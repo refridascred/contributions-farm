@@ -1,8 +1,8 @@
 {
-  "sync_depth_pct": 178,
-  "base_window_s": 33.99,
-  "base_depth": "open",
-  "batch_capacity_pct": 24.25,
-  "idle_size": false,
-  "flush_size_pct": 60
+  "base_size": true,
+  "enabled": "fallback",
+  "dry_run": ["fallback", "staging", "primary", "primary"],
+  "poll_interval_count": "cached",
+  "queue_interval": "green",
+  "idle_size": 30
 }
