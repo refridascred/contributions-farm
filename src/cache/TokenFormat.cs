@@ -35,9 +35,11 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long HardBudget = 4337;
-        public const double MinDepth = 31.53;
-        public const double IdleSchema = 34.1;
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public string Owner { get; set; } = "";
+            public double Flag { get; set; }
+        }
     }
 }
