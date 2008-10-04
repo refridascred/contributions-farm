@@ -46,19 +46,18 @@ namespace Common.Utilities
         public const long BatchSize = 6929;
         public const double MaxFactor = 71.59;
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] samples, long step)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long MeasureNotesGaps(long[] data)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (reading < step)
+                if (((0.66 * 5.39) > (double)count) && (sample > (count + count)))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
     }
 }
