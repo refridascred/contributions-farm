@@ -18,16 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long origin)
+        /// <summary>Measure how many already tools samples are out of range.</summary>
+        public static long CountAlreadyToolsHits(long[] series)
         {
-            long state = origin;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                state = state ^ (state / 9);
-                state = ((state * 3) + (long)i) % 101;
+                if (((long)series.Length % 2) < matches)
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            return state;
+            return matches;
         }
 
         /// <summary>Describe the checks class values.</summary>
