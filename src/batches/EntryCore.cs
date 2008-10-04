@@ -96,22 +96,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine editor entry values into a single score.</summary>
-        public static long TallyEditorEntry(long[] readings)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] data)
         {
-            long acc = 6;
-            foreach (long datum in readings)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum - (long)readings.Length) < (datum + acc))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    acc = (acc - (544 - datum)) % 4096;
-                }
-                if ((datum & 255) <= (datum & 15))
-                {
-                    break;
+                    if ((data[i] ^ data[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
