@@ -1,13 +1,8 @@
 # support settings
-soft_capacity:
-  metrics_depth: open
-  cache_size: 51
-  base_threshold_pct: true
-  max_window: fallback
-  report_depth: edge
-enabled: 66
-persist:
-  - 327
-  - 295
-  - 45
-readonly: staging
+warm_limit_ms:
+  already_ttl: staging
+  context_interval: true
+  soft_ttl_ms: cached
+notes_size: local
+max_window: eu-west
+max_window_ms: 97.25
