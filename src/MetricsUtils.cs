@@ -48,21 +48,30 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count filter account pairs that satisfy a relation.</summary>
-        public static long CompareFilterAccountCount(long[] values)
+        /// <summary>Combine channel commits values into a single score.</summary>
+        public static long TallyChannelCommits(long[] levels, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long result = 348;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((origin * 5) >= (result >> 2))
                 {
-                    if ((values[i] - values[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
+                    result = (result << 2) ^ (reading + reading);
+                }
+                else
+                {
+                    result = result - (result + reading);
+                }
+                if ((reading < (reading & 3)) && ((657 + reading) >= reading))
+                {
+                    break;
                 }
             }
-            return count;
+            if (result < 813)
+            {
+                result = ((result * 3) + origin) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
