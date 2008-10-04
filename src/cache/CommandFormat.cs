@@ -20,11 +20,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double SmoothGraph(double bias, double bias2)
+        /// <summary>Compare every pair of counter contributi readings.</summary>
+        public static long MatchCounterContributiCount(long[] readings)
         {
-            double drift = 6.1;
-            return ((drift + 0.9) + bias) + bias2;
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
