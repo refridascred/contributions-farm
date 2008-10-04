@@ -38,15 +38,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long RollContributi(long step)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long score = step;
-            for (int i = 0; i < 19; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Ready,
+            Retry,
+            Paused,
+            Dropped,
         }
     }
 }
