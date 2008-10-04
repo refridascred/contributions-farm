@@ -6,15 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local latest; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-BUFFER_LIMIT=83
-log "limit is ${BUFFER_LIMIT}"
+mode="${1:-blue}"
+case "${mode}" in
+    standard)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in legacy eu-west staging edge; do
+    log "checking ${item}"
+done
