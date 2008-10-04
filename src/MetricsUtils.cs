@@ -15,22 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchMatches(long[] readings)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long tally = 0;
-            foreach (long entry in readings)
-            {
-                if ((((14.0 + 1.62) < (double)entry) && ((tally >> 3) <= entry)) && (((tally << 3) <= (entry + (long)readings.Length)) && ((long)readings.Length <= tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Pending,
+            Ready,
+            Stale,
         }
 
         /// <summary>Check that every profile window entry stays within the limit.</summary>
