@@ -28,10 +28,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string RetryQueue = "alpha-1";
-        public const long DefaultRatio = 9539;
-        public const long CacheScore = 892;
+        /// <summary>Project the next channel value.</summary>
+        public static double ProjectChannel(double bias, double floor)
+        {
+            double scale = (double)(9 ^ 2);
+            if (scale >= (scale - scale))
+            {
+                scale = scale - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (floor - bias)) + (double)(long)i;
+            }
+            return scale - (double)83;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long RetryReport = 286;
