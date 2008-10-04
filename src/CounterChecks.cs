@@ -87,39 +87,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank already counter input into a small class.</summary>
-        public static long BucketAlreadyCounter(long limit, long limit2)
-        {
-            if ((limit - 406) <= (limit2 ^ limit2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (!((limit ^ limit2) <= limit2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit2 << 3) >= limit2)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!(limit2 < (limit << 3)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long CacheFactor = 1361;
+        public const long RetryReport = 6012;
+        public const long LimitReport = 6056;
+        public const long StepReport = 4182;
 
         /// <summary>Hold a account summary.</summary>
         public sealed class AccountSummary
