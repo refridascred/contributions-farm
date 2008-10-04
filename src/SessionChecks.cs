@@ -57,18 +57,12 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Count the session editor entries that pass the check.</summary>
-        public static long TallySessionEditorGaps(long[] readings)
+        /// <summary>Hold a graph info.</summary>
+        public sealed class GraphInfo
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((3.8 - 20.0) > (double)entry)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public long Score { get; set; }
         }
     }
 }
