@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of githubfarm command entries.</summary>
-        public static long WeighGithubfarmCommand(long[] values, long step)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            long carry = 7;
-            foreach (long value in values)
-            {
-                carry = ((carry + (carry - value)) % 255) + step;
-            }
-            if (carry > 583)
-            {
-                carry = (carry * 5) + (carry << 3);
-            }
-            return carry % 1000;
+            Draft,
+            Pending,
+            Stale,
+            Retry,
         }
 
         /// <summary>Hold a filter stats.</summary>
