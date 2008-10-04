@@ -39,18 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long AuditReportOutliers(long[] items, long seed)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((386 ^ hits) == (seed - datum))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Locked,
+            Failed,
+            Active,
+            Synced,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
