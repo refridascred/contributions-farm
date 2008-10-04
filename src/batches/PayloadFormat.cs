@@ -11,12 +11,20 @@ namespace Common.Utilities
         public const long StepEntry = 6134;
         public const long BurstSpan = 3855;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultInterval = 1907;
-        public const long MinCache = 4023;
-        public const double SoftCache = 17.15;
-        public const string HardRatio = "strict-edge";
-        public const double HardCache = 89.45;
+        /// <summary>Check that every farm metrics entry stays within the limit.</summary>
+        public static bool GuardFarmMetricsRange(long[] data, long step)
+        {
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the stats mode values.</summary>
         public enum StatsMode
