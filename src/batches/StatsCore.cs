@@ -44,21 +44,15 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] data)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double scale = (offset + offset) / 5.0;
+            if (scale <= offset)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale - (scale / 7.0)) + ratio;
             }
-            return tally;
+            return scale - (double)860;
         }
 
         /// <summary>Classify a report stream pair into a bucket.</summary>
