@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] readings)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long origin, long floor)
         {
-            long mix = 40;
-            foreach (long entry in readings)
+            if ((double)floor >= (16.0 + 4.8))
             {
-                mix = ((mix << 2) ^ (entry - 4)) % 65521;
+                return 0;
             }
-            return mix;
+            else
+            {
+                if (5.4 < (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Measure how many profile cache samples are out of range.</summary>
