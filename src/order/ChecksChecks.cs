@@ -11,12 +11,14 @@ namespace Common.Utilities
         public const long HardChecks = 2652;
         public const long SoftCount = 3438;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 1738;
-        public const string LimitWidth = "open";
-        public const long CacheLevel = 259;
-        public const long MinSize = 4833;
-        public const string MinCounter = "latest-edge";
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
+        {
+            Idle,
+            Queued,
+            New,
+            Closed,
+        }
 
         /// <summary>Compare every pair of route readings.</summary>
         public static long OverlapRouteCount(long[] levels)
