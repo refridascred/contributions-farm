@@ -27,11 +27,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BurstInterval = 1613;
-        public const double LimitAlready = 49.15;
-        public const double BurstAlready = 62.68;
-        public const double DefaultSize = 33.57;
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long SeekContextIndex(long[] values, long bound)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= bound) && ((values[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define report limits and defaults.</summary>
         public const long BatchReport = 9090;
