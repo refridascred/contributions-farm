@@ -48,13 +48,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long RollEntry(long bound)
         {
-            public bool Rank { get; set; }
-            public double Owner { get; set; }
-            public double Count { get; set; }
-            public string Label { get; set; } = "";
+            long sum = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                sum = (sum + (bound / 6)) % 97;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    sum = ((sum + bound) % 101) ^ (long)i2;
+                }
+                sum = ((sum * 4) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
