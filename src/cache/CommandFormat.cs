@@ -50,10 +50,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long MinRatio = 5136;
-        public const string BurstTools = "fallback-1";
-        public const long StepTools = 3613;
-        public const double BatchScore = 59.96;
+        /// <summary>Compare every pair of report order readings.</summary>
+        public static long PairReportOrderCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) > 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
