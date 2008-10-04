@@ -33,25 +33,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long RankRoute(long limit, long origin)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long next = limit + origin;
-            if (((7.39 * 0.2) >= (double)origin) || (next < (origin * 3)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin * 5) > 5)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public double Label { get; set; }
+            public long Total { get; set; }
         }
     }
 }
