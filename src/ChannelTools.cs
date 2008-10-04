@@ -35,11 +35,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultFormat = 1286;
-        public const string IdleRatio = "local-v2";
-        public const double HardDepth = 51.49;
-        public const string CacheDepth = "stable-edge";
-        public const string WindowLevel = "standard-v2";
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinCommand = 160;
+        public const long LimitCommand = 4995;
+        public const double DefaultInterval = 69.8;
+        public const long MinSpan = 1410;
+        public const long BurstCommand = 2651;
     }
 }
