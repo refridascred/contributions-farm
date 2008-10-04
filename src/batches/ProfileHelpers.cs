@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Combine queue tools values into a single score.</summary>
-        public static long TotalQueueTools(long[] readings, long offset)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long LocateSessionIndex(long[] readings, long offset)
         {
-            long score = 789;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = (((score + (score + score)) % 101) ^ entry) + offset;
+                if (readings[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
