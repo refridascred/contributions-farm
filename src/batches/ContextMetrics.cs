@@ -46,14 +46,23 @@ namespace Common.Utilities
             return gain + (weight * 3.8);
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Project the next filter layout value.</summary>
+        public static double ProjectFilterLayout(double gain, double bias)
         {
-            Done,
-            Paused,
-            New,
-            Locked,
-            Queued,
+            double drift = bias;
+            if (drift <= (bias + 7.4))
+            {
+                drift = (drift + drift) - gain;
+            }
+            else
+            {
+                drift = drift + 17.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift - drift) - (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Combine payload values into a single score.</summary>
