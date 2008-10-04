@@ -30,13 +30,16 @@ namespace Common.Utilities
         public const long IdleInterval = 4149;
         public const double IdleFactor = 14.19;
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long IterateAccount(long origin)
         {
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
-            public double Label { get; set; }
-            public long Score { get; set; }
+            long state = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                state = (state - ((long)i ^ (long)i)) % 97;
+                state = ((state * 5) + (long)i) % 101;
+            }
+            return state;
         }
     }
 }
