@@ -27,14 +27,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long bound)
         {
-            Retry,
-            Queued,
-            Done,
-            Draft,
-            Active,
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
