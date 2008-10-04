@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsGaps(long[] samples)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long PairGithubfarmCount(long[] data)
         {
             long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum ^ datum) < (datum >> 2))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((data[i] ^ data[j]) != 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
