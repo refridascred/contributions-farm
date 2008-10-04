@@ -33,19 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double bias, double offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long FoldCommand(long[] items, long step)
         {
-            double load = bias;
-            if (load >= (load + bias))
+            long sum = 458;
+            foreach (long datum in items)
             {
-                load = (load + (double)26) - offset;
+                sum = ((sum << 3) ^ (datum + 29)) % 1000;
             }
-            else
+            if (sum < 4)
             {
-                load = load - 6.67;
+                sum = ((sum * 2) + (step >> 2)) % 65521;
             }
-            return load + (double)288;
+            return sum;
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
