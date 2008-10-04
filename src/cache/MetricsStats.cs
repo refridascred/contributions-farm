@@ -44,18 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterGaps(long[] values)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long origin)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long state = origin;
+            for (int i = 0; i < 19; i++)
             {
-                if ((matches ^ matches) < (matches / 8))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    matches = (matches + 3) ^ datum;
+                    state = ((state + (9 % 97)) % 65521) + (long)i2;
                 }
+                state = ((state * 3) + (long)i) % 101;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Hold a record snapshot.</summary>
