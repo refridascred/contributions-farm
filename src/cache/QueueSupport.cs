@@ -17,26 +17,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long WeighFormat(long[] values, long limit)
+        /// <summary>Locate a order layout reading by value.</summary>
+        public static long SeekOrderLayoutIndex(long[] samples, long offset)
         {
-            long carry = 5;
-            foreach (long datum in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((593 + datum) > (carry * 5))
+                if (samples[i] <= offset)
                 {
-                    carry = (carry ^ (datum / 9)) % 101;
-                }
-                else
-                {
-                    carry = (carry - datum) % 101;
+                    return (long)i;
                 }
             }
-            if (carry > 260)
-            {
-                carry = carry + (limit ^ 0);
-            }
-            return carry % 65521;
+            return -1;
         }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
