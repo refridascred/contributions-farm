@@ -73,11 +73,19 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double AdjustPayload(double bias, double offset)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] data, long floor)
         {
-            double drift = (double)(9 ^ 568);
-            return ((drift + 12.0) + bias) + offset;
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample < floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
