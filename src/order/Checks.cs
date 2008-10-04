@@ -25,13 +25,39 @@ namespace Common.Utilities
         public const long WindowGithubfarm = 7836;
         public const double CacheGithubfarm = 5.71;
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long BucketBatch(long floor, long floor2)
         {
-            public bool Total { get; set; }
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
-            public double Offset { get; set; }
+            long span = floor - floor2;
+            if (span < (span * 4))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((span << 3) == (floor2 ^ 548))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)floor != (0.8 / 7.0)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((52 % 24) == (floor & 31))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
