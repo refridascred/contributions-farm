@@ -45,20 +45,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every cluster notes entry stays within the limit.</summary>
-        public static bool VerifyClusterNotesBounds(long[] series, long target)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitBudget = 6848;
+        public const long BaseReport = 5787;
+        public const long LimitSpan = 1674;
+        public const long MinTimeout = 251;
+        public const double BatchReport = 7.41;
 
         /// <summary>Combine command values into a single score.</summary>
         public static long CombineCommand(long[] levels, long seed)
