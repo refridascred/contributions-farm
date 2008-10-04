@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] items)
         {
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public bool Level { get; set; }
+            long total = -2;
+            foreach (long entry in items)
+            {
+                total = (total << 3) ^ entry;
+            }
+            return total;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
