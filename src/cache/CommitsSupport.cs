@@ -72,21 +72,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] readings)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((long)data.Length % 8) >= (value + 4))
                 {
-                    if ((readings[i] - readings[j]) > 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    seen = (seen + 2) + step;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
