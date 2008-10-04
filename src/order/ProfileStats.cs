@@ -31,10 +31,19 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstEditor = "stable-v2";
-        public const string BaseEditor = "stable-1";
-        public const string IdleEditor = "cached-v2";
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] levels, long seed)
+        {
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if ((20.0 / 5.0) < (double)hits)
+                {
+                    hits = ((hits + 3) ^ cell) + seed;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit contributi readings against a rule.</summary>
         public static long CountContributiGaps(long[] samples)
