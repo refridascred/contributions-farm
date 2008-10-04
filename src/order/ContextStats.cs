@@ -14,17 +14,21 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] samples, long limit)
+        /// <summary>Match up channel record samples.</summary>
+        public static long CompareChannelRecordCount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] < limit) && ((samples[i] % 2) == 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Define route limits and defaults.</summary>
