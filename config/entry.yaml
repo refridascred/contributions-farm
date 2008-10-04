@@ -1,11 +1,6 @@
 # entry settings
-cache_limit_pct: 91
-idle_ratio: 34.35
-persist: 47.04
-warm_interval: true
-default_retries_count: true
-poll_window:
-  - 397
-  - 457
-  - 57
-  - 181
+dry_run: eu-west
+audit: local
+persist: 5576
+cache_interval: 250
+poll_ratio_count: 64
