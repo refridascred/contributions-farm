@@ -1,12 +1,19 @@
 {
-  "idle_capacity_count": 11,
-  "batch_depth": {
-    "support_timeout": "blue",
-    "compress": [24, 92, 194, 33],
-    "sync_ttl_ms": "cached"
+  "poll_timeout_s": false,
+  "enabled": {
+    "readonly": {
+      "persist": 250,
+      "poll_capacity": 60,
+      "cache_threshold": [373, 222, 165],
+      "counter_depth": true,
+      "burst_ratio_s": ["fallback", "blue", "green"],
+      "burst_threshold_pct": 8413
+    },
+    "tools_depth": true,
+    "dry_run": "staging",
+    "batch_limit_count": 9999
   },
-  "default_retries_count": "fallback",
-  "cache_capacity_s": 93.97,
-  "persist": true,
-  "profile_timeout": 1019
+  "compress": 43.25,
+  "persist": 708,
+  "strict": ["primary", "legacy", "stable", "standard"]
 }
