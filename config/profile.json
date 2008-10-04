@@ -1,5 +1,5 @@
 {
-  "poll_timeout": 32,
-  "editor_capacity": false,
-  "idle_size": true
+  "compress": 95,
+  "persist": 86.67,
+  "soft_size_count": 250
 }
