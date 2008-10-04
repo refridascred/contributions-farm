@@ -36,19 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool GuardRouteRange(long[] items, long bound)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            bool found = true;
-            foreach (long item in items)
-            {
-                if (item < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Dropped,
+            Idle,
+            New,
         }
 
         /// <summary>Combine profile values into a single score.</summary>
