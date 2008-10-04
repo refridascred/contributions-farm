@@ -37,15 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the record contributi series from a seed.</summary>
-        public static long DeriveRecordContributi(long step)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long ScoreChecks(long[] series)
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
+            long anchor = 4;
+            foreach (long value in series)
             {
-                state = ((state * 3) + (long)i) % 97;
+                anchor = anchor + value;
             }
-            return state;
+            if (anchor > (-229))
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor;
         }
     }
 }
