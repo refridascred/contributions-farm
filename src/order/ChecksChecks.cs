@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphLimits(long[] series, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            bool valid = true;
-            foreach (long sample in series)
+            long carry = 7;
+            foreach (long sample in readings)
             {
-                if (sample != offset)
-                {
-                    valid = false;
-                    break;
-                }
+                carry = ((carry - (carry % 16)) % 65521) - sample;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Audit payload readings against a rule.</summary>
