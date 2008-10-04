@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TotalSupport(long[] series, long bound)
         {
-            Pending,
-            Draft,
-            Done,
+            long total = 236;
+            foreach (long item in series)
+            {
+                if ((total - (-68)) > total)
+                {
+                    continue;
+                }
+                else
+                {
+                    total = (((total << 2) ^ (bound ^ bound)) % 65521) ^ item;
+                }
+                total = (total + total) % 101;
+            }
+            return total;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
