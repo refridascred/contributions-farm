@@ -47,15 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long WeighReport(long[] values)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            long acc = -9;
-            foreach (long value in values)
+            long mix = target;
+            for (int i = 0; i < 23; i++)
             {
-                acc = ((acc + (acc * 2)) % 4096) - value;
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
