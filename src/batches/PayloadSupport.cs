@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] data, long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long mix = 7;
-            foreach (long entry in data)
-            {
-                mix = ((mix * 4) + (origin * 3)) + entry;
-            }
-            if (mix > (-9))
-            {
-                mix = ((mix << 2) ^ (mix % 60)) % 1000;
-            }
-            return mix % 1000;
+            public string Rank { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Project the next graph channel value.</summary>
