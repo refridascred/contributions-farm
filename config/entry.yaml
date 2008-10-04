@@ -1,23 +1,17 @@
 # entry settings
-warm_delay_ms: false
-min_capacity_count: 100
-base_ratio_ms: 7416
-min_limit_pct: 1279
-readonly:
-  soft_delay_s: eu-west
-  min_ratio_ms: true
-  compress: strict
-  strict: open
-  poll_capacity_count: 58.74
-  githubfarm_window:
-    sync_timeout: 5226
-    warm_window: cached
-    dry_run: fallback
-    warm_threshold_ms: 6348
-    base_delay:
-      - standard
-      - blue
-verbose:
-  - strict
-  - green
-  - primary
+soft_interval_ms: true
+hard_limit: fallback
+warm_ttl: 2.36
+idle_threshold_pct:
+  sync_ratio_ms: standard
+  max_interval_ms:
+    base_capacity_count: latest
+    counter_size: 47
+    max_capacity_s: 92
+    channel_capacity: 548
+  session_size:
+    - edge
+    - edge
+    - fallback
+    - primary
+  enabled: 1024
