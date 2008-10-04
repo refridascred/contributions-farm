@@ -30,24 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long RankContributi(long step, long origin)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            if (!(step >= (step + step)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin ^ origin) >= (origin >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public string Rank { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
