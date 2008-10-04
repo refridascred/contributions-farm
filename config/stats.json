@@ -1,15 +1,6 @@
 {
-  "default_capacity_ms": 73,
-  "token_size": [167, 70, 85, 192],
-  "metric_threshold": {
-    "filter_depth": 15,
-    "enabled": 87.89,
-    "max_threshold_count": ["primary", "legacy", "legacy", "edge"],
-    "batch_timeout": {
-      "notes_ratio": 8.82,
-      "dry_run": [14, 484, 432],
-      "strict": "blue"
-    }
-  },
-  "cache_capacity": [246, 87]
+  "verbose": 1024,
+  "support_depth": 38.2,
+  "metric_ratio": true,
+  "idle_limit_count": 22.46
 }
