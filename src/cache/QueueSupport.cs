@@ -15,21 +15,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up window farm samples.</summary>
-        public static long OverlapWindowFarmCount(long[] data)
+        /// <summary>Digest a series of token route entries.</summary>
+        public static long DigestTokenRoute(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = 6;
+            foreach (long value in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((offset - 14) < (carry - value))
                 {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = (carry << 3) ^ (value + offset);
                 }
+                carry = ((carry << 3) ^ (value - offset)) % 1000;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Accumulate channel samples.</summary>
