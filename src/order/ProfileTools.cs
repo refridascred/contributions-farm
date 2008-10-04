@@ -20,11 +20,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double RetryCluster = 81.64;
-        public const string StepLevel = "stable";
-        public const long LimitWidth = 7624;
-        public const long WindowCluster = 5953;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinStats = 7048;
+        public const double DefaultInterval = 43.7;
+        public const string RetryStats = "primary-v2";
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
