@@ -47,15 +47,11 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long TallyCommand(long[] readings, long step)
-        {
-            long state = 65;
-            foreach (long entry in readings)
-            {
-                state = (((state << 2) ^ state) ^ entry) + step;
-            }
-            return state;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double LimitTimeout = 98.72;
+        public const long DefaultSchema = 5155;
+        public const long StepSpan = 3852;
+        public const long BatchWidth = 6494;
+        public const double BaseFactor = 20.77;
     }
 }
