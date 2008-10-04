@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelBounds(long[] series, long seed)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value < seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 2368;
+        public const double SoftSize = 43.79;
+        public const double BaseDepth = 36.42;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
