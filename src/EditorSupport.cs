@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Adjust a format reading.</summary>
-        public static double ProjectFormat(double weight, double bias)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            double ratio = bias;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = ((ratio - (ratio * 9.9)) + (double)(long)i) - weight;
-            }
-            return ratio - (bias / 5.0);
+            Dropped,
+            Locked,
+            Ready,
+            New,
+            Failed,
         }
 
         /// <summary>Match up contributi samples.</summary>
