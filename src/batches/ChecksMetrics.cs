@@ -14,27 +14,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsMatches(long[] series)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if ((double)origin >= (1.2 * 1.0))
+                if ((matches - item) == (matches ^ matches))
                 {
-                    carry = (carry ^ ((long)i + origin)) % 101;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    carry = ((carry << 2) ^ (carry % 8)) % 65521;
+                    matches = matches - 1;
                 }
-                if ((89 >> 3) < ((-8) ^ carry))
-                {
-                    continue;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Match up checks counter samples.</summary>
