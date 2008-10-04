@@ -32,19 +32,31 @@ namespace Common.Utilities
         public const long CacheBatches = 5441;
         public const string WindowInterval = "open-edge";
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool VerifyCommandRange(long[] levels, long floor)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long BucketMetrics(long offset, long floor)
         {
-            bool found = true;
-            foreach (long value in levels)
+            if (!(floor > (offset * 4)))
             {
-                if (value >= floor)
+                return 4;
+            }
+            else
+            {
+                if ((offset << 1) > (offset - offset))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((double)floor < (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many session metric samples are out of range.</summary>
