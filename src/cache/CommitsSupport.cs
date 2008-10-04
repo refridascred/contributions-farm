@@ -63,18 +63,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine queue counter values into a single score.</summary>
-        public static long WeighQueueCounter(long[] levels)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] samples, long seed)
         {
-            long acc = 21;
-            foreach (long sample in levels)
+            long state = 2;
+            foreach (long value in samples)
             {
-                if ((double)acc < (8.5 * 2.6))
+                if (!((6.9 * 3.5) <= (double)value))
                 {
-                    acc = (((acc * 4) + (644 >> 3)) % 101) ^ sample;
+                    state = ((state * 5) + seed) % 1000;
                 }
+                state = (state ^ seed) % 1000;
             }
-            return acc;
+            if (state < 829)
+            {
+                state = state + seed;
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
