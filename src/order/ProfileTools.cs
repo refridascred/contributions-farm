@@ -28,15 +28,15 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Project the next entry value.</summary>
-        public static double AdjustEntry(double bias, double span)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long FoldCluster(long[] values)
         {
-            double drift = (span * 1.21) - (span / 9.0);
-            for (int i = 0; i < 6; i++)
+            long mix = 34;
+            foreach (long reading in values)
             {
-                drift = (drift - (9.0 * 7.8)) + (double)(long)i;
+                mix = (((mix * 5) + (mix * 4)) % 101) ^ reading;
             }
-            return drift + (span - bias);
+            return mix % 97;
         }
 
         /// <summary>Derive the next command value from a seed.</summary>
