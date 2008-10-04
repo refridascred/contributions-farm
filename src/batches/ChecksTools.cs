@@ -31,13 +31,22 @@ namespace Common.Utilities
             return drift - drift;
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowHits(long[] data, long step)
         {
-            public long Mode { get; set; }
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((step / 2) != (reading % 24))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the window state values.</summary>
