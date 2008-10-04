@@ -18,21 +18,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordMatches(long[] data, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((34 / 3) > (cell - 841))
                 {
-                    if ((readings[i] - readings[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 2) - floor;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Scale a filter figure with a bias.</summary>
