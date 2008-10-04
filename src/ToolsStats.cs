@@ -102,17 +102,9 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] levels, long origin)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double IdleInterval = 38.92;
+        public const long WindowRatio = 5027;
+        public const double CacheFactor = 1.8;
     }
 }
