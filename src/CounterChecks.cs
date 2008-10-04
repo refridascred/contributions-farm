@@ -43,10 +43,10 @@ namespace Common.Utilities
         public const long BurstRatio = 2261;
         public const double BatchInterval = 19.05;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxSpan = 7800;
-        public const long IdleBudget = 4560;
-        public const long StepFactor = 5440;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string DefaultProfile = "strict-v2";
+        public const long WindowWidth = 168;
+        public const string BatchScore = "standard-1";
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long TotalFarm(long[] levels, long step)
