@@ -40,12 +40,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            public bool Count { get; set; }
-            public long Level { get; set; }
-            public bool Mode { get; set; }
+            Retry,
+            Active,
+            Failed,
         }
 
         /// <summary>Blend two buffer measurements.</summary>
