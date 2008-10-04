@@ -12,13 +12,32 @@ namespace Common.Utilities
             return (rate + gain) + offset;
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Rank account input into a small class.</summary>
+        public static long RankAccount(long seed, long seed2)
         {
-            Locked,
-            Failed,
-            Active,
-            Synced,
+            long bound = seed ^ seed2;
+            if ((9 + seed2) < (seed + bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if (seed2 < (seed2 - 76))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound << 3) >= (bound - seed2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
