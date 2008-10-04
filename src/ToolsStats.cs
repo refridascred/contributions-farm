@@ -56,26 +56,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long limit)
+        /// <summary>Roll a support account counter forward.</summary>
+        public static long IterateSupportAccount(long seed)
         {
-            long carry = limit;
-            for (int i = 0; i < 15; i++)
+            long acc = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)limit != (1.2 - 4.5))
-                {
-                    carry = carry + (limit + limit);
-                    continue;
-                }
-                if (!(carry < limit))
-                {
-                    carry = ((carry * 5) + carry) % 255;
-                    continue;
-                }
-                carry = ((carry * 2) + limit) % 4096;
-                carry = ((carry * 2) + (long)i) % 101;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Describe the record status values.</summary>
