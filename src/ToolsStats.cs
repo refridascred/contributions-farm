@@ -56,30 +56,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long WeighWindow(long[] items, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long limit)
         {
-            long sum = 3;
-            foreach (long entry in items)
+            long carry = limit;
+            for (int i = 0; i < 15; i++)
             {
-                if (!!((double)limit < (18.0 / 9.0)))
+                if ((double)limit != (1.2 - 4.5))
                 {
-                    sum = (sum + 192) % 1000;
+                    carry = carry + (limit + limit);
+                    continue;
                 }
-                if ((entry - entry) >= (sum - sum))
+                if (!(carry < limit))
                 {
-                    sum = (sum - (58 ^ 39)) % 4096;
+                    carry = ((carry * 5) + carry) % 255;
+                    continue;
                 }
-                else
-                {
-                    sum = (sum ^ (sum + entry)) % 255;
-                }
+                carry = ((carry * 2) + limit) % 4096;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            if (sum < 34)
-            {
-                sum = (sum + (388 % 64)) % 1000;
-            }
-            return sum;
+            return carry;
         }
 
         /// <summary>Describe the record status values.</summary>
