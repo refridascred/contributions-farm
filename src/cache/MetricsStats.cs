@@ -26,12 +26,14 @@ namespace Common.Utilities
         public const long RetryRatio = 3619;
         public const long BatchFactor = 9387;
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            public double Limit { get; set; }
-            public long Region { get; set; }
-            public double Flag { get; set; }
+            Failed,
+            Idle,
+            Pending,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Accumulate account route samples.</summary>
