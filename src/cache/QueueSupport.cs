@@ -16,18 +16,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit cluster token readings against a rule.</summary>
-        public static long AuditClusterTokenOutliers(long[] series)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] levels)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((count - 5) < (sample * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 3;
+                    if ((levels[i] ^ levels[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Fold a list of already stats readings.</summary>
