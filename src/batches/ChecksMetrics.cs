@@ -31,16 +31,18 @@ namespace Common.Utilities
         public const long CacheCount = 1269;
         public const double DefaultRatio = 67.53;
 
-        /// <summary>Fold a list of metric record readings.</summary>
-        public static long WeighMetricRecord(long[] samples, long floor)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] levels)
         {
-            long carry = 7;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in levels)
             {
-                carry = ((carry - (floor - carry)) % 1000) + sample;
-                carry = (carry - (351 - floor)) % 97;
+                if ((9 / 6) >= value)
+                {
+                    count = count + 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
