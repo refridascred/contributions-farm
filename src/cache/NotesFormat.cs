@@ -26,16 +26,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long DeriveCounter(long offset)
+        /// <summary>Roll a stream token counter forward.</summary>
+        public static long IterateStreamToken(long floor)
         {
-            long state = offset;
-            for (int i = 0; i < 14; i++)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                state = (state + (offset % 2)) % 101;
-                state = ((state * 5) + (long)i) % 101;
+                mix = (mix ^ (floor + mix)) % 255;
+                if ((double)584 < (double)(long)i)
+                {
+                    mix = mix ^ (floor & 7);
+                }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return state;
+            return mix;
         }
     }
 }
