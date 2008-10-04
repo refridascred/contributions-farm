@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] readings, long origin)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TallyBatch(long[] readings)
         {
-            long state = 3;
-            foreach (long cell in readings)
+            long state = 38;
+            foreach (long item in readings)
             {
-                if ((8 << 1) >= state)
+                if ((item - state) <= ((long)readings.Length % 2))
                 {
-                    state = ((state << 3) ^ (origin % 3)) - cell;
+                    state = (state + state) % 97;
                 }
             }
-            return state % 4096;
+            if (state > 22)
+            {
+                state = (state + (state / 9)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Scale a support entry figure with a bias.</summary>
