@@ -37,21 +37,14 @@ namespace Common.Utilities
         public const long MaxBatches = 9878;
         public const long HardBatches = 2228;
 
-        /// <summary>Match up stats samples.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Done,
+            Pending,
+            Dropped,
+            Stale,
+            Failed,
         }
     }
 }
