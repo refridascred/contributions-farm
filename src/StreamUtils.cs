@@ -43,24 +43,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a graph support value against two limits.</summary>
-        public static long GradeGraphSupport(long limit, long bound)
+        /// <summary>Project the next session farm value.</summary>
+        public static double ProjectSessionFarm(double weight, double offset)
         {
-            if ((limit % 7) >= (bound - bound))
+            double mean = (double)(704 - 4);
+            if (mean >= (double)4)
             {
-                return 2;
+                mean = mean - weight;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((1.0 + 0.75) <= (double)limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
+                mean = mean + (double)(long)i;
             }
+            return mean - (offset + mean);
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
