@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long LookupFarmIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseWindow = 3322;
+        public const long BurstWindow = 8536;
+        public const double RetryWindow = 1.61;
+        public const long MinWindow = 2109;
+        public const double LimitRatio = 72.14;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double LimitScore = 44.16;
