@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the token series from a seed.</summary>
-        public static long DeriveToken(long step)
+        /// <summary>Blend two command measurements.</summary>
+        public static double BlendCommand(double gain, double offset)
         {
-            long anchor = step;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = (anchor - (long)i) % 65521;
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            double rate = (1.17 / 7.0) * 3.9;
+            return (rate + gain) + offset;
         }
 
         /// <summary>Describe the payload level values.</summary>
