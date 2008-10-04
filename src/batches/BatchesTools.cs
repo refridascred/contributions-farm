@@ -20,10 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double IdleDepth = 43.24;
-        public const long BatchCount = 6232;
-        public const long LimitInterval = 1268;
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double bias, double bias2)
+        {
+            double bias3 = (double)878 + bias;
+            for (int i = 0; i < 5; i++)
+            {
+                bias3 = ((bias3 + (bias / 8.0)) + (double)(long)i) + bias2;
+            }
+            return bias3 + 7.71;
+        }
 
         /// <summary>Match up window samples.</summary>
         public static long MatchWindowCount(long[] values)
