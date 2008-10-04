@@ -20,18 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] readings)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long SeriesNotes(long floor)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)value > (8.22 - 1.0))
-                {
-                    matches = matches + 2;
-                }
+                acc = ((acc * 3) + (314 >> 2)) % 101;
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Hold a tools entry.</summary>
