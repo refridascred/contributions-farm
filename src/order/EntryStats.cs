@@ -44,16 +44,14 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long WeighEditor(long[] readings, long origin)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long mix = 28;
-            foreach (long reading in readings)
-            {
-                mix = (mix + (reading + mix)) % 101;
-                mix = ((mix * 3) + (reading + origin)) % 1000;
-            }
-            return mix % 4096;
+            New,
+            Queued,
+            Failed,
+            Done,
+            Pending,
         }
     }
 }
