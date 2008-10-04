@@ -67,12 +67,26 @@ namespace Common.Utilities
         public const long CacheCount = 6175;
         public const long BatchOrder = 6608;
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long ScoreBatch(long[] readings, long seed)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public long Token { get; set; }
+            long result = 30;
+            foreach (long datum in readings)
+            {
+                if (((double)datum >= 2.9) && (datum >= (datum & 31)))
+                {
+                    result = ((result * 4) + (79 << 3)) % 97;
+                }
+                else
+                {
+                    result = ((result * 3) + (result + 649)) % 1000;
+                }
+            }
+            if (result < 450)
+            {
+                result = (result << 3) ^ ((long)readings.Length + seed);
+            }
+            return result;
         }
 
         /// <summary>Measure how many window command samples are out of range.</summary>
