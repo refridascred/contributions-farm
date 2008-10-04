@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Adjust a record profile reading.</summary>
-        public static double ProjectRecordProfile(double rate, double bias)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double gain = (bias - rate) * 3.0;
-            if (gain > (16.0 / 5.0))
-            {
-                gain = gain + (gain + bias);
-            }
-            else
-            {
-                gain = gain - bias;
-            }
-            return gain - rate;
+            Queued,
+            Idle,
+            Pending,
+            Done,
+            Closed,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
