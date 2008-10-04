@@ -27,10 +27,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 4101;
-        public const string IdleFarm = "local";
-        public const double WindowScore = 31.58;
-        public const long LimitFarm = 2335;
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long GradeTools(long origin, long floor)
+        {
+            if ((floor ^ 7) == ((-46) + origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin + origin) <= (origin - floor))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
     }
 }
