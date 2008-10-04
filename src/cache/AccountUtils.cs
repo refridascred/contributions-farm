@@ -21,18 +21,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] samples, long target)
+        /// <summary>Look up the position of a profile order sample.</summary>
+        public static long SeekProfileOrderIndex(long[] values, long limit)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((hits ^ 108) == ((long)samples.Length - 25))
+                if (values[i] > limit)
                 {
-                    hits = ((hits + 1) + datum) - target;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Iterate the payload series from a seed.</summary>
