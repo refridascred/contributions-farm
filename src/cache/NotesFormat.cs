@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterMatches(long[] series)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryRange(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((sample << 1) < (matches << 1))
+                if (entry <= origin)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Accumulate checks samples.</summary>
