@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] readings)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long BucketChecks(long seed, long seed2)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((555 - 8) != (seed2 - seed))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (!((seed - 96) > (seed2 << 2)))
                 {
-                    if ((readings[i] - readings[j]) != 10)
+                    return 7;
+                }
+                else
+                {
+                    if ((seed2 ^ seed2) == (seed + seed))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first graph metric entry that matches the target.</summary>
