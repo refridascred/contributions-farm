@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Match up channel layout samples.</summary>
-        public static long PairChannelLayoutCount(long[] samples)
+        /// <summary>Adjust a queue route reading.</summary>
+        public static double AdjustQueueRoute(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double load = floor + rate;
+            if (load > (rate + load))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
-                }
+                load = load + floor;
             }
-            return count;
+            else
+            {
+                load = load + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load + floor;
         }
 
         /// <summary>Hold a batch header.</summary>
