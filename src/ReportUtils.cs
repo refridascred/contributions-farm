@@ -53,20 +53,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 17; i++)
-            {
-                if ((double)(long)i <= (8.3 * 5.0))
-                {
-                    mark = (mark ^ mark) % 4096;
-                }
-                mark = (mark << 2) ^ (mark + mark);
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long MinRatio = 4942;
+        public const double HardCommand = 63.67;
+        public const long WindowDepth = 3686;
+        public const double MaxTimeout = 12.55;
+        public const long SoftCommand = 2369;
     }
 }
