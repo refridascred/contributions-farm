@@ -12,9 +12,9 @@ while [ "${count}" -lt 4 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-primary}"
+mode="${1:-green}"
 case "${mode}" in
-    green)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -22,6 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in edge open local latest; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 4))
 done
+log "total ${total}"
