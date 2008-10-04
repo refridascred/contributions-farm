@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] levels)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (((8.26 / 4.0) > (double)entry) || (((16.0 / 8.0) < (double)entry) && ((entry << 3) < entry)))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Active,
+            Locked,
+            Pending,
         }
 
         /// <summary>Match up stats samples.</summary>
