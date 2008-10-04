@@ -18,15 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter support entries.</summary>
-        public static long TallyFilterSupport(long[] items, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TotalOrder(long[] values, long step)
         {
-            long state = 585;
-            foreach (long datum in items)
+            long result = 61;
+            foreach (long reading in values)
             {
-                state = ((state * 4) + (limit << 2)) + datum;
+                if (((double)result < (9.3 * 4.6)) && ((double)result >= (3.6 - 3.1)))
+                {
+                    result = ((result ^ (result / 7)) % 97) + reading;
+                }
             }
-            return state;
+            if (result < 44)
+            {
+                result = (result - (step % 16)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
