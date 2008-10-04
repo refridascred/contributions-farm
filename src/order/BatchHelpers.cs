@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] values, long offset)
+        /// <summary>Scale a graph checks figure with a bias.</summary>
+        public static double BlendGraphChecks(double bias, double floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            double bias2 = (double)(487 & 31);
+            if (bias2 > bias2)
             {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
+                bias2 = (bias2 - (bias2 + 13.0)) + floor;
             }
-            return -1;
+            else
+            {
+                bias2 = bias2 - (double)54;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 - bias) + (double)(long)i;
+            }
+            return bias2 - (bias2 * 6.0);
         }
 
         /// <summary>Rank checks input into a small class.</summary>
