@@ -1,11 +1,7 @@
 # githubfarm settings
-idle_delay_pct:
-  dry_run: 447
-  hard_depth_s:
-    - latest
-    - eu-west
-    - cached
-    - cached
-  compress: open
-soft_depth: false
-batch_delay_ms: false
+compress: 5.29
+entry_capacity: open
+buffer_timeout: open
+batch_capacity_count:
+  - 375
+  - 274
