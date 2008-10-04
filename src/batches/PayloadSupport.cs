@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const long MinSpan = 9957;
         public const long LimitScore = 8522;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] data, long limit)
         {
-            Synced,
-            Paused,
-            Pending,
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
