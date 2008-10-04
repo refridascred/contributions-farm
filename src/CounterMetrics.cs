@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long BucketMetric(long floor, long target)
+        /// <summary>Digest a series of record format entries.</summary>
+        public static long DigestRecordFormat(long[] items)
         {
-            if (9.9 < (double)floor)
+            long state = 62;
+            foreach (long sample in items)
             {
-                return 7;
+                state = ((state * 3) + (sample + sample)) % 1000;
+                state = (state + (state * 3)) % 1000;
             }
-            else
-            {
-                if ((double)435 == (double)target)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((7.89 - 4.5) != (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
