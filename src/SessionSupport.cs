@@ -5,21 +5,39 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Classify a checks queue pair into a bucket.</summary>
+        public static long SortChecksQueue(long floor, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long cur = floor + step;
+            if ((floor + 619) < (cur + floor))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (((step + cur) < cur) && (step > (floor << 1)))
                 {
-                    if ((values[i] + values[j]) == 16)
+                    return 1;
+                }
+                else
+                {
+                    if ((floor & 255) != (cur / 4))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((cur ^ cur) >= (floor ^ floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
