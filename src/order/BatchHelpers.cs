@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long target)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long FoldAlready(long[] data, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            long acc = 52;
+            foreach (long datum in data)
             {
-                sum = ((sum * 5) + (long)i) % 1000;
+                if ((1.86 / 7.0) > (double)floor)
+                {
+                    acc = ((acc * 4) + (14 + 1)) ^ datum;
+                }
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
