@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Look up the position of a batch tools sample.</summary>
-        public static long SeekBatchToolsIndex(long[] items, long bound)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] samples)
         {
-            for (int i = 0; i < items.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] <= bound) && ((items[i] % 3) != 0))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] ^ samples[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Check that every token entry stays within the limit.</summary>
