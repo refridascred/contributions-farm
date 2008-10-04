@@ -80,19 +80,9 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool CheckOrderRange(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long reading in values)
-            {
-                if (reading < limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MinReport = 1408;
+        public const long SoftLevel = 743;
+        public const long WindowWidth = 5851;
     }
 }
