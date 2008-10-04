@@ -34,18 +34,13 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiOutliers(long[] levels)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if (entry < (entry - count))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
