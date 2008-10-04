@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long DigestLayout(long[] data, long target)
-        {
-            long result = -1;
-            foreach (long entry in data)
-            {
-                if (((result - entry) > (target & 7)) || ((target >> 5) != (result + result)))
-                {
-                    result = ((result * 2) + (result - target)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftBuffer = 5135;
+        public const long MinInterval = 8699;
+        public const string BatchBuffer = "open-1";
+        public const long SoftInterval = 5387;
+        public const long SoftRatio = 7716;
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
