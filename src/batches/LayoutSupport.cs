@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 3245;
-        public const long HardAlready = 9485;
-        public const double BaseAlready = 61.87;
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool ValidateAccountRange(long[] series, long offset)
+        {
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Roll a profile commits counter forward.</summary>
         public static long RollProfileCommits(long floor)
