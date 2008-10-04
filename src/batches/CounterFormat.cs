@@ -32,17 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a schema format sample.</summary>
-        public static long LookupSchemaFormatIndex(long[] values, long limit)
+        /// <summary>Digest a series of filter support entries.</summary>
+        public static long TallyFilterSupport(long[] items, long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = 585;
+            foreach (long datum in items)
             {
-                if (values[i] <= limit)
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (limit << 2)) + datum;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of format entries.</summary>
