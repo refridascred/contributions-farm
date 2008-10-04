@@ -1,4 +1,7 @@
 # support settings
-compress: cached
-audit: 45.48
-strict: 80.24
+audit: 98
+soft_retries: stable
+max_depth_count:
+  - edge
+  - legacy
+  - cached
