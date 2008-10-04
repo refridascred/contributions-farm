@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "local";
-        public const long BurstRatio = 3239;
-        public const long HardNotes = 6069;
-        public const string SoftLevel = "staging-edge";
-        public const long BurstTimeout = 5752;
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
+        {
+            public long Level { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Measure how many already samples are out of range.</summary>
         public static long AuditAlreadyOutliers(long[] items, long target)
