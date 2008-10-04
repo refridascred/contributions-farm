@@ -37,17 +37,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long SeekAccountIndex(long[] items, long bound)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 5) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
