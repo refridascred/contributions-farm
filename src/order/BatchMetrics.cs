@@ -42,22 +42,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] samples, long target)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long ClassifyCounter(long floor, long floor2)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            if (!((double)floor2 != (7.82 * 1.9)))
             {
-                if (target >= (target >> 5))
+                return 1;
+            }
+            else
+            {
+                if ((double)floor2 < 6.6)
                 {
-                    hits = (hits + 1) + datum;
+                    return 4;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
