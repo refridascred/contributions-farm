@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=137
-log "limit is ${CHANNEL_LIMIT}"
+mode="${1:-blue}"
+case "${mode}" in
+    green)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-for item in eu-west edge legacy; do
-    log "checking ${item}"
-done
+CHANNEL_LIMIT=500
+log "limit is ${CHANNEL_LIMIT}"
