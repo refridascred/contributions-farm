@@ -6,15 +6,21 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=285
-log "limit is ${COMMAND_LIMIT}"
-
-for item in latest blue legacy staging; do
-    log "checking ${item}"
-done
+mode="${1:-primary}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 total=0
-for i in $(seq 1 10); do
+for i in $(seq 1 3); do
     total=$((total + i * 5))
 done
 log "total ${total}"
+
+COMMAND_LIMIT=460
+log "limit is ${COMMAND_LIMIT}"
