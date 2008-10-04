@@ -1,9 +1,4 @@
 # support settings
-flush_limit_s: 4350
-format_timeout: stable
-already_window: 5757
-base_limit_pct: legacy
-queue_timeout:
-  - latest
-  - fallback
-  - open
+persist: true
+audit: 87.14
+editor_ttl: 6994
