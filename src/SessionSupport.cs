@@ -13,18 +13,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] values, long bound)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long tally = 0;
-            foreach (long sample in values)
-            {
-                if (((-786) - sample) <= (tally ^ (-432)))
-                {
-                    tally = (tally + 2) - bound;
-                }
-            }
-            return tally;
+            Retry,
+            Draft,
+            Synced,
         }
 
         /// <summary>Validate order readings against a bound.</summary>
