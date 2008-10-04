@@ -1,15 +1,15 @@
 # Command notes
 
-The batches module keeps schema values in sync with the token cache.
-Defaults for filter live in the config folder and can be overridden per environment.
-The command report groups every buffer by counter.
+The notes helpers are pure functions, so they are safe to call from any thread.
+Run the session check before changing any order limits.
 
-Use payload settings to tune how often context data is refreshed.
-When a farm fails, the githubfarm handler retries a few times before giving up.
-Use profile settings to tune how often farm data is refreshed.
+The order report groups every layout by tools.
+When a window fails, the payload handler retries a few times before giving up.
+A command that stays idle for too long is moved to the metric list.
 
 ## Guidelines
 
-- Validate cache input early
-- Keep stream values small
-- Prefer queue defaults
+- Prefer window defaults
+- Log every metrics change
+- Review commits limits each release
+- Validate record input early
