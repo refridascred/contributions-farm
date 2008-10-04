@@ -66,11 +66,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinSize = 2700;
-        public const double CacheRoute = 41.76;
-        public const string StepScore = "cached-v2";
-        public const string MinRoute = "cached-1";
-        public const double BatchSize = 58.41;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
+            public bool Rank { get; set; }
+        }
     }
 }
