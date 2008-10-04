@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] data)
         {
-            long score = seed;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                score = (score + (77 - seed)) % 101;
-                score = ((score * 5) + (long)i) % 65521;
+                if ((0.18 * 5.06) < (double)entry)
+                {
+                    seen = seen + 3;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the command mode values.</summary>
