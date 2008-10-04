@@ -19,16 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next filter stats value from a seed.</summary>
-        public static long IterateFilterStats(long offset)
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double ratio, double span)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            double load = ratio;
+            if (load <= ratio)
             {
-                anchor = anchor - offset;
-                anchor = ((anchor * 2) + (long)i) % 1000;
+                load = (load + (load * 10.0)) - span;
             }
-            return anchor;
+            return load - 5.79;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
