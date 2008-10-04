@@ -67,24 +67,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long target, long bound)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long seed)
         {
-            if ((938 + bound) > (bound >> 4))
+            long score = seed;
+            for (int i = 0; i < 22; i++)
             {
-                return 8;
+                score = (score ^ score) % 1000;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((19.0 + 2.09) > (double)bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return score;
         }
 
         /// <summary>Locate a tools reading by value.</summary>
