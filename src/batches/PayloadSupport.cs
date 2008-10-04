@@ -38,22 +38,13 @@ namespace Common.Utilities
             return bias2 + (bias - bias2);
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] readings, long seed)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (tally >= 809)
-                {
-                    tally = ((tally + 2) ^ datum) + seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Locked,
+            Queued,
+            Failed,
         }
     }
 }
