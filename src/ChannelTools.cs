@@ -35,12 +35,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
-        {
-            Done,
-            Synced,
-            Paused,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultFormat = 1286;
+        public const string IdleRatio = "local-v2";
+        public const double HardDepth = 51.49;
+        public const string CacheDepth = "stable-edge";
+        public const string WindowLevel = "standard-v2";
     }
 }
