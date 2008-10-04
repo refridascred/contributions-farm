@@ -38,31 +38,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long floor, long floor2)
-        {
-            if ((floor2 - floor2) == (floor >> 5))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((floor2 % 8) < (floor2 ^ 375))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor > (floor + floor2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 4101;
+        public const string IdleFarm = "local";
+        public const double WindowScore = 31.58;
+        public const long LimitFarm = 2335;
     }
 }
