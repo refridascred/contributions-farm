@@ -18,18 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many already tools samples are out of range.</summary>
-        public static long CountAlreadyToolsHits(long[] series)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long FoldEntry(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long result = -240;
+            foreach (long sample in levels)
             {
-                if (((long)series.Length % 2) < matches)
+                if ((sample << 1) == (result & 31))
                 {
-                    matches = (matches + 2) + value;
+                    result = (result - bound) % 4096;
+                }
+                if (((double)bound <= (2.0 / 9.0)) || (sample <= (sample - result)))
+                {
+                    result = result ^ (result % 3);
+                    continue;
+                }
+                else
+                {
+                    result = (result ^ (sample / 7)) % 255;
+                }
+                if (!((27 % 64) != (result * 3)))
+                {
+                    result = (result << 3) ^ (result * 5);
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Describe the checks class values.</summary>
