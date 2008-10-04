@@ -33,38 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long RankBatch(long offset, long origin)
-        {
-            if (((origin >> 3) == (origin - origin)) && ((origin & 7) >= offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((5.37 + 2.0) >= (double)origin)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (origin > offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((origin * 5) != (offset % 24)) || ((10.0 - 4.3) >= (double)origin))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardChannel = "stable-1";
+        public const long MaxSize = 435;
+        public const long RetryChannel = 8181;
+        public const long LimitLevel = 4486;
     }
 }
