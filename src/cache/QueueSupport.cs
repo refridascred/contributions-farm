@@ -15,25 +15,27 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long RankCommits(long bound, long target)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long ScoreGraph(long[] readings, long bound)
         {
-            long slot = bound - target;
-            if ((25 >= bound) || ((double)0 == (double)bound))
+            long state = 8;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound + slot) > slot)
+                if (!((state % 60) <= (98 - (long)readings.Length)))
                 {
-                    return 0;
+                    state = (state + (cell + bound)) % 1000;
                 }
-                else
+                state = ((state * 5) + (state * 3)) % 4096;
+                if (0.62 > (double)state)
                 {
-                    return 5;
+                    state = (state + bound) % 97;
                 }
             }
+            if (state > 4)
+            {
+                state = state + (bound % 3);
+            }
+            return state;
         }
 
         /// <summary>Accumulate channel samples.</summary>
