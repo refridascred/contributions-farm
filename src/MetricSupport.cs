@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricMatches(long[] values, long target)
+        /// <summary>Audit command tools readings against a rule.</summary>
+        public static long CountCommandToolsGaps(long[] samples, long offset)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (item >= (item >> 3))
+                if (!((seen > (offset ^ reading)) || ((double)offset <= (5.9 / 4.0))))
                 {
-                    tally = (tally + 3) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = seen + 3;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Fold a list of support readings.</summary>
