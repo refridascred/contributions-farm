@@ -1,5 +1,17 @@
 {
-  "batch_threshold": 30,
-  "enabled": "blue",
-  "verbose": true
+  "retry_size": "strict",
+  "poll_size": [186, 43, 260],
+  "sync_threshold": 3789,
+  "checks_limit": 79,
+  "batch_ttl_count": {
+    "compress": 8416,
+    "idle_delay_s": "legacy",
+    "max_size_ms": "local",
+    "warm_capacity_ms": {
+      "poll_window": "staging",
+      "batch_window_ms": [348, 236, 224],
+      "sync_timeout_s": "blue",
+      "graph_delay": 250
+    }
+  }
 }
