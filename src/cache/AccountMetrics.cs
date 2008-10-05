@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long AuditGraphGaps(long[] values, long origin)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long FoldLayout(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long sum = 2;
+            foreach (long entry in readings)
             {
-                if ((((matches - origin) < (matches ^ item)) && ((double)matches > (5.8 / 8.0))) && ((854 >> 4) <= (matches << 2)))
+                if (sum < ((-588) + sum))
                 {
-                    matches = matches + 1;
+                    sum = ((sum + ((long)readings.Length / 3)) % 1000) + entry;
                 }
             }
-            return matches;
+            if (sum < 8)
+            {
+                sum = ((sum << 3) ^ sum) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
