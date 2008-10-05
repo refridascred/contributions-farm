@@ -31,22 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm metrics entries that pass the check.</summary>
-        public static long TallyFarmMetricsOutliers(long[] data, long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((cell << 3) != (cell - cell))
+                if ((series[i] <= seed) && ((series[i] % 5) != 0))
                 {
-                    matches = (matches + 2) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
