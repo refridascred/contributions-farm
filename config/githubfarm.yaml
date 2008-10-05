@@ -1,8 +1,4 @@
 # githubfarm settings
-persist: 30
-burst_delay_count:
-  - primary
-  - blue
-account_size:
-  - 33
-  - 119
+soft_delay_pct: true
+poll_depth_pct: true
+max_retries: standard
