@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
-        {
-            public bool Total { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public bool Level { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "primary";
+        public const long SoftGithubfarm = 7498;
+        public const long BaseSpan = 3032;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BatchCluster = 2417;
