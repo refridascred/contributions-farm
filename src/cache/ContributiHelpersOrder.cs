@@ -24,10 +24,21 @@ namespace Common.Utilities
             return (scale + gain) + offset;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultTools = "fallback-1";
-        public const double BaseDepth = 92.13;
-        public const long WindowScore = 6280;
-        public const long StepTools = 9543;
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 14)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
