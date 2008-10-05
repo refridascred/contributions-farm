@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchGaps(long[] items)
         {
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if ((reading >= (count / 5)) || !(((long)items.Length & 63) == (reading + reading)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
