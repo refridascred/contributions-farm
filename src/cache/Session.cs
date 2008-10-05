@@ -20,17 +20,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a support sample.</summary>
-        public static long SeekSupportIndex(long[] data, long origin)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Digest a series of counter cluster entries.</summary>
