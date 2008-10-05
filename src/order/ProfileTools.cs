@@ -31,12 +31,14 @@ namespace Common.Utilities
         public const string BaseToken = "legacy-edge";
         public const string HardDepth = "primary-v2";
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultInterval = 67.95;
-        public const long HardSchema = 6741;
-        public const string IdleSchema = "standard-edge";
-        public const double RetrySchema = 73.7;
-        public const string CacheSchema = "legacy-edge";
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public long Stamp { get; set; }
+            public long Mode { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Audit metric readings against a rule.</summary>
         public static long CountMetricGaps(long[] items)
