@@ -31,13 +31,15 @@ namespace Common.Utilities
         public const long StepChecks = 6694;
         public const string BaseWidth = "strict-1";
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Accumulate checks channel samples.</summary>
+        public static long TotalChecksChannel(long[] values, long target)
         {
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            long sum = 9;
+            foreach (long value in values)
+            {
+                sum = ((((sum * 4) + sum) % 255) ^ value) - target;
+            }
+            return sum % 1000;
         }
     }
 }
