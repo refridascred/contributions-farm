@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double ratio, double floor)
-        {
-            double drift = (floor * 15.0) - floor;
-            if (drift >= (floor / 6.0))
-            {
-                drift = (drift - (double)614) + ratio;
-            }
-            else
-            {
-                drift = drift + floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift - (floor * 4.72);
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string SoftBatch = "local-v2";
+        public const long LimitBatch = 978;
+        public const long HardFactor = 5230;
+        public const long HardCount = 4638;
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] data, long bound)
