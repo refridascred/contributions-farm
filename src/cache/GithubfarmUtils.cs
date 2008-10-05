@@ -29,19 +29,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool ValidateClusterRange(long[] items, long offset)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] values, long origin)
         {
-            bool ready = true;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (value >= offset)
+                if ((values[i] >= origin) && ((values[i] % 2) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Derive the next batches value from a seed.</summary>
