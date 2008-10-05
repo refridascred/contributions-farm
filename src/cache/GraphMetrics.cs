@@ -20,18 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferOutliers(long[] readings, long step)
+        /// <summary>Combine token metric values into a single score.</summary>
+        public static long ScoreTokenMetric(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mix = 295;
+            foreach (long sample in values)
             {
-                if ((double)reading == (2.39 / 6.0))
+                if ((double)mix < 4.24)
                 {
-                    matches = (matches + 2) - step;
+                    mix = ((mix * 4) + (sample ^ mix)) % 255;
+                }
+                else
+                {
+                    mix = mix - sample;
                 }
             }
-            return matches;
+            if (mix < 731)
+            {
+                mix = mix - (mix + mix);
+            }
+            return mix;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
