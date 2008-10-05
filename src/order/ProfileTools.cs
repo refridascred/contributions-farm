@@ -49,22 +49,10 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteHits(long[] readings, long bound)
-        {
-            long count = 0;
-            foreach (long sample in readings)
-            {
-                if ((sample & 255) < count)
-                {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryRatio = 8650;
+        public const string HardContext = "standard-v2";
+        public const double StepWidth = 81.71;
+        public const long IdleRatio = 7137;
     }
 }
