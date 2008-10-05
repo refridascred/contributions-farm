@@ -19,23 +19,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double bias, double offset)
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long step)
         {
-            double rate = bias;
-            if (rate <= bias)
+            long carry = step;
+            for (int i = 0; i < 19; i++)
             {
-                rate = rate + (bias + rate);
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            else
-            {
-                rate = rate - (double)613;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - (offset - offset)) + (double)(long)i;
-            }
-            return rate - (8.6 - rate);
+            return carry;
         }
 
         /// <summary>Rank payload input into a small class.</summary>
