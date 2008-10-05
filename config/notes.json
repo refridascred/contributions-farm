@@ -1,16 +1,7 @@
 {
-  "persist": false,
-  "batches_limit": {
-    "base_retries": {
-      "batches_window": "cached",
-      "base_window_pct": 1575,
-      "min_timeout": 4332
-    },
-    "compress": 500,
-    "poll_capacity_count": ["open", "standard", "cached"]
-  },
-  "metrics_size": 52.15,
-  "metric_timeout": "legacy",
-  "base_timeout_pct": 100,
-  "cache_limit": true
+  "enabled": 14.01,
+  "min_limit_pct": ["stable", "open", "open"],
+  "warm_limit": "local",
+  "base_size": 96.39,
+  "warm_window_count": 0.11
 }
