@@ -46,15 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double ProjectEditor(double bias, double span)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            double gain = 0.45 * 4.65;
-            if (gain > (span * 8.89))
-            {
-                gain = (gain - span) + bias;
-            }
-            return gain + (span * 4.47);
+            public long Label { get; set; }
+            public long Score { get; set; }
+            public double Ratio { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
