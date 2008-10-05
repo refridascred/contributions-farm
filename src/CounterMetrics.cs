@@ -31,10 +31,18 @@ namespace Common.Utilities
             return gain + 1.7;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BurstTimeout = 186;
-        public const long RetryStream = 6790;
-        public const double MinLevel = 40.49;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long StepContributi(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                anchor = (anchor * 4) + (8 + anchor);
+                anchor = (anchor ^ (long)i) % 255;
+                anchor = ((anchor * 2) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long FindRouteIndex(long[] data, long limit)
