@@ -1,9 +1,8 @@
 # support settings
-flush_timeout:
-  - standard
-  - cached
-  - standard
-  - standard
-persist: 477
-poll_interval: 9
-warm_capacity: 2
+min_ratio_pct:
+  - local
+  - primary
+  - stable
+graph_capacity: 2222
+metric_delay: open
+warm_depth: false
