@@ -1,7 +1,16 @@
 {
-  "profile_window": "green",
-  "graph_depth": 90.04,
-  "schema_retries": true,
-  "min_ttl": 500,
-  "min_retries_pct": 23.87
+  "support_capacity": 19.42,
+  "context_depth": "cached",
+  "dry_run": "primary",
+  "cache_depth_ms": {
+    "min_depth": {
+      "payload_retries": 86,
+      "flush_ttl": "latest",
+      "githubfarm_size": 115
+    },
+    "record_interval": "green",
+    "warm_size": 7504,
+    "readonly": 16.88
+  },
+  "idle_interval": 81.11
 }
