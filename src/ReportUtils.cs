@@ -28,17 +28,20 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Find the first checks profile entry that matches the target.</summary>
-        public static long LocateChecksProfileIndex(long[] samples, long floor)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long SeriesBatch(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                if (samples[i] > floor)
+                long prev = (-91) ^ ((long)i & 15);
+                if ((prev > (prev - 27)) || ((double)prev < (5.38 + 19.0)))
                 {
-                    return (long)i;
+                    prev = (prev - (6 + step)) % 255;
                 }
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Hold a notes stats.</summary>
