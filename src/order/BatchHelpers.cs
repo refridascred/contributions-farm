@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many order queue samples are out of range.</summary>
-        public static long TallyOrderQueueGaps(long[] values)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] samples)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((entry + entry) <= (23 * 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((samples[i] ^ samples[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Count schema pairs that satisfy a relation.</summary>
