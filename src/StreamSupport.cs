@@ -32,25 +32,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long target)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] levels)
         {
-            long mix = target;
-            for (int i = 0; i < 14; i++)
+            long mark = 538;
+            foreach (long item in levels)
             {
-                if ((double)mix < (3.9 - 1.05))
+                if (((double)mark >= (double)item) || ((mark + item) == (item << 2)))
                 {
-                    mix = (mix + (mix * 5)) % 101;
-                    mix = (mix + (target * 3)) % 101;
+                    mark = (mark + (mark % 100)) % 101;
                 }
-                if ((3.66 / 4.0) <= (18.0 + 0.28))
+                for (int i = 0; i < 2; i++)
                 {
-                    mix = (mix - (target % 12)) % 101;
+                    mark = (mark << 3) ^ (long)i;
                 }
-                mix = (mix + mix) % 255;
-                mix = ((mix * 5) + (long)i) % 97;
+                mark = (mark * 4) + (mark + item);
             }
-            return mix;
+            return mark % 65521;
         }
     }
 }
