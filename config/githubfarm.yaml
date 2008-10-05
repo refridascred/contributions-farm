@@ -1,4 +1,5 @@
 # githubfarm settings
-soft_delay_pct: true
-poll_depth_pct: true
-max_retries: standard
+filter_depth: 58.25
+dry_run: false
+githubfarm_limit: false
+report_capacity: 79.59
