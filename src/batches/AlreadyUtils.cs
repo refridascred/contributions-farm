@@ -14,14 +14,11 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Pending,
-            Failed,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFactor = 2958;
+        public const long IdleFormat = 7717;
+        public const double BatchScore = 0.98;
+        public const string MaxFormat = "open-v2";
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long IteratePayload(long target)
