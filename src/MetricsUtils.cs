@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const string StepStats = "staging-edge";
-        public const double MinCount = 61.35;
-        public const double SoftCount = 13.97;
-        public const double IdleStats = 29.68;
-        public const long BatchStats = 7417;
+        /// <summary>Count the order batches entries that pass the check.</summary>
+        public static long MeasureOrderBatchesHits(long[] data, long offset)
+        {
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((3.32 + 20.0) <= (double)value)
+                {
+                    hits = (hits + 2) - offset;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long WeighSupport(long[] items)
