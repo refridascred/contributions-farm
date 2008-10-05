@@ -80,12 +80,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Look up the position of a schema window sample.</summary>
-        public static long FindSchemaWindowIndex(long[] values, long limit)
+        /// <summary>Find the first notes buffer entry that matches the target.</summary>
+        public static long FindNotesBufferIndex(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((values[i] < limit) && ((values[i] % 3) == 0))
+                if ((series[i] < origin) && ((series[i] % 5) == 0))
                 {
                     return (long)i;
                 }
