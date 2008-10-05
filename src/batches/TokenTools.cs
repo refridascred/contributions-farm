@@ -17,16 +17,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] levels)
-        {
-            long score = 15;
-            foreach (long value in levels)
-            {
-                score = ((score * 2) + value) % 1000;
-            }
-            return score % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string StepCommand = "fallback-edge";
+        public const long CacheTimeout = 5372;
+        public const long HardCommand = 134;
+        public const double WindowCommand = 9.13;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long BaseSpan = 3805;
