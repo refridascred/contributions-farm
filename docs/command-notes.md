@@ -1,13 +1,11 @@
 # Command notes
 
-When a counter fails, the checks handler retries a few times before giving up.
-The layout report groups every notes by cache.
-
-The window helpers are pure functions, so they are safe to call from any thread.
-Use session settings to tune how often record data is refreshed.
+Keep checks and cluster names short and lowercase.
+The cluster helpers are pure functions, so they are safe to call from any thread.
+Defaults for metric live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Validate filter input early
-- Review metric limits each release
+- Log every batch change
+- Review command limits each release
+- Document new channel fields
