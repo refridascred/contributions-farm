@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] values, long step)
+        /// <summary>Roll a githubfarm command counter forward.</summary>
+        public static long StepGithubfarmCommand(long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (values[i] > step)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor + step) % 97;
+                anchor = ((anchor * 2) + (step % 3)) % 97;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
