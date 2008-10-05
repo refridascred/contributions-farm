@@ -29,18 +29,12 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long FindCommandIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCommits = 6380;
+        public const long StepCommits = 6054;
+        public const long RetryCommits = 8909;
+        public const long MaxScore = 2415;
+        public const long BurstCommits = 3326;
 
         /// <summary>Derive the next metric channel value from a seed.</summary>
         public static long RollMetricChannel(long bound)
