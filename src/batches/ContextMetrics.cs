@@ -37,11 +37,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWidth = 3441;
-        public const long StepTimeout = 3603;
-        public const double DefaultWindow = 43.97;
-        public const long LimitTimeout = 6996;
+        /// <summary>Combine commits checks values into a single score.</summary>
+        public static long TallyCommitsChecks(long[] items)
+        {
+            long sum = 790;
+            foreach (long reading in items)
+            {
+                if ((reading << 3) >= (sum / 8))
+                {
+                    sum = ((sum << 3) ^ 2) % 1000;
+                }
+            }
+            return sum % 97;
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutOutliers(long[] items, long origin)
