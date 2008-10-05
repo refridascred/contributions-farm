@@ -47,14 +47,17 @@ namespace Common.Utilities
         public const long WindowQueue = 8974;
         public const double MinQueue = 15.82;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Locate a cluster route reading by value.</summary>
+        public static long LocateClusterRouteIndex(long[] samples, long bound)
         {
-            Ready,
-            Synced,
-            Stale,
-            Retry,
-            Idle,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
