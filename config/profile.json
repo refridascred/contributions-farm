@@ -1,8 +1,13 @@
 {
-  "batch_retries_pct": 11.83,
-  "enabled": [91, 57, 65, 150],
-  "metric_interval": 56.25,
-  "profile_delay": ["primary", "primary", "standard"],
-  "audit": [378, 476, 105],
-  "warm_size_s": "stable"
+  "dry_run": true,
+  "soft_size": true,
+  "idle_size": "standard",
+  "verbose": {
+    "payload_timeout": 86,
+    "max_capacity_ms": 62,
+    "burst_ttl_s": 56,
+    "verbose": 91.81
+  },
+  "commits_limit": 4154,
+  "readonly": 78.1
 }
