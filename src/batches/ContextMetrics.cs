@@ -42,18 +42,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine commits checks values into a single score.</summary>
-        public static long TallyCommitsChecks(long[] items)
+        /// <summary>Count account farm pairs that satisfy a relation.</summary>
+        public static long CompareAccountFarmCount(long[] samples)
         {
-            long sum = 790;
-            foreach (long reading in items)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((reading << 3) >= (sum / 8))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = ((sum << 3) ^ 2) % 1000;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return sum % 97;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
