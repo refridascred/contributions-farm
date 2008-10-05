@@ -1,15 +1,4 @@
 # entry settings
-soft_delay_ms:
-  - standard
-  - local
-  - primary
-flush_size_ms:
-  strict:
-    - 36
-    - 192
-  githubfarm_ratio: 19
-  poll_ratio_ms: 5878
-  readonly: 100
-  metrics_ttl: true
-metrics_delay: 45
-retry_size: 30
+idle_timeout_s: cached
+cache_capacity: 2422
+graph_size: false
