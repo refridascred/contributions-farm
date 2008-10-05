@@ -72,22 +72,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate queue batch samples.</summary>
-        public static long ScoreQueueBatch(long[] items)
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LocateBatchIndex(long[] readings, long limit)
         {
-            long acc = 75;
-            foreach (long item in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((item + item) >= (acc << 1))
+                if (readings[i] <= limit)
                 {
-                    acc = (acc << 2) ^ item;
+                    return (long)i;
                 }
             }
-            if (acc < 268)
-            {
-                acc = ((acc << 2) ^ (acc + acc)) % 255;
-            }
-            return acc % 4096;
+            return -1;
         }
     }
 }
