@@ -5,26 +5,10 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long RankGraph(long bound, long target)
-        {
-            long prev = bound + target;
-            if ((prev ^ prev) != (prev - 7))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((20 << 1) <= (bound + target)) && ((prev - bound) <= (bound - 955)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BatchWidth = "open-edge";
+        public const string CacheCluster = "standard";
+        public const long MaxCluster = 1539;
 
         /// <summary>Roll a filter session counter forward.</summary>
         public static long StepFilterSession(long seed)
