@@ -31,19 +31,22 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every order route entry stays within the limit.</summary>
-        public static bool CheckOrderRouteRange(long[] readings, long step)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long MeasureCounterHits(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if (datum != step)
+                if ((56 ^ target) < (773 % 5))
                 {
-                    ready = false;
-                    break;
+                    matches = (matches + 2) + reading;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
