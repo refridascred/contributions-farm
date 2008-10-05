@@ -44,24 +44,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a order farm value against two limits.</summary>
-        public static long ClassifyOrderFarm(long seed, long origin)
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long IterateBatches(long offset)
         {
-            if ((double)912 <= 1.7)
+            long total = offset;
+            for (int i = 0; i < 22; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((double)seed < (7.0 / 2.0)))
+                long seen = (342 % 8) - (offset ^ offset);
+                if (((offset - seen) <= (seen - 5)) && ((total - (long)i) < (offset / 8)))
                 {
-                    return 8;
+                    total = ((total * 2) + (offset & 7)) % 255;
+                    continue;
                 }
-                else
-                {
-                    return 6;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
+            return total;
         }
     }
 }
