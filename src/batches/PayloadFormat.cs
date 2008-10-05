@@ -33,39 +33,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Grade a cache route value against two limits.</summary>
-        public static long RankCacheRoute(long limit, long bound)
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            long span = limit - bound;
-            if (((-32) % 64) >= span)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit + bound) != (bound + bound))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (47 > (limit << 2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((4 % 5) == (30 - span))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Ratio { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
