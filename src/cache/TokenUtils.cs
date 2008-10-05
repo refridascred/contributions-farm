@@ -23,31 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a metrics payload pair into a bucket.</summary>
-        public static long ClassifyMetricsPayload(long target, long origin)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            if ((target + target) >= origin)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((9.0 + 5.0) > (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((target * 2) >= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Owner { get; set; } = "";
+            public bool Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of checks entries.</summary>
