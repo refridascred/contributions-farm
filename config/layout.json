@@ -1,21 +1,5 @@
 {
-  "dry_run": {
-    "batch_timeout": 5774,
-    "command_retries": {
-      "retry_depth_pct": 90.75,
-      "support_timeout": false,
-      "sync_limit_ms": [168, 378],
-      "poll_capacity": "legacy",
-      "max_size": ["primary", "strict", "green", "fallback"]
-    },
-    "default_retries_pct": 93.94,
-    "batch_retries": [343, 238, 412],
-    "retry_ratio_ms": 16.25
-  },
-  "flush_ratio_count": ["cached", "blue", "green", "open"],
-  "readonly": {
-    "record_delay": "stable",
-    "max_interval_count": "open",
-    "poll_ttl_pct": ["legacy", "primary", "staging", "standard"]
-  }
+  "idle_ttl_count": false,
+  "dry_run": false,
+  "soft_timeout_count": "fallback"
 }
