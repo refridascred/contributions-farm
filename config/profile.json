@@ -1,10 +1,14 @@
 {
-  "notes_retries": false,
-  "editor_threshold": {
-    "sync_ratio_s": true,
-    "batches_limit": "staging",
-    "cache_depth_count": 34.37
-  },
-  "audit": "staging",
-  "flush_capacity_ms": 7951
+  "cache_threshold_pct": 9958,
+  "sync_size_s": ["latest", "cached"],
+  "soft_retries_s": "legacy",
+  "report_retries": 11.12,
+  "persist": {
+    "default_size_count": 100,
+    "compress": false,
+    "audit": ["local", "local", "staging", "open"],
+    "verbose": "green",
+    "context_retries": "green",
+    "batch_limit_count": 46.81
+  }
 }
