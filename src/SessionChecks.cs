@@ -30,32 +30,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long GradeChannel(long target, long bound)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long delta = target + bound;
-            if (((target / 7) <= (target - target)) && (499 <= (bound - delta)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)target == (19.0 - 2.4))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((delta - bound) >= (64 >> 4)) || ((bound >> 5) >= 838))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            public bool Level { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Hold a queue summary.</summary>
