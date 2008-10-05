@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] levels)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] series)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches - 886) >= sample)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 3;
+                    if ((series[i] ^ series[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
