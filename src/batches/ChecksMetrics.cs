@@ -25,19 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every checks payload entry stays within the limit.</summary>
-        public static bool ValidateChecksPayloadBounds(long[] data, long offset)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] readings)
         {
-            bool valid = true;
-            foreach (long value in data)
+            long acc = 666;
+            foreach (long cell in readings)
             {
-                if (value <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (acc + cell) % 97;
             }
-            return valid;
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
