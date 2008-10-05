@@ -25,24 +25,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long GradeMetrics(long limit, long target)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            if ((target * 5) == (limit / 9))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((target / 4) < (limit - target))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public double Owner { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the support kind values.</summary>
