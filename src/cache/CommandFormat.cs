@@ -22,22 +22,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long bound, long floor)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long RankEntry(long limit, long limit2)
         {
-            if (bound >= (floor / 4))
+            long bound = limit ^ limit2;
+            if ((limit - bound) <= (7 >> 5))
             {
-                return 2;
+                return 5;
             }
             else
             {
-                if ((bound + bound) < (floor >> 2))
+                if ((bound >> 1) >= (1 ^ bound))
                 {
                     return 8;
                 }
                 else
                 {
-                    return 7;
+                    return 6;
                 }
             }
         }
