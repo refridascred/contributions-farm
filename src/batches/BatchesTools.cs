@@ -27,12 +27,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            public string Rank { get; set; } = "";
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Label { get; set; }
         }
     }
 }
