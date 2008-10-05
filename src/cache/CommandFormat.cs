@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinSchema = 1288;
-        public const string StepSchema = "legacy-edge";
-        public const string MinRatio = "latest-edge";
-        public const long CacheSchema = 7217;
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long RankGraph(long bound, long target)
+        {
+            long prev = bound + target;
+            if ((prev ^ prev) != (prev - 7))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((20 << 1) <= (bound + target)) && ((prev - bound) <= (bound - 955)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Derive the next session value from a seed.</summary>
         public static long DeriveSession(long step)
