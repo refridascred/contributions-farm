@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatGaps(long[] readings)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((3.39 * 2.51) < (double)value)
+                if (!(((6 - entry) < (entry + seen)) && (seen <= (19 + seen))))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 2;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a metric command pair into a bucket.</summary>
