@@ -45,22 +45,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiGaps(long[] samples)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (!(entry > (entry & 31)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Draft,
+            Pending,
+            Locked,
+            Done,
         }
     }
 }
