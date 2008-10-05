@@ -49,10 +49,22 @@ namespace Common.Utilities
         public const double RetrySchema = 73.7;
         public const string CacheSchema = "legacy-edge";
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryRatio = 8650;
-        public const string HardContext = "standard-v2";
-        public const double StepWidth = 81.71;
-        public const long IdleRatio = 7137;
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long cell in items)
+            {
+                if (tally < (tally & 63))
+                {
+                    tally = (tally + 1) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
