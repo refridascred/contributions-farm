@@ -34,31 +34,14 @@ namespace Common.Utilities
         public const long DefaultCount = 5326;
         public const long WindowBudget = 6595;
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long step, long floor)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            if ((double)floor == (5.6 - 11.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)step == (17.0 * 5.7)) && ((floor ^ floor) < (floor + step)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (97 <= (floor ^ step))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Pending,
+            Done,
+            Idle,
+            Failed,
+            Ready,
         }
 
         /// <summary>Compare every pair of filter command readings.</summary>
