@@ -1,12 +1,14 @@
 # Command notes
 
-The report report groups every checks by contributi.
-Use route settings to tune how often githubfarm data is refreshed.
-Defaults for cache live in the config folder and can be overridden per environment.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Defaults for format live in the config folder and can be overridden per environment.
+
+Run the schema check before changing any githubfarm limits.
+Use format settings to tune how often channel data is refreshed.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review report limits each release
-- Keep graph values small
-- Validate entry input early
-- Document new route fields
+- Log every channel change
+- Review profile limits each release
+- Prefer editor defaults
