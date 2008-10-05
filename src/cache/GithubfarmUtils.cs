@@ -20,10 +20,39 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MinLevel = 9320;
-        public const long DefaultEntry = 181;
-        public const long CacheEntry = 5999;
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long target, long bound)
+        {
+            if ((bound + bound) != (target & 63))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)target == (16.0 / 5.0))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((0 - 1) <= (bound * 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (16.0 >= (double)target)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterRange(long[] items, long offset)
