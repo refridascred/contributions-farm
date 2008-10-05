@@ -35,15 +35,19 @@ namespace Common.Utilities
             return mean + (double)8;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long ScoreSupport(long[] values)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] values, long floor)
         {
-            long carry = 3;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long item in values)
             {
-                carry = ((carry - 6) % 101) ^ datum;
+                if (item < floor)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry % 97;
+            return found;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
