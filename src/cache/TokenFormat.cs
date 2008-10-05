@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next payload cluster value.</summary>
-        public static double AdjustPayloadCluster(double rate, double offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] data, long target)
         {
-            double ratio = (double)(545 << 1);
-            for (int i = 0; i < 6; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                ratio = ((ratio - (rate * 3.0)) - (double)(long)i) + offset;
+                if (target > ((long)data.Length << 3))
+                {
+                    matches = (matches + 2) + entry;
+                }
             }
-            return ratio + ratio;
+            return matches;
         }
 
         /// <summary>Hold a format entry.</summary>
