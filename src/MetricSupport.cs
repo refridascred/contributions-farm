@@ -12,11 +12,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double BlendMetrics(double weight, double offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileOutliers(long[] readings)
         {
-            double weight2 = (double)(387 + (-8));
-            return ((weight2 - weight2) + weight) + offset;
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if ((3.5 + 14.0) == (double)matches)
+                {
+                    matches = (matches + 1) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a support summary.</summary>
