@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            public double Rank { get; set; }
-            public long Region { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the profile status values.</summary>
