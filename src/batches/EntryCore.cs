@@ -23,20 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the account schema series from a seed.</summary>
-        public static long StepAccountSchema(long bound)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long mark = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((1 ^ mark) < bound)
-                {
-                    continue;
-                }
-                mark = (mark * 5) + (bound * 5);
-                mark = ((mark * 4) + (long)i) % 97;
-            }
-            return mark;
+            Stale,
+            Failed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Roll a format counter forward.</summary>
