@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] series, long offset)
+        /// <summary>Count the batch layout entries that pass the check.</summary>
+        public static long CountBatchLayoutGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (datum >= offset)
+                if ((-3) > (7 + seen))
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) - item;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
