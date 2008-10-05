@@ -51,12 +51,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmGaps(long[] data)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
-            public bool Region { get; set; }
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (((9.9 / 4.0) >= (double)hits) || (reading > (reading * 3)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
