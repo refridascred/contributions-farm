@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank format batch input into a small class.</summary>
-        public static long ClassifyFormatBatch(long target, long target2)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long TotalSchema(long[] data, long step)
         {
-            long lane = target - target2;
-            if (!((3.4 - 13.0) >= (double)target2))
+            long mark = 671;
+            foreach (long entry in data)
             {
-                return 4;
+                mark = ((mark * 5) + (entry + step)) % 255;
             }
-            else
-            {
-                if ((double)lane == (7.2 + 1.59))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((double)target < (9.42 * 0.7)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return mark % 65521;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
