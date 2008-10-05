@@ -1,20 +1,8 @@
 {
-  "poll_interval_count": {
-    "warm_limit": "primary",
-    "support_ttl": "edge",
-    "verbose": {
-      "command_interval": 75.41,
-      "metrics_ttl": 77,
-      "entry_interval": 8,
-      "audit": "fallback"
-    },
-    "notes_capacity": "eu-west",
-    "report_capacity": true,
-    "retry_ttl": 94.99
-  },
-  "retry_window": 19.94,
-  "sync_retries_s": ["green", "primary", "latest"],
-  "min_window_count": true,
-  "metrics_ttl": ["stable", "stable", "stable"],
-  "poll_retries_s": 65.88
+  "persist": 17.0,
+  "default_ratio_s": 21.78,
+  "flush_delay_s": false,
+  "hard_timeout": false,
+  "hard_depth_pct": "fallback",
+  "sync_timeout_s": false
 }
