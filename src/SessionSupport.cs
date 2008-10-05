@@ -12,25 +12,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] values)
-        {
-            long sum = 641;
-            foreach (long reading in values)
-            {
-                if ((sum ^ reading) < (sum * 2))
-                {
-                    sum = sum - (reading >> 3);
-                    continue;
-                }
-                sum = (sum * 3) + (reading + sum);
-            }
-            if (sum < 794)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 8017;
+        public const double LimitGithubfarm = 76.16;
+        public const long BurstDepth = 8592;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long FoldStream(long[] series, long bound)
