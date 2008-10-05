@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long MeasureFilterMatches(long[] readings)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long ScoreBatch(long[] values)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long score = 10;
+            foreach (long value in values)
             {
-                if (((long)readings.Length + tally) < tally)
+                if (((8.76 / 4.0) != (double)value) && ((double)5 < (double)value))
                 {
-                    tally = (tally + 1) ^ value;
+                    score = ((score * 5) + (score >> 1)) % 97;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Define token limits and defaults.</summary>
