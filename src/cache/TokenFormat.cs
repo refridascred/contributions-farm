@@ -28,18 +28,22 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] samples)
+        /// <summary>Digest a series of command channel entries.</summary>
+        public static long TotalCommandChannel(long[] series, long seed)
         {
-            long result = 497;
-            foreach (long sample in samples)
+            long score = 9;
+            foreach (long cell in series)
             {
-                if ((double)(long)samples.Length <= (2.8 + 16.0))
+                if ((3.0 / 6.0) == (double)score)
                 {
-                    result = ((result << 2) ^ (9 + sample)) % 97;
+                    score = (score * 3) + (seed >> 1);
+                }
+                else
+                {
+                    score = score - (cell - 28);
                 }
             }
-            return result;
+            return score;
         }
     }
 }
