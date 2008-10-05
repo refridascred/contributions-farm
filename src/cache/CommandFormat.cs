@@ -43,15 +43,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the window notes series from a seed.</summary>
-        public static long StepWindowNotes(long limit)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long acc = limit;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Retry,
+            Synced,
+            Ready,
+            New,
         }
     }
 }
