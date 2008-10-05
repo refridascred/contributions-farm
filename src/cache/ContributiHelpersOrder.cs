@@ -18,24 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long seed, long bound)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            if (!((8 / 2) <= bound))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)seed >= (2.72 * 19.0))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the channel mode values.</summary>
