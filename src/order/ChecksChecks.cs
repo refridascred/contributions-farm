@@ -15,12 +15,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string CacheTools = "strict";
-        public const long BaseSize = 2482;
-        public const double CacheBudget = 3.87;
-        public const long StepTools = 1546;
-        public const long BaseTools = 7024;
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
+        {
+            public long Owner { get; set; }
+            public long Score { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const long IdleDepth = 5361;
