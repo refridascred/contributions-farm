@@ -39,16 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] values)
         {
-            long mark = seed;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = mark + mark;
-                mark = ((mark * 2) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
