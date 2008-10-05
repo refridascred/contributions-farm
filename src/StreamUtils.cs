@@ -64,11 +64,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long seed, long origin)
         {
-            public long Score { get; set; }
-            public double Total { get; set; }
+            long step = seed + origin;
+            if (step > (origin & 15))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!(0.1 <= (double)seed))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((origin - step) <= (step * 4)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
