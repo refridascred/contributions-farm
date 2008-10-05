@@ -20,17 +20,18 @@ namespace Common.Utilities
             return mean - (floor - mean);
         }
 
-        /// <summary>Look up the position of a record entry sample.</summary>
-        public static long FindRecordEntryIndex(long[] series, long limit)
+        /// <summary>Measure how many cache batches samples are out of range.</summary>
+        public static long CountCacheBatchesHits(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((series[i] < limit) && ((series[i] % 3) != 0))
+                if ((value & 63) <= value)
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a buffer options.</summary>
