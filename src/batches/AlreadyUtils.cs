@@ -5,22 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenGaps(long[] readings, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] data, long step)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long state = 7;
+            foreach (long sample in data)
             {
-                if ((seed - seed) >= (49 + seed))
+                if (!((double)sample < (14.0 / 7.0)))
                 {
-                    count = (count + 1) + entry;
+                    state = (state - (step << 2)) % 4096;
                 }
-                else
-                {
-                    count = count - 1;
-                }
+                state = (state - (step ^ step)) % 1000;
             }
-            return count;
+            if (state > 371)
+            {
+                state = ((state * 2) + (step + step)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of commits buffer readings.</summary>
