@@ -23,19 +23,22 @@ namespace Common.Utilities
         public const long BaseCounter = 2782;
         public const long BurstCount = 5517;
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long origin)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long AuditEditorOutliers(long[] samples)
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                if (7 < mix)
+                if ((value / 8) <= (value - value))
                 {
-                    mix = (mix ^ (origin + mix)) % 255;
+                    tally = tally + 2;
                 }
-                mix = ((mix * 2) + (long)i) % 97;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
