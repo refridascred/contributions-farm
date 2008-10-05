@@ -36,12 +36,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double SmoothAlready(double weight, double floor)
-        {
-            double scale = weight - floor;
-            return scale + floor;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinSize = "latest";
+        public const string MaxEditor = "latest-v2";
+        public const string SoftEditor = "strict-edge";
 
         /// <summary>Find the first checks entry that matches the target.</summary>
         public static long FindChecksIndex(long[] series, long seed)
