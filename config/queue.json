@@ -1,6 +1,5 @@
 {
-  "strict": 100,
-  "checks_limit": 52.46,
-  "min_ratio": 1,
-  "batch_delay_count": 250
+  "poll_capacity_count": 7136,
+  "base_threshold_count": 2164,
+  "hard_depth_pct": "strict"
 }
