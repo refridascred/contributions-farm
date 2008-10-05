@@ -31,32 +31,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] data, long offset)
+        /// <summary>Fold a list of context cache readings.</summary>
+        public static long TallyContextCache(long[] data)
         {
-            long carry = 672;
-            foreach (long item in data)
+            long score = 9;
+            foreach (long value in data)
             {
-                carry = (carry ^ (carry << 2)) % 97;
-                if ((400 * 3) != (item & 1))
+                if (!((score - value) != (score - 1)))
                 {
-                    carry = carry - (offset * 3);
-                    continue;
+                    score = (score + (score + value)) % 4096;
                 }
                 else
                 {
-                    carry = (carry + (offset % 100)) % 255;
-                }
-                if ((item - item) != (0 * 2))
-                {
-                    carry = ((carry * 2) + (carry % 64)) % 97;
+                    score = score ^ (19 << 1);
                 }
             }
-            if (carry < 83)
-            {
-                carry = (carry - (carry << 1)) % 255;
-            }
-            return carry;
+            return score % 97;
         }
 
         /// <summary>Describe the account mode values.</summary>
