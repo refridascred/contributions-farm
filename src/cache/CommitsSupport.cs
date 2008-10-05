@@ -17,15 +17,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the token cache series from a seed.</summary>
-        public static long IterateTokenCache(long seed)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 101;
-            }
-            return acc;
+            public double Weight { get; set; }
+            public long Label { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Roll a already counter forward.</summary>
