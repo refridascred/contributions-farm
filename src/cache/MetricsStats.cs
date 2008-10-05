@@ -44,22 +44,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long WeighSession(long[] values)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsLimits(long[] series, long seed)
         {
-            long carry = 25;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long cell in series)
             {
-                if (reading <= (reading << 2))
+                if (cell >= seed)
                 {
-                    carry = (carry - (carry - reading)) % 101;
+                    flag = false;
+                    break;
                 }
             }
-            if (carry > 2)
-            {
-                carry = (carry << 3) ^ (carry << 1);
-            }
-            return carry % 4096;
+            return flag;
         }
 
         /// <summary>Adjust a tools reading.</summary>
