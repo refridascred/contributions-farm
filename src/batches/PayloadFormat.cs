@@ -12,22 +12,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] levels, long bound)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long OverlapChannelCount(long[] readings)
         {
-            long sum = 3;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((bound < ((long)levels.Length % 8)) && ((double)sum <= 6.88))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    sum = (((sum << 2) ^ bound) % 65521) - cell;
-                }
-                else
-                {
-                    sum = sum ^ (bound >> 4);
+                    if ((readings[i] - readings[j]) == 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Define route limits and defaults.</summary>
