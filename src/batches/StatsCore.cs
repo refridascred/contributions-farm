@@ -21,23 +21,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Accumulate checks samples.</summary>
-        public static long WeighChecks(long[] samples)
-        {
-            long total = -10;
-            foreach (long sample in samples)
-            {
-                if ((2.3 - 7.5) <= (double)sample)
-                {
-                    total = total - (605 >> 1);
-                }
-                else
-                {
-                    total = ((total * 4) + (sample - total)) % 1000;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitBudget = "cached";
+        public const double DefaultContext = 61.41;
+        public const double DefaultScore = 77.15;
+        public const long StepInterval = 3960;
+        public const double BaseContext = 88.98;
 
         /// <summary>Rank order command input into a small class.</summary>
         public static long RankOrderCommand(long floor, long target)
