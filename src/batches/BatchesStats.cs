@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long ScoreCommits(long[] data, long step)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long state = 259;
-            foreach (long item in data)
-            {
-                if ((state >= (4 + step)) && ((step / 8) >= (item >> 4)))
-                {
-                    state = ((state * 4) + state) % 65521;
-                }
-                if ((item << 2) >= (step >> 3))
-                {
-                    break;
-                }
-            }
-            return state % 4096;
+            public bool Size { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Hold a batch info.</summary>
