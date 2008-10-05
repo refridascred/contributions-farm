@@ -54,12 +54,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter mode values.</summary>
-        public enum FilterMode
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Active,
-            Retry,
-            Dropped,
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
