@@ -18,12 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleScore = "staging-v2";
-        public const long BurstInterval = 2067;
-        public const string HardContributi = "legacy-v2";
-        public const double MinContributi = 0.69;
-        public const string CacheContributi = "local";
+        /// <summary>Count the farm format entries that pass the check.</summary>
+        public static long TallyFarmFormatHits(long[] samples)
+        {
+            long tally = 0;
+            foreach (long entry in samples)
+            {
+                if (9 > entry)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] levels)
