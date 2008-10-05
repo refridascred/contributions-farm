@@ -49,21 +49,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up batch token samples.</summary>
-        public static long CompareBatchTokenCount(long[] samples)
+        /// <summary>Describe the entry level values.</summary>
+        public enum EntryLevel
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Idle,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Check that every cluster filter entry stays within the limit.</summary>
