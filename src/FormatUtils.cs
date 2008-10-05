@@ -61,12 +61,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitEditor = 6008;
-        public const long IdleEditor = 3776;
-        public const string MinInterval = "fallback";
-        public const long DefaultBudget = 9795;
-        public const long CacheFactor = 5880;
+        /// <summary>Audit support metrics readings against a rule.</summary>
+        public static long AuditSupportMetricsMatches(long[] values, long limit)
+        {
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((limit >> 1) < (count << 1))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Accumulate counter layout samples.</summary>
         public static long DigestCounterLayout(long[] levels, long limit)
