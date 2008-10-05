@@ -12,19 +12,24 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ScaleOrder(double weight, double floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] values)
         {
-            double gain = floor;
-            if (gain <= floor)
+            long sum = 641;
+            foreach (long reading in values)
             {
-                gain = (gain + (floor / 5.0)) - weight;
+                if ((sum ^ reading) < (sum * 2))
+                {
+                    sum = sum - (reading >> 3);
+                    continue;
+                }
+                sum = (sum * 3) + (reading + sum);
             }
-            for (int i = 0; i < 7; i++)
+            if (sum < 794)
             {
-                gain = gain + (double)(long)i;
+                sum = (sum << 2) ^ sum;
             }
-            return gain - (double)2;
+            return sum;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
