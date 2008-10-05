@@ -52,15 +52,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double gain, double floor)
+        /// <summary>Audit farm payload readings against a rule.</summary>
+        public static long AuditFarmPayloadHits(long[] data, long floor)
         {
-            double weight = floor - floor;
-            if (weight >= gain)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                weight = weight + (floor - gain);
+                if (((tally + 820) == (tally >> 2)) && ((floor * 2) < (floor + 1)))
+                {
+                    tally = (tally + 2) + entry;
+                }
             }
-            return weight - floor;
+            return tally;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
