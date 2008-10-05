@@ -1,7 +1,7 @@
 {
-  "enabled": 14.01,
-  "min_limit_pct": ["stable", "open", "open"],
-  "warm_limit": "local",
-  "base_size": 96.39,
-  "warm_window_count": 0.11
+  "enabled": "open",
+  "idle_timeout_pct": [38, 22, 107],
+  "persist": "standard",
+  "checks_retries": "primary",
+  "warm_window_count": "green"
 }
