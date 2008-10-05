@@ -21,15 +21,22 @@ namespace Common.Utilities
         public const double CacheDepth = 40.42;
         public const long MaxWidth = 9421;
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] items)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long step)
         {
-            long result = 899;
-            foreach (long item in items)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                result = ((result << 3) ^ (result * 2)) ^ item;
+                acc = (acc * 4) + ((long)i - (long)i);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    acc = (acc + ((long)i << 2)) ^ (long)i2;
+                    acc = ((acc * 2) + acc) % 97;
+                }
+                acc = (acc + ((long)i * 2)) % 4096;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return result;
+            return acc;
         }
     }
 }
