@@ -27,25 +27,12 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Rank order githubfarm input into a small class.</summary>
-        public static long ClassifyOrderGithubfarm(long limit, long seed)
-        {
-            if ((613 * 3) == (seed + 65))
-            {
-                return 2;
-            }
-            else
-            {
-                if (seed <= (seed * 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BurstSize = 954;
+        public const long MinFactor = 2780;
+        public const long StepTimeout = 1799;
+        public const long DefaultDepth = 184;
+        public const long StepBuffer = 4654;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
