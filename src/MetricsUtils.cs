@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Rank payload format input into a small class.</summary>
-        public static long SortPayloadFormat(long offset, long seed)
-        {
-            long bound = offset - seed;
-            if (bound >= (offset - bound))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((936 ^ bound) < (616 << 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleSession = 8282;
+        public const long CacheCount = 8602;
+        public const long IdleDepth = 870;
+        public const double HardScore = 4.54;
+        public const long WindowSession = 2159;
 
         /// <summary>Count the order batches entries that pass the check.</summary>
         public static long MeasureOrderBatchesHits(long[] data, long offset)
