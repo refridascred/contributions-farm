@@ -47,14 +47,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
-        {
-            Synced,
-            New,
-            Done,
-            Idle,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double StepDepth = 84.42;
+        public const long BurstRecord = 5073;
+        public const string BatchRecord = "stable-edge";
+        public const long HardRecord = 3959;
     }
 }
