@@ -33,13 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Measure how many format token samples are out of range.</summary>
+        public static long CountFormatTokenMatches(long[] items)
         {
-            Retry,
-            Stale,
-            New,
-            Draft,
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((matches >> 1) >= (cell / 7))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
