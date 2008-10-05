@@ -45,19 +45,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool VerifyRecordLimits(long[] items, long seed)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            bool found = true;
-            foreach (long datum in items)
-            {
-                if (datum >= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Active,
+            Paused,
+            Failed,
+            Ready,
+            Idle,
         }
     }
 }
