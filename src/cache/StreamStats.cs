@@ -14,18 +14,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionMatches(long[] values)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] items)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((7 % 12) != (tally + value)) && ((6.62 + 8.5) < (double)tally))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((items[i] - items[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Fold a list of editor schema readings.</summary>
