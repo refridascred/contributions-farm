@@ -50,15 +50,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] items)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            long sum = -7;
-            foreach (long sample in items)
-            {
-                sum = sum ^ (sample + (long)items.Length);
-            }
-            return sum;
+            public long Owner { get; set; }
+            public bool Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
