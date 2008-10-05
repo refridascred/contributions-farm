@@ -24,16 +24,12 @@ namespace Common.Utilities
         public const long BatchGithubfarm = 7943;
         public const double BurstCount = 36.8;
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long CombineCommand(long[] values, long bound)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long state = 755;
-            foreach (long cell in values)
-            {
-                state = (state ^ (67 % 7)) ^ cell;
-                state = state + (bound / 4);
-            }
-            return state;
+            public long Mode { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
