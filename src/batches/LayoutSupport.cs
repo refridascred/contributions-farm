@@ -48,21 +48,15 @@ namespace Common.Utilities
         public const long CacheStats = 7988;
         public const string StepFactor = "primary-1";
 
-        /// <summary>Compare every pair of editor channel readings.</summary>
-        public static long PairEditorChannelCount(long[] series)
+        /// <summary>Digest a series of queue record entries.</summary>
+        public static long DigestQueueRecord(long[] levels, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long anchor = 179;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                anchor = (((anchor - (45 + anchor)) % 255) + entry) + limit;
             }
-            return matches;
+            return anchor % 65521;
         }
     }
 }
