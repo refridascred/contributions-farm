@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long CountSessionOutliers(long[] items, long offset)
         {
-            public string Size { get; set; } = "";
-            public double Flag { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (!((5.2 + 9.68) > (double)(long)items.Length))
+                {
+                    matches = ((matches + 2) + sample) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
