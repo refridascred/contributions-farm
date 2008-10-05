@@ -31,17 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] series, long seed)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double ratio, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double ratio2 = offset;
+            if (ratio2 >= (ratio2 / 5.0))
             {
-                if ((series[i] <= seed) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 - (ratio2 * 16.0);
             }
-            return -1;
+            else
+            {
+                ratio2 = ratio2 - offset;
+            }
+            return ratio2 - (ratio + ratio);
         }
     }
 }
