@@ -14,26 +14,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] items)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            long mix = 373;
-            foreach (long item in items)
-            {
-                if ((item - item) < (366 >> 1))
-                {
-                    mix = mix - ((-3) % 97);
-                }
-                else
-                {
-                    mix = mix - (item + mix);
-                }
-                if ((item / 2) >= (mix * 3))
-                {
-                    break;
-                }
-            }
-            return mix;
+            Queued,
+            Locked,
+            Retry,
+            Done,
+            Synced,
         }
 
         /// <summary>Define channel limits and defaults.</summary>
