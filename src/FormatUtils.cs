@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 7385;
-        public const long WindowSpan = 5144;
-        public const long BurstOrder = 3607;
-        public const long WindowOrder = 7499;
-        public const string DefaultOrder = "latest-edge";
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long WeighBuffer(long[] data)
+        {
+            long state = -811;
+            foreach (long item in data)
+            {
+                if ((state ^ state) == (item - state))
+                {
+                    state = ((state << 2) ^ state) % 4096;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double HardCounter = 40.76;
