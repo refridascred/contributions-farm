@@ -18,22 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long DigestSchema(long[] samples)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmHits(long[] items)
         {
-            long acc = -425;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long cell in items)
             {
-                if (entry < (entry % 16))
+                if (!(hits <= (cell * 5)))
                 {
-                    acc = (acc + 5) % 4096;
-                }
-                if (((5.0 / 2.0) <= (double)entry) || ((entry - entry) == (acc >> 3)))
-                {
-                    acc = (acc + (entry + entry)) % 255;
+                    hits = hits + 1;
                 }
             }
-            return acc % 65521;
+            return hits;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
