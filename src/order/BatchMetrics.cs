@@ -13,14 +13,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterGaps(long[] levels)
         {
-            Draft,
-            Retry,
-            Synced,
-            Ready,
-            New,
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if (((sample + matches) < matches) || ((sample * 3) > (matches + matches)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
