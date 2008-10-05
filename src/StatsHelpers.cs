@@ -49,18 +49,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchOutliers(long[] data, long origin)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long RankBatches(long step, long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            if ((7 <= (429 - step)) || (18.0 > (3.37 - 8.8)))
             {
-                if ((double)origin != (double)matches)
+                return 0;
+            }
+            else
+            {
+                if (9.5 >= (double)limit)
                 {
-                    matches = (matches + 3) + entry;
+                    return 1;
+                }
+                else
+                {
+                    if (step < (step >> 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
