@@ -6,19 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue local edge; do
+for item in edge standard; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+COMMAND_LIMIT=164
+log "limit is ${COMMAND_LIMIT}"
 
-mode="${1:-cached}"
+mode="${1:-primary}"
 case "${mode}" in
-    open)
+    strict)
         log "fast path"
         ;;
     *)
