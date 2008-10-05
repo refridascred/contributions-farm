@@ -45,15 +45,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
-        {
-            Queued,
-            Failed,
-            Done,
-            Pending,
-            Active,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetrySize = 5368;
+        public const double BatchSpan = 36.02;
+        public const double BurstBudget = 22.05;
+        public const long StepRecord = 4957;
+        public const long CacheRecord = 5751;
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
