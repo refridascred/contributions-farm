@@ -35,10 +35,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxSize = 23.04;
-        public const double LimitContributi = 45.38;
-        public const long WindowSize = 2222;
-        public const long StepScore = 6719;
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long SortBuffer(long limit, long seed)
+        {
+            long next = limit + seed;
+            if ((next * 4) == ((-23) + next))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((next & 127) >= (794 ^ limit))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
     }
 }
