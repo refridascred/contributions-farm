@@ -29,17 +29,16 @@ namespace Common.Utilities
             return gain2 + (double)5;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long SeekNotesIndex(long[] items, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long CombineCommand(long[] values, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 755;
+            foreach (long cell in values)
             {
-                if (items[i] <= offset)
-                {
-                    return (long)i;
-                }
+                state = (state ^ (67 % 7)) ^ cell;
+                state = state + (bound / 4);
             }
-            return -1;
+            return state;
         }
     }
 }
