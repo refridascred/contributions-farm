@@ -22,18 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const string StepStats = "staging-edge";
+        public const double MinCount = 61.35;
+        public const double SoftCount = 13.97;
+        public const double IdleStats = 29.68;
+        public const long BatchStats = 7417;
 
         /// <summary>Accumulate support samples.</summary>
         public static long WeighSupport(long[] items)
