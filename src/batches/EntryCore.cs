@@ -34,12 +34,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long DefaultRatio = 1147;
-        public const long BurstScore = 7057;
-        public const long BatchSpan = 1439;
-        public const string RetryBudget = "cached-edge";
-        public const long DefaultDepth = 4284;
+        /// <summary>Hold a entry entry.</summary>
+        public sealed class EntryEntry
+        {
+            public double Limit { get; set; }
+            public bool Stamp { get; set; }
+            public double Level { get; set; }
+        }
 
         /// <summary>Accumulate command token samples.</summary>
         public static long DigestCommandToken(long[] series)
