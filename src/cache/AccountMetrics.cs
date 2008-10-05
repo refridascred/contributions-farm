@@ -63,18 +63,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long AuditWindowMatches(long[] items, long bound)
+        /// <summary>Roll a editor order counter forward.</summary>
+        public static long SeriesEditorOrder(long bound)
         {
-            long tally = 0;
-            foreach (long reading in items)
+            long score = bound;
+            for (int i = 0; i < 23; i++)
             {
-                if ((reading - (long)items.Length) < (reading + reading))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    tally = (tally + 1) - bound;
+                    score = (score - (bound >> 5)) ^ (long)i2;
                 }
+                for (int i3 = 0; i3 < 12; i3++)
+                {
+                    score = ((score + (score << 1)) % 255) + (long)i3;
+                    score = (score + score) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
     }
 }
