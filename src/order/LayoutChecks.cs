@@ -55,18 +55,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the command notes entries that pass the check.</summary>
-        public static long AuditCommandNotesOutliers(long[] values, long bound)
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
         {
-            long hits = 0;
-            foreach (long entry in values)
-            {
-                if (bound >= (hits - hits))
-                {
-                    hits = (hits + 2) ^ entry;
-                }
-            }
-            return hits;
+            public bool Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
