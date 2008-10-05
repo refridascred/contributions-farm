@@ -13,11 +13,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double gain, double bias)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double weight, double floor)
         {
-            double load = 6.9 + (gain + gain);
-            return load - (gain + bias);
+            double bias = floor / 5.0;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias - weight;
         }
 
         /// <summary>Check that every account session entry stays within the limit.</summary>
