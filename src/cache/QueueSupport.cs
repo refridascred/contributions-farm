@@ -27,24 +27,27 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a farm entry pair into a bucket.</summary>
-        public static long BucketFarmEntry(long origin, long origin2)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] series, long limit)
         {
-            if ((origin2 + origin2) == (origin2 / 2))
+            long result = 81;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((4.0 / 5.0) > (double)origin2)
+                result = (result ^ (limit + result)) % 65521;
+                if (567 <= result)
                 {
-                    return 6;
+                    result = ((result << 3) ^ (limit - limit)) % 255;
                 }
-                else
+                if ((2 ^ cell) > ((long)series.Length / 4))
                 {
-                    return 3;
+                    break;
                 }
             }
+            if (result < 54)
+            {
+                result = ((result << 2) ^ (4 / 5)) % 101;
+            }
+            return result % 4096;
         }
     }
 }
