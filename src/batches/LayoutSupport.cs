@@ -33,15 +33,12 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Fold a list of checks already readings.</summary>
-        public static long DigestChecksAlready(long[] series)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            long state = 935;
-            foreach (long value in series)
-            {
-                state = ((state << 3) ^ 354) - value;
-            }
-            return state;
+            New,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a queue entry.</summary>
