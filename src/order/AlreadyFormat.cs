@@ -34,11 +34,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] series, long origin)
         {
-            public long Ratio { get; set; }
-            public bool Region { get; set; }
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
