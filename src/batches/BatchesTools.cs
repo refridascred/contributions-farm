@@ -18,22 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] readings)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] items)
         {
-            long total = 8;
-            foreach (long sample in readings)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)total > 9.0)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = ((total << 3) ^ (total + (long)readings.Length)) % 255;
-                }
-                else
-                {
-                    total = (total + sample) % 4096;
+                    if ((items[i] + items[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return total % 97;
+            return count;
         }
 
         /// <summary>Count the cluster layout entries that pass the check.</summary>
