@@ -1,7 +1,15 @@
 {
-  "idle_retries_s": 20,
-  "batch_retries_count": 100,
-  "idle_size": "latest",
-  "verbose": true,
-  "sync_delay_ms": ["eu-west", "blue", "green"]
+  "batch_ttl_ms": 7358,
+  "base_delay": 3880,
+  "flush_threshold_pct": false,
+  "batch_interval_s": {
+    "min_interval": {
+      "session_interval": "standard",
+      "readonly": "green",
+      "compress": [115, 211, 134],
+      "default_capacity_pct": "fallback"
+    },
+    "editor_retries": "primary",
+    "cluster_window": "blue"
+  }
 }
