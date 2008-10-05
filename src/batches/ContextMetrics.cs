@@ -35,10 +35,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstFactor = 7082;
-        public const long CacheSchema = 5297;
-        public const long BurstWidth = 6351;
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long PairChecksCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of record readings.</summary>
         public static long DigestRecord(long[] levels, long seed)
