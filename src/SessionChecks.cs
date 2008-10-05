@@ -40,18 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] data)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if ((hits + 976) == (value % 2))
+                if ((0.3 - 7.6) < (19.0 - 5.0))
                 {
-                    hits = hits + 3;
+                    tally = (tally + 3) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
