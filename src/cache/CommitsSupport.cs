@@ -17,12 +17,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] levels, long bound)
         {
-            public double Weight { get; set; }
-            public long Label { get; set; }
-            public double Rank { get; set; }
+            bool found = true;
+            foreach (long entry in levels)
+            {
+                if (entry >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Roll a already counter forward.</summary>
