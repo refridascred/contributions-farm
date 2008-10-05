@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterLimits(long[] levels, long step)
         {
-            Locked,
-            Queued,
-            Retry,
-            Synced,
-            Active,
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum > step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
