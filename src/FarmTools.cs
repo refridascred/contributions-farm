@@ -16,17 +16,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first cache stream entry that matches the target.</summary>
-        public static long FindCacheStreamIndex(long[] values, long step)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double load = (double)93 + scale;
+            if (load > bias)
             {
-                if ((values[i] < step) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - (9.36 * 4.48);
             }
-            return -1;
+            return load + (load * 8.52);
         }
 
         /// <summary>Audit format readings against a rule.</summary>
