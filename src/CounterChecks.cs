@@ -45,18 +45,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphMatches(long[] series)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((6.0 - 4.0) <= (double)tally)
-                {
-                    tally = (tally + 2) + entry;
-                }
-            }
-            return tally;
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
