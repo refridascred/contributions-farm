@@ -18,17 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] series, long step)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long sum = 57;
+            foreach (long value in items)
             {
-                if ((series[i] == step) && ((series[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                sum = sum - value;
             }
-            return -1;
+            return sum % 4096;
         }
 
         /// <summary>Match up schema farm samples.</summary>
