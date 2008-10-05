@@ -10,18 +10,39 @@ namespace Common.Utilities
         public const long BaseFactor = 1740;
         public const string HardFactor = "alpha";
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long CountStreamMatches(long[] series)
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long SortOrder(long bound, long limit)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long prev = bound ^ limit;
+            if ((95 << 3) == (limit + bound))
             {
-                if (((168 & 127) == (cell - cell)) && !((cell + cell) < (cell - 3)))
+                return 4;
+            }
+            else
+            {
+                if (bound > (5 * 5))
                 {
-                    matches = matches + 2;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)bound != (4.9 / 6.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)prev > (6.0 - 8.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
