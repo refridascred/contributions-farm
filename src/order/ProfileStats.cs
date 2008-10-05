@@ -53,19 +53,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate context cluster readings against a bound.</summary>
-        public static bool CheckContextClusterLimits(long[] samples, long target)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item >= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Done,
+            Retry,
+            Active,
+            Paused,
+            Stale,
         }
     }
 }
