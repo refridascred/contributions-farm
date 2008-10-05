@@ -22,16 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long seed)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long GradePayload(long seed, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 11; i++)
+            if (((double)seed <= 5.3) && ((seed + seed) == (seed - floor)))
             {
-                mark = ((mark << 2) ^ seed) % 65521;
-                mark = ((mark * 3) + (long)i) % 1000;
+                return 8;
             }
-            return mark;
+            else
+            {
+                if ((1.3 <= (double)seed) || ((50 - floor) < 20))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((8.0 * 2.0) < (double)floor)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed >> 5) < seed)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Audit metric contributi readings against a rule.</summary>
