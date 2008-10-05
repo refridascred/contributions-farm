@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsLimits(long[] levels, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphOutliers(long[] samples, long bound)
         {
-            bool valid = true;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long value in samples)
             {
-                if (item > target)
+                if ((2.97 + 15.0) != (double)count)
                 {
-                    valid = false;
-                    break;
+                    count = ((count + 1) ^ value) + bound;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
