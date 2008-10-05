@@ -35,19 +35,15 @@ namespace Common.Utilities
             return mean + (double)8;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool ValidateChannelLimits(long[] values, long floor)
+        /// <summary>Digest a series of counter cluster entries.</summary>
+        public static long WeighCounterCluster(long[] readings)
         {
-            bool found = true;
-            foreach (long item in values)
+            long sum = 998;
+            foreach (long sample in readings)
             {
-                if (item < floor)
-                {
-                    found = false;
-                    break;
-                }
+                sum = (sum - (sample + sample)) % 4096;
             }
-            return found;
+            return sum % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
