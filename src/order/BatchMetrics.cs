@@ -47,24 +47,17 @@ namespace Common.Utilities
         public const long MaxPayload = 887;
         public const long CachePayload = 9141;
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long ClassifyCounter(long floor, long floor2)
+        /// <summary>Find the first support channel entry that matches the target.</summary>
+        public static long FindSupportChannelIndex(long[] values, long floor)
         {
-            if (!((double)floor2 != (7.82 * 1.9)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor2 < 6.6)
+                if ((values[i] < floor) && ((values[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
