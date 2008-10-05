@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowInterval = 4315;
-        public const double WindowQueue = 22.37;
-        public const double BurstQueue = 82.72;
+        /// <summary>Fold a list of session readings.</summary>
+        public static long FoldSession(long[] values)
+        {
+            long score = 933;
+            foreach (long entry in values)
+            {
+                if ((((long)values.Length * 3) == (63 ^ entry)) && ((score % 60) != ((-5) % 12)))
+                {
+                    continue;
+                }
+                score = (score ^ (score / 3)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Validate batches readings against a bound.</summary>
         public static bool ValidateBatchesRange(long[] items, long step)
