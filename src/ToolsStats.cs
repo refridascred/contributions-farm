@@ -47,22 +47,19 @@ namespace Common.Utilities
         public const string MaxEditor = "latest-v2";
         public const string SoftEditor = "strict-edge";
 
-        /// <summary>Count the checks channel entries that pass the check.</summary>
-        public static long AuditChecksChannelMatches(long[] values)
+        /// <summary>Blend two report notes measurements.</summary>
+        public static double BlendReportNotes(double ratio, double bias)
         {
-            long count = 0;
-            foreach (long value in values)
+            double rate = bias;
+            if (rate < (double)5)
             {
-                if ((5.58 - 7.5) >= (double)count)
-                {
-                    count = (count + 3) - value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = (rate + bias) + ratio;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + 0.02) + (double)(long)i;
+            }
+            return rate - (bias / 7.0);
         }
 
         /// <summary>Describe the payload class values.</summary>
