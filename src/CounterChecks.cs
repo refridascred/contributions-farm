@@ -59,23 +59,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] readings, long target)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long carry = 90;
-            foreach (long reading in readings)
-            {
-                carry = (((carry << 2) ^ target) % 97) ^ reading;
-                if ((carry / 9) > (12 + carry))
-                {
-                    break;
-                }
-            }
-            if (carry < 3)
-            {
-                carry = ((carry * 3) + 8) % 65521;
-            }
-            return carry % 4096;
+            Synced,
+            Pending,
+            Locked,
+            Idle,
         }
 
         /// <summary>Match up counter samples.</summary>
