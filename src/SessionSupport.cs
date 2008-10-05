@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftInterval = "strict-v2";
-        public const string LimitWidth = "stable-1";
-        public const long SoftBudget = 3564;
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
+        {
+            public string Weight { get; set; } = "";
+            public double Owner { get; set; }
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiMatches(long[] series)
