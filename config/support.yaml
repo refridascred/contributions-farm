@@ -1,11 +1,18 @@
 # support settings
-compress: 60
-cache_size_pct:
-  - 142
-  - 32
-  - 438
-  - 339
-audit: edge
-readonly: blue
-soft_ratio: stable
-contributi_size: 69
+queue_delay: false
+poll_depth_s: local
+hard_retries:
+  dry_run: 30
+  token_retries:
+    strict:
+      - 393
+      - 481
+      - 446
+      - 365
+    batch_delay_s: false
+    burst_delay_pct: open
+    editor_window:
+      - standard
+      - eu-west
+      - eu-west
+  batch_retries_count: 62
