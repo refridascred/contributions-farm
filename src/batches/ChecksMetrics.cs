@@ -25,15 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] readings)
+        /// <summary>Count the context batches entries that pass the check.</summary>
+        public static long TallyContextBatchesHits(long[] items)
         {
-            long acc = 666;
-            foreach (long cell in readings)
+            long matches = 0;
+            foreach (long value in items)
             {
-                acc = (acc + cell) % 97;
+                if (matches <= (matches / 2))
+                {
+                    matches = (matches + 2) + value;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Fold a list of schema readings.</summary>
