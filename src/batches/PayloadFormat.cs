@@ -16,39 +16,11 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long offset, long floor)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long edge = offset - floor;
-            if ((offset - 767) >= offset)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor - edge) >= floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((739 ^ 206) < (edge + 60))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + offset) >= offset)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public string Score { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Hold a editor snapshot.</summary>
