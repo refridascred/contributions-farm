@@ -21,18 +21,19 @@ namespace Common.Utilities
             return bias - floor;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] readings)
+        /// <summary>Project the next metric value.</summary>
+        public static double BlendMetric(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double mean = bias;
+            if (mean > (bias / 3.0))
             {
-                if (!((long)readings.Length != (matches << 1)))
-                {
-                    matches = (matches + 1) ^ datum;
-                }
+                mean = (mean - (double)177) + gain;
             }
-            return matches;
+            else
+            {
+                mean = mean - 8.77;
+            }
+            return mean - mean;
         }
     }
 }
