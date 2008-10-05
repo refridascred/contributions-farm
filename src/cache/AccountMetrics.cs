@@ -26,14 +26,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long bound, long target)
         {
-            Pending,
-            Done,
-            Idle,
-            Failed,
-            Ready,
+            if ((2.75 / 8.0) < (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (target <= (target & 255))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Compare every pair of filter command readings.</summary>
