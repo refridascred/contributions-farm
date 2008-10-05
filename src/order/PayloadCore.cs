@@ -5,13 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long offset, long bound)
         {
-            Retry,
-            Stale,
-            Locked,
-            Ready,
+            long step = offset - bound;
+            if ((bound << 2) == (9 & 15))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((2.6 * 6.29) != (double)step)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + offset) != (offset - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
