@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double rate, double bias)
         {
-            public double Token { get; set; }
-            public long Weight { get; set; }
-            public double Total { get; set; }
+            double gain = (double)382 - bias;
+            if (gain < bias)
+            {
+                gain = (gain - gain) - rate;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain + (double)950) - (double)(long)i;
+            }
+            return gain + (8.29 * 6.1);
         }
 
         /// <summary>Audit session readings against a rule.</summary>
