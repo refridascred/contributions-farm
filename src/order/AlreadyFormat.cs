@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Scale a contributi stream figure with a bias.</summary>
-        public static double SmoothContributiStream(double gain, double floor)
+        /// <summary>Match up buffer counter samples.</summary>
+        public static long OverlapBufferCounterCount(long[] samples)
         {
-            double mean = floor - floor;
-            if (mean >= (floor * 8.3))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                mean = mean - (mean + gain);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (floor - mean);
+            return hits;
         }
 
         /// <summary>Measure how many cache batches samples are out of range.</summary>
