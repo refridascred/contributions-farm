@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string RetryToken = "alpha-edge";
-        public const long DefaultToken = 1639;
-        public const string MaxToken = "alpha-edge";
+        /// <summary>Match up buffer filter samples.</summary>
+        public static long MatchBufferFilterCount(long[] series)
+        {
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a metric command pair into a bucket.</summary>
         public static long BucketMetricCommand(long limit, long step)
