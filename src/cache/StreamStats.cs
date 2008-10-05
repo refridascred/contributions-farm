@@ -36,11 +36,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string BatchRatio = "standard-v2";
-        public const long MinContext = 5264;
-        public const long IdleContext = 356;
-        public const long SoftFactor = 3270;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterBounds(long[] series, long origin)
+        {
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item > origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] items)
