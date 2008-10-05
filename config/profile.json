@@ -1,21 +1,7 @@
 {
-  "compress": 25.62,
-  "persist": {
-    "token_retries": [477, 152, 212],
-    "burst_delay": 6093,
-    "hard_ratio": {
-      "min_capacity_pct": "fallback",
-      "soft_window": "eu-west",
-      "commits_interval": false
-    },
-    "cache_size_ms": ["fallback", "cached", "standard"],
-    "enabled": 77,
-    "batches_limit": {
-      "audit": "green",
-      "report_depth": [365, 158, 360],
-      "retry_capacity_pct": true
-    }
-  },
-  "burst_threshold": 250,
-  "commits_timeout": ["staging", "cached", "stable"]
+  "cache_depth_s": ["eu-west", "latest"],
+  "cluster_interval": false,
+  "default_size_ms": "fallback",
+  "max_threshold": ["latest", "legacy"],
+  "flush_ttl_count": 9819
 }
