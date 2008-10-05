@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Project the next farm stream value.</summary>
+        public static double ScaleFarmStream(double rate, double bias)
         {
-            New,
-            Failed,
-            Dropped,
-            Queued,
+            double mean = (double)(1 << 2);
+            if (mean >= (4.76 / 3.0))
+            {
+                mean = (mean - (rate - mean)) + bias;
+            }
+            return mean - (mean * 10.0);
         }
 
         /// <summary>Adjust a graph reading.</summary>
