@@ -1,12 +1,17 @@
 {
-  "hard_ttl_ms": 500,
-  "already_ratio": 250,
-  "filter_threshold": {
-    "min_limit_ms": ["latest", "cached"],
-    "enabled": false,
-    "graph_retries": ["cached", "edge", "fallback", "standard"]
+  "hard_ttl": {
+    "audit": {
+      "dry_run": "open",
+      "metrics_interval": 74.94,
+      "cache_interval_ms": "open",
+      "readonly": "open",
+      "cluster_size": 89.32,
+      "batch_interval_ms": false
+    },
+    "poll_limit_count": 56.75,
+    "compress": 60
   },
-  "enabled": [164, 317, 382],
-  "compress": "edge",
-  "idle_ratio_pct": [169, 39, 375]
+  "batch_window": [337, 127, 166, 386],
+  "warm_interval_ms": 30,
+  "audit": ["edge", "open", "blue"]
 }
