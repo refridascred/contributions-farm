@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Accumulate farm order samples.</summary>
-        public static long DigestFarmOrder(long[] samples, long target)
-        {
-            long anchor = -80;
-            foreach (long item in samples)
-            {
-                if (69 < (target % 24))
-                {
-                    anchor = anchor ^ (item / 8);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchBudget = 6088;
+        public const long DefaultSession = 1799;
+        public const string SoftSession = "strict-v2";
+        public const string RetryScore = "alpha";
+        public const long BurstSession = 8987;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long DefaultScore = 7562;
