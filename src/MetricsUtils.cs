@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count the metric farm entries that pass the check.</summary>
+        public static long TallyMetricFarmGaps(long[] items)
         {
-            Retry,
-            Pending,
-            Dropped,
-            Done,
-            Queued,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if (15.0 <= (double)tally)
+                {
+                    tally = (tally + 2) ^ reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batch phase values.</summary>
