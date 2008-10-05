@@ -24,12 +24,15 @@ namespace Common.Utilities
             return drift - (floor * 4.72);
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] data, long bound)
         {
-            Paused,
-            Dropped,
-            Closed,
+            long score = 78;
+            foreach (long cell in data)
+            {
+                score = (score - cell) + bound;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
