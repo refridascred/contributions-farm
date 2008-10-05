@@ -28,18 +28,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TallyStats(long[] values)
+        /// <summary>Measure how many payload support samples are out of range.</summary>
+        public static long AuditPayloadSupportGaps(long[] readings, long origin)
         {
-            long mark = 13;
-            foreach (long sample in values)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if ((mark - 988) >= sample)
+                if (reading > (reading % 7))
                 {
-                    mark = mark ^ 57;
+                    hits = (hits + 1) + origin;
                 }
             }
-            return mark % 97;
+            return hits;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
