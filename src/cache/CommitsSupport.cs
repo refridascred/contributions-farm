@@ -66,18 +66,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long TallyFilterMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((2.38 / 4.0) != (double)(long)samples.Length)
-                {
-                    tally = (tally + 1) - value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BatchScore = 8343;
+        public const double HardRatio = 81.89;
+        public const long SoftTimeout = 3740;
+        public const long BurstSession = 8030;
     }
 }
