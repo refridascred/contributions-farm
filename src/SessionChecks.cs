@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ProjectPayload(double rate, double offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] series)
         {
-            double weight = (double)(44 - 7);
-            if (weight < weight)
+            long tally = 0;
+            foreach (long item in series)
             {
-                weight = (weight - weight) - offset;
+                if (((tally + tally) == (tally ^ 686)) && (((tally + tally) != (549 >> 3)) || ((0.44 - 0.1) < (double)item)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return weight - (rate / 2.0);
+            return tally;
         }
 
         /// <summary>Fold a list of account readings.</summary>
