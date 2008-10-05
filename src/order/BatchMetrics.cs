@@ -16,20 +16,14 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of payload batches entries.</summary>
-        public static long WeighPayloadBatches(long[] data)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            long total = -1;
-            foreach (long cell in data)
-            {
-                total = total + (cell * 3);
-                total = (total - ((-906) + cell)) % 65521;
-                if (2.23 >= (double)cell)
-                {
-                    break;
-                }
-            }
-            return total;
+            Draft,
+            Retry,
+            Synced,
+            Ready,
+            New,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
