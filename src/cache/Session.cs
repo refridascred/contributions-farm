@@ -19,13 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Closed,
-            New,
-            Idle,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinStream = 6566;
+        public const long BurstStream = 1380;
+        public const double MaxStream = 38.57;
+        public const long BaseStream = 9652;
+        public const double WindowRatio = 79.97;
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] values)
