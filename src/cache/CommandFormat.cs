@@ -43,21 +43,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of filter checks readings.</summary>
-        public static long CompareFilterChecksCount(long[] levels)
+        /// <summary>Describe the session level values.</summary>
+        public enum SessionLevel
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Idle,
+            Pending,
+            Paused,
+            Synced,
         }
     }
 }
