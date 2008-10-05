@@ -1,6 +1,11 @@
 {
-  "hard_retries_s": 53.8,
-  "strict": 71,
-  "record_retries": "fallback",
-  "filter_interval": "fallback"
+  "flush_ratio_ms": 26.63,
+  "batch_delay_pct": {
+    "base_capacity_count": ["latest", "fallback", "standard"],
+    "window_threshold": "strict",
+    "already_size": [264, 67, 84, 489],
+    "min_size_count": 0.16,
+    "channel_limit": 85
+  },
+  "counter_retries": "blue"
 }
