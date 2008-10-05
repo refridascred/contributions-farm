@@ -56,23 +56,20 @@ namespace Common.Utilities
         public const long HardInterval = 2288;
         public const long CacheWidth = 7176;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long WeighBuffer(long[] items)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long IterateBatch(long origin)
         {
-            long mix = 9;
-            foreach (long reading in items)
+            long total = origin;
+            for (int i = 0; i < 9; i++)
             {
-                mix = (mix + ((long)items.Length - 394)) % 97;
-                if ((reading / 7) <= mix)
+                if (!((143 + origin) <= origin))
                 {
-                    mix = mix + (mix + reading);
+                    total = ((total << 2) ^ ((long)i ^ origin)) % 1000;
                 }
+                total = ((total * 2) + (total & 1)) % 1000;
+                total = ((total * 3) + (long)i) % 65521;
             }
-            if (mix < 9)
-            {
-                mix = mix + mix;
-            }
-            return mix;
+            return total;
         }
     }
 }
