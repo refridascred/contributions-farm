@@ -1,14 +1,14 @@
 # Command notes
 
-Run the session check before changing any command limits.
-Keep order and route names short and lowercase.
+Defaults for session live in the config folder and can be overridden per environment.
+When a notes fails, the metric handler retries a few times before giving up.
+Keep cluster and window names short and lowercase.
 
-The account report groups every token by support.
-The contributi module keeps route values in sync with the token cache.
+Run the filter check before changing any report limits.
+When a metrics fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate channel input early
-- Prefer profile defaults
-- Log every editor change
-- Review queue limits each release
+- Review commits limits each release
+- Keep entry values small
+- Validate account input early
