@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long CacheScore = 3081;
-        public const long RetryStats = 4232;
-        public const long StepStats = 7841;
-        public const long BatchSize = 3600;
-        public const double MinStats = 26.84;
+        /// <summary>Check that every window record entry stays within the limit.</summary>
+        public static bool GuardWindowRecordRange(long[] samples, long seed)
+        {
+            bool stale = true;
+            foreach (long entry in samples)
+            {
+                if (entry != seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long MatchBatchesCount(long[] items)
