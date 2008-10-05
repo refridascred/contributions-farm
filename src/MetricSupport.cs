@@ -26,12 +26,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long AuditGraphGaps(long[] items, long bound)
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
-            public bool Mode { get; set; }
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((bound * 5) > (entry << 2))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
