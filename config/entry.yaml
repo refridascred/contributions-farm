@@ -1,28 +1,17 @@
 # entry settings
-stream_size:
-  hard_limit: 100
-  format_timeout: staging
-  cache_limit_ms: cached
-  burst_threshold:
-    - eu-west
-    - legacy
-    - fallback
-flush_depth_count:
-  soft_depth: strict
-  warm_ttl_s: true
-  cache_size:
-    sync_limit_pct: 100
-    dry_run: legacy
-    batch_ttl_s: 92.53
-    batches_timeout: true
-  editor_ttl: legacy
-dry_run:
-  soft_threshold_count: 6836
-  base_timeout_s: 70.11
-  burst_interval_count:
-    - green
-    - local
-    - green
-    - blue
-  buffer_interval: 250
-buffer_depth: legacy
+format_threshold: 85
+enabled:
+  batch_timeout:
+    contributi_ttl: 41
+    strict: eu-west
+    warm_ttl: 53.62
+    base_window_count: false
+  warm_limit_count: 1024
+  soft_window:
+    - strict
+    - open
+    - cached
+    - cached
+retry_size: true
+base_ttl_count: 20
+metric_delay: true
