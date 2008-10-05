@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsMatches(long[] levels, long target)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if (reading > target)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Paused,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
