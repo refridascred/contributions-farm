@@ -29,18 +29,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many already githubfarm samples are out of range.</summary>
-        public static long AuditAlreadyGithubfarmHits(long[] values, long offset)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((cell ^ offset) < (cell % 7))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public double Total { get; set; }
+            public long Region { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
