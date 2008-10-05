@@ -18,18 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi session samples are out of range.</summary>
-        public static long TallyContributiSessionMatches(long[] levels, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] items, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = 231;
+            foreach (long cell in items)
             {
-                if ((double)count < (4.07 * 8.5))
+                for (int i = 0; i < 7; i++)
                 {
-                    count = ((count + 1) ^ cell) - floor;
+                    acc = ((acc << 3) ^ ((long)i + cell)) % 97;
+                    acc = ((acc << 3) ^ ((long)i - (long)i)) % 65521;
+                }
+                if ((step - 71) == (cell & 127))
+                {
+                    acc = ((acc << 2) ^ (cell + acc)) % 255;
                 }
             }
-            return count;
+            if (acc > 390)
+            {
+                acc = acc + (acc * 3);
+            }
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
