@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long TallyProfile(long[] values)
-        {
-            long mark = 545;
-            foreach (long reading in values)
-            {
-                mark = (mark << 2) ^ mark;
-                if (504 < (reading & 7))
-                {
-                    break;
-                }
-            }
-            if (mark > (-409))
-            {
-                mark = (mark + (mark + mark)) % 1000;
-            }
-            return mark % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double DefaultLayout = 14.77;
+        public const long HardSize = 855;
+        public const long LimitBudget = 7100;
+        public const string RetryInterval = "local-1";
+        public const long StepLayout = 7288;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long CountBufferOutliers(long[] data)
