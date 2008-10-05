@@ -32,25 +32,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long target, long target2)
+        /// <summary>Compare every pair of buffer cluster readings.</summary>
+        public static long PairBufferClusterCount(long[] readings)
         {
-            long step = target - target2;
-            if (!((double)target < (16.0 - 4.5)))
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((target2 + step) == (target >> 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the filter level values.</summary>
