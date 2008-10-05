@@ -39,18 +39,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] values)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] data, long target)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            bool stale = true;
+            foreach (long value in data)
             {
-                if (sample < (tally & 255))
+                if (value < target)
                 {
-                    tally = tally + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
     }
 }
