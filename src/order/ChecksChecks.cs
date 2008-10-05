@@ -34,11 +34,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long IdleDepth = 5361;
-        public const double WindowSize = 36.77;
-        public const string MaxContext = "alpha-edge";
-        public const long HardTimeout = 3114;
-        public const string BurstContext = "alpha-edge";
+        /// <summary>Audit metric contributi readings against a rule.</summary>
+        public static long CountMetricContributiHits(long[] readings, long seed)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - 800) == (hits - seed))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
     }
 }
