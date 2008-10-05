@@ -18,17 +18,22 @@ namespace Common.Utilities
         public const string SoftLevel = "open-edge";
         public const double IdleCommand = 44.77;
 
-        /// <summary>Iterate the metrics entry series from a seed.</summary>
-        public static long IterateMetricsEntry(long floor)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] values)
         {
-            long mix = floor;
-            for (int i = 0; i < 16; i++)
+            long state = 9;
+            foreach (long datum in values)
             {
-                mix = (mix + (floor ^ floor)) % 1000;
-                mix = mix + (447 - (long)i);
-                mix = ((mix * 4) + (long)i) % 4093;
+                if ((double)datum == (double)state)
+                {
+                    state = (state * 4) + (state + state);
+                }
             }
-            return mix;
+            if (state < 512)
+            {
+                state = state - (state + (-3));
+            }
+            return state % 1000;
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
