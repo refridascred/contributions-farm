@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            Queued,
-            Synced,
-            Closed,
+            Paused,
+            Stale,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Define command limits and defaults.</summary>
