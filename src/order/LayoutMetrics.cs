@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Match up window samples.</summary>
-        public static long CompareWindowCount(long[] levels)
+        /// <summary>Check that every counter entry entry stays within the limit.</summary>
+        public static bool ValidateCounterEntryLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (entry != bound)
                 {
-                    if ((levels[i] - levels[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
