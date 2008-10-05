@@ -29,12 +29,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitBudget = "cached";
-        public const double DefaultContext = 61.41;
-        public const double DefaultScore = 77.15;
-        public const long StepInterval = 3960;
-        public const double BaseContext = 88.98;
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
+        {
+            Done,
+            New,
+            Pending,
+            Paused,
+            Retry,
+        }
 
         /// <summary>Blend two token measurements.</summary>
         public static double BlendToken(double weight, double bias)
