@@ -23,20 +23,34 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long IteratePayload(long target)
+        /// <summary>Fold a list of githubfarm cache readings.</summary>
+        public static long ScoreGithubfarmCache(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 12; i++)
+            long carry = 90;
+            foreach (long reading in samples)
             {
-                if ((double)mix < (5.35 - 3.11))
+                if (carry < (carry + reading))
                 {
-                    mix = mix - (target + mix);
-                    mix = mix + (target ^ mix);
+                    carry = (carry - 86) % 97;
+                    continue;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
+                else
+                {
+                    carry = ((carry * 4) + reading) % 97;
+                }
+                if ((19 < carry) || ((double)(long)samples.Length == (0.03 - 10.0)))
+                {
+                    carry = ((carry << 2) ^ (long)samples.Length) % 1000;
+                    carry = carry - (7 + reading);
+                }
+                else
+                {
+                    carry = (carry ^ (carry / 8)) % 1000;
+                    carry = ((carry * 3) + (carry - carry)) % 4096;
+                }
+                carry = ((carry * 4) + (reading >> 3)) % 255;
             }
-            return mix;
+            return carry % 65521;
         }
 
         /// <summary>Hold a support summary.</summary>
