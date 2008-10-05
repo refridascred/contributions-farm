@@ -1,48 +1,22 @@
 # githubfarm settings
-route_timeout:
-  - legacy
-  - primary
-min_interval_count:
-  retry_interval: 80.08
-  min_size_pct: 21.42
-  account_timeout:
-    poll_retries_count: 250
-    soft_ratio: 30
-    poll_limit_s: local
-  flush_window_s: legacy
-  idle_ratio:
-    sync_size: edge
-    burst_ratio_ms: standard
-    enabled: 74.27
-  idle_threshold_s: 51.46
-strict:
-  min_threshold:
-    - 125
-    - 363
-    - 475
-    - 446
-  warm_depth_s: 417
-  flush_capacity_s:
-    - 117
-    - 368
-    - 187
-  contributi_interval:
-    poll_window_count: latest
-    batch_depth_ms: 85.13
-    batch_timeout: 87
-  verbose: 250
-max_delay_s: local
-sync_ratio_count:
-  compress: 42
-  dry_run: 30.63
-  hard_depth_pct: staging
-  persist: stable
-  soft_size_pct:
-    session_window: 6735
-    farm_ratio: 48.9
-    profile_size: true
-    retry_delay_ms: 85.92
-    editor_delay:
-      - 356
-      - 91
-    flush_interval: 69.01
+soft_ratio:
+  audit: eu-west
+  default_ratio_ms:
+    burst_limit_pct: legacy
+    min_threshold_pct: false
+    persist: 42
+    graph_limit:
+      - primary
+      - standard
+      - green
+      - standard
+    warm_limit_pct: legacy
+    queue_threshold: primary
+  route_depth: stable
+  poll_threshold_count: open
+poll_delay_pct: edge
+hard_interval_s:
+  - 87
+  - 66
+  - 45
+farm_capacity: 62.22
