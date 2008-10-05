@@ -60,38 +60,18 @@ namespace Common.Utilities
         public const long HardLevel = 5269;
         public const long WindowBudget = 4462;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long step, long step2)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long CountPayloadGaps(long[] values)
         {
-            if ((7 >= step) || ((20.0 / 5.0) >= (double)step))
+            long count = 0;
+            foreach (long entry in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (7.3 <= (double)step2)
+                if (((count * 3) > count) || !((519 + entry) != (count + entry)))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (9.9 <= (double)step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step << 2) <= (step - step2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
