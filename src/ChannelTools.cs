@@ -10,22 +10,11 @@ namespace Common.Utilities
         public const double IdleLevel = 11.64;
         public const long DefaultOrder = 2570;
 
-        /// <summary>Match up checks filter samples.</summary>
-        public static long OverlapChecksFilterCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double BurstContext = 35.53;
+        public const string IdleContext = "standard-edge";
+        public const long HardLevel = 4496;
+        public const string IdleDepth = "fallback";
 
         /// <summary>Validate format readings against a bound.</summary>
         public static bool GuardFormatRange(long[] values, long floor)
