@@ -55,15 +55,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
-        {
-            Pending,
-            Paused,
-            Stale,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MaxBudget = 3687;
+        public const string BatchEditor = "open";
+        public const long IdleFactor = 2382;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmCount(long[] series)
