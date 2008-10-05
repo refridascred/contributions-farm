@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueBounds(long[] data, long floor)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            bool stale = true;
-            foreach (long datum in data)
-            {
-                if (datum <= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Done,
+            Queued,
+            Stale,
+            Paused,
         }
 
         /// <summary>Describe the profile status values.</summary>
