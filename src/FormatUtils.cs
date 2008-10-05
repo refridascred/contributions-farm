@@ -22,38 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long GradeCommand(long offset, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] readings, long seed)
         {
-            if (((target - offset) <= offset) && (offset > (offset >> 5)))
+            bool found = true;
+            foreach (long entry in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + 9) >= (offset * 3))
+                if (entry >= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((8.6 / 3.0) > (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target / 5) >= (offset + (-10)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Combine editor values into a single score.</summary>
