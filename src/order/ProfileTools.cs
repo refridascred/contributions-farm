@@ -44,16 +44,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long floor)
-        {
-            long mark = floor;
-            for (int i = 0; i < 6; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double DefaultInterval = 67.95;
+        public const long HardSchema = 6741;
+        public const string IdleSchema = "standard-edge";
+        public const double RetrySchema = 73.7;
+        public const string CacheSchema = "legacy-edge";
 
         /// <summary>Define context limits and defaults.</summary>
         public const long RetryRatio = 8650;
