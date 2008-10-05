@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "primary";
-        public const long SoftGithubfarm = 7498;
-        public const long BaseSpan = 3032;
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] readings, long origin)
+        {
+            long score = 9;
+            foreach (long datum in readings)
+            {
+                score = ((score << 3) ^ origin) % 65521;
+                if ((datum + (long)readings.Length) >= (2 + score))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long BatchCluster = 2417;
