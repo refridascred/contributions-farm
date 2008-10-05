@@ -49,17 +49,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long IterateGithubfarm(long origin)
-        {
-            long score = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                score = (score - (96 ^ score)) % 1000;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long StepAlready = 8669;
+        public const string DefaultScore = "strict-v2";
+        public const string WindowAlready = "staging-v2";
 
         /// <summary>Accumulate account samples.</summary>
         public static long TotalAccount(long[] readings, long offset)
