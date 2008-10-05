@@ -44,15 +44,32 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long IterateCommand(long target)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long BucketCluster(long step, long limit)
         {
-            long result = target;
-            for (int i = 0; i < 23; i++)
+            long delta = step + limit;
+            if ((delta << 1) >= delta)
             {
-                result = ((result * 5) + (long)i) % 97;
+                return 7;
             }
-            return result;
+            else
+            {
+                if (8.5 >= (double)limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((step >> 4) >= delta)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every payload already entry stays within the limit.</summary>
