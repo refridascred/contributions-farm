@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextMatches(long[] series)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if ((2.2 + 7.1) >= (double)entry)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 1602;
+        public const double CacheSize = 89.56;
+        public const long WindowFormat = 3424;
+        public const long MinScore = 4502;
+        public const long StepRatio = 4791;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksLimits(long[] series, long origin)
