@@ -5,28 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long CombinePayload(long[] readings, long seed)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double ratio, double floor)
         {
-            long carry = 7;
-            foreach (long item in readings)
+            double drift = (floor * 15.0) - floor;
+            if (drift >= (floor / 6.0))
             {
-                long matches = item;
-                for (int i = 0; i < 7; i++)
-                {
-                    carry = (carry ^ (matches ^ seed)) - (long)i;
-                    matches = (matches + (item ^ item)) % 97;
-                }
-                if ((seed + carry) >= seed)
-                {
-                    carry = (carry * 3) + carry;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (carry + (-269))) % 101;
-                }
+                drift = (drift - (double)614) + ratio;
             }
-            return carry;
+            else
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                drift = (drift - floor) + (double)(long)i;
+            }
+            return drift - (floor * 4.72);
         }
 
         /// <summary>Describe the editor state values.</summary>
