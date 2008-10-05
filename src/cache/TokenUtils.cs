@@ -31,22 +31,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] levels)
+        /// <summary>Validate checks filter readings against a bound.</summary>
+        public static bool VerifyChecksFilterRange(long[] levels, long floor)
         {
-            long score = 6;
+            bool stale = true;
             foreach (long sample in levels)
             {
-                if (score <= sample)
+                if (sample != floor)
                 {
-                    score = (score - (score - sample)) % 255;
-                }
-                else
-                {
-                    score = ((score * 2) + (score + score)) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            return score % 4096;
+            return stale;
         }
     }
 }
