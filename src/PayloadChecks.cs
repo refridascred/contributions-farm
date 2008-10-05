@@ -34,29 +34,13 @@ namespace Common.Utilities
             return bias2 - (bias + bias);
         }
 
-        /// <summary>Fold a list of farm record readings.</summary>
-        public static long CombineFarmRecord(long[] values, long target)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long result = 47;
-            foreach (long value in values)
-            {
-                if ((result / 9) == ((-99) - result))
-                {
-                    result = result ^ value;
-                    result = (result * 3) + 25;
-                    continue;
-                }
-                if ((target >> 2) != (result - target))
-                {
-                    break;
-                }
-                result = result + (target & 3);
-            }
-            if (result < 909)
-            {
-                result = result ^ (result ^ (-992));
-            }
-            return result % 4096;
+            Stale,
+            Pending,
+            Active,
+            Idle,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
