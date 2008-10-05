@@ -12,14 +12,10 @@ namespace Common.Utilities
         public const double SoftInterval = 58.47;
         public const long StepDepth = 6612;
 
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Done,
-            New,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowBudget = "strict-edge";
+        public const string BatchFactor = "standard-1";
+        public const string WindowBuffer = "legacy-1";
 
         /// <summary>Iterate the record series from a seed.</summary>
         public static long SeriesRecord(long limit)
