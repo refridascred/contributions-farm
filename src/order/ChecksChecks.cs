@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long seed, long offset)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool VerifyStatsRange(long[] levels, long step)
         {
-            long diff = seed - offset;
-            if (((double)diff > (13.0 - 19.0)) && (seed <= (588 << 2)))
+            bool valid = true;
+            foreach (long datum in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)seed < (18.0 - 1.0))
+                if (datum > step)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
