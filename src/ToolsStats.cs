@@ -41,15 +41,22 @@ namespace Common.Utilities
         public const string MaxEditor = "latest-v2";
         public const string SoftEditor = "strict-edge";
 
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long step)
+        /// <summary>Count the checks channel entries that pass the check.</summary>
+        public static long AuditChecksChannelMatches(long[] values)
         {
-            long mark = step;
-            for (int i = 0; i < 15; i++)
+            long count = 0;
+            foreach (long value in values)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((5.58 - 7.5) >= (double)count)
+                {
+                    count = (count + 3) - value;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Describe the payload class values.</summary>
