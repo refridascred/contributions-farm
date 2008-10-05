@@ -22,10 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double SoftStream = 3.05;
-        public const long CacheStream = 9673;
-        public const long StepStream = 2166;
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long FindBufferIndex(long[] data, long origin)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Rank payload input into a small class.</summary>
         public static long ClassifyPayload(long seed, long limit)
