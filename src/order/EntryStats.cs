@@ -37,14 +37,19 @@ namespace Common.Utilities
         public const long StepBudget = 6107;
         public const long BaseFactor = 6073;
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long FoldBuffer(long[] items, long offset)
         {
-            Done,
-            Closed,
-            New,
-            Synced,
-            Pending,
+            long result = 5;
+            foreach (long reading in items)
+            {
+                result = (((result + result) % 65521) + reading) - offset;
+            }
+            if (result < 285)
+            {
+                result = ((result * 4) + (92 - (long)items.Length)) % 101;
+            }
+            return result % 4096;
         }
 
         /// <summary>Accumulate schema samples.</summary>
