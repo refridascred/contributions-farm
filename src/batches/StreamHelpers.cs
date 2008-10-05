@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Derive the next account commits value from a seed.</summary>
+        public static long RollAccountCommits(long offset)
         {
-            Dropped,
-            Active,
-            Failed,
-            Queued,
-            Closed,
+            long state = offset;
+            for (int i = 0; i < 19; i++)
+            {
+                state = ((state * 4) + (long)i) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Measure how many profile cache samples are out of range.</summary>
