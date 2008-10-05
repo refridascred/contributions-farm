@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a entry metrics pair into a bucket.</summary>
-        public static long RankEntryMetrics(long step, long limit)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            if ((double)limit != (double)step)
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit % 24) < step)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit / 2) >= (limit ^ step))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public double Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Compare every pair of commits buffer readings.</summary>
