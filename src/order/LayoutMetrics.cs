@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderHits(long[] values, long step)
-        {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((((double)step > (20.0 * 1.6)) && (((long)values.Length + reading) > (reading ^ matches))) && ((double)step >= (double)matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheWidth = 4232;
+        public const string DefaultMetric = "local-v2";
+        public const string WindowMetric = "strict-v2";
+        public const double IdleMetric = 17.38;
 
         /// <summary>Accumulate command samples.</summary>
         public static long TallyCommand(long[] values)
