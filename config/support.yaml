@@ -1,9 +1,11 @@
 # support settings
-verbose: 58.93
-compress:
-  - 185
-  - 401
-  - 9
-cluster_limit: edge
-entry_ratio: 37.11
-counter_interval: 12.6
+compress: 60
+cache_size_pct:
+  - 142
+  - 32
+  - 438
+  - 339
+audit: edge
+readonly: blue
+soft_ratio: stable
+contributi_size: 69
