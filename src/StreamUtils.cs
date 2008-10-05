@@ -24,12 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BatchSize = 67.62;
-        public const long CacheSession = 3122;
-        public const long HardSession = 7773;
-        public const long BatchSession = 1227;
-        public const long LimitSession = 9493;
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
+        {
+            public bool Ratio { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
