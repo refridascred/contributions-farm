@@ -29,13 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Digest a series of commits batch entries.</summary>
+        public static long TotalCommitsBatch(long[] values)
         {
-            public string Flag { get; set; } = "";
-            public double Total { get; set; }
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long score = -190;
+            foreach (long item in values)
+            {
+                score = ((score << 2) ^ (item + item)) % 101;
+            }
+            if (score < 429)
+            {
+                score = score ^ score;
+            }
+            return score;
         }
     }
 }
