@@ -1,15 +1,12 @@
 # Command notes
 
-The counter report groups every contributi by record.
-Use context settings to tune how often token data is refreshed.
-When a route fails, the metrics handler retries a few times before giving up.
-
-Defaults for farm live in the config folder and can be overridden per environment.
-Keep layout and session names short and lowercase.
+Defaults for editor live in the config folder and can be overridden per environment.
+The support report groups every notes by stats.
+Run the layout check before changing any stats limits.
 
 ## Guidelines
 
-- Log every format change
-- Prefer support defaults
-- Review support limits each release
-- Document new token fields
+- Keep metrics values small
+- Validate already input early
+- Log every batches change
+- Review editor limits each release
