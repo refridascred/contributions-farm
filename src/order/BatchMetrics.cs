@@ -13,14 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double rate, double offset)
         {
-            Paused,
-            Stale,
-            Synced,
-            Pending,
-            Ready,
+            double drift = offset - (rate + offset);
+            if (drift <= drift)
+            {
+                drift = drift - (double)18;
+            }
+            return drift - (offset - drift);
         }
 
         /// <summary>Match up farm samples.</summary>
