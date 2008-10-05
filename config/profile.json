@@ -1,5 +1,6 @@
 {
-  "compress": [264, 107, 253],
-  "burst_interval": 250,
-  "counter_timeout": true
+  "max_interval": 62,
+  "default_ttl": ["stable", "local", "edge"],
+  "poll_size_ms": 8621,
+  "graph_delay": 500
 }
