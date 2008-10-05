@@ -60,20 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema tools series from a seed.</summary>
-        public static long DeriveSchemaTools(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 23; i++)
-            {
-                bool flag = (8 / 7) > target;
-                if (!!flag)
-                {
-                    mark = mark + (mark << 1);
-                }
-                mark = ((mark * 3) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardScore = 6205;
+        public const long HardEditor = 6540;
+        public const long CacheRatio = 7384;
+        public const long MaxEditor = 6118;
+        public const double CacheEditor = 79.43;
     }
 }
