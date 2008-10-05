@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first notes entry that matches the target.</summary>
-        public static long SeekNotesIndex(long[] values, long offset)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if ((values[i] <= offset) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
