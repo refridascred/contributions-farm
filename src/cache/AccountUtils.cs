@@ -28,13 +28,11 @@ namespace Common.Utilities
         public const string BaseFactor = "local-v2";
         public const double LimitBudget = 13.28;
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            public bool Level { get; set; }
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public string Rank { get; set; } = "";
+            public double Count { get; set; }
+            public long Token { get; set; }
         }
     }
 }
