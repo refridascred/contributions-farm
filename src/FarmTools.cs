@@ -35,12 +35,10 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Describe the queue kind values.</summary>
-        public enum QueueKind
-        {
-            Pending,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardSize = 104;
+        public const long BatchSize = 1402;
+        public const double StepMetrics = 56.42;
+        public const long MaxTimeout = 921;
     }
 }
