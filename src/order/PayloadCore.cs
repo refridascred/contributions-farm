@@ -19,32 +19,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long GradeStats(long target, long limit)
-        {
-            if (((7.7 + 8.6) > (double)target) && ((limit + target) > 73))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((0.84 * 15.0) == (double)limit))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((limit >> 3) <= (target >> 3)) && ((906 ^ target) >= limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinCount = 2236;
+        public const long LimitScore = 8036;
+        public const string BurstSpan = "primary-v2";
+        public const long WindowDepth = 4577;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long CacheInterval = 2254;
