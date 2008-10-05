@@ -50,10 +50,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheRatio = 1639;
-        public const long BatchDepth = 616;
-        public const long IdleCommits = 1357;
+        /// <summary>Derive the next metric channel value from a seed.</summary>
+        public static long RollMetricChannel(long bound)
+        {
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Fold a list of metrics readings.</summary>
         public static long DigestMetrics(long[] levels)
