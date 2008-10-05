@@ -31,18 +31,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of schema commits entries.</summary>
-        public static long TotalSchemaCommits(long[] series)
+        /// <summary>Find the first support commits entry that matches the target.</summary>
+        public static long LocateSupportCommitsIndex(long[] data, long limit)
         {
-            long score = 843;
-            foreach (long sample in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score + score) <= (score + sample))
+                if ((data[i] >= limit) && ((data[i] % 3) == 0))
                 {
-                    score = score + (382 ^ 402);
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
