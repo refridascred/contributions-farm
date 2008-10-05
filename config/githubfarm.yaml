@@ -1,4 +1,6 @@
 # githubfarm settings
-already_ratio: latest
-retry_limit_s: 24.41
-buffer_depth: staging
+token_window: 1013
+poll_threshold:
+  - open
+  - blue
+tools_retries: local
