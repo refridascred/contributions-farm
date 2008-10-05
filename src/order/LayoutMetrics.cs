@@ -5,32 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long bound, long origin)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long step = bound - origin;
-            if (!(origin < (40 << 2)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((3 + step) <= (bound + step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin + step) >= 23)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Rank order already input into a small class.</summary>
