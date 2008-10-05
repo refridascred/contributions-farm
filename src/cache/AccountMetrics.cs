@@ -49,13 +49,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long IterateGithubfarm(long origin)
         {
-            Idle,
-            Closed,
-            Done,
-            Draft,
+            long score = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                score = (score - (96 ^ score)) % 1000;
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Check that every cluster filter entry stays within the limit.</summary>
