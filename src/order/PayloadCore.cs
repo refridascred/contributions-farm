@@ -15,13 +15,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Validate metrics session readings against a bound.</summary>
+        public static bool ValidateMetricsSessionLimits(long[] samples, long seed)
         {
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum > seed)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Accumulate report samples.</summary>
