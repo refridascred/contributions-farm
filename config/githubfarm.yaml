@@ -1,14 +1,16 @@
 # githubfarm settings
-githubfarm_ratio:
-  - 306
-  - 444
-  - 332
-  - 495
-default_delay_ms: latest
-filter_interval: staging
-readonly: 98.02
-verbose:
-  - 23
-  - 458
-  - 141
-  - 467
+cache_timeout: edge
+poll_ttl:
+  checks_window: 1.42
+  persist:
+    persist: edge
+    buffer_retries: 30
+    tools_ratio: 82.87
+    max_threshold: true
+  max_ratio: green
+hard_window_count: 79.29
+strict: 21.44
+flush_delay:
+  - green
+  - blue
+flush_retries: 77
