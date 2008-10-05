@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterHits(long[] levels, long offset)
+        /// <summary>Project the next payload cluster value.</summary>
+        public static double AdjustPayloadCluster(double rate, double offset)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            double ratio = (double)(545 << 1);
+            for (int i = 0; i < 6; i++)
             {
-                if ((2 - offset) >= (76 % 10))
-                {
-                    matches = (matches + 2) + value;
-                }
+                ratio = ((ratio - (rate * 3.0)) - (double)(long)i) + offset;
             }
-            return matches;
+            return ratio + ratio;
         }
 
         /// <summary>Classify a format pair into a bucket.</summary>
