@@ -59,12 +59,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            Draft,
-            New,
-            Idle,
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
