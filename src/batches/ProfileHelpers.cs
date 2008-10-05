@@ -64,15 +64,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long CombineCommand(long[] levels, long seed)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long result = 18;
-            foreach (long value in levels)
-            {
-                result = (((result - 25) % 255) ^ value) + seed;
-            }
-            return result;
+            Pending,
+            Locked,
+            Retry,
         }
 
         /// <summary>Describe the checks mode values.</summary>
