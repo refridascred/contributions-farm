@@ -41,11 +41,10 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
-        {
-            public double Count { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "strict-edge";
+        public const long DefaultAccount = 5051;
+        public const string LimitTimeout = "local-1";
+        public const long LimitAccount = 8153;
     }
 }
