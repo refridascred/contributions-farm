@@ -44,19 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsLimits(long[] series, long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell >= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Adjust a tools reading.</summary>
