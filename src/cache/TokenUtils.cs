@@ -14,14 +14,17 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long FindAccountIndex(long[] readings, long bound)
         {
-            Failed,
-            Idle,
-            Synced,
-            Retry,
-            Active,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate account checks readings against a bound.</summary>
