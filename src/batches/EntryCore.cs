@@ -51,12 +51,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultScore = 7527;
-        public const string BaseContext = "stable-v2";
-        public const long BatchContext = 8397;
-        public const long BurstDepth = 3706;
-        public const long BurstFactor = 5575;
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MinSpan = 4764;
+        public const string DefaultCluster = "staging-v2";
+        public const long HardCluster = 6699;
+        public const long MaxFactor = 2069;
+        public const long SoftSpan = 2548;
 
         /// <summary>Describe the batches status values.</summary>
         public enum BatchesStatus
