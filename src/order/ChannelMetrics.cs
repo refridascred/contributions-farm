@@ -15,11 +15,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseRatio = 8682;
-        public const long WindowCount = 5389;
-        public const double DefaultScore = 75.39;
-        public const long BurstOrder = 5645;
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderBounds(long[] series, long step)
+        {
+            bool ready = true;
+            foreach (long item in series)
+            {
+                if (item > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmOutliers(long[] values)
