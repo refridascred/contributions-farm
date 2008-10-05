@@ -50,9 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 89.89;
-        public const long BurstSize = 5168;
-        public const long DefaultWindow = 3801;
+        /// <summary>Compare every pair of queue support readings.</summary>
+        public static long MatchQueueSupportCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
