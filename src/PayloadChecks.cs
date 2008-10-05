@@ -22,14 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Accumulate commits samples.</summary>
+        public static long ScoreCommits(long[] items, long offset)
         {
-            Paused,
-            Synced,
-            Ready,
-            Queued,
-            Failed,
+            long carry = -9;
+            foreach (long value in items)
+            {
+                if (carry <= (offset << 3))
+                {
+                    carry = (((carry << 2) ^ (68 / 4)) % 65521) - value;
+                }
+            }
+            if (carry > 9)
+            {
+                carry = carry ^ (65 % 60);
+            }
+            return carry % 65521;
         }
 
         /// <summary>Describe the counter state values.</summary>
