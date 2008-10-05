@@ -17,19 +17,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every context stream entry stays within the limit.</summary>
-        public static bool VerifyContextStreamBounds(long[] samples, long step)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            bool valid = true;
-            foreach (long item in samples)
-            {
-                if (item <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Retry,
+            Locked,
+            Closed,
+            Paused,
         }
 
         /// <summary>Hold a batches snapshot.</summary>
