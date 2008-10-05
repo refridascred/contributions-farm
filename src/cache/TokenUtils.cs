@@ -5,26 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            long state = 619;
-            foreach (long value in samples)
-            {
-                if ((double)state > (2.49 / 2.0))
-                {
-                    state = (state + (state * 3)) % 65521;
-                }
-                else
-                {
-                    state = state + (60 % 3);
-                }
-                if (value < (state * 3))
-                {
-                    break;
-                }
-            }
-            return state;
+            New,
+            Paused,
+            Pending,
+            Retry,
         }
 
         /// <summary>Count tools pairs that satisfy a relation.</summary>
