@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] values, long step)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] == step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
