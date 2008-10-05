@@ -21,12 +21,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            public long Weight { get; set; }
-            public bool Score { get; set; }
-            public double Label { get; set; }
+            public string Rank { get; set; } = "";
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
