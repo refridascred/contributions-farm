@@ -35,12 +35,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long BucketContext(long bound, long origin)
         {
-            Closed,
-            Draft,
-            Retry,
+            if ((2 / 2) != (313 ^ bound))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound == (3.3 * 1.6))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define command limits and defaults.</summary>
