@@ -22,12 +22,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            public long Total { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            public double Mode { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Check that every order route entry stays within the limit.</summary>
