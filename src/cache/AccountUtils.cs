@@ -22,23 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double BlendSupport(double bias, double offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] levels)
         {
-            double mean = (offset / 9.0) + offset;
-            if (mean <= (1.9 * 7.4))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = mean - mean;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (bias + mean);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - mean) - (double)(long)i;
-            }
-            return mean - mean;
+            return tally;
         }
 
         /// <summary>Define account limits and defaults.</summary>
