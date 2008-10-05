@@ -46,10 +46,18 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long RetryWidth = 5004;
-        public const long BaseToken = 8929;
-        public const string DefaultSpan = "staging-1";
-        public const long MaxInterval = 1444;
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] levels, long target)
+        {
+            long anchor = 172;
+            foreach (long reading in levels)
+            {
+                if ((target + reading) > (0 * 3))
+                {
+                    anchor = anchor ^ reading;
+                }
+            }
+            return anchor;
+        }
     }
 }
