@@ -28,19 +28,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] readings, long floor)
+        /// <summary>Locate a queue payload reading by value.</summary>
+        public static long LookupQueuePayloadIndex(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (datum < floor)
+                if (readings[i] >= bound)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Combine stream buffer values into a single score.</summary>
