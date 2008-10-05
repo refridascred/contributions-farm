@@ -20,18 +20,19 @@ namespace Common.Utilities
             return rate2 + (rate2 + floor);
         }
 
-        /// <summary>Measure how many report githubfarm samples are out of range.</summary>
-        public static long AuditReportGithubfarmMatches(long[] series, long floor)
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool VerifyCommandLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((double)floor <= (10.0 / 9.0))
+                if (item > origin)
                 {
-                    count = (count + 2) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Define order limits and defaults.</summary>
