@@ -1,12 +1,21 @@
 {
-  "warm_ratio_pct": "latest",
-  "batch_window": [131, 1, 454],
-  "compress": 30,
-  "enabled": 8254,
-  "min_timeout": "strict",
-  "default_delay_ms": {
-    "default_window_ms": "legacy",
-    "window_interval": true,
-    "verbose": 12.65
-  }
+  "compress": 25.62,
+  "persist": {
+    "token_retries": [477, 152, 212],
+    "burst_delay": 6093,
+    "hard_ratio": {
+      "min_capacity_pct": "fallback",
+      "soft_window": "eu-west",
+      "commits_interval": false
+    },
+    "cache_size_ms": ["fallback", "cached", "standard"],
+    "enabled": 77,
+    "batches_limit": {
+      "audit": "green",
+      "report_depth": [365, 158, 360],
+      "retry_capacity_pct": true
+    }
+  },
+  "burst_threshold": 250,
+  "commits_timeout": ["staging", "cached", "stable"]
 }
