@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of notes stream readings.</summary>
-        public static long FoldNotesStream(long[] readings)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] samples, long bound)
         {
-            long acc = 7;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (((acc + acc) == (6 ^ 311)) && ((6.1 + 4.8) >= (double)entry))
+                if (value > bound)
                 {
-                    acc = acc + (acc + entry);
-                    continue;
-                }
-                else
-                {
-                    acc = (acc * 4) + (entry * 3);
-                }
-                if ((8.48 + 9.5) >= (double)acc)
-                {
-                    acc = (acc - (acc % 60)) % 65521;
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Locate a queue payload reading by value.</summary>
