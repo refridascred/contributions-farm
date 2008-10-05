@@ -13,18 +13,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the order batches entries that pass the check.</summary>
-        public static long MeasureOrderBatchesHits(long[] data, long offset)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long step, long bound)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long span = step ^ bound;
+            if (((bound - step) <= bound) && ((10 + step) < (67 << 2)))
             {
-                if ((3.32 + 20.0) <= (double)value)
+                return 1;
+            }
+            else
+            {
+                if (span < (bound + step))
                 {
-                    hits = (hits + 2) - offset;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
