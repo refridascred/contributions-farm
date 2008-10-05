@@ -65,18 +65,11 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long MeasureMetricsMatches(long[] data)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((double)tally <= (7.8 * 12.0))
-                {
-                    tally = (tally + 2) + cell;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
