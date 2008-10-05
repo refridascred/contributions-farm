@@ -42,12 +42,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            public string Size { get; set; } = "";
             public double Total { get; set; }
-            public bool Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
