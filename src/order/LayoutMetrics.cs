@@ -41,14 +41,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long GradeStream(long origin, long bound)
         {
-            Pending,
-            Done,
-            Closed,
-            Ready,
-            New,
+            long delta = origin - bound;
+            if (((origin - delta) <= (delta + bound)) && ((bound ^ 11) < (origin * 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if (bound < (bound << 2))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((bound & 15) != (delta >> 4))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
