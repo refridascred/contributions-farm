@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate token profile readings against a bound.</summary>
-        public static bool CheckTokenProfileLimits(long[] readings, long offset)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Ready,
+            Synced,
         }
 
         /// <summary>Describe the channel state values.</summary>
