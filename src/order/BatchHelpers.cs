@@ -25,21 +25,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] values)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 14)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public bool Stamp { get; set; }
+            public bool Ratio { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the token mode values.</summary>
