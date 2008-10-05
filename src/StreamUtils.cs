@@ -37,10 +37,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardSpan = 7968;
-        public const long StepReport = 3375;
-        public const long MinBudget = 3096;
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long HardEditor = 9329;
+        public const long CacheSize = 1808;
+        public const long BatchEditor = 7286;
+        public const double BatchCount = 73.22;
+        public const long StepSize = 4598;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long ClassifySchema(long offset, long bound)
