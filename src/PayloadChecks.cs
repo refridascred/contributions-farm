@@ -72,19 +72,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double bias, double span)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool CheckEditorRange(long[] series, long limit)
         {
-            double rate = span;
-            if (rate < (double)905)
+            bool valid = true;
+            foreach (long item in series)
             {
-                rate = (rate - span) - bias;
+                if (item != limit)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - 7.5) + (double)(long)i;
-            }
-            return rate - (span * 16.0);
+            return valid;
         }
     }
 }
