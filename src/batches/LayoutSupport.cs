@@ -19,12 +19,14 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
         {
-            New,
-            Idle,
+            Paused,
+            Pending,
+            Dropped,
             Retry,
+            Queued,
         }
 
         /// <summary>Define editor limits and defaults.</summary>
