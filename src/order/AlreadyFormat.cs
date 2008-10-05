@@ -40,22 +40,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long TallyTokenOutliers(long[] items, long step)
+        /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmFormatCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits - entry) != (step >> 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((levels[i] + levels[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
