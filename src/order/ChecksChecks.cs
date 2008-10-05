@@ -22,38 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long GradePayload(long seed, long floor)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            if (((double)seed <= 5.3) && ((seed + seed) == (seed - floor)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((1.3 <= (double)seed) || ((50 - floor) < 20))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((8.0 * 2.0) < (double)floor)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((seed >> 5) < seed)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Failed,
+            Synced,
         }
 
         /// <summary>Audit metric contributi readings against a rule.</summary>
