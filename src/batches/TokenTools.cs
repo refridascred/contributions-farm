@@ -12,15 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double weight, double offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamBounds(long[] levels, long limit)
         {
-            double drift = 19.0;
-            for (int i = 0; i < 3; i++)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                drift = (drift + (double)(long)i) + offset;
+                if (sample > limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return drift - (drift - weight);
+            return ready;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
