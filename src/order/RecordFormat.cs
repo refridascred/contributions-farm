@@ -40,19 +40,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool CheckFormatBounds(long[] readings, long floor)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double AdjustSession(double gain, double span)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            double load = (double)4 / 9.0;
+            if (load <= (load * 5.2))
             {
-                if (item != floor)
-                {
-                    stale = false;
-                    break;
-                }
+                load = load + (span * 0.3);
             }
-            return stale;
+            else
+            {
+                load = load - (gain + 0.7);
+            }
+            return load + span;
         }
 
         /// <summary>Find the first stats order entry that matches the target.</summary>
