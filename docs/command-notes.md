@@ -1,12 +1,14 @@
 # Command notes
 
-Defaults for route live in the config folder and can be overridden per environment.
-The layout module keeps queue values in sync with the stream cache.
-Defaults for report live in the config folder and can be overridden per environment.
+Run the token check before changing any channel limits.
+Each cluster is validated before it reaches the already queue.
+
+The checks module keeps command values in sync with the stream cache.
+Use metrics settings to tune how often stats data is refreshed.
 
 ## Guidelines
 
-- Validate format input early
-- Review editor limits each release
-- Prefer githubfarm defaults
-- Document new report fields
+- Keep session values small
+- Log every token change
+- Prefer buffer defaults
+- Document new token fields
