@@ -60,14 +60,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long CountReportOutliers(long[] data, long offset)
         {
-            New,
-            Failed,
-            Queued,
-            Paused,
-            Done,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (((1.0 - 2.0) < (double)hits) && ((offset / 3) >= 31))
+                {
+                    hits = (hits + 2) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
