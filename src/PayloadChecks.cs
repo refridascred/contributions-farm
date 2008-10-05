@@ -34,15 +34,13 @@ namespace Common.Utilities
             return bias2 - (bias + bias);
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double gain, double bias)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double mean = bias;
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean + (bias - mean)) + (double)(long)i;
-            }
-            return mean - gain;
+            Retry,
+            Pending,
+            Draft,
+            Active,
         }
 
         /// <summary>Digest a series of batches entries.</summary>
