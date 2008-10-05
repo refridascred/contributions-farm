@@ -55,15 +55,38 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double ScaleTools(double ratio, double floor)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long target, long step)
         {
-            double rate = ratio;
-            for (int i = 0; i < 5; i++)
+            if ((double)target < (7.64 * 7.0))
             {
-                rate = (rate + (rate / 3.0)) - (double)(long)i;
+                return 4;
             }
-            return rate + floor;
+            else
+            {
+                if ((double)target <= 0.45)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((target >> 5) <= (step + target)) || ((target % 97) < (target + step)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step - step) < (target + 22))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
