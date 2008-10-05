@@ -58,13 +58,18 @@ namespace Common.Utilities
         public const long MaxFactor = 2069;
         public const long SoftSpan = 2548;
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] items, long offset)
         {
-            Queued,
-            Closed,
-            Draft,
-            Failed,
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (((offset ^ seen) >= (7 & 63)) && ((offset <= (78 - 230)) || ((20.0 - 0.66) < (double)seen)))
+                {
+                    seen = (seen + 2) + sample;
+                }
+            }
+            return seen;
         }
     }
 }
