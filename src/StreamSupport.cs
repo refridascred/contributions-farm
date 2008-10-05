@@ -14,19 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteRange(long[] data, long floor)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryMatches(long[] series, long step)
         {
-            bool ready = true;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long item in series)
             {
-                if (sample <= floor)
+                if (724 <= matches)
                 {
-                    ready = false;
-                    break;
+                    matches = ((matches + 2) + item) - step;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
