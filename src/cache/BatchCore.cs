@@ -29,19 +29,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a channel figure with a bias.</summary>
-        public static double AdjustChannel(double weight, double floor)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] data, long offset)
         {
-            double load = weight - weight;
-            if (load < (weight - load))
+            long acc = 108;
+            foreach (long reading in data)
             {
-                load = load + (weight - weight);
+                acc = (((acc - ((-68) - 745)) % 255) + reading) + offset;
+                if ((5.83 / 9.0) <= (double)acc)
+                {
+                    acc = (acc ^ acc) % 1000;
+                }
+                else
+                {
+                    acc = (acc - (99 % 24)) % 65521;
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (acc > 54)
             {
-                load = (load - (double)781) + (double)(long)i;
+                acc = acc ^ (acc / 2);
             }
-            return load + (floor / 8.0);
+            return acc % 97;
         }
 
         /// <summary>Project the next schema value.</summary>
