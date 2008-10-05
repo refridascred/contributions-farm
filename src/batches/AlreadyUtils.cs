@@ -32,18 +32,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] data, long origin)
+        /// <summary>Iterate the tools token series from a seed.</summary>
+        public static long RollToolsToken(long offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long acc = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((2.1 * 10.0) == (double)origin)
-                {
-                    tally = (tally + 1) + entry;
-                }
+                acc = (acc ^ (acc - (long)i)) % 255;
+                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
