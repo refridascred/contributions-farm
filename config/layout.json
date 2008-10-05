@@ -1,7 +1,22 @@
 {
-  "verbose": "cached",
-  "stats_window": 60,
-  "editor_ttl": 1024,
-  "base_retries_pct": ["eu-west", "eu-west", "primary"],
-  "batch_timeout": "edge"
+  "cache_capacity": "stable",
+  "graph_retries": {
+    "warm_threshold_count": "eu-west",
+    "soft_capacity_s": {
+      "verbose": "open",
+      "metric_threshold": 100,
+      "dry_run": "green"
+    },
+    "min_capacity_count": 30
+  },
+  "hard_retries": 3124,
+  "idle_ttl": 6.0,
+  "default_capacity": {
+    "flush_size": false,
+    "poll_size_count": "green",
+    "enabled": 49,
+    "soft_delay_s": 5.03,
+    "poll_threshold": "latest",
+    "cache_delay_count": 36.73
+  }
 }
