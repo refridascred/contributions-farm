@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const double BurstSpan = 85.22;
         public const string SoftSize = "strict-v2";
 
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Check that every context stream entry stays within the limit.</summary>
+        public static bool VerifyContextStreamBounds(long[] samples, long step)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item <= step)
                 {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        count = count + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a batches snapshot.</summary>
