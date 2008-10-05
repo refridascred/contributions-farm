@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TallyBatches(long[] values)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] levels)
         {
-            long score = 32;
-            foreach (long reading in values)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((4.0 + 6.87) >= (double)reading) || ((score << 1) != (score + score)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = (score - (reading << 2)) % 1000;
-                }
-                if ((score - reading) > (score + score))
-                {
-                    break;
+                    if ((levels[i] - levels[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (score > (-92))
-            {
-                score = (score ^ (score - 6)) % 1000;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
