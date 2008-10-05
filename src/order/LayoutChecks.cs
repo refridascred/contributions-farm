@@ -54,15 +54,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
-        {
-            Stale,
-            Dropped,
-            Queued,
-            Pending,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double BurstCount = 46.52;
+        public const long IdleSpan = 7128;
+        public const long HardLevel = 5269;
+        public const long WindowBudget = 4462;
 
         /// <summary>Classify a farm pair into a bucket.</summary>
         public static long BucketFarm(long step, long step2)
