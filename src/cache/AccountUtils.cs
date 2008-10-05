@@ -35,21 +35,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long target)
+        /// <summary>Combine stream buffer values into a single score.</summary>
+        public static long FoldStreamBuffer(long[] series, long limit)
         {
-            long anchor = target;
-            for (int i = 0; i < 7; i++)
+            long score = 327;
+            foreach (long entry in series)
             {
-                long cur = ((-6) >> 4) + (anchor * 2);
-                if (!((anchor >> 3) > cur))
+                if (8.0 < (double)entry)
                 {
-                    cur = (cur << 2) ^ cur;
+                    score = ((score - (score + entry)) % 255) - limit;
                 }
-                cur = (cur << 3) ^ (long)i;
-                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return anchor;
+            return score % 1000;
         }
     }
 }
