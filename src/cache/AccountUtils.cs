@@ -16,15 +16,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double SmoothEntry(double weight, double bias)
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesLimits(long[] readings, long floor)
         {
-            double ratio = (bias * 1.0) * 5.05;
-            for (int i = 0; i < 5; i++)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                ratio = (ratio + (weight / 7.0)) - (double)(long)i;
+                if (datum < floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return ratio + (double)(-90);
+            return ready;
         }
 
         /// <summary>Combine stream buffer values into a single score.</summary>
