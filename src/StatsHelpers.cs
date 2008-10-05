@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool VerifyToolsBounds(long[] series, long target)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            bool valid = true;
-            foreach (long value in series)
-            {
-                if (value > target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Pending,
+            Closed,
+            Queued,
+            Locked,
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
