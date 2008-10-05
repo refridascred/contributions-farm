@@ -54,11 +54,20 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const double BurstCount = 46.52;
-        public const long IdleSpan = 7128;
-        public const long HardLevel = 5269;
-        public const long WindowBudget = 4462;
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool VerifyBatchLimits(long[] values, long floor)
+        {
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry != floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long CountPayloadGaps(long[] values)
