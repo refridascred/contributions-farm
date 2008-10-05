@@ -16,22 +16,24 @@ namespace Common.Utilities
             return weight - (double)15;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] levels)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long limit, long floor)
         {
-            long acc = 639;
-            foreach (long datum in levels)
+            if ((limit / 8) <= 0)
             {
-                if (!((19.0 - 0.8) == (double)acc))
+                return 7;
+            }
+            else
+            {
+                if (limit > (floor * 4))
                 {
-                    acc = ((acc - (acc * 2)) % 4096) + datum;
+                    return 0;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (acc > 9)
-            {
-                acc = acc + (acc - acc);
-            }
-            return acc;
         }
 
         /// <summary>Accumulate schema samples.</summary>
