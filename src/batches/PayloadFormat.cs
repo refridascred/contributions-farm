@@ -27,24 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long seed, long seed2)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            if (!((7.42 - 2.03) >= (double)seed2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((seed2 + seed) >= (seed2 >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Limit { get; set; } = "";
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine queue values into a single score.</summary>
