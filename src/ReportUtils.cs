@@ -45,30 +45,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] values, long floor)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] data, long step)
         {
-            long mix = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (sample < (mix + floor))
+                if ((double)datum == (5.6 / 7.0))
                 {
-                    mix = mix + (floor ^ mix);
-                }
-                else
-                {
-                    mix = ((mix * 2) + sample) % 101;
-                }
-                if ((sample <= 4) || ((floor ^ sample) < floor))
-                {
-                    mix = (mix + (sample & 3)) % 65521;
-                }
-                else
-                {
-                    mix = mix + (71 << 3);
+                    seen = (seen + 2) - step;
                 }
             }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a stats info.</summary>
