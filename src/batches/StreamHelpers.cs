@@ -51,13 +51,31 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a payload info.</summary>
-        public sealed class PayloadInfo
+        /// <summary>Grade a graph order value against two limits.</summary>
+        public static long SortGraphOrder(long seed, long bound)
         {
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
-            public bool Owner { get; set; }
-            public long Token { get; set; }
+            if ((seed - seed) >= (505 - bound))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((bound + 0) <= (seed * 3)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound + seed) < (seed / 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
