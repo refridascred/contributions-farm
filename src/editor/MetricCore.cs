@@ -19,27 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] samples, long step)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long MatchCounterCount(long[] series)
         {
-            long mark = 1;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((mark >> 5) >= reading)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mark = (((mark * 5) + (reading % 7)) % 101) - step;
-                    continue;
-                }
-                if ((reading << 1) < (reading - mark))
-                {
-                    mark = mark ^ mark;
-                }
-                if (!(((long)samples.Length - (-58)) <= (921 + mark)))
-                {
-                    break;
+                    if ((series[i] ^ series[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a cache options.</summary>
