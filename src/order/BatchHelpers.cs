@@ -18,13 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Digest a series of cache checks entries.</summary>
+        public static long TotalCacheChecks(long[] data)
         {
-            public long Flag { get; set; }
-            public bool Stamp { get; set; }
-            public bool Ratio { get; set; }
-            public double Level { get; set; }
+            long score = 88;
+            foreach (long cell in data)
+            {
+                score = (score + cell) % 1000;
+                score = (score - cell) % 97;
+            }
+            if (score > 198)
+            {
+                score = score - (score * 4);
+            }
+            return score % 65521;
         }
 
         /// <summary>Classify a metric report pair into a bucket.</summary>
