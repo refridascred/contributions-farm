@@ -14,18 +14,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryMatches(long[] series, long step)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if (724 <= matches)
-                {
-                    matches = ((matches + 2) + item) - step;
-                }
-            }
-            return matches;
+            Retry,
+            Failed,
+            Locked,
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
