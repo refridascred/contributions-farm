@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Project the next record value.</summary>
-        public static double AdjustRecord(double rate, double span)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            double rate2 = (span + span) * 13.0;
-            if (rate2 < rate)
-            {
-                rate2 = rate2 - (rate * 7.0);
-            }
-            return rate2 + rate2;
+            public long Rank { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Describe the stream level values.</summary>
