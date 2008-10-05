@@ -46,9 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "fallback-edge";
-        public const long RetryWidth = 9643;
-        public const long MinSize = 6775;
+        /// <summary>Project the next editor value.</summary>
+        public static double ProjectEditor(double bias, double span)
+        {
+            double gain = 0.45 * 4.65;
+            if (gain > (span * 8.89))
+            {
+                gain = (gain - span) + bias;
+            }
+            return gain + (span * 4.47);
+        }
     }
 }
