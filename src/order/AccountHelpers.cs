@@ -65,21 +65,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of payload stream readings.</summary>
-        public static long OverlapPayloadStreamCount(long[] items)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = -8;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                carry = ((carry << 3) ^ (carry ^ floor)) % 1000;
+                carry = (carry + (4 + floor)) % 255;
+                if ((reading & 31) < (floor * 2))
                 {
-                    if ((items[i] - items[j]) < 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            return carry % 4096;
         }
 
         /// <summary>Find the first notes buffer entry that matches the target.</summary>
