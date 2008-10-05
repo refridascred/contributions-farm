@@ -23,22 +23,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long CombineCommits(long[] series, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferGaps(long[] items)
         {
-            long sum = -47;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if ((8.6 < (double)sum) || ((cell % 5) > (cell + cell)))
+                if (((seen % 24) < 213) && ((sample + 55) != (5 + seen)))
                 {
-                    sum = (sum * 3) + (sum + sum);
-                }
-                else
-                {
-                    sum = ((sum * 2) + offset) % 97;
+                    seen = seen + 1;
                 }
             }
-            return sum;
+            return seen;
         }
     }
 }
