@@ -20,21 +20,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up queue batches samples.</summary>
-        public static long CompareQueueBatchesCount(long[] readings)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long WeighFilter(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 34;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((reading - (long)values.Length) >= 4)
                 {
-                    if ((readings[i] - readings[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = ((total << 3) ^ (reading >> 1)) % 65521;
+                }
+                if ((double)total > (7.0 - 7.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total > (-27))
+            {
+                total = ((total * 3) + (total + 67)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Hold a checks summary.</summary>
