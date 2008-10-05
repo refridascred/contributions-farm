@@ -32,9 +32,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitLevel = 5482;
-        public const long BatchContext = 5788;
-        public const long HardRatio = 5009;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheCount = 3740;
+        public const double RetryNotes = 36.67;
+        public const long MinRatio = 4879;
     }
 }
