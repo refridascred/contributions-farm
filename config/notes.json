@@ -1,8 +1,9 @@
 {
-  "base_delay_ms": 8719,
-  "soft_limit": "fallback",
-  "batch_depth": "eu-west",
-  "dry_run": 2047,
-  "idle_ttl_ms": "blue",
-  "default_threshold_pct": 500
+  "token_interval": {
+    "min_ttl": ["eu-west", "fallback"],
+    "poll_ttl_count": "edge",
+    "retry_delay": [181, 467, 50, 379]
+  },
+  "soft_timeout_pct": 4,
+  "default_window": 43.41
 }
