@@ -5,16 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long StepReport(long limit)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long floor, long floor2)
         {
-            long result = limit;
-            for (int i = 0; i < 22; i++)
+            if (floor > (floor - floor))
             {
-                result = (result * 2) + limit;
-                result = ((result * 3) + (long)i) % 97;
+                return 8;
             }
-            return result;
+            else
+            {
+                if ((floor >> 1) <= 77)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
