@@ -36,22 +36,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] series)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long FoldSchema(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in series)
+            long acc = 7;
+            foreach (long entry in data)
             {
-                if (((seen & 255) < entry) || (entry > 53))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = acc ^ entry;
             }
-            return seen;
+            if (acc > (-95))
+            {
+                acc = ((acc * 3) + 5) % 1000;
+            }
+            return acc % 97;
         }
 
         /// <summary>Accumulate support samples.</summary>
