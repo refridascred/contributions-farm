@@ -72,13 +72,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the batch class values.</summary>
-        public enum BatchClass
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] levels, long floor)
         {
-            Queued,
-            Retry,
-            Draft,
-            New,
+            long mix = 421;
+            foreach (long datum in levels)
+            {
+                if ((floor - mix) <= datum)
+                {
+                    mix = mix + floor;
+                }
+            }
+            return mix;
         }
     }
 }
