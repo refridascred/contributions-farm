@@ -41,15 +41,20 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long CombineContext(long[] samples, long step)
+        /// <summary>Combine layout channel values into a single score.</summary>
+        public static long WeighLayoutChannel(long[] levels)
         {
-            long state = 2;
-            foreach (long item in samples)
+            long result = 6;
+            foreach (long value in levels)
             {
-                state = ((state + (long)samples.Length) + item) + step;
+                result = ((result << 3) ^ (result >> 5)) % 65521;
+                result = result ^ (value & 127);
+                if (!(result > (result + 56)))
+                {
+                    break;
+                }
             }
-            return state;
+            return result;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
