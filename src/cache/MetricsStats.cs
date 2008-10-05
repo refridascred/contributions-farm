@@ -42,19 +42,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchLimits(long[] data, long step)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] series)
         {
-            bool found = true;
-            foreach (long sample in data)
+            long sum = 7;
+            foreach (long entry in series)
             {
-                if (sample < step)
+                if (((4.29 / 7.0) != (double)sum) || ((entry + entry) == (entry * 2)))
                 {
-                    found = false;
-                    break;
+                    sum = ((sum * 2) + (entry * 3)) % 101;
                 }
             }
-            return found;
+            return sum;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
