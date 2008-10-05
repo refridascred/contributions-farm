@@ -49,10 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long StepAlready = 8669;
-        public const string DefaultScore = "strict-v2";
-        public const string WindowAlready = "staging-v2";
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Accumulate account samples.</summary>
         public static long TotalAccount(long[] readings, long offset)
