@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] readings)
+        /// <summary>Classify a entry metrics pair into a bucket.</summary>
+        public static long RankEntryMetrics(long step, long limit)
         {
-            long acc = 1;
-            foreach (long reading in readings)
+            if ((double)limit != (double)step)
             {
-                acc = (acc + (acc + acc)) ^ reading;
+                return 0;
             }
-            return acc;
+            else
+            {
+                if ((limit % 24) < step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((limit / 2) >= (limit ^ step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of commits buffer readings.</summary>
