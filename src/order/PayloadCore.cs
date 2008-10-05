@@ -38,10 +38,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long CacheInterval = 2254;
-        public const long BatchGraph = 4491;
-        public const long LimitGraph = 6;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] samples, long origin)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if (!!(seen > (origin % 8)))
+                {
+                    seen = (seen + 1) - reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long origin)
