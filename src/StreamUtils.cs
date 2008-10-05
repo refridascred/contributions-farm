@@ -28,15 +28,38 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two stream layout measurements.</summary>
-        public static double AdjustStreamLayout(double gain, double floor)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long target, long step)
         {
-            double load = (double)(82 % 3);
-            if (load >= gain)
+            if ((step >> 4) >= (86 & 7))
             {
-                load = load + floor;
+                return 8;
             }
-            return load - load;
+            else
+            {
+                if ((4.8 - 2.02) < (double)step)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((5 % 10) < (step << 1))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((step + target) > (target >> 2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
