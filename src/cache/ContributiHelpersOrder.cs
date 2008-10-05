@@ -29,12 +29,9 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
-        {
-            Closed,
-            Synced,
-            Queued,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxBudget = 35.73;
+        public const long MinInterval = 1977;
+        public const string MinFarm = "strict-1";
     }
 }
