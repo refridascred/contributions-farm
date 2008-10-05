@@ -46,26 +46,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long BucketContext(long limit, long bound)
-        {
-            long diff = limit + bound;
-            if ((double)limit < (4.0 * 1.13))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((diff << 2) <= limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long IdleSpan = 1268;
+        public const double BatchRatio = 13.99;
+        public const long HardFarm = 7226;
+        public const long RetryDepth = 1418;
 
         /// <summary>Validate buffer readings against a bound.</summary>
         public static bool CheckBufferLimits(long[] values, long offset)
