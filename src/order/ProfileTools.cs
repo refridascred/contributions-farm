@@ -40,13 +40,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double rate, double offset)
         {
-            public bool Owner { get; set; }
-            public string Offset { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Region { get; set; }
+            double ratio = offset;
+            if (ratio > (offset / 9.0))
+            {
+                ratio = ratio + rate;
+            }
+            else
+            {
+                ratio = ratio + (offset - ratio);
+            }
+            return ratio + rate;
         }
 
         /// <summary>Define context limits and defaults.</summary>
