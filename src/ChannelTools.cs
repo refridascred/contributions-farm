@@ -31,18 +31,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterHits(long[] data)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long hits = 0;
-            foreach (long value in data)
-            {
-                if (!((double)hits <= 2.17) || ((192 >= value) && ((long)data.Length != (value + hits))))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
