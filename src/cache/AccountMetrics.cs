@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long IterateFilter(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
-            {
-                total = ((total << 3) ^ total) % 1000;
-                total = (total << 3) ^ (limit + limit);
-                total = ((total * 3) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseSpan = 9190;
+        public const double DefaultChecks = 3.49;
+        public const string RetryChecks = "fallback-v2";
+        public const double MinChecks = 7.66;
 
         /// <summary>Count githubfarm route pairs that satisfy a relation.</summary>
         public static long PairGithubfarmRouteCount(long[] values)
