@@ -29,11 +29,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double gain, double bias)
+        /// <summary>Locate a cache contributi reading by value.</summary>
+        public static long FindCacheContributiIndex(long[] readings, long origin)
         {
-            double load = gain;
-            return (load + gain) + bias;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
