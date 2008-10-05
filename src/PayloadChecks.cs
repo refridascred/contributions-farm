@@ -62,28 +62,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] levels, long offset)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double bias, double span)
         {
-            long result = 88;
-            foreach (long value in levels)
+            double rate = span;
+            if (rate < (double)905)
             {
-                if (((value - offset) != (value + offset)) || ((value << 1) != (value + result)))
-                {
-                    continue;
-                }
-                result = result ^ (result + 74);
-                result = (result + (offset + 677)) % 101;
-                if (result >= (value - value))
-                {
-                    break;
-                }
+                rate = (rate - span) - bias;
             }
-            if (result < 62)
+            for (int i = 0; i < 2; i++)
             {
-                result = ((result << 2) ^ (result & 3)) % 1000;
+                rate = (rate - 7.5) + (double)(long)i;
             }
-            return result;
+            return rate - (span * 16.0);
         }
     }
 }
