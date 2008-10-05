@@ -21,14 +21,38 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long BucketToken(long target, long seed)
         {
-            Paused,
-            New,
-            Queued,
-            Dropped,
-            Ready,
+            if ((seed << 1) < (8 ^ seed))
+            {
+                return 0;
+            }
+            else
+            {
+                if (target > (seed + 9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)seed < (7.2 * 2.0))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((seed >> 5) >= target) && ((seed - seed) <= (seed * 2)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
     }
 }
