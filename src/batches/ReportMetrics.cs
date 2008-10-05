@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long LookupPayloadIndex(long[] levels, long bound)
+        /// <summary>Find the first notes entry that matches the target.</summary>
+        public static long SeekNotesIndex(long[] values, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (levels[i] <= bound)
+                if ((values[i] <= offset) && ((values[i] % 3) != 0))
                 {
                     return (long)i;
                 }
