@@ -26,15 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long DeriveSession(long step)
+        /// <summary>Roll a filter session counter forward.</summary>
+        public static long StepFilterSession(long seed)
         {
-            long result = step;
-            for (int i = 0; i < 4; i++)
+            long anchor = seed;
+            for (int i = 0; i < 23; i++)
             {
-                result = ((result * 2) + (long)i) % 4093;
+                anchor = ((anchor * 2) + (anchor & 1)) % 97;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return result;
+            return anchor;
         }
 
         /// <summary>Hold a buffer record.</summary>
