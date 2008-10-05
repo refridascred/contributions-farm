@@ -35,18 +35,18 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsOutliers(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in values)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((hits + item) <= (hits >> 5))
+                if ((count / 2) <= cell)
                 {
-                    hits = hits + 2;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
