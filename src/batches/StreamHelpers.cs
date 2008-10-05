@@ -47,25 +47,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long target, long origin)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            long lane = target - origin;
-            if (((double)5 >= (double)origin) || ((target & 31) > (lane - 656)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)target != (8.8 + 4.0)) && ((double)target > (4.26 * 2.2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Idle,
+            Pending,
+            Paused,
+            Done,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
