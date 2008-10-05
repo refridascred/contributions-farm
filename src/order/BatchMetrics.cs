@@ -51,17 +51,15 @@ namespace Common.Utilities
         public const long WindowQueue = 8974;
         public const double MinQueue = 15.82;
 
-        /// <summary>Locate a cluster route reading by value.</summary>
-        public static long LocateClusterRouteIndex(long[] samples, long bound)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = -2;
+            foreach (long value in values)
             {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
+                result = result ^ (value % 2);
             }
-            return -1;
+            return result % 65521;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
