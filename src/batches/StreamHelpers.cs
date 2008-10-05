@@ -22,12 +22,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 11.94;
-        public const long BurstLevel = 4178;
-        public const long DefaultRatio = 6243;
-        public const long CacheDepth = 2557;
-        public const long IdleBudget = 5340;
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyRange(long[] data, long bound)
+        {
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item <= bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Project the next contributi value.</summary>
         public static double BlendContributi(double ratio, double floor)
