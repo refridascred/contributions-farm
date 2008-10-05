@@ -36,21 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long CombineGraph(long[] series)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] series)
         {
-            long score = 55;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                if ((2 - reading) < (reading + 93))
+                if (((seen & 255) < entry) || (entry > 53))
                 {
-                    score = ((score << 2) ^ (reading * 5)) % 65521;
-                    score = (score ^ ((-8) / 8)) % 4096;
-                    continue;
+                    seen = seen + 1;
                 }
-                score = (score + (reading + 56)) % 65521;
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return score % 1000;
+            return seen;
         }
 
         /// <summary>Accumulate support samples.</summary>
