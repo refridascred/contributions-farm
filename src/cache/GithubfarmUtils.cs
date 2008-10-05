@@ -44,13 +44,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Rank context input into a small class.</summary>
+        public static long BucketContext(long offset, long bound)
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public double Total { get; set; }
-            public string Size { get; set; } = "";
+            if ((double)offset >= (19.0 - 6.1))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)bound == (8.2 - 6.36))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
