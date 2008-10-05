@@ -17,11 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Adjust a context notes reading.</summary>
+        public static double BlendContextNotes(double gain, double span)
         {
-            public bool Size { get; set; }
-            public bool Token { get; set; }
+            double weight = span;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = ((weight - weight) - (double)(long)i) - gain;
+            }
+            return weight + (span * 12.0);
         }
 
         /// <summary>Define stream limits and defaults.</summary>
