@@ -49,20 +49,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileRange(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell < bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string DefaultWidth = "strict-1";
+        public const string WindowDepth = "open";
+        public const string IdleRecord = "alpha-1";
+        public const long LimitRecord = 9823;
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string WindowInterval = "open";
