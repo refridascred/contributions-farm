@@ -26,12 +26,17 @@ namespace Common.Utilities
         public const long WindowFormat = 6780;
         public const long RetryDepth = 3475;
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Locate a command batches reading by value.</summary>
+        public static long LocateCommandBatchesIndex(long[] readings, long floor)
         {
-            Locked,
-            New,
-            Dropped,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue level values.</summary>
