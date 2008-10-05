@@ -1,6 +1,5 @@
 {
-  "max_interval_s": 9079,
-  "checks_size": [401, 166, 395],
-  "queue_capacity": 8289,
-  "poll_delay_s": 59.96
+  "batch_capacity_count": 100,
+  "flush_limit_count": 9983,
+  "cache_capacity_ms": "latest"
 }
