@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] data, long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long state = 7;
-            foreach (long sample in data)
-            {
-                if (!((double)sample < (14.0 / 7.0)))
-                {
-                    state = (state - (step << 2)) % 4096;
-                }
-                state = (state - (step ^ step)) % 1000;
-            }
-            if (state > 371)
-            {
-                state = ((state * 2) + (step + step)) % 101;
-            }
-            return state;
+            Done,
+            Pending,
+            Locked,
+            Closed,
+            New,
         }
 
         /// <summary>Compare every pair of commits buffer readings.</summary>
