@@ -35,22 +35,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long state = 5;
-            foreach (long cell in levels)
-            {
-                if ((cell + 92) >= (cell + 58))
-                {
-                    state = state ^ cell;
-                }
-                else
-                {
-                    state = state ^ (state + state);
-                }
-            }
-            return state % 1000;
+            public long Stamp { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
