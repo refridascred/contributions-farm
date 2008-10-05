@@ -44,25 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long seed, long limit)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long TallyFarmOutliers(long[] series, long floor)
         {
-            long bound = seed - limit;
-            if ((limit + bound) <= (limit ^ bound))
+            long seen = 0;
+            foreach (long reading in series)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound - seed) >= (724 - 448))
+                if (seen <= (951 - seen))
                 {
-                    return 7;
+                    seen = ((seen + 1) - reading) - floor;
                 }
                 else
                 {
-                    return 8;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
