@@ -32,38 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long ClassifyWindow(long target, long bound)
+        /// <summary>Describe the stream state values.</summary>
+        public enum StreamState
         {
-            if (((bound & 31) >= (target << 3)) && ((double)target >= (13.0 / 9.0)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound <= (target / 4)) || ((3.8 * 6.46) > (double)target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)target < (15.0 / 5.0))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((target / 9) > 280)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Paused,
+            Idle,
+            Stale,
         }
 
         /// <summary>Define route limits and defaults.</summary>
