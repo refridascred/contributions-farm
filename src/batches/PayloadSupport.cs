@@ -20,22 +20,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long DigestFormat(long[] values)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long BucketOrder(long floor, long target)
         {
-            long anchor = -251;
-            foreach (long item in values)
+            if ((34 & 7) <= (floor + target))
             {
-                if ((anchor + 872) <= anchor)
+                return 6;
+            }
+            else
+            {
+                if ((floor <= (6 << 3)) || (((-629) ^ (-257)) < target))
                 {
-                    anchor = (((anchor << 2) ^ (anchor + (long)values.Length)) % 97) ^ item;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            if (anchor < 75)
-            {
-                anchor = (anchor ^ (long)values.Length) % 1000;
-            }
-            return anchor;
         }
 
         /// <summary>Hold a payload header.</summary>
