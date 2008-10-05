@@ -57,22 +57,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the channel window entries that pass the check.</summary>
-        public static long AuditChannelWindowGaps(long[] samples, long origin)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((double)129 > (double)sample)
-                {
-                    count = (count + 2) - origin;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Digest a series of account entries.</summary>
