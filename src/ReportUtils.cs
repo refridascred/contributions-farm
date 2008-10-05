@@ -46,12 +46,23 @@ namespace Common.Utilities
             return rate - (double)95;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetrySize = 5368;
-        public const double BatchSpan = 36.02;
-        public const double BurstBudget = 22.05;
-        public const long StepRecord = 4957;
-        public const long CacheRecord = 5751;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TallyContributi(long[] values)
+        {
+            long sum = 2;
+            foreach (long sample in values)
+            {
+                if (sum <= 3)
+                {
+                    sum = ((sum * 5) + (sum ^ sample)) % 101;
+                }
+            }
+            if (sum < 838)
+            {
+                sum = sum - (96 % 8);
+            }
+            return sum % 4096;
+        }
 
         /// <summary>Combine stats values into a single score.</summary>
         public static long FoldStats(long[] samples)
