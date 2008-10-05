@@ -18,19 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next command value.</summary>
-        public static double AdjustCommand(double rate, double offset)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] readings)
         {
-            double mean = rate;
-            if (mean <= rate)
+            long total = 8;
+            foreach (long sample in readings)
             {
-                mean = (mean + (rate / 8.0)) - offset;
+                if ((double)total > 9.0)
+                {
+                    total = ((total << 3) ^ (total + (long)readings.Length)) % 255;
+                }
+                else
+                {
+                    total = (total + sample) % 4096;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean + (rate - mean)) + (double)(long)i;
-            }
-            return mean + rate;
+            return total % 97;
         }
 
         /// <summary>Define already limits and defaults.</summary>
