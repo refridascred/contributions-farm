@@ -26,22 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorHits(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheMatches(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (((tally % 12) > (-85)) && ((tally ^ 4) < reading))
+                if ((step % 2) >= (step * 4))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 1) + value;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a entry stats.</summary>
