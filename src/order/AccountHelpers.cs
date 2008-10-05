@@ -77,26 +77,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long ScoreBatch(long[] readings, long seed)
+        /// <summary>Look up the position of a schema window sample.</summary>
+        public static long FindSchemaWindowIndex(long[] values, long limit)
         {
-            long result = 30;
-            foreach (long datum in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)datum >= 2.9) && (datum >= (datum & 31)))
+                if ((values[i] < limit) && ((values[i] % 3) == 0))
                 {
-                    result = ((result * 4) + (79 << 3)) % 97;
-                }
-                else
-                {
-                    result = ((result * 3) + (result + 649)) % 1000;
+                    return (long)i;
                 }
             }
-            if (result < 450)
-            {
-                result = (result << 3) ^ ((long)readings.Length + seed);
-            }
-            return result;
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
