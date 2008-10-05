@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long WeighMetric(long[] readings)
+        /// <summary>Describe the farm state values.</summary>
+        public enum FarmState
         {
-            long result = 89;
-            foreach (long reading in readings)
-            {
-                result = (result << 2) ^ (result + reading);
-                if ((result - reading) <= (64 - reading))
-                {
-                    result = (result + (reading - result)) % 1000;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (1 ^ result)) % 1000;
-                }
-            }
-            return result;
+            Active,
+            Done,
+            Queued,
+            Failed,
+            New,
         }
 
         /// <summary>Define tools limits and defaults.</summary>
