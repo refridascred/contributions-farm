@@ -20,11 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double BlendMetrics(double weight, double offset)
         {
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
+            double weight2 = (double)(387 + (-8));
+            return ((weight2 - weight2) + weight) + offset;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
