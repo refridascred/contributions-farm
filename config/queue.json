@@ -1,10 +1,22 @@
 {
-  "tools_depth": "local",
-  "sync_timeout_count": "cached",
-  "enabled": {
-    "max_ttl_pct": 1192,
-    "cache_size_count": "strict",
-    "batch_threshold": 100,
-    "min_capacity_s": 77.05
+  "cache_depth": [402, 88],
+  "cache_threshold_s": 60,
+  "compress": {
+    "soft_retries": [46, 106, 100, 377],
+    "contributi_capacity": 51,
+    "cache_threshold_s": "open",
+    "warm_threshold": {
+      "default_size": 67.14,
+      "verbose": 31.68,
+      "enabled": 9768,
+      "dry_run": "eu-west",
+      "report_delay": 45,
+      "cache_window": "standard"
+    },
+    "warm_window": {
+      "audit": false,
+      "enabled": 250,
+      "batch_timeout_s": true
+    }
   }
 }
