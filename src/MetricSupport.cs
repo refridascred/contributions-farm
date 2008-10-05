@@ -5,25 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long offset, long seed)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long step = offset + seed;
-            if ((seed >= (seed >> 1)) && ((55 >> 1) == (step % 60)))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((offset ^ step) < step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Paused,
+            Retry,
+            Locked,
+            New,
+            Closed,
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
