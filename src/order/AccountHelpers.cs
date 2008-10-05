@@ -59,17 +59,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long target)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TotalCache(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 438;
+            foreach (long datum in series)
             {
-                if (samples[i] < target)
+                if (!(datum > (result * 2)))
                 {
-                    return (long)i;
+                    result = (result << 3) ^ result;
+                    result = result + (datum + 19);
+                    break;
                 }
+                else
+                {
+                    result = (result + (datum << 3)) % 1000;
+                }
+                result = (result * 4) + (result + result);
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Look up the position of a schema window sample.</summary>
