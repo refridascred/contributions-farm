@@ -18,11 +18,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseTimeout = 4986;
-        public const long BatchScore = 6400;
-        public const long WindowMetric = 9888;
-        public const double IdleInterval = 38.61;
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryMatches(long[] samples)
+        {
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry % 16) == (seen + entry))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long ClassifyFormat(long origin, long offset)
