@@ -1,8 +1,14 @@
 {
-  "verbose": false,
-  "min_size": "blue",
-  "dry_run": 38,
-  "strict": "fallback",
-  "batch_retries_pct": 7798,
-  "batch_ratio_pct": "primary"
+  "batch_window": ["primary", "eu-west", "open"],
+  "batch_retries": {
+    "enabled": true,
+    "stats_limit": 2390,
+    "max_delay_ms": true
+  },
+  "idle_ttl_count": {
+    "already_retries": "standard",
+    "metrics_retries": 62.0,
+    "warm_delay_ms": "strict",
+    "retry_window_count": ["cached", "staging", "staging"]
+  }
 }
