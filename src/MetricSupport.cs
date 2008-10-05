@@ -26,9 +26,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string IdlePayload = "alpha-1";
-        public const string BaseScore = "latest-1";
-        public const double MaxSpan = 0.77;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Locked,
+            Done,
+            Pending,
+            Dropped,
+            Draft,
+        }
     }
 }
