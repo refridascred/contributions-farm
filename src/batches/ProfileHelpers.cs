@@ -43,17 +43,32 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Look up the position of a checks stats sample.</summary>
-        public static long LocateChecksStatsIndex(long[] series, long target)
+        /// <summary>Grade a already command value against two limits.</summary>
+        public static long GradeAlreadyCommand(long step, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long edge = step ^ limit;
+            if ((0.2 * 5.0) < (double)step)
             {
-                if ((series[i] == target) && ((series[i] % 5) == 0))
+                return 1;
+            }
+            else
+            {
+                if (6.0 >= (double)step)
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((53 + edge) < (limit + edge))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Combine command values into a single score.</summary>
