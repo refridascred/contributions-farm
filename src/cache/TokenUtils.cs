@@ -18,13 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Classify a metrics payload pair into a bucket.</summary>
+        public static long ClassifyMetricsPayload(long target, long origin)
         {
-            Stale,
-            Done,
-            Queued,
-            Failed,
+            if ((target + target) >= origin)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((9.0 + 5.0) > (double)origin)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((target * 2) >= target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
