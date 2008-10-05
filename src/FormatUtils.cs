@@ -38,13 +38,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool GuardStreamRange(long[] items, long bound)
         {
-            public long Ratio { get; set; }
-            public bool Flag { get; set; }
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Accumulate metric samples.</summary>
