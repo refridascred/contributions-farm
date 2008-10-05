@@ -32,15 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double ProjectBuffer(double rate, double offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            double ratio = (double)24;
-            if (ratio >= 2.4)
-            {
-                ratio = (ratio + (double)67) + rate;
-            }
-            return ratio - offset;
+            public long Weight { get; set; }
+            public double Token { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Locate a record reading by value.</summary>
