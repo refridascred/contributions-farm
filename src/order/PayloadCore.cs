@@ -30,18 +30,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long DigestCache(long[] series, long origin)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long GradeRecord(long seed, long limit)
         {
-            long score = 675;
-            foreach (long value in series)
+            if ((double)seed <= (8.0 + 18.0))
             {
-                if ((score << 1) > (origin + score))
+                return 7;
+            }
+            else
+            {
+                if (limit < (seed & 3))
                 {
-                    score = ((score ^ (long)series.Length) % 255) ^ value;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return score;
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
