@@ -1,8 +1,9 @@
-id,active,region
-1,68.56,868
-2,440,39.34
-3,50.26,45.09
-4,edge,340
-5,315,69.54
-6,open,13.32
-7,66.41,89.87
+id,token,weight
+1,green,725
+2,84.45,blue
+3,762,41.02
+4,primary,primary
+5,164,staging
+6,552,primary
+7,52.18,173
+8,green,fallback
