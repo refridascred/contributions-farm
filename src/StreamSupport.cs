@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteRange(long[] data, long floor)
         {
-            long mix = 37;
-            foreach (long cell in data)
+            bool ready = true;
+            foreach (long sample in data)
             {
-                mix = (mix - cell) % 1000;
+                if (sample <= floor)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
