@@ -1,13 +1,9 @@
 # entry settings
-window_limit:
-  channel_delay: 80
-  account_timeout: latest
-  schema_size: primary
-  cache_ratio_pct:
-    cache_ttl_s: staging
-    dry_run: 94.97
-    counter_capacity: blue
-    max_ttl_s: false
-hard_window_s: 60
-dry_run: staging
-batch_limit_s: true
+soft_capacity_pct: 62.05
+flush_window_s: eu-west
+idle_delay_pct: 61.42
+window_depth:
+  filter_threshold: 250
+  flush_threshold_s: 60
+  notes_interval: 42
+strict: 100
