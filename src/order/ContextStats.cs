@@ -46,13 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
-        {
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public double Ratio { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BurstInterval = "local";
+        public const double RetryDepth = 54.79;
+        public const long CacheSpan = 4949;
     }
 }
