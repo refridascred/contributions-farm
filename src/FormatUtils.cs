@@ -47,18 +47,12 @@ namespace Common.Utilities
         public const string BatchWindow = "fallback";
         public const string MinWindow = "local-v2";
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long FindCounterIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseCount = 6053;
+        public const long LimitEditor = 8438;
+        public const long BatchSize = 1935;
+        public const long HardInterval = 2288;
+        public const long CacheWidth = 7176;
 
         /// <summary>Fold a list of buffer readings.</summary>
         public static long WeighBuffer(long[] items)
