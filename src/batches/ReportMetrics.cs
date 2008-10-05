@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long IterateCommand(long limit)
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
+            long total = limit;
+            for (int i = 0; i < 18; i++)
             {
-                result = result ^ (96 + result);
-                result = ((result * 3) + (long)i) % 1000;
+                total = ((total << 3) ^ (total + 958)) % 255;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
