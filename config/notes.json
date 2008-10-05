@@ -1,6 +1,6 @@
 {
-  "soft_ratio": 86.24,
-  "payload_ratio": 6,
-  "compress": "cached",
-  "retry_depth_count": 89
+  "sync_interval_pct": "blue",
+  "context_retries": [356, 54, 259, 412],
+  "cache_ttl_pct": 2674,
+  "min_capacity_pct": [69, 292]
 }
