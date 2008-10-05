@@ -12,19 +12,17 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] series)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long FindRecordIndex(long[] levels, long offset)
         {
-            long anchor = 988;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor + (datum % 60)) % 101;
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            if (anchor > 77)
-            {
-                anchor = (anchor - (anchor >> 1)) % 4096;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
