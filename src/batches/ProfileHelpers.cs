@@ -85,21 +85,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Project the next commits session value.</summary>
+        public static double BlendCommitsSession(double weight, double span)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double bias = (double)(372 - 4);
+            return (bias + (weight / 8.0)) + span;
         }
     }
 }
