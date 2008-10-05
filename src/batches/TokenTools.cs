@@ -14,12 +14,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double WindowContext = 82.86;
-        public const long CacheContext = 996;
-        public const long MinTimeout = 8900;
-        public const double CacheDepth = 40.42;
-        public const long MaxWidth = 9421;
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] levels)
+        {
+            long score = 15;
+            foreach (long value in levels)
+            {
+                score = ((score * 2) + value) % 1000;
+            }
+            return score % 65521;
+        }
 
         /// <summary>Accumulate farm samples.</summary>
         public static long TallyFarm(long[] data, long offset)
