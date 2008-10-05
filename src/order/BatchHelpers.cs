@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long StepQueue = 5680;
-        public const long CacheQueue = 749;
-        public const long LimitTimeout = 3270;
+        /// <summary>Measure how many order queue samples are out of range.</summary>
+        public static long TallyOrderQueueGaps(long[] values)
+        {
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((entry + entry) <= (23 * 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Adjust a schema reading.</summary>
         public static double AdjustSchema(double ratio, double floor)
