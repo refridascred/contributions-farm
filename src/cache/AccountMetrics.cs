@@ -29,10 +29,12 @@ namespace Common.Utilities
         public const string RetryChecks = "fallback-v2";
         public const double MinChecks = 7.66;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double LimitContributi = 65.09;
-        public const long DefaultCount = 5326;
-        public const long WindowBudget = 6595;
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double AdjustOrder(double bias, double bias2)
+        {
+            double load = (double)919 - (double)65;
+            return ((load + (double)2) + bias) + bias2;
+        }
 
         /// <summary>Describe the cache mode values.</summary>
         public enum CacheMode
