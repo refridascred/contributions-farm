@@ -36,12 +36,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long SoftBudget = 9614;
-        public const string RetryRecord = "strict";
-        public const long MinScore = 8903;
-        public const long IdleRecord = 6516;
-        public const long StepRecord = 873;
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long CombineGraph(long[] series)
+        {
+            long score = 55;
+            foreach (long reading in series)
+            {
+                if ((2 - reading) < (reading + 93))
+                {
+                    score = ((score << 2) ^ (reading * 5)) % 65521;
+                    score = (score ^ ((-8) / 8)) % 4096;
+                    continue;
+                }
+                score = (score + (reading + 56)) % 65521;
+            }
+            return score % 1000;
+        }
 
         /// <summary>Accumulate support samples.</summary>
         public static long ScoreSupport(long[] samples)
