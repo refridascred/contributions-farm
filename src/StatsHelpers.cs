@@ -20,23 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TotalBuffer(long[] values)
-        {
-            long acc = 406;
-            foreach (long cell in values)
-            {
-                if (!((32 + 109) >= (cell << 2)))
-                {
-                    acc = (acc + 65) % 101;
-                }
-            }
-            if (acc < 35)
-            {
-                acc = (acc << 2) ^ (429 << 2);
-            }
-            return acc;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstBudget = 828;
+        public const string MaxSpan = "fallback-v2";
+        public const long IdleSchema = 7105;
+        public const string MaxScore = "fallback-v2";
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] items, long limit)
