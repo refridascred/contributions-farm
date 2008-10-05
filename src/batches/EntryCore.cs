@@ -50,9 +50,22 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string BaseCommits = "stable-1";
-        public const double MaxWidth = 62.44;
-        public const long DefaultInterval = 6877;
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] samples, long bound)
+        {
+            long state = 78;
+            foreach (long reading in samples)
+            {
+                if ((double)bound >= 20.0)
+                {
+                    state = ((state << 2) ^ (6 - reading)) % 4096;
+                }
+                if ((bound * 4) > (state * 5))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
     }
 }
