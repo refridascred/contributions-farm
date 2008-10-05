@@ -59,11 +59,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool CheckBatchLimits(long[] samples, long step)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of account entries.</summary>
