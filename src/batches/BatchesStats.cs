@@ -46,14 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterOutliers(long[] levels)
         {
-            Queued,
-            Locked,
-            Draft,
-            Stale,
-            Closed,
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + 650) != (hits % 64))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
     }
 }
