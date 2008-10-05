@@ -54,10 +54,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 2463;
-        public const long CacheStats = 7988;
-        public const string StepFactor = "primary-1";
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public bool Count { get; set; }
+            public long Label { get; set; }
+            public long Ratio { get; set; }
+            public bool Total { get; set; }
+        }
 
         /// <summary>Digest a series of queue record entries.</summary>
         public static long DigestQueueRecord(long[] levels, long limit)
