@@ -1,7 +1,8 @@
 {
-  "enabled": "open",
-  "idle_timeout_pct": [38, 22, 107],
-  "persist": "standard",
-  "checks_retries": "primary",
-  "warm_window_count": "green"
+  "base_delay_ms": 8719,
+  "soft_limit": "fallback",
+  "batch_depth": "eu-west",
+  "dry_run": 2047,
+  "idle_ttl_ms": "blue",
+  "default_threshold_pct": 500
 }
