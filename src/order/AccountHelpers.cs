@@ -50,20 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] readings, long floor)
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            long carry = -8;
-            foreach (long reading in readings)
-            {
-                carry = ((carry << 3) ^ (carry ^ floor)) % 1000;
-                carry = (carry + (4 + floor)) % 255;
-                if ((reading & 31) < (floor * 2))
-                {
-                    break;
-                }
-            }
-            return carry % 4096;
+            public string Owner { get; set; } = "";
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Find the first notes buffer entry that matches the target.</summary>
