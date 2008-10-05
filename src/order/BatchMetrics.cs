@@ -30,22 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long MeasureNotesOutliers(long[] data)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                if (!(((357 + hits) >= 50) || (hits <= 2)))
+                if (entry <= origin)
                 {
-                    hits = (hits + 3) + reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
