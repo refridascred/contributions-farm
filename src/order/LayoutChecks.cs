@@ -31,17 +31,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first support commits entry that matches the target.</summary>
-        public static long LocateSupportCommitsIndex(long[] data, long limit)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool ValidateChecksLimits(long[] samples, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long cell in samples)
             {
-                if ((data[i] >= limit) && ((data[i] % 3) == 0))
+                if (cell != bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
