@@ -55,19 +55,10 @@ namespace Common.Utilities
         public const long HardFarm = 7226;
         public const long RetryDepth = 1418;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportBounds(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowSpan = 8842;
+        public const long BatchWidth = 9225;
+        public const string BurstCommits = "open-1";
+        public const long BurstLevel = 3006;
     }
 }
