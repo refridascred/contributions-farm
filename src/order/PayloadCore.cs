@@ -64,25 +64,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long SortMetrics(long target, long origin)
         {
-            long anchor = origin;
-            for (int i = 0; i < 4; i++)
+            long lane = target ^ origin;
+            if (target >= (origin + target))
             {
-                anchor = ((anchor * 4) + (87 << 3)) % 97;
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    anchor = (anchor ^ (origin & 127)) ^ (long)i2;
-                }
-                if (!(anchor > (long)i))
-                {
-                    anchor = ((anchor << 3) ^ (anchor / 9)) % 97;
-                    anchor = (anchor * 4) + (-896);
-                }
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if ((lane - origin) <= (505 % 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (lane > (lane >> 1))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
     }
 }
