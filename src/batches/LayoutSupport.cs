@@ -33,22 +33,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many record support samples are out of range.</summary>
-        public static long MeasureRecordSupportMatches(long[] samples)
+        /// <summary>Fold a list of checks already readings.</summary>
+        public static long DigestChecksAlready(long[] series)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long state = 935;
+            foreach (long value in series)
             {
-                if ((7.24 * 19.0) == (double)entry)
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                state = ((state << 3) ^ 354) - value;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Hold a queue entry.</summary>
