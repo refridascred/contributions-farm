@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BatchWidth = "open-edge";
-        public const string CacheCluster = "standard";
-        public const long MaxCluster = 1539;
+        /// <summary>Match up metric samples.</summary>
+        public static long OverlapMetricCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Accumulate tools samples.</summary>
         public static long ScoreTools(long[] items)
