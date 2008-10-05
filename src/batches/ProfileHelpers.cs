@@ -68,19 +68,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyRange(long[] levels, long offset)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum >= offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Ready,
+            Failed,
+            Active,
+            Retry,
         }
     }
 }
