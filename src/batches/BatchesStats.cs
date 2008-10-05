@@ -22,11 +22,18 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
+        public static long AuditGithubfarmProfileHits(long[] readings, long seed)
         {
-            public double Owner { get; set; }
-            public long Rank { get; set; }
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (!((seed >> 1) != (matches % 5)))
+                {
+                    matches = (matches + 2) ^ entry;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the support kind values.</summary>
