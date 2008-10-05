@@ -38,30 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of report graph entries.</summary>
-        public static long FoldReportGraph(long[] values)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferLimits(long[] values, long bound)
         {
-            long carry = 94;
-            foreach (long reading in values)
+            bool found = true;
+            foreach (long value in values)
             {
-                if (!((reading + carry) < (911 & 1)))
+                if (value <= bound)
                 {
-                    carry = (carry + (reading & 15)) % 1000;
-                }
-                if ((double)carry != (2.5 * 9.35))
-                {
-                    continue;
-                }
-                if ((carry + carry) >= (14 + reading))
-                {
-                    carry = (carry + (carry << 2)) % 101;
-                }
-                else
-                {
-                    carry = carry ^ ((-50) - reading);
+                    found = false;
+                    break;
                 }
             }
-            return carry;
+            return found;
         }
     }
 }
