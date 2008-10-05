@@ -1,11 +1,21 @@
 # entry settings
-max_retries_count: primary
-idle_size_pct: fallback
-batch_ttl_s: false
-max_delay_ms:
-  - fallback
-  - primary
-  - fallback
-  - edge
-default_window_ms: 66.94
-format_window: 3310
+sync_delay_s: 53
+cache_depth: legacy
+soft_limit:
+  graph_timeout: 5
+  compress:
+    - green
+    - green
+  schema_delay:
+    compress: cached
+    batch_capacity_pct: primary
+    hard_depth: false
+    audit: 84.79
+  poll_ratio: 3065
+  batch_interval: 4348
+  enabled: false
+retry_retries_ms:
+  cache_window_s: 60
+  warm_ratio: 4971
+  idle_ttl: stable
+  batch_size: eu-west
