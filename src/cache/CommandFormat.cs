@@ -25,14 +25,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public bool Limit { get; set; }
-            public bool Weight { get; set; }
-            public long Level { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleStream = 8484;
+        public const long StepBudget = 2910;
+        public const double RetryStream = 6.62;
+        public const double BatchStream = 14.55;
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
