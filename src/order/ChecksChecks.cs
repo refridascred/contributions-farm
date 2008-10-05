@@ -19,18 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string CacheTools = "strict";
+        public const long BaseSize = 2482;
+        public const double CacheBudget = 3.87;
+        public const long StepTools = 1546;
+        public const long BaseTools = 7024;
 
         /// <summary>Hold a buffer header.</summary>
         public sealed class BufferHeader
