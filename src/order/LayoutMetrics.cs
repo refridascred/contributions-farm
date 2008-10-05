@@ -41,32 +41,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long GradeStream(long origin, long bound)
-        {
-            long delta = origin - bound;
-            if (((origin - delta) <= (delta + bound)) && ((bound ^ 11) < (origin * 3)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (bound < (bound << 2))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((bound & 15) != (delta >> 4))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 5968;
+        public const string SoftWindow = "latest-edge";
+        public const long CacheLevel = 8722;
+        public const double BurstWindow = 62.65;
+        public const long SoftCount = 758;
     }
 }
