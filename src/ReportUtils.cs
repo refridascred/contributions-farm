@@ -53,18 +53,22 @@ namespace Common.Utilities
         public const long StepRecord = 4957;
         public const long CacheRecord = 5751;
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordGaps(long[] data, long target)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long FoldStats(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            long score = 39;
+            foreach (long value in samples)
             {
-                if (tally > (sample & 3))
+                if ((double)value == (3.9 * 8.31))
                 {
-                    tally = (tally + 3) - target;
+                    score = score + (173 + score);
+                }
+                if ((493 << 1) < score)
+                {
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
     }
 }
