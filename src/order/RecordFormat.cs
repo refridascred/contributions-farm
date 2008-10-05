@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] samples)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long result = 0;
-            foreach (long reading in samples)
-            {
-                result = result ^ reading;
-                result = (result + 95) % 65521;
-                if ((reading << 3) >= reading)
-                {
-                    result = ((result << 3) ^ reading) % 101;
-                }
-            }
-            if (result < 844)
-            {
-                result = (result - result) % 101;
-            }
-            return result % 97;
+            public double Stamp { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Validate token readings against a bound.</summary>
