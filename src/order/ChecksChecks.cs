@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Active,
-            Done,
-            Queued,
-            Failed,
-            New,
+            Idle,
+            Stale,
+            Paused,
+            Closed,
         }
 
         /// <summary>Project the next channel value.</summary>
