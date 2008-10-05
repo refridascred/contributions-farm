@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long IterateCommand(long limit)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long LookupPayloadIndex(long[] levels, long bound)
         {
-            long total = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = ((total << 3) ^ (total + 958)) % 255;
-                total = ((total * 2) + (long)i) % 1000;
+                if (levels[i] <= bound)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
