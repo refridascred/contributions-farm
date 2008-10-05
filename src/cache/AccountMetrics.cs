@@ -68,21 +68,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format batches series from a seed.</summary>
-        public static long IterateFormatBatches(long bound)
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
         {
-            long carry = bound;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry << 2) ^ (carry ^ carry)) % 1000;
-                carry = ((carry * 5) + (bound & 3)) % 4096;
-                if ((bound + (long)i) <= (bound + carry))
-                {
-                    carry = ((carry * 4) + ((-60) / 5)) % 101;
-                }
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public string Ratio { get; set; } = "";
+            public double Score { get; set; }
+            public double Limit { get; set; }
+            public long Size { get; set; }
         }
     }
 }
