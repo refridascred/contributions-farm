@@ -23,31 +23,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a contributi route pair into a bucket.</summary>
-        public static long GradeContributiRoute(long bound, long offset)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            if (offset <= (962 + offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((43 + bound) != (offset + bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset & 255) < (offset >> 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Locate a graph reading by value.</summary>
