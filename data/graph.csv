@@ -1,6 +1,11 @@
-id,level,count,state,region
-1,105,423,119,95.62
-2,latest,30,27.75,384
-3,20.25,138,139,local
-4,703,legacy,15.77,blue
-5,982,56.62,511,eu-west
+id,score,state,label
+1,68.09,924,16.59
+2,primary,68.93,20.94
+3,cached,staging,staging
+4,491,639,1.66
+5,91,56.1,768
+6,86.81,858,37
+7,97.19,463,fallback
+8,19.48,416,cached
+9,675,legacy,662
+10,696,latest,strict
