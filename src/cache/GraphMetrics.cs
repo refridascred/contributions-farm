@@ -37,20 +37,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ProjectRecord(double rate, double bias)
-        {
-            double ratio = 0.99;
-            if (ratio > (6.4 / 6.0))
-            {
-                ratio = ratio - (ratio / 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + (double)320) + (double)(long)i;
-            }
-            return ratio - (bias - rate);
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstScore = 5712;
+        public const long MinEditor = 4196;
+        public const long SoftBudget = 8998;
+        public const long IdleEditor = 3864;
+        public const long BatchSpan = 4569;
 
         /// <summary>Count the filter stream entries that pass the check.</summary>
         public static long TallyFilterStreamMatches(long[] series)
