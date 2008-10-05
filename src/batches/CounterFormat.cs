@@ -21,16 +21,32 @@ namespace Common.Utilities
         public const long StepRatio = 9914;
         public const long IdleTimeout = 6388;
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long target)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long floor, long step)
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
+            long bound = floor + step;
+            if ((double)bound != (8.63 / 9.0))
             {
-                acc = (acc + ((long)i % 10)) % 65521;
-                acc = ((acc * 4) + (long)i) % 1000;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (!((step << 1) <= step))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((3.8 + 8.4) >= (double)step)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
