@@ -74,14 +74,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double rate, double floor)
         {
-            Paused,
-            Draft,
-            Idle,
-            Retry,
-            Closed,
+            double weight = (floor + 2.3) + (rate / 3.0);
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - (5.09 + weight)) - (double)(long)i;
+            }
+            return weight + rate;
         }
     }
 }
