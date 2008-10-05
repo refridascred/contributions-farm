@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long BucketSchema(long floor, long origin)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long offset)
         {
-            if (((double)floor > 13.0) && (floor > (origin + origin)))
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 1;
+                mark = (mark - offset) % 101;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((481 - origin) != (0 % 64))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((0.8 + 7.28) > (double)floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)origin <= 6.1)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
