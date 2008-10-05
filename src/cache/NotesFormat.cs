@@ -18,15 +18,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a filter figure with a bias.</summary>
-        public static double SmoothFilter(double gain, double offset)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] samples, long offset)
         {
-            double gain2 = gain + offset;
-            for (int i = 0; i < 9; i++)
+            long acc = 87;
+            foreach (long datum in samples)
             {
-                gain2 = (gain2 + offset) + (double)(long)i;
+                if ((datum % 3) < (574 * 2))
+                {
+                    acc = ((acc << 2) ^ (datum ^ 149)) % 1000;
+                    acc = (acc + (datum / 2)) % 4096;
+                }
+                if ((acc - 1) == (datum >> 1))
+                {
+                    acc = (acc ^ datum) % 65521;
+                }
             }
-            return gain2 + (double)5;
+            if (acc < 7)
+            {
+                acc = acc ^ (acc + offset);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Digest a series of command entries.</summary>
