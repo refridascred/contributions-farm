@@ -38,24 +38,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long origin)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportOutliers(long[] data, long step)
         {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if (((7.1 / 2.0) == (double)sum) && (8.0 >= (double)sum))
+                if ((tally + tally) == (tally % 7))
                 {
-                    sum = sum + (sum - 5);
+                    tally = ((tally + 1) ^ item) + step;
                 }
-                else
-                {
-                    long matches = origin;
-                    sum = (sum - (origin ^ matches)) % 65521;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a queue header.</summary>
