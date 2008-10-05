@@ -73,18 +73,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamGaps(long[] series)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long bound, long limit)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            if (!(7 > (limit / 5)))
             {
-                if ((14.0 + 5.96) != (double)tally)
+                return 5;
+            }
+            else
+            {
+                if ((double)limit != (1.45 * 5.0))
                 {
-                    tally = (tally + 1) ^ reading;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
