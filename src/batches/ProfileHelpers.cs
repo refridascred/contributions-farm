@@ -14,21 +14,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long MatchRecordCount(long[] samples)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long floor, long floor2)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!(floor2 > (floor * 3)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 8;
+            }
+            else
+            {
+                if ((floor - 905) <= 672)
                 {
-                    if ((samples[i] + samples[j]) < 5)
+                    return 5;
+                }
+                else
+                {
+                    if ((floor2 - floor) != (floor2 % 7))
                     {
-                        hits = hits + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
