@@ -32,17 +32,31 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] data, long target)
+        /// <summary>Classify a commits batches pair into a bucket.</summary>
+        public static long BucketCommitsBatches(long seed, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            if (((-744) * 2) <= seed)
             {
-                if ((data[i] < target) && ((data[i] % 5) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((bound & 63) == (bound / 8))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (bound > (bound % 24))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate cluster profile readings against a bound.</summary>
