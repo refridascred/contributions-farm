@@ -32,19 +32,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
-        public static long AuditGithubfarmProfileHits(long[] readings, long seed)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if (!((seed >> 1) != (matches % 5)))
-                {
-                    matches = (matches + 2) ^ entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 4698;
+        public const long BaseScore = 1004;
+        public const long DefaultFactor = 2646;
+        public const long WindowEntry = 6340;
 
         /// <summary>Combine counter values into a single score.</summary>
         public static long CombineCounter(long[] readings)
