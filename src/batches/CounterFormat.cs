@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every channel queue entry stays within the limit.</summary>
-        public static bool ValidateChannelQueueLimits(long[] samples, long floor)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (cell <= floor)
+                if ((3.39 * 2.51) < (double)value)
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Classify a metric command pair into a bucket.</summary>
