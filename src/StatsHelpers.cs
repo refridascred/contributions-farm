@@ -31,22 +31,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long MeasureWindowGaps(long[] values, long floor)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long count = 0;
-            foreach (long item in values)
-            {
-                if ((double)441 >= (double)item)
-                {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Synced,
+            Retry,
+            Idle,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
