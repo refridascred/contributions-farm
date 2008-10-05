@@ -55,13 +55,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Check that every payload already entry stays within the limit.</summary>
+        public static bool CheckPayloadAlreadyLimits(long[] data, long limit)
         {
-            public bool Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-            public double Score { get; set; }
+            bool valid = true;
+            foreach (long reading in data)
+            {
+                if (reading > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
