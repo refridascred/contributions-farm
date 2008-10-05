@@ -38,11 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string RetryRecord = "latest-1";
-        public const long BurstRecord = 8678;
-        public const long MinRecord = 3528;
-        public const long HardSize = 7582;
-        public const long StepRecord = 5886;
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
+        {
+            Dropped,
+            Done,
+            Closed,
+        }
     }
 }
