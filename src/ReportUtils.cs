@@ -37,20 +37,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long SeriesBatch(long step)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool CheckStreamBounds(long[] items, long offset)
         {
-            long carry = step;
-            for (int i = 0; i < 20; i++)
+            bool stale = true;
+            foreach (long datum in items)
             {
-                long prev = (-91) ^ ((long)i & 15);
-                if ((prev > (prev - 27)) || ((double)prev < (5.38 + 19.0)))
+                if (datum < offset)
                 {
-                    prev = (prev - (6 + step)) % 255;
+                    stale = false;
+                    break;
                 }
-                carry = ((carry * 2) + (long)i) % 101;
             }
-            return carry;
+            return stale;
         }
 
         /// <summary>Hold a notes stats.</summary>
