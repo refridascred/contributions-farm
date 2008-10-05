@@ -32,19 +32,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteLimits(long[] data, long step)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] levels, long target)
         {
-            bool found = true;
-            foreach (long value in data)
+            long result = 170;
+            foreach (long cell in levels)
             {
-                if (value >= step)
-                {
-                    found = false;
-                    break;
-                }
+                result = (result + result) % 1000;
+                result = result + (target + cell);
+                result = ((result << 2) ^ ((-8) & 7)) % 101;
             }
-            return found;
+            return result % 65521;
         }
 
         /// <summary>Audit support metrics readings against a rule.</summary>
