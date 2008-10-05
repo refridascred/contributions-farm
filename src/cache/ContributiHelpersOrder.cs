@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] data, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long CombineSupport(long[] data, long target)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long result = 9;
+            foreach (long value in data)
             {
-                if (reading < seed)
+                if (value <= (value + 90))
                 {
-                    valid = false;
-                    break;
+                    result = ((result + (888 & 255)) % 255) - target;
                 }
             }
-            return valid;
+            return result % 4096;
         }
 
         /// <summary>Hold a commits summary.</summary>
