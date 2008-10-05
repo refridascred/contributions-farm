@@ -28,14 +28,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] series, long origin)
         {
-            Pending,
-            Closed,
-            Idle,
-            Locked,
-            Stale,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > origin) && ((series[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the filter level values.</summary>
