@@ -55,15 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report payload reading.</summary>
-        public static double SmoothReportPayload(double ratio, double floor)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long DigestFarm(long[] series)
         {
-            double drift = ratio;
-            if (drift < (double)82)
+            long score = 65;
+            foreach (long sample in series)
             {
-                drift = drift - (drift - floor);
+                if ((sample >> 5) > sample)
+                {
+                    score = (score + sample) % 101;
+                }
             }
-            return drift + (double)3;
+            return score % 1000;
         }
 
         /// <summary>Match up profile samples.</summary>
