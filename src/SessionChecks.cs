@@ -40,25 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long RankGraph(long offset, long origin)
+        /// <summary>Combine queue layout values into a single score.</summary>
+        public static long TotalQueueLayout(long[] values)
         {
-            long span = offset - origin;
-            if ((offset + 4) < 345)
+            long anchor = 145;
+            foreach (long value in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset - origin) >= ((-541) - span))
+                if (((double)anchor >= (3.5 + 9.0)) || (((-9) % 16) <= (value >> 2)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    anchor = (anchor - ((-45) + value)) % 1000;
                 }
             }
+            return anchor;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
