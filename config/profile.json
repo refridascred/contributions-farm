@@ -1,5 +1,10 @@
 {
-  "format_size": [435, 87, 388, 432],
-  "channel_interval": "strict",
-  "burst_threshold": [196, 180, 490, 107]
+  "notes_retries": false,
+  "editor_threshold": {
+    "sync_ratio_s": true,
+    "batches_limit": "staging",
+    "cache_depth_count": 34.37
+  },
+  "audit": "staging",
+  "flush_capacity_ms": 7951
 }
