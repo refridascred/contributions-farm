@@ -19,12 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            public long Owner { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
+            Paused,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Describe the filter level values.</summary>
