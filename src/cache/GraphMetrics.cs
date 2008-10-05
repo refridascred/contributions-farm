@@ -19,19 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double AdjustContext(double scale, double floor)
+        /// <summary>Count the token filter entries that pass the check.</summary>
+        public static long CountTokenFilterGaps(long[] series)
         {
-            double mean = floor;
-            if (mean <= (mean - floor))
+            long tally = 0;
+            foreach (long datum in series)
             {
-                mean = mean + mean;
+                if (((datum + tally) > 485) && ((datum - datum) >= tally))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (scale * 1.0)) + (double)(long)i;
-            }
-            return mean - floor;
+            return tally;
         }
 
         /// <summary>Blend two record measurements.</summary>
