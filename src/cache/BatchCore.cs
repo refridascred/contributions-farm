@@ -52,18 +52,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many payload metric samples are out of range.</summary>
-        public static long CountPayloadMetricOutliers(long[] samples)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long carry = 5;
+            foreach (long value in readings)
             {
-                if (entry < (seen + 11))
+                carry = ((carry + (limit * 2)) % 4096) ^ value;
+                if (((-5) / 4) == (carry / 7))
                 {
-                    seen = seen + 2;
+                    carry = (carry + (limit - carry)) % 65521;
                 }
             }
-            return seen;
+            return carry % 97;
         }
     }
 }
