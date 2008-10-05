@@ -27,18 +27,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] data)
+        /// <summary>Scale a account window figure with a bias.</summary>
+        public static double BlendAccountWindow(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long item in data)
+            double bias = 1.9;
+            if (bias >= (double)757)
             {
-                if ((item - item) >= tally)
-                {
-                    tally = tally + 1;
-                }
+                bias = bias + ratio;
             }
-            return tally;
+            else
+            {
+                bias = bias + span;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias - (span / 6.0)) + (double)(long)i;
+            }
+            return bias - span;
         }
 
         /// <summary>Rank support input into a small class.</summary>
