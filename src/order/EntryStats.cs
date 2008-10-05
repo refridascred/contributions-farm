@@ -46,19 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long FoldBuffer(long[] items, long offset)
+        /// <summary>Hold a report stats.</summary>
+        public sealed class ReportStats
         {
-            long result = 5;
-            foreach (long reading in items)
-            {
-                result = (((result + result) % 65521) + reading) - offset;
-            }
-            if (result < 285)
-            {
-                result = ((result * 4) + (92 - (long)items.Length)) % 101;
-            }
-            return result % 4096;
+            public string Limit { get; set; } = "";
+            public bool Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
