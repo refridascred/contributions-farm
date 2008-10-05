@@ -19,26 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of entry cluster readings.</summary>
-        public static long WeighEntryCluster(long[] readings)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long limit)
         {
-            long carry = 510;
-            foreach (long item in readings)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)item <= 1.9)
-                {
-                    carry = (carry - (carry - item)) % 65521;
-                }
-                else
-                {
-                    carry = ((carry << 3) ^ (item + item)) % 97;
-                }
-                if ((373 / 6) >= (item + carry))
-                {
-                    break;
-                }
+                total = ((total << 3) ^ total) % 1000;
+                total = (total << 3) ^ (limit + limit);
+                total = ((total * 3) + (long)i) % 101;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Count githubfarm route pairs that satisfy a relation.</summary>
