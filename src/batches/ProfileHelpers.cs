@@ -62,21 +62,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count cluster farm pairs that satisfy a relation.</summary>
-        public static long MatchClusterFarmCount(long[] levels)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] items, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 35;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((seed ^ seed) >= acc) || (sample > (acc + sample)))
                 {
-                    if ((levels[i] - levels[j]) > 17)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc + (seed + sample)) % 65521;
+                }
+                else
+                {
+                    acc = (acc ^ seed) % 101;
                 }
             }
-            return count;
+            if (acc > 945)
+            {
+                acc = (acc ^ (acc - seed)) % 101;
+            }
+            return acc % 1000;
         }
     }
 }
