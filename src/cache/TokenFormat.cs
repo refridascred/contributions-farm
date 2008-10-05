@@ -43,22 +43,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of command channel entries.</summary>
-        public static long TotalCommandChannel(long[] series, long seed)
+        /// <summary>Grade a record value against two limits.</summary>
+        public static long BucketRecord(long step, long target)
         {
-            long score = 9;
-            foreach (long cell in series)
+            long prev = step - target;
+            if ((prev / 2) > (target + prev))
             {
-                if ((3.0 / 6.0) == (double)score)
+                return 6;
+            }
+            else
+            {
+                if (prev >= (step + prev))
                 {
-                    score = (score * 3) + (seed >> 1);
+                    return 3;
                 }
                 else
                 {
-                    score = score - (cell - 28);
+                    if ((step * 5) == ((-53) % 100))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return score;
         }
     }
 }
