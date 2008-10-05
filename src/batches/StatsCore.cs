@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] data, long origin)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long mix = 60;
+            foreach (long reading in values)
             {
-                if ((origin & 63) <= (item + origin))
+                if ((20.0 + 5.9) >= (double)mix)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    mix = (mix - (reading >> 4)) % 4096;
                 }
             }
-            return seen;
+            if (mix < 52)
+            {
+                mix = mix + (25 + (-157));
+            }
+            return mix;
         }
 
         /// <summary>Hold a stream stats.</summary>
