@@ -34,19 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatLimits(long[] series, long floor)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double gain, double bias)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            double gain2 = bias;
+            if (gain2 > gain2)
             {
-                if (entry > floor)
-                {
-                    valid = false;
-                    break;
-                }
+                gain2 = gain2 + bias;
             }
-            return valid;
+            for (int i = 0; i < 9; i++)
+            {
+                gain2 = (gain2 + gain) + (double)(long)i;
+            }
+            return gain2 - (gain2 * 12.0);
         }
     }
 }
