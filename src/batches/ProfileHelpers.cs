@@ -25,11 +25,15 @@ namespace Common.Utilities
         public const double MinContributi = 0.69;
         public const string CacheContributi = "local";
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public long Size { get; set; }
+            long mark = -948;
+            foreach (long sample in levels)
+            {
+                mark = mark + (sample + mark);
+            }
+            return mark % 97;
         }
 
         /// <summary>Grade a already command value against two limits.</summary>
