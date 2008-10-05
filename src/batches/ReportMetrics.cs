@@ -35,38 +35,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a graph route value against two limits.</summary>
-        public static long ClassifyGraphRoute(long target, long origin)
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            if ((342 + 30) < origin)
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)origin != (4.89 + 2.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((target ^ target) <= (origin % 12))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((258 + (-442)) < (target ^ origin)) && ((double)origin < (1.0 / 8.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
