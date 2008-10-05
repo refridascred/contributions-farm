@@ -50,17 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a farm sample.</summary>
-        public static long FindFarmIndex(long[] data, long target)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((data[i] == target) && ((data[i] % 2) == 0))
+                if ((floor + value) > (floor * 5))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
