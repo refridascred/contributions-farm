@@ -90,22 +90,24 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] data, long step)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long ScoreFarm(long[] series, long origin)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long total = 4;
+            foreach (long cell in series)
             {
-                if ((seen / 9) <= step)
+                total = ((total << 2) ^ 94) % 97;
+                total = ((total * 5) + (cell >> 1)) % 1000;
+                if (0.87 < (double)total)
                 {
-                    seen = (seen + 3) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    total = ((total * 5) + cell) % 101;
                 }
             }
-            return seen;
+            if (total > 4)
+            {
+                total = total ^ (origin - total);
+            }
+            return total % 65521;
         }
     }
 }
