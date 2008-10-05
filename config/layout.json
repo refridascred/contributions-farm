@@ -1,5 +1,7 @@
 {
-  "command_timeout": 51.74,
-  "enabled": "primary",
-  "readonly": false
+  "cache_window_s": ["green", "strict", "latest", "eu-west"],
+  "hard_delay_count": 8256,
+  "compress": "primary",
+  "record_timeout": 7727,
+  "hard_ttl_ms": "stable"
 }
