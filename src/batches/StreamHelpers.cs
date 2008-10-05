@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long origin, long floor)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            if ((double)floor >= (16.0 + 4.8))
-            {
-                return 0;
-            }
-            else
-            {
-                if (5.4 < (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Dropped,
+            Active,
+            Failed,
+            Queued,
+            Closed,
         }
 
         /// <summary>Measure how many profile cache samples are out of range.</summary>
