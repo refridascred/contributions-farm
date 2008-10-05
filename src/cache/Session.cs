@@ -27,15 +27,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Digest a series of counter cluster entries.</summary>
-        public static long WeighCounterCluster(long[] readings)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] items)
         {
-            long sum = 998;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                sum = (sum - (sample + sample)) % 4096;
+                if ((hits + sample) > (sample >> 1))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return sum % 4096;
+            return hits;
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
