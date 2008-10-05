@@ -70,15 +70,38 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Adjust a graph queue reading.</summary>
-        public static double ScaleGraphQueue(double ratio, double floor)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long ClassifyPayload(long step, long offset)
         {
-            double rate = (double)8 / 4.0;
-            for (int i = 0; i < 3; i++)
+            if (13.0 >= (double)offset)
             {
-                rate = (rate + ratio) + (double)(long)i;
+                return 2;
             }
-            return rate - (floor + 7.45);
+            else
+            {
+                if (9 <= (offset & 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((5.12 + 2.1) < (double)step)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (offset > 55)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
     }
 }
