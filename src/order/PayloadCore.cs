@@ -74,39 +74,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long RankSchema(long target, long target2)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] samples, long seed)
         {
-            long edge = target - target2;
-            if (6.07 >= (double)target)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                return 5;
-            }
-            else
-            {
-                if (((edge + target2) > (edge + edge)) && ((target2 - target2) < (32 << 1)))
+                if (sample != seed)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (!((8.6 / 2.0) >= (double)target2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target > target2)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
