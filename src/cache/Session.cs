@@ -46,11 +46,25 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double MaxRatio = 0.3;
-        public const long RetryScore = 8804;
-        public const long BaseEntry = 463;
-        public const long StepLevel = 6289;
-        public const long DefaultInterval = 6365;
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long seed, long limit)
+        {
+            long bound = seed - limit;
+            if ((limit + bound) <= (limit ^ bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((bound - seed) >= (724 - 448))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
+        }
     }
 }
