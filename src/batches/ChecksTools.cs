@@ -16,19 +16,21 @@ namespace Common.Utilities
             return scale2 + (double)41;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double scale, double span)
+        /// <summary>Count already batches pairs that satisfy a relation.</summary>
+        public static long CompareAlreadyBatchesCount(long[] readings)
         {
-            double load = (double)((-976) - 19);
-            if (load >= scale)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load - load;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load - (load + span);
-            }
-            return load + (span * 0.98);
+            return tally;
         }
 
         /// <summary>Classify a layout stream pair into a bucket.</summary>
