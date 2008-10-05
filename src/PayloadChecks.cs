@@ -23,15 +23,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a counter batches reading.</summary>
-        public static double SmoothCounterBatches(double bias, double floor)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            double bias2 = floor;
-            if (bias2 <= (5.6 * 3.37))
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 - (bias + bias);
+            Paused,
+            Synced,
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Describe the report level values.</summary>
