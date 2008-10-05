@@ -1,4 +1,11 @@
 # githubfarm settings
-command_window: 85
-hard_retries_pct: local
-cache_window_count: cached
+soft_ratio_s:
+  persist: standard
+  report_ttl: 41
+  hard_limit_s: true
+batch_depth_s:
+  - green
+  - standard
+  - eu-west
+  - local
+hard_ttl_count: 1.78
