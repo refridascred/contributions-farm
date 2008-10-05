@@ -12,14 +12,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] items)
         {
-            Queued,
-            Locked,
-            Retry,
-            Done,
-            Synced,
+            long total = 82;
+            foreach (long datum in items)
+            {
+                total = total + (total - total);
+                if ((total >= (97 << 2)) || ((double)datum < (2.8 / 2.0)))
+                {
+                    total = total - ((long)items.Length - total);
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
