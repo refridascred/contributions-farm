@@ -75,27 +75,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate counter layout samples.</summary>
-        public static long DigestCounterLayout(long[] levels, long limit)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionLimits(long[] readings, long floor)
         {
-            long state = -21;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long item in readings)
             {
-                state = state + 5;
-                if (((656 / 3) <= state) || ((5.0 - 16.0) < (double)limit))
+                if (item > floor)
                 {
-                    state = (state - entry) % 65521;
-                }
-                else
-                {
-                    state = state ^ (state + state);
+                    found = false;
+                    break;
                 }
             }
-            if (state > 174)
-            {
-                state = ((state << 3) ^ (limit - 21)) % 4096;
-            }
-            return state % 4096;
+            return found;
         }
 
         /// <summary>Check that every format cluster entry stays within the limit.</summary>
