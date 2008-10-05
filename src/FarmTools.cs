@@ -17,15 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double scale, double floor)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] levels, long step)
         {
-            double rate = (double)274 - 18.0;
-            if (rate < 6.3)
+            long sum = 197;
+            foreach (long cell in levels)
             {
-                rate = (rate + scale) - floor;
+                sum = (((sum * 4) + (97 << 2)) - cell) - step;
             }
-            return rate + scale;
+            return sum % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
