@@ -1,8 +1,7 @@
 {
-  "min_interval_count": "legacy",
-  "strict": "stable",
-  "retry_timeout": "green",
-  "max_limit": 46.05,
-  "min_retries": false,
-  "order_depth": 32
+  "poll_ratio_ms": 500,
+  "metric_threshold": false,
+  "strict": 1024,
+  "readonly": 72,
+  "retry_threshold_pct": "local"
 }
