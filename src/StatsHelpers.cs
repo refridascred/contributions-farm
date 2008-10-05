@@ -29,19 +29,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] data, long origin)
+        /// <summary>Match up commits samples.</summary>
+        public static long MatchCommitsCount(long[] readings)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < origin)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((readings[i] - readings[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Describe the notes kind values.</summary>
