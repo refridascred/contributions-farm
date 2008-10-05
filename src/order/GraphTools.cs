@@ -80,13 +80,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long CountCommitsOutliers(long[] data)
         {
-            Done,
-            Paused,
-            Retry,
-            Pending,
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if ((tally >> 2) == (datum + tally))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
