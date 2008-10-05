@@ -1,24 +1,5 @@
 {
-  "metric_ratio": {
-    "support_capacity": {
-      "metrics_retries": "eu-west",
-      "hard_depth_pct": "eu-west",
-      "batch_depth_count": 30,
-      "audit": "standard",
-      "commits_retries": 6403,
-      "idle_ratio_s": ["latest", "open", "eu-west", "eu-west"]
-    },
-    "hard_size_s": "standard",
-    "soft_interval": 5
-  },
-  "batch_retries_count": 65,
-  "dry_run": {
-    "warm_retries_s": "eu-west",
-    "burst_window": true,
-    "compress": true,
-    "report_interval": "primary"
-  },
-  "base_depth_s": "blue",
-  "strict": 82,
-  "readonly": 179
+  "graph_interval": "cached",
+  "retry_ttl": 3010,
+  "sync_ttl_s": ["fallback", "strict", "eu-west"]
 }
