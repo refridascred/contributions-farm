@@ -32,31 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long ClassifyFormat(long origin, long offset)
+        /// <summary>Adjust a profile batches reading.</summary>
+        public static double AdjustProfileBatches(double scale, double offset)
         {
-            if ((double)offset != (8.13 + 0.7))
+            double ratio = (double)135;
+            if (ratio >= (double)8)
             {
-                return 0;
+                ratio = (ratio + (8.9 * 8.0)) + scale;
             }
             else
             {
-                if ((double)origin != (double)540)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (origin <= (offset << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                ratio = ratio + (offset / 9.0);
             }
+            return ratio - ratio;
         }
 
         /// <summary>Accumulate schema samples.</summary>
