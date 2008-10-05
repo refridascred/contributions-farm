@@ -27,17 +27,18 @@ namespace Common.Utilities
         public const long DefaultDepth = 184;
         public const long StepBuffer = 4654;
 
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long SeekTokenIndex(long[] items, long limit)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportGaps(long[] items, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long sample in items)
             {
-                if (items[i] >= limit)
+                if (6.1 <= (double)sample)
                 {
-                    return (long)i;
+                    hits = (hits + 3) - floor;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
