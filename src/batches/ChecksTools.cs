@@ -33,15 +33,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long FoldQueue(long[] values, long bound)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long mark = 30;
-            foreach (long reading in values)
-            {
-                mark = (((mark + (mark - 9)) % 97) + reading) + bound;
-            }
-            return mark;
+            Retry,
+            Active,
+            Idle,
         }
 
         /// <summary>Match up queue samples.</summary>
