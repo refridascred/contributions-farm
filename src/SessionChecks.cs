@@ -33,10 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepInterval = 1048;
-        public const string DefaultFactor = "open-edge";
-        public const double SoftScore = 8.23;
+        /// <summary>Locate a stream stats reading by value.</summary>
+        public static long LookupStreamStatsIndex(long[] levels, long bound)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderRange(long[] values, long bound)
