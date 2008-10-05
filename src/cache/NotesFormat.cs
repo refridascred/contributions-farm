@@ -27,19 +27,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Measure how many window entry samples are out of range.</summary>
+        public static long CountWindowEntryGaps(long[] samples)
         {
-            long mix = 59;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                mix = ((mix * 3) + (value + value)) % 1000;
-                if ((double)value <= (5.74 + 3.65))
+                if (item >= (matches - matches))
                 {
-                    break;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
