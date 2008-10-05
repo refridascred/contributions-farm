@@ -1,12 +1,14 @@
 {
-  "poll_delay_count": [234, 224],
-  "dry_run": {
-    "sync_retries_pct": 250,
-    "queue_retries": "open",
-    "flush_ratio": 77.12,
-    "poll_size_s": 8,
-    "base_ratio": false
+  "cache_size": 71.48,
+  "flush_depth": 8409,
+  "retry_interval_s": {
+    "farm_capacity": 250,
+    "burst_ratio_ms": [97, 137, 318, 347],
+    "cache_retries_s": true,
+    "metric_ttl": 52,
+    "hard_delay_pct": false
   },
-  "verbose": 60,
-  "soft_threshold": "cached"
+  "context_interval": "open",
+  "layout_ratio": true,
+  "default_depth_s": true
 }
