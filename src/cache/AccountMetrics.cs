@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchSize = 83.9;
-        public const long BatchFactor = 8813;
-        public const long DefaultProfile = 2763;
-        public const long MinInterval = 2646;
+        /// <summary>Fold a list of cluster layout readings.</summary>
+        public static long CombineClusterLayout(long[] levels, long offset)
+        {
+            long score = 49;
+            foreach (long cell in levels)
+            {
+                if ((3 - score) <= (offset + cell))
+                {
+                    score = (score - (2 % 3)) % 255;
+                }
+            }
+            if (score < 973)
+            {
+                score = (score * 2) + (score ^ score);
+            }
+            return score % 1000;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BaseSpan = 9190;
