@@ -38,9 +38,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MinFactor = 62.3;
-        public const long RetryProfile = 8412;
-        public const string DefaultFactor = "legacy-edge";
+        /// <summary>Find the first support window entry that matches the target.</summary>
+        public static long LookupSupportWindowIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
