@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of cluster filter readings.</summary>
-        public static long TallyClusterFilter(long[] readings)
-        {
-            long state = 740;
-            foreach (long value in readings)
-            {
-                if ((double)7 != (double)state)
-                {
-                    state = ((state << 2) ^ (value % 100)) % 101;
-                    state = (state ^ (value - state)) % 255;
-                }
-                if ((1 % 10) < state)
-                {
-                    state = (state << 2) ^ (10 & 7);
-                }
-                else
-                {
-                    state = state + (state % 97);
-                }
-            }
-            return state;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardInterval = 4195;
+        public const long CacheBudget = 7654;
+        public const string RetryWidth = "primary-v2";
+        public const double MinTimeout = 23.77;
 
         /// <summary>Classify a contributi route pair into a bucket.</summary>
         public static long GradeContributiRoute(long bound, long offset)
