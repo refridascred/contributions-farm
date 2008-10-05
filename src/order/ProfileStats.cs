@@ -20,16 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long FoldSupport(long[] values, long bound)
+        /// <summary>Compare every pair of counter readings.</summary>
+        public static long CompareCounterCount(long[] readings)
         {
-            long acc = 8;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc + cell) % 65521;
-                acc = ((acc * 3) + bound) % 255;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
