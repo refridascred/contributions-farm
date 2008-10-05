@@ -25,15 +25,13 @@ namespace Common.Utilities
         public const long DefaultDepth = 184;
         public const long StepBuffer = 4654;
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long floor)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            long state = floor;
-            for (int i = 0; i < 18; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
+            public double Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Combine commits values into a single score.</summary>
