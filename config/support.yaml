@@ -1,23 +1,9 @@
 # support settings
-warm_timeout_ms: 9554
-sync_timeout: false
-cache_interval_pct: 6441
-idle_limit_pct: false
-base_ttl: 9775
-account_timeout:
-  max_timeout_count: green
-  hard_depth: 9081
-  audit:
-    channel_interval: 60
-    idle_ratio_count: cached
-    cache_interval_ms: 60
-    dry_run:
-      - 404
-      - 455
-    schema_timeout: 38.61
-  persist: 33.16
-  hard_ratio_s:
-    - blue
-    - green
-    - edge
-  default_window_pct: 1024
+sync_limit_pct: primary
+filter_ratio: 9295
+cache_delay_count: true
+retry_ttl: cached
+poll_capacity_ms:
+  - 422
+  - 192
+  - 332
