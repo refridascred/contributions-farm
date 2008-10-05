@@ -35,23 +35,36 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long ClassifyContributi(long limit, long step)
+        /// <summary>Grade a graph route value against two limits.</summary>
+        public static long ClassifyGraphRoute(long target, long origin)
         {
-            long lane = limit + step;
-            if ((double)limit != (double)step)
+            if ((342 + 30) < origin)
             {
-                return 1;
+                return 7;
             }
             else
             {
-                if ((6 % 60) == (lane / 3))
+                if ((double)origin != (4.89 + 2.0))
                 {
-                    return 4;
+                    return 6;
                 }
                 else
                 {
-                    return 5;
+                    if ((target ^ target) <= (origin % 12))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((258 + (-442)) < (target ^ origin)) && ((double)origin < (1.0 / 8.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
