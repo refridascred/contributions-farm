@@ -29,12 +29,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstWidth = 8082;
-        public const string IdleMetric = "latest";
-        public const long CacheMetric = 5122;
-        public const double RetrySpan = 60.65;
-        public const double StepMetric = 3.17;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long AuditSessionMatches(long[] levels)
+        {
+            long hits = 0;
+            foreach (long reading in levels)
+            {
+                if ((double)reading < (double)803)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Adjust a entry reading.</summary>
         public static double AdjustEntry(double rate, double offset)
