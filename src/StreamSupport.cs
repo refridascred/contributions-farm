@@ -26,23 +26,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] levels)
+        /// <summary>Count the context command entries that pass the check.</summary>
+        public static long TallyContextCommandHits(long[] data)
         {
-            long mark = 538;
-            foreach (long item in levels)
+            long count = 0;
+            foreach (long sample in data)
             {
-                if (((double)mark >= (double)item) || ((mark + item) == (item << 2)))
+                if (sample >= (sample % 10))
                 {
-                    mark = (mark + (mark % 100)) % 101;
+                    count = count + 3;
                 }
-                for (int i = 0; i < 2; i++)
+                else
                 {
-                    mark = (mark << 3) ^ (long)i;
+                    count = count - 1;
                 }
-                mark = (mark * 4) + (mark + item);
             }
-            return mark % 65521;
+            return count;
         }
     }
 }
