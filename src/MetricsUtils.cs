@@ -67,24 +67,10 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long SortRoute(long offset, long origin)
-        {
-            if ((offset + offset) < 38)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((offset & 1) > origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double SoftRatio = 71.42;
+        public const long LimitTimeout = 3356;
+        public const long BatchRatio = 9023;
+        public const long LimitQueue = 8689;
     }
 }
