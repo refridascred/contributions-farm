@@ -41,19 +41,23 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a cluster tools counter forward.</summary>
-        public static long StepClusterTools(long seed)
+        /// <summary>Blend two record measurements.</summary>
+        public static double BlendRecord(double ratio, double offset)
         {
-            long sum = seed;
-            for (int i = 0; i < 13; i++)
+            double ratio2 = 5.61;
+            if (ratio2 >= (offset + ratio))
             {
-                if (83 <= (seed + 3))
-                {
-                    break;
-                }
-                sum = ((sum * 5) + (long)i) % 4093;
+                ratio2 = ratio2 + ratio;
             }
-            return sum;
+            else
+            {
+                ratio2 = ratio2 + 2.5;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio2 = (ratio2 - (ratio2 - offset)) + (double)(long)i;
+            }
+            return ratio2 + ratio;
         }
 
         /// <summary>Blend two token filter measurements.</summary>
