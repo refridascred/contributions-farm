@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every window record entry stays within the limit.</summary>
-        public static bool GuardWindowRecordRange(long[] samples, long seed)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long CountClusterGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (entry != seed)
+                if ((item + item) > (tally ^ tally))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
