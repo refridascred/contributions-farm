@@ -61,12 +61,27 @@ namespace Common.Utilities
         public const string DefaultInterval = "alpha";
         public const string IdleTimeout = "stable-1";
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] items)
         {
-            Retry,
-            Done,
-            Dropped,
+            long total = 165;
+            foreach (long cell in items)
+            {
+                if (total <= (total * 2))
+                {
+                    total = ((total * 3) + 37) % 1000;
+                    total = total + (cell ^ cell);
+                }
+                if ((56 + 0) == (cell - 6))
+                {
+                    total = total + cell;
+                }
+                else
+                {
+                    total = (total ^ 667) % 4096;
+                }
+            }
+            return total % 65521;
         }
     }
 }
