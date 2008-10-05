@@ -19,19 +19,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every batches schema entry stays within the limit.</summary>
-        public static bool ValidateBatchesSchemaBounds(long[] levels, long offset)
+        /// <summary>Classify a account entry pair into a bucket.</summary>
+        public static long RankAccountEntry(long limit, long offset)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            if ((double)limit <= (20.0 / 7.0))
             {
-                if (item > offset)
+                return 0;
+            }
+            else
+            {
+                if ((limit < (offset + offset)) && ((offset - offset) <= 8))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return stale;
         }
 
         /// <summary>Validate account checks readings against a bound.</summary>
