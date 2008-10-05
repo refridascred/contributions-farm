@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseSize = 5604;
-        public const long MaxEntry = 9827;
-        public const double CacheSize = 45.7;
-        public const long IdleFactor = 9329;
+        /// <summary>Derive the next checks value from a seed.</summary>
+        public static long SeriesChecks(long floor)
+        {
+            long total = floor;
+            for (int i = 0; i < 10; i++)
+            {
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
 
         /// <summary>Hold a record stats.</summary>
         public sealed class RecordStats
