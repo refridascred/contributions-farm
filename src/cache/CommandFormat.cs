@@ -37,18 +37,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] levels, long seed)
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            long hits = 0;
-            foreach (long value in levels)
-            {
-                if (!((double)value <= (9.1 * 3.0)))
-                {
-                    hits = (hits + 3) + seed;
-                }
-            }
-            return hits;
+            public bool Limit { get; set; }
+            public bool Weight { get; set; }
+            public long Level { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Combine metrics profile values into a single score.</summary>
