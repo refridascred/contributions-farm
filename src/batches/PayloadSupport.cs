@@ -21,22 +21,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long acc = 407;
-            foreach (long datum in samples)
-            {
-                if (acc < (acc + datum))
-                {
-                    acc = (acc - acc) % 97;
-                }
-                if (((double)datum <= 3.87) || ((datum * 3) <= datum))
-                {
-                    break;
-                }
-            }
-            return acc;
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Audit session readings against a rule.</summary>
