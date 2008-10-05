@@ -51,12 +51,14 @@ namespace Common.Utilities
         public const long WindowQueue = 8974;
         public const double MinQueue = 15.82;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double StepLayout = 21.77;
-        public const long WindowCount = 3356;
-        public const long BatchSize = 5787;
-        public const string CacheRatio = "stable";
-        public const double BaseBudget = 62.18;
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
+        {
+            Failed,
+            Active,
+            Closed,
+            Locked,
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BurstProfile = "alpha-1";
