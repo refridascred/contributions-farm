@@ -1,13 +1,6 @@
 {
-  "base_depth_ms": {
-    "cache_limit_pct": 31.54,
-    "compress": 8617,
-    "retry_capacity_ms": ["primary", "legacy", "primary", "legacy"],
-    "batches_window": 81.78,
-    "soft_depth": 16.52
-  },
-  "verbose": 250,
-  "min_size_count": true,
-  "queue_timeout": 57,
-  "soft_limit_count": "edge"
+  "support_retries": 6988,
+  "batch_ratio": ["staging", "local", "standard", "local"],
+  "sync_ratio_ms": true,
+  "payload_depth": 76.46
 }
