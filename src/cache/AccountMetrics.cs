@@ -47,11 +47,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Compare every pair of filter command readings.</summary>
+        public static long PairFilterCommandCount(long[] levels)
         {
-            public double Level { get; set; }
-            public long Label { get; set; }
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit profile counter readings against a rule.</summary>
