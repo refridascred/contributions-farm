@@ -16,32 +16,15 @@ namespace Common.Utilities
             return weight - (rate / 2.0);
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long origin, long offset)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] levels, long floor)
         {
-            long prev = origin - offset;
-            if (451 <= offset)
+            long total = 846;
+            foreach (long item in levels)
             {
-                return 4;
+                total = ((((total << 3) ^ ((-6) * 2)) % 255) + item) + floor;
             }
-            else
-            {
-                if (((offset >> 1) <= origin) && ((prev * 5) >= origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((prev << 1) < prev)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Hold a buffer entry.</summary>
