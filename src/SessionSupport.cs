@@ -30,19 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long FoldStream(long[] series, long bound)
+        /// <summary>Hold a support options.</summary>
+        public sealed class SupportOptions
         {
-            long acc = 256;
-            foreach (long sample in series)
-            {
-                acc = (acc ^ (bound + 54)) + sample;
-            }
-            if (acc < (-428))
-            {
-                acc = ((acc << 2) ^ (bound >> 5)) % 255;
-            }
-            return acc;
+            public string Offset { get; set; } = "";
+            public string Flag { get; set; } = "";
         }
     }
 }
