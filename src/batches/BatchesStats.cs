@@ -15,21 +15,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] values)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Flag { get; set; }
+            public double Token { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
