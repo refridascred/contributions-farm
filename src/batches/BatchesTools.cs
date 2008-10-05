@@ -18,21 +18,34 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] items)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long DigestBatch(long[] data, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = -26;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((floor ^ state) < (-6))
                 {
-                    if ((items[i] + items[j]) != 7)
-                    {
-                        count = count + 1;
-                    }
+                    state = (state ^ (0 - floor)) % 65521;
+                }
+                if (10.0 > (double)floor)
+                {
+                    state = (state << 3) ^ (floor * 3);
+                }
+                if (((floor * 3) <= (entry << 3)) || ((double)floor >= (13.0 - 3.19)))
+                {
+                    state = ((state * 5) + floor) % 4096;
+                }
+                else
+                {
+                    state = state - entry;
                 }
             }
-            return count;
+            if (state > 29)
+            {
+                state = (state << 3) ^ (floor + 22);
+            }
+            return state;
         }
 
         /// <summary>Count the cluster layout entries that pass the check.</summary>
