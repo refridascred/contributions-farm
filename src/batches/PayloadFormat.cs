@@ -23,18 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first metric entry that matches the target.</summary>
-        public static long SeekMetricIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double BaseRoute = 35.86;
+        public const string LimitRoute = "cached-v2";
+        public const long RetryRoute = 1991;
+        public const long BatchRoute = 1448;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long StepScore = 2789;
