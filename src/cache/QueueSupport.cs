@@ -37,11 +37,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            public bool Score { get; set; }
-            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
