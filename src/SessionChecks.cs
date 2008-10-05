@@ -40,22 +40,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterMatches(long[] readings)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long RankGraph(long offset, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            long span = offset - origin;
+            if ((offset + 4) < 345)
             {
-                if ((0.3 - 7.6) < (19.0 - 5.0))
+                return 5;
+            }
+            else
+            {
+                if ((offset - origin) >= ((-541) - span))
                 {
-                    tally = (tally + 3) + value;
+                    return 2;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
 
         /// <summary>Look up the position of a githubfarm sample.</summary>
