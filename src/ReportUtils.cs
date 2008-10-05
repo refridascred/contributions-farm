@@ -71,10 +71,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long HardCommits = 6179;
-        public const double HardSize = 44.2;
-        public const long MinCommits = 8966;
-        public const double SoftCount = 45.07;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public bool Weight { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Token { get; set; }
+        }
     }
 }
