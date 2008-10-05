@@ -17,11 +17,13 @@ namespace Common.Utilities
         public const string RetryChecks = "fallback-v2";
         public const double MinChecks = 7.66;
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double AdjustOrder(double bias, double bias2)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            double load = (double)919 - (double)65;
-            return ((load + (double)2) + bias) + bias2;
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the cache mode values.</summary>
