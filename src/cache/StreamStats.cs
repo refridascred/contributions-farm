@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Accumulate contributi cache samples.</summary>
-        public static long ScoreContributiCache(long[] data, long bound)
+        /// <summary>Compare every pair of filter buffer readings.</summary>
+        public static long OverlapFilterBufferCount(long[] levels)
         {
-            long acc = -44;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = ((acc ^ ((-345) ^ cell)) % 255) - bound;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Roll a channel buffer counter forward.</summary>
