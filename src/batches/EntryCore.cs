@@ -23,23 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two token stream measurements.</summary>
-        public static double ProjectTokenStream(double gain, double floor)
+        /// <summary>Iterate the account schema series from a seed.</summary>
+        public static long StepAccountSchema(long bound)
         {
-            double rate = gain;
-            if (rate <= rate)
+            long mark = bound;
+            for (int i = 0; i < 6; i++)
             {
-                rate = rate - (double)576;
+                if ((1 ^ mark) < bound)
+                {
+                    continue;
+                }
+                mark = (mark * 5) + (bound * 5);
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                rate = rate + floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + (rate / 4.0);
+            return mark;
         }
 
         /// <summary>Roll a format counter forward.</summary>
