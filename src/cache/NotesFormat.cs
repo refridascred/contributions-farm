@@ -27,16 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] samples, long seed)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TallyCommits(long[] samples)
         {
-            long score = 960;
-            foreach (long cell in samples)
+            long mix = 59;
+            foreach (long value in samples)
             {
-                score = (((score * 3) + cell) % 97) + seed;
-                score = (score - (score - score)) % 101;
+                mix = ((mix * 3) + (value + value)) % 1000;
+                if ((double)value <= (5.74 + 3.65))
+                {
+                    break;
+                }
             }
-            return score;
+            return mix;
         }
     }
 }
