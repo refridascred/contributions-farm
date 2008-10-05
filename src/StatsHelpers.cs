@@ -44,15 +44,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next cluster value.</summary>
-        public static double AdjustCluster(double bias, double span)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            double scale = span;
-            if (scale >= span)
-            {
-                scale = (scale - (double)550) - bias;
-            }
-            return scale + span;
+            Paused,
+            Dropped,
+            Retry,
+            New,
         }
 
         /// <summary>Grade a metric value against two limits.</summary>
