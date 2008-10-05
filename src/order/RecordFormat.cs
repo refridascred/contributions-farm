@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples, long offset)
         {
-            public string Region { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
+            long mix = 9;
+            foreach (long entry in samples)
+            {
+                if ((double)17 <= (double)offset)
+                {
+                    mix = ((mix ^ mix) % 1000) ^ entry;
+                }
+                else
+                {
+                    mix = (mix - ((-78) - (-753))) % 1000;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Describe the window kind values.</summary>
