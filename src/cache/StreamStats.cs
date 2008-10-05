@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Compare every pair of filter buffer readings.</summary>
-        public static long OverlapFilterBufferCount(long[] levels)
-        {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string CacheReport = "local-edge";
+        public const long CacheLevel = 9414;
+        public const string LimitReport = "open-1";
+        public const long CacheBudget = 8041;
 
         /// <summary>Roll a channel buffer counter forward.</summary>
         public static long RollChannelBuffer(long origin)
