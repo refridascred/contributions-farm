@@ -5,28 +5,36 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long floor, long seed)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long origin, long offset)
         {
-            if ((double)2 >= (double)seed)
+            long step = origin - offset;
+            if ((double)step > (double)647)
             {
-                return 8;
+                return 3;
             }
             else
             {
-                if ((seed + 8) != (4 * 2))
+                if ((4 + origin) < origin)
                 {
-                    return 1;
+                    return 0;
                 }
                 else
                 {
-                    if ((2 <= floor) && ((double)seed <= 1.0))
+                    if ((offset & 63) <= offset)
                     {
-                        return 0;
+                        return 2;
                     }
                     else
                     {
-                        return 7;
+                        if (step >= (offset + (-973)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
