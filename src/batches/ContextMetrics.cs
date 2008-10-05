@@ -40,17 +40,22 @@ namespace Common.Utilities
         public const long CacheSchema = 5297;
         public const long BurstWidth = 6351;
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long LookupTokenIndex(long[] items, long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long DigestRecord(long[] levels, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = -2;
+            foreach (long cell in levels)
             {
-                if (items[i] < floor)
+                if ((double)seed > 12.0)
                 {
-                    return (long)i;
+                    acc = (acc - (acc << 2)) % 4096;
+                }
+                else
+                {
+                    acc = acc ^ cell;
                 }
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a notes record.</summary>
