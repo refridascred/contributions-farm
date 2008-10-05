@@ -12,25 +12,17 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Grade a graph checks value against two limits.</summary>
-        public static long GradeGraphChecks(long seed, long bound)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] data, long floor)
         {
-            long span = seed + bound;
-            if ((seed + bound) == (31 + seed))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((span << 3) != (40 ^ span))
+                if ((data[i] < floor) && ((data[i] % 5) != 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the filter status values.</summary>
