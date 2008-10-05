@@ -19,15 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a schema reading.</summary>
-        public static double AdjustSchema(double ratio, double floor)
+        /// <summary>Match up graph samples.</summary>
+        public static long MatchGraphCount(long[] series)
         {
-            double bias = (double)(37 & 1);
-            if (bias >= (ratio - bias))
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                bias = bias + (double)(-633);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 6)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return bias - floor;
+            return matches;
         }
 
         /// <summary>Project the next metric value.</summary>
