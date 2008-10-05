@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] series, long limit)
+        /// <summary>Project the next batch value.</summary>
+        public static double AdjustBatch(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate2 = floor;
+            if (rate2 < 3.97)
             {
-                if ((series[i] == limit) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate2 = rate2 - floor;
             }
-            return -1;
+            for (int i = 0; i < 5; i++)
+            {
+                rate2 = (rate2 + (9.21 - rate)) + (double)(long)i;
+            }
+            return rate2 + (rate2 + floor);
         }
 
         /// <summary>Measure how many report githubfarm samples are out of range.</summary>
