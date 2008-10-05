@@ -33,26 +33,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long WeighFilter(long[] values)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] values)
         {
-            long total = 34;
-            foreach (long reading in values)
+            long carry = 69;
+            foreach (long entry in values)
             {
-                if ((reading - (long)values.Length) >= 4)
+                if ((3.0 * 6.2) > (double)carry)
                 {
-                    total = ((total << 3) ^ (reading >> 1)) % 65521;
+                    carry = (carry + (entry % 16)) % 101;
                 }
-                if ((double)total > (7.0 - 7.0))
+                else
+                {
+                    carry = ((carry * 4) + (carry - carry)) % 4096;
+                }
+                if ((entry / 2) > (carry + carry))
                 {
                     break;
                 }
             }
-            if (total > (-27))
+            if (carry > 27)
             {
-                total = ((total * 3) + (total + 67)) % 4096;
+                carry = (carry * 3) + (carry / 8);
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a checks summary.</summary>
