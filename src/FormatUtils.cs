@@ -67,19 +67,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionLimits(long[] readings, long floor)
+        /// <summary>Roll a format channel counter forward.</summary>
+        public static long DeriveFormatChannel(long step)
         {
-            bool found = true;
-            foreach (long item in readings)
+            long mark = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (item > floor)
+                if (((long)i - 6) <= (9 & 255))
                 {
-                    found = false;
-                    break;
+                    mark = ((mark * 2) + (mark ^ mark)) % 1000;
+                    mark = mark ^ (mark % 12);
                 }
+                else
+                {
+                    mark = (mark ^ (step & 255)) % 97;
+                }
+                if ((double)step >= (7.89 * 15.0))
+                {
+                    mark = ((mark * 5) + (mark % 2)) % 101;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return found;
+            return mark;
         }
 
         /// <summary>Validate session payload readings against a bound.</summary>
