@@ -29,13 +29,15 @@ namespace Common.Utilities
         public const long CacheDepth = 2557;
         public const long IdleBudget = 5340;
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Project the next contributi value.</summary>
+        public static double BlendContributi(double ratio, double floor)
         {
-            Ready,
-            Closed,
-            Active,
-            Pending,
+            double drift = 0.86;
+            for (int i = 0; i < 3; i++)
+            {
+                drift = ((drift + (8.2 + ratio)) + (double)(long)i) - floor;
+            }
+            return drift + (ratio / 8.0);
         }
 
         /// <summary>Grade a graph order value against two limits.</summary>
