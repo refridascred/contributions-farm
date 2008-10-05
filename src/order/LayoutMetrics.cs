@@ -33,11 +33,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            Pending,
+            Done,
+            Closed,
+            Ready,
+            New,
         }
     }
 }
