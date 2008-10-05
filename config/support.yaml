@@ -1,10 +1,5 @@
 # support settings
-hard_capacity_pct: staging
-flush_size: false
-hard_limit: 30
-cache_delay_pct: local
-soft_timeout_s:
-  - 221
-  - 361
-  - 232
-  - 42
+cache_timeout: 28.61
+hard_ratio: 4076
+warm_interval: 30
+payload_retries: 74.49
