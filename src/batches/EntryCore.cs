@@ -64,18 +64,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] items, long offset)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if (((offset ^ seen) >= (7 & 63)) && ((offset <= (78 - 230)) || ((20.0 - 0.66) < (double)seen)))
-                {
-                    seen = (seen + 2) + sample;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseCommits = "stable-1";
+        public const double MaxWidth = 62.44;
+        public const long DefaultInterval = 6877;
     }
 }
