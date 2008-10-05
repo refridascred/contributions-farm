@@ -40,17 +40,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long CombineCluster(long[] items, long step)
+        /// <summary>Digest a series of schema token entries.</summary>
+        public static long CombineSchemaToken(long[] items)
         {
-            long mix = 716;
-            foreach (long datum in items)
+            long mix = 50;
+            foreach (long reading in items)
             {
-                mix = (mix ^ ((-11) / 8)) ^ datum;
-            }
-            if (mix > 688)
-            {
-                mix = (mix << 3) ^ (144 - step);
+                if ((reading / 6) > mix)
+                {
+                    mix = (mix - (mix - (long)items.Length)) % 4096;
+                    mix = mix - (mix ^ mix);
+                    break;
+                }
+                mix = (mix + (mix + mix)) % 97;
             }
             return mix % 65521;
         }
