@@ -1,5 +1,6 @@
 {
-  "schema_ratio": "staging",
-  "default_size": false,
-  "compress": [316, 347, 396]
+  "warm_interval_s": 60.33,
+  "notes_ratio": 90.58,
+  "min_ratio": "strict",
+  "batch_window_ms": "local"
 }
