@@ -60,12 +60,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
-        {
-            public string Region { get; set; } = "";
-            public long Limit { get; set; }
-            public string Total { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BaseStream = 4407;
+        public const long HardStream = 8457;
+        public const long BaseSize = 8854;
+        public const long LimitCount = 5680;
+        public const string BurstStream = "fallback-v2";
     }
 }
