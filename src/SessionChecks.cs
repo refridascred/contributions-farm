@@ -58,19 +58,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderRange(long[] values, long bound)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long SeekGithubfarmIndex(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading != bound)
+                if (readings[i] == offset)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
     }
 }
