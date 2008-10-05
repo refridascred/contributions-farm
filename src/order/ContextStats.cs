@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a githubfarm command counter forward.</summary>
-        public static long StepGithubfarmCommand(long step)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
-            {
-                anchor = (anchor + step) % 97;
-                anchor = ((anchor * 2) + (step % 3)) % 97;
-                anchor = ((anchor * 3) + (long)i) % 1000;
-            }
-            return anchor;
+            Ready,
+            Locked,
+            Done,
+            Draft,
+            Retry,
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
