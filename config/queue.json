@@ -1,7 +1,8 @@
 {
-  "retry_ttl": [454, 259],
-  "default_threshold_s": ["stable", "cached", "fallback", "blue"],
-  "max_window": false,
-  "audit": "primary",
-  "account_capacity": ["green", "local", "latest", "blue"]
+  "sync_capacity_s": 32.65,
+  "readonly": "edge",
+  "retry_capacity_pct": 75.68,
+  "soft_capacity_count": false,
+  "verbose": [331, 471, 194],
+  "soft_depth": true
 }
