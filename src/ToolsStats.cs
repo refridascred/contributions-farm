@@ -38,17 +38,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] readings, long bound)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double SmoothAlready(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double scale = weight - floor;
+            return scale + floor;
         }
 
         /// <summary>Hold a entry summary.</summary>
