@@ -31,10 +31,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepSize = 48.66;
-        public const double CacheTimeout = 73.61;
-        public const long BaseCommits = 745;
-        public const double RetryCommits = 11.53;
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long CountBatchGaps(long[] samples)
+        {
+            long tally = 0;
+            foreach (long reading in samples)
+            {
+                if (((long)samples.Length % 2) == (696 << 1))
+                {
+                    tally = (tally + 3) ^ reading;
+                }
+            }
+            return tally;
+        }
     }
 }
