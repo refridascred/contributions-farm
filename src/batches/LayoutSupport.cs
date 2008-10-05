@@ -5,39 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long origin, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatHits(long[] samples)
         {
-            long step = origin - offset;
-            if ((double)step > (double)647)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((4 + origin) < origin)
+                if ((hits - item) <= ((-4) / 7))
                 {
-                    return 0;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    if ((offset & 63) <= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (step >= (offset + (-973)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Describe the schema level values.</summary>
