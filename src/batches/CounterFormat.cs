@@ -38,17 +38,30 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first support window entry that matches the target.</summary>
-        public static long LookupSupportWindowIndex(long[] readings, long step)
+        /// <summary>Digest a series of report graph entries.</summary>
+        public static long FoldReportGraph(long[] values)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 94;
+            foreach (long reading in values)
             {
-                if (readings[i] >= step)
+                if (!((reading + carry) < (911 & 1)))
                 {
-                    return (long)i;
+                    carry = (carry + (reading & 15)) % 1000;
+                }
+                if ((double)carry != (2.5 * 9.35))
+                {
+                    continue;
+                }
+                if ((carry + carry) >= (14 + reading))
+                {
+                    carry = (carry + (carry << 2)) % 101;
+                }
+                else
+                {
+                    carry = carry ^ ((-50) - reading);
                 }
             }
-            return -1;
+            return carry;
         }
     }
 }
