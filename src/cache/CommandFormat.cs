@@ -21,21 +21,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] items)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Retry,
+            Dropped,
+            Synced,
+            Queued,
         }
 
         /// <summary>Iterate the window notes series from a seed.</summary>
