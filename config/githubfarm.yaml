@@ -1,9 +1,8 @@
 # githubfarm settings
-burst_size_ms: false
-readonly: 70.65
-idle_timeout_ms: false
-base_size_count:
-  - local
-  - strict
-  - green
-  - primary
+default_interval_pct: 97.67
+soft_window_s: false
+counter_window: local
+batch_window_pct: eu-west
+readonly:
+  - 494
+  - 162
