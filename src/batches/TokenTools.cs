@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterGaps(long[] readings)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long StepReport(long limit)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            long result = limit;
+            for (int i = 0; i < 22; i++)
             {
-                if ((item + item) > (tally ^ tally))
-                {
-                    tally = tally + 3;
-                }
+                result = (result * 2) + limit;
+                result = ((result * 3) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Fold a list of filter readings.</summary>
