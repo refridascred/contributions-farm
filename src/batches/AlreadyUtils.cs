@@ -67,19 +67,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] values, long offset)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long RankTools(long origin, long seed)
         {
-            bool flag = true;
-            foreach (long value in values)
+            if (!((1 ^ seed) >= origin))
             {
-                if (value > offset)
+                return 5;
+            }
+            else
+            {
+                if ((2 / 6) >= origin)
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((seed >> 4) >= (2 + seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((origin & 15) > seed) && ((double)seed < (5.2 / 8.0)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return flag;
         }
     }
 }
