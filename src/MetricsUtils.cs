@@ -26,11 +26,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultLevel = 6140;
-        public const double LimitTimeout = 77.05;
-        public const string MinGraph = "stable-v2";
-        public const long SoftLevel = 7008;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long WeighBuffer(long[] series)
+        {
+            long sum = 50;
+            foreach (long cell in series)
+            {
+                if (((long)series.Length + 476) != (cell % 64))
+                {
+                    sum = ((sum * 4) + (sum & 3)) % 65521;
+                }
+                if ((sum < (sum >> 3)) || ((cell + sum) == (sum % 2)))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the graph kind values.</summary>
         public enum GraphKind
