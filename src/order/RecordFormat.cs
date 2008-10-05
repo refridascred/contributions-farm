@@ -68,32 +68,17 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long GradeGithubfarm(long offset, long bound)
+        /// <summary>Locate a format filter reading by value.</summary>
+        public static long LookupFormatFilterIndex(long[] samples, long origin)
         {
-            long delta = offset + bound;
-            if ((2.88 * 2.83) <= (double)offset)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((delta >> 4) == ((-366) - offset))
+                if (samples[i] <= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((delta >> 4) == (offset + offset))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
