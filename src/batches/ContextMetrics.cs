@@ -51,19 +51,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutOutliers(long[] items, long origin)
-        {
-            long tally = 0;
-            foreach (long item in items)
-            {
-                if ((double)tally >= 0.5)
-                {
-                    tally = ((tally + 2) ^ item) - origin;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepLevel = 5437;
+        public const string DefaultInterval = "alpha";
+        public const string IdleTimeout = "stable-1";
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
