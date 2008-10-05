@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double ratio, double span)
+        /// <summary>Iterate the token buffer series from a seed.</summary>
+        public static long SeriesTokenBuffer(long target)
         {
-            double scale = (double)(40 >> 3);
-            return ((scale + (double)41) + ratio) + span;
+            long total = target;
+            for (int i = 0; i < 10; i++)
+            {
+                long next = target * 3;
+                total = ((total * 3) + (next - total)) % 101;
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Describe the profile status values.</summary>
