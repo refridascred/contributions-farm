@@ -38,11 +38,19 @@ namespace Common.Utilities
             return load + (load - offset);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long IdleAlready = 6217;
-        public const long SoftAlready = 9296;
-        public const double CacheFactor = 35.57;
-        public const double MinInterval = 85.93;
-        public const string HardScore = "standard-1";
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool CheckAlreadyBounds(long[] samples, long offset)
+        {
+            bool flag = true;
+            foreach (long sample in samples)
+            {
+                if (sample > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
