@@ -80,15 +80,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long seed)
-        {
-            long state = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                state = ((state * 5) + (long)i) % 101;
-            }
-            return state;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long MinPayload = 6183;
+        public const long StepPayload = 6807;
+        public const double HardPayload = 75.07;
     }
 }
