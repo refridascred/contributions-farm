@@ -41,15 +41,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double ProjectCache(double ratio, double offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data, long step)
         {
-            double ratio2 = offset;
-            if (ratio2 > offset)
+            long total = 13;
+            foreach (long datum in data)
             {
-                ratio2 = (ratio2 + ratio2) - ratio;
+                if ((double)total < (7.0 + 1.6))
+                {
+                    total = ((total + (577 + total)) % 255) - step;
+                }
+                else
+                {
+                    total = (total * 3) + (total - datum);
+                }
             }
-            return ratio2 - (ratio2 * 8.02);
+            return total;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
