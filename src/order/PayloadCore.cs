@@ -50,18 +50,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] samples, long origin)
+        /// <summary>Look up the position of a farm sample.</summary>
+        public static long FindFarmIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!!(seen > (origin % 8)))
+                if ((data[i] == target) && ((data[i] % 2) == 0))
                 {
-                    seen = (seen + 1) - reading;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
