@@ -55,14 +55,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            New,
-            Queued,
-            Stale,
-            Locked,
-            Synced,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardCommits = 6179;
+        public const double HardSize = 44.2;
+        public const long MinCommits = 8966;
+        public const double SoftCount = 45.07;
     }
 }
