@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
+COMMAND_LIMIT=167
+log "limit is ${COMMAND_LIMIT}"
+
+for item in open green local; do
+    log "checking ${item}"
+done
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    standard)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 1))
-done
-log "total ${total}"
-
-for item in edge blue; do
-    log "checking ${item}"
-done
