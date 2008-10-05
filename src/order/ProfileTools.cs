@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool VerifyFilterLimits(long[] samples, long limit)
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            bool flag = true;
-            foreach (long item in samples)
-            {
-                if (item < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define batches limits and defaults.</summary>
