@@ -1,6 +1,7 @@
 {
-  "warm_interval_s": 60.33,
-  "notes_ratio": 90.58,
-  "min_ratio": "strict",
-  "batch_window_ms": "local"
+  "verbose": "cached",
+  "stats_window": 60,
+  "editor_ttl": 1024,
+  "base_retries_pct": ["eu-west", "eu-west", "primary"],
+  "batch_timeout": "edge"
 }
