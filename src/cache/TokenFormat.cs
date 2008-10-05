@@ -43,32 +43,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long BucketRecord(long step, long target)
-        {
-            long prev = step - target;
-            if ((prev / 2) > (target + prev))
-            {
-                return 6;
-            }
-            else
-            {
-                if (prev >= (step + prev))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((step * 5) == ((-53) % 100))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 8251;
+        public const long MinTimeout = 3951;
+        public const string DefaultStream = "staging-1";
+        public const double HardScore = 57.44;
+        public const long BatchFactor = 8181;
     }
 }
