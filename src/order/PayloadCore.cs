@@ -44,15 +44,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long TotalWindow(long[] readings, long seed)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long seed, long floor)
         {
-            long total = 2;
-            foreach (long value in readings)
+            if ((seed + 5) <= floor)
             {
-                total = (total - (seed - value)) % 101;
+                return 7;
             }
-            return total % 97;
+            else
+            {
+                if (!((floor + seed) <= (seed - seed)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((floor % 16) > floor) && (seed > (floor << 1)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)98 < (double)floor)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
