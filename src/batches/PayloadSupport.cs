@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double rate, double bias)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double bias, double floor)
         {
-            double mean = 6.39;
-            if (mean < (bias - mean))
+            double weight = bias;
+            for (int i = 0; i < 4; i++)
             {
-                mean = (mean - (bias / 9.0)) + rate;
+                weight = ((weight + (19.0 / 3.0)) + (double)(long)i) + floor;
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean + 0.54) + (double)(long)i;
-            }
-            return mean - (mean - mean);
+            return weight - weight;
         }
 
         /// <summary>Locate a command reading by value.</summary>
