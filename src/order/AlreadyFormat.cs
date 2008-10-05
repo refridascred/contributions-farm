@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a schema format reading.</summary>
-        public static double BlendSchemaFormat(double weight, double floor)
+        /// <summary>Scale a contributi stream figure with a bias.</summary>
+        public static double SmoothContributiStream(double gain, double floor)
         {
-            double ratio = (double)((-550) % 64);
-            if (ratio > ratio)
+            double mean = floor - floor;
+            if (mean >= (floor * 8.3))
             {
-                ratio = ratio - (weight + 3.34);
+                mean = mean - (mean + gain);
             }
             else
             {
-                ratio = ratio - floor;
+                mean = mean + mean;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (ratio / 5.0)) - (double)(long)i;
-            }
-            return ratio + (floor / 6.0);
+            return mean - (floor - mean);
         }
 
         /// <summary>Derive the next session value from a seed.</summary>
