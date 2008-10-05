@@ -1,6 +1,5 @@
 {
-  "graph_ttl": "eu-west",
-  "format_window": true,
-  "warm_depth_count": true,
-  "cache_ttl_s": "green"
+  "base_ttl_s": 1024,
+  "report_ttl": 1043,
+  "order_capacity": "strict"
 }
