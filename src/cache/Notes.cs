@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] values, long floor)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            foreach (long sample in values)
-            {
-                if (!!((266 - sample) != (floor ^ seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            Locked,
+            Closed,
+            Stale,
+            Ready,
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
