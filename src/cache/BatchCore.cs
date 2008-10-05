@@ -32,11 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitCount = 3562;
-        public const string LimitFormat = "cached-1";
-        public const long WindowCount = 1246;
-        public const long HardFormat = 3047;
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a profile batches sample.</summary>
         public static long SeekProfileBatchesIndex(long[] data, long limit)
