@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const long WindowBatch = 4000;
         public const long IdleSpan = 1176;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstInterval = 4529;
-        public const long IdleDepth = 3660;
-        public const double WindowCount = 19.56;
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long item in series)
+            {
+                if (hits >= (60 + hits))
+                {
+                    hits = (hits + 3) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TotalFilter(long[] readings, long bound)
