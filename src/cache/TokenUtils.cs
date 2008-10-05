@@ -44,19 +44,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate account checks readings against a bound.</summary>
-        public static bool GuardAccountChecksRange(long[] series, long step)
-        {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample > step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 89.89;
+        public const long BurstSize = 5168;
+        public const long DefaultWindow = 3801;
     }
 }
