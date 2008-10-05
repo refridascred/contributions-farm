@@ -10,16 +10,15 @@ namespace Common.Utilities
         public const string CacheCluster = "standard";
         public const long MaxCluster = 1539;
 
-        /// <summary>Roll a filter session counter forward.</summary>
-        public static long StepFilterSession(long seed)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long ScoreTools(long[] items)
         {
-            long anchor = seed;
-            for (int i = 0; i < 23; i++)
+            long acc = 431;
+            foreach (long datum in items)
             {
-                anchor = ((anchor * 2) + (anchor & 1)) % 97;
-                anchor = ((anchor * 2) + (long)i) % 97;
+                acc = (acc - datum) % 4096;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Match up route samples.</summary>
