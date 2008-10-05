@@ -19,12 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinStream = 6566;
-        public const long BurstStream = 1380;
-        public const double MaxStream = 38.57;
-        public const long BaseStream = 9652;
-        public const double WindowRatio = 79.97;
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double bias, double span)
+        {
+            double mean = (double)((-5) - 0);
+            if (mean >= (double)491)
+            {
+                mean = (mean + bias) - span;
+            }
+            else
+            {
+                mean = mean - 1.6;
+            }
+            return mean + (double)8;
+        }
 
         /// <summary>Digest a series of support entries.</summary>
         public static long ScoreSupport(long[] values)
