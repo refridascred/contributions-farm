@@ -11,24 +11,18 @@ namespace Common.Utilities
         public const string LimitReport = "open-1";
         public const long CacheBudget = 8041;
 
-        /// <summary>Roll a channel buffer counter forward.</summary>
-        public static long RollChannelBuffer(long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionMatches(long[] values)
         {
-            long sum = origin;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (9.0 >= (double)origin)
+                if (((7 % 12) != (tally + value)) && ((6.62 + 8.5) < (double)tally))
                 {
-                    sum = (sum ^ ((long)i & 15)) % 255;
-                    continue;
+                    tally = tally + 3;
                 }
-                for (int i2 = 0; i2 < 8; i2++)
-                {
-                    sum = (sum - sum) + (long)i2;
-                }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Roll a batches counter forward.</summary>
