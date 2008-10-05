@@ -26,14 +26,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long target, long floor)
         {
-            Closed,
-            Dropped,
-            Stale,
-            Done,
-            Locked,
+            long prev = target ^ floor;
+            if ((target / 2) >= prev)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((prev >= (floor - floor)) || (prev < (floor - target)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
