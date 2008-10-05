@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate contributi report samples.</summary>
-        public static long CombineContributiReport(long[] series, long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long FindTokenIndex(long[] samples, long limit)
         {
-            long anchor = 921;
-            foreach (long item in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor - step) % 97) - item;
-                anchor = ((anchor * 4) + 89) % 4096;
+                if (samples[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Accumulate route samples.</summary>
