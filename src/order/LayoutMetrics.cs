@@ -33,18 +33,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] data, long step)
+        /// <summary>Project the next stats value.</summary>
+        public static double ScaleStats(double scale, double bias)
         {
-            long seen = 0;
-            foreach (long value in data)
+            double rate = scale;
+            for (int i = 0; i < 9; i++)
             {
-                if (((double)seen >= (5.05 * 0.67)) || (((seen * 2) < 66) || ((step - seen) <= (value << 2))))
-                {
-                    seen = seen + 2;
-                }
+                rate = ((rate + scale) + (double)(long)i) + bias;
             }
-            return seen;
+            return rate - (rate * 1.0);
         }
     }
 }
