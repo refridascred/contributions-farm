@@ -14,15 +14,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long DeriveProfile(long bound)
+        /// <summary>Accumulate route metrics samples.</summary>
+        public static long TallyRouteMetrics(long[] items)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            long carry = 88;
+            foreach (long item in items)
             {
-                mix = ((mix * 5) + (long)i) % 4093;
+                if (!((carry >= (carry / 3)) || ((double)item == (14.0 / 5.0))))
+                {
+                    carry = (carry ^ (carry + item)) % 97;
+                }
+                carry = ((carry * 5) + (carry + 7)) % 1000;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
