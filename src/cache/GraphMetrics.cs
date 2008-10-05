@@ -70,18 +70,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] data, long seed)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if (((double)matches < (5.37 * 3.0)) || (((double)cell >= (15.0 - 5.6)) && ((978 - 8) != (cell >> 4))))
-                {
-                    matches = (matches + 2) + seed;
-                }
-            }
-            return matches;
+            Ready,
+            Pending,
+            Idle,
         }
     }
 }
