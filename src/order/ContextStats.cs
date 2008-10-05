@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long MinScore = 4502;
         public const long StepRatio = 4791;
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] series, long origin)
-        {
-            bool valid = true;
-            foreach (long cell in series)
-            {
-                if (cell != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseTimeout = 4986;
+        public const long BatchScore = 6400;
+        public const long WindowMetric = 9888;
+        public const double IdleInterval = 38.61;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long ClassifyFormat(long origin, long offset)
