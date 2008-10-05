@@ -15,10 +15,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCount = 3850;
-        public const long DefaultTimeout = 2633;
-        public const string MaxSpan = "latest-v2";
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double ratio, double offset)
+        {
+            double gain = (offset - offset) * 5.95;
+            if (gain < gain)
+            {
+                gain = (gain - gain) - ratio;
+            }
+            return gain + 1.7;
+        }
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BurstTimeout = 186;
