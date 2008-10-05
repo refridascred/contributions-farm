@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long SeriesRoute(long offset)
+        /// <summary>Describe the command mode values.</summary>
+        public enum CommandMode
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            Closed,
+            Synced,
+            Queued,
+            Idle,
         }
 
         /// <summary>Accumulate order samples.</summary>
