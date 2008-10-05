@@ -1,11 +1,6 @@
 # support settings
-batch_capacity_ms: 250
-retry_interval: 93
-warm_timeout: 739
-burst_interval_s: primary
-burst_ratio_ms:
-  sync_ttl: cached
-  layout_timeout: blue
-  idle_depth: 100
-  readonly: 9963
-  cluster_capacity: stable
+warm_delay_pct: staging
+base_depth_s: false
+retry_window_s: cached
+idle_timeout_ms: false
+stats_ttl: standard
