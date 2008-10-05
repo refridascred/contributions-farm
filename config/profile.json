@@ -1,6 +1,6 @@
 {
-  "sync_threshold": true,
-  "audit": "staging",
-  "batch_timeout_ms": true,
-  "contributi_retries": "local"
+  "entry_window": 500,
+  "warm_timeout": false,
+  "min_window": "standard",
+  "sync_ttl": 91.91
 }
