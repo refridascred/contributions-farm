@@ -39,19 +39,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutRange(long[] items, long origin)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Level { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
