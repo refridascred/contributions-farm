@@ -62,12 +62,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            New,
-            Synced,
-            Paused,
+            public string Token { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Owner { get; set; } = "";
         }
     }
 }
