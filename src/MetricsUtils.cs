@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Match up context samples.</summary>
-        public static long OverlapContextCount(long[] levels)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long LocateBatchIndex(long[] samples, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
                 {
-                    if ((levels[i] + levels[j]) != 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
