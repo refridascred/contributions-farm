@@ -71,18 +71,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the layout entry entries that pass the check.</summary>
-        public static long MeasureLayoutEntryHits(long[] levels)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] items)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long anchor = 432;
+            foreach (long entry in items)
             {
-                if (((7.5 + 5.08) < (double)item) || (((item & 31) > (4 >> 3)) && ((item >> 2) > (seen & 3))))
+                if (!(entry > (entry >> 4)))
                 {
-                    seen = seen + 3;
+                    anchor = (anchor - (entry - anchor)) % 4096;
                 }
             }
-            return seen;
+            return anchor;
         }
     }
 }
