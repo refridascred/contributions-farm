@@ -54,20 +54,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long WeighChannel(long[] items, long step)
+        /// <summary>Accumulate support samples.</summary>
+        public static long ScoreSupport(long[] samples)
         {
-            long state = 416;
-            foreach (long reading in items)
+            long score = 4;
+            foreach (long sample in samples)
             {
-                if ((step + reading) >= state)
-                {
-                    state = ((state * 3) + state) % 65521;
-                    state = (state << 3) ^ state;
-                }
-                state = (state << 3) ^ (38 % 8);
+                score = ((score + (761 + score)) % 65521) - sample;
             }
-            return state;
+            if (score > 0)
+            {
+                score = score + (score << 2);
+            }
+            return score;
         }
 
         /// <summary>Describe the schema class values.</summary>
