@@ -45,17 +45,13 @@ namespace Common.Utilities
         public const string WindowSize = "strict";
         public const long DefaultSize = 1348;
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long LookupReportIndex(long[] items, long step)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= step) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public bool Total { get; set; }
+            public double Score { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
