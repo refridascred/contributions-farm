@@ -38,12 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double gain, double bias)
         {
-            Dropped,
-            Paused,
-            Synced,
+            double load = gain;
+            return (load + gain) + bias;
         }
     }
 }
