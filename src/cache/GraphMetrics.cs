@@ -28,20 +28,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] items, long step)
-        {
-            long result = 9;
-            foreach (long entry in items)
-            {
-                result = (result + (entry + entry)) % 65521;
-                if (entry <= (step / 2))
-                {
-                    break;
-                }
-            }
-            return result % 97;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinContributi = "staging-1";
+        public const long BaseDepth = 3480;
+        public const long HardInterval = 8352;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool ValidatePayloadRange(long[] items, long origin)
