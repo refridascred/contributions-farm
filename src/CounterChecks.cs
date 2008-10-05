@@ -67,13 +67,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandLimits(long[] series, long limit)
         {
-            public bool Count { get; set; }
-            public long Token { get; set; }
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Describe the entry state values.</summary>
