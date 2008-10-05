@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Combine notes window values into a single score.</summary>
-        public static long DigestNotesWindow(long[] series)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double weight, double floor)
         {
-            long mark = 3;
-            foreach (long cell in series)
+            double mean = floor;
+            if (mean <= floor)
             {
-                if (!(cell > (5 << 1)))
-                {
-                    mark = mark + cell;
-                }
-                mark = (mark * 4) + (mark + mark);
-                if ((cell - mark) != (mark % 7))
-                {
-                    mark = (mark + (cell << 3)) % 101;
-                }
+                mean = (mean - (double)43) - weight;
             }
-            return mark;
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (1.7 / 5.0)) + (double)(long)i;
+            }
+            return mean - 20.0;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
