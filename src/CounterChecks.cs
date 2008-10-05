@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterMatches(long[] series, long offset)
-        {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((double)hits >= (14.0 + 17.0))
-                {
-                    hits = ((hits + 2) + value) + offset;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepScore = 5668;
+        public const string BurstReport = "local-edge";
+        public const string IdleSpan = "stable-1";
+        public const string CacheScore = "primary-edge";
 
         /// <summary>Accumulate graph filter samples.</summary>
         public static long WeighGraphFilter(long[] levels)
