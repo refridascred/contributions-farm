@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            public bool Size { get; set; }
-            public double Count { get; set; }
-            public double Offset { get; set; }
-            public bool Rank { get; set; }
+            long state = 619;
+            foreach (long value in samples)
+            {
+                if ((double)state > (2.49 / 2.0))
+                {
+                    state = (state + (state * 3)) % 65521;
+                }
+                else
+                {
+                    state = state + (60 % 3);
+                }
+                if (value < (state * 3))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
