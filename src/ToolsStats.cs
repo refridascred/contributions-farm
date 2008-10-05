@@ -50,13 +50,14 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            public bool Mode { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public double Size { get; set; }
+            Stale,
+            Failed,
+            Ready,
+            Closed,
+            Locked,
         }
     }
 }
