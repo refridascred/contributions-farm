@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionGaps(long[] readings)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long bound, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            if (!(11 < (0 + offset)))
             {
-                if ((760 + entry) < (count + count))
+                return 3;
+            }
+            else
+            {
+                if (!((offset >> 3) >= offset))
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    if ((offset % 60) < (482 << 1))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Blend two stream notes measurements.</summary>
