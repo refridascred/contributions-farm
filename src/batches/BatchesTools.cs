@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsMatches(long[] series)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((double)seen != (5.3 + 9.66))
-                {
-                    seen = (seen + 2) + value;
-                }
-            }
-            return seen;
+            Ready,
+            Dropped,
+            Paused,
+            Failed,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
