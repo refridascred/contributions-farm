@@ -33,13 +33,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
-        {
-            Synced,
-            Ready,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BaseWidth = 8227;
+        public const string DefaultCommand = "stable-v2";
+        public const string MinRatio = "legacy";
     }
 }
