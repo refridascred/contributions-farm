@@ -54,13 +54,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long DeriveBatch(long offset)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            long mix = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                mix = (mix ^ (long)i) % 4096;
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
