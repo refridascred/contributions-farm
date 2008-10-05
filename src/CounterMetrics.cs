@@ -11,23 +11,10 @@ namespace Common.Utilities
         public const long WindowBatch = 4000;
         public const long IdleSpan = 1176;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long TallyBufferOutliers(long[] values, long offset)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((offset ^ count) == (long)values.Length)
-                {
-                    count = (count + 3) - reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BurstInterval = 4529;
+        public const long IdleDepth = 3660;
+        public const double WindowCount = 19.56;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long TotalFilter(long[] readings, long bound)
