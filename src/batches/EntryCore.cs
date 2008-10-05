@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many stats metric samples are out of range.</summary>
-        public static long MeasureStatsMetricHits(long[] series, long target)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((9.7 * 4.47) <= (8.0 / 6.0))
-                {
-                    hits = ((hits + 3) - entry) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            New,
+            Failed,
+            Idle,
+            Done,
         }
 
         /// <summary>Describe the batch kind values.</summary>
