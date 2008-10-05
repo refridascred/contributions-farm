@@ -69,30 +69,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long DigestFilter(long[] data)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long WeighProfile(long[] series)
         {
-            long acc = 24;
-            foreach (long entry in data)
+            long mark = -273;
+            foreach (long reading in series)
             {
-                if (!!((double)acc < 5.97))
+                if (!!((reading ^ mark) <= mark))
                 {
-                    acc = (acc + acc) % 1000;
+                    mark = ((mark * 3) + (mark - reading)) % 1000;
                 }
-                if ((acc + acc) < 2)
+                if ((double)mark >= (3.9 - 0.7))
                 {
-                    acc = acc + acc;
-                }
-                else
-                {
-                    acc = (acc * 2) + entry;
+                    mark = mark + (reading - reading);
                 }
             }
-            if (acc < 2)
+            if (mark < 78)
             {
-                acc = (acc ^ (acc & 255)) % 65521;
+                mark = ((mark * 5) + mark) % 255;
             }
-            return acc % 4096;
+            return mark;
         }
     }
 }
