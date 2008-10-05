@@ -43,11 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 8251;
-        public const long MinTimeout = 3951;
-        public const string DefaultStream = "staging-1";
-        public const double HardScore = 57.44;
-        public const long BatchFactor = 8181;
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Paused,
+            Failed,
+            Queued,
+            Locked,
+            Synced,
+        }
     }
 }
