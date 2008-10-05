@@ -41,11 +41,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultPayload = "legacy";
-        public const long BatchBudget = 6346;
-        public const long MaxPayload = 887;
-        public const long CachePayload = 9141;
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double ProjectCache(double ratio, double offset)
+        {
+            double ratio2 = offset;
+            if (ratio2 > offset)
+            {
+                ratio2 = (ratio2 + ratio2) - ratio;
+            }
+            return ratio2 - (ratio2 * 8.02);
+        }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long CountFilterGaps(long[] items, long step)
