@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] samples)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double ProjectSchema(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = (double)145 + (offset * 19.0);
+            if (scale >= (double)1)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                scale = (scale - offset) - rate;
             }
-            return tally;
+            else
+            {
+                scale = scale + (scale - 17.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                scale = (scale - offset) + (double)(long)i;
+            }
+            return scale + offset;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
