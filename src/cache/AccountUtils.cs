@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 9044;
-        public const long IdleCount = 4629;
-        public const string LimitBudget = "latest-1";
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long TallyFilterOutliers(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (!(((long)samples.Length - sample) > (floor & 1)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LookupWindowIndex(long[] samples, long bound)
