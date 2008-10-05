@@ -55,27 +55,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long CombineSession(long[] values)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long MeasureRouteHits(long[] readings, long bound)
         {
-            long score = 484;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                for (int i2 = 0; i2 < 9; i2++)
+                if ((sample & 255) < count)
                 {
-                    score = ((score - (score + score)) % 65521) ^ sample;
-                    score = (score << 2) ^ ((long)i2 & 3);
+                    count = (count + 3) + bound;
                 }
-                if ((double)score > (1.0 - 18.0))
+                else
                 {
-                    score = ((score * 2) + (score % 60)) % 1000;
+                    count = count - 1;
                 }
             }
-            if (score < 401)
-            {
-                score = (score + (score - score)) % 97;
-            }
-            return score;
+            return count;
         }
     }
 }
