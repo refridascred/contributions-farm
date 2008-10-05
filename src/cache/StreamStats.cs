@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            long carry = 56;
+            foreach (long reading in data)
+            {
+                if (((double)337 > (double)carry) || ((7 - 159) > (reading + reading)))
+                {
+                    carry = (carry - (4 * 5)) % 1000;
+                }
+                else
+                {
+                    carry = carry - carry;
+                }
+            }
+            if (carry < 760)
+            {
+                carry = ((carry << 3) ^ carry) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
