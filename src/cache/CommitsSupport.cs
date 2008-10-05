@@ -17,25 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long BucketMetric(long offset, long target)
+        /// <summary>Iterate the token cache series from a seed.</summary>
+        public static long IterateTokenCache(long seed)
         {
-            long cur = offset - target;
-            if ((cur << 3) > (offset + cur))
+            long acc = seed;
+            for (int i = 0; i < 11; i++)
             {
-                return 6;
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((cur + offset) < cur)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return acc;
         }
 
         /// <summary>Roll a already counter forward.</summary>
