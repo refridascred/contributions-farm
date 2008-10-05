@@ -51,25 +51,11 @@ namespace Common.Utilities
             return rate2 - (rate2 * 7.9);
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long ClassifyStream(long bound, long target)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double gain, double floor)
         {
-            long gap = bound ^ target;
-            if ((79 ^ bound) > target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((gap + target) <= (target & 127))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            double drift = (double)(684 >> 2);
+            return ((drift + drift) + gain) + floor;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
