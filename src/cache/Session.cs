@@ -44,22 +44,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long TallyFarmOutliers(long[] series, long floor)
+        /// <summary>Adjust a tools report reading.</summary>
+        public static double AdjustToolsReport(double bias, double span)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            double mean = (double)(45 ^ 4);
+            if (mean > 2.2)
             {
-                if (seen <= (951 - seen))
-                {
-                    seen = ((seen + 1) - reading) - floor;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mean = mean - (bias * 2.0);
             }
-            return seen;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - span;
         }
     }
 }
