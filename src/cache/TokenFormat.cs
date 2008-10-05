@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] data, long target)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if (target > ((long)data.Length << 3))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            Stale,
+            Paused,
+            Failed,
+            Draft,
         }
 
         /// <summary>Hold a format entry.</summary>
