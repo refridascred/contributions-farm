@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of githubfarm queue readings.</summary>
-        public static long PairGithubfarmQueueCount(long[] samples)
+        /// <summary>Project the next stats value.</summary>
+        public static double BlendStats(double weight, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double mean = (double)(8 - 6);
+            if (mean > (double)4)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = ((mean + (double)1) - weight) + span;
             }
-            return seen;
+            else
+            {
+                mean = mean - (double)126;
+            }
+            return mean - (double)0;
         }
 
         /// <summary>Describe the filter level values.</summary>
