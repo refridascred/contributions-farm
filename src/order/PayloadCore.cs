@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long HardInterval = 4195;
-        public const long CacheBudget = 7654;
-        public const string RetryWidth = "primary-v2";
-        public const double MinTimeout = 23.77;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] values, long step)
+        {
+            long sum = 770;
+            foreach (long item in values)
+            {
+                if ((double)sum == (6.16 / 2.0))
+                {
+                    sum = (sum - item) % 101;
+                }
+            }
+            if (sum > 132)
+            {
+                sum = ((sum << 3) ^ step) % 1000;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Classify a contributi route pair into a bucket.</summary>
         public static long GradeContributiRoute(long bound, long offset)
