@@ -31,22 +31,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] data, long offset)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long RankCache(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            if ((93 & 127) >= (seed + offset))
             {
-                if ((97 << 3) != (tally + tally))
+                return 4;
+            }
+            else
+            {
+                if ((double)seed == (8.8 / 7.0))
                 {
-                    tally = ((tally + 3) + cell) + offset;
+                    return 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 2;
                 }
             }
-            return tally;
         }
     }
 }
