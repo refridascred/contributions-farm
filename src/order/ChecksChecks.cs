@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long MeasureRouteOutliers(long[] series, long seed)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] series)
         {
             long matches = 0;
-            foreach (long reading in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (matches <= (matches + matches))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = ((matches + 3) + reading) - seed;
+                    if ((series[i] - series[j]) > 17)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
