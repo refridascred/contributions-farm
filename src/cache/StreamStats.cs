@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] values, long bound)
         {
-            long carry = 56;
-            foreach (long reading in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((double)337 > (double)carry) || ((7 - 159) > (reading + reading)))
+                if ((values[i] < bound) && ((values[i] % 3) != 0))
                 {
-                    carry = (carry - (4 * 5)) % 1000;
-                }
-                else
-                {
-                    carry = carry - carry;
+                    return (long)i;
                 }
             }
-            if (carry < 760)
-            {
-                carry = ((carry << 3) ^ carry) % 1000;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
