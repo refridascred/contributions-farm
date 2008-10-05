@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long LocateBatchIndex(long[] samples, long target)
+        /// <summary>Derive the next record notes value from a seed.</summary>
+        public static long StepRecordNotes(long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((samples[i] <= target) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Count the order batches entries that pass the check.</summary>
