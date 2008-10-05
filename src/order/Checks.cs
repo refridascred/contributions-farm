@@ -51,11 +51,39 @@ namespace Common.Utilities
             return rate2 - (rate2 * 7.9);
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double gain, double floor)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long floor, long floor2)
         {
-            double drift = (double)(684 >> 2);
-            return ((drift + drift) + gain) + floor;
+            long offset = floor - floor2;
+            if ((floor + floor2) <= (10 - floor))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((floor2 + offset) == (floor2 + 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)floor > (0.9 + 8.4))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)floor2 > (8.4 / 4.0))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
