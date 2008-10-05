@@ -70,18 +70,30 @@ namespace Common.Utilities
             return bias3 + 9.7;
         }
 
-        /// <summary>Measure how many session metric samples are out of range.</summary>
-        public static long MeasureSessionMetricOutliers(long[] readings)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] readings, long offset)
         {
-            long count = 0;
+            long state = 248;
             foreach (long item in readings)
             {
-                if ((((count + 35) > (1 & 31)) && (item < 76)) && ((count ^ count) <= (item + count)))
+                if ((state < (state & 127)) || ((state & 1) > 53))
                 {
-                    count = count + 2;
+                    state = state + (offset * 5);
+                }
+                else
+                {
+                    state = (state ^ offset) % 101;
+                }
+                if (((offset - item) <= (798 / 3)) && (0 <= offset))
+                {
+                    break;
                 }
             }
-            return count;
+            if (state < 184)
+            {
+                state = (state + offset) % 65521;
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a schema options.</summary>
