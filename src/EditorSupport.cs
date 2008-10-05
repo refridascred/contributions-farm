@@ -88,11 +88,11 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double bias, double span)
         {
-            public long Weight { get; set; }
-            public double Mode { get; set; }
+            double bias2 = 9.9;
+            return ((bias2 - bias2) + bias) + span;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
