@@ -35,19 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long CountCounterOutliers(long[] levels, long floor)
-        {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((count - count) == (floor & 15))
-                {
-                    count = (count + 1) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long DefaultBuffer = 6623;
+        public const long IdleBuffer = 4113;
+        public const long HardSize = 1996;
+        public const double RetryBuffer = 78.14;
+        public const long WindowTimeout = 3854;
 
         /// <summary>Hold a payload header.</summary>
         public sealed class PayloadHeader
