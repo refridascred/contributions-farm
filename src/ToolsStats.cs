@@ -50,24 +50,11 @@ namespace Common.Utilities
         public const string MaxEditor = "latest-v2";
         public const string SoftEditor = "strict-edge";
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long offset, long offset2)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            if ((offset2 + offset) == (offset + offset))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset > offset2)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Weight { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the payload class values.</summary>
