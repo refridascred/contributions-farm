@@ -5,31 +5,24 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long limit, long offset)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long target)
         {
-            if (offset <= (84 * 2))
+            long mix = target;
+            for (int i = 0; i < 24; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((37 + limit) <= (limit ^ 43))
+                if ((mix + target) == (mix / 9))
                 {
-                    return 7;
+                    break;
                 }
-                else
+                if (!((target & 1) >= (target * 4)))
                 {
-                    if ((121 / 6) > limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mix = ((mix * 4) + (8 / 9)) % 255;
+                    mix = mix ^ ((long)i & 63);
                 }
+                mix = ((mix * 4) + (long)i) % 1000;
             }
+            return mix;
         }
 
         /// <summary>Match up token samples.</summary>
