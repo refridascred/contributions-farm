@@ -23,18 +23,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the metric entries that pass the check.</summary>
-        public static long MeasureMetricOutliers(long[] levels)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double ratio, double span)
         {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((value - value) >= (value + 1))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            double rate = (double)(4 - 448);
+            return ((rate - rate) + ratio) + span;
         }
 
         /// <summary>Audit channel report readings against a rule.</summary>
