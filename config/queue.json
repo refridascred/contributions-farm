@@ -1,8 +1,5 @@
 {
-  "burst_timeout_count": 96.47,
-  "flush_interval": "edge",
-  "profile_capacity": 30,
-  "persist": 58.77,
-  "report_interval": 32.68,
-  "poll_delay_ms": 79.67
+  "soft_timeout": 32.13,
+  "poll_delay": false,
+  "already_limit": 1947
 }
