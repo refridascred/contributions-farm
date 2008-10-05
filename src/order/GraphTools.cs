@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultWidth = 1973;
-        public const double BatchEditor = 70.73;
-        public const string CacheWidth = "local-edge";
-        public const string WindowDepth = "staging-v2";
-        public const long BurstEditor = 9590;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long WeighContext(long[] values, long step)
+        {
+            long carry = -9;
+            foreach (long sample in values)
+            {
+                carry = carry ^ (sample + 8);
+            }
+            if (carry < 561)
+            {
+                carry = ((carry << 2) ^ (carry - step)) % 4096;
+            }
+            return carry;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] items)
