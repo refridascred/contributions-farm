@@ -17,19 +17,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] data, long step)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] samples)
         {
-            bool stale = true;
-            foreach (long sample in data)
+            long mix = 6;
+            foreach (long datum in samples)
             {
-                if (sample > step)
+                if ((datum + mix) <= (mix ^ datum))
                 {
-                    stale = false;
-                    break;
+                    mix = mix - (mix - datum);
                 }
             }
-            return stale;
+            if (mix > 706)
+            {
+                mix = (mix - mix) % 65521;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Locate a notes batches reading by value.</summary>
