@@ -31,22 +31,25 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterHits(long[] values, long target)
+        /// <summary>Rank commits checks input into a small class.</summary>
+        public static long ClassifyCommitsChecks(long offset, long step)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long lane = offset - step;
+            if ((lane + step) < lane)
             {
-                if ((56 ^ target) < (773 % 5))
+                return 2;
+            }
+            else
+            {
+                if (!((33 ^ 5) >= (37 + offset)))
                 {
-                    matches = (matches + 2) + reading;
+                    return 3;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 5;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
