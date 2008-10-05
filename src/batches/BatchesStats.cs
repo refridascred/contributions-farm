@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a context cache reading.</summary>
-        public static double SmoothContextCache(double scale, double floor)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long ScoreCommits(long[] data, long step)
         {
-            double rate = floor;
-            if (rate <= (8.63 * 9.6))
+            long state = 259;
+            foreach (long item in data)
             {
-                rate = (rate - (double)(-70)) + scale;
+                if ((state >= (4 + step)) && ((step / 8) >= (item >> 4)))
+                {
+                    state = ((state * 4) + state) % 65521;
+                }
+                if ((item << 2) >= (step >> 3))
+                {
+                    break;
+                }
             }
-            return rate + floor;
+            return state % 4096;
         }
 
         /// <summary>Hold a batch info.</summary>
