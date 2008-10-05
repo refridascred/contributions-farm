@@ -12,19 +12,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool ValidateCommandLimits(long[] readings, long floor)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            long result = 993;
+            foreach (long reading in data)
             {
-                if (entry <= floor)
+                if (result > reading)
                 {
-                    flag = false;
-                    break;
+                    result = (result - (reading - reading)) - seed;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (370 ^ 1)) % 101;
                 }
             }
-            return flag;
+            return result % 65521;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
