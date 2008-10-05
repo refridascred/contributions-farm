@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long DeriveFilter(long step)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long anchor = step;
-            for (int i = 0; i < 23; i++)
-            {
-                if ((step * 2) >= (anchor & 31))
-                {
-                    anchor = anchor - 422;
-                }
-                anchor = anchor + (long)i;
-                anchor = ((anchor * 5) + (long)i) % 101;
-            }
-            return anchor;
+            public long Offset { get; set; }
+            public long Size { get; set; }
+            public double Total { get; set; }
+            public bool Score { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
