@@ -5,10 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string DefaultRatio = "cached";
-        public const long HardPayload = 2444;
-        public const string MinPayload = "local";
+        /// <summary>Look up the position of a command profile sample.</summary>
+        public static long LocateCommandProfileIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long ClassifyFilter(long offset, long bound)
