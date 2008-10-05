@@ -69,38 +69,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long ClassifyPayload(long step, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] items)
         {
-            if (13.0 >= (double)offset)
+            long sum = -7;
+            foreach (long sample in items)
             {
-                return 2;
+                sum = sum ^ (sample + (long)items.Length);
             }
-            else
-            {
-                if (9 <= (offset & 3))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.12 + 2.1) < (double)step)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (offset > 55)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
