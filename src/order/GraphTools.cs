@@ -22,13 +22,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadGaps(long[] values)
         {
-            public string Score { get; set; } = "";
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if ((11.0 - 20.0) > (double)entry)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two counter githubfarm measurements.</summary>
