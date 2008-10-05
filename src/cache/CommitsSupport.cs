@@ -50,23 +50,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] samples, long seed)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long state = 2;
-            foreach (long value in samples)
-            {
-                if (!((6.9 * 3.5) <= (double)value))
-                {
-                    state = ((state * 5) + seed) % 1000;
-                }
-                state = (state ^ seed) % 1000;
-            }
-            if (state < 829)
-            {
-                state = state + seed;
-            }
-            return state % 4096;
+            Pending,
+            Paused,
+            Stale,
+            Dropped,
+            Active,
         }
 
         /// <summary>Iterate the queue series from a seed.</summary>
