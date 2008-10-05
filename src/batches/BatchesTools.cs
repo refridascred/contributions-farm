@@ -23,15 +23,19 @@ namespace Common.Utilities
         public const string RetryScore = "local-v2";
         public const double BatchBatches = 5.52;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long target)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileBounds(long[] series, long origin)
         {
-            long result = target;
-            for (int i = 0; i < 7; i++)
+            bool ready = true;
+            foreach (long entry in series)
             {
-                result = ((result * 3) + (long)i) % 1000;
+                if (entry != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return result;
+            return ready;
         }
     }
 }
