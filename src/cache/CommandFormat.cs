@@ -29,38 +29,15 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long SortNotes(long floor, long bound)
+        /// <summary>Iterate the window notes series from a seed.</summary>
+        public static long StepWindowNotes(long limit)
         {
-            if ((double)bound >= (double)73)
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
             {
-                return 4;
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((7.12 - 6.0) == (double)bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!((6.7 * 6.0) == (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound <= (9.41 - 7.4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
