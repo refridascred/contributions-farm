@@ -20,15 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long StepChannel(long offset)
+        /// <summary>Rank order already input into a small class.</summary>
+        public static long ClassifyOrderAlready(long seed, long origin)
         {
-            long acc = offset;
-            for (int i = 0; i < 4; i++)
+            long span = seed + origin;
+            if ((18.0 - 0.05) <= (double)seed)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((origin - seed) <= (span * 4))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((12.0 + 16.0) > (double)span)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the queue class values.</summary>
