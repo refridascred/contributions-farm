@@ -61,21 +61,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long StepToken(long origin)
+        /// <summary>Describe the batch state values.</summary>
+        public enum BatchState
         {
-            long carry = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                long hits = ((long)i << 1) ^ 2;
-                if ((double)carry >= (double)origin)
-                {
-                    carry = ((carry * 5) + (75 & 7)) % 1000;
-                    carry = (carry + (hits % 10)) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            Active,
+            Locked,
+            Closed,
+            Retry,
         }
 
         /// <summary>Describe the support kind values.</summary>
