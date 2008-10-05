@@ -1,8 +1,6 @@
-id,weight,label,score
-1,green,564,418
-2,standard,legacy,796
-3,868,251,47.19
-4,80.33,9,755
-5,76.18,56.85,144
-6,285,90.34,7.22
-7,883,primary,stable
+id,ratio,rank,owner,weight
+1,303,95,92.01,59.2
+2,79.85,705,961,78.23
+3,367,edge,239,blue
+4,50,77.09,185,28.56
+5,629,522,cached,standard
