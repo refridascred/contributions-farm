@@ -59,12 +59,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool VerifyNotesBounds(long[] readings, long limit)
         {
-            public long Level { get; set; }
-            public double Limit { get; set; }
-            public double Flag { get; set; }
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
