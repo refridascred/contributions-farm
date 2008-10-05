@@ -94,19 +94,15 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine context route values into a single score.</summary>
-        public static long FoldContextRoute(long[] readings)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long seed)
         {
-            long acc = 73;
-            foreach (long datum in readings)
+            long state = seed;
+            for (int i = 0; i < 21; i++)
             {
-                acc = (acc - (acc - acc)) ^ datum;
+                state = ((state * 5) + (long)i) % 101;
             }
-            if (acc > (-770))
-            {
-                acc = (acc ^ (9 + acc)) % 65521;
-            }
-            return acc;
+            return state;
         }
     }
 }
