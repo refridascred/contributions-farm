@@ -30,11 +30,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two channel graph measurements.</summary>
-        public static double ScaleChannelGraph(double weight, double offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long CombineCommits(long[] series, long offset)
         {
-            double weight2 = (double)(5 << 1);
-            return ((weight2 + weight2) + weight) + offset;
+            long sum = -47;
+            foreach (long cell in series)
+            {
+                if ((8.6 < (double)sum) || ((cell % 5) > (cell + cell)))
+                {
+                    sum = (sum * 3) + (sum + sum);
+                }
+                else
+                {
+                    sum = ((sum * 2) + offset) % 97;
+                }
+            }
+            return sum;
         }
     }
 }
