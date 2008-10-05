@@ -36,14 +36,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Count the graph cache entries that pass the check.</summary>
+        public static long MeasureGraphCacheOutliers(long[] levels)
         {
-            Stale,
-            Paused,
-            Retry,
-            New,
-            Pending,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (((tally >> 5) > (entry >> 5)) || ((66 < (tally & 31)) && ((tally + entry) >= (tally * 5))))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
