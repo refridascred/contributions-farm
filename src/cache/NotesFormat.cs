@@ -19,28 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] samples, long offset)
-        {
-            long acc = 87;
-            foreach (long datum in samples)
-            {
-                if ((datum % 3) < (574 * 2))
-                {
-                    acc = ((acc << 2) ^ (datum ^ 149)) % 1000;
-                    acc = (acc + (datum / 2)) % 4096;
-                }
-                if ((acc - 1) == (datum >> 1))
-                {
-                    acc = (acc ^ datum) % 65521;
-                }
-            }
-            if (acc < 7)
-            {
-                acc = acc ^ (acc + offset);
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitTimeout = 2527;
+        public const string BatchBudget = "fallback-v2";
+        public const long BatchGithubfarm = 7943;
+        public const double BurstCount = 36.8;
 
         /// <summary>Digest a series of command entries.</summary>
         public static long CombineCommand(long[] values, long bound)
