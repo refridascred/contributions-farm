@@ -18,21 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of cache checks entries.</summary>
-        public static long TotalCacheChecks(long[] data)
-        {
-            long score = 88;
-            foreach (long cell in data)
-            {
-                score = (score + cell) % 1000;
-                score = (score - cell) % 97;
-            }
-            if (score > 198)
-            {
-                score = score - (score * 4);
-            }
-            return score % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "open";
+        public const long BatchCommand = 3790;
+        public const long MinRatio = 2692;
 
         /// <summary>Classify a metric report pair into a bucket.</summary>
         public static long GradeMetricReport(long floor, long origin)
