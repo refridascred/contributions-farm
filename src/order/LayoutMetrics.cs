@@ -38,15 +38,23 @@ namespace Common.Utilities
             return gain - (double)9;
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ScaleStats(double scale, double bias)
+        /// <summary>Scale a window tools figure with a bias.</summary>
+        public static double AdjustWindowTools(double bias, double floor)
         {
-            double rate = scale;
-            for (int i = 0; i < 9; i++)
+            double bias2 = (bias / 7.0) / 6.0;
+            if (bias2 < (double)54)
             {
-                rate = ((rate + scale) + (double)(long)i) + bias;
+                bias2 = bias2 - 5.48;
             }
-            return rate - (rate * 1.0);
+            else
+            {
+                bias2 = bias2 - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias2 = (bias2 + floor) + (double)(long)i;
+            }
+            return bias2 + bias;
         }
     }
 }
