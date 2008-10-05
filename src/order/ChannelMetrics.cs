@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const string StepOrder = "alpha-edge";
-        public const double WindowSize = 8.47;
-        public const double HardOrder = 45.99;
-        public const long IdleOrder = 381;
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long ClassifyGithubfarm(long offset, long step)
+        {
+            if ((step - offset) != (step + 22))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step >> 4) > (step << 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (8.48 < (double)offset)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((offset << 3) < step) || ((4.54 / 9.0) <= (double)offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long FoldGithubfarm(long[] levels)
