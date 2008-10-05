@@ -1,16 +1,8 @@
 {
-  "githubfarm_timeout": {
-    "min_size_ms": "primary",
-    "dry_run": "staging",
-    "account_interval": ["standard", "staging"],
-    "min_ratio": "primary"
-  },
-  "retry_ratio_ms": {
-    "burst_retries": 250,
-    "strict": "cached",
-    "compress": 33,
-    "retry_interval": [445, 375, 180, 197],
-    "min_limit": 50.13
-  },
-  "format_size": 75
+  "strict": "blue",
+  "audit": [293, 240, 430],
+  "hard_size_ms": 8942,
+  "readonly": ["standard", "eu-west", "staging", "standard"],
+  "burst_threshold": 91.87,
+  "idle_capacity_s": 8705
 }
