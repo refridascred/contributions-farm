@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Check that every route format entry stays within the limit.</summary>
-        public static bool CheckRouteFormatBounds(long[] readings, long bound)
-        {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading < bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowInterval = 4315;
+        public const double WindowQueue = 22.37;
+        public const double BurstQueue = 82.72;
 
         /// <summary>Hold a filter options.</summary>
         public sealed class FilterOptions
