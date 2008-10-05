@@ -19,23 +19,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Adjust a batches reading.</summary>
-        public static double BlendBatches(double ratio, double offset)
+        /// <summary>Validate already record readings against a bound.</summary>
+        public static bool GuardAlreadyRecordRange(long[] readings, long floor)
         {
-            double load = ratio / 5.0;
-            if (load > (offset * 6.0))
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                load = load + load;
+                if (reading != floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - (load + 9.27);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - ratio) - (double)(long)i;
-            }
-            return load + (load - offset);
+            return stale;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
