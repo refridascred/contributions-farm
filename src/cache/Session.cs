@@ -10,11 +10,19 @@ namespace Common.Utilities
         public const double WindowQueue = 22.37;
         public const double BurstQueue = 82.72;
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesRange(long[] items, long step)
         {
-            public string Label { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the session mode values.</summary>
