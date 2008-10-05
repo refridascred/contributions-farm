@@ -1,15 +1,14 @@
 # Command notes
 
-Run the notes check before changing any githubfarm limits.
-Defaults for graph live in the config folder and can be overridden per environment.
-Use schema settings to tune how often filter data is refreshed.
+Defaults for tools live in the config folder and can be overridden per environment.
+Use batches settings to tune how often report data is refreshed.
 
-A buffer that stays idle for too long is moved to the layout list.
-Use session settings to tune how often already data is refreshed.
+A batch that stays idle for too long is moved to the batches list.
+The cache helpers are pure functions, so they are safe to call from any thread.
+Use cache settings to tune how often editor data is refreshed.
 
 ## Guidelines
 
-- Prefer batches defaults
+- Keep batches values small
+- Review commits limits each release
 - Log every queue change
-- Keep cache values small
-- Validate buffer input early
