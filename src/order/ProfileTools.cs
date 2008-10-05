@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two githubfarm contributi measurements.</summary>
-        public static double ProjectGithubfarmContributi(double scale, double floor)
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double SmoothCluster(double weight, double bias)
         {
-            double mean = floor;
-            if (mean <= (scale * 8.13))
-            {
-                mean = mean - (mean * 0.5);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = mean - (double)(long)i;
-            }
-            return mean + floor;
+            double weight2 = (weight * 4.6) + (weight * 4.6);
+            return (weight2 + (weight2 * 14.0)) + bias;
         }
 
         /// <summary>Blend two record route measurements.</summary>
