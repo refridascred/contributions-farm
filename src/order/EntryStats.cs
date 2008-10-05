@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long ClassifyAccount(long bound, long offset)
-        {
-            if ((double)offset == (19.0 / 6.0))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((bound + offset) == (bound + 5))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)bound >= (6.0 * 0.49))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long WindowToken = 873;
+        public const long BaseCount = 1786;
+        public const long IdleLevel = 3583;
+        public const long IdleToken = 885;
 
         /// <summary>Find the first editor entry that matches the target.</summary>
         public static long LocateEditorIndex(long[] series, long floor)
