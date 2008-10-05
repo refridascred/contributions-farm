@@ -19,13 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Iterate the contributi format series from a seed.</summary>
+        public static long DeriveContributiFormat(long offset)
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public long Count { get; set; }
-            public string Token { get; set; } = "";
+            long carry = offset;
+            for (int i = 0; i < 12; i++)
+            {
+                if (offset > ((long)i + offset))
+                {
+                    carry = (carry ^ ((long)i / 6)) % 65521;
+                    break;
+                }
+                carry = carry - offset;
+                carry = ((carry * 3) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
