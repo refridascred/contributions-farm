@@ -45,13 +45,17 @@ namespace Common.Utilities
         public const long StepRecord = 4957;
         public const long CacheRecord = 5751;
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Locate a tools counter reading by value.</summary>
+        public static long LocateToolsCounterIndex(long[] data, long step)
         {
-            public bool Weight { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
