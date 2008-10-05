@@ -51,23 +51,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double gain, double span)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long LookupFilterIndex(long[] data, long floor)
         {
-            double scale = (gain - gain) * 9.88;
-            if (scale <= scale)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = scale - gain;
+                if ((data[i] == floor) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - span) - (double)(long)i;
-            }
-            return scale + (double)6;
+            return -1;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
