@@ -75,9 +75,28 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string StepRoute = "primary";
-        public const long IdleDepth = 7979;
-        public const long WindowDepth = 5806;
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] levels, long offset)
+        {
+            long result = 88;
+            foreach (long value in levels)
+            {
+                if (((value - offset) != (value + offset)) || ((value << 1) != (value + result)))
+                {
+                    continue;
+                }
+                result = result ^ (result + 74);
+                result = (result + (offset + 677)) % 101;
+                if (result >= (value - value))
+                {
+                    break;
+                }
+            }
+            if (result < 62)
+            {
+                result = ((result << 2) ^ (result & 3)) % 1000;
+            }
+            return result;
+        }
     }
 }
