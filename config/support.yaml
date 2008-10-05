@@ -1,20 +1,5 @@
 # support settings
-max_timeout_pct:
-  - stable
-  - blue
-flush_capacity_pct:
-  - edge
-  - latest
-warm_capacity_count:
-  - 44
-  - 457
-  - 425
-  - 104
-burst_depth_ms:
-  poll_timeout_count: 33
-  queue_retries: stable
-  persist: true
-  max_ratio_pct: false
-  counter_ratio: 4885
-  compress: 38.02
-metric_window: true
+soft_ttl: edge
+audit: 60
+layout_interval: strict
+hard_window: false
