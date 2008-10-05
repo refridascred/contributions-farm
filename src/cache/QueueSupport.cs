@@ -24,17 +24,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long LocateTokenIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstRoute = 5354;
+        public const double HardLevel = 55.3;
+        public const double SoftRoute = 61.5;
+        public const long BurstSpan = 5046;
+        public const string HardRoute = "cached-1";
     }
 }
