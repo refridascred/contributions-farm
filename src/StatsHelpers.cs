@@ -39,15 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long IterateReport(long origin)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] readings)
         {
-            long score = origin;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = ((score * 3) + (long)i) % 65521;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Describe the counter kind values.</summary>
