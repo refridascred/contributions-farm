@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long WindowAlready = 9271;
-        public const double IdleRatio = 12.7;
-        public const long BaseAlready = 5607;
-        public const double HardAlready = 40.01;
-        public const long MaxRatio = 1156;
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] samples, long floor)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long RollAlready(long bound)
