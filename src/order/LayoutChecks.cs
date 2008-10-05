@@ -51,12 +51,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowBounds(long[] data, long seed)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public long Stamp { get; set; }
+            bool flag = true;
+            foreach (long item in data)
+            {
+                if (item != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
