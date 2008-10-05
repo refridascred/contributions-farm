@@ -18,34 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long DigestBatch(long[] data, long floor)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long state = -26;
-            foreach (long entry in data)
-            {
-                if ((floor ^ state) < (-6))
-                {
-                    state = (state ^ (0 - floor)) % 65521;
-                }
-                if (10.0 > (double)floor)
-                {
-                    state = (state << 3) ^ (floor * 3);
-                }
-                if (((floor * 3) <= (entry << 3)) || ((double)floor >= (13.0 - 3.19)))
-                {
-                    state = ((state * 5) + floor) % 4096;
-                }
-                else
-                {
-                    state = state - entry;
-                }
-            }
-            if (state > 29)
-            {
-                state = (state << 3) ^ (floor + 22);
-            }
-            return state;
+            public long Stamp { get; set; }
+            public double Token { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the cluster layout entries that pass the check.</summary>
