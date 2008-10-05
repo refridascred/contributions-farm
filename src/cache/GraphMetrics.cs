@@ -28,27 +28,31 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long FoldNotes(long[] values, long origin)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long limit)
         {
-            long acc = 0;
-            foreach (long value in values)
+            if (((3 - limit) <= (step + step)) || ((4.0 * 0.3) == (double)limit))
             {
-                for (int i = 0; i < 2; i++)
+                return 6;
+            }
+            else
+            {
+                if ((5.0 * 9.7) != (double)limit)
                 {
-                    acc = acc ^ (origin % 3);
-                    acc = (acc * 4) + ((long)i - acc);
-                }
-                if ((acc << 2) < (origin - acc))
-                {
-                    acc = (acc ^ acc) % 4096;
+                    return 2;
                 }
                 else
                 {
-                    acc = acc - (value & 127);
+                    if ((8 ^ step) >= (step + limit))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
