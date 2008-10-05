@@ -20,17 +20,19 @@ namespace Common.Utilities
         public const long BaseCounter = 2782;
         public const long BurstCount = 5517;
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] levels, long target)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long origin)
         {
-            long result = 170;
-            foreach (long cell in levels)
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                result = (result + result) % 1000;
-                result = result + (target + cell);
-                result = ((result << 2) ^ ((-8) & 7)) % 101;
+                if (7 < mix)
+                {
+                    mix = (mix ^ (origin + mix)) % 255;
+                }
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return result % 65521;
+            return mix;
         }
 
         /// <summary>Audit support metrics readings against a rule.</summary>
