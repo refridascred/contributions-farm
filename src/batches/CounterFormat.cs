@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a layout options.</summary>
-        public sealed class LayoutOptions
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] readings, long offset)
         {
-            public double Offset { get; set; }
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public string Flag { get; set; } = "";
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample != offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit commits token readings against a rule.</summary>
