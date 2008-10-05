@@ -1,7 +1,9 @@
 {
-  "hard_retries": 42,
-  "batch_ttl_s": "legacy",
-  "flush_ratio": 100,
-  "report_retries": 6364,
-  "base_threshold_count": "legacy"
+  "flush_threshold": [70, 129, 495],
+  "max_capacity": {
+    "metric_interval": 47.9,
+    "persist": 6588,
+    "hard_capacity_ms": "blue"
+  },
+  "entry_interval": "green"
 }
