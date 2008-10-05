@@ -27,13 +27,32 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long GradeChannel(long target, long bound)
         {
-            public bool Region { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public double Limit { get; set; }
+            long delta = target + bound;
+            if (((target / 7) <= (target - target)) && (499 <= (bound - delta)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)target == (19.0 - 2.4))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((delta - bound) >= (64 >> 4)) || ((bound >> 5) >= 838))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine context values into a single score.</summary>
