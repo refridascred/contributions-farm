@@ -15,19 +15,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderBounds(long[] series, long step)
+        /// <summary>Count the filter buffer entries that pass the check.</summary>
+        public static long MeasureFilterBufferOutliers(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long item in series)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (item > step)
+                if (!((double)entry <= 6.0))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) - step;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
