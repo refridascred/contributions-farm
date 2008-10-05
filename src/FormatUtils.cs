@@ -23,22 +23,32 @@ namespace Common.Utilities
         public const long BaseCounter = 2782;
         public const long BurstCount = 5517;
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long AuditEditorOutliers(long[] samples)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long GradeEntry(long target, long origin)
         {
-            long tally = 0;
-            foreach (long value in samples)
+            long bound = target - origin;
+            if (((bound * 3) <= bound) || (target < (bound * 2)))
             {
-                if ((value / 8) <= (value - value))
+                return 2;
+            }
+            else
+            {
+                if (target > origin)
                 {
-                    tally = tally + 2;
+                    return 0;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (((929 * 2) <= (target + origin)) && ((target << 2) <= 76))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
