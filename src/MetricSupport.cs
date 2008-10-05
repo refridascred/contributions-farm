@@ -38,14 +38,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
-        {
-            Locked,
-            Done,
-            Pending,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long BatchTools = 7802;
+        public const long MaxTools = 3973;
+        public const long SoftTools = 9556;
+        public const long RetryTimeout = 2191;
     }
 }
