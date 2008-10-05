@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Compare every pair of format githubfarm readings.</summary>
-        public static long MatchFormatGithubfarmCount(long[] series)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long SortLayout(long limit, long target)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)limit <= 6.27)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)limit <= 11.0)
                 {
-                    if ((series[i] ^ series[j]) != 17)
+                    return 8;
+                }
+                else
+                {
+                    if ((double)limit > (9.1 * 7.1))
                     {
-                        count = count + 1;
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((double)target < (double)limit) && ((double)limit >= 7.9))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
