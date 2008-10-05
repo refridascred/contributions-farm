@@ -38,39 +38,13 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long GradeSupport(long floor, long step)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long gap = floor + step;
-            if (step > (step & 7))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((gap & 7) < step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((step >> 2) <= (8 * 5)) && (gap < (step << 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (floor >= step)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            New,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
