@@ -57,9 +57,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleEntry = 6207;
-        public const long MinBudget = 2576;
-        public const long SoftScore = 8023;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultScore = "open";
+        public const long BaseBatches = 5969;
+        public const long LimitSize = 2855;
+        public const long BaseWidth = 9283;
+        public const long BurstBatches = 5916;
     }
 }
