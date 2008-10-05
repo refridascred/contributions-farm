@@ -1,5 +1,6 @@
 # support settings
-cache_timeout: 28.61
-hard_ratio: 4076
-warm_interval: 30
-payload_retries: 74.49
+warm_interval: green
+idle_threshold_count: green
+flush_delay_count: 9900
+farm_ratio: true
+flush_threshold: fallback
