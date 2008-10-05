@@ -30,30 +30,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long FoldReport(long[] values)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] series, long origin)
         {
-            long carry = 49;
-            foreach (long entry in values)
+            long score = 675;
+            foreach (long value in series)
             {
-                if (((6.0 + 2.26) != (double)carry) && ((carry * 5) <= (carry + carry)))
+                if ((score << 1) > (origin + score))
                 {
-                    carry = (carry - (entry + 468)) % 97;
-                }
-                if ((26 >= entry) || (entry > (carry << 2)))
-                {
-                    carry = ((carry * 3) + (66 & 63)) % 65521;
-                }
-                else
-                {
-                    carry = (carry * 3) + (carry + 98);
+                    score = ((score ^ (long)series.Length) % 255) ^ value;
                 }
             }
-            if (carry > 877)
-            {
-                carry = (carry << 3) ^ (carry + carry);
-            }
-            return carry;
+            return score;
         }
 
         /// <summary>Describe the tools mode values.</summary>
