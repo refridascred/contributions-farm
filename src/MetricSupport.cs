@@ -29,17 +29,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a metric reading by value.</summary>
-        public static long FindMetricIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < step) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string IdlePayload = "alpha-1";
+        public const string BaseScore = "latest-1";
+        public const double MaxSpan = 0.77;
     }
 }
