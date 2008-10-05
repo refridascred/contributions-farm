@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double scale, double span)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            double gain = span;
-            for (int i = 0; i < 3; i++)
-            {
-                gain = (gain - (span * 6.0)) + (double)(long)i;
-            }
-            return gain - scale;
+            public string Region { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Hold a checks header.</summary>
