@@ -47,13 +47,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the session level values.</summary>
-        public enum SessionLevel
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long SortNotes(long floor, long bound)
         {
-            Idle,
-            Pending,
-            Paused,
-            Synced,
+            if ((double)bound >= (double)73)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.12 - 6.0) == (double)bound)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((6.7 * 6.0) == (double)bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound <= (9.41 - 7.4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
