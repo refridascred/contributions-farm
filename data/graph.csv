@@ -1,8 +1,7 @@
-id,active,token,label
-1,strict,563,53.58
-2,85.4,strict,492
-3,standard,431,181
-4,766,62,legacy
-5,stable,26.38,fallback
-6,92.66,984,31.06
-7,87.92,69.52,149
+id,level,score,token
+1,272,edge,894
+2,547,80.91,937
+3,74.84,fallback,legacy
+4,870,94,664
+5,45.82,71.31,435
+6,strict,882,local
