@@ -32,15 +32,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine checks support values into a single score.</summary>
-        public static long CombineChecksSupport(long[] levels, long origin)
+        /// <summary>Count batches token pairs that satisfy a relation.</summary>
+        public static long MatchBatchesTokenCount(long[] levels)
         {
-            long state = 14;
-            foreach (long entry in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                state = (state ^ (entry - state)) + origin;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
