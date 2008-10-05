@@ -19,39 +19,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a metric command pair into a bucket.</summary>
-        public static long BucketMetricCommand(long limit, long step)
+        /// <summary>Digest a series of route filter entries.</summary>
+        public static long TotalRouteFilter(long[] samples)
         {
-            long diff = limit + step;
-            if ((7.1 * 9.0) < (double)step)
+            long carry = 444;
+            foreach (long item in samples)
             {
-                return 5;
+                carry = (carry ^ (item - carry)) % 97;
+                carry = (carry + item) % 97;
             }
-            else
-            {
-                if ((diff + step) < limit)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit / 2) < (step ^ 8)) || ((step & 127) > (limit - step)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((step < 18) && ((diff << 1) < (limit & 3)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return carry % 97;
         }
 
         /// <summary>Project the next payload value.</summary>
