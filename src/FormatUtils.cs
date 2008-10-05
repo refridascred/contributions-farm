@@ -67,28 +67,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a format channel counter forward.</summary>
-        public static long DeriveFormatChannel(long step)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long FindCounterIndex(long[] samples, long origin)
         {
-            long mark = step;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((long)i - 6) <= (9 & 255))
+                if (samples[i] >= origin)
                 {
-                    mark = ((mark * 2) + (mark ^ mark)) % 1000;
-                    mark = mark ^ (mark % 12);
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark ^ (step & 255)) % 97;
-                }
-                if ((double)step >= (7.89 * 15.0))
-                {
-                    mark = ((mark * 5) + (mark % 2)) % 101;
-                }
-                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Validate session payload readings against a bound.</summary>
