@@ -1,7 +1,13 @@
 {
-  "retry_depth_count": "cached",
-  "base_depth": false,
-  "base_size_s": ["strict", "eu-west", "fallback"],
-  "entry_delay": [165, 184, 471, 271],
-  "min_window_count": "strict"
+  "flush_depth": 60,
+  "sync_threshold": "blue",
+  "editor_ttl": {
+    "default_limit": 34.72,
+    "readonly": false,
+    "max_delay": 72.39,
+    "strict": true,
+    "record_depth": ["eu-west", "stable"]
+  },
+  "verbose": 85.02,
+  "hard_size_s": 14.88
 }
