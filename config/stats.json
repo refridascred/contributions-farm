@@ -1,7 +1,8 @@
 {
-  "poll_ratio_ms": 500,
-  "metric_threshold": false,
-  "strict": 1024,
-  "readonly": 72,
-  "retry_threshold_pct": "local"
+  "burst_threshold_count": 30.35,
+  "enabled": [236, 454, 388, 402],
+  "compress": "latest",
+  "idle_retries_count": 81.95,
+  "batch_timeout": "green",
+  "sync_threshold_ms": [235, 154, 113, 252]
 }
