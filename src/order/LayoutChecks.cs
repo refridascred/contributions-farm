@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueMatches(long[] data)
         {
-            Failed,
-            Active,
-            Locked,
-            Pending,
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if (((3.2 / 6.0) == (double)cell) || ((5.2 + 2.96) == (double)matches))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up stats samples.</summary>
