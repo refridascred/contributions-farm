@@ -56,14 +56,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            Synced,
+            New,
+            Paused,
+            Stale,
             Retry,
-            Idle,
-            Pending,
-            Dropped,
         }
 
         /// <summary>Rank batches input into a small class.</summary>
