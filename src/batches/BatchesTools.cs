@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Ready,
-            Dropped,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string DefaultRatio = "cached";
+        public const long HardPayload = 2444;
+        public const string MinPayload = "local";
 
         /// <summary>Classify a filter pair into a bucket.</summary>
         public static long ClassifyFilter(long offset, long bound)
