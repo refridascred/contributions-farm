@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long limit)
         {
-            public double Token { get; set; }
-            public double Stamp { get; set; }
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                carry = ((carry << 3) ^ (limit & 255)) % 101;
+                carry = ((carry << 3) ^ limit) % 4096;
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Rank window input into a small class.</summary>
