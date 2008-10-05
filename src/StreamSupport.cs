@@ -32,32 +32,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long floor, long step)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long target)
         {
-            long step2 = floor - step;
-            if ((double)step == (14.0 - 8.64))
+            long mix = target;
+            for (int i = 0; i < 14; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor + floor) == (step >> 3))
+                if ((double)mix < (3.9 - 1.05))
                 {
-                    return 3;
+                    mix = (mix + (mix * 5)) % 101;
+                    mix = (mix + (target * 3)) % 101;
                 }
-                else
+                if ((3.66 / 4.0) <= (18.0 + 0.28))
                 {
-                    if ((step2 - 8) >= floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    mix = (mix - (target % 12)) % 101;
                 }
+                mix = (mix + mix) % 255;
+                mix = ((mix * 5) + (long)i) % 97;
             }
+            return mix;
         }
     }
 }
