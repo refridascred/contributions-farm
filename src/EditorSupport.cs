@@ -80,11 +80,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string RetryWindow = "latest";
-        public const double MaxWindow = 75.12;
-        public const long DefaultDepth = 8672;
-        public const double IdleTimeout = 85.68;
-        public const long LimitWidth = 7072;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 6462;
+        public const string HardStats = "stable-v2";
+        public const double BurstStats = 16.9;
     }
 }
