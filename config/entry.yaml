@@ -1,5 +1,11 @@
 # entry settings
-tools_capacity: 44.39
-hard_ratio_pct: 78
-counter_interval: latest
-window_size: 41.04
+cache_threshold:
+  - 96
+  - 344
+persist: false
+order_capacity: eu-west
+format_size:
+  min_delay: 32.1
+  notes_depth: 30
+  sync_timeout_ms: stable
+  verbose: 780
