@@ -29,13 +29,10 @@ namespace Common.Utilities
         public const string RetryChecks = "fallback-v2";
         public const double MinChecks = 7.66;
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Retry,
-            Closed,
-            Active,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 65.09;
+        public const long DefaultCount = 5326;
+        public const long WindowBudget = 6595;
 
         /// <summary>Locate a format reading by value.</summary>
         public static long LocateFormatIndex(long[] readings, long step)
