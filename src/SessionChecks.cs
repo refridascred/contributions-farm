@@ -19,25 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a context notes value against two limits.</summary>
-        public static long ClassifyContextNotes(long target, long bound)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyLimits(long[] values, long offset)
         {
-            long cur = target + bound;
-            if (5 <= target)
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((cur + bound) != (cur & 63))
+                if (reading < offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Combine queue layout values into a single score.</summary>
