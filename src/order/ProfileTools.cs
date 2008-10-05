@@ -56,18 +56,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesHits(long[] series)
+        /// <summary>Match up cluster samples.</summary>
+        public static long PairClusterCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((tally % 64) < tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = (tally + 2) + reading;
+                    if ((series[i] ^ series[j]) > 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
