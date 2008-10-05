@@ -43,17 +43,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long SeekStatsIndex(long[] data, long seed)
+        /// <summary>Scale a record graph figure with a bias.</summary>
+        public static double ScaleRecordGraph(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double mean = weight;
+            for (int i = 0; i < 3; i++)
             {
-                if (data[i] < seed)
-                {
-                    return (long)i;
-                }
+                mean = ((mean + weight) + (double)(long)i) + span;
             }
-            return -1;
+            return mean + (double)73;
         }
     }
 }
