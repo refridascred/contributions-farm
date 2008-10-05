@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double weight, double floor)
+        /// <summary>Compare every pair of format githubfarm readings.</summary>
+        public static long MatchFormatGithubfarmCount(long[] series)
         {
-            double mean = floor;
-            if (mean <= floor)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - (double)43) - weight;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (1.7 / 5.0)) + (double)(long)i;
-            }
-            return mean - 20.0;
+            return count;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
