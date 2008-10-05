@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many counter context samples are out of range.</summary>
-        public static long MeasureCounterContextGaps(long[] values, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelHits(long[] items, long floor)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (((reading & 1) < (offset % 24)) || (((offset << 1) <= (reading % 64)) && (matches > (matches ^ matches))))
+                if ((1.78 + 4.92) <= (double)floor)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    count = (count + 2) + cell;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Measure how many cache batches samples are out of range.</summary>
