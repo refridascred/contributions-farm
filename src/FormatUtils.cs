@@ -71,20 +71,10 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long IterateBatch(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if (!((143 + origin) <= origin))
-                {
-                    total = ((total << 2) ^ ((long)i ^ origin)) % 1000;
-                }
-                total = ((total * 2) + (total & 1)) % 1000;
-                total = ((total * 3) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double DefaultCache = 57.45;
+        public const long BurstScore = 3357;
+        public const string IdleLevel = "strict";
+        public const long RetryLevel = 3675;
     }
 }
