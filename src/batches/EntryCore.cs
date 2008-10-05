@@ -14,13 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Combine route values into a single score.</summary>
+        public static long TotalRoute(long[] samples)
         {
-            Stale,
-            Failed,
-            Draft,
-            Locked,
+            long total = -1;
+            foreach (long cell in samples)
+            {
+                if ((cell >> 4) == ((long)samples.Length >> 1))
+                {
+                    total = (total + (total - cell)) % 255;
+                }
+            }
+            if (total < 2)
+            {
+                total = (total << 3) ^ (total / 2);
+            }
+            return total;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
