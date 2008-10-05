@@ -27,10 +27,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheSupport = 3423;
-        public const string IdleBudget = "standard-v2";
-        public const string LimitSupport = "primary-v2";
-        public const long SoftSupport = 5101;
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
+        {
+            public long Size { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
