@@ -23,22 +23,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchMatches(long[] samples)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long RollBatches(long step)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long sum = step;
+            for (int i = 0; i < 10; i++)
             {
-                if ((0 * 5) != (datum & 7))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                sum = ((sum * 5) + (long)i) % 65521;
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Blend two commits measurements.</summary>
