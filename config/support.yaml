@@ -1,18 +1,23 @@
 # support settings
-queue_delay: false
-poll_depth_s: local
-hard_retries:
-  dry_run: 30
-  token_retries:
-    strict:
-      - 393
-      - 481
-      - 446
-      - 365
-    batch_delay_s: false
-    burst_delay_pct: open
-    editor_window:
-      - standard
-      - eu-west
-      - eu-west
-  batch_retries_count: 62
+warm_timeout_ms: 9554
+sync_timeout: false
+cache_interval_pct: 6441
+idle_limit_pct: false
+base_ttl: 9775
+account_timeout:
+  max_timeout_count: green
+  hard_depth: 9081
+  audit:
+    channel_interval: 60
+    idle_ratio_count: cached
+    cache_interval_ms: 60
+    dry_run:
+      - 404
+      - 455
+    schema_timeout: 38.61
+  persist: 33.16
+  hard_ratio_s:
+    - blue
+    - green
+    - edge
+  default_window_pct: 1024
