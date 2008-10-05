@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] series)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((double)count != (8.0 * 6.5))
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string StepOrder = "alpha-edge";
+        public const double WindowSize = 8.47;
+        public const double HardOrder = 45.99;
+        public const long IdleOrder = 381;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long FoldGithubfarm(long[] levels)
