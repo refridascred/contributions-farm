@@ -69,23 +69,19 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long DeriveFarm(long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] data, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if ((bound + mix) <= bound)
+                if (value > step)
                 {
-                    mix = ((mix * 5) + (bound >> 4)) % 97;
+                    ready = false;
+                    break;
                 }
-                else
-                {
-                    mix = mix - mix;
-                }
-                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return mix;
+            return ready;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
