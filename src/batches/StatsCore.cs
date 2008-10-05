@@ -63,17 +63,19 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] samples, long limit)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long CombineLayout(long[] values, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = 1;
+            foreach (long value in values)
             {
-                if (samples[i] >= limit)
+                mark = ((mark + (176 ^ mark)) % 255) + bound;
+                if ((double)value == (14.0 + 2.35))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Digest a series of layout entries.</summary>
