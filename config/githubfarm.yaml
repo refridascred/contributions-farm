@@ -1,14 +1,13 @@
 # githubfarm settings
-context_retries: true
-soft_limit_count: false
-buffer_retries:
-  burst_threshold_ms:
-    - 196
-    - 20
-    - 268
-    - 451
-  poll_capacity:
-    - stable
-    - stable
-    - eu-west
-  verbose: 240
+burst_ttl_pct: 100
+base_capacity:
+  - 381
+  - 178
+hard_capacity_ms: 70
+stream_size: 5314
+report_timeout:
+  readonly: local
+  burst_delay:
+    - local
+    - green
+  stream_limit: 30
