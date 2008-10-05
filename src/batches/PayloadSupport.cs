@@ -38,18 +38,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long CountBatchGaps(long[] samples)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long tally = 0;
-            foreach (long reading in samples)
-            {
-                if (((long)samples.Length % 2) == (696 << 1))
-                {
-                    tally = (tally + 3) ^ reading;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
