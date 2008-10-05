@@ -41,31 +41,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] items, long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool VerifyFormatRange(long[] readings, long target)
         {
-            long result = 774;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long sample in readings)
             {
-                for (int i = 0; i < 10; i++)
+                if (sample > target)
                 {
-                    result = ((result - limit) % 255) + (long)i;
-                }
-                result = (result + (limit + limit)) % 97;
-                if ((334 > (limit + limit)) || ((2.38 - 2.07) < (double)value))
-                {
-                    result = ((result << 3) ^ (result - limit)) % 97;
-                }
-                else
-                {
-                    result = (result - (result + 19)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            if (result > 344)
-            {
-                result = result + (limit % 12);
-            }
-            return result % 4096;
+            return ok;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
