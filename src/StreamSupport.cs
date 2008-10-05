@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Project the next profile value.</summary>
+        public static double ProjectProfile(double scale, double span)
         {
-            public bool Stamp { get; set; }
-            public long Label { get; set; }
+            double rate = span;
+            if (rate > (double)136)
+            {
+                rate = rate + scale;
+            }
+            else
+            {
+                rate = rate - rate;
+            }
+            return rate + rate;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
