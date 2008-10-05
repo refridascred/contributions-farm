@@ -1,6 +1,7 @@
 {
-  "audit": ["primary", "fallback"],
-  "contributi_capacity": 66.34,
-  "cache_window": 37.0,
-  "enabled": 34
+  "retry_depth_count": "cached",
+  "base_depth": false,
+  "base_size_s": ["strict", "eu-west", "fallback"],
+  "entry_delay": [165, 184, 471, 271],
+  "min_window_count": "strict"
 }
