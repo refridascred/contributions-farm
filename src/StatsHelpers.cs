@@ -20,11 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstBudget = 828;
-        public const string MaxSpan = "fallback-v2";
-        public const long IdleSchema = 7105;
-        public const string MaxScore = "fallback-v2";
+        /// <summary>Count payload queue pairs that satisfy a relation.</summary>
+        public static long ComparePayloadQueueCount(long[] data)
+        {
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) != 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Find the first command entry that matches the target.</summary>
         public static long FindCommandIndex(long[] items, long limit)
