@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the batch layout entries that pass the check.</summary>
-        public static long CountBatchLayoutGaps(long[] samples)
+        /// <summary>Accumulate batches farm samples.</summary>
+        public static long ScoreBatchesFarm(long[] data, long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long acc = 90;
+            foreach (long item in data)
             {
-                if ((-3) > (7 + seen))
+                if ((item - item) < (offset + acc))
                 {
-                    seen = (seen + 2) - item;
+                    acc = acc - (item & 63);
                 }
             }
-            return seen;
+            return acc % 1000;
         }
 
         /// <summary>Count the already metric entries that pass the check.</summary>
