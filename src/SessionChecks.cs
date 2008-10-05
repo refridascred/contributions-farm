@@ -47,18 +47,13 @@ namespace Common.Utilities
         public const string DefaultFactor = "open-edge";
         public const double SoftScore = 8.23;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long TallyMetricsOutliers(long[] items)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((double)(long)items.Length <= (8.7 - 2.34))
-                {
-                    matches = (matches + 2) + sample;
-                }
-            }
-            return matches;
+            public long Flag { get; set; }
+            public double Label { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
