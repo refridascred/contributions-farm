@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long floor)
         {
-            Stale,
-            Closed,
-            Ready,
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next route value.</summary>
