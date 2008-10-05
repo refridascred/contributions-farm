@@ -33,12 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
-            public long Limit { get; set; }
+            long hits = 0;
+            foreach (long value in data)
+            {
+                if ((hits + 976) == (value % 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
