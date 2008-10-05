@@ -22,19 +22,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksRange(long[] values, long offset)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            bool flag = true;
-            foreach (long reading in values)
-            {
-                if (reading <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Idle,
+            Dropped,
+            Paused,
+            Closed,
         }
     }
 }
