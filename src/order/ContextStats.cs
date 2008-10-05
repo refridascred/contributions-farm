@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Find the first format buffer entry that matches the target.</summary>
-        public static long LookupFormatBufferIndex(long[] data, long origin)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BaseInterval = 2586;
+        public const long MaxNotes = 6500;
+        public const string BurstNotes = "primary-v2";
+        public const long StepSpan = 4718;
+        public const string SoftNotes = "open-edge";
 
         /// <summary>Audit format readings against a rule.</summary>
         public static long CountFormatOutliers(long[] levels)
