@@ -57,14 +57,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long CountClusterMatches(long[] items, long bound)
         {
-            Draft,
-            Done,
-            Paused,
-            Synced,
-            Idle,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if (97 <= (reading - seen))
+                {
+                    seen = (seen + 3) + bound;
+                }
+            }
+            return seen;
         }
     }
 }
