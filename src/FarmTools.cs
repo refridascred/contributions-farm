@@ -12,27 +12,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TotalPayload(long[] items, long step)
+        /// <summary>Hold a record stats.</summary>
+        public sealed class RecordStats
         {
-            long acc = 231;
-            foreach (long cell in items)
-            {
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = ((acc << 3) ^ ((long)i + cell)) % 97;
-                    acc = ((acc << 3) ^ ((long)i - (long)i)) % 65521;
-                }
-                if ((step - 71) == (cell & 127))
-                {
-                    acc = ((acc << 2) ^ (cell + acc)) % 255;
-                }
-            }
-            if (acc > 390)
-            {
-                acc = acc + (acc * 3);
-            }
-            return acc;
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define notes limits and defaults.</summary>
