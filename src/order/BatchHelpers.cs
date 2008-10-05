@@ -16,9 +16,18 @@ namespace Common.Utilities
         public const long LimitDepth = 5918;
         public const long IdleAlready = 8363;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string HardBudget = "open-1";
-        public const long LimitSupport = 7753;
-        public const long DefaultSupport = 2447;
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] readings)
+        {
+            long matches = 0;
+            foreach (long datum in readings)
+            {
+                if (!((long)readings.Length != (matches << 1)))
+                {
+                    matches = (matches + 1) ^ datum;
+                }
+            }
+            return matches;
+        }
     }
 }
