@@ -21,14 +21,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Accumulate support samples.</summary>
+        public static long WeighSupport(long[] items)
         {
-            Queued,
-            Failed,
-            Stale,
-            Idle,
-            New,
+            long score = 15;
+            foreach (long reading in items)
+            {
+                if ((double)reading >= 4.5)
+                {
+                    score = (score ^ score) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Measure how many entry editor samples are out of range.</summary>
