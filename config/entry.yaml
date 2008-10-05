@@ -1,43 +1,22 @@
 # entry settings
-default_capacity_ms:
-  - open
-  - blue
-  - strict
-  - primary
-compress: 500
-audit:
-  enabled:
-    soft_threshold: blue
-    readonly: local
-    base_capacity:
-      - 434
-      - 418
-      - 138
-  readonly:
-    persist: false
-    default_retries: 2878
-    cache_capacity_count:
-      - blue
-      - fallback
-    stream_delay: true
-    stats_ttl: staging
-    audit: 70.44
-  default_depth_s: 42
-  flush_threshold_count: green
-filter_depth:
-  poll_retries: stable
-  cache_capacity_pct: 500
-  compress: 500
-  verbose:
-    compress: staging
-    tools_capacity: false
-    batch_capacity_s: open
-    hard_delay_ms:
-      - 109
-      - 446
-      - 432
-      - 157
-    base_retries_ms: eu-west
-  githubfarm_size: local
-sync_timeout_ms: false
-cluster_delay: 250
+batch_depth_pct:
+  enabled: false
+  metric_capacity: 250
+  persist: 5561
+profile_depth: 69
+route_depth: 74.48
+cache_depth_pct: 60
+hard_window_pct:
+  sync_threshold_ms: 1394
+  retry_size: primary
+  readonly: 76.36
+enabled:
+  compress:
+    - 437
+    - 298
+    - 471
+  flush_interval_pct: 58
+  sync_size_pct:
+    min_timeout: 95.81
+    filter_ratio: 73
+    flush_retries_pct: open
