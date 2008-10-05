@@ -26,19 +26,22 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 7743;
         public const long RetrySize = 3271;
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] levels)
+        /// <summary>Measure how many record support samples are out of range.</summary>
+        public static long MeasureRecordSupportMatches(long[] samples)
         {
-            long result = 7;
-            foreach (long entry in levels)
+            long count = 0;
+            foreach (long entry in samples)
             {
-                result = (result + (84 ^ entry)) % 1000;
+                if ((7.24 * 19.0) == (double)entry)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (result < 330)
-            {
-                result = ((result * 2) + (-980)) % 97;
-            }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Hold a layout record.</summary>
