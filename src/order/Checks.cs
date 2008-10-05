@@ -22,21 +22,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] values)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long ScoreFarm(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 5;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                state = state ^ (state >> 3);
+                if ((state & 3) >= (state * 4))
                 {
-                    if ((values[i] ^ values[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = state - state;
+                }
+                else
+                {
+                    state = (state << 3) ^ cell;
+                }
+                if (((double)cell > 6.1) || ((8.95 + 4.1) == (double)cell))
+                {
+                    state = (state * 2) + (cell << 3);
                 }
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
