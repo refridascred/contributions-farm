@@ -35,13 +35,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Adjust a payload session reading.</summary>
+        public static double AdjustPayloadSession(double weight, double span)
         {
-            Closed,
-            Draft,
-            Active,
-            Queued,
+            double weight2 = (double)(51 + 3);
+            if (weight2 > 9.0)
+            {
+                weight2 = ((weight2 - weight2) + weight) - span;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                weight2 = (weight2 + 3.77) - (double)(long)i;
+            }
+            return weight2 + 4.3;
         }
     }
 }
