@@ -14,15 +14,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double weight, double offset)
+        /// <summary>Audit commits token readings against a rule.</summary>
+        public static long TallyCommitsTokenGaps(long[] values)
         {
-            double ratio = (double)358 / 4.0;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long value in values)
             {
-                ratio = ((ratio - (ratio + offset)) - (double)(long)i) - weight;
+                if ((double)value != (2.45 + 11.0))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return ratio + (double)88;
+            return seen;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
