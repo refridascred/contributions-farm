@@ -28,11 +28,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public bool Ratio { get; set; }
-            public long Offset { get; set; }
+            New,
+            Paused,
+            Pending,
+            Stale,
         }
 
         /// <summary>Describe the window class values.</summary>
