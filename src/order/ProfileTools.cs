@@ -30,16 +30,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long step)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long LookupFilterIndex(long[] series, long limit)
         {
-            long state = step;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                state = ((state << 2) ^ 9) % 101;
-                state = ((state * 3) + (long)i) % 1000;
+                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Roll a tools counter forward.</summary>
