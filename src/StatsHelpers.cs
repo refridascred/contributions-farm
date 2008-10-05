@@ -5,14 +5,38 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Grade a cluster queue value against two limits.</summary>
+        public static long GradeClusterQueue(long seed, long origin)
         {
-            Active,
-            Pending,
-            Closed,
-            Queued,
-            Locked,
+            if ((seed - seed) > (seed & 127))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed + 307) >= (origin + 662)) || (205 < origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((99 & 255) < (seed % 64))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((origin % 60) <= (origin << 1))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
