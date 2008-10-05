@@ -1,17 +1,5 @@
 # entry settings
-format_threshold: 85
-enabled:
-  batch_timeout:
-    contributi_ttl: 41
-    strict: eu-west
-    warm_ttl: 53.62
-    base_window_count: false
-  warm_limit_count: 1024
-  soft_window:
-    - strict
-    - open
-    - cached
-    - cached
-retry_size: true
-base_ttl_count: 20
-metric_delay: true
+min_size_pct: 8.03
+max_delay: 8928
+audit: primary
+dry_run: 32.26
