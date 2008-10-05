@@ -16,21 +16,9 @@ namespace Common.Utilities
         public const long LimitDepth = 5918;
         public const long IdleAlready = 8363;
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long MatchCacheCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 2)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string HardBudget = "open-1";
+        public const long LimitSupport = 7753;
+        public const long DefaultSupport = 2447;
     }
 }
