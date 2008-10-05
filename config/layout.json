@@ -1,8 +1,7 @@
 {
-  "default_threshold_ms": true,
-  "counter_ratio": "cached",
-  "audit": 6012,
-  "retry_window_count": "local",
-  "sync_size_ms": ["edge", "green", "stable"],
-  "verbose": "standard"
+  "cache_threshold": 68,
+  "order_ratio": true,
+  "retry_window": 250,
+  "enabled": "staging",
+  "retry_timeout_count": 33.42
 }
