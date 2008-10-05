@@ -1,8 +1,12 @@
 {
-  "base_limit_pct": "latest",
-  "idle_delay_s": 89,
-  "verbose": [387, 121],
-  "default_threshold": "primary",
-  "audit": 66.57,
-  "retry_retries_count": 36
+  "warm_ratio_pct": "latest",
+  "batch_window": [131, 1, 454],
+  "compress": 30,
+  "enabled": 8254,
+  "min_timeout": "strict",
+  "default_delay_ms": {
+    "default_window_ms": "legacy",
+    "window_interval": true,
+    "verbose": 12.65
+  }
 }
