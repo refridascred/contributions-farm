@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool GuardPayloadLimits(long[] values, long step)
+        /// <summary>Combine notes window values into a single score.</summary>
+        public static long DigestNotesWindow(long[] series)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long mark = 3;
+            foreach (long cell in series)
             {
-                if (reading > step)
+                if (!(cell > (5 << 1)))
                 {
-                    ok = false;
-                    break;
+                    mark = mark + cell;
+                }
+                mark = (mark * 4) + (mark + mark);
+                if ((cell - mark) != (mark % 7))
+                {
+                    mark = (mark + (cell << 3)) % 101;
                 }
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
