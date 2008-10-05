@@ -14,25 +14,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Classify a account entry pair into a bucket.</summary>
-        public static long RankAccountEntry(long limit, long offset)
-        {
-            if ((double)limit <= (20.0 / 7.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit < (offset + offset)) && ((offset - offset) <= 8))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheFactor = 3465;
+        public const long DefaultLayout = 1522;
+        public const long RetryLayout = 4199;
+        public const long CacheRatio = 4817;
+        public const string BaseLayout = "legacy";
 
         /// <summary>Validate account checks readings against a bound.</summary>
         public static bool GuardAccountChecksRange(long[] series, long step)
