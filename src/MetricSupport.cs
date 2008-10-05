@@ -20,22 +20,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] data, long seed)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long OverlapMetricCount(long[] samples)
         {
-            long mark = 5;
-            foreach (long datum in data)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (222 ^ seed)) % 65521;
+                    if ((samples[i] - samples[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mark < 3)
-            {
-                mark = mark - (seed ^ mark);
-            }
-            return mark % 97;
+            return seen;
         }
     }
 }
