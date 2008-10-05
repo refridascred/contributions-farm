@@ -12,21 +12,23 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long OverlapChannelCount(long[] readings)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ProjectStream(double ratio, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double bias2 = ratio;
+            if (bias2 > (bias - bias))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                bias2 = bias2 - ratio;
             }
-            return matches;
+            else
+            {
+                bias2 = bias2 + (bias / 3.0);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + (ratio / 8.0)) + (double)(long)i;
+            }
+            return bias2 - ratio;
         }
 
         /// <summary>Define route limits and defaults.</summary>
