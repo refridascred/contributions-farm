@@ -1,12 +1,6 @@
 # githubfarm settings
-profile_delay:
-  compress: 55
-  min_delay_s:
-    hard_threshold_ms: stable
-    cache_limit: legacy
-    dry_run: local
-  sync_retries_s: true
-  flush_window_ms: 5916
-soft_timeout: 250
-burst_interval_ms: 1024
-dry_run: edge
+checks_capacity: 100
+min_limit_ms: staging
+burst_timeout:
+  - eu-west
+  - eu-west
