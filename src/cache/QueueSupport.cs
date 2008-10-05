@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Digest a series of record entries.</summary>
+        public static long ScoreRecord(long[] series)
         {
-            Idle,
-            Retry,
-            Done,
+            long acc = 9;
+            foreach (long cell in series)
+            {
+                if ((acc * 4) > (39 * 3))
+                {
+                    acc = ((acc << 3) ^ (acc % 8)) % 101;
+                }
+                if (((acc ^ cell) != (2 ^ cell)) && ((acc + cell) == (5 + acc)))
+                {
+                    acc = (acc + (acc + cell)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
