@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Derive the next batch githubfarm value from a seed.</summary>
+        public static long SeriesBatchGithubfarm(long limit)
         {
-            Pending,
-            New,
-            Synced,
-            Draft,
+            long sum = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of payload batches entries.</summary>
