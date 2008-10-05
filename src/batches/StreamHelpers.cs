@@ -51,30 +51,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] readings, long offset)
+        /// <summary>Hold a payload info.</summary>
+        public sealed class PayloadInfo
         {
-            long state = 248;
-            foreach (long item in readings)
-            {
-                if ((state < (state & 127)) || ((state & 1) > 53))
-                {
-                    state = state + (offset * 5);
-                }
-                else
-                {
-                    state = (state ^ offset) % 101;
-                }
-                if (((offset - item) <= (798 / 3)) && (0 <= offset))
-                {
-                    break;
-                }
-            }
-            if (state < 184)
-            {
-                state = (state + offset) % 65521;
-            }
-            return state % 1000;
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
+            public bool Owner { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Roll a schema counter forward.</summary>
