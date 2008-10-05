@@ -60,17 +60,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LookupEditorIndex(long[] items, long offset)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long WeighBuffer(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = 9;
+            foreach (long reading in items)
             {
-                if (items[i] < offset)
+                mix = (mix + ((long)items.Length - 394)) % 97;
+                if ((reading / 7) <= mix)
                 {
-                    return (long)i;
+                    mix = mix + (mix + reading);
                 }
             }
-            return -1;
+            if (mix < 9)
+            {
+                mix = mix + mix;
+            }
+            return mix;
         }
     }
 }
