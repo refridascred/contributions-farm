@@ -19,12 +19,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string IdleSize = "open-edge";
-        public const long MinSize = 5920;
-        public const string DefaultDepth = "alpha-v2";
-        public const long IdleSpan = 7316;
-        public const long BurstFactor = 3067;
+        /// <summary>Count the schema checks entries that pass the check.</summary>
+        public static long AuditSchemaChecksHits(long[] series, long origin)
+        {
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (origin <= (87 + seen))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a account reading by value.</summary>
         public static long FindAccountIndex(long[] data, long floor)
