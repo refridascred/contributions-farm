@@ -5,21 +5,38 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up checks samples.</summary>
-        public static long MatchChecksCount(long[] samples)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long limit, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((limit << 2) > (limit << 3))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((7.0 / 4.0) != (double)limit)
                 {
-                    if ((samples[i] + samples[j]) < 9)
+                    return 1;
+                }
+                else
+                {
+                    if (limit < (13 * 5))
                     {
-                        seen = seen + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((9.1 * 8.0) < 0.99)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
