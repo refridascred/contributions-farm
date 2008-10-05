@@ -21,19 +21,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool VerifyCounterBounds(long[] data, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            bool ok = true;
-            foreach (long sample in data)
+            long acc = 407;
+            foreach (long datum in samples)
             {
-                if (sample >= floor)
+                if (acc < (acc + datum))
                 {
-                    ok = false;
+                    acc = (acc - acc) % 97;
+                }
+                if (((double)datum <= 3.87) || ((datum * 3) <= datum))
+                {
                     break;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
