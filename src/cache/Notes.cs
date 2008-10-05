@@ -57,19 +57,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool VerifyBatchesBounds(long[] readings, long target)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandBounds(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long datum in data)
             {
-                if (datum > target)
+                if (datum <= seed)
                 {
-                    ok = false;
+                    valid = false;
                     break;
                 }
             }
-            return ok;
+            return valid;
         }
     }
 }
