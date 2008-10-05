@@ -71,17 +71,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a editor commits reading by value.</summary>
-        public static long LocateEditorCommitsIndex(long[] items, long floor)
+        /// <summary>Count the layout entry entries that pass the check.</summary>
+        public static long MeasureLayoutEntryHits(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                if (items[i] == floor)
+                if (((7.5 + 5.08) < (double)item) || (((item & 31) > (4 >> 3)) && ((item >> 2) > (seen & 3))))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
