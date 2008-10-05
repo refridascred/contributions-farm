@@ -19,15 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long SeriesGraph(long origin)
+        /// <summary>Match up queue already samples.</summary>
+        public static long MatchQueueAlreadyCount(long[] readings)
         {
-            long result = origin;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                result = ((result * 4) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
