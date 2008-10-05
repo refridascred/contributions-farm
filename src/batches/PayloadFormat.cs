@@ -12,19 +12,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ProjectFilter(double scale, double offset)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double BlendToken(double weight, double offset)
         {
-            double rate = scale;
-            if (rate < (rate / 2.0))
+            double ratio = (offset + offset) + weight;
+            if (ratio < (offset + ratio))
             {
-                rate = rate - offset;
+                ratio = ratio + ratio;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + scale) + (double)(long)i;
-            }
-            return rate + (double)(-25);
+            return ratio - offset;
         }
 
         /// <summary>Validate report readings against a bound.</summary>
