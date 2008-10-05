@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long bound)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                mix = ((mix << 2) ^ (bound - (long)i)) % 97;
-                mix = (mix + (mix & 127)) % 65521;
-                mix = ((mix * 3) + (bound - bound)) % 65521;
-                mix = ((mix * 5) + (long)i) % 97;
-            }
-            return mix;
+            public bool Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Match up order samples.</summary>
