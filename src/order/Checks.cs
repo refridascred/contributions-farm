@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long TotalSchema(long[] data, long step)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long mark = 671;
-            foreach (long entry in data)
-            {
-                mark = ((mark * 5) + (entry + step)) % 255;
-            }
-            return mark % 65521;
+            Active,
+            Pending,
+            Dropped,
+            Idle,
+            Locked,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
