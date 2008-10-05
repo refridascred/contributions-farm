@@ -1,14 +1,8 @@
 {
-  "warm_timeout": 2887,
-  "poll_window": [3, 210, 187, 275],
-  "soft_delay": {
-    "hard_ttl": {
-      "stats_interval": 37.11,
-      "audit": 500,
-      "idle_depth_pct": false
-    },
-    "compress": 51.56,
-    "base_timeout_s": false
-  },
-  "cache_retries": true
+  "default_ratio_pct": 84.4,
+  "persist": [370, 56, 55, 173],
+  "base_delay": true,
+  "dry_run": 30,
+  "profile_interval": false,
+  "enabled": 88.71
 }
