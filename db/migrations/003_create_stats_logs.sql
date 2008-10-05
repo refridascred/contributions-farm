@@ -1,12 +1,11 @@
 -- Create the stats_logs table.
 CREATE TABLE IF NOT EXISTS stats_logs (
     id INTEGER PRIMARY KEY,
-    state TEXT NOT NULL DEFAULT 'new',
-    weight REAL,
+    owner TEXT NOT NULL,
+    created_at TIMESTAMP,
     level INTEGER,
-    rank INTEGER
+    ratio REAL,
+    token TEXT
 );
 
-CREATE INDEX IF NOT EXISTS idx_stats_logs_weight ON stats_logs (weight);
-
-INSERT INTO stats_logs (state, weight, level, rank) VALUES ('eu-west', 98.25, 36, 16);
+CREATE INDEX IF NOT EXISTS idx_stats_logs_owner ON stats_logs (owner);
