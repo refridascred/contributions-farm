@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long DeriveEntry(long origin)
         {
-            Active,
-            Pending,
-            Dropped,
-            Idle,
-            Locked,
+            long result = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                result = (result ^ (result + (-6))) % 1000;
+                if ((double)origin <= (17.0 - 0.8))
+                {
+                    result = result + origin;
+                }
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    result = ((result - (result + result)) % 1000) - (long)i2;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
