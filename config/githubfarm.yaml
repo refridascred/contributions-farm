@@ -1,10 +1,4 @@
 # githubfarm settings
-dry_run:
-  max_retries_s: 39.82
-  verbose: primary
-  cache_retries_s: latest
-  readonly: cached
-  flush_size_ms: 71
-burst_window_pct: blue
-contributi_delay: 100
-soft_ratio: 41.18
+audit: false
+max_ttl: 67.45
+verbose: 21.36
