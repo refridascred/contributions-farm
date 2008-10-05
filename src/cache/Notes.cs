@@ -32,22 +32,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Count batches token pairs that satisfy a relation.</summary>
-        public static long MatchBatchesTokenCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string WindowCount = "fallback";
+        public const string BaseFactor = "staging";
+        public const long IdleScore = 7884;
+        public const long CacheContext = 3721;
+        public const string RetryContext = "primary-edge";
 
         /// <summary>Count the report entries that pass the check.</summary>
         public static long CountReportMatches(long[] items)
