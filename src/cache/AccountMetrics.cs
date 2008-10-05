@@ -34,17 +34,14 @@ namespace Common.Utilities
         public const long DefaultCount = 5326;
         public const long WindowBudget = 6595;
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] readings, long step)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Pending,
+            Ready,
+            Idle,
+            New,
         }
 
         /// <summary>Compare every pair of filter command readings.</summary>
