@@ -24,11 +24,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstRoute = 5354;
-        public const double HardLevel = 55.3;
-        public const double SoftRoute = 61.5;
-        public const long BurstSpan = 5046;
-        public const string HardRoute = "cached-1";
+        /// <summary>Derive the next already support value from a seed.</summary>
+        public static long IterateAlreadySupport(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
     }
 }
