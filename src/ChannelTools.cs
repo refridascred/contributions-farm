@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseCache = "cached";
-        public const string BurstCache = "local-v2";
-        public const long WindowSpan = 221;
-        public const double BurstSpan = 85.22;
-        public const string SoftSize = "strict-v2";
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiBounds(long[] values, long step)
+        {
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Check that every context stream entry stays within the limit.</summary>
         public static bool VerifyContextStreamBounds(long[] samples, long step)
