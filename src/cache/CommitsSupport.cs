@@ -34,21 +34,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Locate a contributi record reading by value.</summary>
+        public static long LookupContributiRecordIndex(long[] samples, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (samples[i] > step)
                 {
-                    if ((readings[i] ^ readings[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of token entries.</summary>
