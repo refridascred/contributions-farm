@@ -1,11 +1,12 @@
 # entry settings
-cache_threshold:
-  - 96
-  - 344
-persist: false
-order_capacity: eu-west
-format_size:
-  min_delay: 32.1
-  notes_depth: 30
-  sync_timeout_ms: stable
-  verbose: 780
+min_threshold:
+  - legacy
+  - strict
+audit: staging
+burst_interval_s:
+  - 390
+  - 263
+  - 246
+  - 263
+burst_interval_count: 9222
+retry_window_s: eu-west
