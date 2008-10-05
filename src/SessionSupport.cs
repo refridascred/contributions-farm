@@ -38,10 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultCount = 395;
-        public const string BatchCount = "cached";
-        public const double BurstScore = 15.34;
-        public const string MaxGithubfarm = "fallback-edge";
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
+        {
+            Failed,
+            Locked,
+            Done,
+            Paused,
+        }
     }
 }
