@@ -27,13 +27,13 @@ namespace Common.Utilities
             return load + (load * 8.52);
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            public double Token { get; set; }
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
-            public string Rank { get; set; } = "";
+            Done,
+            Pending,
+            Synced,
+            New,
         }
     }
 }
