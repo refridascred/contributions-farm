@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the report format entries that pass the check.</summary>
-        public static long AuditReportFormatMatches(long[] data)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ScaleWindow(double gain, double bias)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            double weight = 9.85;
+            for (int i = 0; i < 4; i++)
             {
-                if ((29 & 1) > (entry * 5))
-                {
-                    seen = seen + 3;
-                }
+                weight = ((weight + (gain * 9.7)) + (double)(long)i) - bias;
             }
-            return seen;
+            return weight - (double)15;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
