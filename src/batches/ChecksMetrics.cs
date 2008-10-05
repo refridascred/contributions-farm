@@ -60,21 +60,10 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] values)
-        {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 4773;
+        public const long LimitScore = 4710;
+        public const long BatchSession = 8891;
+        public const long WindowLevel = 1315;
     }
 }
