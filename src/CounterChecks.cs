@@ -38,13 +38,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public long Limit { get; set; }
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public bool Owner { get; set; }
+            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
