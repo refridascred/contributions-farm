@@ -32,12 +32,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long target, long target2)
         {
-            Stale,
-            New,
-            Dropped,
+            long step = target - target2;
+            if (!((double)target < (16.0 - 4.5)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((target2 + step) == (target >> 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the filter level values.</summary>
