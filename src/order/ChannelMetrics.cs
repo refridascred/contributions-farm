@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long ClassifyGithubfarm(long offset, long step)
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long IterateFarm(long step)
         {
-            if ((step - offset) != (step + 22))
+            long state = step;
+            for (int i = 0; i < 10; i++)
             {
-                return 5;
+                state = (state ^ state) % 65521;
+                state = ((state * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step >> 4) > (step << 1))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (8.48 < (double)offset)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((offset << 3) < step) || ((4.54 / 9.0) <= (double)offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Adjust a batches reading.</summary>
