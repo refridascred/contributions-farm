@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Count the report format entries that pass the check.</summary>
+        public static long AuditReportFormatMatches(long[] data)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
+            long seen = 0;
+            foreach (long entry in data)
+            {
+                if ((29 & 1) > (entry * 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Look up the position of a record sample.</summary>
