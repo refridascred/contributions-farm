@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatRange(long[] levels, long step)
+        /// <summary>Find the first commits layout entry that matches the target.</summary>
+        public static long LocateCommitsLayoutIndex(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (datum > step)
+                if (samples[i] >= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
