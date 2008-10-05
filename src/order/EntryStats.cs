@@ -46,13 +46,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report stats.</summary>
-        public sealed class ReportStats
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            public string Limit { get; set; } = "";
-            public bool Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            Dropped,
+            Locked,
+            Failed,
+            New,
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
