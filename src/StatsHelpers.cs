@@ -48,39 +48,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long SortMetric(long origin, long origin2)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long TallyChannelMatches(long[] samples, long bound)
         {
-            long delta = origin - origin2;
-            if (!((origin2 & 31) <= delta))
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin2 * 4) == (origin * 2))
+                if (!((bound & 1) > (863 >> 5)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((delta + origin2) == (origin + delta))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((origin & 3) <= (delta + 76))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 2) + datum;
                 }
             }
+            return seen;
         }
     }
 }
