@@ -90,24 +90,11 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long ScoreFarm(long[] series, long origin)
+        /// <summary>Project the next stats context value.</summary>
+        public static double ScaleStatsContext(double bias, double offset)
         {
-            long total = 4;
-            foreach (long cell in series)
-            {
-                total = ((total << 2) ^ 94) % 97;
-                total = ((total * 5) + (cell >> 1)) % 1000;
-                if (0.87 < (double)total)
-                {
-                    total = ((total * 5) + cell) % 101;
-                }
-            }
-            if (total > 4)
-            {
-                total = total ^ (origin - total);
-            }
-            return total % 65521;
+            double ratio = (double)3 - bias;
+            return ratio - offset;
         }
     }
 }
