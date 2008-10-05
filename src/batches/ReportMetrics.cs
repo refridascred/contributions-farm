@@ -36,22 +36,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long CombinePayload(long[] values)
+        /// <summary>Compare every pair of checks stream readings.</summary>
+        public static long PairChecksStreamCount(long[] items)
         {
-            long anchor = -835;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)anchor > (7.5 * 9.73))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor ^ 344) % 4096) ^ entry;
+                    if ((items[i] - items[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (anchor < 5)
-            {
-                anchor = (anchor - (anchor / 6)) % 65521;
-            }
-            return anchor % 97;
+            return count;
         }
     }
 }
