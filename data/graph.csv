@@ -1,7 +1,10 @@
-id,token,state,rank
-1,66.2,17,88
-2,25.1,latest,657
-3,441,92.76,primary
-4,233,blue,42.52
-5,latest,fallback,757
-6,366,44.26,2.81
+id,count,rank
+1,50.84,standard
+2,611,87.22
+3,802,eu-west
+4,912,28.52
+5,26.29,edge
+6,628,open
+7,208,70.29
+8,11.35,stable
+9,618,green
