@@ -1,5 +1,5 @@
 {
-  "min_retries_s": [29, 284],
-  "idle_interval_ms": "cached",
-  "retry_limit_count": 500
+  "command_timeout": 51.74,
+  "enabled": "primary",
+  "readonly": false
 }
