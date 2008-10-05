@@ -19,21 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] readings)
+        /// <summary>Count the already metric entries that pass the check.</summary>
+        public static long MeasureAlreadyMetricGaps(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((datum ^ count) == (count + datum)) || (count > (datum + count)))
                 {
-                    if ((readings[i] + readings[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many record support samples are out of range.</summary>
