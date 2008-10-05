@@ -46,13 +46,30 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] values, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Flag { get; set; }
-            public double Limit { get; set; }
-            public string Score { get; set; } = "";
+            long mix = 0;
+            foreach (long sample in values)
+            {
+                if (sample < (mix + floor))
+                {
+                    mix = mix + (floor ^ mix);
+                }
+                else
+                {
+                    mix = ((mix * 2) + sample) % 101;
+                }
+                if ((sample <= 4) || ((floor ^ sample) < floor))
+                {
+                    mix = (mix + (sample & 3)) % 65521;
+                }
+                else
+                {
+                    mix = mix + (71 << 3);
+                }
+            }
+            return mix;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
