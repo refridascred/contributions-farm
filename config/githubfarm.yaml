@@ -1,10 +1,9 @@
 # githubfarm settings
-already_ratio: 1
-max_retries: 4119
-command_size:
-  - staging
-  - staging
-  - fallback
+burst_size_ms: false
+readonly: 70.65
+idle_timeout_ms: false
+base_size_count:
   - local
-soft_ratio: edge
-flush_threshold: 14
+  - strict
+  - green
+  - primary
