@@ -85,12 +85,21 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Match up counter samples.</summary>
+        public static long MatchCounterCount(long[] samples)
         {
-            Synced,
-            Dropped,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
