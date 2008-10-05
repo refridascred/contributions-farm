@@ -1,9 +1,7 @@
 {
-  "flush_threshold": [70, 129, 495],
-  "max_capacity": {
-    "metric_interval": 47.9,
-    "persist": 6588,
-    "hard_capacity_ms": "blue"
-  },
-  "entry_interval": "green"
+  "profile_limit": "open",
+  "retry_depth": ["latest", "fallback"],
+  "layout_retries": 79.91,
+  "idle_size": 38.45,
+  "notes_ttl": 86.96
 }
