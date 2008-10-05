@@ -19,18 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] levels, long step)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((step >> 5) > (922 ^ step))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public long Count { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define stream limits and defaults.</summary>
