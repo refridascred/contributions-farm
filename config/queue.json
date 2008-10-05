@@ -1,5 +1,8 @@
 {
-  "min_retries_s": "primary",
-  "enabled": "fallback",
-  "base_depth": 8365
+  "dry_run": [100, 169],
+  "retry_limit": 500,
+  "context_threshold": 90.2,
+  "persist": "legacy",
+  "batch_size": "cached",
+  "batch_window": true
 }
