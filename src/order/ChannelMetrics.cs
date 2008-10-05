@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] levels)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long acc = 6;
-            foreach (long datum in levels)
-            {
-                if (((datum * 2) > acc) || ((acc - acc) > (acc + 825)))
-                {
-                    acc = ((acc * 4) + (acc ^ datum)) % 1000;
-                }
-            }
-            return acc % 4096;
+            Done,
+            Idle,
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Validate already record readings against a bound.</summary>
