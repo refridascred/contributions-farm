@@ -1,6 +1,5 @@
 {
-  "sync_timeout_pct": [387, 445, 113],
-  "batch_depth_s": [146, 399, 396, 253],
-  "counter_retries": 52.12,
-  "checks_retries": false
+  "default_capacity_count": "stable",
+  "readonly": ["cached", "open", "local", "local"],
+  "batch_depth": false
 }
