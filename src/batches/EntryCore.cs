@@ -50,22 +50,18 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] samples, long bound)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphMatches(long[] samples)
         {
-            long state = 78;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                if ((double)bound >= 20.0)
+                if ((sample - sample) != (seen - seen))
                 {
-                    state = ((state << 2) ^ (6 - reading)) % 4096;
-                }
-                if ((bound * 4) > (state * 5))
-                {
-                    break;
+                    seen = seen + 2;
                 }
             }
-            return state;
+            return seen;
         }
     }
 }
