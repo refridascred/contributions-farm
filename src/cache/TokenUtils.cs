@@ -14,18 +14,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long FindAccountIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long CacheCount = 6532;
+        public const long RetryBudget = 3130;
+        public const double RetryWidth = 98.25;
+        public const double HardSpan = 50.71;
+        public const string CacheLevel = "primary";
 
         /// <summary>Validate account checks readings against a bound.</summary>
         public static bool GuardAccountChecksRange(long[] series, long step)
