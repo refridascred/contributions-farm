@@ -26,18 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long WeighSupport(long[] items)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterGaps(long[] samples, long step)
         {
-            long score = 15;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if ((double)reading >= 4.5)
+                if ((5 ^ entry) <= entry)
                 {
-                    score = (score ^ score) % 1000;
+                    seen = (seen + 1) - step;
                 }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Measure how many entry editor samples are out of range.</summary>
