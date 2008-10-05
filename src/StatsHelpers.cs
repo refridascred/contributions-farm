@@ -29,21 +29,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long MatchCommitsCount(long[] readings)
+        /// <summary>Check that every account session entry stays within the limit.</summary>
+        public static bool CheckAccountSessionBounds(long[] values, long target)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading >= target)
                 {
-                    if ((readings[i] - readings[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Describe the notes kind values.</summary>
