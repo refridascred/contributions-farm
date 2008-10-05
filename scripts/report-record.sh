@@ -6,12 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in strict blue; do
+for item in fallback eu-west stable; do
     log "checking ${item}"
 done
 
-RECORD_LIMIT=123
-log "limit is ${RECORD_LIMIT}"
+mode="${1:-staging}"
+case "${mode}" in
+    strict)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
 count=0
 while [ "${count}" -lt 7 ]; do
