@@ -66,19 +66,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long SeriesFilter(long seed)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextRange(long[] data, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 5; i++)
+            bool stale = true;
+            foreach (long datum in data)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (datum > step)
                 {
-                    anchor = (anchor ^ ((long)i ^ seed)) - (long)i2;
+                    stale = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return stale;
         }
     }
 }
