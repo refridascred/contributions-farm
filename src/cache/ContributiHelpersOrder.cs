@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatGaps(long[] data)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long reading in data)
             {
-                if (!((42 % 10) <= (datum & 15)))
+                if (reading < seed)
                 {
-                    count = count + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Hold a commits summary.</summary>
