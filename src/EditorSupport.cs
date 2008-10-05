@@ -68,19 +68,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] samples, long origin)
-        {
-            long score = 96;
-            foreach (long reading in samples)
-            {
-                if (!(489 >= origin))
-                {
-                    score = ((score * 5) + (reading << 3)) % 65521;
-                }
-                score = score + (origin - 872);
-            }
-            return score;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string LimitSupport = "local-v2";
+        public const string StepSpan = "standard-v2";
+        public const string WindowCount = "strict-edge";
+        public const long MinCount = 5619;
     }
 }
