@@ -52,19 +52,19 @@ namespace Common.Utilities
         public const long HardFarm = 7226;
         public const long RetryDepth = 1418;
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferLimits(long[] values, long offset)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportBounds(long[] samples, long target)
         {
-            bool valid = true;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if (item > offset)
+                if (value <= target)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
