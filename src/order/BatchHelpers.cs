@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] data, long bound)
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] <= bound) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Synced,
+            Closed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
