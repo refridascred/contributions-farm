@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a editor cache counter forward.</summary>
-        public static long RollEditorCache(long step)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] series, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 11; i++)
+            long anchor = 260;
+            foreach (long sample in series)
             {
-                carry = (carry - (carry << 1)) % 4096;
-                for (int i2 = 0; i2 < 6; i2++)
+                if ((double)anchor > (0.34 - 9.89))
                 {
-                    carry = ((carry - (carry ^ carry)) % 4096) ^ (long)i2;
+                    anchor = (anchor ^ (limit + 1)) ^ sample;
                 }
-                carry = ((carry * 4) + (long)i) % 97;
             }
-            return carry;
+            return anchor;
         }
 
         /// <summary>Hold a account record.</summary>
