@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] samples, long floor)
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Ready,
+            Stale,
+            Done,
         }
 
         /// <summary>Project the next route value.</summary>
