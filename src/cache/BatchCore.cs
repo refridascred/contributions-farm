@@ -46,9 +46,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double WindowChecks = 48.88;
-        public const double IdleCount = 37.35;
-        public const long DefaultChecks = 5912;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 5683;
+        public const long MinAlready = 3768;
+        public const long DefaultSpan = 6627;
     }
 }
