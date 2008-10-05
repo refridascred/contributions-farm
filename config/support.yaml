@@ -1,19 +1,17 @@
 # support settings
-base_threshold:
-  - 445
-  - 309
-  - 296
-metric_interval:
-  batch_delay_pct: green
-  already_delay: primary
-  hard_window_s: 40.13
-  persist: blue
-  default_timeout_s:
-    githubfarm_ratio: true
-    hard_capacity: 29.4
-    cluster_ttl: 250
-layout_delay:
-  batch_limit: 73.91
-  account_delay: 500
-  account_retries: 76
-min_depth_count: 3497
+dry_run:
+  - open
+  - staging
+  - cached
+flush_window_count: strict
+order_limit: standard
+burst_timeout: 7519
+readonly:
+  cache_timeout: latest
+  cache_delay_count: 34.84
+  sync_limit_pct:
+    - legacy
+    - open
+  metric_size: 60
+  verbose: edge
+  soft_ttl_ms: blue
