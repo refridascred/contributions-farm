@@ -14,21 +14,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Compare every pair of commits buffer readings.</summary>
-        public static long PairCommitsBufferCount(long[] data)
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Failed,
+            Locked,
+            Synced,
         }
 
         /// <summary>Iterate the tools token series from a seed.</summary>
