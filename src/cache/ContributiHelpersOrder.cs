@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatGaps(long[] data)
         {
-            public long Offset { get; set; }
-            public long Size { get; set; }
-            public double Total { get; set; }
-            public bool Score { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if (!((42 % 10) <= (datum & 15)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a commits summary.</summary>
