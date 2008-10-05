@@ -42,32 +42,21 @@ namespace Common.Utilities
         public const long IdleContext = 356;
         public const long SoftFactor = 3270;
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long RankSupport(long target, long limit)
+        /// <summary>Match up channel samples.</summary>
+        public static long OverlapChannelCount(long[] items)
         {
-            long span = target ^ limit;
-            if (!((span - span) <= span))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit - target) == (limit - 265))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target >> 1) != (95 + 64))
+                    if ((items[i] - items[j]) < 5)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 5;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
