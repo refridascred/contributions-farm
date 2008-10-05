@@ -38,10 +38,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BatchTools = 7802;
-        public const long MaxTools = 3973;
-        public const long SoftTools = 9556;
-        public const long RetryTimeout = 2191;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] values, long offset)
+        {
+            long matches = 0;
+            foreach (long reading in values)
+            {
+                if ((double)offset != (14.0 / 5.0))
+                {
+                    matches = (matches + 3) + reading;
+                }
+            }
+            return matches;
+        }
     }
 }
