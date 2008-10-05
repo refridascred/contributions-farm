@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 9021;
-        public const long DefaultGithubfarm = 3223;
-        public const long BaseLevel = 6843;
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] levels, long target)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferOutliers(long[] readings, long step)
