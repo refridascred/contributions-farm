@@ -13,12 +13,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MinBatches = 1077;
-        public const long CacheInterval = 9785;
-        public const string WindowWidth = "staging-1";
-        public const double IdleBatches = 40.7;
-        public const double DefaultBatches = 55.19;
+        /// <summary>Blend two record route measurements.</summary>
+        public static double SmoothRecordRoute(double rate, double bias)
+        {
+            double scale = rate - (rate * 17.0);
+            if (scale < (bias * 16.0))
+            {
+                scale = scale + (scale + scale);
+            }
+            return scale - (rate / 8.0);
+        }
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
