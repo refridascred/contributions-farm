@@ -1,5 +1,10 @@
 # githubfarm settings
-filter_depth: 58.25
-dry_run: false
-githubfarm_limit: false
-report_capacity: 79.59
+already_ratio: 1
+max_retries: 4119
+command_size:
+  - staging
+  - staging
+  - fallback
+  - local
+soft_ratio: edge
+flush_threshold: 14
