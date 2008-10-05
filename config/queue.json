@@ -1,5 +1,7 @@
 {
-  "max_capacity_pct": [465, 321, 348, 60],
-  "strict": [207, 166],
-  "base_delay_ms": "blue"
+  "retry_ttl": [454, 259],
+  "default_threshold_s": ["stable", "cached", "fallback", "blue"],
+  "max_window": false,
+  "audit": "primary",
+  "account_capacity": ["green", "local", "latest", "blue"]
 }
