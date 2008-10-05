@@ -19,13 +19,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
-        {
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "local";
+        public const long RetryChecks = 5637;
+        public const long CacheCount = 555;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
