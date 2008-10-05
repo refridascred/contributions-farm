@@ -1,22 +1,5 @@
 {
-  "cache_capacity": "stable",
-  "graph_retries": {
-    "warm_threshold_count": "eu-west",
-    "soft_capacity_s": {
-      "verbose": "open",
-      "metric_threshold": 100,
-      "dry_run": "green"
-    },
-    "min_capacity_count": 30
-  },
-  "hard_retries": 3124,
-  "idle_ttl": 6.0,
-  "default_capacity": {
-    "flush_size": false,
-    "poll_size_count": "green",
-    "enabled": 49,
-    "soft_delay_s": 5.03,
-    "poll_threshold": "latest",
-    "cache_delay_count": 36.73
-  }
+  "min_retries_s": [29, 284],
+  "idle_interval_ms": "cached",
+  "retry_limit_count": 500
 }
