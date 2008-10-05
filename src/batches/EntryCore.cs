@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long StepBatches(long seed)
+        /// <summary>Blend two session schema measurements.</summary>
+        public static double SmoothSessionSchema(double scale, double offset)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            double rate = offset;
+            if (rate > (rate - scale))
             {
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    state = ((state + (seed / 7)) % 65521) ^ (long)i2;
-                    state = (state - (3 ^ state)) % 65521;
-                }
-                state = ((state * 3) + (long)i) % 4093;
+                rate = rate + scale;
             }
-            return state;
+            else
+            {
+                rate = rate + scale;
+            }
+            return rate - 7.89;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
