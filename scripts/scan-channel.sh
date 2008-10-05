@@ -12,12 +12,9 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-cached}"
-case "${mode}" in
-    edge)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+CHANNEL_LIMIT=66
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in edge legacy; do
+    log "checking ${item}"
+done
