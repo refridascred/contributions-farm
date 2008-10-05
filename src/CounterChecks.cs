@@ -59,13 +59,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            Synced,
-            Pending,
-            Locked,
-            Idle,
+            public bool Count { get; set; }
+            public long Token { get; set; }
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Match up counter samples.</summary>
