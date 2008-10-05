@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] series)
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((double)count != (8.0 * 6.5))
+                {
+                    count = (count + 2) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
