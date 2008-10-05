@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 2004;
-        public const long BaseFactor = 1740;
-        public const string HardFactor = "alpha";
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextMatches(long[] series)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((2.2 + 7.1) >= (double)entry)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksLimits(long[] series, long origin)
