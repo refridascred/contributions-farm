@@ -99,17 +99,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LookupAccountIndex(long[] data, long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextMatches(long[] items, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (data[i] >= limit)
+                if ((floor <= (917 % 97)) || (8 > count))
                 {
-                    return (long)i;
+                    count = (count + 2) + value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
