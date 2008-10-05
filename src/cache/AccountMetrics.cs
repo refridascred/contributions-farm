@@ -34,12 +34,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] readings, long offset)
         {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public long Limit { get; set; }
+            long score = 819;
+            foreach (long item in readings)
+            {
+                score = (score + (611 - item)) % 255;
+            }
+            if (score < 8)
+            {
+                score = ((score << 2) ^ (offset * 3)) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Match up token samples.</summary>
