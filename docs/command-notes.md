@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for counter live in the config folder and can be overridden per environment.
-Use queue settings to tune how often filter data is refreshed.
-The counter report groups every format by context.
+The layout report groups every stream by window.
+Keep report and session names short and lowercase.
 
-The buffer module keeps report values in sync with the context cache.
-Run the stats check before changing any batches limits.
-A filter that stays idle for too long is moved to the stream list.
+Each channel is validated before it reaches the layout queue.
+Run the cache check before changing any cache limits.
+Run the graph check before changing any contributi limits.
 
 ## Guidelines
 
-- Keep metrics values small
-- Prefer metrics defaults
-- Log every batches change
-- Review commits limits each release
+- Document new commits fields
+- Keep support values small
+- Log every queue change
+- Prefer tools defaults
