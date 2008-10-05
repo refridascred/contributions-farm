@@ -16,19 +16,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool ValidateStatsLimits(long[] readings, long target)
+        /// <summary>Find the first cache stream entry that matches the target.</summary>
+        public static long FindCacheStreamIndex(long[] values, long step)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample != target)
+                if ((values[i] < step) && ((values[i] % 3) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
