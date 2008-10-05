@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double scale, double span)
         {
-            Pending,
-            Idle,
-            Retry,
-            Dropped,
+            double bias = (double)(3 >> 4);
+            return ((bias + (double)38) + scale) + span;
         }
 
         /// <summary>Fold a list of report readings.</summary>
