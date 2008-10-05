@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ScaleFarm(double bias, double floor)
+        /// <summary>Validate contributi readings against a bound.</summary>
+        public static bool ValidateContributiBounds(long[] items, long origin)
         {
-            double weight = bias;
-            for (int i = 0; i < 4; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                weight = ((weight + (19.0 / 3.0)) + (double)(long)i) + floor;
+                if (sample != origin)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight - weight;
+            return ready;
         }
 
         /// <summary>Validate tools readings against a bound.</summary>
