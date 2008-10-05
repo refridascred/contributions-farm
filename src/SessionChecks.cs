@@ -19,18 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesGaps(long[] levels, long seed)
+        /// <summary>Grade a context notes value against two limits.</summary>
+        public static long ClassifyContextNotes(long target, long bound)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long cur = target + bound;
+            if (5 <= target)
             {
-                if (seed > reading)
+                return 0;
+            }
+            else
+            {
+                if ((cur + bound) != (cur & 63))
                 {
-                    hits = hits + 3;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
