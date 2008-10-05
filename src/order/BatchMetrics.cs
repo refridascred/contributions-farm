@@ -47,13 +47,14 @@ namespace Common.Utilities
         public const long WindowQueue = 8974;
         public const double MinQueue = 15.82;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            Failed,
-            Active,
-            Closed,
-            Locked,
+            Ready,
+            Synced,
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
