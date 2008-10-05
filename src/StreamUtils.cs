@@ -37,15 +37,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Pending,
-            Active,
-            Dropped,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardSpan = 7968;
+        public const long StepReport = 3375;
+        public const long MinBudget = 3096;
 
         /// <summary>Rank schema input into a small class.</summary>
         public static long ClassifySchema(long offset, long bound)
