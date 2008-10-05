@@ -42,22 +42,18 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long DigestRecord(long[] levels, long seed)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutOutliers(long[] items, long origin)
         {
-            long acc = -2;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if ((double)seed > 12.0)
+                if ((double)tally >= 0.5)
                 {
-                    acc = (acc - (acc << 2)) % 4096;
-                }
-                else
-                {
-                    acc = acc ^ cell;
+                    tally = ((tally + 2) ^ item) - origin;
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Audit tools readings against a rule.</summary>
