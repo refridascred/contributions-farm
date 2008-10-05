@@ -35,17 +35,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long FindAccountIndex(long[] data, long seed)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long acc = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if ((data[i] > seed) && ((data[i] % 2) == 0))
+                for (int i2 = 0; i2 < 3; i2++)
                 {
-                    return (long)i;
+                    acc = (((acc * 3) + (limit << 2)) % 255) ^ (long)i2;
+                    acc = acc + (2 - limit);
                 }
+                acc = acc - limit;
+                acc = ((acc * 4) + (long)i) % 4093;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
