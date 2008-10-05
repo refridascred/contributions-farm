@@ -21,19 +21,18 @@ namespace Common.Utilities
         public const double DefaultScore = 75.39;
         public const long BurstOrder = 5645;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] samples, long offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmOutliers(long[] values)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (sample > offset)
+                if (!((value ^ (long)values.Length) > (count ^ value)))
                 {
-                    flag = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
