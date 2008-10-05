@@ -6,12 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in legacy cached strict; do
+for item in legacy fallback; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 6 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
+CHANNEL_LIMIT=271
+log "limit is ${CHANNEL_LIMIT}"
