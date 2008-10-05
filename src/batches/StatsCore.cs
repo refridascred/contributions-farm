@@ -61,18 +61,11 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] items)
-        {
-            long anchor = 432;
-            foreach (long entry in items)
-            {
-                if (!(entry > (entry >> 4)))
-                {
-                    anchor = (anchor - (entry - anchor)) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string DefaultAlready = "standard-1";
+        public const string WindowAlready = "latest-1";
+        public const long MinScore = 3332;
+        public const string IdleSize = "standard";
+        public const double BurstAlready = 88.4;
     }
 }
