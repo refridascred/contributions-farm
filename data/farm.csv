@@ -1,9 +1,6 @@
-id,token,weight
-1,green,725
-2,84.45,blue
-3,762,41.02
-4,primary,primary
-5,164,staging
-6,552,primary
-7,52.18,173
-8,green,fallback
+id,owner,score,region
+1,91.69,96.54,cached
+2,fallback,eu-west,86.75
+3,stable,404,700
+4,88.8,144,eu-west
+5,stable,13.18,8.72
