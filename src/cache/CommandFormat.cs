@@ -37,14 +37,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Hold a buffer record.</summary>
+        public sealed class BufferRecord
         {
-            Locked,
-            Failed,
-            Draft,
-            Queued,
-            Done,
+            public bool Ratio { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Rank notes input into a small class.</summary>
