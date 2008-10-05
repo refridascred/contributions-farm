@@ -36,14 +36,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long MeasureNotesOutliers(long[] data)
         {
-            Synced,
-            Closed,
-            Active,
-            Done,
-            Queued,
+            long hits = 0;
+            foreach (long reading in data)
+            {
+                if (!(((357 + hits) >= 50) || (hits <= 2)))
+                {
+                    hits = (hits + 3) + reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
