@@ -38,17 +38,12 @@ namespace Common.Utilities
             return load + (load - offset);
         }
 
-        /// <summary>Look up the position of a cache commits sample.</summary>
-        public static long FindCacheCommitsIndex(long[] readings, long floor)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Draft,
+            Dropped,
         }
     }
 }
