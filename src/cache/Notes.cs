@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] data)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] data, long target)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((seen & 31) >= 744) && ((seen >> 4) > 733)) && ((seen % 10) >= (seen << 1)))
+                if ((data[i] > target) && ((data[i] % 5) != 0))
                 {
-                    seen = (seen + 3) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Adjust a context reading.</summary>
