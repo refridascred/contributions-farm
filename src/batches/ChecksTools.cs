@@ -26,16 +26,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] series)
         {
-            long acc = offset;
-            for (int i = 0; i < 16; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = (acc + (acc * 2)) % 1000;
-                acc = ((acc * 4) + (long)i) % 101;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
