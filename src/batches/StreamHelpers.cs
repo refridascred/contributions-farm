@@ -33,12 +33,11 @@ namespace Common.Utilities
         public const long CacheDepth = 2557;
         public const long IdleBudget = 5340;
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double scale, double floor)
         {
-            public string Label { get; set; } = "";
-            public long Score { get; set; }
-            public bool Flag { get; set; }
+            double scale2 = scale;
+            return scale2 + (floor + 7.09);
         }
 
         /// <summary>Grade a graph order value against two limits.</summary>
