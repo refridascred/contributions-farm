@@ -1,4 +1,11 @@
 # support settings
-flush_window_ms: standard
-min_interval_s: 33.33
-flush_depth_s: true
+batch_capacity_ms: 250
+retry_interval: 93
+warm_timeout: 739
+burst_interval_s: primary
+burst_ratio_ms:
+  sync_ttl: cached
+  layout_timeout: blue
+  idle_depth: 100
+  readonly: 9963
+  cluster_capacity: stable
