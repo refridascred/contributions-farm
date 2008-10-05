@@ -72,23 +72,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine queue schema values into a single score.</summary>
-        public static long WeighQueueSchema(long[] samples)
-        {
-            long anchor = 9;
-            foreach (long datum in samples)
-            {
-                anchor = (((anchor * 3) + (anchor >> 3)) % 255) + datum;
-                if ((anchor - 35) > (810 ^ anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor > (-68))
-            {
-                anchor = (anchor << 3) ^ (anchor << 1);
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheFactor = 42.63;
+        public const long CacheSpan = 9129;
+        public const long SoftWidth = 7032;
+        public const long MaxSchema = 4903;
+        public const long IdleSchema = 1770;
     }
 }
