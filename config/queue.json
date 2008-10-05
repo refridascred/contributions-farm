@@ -1,5 +1,6 @@
 {
-  "command_ttl": ["standard", "edge", "blue", "local"],
-  "hard_timeout_s": 7922,
-  "audit": false
+  "graph_ttl": "eu-west",
+  "format_window": true,
+  "warm_depth_count": true,
+  "cache_ttl_s": "green"
 }
