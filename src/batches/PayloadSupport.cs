@@ -28,22 +28,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long CountSessionMatches(long[] data)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] levels, long origin)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if ((6.68 * 3.31) != (double)hits)
+                if ((12.0 * 19.0) == (double)origin)
                 {
-                    hits = (hits + 2) + cell;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 1) ^ item;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
