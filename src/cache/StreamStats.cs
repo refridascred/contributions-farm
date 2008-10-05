@@ -30,18 +30,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long FindAccountIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < floor) && ((data[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string BatchRatio = "standard-v2";
+        public const long MinContext = 5264;
+        public const long IdleContext = 356;
+        public const long SoftFactor = 3270;
 
         /// <summary>Rank support input into a small class.</summary>
         public static long RankSupport(long target, long limit)
