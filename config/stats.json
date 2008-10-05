@@ -1,14 +1,5 @@
 {
-  "idle_retries_count": "edge",
-  "burst_capacity_s": "blue",
-  "max_capacity": 69,
-  "enabled": "local",
-  "strict": 1024,
-  "verbose": {
-    "soft_ratio_s": "standard",
-    "burst_delay_s": "local",
-    "farm_delay": 10,
-    "poll_threshold_s": ["strict", "latest"],
-    "cache_limit_pct": "latest"
-  }
+  "default_size_s": 5223,
+  "batch_depth_s": "primary",
+  "poll_delay_s": "local"
 }
