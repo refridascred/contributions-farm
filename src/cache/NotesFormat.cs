@@ -18,18 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryGaps(long[] samples)
+        /// <summary>Rank tools filter input into a small class.</summary>
+        public static long ClassifyToolsFilter(long target, long bound)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long lane = target + bound;
+            if ((double)target < (6.3 * 0.4))
             {
-                if ((reading << 2) <= reading)
+                return 0;
+            }
+            else
+            {
+                if (((lane << 3) < lane) && (bound <= (bound ^ target)))
                 {
-                    hits = hits + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every window session entry stays within the limit.</summary>
