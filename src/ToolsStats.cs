@@ -81,10 +81,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinSize = "latest";
-        public const string MaxEditor = "latest-v2";
-        public const string SoftEditor = "strict-edge";
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinFactor = 1019;
+        public const double BurstInterval = 84.16;
+        public const long BaseChecks = 9160;
 
         /// <summary>Audit metrics cache readings against a rule.</summary>
         public static long AuditMetricsCacheOutliers(long[] levels, long target)
