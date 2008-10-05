@@ -74,12 +74,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferLimits(long[] values, long offset)
         {
-            public bool Limit { get; set; }
-            public double Mode { get; set; }
-            public double Owner { get; set; }
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item > offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
