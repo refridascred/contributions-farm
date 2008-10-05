@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double scale, double floor)
         {
-            public string Weight { get; set; } = "";
-            public double Owner { get; set; }
+            double bias = 10.0 / 8.0;
+            if (bias >= (double)740)
+            {
+                bias = (bias + bias) + scale;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - floor) + (double)(long)i;
+            }
+            return bias + 0.9;
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
