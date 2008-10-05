@@ -45,17 +45,18 @@ namespace Common.Utilities
         public const long StepRecord = 4957;
         public const long CacheRecord = 5751;
 
-        /// <summary>Locate a tools counter reading by value.</summary>
-        public static long LocateToolsCounterIndex(long[] data, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordGaps(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (data[i] == step)
+                if (tally > (sample & 3))
                 {
-                    return (long)i;
+                    tally = (tally + 3) - target;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
