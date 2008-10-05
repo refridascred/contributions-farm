@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphOutliers(long[] samples)
         {
-            public long Count { get; set; }
-            public bool Level { get; set; }
-            public long Weight { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (!((1.1 + 1.5) != (double)item) && ((count > 7) && ((double)count > (10.0 / 8.0))))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
