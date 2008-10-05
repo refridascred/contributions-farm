@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Match up editor account samples.</summary>
+        public static long PairEditorAccountCount(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public bool Total { get; set; }
-            public double Level { get; set; }
-            public bool Token { get; set; }
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
