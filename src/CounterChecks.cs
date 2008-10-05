@@ -52,19 +52,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool GuardCommandLimits(long[] series, long limit)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long GradeFilter(long step, long origin)
         {
-            bool stale = true;
-            foreach (long item in series)
+            long slot = step + origin;
+            if ((12.0 / 8.0) <= (double)origin)
             {
-                if (item <= limit)
+                return 6;
+            }
+            else
+            {
+                if ((step & 127) >= (step % 5))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((slot > (step + slot)) && ((double)origin >= (0.28 + 7.5)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Describe the entry state values.</summary>
