@@ -89,22 +89,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long MeasureContextMatches(long[] items, long floor)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long count = 0;
-            foreach (long value in items)
-            {
-                if ((floor <= (917 % 97)) || (8 > count))
-                {
-                    count = (count + 2) + value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Queued,
+            Stale,
+            New,
         }
     }
 }
