@@ -14,11 +14,15 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardDepth = 1277;
-        public const string MaxCache = "latest-edge";
-        public const long MinCache = 1567;
-        public const long SoftInterval = 8243;
+        /// <summary>Describe the farm status values.</summary>
+        public enum FarmStatus
+        {
+            Failed,
+            Idle,
+            Synced,
+            Retry,
+            Active,
+        }
 
         /// <summary>Validate account checks readings against a bound.</summary>
         public static bool GuardAccountChecksRange(long[] series, long step)
