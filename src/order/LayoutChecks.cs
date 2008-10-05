@@ -46,39 +46,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long RankStream(long step, long step2)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            long next = step - step2;
-            if (step <= (next * 5))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step2 % 24) < (667 + step))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((63 * 4) >= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!(step2 <= (step * 4)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Draft,
+            Ready,
+            Queued,
         }
 
         /// <summary>Describe the editor phase values.</summary>
