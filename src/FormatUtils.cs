@@ -49,12 +49,16 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BaseCount = 6053;
-        public const long LimitEditor = 8438;
-        public const long BatchSize = 1935;
-        public const long HardInterval = 2288;
-        public const long CacheWidth = 7176;
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] data)
+        {
+            long anchor = 34;
+            foreach (long reading in data)
+            {
+                anchor = (((anchor * 3) + (8 * 4)) % 4096) + reading;
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next batch value from a seed.</summary>
         public static long IterateBatch(long origin)
