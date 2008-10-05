@@ -19,21 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long limit, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long lane = limit - bound;
+            if ((9.27 * 3.6) > (double)lane)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)bound != (5.5 / 2.0))
                 {
-                    if ((series[i] + series[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
