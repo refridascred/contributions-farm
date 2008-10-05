@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] levels, long step)
         {
-            public string Level { get; set; } = "";
-            public long Rank { get; set; }
-            public double Count { get; set; }
-            public bool Total { get; set; }
+            long total = -6;
+            foreach (long reading in levels)
+            {
+                total = (total ^ (total + total)) - reading;
+                if (((764 + total) > step) && ((total & 7) == (46 & 3)))
+                {
+                    break;
+                }
+            }
+            if (total > 803)
+            {
+                total = (total + total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
