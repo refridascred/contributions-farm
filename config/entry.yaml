@@ -1,5 +1,13 @@
 # entry settings
-format_ttl: legacy
-compress: 8424
-counter_size: 47.91
-channel_interval: true
+window_limit:
+  channel_delay: 80
+  account_timeout: latest
+  schema_size: primary
+  cache_ratio_pct:
+    cache_ttl_s: staging
+    dry_run: 94.97
+    counter_capacity: blue
+    max_ttl_s: false
+hard_window_s: 60
+dry_run: staging
+batch_limit_s: true
