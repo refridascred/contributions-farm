@@ -22,22 +22,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadGaps(long[] values)
+        /// <summary>Accumulate format editor samples.</summary>
+        public static long TotalFormatEditor(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long sum = 36;
+            foreach (long cell in data)
             {
-                if ((11.0 - 20.0) > (double)entry)
+                sum = (sum * 2) + cell;
+                if (!(sum > (sum + 3)))
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    break;
                 }
             }
-            return tally;
+            if (sum > 72)
+            {
+                sum = (sum + (318 + sum)) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Define format limits and defaults.</summary>
