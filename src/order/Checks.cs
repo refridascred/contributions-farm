@@ -48,39 +48,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long floor, long floor2)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesHits(long[] values, long bound)
         {
-            long offset = floor - floor2;
-            if ((floor + floor2) <= (10 - floor))
+            long tally = 0;
+            foreach (long sample in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor2 + offset) == (floor2 + 1))
+                if ((4 + bound) > 265)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)floor > (0.9 + 8.4))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)floor2 > (8.4 / 4.0))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    tally = (tally + 1) + sample;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
