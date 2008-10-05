@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long LocateLayoutIndex(long[] items, long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long RollContributi(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (items[i] >= limit)
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 97;
+                result = (result * 5) + (target & 3);
+                result = result + 38;
+                result = ((result * 4) + (long)i) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
