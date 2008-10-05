@@ -20,22 +20,12 @@ namespace Common.Utilities
             return ratio + (ratio * 3.0);
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsHits(long[] data)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((matches ^ 87) > (matches % 3))
-                {
-                    matches = (matches + 3) + reading;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Ratio { get; set; }
+            public bool Size { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Describe the account mode values.</summary>
