@@ -22,14 +22,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Locked,
-            Synced,
-            Dropped,
-            Paused,
-            Stale,
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public double Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Project the next metric value.</summary>
