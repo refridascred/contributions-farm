@@ -28,15 +28,19 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long limit)
         {
-            long acc = floor;
-            for (int i = 0; i < 10; i++)
+            long score = limit;
+            for (int i = 0; i < 9; i++)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                for (int i2 = 0; i2 < 2; i2++)
+                {
+                    score = ((score + (limit * 5)) % 255) + (long)i2;
+                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return acc;
+            return score;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
