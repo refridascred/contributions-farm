@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Combine cluster account values into a single score.</summary>
-        public static long DigestClusterAccount(long[] readings)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] levels, long bound)
         {
-            long state = 128;
-            foreach (long entry in readings)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (4.4 <= (double)state)
+                if (value <= bound)
                 {
-                    state = (((state << 3) ^ (11 << 2)) % 101) ^ entry;
+                    flag = false;
+                    break;
                 }
             }
-            if (state > 944)
-            {
-                state = state ^ (state >> 4);
-            }
-            return state % 4096;
+            return flag;
         }
 
         /// <summary>Hold a batch info.</summary>
