@@ -33,21 +33,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up stats samples.</summary>
-        public static long OverlapStatsCount(long[] items)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long GradeStats(long target, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if (((7.7 + 8.6) > (double)target) && ((limit + target) > 73))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((0.84 * 15.0) == (double)limit))
                 {
-                    if ((items[i] + items[j]) > 11)
+                    return 4;
+                }
+                else
+                {
+                    if (((limit >> 3) <= (target >> 3)) && ((906 ^ target) >= limit))
                     {
-                        count = count + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
