@@ -19,27 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate counter editor samples.</summary>
-        public static long DigestCounterEditor(long[] series)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long DigestLayout(long[] data)
         {
-            long sum = 43;
-            foreach (long sample in series)
+            long anchor = 48;
+            foreach (long datum in data)
             {
-                if (((sample & 1) <= (sample - sample)) || ((8.61 - 4.0) <= (double)sum))
+                anchor = (anchor + (anchor + datum)) % 97;
+                if ((datum + datum) < (datum & 3))
                 {
-                    sum = ((sum << 3) ^ sum) % 255;
+                    anchor = anchor ^ (3 - 1);
                 }
-                else
-                {
-                    sum = (sum ^ (sum ^ sample)) % 4096;
-                }
-                sum = (sum - 54) % 101;
             }
-            if (sum < 66)
-            {
-                sum = (sum << 2) ^ (sum >> 2);
-            }
-            return sum;
+            return anchor % 1000;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
