@@ -51,12 +51,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] values)
         {
-            Synced,
-            Queued,
-            New,
+            long score = 78;
+            foreach (long cell in values)
+            {
+                score = ((score ^ (score << 2)) % 65521) - cell;
+                score = (score + (score * 4)) % 255;
+            }
+            if (score < 2)
+            {
+                score = ((score << 2) ^ (0 & 255)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Hold a notes header.</summary>
