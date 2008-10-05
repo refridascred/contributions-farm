@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] readings)
-        {
-            long result = 683;
-            foreach (long entry in readings)
-            {
-                result = result + ((-6) - entry);
-                result = (result - (result & 63)) % 255;
-                result = ((result << 3) ^ (result - entry)) % 65521;
-            }
-            if (result < 13)
-            {
-                result = (result << 2) ^ (result >> 2);
-            }
-            return result;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultWidth = 1973;
+        public const double BatchEditor = 70.73;
+        public const string CacheWidth = "local-edge";
+        public const string WindowDepth = "staging-v2";
+        public const long BurstEditor = 9590;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long CombineToken(long[] items)
