@@ -33,13 +33,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] series, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksRange(long[] values, long offset)
         {
             bool flag = true;
-            foreach (long sample in series)
+            foreach (long reading in values)
             {
-                if (sample != bound)
+                if (reading <= offset)
                 {
                     flag = false;
                     break;
