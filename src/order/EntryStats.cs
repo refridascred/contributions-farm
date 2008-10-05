@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 5445;
-        public const double RetryReport = 96.79;
-        public const double WindowReport = 44.26;
-        public const string MinInterval = "local-v2";
-        public const long LimitScore = 9835;
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long ClassifyAccount(long bound, long offset)
+        {
+            if ((double)offset == (19.0 / 6.0))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((bound + offset) == (bound + 5))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)bound >= (6.0 * 0.49))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstCounter = 1706;
