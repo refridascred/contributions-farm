@@ -1,14 +1,12 @@
 # Command notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-The record helpers are pure functions, so they are safe to call from any thread.
-Keep counter and report names short and lowercase.
-
-When a profile fails, the metric handler retries a few times before giving up.
-The batches report groups every stream by graph.
+The report report groups every checks by contributi.
+Use route settings to tune how often githubfarm data is refreshed.
+Defaults for cache live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every entry change
-- Prefer checks defaults
-- Document new context fields
+- Review report limits each release
+- Keep graph values small
+- Validate entry input early
+- Document new route fields
