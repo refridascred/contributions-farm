@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long origin, long bound)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long LookupContributiIndex(long[] data, long bound)
         {
-            if ((origin * 5) == (origin % 60))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound + origin) != (origin >> 4))
+                if ((data[i] <= bound) && ((data[i] % 3) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a support summary.</summary>
