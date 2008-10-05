@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a support token reading by value.</summary>
-        public static long FindSupportTokenIndex(long[] readings, long limit)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (readings[i] > limit)
-                {
-                    return (long)i;
-                }
+                mix = ((mix << 2) ^ (bound - (long)i)) % 97;
+                mix = (mix + (mix & 127)) % 65521;
+                mix = ((mix * 3) + (bound - bound)) % 65521;
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
