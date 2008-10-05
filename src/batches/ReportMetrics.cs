@@ -36,21 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of checks stream readings.</summary>
-        public static long PairChecksStreamCount(long[] items)
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Weight { get; set; } = "";
+            public long Level { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
