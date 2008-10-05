@@ -22,25 +22,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long RankEntry(long limit, long limit2)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long bound = limit ^ limit2;
-            if ((limit - bound) <= (7 >> 5))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound >> 1) >= (1 ^ bound))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Locked,
+            Failed,
+            Draft,
+            Queued,
+            Done,
         }
 
         /// <summary>Describe the session level values.</summary>
