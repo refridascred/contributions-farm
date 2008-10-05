@@ -19,14 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double gain, double bias)
         {
-            Locked,
-            Retry,
-            Failed,
-            Synced,
-            Active,
+            double load = 6.9 + (gain + gain);
+            return load - (gain + bias);
         }
 
         /// <summary>Check that every account session entry stays within the limit.</summary>
