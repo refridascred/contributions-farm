@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Accumulate layout samples.</summary>
-        public static long FoldLayout(long[] readings)
-        {
-            long sum = 2;
-            foreach (long entry in readings)
-            {
-                if (sum < ((-588) + sum))
-                {
-                    sum = ((sum + ((long)readings.Length / 3)) % 1000) + entry;
-                }
-            }
-            if (sum < 8)
-            {
-                sum = ((sum << 3) ^ sum) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchSize = 83.9;
+        public const long BatchFactor = 8813;
+        public const long DefaultProfile = 2763;
+        public const long MinInterval = 2646;
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long BaseSpan = 9190;
