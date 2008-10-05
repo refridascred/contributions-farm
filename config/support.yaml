@@ -1,5 +1,9 @@
 # support settings
-soft_ttl: edge
-audit: 60
-layout_interval: strict
-hard_window: false
+flush_timeout:
+  - standard
+  - cached
+  - standard
+  - standard
+persist: 477
+poll_interval: 9
+warm_capacity: 2
