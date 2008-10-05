@@ -74,15 +74,21 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double rate, double floor)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long CompareGraphCount(long[] series)
         {
-            double weight = (floor + 2.3) + (rate / 3.0);
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = (weight - (5.09 + weight)) - (double)(long)i;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) < 10)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return weight + rate;
+            return count;
         }
     }
 }
