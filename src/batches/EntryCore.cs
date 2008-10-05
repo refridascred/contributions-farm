@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] levels)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool VerifyReportBounds(long[] readings, long limit)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (((172 * 2) == (value >> 3)) || ((value << 3) == (value % 10)))
+                if (reading > limit)
                 {
-                    tally = tally + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
