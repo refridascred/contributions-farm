@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleSession = 8282;
-        public const long CacheCount = 8602;
-        public const long IdleDepth = 870;
-        public const double HardScore = 4.54;
-        public const long WindowSession = 2159;
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
+        {
+            Draft,
+            Paused,
+            Stale,
+        }
 
         /// <summary>Count the order batches entries that pass the check.</summary>
         public static long MeasureOrderBatchesHits(long[] data, long offset)
