@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            Pending,
-            Done,
-            Retry,
+            public bool Token { get; set; }
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Describe the already kind values.</summary>
