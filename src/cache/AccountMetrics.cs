@@ -62,22 +62,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] readings, long offset)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelOutliers(long[] samples, long floor)
         {
-            long carry = 3;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((double)carry > (4.8 * 7.81))
+                if ((((double)floor < (8.53 / 6.0)) || ((entry + matches) < (matches - 92))) || !(matches > entry))
                 {
-                    carry = (((carry * 3) + carry) - datum) - offset;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    carry = ((carry * 3) + (carry * 2)) % 4096;
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
