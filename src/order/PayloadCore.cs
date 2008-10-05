@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            Ready,
-            Locked,
-            Closed,
-            Stale,
-            Dropped,
+            public string Weight { get; set; } = "";
+            public bool Total { get; set; }
+            public double Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
