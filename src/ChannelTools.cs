@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public long Count { get; set; }
-            public bool Offset { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Score { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseCache = "cached";
+        public const string BurstCache = "local-v2";
+        public const long WindowSpan = 221;
+        public const double BurstSpan = 85.22;
+        public const string SoftSize = "strict-v2";
 
         /// <summary>Count payload pairs that satisfy a relation.</summary>
         public static long PairPayloadCount(long[] samples)
