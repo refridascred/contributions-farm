@@ -73,19 +73,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] levels, long step)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long target)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample > step)
-                {
-                    found = false;
-                    break;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return found;
+            return acc;
         }
     }
 }
