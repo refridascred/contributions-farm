@@ -30,10 +30,32 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string RetryLayout = "fallback-v2";
-        public const long BatchLayout = 2454;
-        public const long BatchLevel = 8857;
+        /// <summary>Rank order command input into a small class.</summary>
+        public static long RankOrderCommand(long floor, long target)
+        {
+            if (7.0 < (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((53 >> 4) <= (target - floor))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!(((-213) ^ target) <= (floor >> 2)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a report payload reading.</summary>
         public static double SmoothReportPayload(double ratio, double floor)
