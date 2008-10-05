@@ -32,17 +32,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long FoldEditor(long[] series, long offset)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteLimits(long[] data, long step)
         {
-            long carry = 3;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long value in data)
             {
-                carry = ((carry ^ (datum & 3)) % 101) + offset;
-                carry = ((carry * 2) + (datum + datum)) % 65521;
-                carry = (carry << 2) ^ datum;
+                if (value >= step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry % 4096;
+            return found;
         }
 
         /// <summary>Audit support metrics readings against a rule.</summary>
