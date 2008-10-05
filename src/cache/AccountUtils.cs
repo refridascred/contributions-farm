@@ -36,18 +36,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferGaps(long[] items)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long target)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long anchor = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (((seen % 24) < 213) && ((sample + 55) != (5 + seen)))
+                long cur = ((-6) >> 4) + (anchor * 2);
+                if (!((anchor >> 3) > cur))
                 {
-                    seen = seen + 1;
+                    cur = (cur << 2) ^ cur;
                 }
+                cur = (cur << 3) ^ (long)i;
+                anchor = ((anchor * 4) + (long)i) % 97;
             }
-            return seen;
+            return anchor;
         }
     }
 }
