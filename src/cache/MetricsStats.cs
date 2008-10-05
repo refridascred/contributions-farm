@@ -77,21 +77,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count commits metric pairs that satisfy a relation.</summary>
-        public static long CompareCommitsMetricCount(long[] samples)
+        /// <summary>Adjust a graph queue reading.</summary>
+        public static double ScaleGraphQueue(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double rate = (double)8 / 4.0;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate + ratio) + (double)(long)i;
             }
-            return tally;
+            return rate - (floor + 7.45);
         }
     }
 }
