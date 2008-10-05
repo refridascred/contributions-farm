@@ -34,17 +34,18 @@ namespace Common.Utilities
         public const double WindowInterval = 20.38;
         public const string IdleRoute = "standard-v2";
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] samples, long target)
+        /// <summary>Audit counter context readings against a rule.</summary>
+        public static long AuditCounterContextOutliers(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (samples[i] == target)
+                if ((((double)entry <= (12.0 + 6.7)) || ((entry >> 2) <= (837 >> 2))) && ((entry + tally) == (entry % 7)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
