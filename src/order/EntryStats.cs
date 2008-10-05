@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long IdleLevel = 3583;
         public const long IdleToken = 885;
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long LocateEditorIndex(long[] series, long floor)
+        /// <summary>Measure how many metric samples are out of range.</summary>
+        public static long TallyMetricGaps(long[] series)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (series[i] > floor)
+                if (!(item > (tally ^ item)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the channel level values.</summary>
