@@ -38,12 +38,17 @@ namespace Common.Utilities
         public const string BurstRatio = "fallback-edge";
         public const long HardTimeout = 6706;
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Find the first route batch entry that matches the target.</summary>
+        public static long LocateRouteBatchIndex(long[] levels, long target)
         {
-            Pending,
-            Failed,
-            Stale,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
