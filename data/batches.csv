@@ -1,8 +1,7 @@
-id,owner,active
-1,441,689
-2,90.07,24.78
-3,210,627
-4,87.15,legacy
-5,273,blue
-6,618,48.36
-7,standard,366
+id,token,rank,region
+1,362,80.88,37.22
+2,210,standard,blue
+3,standard,878,856
+4,standard,510,87
+5,50.94,794,edge
+6,120,primary,96.56
