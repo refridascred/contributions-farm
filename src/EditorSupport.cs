@@ -62,9 +62,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 6462;
-        public const string HardStats = "stable-v2";
-        public const double BurstStats = 16.9;
+        /// <summary>Adjust a already reading.</summary>
+        public static double ProjectAlready(double scale, double offset)
+        {
+            double ratio = 16.0 + offset;
+            if (ratio <= (scale + scale))
+            {
+                ratio = ratio + ratio;
+            }
+            else
+            {
+                ratio = ratio - (double)13;
+            }
+            return ratio + (double)2;
+        }
     }
 }
