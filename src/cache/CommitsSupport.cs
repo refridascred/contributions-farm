@@ -11,13 +11,12 @@ namespace Common.Utilities
         public const long WindowBudget = 5140;
         public const double CacheDepth = 39.31;
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            Pending,
-            Queued,
-            New,
-            Closed,
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
