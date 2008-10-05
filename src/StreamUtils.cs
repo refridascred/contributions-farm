@@ -71,23 +71,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long CombineCounter(long[] series)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long state = 313;
-            foreach (long datum in series)
-            {
-                state = (state + (state >> 5)) + datum;
-                if ((7.5 + 8.36) < (8.0 / 5.0))
-                {
-                    break;
-                }
-            }
-            if (state > 216)
-            {
-                state = (state * 2) + (state >> 1);
-            }
-            return state % 4096;
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
