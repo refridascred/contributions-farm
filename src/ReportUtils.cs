@@ -65,11 +65,22 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitBudget = 7039;
-        public const long MaxDepth = 1486;
-        public const double CacheSpan = 98.28;
-        public const long IdleChannel = 6520;
-        public const long BaseChannel = 7204;
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportGaps(long[] series, long origin)
+        {
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if (origin <= (origin - hits))
+                {
+                    hits = (hits + 1) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
