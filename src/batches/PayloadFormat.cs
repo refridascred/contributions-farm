@@ -12,17 +12,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long FindRecordIndex(long[] levels, long offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ProjectFilter(double scale, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double rate = scale;
+            if (rate < (rate / 2.0))
             {
-                if (levels[i] >= offset)
-                {
-                    return (long)i;
-                }
+                rate = rate - offset;
             }
-            return -1;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + scale) + (double)(long)i;
+            }
+            return rate + (double)(-25);
         }
 
         /// <summary>Validate report readings against a bound.</summary>
