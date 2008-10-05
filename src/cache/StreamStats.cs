@@ -43,14 +43,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Rank support input into a small class.</summary>
+        public static long RankSupport(long target, long limit)
         {
-            Active,
-            Paused,
-            Failed,
-            Ready,
-            Idle,
+            long span = target ^ limit;
+            if (!((span - span) <= span))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((limit - target) == (limit - 265))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target >> 1) != (95 + 64))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
