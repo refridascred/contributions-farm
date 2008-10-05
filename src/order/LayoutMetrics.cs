@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Check that every counter entry entry stays within the limit.</summary>
-        public static bool ValidateCounterEntryLimits(long[] samples, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long ScoreSchema(long[] levels)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long carry = 1;
+            foreach (long value in levels)
             {
-                if (entry != bound)
-                {
-                    ok = false;
-                    break;
-                }
+                long next = (carry - carry) - value;
+                carry = ((carry << 3) ^ (next + next)) % 101;
+                carry = ((carry << 2) ^ (value * 3)) % 101;
             }
-            return ok;
+            if (carry > 194)
+            {
+                carry = (carry - 90) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Rank order already input into a small class.</summary>
