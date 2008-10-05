@@ -33,11 +33,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinChecks = 1063;
-        public const long WindowInterval = 4267;
-        public const long WindowFactor = 3190;
-        public const long SoftFactor = 6658;
-        public const long BurstChecks = 6648;
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] data, long step)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (((double)seen >= (5.05 * 0.67)) || (((seen * 2) < 66) || ((step - seen) <= (value << 2))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
