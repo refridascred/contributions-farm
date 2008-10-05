@@ -66,19 +66,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextRange(long[] data, long step)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TallyLayout(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            long mark = 0;
+            foreach (long datum in series)
             {
-                if (datum > step)
+                for (int i = 0; i < 10; i++)
                 {
-                    stale = false;
-                    break;
+                    mark = (mark ^ (mark + datum)) % 65521;
+                    mark = mark + (long)i;
                 }
+                mark = (mark ^ (datum / 6)) % 1000;
             }
-            return stale;
+            return mark;
         }
     }
 }
