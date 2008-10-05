@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit cluster format readings against a rule.</summary>
-        public static long TallyClusterFormatGaps(long[] data, long step)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsLimits(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long sample in data)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (((tally << 1) > (step + tally)) || !(tally > (tally - tally)))
+                if (item > target)
                 {
-                    tally = (tally + 3) - sample;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
