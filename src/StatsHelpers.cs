@@ -29,12 +29,23 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCommits = 6380;
-        public const long StepCommits = 6054;
-        public const long RetryCommits = 8909;
-        public const long MaxScore = 2415;
-        public const long BurstCommits = 3326;
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long MeasureWindowGaps(long[] values, long floor)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((double)441 >= (double)item)
+                {
+                    count = (count + 1) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long AuditBatchOutliers(long[] data, long origin)
