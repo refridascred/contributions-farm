@@ -55,10 +55,14 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string BurstProfile = "alpha-1";
-        public const long SoftProfile = 1718;
-        public const long RetryProfile = 7741;
-        public const long DefaultProfile = 9056;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Paused,
+            Draft,
+            Idle,
+            Retry,
+            Closed,
+        }
     }
 }
