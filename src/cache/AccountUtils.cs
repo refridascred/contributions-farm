@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsHits(long[] values, long limit)
         {
-            Queued,
-            Closed,
-            Failed,
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (seen <= cell)
+                {
+                    seen = (seen + 1) + limit;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a window reading by value.</summary>
