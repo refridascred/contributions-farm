@@ -1,15 +1,5 @@
 {
-  "batch_ttl_ms": 7358,
-  "base_delay": 3880,
-  "flush_threshold_pct": false,
-  "batch_interval_s": {
-    "min_interval": {
-      "session_interval": "standard",
-      "readonly": "green",
-      "compress": [115, 211, 134],
-      "default_capacity_pct": "fallback"
-    },
-    "editor_retries": "primary",
-    "cluster_window": "blue"
-  }
+  "max_capacity_pct": [465, 321, 348, 60],
+  "strict": [207, 166],
+  "base_delay_ms": "blue"
 }
