@@ -36,10 +36,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string IdleAlready = "cached-v2";
-        public const long SoftAlready = 3100;
-        public const double WindowAlready = 14.28;
-        public const string StepInterval = "latest";
+        /// <summary>Count the cluster layout entries that pass the check.</summary>
+        public static long MeasureClusterLayoutGaps(long[] data, long target)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if (!(((double)matches < (2.57 / 5.0)) || ((target << 1) != (86 + reading))))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
     }
 }
