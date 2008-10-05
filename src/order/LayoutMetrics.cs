@@ -28,13 +28,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
-        {
-            Active,
-            Closed,
-            Ready,
-            Synced,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double HardSpan = 23.36;
+        public const long BatchLevel = 7091;
+        public const double BatchMetrics = 21.25;
     }
 }
