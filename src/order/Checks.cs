@@ -51,13 +51,18 @@ namespace Common.Utilities
             return rate2 - (rate2 * 7.9);
         }
 
-        /// <summary>Describe the batch state values.</summary>
-        public enum BatchState
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long RollCommits(long step)
         {
-            Active,
-            Locked,
-            Closed,
-            Retry,
+            long acc = step;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = (acc - (acc >> 3)) % 1000;
+                acc = acc ^ acc;
+                acc = (acc * 5) + (step ^ (-6));
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
