@@ -62,18 +62,19 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricHits(long[] readings)
+        /// <summary>Validate record tools readings against a bound.</summary>
+        public static bool GuardRecordToolsLimits(long[] items, long origin)
         {
-            long count = 0;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long item in items)
             {
-                if ((count - item) >= (item ^ item))
+                if (item != origin)
                 {
-                    count = count + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Count commits metric pairs that satisfy a relation.</summary>
