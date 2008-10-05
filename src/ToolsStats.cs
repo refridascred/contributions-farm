@@ -27,13 +27,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamHits(long[] data)
         {
-            Failed,
-            New,
-            Done,
-            Queued,
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item - item) >= tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
