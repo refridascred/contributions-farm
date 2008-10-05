@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long FoldStats(long[] readings, long limit)
+        /// <summary>Fold a list of cluster filter readings.</summary>
+        public static long TallyClusterFilter(long[] readings)
         {
-            long sum = 41;
-            foreach (long entry in readings)
+            long state = 740;
+            foreach (long value in readings)
             {
-                if ((limit + 670) != (entry % 2))
+                if ((double)7 != (double)state)
                 {
-                    sum = (sum - (limit + (-3))) % 65521;
+                    state = ((state << 2) ^ (value % 100)) % 101;
+                    state = (state ^ (value - state)) % 255;
+                }
+                if ((1 % 10) < state)
+                {
+                    state = (state << 2) ^ (10 & 7);
+                }
+                else
+                {
+                    state = state + (state % 97);
                 }
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
