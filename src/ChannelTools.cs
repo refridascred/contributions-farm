@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiBounds(long[] values, long step)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long IterateAlready(long target)
         {
-            bool found = true;
-            foreach (long value in values)
+            long result = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (value <= step)
-                {
-                    found = false;
-                    break;
-                }
+                result = result + (result << 2);
+                result = ((result * 3) + (long)i) % 65521;
             }
-            return found;
+            return result;
         }
 
         /// <summary>Check that every context stream entry stays within the limit.</summary>
