@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsHits(long[] values, long limit)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (seen <= cell)
-                {
-                    seen = (seen + 1) + limit;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 9044;
+        public const long IdleCount = 4629;
+        public const string LimitBudget = "latest-1";
 
         /// <summary>Locate a window reading by value.</summary>
         public static long LookupWindowIndex(long[] samples, long bound)
