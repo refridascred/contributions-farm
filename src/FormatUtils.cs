@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Grade a payload format value against two limits.</summary>
-        public static long RankPayloadFormat(long floor, long origin)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] levels)
         {
-            if ((floor ^ 2) >= (origin << 2))
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((76 < (floor / 6)) || (origin > (86 >> 1)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    if ((levels[i] + levels[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Rank command input into a small class.</summary>
