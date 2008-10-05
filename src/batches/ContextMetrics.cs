@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long limit, long offset)
         {
-            Idle,
-            New,
-            Failed,
-            Locked,
+            if (offset <= (84 * 2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((37 + limit) <= (limit ^ 43))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((121 / 6) > limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up token samples.</summary>
