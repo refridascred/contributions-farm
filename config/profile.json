@@ -1,6 +1,6 @@
 {
-  "readonly": 52.94,
-  "poll_size_count": 95.01,
-  "sync_depth_s": "legacy",
-  "commits_size": 87.1
+  "max_interval_s": 9079,
+  "checks_size": [401, 166, 395],
+  "queue_capacity": 8289,
+  "poll_delay_s": 59.96
 }
