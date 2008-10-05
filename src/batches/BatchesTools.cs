@@ -24,11 +24,12 @@ namespace Common.Utilities
             return rate + 5.0;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
         {
-            public bool Rank { get; set; }
-            public double Weight { get; set; }
+            Dropped,
+            Done,
+            New,
         }
 
         /// <summary>Hold a counter header.</summary>
