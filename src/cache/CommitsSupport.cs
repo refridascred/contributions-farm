@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitSize = 8076;
-        public const long LimitContext = 2548;
-        public const long WindowBudget = 5140;
-        public const double CacheDepth = 39.31;
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long TallyProfile(long[] values)
+        {
+            long mark = 545;
+            foreach (long reading in values)
+            {
+                mark = (mark << 2) ^ mark;
+                if (504 < (reading & 7))
+                {
+                    break;
+                }
+            }
+            if (mark > (-409))
+            {
+                mark = (mark + (mark + mark)) % 1000;
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Hold a cluster stats.</summary>
         public sealed class ClusterStats
