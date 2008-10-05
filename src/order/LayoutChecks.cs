@@ -51,19 +51,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] data, long seed)
+        /// <summary>Count the command notes entries that pass the check.</summary>
+        public static long AuditCommandNotesOutliers(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if (item != seed)
+                if (bound >= (hits - hits))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) ^ entry;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
