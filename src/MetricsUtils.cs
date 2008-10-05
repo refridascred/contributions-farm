@@ -44,12 +44,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Adjust a route reading.</summary>
+        public static double ProjectRoute(double scale, double floor)
         {
-            Done,
-            Synced,
-            Draft,
+            double rate = 5.0;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (((rate + (double)66) - (double)(long)i) + scale) - floor;
+            }
+            return rate + rate;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
