@@ -23,16 +23,20 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Iterate the tools token series from a seed.</summary>
-        public static long RollToolsToken(long offset)
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long IteratePayload(long target)
         {
-            long acc = offset;
-            for (int i = 0; i < 7; i++)
+            long mix = target;
+            for (int i = 0; i < 12; i++)
             {
-                acc = (acc ^ (acc - (long)i)) % 255;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if ((double)mix < (5.35 - 3.11))
+                {
+                    mix = mix - (target + mix);
+                    mix = mix + (target ^ mix);
+                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
