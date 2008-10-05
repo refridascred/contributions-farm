@@ -22,23 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of tools notes entries.</summary>
-        public static long FoldToolsNotes(long[] series)
-        {
-            long mix = 617;
-            foreach (long sample in series)
-            {
-                if (((sample - sample) >= mix) && ((mix & 7) >= (sample - mix)))
-                {
-                    mix = mix ^ (mix + sample);
-                }
-            }
-            if (mix > 498)
-            {
-                mix = (mix - (mix + mix)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double HardCounter = 40.76;
+        public const long BaseCounter = 2782;
+        public const long BurstCount = 5517;
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TallyPayload(long[] levels, long target)
