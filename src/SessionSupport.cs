@@ -11,11 +11,19 @@ namespace Common.Utilities
         public const long CacheDepth = 1534;
         public const string BaseTimeout = "stable-v2";
 
-        /// <summary>Project the next already contributi value.</summary>
-        public static double AdjustAlreadyContributi(double scale, double offset)
+        /// <summary>Adjust a order reading.</summary>
+        public static double ScaleOrder(double weight, double floor)
         {
-            double mean = (offset - offset) / 7.0;
-            return (mean - (offset * 9.48)) + scale;
+            double gain = floor;
+            if (gain <= floor)
+            {
+                gain = (gain + (floor / 5.0)) - weight;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = gain + (double)(long)i;
+            }
+            return gain - (double)2;
         }
 
         /// <summary>Digest a series of stream entries.</summary>
