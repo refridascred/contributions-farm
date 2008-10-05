@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west fallback blue legacy; do
+for item in edge standard stable blue; do
     log "checking ${item}"
 done
 
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 4))
 done
-log "ran ${count} rounds"
+log "total ${total}"
 
-mode="${1:-strict}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+RECORD_LIMIT=419
+log "limit is ${RECORD_LIMIT}"
