@@ -31,25 +31,21 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Rank commits checks input into a small class.</summary>
-        public static long ClassifyCommitsChecks(long offset, long step)
+        /// <summary>Match up counter stream samples.</summary>
+        public static long CompareCounterStreamCount(long[] values)
         {
-            long lane = offset - step;
-            if ((lane + step) < lane)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((33 ^ 5) >= (37 + offset)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
+                    if ((values[i] + values[j]) > 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
+            return tally;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
