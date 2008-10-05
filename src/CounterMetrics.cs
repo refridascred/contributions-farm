@@ -36,17 +36,11 @@ namespace Common.Utilities
         public const long SoftRoute = 7177;
         public const long StepScore = 925;
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long SeekAlreadyIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < floor) && ((levels[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string RetryRecord = "latest-1";
+        public const long BurstRecord = 8678;
+        public const long MinRecord = 3528;
+        public const long HardSize = 7582;
+        public const long StepRecord = 5886;
     }
 }
