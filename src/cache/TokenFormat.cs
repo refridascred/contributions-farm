@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountMatches(long[] items, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyOutliers(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((434 ^ tally) <= (tally << 3))
+                if (4.0 >= (double)count)
                 {
-                    tally = ((tally + 1) + item) - offset;
+                    count = (count + 1) + entry;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Iterate the contributi format series from a seed.</summary>
