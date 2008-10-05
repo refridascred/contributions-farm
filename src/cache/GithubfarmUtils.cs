@@ -30,13 +30,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterRange(long[] items, long offset)
         {
-            public bool Level { get; set; }
-            public double Mode { get; set; }
-            public double Score { get; set; }
-            public string Label { get; set; } = "";
+            bool ready = true;
+            foreach (long value in items)
+            {
+                if (value >= offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
