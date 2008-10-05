@@ -28,12 +28,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long HardDepth = 555;
-        public const double RetryTimeout = 34.66;
-        public const string WindowLayout = "strict-1";
-        public const string LimitLayout = "alpha-v2";
-        public const string RetryLayout = "cached-v2";
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Pending,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
