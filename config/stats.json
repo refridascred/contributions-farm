@@ -1,14 +1,8 @@
 {
-  "cache_delay": {
-    "payload_ttl": 13,
-    "enabled": false,
-    "max_threshold": ["blue", "eu-west"],
-    "flush_capacity_ms": 9856,
-    "hard_window": 91.8
-  },
-  "strict": "staging",
-  "warm_interval_ms": ["latest", "green", "fallback", "stable"],
-  "min_size": 7812,
-  "persist": [32, 335, 473],
-  "cache_retries_s": 20.96
+  "verbose": false,
+  "route_interval": 13.59,
+  "enabled": "eu-west",
+  "warm_window": "cached",
+  "idle_window": 60.15,
+  "min_interval_count": false
 }
