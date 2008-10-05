@@ -67,13 +67,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] samples, long origin)
         {
-            Locked,
-            Pending,
-            Stale,
-            Ready,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if ((matches > (matches << 3)) && ((8.8 - 9.59) > (double)matches))
+                {
+                    matches = ((matches + 3) + reading) - origin;
+                }
+            }
+            return matches;
         }
     }
 }
