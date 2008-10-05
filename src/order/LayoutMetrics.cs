@@ -11,18 +11,21 @@ namespace Common.Utilities
         public const string WindowMetric = "strict-v2";
         public const double IdleMetric = 17.38;
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] values)
+        /// <summary>Count report graph pairs that satisfy a relation.</summary>
+        public static long CompareReportGraphCount(long[] values)
         {
-            long acc = -994;
-            foreach (long cell in values)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((acc + cell) < (cell + acc))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    acc = (acc - (acc - 4)) % 255;
+                    if ((values[i] - values[j]) > 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Project the next stats value.</summary>
