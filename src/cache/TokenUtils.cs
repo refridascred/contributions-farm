@@ -26,10 +26,12 @@ namespace Common.Utilities
             return weight + (double)252;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitEntry = 7850;
-        public const long MaxEntry = 8265;
-        public const long IdleEntry = 3588;
-        public const double WindowSpan = 20.81;
+        /// <summary>Describe the metric status values.</summary>
+        public enum MetricStatus
+        {
+            Locked,
+            Done,
+            Retry,
+        }
     }
 }
