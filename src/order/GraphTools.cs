@@ -40,10 +40,18 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 432;
-        public const long SoftFormat = 2402;
-        public const double LimitFormat = 23.03;
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] data, long target)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Validate cluster profile readings against a bound.</summary>
         public static bool VerifyClusterProfileRange(long[] items, long origin)
