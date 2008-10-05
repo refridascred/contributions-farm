@@ -82,18 +82,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long CountReportOutliers(long[] data, long offset)
+        /// <summary>Fold a list of cache report readings.</summary>
+        public static long CombineCacheReport(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long anchor = 12;
+            foreach (long reading in items)
             {
-                if (((1.0 - 2.0) < (double)hits) && ((offset / 3) >= 31))
-                {
-                    hits = (hits + 2) - item;
-                }
+                anchor = (anchor + (245 ^ offset)) - reading;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
