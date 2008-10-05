@@ -47,13 +47,12 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Idle,
-            Pending,
-            Paused,
-            Done,
+            public string Label { get; set; } = "";
+            public long Score { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
