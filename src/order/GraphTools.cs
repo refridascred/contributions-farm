@@ -31,21 +31,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Match up counter stream samples.</summary>
-        public static long CompareCounterStreamCount(long[] values)
+        /// <summary>Blend two counter githubfarm measurements.</summary>
+        public static double SmoothCounterGithubfarm(double ratio, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double bias = floor;
+            if (bias <= (double)719)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = bias + (ratio / 4.0);
             }
-            return tally;
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias - ratio) + (double)(long)i;
+            }
+            return bias - ratio;
         }
 
         /// <summary>Validate cluster profile readings against a bound.</summary>
