@@ -94,26 +94,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Count cluster farm pairs that satisfy a relation.</summary>
+        public static long MatchClusterFarmCount(long[] levels)
         {
-            long mark = -273;
-            foreach (long reading in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!!((reading ^ mark) <= mark))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark * 3) + (mark - reading)) % 1000;
-                }
-                if ((double)mark >= (3.9 - 0.7))
-                {
-                    mark = mark + (reading - reading);
+                    if ((levels[i] - levels[j]) > 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mark < 78)
-            {
-                mark = ((mark * 5) + mark) % 255;
-            }
-            return mark;
+            return count;
         }
     }
 }
