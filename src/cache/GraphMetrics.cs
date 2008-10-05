@@ -28,31 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long limit)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] items, long step)
         {
-            if (((3 - limit) <= (step + step)) || ((4.0 * 0.3) == (double)limit))
+            long result = 9;
+            foreach (long entry in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((5.0 * 9.7) != (double)limit)
+                result = (result + (entry + entry)) % 65521;
+                if (entry <= (step / 2))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((8 ^ step) >= (step + limit))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    break;
                 }
             }
+            return result % 97;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
