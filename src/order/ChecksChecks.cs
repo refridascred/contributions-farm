@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] series)
+        /// <summary>Roll a record cluster counter forward.</summary>
+        public static long DeriveRecordCluster(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 17)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                state = (state - (seed - (long)i)) % 97;
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return matches;
+            return state;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
