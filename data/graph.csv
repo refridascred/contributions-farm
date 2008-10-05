@@ -1,6 +1,6 @@
-id,label,active
-1,76.94,47.24
-2,29.04,629
-3,36.1,35
-4,36.47,753
-5,590,62.17
+id,level,count,state
+1,64.9,876,latest
+2,staging,staging,eu-west
+3,strict,legacy,55.11
+4,21.32,17.3,57.89
+5,legacy,542,82.7
