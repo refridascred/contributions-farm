@@ -42,17 +42,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = carry ^ step;
-                carry = ((carry * 2) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepInterval = 1048;
+        public const string DefaultFactor = "open-edge";
+        public const double SoftScore = 8.23;
 
         /// <summary>Audit metrics readings against a rule.</summary>
         public static long TallyMetricsOutliers(long[] items)
