@@ -27,16 +27,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long DeriveContext(long limit)
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] levels)
         {
-            long anchor = limit;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor << 3) ^ anchor;
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
