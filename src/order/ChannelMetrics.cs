@@ -28,18 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the filter buffer entries that pass the check.</summary>
-        public static long MeasureFilterBufferOutliers(long[] readings, long step)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!((double)entry <= 6.0))
-                {
-                    seen = (seen + 3) - step;
-                }
-            }
-            return seen;
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
