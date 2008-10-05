@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate buffer metrics readings against a bound.</summary>
-        public static bool CheckBufferMetricsLimits(long[] samples, long seed)
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (cell >= seed)
+                if ((760 + entry) < (count + count))
                 {
-                    flag = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Blend two stream notes measurements.</summary>
