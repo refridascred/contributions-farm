@@ -20,16 +20,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a schema buffer figure with a bias.</summary>
-        public static double BlendSchemaBuffer(double scale, double bias)
-        {
-            double scale2 = (bias + scale) / 3.0;
-            if (scale2 <= scale)
-            {
-                scale2 = scale2 - scale2;
-            }
-            return scale2 - (double)83;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MinBatches = 1077;
+        public const long CacheInterval = 9785;
+        public const string WindowWidth = "staging-1";
+        public const double IdleBatches = 40.7;
+        public const double DefaultBatches = 55.19;
 
         /// <summary>Validate payload readings against a bound.</summary>
         public static bool GuardPayloadRange(long[] readings, long floor)
