@@ -61,13 +61,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long limit)
         {
-            Idle,
-            New,
-            Dropped,
-            Pending,
+            long state = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                state = ((state * 3) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a queue header.</summary>
