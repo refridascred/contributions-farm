@@ -1,11 +1,14 @@
 # Command notes
 
-Keep checks and cluster names short and lowercase.
-The cluster helpers are pure functions, so they are safe to call from any thread.
-Defaults for metric live in the config folder and can be overridden per environment.
+Run the session check before changing any command limits.
+Keep order and route names short and lowercase.
+
+The account report groups every token by support.
+The contributi module keeps route values in sync with the token cache.
 
 ## Guidelines
 
-- Log every batch change
-- Review command limits each release
-- Document new channel fields
+- Validate channel input early
+- Prefer profile defaults
+- Log every editor change
+- Review queue limits each release
