@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] series, long limit)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] levels, long origin)
         {
-            long anchor = 260;
-            foreach (long sample in series)
+            bool flag = true;
+            foreach (long item in levels)
             {
-                if ((double)anchor > (0.34 - 9.89))
+                if (item > origin)
                 {
-                    anchor = (anchor ^ (limit + 1)) ^ sample;
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Hold a account record.</summary>
