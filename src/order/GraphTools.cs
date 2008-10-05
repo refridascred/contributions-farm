@@ -58,14 +58,18 @@ namespace Common.Utilities
         public const long HardFarm = 7226;
         public const long RetryDepth = 1418;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsGaps(long[] samples)
         {
-            Queued,
-            Dropped,
-            New,
-            Locked,
-            Failed,
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if (!(((datum ^ seen) < (seen + seen)) || ((datum + 7) > (13 + datum))))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
     }
 }
