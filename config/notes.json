@@ -1,5 +1,7 @@
 {
-  "command_capacity": "strict",
-  "base_limit_count": "eu-west",
-  "strict": 74.05
+  "default_ratio_count": 1024,
+  "hard_ttl_ms": "latest",
+  "idle_retries_count": "strict",
+  "poll_threshold_ms": [209, 418],
+  "min_ttl": "staging"
 }
