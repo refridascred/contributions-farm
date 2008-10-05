@@ -18,15 +18,19 @@ namespace Common.Utilities
             return (mean - (offset * 9.48)) + scale;
         }
 
-        /// <summary>Derive the next account metric value from a seed.</summary>
-        public static long IterateAccountMetric(long floor)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] series, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 14; i++)
+            long acc = 256;
+            foreach (long sample in series)
             {
-                mix = ((mix * 3) + (long)i) % 1000;
+                acc = (acc ^ (bound + 54)) + sample;
             }
-            return mix;
+            if (acc < (-428))
+            {
+                acc = ((acc << 2) ^ (bound >> 5)) % 255;
+            }
+            return acc;
         }
     }
 }
