@@ -19,27 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate context tools samples.</summary>
-        public static long WeighContextTools(long[] readings, long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long DeriveProfile(long bound)
         {
-            long total = 4;
-            foreach (long reading in readings)
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if ((0 >> 1) >= (offset ^ total))
-                {
-                    total = total - reading;
-                    total = total ^ (total ^ 499);
-                }
-                if ((18.0 - 1.3) > (double)total)
-                {
-                    total = ((total << 2) ^ reading) % 4096;
-                }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            if (total < 0)
-            {
-                total = (total * 2) + (total % 10);
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Describe the payload kind values.</summary>
