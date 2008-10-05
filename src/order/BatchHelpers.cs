@@ -12,18 +12,12 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatOutliers(long[] data)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((double)hits < (7.7 * 8.16)) && ((hits - hits) >= (9 + entry)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Label { get; set; } = "";
+            public double Limit { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
