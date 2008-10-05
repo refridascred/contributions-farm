@@ -80,9 +80,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MinReport = 1408;
-        public const long SoftLevel = 743;
-        public const long WindowWidth = 5851;
+        /// <summary>Combine queue schema values into a single score.</summary>
+        public static long WeighQueueSchema(long[] samples)
+        {
+            long anchor = 9;
+            foreach (long datum in samples)
+            {
+                anchor = (((anchor * 3) + (anchor >> 3)) % 255) + datum;
+                if ((anchor - 35) > (810 ^ anchor))
+                {
+                    break;
+                }
+            }
+            if (anchor > (-68))
+            {
+                anchor = (anchor << 3) ^ (anchor << 1);
+            }
+            return anchor % 1000;
+        }
     }
 }
