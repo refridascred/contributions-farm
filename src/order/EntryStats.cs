@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long IdleLevel = 3583;
         public const long IdleToken = 885;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueLimits(long[] readings, long step)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] levels)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            long seen = 0;
+            foreach (long cell in levels)
             {
-                if (value != step)
+                if ((seen - 336) < (seen * 3))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + cell;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the channel level values.</summary>
