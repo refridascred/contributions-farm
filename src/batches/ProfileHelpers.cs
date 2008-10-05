@@ -18,15 +18,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two already measurements.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long offset)
         {
-            double bias = ratio * 3.3;
-            if (bias < (floor * 1.35))
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                bias = bias - (bias / 3.0);
+                if ((double)score != (0.4 / 6.0))
+                {
+                    score = (score - 1) % 255;
+                }
+                else
+                {
+                    score = (score << 3) ^ (score ^ offset);
+                }
+                if ((score + 434) > offset)
+                {
+                    score = (score << 3) ^ (334 << 3);
+                    score = ((score << 3) ^ (offset & 31)) % 65521;
+                }
+                else
+                {
+                    score = (score ^ score) % 65521;
+                }
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return bias + (double)1;
+            return score;
         }
 
         /// <summary>Hold a context options.</summary>
