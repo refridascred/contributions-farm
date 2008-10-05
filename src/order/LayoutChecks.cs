@@ -69,18 +69,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long CountPayloadGaps(long[] values)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] items, long target)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long result = 769;
+            foreach (long datum in items)
             {
-                if (((count * 3) > count) || !((519 + entry) != (count + entry)))
+                result = (((result + (334 & 15)) % 255) + datum) + target;
+                if ((double)(long)items.Length <= (1.0 / 9.0))
                 {
-                    count = count + 2;
+                    result = ((result * 5) + (result * 4)) % 97;
                 }
             }
-            return count;
+            return result;
         }
     }
 }
