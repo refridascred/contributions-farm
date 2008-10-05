@@ -1,15 +1,14 @@
 # Command notes
 
-The layout module keeps graph values in sync with the route cache.
-When a graph fails, the metric handler retries a few times before giving up.
-Use githubfarm settings to tune how often stream data is refreshed.
+Run the record check before changing any graph limits.
+Each schema is validated before it reaches the token queue.
 
-Each window is validated before it reaches the support queue.
-The session module keeps command values in sync with the token cache.
+Run the token check before changing any layout limits.
+Run the filter check before changing any metrics limits.
+Each window is validated before it reaches the order queue.
 
 ## Guidelines
 
-- Prefer graph defaults
-- Document new cache fields
 - Validate stream input early
-- Review command limits each release
+- Log every graph change
+- Document new schema fields
