@@ -14,12 +14,25 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Grade a graph checks value against two limits.</summary>
+        public static long GradeGraphChecks(long seed, long bound)
         {
-            public long Label { get; set; }
-            public double Token { get; set; }
-            public long Region { get; set; }
+            long span = seed + bound;
+            if ((seed + bound) == (31 + seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((span << 3) != (40 ^ span))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Compare every pair of githubfarm readings.</summary>
