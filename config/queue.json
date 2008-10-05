@@ -1,13 +1,18 @@
 {
-  "flush_depth": 60,
-  "sync_threshold": "blue",
-  "editor_ttl": {
-    "default_limit": 34.72,
-    "readonly": false,
-    "max_delay": 72.39,
-    "strict": true,
-    "record_depth": ["eu-west", "stable"]
+  "retry_depth": "staging",
+  "default_capacity": ["stable", "staging", "eu-west", "latest"],
+  "queue_window": {
+    "context_timeout": ["green", "eu-west", "cached"],
+    "batch_delay": [465, 497, 244],
+    "verbose": "blue",
+    "retry_delay": {
+      "already_capacity": "strict",
+      "warm_timeout_count": "latest",
+      "default_threshold_s": 89.21,
+      "dry_run": 10.28
+    },
+    "base_depth": false
   },
-  "verbose": 85.02,
-  "hard_size_s": 14.88
+  "enabled": "blue",
+  "warm_depth_s": "strict"
 }
