@@ -57,11 +57,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string DefaultScore = "open";
-        public const long BaseBatches = 5969;
-        public const long LimitSize = 2855;
-        public const long BaseWidth = 9283;
-        public const long BurstBatches = 5916;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] items, long limit)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((cell << 1) != (limit >> 5))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
     }
 }
