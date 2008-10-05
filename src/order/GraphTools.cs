@@ -40,20 +40,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two counter githubfarm measurements.</summary>
-        public static double SmoothCounterGithubfarm(double ratio, double floor)
-        {
-            double bias = floor;
-            if (bias <= (double)719)
-            {
-                bias = bias + (ratio / 4.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias - ratio) + (double)(long)i;
-            }
-            return bias - ratio;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 432;
+        public const long SoftFormat = 2402;
+        public const double LimitFormat = 23.03;
 
         /// <summary>Validate cluster profile readings against a bound.</summary>
         public static bool VerifyClusterProfileRange(long[] items, long origin)
