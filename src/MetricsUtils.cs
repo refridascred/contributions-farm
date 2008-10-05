@@ -51,10 +51,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double SoftRatio = 71.42;
-        public const long LimitTimeout = 3356;
-        public const long BatchRatio = 9023;
-        public const long LimitQueue = 8689;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            New,
+            Closed,
+            Stale,
+        }
     }
 }
