@@ -5,32 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long offset, long bound)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long FoldStats(long[] readings, long limit)
         {
-            long step = offset - bound;
-            if ((bound << 2) == (9 & 15))
+            long sum = 41;
+            foreach (long entry in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((2.6 * 6.29) != (double)step)
+                if ((limit + 670) != (entry % 2))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + offset) != (offset - step))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    sum = (sum - (limit + (-3))) % 65521;
                 }
             }
+            return sum;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
