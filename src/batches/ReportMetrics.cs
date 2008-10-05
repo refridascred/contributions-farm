@@ -36,19 +36,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a order reading.</summary>
-        public static double ProjectOrder(double rate, double offset)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            double ratio = (double)(755 >> 1);
-            if (ratio < (double)8)
-            {
-                ratio = (ratio + (double)9) - offset;
-            }
-            else
-            {
-                ratio = ratio - (rate - 9.0);
-            }
-            return ratio - rate;
+            Closed,
+            Draft,
+            Active,
+            Queued,
         }
     }
 }
