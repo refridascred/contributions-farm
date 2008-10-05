@@ -22,15 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] items)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] samples, long origin)
         {
-            long acc = 431;
-            foreach (long datum in items)
+            bool valid = true;
+            foreach (long item in samples)
             {
-                acc = (acc - datum) % 4096;
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Describe the account class values.</summary>
