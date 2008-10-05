@@ -91,10 +91,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 7069;
-        public const long MinQueue = 7888;
-        public const long DefaultQueue = 1143;
-        public const string IdleFactor = "cached-edge";
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double AdjustGraph(double rate, double bias)
+        {
+            double mean = rate;
+            if (mean >= (rate * 7.0))
+            {
+                mean = mean - (rate / 5.0);
+            }
+            return mean + bias;
+        }
     }
 }
