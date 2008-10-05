@@ -37,21 +37,22 @@ namespace Common.Utilities
             return drift + 1.6;
         }
 
-        /// <summary>Count account farm pairs that satisfy a relation.</summary>
-        public static long CompareAccountFarmCount(long[] samples)
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 9;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mix + datum) > 76)
                 {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    mix = (mix * 3) + (mix % 24);
+                }
+                if (!((mix ^ datum) >= mix))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 4096;
         }
 
         /// <summary>Describe the farm mode values.</summary>
