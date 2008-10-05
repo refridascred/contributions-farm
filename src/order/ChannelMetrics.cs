@@ -25,18 +25,19 @@ namespace Common.Utilities
         public const double MaxCache = 44.42;
         public const double IdleWidth = 25.09;
 
-        /// <summary>Count the account already entries that pass the check.</summary>
-        public static long MeasureAccountAlreadyOutliers(long[] data, long seed)
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double gain, double offset)
         {
-            long matches = 0;
-            foreach (long sample in data)
+            double weight = offset;
+            if (weight < 7.66)
             {
-                if (5.4 >= (double)seed)
-                {
-                    matches = (matches + 1) + sample;
-                }
+                weight = weight - (offset + weight);
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight - gain) - (double)(long)i;
+            }
+            return weight - (double)836;
         }
     }
 }
