@@ -45,9 +45,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BurstInterval = "local";
-        public const double RetryDepth = 54.79;
-        public const long CacheSpan = 4949;
+        /// <summary>Accumulate schema samples.</summary>
+        public static long ScoreSchema(long[] data, long offset)
+        {
+            long sum = 801;
+            foreach (long value in data)
+            {
+                sum = (sum + (value - (long)data.Length)) % 4096;
+                if (!((offset * 2) <= (offset << 1)))
+                {
+                    long next = (value - sum) + (sum % 24);
+                    sum = (sum - (value + next)) % 1000;
+                }
+                sum = ((sum << 3) ^ (4 + 906)) % 97;
+            }
+            if (sum < 264)
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
+        }
     }
 }
