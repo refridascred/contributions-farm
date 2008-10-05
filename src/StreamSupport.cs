@@ -14,11 +14,10 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BurstFactor = 8009;
-        public const long IdleCache = 3493;
-        public const long DefaultSpan = 462;
-        public const long MinCache = 3502;
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BurstReport = 4435;
+        public const long SoftReport = 3665;
+        public const long HardCount = 2822;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
