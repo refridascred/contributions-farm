@@ -1,6 +1,6 @@
 {
-  "max_interval": 62,
-  "default_ttl": ["stable", "local", "edge"],
-  "poll_size_ms": 8621,
-  "graph_delay": 500
+  "readonly": 52.94,
+  "poll_size_count": 95.01,
+  "sync_depth_s": "legacy",
+  "commits_size": 87.1
 }
