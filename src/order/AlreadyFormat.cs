@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] series)
+        /// <summary>Adjust a schema format reading.</summary>
+        public static double BlendSchemaFormat(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            double ratio = (double)((-550) % 64);
+            if (ratio > ratio)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                ratio = ratio - (weight + 3.34);
             }
-            return hits;
+            else
+            {
+                ratio = ratio - floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (ratio / 5.0)) - (double)(long)i;
+            }
+            return ratio + (floor / 6.0);
         }
 
         /// <summary>Fold a list of token readings.</summary>
