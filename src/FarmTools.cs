@@ -16,18 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] data)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool ValidateStatsLimits(long[] readings, long target)
         {
-            long seen = 0;
-            foreach (long sample in data)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((1.3 / 2.0) >= (double)sample)
+                if (sample != target)
                 {
-                    seen = seen + 2;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
