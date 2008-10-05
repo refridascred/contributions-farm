@@ -72,11 +72,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheFactor = 42.63;
-        public const long CacheSpan = 9129;
-        public const long SoftWidth = 7032;
-        public const long MaxSchema = 4903;
-        public const long IdleSchema = 1770;
+        /// <summary>Describe the batch class values.</summary>
+        public enum BatchClass
+        {
+            Queued,
+            Retry,
+            Draft,
+            New,
+        }
     }
 }
