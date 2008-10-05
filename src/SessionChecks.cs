@@ -19,19 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long DigestLayout(long[] data)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] data)
         {
-            long anchor = 48;
+            long count = 0;
             foreach (long datum in data)
             {
-                anchor = (anchor + (anchor + datum)) % 97;
-                if ((datum + datum) < (datum & 3))
+                if (((9.6 + 3.0) != (double)datum) || ((double)count != (15.0 + 6.0)))
                 {
-                    anchor = anchor ^ (3 - 1);
+                    count = count + 2;
                 }
             }
-            return anchor % 1000;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
