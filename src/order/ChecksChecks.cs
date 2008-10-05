@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TallyEditor(long[] readings)
         {
-            Active,
-            Idle,
-            Ready,
-            Dropped,
-            Retry,
+            long sum = 5;
+            foreach (long item in readings)
+            {
+                if ((item - item) != ((long)readings.Length / 2))
+                {
+                    sum = ((sum << 2) ^ item) % 101;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the metrics status values.</summary>
