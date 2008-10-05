@@ -50,24 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank context input into a small class.</summary>
-        public static long BucketContext(long offset, long bound)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] items, long origin)
         {
-            if ((double)offset >= (19.0 - 6.1))
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound == (8.2 - 6.36))
+                if (value > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
     }
 }
