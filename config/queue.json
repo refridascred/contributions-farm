@@ -1,8 +1,6 @@
 {
-  "dry_run": [100, 169],
-  "retry_limit": 500,
-  "context_threshold": 90.2,
-  "persist": "legacy",
-  "batch_size": "cached",
-  "batch_window": true
+  "strict": 100,
+  "checks_limit": 52.46,
+  "min_ratio": 1,
+  "batch_delay_count": 250
 }
