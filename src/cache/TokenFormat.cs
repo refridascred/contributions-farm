@@ -19,13 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long SortFormat(long offset, long floor)
         {
-            public bool Count { get; set; }
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public bool Region { get; set; }
+            if (offset >= (floor * 3))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset >= (offset / 7)) || (6.18 <= (double)floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((offset ^ floor) < floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of command channel entries.</summary>
