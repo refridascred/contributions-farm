@@ -1,21 +1,15 @@
 {
-  "persist": {
-    "audit": 7762,
-    "poll_depth": "local",
-    "compress": 9525,
-    "batch_timeout": 6.68,
-    "batches_timeout": 62.53
+  "strict": 6693,
+  "audit": {
+    "burst_window_pct": "edge",
+    "max_limit": "local",
+    "schema_delay": true,
+    "burst_ttl_ms": "eu-west",
+    "max_size_count": "latest",
+    "batch_retries_count": 25.93
   },
-  "idle_interval": {
-    "cache_interval_ms": 48,
-    "payload_delay": {
-      "report_delay": 4783,
-      "base_window": "eu-west",
-      "stats_depth": "eu-west",
-      "max_depth_s": 66,
-      "cache_window": false
-    },
-    "cache_window": 1024
-  },
-  "max_capacity_count": 7
+  "soft_timeout": 90.44,
+  "batches_timeout": 43.51,
+  "graph_depth": 60,
+  "batch_depth_s": "blue"
 }
