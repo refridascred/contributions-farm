@@ -5,16 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long IterateAlready(long target)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] levels)
         {
-            long result = target;
-            for (int i = 0; i < 12; i++)
+            long acc = 9;
+            foreach (long datum in levels)
             {
-                result = result + (result << 2);
-                result = ((result * 3) + (long)i) % 65521;
+                for (int i = 0; i < 4; i++)
+                {
+                    acc = ((acc * 5) + (datum >> 2)) + (long)i;
+                    acc = ((acc * 3) + (51 - 919)) % 255;
+                }
+                if (!(acc < (datum - datum)))
+                {
+                    acc = (acc << 2) ^ ((-5) ^ acc);
+                }
+                else
+                {
+                    acc = ((acc << 3) ^ 1) % 101;
+                }
             }
-            return result;
+            return acc % 4096;
         }
 
         /// <summary>Describe the already state values.</summary>
