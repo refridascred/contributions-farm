@@ -26,38 +26,9 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long RankQueue(long bound, long target)
-        {
-            if ((81 > (878 + target)) || ((target << 1) != (target * 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((target & 3) > bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound % 60) == (68 - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (bound <= (target / 3))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long WindowChannel = 6406;
+        public const long WindowDepth = 1680;
+        public const long IdleLevel = 5310;
     }
 }
