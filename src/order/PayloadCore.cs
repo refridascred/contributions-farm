@@ -28,11 +28,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MinCount = 2236;
-        public const long LimitScore = 8036;
-        public const string BurstSpan = "primary-v2";
-        public const long WindowDepth = 4577;
+        /// <summary>Classify a contributi route pair into a bucket.</summary>
+        public static long GradeContributiRoute(long bound, long offset)
+        {
+            if (offset <= (962 + offset))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((43 + bound) != (offset + bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((offset & 255) < (offset >> 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long CacheInterval = 2254;
