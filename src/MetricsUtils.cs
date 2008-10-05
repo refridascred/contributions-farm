@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a commits info.</summary>
-        public sealed class CommitsInfo
+        /// <summary>Rank payload format input into a small class.</summary>
+        public static long SortPayloadFormat(long offset, long seed)
         {
-            public long Size { get; set; }
-            public bool Mode { get; set; }
+            long bound = offset - seed;
+            if (bound >= (offset - bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((936 ^ bound) < (616 << 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count the order batches entries that pass the check.</summary>
