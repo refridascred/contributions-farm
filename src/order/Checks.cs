@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Rank format batch input into a small class.</summary>
+        public static long ClassifyFormatBatch(long target, long target2)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long lane = target - target2;
+            if (!((3.4 - 13.0) >= (double)target2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)lane == (7.2 + 1.59))
                 {
-                    if ((items[i] ^ items[j]) > 15)
+                    return 5;
+                }
+                else
+                {
+                    if (!((double)target < (9.42 * 0.7)))
                     {
-                        tally = tally + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
