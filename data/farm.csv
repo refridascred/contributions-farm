@@ -1,7 +1,10 @@
-id,score,label,rank
-1,858,edge,77.87
-2,41.74,primary,edge
-3,legacy,682,98.64
-4,19.92,primary,54.87
-5,979,90.75,985
-6,staging,14.82,927
+id,active
+1,standard
+2,primary
+3,558
+4,28
+5,296
+6,844
+7,681
+8,46.43
+9,626
