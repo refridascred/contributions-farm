@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 3223;
         public const long BaseLevel = 6843;
 
-        /// <summary>Count the token filter entries that pass the check.</summary>
-        public static long CountTokenFilterGaps(long[] series)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferOutliers(long[] readings, long step)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (((datum + tally) > 485) && ((datum - datum) >= tally))
+                if ((double)reading == (2.39 / 6.0))
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    matches = (matches + 2) - step;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
