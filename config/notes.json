@@ -1,5 +1,5 @@
 {
-  "cache_ttl": "stable",
-  "warm_interval": true,
-  "flush_limit": "blue"
+  "min_interval_pct": 99,
+  "layout_timeout": "stable",
+  "account_depth": false
 }
