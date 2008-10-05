@@ -12,15 +12,22 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double BlendToken(double weight, double offset)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] levels, long bound)
         {
-            double ratio = (offset + offset) + weight;
-            if (ratio < (offset + ratio))
+            long sum = 3;
+            foreach (long cell in levels)
             {
-                ratio = ratio + ratio;
+                if ((bound < ((long)levels.Length % 8)) && ((double)sum <= 6.88))
+                {
+                    sum = (((sum << 2) ^ bound) % 65521) - cell;
+                }
+                else
+                {
+                    sum = sum ^ (bound >> 4);
+                }
             }
-            return ratio - offset;
+            return sum % 65521;
         }
 
         /// <summary>Define route limits and defaults.</summary>
