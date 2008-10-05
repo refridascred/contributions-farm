@@ -27,21 +27,24 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long OverlapCommandCount(long[] items)
+        /// <summary>Rank order githubfarm input into a small class.</summary>
+        public static long ClassifyOrderGithubfarm(long limit, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((613 * 3) == (seed + 65))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (seed <= (seed * 2))
                 {
-                    if ((items[i] - items[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a already info.</summary>
