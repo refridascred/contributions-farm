@@ -1,5 +1,10 @@
 {
-  "editor_size": "open",
-  "readonly": "staging",
-  "persist": 1024
+  "sync_timeout_s": [246, 93, 226],
+  "audit": {
+    "burst_ratio": 45.57,
+    "verbose": "local",
+    "retry_capacity": 100
+  },
+  "min_depth_s": [360, 153],
+  "strict": "edge"
 }
