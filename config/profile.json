@@ -1,5 +1,8 @@
 {
-  "batch_capacity_count": 100,
-  "flush_limit_count": 9983,
-  "cache_capacity_ms": "latest"
+  "base_limit_pct": "latest",
+  "idle_delay_s": 89,
+  "verbose": [387, 121],
+  "default_threshold": "primary",
+  "audit": 66.57,
+  "retry_retries_count": 36
 }
