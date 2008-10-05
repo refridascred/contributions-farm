@@ -38,24 +38,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long FoldQueue(long[] data, long bound)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] samples, long target)
         {
-            long sum = 1;
-            foreach (long value in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                sum = ((sum << 2) ^ value) % 4096;
-                if (((value * 4) <= (sum % 97)) || ((double)32 <= (double)bound))
+                if (samples[i] == target)
                 {
-                    sum = ((sum << 3) ^ sum) % 255;
+                    return (long)i;
                 }
-                sum = (sum ^ (value * 3)) % 101;
             }
-            if (sum > 7)
-            {
-                sum = (sum ^ (bound % 64)) % 4096;
-            }
-            return sum % 1000;
+            return -1;
         }
     }
 }
