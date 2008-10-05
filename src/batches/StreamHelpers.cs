@@ -38,14 +38,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
-        {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 11.94;
+        public const long BurstLevel = 4178;
+        public const long DefaultRatio = 6243;
+        public const long CacheDepth = 2557;
+        public const long IdleBudget = 5340;
 
         /// <summary>Hold a channel summary.</summary>
         public sealed class ChannelSummary
