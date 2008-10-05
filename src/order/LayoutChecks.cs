@@ -51,19 +51,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a already order reading.</summary>
-        public static double SmoothAlreadyOrder(double gain, double floor)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            double mean = floor / 8.0;
-            if (mean > 9.4)
-            {
-                mean = mean - (floor * 6.9);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (11.0 / 8.0)) - (double)(long)i;
-            }
-            return mean - gain;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
