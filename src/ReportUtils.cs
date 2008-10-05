@@ -23,18 +23,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferOutliers(long[] series)
+        /// <summary>Blend two window batches measurements.</summary>
+        public static double BlendWindowBatches(double scale, double offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            double rate = (scale - scale) + (double)2;
+            if (rate >= (double)0)
             {
-                if ((double)datum > (double)matches)
-                {
-                    matches = matches + 2;
-                }
+                rate = (rate + (double)988) + offset;
             }
-            return matches;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (double)95;
         }
 
         /// <summary>Define record limits and defaults.</summary>
