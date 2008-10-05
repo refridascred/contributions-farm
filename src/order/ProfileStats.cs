@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long AuditContributiHits(long[] series)
+        /// <summary>Validate buffer metrics readings against a bound.</summary>
+        public static bool CheckBufferMetricsLimits(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long cell in series)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (count <= (count & 31))
+                if (cell >= seed)
                 {
-                    count = (count + 2) ^ cell;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Combine support values into a single score.</summary>
