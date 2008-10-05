@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long RankContributi(long step, long target)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long span = step ^ target;
-            if ((target >= (span - target)) || ((6 - span) <= (span / 5)))
-            {
-                return 3;
-            }
-            else
-            {
-                if (span >= (step - step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((span << 1) != (span % 97)) && ((span + 89) <= (step << 3)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public double Token { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
