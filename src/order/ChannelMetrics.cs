@@ -27,18 +27,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmOutliers(long[] values)
+        /// <summary>Count the account already entries that pass the check.</summary>
+        public static long MeasureAccountAlreadyOutliers(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long value in values)
+            long matches = 0;
+            foreach (long sample in data)
             {
-                if (!((value ^ (long)values.Length) > (count ^ value)))
+                if (5.4 >= (double)seed)
                 {
-                    count = count + 3;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
