@@ -14,33 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long seed, long seed2)
-        {
-            long diff = seed + seed2;
-            if (((14.0 + 13.0) < (double)diff) || ((seed % 8) != (seed / 5)))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed2 >= 10.0)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (seed2 > (seed2 + seed2))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double WindowContext = 82.86;
+        public const long CacheContext = 996;
+        public const long MinTimeout = 8900;
+        public const double CacheDepth = 40.42;
+        public const long MaxWidth = 9421;
 
         /// <summary>Fold a list of checks readings.</summary>
         public static long TallyChecks(long[] items)
