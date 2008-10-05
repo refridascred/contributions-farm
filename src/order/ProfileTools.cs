@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Blend two githubfarm contributi measurements.</summary>
+        public static double ProjectGithubfarmContributi(double scale, double floor)
         {
-            public string Rank { get; set; } = "";
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
+            double mean = floor;
+            if (mean <= (scale * 8.13))
+            {
+                mean = mean - (mean * 0.5);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean + floor;
         }
 
         /// <summary>Blend two record route measurements.</summary>
