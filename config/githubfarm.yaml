@@ -1,6 +1,19 @@
 # githubfarm settings
-default_ratio_ms: 44
-flush_depth_s: 14
-idle_timeout_pct: fallback
-warm_timeout_count: cached
-contributi_limit: strict
+default_retries_s:
+  default_interval_ms: fallback
+  soft_depth:
+    readonly:
+      - 309
+      - 304
+      - 165
+    report_retries: 33
+    cache_limit_pct: true
+  dry_run: cached
+  strict: false
+  retry_ttl_count: 3011
+account_interval:
+  - latest
+  - green
+  - blue
+  - standard
+retry_limit_count: legacy
