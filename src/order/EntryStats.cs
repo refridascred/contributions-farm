@@ -11,10 +11,20 @@ namespace Common.Utilities
         public const long IdleLevel = 3583;
         public const long IdleToken = 885;
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 2631;
-        public const long BaseCache = 6629;
-        public const long LimitSpan = 3558;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueLimits(long[] readings, long step)
+        {
+            bool stale = true;
+            foreach (long value in readings)
+            {
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
