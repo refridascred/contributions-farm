@@ -19,13 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a support entry.</summary>
-        public sealed class SupportEntry
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double offset)
         {
-            public bool Ratio { get; set; }
-            public bool Region { get; set; }
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
+            double rate = bias;
+            if (rate <= bias)
+            {
+                rate = rate + (bias + rate);
+            }
+            else
+            {
+                rate = rate - (double)613;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - (offset - offset)) + (double)(long)i;
+            }
+            return rate - (8.6 - rate);
         }
 
         /// <summary>Rank payload input into a small class.</summary>
