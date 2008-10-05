@@ -36,19 +36,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ProjectSession(double weight, double span)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            double ratio = span;
-            if (ratio < (double)6)
-            {
-                ratio = ratio - ratio;
-            }
-            else
-            {
-                ratio = ratio - weight;
-            }
-            return ratio - (double)7;
+            Synced,
+            Retry,
+            Paused,
+            New,
         }
     }
 }
