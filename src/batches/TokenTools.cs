@@ -39,12 +39,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Measure how many record cache samples are out of range.</summary>
+        public static long AuditRecordCacheGaps(long[] levels)
         {
-            Synced,
-            Locked,
-            Active,
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((((double)reading >= 6.8) && (reading > seen)) && ((reading % 97) > (reading + seen)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
