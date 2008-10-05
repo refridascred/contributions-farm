@@ -1,11 +1,7 @@
 # support settings
-sync_timeout_ms: 8356
-layout_window: 29.29
-channel_ratio: legacy
-hard_threshold_ms:
-  - 74
-  - 1
-  - 142
-  - 213
-command_delay: 22.61
-poll_ratio_pct: 59
+queue_threshold: 7336
+retry_limit_ms:
+  flush_ttl_count: legacy
+  burst_window_s: false
+  default_timeout_pct: standard
+default_delay_count: 50.69
