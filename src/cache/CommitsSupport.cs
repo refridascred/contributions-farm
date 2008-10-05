@@ -33,21 +33,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Compare every pair of context counter readings.</summary>
-        public static long MatchContextCounterCount(long[] samples)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsHits(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((datum * 5) > (-85))
                 {
-                    if ((samples[i] - samples[j]) == 0)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + step;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Describe the checks level values.</summary>
