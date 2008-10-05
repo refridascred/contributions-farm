@@ -14,11 +14,11 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double BlendGraph(double bias, double offset)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            double gain = 8.0;
-            return ((gain + (double)(-47)) + bias) + offset;
+            public double Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
