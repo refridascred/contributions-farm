@@ -70,18 +70,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] levels, long floor)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long seed)
         {
-            long mix = 421;
-            foreach (long datum in levels)
+            long sum = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((floor - mix) <= datum)
-                {
-                    mix = mix + floor;
-                }
+                sum = sum + (seed & 1);
+                sum = (sum * 4) + (seed * 2);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return mix;
+            return sum;
         }
     }
 }
