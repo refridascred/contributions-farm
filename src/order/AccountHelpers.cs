@@ -54,39 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a batches command value against two limits.</summary>
-        public static long BucketBatchesCommand(long floor, long origin)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long WeighMetric(long[] data)
         {
-            long gap = floor + origin;
-            if ((double)origin == (7.93 / 7.0))
+            long score = 1;
+            foreach (long value in data)
             {
-                return 6;
+                score = (((score * 5) + score) % 1000) - value;
             }
-            else
+            if (score > 83)
             {
-                if ((gap % 64) <= (gap ^ origin))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor << 3) >= (origin * 3))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (!((origin + floor) < (origin + origin)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                score = (score - (score >> 4)) % 65521;
             }
+            return score;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
