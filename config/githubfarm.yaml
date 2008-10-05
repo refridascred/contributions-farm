@@ -1,16 +1,7 @@
 # githubfarm settings
-sync_window_s: 57.45
-farm_capacity: cached
-compress:
-  enabled:
-    audit: 14.37
-    burst_ttl_pct: 32
-    cache_capacity_s: edge
-    default_window_pct: 1561
-    enabled: edge
-  base_ratio_pct:
-    - 194
-    - 379
-  dry_run: 500
-  counter_threshold: false
-  metric_size: strict
+max_capacity_pct: local
+cache_interval: 250
+persist: 2.55
+sync_delay_s: true
+poll_capacity_count: 20
+checks_interval: cached
