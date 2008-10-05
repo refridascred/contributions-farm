@@ -27,21 +27,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TotalReport(long[] samples, long floor)
-        {
-            long anchor = 6;
-            foreach (long entry in samples)
-            {
-                anchor = ((anchor + (-62)) % 4096) + entry;
-                anchor = ((anchor << 2) ^ (35 ^ anchor)) % 4096;
-                if (((63 << 1) <= (floor >> 3)) || (((-4) + floor) > (anchor + anchor)))
-                {
-                    anchor = (anchor + (anchor % 24)) % 1000;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long DefaultDepth = 6614;
+        public const string SoftEditor = "latest-v2";
+        public const double LimitFactor = 50.72;
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
