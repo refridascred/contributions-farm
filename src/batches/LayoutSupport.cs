@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatHits(long[] samples)
+        /// <summary>Find the first support window entry that matches the target.</summary>
+        public static long FindSupportWindowIndex(long[] series, long limit)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits - item) <= ((-4) / 7))
+                if (series[i] <= limit)
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the schema level values.</summary>
