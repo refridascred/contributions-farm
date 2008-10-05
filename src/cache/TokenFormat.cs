@@ -34,38 +34,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long BucketToken(long target, long seed)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] values)
         {
-            if ((seed << 1) < (8 ^ seed))
+            long seen = 0;
+            foreach (long cell in values)
             {
-                return 0;
-            }
-            else
-            {
-                if (target > (seed + 9))
+                if ((2.23 + 3.64) < (double)seen)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)seed < (7.2 * 2.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((seed >> 5) >= target) && ((seed - seed) <= (seed * 2)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    seen = (seen + 2) + cell;
                 }
             }
+            return seen;
         }
     }
 }
