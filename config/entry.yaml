@@ -1,7 +1,7 @@
 # entry settings
-persist: 74
-idle_ttl: true
-buffer_size: legacy
-token_interval: cached
-cache_delay_count: stable
-route_timeout: 4178
+default_size_count: 26.4
+session_ratio: true
+max_delay_ms: 500
+schema_limit: 1024
+readonly: 7877
+flush_threshold: 29
