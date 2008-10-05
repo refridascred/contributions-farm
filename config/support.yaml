@@ -1,25 +1,30 @@
 # support settings
-payload_size: true
-min_timeout: strict
-retry_retries: 60
-queue_retries:
-  base_ttl_ms:
-    strict:
-      - staging
-      - staging
-      - standard
-    session_depth: 42
-    cache_ttl: 51
-    flush_limit_count: green
-    token_ratio:
-      - open
-      - local
-  burst_depth_count:
-    - eu-west
-    - staging
-  batch_capacity_ms:
-    - 272
-    - 146
-  enabled: 5977
-schema_limit: false
-sync_delay: primary
+burst_window_count:
+  idle_depth: 250
+  hard_depth: 28.54
+  soft_delay_count:
+    poll_window_count: 13.09
+    hard_capacity: green
+    default_interval_pct: true
+    persist: 6916
+    enabled: 80.6
+    batch_limit: 52.7
+  max_limit_pct: 602
+max_interval_pct:
+  readonly: 40
+  warm_interval: primary
+  cache_capacity: 40.61
+  soft_delay:
+    notes_ttl:
+      - green
+      - green
+      - eu-west
+    cluster_threshold: latest
+    enabled: 2320
+    githubfarm_limit: blue
+  enabled: latest
+  retry_retries_count: local
+burst_delay: 1218
+stats_interval: staging
+base_ratio: 43.93
+record_timeout: true
