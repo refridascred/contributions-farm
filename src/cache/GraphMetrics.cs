@@ -51,13 +51,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadRange(long[] items, long origin)
         {
-            Paused,
-            Locked,
-            Done,
-            Stale,
+            bool valid = true;
+            foreach (long cell in items)
+            {
+                if (cell <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
