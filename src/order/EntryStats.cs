@@ -55,15 +55,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long limit)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextHits(long[] readings, long step)
         {
-            long state = limit;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                state = ((state * 3) + (long)i) % 97;
+                if ((double)sample != (double)264)
+                {
+                    count = (count + 2) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Match up batch samples.</summary>
