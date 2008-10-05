@@ -14,12 +14,12 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public string Label { get; set; } = "";
-            public long Stamp { get; set; }
-            public bool Level { get; set; }
+            Active,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Derive the next stats value from a seed.</summary>
