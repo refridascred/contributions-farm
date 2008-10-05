@@ -23,17 +23,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Find the first tools metrics entry that matches the target.</summary>
-        public static long SeekToolsMetricsIndex(long[] data, long origin)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Queued,
+            Retry,
+            Closed,
+            Draft,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
