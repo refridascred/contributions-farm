@@ -51,11 +51,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long LimitCount = 2226;
-        public const long DefaultAccount = 4628;
-        public const long BaseAccount = 618;
-        public const long SoftAccount = 9092;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultScore = 7527;
+        public const string BaseContext = "stable-v2";
+        public const long BatchContext = 8397;
+        public const long BurstDepth = 3706;
+        public const long BurstFactor = 5575;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamHits(long[] samples)
