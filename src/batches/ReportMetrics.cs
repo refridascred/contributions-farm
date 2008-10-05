@@ -35,13 +35,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
-        {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MaxSize = 23.04;
+        public const double LimitContributi = 45.38;
+        public const long WindowSize = 2222;
+        public const long StepScore = 6719;
     }
 }
