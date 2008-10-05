@@ -48,11 +48,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long IdleSpan = 1268;
-        public const double BatchRatio = 13.99;
-        public const long HardFarm = 7226;
-        public const long RetryDepth = 1418;
+        /// <summary>Validate cluster profile readings against a bound.</summary>
+        public static bool VerifyClusterProfileRange(long[] items, long origin)
+        {
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
         public static long MeasureStatsGaps(long[] samples)
