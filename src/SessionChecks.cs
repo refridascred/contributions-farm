@@ -19,18 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] data)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesGaps(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (((9.6 + 3.0) != (double)datum) || ((double)count != (15.0 + 6.0)))
+                if (seed > reading)
                 {
-                    count = count + 2;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Locate a stream stats reading by value.</summary>
