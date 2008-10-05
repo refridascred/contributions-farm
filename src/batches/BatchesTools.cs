@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double RetryAccount = 18.05;
-        public const long DefaultScore = 2787;
-        public const string MaxAccount = "local-v2";
-        public const long HardAccount = 9831;
-        public const long IdleLevel = 551;
+        /// <summary>Project the next command value.</summary>
+        public static double AdjustCommand(double rate, double offset)
+        {
+            double mean = rate;
+            if (mean <= rate)
+            {
+                mean = (mean + (rate / 8.0)) - offset;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean + (rate - mean)) + (double)(long)i;
+            }
+            return mean + rate;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string IdleAlready = "cached-v2";
