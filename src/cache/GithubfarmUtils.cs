@@ -20,38 +20,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long target, long bound)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            if ((bound + bound) != (target & 63))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)target == (16.0 / 5.0))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((0 - 1) <= (bound * 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (16.0 >= (double)target)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            New,
+            Draft,
+            Done,
+            Paused,
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
