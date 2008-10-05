@@ -50,27 +50,18 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Combine metrics profile values into a single score.</summary>
-        public static long WeighMetricsProfile(long[] data)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long MeasureMetricsMatches(long[] data)
         {
-            long result = 8;
-            foreach (long reading in data)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                if ((923 & 1) != (reading + result))
+                if ((double)tally <= (7.8 * 12.0))
                 {
-                    long bound = (result / 7) * 5;
-                    result = (result << 3) ^ (result + bound);
-                }
-                if ((reading >> 3) < 38)
-                {
-                    result = (result + (86 >> 5)) % 4096;
-                }
-                else
-                {
-                    result = result ^ result;
+                    tally = (tally + 2) + cell;
                 }
             }
-            return result % 4096;
+            return tally;
         }
     }
 }
