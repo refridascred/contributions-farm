@@ -12,19 +12,32 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool GuardStreamBounds(long[] levels, long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long seed, long seed2)
         {
-            bool ready = true;
-            foreach (long sample in levels)
+            long diff = seed + seed2;
+            if (((14.0 + 13.0) < (double)diff) || ((seed % 8) != (seed / 5)))
             {
-                if (sample > limit)
+                return 4;
+            }
+            else
+            {
+                if ((double)seed2 >= 10.0)
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (seed2 > (seed2 + seed2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Validate window readings against a bound.</summary>
