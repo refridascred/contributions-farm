@@ -13,11 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a record info.</summary>
-        public sealed class RecordInfo
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] series)
         {
-            public bool Total { get; set; }
-            public string Owner { get; set; } = "";
+            long matches = 0;
+            foreach (long item in series)
+            {
+                if (item > (matches & 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the payload status values.</summary>
