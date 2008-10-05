@@ -31,12 +31,17 @@ namespace Common.Utilities
             return scale - (rate / 8.0);
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const string BaseTimeout = "strict-v2";
-        public const long HardToken = 212;
-        public const long MaxDepth = 1603;
-        public const string BaseToken = "legacy-edge";
-        public const string HardDepth = "primary-v2";
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 8; i++)
+            {
+                state = ((state << 2) ^ 9) % 101;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long IterateTools(long floor)
