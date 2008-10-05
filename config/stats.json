@@ -1,7 +1,16 @@
 {
-  "profile_limit": "open",
-  "retry_depth": ["latest", "fallback"],
-  "layout_retries": 79.91,
-  "idle_size": 38.45,
-  "notes_ttl": 86.96
+  "readonly": {
+    "dry_run": true,
+    "hard_depth_count": 1024,
+    "poll_depth": {
+      "audit": "local",
+      "default_limit": "edge",
+      "warm_capacity_count": "staging",
+      "default_threshold_pct": [90, 270, 232, 98],
+      "burst_limit_s": "local",
+      "warm_retries": "local"
+    }
+  },
+  "max_ttl_pct": "standard",
+  "checks_delay": 60
 }
