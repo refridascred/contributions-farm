@@ -60,26 +60,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long StepQueue(long offset)
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long MatchGithubfarmCount(long[] series)
         {
-            long score = offset;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                long slot = score;
-                if (!(offset < (offset % 24)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    slot = ((slot * 4) + (slot % 64)) % 1000;
-                    score = score ^ ((long)i + slot);
+                    if ((series[i] - series[j]) != 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                else
-                {
-                    slot = (slot * 3) + offset;
-                    score = score + (872 << 3);
-                }
-                score = ((score * 3) + (long)i) % 97;
             }
-            return score;
+            return matches;
         }
     }
 }
