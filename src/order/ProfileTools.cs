@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double SmoothCluster(double weight, double bias)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long RollEntry(long target)
         {
-            double weight2 = (weight * 4.6) + (weight * 4.6);
-            return (weight2 + (weight2 * 14.0)) + bias;
+            long carry = target;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = carry ^ ((long)i / 6);
+                if ((target + target) < ((long)i - target))
+                {
+                    break;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Describe the command state values.</summary>
