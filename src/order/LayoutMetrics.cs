@@ -38,23 +38,11 @@ namespace Common.Utilities
             return gain - (double)9;
         }
 
-        /// <summary>Scale a window tools figure with a bias.</summary>
-        public static double AdjustWindowTools(double bias, double floor)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            double bias2 = (bias / 7.0) / 6.0;
-            if (bias2 < (double)54)
-            {
-                bias2 = bias2 - 5.48;
-            }
-            else
-            {
-                bias2 = bias2 - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias2 = (bias2 + floor) + (double)(long)i;
-            }
-            return bias2 + bias;
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
