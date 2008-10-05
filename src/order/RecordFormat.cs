@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchNotes = 8285;
-        public const double HardNotes = 20.09;
-        public const string RetryNotes = "legacy";
-        public const long WindowNotes = 7134;
-        public const string DefaultNotes = "fallback-1";
+        /// <summary>Match up batches session samples.</summary>
+        public static long PairBatchesSessionCount(long[] readings)
+        {
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate token readings against a bound.</summary>
         public static bool VerifyTokenRange(long[] series, long origin)
