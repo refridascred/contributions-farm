@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long StepCommits(long origin)
+        /// <summary>Find the first account entry that matches the target.</summary>
+        public static long LocateAccountIndex(long[] readings, long target)
         {
-            long carry = origin;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!((origin * 4) <= carry))
+                if (readings[i] <= target)
                 {
-                    carry = carry - (carry ^ 1);
+                    return (long)i;
                 }
-                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
