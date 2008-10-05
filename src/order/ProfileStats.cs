@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double bias, double bias2)
         {
-            public long Weight { get; set; }
-            public double Token { get; set; }
-            public bool Score { get; set; }
+            double gain = bias2;
+            if (gain <= (bias / 3.0))
+            {
+                gain = gain + (bias2 + bias);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain - (bias2 - 4.0)) + (double)(long)i;
+            }
+            return gain + (bias2 - bias);
         }
 
         /// <summary>Locate a record reading by value.</summary>
