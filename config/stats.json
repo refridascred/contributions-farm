@@ -1,5 +1,8 @@
 {
-  "default_capacity_count": "stable",
-  "readonly": ["cached", "open", "local", "local"],
-  "batch_depth": false
+  "max_retries": ["strict", "cached"],
+  "audit": 98.65,
+  "entry_ttl": "standard",
+  "stream_ttl": 2308,
+  "route_retries": "blue",
+  "max_size_pct": true
 }
