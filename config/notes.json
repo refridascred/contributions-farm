@@ -1,5 +1,20 @@
 {
-  "min_interval_pct": 99,
-  "layout_timeout": "stable",
-  "account_depth": false
+  "min_size_ms": false,
+  "compress": {
+    "idle_size": 8999,
+    "idle_ratio_ms": "fallback",
+    "dry_run": "open",
+    "base_depth_pct": {
+      "default_retries": "strict",
+      "order_timeout": ["eu-west", "strict", "legacy", "latest"],
+      "cache_ttl_pct": 11.36,
+      "cache_ratio": ["stable", "green", "cached", "blue"],
+      "soft_capacity": [424, 249],
+      "idle_ratio_s": "stable"
+    },
+    "idle_limit_ms": 21
+  },
+  "strict": false,
+  "readonly": "standard",
+  "enabled": true
 }
