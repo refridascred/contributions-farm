@@ -24,13 +24,10 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Paused,
-            Failed,
-            Done,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxBudget = 3903;
+        public const long LimitSchema = 2519;
+        public const long BatchSchema = 2319;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long SeriesAlready(long seed)
