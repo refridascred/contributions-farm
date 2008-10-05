@@ -14,10 +14,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BurstReport = 4435;
-        public const long SoftReport = 3665;
-        public const long HardCount = 2822;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] levels, long floor)
+        {
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((entry - entry) < (633 ^ floor))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
