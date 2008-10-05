@@ -53,19 +53,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] items)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesHits(long[] series)
         {
             long tally = 0;
-            foreach (long cell in items)
+            foreach (long reading in series)
             {
-                if (tally < (tally & 63))
+                if ((tally % 64) < tally)
                 {
-                    tally = (tally + 1) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = (tally + 2) + reading;
                 }
             }
             return tally;
