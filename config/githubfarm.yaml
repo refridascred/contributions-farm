@@ -1,8 +1,4 @@
 # githubfarm settings
-cache_retries: true
-format_capacity: primary
-checks_ratio: cached
-soft_interval_ms:
-  format_interval: true
-  persist: fallback
-  audit: 64
+verbose: 33.57
+hard_timeout: blue
+graph_ttl: stable
