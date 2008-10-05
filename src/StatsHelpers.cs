@@ -36,15 +36,18 @@ namespace Common.Utilities
         public const long MaxScore = 2415;
         public const long BurstCommits = 3326;
 
-        /// <summary>Derive the next metric channel value from a seed.</summary>
-        public static long RollMetricChannel(long bound)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchOutliers(long[] data, long origin)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                if ((double)origin != (double)matches)
+                {
+                    matches = (matches + 3) + entry;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
