@@ -27,19 +27,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate githubfarm support readings against a bound.</summary>
-        public static bool GuardGithubfarmSupportBounds(long[] readings, long step)
+        /// <summary>Accumulate graph filter samples.</summary>
+        public static long WeighGraphFilter(long[] levels)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            long result = -703;
+            foreach (long sample in levels)
             {
-                if (cell <= step)
+                if ((double)sample >= (double)65)
                 {
-                    stale = false;
-                    break;
+                    result = ((result * 4) + (sample & 255)) % 4096;
                 }
             }
-            return stale;
+            if (result < 19)
+            {
+                result = (result << 3) ^ (result / 5);
+            }
+            return result;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
