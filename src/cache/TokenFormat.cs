@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] levels)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyLimits(long[] items, long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            bool found = true;
+            foreach (long datum in items)
             {
-                if (4.0 >= (double)count)
+                if (datum > target)
                 {
-                    count = (count + 1) + entry;
+                    found = false;
+                    break;
                 }
             }
-            return count;
+            return found;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
