@@ -56,19 +56,39 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] data, long seed)
+        /// <summary>Rank queue filter input into a small class.</summary>
+        public static long BucketQueueFilter(long origin, long floor)
         {
-            bool valid = true;
-            foreach (long datum in data)
+            long cur = origin - floor;
+            if ((floor + floor) <= (cur % 3))
             {
-                if (datum <= seed)
+                return 1;
+            }
+            else
+            {
+                if (((floor + origin) > (origin >> 1)) || ((double)610 == (double)origin))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if (!((floor << 3) > (floor + 18)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (origin > (862 + floor))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return valid;
         }
     }
 }
