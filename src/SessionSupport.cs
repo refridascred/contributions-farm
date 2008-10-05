@@ -12,11 +12,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 1190;
-        public const long BasePayload = 7030;
-        public const long RetryPayload = 2126;
-        public const double RetryWidth = 5.03;
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] series)
+        {
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((double)hits >= (9.7 * 6.0))
+                {
+                    hits = (hits + 2) ^ value;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long FoldStream(long[] series, long bound)
