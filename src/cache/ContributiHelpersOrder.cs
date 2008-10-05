@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a profile info.</summary>
-        public sealed class ProfileInfo
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public long Total { get; set; }
-            public bool Owner { get; set; }
-            public bool Token { get; set; }
+            public long Flag { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a commits summary.</summary>
