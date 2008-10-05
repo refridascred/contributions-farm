@@ -20,21 +20,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long GradeBatches(long target, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (offset > (offset - target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((double)target >= 12.0))
                 {
-                    if ((values[i] ^ values[j]) < 11)
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset != (4.47 / 8.0))
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
