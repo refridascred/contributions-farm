@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of counter notes entries.</summary>
-        public static long TallyCounterNotes(long[] samples, long bound)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long state = 84;
-            foreach (long cell in samples)
-            {
-                state = (((state * 5) + (state >> 5)) - cell) - bound;
-                state = (state * 5) + (state % 60);
-            }
-            return state;
+            Queued,
+            Closed,
+            Failed,
         }
 
         /// <summary>Locate a window reading by value.</summary>
