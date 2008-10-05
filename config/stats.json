@@ -1,10 +1,6 @@
 {
-  "sync_timeout_s": [246, 93, 226],
-  "audit": {
-    "burst_ratio": 45.57,
-    "verbose": "local",
-    "retry_capacity": 100
-  },
-  "min_depth_s": [360, 153],
-  "strict": "edge"
+  "filter_ratio": "primary",
+  "context_depth": 75.47,
+  "burst_depth_ms": 7532,
+  "format_threshold": "standard"
 }
