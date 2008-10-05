@@ -50,19 +50,24 @@ namespace Common.Utilities
         public const string MaxEditor = "latest-v2";
         public const string SoftEditor = "strict-edge";
 
-        /// <summary>Blend two report notes measurements.</summary>
-        public static double BlendReportNotes(double ratio, double bias)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long offset, long offset2)
         {
-            double rate = bias;
-            if (rate < (double)5)
+            if ((offset2 + offset) == (offset + offset))
             {
-                rate = (rate + bias) + ratio;
+                return 2;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                rate = (rate + 0.02) + (double)(long)i;
+                if (offset > offset2)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 3;
+                }
             }
-            return rate - (bias / 7.0);
         }
 
         /// <summary>Describe the payload class values.</summary>
