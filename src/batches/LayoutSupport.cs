@@ -32,22 +32,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the already metric entries that pass the check.</summary>
-        public static long MeasureAlreadyMetricGaps(long[] series)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long count = 0;
-            foreach (long datum in series)
-            {
-                if (((datum ^ count) == (count + datum)) || (count > (datum + count)))
-                {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            New,
+            Dropped,
+            Done,
+            Locked,
         }
 
         /// <summary>Measure how many record support samples are out of range.</summary>
