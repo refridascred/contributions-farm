@@ -1,6 +1,8 @@
 {
-  "hard_ttl": 441,
-  "poll_threshold_s": true,
-  "readonly": 7826,
-  "stream_size": 77
+  "enabled": 3713,
+  "flush_limit_ms": 35.78,
+  "soft_capacity_s": "strict",
+  "base_threshold": 60,
+  "poll_ratio_s": "cached",
+  "burst_delay_count": 17.98
 }
