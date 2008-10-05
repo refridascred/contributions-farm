@@ -1,22 +1,9 @@
 # entry settings
-hard_delay_pct:
-  sync_capacity: false
-  default_retries_pct:
-    - 242
-    - 281
-  default_ratio_pct: true
-  dry_run: edge
-  retry_interval: 76
-  max_size_count: 62
-cache_capacity:
-  - green
-  - standard
-default_depth:
-  flush_limit: 30
-  default_window_pct: 60
-  hard_capacity_count: 1348
-  compress: blue
-  context_retries: 500
-commits_delay: local
-warm_retries_s: 68
-min_delay_ms: blue
+hard_timeout_ms: 88.2
+max_retries_count:
+  - 226
+  - 36
+  - 211
+window_capacity: local
+idle_limit_ms: 56.77
+graph_ratio: 250
