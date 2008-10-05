@@ -37,19 +37,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double rate, double offset)
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            double rate2 = (double)(0 ^ 981);
-            if (rate2 < offset)
-            {
-                rate2 = rate2 - rate2;
-            }
-            else
-            {
-                rate2 = rate2 - (rate + rate2);
-            }
-            return rate2 - (rate2 * 7.9);
+            Active,
+            Draft,
+            Done,
         }
 
         /// <summary>Rank tools input into a small class.</summary>
