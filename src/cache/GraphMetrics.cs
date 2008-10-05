@@ -47,19 +47,21 @@ namespace Common.Utilities
         public const long BaseDepth = 3480;
         public const long HardInterval = 8352;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadRange(long[] items, long origin)
+        /// <summary>Count cache metrics pairs that satisfy a relation.</summary>
+        public static long OverlapCacheMetricsCount(long[] values)
         {
-            bool valid = true;
-            foreach (long cell in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= origin)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((values[i] ^ values[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
 
         /// <summary>Hold a session info.</summary>
