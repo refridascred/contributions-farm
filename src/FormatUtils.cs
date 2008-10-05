@@ -40,12 +40,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstWidth = 541;
-        public const long BaseSize = 7074;
-        public const long DefaultFactor = 6082;
-        public const string BatchWindow = "fallback";
-        public const string MinWindow = "local-v2";
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
+        {
+            public long Ratio { get; set; }
+            public bool Flag { get; set; }
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Define editor limits and defaults.</summary>
         public const long BaseCount = 6053;
