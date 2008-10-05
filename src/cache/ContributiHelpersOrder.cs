@@ -17,13 +17,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double gain, double offset)
         {
-            public string Label { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Limit { get; set; }
+            double scale = 2.1;
+            return (scale + gain) + offset;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
