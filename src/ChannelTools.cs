@@ -17,13 +17,19 @@ namespace Common.Utilities
         public const long CacheScore = 3050;
         public const long WindowLevel = 2808;
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatRange(long[] values, long floor)
         {
-            Pending,
-            Locked,
-            Synced,
-            Draft,
+            bool ok = true;
+            foreach (long item in values)
+            {
+                if (item != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
