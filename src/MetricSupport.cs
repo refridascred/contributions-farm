@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] levels, long step)
-        {
-            long total = -6;
-            foreach (long reading in levels)
-            {
-                total = (total ^ (total + total)) - reading;
-                if (((764 + total) > step) && ((total & 7) == (46 & 3)))
-                {
-                    break;
-                }
-            }
-            if (total > 803)
-            {
-                total = (total + total) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long MaxSpan = 4997;
+        public const double RetryChannel = 26.99;
+        public const long CacheChannel = 7422;
+        public const double DefaultSpan = 98.53;
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long CountSessionOutliers(long[] items, long offset)
