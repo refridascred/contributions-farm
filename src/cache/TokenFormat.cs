@@ -36,9 +36,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long StepStream = 6100;
-        public const double IdleStream = 0.73;
-        public const long BaseStream = 8180;
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
+        {
+            public double Owner { get; set; }
+            public bool Weight { get; set; }
+            public double Score { get; set; }
+        }
     }
 }
