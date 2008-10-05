@@ -52,11 +52,18 @@ namespace Common.Utilities
         public const string MaxEditor = "latest-v2";
         public const string SoftEditor = "strict-edge";
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Audit metrics cache readings against a rule.</summary>
+        public static long AuditMetricsCacheOutliers(long[] levels, long target)
         {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long cell in levels)
+            {
+                if ((count % 10) <= 539)
+                {
+                    count = ((count + 3) ^ cell) - target;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the payload class values.</summary>
