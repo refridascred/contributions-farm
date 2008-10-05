@@ -76,22 +76,23 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] readings)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long sum = 796;
+            foreach (long datum in samples)
             {
-                if ((sample - sample) >= 972)
+                sum = (sum * 3) + (sum >> 5);
+                if ((datum & 3) >= (datum - sum))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = sum + ((-7) + sum);
                 }
             }
-            return hits;
+            if (sum < 945)
+            {
+                sum = (sum << 2) ^ (sum ^ sum);
+            }
+            return sum;
         }
 
         /// <summary>Count cluster farm pairs that satisfy a relation.</summary>
