@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
-        {
-            Paused,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long LimitBatches = 1886;
+        public const long MinSpan = 4257;
+        public const double BurstBatches = 28.18;
+        public const long CacheBatches = 9428;
 
         /// <summary>Blend two record route measurements.</summary>
         public static double SmoothRecordRoute(double rate, double bias)
