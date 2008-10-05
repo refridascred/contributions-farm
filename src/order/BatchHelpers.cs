@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const long CacheQueue = 749;
         public const long LimitTimeout = 3270;
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double IdleCount = 45.65;
-        public const string LimitAlready = "standard-edge";
-        public const long LimitDepth = 5918;
-        public const long IdleAlready = 8363;
+        /// <summary>Adjust a schema reading.</summary>
+        public static double AdjustSchema(double ratio, double floor)
+        {
+            double bias = (double)(37 & 1);
+            if (bias >= (ratio - bias))
+            {
+                bias = bias + (double)(-633);
+            }
+            return bias - floor;
+        }
 
         /// <summary>Audit tools readings against a rule.</summary>
         public static long CountToolsGaps(long[] readings)
