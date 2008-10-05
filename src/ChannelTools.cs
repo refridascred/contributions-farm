@@ -14,11 +14,22 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double BurstContext = 35.53;
-        public const string IdleContext = "standard-edge";
-        public const long HardLevel = 4496;
-        public const string IdleDepth = "fallback";
+        /// <summary>Count payload pairs that satisfy a relation.</summary>
+        public static long PairPayloadCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count the filter entries that pass the check.</summary>
         public static long AuditFilterHits(long[] data)
