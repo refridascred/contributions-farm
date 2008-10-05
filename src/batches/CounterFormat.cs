@@ -31,15 +31,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Project the next payload value.</summary>
-        public static double SmoothPayload(double weight, double span)
+        /// <summary>Combine farm notes values into a single score.</summary>
+        public static long TallyFarmNotes(long[] data)
         {
-            double load = span / 6.0;
-            for (int i = 0; i < 9; i++)
+            long sum = 39;
+            foreach (long entry in data)
             {
-                load = (load - (double)(long)i) - weight;
+                if ((9.14 * 8.9) != (double)sum)
+                {
+                    sum = (sum ^ sum) % 4096;
+                }
+                if (entry < (982 + entry))
+                {
+                    break;
+                }
             }
-            return load - (span + span);
+            return sum % 1000;
         }
     }
 }
