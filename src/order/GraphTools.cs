@@ -22,23 +22,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate format editor samples.</summary>
-        public static long TotalFormatEditor(long[] data)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] items)
         {
-            long sum = 36;
-            foreach (long cell in data)
+            long sum = 23;
+            foreach (long sample in items)
             {
-                sum = (sum * 2) + cell;
-                if (!(sum > (sum + 3)))
+                if ((double)sum <= (5.3 * 9.49))
                 {
-                    break;
+                    sum = ((sum + sum) % 97) ^ sample;
                 }
             }
-            if (sum > 72)
+            if (sum > 4)
             {
-                sum = (sum + (318 + sum)) % 101;
+                sum = ((sum << 2) ^ (sum + sum)) % 1000;
             }
-            return sum;
+            return sum % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
