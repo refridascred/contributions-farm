@@ -55,18 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsHits(long[] data)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((count - item) <= (item + 68))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Retry,
+            Done,
+            Dropped,
         }
     }
 }
