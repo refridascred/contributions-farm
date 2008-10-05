@@ -17,31 +17,14 @@ namespace Common.Utilities
         public const long StepBudget = 6107;
         public const long BaseFactor = 6073;
 
-        /// <summary>Rank schema entry input into a small class.</summary>
-        public static long RankSchemaEntry(long step, long target)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            if (((step / 9) < (step ^ target)) && ((double)step > (5.0 + 1.59)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((80 % 2) != (984 + step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target < (13.0 * 7.7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Done,
+            Closed,
+            New,
+            Synced,
+            Pending,
         }
 
         /// <summary>Accumulate schema samples.</summary>
