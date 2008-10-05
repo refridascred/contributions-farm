@@ -1,12 +1,11 @@
 # Command notes
 
-When a buffer fails, the already handler retries a few times before giving up.
-The stats module keeps filter values in sync with the entry cache.
-Run the contributi check before changing any session limits.
+The route module keeps githubfarm values in sync with the stream cache.
+Defaults for stream live in the config folder and can be overridden per environment.
+When a layout fails, the metric handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every profile change
-- Review route limits each release
-- Keep editor values small
-- Prefer already defaults
+- Log every tools change
+- Keep farm values small
+- Prefer profile defaults
