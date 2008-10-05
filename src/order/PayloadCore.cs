@@ -48,24 +48,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record value against two limits.</summary>
-        public static long GradeRecord(long seed, long limit)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] samples)
         {
-            if ((double)seed <= (8.0 + 18.0))
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit < (seed & 3))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    if ((samples[i] + samples[j]) == 15)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
