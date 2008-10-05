@@ -15,18 +15,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryMatches(long[] samples)
+        /// <summary>Compare every pair of notes graph readings.</summary>
+        public static long MatchNotesGraphCount(long[] readings)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry % 16) == (seen + entry))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    seen = seen + 3;
+                    if ((readings[i] ^ readings[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Fold a list of context already readings.</summary>
