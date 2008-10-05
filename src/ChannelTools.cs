@@ -26,12 +26,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] samples, long origin)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] data, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (samples[i] >= origin)
+                if (data[i] < seed)
                 {
                     return (long)i;
                 }
