@@ -44,13 +44,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
-        {
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Token { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 2463;
+        public const long CacheStats = 7988;
+        public const string StepFactor = "primary-1";
 
         /// <summary>Compare every pair of editor channel readings.</summary>
         public static long PairEditorChannelCount(long[] series)
