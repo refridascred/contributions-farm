@@ -22,21 +22,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long limit)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long acc = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    acc = (((acc * 3) + (limit << 2)) % 255) ^ (long)i2;
-                    acc = acc + (2 - limit);
-                }
-                acc = acc - limit;
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
+            Stale,
+            Closed,
+            Pending,
+            Ready,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
