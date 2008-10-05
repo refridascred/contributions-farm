@@ -16,19 +16,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every token session entry stays within the limit.</summary>
-        public static bool CheckTokenSessionLimits(long[] samples, long step)
+        /// <summary>Compare every pair of layout buffer readings.</summary>
+        public static long OverlapLayoutBufferCount(long[] items)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((items[i] - items[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Describe the checks class values.</summary>
