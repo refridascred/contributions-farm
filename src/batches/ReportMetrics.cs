@@ -36,12 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Adjust a order reading.</summary>
+        public static double ProjectOrder(double rate, double offset)
         {
-            public string Weight { get; set; } = "";
-            public long Level { get; set; }
-            public long Ratio { get; set; }
+            double ratio = (double)(755 >> 1);
+            if (ratio < (double)8)
+            {
+                ratio = (ratio + (double)9) - offset;
+            }
+            else
+            {
+                ratio = ratio - (rate - 9.0);
+            }
+            return ratio - rate;
         }
     }
 }
