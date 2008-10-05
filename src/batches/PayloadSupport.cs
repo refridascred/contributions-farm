@@ -40,17 +40,32 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long FindStatsIndex(long[] samples, long origin)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long offset, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long step = offset + floor;
+            if (((7.0 * 9.8) != (double)step) && ((double)offset < (double)floor))
             {
-                if ((samples[i] <= origin) && ((samples[i] % 5) != 0))
+                return 2;
+            }
+            else
+            {
+                if ((double)floor != (2.0 / 7.0))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((floor + offset) == (step / 3))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
