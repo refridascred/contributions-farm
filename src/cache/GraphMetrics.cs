@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long value in series)
-            {
-                if (((tally + 5) != (3 / 4)) || !((double)tally == (3.12 * 6.0)))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 9021;
+        public const long DefaultGithubfarm = 3223;
+        public const long BaseLevel = 6843;
 
         /// <summary>Count the token filter entries that pass the check.</summary>
         public static long CountTokenFilterGaps(long[] series)
