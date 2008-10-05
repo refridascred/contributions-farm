@@ -23,23 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ProjectStream(double ratio, double bias)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] series, long limit)
         {
-            double bias2 = ratio;
-            if (bias2 > (bias - bias))
+            for (int i = 0; i < series.Length; i++)
             {
-                bias2 = bias2 - ratio;
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias2 = bias2 + (bias / 3.0);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + (ratio / 8.0)) + (double)(long)i;
-            }
-            return bias2 - ratio;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
