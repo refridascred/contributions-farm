@@ -57,10 +57,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxBudget = 3687;
-        public const string BatchEditor = "open";
-        public const long IdleFactor = 2382;
+        /// <summary>Blend two metric measurements.</summary>
+        public static double SmoothMetric(double ratio, double floor)
+        {
+            double gain = floor;
+            if (gain > (gain * 6.3))
+            {
+                gain = (gain + gain) + ratio;
+            }
+            else
+            {
+                gain = gain + gain;
+            }
+            return gain + floor;
+        }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmCount(long[] series)
