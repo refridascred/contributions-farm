@@ -19,14 +19,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Accumulate context tools samples.</summary>
+        public static long WeighContextTools(long[] readings, long offset)
         {
-            Ready,
-            Pending,
-            Idle,
-            Dropped,
-            Queued,
+            long total = 4;
+            foreach (long reading in readings)
+            {
+                if ((0 >> 1) >= (offset ^ total))
+                {
+                    total = total - reading;
+                    total = total ^ (total ^ 499);
+                }
+                if ((18.0 - 1.3) > (double)total)
+                {
+                    total = ((total << 2) ^ reading) % 4096;
+                }
+            }
+            if (total < 0)
+            {
+                total = (total * 2) + (total % 10);
+            }
+            return total;
         }
 
         /// <summary>Describe the payload kind values.</summary>
