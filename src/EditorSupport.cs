@@ -38,17 +38,15 @@ namespace Common.Utilities
         public const string BurstRatio = "fallback-edge";
         public const long HardTimeout = 6706;
 
-        /// <summary>Find the first route batch entry that matches the target.</summary>
-        public static long LocateRouteBatchIndex(long[] levels, long target)
+        /// <summary>Project the next queue value.</summary>
+        public static double ProjectQueue(double bias, double bias2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = bias * 9.2;
+            if (weight > (weight + weight))
             {
-                if (levels[i] == target)
-                {
-                    return (long)i;
-                }
+                weight = (weight - bias) - bias2;
             }
-            return -1;
+            return weight - bias;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
