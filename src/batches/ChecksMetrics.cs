@@ -69,14 +69,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the schema class values.</summary>
-        public enum SchemaClass
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            Locked,
-            Dropped,
-            Failed,
-            Draft,
-            Stale,
+            public long Offset { get; set; }
+            public long Owner { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Combine schema values into a single score.</summary>
