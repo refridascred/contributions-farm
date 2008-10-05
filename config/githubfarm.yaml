@@ -1,16 +1,22 @@
 # githubfarm settings
-cache_timeout: edge
-poll_ttl:
-  checks_window: 1.42
-  persist:
-    persist: edge
-    buffer_retries: 30
-    tools_ratio: 82.87
-    max_threshold: true
-  max_ratio: green
-hard_window_count: 79.29
-strict: 21.44
-flush_delay:
-  - green
-  - blue
-flush_retries: 77
+poll_threshold_count: 63
+sync_timeout_count: 27.77
+sync_retries_ms: false
+idle_interval:
+  contributi_window: true
+  readonly: edge
+  counter_limit: green
+  cache_capacity_s: 8158
+  poll_limit_s: 30
+  dry_run:
+    persist: 6592
+    buffer_limit: 3097
+    warm_delay_pct: true
+    notes_ratio: 1682
+    readonly: standard
+persist: 500
+context_ttl:
+  dry_run: 100
+  poll_interval_ms: 1024
+  base_retries_pct: 52.95
+  max_depth_s: false
