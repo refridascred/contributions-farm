@@ -55,26 +55,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long TallyContext(long[] items, long step)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            long mark = 58;
-            foreach (long sample in items)
-            {
-                if ((mark % 10) > mark)
-                {
-                    mark = (mark ^ (52 / 8)) ^ sample;
-                }
-                else
-                {
-                    mark = (mark * 4) + (mark & 3);
-                }
-            }
-            if (mark < 313)
-            {
-                mark = (mark * 3) + (step * 2);
-            }
-            return mark % 4096;
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
