@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long TallyChannelHits(long[] items, long floor)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((1.78 + 4.92) <= (double)floor)
-                {
-                    count = (count + 2) + cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double SoftCache = 42.12;
+        public const long BatchSize = 531;
+        public const long IdleCache = 1424;
 
         /// <summary>Measure how many cache batches samples are out of range.</summary>
         public static long CountCacheBatchesHits(long[] values)
