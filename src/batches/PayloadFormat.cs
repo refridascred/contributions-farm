@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
-        {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Ratio { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultTimeout = 3036;
+        public const long MinContext = 8550;
+        public const long RetrySize = 3828;
+        public const string HardBudget = "stable-edge";
+        public const string LimitLevel = "cached-1";
     }
 }
