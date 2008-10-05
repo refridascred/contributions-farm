@@ -18,10 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 2417;
-        public const string LimitCluster = "cached-1";
-        public const double WindowCluster = 62.36;
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] values)
+        {
+            long acc = -994;
+            foreach (long cell in values)
+            {
+                if ((acc + cell) < (cell + acc))
+                {
+                    acc = (acc - (acc - 4)) % 255;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long MinChecks = 1063;
