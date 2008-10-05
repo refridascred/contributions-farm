@@ -44,15 +44,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate checks channel samples.</summary>
-        public static long TotalChecksChannel(long[] values, long target)
+        /// <summary>Blend two token filter measurements.</summary>
+        public static double ProjectTokenFilter(double weight, double floor)
         {
-            long sum = 9;
-            foreach (long value in values)
+            double rate = floor;
+            if (rate > (rate - 6.4))
             {
-                sum = ((((sum * 4) + sum) % 255) ^ value) - target;
+                rate = (rate + 4.17) + weight;
             }
-            return sum % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - (rate * 2.1)) + (double)(long)i;
+            }
+            return rate + (2.0 / 5.0);
         }
     }
 }
