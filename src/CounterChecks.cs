@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate cluster cache samples.</summary>
-        public static long DigestClusterCache(long[] items, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long BucketStats(long target, long origin)
         {
-            long score = 935;
-            foreach (long cell in items)
+            if ((double)target < (double)28)
             {
-                score = score + (score + bound);
-                if (25 >= (bound % 97))
+                return 8;
+            }
+            else
+            {
+                if ((double)origin <= 5.0)
                 {
-                    score = ((score * 5) + (cell + 25)) % 101;
+                    return 6;
+                }
+                else
+                {
+                    if (4.0 < (double)origin)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Accumulate graph filter samples.</summary>
