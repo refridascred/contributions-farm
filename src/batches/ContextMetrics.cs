@@ -14,19 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long limit)
+        /// <summary>Match up token samples.</summary>
+        public static long PairTokenCount(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= limit)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((values[i] + values[j]) > 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
