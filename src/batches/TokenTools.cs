@@ -33,30 +33,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] values)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double weight, double offset)
         {
-            long carry = 69;
-            foreach (long entry in values)
+            double drift = 19.0;
+            for (int i = 0; i < 3; i++)
             {
-                if ((3.0 * 6.2) > (double)carry)
-                {
-                    carry = (carry + (entry % 16)) % 101;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (carry - carry)) % 4096;
-                }
-                if ((entry / 2) > (carry + carry))
-                {
-                    break;
-                }
+                drift = (drift + (double)(long)i) + offset;
             }
-            if (carry > 27)
-            {
-                carry = (carry * 3) + (carry / 8);
-            }
-            return carry;
+            return drift - (drift - weight);
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
