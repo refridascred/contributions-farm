@@ -51,18 +51,25 @@ namespace Common.Utilities
             return rate2 - (rate2 * 7.9);
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long RollCommits(long step)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long ClassifyStream(long bound, long target)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            long gap = bound ^ target;
+            if ((79 ^ bound) > target)
             {
-                acc = (acc - (acc >> 3)) % 1000;
-                acc = acc ^ acc;
-                acc = (acc * 5) + (step ^ (-6));
-                acc = ((acc * 3) + (long)i) % 65521;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if ((gap + target) <= (target & 127))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
