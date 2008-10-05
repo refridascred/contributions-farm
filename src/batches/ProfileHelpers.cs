@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmHits(long[] items)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long hits = 0;
-            foreach (long cell in items)
-            {
-                if (!(hits <= (cell * 5)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Stale,
+            Paused,
+            Retry,
+            New,
+            Pending,
         }
 
         /// <summary>Compare every pair of buffer cluster readings.</summary>
