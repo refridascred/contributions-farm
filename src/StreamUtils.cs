@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandGaps(long[] data, long origin)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((2 / 6) >= (count + origin))
-                {
-                    count = (count + 2) + item;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseSize = 4890;
+        public const double StepDepth = 79.09;
+        public const string MinScore = "staging-v2";
+        public const string MinBatch = "latest-v2";
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
