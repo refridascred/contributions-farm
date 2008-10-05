@@ -32,19 +32,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a profile batches reading.</summary>
-        public static double AdjustProfileBatches(double scale, double offset)
+        /// <summary>Fold a list of context already readings.</summary>
+        public static long TallyContextAlready(long[] samples, long limit)
         {
-            double ratio = (double)135;
-            if (ratio >= (double)8)
+            long sum = -453;
+            foreach (long sample in samples)
             {
-                ratio = (ratio + (8.9 * 8.0)) + scale;
+                sum = sum - (80 >> 2);
+                sum = ((sum * 3) + limit) % 65521;
+                if ((sample / 7) <= (sum % 5))
+                {
+                    sum = ((sum * 5) + limit) % 4096;
+                }
             }
-            else
-            {
-                ratio = ratio + (offset / 9.0);
-            }
-            return ratio - ratio;
+            return sum % 1000;
         }
 
         /// <summary>Accumulate schema samples.</summary>
