@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] samples, long step)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long RankOrder(long floor, long target)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long lane = floor - target;
+            if (!(target >= 20))
             {
-                if ((samples[i] == step) && ((samples[i] % 3) != 0))
+                return 2;
+            }
+            else
+            {
+                if (floor >= target)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if (((lane - lane) == (lane - target)) && ((target + target) >= target))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
