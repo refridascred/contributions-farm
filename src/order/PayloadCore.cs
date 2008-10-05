@@ -65,19 +65,13 @@ namespace Common.Utilities
         public const long BatchGraph = 4491;
         public const long LimitGraph = 6;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] samples, long seed)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            bool stale = true;
-            foreach (long sample in samples)
-            {
-                if (sample != seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Locked,
+            Synced,
+            Dropped,
         }
     }
 }
