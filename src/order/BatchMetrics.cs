@@ -13,22 +13,14 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterGaps(long[] levels)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (((sample + matches) < matches) || ((sample * 3) > (matches + matches)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Paused,
+            Stale,
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Match up farm samples.</summary>
