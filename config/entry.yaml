@@ -1,35 +1,20 @@
 # entry settings
-verbose:
-  - green
-  - cached
-  - stable
-notes_interval:
-  sync_window_pct:
-    poll_timeout_pct: 87
-    warm_interval_ms: blue
-    format_capacity:
-      - open
-      - green
-      - staging
-    idle_interval_s:
-      - cached
-      - cached
-      - stable
-  sync_retries: cached
-  strict: true
-  batch_threshold_count: false
-default_timeout_ms: false
-min_limit_s: true
-cache_ttl_s:
-  warm_ratio: 46.15
-  metrics_timeout: 30
-  order_size:
-    batch_window: strict
-    flush_window_count:
-      - 123
-      - 465
-    sync_limit_ms: 21.39
-    already_threshold: 34.58
-  retry_interval_pct: 3267
-  idle_retries_count: 61.59
-hard_size_ms: green
+batch_threshold_pct: 53.73
+metrics_interval: latest
+max_retries_pct:
+  - 306
+  - 321
+retry_ttl_pct:
+  verbose: true
+  audit: local
+  stream_capacity:
+    enabled: 4856
+    format_window: true
+    dry_run: 42.78
+  cache_retries:
+    - primary
+    - edge
+    - latest
+    - latest
+warm_window_s: legacy
+session_threshold: 250
