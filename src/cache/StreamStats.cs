@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long ScoreBatch(long[] values)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] series, long target)
         {
-            long score = 10;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((8.76 / 4.0) != (double)value) && ((double)5 < (double)value))
+                if (series[i] < target)
                 {
-                    score = ((score * 5) + (score >> 1)) % 97;
+                    return (long)i;
                 }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
