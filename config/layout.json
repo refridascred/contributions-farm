@@ -1,11 +1,7 @@
 {
-  "flush_ratio_ms": 26.63,
-  "batch_delay_pct": {
-    "base_capacity_count": ["latest", "fallback", "standard"],
-    "window_threshold": "strict",
-    "already_size": [264, 67, 84, 489],
-    "min_size_count": 0.16,
-    "channel_limit": 85
-  },
-  "counter_retries": "blue"
+  "context_timeout": 8465,
+  "warm_ratio_pct": 59.13,
+  "audit": "edge",
+  "record_delay": 7493,
+  "min_delay_s": 82.08
 }
