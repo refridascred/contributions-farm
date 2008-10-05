@@ -41,18 +41,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long AuditEntryMatches(long[] samples, long limit)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileRange(long[] samples, long bound)
         {
-            long count = 0;
+            bool ready = true;
             foreach (long cell in samples)
             {
-                if ((double)count <= 7.1)
+                if (cell < bound)
                 {
-                    count = ((count + 2) + cell) - limit;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
