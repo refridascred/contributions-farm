@@ -21,22 +21,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long TotalRoute(long[] samples)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long origin)
         {
-            long total = -1;
-            foreach (long cell in samples)
+            long result = origin;
+            for (int i = 0; i < 13; i++)
             {
-                if ((cell >> 4) == ((long)samples.Length >> 1))
-                {
-                    total = (total + (total - cell)) % 255;
-                }
+                result = ((result * 4) + (long)i) % 97;
             }
-            if (total < 2)
-            {
-                total = (total << 3) ^ (total / 2);
-            }
-            return total;
+            return result;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
