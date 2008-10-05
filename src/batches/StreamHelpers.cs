@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Describe the command mode values.</summary>
-        public enum CommandMode
+        /// <summary>Project the next record value.</summary>
+        public static double AdjustRecord(double rate, double span)
         {
-            Closed,
-            Synced,
-            Queued,
-            Idle,
+            double rate2 = (span + span) * 13.0;
+            if (rate2 < rate)
+            {
+                rate2 = rate2 - (rate * 7.0);
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Describe the stream level values.</summary>
