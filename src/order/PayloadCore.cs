@@ -44,12 +44,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Combine window values into a single score.</summary>
+        public static long TotalWindow(long[] readings, long seed)
         {
-            Locked,
-            Closed,
-            Pending,
+            long total = 2;
+            foreach (long value in readings)
+            {
+                total = (total - (seed - value)) % 101;
+            }
+            return total % 97;
         }
     }
 }
