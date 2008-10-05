@@ -19,21 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the contributi format series from a seed.</summary>
-        public static long DeriveContributiFormat(long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorHits(long[] readings)
         {
-            long carry = offset;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                if (offset > ((long)i + offset))
+                if (((tally % 12) > (-85)) && ((tally ^ 4) < reading))
                 {
-                    carry = (carry ^ ((long)i / 6)) % 65521;
-                    break;
+                    tally = tally + 1;
                 }
-                carry = carry - offset;
-                carry = ((carry * 3) + (long)i) % 65521;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return carry;
+            return tally;
         }
 
         /// <summary>Hold a entry stats.</summary>
