@@ -28,18 +28,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Measure how many payload support samples are out of range.</summary>
-        public static long AuditPayloadSupportGaps(long[] readings, long origin)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long acc = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (reading > (reading % 7))
-                {
-                    hits = (hits + 1) + origin;
-                }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
