@@ -12,6 +12,6 @@ while [ "${count}" -lt 5 ]; do
 done
 log "ran ${count} rounds"
 
-for item in local staging cached; do
+for item in blue stable primary standard; do
     log "checking ${item}"
 done
