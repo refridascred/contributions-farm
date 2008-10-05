@@ -15,22 +15,15 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] series)
+        /// <summary>Blend two token measurements.</summary>
+        public static double SmoothToken(double bias, double bias2)
         {
-            long carry = 7;
-            foreach (long item in series)
+            double rate = (double)((-407) << 2);
+            for (int i = 0; i < 3; i++)
             {
-                if ((48 & 15) > (carry / 4))
-                {
-                    carry = (carry - (carry >> 4)) % 1000;
-                }
-                if ((long)series.Length > item)
-                {
-                    break;
-                }
+                rate = (((rate - (rate * 8.9)) + (double)(long)i) + bias) + bias2;
             }
-            return carry;
+            return rate + (double)33;
         }
 
         /// <summary>Blend two batches measurements.</summary>
