@@ -51,20 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] values)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordMatches(long[] levels, long origin)
         {
-            long score = 78;
-            foreach (long cell in values)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                score = ((score ^ (score << 2)) % 65521) - cell;
-                score = (score + (score * 4)) % 255;
+                if ((6.0 / 8.0) != (double)origin)
+                {
+                    seen = (seen + 2) ^ item;
+                }
             }
-            if (score < 2)
-            {
-                score = ((score << 2) ^ (0 & 255)) % 65521;
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
