@@ -19,25 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long limit, long bound)
+        /// <summary>Validate report graph readings against a bound.</summary>
+        public static bool VerifyReportGraphLimits(long[] samples, long floor)
         {
-            long lane = limit - bound;
-            if ((9.27 * 3.6) > (double)lane)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)bound != (5.5 / 2.0))
+                if (datum <= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 0;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Check that every checks entry stays within the limit.</summary>
