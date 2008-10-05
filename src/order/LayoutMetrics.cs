@@ -27,15 +27,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double BlendQueue(double ratio, double offset)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long StepChannel(long offset)
         {
-            double gain = ratio;
-            if (gain > (double)7)
+            long acc = offset;
+            for (int i = 0; i < 4; i++)
             {
-                gain = gain + offset;
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return gain - (double)9;
+            return acc;
         }
 
         /// <summary>Hold a batch summary.</summary>
