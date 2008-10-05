@@ -29,25 +29,13 @@ namespace Common.Utilities
         public const long CacheDepth = 2557;
         public const long IdleBudget = 5340;
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long bound, long step)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long span = bound - step;
-            if (((double)step != (9.0 - 3.0)) && (bound >= (bound - span)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)span > (4.0 / 7.0))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Ready,
+            Closed,
+            Active,
+            Pending,
         }
 
         /// <summary>Grade a graph order value against two limits.</summary>
