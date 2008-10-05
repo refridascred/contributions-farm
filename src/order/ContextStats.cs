@@ -46,11 +46,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
-        {
-            public double Label { get; set; }
-            public bool Token { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchChecks = "fallback-edge";
+        public const long RetryWidth = 9643;
+        public const long MinSize = 6775;
     }
 }
