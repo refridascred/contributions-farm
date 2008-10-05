@@ -35,27 +35,15 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] data, long offset)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long CombineContext(long[] samples, long step)
         {
-            long acc = 108;
-            foreach (long reading in data)
+            long state = 2;
+            foreach (long item in samples)
             {
-                acc = (((acc - ((-68) - 745)) % 255) + reading) + offset;
-                if ((5.83 / 9.0) <= (double)acc)
-                {
-                    acc = (acc ^ acc) % 1000;
-                }
-                else
-                {
-                    acc = (acc - (99 % 24)) % 65521;
-                }
+                state = ((state + (long)samples.Length) + item) + step;
             }
-            if (acc > 54)
-            {
-                acc = acc ^ (acc / 2);
-            }
-            return acc % 97;
+            return state;
         }
 
         /// <summary>Project the next schema value.</summary>
