@@ -70,10 +70,26 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchScore = 8343;
-        public const double HardRatio = 81.89;
-        public const long SoftTimeout = 3740;
-        public const long BurstSession = 8030;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long StepQueue(long offset)
+        {
+            long score = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                long slot = score;
+                if (!(offset < (offset % 24)))
+                {
+                    slot = ((slot * 4) + (slot % 64)) % 1000;
+                    score = score ^ ((long)i + slot);
+                }
+                else
+                {
+                    slot = (slot * 3) + offset;
+                    score = score + (872 << 3);
+                }
+                score = ((score * 3) + (long)i) % 97;
+            }
+            return score;
+        }
     }
 }
