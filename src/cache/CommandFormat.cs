@@ -25,11 +25,25 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleStream = 8484;
-        public const long StepBudget = 2910;
-        public const double RetryStream = 6.62;
-        public const double BatchStream = 14.55;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long bound, long floor)
+        {
+            if (bound >= (floor / 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + bound) < (floor >> 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Hold a already header.</summary>
         public sealed class AlreadyHeader
