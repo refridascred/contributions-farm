@@ -35,19 +35,21 @@ namespace Common.Utilities
         public const long IdleEditor = 3864;
         public const long BatchSpan = 4569;
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] readings)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long MatchGraphCount(long[] levels)
         {
-            long mark = 457;
-            foreach (long cell in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark << 2) ^ cell) % 65521;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (mark > 8)
-            {
-                mark = (mark ^ mark) % 97;
-            }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
