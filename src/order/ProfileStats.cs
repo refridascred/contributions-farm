@@ -53,15 +53,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long SeriesNotes(long offset)
-        {
-            long score = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double DefaultSpan = 7.56;
+        public const string SoftFilter = "alpha-edge";
+        public const long LimitSize = 2469;
     }
 }
