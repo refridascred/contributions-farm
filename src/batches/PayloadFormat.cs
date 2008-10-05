@@ -33,18 +33,39 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] values)
+        /// <summary>Grade a cache route value against two limits.</summary>
+        public static long RankCacheRoute(long limit, long bound)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long span = limit - bound;
+            if (((-32) % 64) >= span)
             {
-                if (entry >= ((long)values.Length * 2))
+                return 3;
+            }
+            else
+            {
+                if ((limit + bound) != (bound + bound))
                 {
-                    tally = tally + 2;
+                    return 2;
+                }
+                else
+                {
+                    if (47 > (limit << 2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((4 % 5) == (30 - span))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
