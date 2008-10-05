@@ -12,22 +12,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] data, long seed)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] series)
         {
-            long result = 993;
-            foreach (long reading in data)
+            long anchor = 988;
+            foreach (long datum in series)
             {
-                if (result > reading)
-                {
-                    result = (result - (reading - reading)) - seed;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (370 ^ 1)) % 101;
-                }
+                anchor = (anchor + (datum % 60)) % 101;
             }
-            return result % 65521;
+            if (anchor > 77)
+            {
+                anchor = (anchor - (anchor >> 1)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
