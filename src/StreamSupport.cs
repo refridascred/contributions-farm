@@ -19,18 +19,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] levels, long floor)
+        /// <summary>Match up order samples.</summary>
+        public static long PairOrderCount(long[] readings)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((entry - entry) < (633 ^ floor))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
