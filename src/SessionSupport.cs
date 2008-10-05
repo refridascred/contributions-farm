@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next farm stream value.</summary>
-        public static double ScaleFarmStream(double rate, double bias)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            double mean = (double)(1 << 2);
-            if (mean >= (4.76 / 3.0))
-            {
-                mean = (mean - (rate - mean)) + bias;
-            }
-            return mean - (mean * 10.0);
+            public double Score { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Adjust a graph reading.</summary>
