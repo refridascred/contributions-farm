@@ -46,21 +46,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Adjust a already order reading.</summary>
+        public static double SmoothAlreadyOrder(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = floor / 8.0;
+            if (mean > 9.4)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = mean - (floor * 6.9);
             }
-            return hits;
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (11.0 / 8.0)) - (double)(long)i;
+            }
+            return mean - gain;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
