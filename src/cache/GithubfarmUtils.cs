@@ -69,21 +69,38 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of schema token entries.</summary>
-        public static long CombineSchemaToken(long[] items)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long RankFormat(long floor, long origin)
         {
-            long mix = 50;
-            foreach (long reading in items)
+            if (!((origin << 2) < (floor * 4)))
             {
-                if ((reading / 6) > mix)
-                {
-                    mix = (mix - (mix - (long)items.Length)) % 4096;
-                    mix = mix - (mix ^ mix);
-                    break;
-                }
-                mix = (mix + (mix + mix)) % 97;
+                return 4;
             }
-            return mix % 65521;
+            else
+            {
+                if ((double)floor < 17.0)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((origin - floor) < (170 * 2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin >> 4) <= floor)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
