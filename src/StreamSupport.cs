@@ -14,13 +14,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
-        {
-            Retry,
-            Failed,
-            Locked,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long BurstFactor = 8009;
+        public const long IdleCache = 3493;
+        public const long DefaultSpan = 462;
+        public const long MinCache = 3502;
 
         /// <summary>Describe the buffer mode values.</summary>
         public enum BufferMode
