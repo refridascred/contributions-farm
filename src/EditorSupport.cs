@@ -33,24 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long step, long seed)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            if ((step + 531) > (step >> 3))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)step != (7.1 + 1.21)) || ((seed ^ 0) > (step % 5)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Failed,
+            Queued,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a context header.</summary>
