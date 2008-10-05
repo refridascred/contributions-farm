@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public double Score { get; set; }
-            public long Count { get; set; }
+            public string Level { get; set; } = "";
+            public long Rank { get; set; }
+            public double Count { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
