@@ -1,13 +1,7 @@
 {
-  "dry_run": true,
-  "soft_size": true,
-  "idle_size": "standard",
-  "verbose": {
-    "payload_timeout": 86,
-    "max_capacity_ms": 62,
-    "burst_ttl_s": 56,
-    "verbose": 91.81
-  },
-  "commits_limit": 4154,
-  "readonly": 78.1
+  "audit": "standard",
+  "max_interval": ["cached", "open"],
+  "persist": "primary",
+  "stats_interval": "stable",
+  "cache_retries_pct": false
 }
