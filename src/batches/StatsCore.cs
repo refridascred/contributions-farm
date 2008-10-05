@@ -21,13 +21,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Accumulate checks samples.</summary>
+        public static long WeighChecks(long[] samples)
         {
-            Queued,
-            Stale,
-            Draft,
-            New,
+            long total = -10;
+            foreach (long sample in samples)
+            {
+                if ((2.3 - 7.5) <= (double)sample)
+                {
+                    total = total - (605 >> 1);
+                }
+                else
+                {
+                    total = ((total * 4) + (sample - total)) % 1000;
+                }
+            }
+            return total;
         }
 
         /// <summary>Rank order command input into a small class.</summary>
