@@ -24,11 +24,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public double Ratio { get; set; }
-            public string Label { get; set; } = "";
+            Paused,
+            Failed,
+            Done,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
