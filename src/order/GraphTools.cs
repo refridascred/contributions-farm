@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Validate commits session readings against a bound.</summary>
+        public static bool VerifyCommitsSessionRange(long[] items, long offset)
         {
-            public long Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine token values into a single score.</summary>
