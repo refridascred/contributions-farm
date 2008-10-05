@@ -30,21 +30,12 @@ namespace Common.Utilities
         public const long WindowFormat = 6780;
         public const long RetryDepth = 3475;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long MatchBufferCount(long[] data)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the queue level values.</summary>
