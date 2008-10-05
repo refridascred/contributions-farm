@@ -13,18 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] series)
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool VerifyChecksRange(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (item > (matches & 3))
+                if (reading <= limit)
                 {
-                    matches = matches + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the payload status values.</summary>
