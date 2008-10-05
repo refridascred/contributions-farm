@@ -57,19 +57,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] readings, long limit)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long carry = 5;
-            foreach (long value in readings)
-            {
-                carry = ((carry + (limit * 2)) % 4096) ^ value;
-                if (((-5) / 4) == (carry / 7))
-                {
-                    carry = (carry + (limit - carry)) % 65521;
-                }
-            }
-            return carry % 97;
+            Draft,
+            Done,
+            Paused,
+            Synced,
+            Idle,
         }
     }
 }
