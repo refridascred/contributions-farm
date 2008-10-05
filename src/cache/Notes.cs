@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] data, long target)
+        /// <summary>Combine context stats values into a single score.</summary>
+        public static long WeighContextStats(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 1;
+            foreach (long sample in readings)
             {
-                if ((data[i] > target) && ((data[i] % 5) != 0))
+                if ((sample - result) == (result % 64))
                 {
-                    return (long)i;
+                    result = (result ^ (996 >> 1)) % 97;
+                }
+                else
+                {
+                    result = (result * 5) + result;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Find the first tools metrics entry that matches the target.</summary>
