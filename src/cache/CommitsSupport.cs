@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
-        {
-            Failed,
-            Pending,
-            Queued,
-            Done,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitSize = 8076;
+        public const long LimitContext = 2548;
+        public const long WindowBudget = 5140;
+        public const double CacheDepth = 39.31;
 
         /// <summary>Describe the window status values.</summary>
         public enum WindowStatus
