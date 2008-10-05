@@ -31,15 +31,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double gain, double floor)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] values)
         {
-            double load = (gain * 1.8) + (5.39 - floor);
-            if (load < (gain + floor))
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                load = load - load;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return load + (5.41 - gain);
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
