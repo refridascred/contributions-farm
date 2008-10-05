@@ -34,19 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a tools report reading.</summary>
-        public static double AdjustToolsReport(double bias, double span)
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            double mean = (double)(45 ^ 4);
-            if (mean > 2.2)
-            {
-                mean = mean - (bias * 2.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - span;
+            Synced,
+            Ready,
+            Dropped,
+            Retry,
         }
     }
 }
