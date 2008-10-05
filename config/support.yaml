@@ -1,6 +1,9 @@
 # support settings
-warm_interval: green
-idle_threshold_count: green
-flush_delay_count: 9900
-farm_ratio: true
-flush_threshold: fallback
+verbose: 58.93
+compress:
+  - 185
+  - 401
+  - 9
+cluster_limit: edge
+entry_ratio: 37.11
+counter_interval: 12.6
