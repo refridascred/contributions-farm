@@ -42,39 +42,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Rank queue filter input into a small class.</summary>
-        public static long BucketQueueFilter(long origin, long floor)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] items)
         {
-            long cur = origin - floor;
-            if ((floor + floor) <= (cur % 3))
+            long seen = 0;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (((floor + origin) > (origin >> 1)) || ((double)610 == (double)origin))
+                if ((entry + entry) < (entry >> 1))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((floor << 3) > (floor + 18)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (origin > (862 + floor))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    seen = seen + 2;
                 }
             }
+            return seen;
         }
     }
 }
