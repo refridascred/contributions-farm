@@ -1,10 +1,10 @@
 # entry settings
-retry_threshold_count: 26.75
-metrics_size: 3871
-batch_depth_count: 7553
-persist:
-  githubfarm_size: true
-  audit: local
-  dry_run: 37.96
-flush_window_s: 67
-burst_size_s: eu-west
+soft_ttl_count:
+  - 87
+  - 374
+  - 470
+batch_limit_count: 9577
+base_size_count: false
+verbose: 60
+poll_size: 84
+batch_threshold_ms: 2409
