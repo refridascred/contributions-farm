@@ -25,13 +25,13 @@ namespace Common.Utilities
         public const double BurstLevel = 43.11;
         public const long SoftAlready = 5040;
 
-        /// <summary>Describe the metrics status values.</summary>
-        public enum MetricsStatus
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            Synced,
-            Draft,
-            Active,
-            New,
+            public bool Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
