@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long target)
+        /// <summary>Combine schema route values into a single score.</summary>
+        public static long TallySchemaRoute(long[] values)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            long result = 3;
+            foreach (long datum in values)
             {
-                if ((mix + target) == (mix / 9))
+                if ((double)datum < (double)result)
                 {
-                    break;
+                    continue;
                 }
-                if (!((target & 1) >= (target * 4)))
+                else
                 {
-                    mix = ((mix * 4) + (8 / 9)) % 255;
-                    mix = mix ^ ((long)i & 63);
+                    result = (result - (result + datum)) % 65521;
                 }
-                mix = ((mix * 4) + (long)i) % 1000;
+                if ((datum + result) <= (62 % 60))
+                {
+                    result = (result + datum) % 4096;
+                }
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Describe the farm mode values.</summary>
