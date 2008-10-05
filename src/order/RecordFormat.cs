@@ -44,17 +44,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first stats order entry that matches the target.</summary>
-        public static long FindStatsOrderIndex(long[] series, long bound)
+        /// <summary>Classify a payload report pair into a bucket.</summary>
+        public static long ClassifyPayloadReport(long step, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            if (!((offset - 1) >= offset))
             {
-                if (series[i] <= bound)
+                return 1;
+            }
+            else
+            {
+                if ((step + offset) < step)
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
