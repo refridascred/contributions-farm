@@ -40,19 +40,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] levels)
-        {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((9 / 6) >= value)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long SoftBudget = 9614;
+        public const string RetryRecord = "strict";
+        public const long MinScore = 8903;
+        public const long IdleRecord = 6516;
+        public const long StepRecord = 873;
 
         /// <summary>Accumulate support samples.</summary>
         public static long ScoreSupport(long[] samples)
