@@ -65,17 +65,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] values, long target)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long RankSchema(long target, long target2)
         {
-            for (int i = 0; i < values.Length; i++)
+            long edge = target - target2;
+            if (6.07 >= (double)target)
             {
-                if ((values[i] <= target) && ((values[i] % 5) == 0))
+                return 5;
+            }
+            else
+            {
+                if (((edge + target2) > (edge + edge)) && ((target2 - target2) < (32 << 1)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if (!((8.6 / 2.0) >= (double)target2))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (target > target2)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
