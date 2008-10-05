@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const long StepSpan = 4718;
         public const string SoftNotes = "open-edge";
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long value in levels)
-            {
-                if ((79 - value) <= (value % 60))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string DefaultSize = "stable-v2";
+        public const long WindowBuffer = 9492;
+        public const long LimitDepth = 8835;
+        public const long BurstSpan = 9007;
+        public const double StepBuffer = 86.56;
 
         /// <summary>Compare every pair of session readings.</summary>
         public static long PairSessionCount(long[] series)
