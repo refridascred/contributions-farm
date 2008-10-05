@@ -1,5 +1,7 @@
 # entry settings
-poll_capacity_s: false
-batch_limit_count: false
-idle_limit_count: true
-poll_window_count: 35.3
+min_retries: 42.04
+burst_size_ms: 33.24
+strict: open
+default_delay: 47.11
+queue_retries: latest
+compress: 7975
