@@ -1,20 +1,5 @@
 {
-  "notes_timeout": "latest",
-  "readonly": {
-    "min_retries_ms": {
-      "compress": ["standard", "eu-west"],
-      "format_threshold": 1.98,
-      "idle_interval_ms": 61
-    },
-    "burst_window_ms": 250,
-    "warm_ttl": false,
-    "base_interval": {
-      "sync_timeout_s": [316, 378],
-      "batch_delay": ["stable", "stable", "legacy"],
-      "format_ttl": ["green", "standard"],
-      "soft_limit": 41.83
-    },
-    "enabled": "fallback"
-  },
-  "metrics_interval": [302, 296, 428, 104]
+  "schema_ratio": "staging",
+  "default_size": false,
+  "compress": [316, 347, 396]
 }
