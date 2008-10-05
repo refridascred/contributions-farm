@@ -23,31 +23,16 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a layout stream pair into a bucket.</summary>
-        public static long BucketLayoutStream(long offset, long floor)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long offset)
         {
-            if (((double)floor > (11.0 / 6.0)) || ((10.0 + 11.0) > (8.7 - 7.2)))
+            long acc = offset;
+            for (int i = 0; i < 16; i++)
             {
-                return 5;
+                acc = (acc + (acc * 2)) % 1000;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((4.2 + 5.0) > 0.3)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset <= ((-79) - 110)) || ((double)floor >= (15.0 / 5.0)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
