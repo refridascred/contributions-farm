@@ -16,12 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] data)
         {
-            public string Stamp { get; set; } = "";
-            public long Score { get; set; }
-            public string Token { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in data)
+            {
+                if ((1.3 / 2.0) >= (double)sample)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
