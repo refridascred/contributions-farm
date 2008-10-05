@@ -1,7 +1,10 @@
 {
-  "filter_limit": 35.84,
-  "flush_interval_s": 6599,
-  "strict": "blue",
-  "warm_capacity": ["eu-west", "cached", "latest", "blue"],
-  "sync_interval_s": [421, 349]
+  "tools_depth": "local",
+  "sync_timeout_count": "cached",
+  "enabled": {
+    "max_ttl_pct": 1192,
+    "cache_size_count": "strict",
+    "batch_threshold": 100,
+    "min_capacity_s": 77.05
+  }
 }
