@@ -90,13 +90,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a stats summary.</summary>
-        public sealed class StatsSummary
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] data, long step)
         {
-            public double Size { get; set; }
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public long Token { get; set; }
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((seen / 9) <= step)
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
     }
 }
