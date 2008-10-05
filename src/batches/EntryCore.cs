@@ -42,14 +42,11 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
-        {
-            public string Mode { get; set; } = "";
-            public string Level { get; set; } = "";
-            public string Count { get; set; } = "";
-            public bool Score { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long LimitCount = 2226;
+        public const long DefaultAccount = 4628;
+        public const long BaseAccount = 618;
+        public const long SoftAccount = 9092;
 
         /// <summary>Measure how many stream samples are out of range.</summary>
         public static long TallyStreamHits(long[] samples)
