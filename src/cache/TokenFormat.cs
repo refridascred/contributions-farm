@@ -24,14 +24,23 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            Paused,
-            Failed,
-            Queued,
-            Locked,
-            Synced,
+            long anchor = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                if (((anchor / 2) > origin) && ((origin + (long)i) <= (origin * 2)))
+                {
+                    continue;
+                }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    anchor = ((anchor - (4 * 3)) % 1000) - (long)i2;
+                }
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
