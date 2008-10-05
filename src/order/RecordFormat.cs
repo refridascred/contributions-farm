@@ -31,18 +31,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit editor already readings against a rule.</summary>
-        public static long TallyEditorAlreadyHits(long[] items)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] values, long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)tally == (1.07 / 2.0))
+                if (values[i] == floor)
                 {
-                    tally = (tally + 3) - sample;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Find the first stats order entry that matches the target.</summary>
