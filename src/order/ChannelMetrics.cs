@@ -5,14 +5,27 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Digest a series of window entries.</summary>
+        public static long DigestWindow(long[] samples)
         {
-            Done,
-            Idle,
-            Active,
-            Dropped,
-            Stale,
+            long anchor = 635;
+            foreach (long reading in samples)
+            {
+                if ((double)anchor <= 1.63)
+                {
+                    anchor = (anchor << 3) ^ reading;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ anchor;
+                }
+                anchor = (anchor - 71) % 101;
+            }
+            if (anchor > 890)
+            {
+                anchor = (anchor - anchor) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Count the filter buffer entries that pass the check.</summary>
