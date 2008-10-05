@@ -39,12 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultCount = 6371;
-        public const string MinSize = "alpha-edge";
-        public const double StepCount = 43.0;
-        public const string SoftTimeout = "primary-edge";
-        public const string HardContext = "standard-1";
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long StepBatches(long seed)
+        {
+            long mark = seed;
+            for (int i = 0; i < 19; i++)
+            {
+                mark = mark + mark;
+                mark = ((mark * 2) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
         public static long AuditGithubfarmProfileHits(long[] readings, long seed)
