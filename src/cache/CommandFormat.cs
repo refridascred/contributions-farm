@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of context contributi readings.</summary>
-        public static long TallyContextContributi(long[] data)
-        {
-            long mix = 3;
-            foreach (long cell in data)
-            {
-                mix = (mix * 2) + (mix ^ cell);
-            }
-            return mix;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinSchema = 1288;
+        public const string StepSchema = "legacy-edge";
+        public const string MinRatio = "latest-edge";
+        public const long CacheSchema = 7217;
 
         /// <summary>Hold a farm header.</summary>
         public sealed class FarmHeader
