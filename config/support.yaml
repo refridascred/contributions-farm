@@ -1,4 +1,14 @@
 # support settings
-batch_size_pct: 6428
-enabled: staging
-strict: strict
+flush_size: 3471
+retry_retries_ms: blue
+soft_threshold_count: true
+poll_capacity_pct:
+  soft_ratio:
+    - strict
+    - standard
+    - legacy
+    - eu-west
+  sync_interval_s: local
+  hard_size: 36
+  sync_size_ms: 6592
+  cache_depth_s: 2209
