@@ -27,12 +27,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long WindowBuffer = 4602;
-        public const long RetryWidth = 7380;
-        public const long MaxBuffer = 436;
-        public const string WindowSize = "strict";
-        public const long DefaultSize = 1348;
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TotalReport(long[] samples, long floor)
+        {
+            long anchor = 6;
+            foreach (long entry in samples)
+            {
+                anchor = ((anchor + (-62)) % 4096) + entry;
+                anchor = ((anchor << 2) ^ (35 ^ anchor)) % 4096;
+                if (((63 << 1) <= (floor >> 3)) || (((-4) + floor) > (anchor + anchor)))
+                {
+                    anchor = (anchor + (anchor % 24)) % 1000;
+                }
+            }
+            return anchor % 1000;
+        }
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
