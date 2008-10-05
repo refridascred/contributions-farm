@@ -62,19 +62,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool ValidatePayloadBounds(long[] items, long seed)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long target)
         {
-            bool found = true;
-            foreach (long item in items)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item <= seed)
+                if (samples[i] < target)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Look up the position of a schema window sample.</summary>
