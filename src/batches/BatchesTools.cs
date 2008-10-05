@@ -17,11 +17,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 3459;
-        public const long DefaultScore = 5585;
-        public const string RetryScore = "local-v2";
-        public const double BatchBatches = 5.52;
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long step, long floor)
+        {
+            long step2 = step + floor;
+            if ((step2 * 4) <= (83 - step))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((step2 + step2) < (step + step2))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Validate profile readings against a bound.</summary>
         public static bool VerifyProfileBounds(long[] series, long origin)
