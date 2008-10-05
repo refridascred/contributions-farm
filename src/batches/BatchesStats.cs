@@ -65,23 +65,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a buffer counter figure with a bias.</summary>
-        public static double ScaleBufferCounter(double ratio, double bias)
+        /// <summary>Describe the metrics kind values.</summary>
+        public enum MetricsKind
         {
-            double scale = ratio;
-            if (scale >= scale)
-            {
-                scale = scale - (scale - scale);
-            }
-            else
-            {
-                scale = scale - ratio;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale - (bias + 19.0)) + (double)(long)i;
-            }
-            return scale - bias;
+            Closed,
+            Locked,
+            Retry,
+            Paused,
+            Dropped,
         }
     }
 }
