@@ -31,19 +31,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
-        public static bool CheckFarmGithubfarmLimits(long[] readings, long floor)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            bool ok = true;
-            foreach (long reading in readings)
-            {
-                if (reading >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Level { get; set; } = "";
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
