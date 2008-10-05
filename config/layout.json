@@ -1,7 +1,8 @@
 {
-  "cache_window_s": ["green", "strict", "latest", "eu-west"],
-  "hard_delay_count": 8256,
-  "compress": "primary",
-  "record_timeout": 7727,
-  "hard_ttl_ms": "stable"
+  "counter_delay": "legacy",
+  "persist": "local",
+  "command_interval": "blue",
+  "cache_size_pct": "strict",
+  "soft_limit_pct": 53,
+  "flush_retries_count": "fallback"
 }
