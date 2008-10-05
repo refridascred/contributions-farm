@@ -54,23 +54,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] samples)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long sum = 796;
-            foreach (long datum in samples)
-            {
-                sum = (sum * 3) + (sum >> 5);
-                if ((datum & 3) >= (datum - sum))
-                {
-                    sum = sum + ((-7) + sum);
-                }
-            }
-            if (sum < 945)
-            {
-                sum = (sum << 2) ^ (sum ^ sum);
-            }
-            return sum;
+            Closed,
+            Active,
+            Stale,
         }
 
         /// <summary>Count cluster farm pairs that satisfy a relation.</summary>
