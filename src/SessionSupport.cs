@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftInterval = "strict-v2";
+        public const string LimitWidth = "stable-1";
+        public const long SoftBudget = 3564;
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long MeasureContributiMatches(long[] series)
