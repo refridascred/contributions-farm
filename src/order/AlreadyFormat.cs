@@ -64,12 +64,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LocateContributiIndex(long[] items, long offset)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] >= offset)
+                if (readings[i] <= limit)
                 {
                     return (long)i;
                 }
