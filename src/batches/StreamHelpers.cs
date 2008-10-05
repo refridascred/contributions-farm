@@ -84,21 +84,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Compare every pair of command notes readings.</summary>
-        public static long CompareCommandNotesCount(long[] series)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 6)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Label { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
