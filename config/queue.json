@@ -1,5 +1,7 @@
 {
-  "soft_timeout": 32.13,
-  "poll_delay": false,
-  "already_limit": 1947
+  "burst_ratio": false,
+  "farm_retries": false,
+  "verbose": 6531,
+  "schema_ttl": "open",
+  "hard_delay_s": true
 }
