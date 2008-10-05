@@ -19,18 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionGaps(long[] items)
+        /// <summary>Count the batches queue entries that pass the check.</summary>
+        public static long MeasureBatchesQueueMatches(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long item in items)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                if (seen <= (item % 12))
+                if ((floor ^ floor) <= (reading * 5))
                 {
-                    seen = seen + 2;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
