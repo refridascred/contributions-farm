@@ -33,12 +33,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long IdleBudget = 6059;
-        public const long BatchFactor = 212;
-        public const string LimitSize = "staging";
-        public const long BatchAccount = 2728;
-        public const long SoftAccount = 2299;
+        /// <summary>Define token limits and defaults.</summary>
+        public const long SoftWidth = 3464;
+        public const string BurstRatio = "fallback-edge";
+        public const long HardTimeout = 6706;
 
         /// <summary>Match up schema farm samples.</summary>
         public static long MatchSchemaFarmCount(long[] levels)
