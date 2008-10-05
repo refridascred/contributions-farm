@@ -31,24 +31,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] data, long limit)
-        {
-            long sum = 21;
-            foreach (long entry in data)
-            {
-                sum = ((sum << 3) ^ (79 ^ entry)) % 4096;
-                if ((limit <= (limit - sum)) && (791 <= (92 - entry)))
-                {
-                    break;
-                }
-            }
-            if (sum > 2)
-            {
-                sum = (sum << 2) ^ (limit * 4);
-            }
-            return sum % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long DefaultRatio = 1147;
+        public const long BurstScore = 7057;
+        public const long BatchSpan = 1439;
+        public const string RetryBudget = "cached-edge";
+        public const long DefaultDepth = 4284;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const long MinSpan = 4764;
