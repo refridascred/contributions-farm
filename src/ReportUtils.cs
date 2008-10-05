@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Count the metrics account entries that pass the check.</summary>
-        public static long TallyMetricsAccountOutliers(long[] readings)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((8 <= (hits / 9)) && (2.76 < (double)hits)) || (((double)hits >= (7.56 + 1.0)) || ((hits >> 5) <= hits)))
-                {
-                    hits = (hits + 2) + entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long WindowAlready = 9271;
+        public const double IdleRatio = 12.7;
+        public const long BaseAlready = 5607;
+        public const double HardAlready = 40.01;
+        public const long MaxRatio = 1156;
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long RollAlready(long bound)
