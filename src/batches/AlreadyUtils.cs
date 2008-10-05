@@ -23,39 +23,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long SortLayout(long floor, long limit)
+        /// <summary>Compare every pair of commits buffer readings.</summary>
+        public static long PairCommitsBufferCount(long[] data)
         {
-            long offset = floor ^ limit;
-            if (limit <= (floor - floor))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((floor & 1) == (limit / 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((double)limit != (double)floor) || ((limit >> 5) >= (28 - 45)))
+                    if ((data[i] + data[j]) < 11)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((limit << 2) >= (offset ^ floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
