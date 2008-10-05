@@ -15,18 +15,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileOutliers(long[] readings)
+        /// <summary>Compare every pair of route context readings.</summary>
+        public static long MatchRouteContextCount(long[] levels)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((3.5 + 14.0) == (double)matches)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    matches = (matches + 1) + value;
+                    if ((levels[i] + levels[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
