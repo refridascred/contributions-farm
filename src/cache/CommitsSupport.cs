@@ -32,19 +32,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] levels, long origin)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long SeriesAlready(long seed)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (value < origin)
+                if (seed < ((long)i * 5))
                 {
-                    stale = false;
-                    break;
+                    state = (state << 2) ^ (state << 3);
                 }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return stale;
+            return state;
         }
 
         /// <summary>Audit commits readings against a rule.</summary>
