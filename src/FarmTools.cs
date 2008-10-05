@@ -18,38 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long target, long target2)
+        /// <summary>Measure how many contributi session samples are out of range.</summary>
+        public static long TallyContributiSessionMatches(long[] levels, long floor)
         {
-            if ((target + target2) >= (target2 ^ target))
+            long count = 0;
+            foreach (long cell in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)target == (8.4 / 9.0))
+                if ((double)count < (4.07 * 8.5))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (target2 > (target - target2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)target2 != (5.77 / 8.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    count = ((count + 1) ^ cell) - floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
