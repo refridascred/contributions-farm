@@ -58,22 +58,13 @@ namespace Common.Utilities
         public const long BurstDepth = 3706;
         public const long BurstFactor = 5575;
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamHits(long[] samples)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if ((double)item >= 18.0)
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Queued,
+            Closed,
+            Draft,
+            Failed,
         }
     }
 }
