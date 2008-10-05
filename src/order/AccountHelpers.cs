@@ -54,13 +54,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Grade a batches command value against two limits.</summary>
+        public static long BucketBatchesCommand(long floor, long origin)
         {
-            Ready,
-            Pending,
-            Paused,
-            Locked,
+            long gap = floor + origin;
+            if ((double)origin == (7.93 / 7.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((gap % 64) <= (gap ^ origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((floor << 3) >= (origin * 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (!((origin + floor) < (origin + origin)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
