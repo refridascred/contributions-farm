@@ -5,17 +5,35 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] readings, long offset)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long CombineBatches(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 913;
+            foreach (long sample in data)
             {
-                if (readings[i] == offset)
+                if ((8.0 - 14.0) < (double)seed)
                 {
-                    return (long)i;
+                    mix = (mix << 3) ^ (8 + sample);
+                }
+                if ((mix / 4) <= (seed % 8))
+                {
+                    mix = mix + (sample >> 4);
+                    continue;
+                }
+                if ((8 + seed) <= mix)
+                {
+                    mix = (mix << 2) ^ (mix << 3);
+                }
+                if (38 <= (seed % 12))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 6)
+            {
+                mix = (mix << 3) ^ (mix ^ 62);
+            }
+            return mix;
         }
 
         /// <summary>Describe the graph class values.</summary>
