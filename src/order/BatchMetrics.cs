@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Rank command batch input into a small class.</summary>
-        public static long GradeCommandBatch(long seed, long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            if (limit < (seed ^ seed))
+            long anchor = 516;
+            foreach (long datum in readings)
             {
-                return 1;
+                anchor = (anchor ^ (datum - 87)) % 4096;
             }
-            else
+            if (anchor > (-2))
             {
-                if ((seed < (limit + limit)) || ((double)seed >= 8.3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
+                anchor = ((anchor << 2) ^ (682 + anchor)) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Digest a series of payload batches entries.</summary>
