@@ -20,15 +20,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double ratio, double offset)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long FoldToken(long[] data, long origin)
         {
-            double gain = (offset - offset) * 5.95;
-            if (gain < gain)
+            long mark = -7;
+            foreach (long entry in data)
             {
-                gain = (gain - gain) - ratio;
+                if ((origin + entry) <= (mark / 5))
+                {
+                    mark = (mark + (entry << 3)) % 4096;
+                }
+                else
+                {
+                    mark = (mark - ((long)data.Length ^ entry)) % 65521;
+                }
             }
-            return gain + 1.7;
+            return mark;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
