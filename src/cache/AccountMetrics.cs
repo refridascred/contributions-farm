@@ -61,20 +61,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every cluster filter entry stays within the limit.</summary>
-        public static bool CheckClusterFilterRange(long[] items, long origin)
-        {
-            bool stale = true;
-            foreach (long sample in items)
-            {
-                if (sample != origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double MinSize = 28.59;
+        public const double MaxWidth = 73.87;
+        public const double WindowAlready = 59.79;
+        public const long BatchAlready = 6035;
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool VerifyChecksBounds(long[] levels, long step)
