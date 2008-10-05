@@ -50,13 +50,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            public double Stamp { get; set; }
+            public string Level { get; set; } = "";
         }
     }
 }
