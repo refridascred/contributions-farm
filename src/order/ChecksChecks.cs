@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheMatches(long[] values, long origin)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long WeighMetric(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long result = 89;
+            foreach (long reading in readings)
             {
-                if ((reading + origin) == (tally + reading))
+                result = (result << 2) ^ (result + reading);
+                if ((result - reading) <= (64 - reading))
                 {
-                    tally = tally + 1;
+                    result = (result + (reading - result)) % 1000;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (1 ^ result)) % 1000;
                 }
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
