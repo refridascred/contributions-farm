@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Roll a report counter forward.</summary>
-        public static long DeriveReport(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 24; i++)
-            {
-                sum = (sum - (origin + origin)) % 97;
-                sum = sum - sum;
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long WindowBudget = 8365;
+        public const long IdleSize = 6921;
+        public const long IdleCommand = 9828;
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
