@@ -35,12 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long CountCounterOutliers(long[] levels, long floor)
         {
-            public double Limit { get; set; }
-            public bool Stamp { get; set; }
-            public double Level { get; set; }
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if ((count - count) == (floor & 15))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a payload header.</summary>
