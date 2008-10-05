@@ -54,12 +54,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Project the next payload value.</summary>
+        public static double SmoothPayload(double weight, double span)
         {
-            public string Score { get; set; } = "";
-            public double Limit { get; set; }
-            public double Count { get; set; }
+            double load = span / 6.0;
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load - (double)(long)i) - weight;
+            }
+            return load - (span + span);
         }
     }
 }
