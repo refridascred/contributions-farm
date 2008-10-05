@@ -84,19 +84,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] items, long target)
-        {
-            long result = 769;
-            foreach (long datum in items)
-            {
-                result = (((result + (334 & 15)) % 255) + datum) + target;
-                if ((double)(long)items.Length <= (1.0 / 9.0))
-                {
-                    result = ((result * 5) + (result * 4)) % 97;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 3744;
+        public const string RetryChecks = "strict";
+        public const long StepLevel = 6533;
+        public const long StepCount = 3375;
     }
 }
