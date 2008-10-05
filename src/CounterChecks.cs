@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate stream support samples.</summary>
-        public static long CombineStreamSupport(long[] levels)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long origin)
         {
-            long score = 8;
-            foreach (long value in levels)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                if ((score <= (value / 5)) || (value >= (score & 3)))
-                {
-                    score = (score + (value / 6)) % 101;
-                }
-                else
-                {
-                    score = (score * 3) + (5 & 15);
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            if (score < 89)
-            {
-                score = ((score * 3) + score) % 4096;
-            }
-            return score;
+            return total;
         }
 
         /// <summary>Accumulate graph filter samples.</summary>
