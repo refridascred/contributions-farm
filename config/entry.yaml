@@ -1,8 +1,43 @@
 # entry settings
-farm_ratio:
-  - 494
-  - 373
-  - 163
-githubfarm_ratio: eu-west
-hard_limit_s: 1024
-hard_size_count: 96.23
+default_capacity_ms:
+  - open
+  - blue
+  - strict
+  - primary
+compress: 500
+audit:
+  enabled:
+    soft_threshold: blue
+    readonly: local
+    base_capacity:
+      - 434
+      - 418
+      - 138
+  readonly:
+    persist: false
+    default_retries: 2878
+    cache_capacity_count:
+      - blue
+      - fallback
+    stream_delay: true
+    stats_ttl: staging
+    audit: 70.44
+  default_depth_s: 42
+  flush_threshold_count: green
+filter_depth:
+  poll_retries: stable
+  cache_capacity_pct: 500
+  compress: 500
+  verbose:
+    compress: staging
+    tools_capacity: false
+    batch_capacity_s: open
+    hard_delay_ms:
+      - 109
+      - 446
+      - 432
+      - 157
+    base_retries_ms: eu-west
+  githubfarm_size: local
+sync_timeout_ms: false
+cluster_delay: 250
