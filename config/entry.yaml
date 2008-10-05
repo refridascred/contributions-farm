@@ -1,7 +1,28 @@
 # entry settings
-min_retries: 42.04
-burst_size_ms: 33.24
-strict: open
-default_delay: 47.11
-queue_retries: latest
-compress: 7975
+warm_depth: 4291
+compress:
+  warm_delay_pct:
+    readonly:
+      - 124
+      - 41
+    metric_timeout: stable
+    burst_window: 250
+    retry_capacity:
+      - 147
+      - 138
+      - 338
+      - 358
+    poll_retries: staging
+    verbose: eu-west
+  retry_size_s:
+    - local
+    - local
+    - fallback
+  readonly: 6923
+  dry_run: 41
+profile_interval: 8615
+enabled:
+  - primary
+  - legacy
+  - eu-west
+max_ratio_pct: 5077
