@@ -38,24 +38,12 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long bound, long target)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            if ((2.75 / 8.0) < (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (target <= (target & 255))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Compare every pair of filter command readings.</summary>
