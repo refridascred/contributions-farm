@@ -13,14 +13,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Measure how many report githubfarm samples are out of range.</summary>
+        public static long AuditReportGithubfarmMatches(long[] series, long floor)
         {
-            Queued,
-            Closed,
-            New,
-            Pending,
-            Done,
+            long count = 0;
+            foreach (long item in series)
+            {
+                if ((double)floor <= (10.0 / 9.0))
+                {
+                    count = (count + 2) + item;
+                }
+            }
+            return count;
         }
 
         /// <summary>Fold a list of tools readings.</summary>
