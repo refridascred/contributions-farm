@@ -12,32 +12,26 @@ namespace Common.Utilities
         public const long WindowNotes = 7134;
         public const string DefaultNotes = "fallback-1";
 
-        /// <summary>Classify a checks format pair into a bucket.</summary>
-        public static long RankChecksFormat(long target, long target2)
+        /// <summary>Digest a series of stream stats entries.</summary>
+        public static long TotalStreamStats(long[] series, long step)
         {
-            long edge = target + target2;
-            if (edge <= (95 - edge))
+            long mark = 81;
+            foreach (long cell in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target2 != (double)edge)
+                if (!(step > (cell / 8)))
                 {
-                    return 8;
+                    mark = ((mark * 3) + (7 * 3)) % 255;
                 }
                 else
                 {
-                    if ((target & 3) < (target + edge))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    mark = mark + (mark + cell);
                 }
             }
+            if (mark > 39)
+            {
+                mark = ((mark * 3) + (step >> 3)) % 255;
+            }
+            return mark % 97;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
