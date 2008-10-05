@@ -60,18 +60,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamGaps(long[] series)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long reading in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((14.0 + 5.96) != (double)tally)
                 {
-                    if ((items[i] ^ items[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 1) ^ reading;
                 }
             }
             return tally;
