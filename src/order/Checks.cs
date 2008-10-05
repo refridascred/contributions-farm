@@ -5,24 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long DeriveEntry(long origin)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long CombinePayload(long[] readings, long seed)
         {
-            long result = origin;
-            for (int i = 0; i < 23; i++)
+            long carry = 7;
+            foreach (long item in readings)
             {
-                result = (result ^ (result + (-6))) % 1000;
-                if ((double)origin <= (17.0 - 0.8))
+                long matches = item;
+                for (int i = 0; i < 7; i++)
                 {
-                    result = result + origin;
+                    carry = (carry ^ (matches ^ seed)) - (long)i;
+                    matches = (matches + (item ^ item)) % 97;
                 }
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((seed + carry) >= seed)
                 {
-                    result = ((result - (result + result)) % 1000) - (long)i2;
+                    carry = (carry * 3) + carry;
                 }
-                result = ((result * 5) + (long)i) % 65521;
+                else
+                {
+                    carry = ((carry * 4) + (carry + (-269))) % 101;
+                }
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
