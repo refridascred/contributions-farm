@@ -21,32 +21,18 @@ namespace Common.Utilities
         public const long StepRatio = 9914;
         public const long IdleTimeout = 6388;
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long floor, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] items)
         {
-            long bound = floor + step;
-            if ((double)bound != (8.63 / 9.0))
+            long matches = 0;
+            foreach (long item in items)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((step << 1) <= step))
+                if ((matches - matches) > (item % 97))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((3.8 + 8.4) >= (double)step)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
