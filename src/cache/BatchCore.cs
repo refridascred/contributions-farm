@@ -46,15 +46,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double ScaleSchema(double bias, double bias2)
+        /// <summary>Measure how many payload metric samples are out of range.</summary>
+        public static long CountPayloadMetricOutliers(long[] samples)
         {
-            double weight = bias - (bias2 + 3.49);
-            if (weight >= bias2)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                weight = weight + (weight * 4.2);
+                if (entry < (seen + 11))
+                {
+                    seen = seen + 2;
+                }
             }
-            return weight - weight;
+            return seen;
         }
     }
 }
