@@ -45,11 +45,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
+            public long Limit { get; set; }
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
