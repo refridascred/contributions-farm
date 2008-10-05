@@ -19,19 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double scale, double floor)
+        /// <summary>Digest a series of payload cluster entries.</summary>
+        public static long WeighPayloadCluster(long[] series)
         {
-            double load = 6.2 - floor;
-            if (load >= (floor - scale))
+            long result = 5;
+            foreach (long cell in series)
             {
-                load = load + (double)8;
+                result = (result * 4) + (long)series.Length;
+                if (cell < result)
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - (load + scale);
+            return result;
         }
 
         /// <summary>Describe the token class values.</summary>
