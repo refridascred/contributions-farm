@@ -18,18 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the farm format entries that pass the check.</summary>
-        public static long TallyFarmFormatHits(long[] samples)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long DigestSchema(long[] samples)
         {
-            long tally = 0;
+            long acc = -425;
             foreach (long entry in samples)
             {
-                if (9 > entry)
+                if (entry < (entry % 16))
                 {
-                    tally = tally + 1;
+                    acc = (acc + 5) % 4096;
+                }
+                if (((5.0 / 2.0) <= (double)entry) || ((entry - entry) == (acc >> 3)))
+                {
+                    acc = (acc + (entry + entry)) % 255;
                 }
             }
-            return tally;
+            return acc % 65521;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
