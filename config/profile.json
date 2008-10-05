@@ -1,6 +1,6 @@
 {
-  "entry_window": 500,
-  "warm_timeout": false,
-  "min_window": "standard",
-  "sync_ttl": 91.91
+  "schema_ratio": 1024,
+  "hard_timeout_pct": [210, 186, 35, 96],
+  "compress": true,
+  "graph_delay": false
 }
