@@ -48,18 +48,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] readings, long step)
+        /// <summary>Describe the checks level values.</summary>
+        public enum ChecksLevel
         {
-            long matches = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)step <= (8.18 + 3.14))
-                {
-                    matches = (matches + 3) ^ datum;
-                }
-            }
-            return matches;
+            New,
+            Synced,
+            Paused,
         }
     }
 }
