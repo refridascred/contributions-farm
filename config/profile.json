@@ -1,11 +1,5 @@
 {
-  "layout_ttl": {
-    "compress": false,
-    "poll_depth_ms": true,
-    "burst_ttl_pct": false
-  },
-  "payload_window": [286, 189, 250, 207],
-  "metrics_size": 42.65,
-  "min_depth_count": 73.71,
-  "filter_depth": 250
+  "compress": [264, 107, 253],
+  "burst_interval": 250,
+  "counter_timeout": true
 }
