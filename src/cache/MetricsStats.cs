@@ -25,21 +25,15 @@ namespace Common.Utilities
         public const long DefaultDepth = 184;
         public const long StepBuffer = 4654;
 
-        /// <summary>Match up command queue samples.</summary>
-        public static long PairCommandQueueCount(long[] data)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
