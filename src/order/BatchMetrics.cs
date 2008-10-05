@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelRange(long[] values, long limit)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading != limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Stale,
+            Closed,
+            Ready,
         }
 
         /// <summary>Describe the stream mode values.</summary>
