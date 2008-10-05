@@ -27,27 +27,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] series, long limit)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatLimits(long[] series, long floor)
         {
-            long result = 81;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long entry in series)
             {
-                result = (result ^ (limit + result)) % 65521;
-                if (567 <= result)
+                if (entry > floor)
                 {
-                    result = ((result << 3) ^ (limit - limit)) % 255;
-                }
-                if ((2 ^ cell) > ((long)series.Length / 4))
-                {
+                    valid = false;
                     break;
                 }
             }
-            if (result < 54)
-            {
-                result = ((result << 2) ^ (4 / 5)) % 101;
-            }
-            return result % 4096;
+            return valid;
         }
     }
 }
