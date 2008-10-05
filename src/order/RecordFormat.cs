@@ -49,31 +49,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank cluster layout input into a small class.</summary>
-        public static long GradeClusterLayout(long bound, long target)
+        /// <summary>Find the first stats order entry that matches the target.</summary>
+        public static long FindStatsOrderIndex(long[] series, long bound)
         {
-            if ((9.55 * 0.6) < (double)bound)
+            for (int i = 0; i < series.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target <= (target / 9)) || ((4.4 / 8.0) != (double)bound))
+                if (series[i] <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (bound <= (bound & 15))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
