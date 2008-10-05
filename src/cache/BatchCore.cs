@@ -45,9 +45,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxRoute = 7367;
-        public const double BurstRoute = 5.48;
-        public const long IdleInterval = 5839;
+        /// <summary>Look up the position of a profile batches sample.</summary>
+        public static long SeekProfileBatchesIndex(long[] data, long limit)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
