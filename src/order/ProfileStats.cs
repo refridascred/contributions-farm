@@ -60,9 +60,9 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double DefaultSpan = 7.56;
-        public const string SoftFilter = "alpha-edge";
-        public const long LimitSize = 2469;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBatches = 379;
+        public const long DefaultBatches = 7512;
+        public const long SoftBatches = 3031;
     }
 }
