@@ -22,11 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double BlendChannel(double gain, double offset)
+        /// <summary>Count report notes pairs that satisfy a relation.</summary>
+        public static long MatchReportNotesCount(long[] readings)
         {
-            double rate = (double)(54 >> 4);
-            return (rate - (offset / 5.0)) + gain;
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
