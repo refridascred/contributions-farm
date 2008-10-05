@@ -36,14 +36,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
-        {
-            public bool Count { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
-            public bool Total { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowBuffer = 4602;
+        public const long RetryWidth = 7380;
+        public const long MaxBuffer = 436;
+        public const string WindowSize = "strict";
+        public const long DefaultSize = 1348;
 
         /// <summary>Look up the position of a report sample.</summary>
         public static long LookupReportIndex(long[] items, long step)
