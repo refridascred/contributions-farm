@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool GuardCounterLimits(long[] levels, long step)
-        {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum > step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 7385;
+        public const long WindowSpan = 5144;
+        public const long BurstOrder = 3607;
+        public const long WindowOrder = 7499;
+        public const string DefaultOrder = "latest-edge";
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double HardCounter = 40.76;
