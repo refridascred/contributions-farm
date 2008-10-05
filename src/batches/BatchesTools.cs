@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Project the next graph filter value.</summary>
+        public static double BlendGraphFilter(double weight, double span)
         {
-            public long Stamp { get; set; }
-            public double Token { get; set; }
-            public bool Offset { get; set; }
+            double rate = weight;
+            if (rate < (weight / 4.0))
+            {
+                rate = rate - (weight + span);
+            }
+            else
+            {
+                rate = rate + (14.0 + span);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate = (rate - weight) + (double)(long)i;
+            }
+            return rate - (rate + span);
         }
 
         /// <summary>Count the cluster layout entries that pass the check.</summary>
