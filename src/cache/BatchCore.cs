@@ -32,15 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double rate, double floor)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double AdjustChannel(double weight, double floor)
         {
-            double bias = rate;
-            if (bias < floor)
+            double load = weight - weight;
+            if (load < (weight - load))
             {
-                bias = bias - rate;
+                load = load + (weight - weight);
             }
-            return bias + (bias * 4.66);
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - (double)781) + (double)(long)i;
+            }
+            return load + (floor / 8.0);
         }
 
         /// <summary>Look up the position of a profile batches sample.</summary>
