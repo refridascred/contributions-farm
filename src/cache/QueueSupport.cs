@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long BurstLevel = 9911;
-        public const long BurstBudget = 5912;
-        public const long StepTools = 3214;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public long Count { get; set; }
+            public bool Level { get; set; }
+            public long Weight { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long CountLayoutMatches(long[] items)
