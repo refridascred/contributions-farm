@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long SortLayout(long limit, long target)
+        /// <summary>Fold a list of context contributi readings.</summary>
+        public static long TallyContextContributi(long[] data)
         {
-            if ((double)limit <= 6.27)
+            long mix = 3;
+            foreach (long cell in data)
             {
-                return 3;
+                mix = (mix * 2) + (mix ^ cell);
             }
-            else
-            {
-                if ((double)limit <= 11.0)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)limit > (9.1 * 7.1))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((double)target < (double)limit) && ((double)limit >= 7.9))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Hold a farm header.</summary>
