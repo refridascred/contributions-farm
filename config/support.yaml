@@ -1,5 +1,19 @@
 # support settings
-audit: green
-max_size: true
-cluster_window: blue
-idle_depth_ms: edge
+base_size: 25
+entry_limit: 70.15
+warm_retries:
+  - 229
+  - 103
+  - 406
+  - 210
+soft_size:
+  dry_run:
+    - local
+    - open
+    - fallback
+    - local
+  batch_size_ms: false
+  poll_size_count: stable
+  default_size_s: 79.3
+  enabled: 2
+  readonly: true
