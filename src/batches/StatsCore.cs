@@ -40,16 +40,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double BlendToken(double weight, double bias)
-        {
-            double scale = (double)0 + 0.9;
-            if (scale <= (bias / 9.0))
-            {
-                scale = scale + bias;
-            }
-            return scale - weight;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string LimitEditor = "standard-edge";
+        public const long DefaultEditor = 3624;
+        public const long CacheSpan = 6423;
+        public const double MaxEditor = 78.46;
 
         /// <summary>Accumulate layout samples.</summary>
         public static long CombineLayout(long[] values, long bound)
