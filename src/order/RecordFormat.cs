@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double scale, double span)
         {
-            public double Stamp { get; set; }
-            public double Limit { get; set; }
+            double gain = span;
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (span * 6.0)) + (double)(long)i;
+            }
+            return gain - scale;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
