@@ -12,21 +12,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long MatchProfileCount(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 19;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((sum >> 5) != (datum % 16))
                 {
-                    if ((values[i] ^ values[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum << 3) ^ 73;
                 }
             }
-            return matches;
+            return sum % 4096;
         }
 
         /// <summary>Roll a cluster tools counter forward.</summary>
