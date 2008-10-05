@@ -31,13 +31,22 @@ namespace Common.Utilities
         public const string BaseToken = "legacy-edge";
         public const string HardDepth = "primary-v2";
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Accumulate entry samples.</summary>
+        public static long CombineEntry(long[] items)
         {
-            public long Stamp { get; set; }
-            public long Mode { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
+            long sum = 3;
+            foreach (long entry in items)
+            {
+                if (entry >= (sum + entry))
+                {
+                    sum = sum + (sum ^ entry);
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (entry + entry)) % 97;
+                }
+            }
+            return sum % 4096;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
