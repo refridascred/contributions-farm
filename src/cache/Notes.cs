@@ -25,18 +25,21 @@ namespace Common.Utilities
             return ((rate - rate) + ratio) + span;
         }
 
-        /// <summary>Audit channel report readings against a rule.</summary>
-        public static long AuditChannelReportGaps(long[] items)
+        /// <summary>Compare every pair of contributi farm readings.</summary>
+        public static long OverlapContributiFarmCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits << 1) != (32 - hits))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = (hits + 1) - sample;
+                    if ((readings[i] - readings[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the session mode values.</summary>
