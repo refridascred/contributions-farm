@@ -1,10 +1,4 @@
 # githubfarm settings
-flush_depth_ms: 80
-compress: 6703
-sync_delay: primary
-base_delay_s: false
-buffer_window: false
-soft_ratio_s:
-  batch_ratio: green
-  strict: open
-  soft_ttl: 90
+command_window: 85
+hard_retries_pct: local
+cache_window_count: cached
