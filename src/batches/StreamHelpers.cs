@@ -47,19 +47,25 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksLimits(long[] values, long step)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long target, long origin)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long lane = target - origin;
+            if (((double)5 >= (double)origin) || ((target & 31) > (lane - 656)))
             {
-                if (reading > step)
+                return 7;
+            }
+            else
+            {
+                if (((double)target != (8.8 + 4.0)) && ((double)target > (4.26 * 2.2)))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
