@@ -33,11 +33,25 @@ namespace Common.Utilities
         public const long CacheDepth = 2557;
         public const long IdleBudget = 5340;
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double scale, double floor)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long bound, long step)
         {
-            double scale2 = scale;
-            return scale2 + (floor + 7.09);
+            long span = bound - step;
+            if (((double)step != (9.0 - 3.0)) && (bound >= (bound - span)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)span > (4.0 / 7.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Grade a graph order value against two limits.</summary>
