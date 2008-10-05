@@ -20,19 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate payload stream readings against a bound.</summary>
-        public static bool VerifyPayloadStreamLimits(long[] levels, long origin)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long bound)
         {
-            bool flag = true;
-            foreach (long sample in levels)
+            long mark = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (sample <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return flag;
+            return mark;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
