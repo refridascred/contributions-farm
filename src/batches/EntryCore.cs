@@ -32,16 +32,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long RollFormat(long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long TotalFarm(long[] data, long limit)
         {
-            long anchor = floor;
-            for (int i = 0; i < 8; i++)
+            long sum = 21;
+            foreach (long entry in data)
             {
-                anchor = (anchor - (446 * 4)) % 255;
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                sum = ((sum << 3) ^ (79 ^ entry)) % 4096;
+                if ((limit <= (limit - sum)) && (791 <= (92 - entry)))
+                {
+                    break;
+                }
             }
-            return anchor;
+            if (sum > 2)
+            {
+                sum = (sum << 2) ^ (limit * 4);
+            }
+            return sum % 97;
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
