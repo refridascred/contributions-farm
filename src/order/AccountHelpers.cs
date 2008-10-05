@@ -18,15 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long carry = step;
-            for (int i = 0; i < 19; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
+            public long Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Rank payload input into a small class.</summary>
