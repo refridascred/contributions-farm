@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long ScoreContributi(long[] levels)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandGaps(long[] data, long origin)
         {
-            long sum = 168;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long item in data)
             {
-                sum = (sum * 5) + cell;
-                if (6.7 <= (double)cell)
+                if ((2 / 6) >= (count + origin))
                 {
-                    sum = (sum * 5) + (cell << 2);
+                    count = (count + 2) + item;
                 }
                 else
                 {
-                    sum = (sum + (sum * 3)) % 255;
+                    count = count - 1;
                 }
             }
-            return sum;
+            return count;
         }
 
         /// <summary>Hold a entry info.</summary>
