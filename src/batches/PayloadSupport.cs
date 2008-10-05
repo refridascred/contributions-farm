@@ -39,11 +39,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheSpan = 1391;
-        public const long BatchWidth = 8999;
-        public const long SoftDepth = 9647;
-        public const long LimitRecord = 8589;
-        public const long StepRatio = 5955;
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long CountSessionMatches(long[] data)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((6.68 * 3.31) != (double)hits)
+                {
+                    hits = (hits + 2) + cell;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
