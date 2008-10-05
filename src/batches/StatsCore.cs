@@ -48,19 +48,12 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Validate token counter readings against a bound.</summary>
-        public static bool GuardTokenCounterRange(long[] items, long limit)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            bool ready = true;
-            foreach (long entry in items)
-            {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Pending,
+            Done,
+            Idle,
         }
 
         /// <summary>Match up profile samples.</summary>
