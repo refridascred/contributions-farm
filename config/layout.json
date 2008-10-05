@@ -1,22 +1,6 @@
 {
-  "retry_depth": 94.43,
-  "retry_retries": {
-    "soft_ttl_pct": "fallback",
-    "burst_capacity_pct": ["primary", "staging", "standard", "primary"],
-    "dry_run": [72, 107],
-    "window_ttl": {
-      "commits_depth": 44.74,
-      "batches_limit": 60,
-      "stream_depth": "local",
-      "strict": 67.34
-    },
-    "retry_threshold_s": 1445,
-    "batch_capacity_count": "staging"
-  },
-  "min_window_ms": 36.47,
-  "idle_ratio_pct": {
-    "tools_ttl": true,
-    "batch_interval": 1994,
-    "tools_delay": "cached"
-  }
+  "cache_ttl_count": "local",
+  "warm_limit": "local",
+  "idle_interval_ms": true,
+  "batch_threshold": ["fallback", "cached"]
 }
