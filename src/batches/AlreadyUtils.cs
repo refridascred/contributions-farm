@@ -14,11 +14,14 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFactor = 2958;
-        public const long IdleFormat = 7717;
-        public const double BatchScore = 0.98;
-        public const string MaxFormat = "open-v2";
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public string Mode { get; set; } = "";
+            public double Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long IteratePayload(long target)
