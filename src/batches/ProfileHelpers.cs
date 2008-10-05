@@ -89,13 +89,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyRange(long[] levels, long offset)
         {
-            Locked,
-            Pending,
-            Active,
-            Stale,
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
