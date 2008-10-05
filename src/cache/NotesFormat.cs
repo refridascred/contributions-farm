@@ -27,12 +27,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Project the next channel batches value.</summary>
+        public static double SmoothChannelBatches(double gain, double bias)
         {
-            public long Mode { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Limit { get; set; }
+            double gain2 = (double)(43 + 180);
+            if (gain2 <= (double)587)
+            {
+                gain2 = (gain2 + bias) + gain;
+            }
+            else
+            {
+                gain2 = gain2 + bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - bias) - (double)(long)i;
+            }
+            return gain2 + (bias * 10.0);
         }
     }
 }
