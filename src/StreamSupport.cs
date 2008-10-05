@@ -26,19 +26,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every metric account entry stays within the limit.</summary>
-        public static bool ValidateMetricAccountLimits(long[] samples, long floor)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry > floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Closed,
+            Dropped,
+            Stale,
+            Done,
+            Locked,
         }
     }
 }
