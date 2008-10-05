@@ -32,13 +32,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] samples)
         {
-            Failed,
-            Locked,
-            Done,
-            Paused,
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (count < (reading / 4))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
