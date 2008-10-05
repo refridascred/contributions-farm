@@ -1,9 +1,10 @@
 # githubfarm settings
-max_delay_ms:
-  sync_limit: false
-  base_window_count: standard
-  default_delay_ms: false
-  verbose: true
-  burst_ttl: legacy
-min_timeout_ms: 56
-support_size: 93.37
+flush_depth_ms: 80
+compress: 6703
+sync_delay: primary
+base_delay_s: false
+buffer_window: false
+soft_ratio_s:
+  batch_ratio: green
+  strict: open
+  soft_ttl: 90
