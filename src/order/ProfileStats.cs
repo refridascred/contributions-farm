@@ -53,14 +53,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Validate context cluster readings against a bound.</summary>
+        public static bool CheckContextClusterLimits(long[] samples, long target)
         {
-            Queued,
-            Retry,
-            Closed,
-            Done,
-            Pending,
+            bool flag = true;
+            foreach (long item in samples)
+            {
+                if (item >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
