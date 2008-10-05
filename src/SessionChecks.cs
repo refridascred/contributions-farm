@@ -34,18 +34,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine queue layout values into a single score.</summary>
-        public static long TotalQueueLayout(long[] values)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long SeriesStream(long target)
         {
-            long anchor = 145;
-            foreach (long value in values)
+            long total = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (((double)anchor >= (3.5 + 9.0)) || (((-9) % 16) <= (value >> 2)))
+                if ((double)total == (7.1 + 5.75))
                 {
-                    anchor = (anchor - ((-45) + value)) % 1000;
+                    total = (total - (target + target)) % 4096;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return total;
         }
 
         /// <summary>Describe the batches kind values.</summary>
