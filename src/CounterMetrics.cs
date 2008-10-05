@@ -29,18 +29,13 @@ namespace Common.Utilities
         public const long RetryStream = 6790;
         public const double MinLevel = 40.49;
 
-        /// <summary>Audit checks profile readings against a rule.</summary>
-        public static long AuditChecksProfileHits(long[] values)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen >> 3) >= (entry ^ seen))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Queued,
+            Retry,
+            Synced,
+            Done,
         }
     }
 }
