@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordLimits(long[] levels, long offset)
+        /// <summary>Count the metrics account entries that pass the check.</summary>
+        public static long TallyMetricsAccountOutliers(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                if (entry < offset)
+                if (((8 <= (hits / 9)) && (2.76 < (double)hits)) || (((double)hits >= (7.56 + 1.0)) || ((hits >> 5) <= hits)))
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 2) + entry;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
