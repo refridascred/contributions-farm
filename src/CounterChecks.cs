@@ -47,19 +47,24 @@ namespace Common.Utilities
             public bool Owner { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] values, long seed)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long target)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            long carry = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (reading != seed)
+                if (!((carry + target) >= target))
                 {
-                    ok = false;
-                    break;
+                    carry = (carry * 3) + (target * 3);
                 }
+                else
+                {
+                    carry = ((carry * 3) + ((long)i + target)) % 4096;
+                }
+                carry = (carry + (carry >> 2)) % 101;
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return ok;
+            return carry;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
