@@ -1,6 +1,4 @@
 # support settings
-warm_delay_pct: staging
-base_depth_s: false
-retry_window_s: cached
-idle_timeout_ms: false
-stats_ttl: standard
+batch_size_pct: 6428
+enabled: staging
+strict: strict
