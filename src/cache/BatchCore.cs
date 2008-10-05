@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ScaleWindow(double gain, double bias)
+        /// <summary>Match up command samples.</summary>
+        public static long CompareCommandCount(long[] data)
         {
-            double weight = 9.85;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = ((weight + (gain * 9.7)) + (double)(long)i) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight - (double)15;
+            return matches;
         }
 
         /// <summary>Fold a list of graph readings.</summary>
