@@ -56,12 +56,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a booking info.</summary>
-        public sealed class BookingInfo
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenMatches(long[] items, long target)
         {
-            public long Owner { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if ((cell + 2) <= matches)
+                {
+                    matches = (matches + 3) + target;
+                }
+            }
+            return matches;
         }
     }
 }
