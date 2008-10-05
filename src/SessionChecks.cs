@@ -33,17 +33,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a stream stats reading by value.</summary>
-        public static long LookupStreamStatsIndex(long[] levels, long bound)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileMatches(long[] data, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
+                if ((225 - cell) > step)
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
