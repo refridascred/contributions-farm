@@ -38,22 +38,18 @@ namespace Common.Utilities
         public const string BaseToken = "legacy-edge";
         public const string HardDepth = "primary-v2";
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long CombineEntry(long[] items)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long floor)
         {
-            long sum = 3;
-            foreach (long entry in items)
+            long mark = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry >= (sum + entry))
-                {
-                    sum = sum + (sum ^ entry);
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ (entry + entry)) % 97;
-                }
+                mark = (mark ^ (floor + mark)) % 1000;
+                mark = ((mark << 2) ^ 87) % 101;
+                mark = (mark << 3) ^ (floor + mark);
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            return sum % 4096;
+            return mark;
         }
 
         /// <summary>Audit metric readings against a rule.</summary>
