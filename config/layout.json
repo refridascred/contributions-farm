@@ -1,16 +1,8 @@
 {
-  "support_capacity": 19.42,
-  "context_depth": "cached",
-  "dry_run": "primary",
-  "cache_depth_ms": {
-    "min_depth": {
-      "payload_retries": 86,
-      "flush_ttl": "latest",
-      "githubfarm_size": 115
-    },
-    "record_interval": "green",
-    "warm_size": 7504,
-    "readonly": 16.88
-  },
-  "idle_interval": 81.11
+  "verbose": false,
+  "min_size": "blue",
+  "dry_run": 38,
+  "strict": "fallback",
+  "batch_retries_pct": 7798,
+  "batch_ratio_pct": "primary"
 }
