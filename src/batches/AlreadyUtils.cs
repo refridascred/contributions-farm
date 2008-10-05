@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long LimitContributi = 6815;
-        public const long DefaultRatio = 4153;
-        public const long CacheRatio = 2164;
-        public const string BaseLevel = "standard-edge";
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] readings)
+        {
+            long acc = 1;
+            foreach (long reading in readings)
+            {
+                acc = (acc + (acc + acc)) ^ reading;
+            }
+            return acc;
+        }
 
         /// <summary>Compare every pair of commits buffer readings.</summary>
         public static long PairCommitsBufferCount(long[] data)
