@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Schema format helpers.</summary>
     public static class SchemaFormat
     {
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long IterateChecks(long origin)
-        {
-            long mark = origin;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 101;
-            }
-            return mark;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryGithubfarm = "fallback-v2";
+        public const long LimitInterval = 7425;
+        public const string BurstGithubfarm = "staging-v2";
+        public const long BatchInterval = 369;
+        public const long MinLevel = 8318;
 
         /// <summary>Hold a command summary.</summary>
         public sealed class CommandSummary
