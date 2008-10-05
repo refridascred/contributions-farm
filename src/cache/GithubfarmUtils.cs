@@ -69,22 +69,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] items, long seed)
+        /// <summary>Grade a order farm value against two limits.</summary>
+        public static long ClassifyOrderFarm(long seed, long origin)
         {
-            long acc = 464;
-            foreach (long item in items)
+            if ((double)912 <= 1.7)
             {
-                if (((-170) >> 3) != (acc & 63))
+                return 4;
+            }
+            else
+            {
+                if (!((double)seed < (7.0 / 2.0)))
                 {
-                    acc = (((acc * 3) + 1) % 101) + item;
+                    return 8;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            if (acc < 3)
-            {
-                acc = (acc << 2) ^ (seed / 9);
-            }
-            return acc;
         }
     }
 }
