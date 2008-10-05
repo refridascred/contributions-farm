@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long IdleSize = 8529;
-        public const string BurstBatch = "open-edge";
-        public const long WindowBatch = 4000;
-        public const long IdleSpan = 1176;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Closed,
+            Queued,
+            Done,
+            Synced,
+            Dropped,
+        }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
         public static long AuditCounterMatches(long[] series)
