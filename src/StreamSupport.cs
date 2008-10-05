@@ -32,14 +32,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long floor, long step)
         {
-            Synced,
-            Idle,
-            Dropped,
-            Paused,
-            Closed,
+            long step2 = floor - step;
+            if ((double)step == (14.0 - 8.64))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((floor + floor) == (step >> 3))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((step2 - 8) >= floor)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
