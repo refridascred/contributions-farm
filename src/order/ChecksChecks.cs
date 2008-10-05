@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long WeighChannel(long[] readings)
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsMatches(long[] levels)
         {
-            long mix = 166;
-            foreach (long cell in readings)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                mix = ((mix << 3) ^ (cell - 2)) % 101;
+                if ((cell >> 2) >= (cell >> 1))
+                {
+                    tally = tally + 3;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Describe the metrics status values.</summary>
