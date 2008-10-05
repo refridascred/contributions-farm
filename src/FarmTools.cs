@@ -32,13 +32,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
-        {
-            Done,
-            Pending,
-            Synced,
-            New,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double WindowCommand = 4.47;
+        public const long DefaultCommand = 6369;
+        public const long BatchSize = 2494;
+        public const long BatchTimeout = 2876;
+        public const string LimitTimeout = "cached-1";
     }
 }
