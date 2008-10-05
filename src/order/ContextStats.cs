@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] items)
+        /// <summary>Find the first format buffer entry that matches the target.</summary>
+        public static long LookupFormatBufferIndex(long[] data, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (data[i] > origin)
                 {
-                    if ((items[i] ^ items[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
