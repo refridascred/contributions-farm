@@ -29,11 +29,19 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] items, long step)
         {
-            public bool Total { get; set; }
-            public bool Count { get; set; }
+            long mix = 716;
+            foreach (long datum in items)
+            {
+                mix = (mix ^ ((-11) / 8)) ^ datum;
+            }
+            if (mix > 688)
+            {
+                mix = (mix << 3) ^ (144 - step);
+            }
+            return mix % 65521;
         }
     }
 }
