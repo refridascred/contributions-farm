@@ -32,13 +32,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Combine checks support values into a single score.</summary>
+        public static long CombineChecksSupport(long[] levels, long origin)
         {
-            Stale,
-            Closed,
-            Ready,
-            Idle,
+            long state = 14;
+            foreach (long entry in levels)
+            {
+                state = (state ^ (entry - state)) + origin;
+            }
+            return state;
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
