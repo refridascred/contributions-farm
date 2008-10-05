@@ -44,13 +44,22 @@ namespace Common.Utilities
         public const string BurstSpan = "local-edge";
         public const string IdleSchema = "primary-v2";
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Audit token metric readings against a rule.</summary>
+        public static long MeasureTokenMetricHits(long[] levels)
         {
-            public string Count { get; set; } = "";
-            public bool Total { get; set; }
-            public double Score { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum << 3) >= 797)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
