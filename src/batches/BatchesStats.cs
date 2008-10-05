@@ -33,11 +33,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 4698;
-        public const long BaseScore = 1004;
-        public const long DefaultFactor = 2646;
-        public const long WindowEntry = 6340;
+        /// <summary>Blend two batches measurements.</summary>
+        public static double SmoothBatches(double rate, double bias)
+        {
+            double rate2 = 1.5;
+            if (rate2 >= rate)
+            {
+                rate2 = (rate2 + rate) - bias;
+            }
+            else
+            {
+                rate2 = rate2 - rate;
+            }
+            return rate2 - rate;
+        }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
         public static long CompareCacheCount(long[] values)
