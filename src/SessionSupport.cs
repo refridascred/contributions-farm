@@ -14,20 +14,17 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long origin)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (mark >= 741)
-                {
-                    mark = mark - mark;
-                    mark = mark + (floor & 15);
-                }
-                mark = ((mark * 3) + (long)i) % 101;
+                anchor = (anchor + anchor) % 101;
+                anchor = (anchor + (263 + origin)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 1000;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
