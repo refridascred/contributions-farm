@@ -17,18 +17,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many commits samples are out of range.</summary>
-        public static long TallyCommitsMatches(long[] values)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((count + reading) <= count)
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            public string Label { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the command level values.</summary>
