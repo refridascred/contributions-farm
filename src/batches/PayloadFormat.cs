@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            Locked,
-            Failed,
-            Draft,
-            Active,
-            Paused,
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Hold a payload stats.</summary>
