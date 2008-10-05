@@ -35,21 +35,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long state = 5;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((cell + 92) >= (cell + 58))
                 {
-                    if ((values[i] ^ values[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    state = state ^ cell;
+                }
+                else
+                {
+                    state = state ^ (state + state);
                 }
             }
-            return seen;
+            return state % 1000;
         }
 
         /// <summary>Fold a list of record readings.</summary>
