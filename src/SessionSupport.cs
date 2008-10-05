@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSupport = 7.0;
-        public const long MaxSupport = 1841;
-        public const long CacheDepth = 1534;
-        public const string BaseTimeout = "stable-v2";
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
+        {
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Adjust a order reading.</summary>
         public static double ScaleOrder(double weight, double floor)
