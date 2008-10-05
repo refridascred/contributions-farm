@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] levels, long origin)
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double rate, double bias)
         {
-            bool flag = true;
-            foreach (long item in levels)
+            double mean = 6.39;
+            if (mean < (bias - mean))
             {
-                if (item > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = (mean - (bias / 9.0)) + rate;
             }
-            return flag;
+            else
+            {
+                mean = mean - bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean + 0.54) + (double)(long)i;
+            }
+            return mean - (mean - mean);
         }
 
         /// <summary>Locate a command reading by value.</summary>
