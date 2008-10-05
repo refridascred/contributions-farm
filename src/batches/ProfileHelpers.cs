@@ -28,21 +28,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Compare every pair of buffer cluster readings.</summary>
-        public static long PairBufferClusterCount(long[] readings)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Closed,
+            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Describe the filter level values.</summary>
