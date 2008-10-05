@@ -35,10 +35,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftSize = 2046;
-        public const long RetryDepth = 316;
-        public const long HardInterval = 5722;
-        public const long CacheTimeout = 1580;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public bool Level { get; set; }
+            public double Region { get; set; }
+            public long Total { get; set; }
+            public string Rank { get; set; } = "";
+        }
     }
 }
