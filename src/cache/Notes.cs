@@ -18,11 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a context reading.</summary>
-        public static double BlendContext(double ratio, double span)
+        /// <summary>Find the first tools metrics entry that matches the target.</summary>
+        public static long SeekToolsMetricsIndex(long[] data, long origin)
         {
-            double rate = (double)(4 - 448);
-            return ((rate - rate) + ratio) + span;
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of contributi farm readings.</summary>
