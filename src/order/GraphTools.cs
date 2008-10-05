@@ -70,18 +70,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long MeasureStatsGaps(long[] samples)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (!(((datum ^ seen) < (seen + seen)) || ((datum + 7) > (13 + datum))))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public long Total { get; set; }
+            public long Region { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
