@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double scale, double floor)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double bias = 10.0 / 8.0;
-            if (bias >= (double)740)
-            {
-                bias = (bias + bias) + scale;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - floor) + (double)(long)i;
-            }
-            return bias + 0.9;
+            New,
+            Failed,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
