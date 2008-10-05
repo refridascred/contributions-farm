@@ -1,8 +1,17 @@
 # githubfarm settings
-default_interval_pct: 97.67
-soft_window_s: false
-counter_window: local
-batch_window_pct: eu-west
-readonly:
-  - 494
-  - 162
+sync_threshold_ms: false
+base_threshold_s:
+  warm_size_ms:
+    - 294
+    - 318
+  soft_depth:
+    - 255
+    - 109
+  sync_delay_count: edge
+persist: 34.79
+default_window_count:
+  batch_interval: false
+  buffer_window: 9
+  soft_retries_ms: 33
+  retry_ttl: 500
+record_interval: false
