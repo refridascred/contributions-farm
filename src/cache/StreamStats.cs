@@ -29,19 +29,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of editor schema readings.</summary>
-        public static long TallyEditorSchema(long[] levels)
+        /// <summary>Roll a cluster tools counter forward.</summary>
+        public static long StepClusterTools(long seed)
         {
-            long total = 386;
-            foreach (long datum in levels)
+            long sum = seed;
+            for (int i = 0; i < 13; i++)
             {
-                total = ((total + (total + total)) % 65521) + datum;
+                if (83 <= (seed + 3))
+                {
+                    break;
+                }
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            if (total > 196)
-            {
-                total = (total << 2) ^ ((long)levels.Length / 9);
-            }
-            return total;
+            return sum;
         }
 
         /// <summary>Accumulate checks channel samples.</summary>
