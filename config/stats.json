@@ -1,5 +1,5 @@
 {
-  "queue_depth": 26,
-  "idle_depth_s": 5442,
-  "order_threshold": "open"
+  "editor_size": "open",
+  "readonly": "staging",
+  "persist": 1024
 }
