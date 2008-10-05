@@ -32,15 +32,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long ScoreTools(long[] levels)
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            long mark = -948;
-            foreach (long sample in levels)
-            {
-                mark = mark + (sample + mark);
-            }
-            return mark % 97;
+            Stale,
+            New,
+            Dropped,
         }
 
         /// <summary>Describe the filter level values.</summary>
