@@ -68,10 +68,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string LimitSupport = "local-v2";
-        public const string StepSpan = "standard-v2";
-        public const string WindowCount = "strict-edge";
-        public const long MinCount = 5619;
+        /// <summary>Define window limits and defaults.</summary>
+        public const string RetryWindow = "latest";
+        public const double MaxWindow = 75.12;
+        public const long DefaultDepth = 8672;
+        public const double IdleTimeout = 85.68;
+        public const long LimitWidth = 7072;
     }
 }
