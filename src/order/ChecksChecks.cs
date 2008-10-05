@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] readings)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheMatches(long[] values, long origin)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (!((entry / 4) >= (matches / 9)) || (((matches - entry) == (4 << 3)) && ((double)entry > (0.8 / 8.0))))
+                if ((reading + origin) == (tally + reading))
                 {
-                    matches = matches + 3;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
