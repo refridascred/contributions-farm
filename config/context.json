@@ -1,7 +1,12 @@
 {
-  "flush_ttl_pct": 66.86,
-  "dry_run": false,
-  "flush_ratio": 1024,
-  "compress": "blue",
-  "retry_interval": 25
+  "batch_ttl_s": "eu-west",
+  "compress": "green",
+  "warm_depth_count": "legacy",
+  "soft_ttl_ms": {
+    "githubfarm_interval": 81.36,
+    "entry_window": false,
+    "queue_threshold": ["open", "latest"]
+  },
+  "cache_depth_pct": "strict",
+  "metrics_window": 6573
 }
