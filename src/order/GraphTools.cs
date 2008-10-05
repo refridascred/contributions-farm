@@ -46,12 +46,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order snapshot.</summary>
-        public sealed class OrderSnapshot
+        /// <summary>Grade a counter format value against two limits.</summary>
+        public static long GradeCounterFormat(long floor, long floor2)
         {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
-            public string Flag { get; set; } = "";
+            long prev = floor - floor2;
+            if ((73 + prev) <= (5 ^ prev))
+            {
+                return 4;
+            }
+            else
+            {
+                if (prev < (floor2 + prev))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)floor2 != (4.44 + 20.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
