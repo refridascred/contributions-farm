@@ -1,5 +1,6 @@
 {
-  "base_ttl_s": 1024,
-  "report_ttl": 1043,
-  "order_capacity": "strict"
+  "audit": "blue",
+  "burst_delay_count": 100,
+  "max_timeout_count": false,
+  "enabled": 1495
 }
