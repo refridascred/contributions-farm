@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long RankContributi(long step, long target)
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
+            long span = step ^ target;
+            if ((target >= (span - target)) || ((6 - span) <= (span / 5)))
             {
-                if (carry < ((long)i & 7))
-                {
-                    carry = (carry * 2) + (carry + seed);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                return 3;
             }
-            return carry;
+            else
+            {
+                if (span >= (step - step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((span << 1) != (span % 97)) && ((span + 89) <= (step << 3)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
