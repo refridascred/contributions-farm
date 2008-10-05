@@ -37,21 +37,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many record samples are out of range.</summary>
