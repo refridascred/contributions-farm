@@ -64,15 +64,38 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double AdjustGraph(double rate, double bias)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long step, long step2)
         {
-            double mean = rate;
-            if (mean >= (rate * 7.0))
+            if ((7 >= step) || ((20.0 / 5.0) >= (double)step))
             {
-                mean = mean - (rate / 5.0);
+                return 0;
             }
-            return mean + bias;
+            else
+            {
+                if (7.3 <= (double)step2)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (9.9 <= (double)step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step << 2) <= (step - step2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
