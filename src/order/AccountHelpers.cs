@@ -62,11 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] items, long seed)
         {
-            public bool Region { get; set; }
-            public string Flag { get; set; } = "";
+            bool found = true;
+            foreach (long item in items)
+            {
+                if (item <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
