@@ -34,19 +34,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a payload session reading.</summary>
-        public static double AdjustPayloadSession(double weight, double span)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long ClassifyContributi(long limit, long step)
         {
-            double weight2 = (double)(51 + 3);
-            if (weight2 > 9.0)
+            long lane = limit + step;
+            if ((double)limit != (double)step)
             {
-                weight2 = ((weight2 - weight2) + weight) - span;
+                return 1;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                weight2 = (weight2 + 3.77) - (double)(long)i;
+                if ((6 % 60) == (lane / 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return weight2 + 4.3;
         }
     }
 }
