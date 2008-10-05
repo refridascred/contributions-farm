@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Find the first account entry that matches the target.</summary>
-        public static long LocateAccountIndex(long[] readings, long target)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterLimits(long[] samples, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool flag = true;
+            foreach (long item in samples)
             {
-                if (readings[i] <= target)
+                if (item < limit)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
