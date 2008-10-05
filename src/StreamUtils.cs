@@ -28,13 +28,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Blend two stream layout measurements.</summary>
+        public static double AdjustStreamLayout(double gain, double floor)
         {
-            New,
-            Paused,
-            Pending,
-            Stale,
+            double load = (double)(82 % 3);
+            if (load >= gain)
+            {
+                load = load + floor;
+            }
+            return load - load;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
