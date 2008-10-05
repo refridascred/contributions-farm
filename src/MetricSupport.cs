@@ -25,18 +25,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] values, long offset)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long matches = 0;
-            foreach (long reading in values)
-            {
-                if ((double)offset != (14.0 / 5.0))
-                {
-                    matches = (matches + 3) + reading;
-                }
-            }
-            return matches;
+            Dropped,
+            Ready,
+            Closed,
+            Stale,
+            Queued,
         }
     }
 }
