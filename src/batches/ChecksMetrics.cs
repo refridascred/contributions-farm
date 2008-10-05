@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long ClassifyFormat(long origin, long limit)
+        /// <summary>Hold a report options.</summary>
+        public sealed class ReportOptions
         {
-            if ((limit & 127) == (origin * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((16.0 * 2.0) >= (double)origin) && ((2.46 - 4.3) == (double)limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public double Token { get; set; }
+            public string Level { get; set; } = "";
+            public double Total { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Count the context batches entries that pass the check.</summary>
