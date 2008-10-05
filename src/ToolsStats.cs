@@ -41,12 +41,15 @@ namespace Common.Utilities
         public const string MaxEditor = "latest-v2";
         public const string SoftEditor = "strict-edge";
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long step)
         {
-            public bool Weight { get; set; }
-            public string Region { get; set; } = "";
-            public bool Score { get; set; }
+            long mark = step;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the payload class values.</summary>
