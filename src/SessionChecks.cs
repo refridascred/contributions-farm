@@ -19,15 +19,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] levels, long floor)
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long RankEditor(long step, long offset)
         {
-            long total = 846;
-            foreach (long item in levels)
+            if (!((step & 15) < (21 / 5)))
             {
-                total = ((((total << 3) ^ ((-6) * 2)) % 255) + item) + floor;
+                return 8;
             }
-            return total;
+            else
+            {
+                if ((step / 8) <= (offset & 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Hold a metric stats.</summary>
