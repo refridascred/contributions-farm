@@ -64,20 +64,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool CheckBatchLimits(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string WindowInterval = "open";
+        public const long BaseBuffer = 3448;
+        public const long RetryBuffer = 3856;
+        public const string CacheBuffer = "latest";
+        public const long IdleBudget = 5048;
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
