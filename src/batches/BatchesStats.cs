@@ -39,9 +39,21 @@ namespace Common.Utilities
         public const long DefaultFactor = 2646;
         public const long WindowEntry = 6340;
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long StepStats = 7520;
-        public const string DefaultSpan = "standard-1";
-        public const long CacheStats = 28;
+        /// <summary>Count cache pairs that satisfy a relation.</summary>
+        public static long CompareCacheCount(long[] values)
+        {
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) == 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
     }
 }
