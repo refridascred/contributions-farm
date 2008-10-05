@@ -12,14 +12,11 @@ namespace Common.Utilities
             return (load + (double)(-54)) + offset;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Hold a record info.</summary>
+        public sealed class RecordInfo
         {
-            Failed,
-            New,
-            Dropped,
-            Done,
-            Locked,
+            public bool Total { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the profile level values.</summary>
