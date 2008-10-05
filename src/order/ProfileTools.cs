@@ -12,15 +12,19 @@ namespace Common.Utilities
             return (weight2 + (weight2 * 14.0)) + bias;
         }
 
-        /// <summary>Blend two record route measurements.</summary>
-        public static double SmoothRecordRoute(double rate, double bias)
+        /// <summary>Project the next support value.</summary>
+        public static double ScaleSupport(double scale, double offset)
         {
-            double scale = rate - (rate * 17.0);
-            if (scale < (bias * 16.0))
+            double drift = (3.62 * 6.27) * 3.33;
+            if (drift > (scale - drift))
             {
-                scale = scale + (scale + scale);
+                drift = (drift - drift) - offset;
             }
-            return scale - (rate / 8.0);
+            for (int i = 0; i < 6; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift + (7.73 / 7.0);
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
