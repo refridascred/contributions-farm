@@ -70,38 +70,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long seed, long floor)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long SeekOrderIndex(long[] values, long target)
         {
-            if ((seed + 5) <= floor)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((floor + seed) <= (seed - seed)))
+                if ((values[i] <= target) && ((values[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((floor % 16) > floor) && (seed > (floor << 1)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)98 < (double)floor)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
