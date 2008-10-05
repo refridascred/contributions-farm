@@ -71,13 +71,19 @@ namespace Common.Utilities
         public const string CacheBuffer = "latest";
         public const long IdleBudget = 5048;
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] values, long limit)
         {
-            Pending,
-            Stale,
-            Synced,
-            Queued,
+            bool ready = true;
+            foreach (long item in values)
+            {
+                if (item < limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
