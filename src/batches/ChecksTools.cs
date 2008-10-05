@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string LimitFormat = "strict-1";
-        public const string IdleSpan = "alpha";
-        public const string HardSize = "cached-edge";
-        public const long SoftFormat = 3951;
+        /// <summary>Blend two already measurements.</summary>
+        public static double ScaleAlready(double scale, double bias)
+        {
+            double scale2 = scale;
+            for (int i = 0; i < 2; i++)
+            {
+                scale2 = ((scale2 + (scale + 4.46)) + (double)(long)i) - bias;
+            }
+            return scale2 + (double)41;
+        }
 
         /// <summary>Adjust a cache reading.</summary>
         public static double ProjectCache(double scale, double span)
