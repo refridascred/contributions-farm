@@ -62,38 +62,21 @@ namespace Common.Utilities
             return load + 11.0;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long offset, long step)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            if (((step + offset) <= (step << 3)) && ((offset + step) > (step + offset)))
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)offset < 6.94)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((5.0 / 6.0) != (double)offset))
+                    if ((values[i] ^ values[j]) == 13)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)offset != (double)76) && (step <= (step >> 2)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
     }
 }
