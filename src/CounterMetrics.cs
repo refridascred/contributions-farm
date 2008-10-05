@@ -5,16 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of record format entries.</summary>
-        public static long DigestRecordFormat(long[] items)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] items)
         {
-            long state = 62;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                state = ((state * 3) + (sample + sample)) % 1000;
-                state = (state + (state * 3)) % 1000;
+                if ((datum * 2) < tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return state;
+            return tally;
         }
 
         /// <summary>Adjust a context notes reading.</summary>
