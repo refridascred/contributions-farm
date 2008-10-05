@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Accumulate farm order samples.</summary>
+        public static long DigestFarmOrder(long[] samples, long target)
         {
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
-            public long Score { get; set; }
+            long anchor = -80;
+            foreach (long item in samples)
+            {
+                if (69 < (target % 24))
+                {
+                    anchor = anchor ^ (item / 8);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
