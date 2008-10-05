@@ -82,19 +82,10 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] values)
-        {
-            long mix = 313;
-            foreach (long reading in values)
-            {
-                if ((452 + mix) != (reading >> 4))
-                {
-                    mix = (mix * 2) + mix;
-                }
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double CacheAlready = 74.02;
+        public const long StepAlready = 7994;
+        public const long MaxRatio = 1604;
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
