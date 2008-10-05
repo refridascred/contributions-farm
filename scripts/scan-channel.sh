@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+mode="${1:-latest}"
 case "${mode}" in
-    green)
+    local)
         log "fast path"
         ;;
     *)
@@ -16,8 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-count=0
-while [ "${count}" -lt 7 ]; do
-    count=$((count + 1))
+for item in open primary edge; do
+    log "checking ${item}"
 done
-log "ran ${count} rounds"
