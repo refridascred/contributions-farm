@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] levels)
+        /// <summary>Locate a entry reading by value.</summary>
+        public static long FindEntryIndex(long[] items, long offset)
         {
-            long state = 742;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((967 & 3) > state)
+                if (items[i] > offset)
                 {
-                    state = ((state ^ (state - (long)levels.Length)) % 65521) + cell;
+                    return (long)i;
                 }
             }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Digest a series of context entries.</summary>
