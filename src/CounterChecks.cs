@@ -86,11 +86,12 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Project the next stats context value.</summary>
-        public static double ScaleStatsContext(double bias, double offset)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            double ratio = (double)3 - bias;
-            return ratio - offset;
+            Synced,
+            Dropped,
+            Idle,
         }
     }
 }
