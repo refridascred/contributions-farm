@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double rate, double floor)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] samples)
         {
-            double rate2 = floor;
-            if (rate2 < 3.97)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = rate2 - floor;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                rate2 = (rate2 + (9.21 - rate)) + (double)(long)i;
-            }
-            return rate2 + (rate2 + floor);
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
