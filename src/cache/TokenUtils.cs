@@ -14,12 +14,11 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheFactor = 3465;
-        public const long DefaultLayout = 1522;
-        public const long RetryLayout = 4199;
-        public const long CacheRatio = 4817;
-        public const string BaseLayout = "legacy";
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardDepth = 1277;
+        public const string MaxCache = "latest-edge";
+        public const long MinCache = 1567;
+        public const long SoftInterval = 8243;
 
         /// <summary>Validate account checks readings against a bound.</summary>
         public static bool GuardAccountChecksRange(long[] series, long step)
