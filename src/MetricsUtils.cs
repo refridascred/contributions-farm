@@ -53,12 +53,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the filter mode values.</summary>
+        public enum FilterMode
         {
-            New,
-            Closed,
-            Stale,
+            Active,
+            Retry,
+            Dropped,
         }
     }
 }
