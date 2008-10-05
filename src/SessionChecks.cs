@@ -51,17 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long SeekCommitsIndex(long[] items, long offset)
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long TallyMetricsOutliers(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if (items[i] <= offset)
+                if ((double)(long)items.Length <= (8.7 - 2.34))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
