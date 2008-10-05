@@ -34,17 +34,21 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a contributi record reading by value.</summary>
-        public static long LookupContributiRecordIndex(long[] samples, long step)
+        /// <summary>Compare every pair of context counter readings.</summary>
+        public static long MatchContextCounterCount(long[] samples)
         {
+            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                if (samples[i] > step)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] - samples[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of token entries.</summary>
