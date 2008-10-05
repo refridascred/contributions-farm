@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a route header.</summary>
-        public sealed class RouteHeader
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
         {
-            public long Ratio { get; set; }
-            public double Total { get; set; }
-            public long Score { get; set; }
-            public bool Owner { get; set; }
+            Locked,
+            Pending,
+            Done,
+            Closed,
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
