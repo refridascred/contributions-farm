@@ -35,18 +35,19 @@ namespace Common.Utilities
         public const long IdleEditor = 3864;
         public const long BatchSpan = 4569;
 
-        /// <summary>Count the filter stream entries that pass the check.</summary>
-        public static long TallyFilterStreamMatches(long[] series)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] readings)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            long mark = 457;
+            foreach (long cell in readings)
             {
-                if ((489 ^ hits) < (cell + 82))
-                {
-                    hits = hits + 3;
-                }
+                mark = ((mark << 2) ^ cell) % 65521;
             }
-            return hits;
+            if (mark > 8)
+            {
+                mark = (mark ^ mark) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
