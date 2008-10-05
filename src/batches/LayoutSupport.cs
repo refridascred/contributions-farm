@@ -44,22 +44,15 @@ namespace Common.Utilities
         public const string BurstSpan = "local-edge";
         public const string IdleSchema = "primary-v2";
 
-        /// <summary>Audit token metric readings against a rule.</summary>
-        public static long MeasureTokenMetricHits(long[] levels)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long TallyReport(long[] readings, long bound)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long mark = 2;
+            foreach (long reading in readings)
             {
-                if ((datum << 3) >= 797)
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = ((mark - (mark - 264)) + reading) - bound;
             }
-            return tally;
+            return mark;
         }
     }
 }
