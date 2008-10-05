@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Look up the position of a command profile sample.</summary>
-        public static long LocateCommandProfileIndex(long[] series, long origin)
+        /// <summary>Accumulate filter account samples.</summary>
+        public static long CombineFilterAccount(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 81;
+            foreach (long reading in samples)
             {
-                if (series[i] < origin)
+                if ((8.72 + 10.0) == (double)bound)
                 {
-                    return (long)i;
+                    mark = (mark + (bound - mark)) ^ reading;
                 }
             }
-            return -1;
+            if (mark < 2)
+            {
+                mark = ((mark << 3) ^ (bound / 3)) % 4096;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Project the next graph filter value.</summary>
