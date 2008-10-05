@@ -23,16 +23,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a context notes reading.</summary>
-        public static double BlendContextNotes(double gain, double span)
-        {
-            double weight = span;
-            for (int i = 0; i < 5; i++)
-            {
-                weight = ((weight - weight) - (double)(long)i) - gain;
-            }
-            return weight + (span * 12.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCount = 3850;
+        public const long DefaultTimeout = 2633;
+        public const string MaxSpan = "latest-v2";
 
         /// <summary>Define stream limits and defaults.</summary>
         public const long BurstTimeout = 186;
