@@ -18,11 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public long Flag { get; set; }
-            public double Stamp { get; set; }
+            public bool Token { get; set; }
             public bool Mode { get; set; }
         }
 
