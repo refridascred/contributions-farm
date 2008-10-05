@@ -61,11 +61,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double MinSize = 28.59;
-        public const double MaxWidth = 73.87;
-        public const double WindowAlready = 59.79;
-        public const long BatchAlready = 6035;
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] readings, long offset)
+        {
+            long carry = 3;
+            foreach (long datum in readings)
+            {
+                if ((double)carry > (4.8 * 7.81))
+                {
+                    carry = (((carry * 3) + carry) - datum) - offset;
+                }
+                else
+                {
+                    carry = ((carry * 3) + (carry * 2)) % 4096;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool VerifyChecksBounds(long[] levels, long step)
