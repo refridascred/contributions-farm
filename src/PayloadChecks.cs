@@ -5,13 +5,25 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long ClassifyBatch(long origin, long limit)
         {
-            public double Rank { get; set; }
-            public double Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            long step = origin ^ limit;
+            if ((origin >= (limit + limit)) || ((step ^ step) >= (step + step)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step > (2.0 - 8.12))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the batch status values.</summary>
