@@ -44,19 +44,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long origin)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long WeighSession(long[] values)
         {
-            long state = origin;
-            for (int i = 0; i < 19; i++)
+            long carry = 25;
+            foreach (long reading in values)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (reading <= (reading << 2))
                 {
-                    state = ((state + (9 % 97)) % 65521) + (long)i2;
+                    carry = (carry - (carry - reading)) % 101;
                 }
-                state = ((state * 3) + (long)i) % 101;
             }
-            return state;
+            if (carry > 2)
+            {
+                carry = (carry << 3) ^ (carry << 1);
+            }
+            return carry % 4096;
         }
 
         /// <summary>Hold a record snapshot.</summary>
