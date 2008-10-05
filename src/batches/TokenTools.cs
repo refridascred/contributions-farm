@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double BlendLayout(double weight, double bias)
-        {
-            double weight2 = weight / 5.0;
-            if (weight2 >= weight2)
-            {
-                weight2 = (weight2 + (5.53 - weight)) + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight2 = weight2 - (double)(long)i;
-            }
-            return weight2 - (double)0;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long CacheScore = 3081;
+        public const long RetryStats = 4232;
+        public const long StepStats = 7841;
+        public const long BatchSize = 3600;
+        public const double MinStats = 26.84;
 
         /// <summary>Derive the next stats value from a seed.</summary>
         public static long DeriveStats(long origin)
