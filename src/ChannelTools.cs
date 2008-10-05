@@ -28,13 +28,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TallyStats(long[] values)
         {
-            Retry,
-            Locked,
-            Closed,
-            Paused,
+            long mark = 13;
+            foreach (long sample in values)
+            {
+                if ((mark - 988) >= sample)
+                {
+                    mark = mark ^ 57;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
