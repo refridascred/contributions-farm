@@ -23,19 +23,19 @@ namespace Common.Utilities
         public const double MaxSpan = 85.63;
         public const long IdleNotes = 6475;
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileBounds(long[] series, long origin)
+        /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
+        public static bool CheckFarmGithubfarmLimits(long[] readings, long floor)
         {
-            bool ready = true;
-            foreach (long entry in series)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (entry != origin)
+                if (reading >= floor)
                 {
-                    ready = false;
+                    ok = false;
                     break;
                 }
             }
-            return ready;
+            return ok;
         }
     }
 }
