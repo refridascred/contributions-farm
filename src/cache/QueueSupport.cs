@@ -37,12 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Count the farm metrics entries that pass the check.</summary>
+        public static long TallyFarmMetricsOutliers(long[] data, long step)
         {
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in data)
+            {
+                if ((cell << 3) != (cell - cell))
+                {
+                    matches = (matches + 2) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
