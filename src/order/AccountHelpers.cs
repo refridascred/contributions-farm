@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] items, long origin)
+        /// <summary>Roll a schema counter forward.</summary>
+        public static long SeriesSchema(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long acc = bound;
+            for (int i = 0; i < 13; i++)
             {
-                if ((items[i] == origin) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Hold a window summary.</summary>
