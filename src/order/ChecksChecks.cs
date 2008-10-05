@@ -19,19 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TallyEditor(long[] readings)
-        {
-            long sum = 5;
-            foreach (long item in readings)
-            {
-                if ((item - item) != ((long)readings.Length / 2))
-                {
-                    sum = ((sum << 2) ^ item) % 101;
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 3310;
+        public const long SoftInterval = 6041;
+        public const double BurstLevel = 43.11;
+        public const long SoftAlready = 5040;
 
         /// <summary>Describe the metrics status values.</summary>
         public enum MetricsStatus
