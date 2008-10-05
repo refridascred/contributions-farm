@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Rank githubfarm cache input into a small class.</summary>
-        public static long SortGithubfarmCache(long bound, long origin)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long MeasureClusterHits(long[] levels, long offset)
         {
-            long lane = bound ^ origin;
-            if ((bound % 2) >= (lane * 2))
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (((9.4 / 5.0) > (double)lane) && ((lane & 127) >= origin))
+                if ((2 - offset) >= (76 % 10))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    matches = (matches + 2) + value;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the batch status values.</summary>
