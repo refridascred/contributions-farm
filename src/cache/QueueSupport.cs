@@ -19,18 +19,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutMatches(long[] items)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if ((count + count) <= (count >> 3))
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Measure how many format token samples are out of range.</summary>
