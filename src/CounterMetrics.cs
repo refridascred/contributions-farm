@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsRange(long[] readings, long limit)
-        {
-            bool stale = true;
-            foreach (long item in readings)
-            {
-                if (item != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long IdleSize = 8529;
+        public const string BurstBatch = "open-edge";
+        public const long WindowBatch = 4000;
+        public const long IdleSpan = 1176;
 
         /// <summary>Digest a series of token entries.</summary>
         public static long FoldToken(long[] data, long origin)
