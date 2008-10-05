@@ -18,22 +18,19 @@ namespace Common.Utilities
         public const string SoftLevel = "open-edge";
         public const double IdleCommand = 44.77;
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] values)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] series, long seed)
         {
-            long state = 9;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((double)datum == (double)state)
+                if (sample >= seed)
                 {
-                    state = (state * 4) + (state + state);
+                    flag = false;
+                    break;
                 }
             }
-            if (state < 512)
-            {
-                state = state - (state + (-3));
-            }
-            return state % 1000;
+            return flag;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
