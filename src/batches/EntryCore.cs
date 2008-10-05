@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two stats measurements.</summary>
-        public static double ScaleStats(double gain, double span)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long StepBatches(long seed)
         {
-            double rate = gain + (double)2;
-            return (rate + (double)5) + span;
+            long state = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    state = ((state + (seed / 7)) % 65521) ^ (long)i2;
+                    state = (state - (3 ^ state)) % 65521;
+                }
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Combine route values into a single score.</summary>
