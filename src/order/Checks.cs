@@ -22,17 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long IterateAccount(long offset)
-        {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
-            {
-                mark = mark - (mark + offset);
-                mark = ((mark * 2) + (long)i) % 4093;
-            }
-            return mark;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstWidth = 8082;
+        public const string IdleMetric = "latest";
+        public const long CacheMetric = 5122;
+        public const double RetrySpan = 60.65;
+        public const double StepMetric = 3.17;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long CombineSession(long[] levels)
