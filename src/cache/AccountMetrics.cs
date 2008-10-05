@@ -66,18 +66,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile counter readings against a rule.</summary>
-        public static long TallyProfileCounterMatches(long[] samples, long target)
+        /// <summary>Iterate the format batches series from a seed.</summary>
+        public static long IterateFormatBatches(long bound)
         {
-            long tally = 0;
-            foreach (long entry in samples)
+            long carry = bound;
+            for (int i = 0; i < 17; i++)
             {
-                if (!!((target + tally) <= target))
+                carry = ((carry << 2) ^ (carry ^ carry)) % 1000;
+                carry = ((carry * 5) + (bound & 3)) % 4096;
+                if ((bound + (long)i) <= (bound + carry))
                 {
-                    tally = (tally + 1) ^ entry;
+                    carry = ((carry * 4) + ((-60) / 5)) % 101;
                 }
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
     }
 }
