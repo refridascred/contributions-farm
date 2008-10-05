@@ -13,22 +13,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] levels)
-        {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) > 1)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultScore = 7562;
+        public const long LimitCluster = 7708;
+        public const double SoftCluster = 67.94;
+        public const double IdleCluster = 88.98;
 
         /// <summary>Measure how many window entry samples are out of range.</summary>
         public static long CountWindowEntryGaps(long[] samples)
