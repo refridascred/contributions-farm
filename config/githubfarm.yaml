@@ -1,6 +1,4 @@
 # githubfarm settings
-token_window: 1013
-poll_threshold:
-  - open
-  - blue
-tools_retries: local
+batch_retries: open
+graph_interval: 38
+graph_ttl: strict
