@@ -1,6 +1,5 @@
 {
-  "support_retries": 6988,
-  "batch_ratio": ["staging", "local", "standard", "local"],
-  "sync_ratio_ms": true,
-  "payload_depth": 76.46
+  "cache_depth": "strict",
+  "verbose": 60,
+  "burst_capacity_s": 5.67
 }
