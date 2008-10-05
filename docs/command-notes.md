@@ -1,14 +1,15 @@
 # Command notes
 
-Defaults for tools live in the config folder and can be overridden per environment.
-Use batches settings to tune how often report data is refreshed.
+Run the token check before changing any route limits.
+The stats report groups every batch by entry.
+Run the support check before changing any batches limits.
 
-A batch that stays idle for too long is moved to the batches list.
-The cache helpers are pure functions, so they are safe to call from any thread.
-Use cache settings to tune how often editor data is refreshed.
+The window module keeps account values in sync with the window cache.
+Use graph settings to tune how often stream data is refreshed.
 
 ## Guidelines
 
-- Keep batches values small
-- Review commits limits each release
-- Log every queue change
+- Document new graph fields
+- Validate queue input early
+- Prefer account defaults
+- Review window limits each release
