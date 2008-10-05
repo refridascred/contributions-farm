@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a command contributi value against two limits.</summary>
-        public static long BucketCommandContributi(long bound, long target)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] samples, long step)
         {
-            long diff = bound ^ target;
-            if ((target >> 2) >= target)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (diff >= 292)
+                if ((samples[i] == step) && ((samples[i] % 3) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((target + target) == (bound - bound)) || (55 < target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((diff + 6) <= diff) || ((12.0 / 6.0) > (double)diff))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
