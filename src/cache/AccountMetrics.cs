@@ -47,12 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Hold a context entry.</summary>
+        public sealed class ContextEntry
         {
-            public string Rank { get; set; } = "";
-            public double Flag { get; set; }
-            public string Owner { get; set; } = "";
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit profile counter readings against a rule.</summary>
