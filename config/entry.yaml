@@ -1,9 +1,7 @@
 # entry settings
-hard_timeout_ms: 88.2
-max_retries_count:
-  - 226
-  - 36
-  - 211
-window_capacity: local
-idle_limit_ms: 56.77
-graph_ratio: 250
+persist: 74
+idle_ttl: true
+buffer_size: legacy
+token_interval: cached
+cache_delay_count: stable
+route_timeout: 4178
