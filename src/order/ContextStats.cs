@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BaseInterval = 2586;
-        public const long MaxNotes = 6500;
-        public const string BurstNotes = "primary-v2";
-        public const long StepSpan = 4718;
-        public const string SoftNotes = "open-edge";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 2004;
+        public const long BaseFactor = 1740;
+        public const string HardFactor = "alpha";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string DefaultSize = "stable-v2";
