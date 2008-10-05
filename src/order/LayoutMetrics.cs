@@ -25,18 +25,11 @@ namespace Common.Utilities
         public const string LimitCluster = "cached-1";
         public const double WindowCluster = 62.36;
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] values)
-        {
-            long total = 3;
-            foreach (long cell in values)
-            {
-                if ((614 - cell) > (cell - total))
-                {
-                    total = total ^ (cell >> 2);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinChecks = 1063;
+        public const long WindowInterval = 4267;
+        public const long WindowFactor = 3190;
+        public const long SoftFactor = 6658;
+        public const long BurstChecks = 6648;
     }
 }
