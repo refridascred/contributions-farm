@@ -47,18 +47,19 @@ namespace Common.Utilities
             return gain + (bias2 - bias);
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] values, long seed)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool GuardSessionRange(long[] levels, long origin)
         {
-            long matches = 0;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                if (!(seed > (item + seed)) || ((seed % 12) != (seed - 32)))
+                if (entry <= origin)
                 {
-                    matches = matches + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return matches;
+            return stale;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
