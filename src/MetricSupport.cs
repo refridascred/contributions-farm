@@ -27,19 +27,21 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every githubfarm stream entry stays within the limit.</summary>
-        public static bool VerifyGithubfarmStreamRange(long[] levels, long target)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell != target)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] + levels[j]) == 1)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
