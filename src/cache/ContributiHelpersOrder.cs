@@ -38,15 +38,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double AdjustMetric(double ratio, double bias)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            double mean = bias;
-            if (mean <= mean)
-            {
-                mean = (mean + mean) + ratio;
-            }
-            return mean - mean;
+            Closed,
+            Synced,
+            Queued,
         }
     }
 }
