@@ -20,10 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MaxTimeout = 6539;
-        public const long BaseTimeout = 3969;
-        public const long BurstCount = 4473;
+        /// <summary>Match up already samples.</summary>
+        public static long MatchAlreadyCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long step)
