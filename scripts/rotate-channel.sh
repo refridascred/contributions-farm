@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging standard latest eu-west; do
+CHANNEL_LIMIT=295
+log "limit is ${CHANNEL_LIMIT}"
+
+total=0
+for i in $(seq 1 6); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
+
+for item in legacy latest; do
     log "checking ${item}"
 done
-
-mode="${1:-local}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
