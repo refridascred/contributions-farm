@@ -50,21 +50,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of route readings.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 9)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public string Rank { get; set; } = "";
+            public double Flag { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Roll a editor order counter forward.</summary>
