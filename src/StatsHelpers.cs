@@ -20,15 +20,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double weight, double floor)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long OverlapAccountCount(long[] readings)
         {
-            double bias = floor / 5.0;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = (bias - floor) + (double)(long)i;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias - weight;
+            return hits;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
