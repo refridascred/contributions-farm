@@ -45,19 +45,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] values, long offset)
+        /// <summary>Match up queue samples.</summary>
+        public static long MatchQueueCount(long[] values)
         {
-            long mix = -3;
-            foreach (long cell in values)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mix = (mix - offset) % 65521;
-                if (!(cell > (mix << 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = (mix - (offset + offset)) % 65521;
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mix;
+            return seen;
         }
     }
 }
