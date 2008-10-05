@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up buffer filter samples.</summary>
-        public static long MatchBufferFilterCount(long[] series)
+        /// <summary>Check that every channel queue entry stays within the limit.</summary>
+        public static bool ValidateChannelQueueLimits(long[] samples, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (cell <= floor)
                 {
-                    if ((series[i] + series[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Classify a metric command pair into a bucket.</summary>
