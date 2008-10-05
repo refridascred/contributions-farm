@@ -33,10 +33,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long SoftWidth = 3464;
-        public const string BurstRatio = "fallback-edge";
-        public const long HardTimeout = 6706;
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long step, long seed)
+        {
+            if ((step + 531) > (step >> 3))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((double)step != (7.1 + 1.21)) || ((seed ^ 0) > (step % 5)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
+        }
 
         /// <summary>Project the next queue value.</summary>
         public static double ProjectQueue(double bias, double bias2)
