@@ -28,12 +28,28 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstScore = 5712;
-        public const long MinEditor = 4196;
-        public const long SoftBudget = 8998;
-        public const long IdleEditor = 3864;
-        public const long BatchSpan = 4569;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long FoldNotes(long[] values, long origin)
+        {
+            long acc = 0;
+            foreach (long value in values)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = acc ^ (origin % 3);
+                    acc = (acc * 4) + ((long)i - acc);
+                }
+                if ((acc << 2) < (origin - acc))
+                {
+                    acc = (acc ^ acc) % 4096;
+                }
+                else
+                {
+                    acc = acc - (value & 127);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long MatchGraphCount(long[] levels)
