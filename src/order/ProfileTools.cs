@@ -35,14 +35,12 @@ namespace Common.Utilities
             return scale - (rate / 8.0);
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
-        {
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Count { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string BaseTimeout = "strict-v2";
+        public const long HardToken = 212;
+        public const long MaxDepth = 1603;
+        public const string BaseToken = "legacy-edge";
+        public const string HardDepth = "primary-v2";
 
         /// <summary>Define schema limits and defaults.</summary>
         public const double DefaultInterval = 67.95;
