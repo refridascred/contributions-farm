@@ -35,11 +35,14 @@ namespace Common.Utilities
         public const long LimitInterval = 2993;
         public const long DefaultWidth = 814;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string LimitEditor = "standard-edge";
-        public const long DefaultEditor = 3624;
-        public const long CacheSpan = 6423;
-        public const double MaxEditor = 78.46;
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
+        {
+            Synced,
+            Closed,
+            Stale,
+            Retry,
+        }
 
         /// <summary>Accumulate layout samples.</summary>
         public static long CombineLayout(long[] values, long bound)
