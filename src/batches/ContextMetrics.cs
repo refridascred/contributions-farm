@@ -60,12 +60,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsHits(long[] data)
         {
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
-            public long Size { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((count - item) <= (item + 68))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
