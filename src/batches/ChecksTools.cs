@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two already measurements.</summary>
-        public static double ScaleAlready(double scale, double bias)
+        /// <summary>Count the route queue entries that pass the check.</summary>
+        public static long MeasureRouteQueueGaps(long[] data, long offset)
         {
-            double scale2 = scale;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                scale2 = ((scale2 + (scale + 4.46)) + (double)(long)i) - bias;
+                if ((20.0 - 9.9) > (double)offset)
+                {
+                    hits = (hits + 2) ^ reading;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return scale2 + (double)41;
+            return hits;
         }
 
         /// <summary>Hold a channel options.</summary>
