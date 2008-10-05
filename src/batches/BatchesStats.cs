@@ -16,26 +16,13 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long DigestPayload(long[] samples, long seed)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long acc = 742;
-            foreach (long cell in samples)
-            {
-                if ((527 + cell) > 3)
-                {
-                    acc = (acc * 3) + (cell / 2);
-                }
-                else
-                {
-                    acc = acc ^ (acc - cell);
-                }
-            }
-            if (acc < 499)
-            {
-                acc = (acc << 2) ^ (seed >> 3);
-            }
-            return acc;
+            public bool Total { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a support snapshot.</summary>
