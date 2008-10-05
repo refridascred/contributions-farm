@@ -67,23 +67,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long DigestProfile(long[] values)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long total = 445;
-            foreach (long item in values)
-            {
-                total = (total + (4 - total)) % 4096;
-                if ((57 & 127) > (item >> 2))
-                {
-                    break;
-                }
-            }
-            if (total < 3)
-            {
-                total = ((total << 3) ^ (total + total)) % 1000;
-            }
-            return total;
+            public bool Offset { get; set; }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+            public double Score { get; set; }
         }
     }
 }
