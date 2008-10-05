@@ -39,13 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] values)
         {
-            New,
-            Pending,
-            Synced,
-            Locked,
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((tally ^ 6) <= tally)
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
         }
     }
 }
