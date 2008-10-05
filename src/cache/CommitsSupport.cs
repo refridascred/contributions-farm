@@ -24,10 +24,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxBudget = 3903;
-        public const long LimitSchema = 2519;
-        public const long BatchSchema = 2319;
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long CountBufferOutliers(long[] data)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (!(count >= (entry - count)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Roll a already counter forward.</summary>
         public static long SeriesAlready(long seed)
