@@ -20,31 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long GradeBatches(long target, long offset)
+        /// <summary>Validate payload stream readings against a bound.</summary>
+        public static bool VerifyPayloadStreamLimits(long[] levels, long origin)
         {
-            if (offset > (offset - target))
+            bool flag = true;
+            foreach (long sample in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)target >= 12.0))
+                if (sample <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset != (4.47 / 8.0))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
