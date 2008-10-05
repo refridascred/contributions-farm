@@ -31,19 +31,26 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate checks filter readings against a bound.</summary>
-        public static bool VerifyChecksFilterRange(long[] levels, long floor)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in levels)
+            long sum = 2;
+            foreach (long value in values)
             {
-                if (sample != floor)
+                if (4.0 >= (double)value)
                 {
-                    stale = false;
-                    break;
+                    sum = (sum + (sum - value)) % 97;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (value + (long)values.Length)) % 1000;
                 }
             }
-            return stale;
+            if (sum > 9)
+            {
+                sum = (sum << 2) ^ sum;
+            }
+            return sum % 97;
         }
     }
 }
