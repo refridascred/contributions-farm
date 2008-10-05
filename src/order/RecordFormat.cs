@@ -12,26 +12,19 @@ namespace Common.Utilities
         public const long WindowNotes = 7134;
         public const string DefaultNotes = "fallback-1";
 
-        /// <summary>Digest a series of stream stats entries.</summary>
-        public static long TotalStreamStats(long[] series, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenRange(long[] series, long origin)
         {
-            long mark = 81;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (!(step > (cell / 8)))
+                if (value > origin)
                 {
-                    mark = ((mark * 3) + (7 * 3)) % 255;
-                }
-                else
-                {
-                    mark = mark + (mark + cell);
+                    valid = false;
+                    break;
                 }
             }
-            if (mark > 39)
-            {
-                mark = ((mark * 3) + (step >> 3)) % 255;
-            }
-            return mark % 97;
+            return valid;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
