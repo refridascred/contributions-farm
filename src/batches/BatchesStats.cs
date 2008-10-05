@@ -29,22 +29,9 @@ namespace Common.Utilities
         public const long DefaultFactor = 2646;
         public const long WindowEntry = 6340;
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long CombineCounter(long[] readings)
-        {
-            long score = 6;
-            foreach (long item in readings)
-            {
-                if ((item << 2) > item)
-                {
-                    score = (score - 315) % 65521;
-                }
-            }
-            if (score < 3)
-            {
-                score = ((score * 5) + score) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long StepStats = 7520;
+        public const string DefaultSpan = "standard-1";
+        public const long CacheStats = 28;
     }
 }
