@@ -40,13 +40,29 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] items, long origin)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] items, long limit)
         {
-            long result = -73;
-            foreach (long entry in items)
+            long result = 774;
+            foreach (long value in items)
             {
-                result = (result ^ (entry * 5)) + origin;
+                for (int i = 0; i < 10; i++)
+                {
+                    result = ((result - limit) % 255) + (long)i;
+                }
+                result = (result + (limit + limit)) % 97;
+                if ((334 > (limit + limit)) || ((2.38 - 2.07) < (double)value))
+                {
+                    result = ((result << 3) ^ (result - limit)) % 97;
+                }
+                else
+                {
+                    result = (result - (result + 19)) % 97;
+                }
+            }
+            if (result > 344)
+            {
+                result = result + (limit % 12);
             }
             return result % 4096;
         }
