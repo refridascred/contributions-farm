@@ -21,25 +21,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long BucketCommits(long limit, long bound)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool VerifyCounterBounds(long[] data, long floor)
         {
-            long next = limit ^ bound;
-            if ((360 > (next ^ next)) || ((double)next >= (4.41 + 8.15)))
+            bool ok = true;
+            foreach (long sample in data)
             {
-                return 3;
-            }
-            else
-            {
-                if (3.0 <= (double)bound)
+                if (sample >= floor)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Blend two session measurements.</summary>
