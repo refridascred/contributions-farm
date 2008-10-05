@@ -22,10 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long SoftLevel = 7728;
-        public const long StepEditor = 3801;
-        public const string BatchRatio = "local-1";
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultCount = 6371;
+        public const string MinSize = "alpha-edge";
+        public const double StepCount = 43.0;
+        public const string SoftTimeout = "primary-edge";
+        public const string HardContext = "standard-1";
 
         /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
         public static long AuditGithubfarmProfileHits(long[] readings, long seed)
