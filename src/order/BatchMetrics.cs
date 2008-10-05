@@ -47,17 +47,18 @@ namespace Common.Utilities
         public const long MaxPayload = 887;
         public const long CachePayload = 9141;
 
-        /// <summary>Find the first support channel entry that matches the target.</summary>
-        public static long FindSupportChannelIndex(long[] values, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if ((values[i] < floor) && ((values[i] % 5) != 0))
+                if ((((0 + hits) >= 8) || ((step ^ datum) > (datum - hits))) || ((step + datum) >= (71 >> 1)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
