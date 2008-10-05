@@ -32,17 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LookupGithubfarmIndex(long[] data, long target)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double rate, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double bias = rate;
+            if (bias < floor)
             {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
+                bias = bias - rate;
             }
-            return -1;
+            return bias + (bias * 4.66);
         }
 
         /// <summary>Look up the position of a profile batches sample.</summary>
