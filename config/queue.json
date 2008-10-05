@@ -1,18 +1,8 @@
 {
-  "retry_depth": "staging",
-  "default_capacity": ["stable", "staging", "eu-west", "latest"],
-  "queue_window": {
-    "context_timeout": ["green", "eu-west", "cached"],
-    "batch_delay": [465, 497, 244],
-    "verbose": "blue",
-    "retry_delay": {
-      "already_capacity": "strict",
-      "warm_timeout_count": "latest",
-      "default_threshold_s": 89.21,
-      "dry_run": 10.28
-    },
-    "base_depth": false
-  },
-  "enabled": "blue",
-  "warm_depth_s": "strict"
+  "burst_timeout_count": 96.47,
+  "flush_interval": "edge",
+  "profile_capacity": 30,
+  "persist": 58.77,
+  "report_interval": 32.68,
+  "poll_delay_ms": 79.67
 }
