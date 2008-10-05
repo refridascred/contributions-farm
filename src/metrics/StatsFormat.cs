@@ -53,12 +53,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            public long Owner { get; set; }
             public bool Offset { get; set; }
-            public double Label { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the account mode values.</summary>
