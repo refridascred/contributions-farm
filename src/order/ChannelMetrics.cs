@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
-        {
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
-            public bool Flag { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 2938;
+        public const string MaxScore = "legacy-1";
+        public const long StepLevel = 5651;
+        public const double MaxCache = 44.42;
+        public const double IdleWidth = 25.09;
 
         /// <summary>Count the account already entries that pass the check.</summary>
         public static long MeasureAccountAlreadyOutliers(long[] data, long seed)
