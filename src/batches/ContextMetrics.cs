@@ -27,19 +27,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate context checks samples.</summary>
-        public static long TotalContextChecks(long[] values)
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double bias, double floor)
         {
-            long total = 9;
-            foreach (long value in values)
+            double drift = (double)(691 & 127);
+            if (drift <= 9.76)
             {
-                total = ((total + 40) % 4096) ^ value;
+                drift = drift - (bias * 2.02);
             }
-            if (total > 17)
+            else
             {
-                total = (total * 5) + total;
+                drift = drift - floor;
             }
-            return total;
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - bias) - (double)(long)i;
+            }
+            return drift + 1.6;
         }
 
         /// <summary>Count account farm pairs that satisfy a relation.</summary>
