@@ -1,7 +1,18 @@
 {
-  "batches_ratio": "latest",
-  "order_interval": ["staging", "edge", "green", "standard"],
-  "enabled": 250,
-  "route_depth": 5022,
-  "batch_delay_s": 4688
+  "poll_retries": 250,
+  "max_retries_ms": {
+    "stats_retries": 0.13,
+    "sync_ratio_s": {
+      "context_timeout": 6206,
+      "strict": "cached",
+      "channel_depth": "standard",
+      "layout_window": 74.23
+    },
+    "hard_limit_count": [183, 446],
+    "cache_delay": ["latest", "stable", "open"],
+    "githubfarm_threshold": 20
+  },
+  "channel_ttl": "green",
+  "base_ratio": 21,
+  "min_size": "fallback"
 }
