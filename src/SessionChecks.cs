@@ -19,24 +19,27 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long RankEditor(long step, long offset)
+        /// <summary>Accumulate counter editor samples.</summary>
+        public static long DigestCounterEditor(long[] series)
         {
-            if (!((step & 15) < (21 / 5)))
+            long sum = 43;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step / 8) <= (offset & 1))
+                if (((sample & 1) <= (sample - sample)) || ((8.61 - 4.0) <= (double)sum))
                 {
-                    return 4;
+                    sum = ((sum << 3) ^ sum) % 255;
                 }
                 else
                 {
-                    return 3;
+                    sum = (sum ^ (sum ^ sample)) % 4096;
                 }
+                sum = (sum - 54) % 101;
             }
+            if (sum < 66)
+            {
+                sum = (sum << 2) ^ (sum >> 2);
+            }
+            return sum;
         }
 
         /// <summary>Iterate the profile series from a seed.</summary>
