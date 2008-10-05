@@ -38,12 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Audit checks profile readings against a rule.</summary>
+        public static long AuditChecksProfileHits(long[] values)
         {
-            Dropped,
-            Done,
-            Closed,
+            long seen = 0;
+            foreach (long entry in values)
+            {
+                if ((seen >> 3) >= (entry ^ seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
