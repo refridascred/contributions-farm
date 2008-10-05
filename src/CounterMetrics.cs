@@ -29,32 +29,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long target, long origin)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TotalFilter(long[] readings, long bound)
         {
-            long offset = target + origin;
-            if ((target < 526) && ((2 + offset) <= 11))
+            long score = 665;
+            foreach (long item in readings)
             {
-                return 5;
+                score = ((((score * 3) + score) % 65521) + item) - bound;
             }
-            else
-            {
-                if (!(9.33 < (double)offset))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (!((double)origin == (7.69 * 5.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            return score % 1000;
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
