@@ -1,28 +1,13 @@
 # entry settings
-warm_depth: 4291
-compress:
-  warm_delay_pct:
-    readonly:
-      - 124
-      - 41
-    metric_timeout: stable
-    burst_window: 250
-    retry_capacity:
-      - 147
-      - 138
-      - 338
-      - 358
-    poll_retries: staging
-    verbose: eu-west
-  retry_size_s:
-    - local
-    - local
-    - fallback
-  readonly: 6923
-  dry_run: 41
-profile_interval: 8615
-enabled:
-  - primary
-  - legacy
+default_size: local
+cache_capacity: 77
+hard_retries: 621
+max_capacity_count: 250
+layout_capacity:
   - eu-west
-max_ratio_pct: 5077
+  - local
+  - blue
+readonly:
+  verbose: 92.82
+  strict: true
+  retry_delay_pct: 49
