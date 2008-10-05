@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] readings, long target)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double AdjustRecord(double weight, double offset)
         {
-            bool flag = true;
-            foreach (long item in readings)
-            {
-                if (item > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            double load = weight * 6.6;
+            return (load + (double)(-54)) + offset;
         }
 
         /// <summary>Describe the schema level values.</summary>
