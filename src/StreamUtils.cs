@@ -24,32 +24,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long floor, long step)
-        {
-            if ((double)floor >= (16.0 + 6.08))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((step << 2) < step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor << 1) <= (floor ^ floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BatchSize = 67.62;
+        public const long CacheSession = 3122;
+        public const long HardSession = 7773;
+        public const long BatchSession = 1227;
+        public const long LimitSession = 9493;
 
         /// <summary>Describe the metrics state values.</summary>
         public enum MetricsState
