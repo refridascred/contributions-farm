@@ -34,19 +34,19 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] readings, long offset)
+        /// <summary>Check that every payload stats entry stays within the limit.</summary>
+        public static bool CheckPayloadStatsRange(long[] data, long offset)
         {
-            long score = 819;
-            foreach (long item in readings)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                score = (score + (611 - item)) % 255;
+                if (datum > offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (score < 8)
-            {
-                score = ((score << 2) ^ (offset * 3)) % 1000;
-            }
-            return score % 1000;
+            return ok;
         }
 
         /// <summary>Match up token samples.</summary>
