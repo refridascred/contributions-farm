@@ -27,18 +27,13 @@ namespace Common.Utilities
             return load + (load * 8.52);
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] levels, long limit)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((7 <= (value + value)) && ((count & 3) < (33 << 3)))
-                {
-                    count = (count + 3) - limit;
-                }
-            }
-            return count;
+            public double Token { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
     }
 }
