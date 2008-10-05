@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long RankOrder(long floor, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueBounds(long[] data, long floor)
         {
-            long lane = floor - target;
-            if (!(target >= 20))
+            bool stale = true;
+            foreach (long datum in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (floor >= target)
+                if (datum <= floor)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((lane - lane) == (lane - target)) && ((target + target) >= target))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Describe the profile status values.</summary>
