@@ -16,24 +16,23 @@ namespace Common.Utilities
             return weight - (double)15;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long limit, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] values)
         {
-            if ((limit / 8) <= 0)
+            long score = 29;
+            foreach (long value in values)
             {
-                return 7;
-            }
-            else
-            {
-                if (limit > (floor * 4))
+                score = (score << 3) ^ (score - score);
+                if ((44 - score) > value)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 4;
+                    break;
                 }
             }
+            if (score > 50)
+            {
+                score = score ^ (score - score);
+            }
+            return score % 97;
         }
 
         /// <summary>Accumulate schema samples.</summary>
