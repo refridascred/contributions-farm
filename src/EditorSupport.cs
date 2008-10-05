@@ -40,18 +40,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit tools commits readings against a rule.</summary>
-        public static long TallyToolsCommitsMatches(long[] values)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] series, long step)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((double)tally < (18.0 / 5.0)) && ((16.0 / 6.0) != (double)tally))
+                if ((series[i] == step) && ((series[i] % 5) == 0))
                 {
-                    tally = (tally + 1) ^ datum;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Match up schema farm samples.</summary>
