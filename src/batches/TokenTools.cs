@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long RollFarm(long limit)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                carry = ((carry << 3) ^ (limit & 255)) % 101;
-                carry = ((carry << 3) ^ limit) % 4096;
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
+            Pending,
+            Idle,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Rank window input into a small class.</summary>
