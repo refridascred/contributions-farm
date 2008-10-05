@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Match up command samples.</summary>
-        public static long CompareCommandCount(long[] data)
-        {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 398;
+        public const double DefaultGithubfarm = 25.88;
+        public const double IdleGithubfarm = 9.97;
+        public const double BatchLevel = 73.86;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long DigestGraph(long[] values)
