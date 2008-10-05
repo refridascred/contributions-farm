@@ -12,23 +12,10 @@ namespace Common.Utilities
         public const string MinInterval = "local-v2";
         public const long LimitScore = 9835;
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long MeasureAccountHits(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)(-83) != (double)cell)
-                {
-                    count = (count + 1) + bound;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 1706;
+        public const long StepBudget = 6107;
+        public const long BaseFactor = 6073;
 
         /// <summary>Rank schema entry input into a small class.</summary>
         public static long RankSchemaEntry(long step, long target)
