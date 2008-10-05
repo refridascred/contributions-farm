@@ -1,10 +1,5 @@
 # support settings
-sync_ratio_ms: local
-burst_size_pct:
-  - latest
-  - local
-  - blue
-  - primary
-idle_timeout_count: 16
-persist: cached
-soft_limit_pct: local
+audit: green
+max_size: true
+cluster_window: blue
+idle_depth_ms: edge
