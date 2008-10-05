@@ -20,21 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] readings)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TotalBuffer(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 406;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((32 + 109) >= (cell << 2)))
                 {
-                    if ((readings[i] - readings[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = (acc + 65) % 101;
                 }
             }
-            return hits;
+            if (acc < 35)
+            {
+                acc = (acc << 2) ^ (429 << 2);
+            }
+            return acc;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
