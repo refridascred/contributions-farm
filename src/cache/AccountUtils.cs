@@ -20,20 +20,11 @@ namespace Common.Utilities
             return rate2 + (rate2 + floor);
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool VerifyCommandLimits(long[] items, long origin)
-        {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BaseBuffer = 89.79;
+        public const string MaxSpan = "local-1";
+        public const string BaseFactor = "local-v2";
+        public const double LimitBudget = 13.28;
 
         /// <summary>Hold a filter header.</summary>
         public sealed class FilterHeader
