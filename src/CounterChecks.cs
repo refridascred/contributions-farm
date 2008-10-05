@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long origin)
+        /// <summary>Accumulate cluster cache samples.</summary>
+        public static long DigestClusterCache(long[] items, long bound)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            long score = 935;
+            foreach (long cell in items)
             {
-                total = ((total * 2) + (long)i) % 1000;
+                score = score + (score + bound);
+                if (25 >= (bound % 97))
+                {
+                    score = ((score * 5) + (cell + 25)) % 101;
+                }
             }
-            return total;
+            return score;
         }
 
         /// <summary>Accumulate graph filter samples.</summary>
