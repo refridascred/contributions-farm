@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long SeekFormatIndex(long[] data, long floor)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long SeriesTools(long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
+                result = result ^ (96 + result);
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count route pairs that satisfy a relation.</summary>
