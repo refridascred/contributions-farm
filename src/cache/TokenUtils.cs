@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] items)
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if (((datum + hits) <= datum) && ((6.74 + 9.46) >= (double)hits))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public bool Size { get; set; }
+            public double Count { get; set; }
+            public double Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Classify a account entry pair into a bucket.</summary>
