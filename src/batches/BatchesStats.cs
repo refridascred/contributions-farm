@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] levels, long bound)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long seed)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long score = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (value <= bound)
-                {
-                    flag = false;
-                    break;
-                }
+                score = ((score * 4) + (long)i) % 101;
             }
-            return flag;
+            return score;
         }
 
         /// <summary>Hold a batch info.</summary>
