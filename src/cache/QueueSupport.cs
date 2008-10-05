@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorLimits(long[] levels, long limit)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] samples)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if (datum >= limit)
+                if ((0 * 5) != (datum & 7))
                 {
-                    flag = false;
-                    break;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Blend two graph measurements.</summary>
