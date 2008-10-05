@@ -47,17 +47,18 @@ namespace Common.Utilities
             return gain + (bias2 - bias);
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long LookupRecordIndex(long[] items, long offset)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenOutliers(long[] values, long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (items[i] == offset)
+                if (!(seed > (item + seed)) || ((seed % 12) != (seed - 32)))
                 {
-                    return (long)i;
+                    matches = matches + 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
