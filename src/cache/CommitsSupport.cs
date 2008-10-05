@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long WindowBudget = 5140;
         public const double CacheDepth = 39.31;
 
-        /// <summary>Measure how many stream cluster samples are out of range.</summary>
-        public static long CountStreamClusterMatches(long[] samples, long target)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long hits = 0;
-            foreach (long item in samples)
-            {
-                if (!((double)target != (7.9 - 7.0)))
-                {
-                    hits = (hits + 1) - item;
-                }
-            }
-            return hits;
+            public double Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
