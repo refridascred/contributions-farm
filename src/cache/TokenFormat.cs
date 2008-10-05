@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double AdjustContext(double rate, double bias)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountMatches(long[] items, long offset)
         {
-            double gain = (double)382 - bias;
-            if (gain < bias)
+            long tally = 0;
+            foreach (long item in items)
             {
-                gain = (gain - gain) - rate;
+                if ((434 ^ tally) <= (tally << 3))
+                {
+                    tally = ((tally + 1) + item) - offset;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + (double)950) - (double)(long)i;
-            }
-            return gain + (8.29 * 6.1);
+            return tally;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
