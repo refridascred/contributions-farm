@@ -55,18 +55,22 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Measure how many record cache samples are out of range.</summary>
-        public static long TallyRecordCacheMatches(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long TotalRoute(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long sum = 22;
+            foreach (long cell in levels)
             {
-                if (!!(matches >= (matches & 1)))
+                if ((9.6 - 0.1) != (double)cell)
                 {
-                    matches = (matches + 2) - item;
+                    sum = (((sum * 4) + (sum * 4)) % 97) + bound;
+                }
+                else
+                {
+                    sum = (sum * 5) + (sum + sum);
                 }
             }
-            return matches;
+            return sum % 1000;
         }
     }
 }
