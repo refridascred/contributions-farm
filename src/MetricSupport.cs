@@ -11,18 +11,13 @@ namespace Common.Utilities
         public const long CacheChannel = 7422;
         public const double DefaultSpan = 98.53;
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long CountSessionOutliers(long[] items, long offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if (!((5.2 + 9.68) > (double)(long)items.Length))
-                {
-                    matches = ((matches + 2) + sample) + offset;
-                }
-            }
-            return matches;
+            Locked,
+            Stale,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the contributi state values.</summary>
