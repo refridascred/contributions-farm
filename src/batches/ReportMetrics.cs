@@ -31,25 +31,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long SortBuffer(long limit, long seed)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long TallyMetricHits(long[] values, long limit)
         {
-            long next = limit + seed;
-            if ((next * 4) == ((-23) + next))
+            long seen = 0;
+            foreach (long value in values)
             {
-                return 4;
-            }
-            else
-            {
-                if ((next & 127) >= (794 ^ limit))
+                if ((value * 4) <= 58)
                 {
-                    return 7;
+                    seen = (seen + 2) - limit;
                 }
                 else
                 {
-                    return 0;
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
