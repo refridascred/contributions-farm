@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long WindowBudget = 8365;
-        public const long IdleSize = 6921;
-        public const long IdleCommand = 9828;
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorBounds(long[] levels, long step)
+        {
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry < step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the metric class values.</summary>
         public enum MetricClass
