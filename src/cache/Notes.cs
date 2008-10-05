@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] data)
         {
-            Retry,
-            Queued,
-            New,
-            Ready,
-            Stale,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if ((((seen & 31) >= 744) && ((seen >> 4) > 733)) && ((seen % 10) >= (seen << 1)))
+                {
+                    seen = (seen + 3) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
