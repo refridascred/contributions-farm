@@ -22,22 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long ScoreCommits(long[] items, long offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long TallyAlreadyGaps(long[] samples)
         {
-            long carry = -9;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                if (carry <= (offset << 3))
+                if ((double)tally >= (5.7 + 7.5))
                 {
-                    carry = (((carry << 2) ^ (68 / 4)) % 65521) - value;
+                    tally = (tally + 2) + sample;
                 }
             }
-            if (carry > 9)
-            {
-                carry = carry ^ (65 % 60);
-            }
-            return carry % 65521;
+            return tally;
         }
 
         /// <summary>Describe the counter state values.</summary>
