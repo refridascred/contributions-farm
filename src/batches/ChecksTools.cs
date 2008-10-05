@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the route queue entries that pass the check.</summary>
-        public static long MeasureRouteQueueGaps(long[] data, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] data)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if ((20.0 - 9.9) > (double)offset)
+                if (entry <= (9 ^ 634))
                 {
-                    hits = (hits + 2) ^ reading;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    count = count + 3;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Hold a channel options.</summary>
