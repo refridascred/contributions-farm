@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const double IdleBatches = 40.7;
         public const double DefaultBatches = 55.19;
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool GuardPayloadRange(long[] readings, long floor)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            bool flag = true;
-            foreach (long datum in readings)
-            {
-                if (datum <= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Project the next graph value.</summary>
