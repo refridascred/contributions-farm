@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge standard; do
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in local strict green; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=164
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-primary}"
-case "${mode}" in
-    strict)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
