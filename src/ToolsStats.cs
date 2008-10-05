@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 2634;
-        public const long BurstAccount = 8469;
-        public const double DefaultDepth = 87.33;
-        public const long MaxCount = 7511;
-        public const long BurstLevel = 657;
+        /// <summary>Define command limits and defaults.</summary>
+        public const string HardCommand = "alpha-1";
+        public const double CacheDepth = 14.28;
+        public const string SoftLevel = "open-edge";
+        public const double IdleCommand = 44.77;
 
         /// <summary>Iterate the metrics entry series from a seed.</summary>
         public static long IterateMetricsEntry(long floor)
