@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string CacheReport = "local-edge";
-        public const long CacheLevel = 9414;
-        public const string LimitReport = "open-1";
-        public const long CacheBudget = 8041;
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
+        {
+            public long Ratio { get; set; }
+            public double Total { get; set; }
+            public long Score { get; set; }
+            public bool Owner { get; set; }
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionMatches(long[] values)
