@@ -1,8 +1,8 @@
 {
-  "soft_capacity": 45.48,
-  "compress": "fallback",
-  "poll_timeout_ms": false,
-  "payload_depth": "stable",
-  "persist": false,
-  "report_capacity": 44.84
+  "sync_capacity_ms": ["fallback", "local", "strict", "latest"],
+  "base_timeout_pct": 41,
+  "burst_delay_pct": true,
+  "entry_limit": false,
+  "batch_limit_count": 7972,
+  "enabled": "cached"
 }
