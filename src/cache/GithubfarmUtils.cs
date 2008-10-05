@@ -69,38 +69,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long RankFormat(long floor, long origin)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] items, long seed)
         {
-            if (!((origin << 2) < (floor * 4)))
+            long acc = 464;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor < 17.0)
+                if (((-170) >> 3) != (acc & 63))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((origin - floor) < (170 * 2))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((origin >> 4) <= floor)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    acc = (((acc * 3) + 1) % 101) + item;
                 }
             }
+            if (acc < 3)
+            {
+                acc = (acc << 2) ^ (seed / 9);
+            }
+            return acc;
         }
     }
 }
