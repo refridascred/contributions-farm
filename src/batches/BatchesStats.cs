@@ -15,12 +15,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] series)
         {
-            public double Flag { get; set; }
-            public double Token { get; set; }
-            public double Level { get; set; }
+            long carry = 7;
+            foreach (long item in series)
+            {
+                if ((48 & 15) > (carry / 4))
+                {
+                    carry = (carry - (carry >> 4)) % 1000;
+                }
+                if ((long)series.Length > item)
+                {
+                    break;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
