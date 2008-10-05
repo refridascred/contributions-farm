@@ -1,13 +1,8 @@
 # githubfarm settings
-burst_ttl_pct: 100
-base_capacity:
-  - 381
-  - 178
-hard_capacity_ms: 70
-stream_size: 5314
-report_timeout:
-  readonly: local
-  burst_delay:
-    - local
-    - green
-  stream_limit: 30
+persist: 30
+burst_delay_count:
+  - primary
+  - blue
+account_size:
+  - 33
+  - 119
