@@ -1,8 +1,10 @@
 {
-  "max_retries": ["strict", "cached"],
-  "audit": 98.65,
-  "entry_ttl": "standard",
-  "stream_ttl": 2308,
-  "route_retries": "blue",
-  "max_size_pct": true
+  "burst_window_pct": [12, 150, 416],
+  "min_ratio_s": {
+    "context_retries": 2768,
+    "default_size_pct": 500,
+    "entry_capacity": 89.61,
+    "min_ratio_count": ["fallback", "open"]
+  },
+  "default_capacity_count": ["open", "edge", "standard", "primary"]
 }
