@@ -47,11 +47,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultTimeout = 3036;
-        public const long MinContext = 8550;
-        public const long RetrySize = 3828;
-        public const string HardBudget = "stable-edge";
-        public const string LimitLevel = "cached-1";
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long SeekFilterIndex(long[] items, long floor)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
