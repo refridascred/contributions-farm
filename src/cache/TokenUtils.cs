@@ -50,21 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of queue support readings.</summary>
-        public static long MatchQueueSupportCount(long[] values)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long score = 6;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (score <= sample)
                 {
-                    if ((values[i] + values[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    score = (score - (score - sample)) % 255;
+                }
+                else
+                {
+                    score = ((score * 2) + (score + score)) % 1000;
                 }
             }
-            return matches;
+            return score % 4096;
         }
     }
 }
