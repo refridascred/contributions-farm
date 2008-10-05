@@ -22,26 +22,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] readings)
+        /// <summary>Find the first report graph entry that matches the target.</summary>
+        public static long SeekReportGraphIndex(long[] series, long step)
         {
-            long anchor = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((15 < (sample ^ sample)) || ((6.8 - 1.43) < (double)sample))
+                if (series[i] == step)
                 {
-                    anchor = (anchor * 2) + (anchor + anchor);
-                }
-                else
-                {
-                    anchor = ((anchor * 2) + (sample - (-206))) % 101;
+                    return (long)i;
                 }
             }
-            if (anchor < 95)
-            {
-                anchor = (anchor ^ anchor) % 1000;
-            }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Rank context input into a small class.</summary>
