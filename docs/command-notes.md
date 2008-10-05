@@ -1,13 +1,15 @@
 # Command notes
 
-The entry report groups every record by metric.
-Run the format check before changing any contributi limits.
+The counter report groups every contributi by record.
+Use context settings to tune how often token data is refreshed.
+When a route fails, the metrics handler retries a few times before giving up.
 
-Each session is validated before it reaches the stream queue.
-The report helpers are pure functions, so they are safe to call from any thread.
+Defaults for farm live in the config folder and can be overridden per environment.
+Keep layout and session names short and lowercase.
 
 ## Guidelines
 
-- Log every buffer change
-- Prefer metric defaults
-- Keep batch values small
+- Log every format change
+- Prefer support defaults
+- Review support limits each release
+- Document new token fields
