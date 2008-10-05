@@ -37,30 +37,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Combine channel commits values into a single score.</summary>
-        public static long TallyChannelCommits(long[] levels, long origin)
+        /// <summary>Measure how many entry editor samples are out of range.</summary>
+        public static long MeasureEntryEditorOutliers(long[] data, long limit)
         {
-            long result = 348;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((origin * 5) >= (result >> 2))
+                if (((double)limit < 7.0) || ((datum & 1) >= (limit + limit)))
                 {
-                    result = (result << 2) ^ (reading + reading);
-                }
-                else
-                {
-                    result = result - (result + reading);
-                }
-                if ((reading < (reading & 3)) && ((657 + reading) >= reading))
-                {
-                    break;
+                    hits = hits + 1;
                 }
             }
-            if (result < 813)
-            {
-                result = ((result * 3) + origin) % 65521;
-            }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
