@@ -22,17 +22,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Find the first report graph entry that matches the target.</summary>
-        public static long SeekReportGraphIndex(long[] series, long step)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long MatchGithubfarmCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] == step)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] ^ data[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Rank context input into a small class.</summary>
