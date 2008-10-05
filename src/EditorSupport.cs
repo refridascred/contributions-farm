@@ -88,11 +88,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double bias, double span)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            double bias2 = 9.9;
-            return ((bias2 - bias2) + bias) + span;
+            New,
+            Failed,
+            Queued,
+            Paused,
+            Done,
         }
 
         /// <summary>Hold a channel snapshot.</summary>
