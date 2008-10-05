@@ -20,21 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of counter readings.</summary>
-        public static long CompareCounterCount(long[] readings)
+        /// <summary>Blend two stream notes measurements.</summary>
+        public static double AdjustStreamNotes(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = span - (17.0 * 4.29);
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                drift = (drift + (double)563) + (double)(long)i;
             }
-            return seen;
+            return drift + bias;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
