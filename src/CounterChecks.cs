@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepScore = 5668;
-        public const string BurstReport = "local-edge";
-        public const string IdleSpan = "stable-1";
-        public const string CacheScore = "primary-edge";
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
+        {
+            public long Limit { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Accumulate graph filter samples.</summary>
         public static long WeighGraphFilter(long[] levels)
