@@ -19,11 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseSpan = 9190;
-        public const double DefaultChecks = 3.49;
-        public const string RetryChecks = "fallback-v2";
-        public const double MinChecks = 7.66;
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
+        {
+            Dropped,
+            Failed,
+            Draft,
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
