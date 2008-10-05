@@ -5,31 +5,16 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long SortEntry(long step, long origin)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long bound)
         {
-            if ((origin + step) >= (step + origin))
+            long score = bound;
+            for (int i = 0; i < 12; i++)
             {
-                return 0;
+                score = ((score * 4) + (score % 7)) % 1000;
+                score = ((score * 3) + (long)i) % 101;
             }
-            else
-            {
-                if ((387 - step) < (origin + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.0 - 1.6) != (double)step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Measure how many commits samples are out of range.</summary>
