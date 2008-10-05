@@ -51,15 +51,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double SmoothCommits(double ratio, double span)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            double load = (span + span) + 8.9;
-            for (int i = 0; i < 6; i++)
-            {
-                load = ((load - load) - (double)(long)i) - ratio;
-            }
-            return load + 11.0;
+            public double Rank { get; set; }
+            public double Mode { get; set; }
+            public long Offset { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
