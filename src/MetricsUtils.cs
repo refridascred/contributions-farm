@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Derive the next record notes value from a seed.</summary>
-        public static long StepRecordNotes(long target)
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            public long Size { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Count the order batches entries that pass the check.</summary>
