@@ -74,15 +74,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long SeriesContext(long origin)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            long anchor = origin;
-            for (int i = 0; i < 10; i++)
-            {
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public bool Limit { get; set; }
+            public double Mode { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
