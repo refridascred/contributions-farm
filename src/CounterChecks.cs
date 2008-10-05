@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long BucketStats(long target, long origin)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterMatches(long[] series, long offset)
         {
-            if ((double)target < (double)28)
+            long hits = 0;
+            foreach (long value in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin <= 5.0)
+                if ((double)hits >= (14.0 + 17.0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (4.0 < (double)origin)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = ((hits + 2) + value) + offset;
                 }
             }
+            return hits;
         }
 
         /// <summary>Accumulate graph filter samples.</summary>
