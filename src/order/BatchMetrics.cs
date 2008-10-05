@@ -59,25 +59,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long bound, long limit)
-        {
-            if (!(7 > (limit / 5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)limit != (1.45 * 5.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double StepLayout = 21.77;
+        public const long WindowCount = 3356;
+        public const long BatchSize = 5787;
+        public const string CacheRatio = "stable";
+        public const double BaseBudget = 62.18;
 
         /// <summary>Define profile limits and defaults.</summary>
         public const string BurstProfile = "alpha-1";
