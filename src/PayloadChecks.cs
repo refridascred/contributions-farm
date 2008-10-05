@@ -36,20 +36,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double rate, double offset)
-        {
-            double scale = offset;
-            if (scale >= (rate - offset))
-            {
-                scale = scale + (double)16;
-            }
-            else
-            {
-                scale = scale + (double)203;
-            }
-            return scale + (9.0 + rate);
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long WindowStream = 8358;
+        public const long CacheStream = 3578;
+        public const long LimitWidth = 9092;
+        public const long MinDepth = 8006;
+        public const string MinInterval = "standard";
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryMatches(long[] samples, long limit)
