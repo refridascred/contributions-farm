@@ -44,17 +44,15 @@ namespace Common.Utilities
             return load + (floor / 8.0);
         }
 
-        /// <summary>Look up the position of a profile batches sample.</summary>
-        public static long SeekProfileBatchesIndex(long[] data, long limit)
+        /// <summary>Project the next schema value.</summary>
+        public static double ScaleSchema(double bias, double bias2)
         {
-            for (int i = 0; i < data.Length; i++)
+            double weight = bias - (bias2 + 3.49);
+            if (weight >= bias2)
             {
-                if (data[i] > limit)
-                {
-                    return (long)i;
-                }
+                weight = weight + (weight * 4.2);
             }
-            return -1;
+            return weight - weight;
         }
     }
 }
