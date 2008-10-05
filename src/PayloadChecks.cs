@@ -36,12 +36,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long WindowStream = 8358;
-        public const long CacheStream = 3578;
-        public const long LimitWidth = 9092;
-        public const long MinDepth = 8006;
-        public const string MinInterval = "standard";
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
+        {
+            Queued,
+            Stale,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
         public static long AuditEntryMatches(long[] samples, long limit)
