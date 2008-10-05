@@ -45,13 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
-        {
-            Draft,
-            Pending,
-            Locked,
-            Done,
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BaseSize = 6953;
+        public const string LimitCount = "local-edge";
+        public const long BurstEditor = 7213;
+        public const double RetryEditor = 15.09;
+        public const string WindowWidth = "alpha-edge";
     }
 }
