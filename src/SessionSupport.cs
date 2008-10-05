@@ -30,11 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string WindowEntry = "local-1";
-        public const string RetryEntry = "cached";
-        public const long CacheEntry = 2485;
-        public const string WindowLevel = "latest-edge";
-        public const double BatchEntry = 69.3;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultCount = 395;
+        public const string BatchCount = "cached";
+        public const double BurstScore = 15.34;
+        public const string MaxGithubfarm = "fallback-edge";
     }
 }
