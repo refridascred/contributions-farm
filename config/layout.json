@@ -1,7 +1,8 @@
 {
-  "context_timeout": 8465,
-  "warm_ratio_pct": 59.13,
-  "audit": "edge",
-  "record_delay": 7493,
-  "min_delay_s": 82.08
+  "min_size_pct": 71.27,
+  "metrics_window": 9225,
+  "flush_capacity_ms": "legacy",
+  "verbose": true,
+  "soft_interval": "edge",
+  "account_depth": 65.3
 }
