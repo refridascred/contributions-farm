@@ -33,18 +33,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] values)
-        {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if ((2.23 + 3.64) < (double)seen)
-                {
-                    seen = (seen + 2) + cell;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long StepStream = 6100;
+        public const double IdleStream = 0.73;
+        public const long BaseStream = 8180;
     }
 }
