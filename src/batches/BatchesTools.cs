@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long SeriesOrder(long limit)
-        {
-            long acc = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                acc = ((acc * 4) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double RetryAccount = 18.05;
+        public const long DefaultScore = 2787;
+        public const string MaxAccount = "local-v2";
+        public const long HardAccount = 9831;
+        public const long IdleLevel = 551;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string IdleAlready = "cached-v2";
