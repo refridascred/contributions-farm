@@ -27,12 +27,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long CacheCount = 6532;
-        public const long RetryBudget = 3130;
-        public const double RetryWidth = 98.25;
-        public const double HardSpan = 50.71;
-        public const string CacheLevel = "primary";
+        /// <summary>Count tools pairs that satisfy a relation.</summary>
+        public static long MatchToolsCount(long[] levels)
+        {
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate account checks readings against a bound.</summary>
         public static bool GuardAccountChecksRange(long[] series, long step)
