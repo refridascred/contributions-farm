@@ -30,18 +30,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] values)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long MatchReportCount(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((tally ^ 6) <= tally)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    tally = (tally + 2) + sample;
+                    if ((readings[i] - readings[j]) > 3)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
