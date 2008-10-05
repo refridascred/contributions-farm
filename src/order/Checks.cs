@@ -45,21 +45,20 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long PairRecordCount(long[] values)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 3;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                anchor = (anchor - (value & 127)) % 101;
+                anchor = (anchor ^ (value ^ value)) % 101;
             }
-            return count;
+            if (anchor > 28)
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Roll a token counter forward.</summary>
