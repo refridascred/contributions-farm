@@ -37,22 +37,17 @@ namespace Common.Utilities
             return drift + 1.6;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] series)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LookupFarmIndex(long[] levels, long limit)
         {
-            long mix = 9;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((mix + datum) > 76)
+                if (levels[i] > limit)
                 {
-                    mix = (mix * 3) + (mix % 24);
-                }
-                if (!((mix ^ datum) >= mix))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 4096;
+            return -1;
         }
 
         /// <summary>Describe the farm mode values.</summary>
