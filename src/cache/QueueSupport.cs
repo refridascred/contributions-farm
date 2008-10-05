@@ -24,15 +24,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next already support value from a seed.</summary>
-        public static long IterateAlreadySupport(long limit)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long mix = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Retry,
+            Stale,
+            New,
+            Draft,
         }
     }
 }
