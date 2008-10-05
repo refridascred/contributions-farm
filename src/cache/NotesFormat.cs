@@ -19,13 +19,23 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
+        /// <summary>Digest a series of context entries.</summary>
+        public static long DigestContext(long[] levels)
         {
-            Retry,
-            Dropped,
-            Synced,
-            Ready,
+            long score = 83;
+            foreach (long datum in levels)
+            {
+                score = ((score ^ score) % 65521) ^ datum;
+                if (!((score * 4) > (470 ^ (long)levels.Length)))
+                {
+                    score = (score + score) % 101;
+                }
+            }
+            if (score > (-42))
+            {
+                score = ((score << 3) ^ score) % 255;
+            }
+            return score;
         }
 
         /// <summary>Check that every window session entry stays within the limit.</summary>
