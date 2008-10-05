@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two session schema measurements.</summary>
-        public static double SmoothSessionSchema(double scale, double offset)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] levels)
         {
-            double rate = offset;
-            if (rate > (rate - scale))
+            long tally = 0;
+            foreach (long value in levels)
             {
-                rate = rate + scale;
+                if (((172 * 2) == (value >> 3)) || ((value << 3) == (value % 10)))
+                {
+                    tally = tally + 2;
+                }
             }
-            else
-            {
-                rate = rate + scale;
-            }
-            return rate - 7.89;
+            return tally;
         }
 
         /// <summary>Iterate the graph series from a seed.</summary>
