@@ -12,19 +12,13 @@ namespace Common.Utilities
             return (weight2 + (weight2 * 14.0)) + bias;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ScaleSupport(double scale, double offset)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            double drift = (3.62 * 6.27) * 3.33;
-            if (drift > (scale - drift))
-            {
-                drift = (drift - drift) - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift + (7.73 / 7.0);
+            New,
+            Idle,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Derive the next contributi value from a seed.</summary>
