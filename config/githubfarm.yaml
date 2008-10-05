@@ -1,22 +1,8 @@
 # githubfarm settings
-soft_ratio:
-  audit: eu-west
-  default_ratio_ms:
-    burst_limit_pct: legacy
-    min_threshold_pct: false
-    persist: 42
-    graph_limit:
-      - primary
-      - standard
-      - green
-      - standard
-    warm_limit_pct: legacy
-    queue_threshold: primary
-  route_depth: stable
-  poll_threshold_count: open
-poll_delay_pct: edge
-hard_interval_s:
-  - 87
-  - 66
-  - 45
-farm_capacity: 62.22
+cache_retries: true
+format_capacity: primary
+checks_ratio: cached
+soft_interval_ms:
+  format_interval: true
+  persist: fallback
+  audit: 64
