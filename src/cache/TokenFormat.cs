@@ -16,31 +16,12 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long offset, long floor)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            if (offset >= (floor * 3))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((offset >= (offset / 7)) || (6.18 <= (double)floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((offset ^ floor) < floor)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Stamp { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the metrics phase values.</summary>
