@@ -35,38 +35,19 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long target, long step)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchLimits(long[] data, long step)
         {
-            if ((double)target < (7.64 * 7.0))
+            bool found = true;
+            foreach (long sample in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)target <= 0.45)
+                if (sample < step)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((target >> 5) <= (step + target)) || ((target % 97) < (target + step)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step - step) < (target + 22))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
