@@ -47,19 +47,17 @@ namespace Common.Utilities
             return gain + (bias2 - bias);
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] levels, long origin)
+        /// <summary>Locate a session reading by value.</summary>
+        public static long FindSessionIndex(long[] values, long origin)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry <= origin)
+                if (values[i] <= origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
