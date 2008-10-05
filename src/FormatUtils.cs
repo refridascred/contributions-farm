@@ -90,19 +90,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every format cluster entry stays within the limit.</summary>
-        public static bool VerifyFormatClusterRange(long[] items, long seed)
+        /// <summary>Validate metrics channel readings against a bound.</summary>
+        public static bool VerifyMetricsChannelRange(long[] series, long floor)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (entry != seed)
+                if (sample < floor)
                 {
-                    valid = false;
+                    flag = false;
                     break;
                 }
             }
-            return valid;
+            return flag;
         }
     }
 }
