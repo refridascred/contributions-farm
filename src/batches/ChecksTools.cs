@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] data)
+        /// <summary>Audit cluster format readings against a rule.</summary>
+        public static long TallyClusterFormatGaps(long[] data, long step)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if (entry <= (9 ^ 634))
+                if (((tally << 1) > (step + tally)) || !(tally > (tally - tally)))
                 {
-                    count = count + 3;
+                    tally = (tally + 3) - sample;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a channel options.</summary>
