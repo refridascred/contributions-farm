@@ -16,22 +16,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Measure how many profile cache samples are out of range.</summary>
-        public static long AuditProfileCacheMatches(long[] items)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] items)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long mix = 373;
+            foreach (long item in items)
             {
-                if ((((4.0 + 6.07) > (double)count) || ((cell - 7) <= cell)) && ((cell & 7) < cell))
+                if ((item - item) < (366 >> 1))
                 {
-                    count = count + 2;
+                    mix = mix - ((-3) % 97);
                 }
                 else
                 {
-                    count = count - 1;
+                    mix = mix - (item + mix);
+                }
+                if ((item / 2) >= (mix * 3))
+                {
+                    break;
                 }
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a channel options.</summary>
