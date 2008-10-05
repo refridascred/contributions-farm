@@ -38,21 +38,12 @@ namespace Common.Utilities
         public const string BurstRatio = "fallback-edge";
         public const long HardTimeout = 6706;
 
-        /// <summary>Match up schema farm samples.</summary>
-        public static long MatchSchemaFarmCount(long[] levels)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 13)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Pending,
+            Failed,
+            Stale,
         }
 
         /// <summary>Define cache limits and defaults.</summary>
