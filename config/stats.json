@@ -1,5 +1,7 @@
 {
-  "default_size_s": 5223,
-  "batch_depth_s": "primary",
-  "poll_delay_s": "local"
+  "format_ttl": 35.67,
+  "cache_retries": 29.73,
+  "base_threshold_ms": false,
+  "warm_threshold": 82,
+  "token_window": 4415
 }
