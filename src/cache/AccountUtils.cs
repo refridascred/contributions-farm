@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long SeekGithubfarmIndex(long[] series, long step)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] series, long limit)
         {
             for (int i = 0; i < series.Length; i++)
             {
-                if (series[i] == step)
+                if ((series[i] == limit) && ((series[i] % 3) == 0))
                 {
                     return (long)i;
                 }
