@@ -10,22 +10,39 @@ namespace Common.Utilities
         public const long DefaultToken = 1639;
         public const string MaxToken = "alpha-edge";
 
-        /// <summary>Audit commits token readings against a rule.</summary>
-        public static long TallyCommitsTokenGaps(long[] values)
+        /// <summary>Classify a metric command pair into a bucket.</summary>
+        public static long BucketMetricCommand(long limit, long step)
         {
-            long seen = 0;
-            foreach (long value in values)
+            long diff = limit + step;
+            if ((7.1 * 9.0) < (double)step)
             {
-                if ((double)value != (2.45 + 11.0))
+                return 5;
+            }
+            else
+            {
+                if ((diff + step) < limit)
                 {
-                    seen = seen + 2;
+                    return 3;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    if (((limit / 2) < (step ^ 8)) || ((step & 127) > (limit - step)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((step < 18) && ((diff << 1) < (limit & 3)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a metrics header.</summary>
