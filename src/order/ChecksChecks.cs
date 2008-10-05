@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Match up batch counter samples.</summary>
-        public static long MatchBatchCounterCount(long[] readings)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the filter level values.</summary>
