@@ -63,32 +63,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long SortMetrics(long target, long origin)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long lane = target ^ origin;
-            if (target >= (origin + target))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((lane - origin) <= (505 % 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (lane > (lane >> 1))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Ready,
+            Active,
+            Done,
+            Locked,
         }
     }
 }
