@@ -45,19 +45,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] items, long step)
-        {
-            long hits = 0;
-            foreach (long datum in items)
-            {
-                if ((((0 + hits) >= 8) || ((step ^ datum) > (datum - hits))) || ((step + datum) >= (71 >> 1)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string BatchSpan = "legacy-edge";
+        public const long IdleQueue = 7111;
+        public const long WindowQueue = 8974;
+        public const double MinQueue = 15.82;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double StepLayout = 21.77;
