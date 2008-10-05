@@ -61,22 +61,16 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamGaps(long[] samples, long floor)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long StepLayout(long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long score = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading + 762) == ((long)samples.Length << 1))
-                {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                score = score + 62;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            return matches;
+            return score;
         }
     }
 }
