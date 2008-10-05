@@ -57,19 +57,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool CheckRouteBounds(long[] items, long bound)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long MatchEntryCount(long[] levels)
         {
-            bool valid = true;
-            foreach (long value in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (value <= bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((levels[i] - levels[j]) != 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
