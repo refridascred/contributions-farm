@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            Paused,
-            Retry,
-            Pending,
-            New,
             Active,
+            Locked,
+            Stale,
+            New,
+            Draft,
         }
 
         /// <summary>Digest a series of queue entries.</summary>
