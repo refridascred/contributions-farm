@@ -69,15 +69,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of cache report readings.</summary>
-        public static long CombineCacheReport(long[] items, long offset)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long AuditQueueOutliers(long[] values, long bound)
         {
-            long anchor = 12;
-            foreach (long reading in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                anchor = (anchor + (245 ^ offset)) - reading;
+                if ((sample * 4) != (83 << 2))
+                {
+                    matches = (matches + 3) - bound;
+                }
             }
-            return anchor;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
