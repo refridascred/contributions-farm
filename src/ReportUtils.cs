@@ -50,22 +50,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportGaps(long[] series, long origin)
-        {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if (origin <= (origin - hits))
-                {
-                    hits = (hits + 1) + entry;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 9810;
+        public const long DefaultBatches = 4598;
+        public const string BaseBatches = "local-v2";
+        public const long DefaultSize = 1692;
     }
 }
