@@ -18,22 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterGaps(long[] samples)
+        /// <summary>Blend two already measurements.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            long tally = 0;
-            foreach (long cell in samples)
+            double bias = ratio * 3.3;
+            if (bias < (floor * 1.35))
             {
-                if (2 >= cell)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = bias - (bias / 3.0);
             }
-            return tally;
+            return bias + (double)1;
         }
 
         /// <summary>Hold a context options.</summary>
