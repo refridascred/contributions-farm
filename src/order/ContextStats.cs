@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long BaseFactor = 1740;
         public const string HardFactor = "alpha";
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
-        {
-            public string Weight { get; set; } = "";
-            public long Size { get; set; }
-            public double Level { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double IdleLevel = 9.42;
+        public const long HardStream = 8849;
+        public const string BaseRatio = "legacy-v2";
+        public const long IdleStream = 7427;
+        public const long MinTimeout = 8283;
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long ClassifyFormat(long origin, long offset)
