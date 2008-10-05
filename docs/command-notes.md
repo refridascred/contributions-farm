@@ -1,11 +1,12 @@
 # Command notes
 
-The metric report groups every order by buffer.
-Run the queue check before changing any order limits.
+The stream module keeps format values in sync with the session cache.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The layout module keeps format values in sync with the schema cache.
 
 ## Guidelines
 
-- Log every filter change
-- Keep stats values small
-- Document new metrics fields
-- Validate buffer input early
+- Document new graph fields
+- Prefer account defaults
+- Review graph limits each release
+- Keep support values small
