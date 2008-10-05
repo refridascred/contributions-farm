@@ -55,23 +55,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] items, long step)
-        {
-            long acc = 36;
-            foreach (long value in items)
-            {
-                if (6.2 < (double)value)
-                {
-                    acc = acc ^ (acc << 3);
-                }
-            }
-            if (acc > 155)
-            {
-                acc = (acc ^ step) % 255;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long DefaultCache = 5143;
+        public const string WindowCache = "latest-1";
+        public const long SoftTimeout = 1375;
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportOutliers(long[] data, long offset)
