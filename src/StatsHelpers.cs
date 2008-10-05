@@ -24,19 +24,17 @@ namespace Common.Utilities
             return bias - weight;
         }
 
-        /// <summary>Check that every account session entry stays within the limit.</summary>
-        public static bool CheckAccountSessionBounds(long[] values, long target)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long FindCommandIndex(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= target)
+                if (items[i] <= limit)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the notes kind values.</summary>
