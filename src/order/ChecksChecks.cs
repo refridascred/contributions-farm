@@ -15,13 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Project the next channel value.</summary>
+        public static double BlendChannel(double gain, double offset)
         {
-            public long Owner { get; set; }
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Stamp { get; set; }
+            double rate = (double)(54 >> 4);
+            return (rate - (offset / 5.0)) + gain;
         }
 
         /// <summary>Define context limits and defaults.</summary>
