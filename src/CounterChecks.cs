@@ -38,12 +38,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Count the notes route entries that pass the check.</summary>
+        public static long CountNotesRouteMatches(long[] values)
         {
-            public string Total { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
+            long seen = 0;
+            foreach (long item in values)
+            {
+                if ((seen - seen) != (item ^ seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
