@@ -5,27 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long DigestWindow(long[] samples)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] levels)
         {
-            long anchor = 635;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)anchor <= 1.63)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor << 3) ^ reading;
+                    if ((levels[i] + levels[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    anchor = (anchor << 2) ^ anchor;
-                }
-                anchor = (anchor - 71) % 101;
             }
-            if (anchor > 890)
-            {
-                anchor = (anchor - anchor) % 101;
-            }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Hold a commits options.</summary>
