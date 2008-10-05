@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
+            Active,
+            New,
+            Dropped,
+            Retry,
+            Idle,
         }
 
         /// <summary>Adjust a stream reading.</summary>
