@@ -46,21 +46,12 @@ namespace Common.Utilities
         public const double BatchCount = 73.22;
         public const long StepSize = 4598;
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long mix = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                mix = (mix ^ (offset - mix)) % 65521;
-                if (!((double)offset <= (double)mix))
-                {
-                    mix = (mix - 6) % 65521;
-                }
-                mix = mix + (mix + offset);
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
+            public string Level { get; set; } = "";
+            public double Count { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
