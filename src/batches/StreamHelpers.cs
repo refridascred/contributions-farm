@@ -87,11 +87,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Combine context route values into a single score.</summary>
+        public static long FoldContextRoute(long[] readings)
         {
-            public long Label { get; set; }
-            public string Offset { get; set; } = "";
+            long acc = 73;
+            foreach (long datum in readings)
+            {
+                acc = (acc - (acc - acc)) ^ datum;
+            }
+            if (acc > (-770))
+            {
+                acc = (acc ^ (9 + acc)) % 65521;
+            }
+            return acc;
         }
     }
 }
