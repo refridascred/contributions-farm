@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double scale, double span)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long SeriesTools(long limit)
         {
-            double bias = (double)(3 >> 4);
-            return ((bias + (double)38) + scale) + span;
+            long sum = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = (sum - sum) % 1000;
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
         }
 
         /// <summary>Fold a list of report readings.</summary>
