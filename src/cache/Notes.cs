@@ -39,10 +39,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MaxTimeout = 2357;
-        public const double BatchEditor = 74.44;
-        public const long WindowDepth = 3405;
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
+        {
+            Stale,
+            Closed,
+            Ready,
+            Idle,
+        }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
         public static bool VerifyBatchesBounds(long[] readings, long target)
