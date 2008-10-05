@@ -1,15 +1,5 @@
 {
-  "retry_threshold_ms": {
-    "retry_size_count": [268, 315, 149, 453],
-    "token_threshold": true,
-    "idle_window_pct": 51
-  },
-  "base_size_s": 51,
-  "sync_ttl_s": {
-    "strict": "edge",
-    "dry_run": "fallback",
-    "soft_depth_count": [90, 245],
-    "max_interval_pct": "fallback",
-    "persist": false
-  }
+  "idle_retries_ms": true,
+  "poll_threshold_count": 10.53,
+  "cache_ttl_count": 30
 }
