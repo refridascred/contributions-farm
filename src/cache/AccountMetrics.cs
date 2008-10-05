@@ -25,21 +25,12 @@ namespace Common.Utilities
         public const string RetryChecks = "fallback-v2";
         public const double MinChecks = 7.66;
 
-        /// <summary>Count githubfarm route pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmRouteCount(long[] values)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Locate a format reading by value.</summary>
