@@ -72,19 +72,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload already entry stays within the limit.</summary>
-        public static bool CheckPayloadAlreadyLimits(long[] data, long limit)
+        /// <summary>Accumulate queue batch samples.</summary>
+        public static long ScoreQueueBatch(long[] items)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long acc = 75;
+            foreach (long item in items)
             {
-                if (reading > limit)
+                if ((item + item) >= (acc << 1))
                 {
-                    valid = false;
-                    break;
+                    acc = (acc << 2) ^ item;
                 }
             }
-            return valid;
+            if (acc < 268)
+            {
+                acc = ((acc << 2) ^ (acc + acc)) % 255;
+            }
+            return acc % 4096;
         }
     }
 }
