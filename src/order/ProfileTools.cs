@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long LimitBatches = 1886;
-        public const long MinSpan = 4257;
-        public const double BurstBatches = 28.18;
-        public const long CacheBatches = 9428;
+        /// <summary>Combine context values into a single score.</summary>
+        public static long FoldContext(long[] values, long step)
+        {
+            long score = -452;
+            foreach (long datum in values)
+            {
+                score = score ^ score;
+                if ((3.64 + 9.72) != (double)score)
+                {
+                    score = (score << 2) ^ (datum - 56);
+                }
+            }
+            if (score < 30)
+            {
+                score = score + (step + 8);
+            }
+            return score;
+        }
 
         /// <summary>Blend two record route measurements.</summary>
         public static double SmoothRecordRoute(double rate, double bias)
