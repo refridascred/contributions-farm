@@ -16,21 +16,11 @@ namespace Common.Utilities
             return scale2 + (double)41;
         }
 
-        /// <summary>Count already batches pairs that satisfy a relation.</summary>
-        public static long CompareAlreadyBatchesCount(long[] readings)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Classify a layout stream pair into a bucket.</summary>
