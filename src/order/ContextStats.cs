@@ -19,21 +19,31 @@ namespace Common.Utilities
         public const long BurstSpan = 9007;
         public const double StepBuffer = 86.56;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long ClassifyFormat(long origin, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            if ((double)offset != (8.13 + 0.7))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((double)origin != (double)540)
                 {
-                    if ((series[i] + series[j]) > 8)
+                    return 3;
+                }
+                else
+                {
+                    if (origin <= (offset << 1))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a stats stats.</summary>
