@@ -46,11 +46,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public bool Label { get; set; }
-            public long Offset { get; set; }
+            public bool Owner { get; set; }
+            public string Offset { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many record cache samples are out of range.</summary>
