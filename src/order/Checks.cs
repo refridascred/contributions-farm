@@ -29,22 +29,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] levels)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            long hits = 0;
-            foreach (long reading in levels)
-            {
-                if ((double)reading < (double)803)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Queued,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Adjust a entry reading.</summary>
