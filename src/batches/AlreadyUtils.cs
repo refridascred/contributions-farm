@@ -67,18 +67,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] samples, long origin)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((matches > (matches << 3)) && ((8.8 - 9.59) > (double)matches))
+                if (value > offset)
                 {
-                    matches = ((matches + 3) + reading) - origin;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
