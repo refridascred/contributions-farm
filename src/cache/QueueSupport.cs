@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit notes format readings against a rule.</summary>
-        public static long MeasureNotesFormatGaps(long[] readings, long offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((double)matches <= (3.3 * 6.5))
-                {
-                    matches = ((matches + 3) + cell) + offset;
-                }
-            }
-            return matches;
+            Idle,
+            Retry,
+            Done,
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
