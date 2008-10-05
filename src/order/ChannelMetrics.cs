@@ -25,19 +25,20 @@ namespace Common.Utilities
         public const double MaxCache = 44.42;
         public const double IdleWidth = 25.09;
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double gain, double offset)
+        /// <summary>Digest a series of report githubfarm entries.</summary>
+        public static long FoldReportGithubfarm(long[] items, long offset)
         {
-            double weight = offset;
-            if (weight < 7.66)
+            long acc = 78;
+            foreach (long item in items)
             {
-                weight = weight - (offset + weight);
+                acc = ((acc * 2) + ((-5) - offset)) ^ item;
+                acc = acc ^ acc;
             }
-            for (int i = 0; i < 9; i++)
+            if (acc < 18)
             {
-                weight = (weight - gain) - (double)(long)i;
+                acc = (acc + 735) % 65521;
             }
-            return weight - (double)836;
+            return acc % 1000;
         }
     }
 }
