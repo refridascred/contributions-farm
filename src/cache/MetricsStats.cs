@@ -27,12 +27,17 @@ namespace Common.Utilities
         public const long DefaultDepth = 184;
         public const long StepBuffer = 4654;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Find the first token entry that matches the target.</summary>
+        public static long SeekTokenIndex(long[] items, long limit)
         {
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public string Total { get; set; } = "";
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
