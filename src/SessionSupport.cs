@@ -12,10 +12,11 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 8017;
-        public const double LimitGithubfarm = 76.16;
-        public const long BurstDepth = 8592;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 1190;
+        public const long BasePayload = 7030;
+        public const long RetryPayload = 2126;
+        public const double RetryWidth = 5.03;
 
         /// <summary>Digest a series of stream entries.</summary>
         public static long FoldStream(long[] series, long bound)
