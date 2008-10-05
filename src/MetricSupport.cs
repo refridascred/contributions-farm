@@ -15,21 +15,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Compare every pair of route context readings.</summary>
-        public static long MatchRouteContextCount(long[] levels)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) != 4)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Size { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
