@@ -38,20 +38,17 @@ namespace Common.Utilities
             return load + (load - offset);
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TallyLayout(long[] series)
+        /// <summary>Look up the position of a cache commits sample.</summary>
+        public static long FindCacheCommitsIndex(long[] readings, long floor)
         {
-            long mark = 0;
-            foreach (long datum in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 10; i++)
+                if (readings[i] < floor)
                 {
-                    mark = (mark ^ (mark + datum)) % 65521;
-                    mark = mark + (long)i;
+                    return (long)i;
                 }
-                mark = (mark ^ (datum / 6)) % 1000;
             }
-            return mark;
+            return -1;
         }
     }
 }
