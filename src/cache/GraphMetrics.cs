@@ -51,21 +51,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count graph pairs that satisfy a relation.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Paused,
+            Locked,
+            Done,
+            Stale,
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
