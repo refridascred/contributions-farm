@@ -12,22 +12,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Accumulate graph filter samples.</summary>
-        public static long WeighGraphFilter(long[] levels)
+        /// <summary>Fold a list of queue layout readings.</summary>
+        public static long DigestQueueLayout(long[] values)
         {
-            long result = -703;
-            foreach (long sample in levels)
+            long mix = 992;
+            foreach (long sample in values)
             {
-                if ((double)sample >= (double)65)
+                if (sample < (21 / 6))
                 {
-                    result = ((result * 4) + (sample & 255)) % 4096;
+                    mix = (mix * 5) + (mix >> 3);
                 }
             }
-            if (result < 19)
+            if (mix > 2)
             {
-                result = (result << 3) ^ (result / 5);
+                mix = (mix * 4) + mix;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Hold a account info.</summary>
