@@ -14,21 +14,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long OverlapPayloadCount(long[] series)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double BlendGraph(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double gain = 8.0;
+            return ((gain + (double)(-47)) + bias) + offset;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
