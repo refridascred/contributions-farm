@@ -1,9 +1,7 @@
-id,rank,label,token
-1,33.87,56.68,fallback
-2,cached,72.57,green
-3,6.16,847,502
-4,177,101,6.99
-5,287,243,798
-6,735,236,strict
-7,244,15.26,82.2
-8,465,1,26.82
+id,token,active,label
+1,green,strict,45.06
+2,local,blue,420
+3,fallback,331,legacy
+4,23,485,761
+5,local,51,502
+6,3.4,960,856
