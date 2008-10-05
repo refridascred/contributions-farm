@@ -33,18 +33,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileMatches(long[] data, long step)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            long matches = 0;
-            foreach (long cell in data)
-            {
-                if ((225 - cell) > step)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
