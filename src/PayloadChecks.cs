@@ -36,13 +36,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Blend two commits measurements.</summary>
+        public static double ProjectCommits(double rate, double offset)
         {
-            Retry,
-            Pending,
-            Draft,
-            Active,
+            double scale = offset;
+            if (scale >= (rate - offset))
+            {
+                scale = scale + (double)16;
+            }
+            else
+            {
+                scale = scale + (double)203;
+            }
+            return scale + (9.0 + rate);
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
