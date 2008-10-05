@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double DefaultLayout = 14.77;
-        public const long HardSize = 855;
-        public const long LimitBudget = 7100;
-        public const string RetryInterval = "local-1";
-        public const long StepLayout = 7288;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long seed)
+        {
+            long state = seed;
+            for (int i = 0; i < 15; i++)
+            {
+                state = (state - state) % 1000;
+                state = ((state * 3) + (long)i) % 1000;
+            }
+            return state;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long BucketMetric(long offset, long target)
