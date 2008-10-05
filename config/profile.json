@@ -1,8 +1,8 @@
 {
-  "persist": 17.0,
-  "default_ratio_s": 21.78,
-  "flush_delay_s": false,
-  "hard_timeout": false,
-  "hard_depth_pct": "fallback",
-  "sync_timeout_s": false
+  "min_size_pct": "standard",
+  "cache_size_s": "edge",
+  "retry_threshold": "green",
+  "command_ttl": "strict",
+  "hard_ttl_count": true,
+  "tools_threshold": [399, 483, 412, 119]
 }
