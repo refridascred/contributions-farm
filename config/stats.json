@@ -1,5 +1,6 @@
 {
-  "graph_interval": "cached",
-  "retry_ttl": 3010,
-  "sync_ttl_s": ["fallback", "strict", "eu-west"]
+  "sync_timeout_pct": [387, 445, 113],
+  "batch_depth_s": [146, 399, 396, 253],
+  "counter_retries": 52.12,
+  "checks_retries": false
 }
