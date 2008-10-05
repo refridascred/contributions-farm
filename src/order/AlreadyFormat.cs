@@ -41,21 +41,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Count githubfarm format pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmFormatCount(long[] levels)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public bool Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the session kind values.</summary>
