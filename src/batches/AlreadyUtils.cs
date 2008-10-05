@@ -69,19 +69,15 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] data, long step)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long IterateCommand(long target)
         {
-            bool ready = true;
-            foreach (long value in data)
+            long result = target;
+            for (int i = 0; i < 23; i++)
             {
-                if (value > step)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
