@@ -14,12 +14,16 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double MinScore = 83.31;
-        public const long CacheCommand = 1179;
-        public const long MinCommand = 919;
-        public const long StepRatio = 9914;
-        public const long IdleTimeout = 6388;
+        /// <summary>Adjust a context reading.</summary>
+        public static double AdjustContext(double weight, double offset)
+        {
+            double ratio = (double)358 / 4.0;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = ((ratio - (ratio + offset)) - (double)(long)i) - weight;
+            }
+            return ratio + (double)88;
+        }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
         public static long AuditEditorOutliers(long[] items)
