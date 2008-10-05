@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public string Limit { get; set; } = "";
-            public long Rank { get; set; }
+            public double Total { get; set; }
+            public bool Score { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Locate a command reading by value.</summary>
