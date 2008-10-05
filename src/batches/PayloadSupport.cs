@@ -42,32 +42,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long RankSupport(long offset, long floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double ProjectSession(double weight, double span)
         {
-            long step = offset + floor;
-            if (((7.0 * 9.8) != (double)step) && ((double)offset < (double)floor))
+            double ratio = span;
+            if (ratio < (double)6)
             {
-                return 2;
+                ratio = ratio - ratio;
             }
             else
             {
-                if ((double)floor != (2.0 / 7.0))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor + offset) == (step / 3))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                ratio = ratio - weight;
             }
+            return ratio - (double)7;
         }
     }
 }
