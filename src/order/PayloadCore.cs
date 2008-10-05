@@ -49,30 +49,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] values)
-        {
-            long total = 6;
-            foreach (long item in values)
-            {
-                total = total ^ (349 / 3);
-                if ((double)total != (0.6 / 5.0))
-                {
-                    total = (total ^ ((long)values.Length + total)) % 101;
-                    break;
-                }
-                else
-                {
-                    total = (total + (item * 2)) % 65521;
-                }
-                total = ((total * 3) + ((-6) >> 2)) % 97;
-            }
-            if (total > 926)
-            {
-                total = (total + total) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long CacheInterval = 2254;
+        public const long BatchGraph = 4491;
+        public const long LimitGraph = 6;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyBounds(long[] samples, long seed)
