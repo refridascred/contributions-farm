@@ -22,14 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Digest a series of tools notes entries.</summary>
+        public static long FoldToolsNotes(long[] series)
         {
-            Locked,
-            Synced,
-            Pending,
-            Closed,
-            Dropped,
+            long mix = 617;
+            foreach (long sample in series)
+            {
+                if (((sample - sample) >= mix) && ((mix & 7) >= (sample - mix)))
+                {
+                    mix = mix ^ (mix + sample);
+                }
+            }
+            if (mix > 498)
+            {
+                mix = (mix - (mix + mix)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Accumulate payload samples.</summary>
