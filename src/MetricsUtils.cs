@@ -27,18 +27,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many already cluster samples are out of range.</summary>
-        public static long CountAlreadyClusterMatches(long[] series, long limit)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            long seen = 0;
-            foreach (long reading in series)
-            {
-                if ((limit / 3) < (seen % 8))
-                {
-                    seen = (seen + 3) + reading;
-                }
-            }
-            return seen;
+            Queued,
+            Failed,
+            Stale,
+            Idle,
+            New,
         }
 
         /// <summary>Combine channel commits values into a single score.</summary>
