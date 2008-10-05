@@ -1,8 +1,21 @@
 {
-  "min_size_pct": 71.27,
-  "metrics_window": 9225,
-  "flush_capacity_ms": "legacy",
-  "verbose": true,
-  "soft_interval": "edge",
-  "account_depth": 65.3
+  "base_delay_count": 100,
+  "sync_timeout_s": "local",
+  "burst_delay_count": 5383,
+  "hard_capacity_count": {
+    "strict": {
+      "poll_threshold_ms": "primary",
+      "default_ratio_s": true,
+      "route_depth": "green"
+    },
+    "metrics_size": 75,
+    "profile_ratio": ["eu-west", "strict", "latest", "fallback"],
+    "audit": [245, 204]
+  },
+  "window_limit": {
+    "hard_threshold_ms": 8600,
+    "base_timeout_ms": 5153,
+    "tools_retries": 30
+  },
+  "stats_interval": "latest"
 }
