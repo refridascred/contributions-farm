@@ -40,21 +40,26 @@ namespace Common.Utilities
         public const long BatchLayout = 2454;
         public const long BatchLevel = 8857;
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] values)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = -70;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (datum >= (sum << 3))
                 {
-                    if ((values[i] ^ values[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
+                    sum = ((sum << 3) ^ datum) % 1000;
+                }
+                else
+                {
+                    sum = (sum * 4) + sum;
                 }
             }
-            return tally;
+            if (sum > 2)
+            {
+                sum = ((sum * 2) + sum) % 4096;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Match up profile samples.</summary>
