@@ -19,11 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double LimitSpan = 13.91;
-        public const long IdleLevel = 548;
-        public const long DefaultGithubfarm = 7743;
-        public const long RetrySize = 3271;
+        /// <summary>Compare every pair of profile readings.</summary>
+        public static long OverlapProfileCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many record support samples are out of range.</summary>
         public static long MeasureRecordSupportMatches(long[] samples)
