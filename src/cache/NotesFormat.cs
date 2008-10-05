@@ -18,25 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank tools filter input into a small class.</summary>
-        public static long ClassifyToolsFilter(long target, long bound)
+        /// <summary>Scale a filter figure with a bias.</summary>
+        public static double SmoothFilter(double gain, double offset)
         {
-            long lane = target + bound;
-            if ((double)target < (6.3 * 0.4))
+            double gain2 = gain + offset;
+            for (int i = 0; i < 9; i++)
             {
-                return 0;
+                gain2 = (gain2 + offset) + (double)(long)i;
             }
-            else
-            {
-                if (((lane << 3) < lane) && (bound <= (bound ^ target)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            return gain2 + (double)5;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
