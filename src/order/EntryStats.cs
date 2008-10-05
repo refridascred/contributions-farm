@@ -32,39 +32,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long RankAlready(long offset, long seed)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long CountCommitsMatches(long[] samples, long floor)
         {
-            long step = offset - seed;
-            if ((step % 60) < (step + step))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)step != (double)seed) && (seed <= (997 * 2)))
+                if ((sample + (long)samples.Length) < sample)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (step > (seed + offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step > (seed & 1))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = (count + 2) + floor;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
