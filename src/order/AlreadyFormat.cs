@@ -54,19 +54,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] readings, long bound)
-        {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long RetryWidth = 5004;
+        public const long BaseToken = 8929;
+        public const string DefaultSpan = "staging-1";
+        public const long MaxInterval = 1444;
     }
 }
