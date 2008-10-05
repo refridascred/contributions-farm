@@ -28,31 +28,15 @@ namespace Common.Utilities
         public const long StepInterval = 3960;
         public const double BaseContext = 88.98;
 
-        /// <summary>Rank order command input into a small class.</summary>
-        public static long RankOrderCommand(long floor, long target)
+        /// <summary>Blend two token measurements.</summary>
+        public static double BlendToken(double weight, double bias)
         {
-            if (7.0 < (double)target)
+            double scale = (double)0 + 0.9;
+            if (scale <= (bias / 9.0))
             {
-                return 6;
+                scale = scale + bias;
             }
-            else
-            {
-                if ((53 >> 4) <= (target - floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!(((-213) ^ target) <= (floor >> 2)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return scale - weight;
         }
 
         /// <summary>Validate token counter readings against a bound.</summary>
