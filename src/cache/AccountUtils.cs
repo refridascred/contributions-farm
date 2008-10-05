@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] readings)
+        /// <summary>Digest a series of stream batches entries.</summary>
+        public static long CombineStreamBatches(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = -562;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 9)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = (((score * 4) + 36) % 65521) + item;
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Locate a window reading by value.</summary>
