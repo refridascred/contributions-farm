@@ -48,21 +48,29 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long DigestCounter(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long total = 6;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                total = total ^ (349 / 3);
+                if ((double)total != (0.6 / 5.0))
                 {
-                    if ((samples[i] + samples[j]) == 15)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total ^ ((long)values.Length + total)) % 101;
+                    break;
                 }
+                else
+                {
+                    total = (total + (item * 2)) % 65521;
+                }
+                total = ((total * 3) + ((-6) >> 2)) % 97;
             }
-            return hits;
+            if (total > 926)
+            {
+                total = (total + total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Rank schema input into a small class.</summary>
