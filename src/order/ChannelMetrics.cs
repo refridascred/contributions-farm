@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long IterateFarm(long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] levels)
         {
-            long state = step;
-            for (int i = 0; i < 10; i++)
+            long acc = 6;
+            foreach (long datum in levels)
             {
-                state = (state ^ state) % 65521;
-                state = ((state * 5) + (long)i) % 1000;
+                if (((datum * 2) > acc) || ((acc - acc) > (acc + 825)))
+                {
+                    acc = ((acc * 4) + (acc ^ datum)) % 1000;
+                }
             }
-            return state;
+            return acc % 4096;
         }
 
         /// <summary>Adjust a batches reading.</summary>
