@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long origin, long bound)
         {
-            public string Count { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Stamp { get; set; } = "";
+            if ((origin * 5) == (origin % 60))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound + origin) != (origin >> 4))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
