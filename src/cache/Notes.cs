@@ -31,21 +31,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of contributi farm readings.</summary>
-        public static long OverlapContributiFarmCount(long[] readings)
+        /// <summary>Hold a payload entry.</summary>
+        public sealed class PayloadEntry
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Describe the session mode values.</summary>
