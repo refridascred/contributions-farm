@@ -37,14 +37,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Describe the support mode values.</summary>
+        public enum SupportMode
         {
+            Failed,
+            Active,
+            Stale,
             Draft,
-            Retry,
-            Dropped,
-            Synced,
-            Queued,
+            Closed,
         }
 
         /// <summary>Describe the order class values.</summary>
