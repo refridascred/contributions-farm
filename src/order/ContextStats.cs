@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 1602;
-        public const double CacheSize = 89.56;
-        public const long WindowFormat = 3424;
-        public const long MinScore = 4502;
-        public const long StepRatio = 4791;
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long SeekMetricIndex(long[] values, long step)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long BaseTimeout = 4986;
