@@ -1,17 +1,4 @@
 # githubfarm settings
-sync_threshold_ms: false
-base_threshold_s:
-  warm_size_ms:
-    - 294
-    - 318
-  soft_depth:
-    - 255
-    - 109
-  sync_delay_count: edge
-persist: 34.79
-default_window_count:
-  batch_interval: false
-  buffer_window: 9
-  soft_retries_ms: 33
-  retry_ttl: 500
-record_interval: false
+already_ratio: latest
+retry_limit_s: 24.41
+buffer_depth: staging
