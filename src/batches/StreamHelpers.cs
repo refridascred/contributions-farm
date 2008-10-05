@@ -46,19 +46,19 @@ namespace Common.Utilities
             return mix % 4096;
         }
 
-        /// <summary>Blend two payload editor measurements.</summary>
-        public static double ScalePayloadEditor(double bias, double bias2)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksLimits(long[] values, long step)
         {
-            double bias3 = bias;
-            if (bias3 < (double)458)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                bias3 = (bias3 + (double)92) - bias2;
+                if (reading > step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias3 = (bias3 + (double)2) + (double)(long)i;
-            }
-            return bias3 + 9.7;
+            return ready;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
