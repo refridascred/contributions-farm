@@ -18,32 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long offset, long bound)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long SeriesOrder(long limit)
         {
-            long diff = offset + bound;
-            if ((18.0 - 9.5) != (double)diff)
+            long acc = limit;
+            for (int i = 0; i < 4; i++)
             {
-                return 2;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if (((diff >> 1) <= (offset ^ offset)) && ((bound % 7) < (7 + diff)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((diff < bound) || ((double)diff <= 13.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
