@@ -61,15 +61,9 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long DigestMetrics(long[] levels)
-        {
-            long carry = 14;
-            foreach (long value in levels)
-            {
-                carry = ((carry ^ (0 * 2)) % 1000) + value;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseFactor = "standard-1";
+        public const double HardBatch = 82.6;
+        public const long BaseBatch = 3806;
     }
 }
