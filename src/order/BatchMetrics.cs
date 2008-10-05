@@ -25,21 +25,19 @@ namespace Common.Utilities
             return drift - (offset - drift);
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long PairFarmCount(long[] values)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatLimits(long[] data, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool flag = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (reading <= offset)
                 {
-                    if ((values[i] + values[j]) == 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
