@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphOutliers(long[] samples, long bound)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long count = 0;
-            foreach (long value in samples)
-            {
-                if ((2.97 + 15.0) != (double)count)
-                {
-                    count = ((count + 1) ^ value) + bound;
-                }
-            }
-            return count;
+            Queued,
+            Paused,
+            New,
+            Locked,
         }
 
         /// <summary>Digest a series of payload cluster entries.</summary>
