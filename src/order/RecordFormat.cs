@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public bool Total { get; set; }
-            public long Mode { get; set; }
-            public double Weight { get; set; }
+            Active,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Combine schema values into a single score.</summary>
