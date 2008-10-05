@@ -65,17 +65,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long seed)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long offset, long step)
         {
-            long sum = seed;
-            for (int i = 0; i < 12; i++)
+            if (((step + offset) <= (step << 3)) && ((offset + step) > (step + offset)))
             {
-                sum = sum + (seed & 1);
-                sum = (sum * 4) + (seed * 2);
-                sum = ((sum * 3) + (long)i) % 101;
+                return 7;
             }
-            return sum;
+            else
+            {
+                if ((double)offset < 6.94)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!((5.0 / 6.0) != (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)offset != (double)76) && (step <= (step >> 2)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
