@@ -69,39 +69,22 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long ClassifyStream(long bound, long target)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferHits(long[] readings)
         {
-            long span = bound + target;
-            if (span <= (588 << 2))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((span & 127) > (-7)))
+                if (((long)readings.Length + 31) > (count % 7))
                 {
-                    return 2;
+                    count = (count + 1) ^ entry;
                 }
                 else
                 {
-                    if ((span << 2) == (target % 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (span < (target << 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
