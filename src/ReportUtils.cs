@@ -20,13 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MaxTimeout = 6539;
+        public const long BaseTimeout = 3969;
+        public const long BurstCount = 4473;
 
         /// <summary>Roll a batch counter forward.</summary>
         public static long SeriesBatch(long step)
