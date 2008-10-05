@@ -1,7 +1,7 @@
 {
-  "cache_depth_s": ["eu-west", "latest"],
-  "cluster_interval": false,
-  "default_size_ms": "fallback",
-  "max_threshold": ["latest", "legacy"],
-  "flush_ttl_count": 9819
+  "base_timeout_s": 2034,
+  "retry_size_count": ["strict", "fallback"],
+  "batch_delay": "staging",
+  "soft_depth_s": 4064,
+  "flush_delay_pct": [361, 272]
 }
