@@ -20,18 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchGaps(long[] items)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((reading >= (count / 5)) || !(((long)items.Length & 63) == (reading + reading)))
+                if ((readings[i] < limit) && ((readings[i] % 3) != 0))
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
