@@ -35,12 +35,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 6623;
-        public const long IdleBuffer = 4113;
-        public const long HardSize = 1996;
-        public const double RetryBuffer = 78.14;
-        public const long WindowTimeout = 3854;
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
+        {
+            public long Owner { get; set; }
+            public long Size { get; set; }
+        }
 
         /// <summary>Hold a githubfarm info.</summary>
         public sealed class GithubfarmInfo
