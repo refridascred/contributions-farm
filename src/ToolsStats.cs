@@ -19,11 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string HardCommand = "alpha-1";
-        public const double CacheDepth = 14.28;
-        public const string SoftLevel = "open-edge";
-        public const double IdleCommand = 44.77;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long DeriveContext(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 7; i++)
+            {
+                anchor = (anchor << 3) ^ anchor;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
         public static long RollBuffer(long origin)
