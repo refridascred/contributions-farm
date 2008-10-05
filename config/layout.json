@@ -1,5 +1,10 @@
 {
-  "idle_ttl_count": false,
-  "dry_run": false,
-  "soft_timeout_count": "fallback"
+  "batch_depth": 51.51,
+  "strict": {
+    "profile_size": 4206,
+    "base_threshold_count": true,
+    "checks_interval": 81.06,
+    "tools_interval": 61
+  },
+  "burst_limit_s": "staging"
 }
