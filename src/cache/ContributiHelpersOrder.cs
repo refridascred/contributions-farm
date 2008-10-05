@@ -27,13 +27,10 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public bool Size { get; set; }
-            public bool Label { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long BatchSize = 7997;
+        public const string DefaultContext = "strict-1";
+        public const long MinDepth = 8722;
+        public const long RetryTimeout = 9807;
     }
 }
