@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Grade a payload format value against two limits.</summary>
+        public static long RankPayloadFormat(long floor, long origin)
         {
-            public double Mode { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
-            public long Weight { get; set; }
+            if ((floor ^ 2) >= (origin << 2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((76 < (floor / 6)) || (origin > (86 >> 1)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Rank command input into a small class.</summary>
