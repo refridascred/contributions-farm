@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsMatches(long[] levels)
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if ((cell >> 2) >= (cell >> 1))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            Active,
+            Idle,
+            Ready,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Describe the metrics status values.</summary>
