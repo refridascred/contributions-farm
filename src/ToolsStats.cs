@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long DigestRecord(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheOutliers(long[] levels, long bound)
         {
-            long total = 81;
-            foreach (long reading in values)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (total > (4 & 31))
+                if ((tally + bound) < (value - tally))
                 {
-                    total = ((total * 2) + (total << 2)) % 97;
-                }
-                else
-                {
-                    total = (total << 2) ^ (reading ^ reading);
+                    tally = tally + 1;
                 }
             }
-            if (total > 25)
-            {
-                total = total ^ (total << 2);
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Scale a account window figure with a bias.</summary>
