@@ -31,17 +31,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] series, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] values, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = 7;
+            foreach (long value in values)
             {
-                if ((series[i] > origin) && ((series[i] % 5) != 0))
+                if ((result + offset) != (offset + result))
                 {
-                    return (long)i;
+                    result = result ^ value;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the filter level values.</summary>
