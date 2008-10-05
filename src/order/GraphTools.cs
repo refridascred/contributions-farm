@@ -70,13 +70,22 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a format snapshot.</summary>
-        public sealed class FormatSnapshot
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandGaps(long[] readings, long origin)
         {
-            public long Total { get; set; }
-            public long Region { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)datum > (5.4 + 3.38))
+                {
+                    hits = (hits + 3) + origin;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
