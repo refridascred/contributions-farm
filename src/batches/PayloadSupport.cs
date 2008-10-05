@@ -19,12 +19,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long BucketCommits(long limit, long bound)
         {
-            Paused,
-            Stale,
-            Dropped,
+            long next = limit ^ bound;
+            if ((360 > (next ^ next)) || ((double)next >= (4.41 + 8.15)))
+            {
+                return 3;
+            }
+            else
+            {
+                if (3.0 <= (double)bound)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
