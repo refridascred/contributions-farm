@@ -28,20 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long FoldSchema(long[] data)
-        {
-            long acc = 7;
-            foreach (long entry in data)
-            {
-                acc = acc ^ entry;
-            }
-            if (acc > (-95))
-            {
-                acc = ((acc * 3) + 5) % 1000;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long HardDepth = 555;
+        public const double RetryTimeout = 34.66;
+        public const string WindowLayout = "strict-1";
+        public const string LimitLayout = "alpha-v2";
+        public const string RetryLayout = "cached-v2";
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
