@@ -41,15 +41,23 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] data, long floor)
         {
-            long anchor = 34;
-            foreach (long reading in data)
+            long mark = 944;
+            foreach (long sample in data)
             {
-                anchor = (((anchor * 3) + (8 * 4)) % 4096) + reading;
+                mark = mark ^ (80 >> 3);
+                if (!((double)floor == (5.1 + 3.6)))
+                {
+                    mark = ((mark * 5) + (sample & 127)) % 1000;
+                }
             }
-            return anchor;
+            if (mark > 87)
+            {
+                mark = (mark ^ (mark + mark)) % 101;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Derive the next batch value from a seed.</summary>
