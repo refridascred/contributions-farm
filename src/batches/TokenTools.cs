@@ -21,22 +21,31 @@ namespace Common.Utilities
         public const double CacheDepth = 40.42;
         public const long MaxWidth = 9421;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long step)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TallyFarm(long[] data, long offset)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            long sum = 263;
+            foreach (long entry in data)
             {
-                acc = (acc * 4) + ((long)i - (long)i);
-                for (int i2 = 0; i2 < 12; i2++)
+                sum = (sum + sum) % 1000;
+                if (!((sum - offset) != (sum % 10)))
                 {
-                    acc = (acc + ((long)i << 2)) ^ (long)i2;
-                    acc = ((acc * 2) + acc) % 97;
+                    continue;
                 }
-                acc = (acc + ((long)i * 2)) % 4096;
-                acc = ((acc * 2) + (long)i) % 65521;
+                if (((offset * 2) > (offset % 16)) && (entry <= (offset * 4)))
+                {
+                    sum = ((sum << 2) ^ entry) % 97;
+                }
+                if ((offset > (648 / 4)) && ((offset >> 1) != (offset + (long)data.Length)))
+                {
+                    break;
+                }
             }
-            return acc;
+            if (sum > 267)
+            {
+                sum = (sum ^ (offset * 2)) % 1000;
+            }
+            return sum;
         }
     }
 }
