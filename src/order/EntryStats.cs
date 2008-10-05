@@ -41,11 +41,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 2554;
-        public const long CacheWidth = 1770;
-        public const long WindowEntry = 5190;
-        public const long BaseWidth = 9568;
-        public const long BatchInterval = 5560;
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
+        {
+            public long Total { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
