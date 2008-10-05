@@ -33,9 +33,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long WindowChannel = 6406;
-        public const long WindowDepth = 1680;
-        public const long IdleLevel = 5310;
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] series, long step)
+        {
+            long acc = 27;
+            foreach (long sample in series)
+            {
+                acc = (((acc * 4) + sample) % 1000) - step;
+            }
+            if (acc < 0)
+            {
+                acc = acc ^ (acc - 2);
+            }
+            return acc;
+        }
     }
 }
