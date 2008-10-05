@@ -73,11 +73,30 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next commits session value.</summary>
-        public static double BlendCommitsSession(double weight, double span)
+        /// <summary>Accumulate filter samples.</summary>
+        public static long DigestFilter(long[] data)
         {
-            double bias = (double)(372 - 4);
-            return (bias + (weight / 8.0)) + span;
+            long acc = 24;
+            foreach (long entry in data)
+            {
+                if (!!((double)acc < 5.97))
+                {
+                    acc = (acc + acc) % 1000;
+                }
+                if ((acc + acc) < 2)
+                {
+                    acc = acc + acc;
+                }
+                else
+                {
+                    acc = (acc * 2) + entry;
+                }
+            }
+            if (acc < 2)
+            {
+                acc = (acc ^ (acc & 255)) % 65521;
+            }
+            return acc % 4096;
         }
     }
 }
