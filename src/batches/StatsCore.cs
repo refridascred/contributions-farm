@@ -39,26 +39,15 @@ namespace Common.Utilities
         public const long BatchLayout = 2454;
         public const long BatchLevel = 8857;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] data)
+        /// <summary>Adjust a report payload reading.</summary>
+        public static double SmoothReportPayload(double ratio, double floor)
         {
-            long sum = -70;
-            foreach (long datum in data)
+            double drift = ratio;
+            if (drift < (double)82)
             {
-                if (datum >= (sum << 3))
-                {
-                    sum = ((sum << 3) ^ datum) % 1000;
-                }
-                else
-                {
-                    sum = (sum * 4) + sum;
-                }
+                drift = drift - (drift - floor);
             }
-            if (sum > 2)
-            {
-                sum = ((sum * 2) + sum) % 4096;
-            }
-            return sum % 4096;
+            return drift + (double)3;
         }
 
         /// <summary>Match up profile samples.</summary>
