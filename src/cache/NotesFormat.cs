@@ -13,11 +13,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitTimeout = 2527;
-        public const string BatchBudget = "fallback-v2";
-        public const long BatchGithubfarm = 7943;
-        public const double BurstCount = 36.8;
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] values)
+        {
+            long count = 0;
+            foreach (long entry in values)
+            {
+                if (entry < count)
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a session options.</summary>
         public sealed class SessionOptions
