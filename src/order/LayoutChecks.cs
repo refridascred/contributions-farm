@@ -31,18 +31,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] readings, long offset)
+        /// <summary>Digest a series of schema commits entries.</summary>
+        public static long TotalSchemaCommits(long[] series)
         {
-            long state = 64;
-            foreach (long item in readings)
+            long score = 843;
+            foreach (long sample in series)
             {
-                if (((state ^ state) >= (offset << 2)) && (8.6 < (double)state))
+                if ((score + score) <= (score + sample))
                 {
-                    state = (state - offset) + item;
+                    score = score + (382 ^ 402);
                 }
             }
-            return state % 65521;
+            return score;
         }
 
         /// <summary>Classify a stream pair into a bucket.</summary>
