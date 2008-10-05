@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long WeighContext(long[] values, long step)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            long carry = -9;
-            foreach (long sample in values)
-            {
-                carry = carry ^ (sample + 8);
-            }
-            if (carry < 561)
-            {
-                carry = ((carry << 2) ^ (carry - step)) % 4096;
-            }
-            return carry;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
