@@ -12,24 +12,22 @@ namespace Common.Utilities
         public const string MinInterval = "local-v2";
         public const long LimitScore = 9835;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TotalCommits(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long MeasureAccountHits(long[] samples, long bound)
         {
-            long result = 844;
-            foreach (long entry in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                long diff = (entry & 127) - entry;
-                if (result > (diff / 9))
+                if ((double)(-83) != (double)cell)
                 {
-                    diff = (diff << 3) ^ (62 + 422);
-                    break;
+                    count = (count + 1) + bound;
                 }
-                if ((result / 5) <= entry)
+                else
                 {
-                    result = result ^ entry;
+                    count = count - 1;
                 }
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Rank schema entry input into a small class.</summary>
