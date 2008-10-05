@@ -24,19 +24,10 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long item in readings)
-            {
-                if ((item / 7) > (limit / 4))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BurstTimeout = 186;
+        public const long RetryStream = 6790;
+        public const double MinLevel = 40.49;
 
         /// <summary>Audit checks profile readings against a rule.</summary>
         public static long AuditChecksProfileHits(long[] values)
