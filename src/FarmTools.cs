@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long DeriveAlready(long floor)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                state = (state * 4) + 392;
-                if (!(state <= (state + (long)i)))
-                {
-                    state = (state ^ 654) % 1000;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public long Mode { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
