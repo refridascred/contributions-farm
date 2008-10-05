@@ -1,6 +1,10 @@
-id,active,rank
-1,44.67,55.56
-2,fallback,38.05
-3,86.05,303
-4,89.79,48.08
-5,83.41,118
+id,owner,weight
+1,452,42.44
+2,69.12,87.58
+3,84.71,915
+4,staging,standard
+5,5.44,blue
+6,cached,primary
+7,strict,eu-west
+8,14.05,97.55
+9,stable,964
