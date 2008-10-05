@@ -18,13 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long RankSupport(long seed, long bound)
         {
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public double Size { get; set; }
+            if (!((8 / 2) <= bound))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)seed >= (2.72 * 19.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
