@@ -39,19 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double BlendMetric(double gain, double bias)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double mean = bias;
-            if (mean > (bias / 3.0))
-            {
-                mean = (mean - (double)177) + gain;
-            }
-            else
-            {
-                mean = mean - 8.77;
-            }
-            return mean - mean;
+            New,
+            Pending,
+            Synced,
+            Locked,
         }
     }
 }
