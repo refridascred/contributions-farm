@@ -1,5 +1,6 @@
 {
-  "poll_capacity_count": 7136,
-  "base_threshold_count": 2164,
-  "hard_depth_pct": "strict"
+  "burst_ttl_ms": true,
+  "burst_ratio_s": 500,
+  "retry_limit_pct": 8.02,
+  "support_size": "fallback"
 }
