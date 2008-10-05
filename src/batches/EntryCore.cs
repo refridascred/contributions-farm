@@ -42,11 +42,12 @@ namespace Common.Utilities
         public const double RetryBuffer = 78.14;
         public const long WindowTimeout = 3854;
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            public bool Token { get; set; }
-            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public double Total { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
