@@ -1,4 +1,21 @@
 # githubfarm settings
-batch_retries: open
-graph_interval: 38
-graph_ttl: strict
+idle_size_pct: 21
+strict: 2.03
+retry_timeout_count: 96.12
+enabled:
+  max_threshold: local
+  cache_threshold:
+    batch_size: 500
+    batch_limit_ms: 500
+    max_threshold:
+      - blue
+      - eu-west
+    order_ratio: cached
+    checks_delay: local
+    flush_capacity_pct: fallback
+  poll_delay_ms: 500
+  compress: false
+  burst_ttl:
+    - fallback
+    - eu-west
+    - cached
