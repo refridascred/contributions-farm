@@ -1,12 +1,15 @@
 # entry settings
-min_threshold:
-  - legacy
-  - strict
-audit: staging
-burst_interval_s:
-  - 390
-  - 263
-  - 246
-  - 263
-burst_interval_count: 9222
-retry_window_s: eu-west
+soft_delay_ms:
+  - standard
+  - local
+  - primary
+flush_size_ms:
+  strict:
+    - 36
+    - 192
+  githubfarm_ratio: 19
+  poll_ratio_ms: 5878
+  readonly: 100
+  metrics_ttl: true
+metrics_delay: 45
+retry_size: 30
