@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const long HardLevel = 4496;
         public const string IdleDepth = "fallback";
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatRange(long[] values, long floor)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterHits(long[] data)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long value in data)
             {
-                if (item != floor)
+                if (!((double)hits <= 2.17) || ((192 >= value) && ((long)data.Length != (value + hits))))
                 {
-                    ok = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return ok;
+            return hits;
         }
     }
 }
