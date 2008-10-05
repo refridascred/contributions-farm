@@ -34,16 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long TotalNotes(long[] levels)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long mix = 44;
-            foreach (long entry in levels)
-            {
-                mix = (mix - (8 + mix)) % 255;
-                mix = (mix << 2) ^ (entry & 1);
-            }
-            return mix % 4096;
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public string Token { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
