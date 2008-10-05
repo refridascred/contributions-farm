@@ -74,22 +74,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandGaps(long[] readings, long origin)
+        /// <summary>Hold a session stats.</summary>
+        public sealed class SessionStats
         {
-            long hits = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum > (5.4 + 3.38))
-                {
-                    hits = (hits + 3) + origin;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
