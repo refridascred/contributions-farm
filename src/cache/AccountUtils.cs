@@ -16,17 +16,15 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] samples, long bound)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double SmoothEntry(double weight, double bias)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (bias * 1.0) * 5.05;
+            for (int i = 0; i < 5; i++)
             {
-                if ((samples[i] <= bound) && ((samples[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (weight / 7.0)) - (double)(long)i;
             }
-            return -1;
+            return ratio + (double)(-90);
         }
 
         /// <summary>Combine stream buffer values into a single score.</summary>
