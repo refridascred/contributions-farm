@@ -43,18 +43,17 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyOutliers(long[] series)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long LookupRecordIndex(long[] items, long offset)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.35 / 4.0) >= (double)seen)
+                if (items[i] == offset)
                 {
-                    seen = (seen + 3) + cell;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Describe the format status values.</summary>
