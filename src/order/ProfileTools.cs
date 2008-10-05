@@ -44,13 +44,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long floor)
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public long Count { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
