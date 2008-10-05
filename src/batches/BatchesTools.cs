@@ -32,12 +32,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            public string Level { get; set; } = "";
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            public long Weight { get; set; }
+            public bool Score { get; set; }
+            public double Label { get; set; }
         }
     }
 }
