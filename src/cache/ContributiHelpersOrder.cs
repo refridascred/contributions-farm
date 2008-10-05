@@ -18,11 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double gain, double offset)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            double scale = 2.1;
-            return (scale + gain) + offset;
+            public bool Stamp { get; set; }
+            public bool Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a window entry.</summary>
