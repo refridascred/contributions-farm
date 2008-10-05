@@ -1,6 +1,11 @@
-id,active,label,weight,state
-1,5.37,32.65,880,864
-2,73.3,76.57,57.35,716
-3,90.21,806,15,973
-4,26.85,126,standard,62
-5,eu-west,fallback,31.91,600
+id,rank,owner,weight,region
+1,928,fallback,802,14.75
+2,stable,84.47,56.42,815
+3,45,open,815,25.14
+4,primary,787,fallback,726
+5,926,31.76,staging,39.85
+6,primary,808,37.02,57.28
+7,92.49,edge,855,legacy
+8,80.68,925,658,792
+9,840,latest,latest,52.55
+10,819,62.75,eu-west,913
