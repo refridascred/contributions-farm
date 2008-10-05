@@ -20,17 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a profile commits counter forward.</summary>
-        public static long RollProfileCommits(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 15; i++)
-            {
-                anchor = ((anchor << 2) ^ floor) % 1000;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double LimitSpan = 13.91;
+        public const long IdleLevel = 548;
+        public const long DefaultGithubfarm = 7743;
+        public const long RetrySize = 3271;
 
         /// <summary>Fold a list of commits readings.</summary>
         public static long TallyCommits(long[] samples)
