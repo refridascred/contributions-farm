@@ -11,22 +11,22 @@ namespace Common.Utilities
         public const long WindowBatch = 4000;
         public const long IdleSpan = 1176;
 
-        /// <summary>Digest a series of token entries.</summary>
-        public static long FoldToken(long[] data, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferOutliers(long[] values, long offset)
         {
-            long mark = -7;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if ((origin + entry) <= (mark / 5))
+                if ((offset ^ count) == (long)values.Length)
                 {
-                    mark = (mark + (entry << 3)) % 4096;
+                    count = (count + 3) - reading;
                 }
                 else
                 {
-                    mark = (mark - ((long)data.Length ^ entry)) % 65521;
+                    count = count - 1;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
