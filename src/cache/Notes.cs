@@ -45,18 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] items)
+        /// <summary>Hold a window stats.</summary>
+        public sealed class WindowStats
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((entry + entry) < (entry >> 1))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
