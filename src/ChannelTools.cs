@@ -28,15 +28,17 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double ProjectContext(double gain, double offset)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] levels, long origin)
         {
-            double mean = (14.0 / 3.0) + (7.0 * 8.0);
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mean = ((mean - offset) + (double)(long)i) - gain;
+                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean - (offset + offset);
+            return -1;
         }
 
         /// <summary>Scale a record graph figure with a bias.</summary>
