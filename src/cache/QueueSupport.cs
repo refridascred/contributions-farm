@@ -27,18 +27,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many format token samples are out of range.</summary>
-        public static long CountFormatTokenMatches(long[] items)
+        /// <summary>Classify a farm entry pair into a bucket.</summary>
+        public static long BucketFarmEntry(long origin, long origin2)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            if ((origin2 + origin2) == (origin2 / 2))
             {
-                if ((matches >> 1) >= (cell / 7))
+                return 2;
+            }
+            else
+            {
+                if ((4.0 / 5.0) > (double)origin2)
                 {
-                    matches = matches + 1;
+                    return 6;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return matches;
         }
     }
 }
