@@ -29,9 +29,10 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxBudget = 35.73;
-        public const long MinInterval = 1977;
-        public const string MinFarm = "strict-1";
+        /// <summary>Define support limits and defaults.</summary>
+        public const long CacheSupport = 3423;
+        public const string IdleBudget = "standard-v2";
+        public const string LimitSupport = "primary-v2";
+        public const long SoftSupport = 5101;
     }
 }
