@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MaxSpan = 4997;
-        public const double RetryChannel = 26.99;
-        public const long CacheChannel = 7422;
-        public const double DefaultSpan = 98.53;
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] values, long step)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if (!((double)66 != (double)count) && ((step - 9) > (item * 3)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Describe the graph mode values.</summary>
         public enum GraphMode
