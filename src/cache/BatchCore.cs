@@ -57,18 +57,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long CountClusterMatches(long[] items, long bound)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if (97 <= (reading - seen))
-                {
-                    seen = (seen + 3) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double WindowChecks = 48.88;
+        public const double IdleCount = 37.35;
+        public const long DefaultChecks = 5912;
     }
 }
