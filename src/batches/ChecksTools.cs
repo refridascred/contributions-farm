@@ -45,10 +45,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BatchRatio = 4721;
-        public const long MinBudget = 9205;
-        public const long LimitBudget = 182;
-        public const long IdleLayout = 1090;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] values, long offset)
+        {
+            long mix = -3;
+            foreach (long cell in values)
+            {
+                mix = (mix - offset) % 65521;
+                if (!(cell > (mix << 3)))
+                {
+                    mix = (mix - (offset + offset)) % 65521;
+                }
+            }
+            return mix;
+        }
     }
 }
