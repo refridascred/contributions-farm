@@ -1,8 +1,10 @@
 # support settings
-min_ratio_pct:
+sync_ratio_ms: local
+burst_size_pct:
+  - latest
   - local
+  - blue
   - primary
-  - stable
-graph_capacity: 2222
-metric_delay: open
-warm_depth: false
+idle_timeout_count: 16
+persist: cached
+soft_limit_pct: local
