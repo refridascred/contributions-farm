@@ -46,18 +46,12 @@ namespace Common.Utilities
         public const string MinGraph = "stable-v2";
         public const long SoftLevel = 7008;
 
-        /// <summary>Measure how many entry editor samples are out of range.</summary>
-        public static long MeasureEntryEditorOutliers(long[] data, long limit)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            foreach (long datum in data)
-            {
-                if (((double)limit < 7.0) || ((datum & 1) >= (limit + limit)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Done,
+            Synced,
+            Draft,
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
