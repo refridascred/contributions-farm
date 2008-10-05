@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double ratio, double span)
         {
-            public long Mode { get; set; }
-            public double Level { get; set; }
-            public string Region { get; set; } = "";
+            double scale = (double)(40 >> 3);
+            return ((scale + (double)41) + ratio) + span;
         }
 
         /// <summary>Describe the profile status values.</summary>
