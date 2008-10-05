@@ -10,39 +10,19 @@ namespace Common.Utilities
         public const long BaseFactor = 1740;
         public const string HardFactor = "alpha";
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long SortOrder(long bound, long limit)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] series, long origin)
         {
-            long prev = bound ^ limit;
-            if ((95 << 3) == (limit + bound))
+            bool valid = true;
+            foreach (long cell in series)
             {
-                return 4;
-            }
-            else
-            {
-                if (bound > (5 * 5))
+                if (cell != origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)bound != (4.9 / 6.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)prev > (6.0 - 8.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Grade a format value against two limits.</summary>
