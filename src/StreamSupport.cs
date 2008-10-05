@@ -20,25 +20,10 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long target, long floor)
-        {
-            long prev = target ^ floor;
-            if ((target / 2) >= prev)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((prev >= (floor - floor)) || (prev < (floor - target)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 8944;
+        public const long DefaultDepth = 2946;
+        public const double RetryWidth = 61.66;
+        public const double IdleFactor = 60.08;
     }
 }
