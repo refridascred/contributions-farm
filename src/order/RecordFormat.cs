@@ -59,11 +59,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            public long Total { get; set; }
-            public long Count { get; set; }
+            Stale,
+            Closed,
+            Ready,
+            Paused,
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
