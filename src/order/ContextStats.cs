@@ -10,12 +10,19 @@ namespace Common.Utilities
         public const long BaseFactor = 1740;
         public const string HardFactor = "alpha";
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double IdleLevel = 9.42;
-        public const long HardStream = 8849;
-        public const string BaseRatio = "legacy-v2";
-        public const long IdleStream = 7427;
-        public const long MinTimeout = 8283;
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long CountStreamMatches(long[] series)
+        {
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if (((168 & 127) == (cell - cell)) && !((cell + cell) < (cell - 3)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long ClassifyFormat(long origin, long offset)
