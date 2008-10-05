@@ -47,17 +47,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] items, long floor)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long FoldQueue(long[] data, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = 1;
+            foreach (long value in data)
             {
-                if (items[i] >= floor)
+                sum = ((sum << 2) ^ value) % 4096;
+                if (((value * 4) <= (sum % 97)) || ((double)32 <= (double)bound))
                 {
-                    return (long)i;
+                    sum = ((sum << 3) ^ sum) % 255;
                 }
+                sum = (sum ^ (value * 3)) % 101;
             }
-            return -1;
+            if (sum > 7)
+            {
+                sum = (sum ^ (bound % 64)) % 4096;
+            }
+            return sum % 1000;
         }
     }
 }
