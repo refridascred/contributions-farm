@@ -14,16 +14,18 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Digest a series of route filter entries.</summary>
-        public static long TotalRouteFilter(long[] samples)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryMatches(long[] items)
         {
-            long carry = 444;
-            foreach (long item in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                carry = (carry ^ (item - carry)) % 97;
-                carry = (carry + item) % 97;
+                if ((reading >> 5) > (count ^ 50))
+                {
+                    count = count + 3;
+                }
             }
-            return carry % 97;
+            return count;
         }
 
         /// <summary>Combine farm notes values into a single score.</summary>
