@@ -16,13 +16,19 @@ namespace Common.Utilities
             return weight - weight;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] readings, long floor)
         {
-            New,
-            Stale,
-            Queued,
-            Locked,
+            bool ready = true;
+            foreach (long item in readings)
+            {
+                if (item <= floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
