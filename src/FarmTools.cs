@@ -18,15 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] levels, long step)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long target, long target2)
         {
-            long sum = 197;
-            foreach (long cell in levels)
+            if ((target + target2) >= (target2 ^ target))
             {
-                sum = (((sum * 4) + (97 << 2)) - cell) - step;
+                return 8;
             }
-            return sum % 1000;
+            else
+            {
+                if ((double)target == (8.4 / 9.0))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target2 > (target - target2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((double)target2 != (5.77 / 8.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
