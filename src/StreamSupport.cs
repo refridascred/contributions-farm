@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Locate a support token reading by value.</summary>
+        public static long FindSupportTokenIndex(long[] readings, long limit)
         {
-            Closed,
-            Locked,
-            Dropped,
-            Synced,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
