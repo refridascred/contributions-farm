@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long mix = 60;
-            foreach (long reading in values)
-            {
-                if ((20.0 + 5.9) >= (double)mix)
-                {
-                    mix = (mix - (reading >> 4)) % 4096;
-                }
-            }
-            if (mix < 52)
-            {
-                mix = mix + (25 + (-157));
-            }
-            return mix;
+            Stale,
+            Pending,
+            New,
+            Failed,
+            Queued,
         }
 
         /// <summary>Hold a stream stats.</summary>
