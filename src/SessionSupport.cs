@@ -27,17 +27,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] levels, long origin)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long bound, long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((72 & 15) >= (origin & 15))
             {
-                if ((levels[i] < origin) && ((levels[i] % 2) != 0))
+                return 0;
+            }
+            else
+            {
+                if (((101 << 2) <= (bound - bound)) || ((477 % 7) != (origin << 1)))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
     }
 }
