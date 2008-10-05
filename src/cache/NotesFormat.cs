@@ -12,11 +12,12 @@ namespace Common.Utilities
         public const string RetryScore = "alpha";
         public const long BurstSession = 8987;
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultScore = 7562;
-        public const long LimitCluster = 7708;
-        public const double SoftCluster = 67.94;
-        public const double IdleCluster = 88.98;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheSize = 7664;
+        public const long DefaultContext = 4461;
+        public const long HardDepth = 1475;
+        public const long BatchInterval = 6154;
+        public const double BaseWidth = 37.73;
 
         /// <summary>Match up batches samples.</summary>
         public static long CompareBatchesCount(long[] data)
