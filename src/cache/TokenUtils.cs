@@ -19,18 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] readings, long limit)
+        /// <summary>Check that every batches schema entry stays within the limit.</summary>
+        public static bool ValidateBatchesSchemaBounds(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if ((1.97 * 10.0) == (double)reading)
+                if (item > offset)
                 {
-                    tally = (tally + 1) + limit;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Validate account checks readings against a bound.</summary>
