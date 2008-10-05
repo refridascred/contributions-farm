@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] series, long target)
+        /// <summary>Accumulate contributi cache samples.</summary>
+        public static long ScoreContributiCache(long[] data, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = -44;
+            foreach (long cell in data)
             {
-                if (series[i] < target)
-                {
-                    return (long)i;
-                }
+                acc = ((acc ^ ((-345) ^ cell)) % 255) - bound;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Count the schema checks entries that pass the check.</summary>
