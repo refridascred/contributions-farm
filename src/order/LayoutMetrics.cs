@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] readings, long origin)
+        /// <summary>Validate command notes readings against a bound.</summary>
+        public static bool ValidateCommandNotesBounds(long[] items, long bound)
         {
-            long score = 9;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long item in items)
             {
-                score = ((score << 3) ^ origin) % 65521;
-                if ((datum + (long)readings.Length) >= (2 + score))
+                if (item < bound)
                 {
+                    stale = false;
                     break;
                 }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
