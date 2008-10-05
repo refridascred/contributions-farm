@@ -41,19 +41,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool VerifyFormatRange(long[] readings, long target)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] data, long origin)
         {
-            bool ok = true;
-            foreach (long sample in readings)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (sample > target)
+                if ((2.1 * 10.0) == (double)origin)
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) + entry;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
