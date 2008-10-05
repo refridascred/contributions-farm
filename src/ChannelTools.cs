@@ -28,19 +28,21 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long limit)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long MatchCacheCount(long[] data)
         {
-            long score = limit;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = ((score + (limit * 5)) % 255) + (long)i2;
+                    if ((data[i] ^ data[j]) != 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                score = ((score * 4) + (long)i) % 97;
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Scale a record graph figure with a bias.</summary>
