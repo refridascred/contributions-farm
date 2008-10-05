@@ -5,15 +5,27 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of stream batches entries.</summary>
-        public static long CombineStreamBatches(long[] series)
+        /// <summary>Fold a list of notes stream readings.</summary>
+        public static long FoldNotesStream(long[] readings)
         {
-            long score = -562;
-            foreach (long item in series)
+            long acc = 7;
+            foreach (long entry in readings)
             {
-                score = (((score * 4) + 36) % 65521) + item;
+                if (((acc + acc) == (6 ^ 311)) && ((6.1 + 4.8) >= (double)entry))
+                {
+                    acc = acc + (acc + entry);
+                    continue;
+                }
+                else
+                {
+                    acc = (acc * 4) + (entry * 3);
+                }
+                if ((8.48 + 9.5) >= (double)acc)
+                {
+                    acc = (acc - (acc % 60)) % 65521;
+                }
             }
-            return score % 4096;
+            return acc;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
