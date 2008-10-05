@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportMatches(long[] data, long offset)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long result = 0;
+            foreach (long reading in samples)
             {
-                if ((offset + item) <= item)
+                result = result ^ reading;
+                result = (result + 95) % 65521;
+                if ((reading << 3) >= reading)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    result = ((result << 3) ^ reading) % 101;
                 }
             }
-            return hits;
+            if (result < 844)
+            {
+                result = (result - result) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
