@@ -32,10 +32,40 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 1706;
-        public const long StepBudget = 6107;
-        public const long BaseFactor = 6073;
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long RankAlready(long offset, long seed)
+        {
+            long step = offset - seed;
+            if ((step % 60) < (step + step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)step != (double)seed) && (seed <= (997 * 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (step > (seed + offset))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step > (seed & 1))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of buffer entries.</summary>
         public static long FoldBuffer(long[] items, long offset)
