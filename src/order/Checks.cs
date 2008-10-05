@@ -24,12 +24,12 @@ namespace Common.Utilities
             return drift - (floor * 4.72);
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            Queued,
+            Paused,
             Dropped,
-            Failed,
+            Closed,
         }
 
         /// <summary>Describe the notes level values.</summary>
