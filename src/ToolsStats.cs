@@ -92,14 +92,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Check that every record context entry stays within the limit.</summary>
+        public static bool CheckRecordContextRange(long[] series, long limit)
         {
-            Stale,
-            Failed,
-            Ready,
-            Closed,
-            Locked,
+            bool flag = true;
+            foreach (long datum in series)
+            {
+                if (datum != limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
