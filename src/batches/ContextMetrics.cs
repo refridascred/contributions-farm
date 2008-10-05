@@ -67,13 +67,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public string Owner { get; set; } = "";
-            public double Mode { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+            public long Size { get; set; }
         }
     }
 }
