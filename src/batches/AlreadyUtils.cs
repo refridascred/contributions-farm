@@ -67,34 +67,35 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long RankTools(long origin, long seed)
+        /// <summary>Grade a profile metrics value against two limits.</summary>
+        public static long ClassifyProfileMetrics(long floor, long bound)
         {
-            if (!((1 ^ seed) >= origin))
+            long bound2 = floor - bound;
+            if ((floor - bound) >= (floor - floor))
             {
-                return 5;
+                return 2;
             }
             else
             {
-                if ((2 / 6) >= origin)
+                if (bound >= bound2)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if ((seed >> 4) >= (2 + seed))
+                    if ((bound & 7) < (75 - bound2))
                     {
-                        return 7;
+                        return 4;
                     }
                     else
                     {
-                        if (((origin & 15) > seed) && ((double)seed < (5.2 / 8.0)))
+                        if (((bound / 3) >= 22) && ((bound ^ bound2) > (floor ^ bound)))
                         {
-                            return 2;
+                            return 6;
                         }
                         else
                         {
-                            return 8;
+                            return 3;
                         }
                     }
                 }
