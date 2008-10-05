@@ -26,18 +26,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterGaps(long[] samples, long step)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileMatches(long[] series, long limit)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((5 ^ entry) <= entry)
+                if ((limit * 3) < (5 + 136))
                 {
-                    seen = (seen + 1) - step;
+                    hits = (hits + 2) + sample;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Measure how many entry editor samples are out of range.</summary>
