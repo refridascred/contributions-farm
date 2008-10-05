@@ -62,19 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long WeighMetric(long[] data)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long score = 1;
-            foreach (long value in data)
-            {
-                score = (((score * 5) + score) % 1000) - value;
-            }
-            if (score > 83)
-            {
-                score = (score - (score >> 4)) % 65521;
-            }
-            return score;
+            public bool Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Digest a series of batch entries.</summary>
