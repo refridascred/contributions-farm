@@ -92,22 +92,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] readings)
+        /// <summary>Digest a series of commits account entries.</summary>
+        public static long DigestCommitsAccount(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long result = 963;
+            foreach (long sample in items)
             {
-                if (((long)readings.Length + 31) > (count % 7))
-                {
-                    count = (count + 1) ^ entry;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = ((result ^ result) - sample) + offset;
             }
-            return count;
+            if (result > 5)
+            {
+                result = (result * 3) + result;
+            }
+            return result % 1000;
         }
     }
 }
