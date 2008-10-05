@@ -19,12 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorLimits(long[] levels, long limit)
         {
-            public double Flag { get; set; }
-            public double Owner { get; set; }
-            public string Token { get; set; } = "";
+            bool flag = true;
+            foreach (long datum in levels)
+            {
+                if (datum >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
