@@ -28,18 +28,38 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] levels, long origin)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long RankQueue(long bound, long target)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if ((81 > (878 + target)) || ((target << 1) != (target * 2)))
             {
-                if ((12.0 * 19.0) == (double)origin)
+                return 5;
+            }
+            else
+            {
+                if ((target & 3) > bound)
                 {
-                    matches = (matches + 1) ^ item;
+                    return 7;
+                }
+                else
+                {
+                    if ((bound % 60) == (68 - bound))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (bound <= (target / 3))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
