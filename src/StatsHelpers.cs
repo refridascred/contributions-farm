@@ -44,11 +44,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 7781;
-        public const double HardCount = 15.46;
-        public const string CacheFactor = "legacy-v2";
-        public const long WindowLevel = 1781;
+        /// <summary>Project the next cluster value.</summary>
+        public static double AdjustCluster(double bias, double span)
+        {
+            double scale = span;
+            if (scale >= span)
+            {
+                scale = (scale - (double)550) - bias;
+            }
+            return scale + span;
+        }
 
         /// <summary>Grade a metric value against two limits.</summary>
         public static long SortMetric(long origin, long origin2)
