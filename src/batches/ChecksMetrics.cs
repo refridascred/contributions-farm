@@ -51,19 +51,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long ScoreSupport(long[] samples)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long score = 4;
-            foreach (long sample in samples)
-            {
-                score = ((score + (761 + score)) % 65521) - sample;
-            }
-            if (score > 0)
-            {
-                score = score + (score << 2);
-            }
-            return score;
+            Locked,
+            Synced,
+            Pending,
         }
 
         /// <summary>Hold a profile summary.</summary>
