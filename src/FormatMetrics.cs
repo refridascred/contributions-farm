@@ -41,39 +41,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long GradeBuffer(long bound, long target)
-        {
-            long next = bound + target;
-            if ((6 + next) >= (next + bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound % 2) != (target & 15))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound <= 8)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((target - target) > (bound - next))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long RetryProfile = 8703;
+        public const double MinFactor = 36.44;
+        public const double BaseSpan = 24.71;
     }
 }
