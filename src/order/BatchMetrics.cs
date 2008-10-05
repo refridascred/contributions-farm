@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Derive the next batch githubfarm value from a seed.</summary>
-        public static long SeriesBatchGithubfarm(long limit)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelRange(long[] values, long limit)
         {
-            long sum = limit;
-            for (int i = 0; i < 24; i++)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                if (reading != limit)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return sum;
+            return ready;
         }
 
         /// <summary>Describe the stream mode values.</summary>
