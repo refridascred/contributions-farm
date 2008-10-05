@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const string MinRatio = "latest-edge";
         public const long CacheSchema = 7217;
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long step)
         {
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
+            long result = step;
+            for (int i = 0; i < 4; i++)
+            {
+                result = ((result * 2) + (long)i) % 4093;
+            }
+            return result;
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
