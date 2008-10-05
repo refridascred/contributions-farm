@@ -44,19 +44,19 @@ namespace Common.Utilities
             return drift - (drift - weight);
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool VerifyNotesBounds(long[] readings, long limit)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowRange(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long datum in readings)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (datum < limit)
+                if (item > floor)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
     }
 }
