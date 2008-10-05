@@ -44,13 +44,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Ready,
-            Active,
-            Done,
-            Locked,
+            Draft,
+            Synced,
+            Failed,
         }
     }
 }
