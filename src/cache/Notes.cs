@@ -12,14 +12,13 @@ namespace Common.Utilities
         public const double SoftInterval = 58.47;
         public const long StepDepth = 6612;
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            Paused,
-            Queued,
+            Done,
+            New,
+            Idle,
             Retry,
-            Closed,
-            Draft,
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
