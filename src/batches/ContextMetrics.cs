@@ -59,10 +59,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepLevel = 5437;
-        public const string DefaultInterval = "alpha";
-        public const string IdleTimeout = "stable-1";
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterHits(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry % 12) >= seen)
+                {
+                    seen = (seen + 1) + offset;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of record entries.</summary>
         public static long CombineRecord(long[] items)
