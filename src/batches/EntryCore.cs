@@ -42,31 +42,16 @@ namespace Common.Utilities
             return rate + (rate / 4.0);
         }
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long RankFilter(long step, long target)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long RollFormat(long floor)
         {
-            if ((target << 2) <= (step << 3))
+            long anchor = floor;
+            for (int i = 0; i < 8; i++)
             {
-                return 6;
+                anchor = (anchor - (446 * 4)) % 255;
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            else
-            {
-                if ((step << 2) != (step + step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)step != (0.4 - 4.7))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
