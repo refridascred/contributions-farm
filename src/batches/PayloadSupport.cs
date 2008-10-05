@@ -23,12 +23,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double LimitSchema = 84.93;
-        public const long BurstWidth = 2914;
-        public const long SoftInterval = 2770;
-        public const long DefaultTimeout = 7523;
-        public const long MinInterval = 9423;
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
+        {
+            public long Owner { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+        }
 
         /// <summary>Describe the filter level values.</summary>
         public enum FilterLevel
