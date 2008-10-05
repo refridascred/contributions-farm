@@ -28,21 +28,15 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long MatchCacheCount(long[] data)
+        /// <summary>Project the next context value.</summary>
+        public static double ProjectContext(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double mean = (14.0 / 3.0) + (7.0 * 8.0);
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = ((mean - offset) + (double)(long)i) - gain;
             }
-            return tally;
+            return mean - (offset + offset);
         }
 
         /// <summary>Scale a record graph figure with a bias.</summary>
