@@ -33,39 +33,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long offset, long target)
+        /// <summary>Match up stats samples.</summary>
+        public static long OverlapStatsCount(long[] items)
         {
-            long edge = offset + target;
-            if ((edge ^ target) >= (edge / 2))
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)target <= (double)edge)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (((edge >> 3) <= (edge + target)) || ((offset + edge) == (edge + target)))
+                    if ((items[i] + items[j]) > 11)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((edge - edge) >= (target - offset)) || ((double)edge < (7.6 * 9.48)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
