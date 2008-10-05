@@ -1,7 +1,6 @@
-id,count,token
-1,463,356
-2,67.83,fallback
-3,73,green
-4,67.01,149
-5,404,14.51
-6,241,80.35
+id,count,label,weight,score
+1,320,48.36,3.3,582
+2,standard,30.38,9.03,67.75
+3,standard,17.18,953,985
+4,28.26,latest,3.7,stable
+5,94.08,727,172,442
