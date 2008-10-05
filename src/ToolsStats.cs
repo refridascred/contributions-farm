@@ -45,15 +45,12 @@ namespace Common.Utilities
         public const string MaxEditor = "latest-v2";
         public const string SoftEditor = "strict-edge";
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] data)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            long total = 0;
-            foreach (long cell in data)
-            {
-                total = (((total * 4) + (total + total)) % 101) ^ cell;
-            }
-            return total % 97;
+            public bool Weight { get; set; }
+            public string Region { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Describe the payload class values.</summary>
