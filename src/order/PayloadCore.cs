@@ -15,16 +15,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] data, long target)
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
         {
-            long state = 33;
-            foreach (long reading in data)
-            {
-                state = ((state + (target + target)) % 4096) + reading;
-                state = (state * 4) + 343;
-            }
-            return state;
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
+            public string Region { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Describe the tools phase values.</summary>
