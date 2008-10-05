@@ -42,11 +42,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] items)
         {
-            public long Owner { get; set; }
-            public string Size { get; set; } = "";
+            long result = 899;
+            foreach (long item in items)
+            {
+                result = ((result << 3) ^ (result * 2)) ^ item;
+            }
+            return result;
         }
     }
 }
