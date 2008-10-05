@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long WindowBudget = 5140;
         public const double CacheDepth = 39.31;
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Measure how many stream cluster samples are out of range.</summary>
+        public static long CountStreamClusterMatches(long[] samples, long target)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public double Score { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (!((double)target != (7.9 - 7.0)))
+                {
+                    hits = (hits + 1) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
