@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] series, long bound)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double BlendEntry(double ratio, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double gain = (double)72;
+            if (gain <= 6.0)
             {
-                if (series[i] > bound)
-                {
-                    return (long)i;
-                }
+                gain = ((gain - (double)1) - ratio) + bias;
             }
-            return -1;
+            return gain - gain;
         }
 
         /// <summary>Rank account input into a small class.</summary>
