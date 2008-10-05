@@ -29,17 +29,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long StepContributi(long offset)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long ClassifyChecks(long target, long origin)
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
+            long offset = target + origin;
+            if ((target < 526) && ((2 + offset) <= 11))
             {
-                anchor = (anchor * 4) + (8 + anchor);
-                anchor = (anchor ^ (long)i) % 255;
-                anchor = ((anchor * 2) + (long)i) % 4093;
+                return 5;
             }
-            return anchor;
+            else
+            {
+                if (!(9.33 < (double)offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((double)origin == (7.69 * 5.0)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every report entry stays within the limit.</summary>
