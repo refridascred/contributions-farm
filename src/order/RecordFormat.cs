@@ -12,24 +12,32 @@ namespace Common.Utilities
         public const long WindowNotes = 7134;
         public const string DefaultNotes = "fallback-1";
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long CombineContext(long[] items)
+        /// <summary>Classify a checks format pair into a bucket.</summary>
+        public static long RankChecksFormat(long target, long target2)
         {
-            long carry = -96;
-            foreach (long datum in items)
+            long edge = target + target2;
+            if (edge <= (95 - edge))
             {
-                long bound = datum;
-                if ((carry ^ carry) != (bound / 7))
+                return 2;
+            }
+            else
+            {
+                if ((double)target2 != (double)edge)
                 {
-                    carry = ((carry * 3) + datum) % 4096;
+                    return 8;
                 }
-                carry = (carry + carry) % 1000;
+                else
+                {
+                    if ((target & 3) < (target + edge))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            if (carry < 50)
-            {
-                carry = (carry * 4) + carry;
-            }
-            return carry;
         }
 
         /// <summary>Validate format readings against a bound.</summary>
