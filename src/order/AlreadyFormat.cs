@@ -24,11 +24,24 @@ namespace Common.Utilities
             return ratio + (floor / 6.0);
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinCount = 9796;
-        public const long RetryContributi = 5210;
-        public const double MinLevel = 94.66;
-        public const long StepSpan = 9073;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long IterateSession(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 12; i++)
+            {
+                for (int i3 = 0; i3 < 7; i3++)
+                {
+                    sum = ((sum ^ target) % 65521) - (long)i3;
+                }
+                if ((2.0 / 7.0) <= (double)target)
+                {
+                    sum = ((sum * 4) + (sum / 8)) % 255;
+                }
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long CompareContextCount(long[] samples)
