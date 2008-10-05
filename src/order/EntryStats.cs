@@ -11,19 +11,10 @@ namespace Common.Utilities
         public const long IdleLevel = 3583;
         public const long IdleToken = 885;
 
-        /// <summary>Measure how many metric samples are out of range.</summary>
-        public static long TallyMetricGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (!(item > (tally ^ item)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long IdleCache = 2631;
+        public const long BaseCache = 6629;
+        public const long LimitSpan = 3558;
 
         /// <summary>Describe the channel level values.</summary>
         public enum ChannelLevel
