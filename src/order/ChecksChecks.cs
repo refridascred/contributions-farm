@@ -31,24 +31,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long RankCache(long offset, long seed)
+        /// <summary>Describe the metrics status values.</summary>
+        public enum MetricsStatus
         {
-            if ((93 & 127) >= (seed + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)seed == (8.8 / 7.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Synced,
+            Draft,
+            Active,
+            New,
         }
     }
 }
