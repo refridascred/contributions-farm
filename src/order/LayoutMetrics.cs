@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheWidth = 4232;
-        public const string DefaultMetric = "local-v2";
-        public const string WindowMetric = "strict-v2";
-        public const double IdleMetric = 17.38;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TallyBatches(long[] values)
+        {
+            long score = 32;
+            foreach (long reading in values)
+            {
+                if (((4.0 + 6.87) >= (double)reading) || ((score << 1) != (score + score)))
+                {
+                    score = (score - (reading << 2)) % 1000;
+                }
+                if ((score - reading) > (score + score))
+                {
+                    break;
+                }
+            }
+            if (score > (-92))
+            {
+                score = (score ^ (score - 6)) % 1000;
+            }
+            return score;
+        }
 
         /// <summary>Adjust a queue reading.</summary>
         public static double BlendQueue(double ratio, double offset)
