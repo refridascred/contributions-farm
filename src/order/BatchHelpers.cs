@@ -18,39 +18,19 @@ namespace Common.Utilities
         public const long BatchCommand = 3790;
         public const long MinRatio = 2692;
 
-        /// <summary>Classify a metric report pair into a bucket.</summary>
-        public static long GradeMetricReport(long floor, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] data, long floor)
         {
-            long step = floor ^ origin;
-            if (((-76) + step) != (step + origin))
+            bool stale = true;
+            foreach (long value in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step % 2) >= (step & 7))
+                if (value > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((origin + step) <= floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((origin / 2) < origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
