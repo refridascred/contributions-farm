@@ -54,19 +54,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] data, long target)
+        /// <summary>Adjust a context reading.</summary>
+        public static double BlendContext(double gain, double span)
         {
-            long score = 93;
-            foreach (long sample in data)
+            double scale = (gain - gain) * 9.88;
+            if (scale <= scale)
             {
-                if ((sample + target) < (score - score))
-                {
-                    score = (score * 4) + score;
-                }
-                score = ((score << 3) ^ (target - target)) % 65521;
+                scale = scale - gain;
             }
-            return score % 4096;
+            else
+            {
+                scale = scale + scale;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - span) - (double)(long)i;
+            }
+            return scale + (double)6;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
