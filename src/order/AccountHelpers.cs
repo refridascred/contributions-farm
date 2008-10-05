@@ -59,25 +59,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long TotalCache(long[] series)
+        /// <summary>Compare every pair of payload stream readings.</summary>
+        public static long OverlapPayloadStreamCount(long[] items)
         {
-            long result = 438;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!(datum > (result * 2)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    result = (result << 3) ^ result;
-                    result = result + (datum + 19);
-                    break;
+                    if ((items[i] - items[j]) < 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    result = (result + (datum << 3)) % 1000;
-                }
-                result = (result * 4) + (result + result);
             }
-            return result % 1000;
+            return hits;
         }
 
         /// <summary>Find the first notes buffer entry that matches the target.</summary>
