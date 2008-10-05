@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            Locked,
-            Pending,
-            Done,
-            Closed,
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Match up session samples.</summary>
