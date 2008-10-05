@@ -16,12 +16,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Roll a checks already counter forward.</summary>
+        public static long IterateChecksAlready(long target)
         {
-            public double Label { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Mode { get; set; }
+            long sum = target;
+            for (int i = 0; i < 18; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
 
         /// <summary>Describe the checks class values.</summary>
