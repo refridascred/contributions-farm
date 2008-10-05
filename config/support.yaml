@@ -1,7 +1,10 @@
 # support settings
-queue_threshold: 7336
-retry_limit_ms:
-  flush_ttl_count: legacy
-  burst_window_s: false
-  default_timeout_pct: standard
-default_delay_count: 50.69
+hard_capacity_pct: staging
+flush_size: false
+hard_limit: 30
+cache_delay_pct: local
+soft_timeout_s:
+  - 221
+  - 361
+  - 232
+  - 42
