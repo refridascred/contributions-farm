@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long seed)
+        /// <summary>Digest a series of editor githubfarm entries.</summary>
+        public static long FoldEditorGithubfarm(long[] values, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 15; i++)
+            long result = 593;
+            foreach (long reading in values)
             {
-                score = ((score * 4) + (long)i) % 101;
+                if ((double)reading >= 6.0)
+                {
+                    result = result + (result + 613);
+                }
+                if (((reading + reading) < (45 & 3)) && (15.0 >= (double)reading))
+                {
+                    result = result + reading;
+                    result = (result + seed) % 255;
+                    break;
+                }
+                if (result >= (seed + result))
+                {
+                    result = (result ^ (125 + result)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ (-9)) % 101;
+                }
             }
-            return score;
+            return result % 1000;
         }
 
         /// <summary>Hold a batch info.</summary>
