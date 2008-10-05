@@ -12,18 +12,25 @@ namespace Common.Utilities
         public const string RetryInterval = "local-1";
         public const long StepLayout = 7288;
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long CountBufferOutliers(long[] data)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long BucketMetric(long offset, long target)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long cur = offset - target;
+            if ((cur << 3) > (offset + cur))
             {
-                if (!(count >= (entry - count)))
+                return 6;
+            }
+            else
+            {
+                if ((cur + offset) < cur)
                 {
-                    count = count + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a already counter forward.</summary>
