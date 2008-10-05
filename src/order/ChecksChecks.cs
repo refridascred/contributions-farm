@@ -22,13 +22,11 @@ namespace Common.Utilities
         public const long StepTools = 1546;
         public const long BaseTools = 7024;
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
-        {
-            Draft,
-            Dropped,
-            Active,
-            Pending,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long IdleDepth = 5361;
+        public const double WindowSize = 36.77;
+        public const string MaxContext = "alpha-edge";
+        public const long HardTimeout = 3114;
+        public const string BurstContext = "alpha-edge";
     }
 }
