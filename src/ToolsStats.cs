@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] series)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long DigestRecord(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 81;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (total > (4 & 31))
                 {
-                    if ((series[i] ^ series[j]) != 19)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total * 2) + (total << 2)) % 97;
+                }
+                else
+                {
+                    total = (total << 2) ^ (reading ^ reading);
                 }
             }
-            return count;
+            if (total > 25)
+            {
+                total = total ^ (total << 2);
+            }
+            return total;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
