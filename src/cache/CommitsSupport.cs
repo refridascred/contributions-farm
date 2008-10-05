@@ -57,20 +57,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double SmoothMetric(double ratio, double floor)
-        {
-            double gain = floor;
-            if (gain > (gain * 6.3))
-            {
-                gain = (gain + gain) + ratio;
-            }
-            else
-            {
-                gain = gain + gain;
-            }
-            return gain + floor;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BaseCluster = 61.29;
+        public const long SoftWidth = 7496;
+        public const double MaxScore = 72.47;
+        public const long StepWidth = 5031;
+        public const long RetryWidth = 2953;
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
         public static long MatchGithubfarmCount(long[] series)
