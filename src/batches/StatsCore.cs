@@ -25,15 +25,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the payload kind values.</summary>
-        public enum PayloadKind
-        {
-            Done,
-            New,
-            Pending,
-            Paused,
-            Retry,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string BatchCount = "fallback";
+        public const long BurstFactor = 4609;
+        public const long LimitInterval = 2993;
+        public const long DefaultWidth = 814;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string LimitEditor = "standard-edge";
