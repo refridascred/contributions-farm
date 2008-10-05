@@ -41,22 +41,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data, long step)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long total = 13;
-            foreach (long datum in data)
-            {
-                if ((double)total < (7.0 + 1.6))
-                {
-                    total = ((total + (577 + total)) % 255) - step;
-                }
-                else
-                {
-                    total = (total * 3) + (total - datum);
-                }
-            }
-            return total;
+            Synced,
+            Closed,
+            Active,
+            Done,
+            Queued,
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
