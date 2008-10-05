@@ -31,13 +31,13 @@ namespace Common.Utilities
         public const long StepTools = 1546;
         public const long BaseTools = 7024;
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Describe the notes mode values.</summary>
+        public enum NotesMode
         {
-            public bool Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            Draft,
+            Dropped,
+            Active,
+            Pending,
         }
     }
 }
