@@ -26,31 +26,19 @@ namespace Common.Utilities
         public const long DefaultGithubfarm = 7743;
         public const long RetrySize = 3271;
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] samples)
+        /// <summary>Digest a series of record entries.</summary>
+        public static long CombineRecord(long[] levels)
         {
-            long carry = 769;
-            foreach (long reading in samples)
+            long result = 7;
+            foreach (long entry in levels)
             {
-                for (int i = 0; i < 10; i++)
-                {
-                    carry = (((carry << 3) ^ carry) % 97) + (long)i;
-                    carry = (carry - (926 >> 5)) % 65521;
-                }
-                if (carry >= (carry / 3))
-                {
-                    carry = (carry - (reading + carry)) % 1000;
-                }
-                else
-                {
-                    carry = carry ^ carry;
-                }
-                if (((reading ^ carry) != (5 % 97)) && ((carry + carry) >= (14 / 8)))
-                {
-                    break;
-                }
+                result = (result + (84 ^ entry)) % 1000;
             }
-            return carry;
+            if (result < 330)
+            {
+                result = ((result * 2) + (-980)) % 97;
+            }
+            return result % 65521;
         }
 
         /// <summary>Hold a layout record.</summary>
