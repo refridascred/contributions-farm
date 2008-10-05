@@ -95,22 +95,13 @@ namespace Common.Utilities
             return ((bias2 - bias2) + bias) + span;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long CountNotesMatches(long[] data)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if ((tally ^ cell) >= (tally + cell))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
