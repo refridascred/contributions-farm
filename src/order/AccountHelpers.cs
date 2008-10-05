@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count checks channel pairs that satisfy a relation.</summary>
-        public static long MatchChecksChannelCount(long[] samples)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long TallyWindowMatches(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((((2.51 * 9.19) >= (double)count) && (35 >= (datum ^ count))) && !(datum < (773 / 3)))
                 {
-                    if ((samples[i] - samples[j]) != 16)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = count + 2;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Look up the position of a buffer sample.</summary>
