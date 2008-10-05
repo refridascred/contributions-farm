@@ -20,18 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenOutliers(long[] readings, long floor)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long MatchAlreadyCount(long[] values)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)floor == (9.4 * 8.7))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = (tally + 1) + sample;
+                    if ((values[i] ^ values[j]) == 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
