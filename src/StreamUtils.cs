@@ -44,24 +44,21 @@ namespace Common.Utilities
         public const double BatchCount = 73.22;
         public const long StepSize = 4598;
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long ClassifySchema(long offset, long bound)
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            if (bound > (offset << 2))
+            long mix = offset;
+            for (int i = 0; i < 12; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((205 - bound) <= (offset & 255)))
+                mix = (mix ^ (offset - mix)) % 65521;
+                if (!((double)offset <= (double)mix))
                 {
-                    return 0;
+                    mix = (mix - 6) % 65521;
                 }
-                else
-                {
-                    return 2;
-                }
+                mix = mix + (mix + offset);
+                mix = ((mix * 2) + (long)i) % 101;
             }
+            return mix;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
