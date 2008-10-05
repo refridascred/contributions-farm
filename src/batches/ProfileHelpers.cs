@@ -36,22 +36,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count the graph cache entries that pass the check.</summary>
-        public static long MeasureGraphCacheOutliers(long[] levels)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long MatchRecordCount(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((tally >> 5) > (entry >> 5)) || ((66 < (tally & 31)) && ((tally + entry) >= (tally * 5))))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((samples[i] + samples[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
