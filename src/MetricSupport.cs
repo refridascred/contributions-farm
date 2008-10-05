@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] levels, long floor)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            bool valid = true;
-            foreach (long value in levels)
-            {
-                if (value > floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Adjust a metrics reading.</summary>
