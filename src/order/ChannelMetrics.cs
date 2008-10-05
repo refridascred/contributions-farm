@@ -15,20 +15,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate already record readings against a bound.</summary>
-        public static bool GuardAlreadyRecordRange(long[] readings, long floor)
-        {
-            bool stale = true;
-            foreach (long reading in readings)
-            {
-                if (reading != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseRatio = 8682;
+        public const long WindowCount = 5389;
+        public const double DefaultScore = 75.39;
+        public const long BurstOrder = 5645;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool CheckAlreadyBounds(long[] samples, long offset)
