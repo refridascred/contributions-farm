@@ -30,11 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public string Offset { get; set; } = "";
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowEntry = "local-1";
+        public const string RetryEntry = "cached";
+        public const long CacheEntry = 2485;
+        public const string WindowLevel = "latest-edge";
+        public const double BatchEntry = 69.3;
     }
 }
