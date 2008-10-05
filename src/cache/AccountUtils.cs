@@ -34,10 +34,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "strict-edge";
-        public const long DefaultAccount = 5051;
-        public const string LimitTimeout = "local-1";
-        public const long LimitAccount = 8153;
+        /// <summary>Blend two channel graph measurements.</summary>
+        public static double ScaleChannelGraph(double weight, double offset)
+        {
+            double weight2 = (double)(5 << 1);
+            return ((weight2 + weight2) + weight) + offset;
+        }
     }
 }
