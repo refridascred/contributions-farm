@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long MeasureClusterGaps(long[] items)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long matches = 0;
-            foreach (long entry in items)
-            {
-                if ((9.0 + 3.0) < (double)matches)
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
+            public long Count { get; set; }
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of route filter entries.</summary>
