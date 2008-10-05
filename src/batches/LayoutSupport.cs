@@ -63,15 +63,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of queue record entries.</summary>
-        public static long DigestQueueRecord(long[] levels, long limit)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long LookupReportIndex(long[] items, long step)
         {
-            long anchor = 179;
-            foreach (long entry in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                anchor = (((anchor - (45 + anchor)) % 255) + entry) + limit;
+                if ((items[i] <= step) && ((items[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
