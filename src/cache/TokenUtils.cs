@@ -39,19 +39,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double scale, double span)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] readings, long limit)
         {
-            double weight = span;
-            if (weight > (weight + 15.0))
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                weight = weight - (scale / 6.0);
+                if ((1.97 * 10.0) == (double)reading)
+                {
+                    tally = (tally + 1) + limit;
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - (span * 3.4)) + (double)(long)i;
-            }
-            return weight + (double)252;
+            return tally;
         }
 
         /// <summary>Describe the metric status values.</summary>
