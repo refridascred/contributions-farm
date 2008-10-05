@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long IdleCache = 2938;
-        public const string MaxScore = "legacy-1";
-        public const long StepLevel = 5651;
-        public const double MaxCache = 44.42;
-        public const double IdleWidth = 25.09;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double BaseLayout = 60.09;
+        public const string CacheFactor = "stable";
+        public const string DefaultLayout = "primary";
+        public const long BurstLayout = 9842;
 
         /// <summary>Digest a series of report entries.</summary>
         public static long ScoreReport(long[] items)
