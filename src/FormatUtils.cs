@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long WeighBuffer(long[] data)
+        /// <summary>Look up the position of a cluster sample.</summary>
+        public static long LocateClusterIndex(long[] readings, long step)
         {
-            long state = -811;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((state ^ state) == (item - state))
+                if (readings[i] <= step)
                 {
-                    state = ((state << 2) ^ state) % 4096;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
