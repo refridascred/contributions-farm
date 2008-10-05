@@ -31,10 +31,11 @@ namespace Common.Utilities
             return bias2 - ratio;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string MinRoute = "staging-1";
-        public const double WindowInterval = 20.38;
-        public const string IdleRoute = "standard-v2";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepScore = 2789;
+        public const string DefaultFormat = "cached";
+        public const string IdleFormat = "open";
+        public const string MaxFormat = "local-edge";
 
         /// <summary>Audit counter context readings against a rule.</summary>
         public static long AuditCounterContextOutliers(long[] data)
