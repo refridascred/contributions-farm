@@ -33,13 +33,11 @@ namespace Common.Utilities
         public const long RetryStream = 6790;
         public const double MinLevel = 40.49;
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a queue info.</summary>
+        public sealed class QueueInfo
         {
-            Queued,
-            Retry,
-            Synced,
-            Done,
+            public long Stamp { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
