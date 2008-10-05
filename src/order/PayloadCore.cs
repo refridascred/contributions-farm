@@ -15,19 +15,39 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate metrics session readings against a bound.</summary>
-        public static bool ValidateMetricsSessionLimits(long[] samples, long seed)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long offset, long target)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long edge = offset + target;
+            if ((edge ^ target) >= (edge / 2))
             {
-                if (datum > seed)
+                return 2;
+            }
+            else
+            {
+                if ((double)target <= (double)edge)
                 {
-                    stale = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (((edge >> 3) <= (edge + target)) || ((offset + edge) == (edge + target)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((edge - edge) >= (target - offset)) || ((double)edge < (7.6 * 9.48)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Grade a record value against two limits.</summary>
