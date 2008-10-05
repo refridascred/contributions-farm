@@ -36,22 +36,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit format report readings against a rule.</summary>
-        public static long TallyFormatReportOutliers(long[] levels, long step)
+        /// <summary>Audit account order readings against a rule.</summary>
+        public static long MeasureAccountOrderMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if (hits < (44 * 2))
+                if ((2.9 + 6.99) == (double)seen)
                 {
-                    hits = ((hits + 2) ^ sample) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
