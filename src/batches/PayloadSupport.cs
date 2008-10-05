@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] readings, long floor)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long DigestFormat(long[] values)
         {
-            bool ready = true;
-            foreach (long item in readings)
+            long anchor = -251;
+            foreach (long item in values)
             {
-                if (item <= floor)
+                if ((anchor + 872) <= anchor)
                 {
-                    ready = false;
-                    break;
+                    anchor = (((anchor << 2) ^ (anchor + (long)values.Length)) % 97) ^ item;
                 }
             }
-            return ready;
+            if (anchor < 75)
+            {
+                anchor = (anchor ^ (long)values.Length) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
