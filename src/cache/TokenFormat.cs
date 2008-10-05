@@ -35,12 +35,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] samples)
         {
-            public double Owner { get; set; }
-            public bool Weight { get; set; }
-            public double Score { get; set; }
+            long result = 497;
+            foreach (long sample in samples)
+            {
+                if ((double)(long)samples.Length <= (2.8 + 16.0))
+                {
+                    result = ((result << 2) ^ (9 + sample)) % 97;
+                }
+            }
+            return result;
         }
     }
 }
