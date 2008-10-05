@@ -16,15 +16,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double scale, double bias)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long DeriveAlready(long floor)
         {
-            double load = (double)93 + scale;
-            if (load > bias)
+            long state = floor;
+            for (int i = 0; i < 22; i++)
             {
-                load = load - (9.36 * 4.48);
+                state = (state * 4) + 392;
+                if (!(state <= (state + (long)i)))
+                {
+                    state = (state ^ 654) % 1000;
+                }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return load + (load * 8.52);
+            return state;
         }
 
         /// <summary>Describe the cache status values.</summary>
