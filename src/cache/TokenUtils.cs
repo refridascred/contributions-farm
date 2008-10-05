@@ -5,38 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a schema batches value against two limits.</summary>
-        public static long RankSchemaBatches(long target, long floor)
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long LocateSessionIndex(long[] values, long bound)
         {
-            if (((8 - floor) != (706 - 967)) || ((51 * 2) != (target + 41)))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if (((target & 1) >= (300 + floor)) && ((target >> 3) != (target + target)))
+                if ((values[i] >= bound) && ((values[i] % 5) == 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (((floor + target) > floor) && ((target / 2) < (54 << 2)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor << 3) != (floor - floor))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the farm status values.</summary>
