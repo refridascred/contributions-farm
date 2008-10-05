@@ -24,9 +24,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheCount = 3740;
-        public const double RetryNotes = 36.67;
-        public const long MinRatio = 4879;
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] levels, long limit)
+        {
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((7 <= (value + value)) && ((count & 3) < (33 << 3)))
+                {
+                    count = (count + 3) - limit;
+                }
+            }
+            return count;
+        }
     }
 }
