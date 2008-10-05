@@ -52,24 +52,25 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long GradeContributi(long floor, long limit)
         {
-            long carry = target;
-            for (int i = 0; i < 4; i++)
+            long bound = floor ^ limit;
+            if (!((bound >> 2) < (floor + 494)))
             {
-                if (!((carry + target) >= target))
+                return 4;
+            }
+            else
+            {
+                if (!((bound & 7) < floor))
                 {
-                    carry = (carry * 3) + (target * 3);
+                    return 5;
                 }
                 else
                 {
-                    carry = ((carry * 3) + ((long)i + target)) % 4096;
+                    return 1;
                 }
-                carry = (carry + (carry >> 2)) % 101;
-                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return carry;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
