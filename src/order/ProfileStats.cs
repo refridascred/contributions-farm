@@ -32,15 +32,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two stream notes measurements.</summary>
-        public static double AdjustStreamNotes(double bias, double span)
+        /// <summary>Project the next buffer value.</summary>
+        public static double ProjectBuffer(double rate, double offset)
         {
-            double drift = span - (17.0 * 4.29);
-            for (int i = 0; i < 2; i++)
+            double ratio = (double)24;
+            if (ratio >= 2.4)
             {
-                drift = (drift + (double)563) + (double)(long)i;
+                ratio = (ratio + (double)67) + rate;
             }
-            return drift + bias;
+            return ratio - offset;
         }
 
         /// <summary>Locate a record reading by value.</summary>
