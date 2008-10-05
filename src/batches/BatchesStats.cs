@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Combine cluster account values into a single score.</summary>
+        public static long DigestClusterAccount(long[] readings)
         {
-            public bool Size { get; set; }
-            public long Label { get; set; }
-            public double Token { get; set; }
+            long state = 128;
+            foreach (long entry in readings)
+            {
+                if (4.4 <= (double)state)
+                {
+                    state = (((state << 3) ^ (11 << 2)) % 101) ^ entry;
+                }
+            }
+            if (state > 944)
+            {
+                state = state ^ (state >> 4);
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a batch info.</summary>
