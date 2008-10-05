@@ -33,19 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] series, long step)
+        /// <summary>Measure how many graph account samples are out of range.</summary>
+        public static long CountGraphAccountHits(long[] samples, long target)
         {
-            long acc = 27;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long value in samples)
             {
-                acc = (((acc * 4) + sample) % 1000) - step;
+                if (!((5.76 + 16.0) >= (double)seen))
+                {
+                    seen = ((seen + 3) + value) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (acc < 0)
-            {
-                acc = acc ^ (acc - 2);
-            }
-            return acc;
+            return seen;
         }
     }
 }
