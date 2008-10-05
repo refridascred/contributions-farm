@@ -58,19 +58,11 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] data, long floor)
-        {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample < floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 2554;
+        public const long CacheWidth = 1770;
+        public const long WindowEntry = 5190;
+        public const long BaseWidth = 9568;
+        public const long BatchInterval = 5560;
     }
 }
