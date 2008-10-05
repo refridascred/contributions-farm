@@ -57,18 +57,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long AuditFilterOutliers(long[] items, long limit)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long seen = 0;
-            foreach (long cell in items)
-            {
-                if ((cell << 1) != (limit >> 5))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            Queued,
+            Retry,
+            Closed,
+            Done,
+            Pending,
         }
     }
 }
