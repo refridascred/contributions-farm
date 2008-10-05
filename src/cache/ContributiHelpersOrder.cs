@@ -38,10 +38,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long BatchSize = 7997;
-        public const string DefaultContext = "strict-1";
-        public const long MinDepth = 8722;
-        public const long RetryTimeout = 9807;
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double AdjustMetric(double ratio, double bias)
+        {
+            double mean = bias;
+            if (mean <= mean)
+            {
+                mean = (mean + mean) + ratio;
+            }
+            return mean - mean;
+        }
     }
 }
