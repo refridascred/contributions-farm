@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] levels, long offset)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamBounds(long[] series, long seed)
         {
-            long anchor = 53;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long cell in series)
             {
-                if ((sample + anchor) <= (offset >> 3))
+                if (cell > seed)
                 {
-                    anchor = (anchor ^ 86) % 97;
-                }
-                if (anchor >= (6 + (long)levels.Length))
-                {
-                    anchor = ((anchor << 3) ^ (offset >> 1)) % 97;
-                }
-                if (9.5 <= (double)offset)
-                {
+                    stale = false;
                     break;
                 }
             }
-            return anchor % 4096;
+            return stale;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
