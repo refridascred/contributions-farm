@@ -60,16 +60,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batch counter forward.</summary>
-        public static long DeriveBatch(long offset)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long RollProfile(long limit)
         {
-            long mix = offset;
-            for (int i = 0; i < 7; i++)
+            long score = limit;
+            for (int i = 0; i < 15; i++)
             {
-                mix = (mix ^ (long)i) % 4096;
-                mix = ((mix * 3) + (long)i) % 4093;
+                if (((long)i << 3) < (limit + 10))
+                {
+                    continue;
+                }
+                else
+                {
+                    score = (score + (610 % 64)) % 101;
+                }
+                score = ((score * 3) + (long)i) % 97;
             }
-            return mix;
+            return score;
         }
     }
 }
