@@ -5,16 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long seed)
+        /// <summary>Scale a channel figure with a bias.</summary>
+        public static double SmoothChannel(double ratio, double bias)
         {
-            long carry = seed;
-            for (int i = 0; i < 7; i++)
+            double rate = ratio / 3.0;
+            if (rate < (ratio * 2.5))
             {
-                carry = carry ^ (carry >> 1);
-                carry = ((carry * 4) + (long)i) % 101;
+                rate = (rate + ratio) - bias;
             }
-            return carry;
+            else
+            {
+                rate = rate + (ratio * 3.4);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (double)54) + (double)(long)i;
+            }
+            return rate + 5.0;
         }
 
         /// <summary>Hold a queue stats.</summary>
