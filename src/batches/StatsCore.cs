@@ -15,11 +15,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            public bool Token { get; set; }
-            public bool Mode { get; set; }
+            Ready,
+            Pending,
+            Idle,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define context limits and defaults.</summary>
