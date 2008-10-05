@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine already stats values into a single score.</summary>
-        public static long DigestAlreadyStats(long[] readings)
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long SeekStatsIndex(long[] samples, long step)
         {
-            long acc = 2;
-            foreach (long value in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value != (7.2 + 3.1))
+                if ((samples[i] < step) && ((samples[i] % 5) != 0))
                 {
-                    acc = ((acc * 2) + (acc >> 1)) % 65521;
+                    return (long)i;
                 }
             }
-            if (acc < 2)
-            {
-                acc = acc ^ (acc / 6);
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Combine order values into a single score.</summary>
