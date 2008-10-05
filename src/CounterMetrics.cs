@@ -42,17 +42,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long FindRouteIndex(long[] data, long limit)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportBounds(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool stale = true;
+            foreach (long value in items)
             {
-                if (data[i] == limit)
+                if (value >= step)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
