@@ -32,18 +32,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((matches - matches) > (item % 97))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double MinFactor = 62.3;
+        public const long RetryProfile = 8412;
+        public const string DefaultFactor = "legacy-edge";
     }
 }
