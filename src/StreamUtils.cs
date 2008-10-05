@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseSize = 4890;
-        public const double StepDepth = 79.09;
-        public const string MinScore = "staging-v2";
-        public const string MinBatch = "latest-v2";
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] samples, long offset)
+        {
+            long state = -21;
+            foreach (long sample in samples)
+            {
+                long lane = (sample & 7) << 1;
+                if (lane < (992 / 9))
+                {
+                    lane = ((lane - (lane << 1)) % 65521) - offset;
+                }
+                else
+                {
+                    state = (state + (state + state)) % 1000;
+                }
+                if ((state << 2) < (sample - state))
+                {
+                    state = state ^ (state << 2);
+                }
+            }
+            return state % 97;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
