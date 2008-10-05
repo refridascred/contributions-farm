@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine context values into a single score.</summary>
-        public static long FoldContext(long[] values, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool GuardCounterRange(long[] readings, long floor)
         {
-            long score = -452;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                score = score ^ score;
-                if ((3.64 + 9.72) != (double)score)
+                if (item < floor)
                 {
-                    score = (score << 2) ^ (datum - 56);
+                    valid = false;
+                    break;
                 }
             }
-            if (score < 30)
-            {
-                score = score + (step + 8);
-            }
-            return score;
+            return valid;
         }
 
         /// <summary>Blend two record route measurements.</summary>
