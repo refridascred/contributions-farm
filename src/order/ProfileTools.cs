@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a context entry.</summary>
-        public sealed class ContextEntry
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public long Level { get; set; }
+            Paused,
+            Synced,
+            Retry,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
