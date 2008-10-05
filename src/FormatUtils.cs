@@ -67,19 +67,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate session payload readings against a bound.</summary>
-        public static bool ValidateSessionPayloadRange(long[] data, long origin)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long LookupEditorIndex(long[] samples, long floor)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (cell < origin)
+                if ((samples[i] >= floor) && ((samples[i] % 5) == 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
