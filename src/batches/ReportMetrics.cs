@@ -16,21 +16,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] samples)
+        /// <summary>Check that every token session entry stays within the limit.</summary>
+        public static bool CheckTokenSessionLimits(long[] samples, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (entry < step)
                 {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Grade a buffer value against two limits.</summary>
