@@ -37,15 +37,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the notes route entries that pass the check.</summary>
-        public static long CountNotesRouteMatches(long[] values)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] levels)
         {
             long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((seen - seen) != (item ^ seen))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((levels[i] - levels[j]) != 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
