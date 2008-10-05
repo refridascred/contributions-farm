@@ -17,25 +17,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long step, long floor)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long PairQueueCount(long[] readings)
         {
-            long step2 = step + floor;
-            if ((step2 * 4) <= (83 - step))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step2 + step2) < (step + step2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
+                    if ((readings[i] ^ readings[j]) < 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
