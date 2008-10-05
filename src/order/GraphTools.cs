@@ -55,10 +55,14 @@ namespace Common.Utilities
         public const long HardFarm = 7226;
         public const long RetryDepth = 1418;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowSpan = 8842;
-        public const long BatchWidth = 9225;
-        public const string BurstCommits = "open-1";
-        public const long BurstLevel = 3006;
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
+        {
+            Queued,
+            Dropped,
+            New,
+            Locked,
+            Failed,
+        }
     }
 }
