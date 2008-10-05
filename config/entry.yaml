@@ -1,13 +1,28 @@
 # entry settings
-default_size: local
-cache_capacity: 77
-hard_retries: 621
-max_capacity_count: 250
-layout_capacity:
-  - eu-west
-  - local
-  - blue
-readonly:
-  verbose: 92.82
-  strict: true
-  retry_delay_pct: 49
+audit: local
+enabled: 67
+batch_size_s: standard
+poll_limit: edge
+max_delay_pct:
+  order_delay:
+    - 269
+    - 468
+    - 237
+  compress:
+    burst_ratio_pct: 7296
+    dry_run: 92
+    sync_ratio: edge
+    audit: 81
+    tools_window: edge
+    already_delay: 1986
+  burst_delay: fallback
+  retry_limit:
+    - open
+    - eu-west
+  readonly: edge
+  base_retries_pct:
+    base_ratio_count: cached
+    notes_capacity: false
+    idle_limit_ms: true
+    cluster_retries: 60
+    max_delay: 52
