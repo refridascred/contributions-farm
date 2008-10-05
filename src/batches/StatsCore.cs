@@ -55,18 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long DigestFarm(long[] series)
+        /// <summary>Validate token counter readings against a bound.</summary>
+        public static bool GuardTokenCounterRange(long[] items, long limit)
         {
-            long score = 65;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long entry in items)
             {
-                if ((sample >> 5) > sample)
+                if (entry > limit)
                 {
-                    score = (score + sample) % 101;
+                    ready = false;
+                    break;
                 }
             }
-            return score % 1000;
+            return ready;
         }
 
         /// <summary>Match up profile samples.</summary>
