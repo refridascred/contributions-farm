@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Stale,
-            Paused,
-            Failed,
-            Draft,
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a format entry.</summary>
