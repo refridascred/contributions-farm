@@ -28,11 +28,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long ClassifySchema(long offset, long bound)
         {
-            public long Region { get; set; }
-            public bool Label { get; set; }
+            if (bound > (offset << 2))
+            {
+                return 3;
+            }
+            else
+            {
+                if (!((205 - bound) <= (offset & 255)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Hold a window stats.</summary>
