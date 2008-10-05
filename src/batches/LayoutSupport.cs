@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Accumulate batches farm samples.</summary>
-        public static long ScoreBatchesFarm(long[] data, long offset)
+        /// <summary>Rank record input into a small class.</summary>
+        public static long RankRecord(long floor, long seed)
         {
-            long acc = 90;
-            foreach (long item in data)
+            if ((double)2 >= (double)seed)
             {
-                if ((item - item) < (offset + acc))
+                return 8;
+            }
+            else
+            {
+                if ((seed + 8) != (4 * 2))
                 {
-                    acc = acc - (item & 63);
+                    return 1;
+                }
+                else
+                {
+                    if ((2 <= floor) && ((double)seed <= 1.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return acc % 1000;
         }
 
         /// <summary>Count the already metric entries that pass the check.</summary>
