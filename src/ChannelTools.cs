@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxLevel = 896;
-        public const double IdleLevel = 11.64;
-        public const long DefaultOrder = 2570;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public long Count { get; set; }
+            public bool Offset { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Score { get; set; }
+        }
 
         /// <summary>Define context limits and defaults.</summary>
         public const double BurstContext = 35.53;
