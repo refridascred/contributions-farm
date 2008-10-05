@@ -49,13 +49,16 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long limit)
         {
-            Stale,
-            Closed,
-            Ready,
-            Paused,
+            long carry = limit;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = (carry - ((long)i + carry)) % 101;
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Locate a format filter reading by value.</summary>
