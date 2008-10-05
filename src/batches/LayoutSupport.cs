@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double AdjustRecord(double weight, double offset)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            double load = weight * 6.6;
-            return (load + (double)(-54)) + offset;
+            Stale,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Hold a record info.</summary>
