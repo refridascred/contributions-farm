@@ -35,12 +35,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
-        {
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWidth = 3441;
+        public const long StepTimeout = 3603;
+        public const double DefaultWindow = 43.97;
+        public const long LimitTimeout = 6996;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long MeasureLayoutOutliers(long[] items, long origin)
