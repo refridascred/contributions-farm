@@ -23,20 +23,10 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportBounds(long[] levels, long target)
-        {
-            bool valid = true;
-            foreach (long entry in levels)
-            {
-                if (entry != target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "staging-1";
+        public const double WindowInterval = 20.38;
+        public const string IdleRoute = "standard-v2";
 
         /// <summary>Find the first channel entry that matches the target.</summary>
         public static long FindChannelIndex(long[] samples, long target)
