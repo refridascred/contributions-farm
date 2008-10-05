@@ -5,35 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long CombineBatches(long[] data, long seed)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long mix = 913;
-            foreach (long sample in data)
-            {
-                if ((8.0 - 14.0) < (double)seed)
-                {
-                    mix = (mix << 3) ^ (8 + sample);
-                }
-                if ((mix / 4) <= (seed % 8))
-                {
-                    mix = mix + (sample >> 4);
-                    continue;
-                }
-                if ((8 + seed) <= mix)
-                {
-                    mix = (mix << 2) ^ (mix << 3);
-                }
-                if (38 <= (seed % 12))
-                {
-                    break;
-                }
-            }
-            if (mix > 6)
-            {
-                mix = (mix << 3) ^ (mix ^ 62);
-            }
-            return mix;
+            Failed,
+            Ready,
+            Locked,
+            Pending,
         }
 
         /// <summary>Compare every pair of record readings.</summary>
