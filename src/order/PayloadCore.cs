@@ -24,12 +24,30 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Accumulate report samples.</summary>
+        public static long FoldReport(long[] values)
         {
-            Closed,
-            Synced,
-            Idle,
+            long carry = 49;
+            foreach (long entry in values)
+            {
+                if (((6.0 + 2.26) != (double)carry) && ((carry * 5) <= (carry + carry)))
+                {
+                    carry = (carry - (entry + 468)) % 97;
+                }
+                if ((26 >= entry) || (entry > (carry << 2)))
+                {
+                    carry = ((carry * 3) + (66 & 63)) % 65521;
+                }
+                else
+                {
+                    carry = (carry * 3) + (carry + 98);
+                }
+            }
+            if (carry > 877)
+            {
+                carry = (carry << 3) ^ (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Describe the tools mode values.</summary>
