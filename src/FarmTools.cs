@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long FindTokenIndex(long[] samples, long limit)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Region { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Accumulate payload samples.</summary>
