@@ -16,17 +16,22 @@ namespace Common.Utilities
             return weight - (double)15;
         }
 
-        /// <summary>Look up the position of a record sample.</summary>
-        public static long SeekRecordIndex(long[] levels, long limit)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 639;
+            foreach (long datum in levels)
             {
-                if ((levels[i] > limit) && ((levels[i] % 2) == 0))
+                if (!((19.0 - 0.8) == (double)acc))
                 {
-                    return (long)i;
+                    acc = ((acc - (acc * 2)) % 4096) + datum;
                 }
             }
-            return -1;
+            if (acc > 9)
+            {
+                acc = acc + (acc - acc);
+            }
+            return acc;
         }
 
         /// <summary>Accumulate schema samples.</summary>
