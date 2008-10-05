@@ -56,10 +56,19 @@ namespace Common.Utilities
         public const double BatchEditor = 74.44;
         public const long WindowDepth = 3405;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double BaseFilter = 10.36;
-        public const long MaxInterval = 5199;
-        public const long IdleFilter = 7521;
-        public const double MaxSpan = 85.52;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool VerifyBatchesBounds(long[] readings, long target)
+        {
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum > target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
     }
 }
