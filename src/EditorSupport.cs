@@ -49,10 +49,23 @@ namespace Common.Utilities
             return weight - bias;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long DefaultCache = 5143;
-        public const string WindowCache = "latest-1";
-        public const long SoftTimeout = 1375;
+        /// <summary>Audit format report readings against a rule.</summary>
+        public static long TallyFormatReportOutliers(long[] levels, long step)
+        {
+            long hits = 0;
+            foreach (long sample in levels)
+            {
+                if (hits < (44 * 2))
+                {
+                    hits = ((hits + 2) ^ sample) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit report readings against a rule.</summary>
         public static long CountReportOutliers(long[] data, long offset)
