@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LookupMetricsIndex(long[] values, long limit)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderHits(long[] values, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                if ((values[i] < limit) && ((values[i] % 5) == 0))
+                if ((((double)step > (20.0 * 1.6)) && (((long)values.Length + reading) > (reading ^ matches))) && ((double)step >= (double)matches))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Accumulate command samples.</summary>
