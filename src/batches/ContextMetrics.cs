@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Combine schema route values into a single score.</summary>
-        public static long TallySchemaRoute(long[] values)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long LocateLayoutIndex(long[] values, long limit)
         {
-            long result = 3;
-            foreach (long datum in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)datum < (double)result)
+                if (values[i] < limit)
                 {
-                    continue;
-                }
-                else
-                {
-                    result = (result - (result + datum)) % 65521;
-                }
-                if ((datum + result) <= (62 % 60))
-                {
-                    result = (result + datum) % 4096;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Adjust a payload reading.</summary>
