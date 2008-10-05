@@ -1,18 +1,5 @@
 {
-  "notes_delay": "latest",
-  "batch_depth_count": 30,
-  "burst_retries_pct": [146, 311, 424, 466],
-  "cache_size": 75.82,
-  "dry_run": {
-    "checks_ttl": false,
-    "compress": {
-      "hard_limit_pct": "blue",
-      "record_window": true,
-      "strict": ["staging", "cached", "staging"]
-    },
-    "token_interval": "edge",
-    "soft_size_ms": false,
-    "payload_limit": "stable"
-  },
-  "sync_threshold_s": 8400
+  "command_capacity": "strict",
+  "base_limit_count": "eu-west",
+  "strict": 74.05
 }
