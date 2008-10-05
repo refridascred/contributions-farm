@@ -5,38 +5,14 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long limit, long offset)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            if ((limit << 2) > (limit << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((7.0 / 4.0) != (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (limit < (13 * 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((9.1 * 8.0) < 0.99)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Retry,
+            Pending,
+            New,
+            Active,
         }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
