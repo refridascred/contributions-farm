@@ -1,6 +1,11 @@
 # entry settings
-poll_window_ms: 5966
-retry_ttl_s: 85.91
-schema_size: 1024
-min_ratio_count: 49
-min_retries: 6417
+max_retries_count: primary
+idle_size_pct: fallback
+batch_ttl_s: false
+max_delay_ms:
+  - fallback
+  - primary
+  - fallback
+  - edge
+default_window_ms: 66.94
+format_window: 3310
