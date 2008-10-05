@@ -1,14 +1,12 @@
 {
-  "report_interval": "stable",
-  "buffer_limit": true,
-  "route_depth": {
-    "min_window_s": "green",
-    "flush_threshold": 500,
-    "flush_interval_s": false,
-    "min_threshold_pct": false,
-    "order_threshold": 43,
-    "sync_retries_s": true
+  "hard_ttl_ms": 500,
+  "already_ratio": 250,
+  "filter_threshold": {
+    "min_limit_ms": ["latest", "cached"],
+    "enabled": false,
+    "graph_retries": ["cached", "edge", "fallback", "standard"]
   },
-  "compress": [384, 175, 270],
-  "idle_window_s": "fallback"
+  "enabled": [164, 317, 382],
+  "compress": "edge",
+  "idle_ratio_pct": [169, 39, 375]
 }
