@@ -25,19 +25,15 @@ namespace Common.Utilities
         public const string SoftLevel = "open-edge";
         public const double IdleCommand = 44.77;
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] series, long seed)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long RollBuffer(long origin)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            long carry = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if (sample >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            return flag;
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
