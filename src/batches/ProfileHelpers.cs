@@ -43,32 +43,14 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a already command value against two limits.</summary>
-        public static long GradeAlreadyCommand(long step, long limit)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long edge = step ^ limit;
-            if ((0.2 * 5.0) < (double)step)
-            {
-                return 1;
-            }
-            else
-            {
-                if (6.0 >= (double)step)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((53 + edge) < (limit + edge))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            Active,
+            New,
+            Queued,
+            Ready,
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
