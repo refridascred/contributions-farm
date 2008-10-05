@@ -1,7 +1,6 @@
 {
-  "audit": "standard",
-  "max_interval": ["cached", "open"],
-  "persist": "primary",
-  "stats_interval": "stable",
-  "cache_retries_pct": false
+  "compress": 7171,
+  "min_timeout": false,
+  "default_retries": 57.02,
+  "batch_timeout_ms": "standard"
 }
