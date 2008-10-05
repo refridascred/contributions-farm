@@ -25,11 +25,17 @@ namespace Common.Utilities
         public const long RetryStream = 6790;
         public const double MinLevel = 40.49;
 
-        /// <summary>Hold a queue info.</summary>
-        public sealed class QueueInfo
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] data, long limit)
         {
-            public long Stamp { get; set; }
-            public long Offset { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
