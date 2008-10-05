@@ -30,11 +30,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowRoute = 9128;
-        public const double LimitFactor = 43.0;
-        public const long SoftRoute = 7177;
-        public const long StepScore = 925;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((item / 7) > (limit / 4))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const string RetryRecord = "latest-1";
