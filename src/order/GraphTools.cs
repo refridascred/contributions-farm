@@ -74,12 +74,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a session stats.</summary>
-        public sealed class SessionStats
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-            public long Level { get; set; }
+            Done,
+            Paused,
+            Retry,
+            Pending,
         }
     }
 }
