@@ -14,22 +14,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] series)
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)hits >= (9.7 * 6.0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 2) ^ value;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    if ((series[i] ^ series[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
