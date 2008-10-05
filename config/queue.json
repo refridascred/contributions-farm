@@ -1,6 +1,7 @@
 {
-  "burst_ttl_ms": true,
-  "burst_ratio_s": 500,
-  "retry_limit_pct": 8.02,
-  "support_size": "fallback"
+  "batches_ratio": "latest",
+  "order_interval": ["staging", "edge", "green", "standard"],
+  "enabled": 250,
+  "route_depth": 5022,
+  "batch_delay_s": 4688
 }
