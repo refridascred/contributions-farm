@@ -76,19 +76,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate metrics channel readings against a bound.</summary>
-        public static bool VerifyMetricsChannelRange(long[] series, long floor)
+        /// <summary>Validate session payload readings against a bound.</summary>
+        public static bool ValidateSessionPayloadRange(long[] data, long origin)
         {
-            bool flag = true;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (sample < floor)
+                if (cell < origin)
                 {
-                    flag = false;
+                    ready = false;
                     break;
                 }
             }
-            return flag;
+            return ready;
         }
     }
 }
