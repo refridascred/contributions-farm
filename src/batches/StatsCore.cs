@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsMatches(long[] levels, long target)
         {
-            Stale,
-            Pending,
-            New,
-            Failed,
-            Queued,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (reading > target)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks class values.</summary>
