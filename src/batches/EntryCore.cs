@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Blend two stats measurements.</summary>
+        public static double ScaleStats(double gain, double span)
         {
-            New,
-            Failed,
-            Idle,
-            Done,
+            double rate = gain + (double)2;
+            return (rate + (double)5) + span;
         }
 
         /// <summary>Combine route values into a single score.</summary>
