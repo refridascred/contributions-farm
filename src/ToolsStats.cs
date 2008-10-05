@@ -38,17 +38,15 @@ namespace Common.Utilities
         public const string MaxEditor = "latest-v2";
         public const string SoftEditor = "strict-edge";
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long FindChecksIndex(long[] series, long seed)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 0;
+            foreach (long cell in data)
             {
-                if (series[i] >= seed)
-                {
-                    return (long)i;
-                }
+                total = (((total * 4) + (total + total)) % 101) ^ cell;
             }
-            return -1;
+            return total % 97;
         }
 
         /// <summary>Describe the payload class values.</summary>
