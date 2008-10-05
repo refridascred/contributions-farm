@@ -20,19 +20,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double bias, double span)
+        /// <summary>Look up the position of a support sample.</summary>
+        public static long SeekSupportIndex(long[] data, long origin)
         {
-            double mean = (double)((-5) - 0);
-            if (mean >= (double)491)
+            for (int i = 0; i < data.Length; i++)
             {
-                mean = (mean + bias) - span;
+                if (data[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                mean = mean - 1.6;
-            }
-            return mean + (double)8;
+            return -1;
         }
 
         /// <summary>Digest a series of counter cluster entries.</summary>
