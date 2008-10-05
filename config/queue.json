@@ -1,5 +1,18 @@
 {
-  "min_threshold_count": ["cached", "standard"],
-  "batches_limit": 73.11,
-  "flush_threshold_pct": true
+  "max_ttl_count": 46,
+  "route_size": {
+    "default_capacity_count": 500,
+    "poll_limit": {
+      "min_ttl_ms": 62,
+      "min_interval": 60,
+      "channel_timeout": 2748,
+      "sync_delay_ms": 89.75
+    },
+    "batch_ttl": ["open", "eu-west", "legacy"],
+    "cluster_size": [158, 422, 312]
+  },
+  "account_depth": ["fallback", "open", "stable", "green"],
+  "cache_size_count": 60,
+  "max_depth": false,
+  "audit": [333, 454, 52, 288]
 }
