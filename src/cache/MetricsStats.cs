@@ -62,13 +62,18 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricHits(long[] readings)
         {
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long item in readings)
+            {
+                if ((count - item) >= (item ^ item))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count commits metric pairs that satisfy a relation.</summary>
