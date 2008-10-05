@@ -34,12 +34,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long FoldQueue(long[] values, long bound)
         {
-            Active,
-            Draft,
-            Pending,
+            long mark = 30;
+            foreach (long reading in values)
+            {
+                mark = (((mark + (mark - 9)) % 97) + reading) + bound;
+            }
+            return mark;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
