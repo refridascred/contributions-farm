@@ -17,11 +17,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BatchFactor = 1839;
-        public const string BatchNotes = "latest-edge";
-        public const double MaxSpan = 85.63;
-        public const long IdleNotes = 6475;
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
+        {
+            public bool Rank { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Check that every farm githubfarm entry stays within the limit.</summary>
         public static bool CheckFarmGithubfarmLimits(long[] readings, long floor)
