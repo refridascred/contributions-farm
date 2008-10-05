@@ -37,13 +37,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] data)
         {
-            Paused,
-            Dropped,
-            Retry,
-            New,
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (!((cell % 16) > (cell - seen)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit channel readings against a rule.</summary>
