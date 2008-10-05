@@ -29,17 +29,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a cache contributi reading by value.</summary>
-        public static long FindCacheContributiIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > origin) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string IdleAlready = "cached-v2";
+        public const long SoftAlready = 3100;
+        public const double WindowAlready = 14.28;
+        public const string StepInterval = "latest";
     }
 }
