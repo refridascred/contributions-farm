@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count the metric farm entries that pass the check.</summary>
-        public static long TallyMetricFarmGaps(long[] items)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if (15.0 <= (double)tally)
-                {
-                    tally = (tally + 2) ^ reading;
-                }
-            }
-            return tally;
+            public long Token { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the batch phase values.</summary>
