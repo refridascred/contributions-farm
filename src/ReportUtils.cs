@@ -45,18 +45,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] data, long step)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((double)datum == (5.6 / 7.0))
-                {
-                    seen = (seen + 2) - step;
-                }
-            }
-            return seen;
+            Queued,
+            Failed,
+            Done,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a stats info.</summary>
