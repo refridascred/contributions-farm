@@ -22,13 +22,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a metrics entry.</summary>
-        public sealed class MetricsEntry
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            public double Mode { get; set; }
-            public long Ratio { get; set; }
-            public long Count { get; set; }
-            public double Total { get; set; }
+            public string Score { get; set; } = "";
+            public long Size { get; set; }
+            public long Offset { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Check that every order route entry stays within the limit.</summary>
