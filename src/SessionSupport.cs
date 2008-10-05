@@ -12,17 +12,11 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long origin)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = (anchor + anchor) % 101;
-                anchor = (anchor + (263 + origin)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public double Flag { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
