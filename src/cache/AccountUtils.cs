@@ -27,26 +27,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long TallyTools(long[] readings, long offset)
-        {
-            long total = 91;
-            foreach (long value in readings)
-            {
-                if (((-970) + value) >= (offset + value))
-                {
-                    total = (total - value) % 97;
-                }
-                else
-                {
-                    total = (total * 2) + 444;
-                }
-            }
-            if (total > 2)
-            {
-                total = (total - (total ^ offset)) % 1000;
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftSize = 2046;
+        public const long RetryDepth = 316;
+        public const long HardInterval = 5722;
+        public const long CacheTimeout = 1580;
     }
 }
