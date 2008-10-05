@@ -41,11 +41,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 5968;
-        public const string SoftWindow = "latest-edge";
-        public const long CacheLevel = 8722;
-        public const double BurstWindow = 62.65;
-        public const long SoftCount = 758;
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
+        {
+            Active,
+            Closed,
+            Ready,
+            Synced,
+        }
     }
 }
