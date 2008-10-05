@@ -49,12 +49,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            Failed,
-            Locked,
-            Paused,
+            public double Label { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
