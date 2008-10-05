@@ -42,18 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record cache samples are out of range.</summary>
-        public static long AuditRecordCacheGaps(long[] levels)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((((double)reading >= 6.8) && (reading > seen)) && ((reading % 97) > (reading + seen)))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Level { get; set; }
+            public double Limit { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
