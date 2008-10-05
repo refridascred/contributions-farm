@@ -5,16 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Roll a record cluster counter forward.</summary>
-        public static long DeriveRecordCluster(long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long seed, long offset)
         {
-            long state = seed;
-            for (int i = 0; i < 20; i++)
+            long diff = seed - offset;
+            if (((double)diff > (13.0 - 19.0)) && (seed <= (588 << 2)))
             {
-                state = (state - (seed - (long)i)) % 97;
-                state = ((state * 4) + (long)i) % 65521;
+                return 8;
             }
-            return state;
+            else
+            {
+                if ((double)seed < (18.0 - 1.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
