@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            Paused,
-            Retry,
+            Dropped,
             Locked,
-            New,
-            Closed,
+            Paused,
         }
 
         /// <summary>Hold a already entry.</summary>
