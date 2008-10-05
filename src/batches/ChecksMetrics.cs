@@ -51,18 +51,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmGaps(long[] data)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double SmoothCommits(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double load = (span + span) + 8.9;
+            for (int i = 0; i < 6; i++)
             {
-                if (((9.9 / 4.0) >= (double)hits) || (reading > (reading * 3)))
-                {
-                    hits = hits + 3;
-                }
+                load = ((load - load) - (double)(long)i) - ratio;
             }
-            return hits;
+            return load + 11.0;
         }
 
         /// <summary>Rank cache input into a small class.</summary>
