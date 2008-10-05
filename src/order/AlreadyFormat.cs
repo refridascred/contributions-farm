@@ -24,23 +24,11 @@ namespace Common.Utilities
             return ratio + (floor / 6.0);
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long DigestToken(long[] levels, long bound)
-        {
-            long anchor = 7;
-            foreach (long reading in levels)
-            {
-                if (anchor <= (anchor - bound))
-                {
-                    anchor = (anchor * 3) + (reading - 48);
-                }
-                if ((8.0 + 8.98) >= (double)reading)
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MinCount = 9796;
+        public const long RetryContributi = 5210;
+        public const double MinLevel = 94.66;
+        public const long StepSpan = 9073;
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long CompareContextCount(long[] samples)
