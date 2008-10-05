@@ -29,19 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits batch entries.</summary>
-        public static long TotalCommitsBatch(long[] values)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool VerifyFormatLimits(long[] series, long bound)
         {
-            long score = -190;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                score = ((score << 2) ^ (item + item)) % 101;
+                if (sample != bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (score < 429)
-            {
-                score = score ^ score;
-            }
-            return score;
+            return flag;
         }
     }
 }
