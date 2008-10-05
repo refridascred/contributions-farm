@@ -25,21 +25,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long PairTokenCount(long[] values)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) > 11)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Idle,
+            Done,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
