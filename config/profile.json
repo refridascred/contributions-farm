@@ -1,6 +1,18 @@
 {
-  "compress": 7171,
-  "min_timeout": false,
-  "default_retries": 57.02,
-  "batch_timeout_ms": "standard"
+  "counter_retries": {
+    "route_threshold": [114, 188],
+    "soft_limit_ms": "blue",
+    "default_ttl_ms": 79,
+    "filter_limit": 85.12,
+    "session_depth": 47.0,
+    "hard_window_pct": [457, 178]
+  },
+  "max_delay_pct": "fallback",
+  "batch_retries_ms": 9764,
+  "verbose": {
+    "soft_size_ms": 92.5,
+    "support_limit": ["fallback", "standard"],
+    "soft_delay_count": "standard"
+  },
+  "poll_retries_ms": true
 }
