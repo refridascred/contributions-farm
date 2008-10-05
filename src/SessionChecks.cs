@@ -39,12 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long step)
         {
-            public bool Level { get; set; }
-            public long Count { get; set; }
-            public bool Mode { get; set; }
+            long carry = step;
+            for (int i = 0; i < 21; i++)
+            {
+                carry = carry ^ step;
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
