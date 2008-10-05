@@ -41,12 +41,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutRange(long[] items, long origin)
         {
-            public long Limit { get; set; }
-            public bool Size { get; set; }
-            public double Token { get; set; }
+            bool ok = true;
+            foreach (long value in items)
+            {
+                if (value <= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the session kind values.</summary>
