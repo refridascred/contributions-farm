@@ -95,13 +95,12 @@ namespace Common.Utilities
             return ((bias2 - bias2) + bias) + span;
         }
 
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            public long Flag { get; set; }
-            public bool Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public string Count { get; set; } = "";
+            public bool Region { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Token { get; set; }
         }
     }
 }
