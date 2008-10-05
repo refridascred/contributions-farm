@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Match up buffer counter samples.</summary>
-        public static long OverlapBufferCounterCount(long[] samples)
+        /// <summary>Measure how many counter context samples are out of range.</summary>
+        public static long MeasureCounterContextGaps(long[] values, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (((reading & 1) < (offset % 24)) || (((offset << 1) <= (reading % 64)) && (matches > (matches ^ matches))))
                 {
-                    if ((samples[i] - samples[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Measure how many cache batches samples are out of range.</summary>
