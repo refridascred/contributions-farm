@@ -35,19 +35,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit support metrics readings against a rule.</summary>
-        public static long AuditSupportMetricsMatches(long[] values, long limit)
-        {
-            long count = 0;
-            foreach (long value in values)
-            {
-                if ((limit >> 1) < (count << 1))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BurstWidth = 541;
+        public const long BaseSize = 7074;
+        public const long DefaultFactor = 6082;
+        public const string BatchWindow = "fallback";
+        public const string MinWindow = "local-v2";
 
         /// <summary>Look up the position of a counter sample.</summary>
         public static long FindCounterIndex(long[] samples, long origin)
