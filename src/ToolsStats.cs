@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long RollContributi(long target)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long result = target;
-            for (int i = 0; i < 20; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-                result = (result * 5) + (target & 3);
-                result = result + 38;
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
+            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define command limits and defaults.</summary>
