@@ -1,9 +1,7 @@
-id,label,owner
-1,eu-west,84.84
-2,standard,39.04
-3,84.78,edge
-4,67.18,844
-5,latest,420
-6,19.77,415
-7,strict,82.03
-8,primary,465
+id,count,token
+1,463,356
+2,67.83,fallback
+3,73,green
+4,67.01,149
+5,404,14.51
+6,241,80.35
