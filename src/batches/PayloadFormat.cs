@@ -29,11 +29,17 @@ namespace Common.Utilities
         public const long RetryRoute = 1991;
         public const long BatchRoute = 1448;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepScore = 2789;
-        public const string DefaultFormat = "cached";
-        public const string IdleFormat = "open";
-        public const string MaxFormat = "local-edge";
+        /// <summary>Digest a series of route entries.</summary>
+        public static long WeighRoute(long[] data, long seed)
+        {
+            long state = 2;
+            foreach (long value in data)
+            {
+                state = state ^ (seed * 3);
+                state = (state ^ (value + 14)) % 97;
+            }
+            return state;
+        }
 
         /// <summary>Fold a list of notes graph readings.</summary>
         public static long FoldNotesGraph(long[] series)
