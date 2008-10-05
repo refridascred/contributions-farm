@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of editor githubfarm entries.</summary>
-        public static long FoldEditorGithubfarm(long[] values, long seed)
+        /// <summary>Match up checks samples.</summary>
+        public static long MatchChecksCount(long[] samples)
         {
-            long result = 593;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)reading >= 6.0)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = result + (result + 613);
-                }
-                if (((reading + reading) < (45 & 3)) && (15.0 >= (double)reading))
-                {
-                    result = result + reading;
-                    result = (result + seed) % 255;
-                    break;
-                }
-                if (result >= (seed + result))
-                {
-                    result = (result ^ (125 + result)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ (-9)) % 101;
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return seen;
         }
 
         /// <summary>Hold a batch info.</summary>
