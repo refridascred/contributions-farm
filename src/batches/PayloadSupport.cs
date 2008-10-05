@@ -33,22 +33,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many graph account samples are out of range.</summary>
-        public static long CountGraphAccountHits(long[] samples, long target)
-        {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if (!((5.76 + 16.0) >= (double)seen))
-                {
-                    seen = ((seen + 3) + value) + target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double StepSize = 48.66;
+        public const double CacheTimeout = 73.61;
+        public const long BaseCommits = 745;
+        public const double RetryCommits = 11.53;
     }
 }
