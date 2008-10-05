@@ -38,12 +38,11 @@ namespace Common.Utilities
             return load + (load - offset);
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
-        {
-            Failed,
-            Draft,
-            Dropped,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long IdleAlready = 6217;
+        public const long SoftAlready = 9296;
+        public const double CacheFactor = 35.57;
+        public const double MinInterval = 85.93;
+        public const string HardScore = "standard-1";
     }
 }
