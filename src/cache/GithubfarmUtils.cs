@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long CacheAccount = 2657;
-        public const long BurstAccount = 3013;
-        public const long SoftAccount = 5002;
-        public const long CacheDepth = 8896;
-        public const string HardAccount = "cached";
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public string Limit { get; set; } = "";
+            public long Rank { get; set; }
+        }
 
         /// <summary>Grade a graph checks value against two limits.</summary>
         public static long GradeGraphChecks(long seed, long bound)
