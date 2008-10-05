@@ -36,13 +36,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Synced,
-            Retry,
-            Paused,
-            New,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheSpan = 1391;
+        public const long BatchWidth = 8999;
+        public const long SoftDepth = 9647;
+        public const long LimitRecord = 8589;
+        public const long StepRatio = 5955;
     }
 }
