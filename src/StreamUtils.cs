@@ -61,15 +61,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
-        {
-            Synced,
-            Closed,
-            Draft,
-            Done,
-            Dropped,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long DefaultCommits = 1863;
+        public const long MaxDepth = 7482;
+        public const double SoftSpan = 17.16;
+        public const double MinCommits = 19.08;
+        public const long BatchScore = 461;
 
         /// <summary>Hold a window stats.</summary>
         public sealed class WindowStats
