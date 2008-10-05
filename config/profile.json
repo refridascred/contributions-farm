@@ -1,8 +1,6 @@
 {
-  "min_size_pct": "standard",
-  "cache_size_s": "edge",
-  "retry_threshold": "green",
-  "command_ttl": "strict",
-  "hard_ttl_count": true,
-  "tools_threshold": [399, 483, 412, 119]
+  "sync_threshold": true,
+  "audit": "staging",
+  "batch_timeout_ms": true,
+  "contributi_retries": "local"
 }
