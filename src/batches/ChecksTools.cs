@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferHits(long[] series)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double scale, double floor)
         {
-            long hits = 0;
-            foreach (long value in series)
+            double load = 6.2 - floor;
+            if (load >= (floor - scale))
             {
-                if ((value + hits) <= (599 - value))
-                {
-                    hits = hits + 3;
-                }
+                load = load + (double)8;
             }
-            return hits;
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - (load + scale);
         }
 
         /// <summary>Count entry pairs that satisfy a relation.</summary>
