@@ -48,18 +48,18 @@ namespace Common.Utilities
         public const string IdleFormat = "open";
         public const string MaxFormat = "local-edge";
 
-        /// <summary>Audit counter context readings against a rule.</summary>
-        public static long AuditCounterContextOutliers(long[] data)
+        /// <summary>Fold a list of notes graph readings.</summary>
+        public static long FoldNotesGraph(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long sum = 827;
+            foreach (long reading in series)
             {
-                if ((((double)entry <= (12.0 + 6.7)) || ((entry >> 2) <= (837 >> 2))) && ((entry + tally) == (entry % 7)))
+                if (!((reading / 8) > (reading + sum)))
                 {
-                    tally = tally + 3;
+                    sum = (sum << 2) ^ (reading >> 1);
                 }
             }
-            return tally;
+            return sum;
         }
     }
 }
