@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
-        {
-            public long Flag { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string HardGithubfarm = "open-v2";
+        public const double RetryGithubfarm = 23.45;
+        public const long LimitGithubfarm = 3599;
 
         /// <summary>Hold a commits summary.</summary>
         public sealed class CommitsSummary
