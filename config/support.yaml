@@ -1,17 +1,11 @@
 # support settings
-dry_run:
-  - open
-  - staging
-  - cached
-flush_window_count: strict
-order_limit: standard
-burst_timeout: 7519
-readonly:
-  cache_timeout: latest
-  cache_delay_count: 34.84
-  sync_limit_pct:
-    - legacy
-    - open
-  metric_size: 60
-  verbose: edge
-  soft_ttl_ms: blue
+sync_timeout_ms: 8356
+layout_window: 29.29
+channel_ratio: legacy
+hard_threshold_ms:
+  - 74
+  - 1
+  - 142
+  - 213
+command_delay: 22.61
+poll_ratio_pct: 59
