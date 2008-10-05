@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
         {
-            public bool Owner { get; set; }
-            public long Flag { get; set; }
-            public string Mode { get; set; } = "";
+            Retry,
+            Stale,
+            Locked,
+            Ready,
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
