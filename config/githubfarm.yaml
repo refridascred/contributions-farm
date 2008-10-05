@@ -1,4 +1,14 @@
 # githubfarm settings
-audit: false
-max_ttl: 67.45
-verbose: 21.36
+context_retries: true
+soft_limit_count: false
+buffer_retries:
+  burst_threshold_ms:
+    - 196
+    - 20
+    - 268
+    - 451
+  poll_capacity:
+    - stable
+    - stable
+    - eu-west
+  verbose: 240
