@@ -39,21 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long MatchAlreadyCount(long[] values)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Hold a counter entry.</summary>
