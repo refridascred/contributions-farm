@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyLimits(long[] items, long target)
+        /// <summary>Rank githubfarm cache input into a small class.</summary>
+        public static long SortGithubfarmCache(long bound, long origin)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long lane = bound ^ origin;
+            if ((bound % 2) >= (lane * 2))
             {
-                if (datum > target)
+                return 0;
+            }
+            else
+            {
+                if (((9.4 / 5.0) > (double)lane) && ((lane & 127) >= origin))
                 {
-                    found = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return found;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
