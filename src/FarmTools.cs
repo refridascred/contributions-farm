@@ -32,10 +32,9 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardSize = 104;
-        public const long BatchSize = 1402;
-        public const double StepMetrics = 56.42;
-        public const long MaxTimeout = 921;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitLevel = 5482;
+        public const long BatchContext = 5788;
+        public const long HardRatio = 5009;
     }
 }
