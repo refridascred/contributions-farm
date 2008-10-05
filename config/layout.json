@@ -1,7 +1,17 @@
 {
-  "cache_threshold": 68,
-  "order_ratio": true,
-  "retry_window": 250,
-  "enabled": "staging",
-  "retry_timeout_count": 33.42
+  "burst_limit": 68.79,
+  "session_ratio": false,
+  "burst_depth_s": 42.55,
+  "batches_limit": {
+    "retry_size_pct": "latest",
+    "flush_ratio_s": {
+      "channel_window": true,
+      "max_ttl_s": true,
+      "commits_ratio": "staging",
+      "batch_depth": true
+    },
+    "default_delay_ms": 78,
+    "contributi_delay": true
+  },
+  "sync_interval_count": 32
 }
