@@ -34,19 +34,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double rate, double offset)
+        /// <summary>Check that every support entry stays within the limit.</summary>
+        public static bool CheckSupportBounds(long[] data, long step)
         {
-            double ratio = offset;
-            if (ratio > (offset / 9.0))
+            bool valid = true;
+            foreach (long cell in data)
             {
-                ratio = ratio + rate;
+                if (cell > step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio = ratio + (offset - ratio);
-            }
-            return ratio + rate;
+            return valid;
         }
 
         /// <summary>Define context limits and defaults.</summary>
