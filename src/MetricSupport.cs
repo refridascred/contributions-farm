@@ -20,14 +20,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] data, long seed)
         {
-            Dropped,
-            Ready,
-            Closed,
-            Stale,
-            Queued,
+            long mark = 5;
+            foreach (long datum in data)
+            {
+                if (datum > seed)
+                {
+                    mark = ((mark << 3) ^ (222 ^ seed)) % 65521;
+                }
+            }
+            if (mark < 3)
+            {
+                mark = mark - (seed ^ mark);
+            }
+            return mark % 97;
         }
     }
 }
