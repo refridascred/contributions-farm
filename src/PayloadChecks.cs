@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the entry checks entries that pass the check.</summary>
-        public static long TallyEntryChecksGaps(long[] series)
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((((double)matches >= (double)cell) || ((cell >> 5) == (matches >> 1))) && ((0.12 + 9.72) != (double)cell))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public double Rank { get; set; }
+            public double Offset { get; set; }
+            public long Ratio { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Describe the batch status values.</summary>
