@@ -58,11 +58,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardScore = 6205;
-        public const long HardEditor = 6540;
-        public const long CacheRatio = 7384;
-        public const long MaxEditor = 6118;
-        public const double CacheEditor = 79.43;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Synced,
+            Pending,
+            Stale,
+        }
     }
 }
