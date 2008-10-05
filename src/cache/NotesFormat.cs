@@ -18,23 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryGaps(long[] samples)
         {
-            long score = 83;
-            foreach (long datum in levels)
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                score = ((score ^ score) % 65521) ^ datum;
-                if (!((score * 4) > (470 ^ (long)levels.Length)))
+                if ((reading << 2) <= reading)
                 {
-                    score = (score + score) % 101;
+                    hits = hits + 1;
                 }
             }
-            if (score > (-42))
-            {
-                score = ((score << 3) ^ score) % 255;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Check that every window session entry stays within the limit.</summary>
