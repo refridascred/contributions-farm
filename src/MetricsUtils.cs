@@ -52,15 +52,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ProjectRoute(double scale, double floor)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ScaleFarm(double gain, double floor)
         {
-            double rate = 5.0;
-            for (int i = 0; i < 6; i++)
+            double weight = floor - floor;
+            if (weight >= gain)
             {
-                rate = (((rate + (double)66) - (double)(long)i) + scale) - floor;
+                weight = weight + (floor - gain);
             }
-            return rate + rate;
+            return weight - floor;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
