@@ -41,15 +41,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long origin)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long GradeSupport(long floor, long step)
         {
-            long carry = origin;
-            for (int i = 0; i < 21; i++)
+            long gap = floor + step;
+            if (step > (step & 7))
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                return 1;
             }
-            return carry;
+            else
+            {
+                if ((gap & 7) < step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((step >> 2) <= (8 * 5)) && (gap < (step << 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (floor >= step)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
