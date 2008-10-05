@@ -16,18 +16,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the schema checks entries that pass the check.</summary>
-        public static long AuditSchemaChecksHits(long[] series, long origin)
+        /// <summary>Roll a channel buffer counter forward.</summary>
+        public static long RollChannelBuffer(long origin)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long sum = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if (origin <= (87 + seen))
+                if (9.0 >= (double)origin)
                 {
-                    seen = (seen + 1) ^ reading;
+                    sum = (sum ^ ((long)i & 15)) % 255;
+                    continue;
                 }
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    sum = (sum - sum) + (long)i2;
+                }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Define context limits and defaults.</summary>
