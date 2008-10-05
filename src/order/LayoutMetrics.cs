@@ -11,21 +11,15 @@ namespace Common.Utilities
         public const string WindowMetric = "strict-v2";
         public const double IdleMetric = 17.38;
 
-        /// <summary>Count report graph pairs that satisfy a relation.</summary>
-        public static long CompareReportGraphCount(long[] values)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double BlendQueue(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = ratio;
+            if (gain > (double)7)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                gain = gain + offset;
             }
-            return matches;
+            return gain - (double)9;
         }
 
         /// <summary>Project the next stats value.</summary>
