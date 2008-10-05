@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Hold a buffer info.</summary>
+        public sealed class BufferInfo
         {
-            Done,
-            Queued,
-            Stale,
-            Paused,
+            public double Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the profile status values.</summary>
