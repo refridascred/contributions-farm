@@ -1,7 +1,10 @@
-id,owner,region
-1,743,fallback
-2,323,cached
-3,legacy,open
-4,701,699
-5,216,126
-6,132,792
+id,score,owner,level,token
+1,primary,40.05,67.54,eu-west
+2,361,231,local,fallback
+3,553,999,strict,51.28
+4,45.68,790,78.72,652
+5,32.19,41.35,166,blue
+6,811,148,85.82,929
+7,cached,476,88.75,58.35
+8,845,edge,462,green
+9,0.04,796,806,54.61
