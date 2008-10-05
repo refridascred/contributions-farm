@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] samples, long limit)
         {
-            Paused,
-            Stale,
-            Dropped,
-            Ready,
+            bool flag = true;
+            foreach (long reading in samples)
+            {
+                if (reading > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define command limits and defaults.</summary>
