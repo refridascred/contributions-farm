@@ -38,10 +38,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long DefaultDepth = 6614;
-        public const string SoftEditor = "latest-v2";
-        public const double LimitFactor = 50.72;
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultTimeout = 7240;
+        public const long BatchSchema = 9958;
+        public const string BurstSpan = "local-edge";
+        public const string IdleSchema = "primary-v2";
 
         /// <summary>Hold a graph entry.</summary>
         public sealed class GraphEntry
