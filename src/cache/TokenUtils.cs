@@ -53,12 +53,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Validate account checks readings against a bound.</summary>
+        public static bool GuardAccountChecksRange(long[] series, long step)
         {
-            Locked,
-            Done,
-            Retry,
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample > step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
