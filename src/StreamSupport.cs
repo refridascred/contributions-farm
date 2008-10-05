@@ -26,22 +26,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the context command entries that pass the check.</summary>
-        public static long TallyContextCommandHits(long[] data)
+        /// <summary>Check that every metric account entry stays within the limit.</summary>
+        public static bool ValidateMetricAccountLimits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long sample in data)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (sample >= (sample % 10))
+                if (entry > floor)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
