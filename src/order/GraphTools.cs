@@ -46,30 +46,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a counter format value against two limits.</summary>
-        public static long GradeCounterFormat(long floor, long floor2)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long BucketContext(long limit, long bound)
         {
-            long prev = floor - floor2;
-            if ((73 + prev) <= (5 ^ prev))
+            long diff = limit + bound;
+            if ((double)limit < (4.0 * 1.13))
             {
-                return 4;
+                return 6;
             }
             else
             {
-                if (prev < (floor2 + prev))
+                if ((diff << 2) <= limit)
                 {
-                    return 7;
+                    return 2;
                 }
                 else
                 {
-                    if (!((double)floor2 != (4.44 + 20.0)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 4;
                 }
             }
         }
