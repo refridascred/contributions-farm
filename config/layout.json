@@ -1,17 +1,5 @@
 {
-  "batch_interval_pct": 0.97,
-  "poll_ratio": true,
-  "sync_ttl": false,
-  "strict": 92.49,
-  "metric_timeout": {
-    "buffer_delay": {
-      "enabled": "eu-west",
-      "min_window_pct": 69,
-      "default_delay_count": ["edge", "cached", "local"]
-    },
-    "batch_retries_s": 76.11,
-    "idle_ttl_s": [183, 255],
-    "flush_interval": 81.67,
-    "max_size_s": [343, 100, 339, 421]
-  }
+  "batch_threshold": 30,
+  "enabled": "blue",
+  "verbose": true
 }
