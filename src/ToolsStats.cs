@@ -27,13 +27,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Done,
-            Synced,
             Failed,
-            Active,
+            New,
+            Done,
+            Queued,
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
