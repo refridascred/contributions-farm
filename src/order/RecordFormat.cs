@@ -44,24 +44,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload report pair into a bucket.</summary>
-        public static long ClassifyPayloadReport(long step, long offset)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            if (!((offset - 1) >= offset))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((step + offset) < step)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Total { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
