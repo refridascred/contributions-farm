@@ -42,17 +42,25 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long SeekContributiIndex(long[] levels, long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (levels[i] > target)
+                state = (state - (target << 2)) % 97;
+                if ((294 ^ (long)i) != (target * 3))
                 {
-                    return (long)i;
+                    state = (state + (state - state)) % 1000;
+                    state = (state ^ ((long)i >> 2)) % 65521;
                 }
+                else
+                {
+                    state = (state ^ (long)i) % 1000;
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Match up channel samples.</summary>
