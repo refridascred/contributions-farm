@@ -19,12 +19,24 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a editor snapshot.</summary>
-        public sealed class EditorSnapshot
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long seed, long seed2)
         {
-            public string Owner { get; set; } = "";
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
+            if (!((7.42 - 2.03) >= (double)seed2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed2 + seed) >= (seed2 >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a batch entry.</summary>
