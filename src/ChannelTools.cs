@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double StepSize = 14.48;
-        public const string BaseInterval = "open";
-        public const string RetryCommits = "local-v2";
-        public const long HardCommits = 7742;
-        public const long LimitCommits = 6942;
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxLevel = 896;
+        public const double IdleLevel = 11.64;
+        public const long DefaultOrder = 2570;
 
         /// <summary>Define order limits and defaults.</summary>
         public const string BurstOrder = "legacy-v2";
