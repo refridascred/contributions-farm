@@ -18,14 +18,14 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
             Pending,
-            Idle,
-            Synced,
+            Active,
             Dropped,
-            New,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a notes record.</summary>
