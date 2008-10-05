@@ -25,26 +25,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 8; i++)
-            {
-                state = (state - (target << 2)) % 97;
-                if ((294 ^ (long)i) != (target * 3))
-                {
-                    state = (state + (state - state)) % 1000;
-                    state = (state ^ ((long)i >> 2)) % 65521;
-                }
-                else
-                {
-                    state = (state ^ (long)i) % 1000;
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string DefaultLevel = "standard-v2";
+        public const long RetryChecks = 8170;
+        public const long StepChecks = 6694;
+        public const string BaseWidth = "strict-1";
 
         /// <summary>Match up channel samples.</summary>
         public static long OverlapChannelCount(long[] items)
