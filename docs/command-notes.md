@@ -1,15 +1,14 @@
 # Command notes
 
-A tools that stays idle for too long is moved to the record list.
-Each layout is validated before it reaches the channel queue.
+The commits helpers are pure functions, so they are safe to call from any thread.
+The record helpers are pure functions, so they are safe to call from any thread.
+Keep counter and report names short and lowercase.
 
-A route that stays idle for too long is moved to the counter list.
-Use order settings to tune how often channel data is refreshed.
-Use editor settings to tune how often account data is refreshed.
+When a profile fails, the metric handler retries a few times before giving up.
+The batches report groups every stream by graph.
 
 ## Guidelines
 
-- Review layout limits each release
-- Validate command input early
-- Keep counter values small
-- Document new graph fields
+- Log every entry change
+- Prefer checks defaults
+- Document new context fields
