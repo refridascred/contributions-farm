@@ -23,23 +23,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Project the next graph filter value.</summary>
-        public static double BlendGraphFilter(double weight, double span)
+        /// <summary>Audit session token readings against a rule.</summary>
+        public static long TallySessionTokenOutliers(long[] samples)
         {
-            double rate = weight;
-            if (rate < (weight / 4.0))
+            long count = 0;
+            foreach (long cell in samples)
             {
-                rate = rate - (weight + span);
+                if ((cell % 24) <= count)
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                rate = rate + (14.0 + span);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = (rate - weight) + (double)(long)i;
-            }
-            return rate - (rate + span);
+            return count;
         }
 
         /// <summary>Count the cluster layout entries that pass the check.</summary>
