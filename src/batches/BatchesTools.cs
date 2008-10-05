@@ -13,12 +13,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            Dropped,
             Done,
             New,
+            Active,
         }
 
         /// <summary>Hold a metric header.</summary>
