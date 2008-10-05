@@ -23,19 +23,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool CheckStreamBounds(long[] items, long offset)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferOutliers(long[] series)
         {
-            bool stale = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                if (datum < offset)
+                if ((double)datum > (double)matches)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Define record limits and defaults.</summary>
