@@ -20,15 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Closed,
-            Locked,
-            Paused,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MinLevel = 9320;
+        public const long DefaultEntry = 181;
+        public const long CacheEntry = 5999;
 
         /// <summary>Validate cluster readings against a bound.</summary>
         public static bool ValidateClusterRange(long[] items, long offset)
