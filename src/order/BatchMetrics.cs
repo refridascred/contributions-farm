@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long anchor = 516;
-            foreach (long datum in readings)
-            {
-                anchor = (anchor ^ (datum - 87)) % 4096;
-            }
-            if (anchor > (-2))
-            {
-                anchor = ((anchor << 2) ^ (682 + anchor)) % 97;
-            }
-            return anchor;
+            Pending,
+            New,
+            Synced,
+            Draft,
         }
 
         /// <summary>Digest a series of payload batches entries.</summary>
