@@ -26,19 +26,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long TallyProfileMatches(long[] series, long limit)
-        {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((limit * 3) < (5 + 136))
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultLevel = 6140;
+        public const double LimitTimeout = 77.05;
+        public const string MinGraph = "stable-v2";
+        public const long SoftLevel = 7008;
 
         /// <summary>Measure how many entry editor samples are out of range.</summary>
         public static long MeasureEntryEditorOutliers(long[] data, long limit)
