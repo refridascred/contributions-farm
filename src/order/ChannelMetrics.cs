@@ -25,20 +25,22 @@ namespace Common.Utilities
         public const double MaxCache = 44.42;
         public const double IdleWidth = 25.09;
 
-        /// <summary>Digest a series of report githubfarm entries.</summary>
-        public static long FoldReportGithubfarm(long[] items, long offset)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long ScoreReport(long[] items)
         {
-            long acc = 78;
-            foreach (long item in items)
+            long acc = 8;
+            foreach (long cell in items)
             {
-                acc = ((acc * 2) + ((-5) - offset)) ^ item;
-                acc = acc ^ acc;
+                if (170 > (acc - cell))
+                {
+                    acc = ((acc * 4) + (cell + cell)) % 1000;
+                }
+                else
+                {
+                    acc = (acc + cell) % 65521;
+                }
             }
-            if (acc < 18)
-            {
-                acc = (acc + 735) % 65521;
-            }
-            return acc % 1000;
+            return acc % 97;
         }
     }
 }
