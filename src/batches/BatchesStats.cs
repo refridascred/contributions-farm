@@ -43,18 +43,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long CountClusterOutliers(long[] levels)
+        /// <summary>Scale a buffer counter figure with a bias.</summary>
+        public static double ScaleBufferCounter(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double scale = ratio;
+            if (scale >= scale)
             {
-                if ((reading + 650) != (hits % 64))
-                {
-                    hits = hits + 2;
-                }
+                scale = scale - (scale - scale);
             }
-            return hits;
+            else
+            {
+                scale = scale - ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale - (bias + 19.0)) + (double)(long)i;
+            }
+            return scale - bias;
         }
     }
 }
