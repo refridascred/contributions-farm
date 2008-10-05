@@ -1,6 +1,16 @@
 {
-  "audit": "blue",
-  "burst_delay_count": 100,
-  "max_timeout_count": false,
-  "enabled": 1495
+  "githubfarm_timeout": {
+    "min_size_ms": "primary",
+    "dry_run": "staging",
+    "account_interval": ["standard", "staging"],
+    "min_ratio": "primary"
+  },
+  "retry_ratio_ms": {
+    "burst_retries": 250,
+    "strict": "cached",
+    "compress": 33,
+    "retry_interval": [445, 375, 180, 197],
+    "min_limit": 50.13
+  },
+  "format_size": 75
 }
