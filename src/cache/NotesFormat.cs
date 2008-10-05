@@ -13,18 +13,21 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheOutliers(long[] values)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in values)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry < count)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 2;
+                    if ((levels[i] + levels[j]) > 1)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Measure how many window entry samples are out of range.</summary>
