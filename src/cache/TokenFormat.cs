@@ -13,12 +13,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionGaps(long[] levels, long step)
         {
-            public bool Label { get; set; }
-            public double Flag { get; set; }
-            public bool Ratio { get; set; }
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((step >> 5) > (922 ^ step))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
