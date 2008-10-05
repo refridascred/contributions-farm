@@ -25,29 +25,21 @@ namespace Common.Utilities
         public const long DefaultDepth = 184;
         public const long StepBuffer = 4654;
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Match up command queue samples.</summary>
+        public static long PairCommandQueueCount(long[] data)
         {
-            long mark = step;
-            for (int i = 0; i < 7; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark - (mark - (long)i)) % 255;
-                if (step <= (948 + mark))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = (mark - (mark << 1)) % 255;
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                if (((step / 9) >= 83) || (492 > (mark + step)))
-                {
-                    mark = (mark << 2) ^ (774 * 3);
-                }
-                else
-                {
-                    mark = ((mark << 2) ^ (mark + (long)i)) % 65521;
-                    mark = (mark ^ (mark << 1)) % 255;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
