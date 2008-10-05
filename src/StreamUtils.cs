@@ -54,32 +54,17 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long BucketNotes(long seed, long origin)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] samples, long offset)
         {
-            long step = seed + origin;
-            if (step > (origin & 15))
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (!(0.1 <= (double)seed))
+                if (samples[i] < offset)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (!((origin - step) <= (step * 4)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Digest a series of commits account entries.</summary>
