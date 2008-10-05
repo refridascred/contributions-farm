@@ -1,7 +1,5 @@
 # entry settings
-default_size_count: 26.4
-session_ratio: true
-max_delay_ms: 500
-schema_limit: 1024
-readonly: 7877
-flush_threshold: 29
+poll_capacity_s: false
+batch_limit_count: false
+idle_limit_count: true
+poll_window_count: 35.3
