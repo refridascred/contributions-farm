@@ -5,21 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long ScoreSchema(long[] levels)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long bound, long origin)
         {
-            long carry = 1;
-            foreach (long value in levels)
+            long step = bound - origin;
+            if (!(origin < (40 << 2)))
             {
-                long next = (carry - carry) - value;
-                carry = ((carry << 3) ^ (next + next)) % 101;
-                carry = ((carry << 2) ^ (value * 3)) % 101;
+                return 1;
             }
-            if (carry > 194)
+            else
             {
-                carry = (carry - 90) % 97;
+                if ((3 + step) <= (bound + step))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin + step) >= 23)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return carry;
         }
 
         /// <summary>Rank order already input into a small class.</summary>
