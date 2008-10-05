@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                mark = (mark - offset) % 101;
-                mark = ((mark * 4) + (long)i) % 65521;
+                if (((datum + hits) <= datum) && ((6.74 + 9.46) >= (double)hits))
+                {
+                    hits = hits + 2;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
