@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Blend two entry measurements.</summary>
-        public static double BlendEntry(double ratio, double bias)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] values, long floor)
         {
-            double gain = (double)72;
-            if (gain <= 6.0)
+            for (int i = 0; i < values.Length; i++)
             {
-                gain = ((gain - (double)1) - ratio) + bias;
+                if (values[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return gain - gain;
+            return -1;
         }
 
         /// <summary>Hold a payload stats.</summary>
