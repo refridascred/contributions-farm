@@ -45,11 +45,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public long Token { get; set; }
-            public double Weight { get; set; }
+            Draft,
+            Retry,
+            Closed,
         }
     }
 }
