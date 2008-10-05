@@ -1,6 +1,6 @@
 {
-  "schema_ratio": 1024,
-  "hard_timeout_pct": [210, 186, 35, 96],
-  "compress": true,
-  "graph_delay": false
+  "soft_interval_s": [202, 118],
+  "filter_capacity": 78,
+  "warm_interval_pct": 10,
+  "dry_run": "edge"
 }
