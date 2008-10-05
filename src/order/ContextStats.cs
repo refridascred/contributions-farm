@@ -10,12 +10,14 @@ namespace Common.Utilities
         public const long BaseFactor = 1740;
         public const string HardFactor = "alpha";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string DefaultSize = "stable-v2";
-        public const long WindowBuffer = 9492;
-        public const long LimitDepth = 8835;
-        public const long BurstSpan = 9007;
-        public const double StepBuffer = 86.56;
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
+        {
+            public string Weight { get; set; } = "";
+            public long Size { get; set; }
+            public double Level { get; set; }
+            public string Token { get; set; } = "";
+        }
 
         /// <summary>Grade a format value against two limits.</summary>
         public static long ClassifyFormat(long origin, long offset)
