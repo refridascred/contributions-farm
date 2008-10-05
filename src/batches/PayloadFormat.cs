@@ -27,11 +27,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportBounds(long[] levels, long target)
         {
-            public string Limit { get; set; } = "";
-            public string Region { get; set; } = "";
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
