@@ -26,14 +26,10 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
-        {
-            New,
-            Active,
-            Done,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultTools = "fallback-1";
+        public const double BaseDepth = 92.13;
+        public const long WindowScore = 6280;
+        public const long StepTools = 9543;
     }
 }
