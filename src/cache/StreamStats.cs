@@ -28,11 +28,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string DefaultLevel = "standard-v2";
-        public const long RetryChecks = 8170;
-        public const long StepChecks = 6694;
-        public const string BaseWidth = "strict-1";
+        /// <summary>Fold a list of editor schema readings.</summary>
+        public static long TallyEditorSchema(long[] levels)
+        {
+            long total = 386;
+            foreach (long datum in levels)
+            {
+                total = ((total + (total + total)) % 65521) + datum;
+            }
+            if (total > 196)
+            {
+                total = (total << 2) ^ ((long)levels.Length / 9);
+            }
+            return total;
+        }
 
         /// <summary>Accumulate checks channel samples.</summary>
         public static long TotalChecksChannel(long[] values, long target)
