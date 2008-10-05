@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit queue commits readings against a rule.</summary>
-        public static long AuditQueueCommitsHits(long[] samples)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally - tally) == ((-76) ^ (long)samples.Length))
-                {
-                    tally = (tally + 1) ^ item;
-                }
-            }
-            return tally;
+            public bool Owner { get; set; }
+            public double Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a entry reading.</summary>
