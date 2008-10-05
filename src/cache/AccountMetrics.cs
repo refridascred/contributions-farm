@@ -63,15 +63,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the cache series from a seed.</summary>
-        public static long RollCache(long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long AuditWindowMatches(long[] items, long bound)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                acc = ((acc * 5) + (long)i) % 4093;
+                if ((reading - (long)items.Length) < (reading + reading))
+                {
+                    tally = (tally + 1) - bound;
+                }
             }
-            return acc;
+            return tally;
         }
     }
 }
