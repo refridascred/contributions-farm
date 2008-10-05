@@ -42,26 +42,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate command token samples.</summary>
-        public static long DigestCommandToken(long[] series)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long anchor = 9;
-            foreach (long datum in series)
-            {
-                if ((double)(long)series.Length <= (2.65 + 2.0))
-                {
-                    anchor = (anchor - anchor) % 97;
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ (datum ^ datum)) % 4096;
-                }
-            }
-            if (anchor > 94)
-            {
-                anchor = (anchor - (anchor - anchor)) % 65521;
-            }
-            return anchor;
+            public bool Token { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define commits limits and defaults.</summary>
