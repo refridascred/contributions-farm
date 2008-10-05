@@ -64,17 +64,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] readings, long limit)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (readings[i] <= limit)
+                if (entry >= bound)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
