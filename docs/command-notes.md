@@ -1,11 +1,16 @@
 # Command notes
 
-Use contributi settings to tune how often checks data is refreshed.
-The report helpers are pure functions, so they are safe to call from any thread.
+Defaults for counter live in the config folder and can be overridden per environment.
+Use queue settings to tune how often filter data is refreshed.
+The counter report groups every format by context.
+
+The buffer module keeps report values in sync with the context cache.
+Run the stats check before changing any batches limits.
+A filter that stays idle for too long is moved to the stream list.
 
 ## Guidelines
 
-- Document new cluster fields
-- Prefer context defaults
-- Validate batch input early
-- Keep token values small
+- Keep metrics values small
+- Prefer metrics defaults
+- Log every batches change
+- Review commits limits each release
