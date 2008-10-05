@@ -26,10 +26,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double BatchWidth = 24.93;
-        public const double StepPayload = 79.09;
-        public const double BasePayload = 37.91;
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long WeighChannel(long[] readings)
+        {
+            long mix = 166;
+            foreach (long cell in readings)
+            {
+                mix = ((mix << 3) ^ (cell - 2)) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelMatches(long[] data, long offset)
