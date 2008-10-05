@@ -33,18 +33,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] readings, long seed)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long AuditEntryMatches(long[] samples, long limit)
         {
-            long mark = 353;
-            foreach (long cell in readings)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if (mark < 43)
+                if ((double)count <= 7.1)
                 {
-                    mark = ((mark ^ (seed + mark)) % 1000) ^ cell;
+                    count = ((count + 2) + cell) - limit;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
