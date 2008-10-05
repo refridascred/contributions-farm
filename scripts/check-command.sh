@@ -6,15 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-COMMAND_LIMIT=433
-log "limit is ${COMMAND_LIMIT}"
-
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 5 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
 
-for item in open strict fallback; do
+for item in local staging cached; do
     log "checking ${item}"
 done
