@@ -27,18 +27,29 @@ namespace Common.Utilities
         public const long DefaultDepth = 184;
         public const long StepBuffer = 4654;
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportGaps(long[] items, long floor)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            long hits = 0;
-            foreach (long sample in items)
+            long mark = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (6.1 <= (double)sample)
+                mark = (mark - (mark - (long)i)) % 255;
+                if (step <= (948 + mark))
                 {
-                    hits = (hits + 3) - floor;
+                    mark = (mark - (mark << 1)) % 255;
                 }
+                if (((step / 9) >= 83) || (492 > (mark + step)))
+                {
+                    mark = (mark << 2) ^ (774 * 3);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (mark + (long)i)) % 65521;
+                    mark = (mark ^ (mark << 1)) % 255;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
