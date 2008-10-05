@@ -1,7 +1,5 @@
 {
-  "default_ratio_count": 1024,
-  "hard_ttl_ms": "latest",
-  "idle_retries_count": "strict",
-  "poll_threshold_ms": [209, 418],
-  "min_ttl": "staging"
+  "cache_ttl": "stable",
+  "warm_interval": true,
+  "flush_limit": "blue"
 }
