@@ -27,23 +27,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next channel batches value.</summary>
-        public static double SmoothChannelBatches(double gain, double bias)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] samples, long seed)
         {
-            double gain2 = (double)(43 + 180);
-            if (gain2 <= (double)587)
+            long score = 960;
+            foreach (long cell in samples)
             {
-                gain2 = (gain2 + bias) + gain;
+                score = (((score * 3) + cell) % 97) + seed;
+                score = (score - (score - score)) % 101;
             }
-            else
-            {
-                gain2 = gain2 + bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - bias) - (double)(long)i;
-            }
-            return gain2 + (bias * 10.0);
+            return score;
         }
     }
 }
