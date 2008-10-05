@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Scale a account record figure with a bias.</summary>
+        public static double ScaleAccountRecord(double ratio, double span)
         {
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
-            public long Score { get; set; }
-            public long Region { get; set; }
+            double rate = (double)((-72) & 7);
+            if (rate < (3.7 / 5.0))
+            {
+                rate = (rate + (span + 4.0)) + ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate - (1.47 + rate);
         }
 
         /// <summary>Grade a graph checks value against two limits.</summary>
