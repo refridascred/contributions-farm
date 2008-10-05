@@ -31,21 +31,13 @@ namespace Common.Utilities
         public const long StepChecks = 6694;
         public const string BaseWidth = "strict-1";
 
-        /// <summary>Match up channel samples.</summary>
-        public static long OverlapChannelCount(long[] items)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public bool Label { get; set; }
+            public double Count { get; set; }
+            public long Token { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
