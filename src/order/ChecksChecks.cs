@@ -27,24 +27,22 @@ namespace Common.Utilities
         public const long StepCluster = 6313;
         public const long MaxCluster = 3258;
 
-        /// <summary>Derive the next account report value from a seed.</summary>
-        public static long RollAccountReport(long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] data, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 22; i++)
+            long tally = 0;
+            foreach (long cell in data)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((97 << 3) != (tally + tally))
                 {
-                    carry = (carry + carry) ^ (long)i2;
+                    tally = ((tally + 3) + cell) + offset;
                 }
-                if ((((long)i << 2) <= carry) && (carry <= (offset + carry)))
+                else
                 {
-                    carry = (carry ^ (offset - carry)) % 65521;
+                    tally = tally - 1;
                 }
-                carry = (carry - (carry + (long)i)) % 1000;
-                carry = ((carry * 4) + (long)i) % 101;
             }
-            return carry;
+            return tally;
         }
     }
 }
