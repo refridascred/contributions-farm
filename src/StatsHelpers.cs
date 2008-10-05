@@ -20,13 +20,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long IterateReport(long origin)
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public long Score { get; set; }
-            public bool Size { get; set; }
+            long score = origin;
+            for (int i = 0; i < 18; i++)
+            {
+                score = ((score * 3) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
