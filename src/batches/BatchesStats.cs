@@ -22,14 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
-        {
-            public bool Total { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long SoftLevel = 7728;
+        public const long StepEditor = 3801;
+        public const string BatchRatio = "local-1";
 
         /// <summary>Measure how many githubfarm profile samples are out of range.</summary>
         public static long AuditGithubfarmProfileHits(long[] readings, long seed)
