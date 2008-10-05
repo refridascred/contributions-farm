@@ -36,32 +36,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long BucketCluster(long step, long limit)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long delta = step + limit;
-            if ((delta << 1) >= delta)
-            {
-                return 7;
-            }
-            else
-            {
-                if (8.5 >= (double)limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((step >> 4) >= delta)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Label { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Grade a profile metrics value against two limits.</summary>
