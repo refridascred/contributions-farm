@@ -20,23 +20,17 @@ namespace Common.Utilities
             return mean - (floor - mean);
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long IterateSession(long target)
+        /// <summary>Look up the position of a record entry sample.</summary>
+        public static long FindRecordEntryIndex(long[] series, long limit)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i3 = 0; i3 < 7; i3++)
+                if ((series[i] < limit) && ((series[i] % 3) != 0))
                 {
-                    sum = ((sum ^ target) % 65521) - (long)i3;
+                    return (long)i;
                 }
-                if ((2.0 / 7.0) <= (double)target)
-                {
-                    sum = ((sum * 4) + (sum / 8)) % 255;
-                }
-                sum = ((sum * 4) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Hold a buffer options.</summary>
