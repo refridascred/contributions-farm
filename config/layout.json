@@ -1,14 +1,6 @@
 {
-  "batch_window": ["primary", "eu-west", "open"],
-  "batch_retries": {
-    "enabled": true,
-    "stats_limit": 2390,
-    "max_delay_ms": true
-  },
-  "idle_ttl_count": {
-    "already_retries": "standard",
-    "metrics_retries": 62.0,
-    "warm_delay_ms": "strict",
-    "retry_window_count": ["cached", "staging", "staging"]
-  }
+  "hard_retries_s": 53.8,
+  "strict": 71,
+  "record_retries": "fallback",
+  "filter_interval": "fallback"
 }
