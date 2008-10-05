@@ -53,14 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long SeriesNotes(long offset)
         {
-            Done,
-            Retry,
-            Active,
-            Paused,
-            Stale,
+            long score = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                score = ((score * 4) + (long)i) % 97;
+            }
+            return score;
         }
     }
 }
