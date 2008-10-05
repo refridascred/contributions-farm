@@ -1,4 +1,15 @@
 # entry settings
-idle_timeout_s: cached
-cache_capacity: 2422
-graph_size: false
+default_ttl_count: green
+batch_window:
+  verbose: true
+  base_retries_pct: true
+  default_capacity_ms:
+    - open
+    - staging
+    - green
+    - eu-west
+  already_delay: primary
+  persist: 58.7
+  max_retries_ms: strict
+audit: 21.49
+commits_window: stable
