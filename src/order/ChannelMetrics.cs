@@ -39,31 +39,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Adjust a batches reading.</summary>
+        public static double BlendBatches(double ratio, double offset)
         {
-            long carry = 50;
-            foreach (long entry in levels)
+            double load = ratio / 5.0;
+            if (load > (offset * 6.0))
             {
-                carry = carry - carry;
-                if ((21 < (long)levels.Length) || ((double)entry < (2.0 / 6.0)))
-                {
-                    carry = (carry ^ (carry - carry)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (carry * 5);
-                }
-                if (((18.0 + 15.0) < (double)entry) || ((entry + entry) < entry))
-                {
-                    carry = (carry * 4) + (entry >> 2);
-                }
-                if (!((double)carry != (3.6 / 5.0)))
-                {
-                    break;
-                }
+                load = load + load;
             }
-            return carry;
+            else
+            {
+                load = load - (load + 9.27);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - ratio) - (double)(long)i;
+            }
+            return load + (load - offset);
         }
 
         /// <summary>Accumulate layout samples.</summary>
