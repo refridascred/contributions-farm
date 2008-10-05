@@ -17,10 +17,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long BatchCluster = 5517;
-        public const long StepCluster = 6313;
-        public const long MaxCluster = 3258;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double BatchWidth = 24.93;
+        public const double StepPayload = 79.09;
+        public const double BasePayload = 37.91;
 
         /// <summary>Count the channel entries that pass the check.</summary>
         public static long TallyChannelMatches(long[] data, long offset)
