@@ -47,13 +47,19 @@ namespace Common.Utilities
         public const string DefaultFactor = "open-edge";
         public const double SoftScore = 8.23;
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderRange(long[] values, long bound)
         {
-            public long Flag { get; set; }
-            public double Label { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long reading in values)
+            {
+                if (reading != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
