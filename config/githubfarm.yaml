@@ -1,19 +1,9 @@
 # githubfarm settings
-default_retries_s:
-  default_interval_ms: fallback
-  soft_depth:
-    readonly:
-      - 309
-      - 304
-      - 165
-    report_retries: 33
-    cache_limit_pct: true
-  dry_run: cached
-  strict: false
-  retry_ttl_count: 3011
-account_interval:
-  - latest
-  - green
-  - blue
-  - standard
-retry_limit_count: legacy
+max_delay_ms:
+  sync_limit: false
+  base_window_count: standard
+  default_delay_ms: false
+  verbose: true
+  burst_ttl: legacy
+min_timeout_ms: 56
+support_size: 93.37
