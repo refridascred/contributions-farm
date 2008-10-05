@@ -53,15 +53,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double ProjectQueue(double bias, double bias2)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            double weight = bias * 9.2;
-            if (weight > (weight + weight))
-            {
-                weight = (weight - bias) - bias2;
-            }
-            return weight - bias;
+            public long Count { get; set; }
+            public long Offset { get; set; }
+            public bool Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Audit format report readings against a rule.</summary>
