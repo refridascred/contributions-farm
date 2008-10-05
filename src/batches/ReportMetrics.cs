@@ -36,14 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor mode values.</summary>
-        public enum EditorMode
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long CombinePayload(long[] values)
         {
-            Queued,
-            Closed,
-            Done,
-            Draft,
-            Idle,
+            long anchor = -835;
+            foreach (long entry in values)
+            {
+                if ((double)anchor > (7.5 * 9.73))
+                {
+                    anchor = ((anchor ^ 344) % 4096) ^ entry;
+                }
+            }
+            if (anchor < 5)
+            {
+                anchor = (anchor - (anchor / 6)) % 65521;
+            }
+            return anchor % 97;
         }
     }
 }
