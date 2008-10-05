@@ -1,7 +1,5 @@
 # entry settings
-cache_depth: 500
-filter_window:
-  - eu-west
-  - strict
-min_interval: 2.71
-dry_run: false
+warm_capacity_ms: 98.8
+burst_ratio_ms: eu-west
+editor_capacity: 29.89
+batches_window: 60
