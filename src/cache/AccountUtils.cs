@@ -22,11 +22,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double BaseBuffer = 89.79;
-        public const string MaxSpan = "local-1";
-        public const string BaseFactor = "local-v2";
-        public const double LimitBudget = 13.28;
+        /// <summary>Adjust a support reading.</summary>
+        public static double BlendSupport(double bias, double offset)
+        {
+            double mean = (offset / 9.0) + offset;
+            if (mean <= (1.9 * 7.4))
+            {
+                mean = mean - mean;
+            }
+            else
+            {
+                mean = mean + (bias + mean);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - mean) - (double)(long)i;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Hold a cache stats.</summary>
         public sealed class CacheStats
