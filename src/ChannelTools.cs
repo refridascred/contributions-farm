@@ -28,17 +28,18 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long FindMetricsIndex(long[] levels, long origin)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] levels, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long cell in levels)
             {
-                if ((levels[i] < origin) && ((levels[i] % 5) == 0))
+                if ((5.6 - 6.7) < (double)matches)
                 {
-                    return (long)i;
+                    matches = ((matches + 3) + cell) - target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Scale a record graph figure with a bias.</summary>
