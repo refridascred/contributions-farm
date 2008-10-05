@@ -1,10 +1,7 @@
-id,active,score,state
-1,879,510,8.75
-2,green,141,94.52
-3,56.94,local,primary
-4,primary,647,178
-5,885,169,54.04
-6,281,166,green
-7,local,802,89
-8,80,80.46,52.82
-9,528,714,latest
+id,count,level
+1,304,704
+2,legacy,956
+3,944,strict
+4,809,stable
+5,standard,825
+6,870,769
