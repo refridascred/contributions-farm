@@ -51,17 +51,13 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long LookupFilterIndex(long[] data, long floor)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] == floor) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Mode { get; set; } = "";
+            public string Level { get; set; } = "";
+            public string Count { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
