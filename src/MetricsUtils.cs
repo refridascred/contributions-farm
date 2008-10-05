@@ -52,18 +52,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit farm payload readings against a rule.</summary>
-        public static long AuditFarmPayloadHits(long[] data, long floor)
+        /// <summary>Measure how many githubfarm account samples are out of range.</summary>
+        public static long AuditGithubfarmAccountOutliers(long[] items)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long value in items)
             {
-                if (((tally + 820) == (tally >> 2)) && ((floor * 2) < (floor + 1)))
+                if (!((value + hits) <= (hits ^ value)))
                 {
-                    tally = (tally + 2) + entry;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Derive the next profile value from a seed.</summary>
