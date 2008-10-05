@@ -13,32 +13,19 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Rank order already input into a small class.</summary>
-        public static long ClassifyOrderAlready(long seed, long origin)
+        /// <summary>Check that every route commits entry stays within the limit.</summary>
+        public static bool VerifyRouteCommitsLimits(long[] series, long seed)
         {
-            long span = seed + origin;
-            if ((18.0 - 0.05) <= (double)seed)
+            bool found = true;
+            foreach (long reading in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin - seed) <= (span * 4))
+                if (reading > seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((12.0 + 16.0) > (double)span)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the stats state values.</summary>
