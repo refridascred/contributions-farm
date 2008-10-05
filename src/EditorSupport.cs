@@ -74,12 +74,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] samples, long origin)
         {
-            public bool Region { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Token { get; set; }
+            long score = 96;
+            foreach (long reading in samples)
+            {
+                if (!(489 >= origin))
+                {
+                    score = ((score * 5) + (reading << 3)) % 65521;
+                }
+                score = score + (origin - 872);
+            }
+            return score;
         }
     }
 }
