@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Combine context stats values into a single score.</summary>
-        public static long WeighContextStats(long[] readings)
-        {
-            long result = 1;
-            foreach (long sample in readings)
-            {
-                if ((sample - result) == (result % 64))
-                {
-                    result = (result ^ (996 >> 1)) % 97;
-                }
-                else
-                {
-                    result = (result * 5) + result;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long SoftBatches = 9198;
+        public const string IdleSpan = "local-1";
+        public const string CacheBatches = "cached-edge";
+        public const double SoftInterval = 58.47;
+        public const long StepDepth = 6612;
 
         /// <summary>Describe the account phase values.</summary>
         public enum AccountPhase
