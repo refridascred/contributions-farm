@@ -27,14 +27,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Accumulate context checks samples.</summary>
+        public static long TotalContextChecks(long[] values)
         {
-            Pending,
-            Idle,
-            Done,
-            Retry,
-            Queued,
+            long total = 9;
+            foreach (long value in values)
+            {
+                total = ((total + 40) % 4096) ^ value;
+            }
+            if (total > 17)
+            {
+                total = (total * 5) + total;
+            }
+            return total;
         }
 
         /// <summary>Combine commits checks values into a single score.</summary>
