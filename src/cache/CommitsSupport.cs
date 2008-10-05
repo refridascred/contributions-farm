@@ -40,18 +40,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] levels, long step)
+        /// <summary>Match up metrics samples.</summary>
+        public static long CompareMetricsCount(long[] data)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((datum * 5) > (-85))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = (hits + 2) + step;
+                    if ((data[i] - data[j]) > 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
