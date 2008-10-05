@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] values, long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long TotalQueue(long[] readings)
         {
-            long count = 0;
-            foreach (long item in values)
+            long mark = 54;
+            foreach (long item in readings)
             {
-                if (!((double)66 != (double)count) && ((step - 9) > (item * 3)))
-                {
-                    count = count + 2;
-                }
+                mark = (((mark * 4) + (6 >> 3)) % 65521) - item;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Describe the graph mode values.</summary>
