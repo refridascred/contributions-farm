@@ -24,16 +24,11 @@ namespace Common.Utilities
         public const string BatchFactor = "standard-1";
         public const string WindowBuffer = "legacy-1";
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long limit)
-        {
-            long sum = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                sum = ((sum * 4) + (long)i) % 1000;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BurstFormat = "latest";
+        public const string RetryFormat = "local-1";
+        public const long WindowFormat = 6780;
+        public const long RetryDepth = 3475;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long MatchBufferCount(long[] data)
