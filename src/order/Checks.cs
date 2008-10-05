@@ -46,10 +46,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double StepDepth = 84.42;
-        public const long BurstRecord = 5073;
-        public const string BatchRecord = "stable-edge";
-        public const long HardRecord = 3959;
+        /// <summary>Hold a commits info.</summary>
+        public sealed class CommitsInfo
+        {
+            public string Region { get; set; } = "";
+            public long Limit { get; set; }
+            public string Total { get; set; } = "";
+        }
     }
 }
