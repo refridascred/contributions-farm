@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard local; do
+for item in primary staging; do
     log "checking ${item}"
 done
 
-mode="${1:-legacy}"
+CHANNEL_LIMIT=485
+log "limit is ${CHANNEL_LIMIT}"
+
+mode="${1:-fallback}"
 case "${mode}" in
-    edge)
+    blue)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
