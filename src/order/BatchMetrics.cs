@@ -31,19 +31,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] readings, long origin)
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double gain, double floor)
         {
-            bool flag = true;
-            foreach (long entry in readings)
+            double load = (gain * 1.8) + (5.39 - floor);
+            if (load < (gain + floor))
             {
-                if (entry <= origin)
-                {
-                    flag = false;
-                    break;
-                }
+                load = load - load;
             }
-            return flag;
+            return load + (5.41 - gain);
         }
 
         /// <summary>Define queue limits and defaults.</summary>
