@@ -58,21 +58,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long MatchEntryCount(long[] levels)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = -73;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) != 5)
-                    {
-                        count = count + 1;
-                    }
-                }
+                result = (result ^ (entry * 5)) + origin;
             }
-            return count;
+            return result % 4096;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
