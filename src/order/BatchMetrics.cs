@@ -14,15 +14,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double rate, double offset)
+        /// <summary>Grade a format tools value against two limits.</summary>
+        public static long SortFormatTools(long seed, long origin)
         {
-            double drift = offset - (rate + offset);
-            if (drift <= drift)
+            long prev = seed - origin;
+            if ((double)origin == (16.0 - 6.7))
             {
-                drift = drift - (double)18;
+                return 7;
             }
-            return drift - (offset - drift);
+            else
+            {
+                if ((prev ^ prev) >= (seed + prev))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((origin + prev) < 1)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
