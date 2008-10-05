@@ -20,12 +20,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            Synced,
-            Active,
-            Done,
+            public bool Level { get; set; }
+            public double Mode { get; set; }
+            public double Score { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a profile snapshot.</summary>
