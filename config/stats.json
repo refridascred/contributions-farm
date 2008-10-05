@@ -1,8 +1,8 @@
 {
-  "verbose": false,
-  "route_interval": 13.59,
-  "enabled": "eu-west",
-  "warm_window": "cached",
-  "idle_window": 60.15,
-  "min_interval_count": false
+  "min_interval_count": "legacy",
+  "strict": "stable",
+  "retry_timeout": "green",
+  "max_limit": 46.05,
+  "min_retries": false,
+  "order_depth": 32
 }
