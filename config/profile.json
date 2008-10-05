@@ -1,7 +1,18 @@
 {
-  "base_timeout_s": 2034,
-  "retry_size_count": ["strict", "fallback"],
-  "batch_delay": "staging",
-  "soft_depth_s": 4064,
-  "flush_delay_pct": [361, 272]
+  "sync_window_count": false,
+  "default_window_s": {
+    "hard_limit": 88.88,
+    "base_threshold_s": "open",
+    "strict": 6807,
+    "audit": 61.12
+  },
+  "poll_threshold_count": "strict",
+  "max_ttl_pct": 43,
+  "compress": 250,
+  "default_depth_ms": {
+    "idle_retries": "strict",
+    "warm_ttl_pct": 500,
+    "hard_limit_s": "green",
+    "dry_run": 13.21
+  }
 }
