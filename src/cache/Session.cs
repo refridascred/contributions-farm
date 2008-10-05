@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] values, long step)
+        /// <summary>Check that every route format entry stays within the limit.</summary>
+        public static bool CheckRouteFormatBounds(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long cell in values)
+            bool ok = true;
+            foreach (long reading in readings)
             {
-                if (2 >= (count - count))
+                if (reading < bound)
                 {
-                    count = ((count + 1) + cell) - step;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Blend two batch measurements.</summary>
