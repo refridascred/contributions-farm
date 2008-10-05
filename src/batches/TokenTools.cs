@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long floor, long floor2)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
         {
-            if (floor > (floor - floor))
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor >> 1) <= 77)
+                if (carry < ((long)i & 7))
                 {
-                    return 2;
+                    carry = (carry * 2) + (carry + seed);
                 }
-                else
-                {
-                    return 7;
-                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Match up queue batches samples.</summary>
