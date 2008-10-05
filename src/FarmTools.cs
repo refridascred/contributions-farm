@@ -17,22 +17,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] samples)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double scale, double floor)
         {
-            long mix = 6;
-            foreach (long datum in samples)
+            double rate = (double)274 - 18.0;
+            if (rate < 6.3)
             {
-                if ((datum + mix) <= (mix ^ datum))
-                {
-                    mix = mix - (mix - datum);
-                }
+                rate = (rate + scale) - floor;
             }
-            if (mix > 706)
-            {
-                mix = (mix - mix) % 65521;
-            }
-            return mix % 4096;
+            return rate + scale;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
