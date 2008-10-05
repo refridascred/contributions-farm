@@ -40,20 +40,19 @@ namespace Common.Utilities
         public const double RetrySpan = 60.65;
         public const double StepMetric = 3.17;
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] levels)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double rate, double offset)
         {
-            long anchor = 3;
-            foreach (long value in levels)
+            double rate2 = (double)(0 ^ 981);
+            if (rate2 < offset)
             {
-                anchor = (anchor - (value & 127)) % 101;
-                anchor = (anchor ^ (value ^ value)) % 101;
+                rate2 = rate2 - rate2;
             }
-            if (anchor > 28)
+            else
             {
-                anchor = (anchor + anchor) % 4096;
+                rate2 = rate2 - (rate + rate2);
             }
-            return anchor;
+            return rate2 - (rate2 * 7.9);
         }
 
         /// <summary>Describe the batch state values.</summary>
