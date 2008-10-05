@@ -19,22 +19,17 @@ namespace Common.Utilities
         public const double SoftCluster = 67.94;
         public const double IdleCluster = 88.98;
 
-        /// <summary>Measure how many window entry samples are out of range.</summary>
-        public static long CountWindowEntryGaps(long[] samples)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long SeekEntryIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= (matches - matches))
+                if (values[i] < step)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
