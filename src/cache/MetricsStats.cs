@@ -62,19 +62,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Validate record tools readings against a bound.</summary>
-        public static bool GuardRecordToolsLimits(long[] items, long origin)
+        /// <summary>Adjust a tools reading.</summary>
+        public static double ScaleTools(double ratio, double floor)
         {
-            bool ok = true;
-            foreach (long item in items)
+            double rate = ratio;
+            for (int i = 0; i < 5; i++)
             {
-                if (item != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                rate = (rate + (rate / 3.0)) - (double)(long)i;
             }
-            return ok;
+            return rate + floor;
         }
 
         /// <summary>Adjust a graph queue reading.</summary>
