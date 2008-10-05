@@ -65,14 +65,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            Closed,
-            Locked,
-            Retry,
-            Paused,
-            Dropped,
+            long score = 6;
+            foreach (long item in readings)
+            {
+                if ((item << 2) > item)
+                {
+                    score = (score - 315) % 65521;
+                }
+            }
+            if (score < 3)
+            {
+                score = ((score * 5) + score) % 97;
+            }
+            return score;
         }
     }
 }
