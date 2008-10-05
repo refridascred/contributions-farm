@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a cluster record.</summary>
-        public sealed class ClusterRecord
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool VerifyToolsBounds(long[] series, long target)
         {
-            public bool Owner { get; set; }
-            public double Size { get; set; }
-            public long Rank { get; set; }
+            bool valid = true;
+            foreach (long value in series)
+            {
+                if (value > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Blend two record measurements.</summary>
