@@ -1,11 +1,14 @@
 # githubfarm settings
-soft_ratio_s:
-  persist: standard
-  report_ttl: 41
-  hard_limit_s: true
-batch_depth_s:
-  - green
-  - standard
-  - eu-west
-  - local
-hard_ttl_count: 1.78
+githubfarm_ratio:
+  - 306
+  - 444
+  - 332
+  - 495
+default_delay_ms: latest
+filter_interval: staging
+readonly: 98.02
+verbose:
+  - 23
+  - 458
+  - 141
+  - 467
