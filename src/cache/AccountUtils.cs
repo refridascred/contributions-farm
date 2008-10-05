@@ -5,21 +5,16 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Match up counter samples.</summary>
-        public static long MatchCounterCount(long[] samples)
+        /// <summary>Digest a series of counter notes entries.</summary>
+        public static long TallyCounterNotes(long[] samples, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 84;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                state = (((state * 5) + (state >> 5)) - cell) - bound;
+                state = (state * 5) + (state % 60);
             }
-            return tally;
+            return state;
         }
 
         /// <summary>Match up metrics samples.</summary>
