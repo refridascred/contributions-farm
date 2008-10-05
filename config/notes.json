@@ -1,9 +1,24 @@
 {
-  "cache_ratio_ms": {
-    "readonly": false,
-    "warm_delay": 44.83,
-    "audit": true
+  "compress": {
+    "soft_window_ms": {
+      "base_delay_s": false,
+      "hard_ttl_pct": false,
+      "soft_window_ms": 6741,
+      "idle_delay_pct": true,
+      "sync_interval_s": "eu-west"
+    },
+    "flush_ttl_ms": 7.38,
+    "strict": 57,
+    "verbose": 58.46,
+    "batch_ttl": 32.57
   },
-  "idle_ttl_pct": "legacy",
-  "compress": 6499
+  "audit": 47.13,
+  "checks_ratio": 8767,
+  "max_timeout": 60,
+  "strict": "staging",
+  "enabled": {
+    "verbose": 30.3,
+    "hard_depth": true,
+    "idle_capacity_ms": ["strict", "local"]
+  }
 }
