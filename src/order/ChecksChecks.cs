@@ -22,21 +22,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count report notes pairs that satisfy a relation.</summary>
-        public static long MatchReportNotesCount(long[] readings)
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = seed;
+            for (int i = 0; i < 11; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mark = ((mark << 2) ^ seed) % 65521;
+                mark = ((mark * 3) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define context limits and defaults.</summary>
