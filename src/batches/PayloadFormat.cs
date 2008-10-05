@@ -12,11 +12,19 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool ValidateCommandLimits(long[] readings, long floor)
         {
-            public string Score { get; set; } = "";
-            public double Region { get; set; }
+            bool flag = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Grade a checks value against two limits.</summary>
