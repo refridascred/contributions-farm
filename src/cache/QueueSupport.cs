@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphOutliers(long[] samples)
+        /// <summary>Audit notes format readings against a rule.</summary>
+        public static long MeasureNotesFormatGaps(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (!((1.1 + 1.5) != (double)item) && ((count > 7) && ((double)count > (10.0 / 8.0))))
+                if ((double)matches <= (3.3 * 6.5))
                 {
-                    count = count + 2;
+                    matches = ((matches + 3) + cell) + offset;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit batch readings against a rule.</summary>
