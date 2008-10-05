@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] levels)
         {
-            public bool Total { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((matches - 886) >= sample)
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define command limits and defaults.</summary>
