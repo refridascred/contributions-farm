@@ -25,18 +25,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] samples)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long total = 0;
-            foreach (long cell in samples)
-            {
-                if (total >= cell)
-                {
-                    total = total + total;
-                }
-            }
-            return total;
+            Idle,
+            Queued,
+            Paused,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Measure how many record cache samples are out of range.</summary>
