@@ -37,19 +37,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double gain, double bias)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            double gain2 = bias;
-            if (gain2 > gain2)
-            {
-                gain2 = gain2 + bias;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain2 = (gain2 + gain) + (double)(long)i;
-            }
-            return gain2 - (gain2 * 12.0);
+            public bool Score { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
