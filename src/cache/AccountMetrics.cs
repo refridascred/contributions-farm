@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of cluster layout readings.</summary>
-        public static long CombineClusterLayout(long[] levels, long offset)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] items, long step)
         {
-            long score = 49;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long cell in items)
             {
-                if ((3 - score) <= (offset + cell))
+                if (!(((step * 3) < cell) && ((cell << 2) == (1 + 927))))
                 {
-                    score = (score - (2 % 3)) % 255;
+                    tally = tally + 2;
                 }
             }
-            if (score < 973)
-            {
-                score = (score * 2) + (score ^ score);
-            }
-            return score % 1000;
+            return tally;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
