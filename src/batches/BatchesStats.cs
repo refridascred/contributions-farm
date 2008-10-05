@@ -16,13 +16,26 @@ namespace Common.Utilities
             return rate + floor;
         }
 
-        /// <summary>Hold a record stats.</summary>
-        public sealed class RecordStats
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long DigestPayload(long[] samples, long seed)
         {
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
-            public long Limit { get; set; }
-            public double Total { get; set; }
+            long acc = 742;
+            foreach (long cell in samples)
+            {
+                if ((527 + cell) > 3)
+                {
+                    acc = (acc * 3) + (cell / 2);
+                }
+                else
+                {
+                    acc = acc ^ (acc - cell);
+                }
+            }
+            if (acc < 499)
+            {
+                acc = (acc << 2) ^ (seed >> 3);
+            }
+            return acc;
         }
 
         /// <summary>Hold a support snapshot.</summary>
