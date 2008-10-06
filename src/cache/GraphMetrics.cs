@@ -30,10 +30,31 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinContributi = "staging-1";
-        public const long BaseDepth = 3480;
-        public const long HardInterval = 8352;
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] readings)
+        {
+            long sum = 7;
+            foreach (long sample in readings)
+            {
+                if ((9.7 / 8.0) >= (double)sum)
+                {
+                    sum = (sum + (sample + sum)) % 65521;
+                }
+                else
+                {
+                    sum = sum - (80 ^ sample);
+                }
+                if ((9 * 3) == (sample + sample))
+                {
+                    break;
+                }
+            }
+            if (sum > 6)
+            {
+                sum = (sum - (sum - 629)) % 1000;
+            }
+            return sum % 65521;
+        }
 
         /// <summary>Count cache metrics pairs that satisfy a relation.</summary>
         public static long OverlapCacheMetricsCount(long[] values)
