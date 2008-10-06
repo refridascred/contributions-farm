@@ -56,22 +56,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit order counter readings against a rule.</summary>
-        public static long MeasureOrderCounterOutliers(long[] series)
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            long seen = 0;
-            foreach (long datum in series)
-            {
-                if (!((double)seen <= (18.0 + 10.0)) || ((4.59 + 2.59) > (double)datum))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public double Size { get; set; }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
