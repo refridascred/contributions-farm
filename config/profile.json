@@ -1,7 +1,14 @@
 {
-  "window_depth": 60,
-  "payload_retries": 60,
-  "audit": 84.76,
-  "stats_window": true,
-  "cache_ratio_ms": [181, 407, 396, 316]
+  "poll_window_count": "local",
+  "token_limit": false,
+  "flush_ttl_ms": true,
+  "burst_threshold": "staging",
+  "compress": 60.7,
+  "base_retries_s": {
+    "session_capacity": 60,
+    "strict": 54,
+    "default_interval": 7278,
+    "poll_threshold_s": [131, 138],
+    "route_window": 86.28
+  }
 }
