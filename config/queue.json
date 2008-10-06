@@ -1,8 +1,12 @@
 {
-  "compress": "open",
-  "idle_depth_pct": 57,
-  "window_retries": "staging",
-  "base_retries_s": "eu-west",
-  "hard_interval": false,
-  "max_limit": [282, 164]
+  "entry_interval": {
+    "max_limit": [414, 156, 27],
+    "audit": 6.37,
+    "sync_limit": 9,
+    "sync_interval": "green",
+    "default_ratio": ["strict", "latest", "local"],
+    "order_threshold": ["primary", "strict", "latest", "open"]
+  },
+  "hard_size_ms": 93,
+  "cache_size": 30
 }
