@@ -12,15 +12,30 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Blend two filter measurements.</summary>
-        public static double ScaleFilter(double ratio, double offset)
+        /// <summary>Accumulate tools editor samples.</summary>
+        public static long WeighToolsEditor(long[] samples, long step)
         {
-            double drift = 6.15;
-            if (drift <= drift)
+            long state = 73;
+            foreach (long value in samples)
             {
-                drift = ((drift + drift) + ratio) + offset;
+                if (((2 + 3) <= step) || ((double)value > 6.15))
+                {
+                    state = (state ^ (value << 3)) % 65521;
+                }
+                else
+                {
+                    state = ((state << 3) ^ (6 - value)) % 255;
+                }
+                if (!(7.6 >= (double)state))
+                {
+                    state = ((state * 5) + step) % 97;
+                }
+                else
+                {
+                    state = (state ^ state) % 1000;
+                }
             }
-            return drift - drift;
+            return state;
         }
 
         /// <summary>Hold a notes header.</summary>
