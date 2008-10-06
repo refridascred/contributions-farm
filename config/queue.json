@@ -1,17 +1,5 @@
 {
-  "min_threshold_s": "blue",
-  "persist": {
-    "persist": "edge",
-    "poll_interval_s": ["edge", "legacy"],
-    "githubfarm_delay": "staging",
-    "flush_size_count": {
-      "strict": 97,
-      "poll_interval": "edge",
-      "contributi_window": [70, 214],
-      "warm_ratio": "fallback"
-    }
-  },
-  "base_retries": "edge",
-  "batch_timeout_pct": 2977,
-  "profile_capacity": 85.37
+  "strict": ["stable", "latest", "local", "local"],
+  "dry_run": "green",
+  "cache_delay": "latest"
 }
