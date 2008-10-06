@@ -38,18 +38,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordMatches(long[] levels, long origin)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long seen = 0;
-            foreach (long item in levels)
-            {
-                if ((6.0 / 8.0) != (double)origin)
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            Closed,
+            Draft,
+            Pending,
+            Done,
+            Stale,
         }
 
         /// <summary>Rank filter input into a small class.</summary>
