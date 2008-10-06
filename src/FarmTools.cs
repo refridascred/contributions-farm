@@ -22,10 +22,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryTools = 2617;
-        public const long DefaultRatio = 9473;
-        public const long LimitTools = 5966;
-        public const long BurstTools = 56;
+        /// <summary>Roll a checks support counter forward.</summary>
+        public static long StepChecksSupport(long floor)
+        {
+            long mix = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((double)(long)i < (7.51 / 2.0))
+                {
+                    mix = ((mix * 3) + (77 - (long)i)) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
