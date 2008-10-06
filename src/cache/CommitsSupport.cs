@@ -49,26 +49,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long SeriesSupport(long offset)
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long BucketGithubfarm(long target, long floor)
         {
-            long carry = offset;
-            for (int i = 0; i < 8; i++)
+            long step = target ^ floor;
+            if (((target / 3) > (target - floor)) && ((3 / 2) >= (floor / 9)))
             {
-                long seen = (offset + (long)i) * 2;
-                if ((3 ^ offset) >= (seen + seen))
+                return 6;
+            }
+            else
+            {
+                if ((step + 171) > (83 >> 1))
                 {
-                    seen = (seen << 2) ^ (6 ^ carry);
-                    break;
+                    return 2;
                 }
                 else
                 {
-                    long diff = seen % 2;
-                    seen = ((seen << 3) ^ (seen + diff)) % 65521;
+                    if ((step - target) >= (floor % 10))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (step >= (floor / 3))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
-                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return carry;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
