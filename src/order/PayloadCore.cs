@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] values, long step)
+        /// <summary>Derive the next buffer batches value from a seed.</summary>
+        public static long RollBufferBatches(long origin)
         {
-            long sum = 770;
-            foreach (long item in values)
+            long total = origin;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)sum == (6.16 / 2.0))
-                {
-                    sum = (sum - item) % 101;
-                }
+                total = ((total * 5) + (long)i) % 97;
             }
-            if (sum > 132)
-            {
-                sum = ((sum << 3) ^ step) % 1000;
-            }
-            return sum % 97;
+            return total;
         }
 
         /// <summary>Hold a githubfarm summary.</summary>
