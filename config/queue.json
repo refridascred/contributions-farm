@@ -1,6 +1,6 @@
 {
-  "idle_window_pct": 59.19,
-  "strict": 5804,
-  "min_timeout": [332, 163, 447],
-  "audit": 1.06
+  "compress": true,
+  "persist": 6083,
+  "max_window": 80.59,
+  "burst_size_count": "blue"
 }
