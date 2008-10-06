@@ -31,11 +31,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 665;
-        public const double SoftRecord = 60.79;
-        public const long StepFactor = 4081;
-        public const double BaseCount = 83.31;
-        public const double MinRecord = 51.77;
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
+        {
+            Failed,
+            Done,
+            Draft,
+            Dropped,
+            Pending,
+        }
     }
 }
