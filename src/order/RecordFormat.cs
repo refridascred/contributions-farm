@@ -35,11 +35,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            public long Mode { get; set; }
-            public double Label { get; set; }
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define counter limits and defaults.</summary>
