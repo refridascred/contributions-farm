@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsRange(long[] values, long floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool GuardCommitsLimits(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long sample in levels)
             {
-                if (datum > floor)
+                if (sample <= origin)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
