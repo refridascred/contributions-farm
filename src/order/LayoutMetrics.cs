@@ -28,14 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double bias, double bias2)
         {
-            Ready,
-            Stale,
-            Retry,
-            New,
-            Idle,
+            double ratio = (double)(6 % 64);
+            if (ratio >= 0.1)
+            {
+                ratio = ratio + ratio;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio - (bias2 + bias);
         }
     }
 }
