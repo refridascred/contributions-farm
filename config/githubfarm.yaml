@@ -1,7 +1,18 @@
 # githubfarm settings
-dry_run: 30
-sync_ratio_ms:
-  - 164
-  - 484
-cache_capacity: blue
-queue_timeout: 4039
+persist: 1024
+warm_interval: 41.65
+max_interval:
+  compress: 100
+  strict: primary
+  poll_retries_pct: legacy
+  session_window: latest
+  soft_timeout:
+    burst_limit_pct: 84.78
+    default_timeout_s: true
+    cache_window:
+      - 59
+      - 249
+    strict: 11.29
+burst_limit: 9103
+support_size: local
+base_capacity: latest
