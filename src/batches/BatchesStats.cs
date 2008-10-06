@@ -26,19 +26,13 @@ namespace Common.Utilities
             return rate + (double)33;
         }
 
-        /// <summary>Blend two batches measurements.</summary>
-        public static double SmoothBatches(double rate, double bias)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double rate2 = 1.5;
-            if (rate2 >= rate)
-            {
-                rate2 = (rate2 + rate) - bias;
-            }
-            else
-            {
-                rate2 = rate2 - rate;
-            }
-            return rate2 - rate;
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
+            public long Count { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Count cache pairs that satisfy a relation.</summary>
