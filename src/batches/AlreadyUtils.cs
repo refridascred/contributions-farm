@@ -15,14 +15,30 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Accumulate metric checks samples.</summary>
+        public static long CombineMetricChecks(long[] readings)
         {
-            Draft,
-            Failed,
-            Stale,
-            Active,
-            Dropped,
+            long state = 137;
+            foreach (long value in readings)
+            {
+                if ((double)state != (1.0 / 3.0))
+                {
+                    state = (state + (state / 4)) % 255;
+                }
+                else
+                {
+                    state = ((state * 2) + value) % 255;
+                }
+                if (!((state + value) < state))
+                {
+                    state = (state << 2) ^ (value - (-5));
+                }
+                else
+                {
+                    state = (state << 2) ^ (52 * 2);
+                }
+            }
+            return state % 4096;
         }
 
         /// <summary>Fold a list of githubfarm cache readings.</summary>
