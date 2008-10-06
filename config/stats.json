@@ -1,19 +1,6 @@
 {
-  "warm_limit_count": {
-    "poll_capacity_pct": "cached",
-    "warm_delay": "latest",
-    "min_delay": 84
-  },
-  "min_retries_pct": {
-    "min_capacity": 2849,
-    "sync_size_ms": 100,
-    "retry_size_s": 67.47,
-    "enabled": 60,
-    "account_retries": "green",
-    "max_window_pct": 32.16
-  },
-  "poll_ratio_pct": 22.13,
-  "sync_limit": 250,
-  "sync_depth": 22,
-  "record_timeout": 16
+  "layout_interval": 1199,
+  "warm_delay": 93,
+  "warm_ttl_pct": "latest",
+  "sync_capacity_pct": 4088
 }
