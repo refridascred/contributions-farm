@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] values)
+        /// <summary>Blend two contributi record measurements.</summary>
+        public static double AdjustContributiRecord(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double weight2 = (double)((-108) & 7);
+            if (weight2 >= (1.36 / 8.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) < 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                weight2 = (weight2 + floor) - weight;
             }
-            return tally;
+            else
+            {
+                weight2 = weight2 - 8.0;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight2 = (weight2 + (weight2 - floor)) - (double)(long)i;
+            }
+            return weight2 + (double)588;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
