@@ -57,17 +57,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a route sample.</summary>
-        public static long LookupRouteIndex(long[] items, long bound)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return (long)i;
+                    carry = ((carry + (bound / 2)) % 101) - (long)i2;
+                    carry = ((carry * 2) + bound) % 65521;
                 }
+                carry = (carry + bound) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
             }
-            return -1;
+            return carry;
         }
     }
 }
