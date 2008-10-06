@@ -28,13 +28,14 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the farm class values.</summary>
-        public enum FarmClass
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            Dropped,
-            Paused,
-            Done,
             Idle,
+            New,
+            Closed,
+            Retry,
+            Active,
         }
     }
 }
