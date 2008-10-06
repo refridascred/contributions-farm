@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long CountFilterMatches(long[] readings, long floor)
-        {
-            long matches = 0;
-            foreach (long item in readings)
-            {
-                if (!((double)item < (8.0 * 8.42)))
-                {
-                    matches = (matches + 3) - floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardTimeout = 9565;
+        public const long CacheMetrics = 9804;
+        public const double RetryBudget = 54.86;
+        public const long BaseBudget = 3510;
+        public const long MaxSpan = 8322;
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LocateContextIndex(long[] readings, long origin)
