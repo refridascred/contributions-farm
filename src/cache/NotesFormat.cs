@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string IdleInterval = "cached-v2";
-        public const long HardNotes = 7256;
-        public const string LimitNotes = "open-v2";
-        public const long MaxTimeout = 6368;
-        public const long RetryNotes = 5255;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public long Weight { get; set; }
+            public string Label { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
+        }
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
