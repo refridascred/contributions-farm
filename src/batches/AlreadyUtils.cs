@@ -15,17 +15,31 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] readings, long limit)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long GradeBuffer(long step, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((step - step) < offset)
             {
-                if (readings[i] > limit)
+                return 6;
+            }
+            else
+            {
+                if ((double)step > (double)offset)
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((455 * 2) != (step / 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the farm kind values.</summary>
