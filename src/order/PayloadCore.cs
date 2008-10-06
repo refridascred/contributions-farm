@@ -29,12 +29,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long IteratePayload(long limit)
         {
-            public long Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Stamp { get; set; }
+            long mix = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
