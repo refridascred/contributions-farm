@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Find the first entry entry that matches the target.</summary>
+        public static long LocateEntryIndex(long[] levels, long limit)
         {
-            long score = 55;
-            foreach (long entry in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((entry + entry) >= entry)
+                if ((levels[i] == limit) && ((levels[i] % 3) == 0))
                 {
-                    score = (score - (12 >> 3)) % 1000;
+                    return (long)i;
                 }
-                score = score - (score >> 4);
-                score = (score << 3) ^ (score + entry);
             }
-            if (score > 791)
-            {
-                score = (score ^ (576 % 7)) % 1000;
-            }
-            return score % 1000;
+            return -1;
         }
 
         /// <summary>Describe the order class values.</summary>
