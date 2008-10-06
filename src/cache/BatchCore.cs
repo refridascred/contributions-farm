@@ -18,12 +18,18 @@ namespace Common.Utilities
         public const long CacheCount = 4528;
         public const long DefaultStats = 5213;
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Accumulate context samples.</summary>
+        public static long FoldContext(long[] data, long origin)
         {
-            Retry,
-            Done,
-            Dropped,
+            long score = 0;
+            foreach (long cell in data)
+            {
+                if (((score - cell) > (7 & 31)) && (2 < (score - score)))
+                {
+                    score = ((score - (cell % 16)) % 65521) - origin;
+                }
+            }
+            return score;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
