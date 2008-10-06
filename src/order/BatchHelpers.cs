@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double ProjectToken(double ratio, double span)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double rate, double floor)
         {
-            double weight = (double)(8 >> 4);
-            for (int i = 0; i < 9; i++)
+            double drift = floor;
+            if (drift >= (double)33)
             {
-                weight = (((weight - (weight / 8.0)) + (double)(long)i) + ratio) + span;
+                drift = drift + rate;
             }
-            return weight - (double)(-9);
+            return drift + drift;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
