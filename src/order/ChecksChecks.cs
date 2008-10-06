@@ -22,19 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandBounds(long[] values, long origin)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            bool ok = true;
-            foreach (long datum in values)
-            {
-                if (datum >= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Synced,
+            Closed,
+            New,
+            Done,
+            Draft,
         }
 
         /// <summary>Digest a series of window entries.</summary>
