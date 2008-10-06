@@ -23,38 +23,13 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long target, long limit)
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            if (((883 - 10) < target) || ((limit + (-283)) >= (76 * 2)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (target >= 441)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((limit / 4) == (target ^ target)) && ((double)target != (6.7 + 2.13)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (14.0 >= (double)limit)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public double Size { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
