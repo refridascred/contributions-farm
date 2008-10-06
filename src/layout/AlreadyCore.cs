@@ -20,18 +20,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterMatches(long[] series, long bound)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if (!(((double)value != (double)bound) || ((197 - value) != (75 + value))))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public string Level { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Roll a account counter forward.</summary>
