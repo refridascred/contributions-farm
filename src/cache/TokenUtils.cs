@@ -16,11 +16,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            public string Count { get; set; } = "";
-            public bool Weight { get; set; }
+            Queued,
+            New,
+            Locked,
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
