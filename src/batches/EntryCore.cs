@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Measure how many stream filter samples are out of range.</summary>
-        public static long MeasureStreamFilterOutliers(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] samples, long step)
         {
             long tally = 0;
-            foreach (long value in items)
+            foreach (long item in samples)
             {
-                if (value <= (75 + value))
+                if ((tally ^ tally) >= (tally + tally))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    tally = ((tally + 1) + item) - step;
                 }
             }
             return tally;
