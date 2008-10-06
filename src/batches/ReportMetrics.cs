@@ -12,26 +12,10 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long ClassifyGraph(long offset, long seed)
-        {
-            long cur = offset ^ seed;
-            if ((cur + offset) > (cur / 4))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((seed + (-7)) > cur) && ((offset >> 1) < (seed << 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long MinNotes = 1799;
+        public const double BatchNotes = 30.84;
+        public const long IdleTimeout = 6633;
 
         /// <summary>Validate route readings against a bound.</summary>
         public static bool GuardRouteBounds(long[] readings, long bound)
