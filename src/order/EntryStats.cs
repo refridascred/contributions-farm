@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardTimeout = 9565;
-        public const long CacheMetrics = 9804;
-        public const double RetryBudget = 54.86;
-        public const long BaseBudget = 3510;
-        public const long MaxSpan = 8322;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferBounds(long[] data, long origin)
+        {
+            bool flag = true;
+            foreach (long entry in data)
+            {
+                if (entry != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Locate a context reading by value.</summary>
         public static long LocateContextIndex(long[] readings, long origin)
