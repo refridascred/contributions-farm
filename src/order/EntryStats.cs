@@ -58,19 +58,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ScaleWindow(double rate, double offset)
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            double drift = (double)(72 & 127);
-            if (drift > (drift / 8.0))
-            {
-                drift = drift + (offset - drift);
-            }
-            else
-            {
-                drift = drift + (drift - offset);
-            }
-            return drift + (rate - rate);
+            public bool Limit { get; set; }
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
