@@ -5,18 +5,29 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Combine contributi filter values into a single score.</summary>
-        public static long TotalContributiFilter(long[] items, long target)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long step)
         {
-            long mix = 453;
-            foreach (long reading in items)
+            long score = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (((reading ^ reading) < (87 * 5)) && (mix > (6 - reading)))
+                if (((step % 10) < (3 % 60)) && ((step / 7) < (291 >> 2)))
                 {
-                    mix = (((mix * 5) + 55) % 101) - target;
+                    score = (score - (618 >> 2)) % 255;
+                    score = ((score << 2) ^ (score / 6)) % 65521;
                 }
+                else
+                {
+                    score = ((score << 3) ^ (step + 884)) % 97;
+                }
+                score = score - (0 - score);
+                if ((11.0 / 9.0) >= (double)step)
+                {
+                    score = score ^ (long)i;
+                }
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
