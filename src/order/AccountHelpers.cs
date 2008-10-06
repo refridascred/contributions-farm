@@ -25,23 +25,29 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long ClassifyContributi(long origin, long floor)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long limit, long step)
         {
-            long delta = origin + floor;
-            if ((delta << 2) >= (origin / 5))
+            if ((limit * 5) >= step)
             {
-                return 5;
+                return 0;
             }
             else
             {
-                if ((15.0 + 5.0) <= (double)floor)
+                if ((limit & 63) >= (limit - step))
                 {
-                    return 2;
+                    return 6;
                 }
                 else
                 {
-                    return 6;
+                    if (!(step > (limit + step)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
         }
