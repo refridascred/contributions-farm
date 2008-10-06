@@ -38,19 +38,19 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool VerifyTokenBounds(long[] series, long limit)
+        /// <summary>Adjust a session reading.</summary>
+        public static double SmoothSession(double rate, double offset)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            double gain = (double)(68 % 3);
+            if (gain < gain)
             {
-                if (entry <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                gain = gain - (rate - gain);
             }
-            return stale;
+            else
+            {
+                gain = gain + (offset + offset);
+            }
+            return gain - gain;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
