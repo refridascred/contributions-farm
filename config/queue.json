@@ -1,14 +1,19 @@
 {
-  "max_threshold_s": {
-    "soft_delay_count": "fallback",
-    "enabled": 60,
-    "persist": false,
-    "flush_ttl": "primary",
-    "entry_retries": "local",
-    "base_size": "edge"
-  },
-  "support_limit": ["strict", "legacy", "green", "stable"],
-  "poll_interval": 18,
-  "verbose": ["eu-west", "local", "fallback"],
-  "retry_timeout_pct": 3736
+  "strict": 38.11,
+  "default_interval": "cached",
+  "batch_ratio": {
+    "audit": 14,
+    "sync_capacity": 710,
+    "already_delay": "legacy",
+    "verbose": "latest",
+    "cache_ttl": false,
+    "token_timeout": {
+      "compress": true,
+      "persist": "latest",
+      "cache_ttl": 72.85,
+      "graph_ttl": "open",
+      "min_timeout_ms": false,
+      "verbose": 17
+    }
+  }
 }
