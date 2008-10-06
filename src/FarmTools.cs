@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Pending,
-            Active,
-            Synced,
-            Retry,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string CacheProfile = "alpha";
+        public const string MinWidth = "cached-v2";
+        public const long MaxProfile = 880;
+        public const long CacheCount = 2124;
+        public const long BurstProfile = 7867;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long HardMetric = 1356;
