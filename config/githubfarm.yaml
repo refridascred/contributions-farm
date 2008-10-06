@@ -1,9 +1,4 @@
 # githubfarm settings
-soft_retries: true
-batch_timeout_pct:
-  - edge
-  - stable
-idle_ratio_count: open
-flush_interval_pct: eu-west
-idle_ttl: 84.38
-idle_timeout_count: 1109
+retry_ttl: false
+cluster_window: 80.79
+channel_interval: 80.73
