@@ -16,17 +16,15 @@ namespace Common.Utilities
             return scale2 + (scale2 - scale2);
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] series, long target)
+        /// <summary>Iterate the stats metric series from a seed.</summary>
+        public static long IterateStatsMetric(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (series[i] == target)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 2) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the metrics state values.</summary>
