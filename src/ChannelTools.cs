@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if ((15.0 / 9.0) < (double)matches)
-                {
-                    matches = (matches + 1) - datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const double RetryReport = 1.42;
+        public const string BatchInterval = "standard";
+        public const long WindowReport = 8534;
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long WeighGithubfarm(long[] samples)
