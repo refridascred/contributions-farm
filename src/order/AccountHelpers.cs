@@ -16,18 +16,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] values, long offset)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LocateLayoutIndex(long[] values, long floor)
         {
-            long sum = 554;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)cell == (13.0 * 3.8))
+                if ((values[i] > floor) && ((values[i] % 5) == 0))
                 {
-                    sum = (((sum << 3) ^ (53 >> 3)) % 1000) + offset;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Describe the counter phase values.</summary>
