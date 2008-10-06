@@ -29,25 +29,10 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Grade a commits graph value against two limits.</summary>
-        public static long ClassifyCommitsGraph(long floor, long bound)
-        {
-            long delta = floor + bound;
-            if ((delta >> 4) == (floor >> 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)floor > (1.62 - 7.6)) && ((double)delta != (14.0 / 4.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 4427;
+        public const string SoftCache = "legacy";
+        public const string StepCache = "local-edge";
+        public const long IdleCache = 5055;
     }
 }
