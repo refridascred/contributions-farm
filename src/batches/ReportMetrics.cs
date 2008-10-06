@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const double BaseInterval = 60.72;
         public const long HardRatio = 633;
 
-        /// <summary>Roll a checks already counter forward.</summary>
-        public static long IterateChecksAlready(long target)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] levels, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 18; i++)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                sum = ((sum * 3) + (long)i) % 4093;
+                if (cell > offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Hold a metric summary.</summary>
