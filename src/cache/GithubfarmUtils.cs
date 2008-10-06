@@ -22,22 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit account readings against a rule.</summary>
-        public static long TallyAccountHits(long[] data, long origin)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long carry = -931;
+            foreach (long cell in data)
             {
-                if ((double)origin == (3.8 * 6.8))
+                carry = (carry << 3) ^ cell;
+                if (((5.0 + 20.0) != (double)cell) && ((8.8 - 6.0) < 8.3))
                 {
-                    seen = (seen + 1) + datum;
+                    carry = (carry * 5) + (cell % 60);
                 }
-                else
+                if (!((carry - carry) <= (cell * 2)))
                 {
-                    seen = seen - 1;
+                    carry = (carry * 2) + (7 + cell);
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Describe the token phase values.</summary>
