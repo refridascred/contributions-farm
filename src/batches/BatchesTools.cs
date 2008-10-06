@@ -38,21 +38,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long StepSession(long step)
+        /// <summary>Combine farm counter values into a single score.</summary>
+        public static long CombineFarmCounter(long[] readings)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            long mix = -146;
+            foreach (long reading in readings)
             {
-                long diff = (step + 595) / 7;
-                diff = ((diff * 3) + (step ^ (long)i)) % 255;
-                if ((diff * 3) >= (diff / 5))
-                {
-                    sum = sum + (sum & 15);
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                mix = (mix << 2) ^ reading;
+                mix = ((mix << 2) ^ (mix + 97)) % 4096;
             }
-            return sum;
+            return mix;
         }
     }
 }
