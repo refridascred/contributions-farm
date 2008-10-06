@@ -28,14 +28,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
         {
-            Paused,
-            Pending,
-            Dropped,
-            Retry,
-            Queued,
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
