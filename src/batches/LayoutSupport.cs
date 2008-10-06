@@ -62,12 +62,9 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Ready,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const string BatchSize = "standard";
+        public const string IdleChecks = "local-1";
+        public const long BurstTimeout = 4127;
     }
 }
