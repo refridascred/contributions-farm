@@ -16,12 +16,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] values, long floor)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] values, long seed)
         {
             for (int i = 0; i < values.Length; i++)
             {
-                if ((values[i] > floor) && ((values[i] % 5) == 0))
+                if (values[i] < seed)
                 {
                     return (long)i;
                 }
