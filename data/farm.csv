@@ -1,7 +1,9 @@
-id,owner,token,count
-1,728,66.62,edge
-2,local,141,820
-3,902,947,7.57
-4,green,85.88,94.07
-5,565,cached,65.02
-6,9,959,standard
+id,active,state,level
+1,35,396,456
+2,green,806,624
+3,50.21,611,cached
+4,edge,56.07,415
+5,407,edge,86.21
+6,157,standard,strict
+7,926,101,cached
+8,401,851,stable
