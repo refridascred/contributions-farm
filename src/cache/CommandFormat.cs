@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long ScoreStream(long[] data, long seed)
         {
-            Draft,
-            Ready,
-            Active,
-            Pending,
-            Dropped,
+            long total = 52;
+            foreach (long item in data)
+            {
+                if (item > (total + seed))
+                {
+                    total = (total - (43 ^ item)) % 97;
+                }
+            }
+            if (total > (-47))
+            {
+                total = ((total << 2) ^ (total & 31)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Find the first notes cache entry that matches the target.</summary>
