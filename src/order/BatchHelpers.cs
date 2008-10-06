@@ -17,13 +17,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] items, long floor)
         {
-            Draft,
-            New,
-            Failed,
-            Done,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
