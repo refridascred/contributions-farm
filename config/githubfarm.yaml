@@ -1,16 +1,5 @@
 # githubfarm settings
-strict:
-  min_capacity_s: 87.6
-  enabled:
-    - strict
-    - fallback
-    - edge
-  warm_timeout_pct:
-    burst_limit_ms: fallback
-    strict: strict
-    batch_retries_pct: open
-    window_timeout: staging
-    poll_timeout: eu-west
-  buffer_delay: 100
-min_delay_pct: 90.84
-cache_limit_ms: 35.81
+poll_delay_ms: 7535
+hard_window: green
+enabled: false
+batch_ttl_pct: 92
