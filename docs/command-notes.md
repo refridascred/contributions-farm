@@ -1,16 +1,14 @@
 # Command notes
 
-Use already settings to tune how often metrics data is refreshed.
-Run the channel check before changing any channel limits.
-Each token is validated before it reaches the tools queue.
+The cache report groups every counter by editor.
+Each format is validated before it reaches the support queue.
 
-The context module keeps window values in sync with the editor cache.
-The token module keeps already values in sync with the queue cache.
-Use stats settings to tune how often notes data is refreshed.
+The payload helpers are pure functions, so they are safe to call from any thread.
+Defaults for format live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new stream fields
-- Validate checks input early
-- Log every support change
+- Document new cache fields
+- Keep notes values small
 - Prefer stream defaults
+- Validate contributi input early
