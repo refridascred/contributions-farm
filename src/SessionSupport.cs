@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            New,
-            Idle,
-            Active,
-            Draft,
+            public long Size { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a schema info.</summary>
