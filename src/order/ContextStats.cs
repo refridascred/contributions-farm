@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long origin, long step)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long gap = origin ^ step;
-            if ((double)step < (8.0 / 8.0))
-            {
-                return 2;
-            }
-            else
-            {
-                if (7.8 >= (double)gap)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step + origin) <= gap)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public double Total { get; set; }
+            public long Mode { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Hold a metrics summary.</summary>
