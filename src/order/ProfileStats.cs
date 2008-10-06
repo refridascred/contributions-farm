@@ -67,21 +67,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long OverlapContextCount(long[] items)
+        /// <summary>Check that every tools cache entry stays within the limit.</summary>
+        public static bool CheckToolsCacheRange(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (sample > target)
                 {
-                    if ((items[i] - items[j]) > 11)
-                    {
-                        matches = matches + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
     }
 }
