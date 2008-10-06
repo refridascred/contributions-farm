@@ -22,19 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelBounds(long[] items, long bound)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long CombineProfile(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long result = 3;
+            foreach (long value in series)
             {
-                if (sample >= bound)
+                if (value <= 2)
                 {
-                    ready = false;
-                    break;
+                    result = ((result * 5) + (value % 10)) % 97;
+                }
+                else
+                {
+                    result = result ^ (value >> 5);
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
