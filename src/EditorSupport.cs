@@ -49,13 +49,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] series)
         {
-            public long Label { get; set; }
-            public double Ratio { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen * 2) <= (datum + seen))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
