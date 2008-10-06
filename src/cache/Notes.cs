@@ -34,19 +34,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ScaleReport(double gain, double bias)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] series)
         {
-            double rate = (double)(76 * 5);
-            if (rate <= bias)
+            long mark = 4;
+            foreach (long value in series)
             {
-                rate = rate + (double)4;
+                if (!((mark & 63) > (mark % 24)))
+                {
+                    mark = ((mark << 2) ^ (value / 5)) % 4096;
+                }
+                else
+                {
+                    mark = (mark - (mark + mark)) % 101;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (bias + bias)) + (double)(long)i;
-            }
-            return rate + (gain * 7.95);
+            return mark;
         }
 
         /// <summary>Describe the queue level values.</summary>
