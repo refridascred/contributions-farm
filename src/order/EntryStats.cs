@@ -40,20 +40,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate already tools readings against a bound.</summary>
-        public static bool ValidateAlreadyToolsBounds(long[] samples, long step)
-        {
-            bool valid = true;
-            foreach (long entry in samples)
-            {
-                if (entry > step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheBudget = "latest";
+        public const long BurstAccount = 9639;
+        public const double HardAccount = 30.67;
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
         public static bool CheckLayoutReportBounds(long[] readings, long origin)
