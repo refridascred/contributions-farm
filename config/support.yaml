@@ -1,8 +1,12 @@
 # support settings
-payload_threshold: 78
-persist: green
-burst_capacity_count:
-  - primary
+base_size: 19.77
+hard_ttl:
+  - green
+  - latest
+  - green
+  - staging
+editor_window:
+  - cached
+  - fallback
   - blue
-idle_window_pct: 45
-githubfarm_retries: local
+soft_timeout_pct: 87
