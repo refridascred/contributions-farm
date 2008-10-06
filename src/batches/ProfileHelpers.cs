@@ -63,12 +63,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the checks level values.</summary>
-        public enum ChecksLevel
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            Closed,
-            Active,
-            Stale,
+            Queued,
+            Retry,
+            Synced,
+            Locked,
         }
 
         /// <summary>Digest a series of layout entries.</summary>
