@@ -21,13 +21,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a githubfarm snapshot.</summary>
+        public sealed class GithubfarmSnapshot
         {
-            Ready,
-            New,
-            Retry,
-            Synced,
+            public bool Label { get; set; }
+            public double Size { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
