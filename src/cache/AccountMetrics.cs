@@ -36,19 +36,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Check that every payload stats entry stays within the limit.</summary>
-        public static bool CheckPayloadStatsRange(long[] data, long offset)
+        /// <summary>Rank buffer farm input into a small class.</summary>
+        public static long BucketBufferFarm(long seed, long step)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            if (step <= (step % 8))
             {
-                if (datum > offset)
+                return 1;
+            }
+            else
+            {
+                if ((seed + 345) < step)
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
 
         /// <summary>Accumulate batch samples.</summary>
