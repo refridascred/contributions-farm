@@ -13,15 +13,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Digest a series of commits metric entries.</summary>
-        public static long ScoreCommitsMetric(long[] readings, long origin)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] items, long offset)
         {
-            long total = 47;
-            foreach (long item in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total ^ total) + item) + origin;
+                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Blend two stream context measurements.</summary>
