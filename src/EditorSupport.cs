@@ -20,28 +20,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long origin)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long result = origin;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    result = (((result * 5) + (0 % 100)) % 97) + (long)i2;
-                }
-                if (((long)i >> 1) != (origin & 7))
-                {
-                    result = ((result * 3) + (result + result)) % 255;
-                    break;
-                }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    result = ((result - (origin % 10)) % 4096) - (long)i3;
-                }
-                result = ((result * 3) + (long)i) % 65521;
-            }
-            return result;
+            Ready,
+            Synced,
+            Idle,
+            Paused,
+            Queued,
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
