@@ -26,19 +26,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] series, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long reading in series)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (reading > seed)
+                if (((double)cell < (19.0 - 7.0)) && ((step - count) <= (cell << 1)))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
     }
 }
