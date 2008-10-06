@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            Failed,
-            Active,
-            Locked,
+            public string Label { get; set; } = "";
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
