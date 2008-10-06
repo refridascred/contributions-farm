@@ -50,12 +50,14 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            Locked,
             Synced,
-            Pending,
+            Draft,
+            Ready,
+            New,
+            Dropped,
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
