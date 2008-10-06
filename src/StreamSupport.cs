@@ -31,17 +31,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a session payload reading by value.</summary>
-        public static long SeekSessionPayloadIndex(long[] series, long origin)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long FoldRoute(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mark = 357;
+            foreach (long datum in data)
             {
-                if (series[i] < origin)
-                {
-                    return (long)i;
-                }
+                mark = mark + (mark ^ 2);
+                mark = (mark - datum) % 1000;
             }
-            return -1;
+            if (mark < 7)
+            {
+                mark = mark ^ (mark % 3);
+            }
+            return mark;
         }
     }
 }
