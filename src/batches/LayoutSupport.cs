@@ -13,19 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksRange(long[] samples, long limit)
+        /// <summary>Audit metrics profile readings against a rule.</summary>
+        public static long MeasureMetricsProfileMatches(long[] values, long target)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in values)
             {
-                if (reading <= limit)
+                if ((hits << 1) == (hits + item))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 2) - target;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
