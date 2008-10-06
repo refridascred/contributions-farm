@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] data, long offset)
+        /// <summary>Blend two cache account measurements.</summary>
+        public static double BlendCacheAccount(double rate, double bias)
         {
-            long sum = 3;
-            foreach (long cell in data)
+            double gain = (double)(9 + 146);
+            if (gain <= (double)6)
             {
-                if ((offset - 615) != ((-66) + cell))
-                {
-                    sum = (sum + (0 / 5)) % 1000;
-                }
-                else
-                {
-                    sum = ((sum << 2) ^ sum) % 65521;
-                }
-                sum = ((sum << 2) ^ (offset - cell)) % 101;
-                if ((sum - cell) >= (-80))
-                {
-                    sum = ((sum << 2) ^ (sum / 8)) % 97;
-                }
+                gain = (gain - bias) - rate;
             }
-            if (sum > 337)
-            {
-                sum = (sum ^ 35) % 65521;
-            }
-            return sum;
+            return gain + (bias * 2.58);
         }
 
         /// <summary>Define already limits and defaults.</summary>
