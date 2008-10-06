@@ -28,14 +28,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionMatches(long[] items, long origin)
         {
-            Stale,
-            Retry,
-            New,
-            Synced,
-            Dropped,
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((seen * 2) > reading)
+                {
+                    seen = (seen + 1) + origin;
+                }
+            }
+            return seen;
         }
     }
 }
