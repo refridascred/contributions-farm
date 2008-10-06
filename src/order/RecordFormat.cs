@@ -28,26 +28,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of route record entries.</summary>
-        public static long TallyRouteRecord(long[] samples, long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long limit)
         {
-            long acc = 0;
-            foreach (long sample in samples)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                if ((2.1 / 6.0) > (double)bound)
-                {
-                    break;
-                }
-                if ((double)acc != (double)bound)
-                {
-                    acc = (acc * 2) + sample;
-                }
-                else
-                {
-                    acc = (acc + (bound - bound)) % 255;
-                }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
