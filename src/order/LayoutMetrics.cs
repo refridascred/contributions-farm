@@ -36,10 +36,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string CacheMetric = "alpha";
-        public const long SoftScore = 7062;
-        public const long BatchMetric = 6945;
-        public const long BatchLevel = 2464;
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long bound, long seed)
+        {
+            if (((4 / 6) > (bound - bound)) && ((seed >> 2) != (9 * 3)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)bound < (3.0 + 2.0))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
