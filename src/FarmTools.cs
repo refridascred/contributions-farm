@@ -22,18 +22,10 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] readings)
-        {
-            long matches = 0;
-            foreach (long entry in readings)
-            {
-                if ((6.6 / 3.0) > (double)matches)
-                {
-                    matches = (matches + 3) + entry;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long RetryTools = 2617;
+        public const long DefaultRatio = 9473;
+        public const long LimitTools = 5966;
+        public const long BurstTools = 56;
     }
 }
