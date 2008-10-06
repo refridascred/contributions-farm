@@ -1,6 +1,7 @@
-id,level,token,owner
-1,946,953,94.36
-2,479,stable,47.58
-3,5.95,54.82,786
-4,914,5.36,primary
-5,legacy,cached,628
+id,rank,state,ratio
+1,edge,fallback,fallback
+2,400,426,826
+3,standard,217,latest
+4,459,200,cached
+5,strict,stable,10.52
+6,132,3.47,467
