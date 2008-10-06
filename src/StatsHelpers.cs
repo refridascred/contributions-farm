@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Grade a cluster queue value against two limits.</summary>
-        public static long GradeClusterQueue(long seed, long origin)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountMatches(long[] values)
         {
-            if ((seed - seed) > (seed & 127))
+            long count = 0;
+            foreach (long sample in values)
             {
-                return 1;
-            }
-            else
-            {
-                if (((seed + 307) >= (origin + 662)) || (205 < origin))
+                if (((sample <= (count * 4)) || ((count + count) >= ((-353) + sample))) || ((sample + count) >= (sample % 3)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((99 & 255) < (seed % 64))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((origin % 60) <= (origin << 1))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Adjust a metric reading.</summary>
