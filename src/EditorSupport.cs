@@ -83,19 +83,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ProjectAlready(double scale, double offset)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double ratio = 16.0 + offset;
-            if (ratio <= (scale + scale))
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio - (double)13;
-            }
-            return ratio + (double)2;
+            Retry,
+            Pending,
+            Done,
+            Failed,
         }
     }
 }
