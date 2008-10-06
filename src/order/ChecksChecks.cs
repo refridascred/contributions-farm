@@ -22,14 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            Synced,
-            Closed,
-            New,
-            Done,
-            Draft,
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Weight { get; set; }
         }
 
         /// <summary>Digest a series of window entries.</summary>
