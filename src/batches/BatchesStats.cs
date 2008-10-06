@@ -20,19 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool VerifyBatchLimits(long[] data, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (entry >= seed)
+                if ((double)datum >= (1.1 - 0.7))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 2;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Derive the next farm contributi value from a seed.</summary>
