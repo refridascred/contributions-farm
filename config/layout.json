@@ -1,5 +1,6 @@
 {
-  "default_limit": "primary",
-  "batches_window": true,
-  "retry_timeout": true
+  "notes_size": 5.74,
+  "poll_window_count": 61,
+  "batch_delay_pct": 35,
+  "audit": 8998
 }
