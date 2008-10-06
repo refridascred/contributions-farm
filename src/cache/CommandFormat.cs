@@ -35,14 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] readings, long seed)
         {
-            Failed,
-            Active,
-            Stale,
-            Draft,
-            Closed,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Hold a layout stats.</summary>
