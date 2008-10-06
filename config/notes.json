@@ -1,8 +1,5 @@
 {
-  "audit": 65,
-  "min_ttl_count": "strict",
-  "context_limit": "staging",
-  "notes_ratio": false,
-  "flush_depth_s": 6424,
-  "dry_run": [213, 368]
+  "hard_size_s": "cached",
+  "base_ratio": true,
+  "idle_limit_s": "edge"
 }
