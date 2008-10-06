@@ -1,12 +1,10 @@
 {
-  "idle_size": "latest",
-  "default_depth_count": {
-    "cache_limit_count": 56.98,
-    "hard_delay_count": 4358,
-    "burst_capacity": 500,
-    "compress": 62,
-    "route_ratio": "stable",
-    "burst_retries_s": 500
+  "audit": "blue",
+  "sync_retries_count": false,
+  "compress": {
+    "dry_run": ["blue", "local", "fallback"],
+    "buffer_capacity": 2105,
+    "idle_interval_pct": 100
   },
-  "warm_capacity_count": 3036
+  "persist": false
 }
