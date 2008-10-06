@@ -61,19 +61,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate metrics commits readings against a bound.</summary>
-        public static bool CheckMetricsCommitsBounds(long[] samples, long seed)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry <= seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((readings[i] - readings[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Describe the payload state values.</summary>
