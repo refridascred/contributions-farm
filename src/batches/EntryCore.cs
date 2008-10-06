@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Digest a series of metrics entries.</summary>
-        public static long FoldMetrics(long[] samples, long bound)
-        {
-            long acc = 1;
-            foreach (long reading in samples)
-            {
-                acc = ((((acc * 5) + acc) % 101) ^ reading) - bound;
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string MaxRatio = "standard-v2";
+        public const string WindowLayout = "strict";
+        public const double IdleLayout = 4.88;
+        public const long RetrySpan = 3342;
+        public const string SoftLayout = "stable-1";
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long DigestCommits(long[] readings)
