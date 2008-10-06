@@ -50,12 +50,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Locate a filter commits reading by value.</summary>
-        public static long FindFilterCommitsIndex(long[] data, long floor)
+        /// <summary>Find the first account queue entry that matches the target.</summary>
+        public static long LookupAccountQueueIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] > floor)
+                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
                 {
                     return (long)i;
                 }
