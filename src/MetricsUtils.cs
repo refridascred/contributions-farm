@@ -47,36 +47,22 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long seed, long bound)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long floor, long seed)
         {
-            if (548 > (bound << 1))
+            if (((seed >> 3) == ((-3) ^ seed)) && ((61 + seed) != ((-14) - 5)))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((9.0 / 4.0) == (double)bound)
+                if ((1.99 / 2.0) < (double)seed)
                 {
-                    return 0;
+                    return 8;
                 }
                 else
                 {
-                    if (((bound << 1) < (seed / 7)) && ((seed & 63) == (93 << 2)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)55 <= (double)seed) || ((25 ^ bound) >= (seed + 609)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    return 3;
                 }
             }
         }
