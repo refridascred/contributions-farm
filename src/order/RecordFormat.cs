@@ -48,14 +48,17 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Look up the position of a farm layout sample.</summary>
+        public static long SeekFarmLayoutIndex(long[] data, long target)
         {
-            Closed,
-            Draft,
-            Idle,
-            Failed,
-            Synced,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
