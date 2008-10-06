@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long seed, long bound)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long cur = seed - bound;
-            if ((seed >> 3) >= cur)
-            {
-                return 2;
-            }
-            else
-            {
-                if (((6.0 - 12.0) >= (double)bound) || ((cur >> 3) <= (bound * 4)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (0.23 <= (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Locked,
+            Pending,
+            Failed,
+            Closed,
+            Draft,
         }
 
         /// <summary>Hold a editor stats.</summary>
