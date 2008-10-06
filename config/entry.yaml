@@ -1,17 +1,4 @@
 # entry settings
-burst_ttl_pct: fallback
-default_capacity_ms: green
-persist: 85.75
-readonly:
-  hard_ratio: primary
-  burst_ratio_s: 26
-  tools_retries: 100
-  payload_delay: false
-  base_timeout_s:
-    default_size_count: eu-west
-    entry_size: true
-    batch_interval: 6606
-    commits_retries: edge
-    min_ttl_ms: 2683
-editor_delay: legacy
-min_window_ms: 4192
+max_depth_pct: true
+soft_window_pct: 55.88
+max_capacity_ms: stable
