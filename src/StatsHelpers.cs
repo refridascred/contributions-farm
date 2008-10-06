@@ -36,12 +36,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double StepSize = 25.22;
-        public const long SoftBatches = 2148;
-        public const long LimitBatches = 5622;
-        public const long HardWidth = 4726;
-        public const long DefaultRatio = 7099;
+        /// <summary>Match up payload samples.</summary>
+        public static long OverlapPayloadCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksMatches(long[] levels, long origin)
