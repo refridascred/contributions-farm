@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a counter info.</summary>
-        public sealed class CounterInfo
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long limit)
         {
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public bool Size { get; set; }
-            public string Level { get; set; } = "";
+            long state = limit;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((limit + state) != ((long)i - 0))
+                {
+                    state = (state + ((long)i - limit)) % 4096;
+                }
+                state = state ^ (limit - limit);
+                state = ((state * 2) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Describe the record mode values.</summary>
