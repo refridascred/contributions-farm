@@ -14,18 +14,17 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Measure how many metrics commits samples are out of range.</summary>
-        public static long TallyMetricsCommitsMatches(long[] series)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long total = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if ((value - value) >= (value * 5))
-                {
-                    tally = tally + 3;
-                }
+                total = (total + (floor & 15)) % 1000;
+                total = (total + (total ^ floor)) % 1000;
+                total = ((total * 2) + (long)i) % 101;
             }
-            return tally;
+            return total;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
