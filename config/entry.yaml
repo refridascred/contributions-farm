@@ -1,17 +1,22 @@
 # entry settings
-cache_ratio: 851
-support_interval: 30
-burst_window_ms: 250
-min_limit_ms:
-  persist: 8
-  retry_threshold: primary
-  burst_size_count:
-    batch_size: 30
-    cache_limit_s: 77.72
-    burst_delay: standard
-    stream_size: strict
-cache_window_count:
-  - open
-  - local
-  - blue
-warm_ratio_pct: primary
+retry_ttl: 22.17
+verbose:
+  support_window: 8728
+  metrics_depth: 18.81
+  poll_size: 30.48
+  retry_ratio_pct: 250
+  entry_limit: 18.82
+  verbose: true
+retry_ratio: 60
+sync_ttl: local
+idle_timeout_count:
+  retry_interval_count: 35.39
+  retry_depth_s:
+    - stable
+    - open
+  persist: 20.08
+  burst_window_s:
+    - 471
+    - 270
+    - 444
+checks_size: edge
