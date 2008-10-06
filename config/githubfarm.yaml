@@ -1,8 +1,31 @@
 # githubfarm settings
-batch_ttl_s: 29
-default_interval:
-  - blue
-  - green
-  - standard
-session_ratio: 26.89
-readonly: true
+counter_size: 250
+order_window: 85
+compress:
+  verbose: legacy
+  readonly: staging
+  default_delay_ms: 79.86
+  strict: blue
+  hard_ratio: 4485
+  retry_capacity:
+    - 351
+    - 495
+session_size:
+  audit: false
+  soft_ratio:
+    poll_window_ms: 12.67
+    idle_threshold: legacy
+    idle_retries: stable
+    sync_delay_s: 30
+    hard_interval: strict
+    verbose: blue
+  base_depth: true
+  poll_delay: true
+  stream_timeout:
+    - 6
+    - 100
+batch_timeout_s:
+  - 311
+  - 432
+  - 495
+  - 114
