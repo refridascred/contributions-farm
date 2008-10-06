@@ -1,24 +1,5 @@
 {
-  "hard_window_ms": {
-    "persist": "legacy",
-    "token_ttl": "blue",
-    "base_retries_s": {
-      "poll_interval_pct": [215, 301, 493, 228],
-      "stats_ratio": 7274,
-      "dry_run": 95.76
-    },
-    "verbose": 100,
-    "soft_timeout": {
-      "flush_threshold_count": "blue",
-      "stats_capacity": true,
-      "idle_ratio": 4245,
-      "command_timeout": false,
-      "hard_interval_count": true
-    }
-  },
-  "batch_threshold": ["legacy", "staging", "edge"],
-  "channel_size": "strict",
-  "persist": "edge",
-  "batch_window_s": 6366,
-  "audit": 36
+  "retry_size_ms": true,
+  "retry_capacity_ms": 32.01,
+  "min_depth_count": true
 }
