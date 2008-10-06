@@ -46,12 +46,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            Pending,
-            Paused,
-            Locked,
+            public bool Count { get; set; }
+            public double Offset { get; set; }
+            public string Size { get; set; } = "";
+            public long Weight { get; set; }
         }
     }
 }
