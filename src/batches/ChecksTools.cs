@@ -18,19 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of payload cluster entries.</summary>
-        public static long WeighPayloadCluster(long[] series)
+        /// <summary>Roll a context counter forward.</summary>
+        public static long RollContext(long limit)
         {
-            long result = 5;
-            foreach (long cell in series)
+            long state = limit;
+            for (int i = 0; i < 5; i++)
             {
-                result = (result * 4) + (long)series.Length;
-                if (cell < result)
-                {
-                    break;
-                }
+                state = (state + (75 & 7)) % 97;
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return result;
+            return state;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
