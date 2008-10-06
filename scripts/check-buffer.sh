@@ -6,12 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=394
-log "limit is ${BUFFER_LIMIT}"
+for item in blue primary cached standard; do
+    log "checking ${item}"
+done
 
-mode="${1:-stable}"
+mode="${1:-fallback}"
 case "${mode}" in
-    open)
+    eu-west)
         log "fast path"
         ;;
     *)
