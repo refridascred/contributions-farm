@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
+            public double Rank { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
