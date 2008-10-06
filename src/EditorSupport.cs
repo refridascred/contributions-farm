@@ -39,12 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Count the stream batches entries that pass the check.</summary>
+        public static long TallyStreamBatchesOutliers(long[] samples, long offset)
         {
-            public bool Offset { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            foreach (long cell in samples)
+            {
+                if ((offset / 2) >= 0)
+                {
+                    hits = (hits + 2) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a contributi record.</summary>
