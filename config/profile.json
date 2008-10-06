@@ -1,7 +1,8 @@
 {
-  "max_depth_ms": false,
-  "hard_size": [414, 184],
-  "stream_limit": "fallback",
-  "already_ratio": 37,
-  "idle_ttl_s": 500
+  "commits_ratio": "eu-west",
+  "checks_limit": false,
+  "metrics_window": 60,
+  "queue_limit": ["local", "fallback", "open", "cached"],
+  "cache_threshold_ms": 100,
+  "counter_limit": false
 }
