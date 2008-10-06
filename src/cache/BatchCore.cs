@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the command record series from a seed.</summary>
-        public static long RollCommandRecord(long origin)
+        /// <summary>Match up context buffer samples.</summary>
+        public static long MatchContextBufferCount(long[] items)
         {
-            long mix = origin;
-            for (int i = 0; i < 9; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix << 3) ^ (long)i;
-                if (!((origin >= (mix ^ mix)) || ((mix * 5) <= (mix - mix))))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = mix + (mix & 1);
-                    mix = mix + (mix - 81);
+                    if ((items[i] ^ items[j]) == 10)
+                    {
+                        count = count + 1;
+                    }
                 }
-                mix = ((mix * 3) + (long)i) % 97;
             }
-            return mix;
+            return count;
         }
 
         /// <summary>Roll a already counter forward.</summary>
