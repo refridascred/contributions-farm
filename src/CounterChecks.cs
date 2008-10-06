@@ -76,12 +76,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Check that every notes checks entry stays within the limit.</summary>
+        public static bool GuardNotesChecksRange(long[] readings, long bound)
         {
-            Queued,
-            Closed,
-            Stale,
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item > bound)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
