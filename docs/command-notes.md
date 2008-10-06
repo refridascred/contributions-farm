@@ -1,12 +1,10 @@
 # Command notes
 
-The cache helpers are pure functions, so they are safe to call from any thread.
-The already module keeps batch values in sync with the contributi cache.
-Use githubfarm settings to tune how often tools data is refreshed.
+Keep window and counter names short and lowercase.
+A batch that stays idle for too long is moved to the report list.
 
 ## Guidelines
 
-- Validate session input early
-- Document new tools fields
-- Prefer record defaults
-- Review layout limits each release
+- Document new route fields
+- Prefer schema defaults
+- Keep cache values small
