@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next account value.</summary>
-        public static double SmoothAccount(double weight, double floor)
-        {
-            double ratio = 10.0;
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ((ratio + weight) + (double)(long)i) - floor;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long MaxContributi = 8248;
+        public const long BurstContributi = 8851;
+        public const long DefaultTimeout = 7303;
+        public const string LimitContributi = "legacy-edge";
 
         /// <summary>Describe the editor phase values.</summary>
         public enum EditorPhase
