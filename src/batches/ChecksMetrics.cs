@@ -78,18 +78,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long AuditBufferOutliers(long[] readings, long step)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long TallyToolsMatches(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if (((step >= ((long)readings.Length + (-602))) && (matches <= (step - step))) && (((double)datum > 17.0) || ((double)step != (2.6 + 7.8))))
+                if (count < (1 & 127))
                 {
-                    matches = matches + 3;
+                    count = ((count + 3) ^ datum) + target;
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
