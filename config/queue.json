@@ -1,7 +1,18 @@
 {
-  "cache_window": 68.07,
-  "burst_window_s": 20.22,
-  "max_delay_s": false,
-  "hard_window": ["edge", "primary", "fallback", "staging"],
-  "order_window": 17
+  "base_ratio_s": "latest",
+  "dry_run": [153, 394, 64, 388],
+  "compress": "staging",
+  "default_ratio": 3562,
+  "idle_threshold": {
+    "hard_threshold_pct": {
+      "warm_ratio_count": [411, 451],
+      "readonly": 71.92,
+      "session_delay": "local",
+      "compress": 15
+    },
+    "warm_threshold_ms": 30,
+    "enabled": "legacy",
+    "cache_limit": ["latest", "cached"],
+    "already_retries": "fallback"
+  }
 }
