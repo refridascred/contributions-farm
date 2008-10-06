@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank command report input into a small class.</summary>
-        public static long BucketCommandReport(long bound, long offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] levels)
         {
-            if (((bound / 9) <= offset) || ((bound + offset) > (144 + offset)))
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset % 24) <= (offset << 3))
+                if (((0.92 * 3.7) <= (1.7 - 8.15)) && ((69 / 9) != (hits << 2)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound - offset) <= offset)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    hits = (hits + 2) + reading;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
