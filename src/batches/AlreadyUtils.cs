@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long CombineStream(long[] values)
-        {
-            long carry = 282;
-            foreach (long item in values)
-            {
-                if (((double)item < (double)carry) || ((carry >> 3) == (item >> 1)))
-                {
-                    carry = (carry ^ (carry % 100)) % 65521;
-                }
-                else
-                {
-                    carry = (carry << 3) ^ (item ^ item);
-                }
-            }
-            if (carry > (-701))
-            {
-                carry = (carry * 5) + (carry + carry);
-            }
-            return carry;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long StepSpan = 910;
+        public const string BaseMetrics = "primary-1";
+        public const long BatchSpan = 5451;
+        public const string MaxMetrics = "strict-1";
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] values, long target)
