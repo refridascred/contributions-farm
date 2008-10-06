@@ -33,14 +33,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
-        {
-            public double Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
-            public string Region { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long RetryEntry = 4463;
+        public const long BurstEntry = 4039;
+        public const long MinTimeout = 2857;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] series)
