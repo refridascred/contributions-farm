@@ -1,7 +1,8 @@
 {
-  "poll_ttl_s": "strict",
-  "compress": false,
-  "dry_run": 32,
-  "readonly": 5.42,
-  "flush_ratio": "green"
+  "flush_capacity_count": "open",
+  "readonly": "primary",
+  "flush_delay": true,
+  "githubfarm_limit": "open",
+  "enabled": 17.19,
+  "dry_run": "fallback"
 }
