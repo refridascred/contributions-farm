@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            Draft,
-            Dropped,
-            Failed,
-            Stale,
+            public bool Offset { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Roll a tools counter forward.</summary>
