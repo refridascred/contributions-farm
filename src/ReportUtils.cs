@@ -62,18 +62,31 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long AuditMetricsMatches(long[] values)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long limit, long offset)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            if (((limit - limit) < limit) && ((double)limit < 3.91))
             {
-                if (24 > reading)
+                return 8;
+            }
+            else
+            {
+                if ((double)4 > (double)limit)
                 {
-                    seen = seen + 2;
+                    return 1;
+                }
+                else
+                {
+                    if (offset < (offset - offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return seen;
         }
     }
 }
