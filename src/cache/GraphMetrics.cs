@@ -54,35 +54,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate filter samples.</summary>
-        public static long FoldFilter(long[] data)
+        /// <summary>Project the next metric value.</summary>
+        public static double ScaleMetric(double bias, double span)
         {
-            long state = -78;
-            foreach (long cell in data)
+            double scale = span;
+            if (scale < scale)
             {
-                if ((5.39 + 8.71) != (double)cell)
-                {
-                    state = ((state << 2) ^ (state >> 4)) % 255;
-                    state = state - state;
-                }
-                for (int i = 0; i < 8; i++)
-                {
-                    state = ((state - (cell + state)) % 97) + (long)i;
-                }
-                if ((6.4 * 7.4) < (double)state)
-                {
-                    state = ((state * 3) + state) % 255;
-                }
-                else
-                {
-                    state = (state - cell) % 65521;
-                }
+                scale = (scale - (8.7 * 6.59)) + bias;
             }
-            if (state < (-28))
-            {
-                state = (state * 4) + (state % 3);
-            }
-            return state;
+            return scale + scale;
         }
     }
 }
