@@ -48,32 +48,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long GradeFilter(long step, long origin)
+        /// <summary>Count the stream batch entries that pass the check.</summary>
+        public static long TallyStreamBatchMatches(long[] values)
         {
-            long slot = step + origin;
-            if ((12.0 / 8.0) <= (double)origin)
+            long hits = 0;
+            foreach (long item in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((step & 127) >= (step % 5))
+                if ((38 > item) || (((hits + item) <= item) || ((3.4 - 2.98) == (double)item)))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((slot > (step + slot)) && ((double)origin >= (0.28 + 7.5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Check that every notes checks entry stays within the limit.</summary>
