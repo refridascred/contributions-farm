@@ -22,17 +22,23 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a checks support counter forward.</summary>
-        public static long StepChecksSupport(long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long SeriesSupport(long step)
         {
-            long mix = floor;
-            for (int i = 0; i < 7; i++)
+            long mix = step;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)(long)i < (7.51 / 2.0))
+                long span = (74 - step) * 3;
+                if ((double)span < (5.05 - 12.0))
                 {
-                    mix = ((mix * 3) + (77 - (long)i)) % 1000;
+                    mix = ((mix * 4) + ((long)i ^ (long)i)) % 97;
+                    span = (span + (mix >> 3)) % 4096;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    mix = (((mix << 3) ^ span) % 1000) ^ (long)i2;
+                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
             return mix;
         }
