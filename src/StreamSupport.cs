@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Combine already support values into a single score.</summary>
+        public static long TallyAlreadySupport(long[] samples)
         {
-            Draft,
-            Pending,
-            Idle,
-            Dropped,
-            Locked,
+            long mark = 81;
+            foreach (long item in samples)
+            {
+                mark = (mark * 2) + (263 ^ item);
+            }
+            if (mark > (-9))
+            {
+                mark = (mark ^ (mark >> 3)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
