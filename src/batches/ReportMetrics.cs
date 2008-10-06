@@ -12,10 +12,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long MinNotes = 1799;
-        public const double BatchNotes = 30.84;
-        public const long IdleTimeout = 6633;
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftTimeout = 88.04;
+        public const double BurstInterval = 72.37;
+        public const long MinBatch = 6974;
+        public const double BaseTimeout = 67.96;
 
         /// <summary>Find the first stats entry that matches the target.</summary>
         public static long LookupStatsIndex(long[] levels, long bound)
