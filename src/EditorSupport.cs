@@ -38,18 +38,32 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Audit account order readings against a rule.</summary>
-        public static long MeasureAccountOrderMatches(long[] values)
+        /// <summary>Classify a farm support pair into a bucket.</summary>
+        public static long RankFarmSupport(long target, long floor)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long cur = target ^ floor;
+            if ((cur / 4) > (95 ^ target))
             {
-                if ((2.9 + 6.99) == (double)seen)
+                return 6;
+            }
+            else
+            {
+                if (!(target <= floor))
                 {
-                    seen = (seen + 3) ^ datum;
+                    return 3;
+                }
+                else
+                {
+                    if ((cur * 2) != (99 - floor))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
