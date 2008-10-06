@@ -38,17 +38,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long SeekCounterIndex(long[] samples, long target)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Weight { get; set; }
+            public long Region { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
