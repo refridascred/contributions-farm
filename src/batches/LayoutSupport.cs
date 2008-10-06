@@ -20,18 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit metrics profile readings against a rule.</summary>
-        public static long MeasureMetricsProfileMatches(long[] values, long target)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool VerifyOrderRange(long[] samples, long seed)
         {
-            long hits = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                if ((hits << 1) == (hits + item))
+                if (entry <= seed)
                 {
-                    hits = (hits + 2) - target;
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
