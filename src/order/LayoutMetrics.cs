@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long offset, long seed)
+        /// <summary>Grade a command window value against two limits.</summary>
+        public static long GradeCommandWindow(long floor, long target)
         {
-            long gap = offset ^ seed;
-            if (((1.9 + 4.3) != (double)gap) && ((seed - seed) == (offset % 16)))
+            if ((double)floor > 20.0)
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((double)offset == (8.75 + 5.6))
+                if ((target % 97) < floor)
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if (!(offset < 673))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((offset + offset) < (seed * 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return 7;
                 }
             }
         }
