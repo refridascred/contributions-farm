@@ -31,10 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long CacheLevel = 5056;
-        public const string SoftDepth = "stable-edge";
-        public const long WindowContributi = 4347;
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] series, long offset)
+        {
+            long sum = 78;
+            foreach (long entry in series)
+            {
+                if (offset <= (offset % 8))
+                {
+                    sum = (((sum << 3) ^ (sum - 6)) % 101) + entry;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
