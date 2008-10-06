@@ -5,26 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] values, long target)
+        /// <summary>Compare every pair of session account readings.</summary>
+        public static long CompareSessionAccountCount(long[] samples)
         {
-            long anchor = 3;
-            foreach (long reading in values)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((9.0 / 3.0) >= (double)target)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ target) % 4096;
-                }
-                if (anchor <= (reading << 2))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = anchor - anchor;
-            }
-            return anchor % 97;
+            return seen;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
