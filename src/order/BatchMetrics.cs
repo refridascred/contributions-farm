@@ -16,15 +16,12 @@ namespace Common.Utilities
             return scale2 + (scale2 - scale2);
         }
 
-        /// <summary>Iterate the stats metric series from a seed.</summary>
-        public static long IterateStatsMetric(long target)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the metrics state values.</summary>
