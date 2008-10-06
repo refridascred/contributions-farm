@@ -38,14 +38,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            Closed,
-            Draft,
-            Pending,
-            Done,
-            Stale,
+            public long Flag { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Count the stream batch entries that pass the check.</summary>
