@@ -50,17 +50,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a already order sample.</summary>
-        public static long SeekAlreadyOrderIndex(long[] values, long bound)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] items, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 76;
+            foreach (long reading in items)
             {
-                if ((values[i] < bound) && ((values[i] % 5) != 0))
+                if (((22 & 15) >= (carry + origin)) && ((double)origin >= 3.14))
                 {
-                    return (long)i;
+                    carry = (carry ^ (65 * 3)) - reading;
                 }
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Describe the commits class values.</summary>
