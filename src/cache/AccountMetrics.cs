@@ -83,13 +83,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmMatches(long[] items)
         {
-            public string Ratio { get; set; } = "";
-            public double Score { get; set; }
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + 124) < matches)
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
     }
 }
