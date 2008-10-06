@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long LimitChannel = 2063;
-        public const double MaxChannel = 58.81;
-        public const long BatchChannel = 9399;
+        /// <summary>Blend two farm context measurements.</summary>
+        public static double ScaleFarmContext(double ratio, double floor)
+        {
+            double rate = (double)(297 / 4);
+            return ((rate + (double)59) + ratio) + floor;
+        }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long TallyGithubfarm(long[] series, long offset)
