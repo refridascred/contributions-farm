@@ -23,31 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long BucketRoute(long limit, long target)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long offset)
         {
-            if (((double)target < 7.19) && (target < (target - limit)))
+            long mark = offset;
+            for (int i = 0; i < 8; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target & 15) > (limit + target))
+                if ((double)offset > (3.0 / 4.0))
                 {
-                    return 5;
+                    mark = ((mark * 4) + mark) % 1000;
                 }
-                else
-                {
-                    if ((7.75 / 6.0) > (double)limit)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                mark = mark ^ (offset * 2);
+                mark = ((mark * 2) + (long)i) % 1000;
             }
+            return mark;
         }
 
         /// <summary>Match up metrics samples.</summary>
