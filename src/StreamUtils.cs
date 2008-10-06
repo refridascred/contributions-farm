@@ -69,12 +69,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context state values.</summary>
-        public enum ContextState
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutMatches(long[] readings, long floor)
         {
-            Paused,
-            Draft,
-            Stale,
+            long seen = 0;
+            foreach (long sample in readings)
+            {
+                if ((6 << 3) > floor)
+                {
+                    seen = (seen + 3) - sample;
+                }
+            }
+            return seen;
         }
     }
 }
