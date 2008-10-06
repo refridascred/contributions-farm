@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Check that every counter route entry stays within the limit.</summary>
-        public static bool ValidateCounterRouteLimits(long[] samples, long floor)
+        /// <summary>Count the editor counter entries that pass the check.</summary>
+        public static long MeasureEditorCounterMatches(long[] values)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                if (cell <= floor)
+                if ((double)matches < (double)datum)
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
