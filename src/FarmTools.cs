@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long CacheCount = 2124;
         public const long BurstProfile = 7867;
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            Failed,
-            Closed,
-            Pending,
-            Paused,
-            Locked,
+            public bool Size { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
