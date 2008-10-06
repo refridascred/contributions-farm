@@ -14,13 +14,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
-        {
-            public string Total { get; set; } = "";
-            public double Region { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardMetric = 1356;
+        public const long HardLevel = 3643;
+        public const long WindowLevel = 5310;
+        public const long BatchMetric = 117;
 
         /// <summary>Roll a support counter forward.</summary>
         public static long SeriesSupport(long step)
