@@ -48,13 +48,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Locate a queue counter reading by value.</summary>
+        public static long SeekQueueCounterIndex(long[] levels, long limit)
         {
-            Retry,
-            Closed,
-            Failed,
-            Idle,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the queue status values.</summary>
