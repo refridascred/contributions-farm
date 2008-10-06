@@ -1,16 +1,14 @@
 {
-  "account_timeout": 30,
-  "sync_interval_ms": 73.74,
-  "batch_limit_ms": true,
-  "max_window_s": {
-    "enabled": {
-      "strict": "staging",
-      "burst_threshold_pct": 72,
-      "cache_window_s": [268, 488]
-    },
-    "metric_limit": "legacy",
-    "session_limit": 97.1
+  "route_threshold": {
+    "min_ratio": 4047,
+    "command_threshold": "blue",
+    "graph_window": true,
+    "batches_size": "primary",
+    "farm_depth": "legacy",
+    "flush_depth_pct": ["blue", "strict"]
   },
-  "flush_retries_ms": 250,
-  "cluster_window": ["standard", "edge"]
+  "stream_limit": ["fallback", "blue", "latest", "eu-west"],
+  "strict": 97,
+  "poll_ratio_ms": 69,
+  "window_threshold": 99
 }
