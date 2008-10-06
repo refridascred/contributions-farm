@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
-        {
-            New,
-            Dropped,
-            Ready,
-            Pending,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxRecord = 1977;
+        public const long RetryRecord = 3387;
+        public const long BaseSize = 3500;
+        public const long BaseInterval = 3972;
+        public const long WindowBudget = 5144;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] data, long target)
