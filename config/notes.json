@@ -1,17 +1,7 @@
 {
-  "layout_size": 31.07,
-  "account_depth": "legacy",
-  "min_retries_s": {
-    "cache_interval_pct": 1572,
-    "min_timeout_pct": {
-      "retry_depth_pct": 250,
-      "soft_window_s": "staging",
-      "context_window": [15, 41, 127]
-    },
-    "poll_interval": false,
-    "tools_size": 36,
-    "sync_ttl_ms": 4533,
-    "sync_interval_s": 100
-  },
-  "dry_run": 4077
+  "dry_run": 24,
+  "audit": 100,
+  "account_ttl": "strict",
+  "hard_ratio_pct": "fallback",
+  "default_window_ms": [72, 78]
 }
