@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long sum = -882;
-            foreach (long reading in levels)
-            {
-                sum = sum ^ (reading - reading);
-                if ((reading - reading) > (sum * 2))
-                {
-                    sum = sum - (48 + sum);
-                }
-            }
-            return sum % 1000;
+            Dropped,
+            Pending,
+            Retry,
+            Synced,
+            Active,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
