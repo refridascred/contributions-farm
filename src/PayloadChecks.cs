@@ -26,21 +26,18 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long MeasureBatchesMatches(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)hits >= 4.85)
                 {
-                    if ((readings[i] - readings[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = (hits + 2) + datum;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Hold a support record.</summary>
