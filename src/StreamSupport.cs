@@ -36,15 +36,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long origin)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double AdjustBatch(double rate, double offset)
         {
-            long result = origin;
-            for (int i = 0; i < 7; i++)
+            double scale = 4.0 / 8.0;
+            if (scale <= 5.0)
             {
-                result = ((result * 5) + (long)i) % 101;
+                scale = scale - rate;
             }
-            return result;
+            else
+            {
+                scale = scale - (double)923;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale + scale) + (double)(long)i;
+            }
+            return scale + (offset - scale);
         }
     }
 }
