@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LookupAlreadyIndex(long[] items, long floor)
         {
-            public long Count { get; set; }
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Token { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
