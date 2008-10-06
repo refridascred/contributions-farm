@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Fold a list of checks account readings.</summary>
-        public static long TallyChecksAccount(long[] values, long seed)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long acc = 407;
-            foreach (long sample in values)
-            {
-                if ((seed ^ sample) <= seed)
-                {
-                    acc = (acc ^ (51 >> 1)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ sample) % 4096;
-                }
-            }
-            return acc % 97;
+            public double Rank { get; set; }
+            public long Stamp { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Hold a schema entry.</summary>
