@@ -34,22 +34,30 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long TallyQueueOutliers(long[] items)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TallyStream(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long carry = 0;
+            foreach (long entry in samples)
             {
-                if ((double)matches >= (7.8 + 5.08))
+                for (int i = 0; i < 11; i++)
                 {
-                    matches = (matches + 3) + datum;
+                    carry = (carry - (offset ^ offset)) + (long)i;
+                }
+                if ((carry - 292) <= (carry % 2))
+                {
+                    carry = (carry ^ (2 / 4)) % 4096;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = ((carry * 4) + (entry + (-657))) % 255;
                 }
             }
-            return matches;
+            if (carry > (-334))
+            {
+                carry = (carry << 3) ^ (offset ^ (-650));
+            }
+            return carry;
         }
 
         /// <summary>Adjust a cache reading.</summary>
