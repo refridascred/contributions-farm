@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
+        /// <summary>Check that every route window entry stays within the limit.</summary>
+        public static bool GuardRouteWindowLimits(long[] values, long floor)
         {
-            Locked,
-            New,
-            Done,
-            Idle,
+            bool flag = true;
+            foreach (long cell in values)
+            {
+                if (cell <= floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
