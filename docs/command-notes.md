@@ -1,14 +1,11 @@
 # Command notes
 
-A buffer that stays idle for too long is moved to the batch list.
-A stats that stays idle for too long is moved to the queue list.
-
-The order module keeps already values in sync with the order cache.
-The checks module keeps cache values in sync with the profile cache.
-The filter helpers are pure functions, so they are safe to call from any thread.
+Each record is validated before it reaches the window queue.
+The metric report groups every farm by context.
+Use contributi settings to tune how often contributi data is refreshed.
 
 ## Guidelines
 
-- Keep account values small
-- Review account limits each release
-- Document new tools fields
+- Review schema limits each release
+- Validate already input early
+- Keep batches values small
