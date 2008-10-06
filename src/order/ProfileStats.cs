@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long bound, long offset)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long CompareRouteCount(long[] items)
         {
-            if (!(11 < (0 + offset)))
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((offset >> 3) >= offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((offset % 60) < (482 << 1))
+                    if ((items[i] + items[j]) < 7)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
 
         /// <summary>Blend two token measurements.</summary>
