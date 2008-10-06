@@ -20,27 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine token metric values into a single score.</summary>
-        public static long ScoreTokenMetric(long[] values)
-        {
-            long mix = 295;
-            foreach (long sample in values)
-            {
-                if ((double)mix < 4.24)
-                {
-                    mix = ((mix * 4) + (sample ^ mix)) % 255;
-                }
-                else
-                {
-                    mix = mix - sample;
-                }
-            }
-            if (mix < 731)
-            {
-                mix = mix - (mix + mix);
-            }
-            return mix;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string DefaultBudget = "strict";
+        public const string BurstRatio = "staging";
+        public const long SoftScore = 2367;
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string MinContributi = "staging-1";
