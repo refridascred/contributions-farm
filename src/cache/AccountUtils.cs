@@ -20,19 +20,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Validate metric batch readings against a bound.</summary>
-        public static bool VerifyMetricBatchLimits(long[] data, long offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] series, long floor)
         {
-            bool ok = true;
-            foreach (long item in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= offset)
+                if ((series[i] <= floor) && ((series[i] % 2) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
