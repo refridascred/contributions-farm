@@ -35,18 +35,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] readings, long offset)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            long acc = 6;
-            foreach (long entry in readings)
-            {
-                if (((offset ^ entry) <= (entry * 2)) && ((double)acc <= (double)offset))
-                {
-                    acc = (acc + (offset % 97)) % 65521;
-                }
-            }
-            return acc % 97;
+            Retry,
+            Idle,
+            Synced,
+            Locked,
+            Queued,
         }
     }
 }
