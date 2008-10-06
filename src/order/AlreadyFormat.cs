@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double bias, double offset)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            double gain = (double)(62 + 80);
-            if (gain < 8.8)
-            {
-                gain = (gain + bias) - offset;
-            }
-            else
-            {
-                gain = gain - bias;
-            }
-            return gain - bias;
+            Ready,
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Locate a filter reading by value.</summary>
