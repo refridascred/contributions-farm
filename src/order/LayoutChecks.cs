@@ -69,13 +69,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
-        {
-            Paused,
-            Dropped,
-            Active,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitCount = 7752;
+        public const long MinTimeout = 2211;
+        public const long SoftBudget = 4380;
+        public const string BurstReport = "open-v2";
     }
 }
