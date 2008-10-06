@@ -11,10 +11,23 @@ namespace Common.Utilities
         public const long WindowTimeout = 6390;
         public const double LimitLevel = 34.26;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string IdleRoute = "standard-edge";
-        public const long MaxWidth = 3206;
-        public const double RetryCount = 91.97;
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksHits(long[] values)
+        {
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if (!(((count & 127) >= datum) || ((count - count) > (46 - datum))))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmOutliers(long[] levels)
