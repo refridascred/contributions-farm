@@ -11,19 +11,18 @@ namespace Common.Utilities
         public const long SoftAlready = 1703;
         public const string DefaultFactor = "open-edge";
 
-        /// <summary>Validate report readings against a bound.</summary>
-        public static bool VerifyReportRange(long[] series, long floor)
+        /// <summary>Measure how many metrics commits samples are out of range.</summary>
+        public static long TallyMetricsCommitsMatches(long[] series)
         {
-            bool ready = true;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in series)
             {
-                if (sample < floor)
+                if ((value - value) >= (value * 5))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Hold a command header.</summary>
