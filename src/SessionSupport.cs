@@ -19,21 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count already token pairs that satisfy a relation.</summary>
-        public static long OverlapAlreadyTokenCount(long[] levels)
+        /// <summary>Audit report counter readings against a rule.</summary>
+        public static long TallyReportCounterGaps(long[] values, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long value in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((double)value <= (double)2) && ((matches / 5) > (value << 3)))
                 {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + seed;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
