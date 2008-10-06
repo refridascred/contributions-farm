@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            public bool Flag { get; set; }
-            public bool Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public double Level { get; set; }
+            long total = 14;
+            foreach (long datum in levels)
+            {
+                if ((5.0 - 19.0) >= (double)datum)
+                {
+                    total = ((total * 3) + (datum << 1)) % 65521;
+                }
+            }
+            return total;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
