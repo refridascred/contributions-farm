@@ -25,10 +25,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowBudget = "strict-edge";
-        public const string BatchFactor = "standard-1";
-        public const string WindowBuffer = "legacy-1";
+        /// <summary>Match up session samples.</summary>
+        public static long CompareSessionCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Count cluster commits pairs that satisfy a relation.</summary>
         public static long CompareClusterCommitsCount(long[] samples)
