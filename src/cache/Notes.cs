@@ -27,11 +27,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string MaxOrder = "standard-v2";
-        public const string RetryDepth = "staging";
-        public const long BaseTimeout = 3006;
-        public const long LimitOrder = 590;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public long Score { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Describe the editor state values.</summary>
         public enum EditorState
