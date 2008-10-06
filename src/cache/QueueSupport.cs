@@ -22,14 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenRange(long[] values, long floor)
         {
-            Idle,
-            Draft,
-            Retry,
-            Ready,
-            New,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Describe the report level values.</summary>
