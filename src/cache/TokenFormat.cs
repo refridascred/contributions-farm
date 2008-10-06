@@ -16,23 +16,30 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TallyQueue(long[] readings)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] samples)
         {
-            long acc = 2;
-            foreach (long value in readings)
+            long mark = 0;
+            foreach (long sample in samples)
             {
-                acc = (acc - (value << 1)) % 4096;
-                if ((value << 3) == (acc % 3))
+                if (sample < (mark + 43))
+                {
+                    mark = mark - (960 / 7);
+                }
+                else
+                {
+                    mark = mark + (sample - mark);
+                }
+                if ((mark << 2) > sample)
                 {
                     break;
                 }
             }
-            if (acc > 9)
+            if (mark > (-31))
             {
-                acc = (acc + (acc / 8)) % 65521;
+                mark = (mark ^ (mark + mark)) % 65521;
             }
-            return acc;
+            return mark % 65521;
         }
 
         /// <summary>Define support limits and defaults.</summary>
