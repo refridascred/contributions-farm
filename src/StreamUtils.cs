@@ -42,12 +42,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            Done,
-            New,
-            Active,
+            public bool Rank { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Find the first editor metric entry that matches the target.</summary>
