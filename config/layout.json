@@ -1,5 +1,6 @@
 {
-  "strict": "eu-west",
-  "enabled": "edge",
-  "warm_threshold_pct": 56
+  "token_size": ["standard", "legacy", "edge"],
+  "default_interval_ms": "standard",
+  "buffer_capacity": 1024,
+  "readonly": "blue"
 }
