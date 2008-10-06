@@ -51,18 +51,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long MeasureFarmMatches(long[] items)
+        /// <summary>Project the next session value.</summary>
+        public static double SmoothSession(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + 124) < matches)
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            double ratio2 = offset;
+            return ratio2 + (4.7 - ratio);
         }
     }
 }
