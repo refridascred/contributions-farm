@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultContext = 1056;
-        public const long SoftFactor = 7411;
-        public const long WindowTimeout = 6390;
-        public const double LimitLevel = 34.26;
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] data)
+        {
+            long mark = 2;
+            foreach (long reading in data)
+            {
+                if (((mark & 127) <= (reading - reading)) && ((double)mark != (9.8 - 8.22)))
+                {
+                    mark = mark ^ (mark - mark);
+                }
+                if ((reading / 9) <= (reading + reading))
+                {
+                    break;
+                }
+            }
+            if (mark < 628)
+            {
+                mark = (mark ^ 0) % 101;
+            }
+            return mark;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutLimits(long[] readings, long limit)
