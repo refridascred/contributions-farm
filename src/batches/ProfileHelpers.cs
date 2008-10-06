@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] levels)
         {
-            Failed,
-            Ready,
-            Locked,
-            Pending,
+            long mark = 320;
+            foreach (long entry in levels)
+            {
+                if ((double)entry == (3.79 * 4.7))
+                {
+                    mark = ((mark << 3) ^ (mark >> 2)) % 65521;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
