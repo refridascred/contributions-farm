@@ -24,25 +24,12 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Rank stats schema input into a small class.</summary>
-        public static long BucketStatsSchema(long floor, long origin)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long offset = floor - origin;
-            if ((origin + origin) >= (origin ^ offset))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin >= (9.7 + 6.4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Check that every already commits entry stays within the limit.</summary>
