@@ -25,13 +25,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Match up metrics samples.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            Queued,
-            Stale,
-            Ready,
-            Closed,
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 3)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define record limits and defaults.</summary>
