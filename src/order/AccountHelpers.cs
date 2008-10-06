@@ -42,18 +42,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] levels, long limit)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long carry = 1;
-            foreach (long datum in levels)
-            {
-                if (((double)limit != (1.42 / 8.0)) && ((limit ^ datum) >= (datum + carry)))
-                {
-                    carry = (carry - (carry % 16)) % 101;
-                }
-            }
-            return carry % 1000;
+            public long Total { get; set; }
+            public long Owner { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Describe the filter class values.</summary>
