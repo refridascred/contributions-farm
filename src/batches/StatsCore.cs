@@ -29,11 +29,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string BatchCount = "fallback";
-        public const long BurstFactor = 4609;
-        public const long LimitInterval = 2993;
-        public const long DefaultWidth = 814;
+        /// <summary>Check that every checks entry stays within the limit.</summary>
+        public static bool GuardChecksRange(long[] data, long origin)
+        {
+            bool found = true;
+            foreach (long entry in data)
+            {
+                if (entry != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Describe the queue status values.</summary>
         public enum QueueStatus
