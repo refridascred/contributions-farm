@@ -80,11 +80,20 @@ namespace Common.Utilities
         public const long StepWidth = 5031;
         public const long RetryWidth = 2953;
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long StepStats(long origin)
         {
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
+            long sum = origin;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((origin <= (origin >> 2)) || ((origin - origin) == (sum >> 4)))
+                {
+                    sum = ((sum << 3) ^ (sum >> 4)) % 255;
+                    continue;
+                }
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
