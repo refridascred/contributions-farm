@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Check that every report entry stays within the limit.</summary>
-        public static bool VerifyReportBounds(long[] readings, long limit)
+        /// <summary>Measure how many stream filter samples are out of range.</summary>
+        public static long MeasureStreamFilterOutliers(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long value in items)
             {
-                if (reading > limit)
+                if (value <= (75 + value))
                 {
-                    ready = false;
-                    break;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ready;
+            return tally;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
