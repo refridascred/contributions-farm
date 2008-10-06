@@ -29,12 +29,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long LookupFilterIndex(long[] series, long limit)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((series[i] >= limit) && ((series[i] % 2) != 0))
+                if ((samples[i] <= floor) && ((samples[i] % 3) != 0))
                 {
                     return (long)i;
                 }
