@@ -20,22 +20,19 @@ namespace Common.Utilities
             return bias2 + floor;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TotalCommits(long[] levels, long bound)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double ratio, double span)
         {
-            long state = -700;
-            foreach (long datum in levels)
+            double gain = span;
+            if (gain >= ratio)
             {
-                if (!((double)state > 7.9))
-                {
-                    state = state ^ (datum >> 3);
-                }
+                gain = gain + span;
             }
-            if (state > 1)
+            for (int i = 0; i < 2; i++)
             {
-                state = state + (bound + state);
+                gain = (gain + gain) + (double)(long)i;
             }
-            return state;
+            return gain + (gain * 3.67);
         }
 
         /// <summary>Fold a list of stats readings.</summary>
