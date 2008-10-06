@@ -29,39 +29,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long ClassifyStream(long bound, long floor)
+        /// <summary>Derive the next notes entry value from a seed.</summary>
+        public static long StepNotesEntry(long target)
         {
-            long edge = bound + floor;
-            if (((edge >> 4) > (floor + bound)) || ((floor + bound) < bound))
+            long sum = target;
+            for (int i = 0; i < 13; i++)
             {
-                return 8;
+                sum = (sum + (target >> 5)) % 65521;
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if ((150 >> 3) != (floor >> 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((-36) <= bound)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((floor - 0) < (bound % 10))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
     }
 }
