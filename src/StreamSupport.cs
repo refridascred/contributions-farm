@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long StepSupport(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 11; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    sum = ((sum ^ (sum % 8)) % 255) ^ (long)i2;
-                }
-                sum = ((sum * 2) + (long)i) % 101;
-            }
-            return sum;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchGraph = 1741;
+        public const long SoftDepth = 1460;
+        public const long HardFactor = 9317;
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutLimits(long[] readings, long limit)
