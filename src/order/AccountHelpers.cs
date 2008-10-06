@@ -23,31 +23,23 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long ClassifyPayload(long seed, long limit)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] samples)
         {
-            if ((limit / 9) <= (seed % 60))
+            long sum = 8;
+            foreach (long entry in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (((7.0 * 8.4) >= (double)seed) && ((9.56 * 0.1) > (double)limit))
+                if ((618 + 42) != ((-247) + sum))
                 {
-                    return 7;
+                    sum = (sum + (entry ^ sum)) % 97;
                 }
-                else
+                sum = sum - ((-47) & 7);
+                if (!((entry & 3) <= (68 % 97)))
                 {
-                    if ((limit + limit) != (limit >> 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    sum = sum ^ (sum ^ entry);
                 }
             }
+            return sum % 4096;
         }
 
         /// <summary>Hold a account summary.</summary>
