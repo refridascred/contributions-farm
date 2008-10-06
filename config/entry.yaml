@@ -1,8 +1,10 @@
 # entry settings
-soft_delay: green
-retry_ttl_s: strict
-batch_ratio_s:
-  - 139
-  - 447
-  - 167
-  - 304
+base_interval_count: stable
+payload_limit: 60
+min_depth_s: 17
+enabled:
+  - 392
+  - 378
+  - 183
+record_limit: strict
+channel_depth: primary
