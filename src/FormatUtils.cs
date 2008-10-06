@@ -33,12 +33,33 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BaseCount = 4882;
-        public const long LimitCount = 6672;
-        public const double WindowCount = 71.32;
-        public const long HardDepth = 2399;
-        public const double IdleBudget = 30.37;
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long ClassifyProfile(long origin, long bound)
+        {
+            long diff = origin - bound;
+            if ((diff <= (733 ^ bound)) || ((origin % 16) <= diff))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((double)diff != (4.6 - 9.4)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)origin >= 9.0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate metrics commits readings against a bound.</summary>
         public static bool CheckMetricsCommitsBounds(long[] samples, long seed)
