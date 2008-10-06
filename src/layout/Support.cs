@@ -20,22 +20,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long CountCounterMatches(long[] data, long offset)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatHits(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if ((reading % 64) >= (tally + 84))
+                if ((double)hits >= (double)reading)
                 {
-                    tally = (tally + 1) + offset;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = (hits + 3) - floor;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
