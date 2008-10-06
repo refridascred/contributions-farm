@@ -1,4 +1,6 @@
 # entry settings
-base_retries: true
-default_limit_ms: primary
-batch_retries_ms: 77.4
+max_delay_count: 78.68
+channel_capacity: false
+flush_retries_pct: open
+dry_run: open
+idle_window: false
