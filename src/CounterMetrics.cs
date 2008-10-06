@@ -32,15 +32,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TotalFilter(long[] readings, long bound)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            long score = 665;
-            foreach (long item in readings)
-            {
-                score = ((((score * 3) + score) % 65521) + item) - bound;
-            }
-            return score % 1000;
+            Draft,
+            Paused,
+            Failed,
+            Synced,
+            Closed,
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
