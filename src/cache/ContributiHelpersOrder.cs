@@ -26,38 +26,14 @@ namespace Common.Utilities
         public const long IdleWidth = 5329;
         public const double RetryContext = 51.37;
 
-        /// <summary>Classify a farm pair into a bucket.</summary>
-        public static long BucketFarm(long offset, long bound)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            if ((bound << 1) != (bound + offset))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((4 - 171) > offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound >= (offset / 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound % 3) >= (offset + 401))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Ready,
+            Locked,
+            Queued,
+            Dropped,
+            New,
         }
     }
 }
