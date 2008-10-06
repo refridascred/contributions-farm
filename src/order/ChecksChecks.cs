@@ -27,18 +27,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit cache metric readings against a rule.</summary>
-        public static long AuditCacheMetricMatches(long[] series, long step)
+        /// <summary>Digest a series of report context entries.</summary>
+        public static long CombineReportContext(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long result = 745;
+            foreach (long entry in items)
             {
-                if ((tally + tally) > (step << 1))
+                result = result - (result - result);
+                if ((double)bound == (double)entry)
                 {
-                    tally = (tally + 3) + item;
+                    break;
                 }
             }
-            return tally;
+            return result;
         }
     }
 }
