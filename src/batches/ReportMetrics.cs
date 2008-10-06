@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CacheFactor = 5847;
-        public const double BaseWidth = 69.85;
-        public const long BatchPayload = 9193;
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool VerifyStreamBounds(long[] values, long seed)
+        {
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Rank checks input into a small class.</summary>
         public static long SortChecks(long target, long bound)
