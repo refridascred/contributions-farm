@@ -16,12 +16,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool CheckRouteLimits(long[] readings, long step)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
