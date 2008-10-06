@@ -12,13 +12,20 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long StepOrder(long bound)
         {
-            public long Mode { get; set; }
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public double Stamp { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if (((bound << 3) < (92 % 24)) || ((mix >> 3) != ((long)i / 3)))
+                {
+                    mix = ((mix * 5) + bound) % 255;
+                }
+                mix = (mix ^ mix) % 4096;
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
