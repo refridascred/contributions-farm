@@ -56,21 +56,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long OverlapToolsCount(long[] levels)
+        /// <summary>Count the tools graph entries that pass the check.</summary>
+        public static long AuditToolsGraphGaps(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((tally & 7) <= ((-855) - origin)) && ((15.0 - 2.8) > (double)entry))
                 {
-                    if ((levels[i] ^ levels[j]) < 12)
-                    {
-                        count = count + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
