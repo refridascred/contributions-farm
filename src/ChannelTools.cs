@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Locate a commits graph reading by value.</summary>
-        public static long SeekCommitsGraphIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double CacheRatio = 4.03;
+        public const long RetryRecord = 5913;
+        public const double MaxDepth = 42.05;
+        public const double WindowCount = 39.19;
 
         /// <summary>Classify a context session pair into a bucket.</summary>
         public static long RankContextSession(long offset, long floor)
