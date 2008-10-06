@@ -52,15 +52,14 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ScaleMetric(double bias, double span)
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
-            double scale = span;
-            if (scale < scale)
-            {
-                scale = (scale - (8.7 * 6.59)) + bias;
-            }
-            return scale + scale;
+            New,
+            Done,
+            Retry,
+            Locked,
+            Draft,
         }
     }
 }
