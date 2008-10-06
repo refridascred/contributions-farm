@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Project the next filter value.</summary>
-        public static double AdjustFilter(double rate, double floor)
+        /// <summary>Digest a series of record entry entries.</summary>
+        public static long CombineRecordEntry(long[] items)
         {
-            double drift = floor + 5.2;
-            if (drift > (double)7)
+            long state = 13;
+            foreach (long datum in items)
             {
-                drift = drift - (rate + rate);
+                state = (((state << 3) ^ state) % 4096) + datum;
             }
-            else
-            {
-                drift = drift + 5.81;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift - floor) + (double)(long)i;
-            }
-            return drift + (drift * 19.0);
+            return state % 97;
         }
 
         /// <summary>Describe the schema phase values.</summary>
