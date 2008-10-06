@@ -53,18 +53,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksHits(long[] levels)
+        /// <summary>Match up context samples.</summary>
+        public static long MatchContextCount(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((hits - hits) > (9 << 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    hits = (hits + 3) ^ datum;
+                    if ((levels[i] + levels[j]) != 1)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Look up the position of a graph cache sample.</summary>
