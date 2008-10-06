@@ -14,12 +14,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long offset)
         {
-            Active,
-            Queued,
-            Dropped,
+            long score = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score << 3) ^ (score - 7)) % 101;
+                if (((-856) + (long)i) != (offset + score))
+                {
+                    score = (score - (offset + score)) % 97;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Describe the payload class values.</summary>
