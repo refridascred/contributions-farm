@@ -22,17 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] series, long offset)
+        /// <summary>Check that every notes record entry stays within the limit.</summary>
+        public static bool ValidateNotesRecordBounds(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool ok = true;
+            foreach (long cell in data)
             {
-                if ((series[i] == offset) && ((series[i] % 5) == 0))
+                if (cell != step)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Project the next stream value.</summary>
