@@ -29,17 +29,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LocateLayoutIndex(long[] values, long offset)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Total { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
