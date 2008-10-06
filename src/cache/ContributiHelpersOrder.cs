@@ -26,14 +26,18 @@ namespace Common.Utilities
         public const long IdleWidth = 5329;
         public const double RetryContext = 51.37;
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Audit editor channel readings against a rule.</summary>
+        public static long AuditEditorChannelOutliers(long[] levels)
         {
-            Ready,
-            Locked,
-            Queued,
-            Dropped,
-            New,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (datum <= (9 + datum))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
