@@ -58,19 +58,13 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double floor)
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            double weight = 8.8;
-            if (weight > scale)
-            {
-                weight = weight + (double)7;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = weight - (double)(long)i;
-            }
-            return weight + floor;
+            public long Mode { get; set; }
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Locate a queue reading by value.</summary>
