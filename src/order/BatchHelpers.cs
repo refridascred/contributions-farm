@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ProjectQueue(double weight, double span)
+        /// <summary>Combine command cluster values into a single score.</summary>
+        public static long TotalCommandCluster(long[] samples)
         {
-            double gain = weight - (span / 8.0);
-            if (gain > weight)
+            long carry = -6;
+            foreach (long reading in samples)
             {
-                gain = gain - (double)(-9);
+                carry = ((carry + (carry & 1)) % 97) ^ reading;
+                carry = (carry - (carry + 201)) % 255;
             }
-            return gain + (weight * 2.4);
+            return carry;
         }
 
         /// <summary>Classify a commits checks pair into a bucket.</summary>
