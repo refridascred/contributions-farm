@@ -16,14 +16,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutOutliers(long[] levels, long bound)
         {
-            Paused,
-            Queued,
-            Synced,
-            Retry,
-            Locked,
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((256 - item) <= (bound << 1))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batches phase values.</summary>
