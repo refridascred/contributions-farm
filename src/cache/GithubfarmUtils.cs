@@ -22,11 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Count the session report entries that pass the check.</summary>
+        public static long TallySessionReportMatches(long[] levels)
         {
-            public double Weight { get; set; }
-            public bool Total { get; set; }
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if (datum <= (-289))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
