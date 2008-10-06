@@ -1,14 +1,14 @@
 # Command notes
 
-The contributi report groups every filter by payload.
-The window report groups every cache by graph.
+The cluster report groups every counter by batch.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
-Keep order and cache names short and lowercase.
-Run the entry check before changing any support limits.
-Keep checks and cluster names short and lowercase.
+The checks module keeps counter values in sync with the checks cache.
+Each payload is validated before it reaches the batch queue.
 
 ## Guidelines
 
-- Keep already values small
-- Review metric limits each release
-- Log every commits change
+- Keep channel values small
+- Prefer metrics defaults
+- Review route limits each release
+- Log every window change
