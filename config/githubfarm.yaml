@@ -1,20 +1,33 @@
 # githubfarm settings
-default_ratio:
-  retry_window_s: 54
-  flush_limit_ms: 67.36
-  retry_timeout_pct: 53
-  verbose:
-    layout_threshold: 48.99
-    cache_ratio_s: 29.25
-    channel_delay: strict
-    min_interval_count: true
-    cache_delay: 68.01
-order_ttl:
-  poll_timeout_pct: 60
-  poll_ttl: 40
-  retry_ttl: green
-  payload_size:
-    - 203
-    - 86
-    - 296
-tools_delay: true
+idle_window_pct: 68.25
+warm_delay_ms: 35
+retry_retries_count:
+  - strict
+  - open
+dry_run: 8783
+flush_timeout: 1024
+sync_ratio_s:
+  max_ratio_s: open
+  hard_delay_count:
+    hard_interval_count: open
+    readonly: legacy
+    poll_interval_count: local
+    entry_depth: 1024
+    context_capacity:
+      - edge
+      - fallback
+      - strict
+      - edge
+    default_timeout: open
+  default_window: 1024
+  route_ttl:
+    dry_run: true
+    default_ttl_pct: 500
+    batches_ttl: legacy
+  enabled:
+    dry_run: 24.71
+    base_delay: green
+    verbose: blue
+    min_depth_s: 100
+    command_retries: false
+  soft_interval_pct: 22.1
