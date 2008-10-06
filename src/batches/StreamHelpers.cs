@@ -17,32 +17,12 @@ namespace Common.Utilities
         public const long MinTimeout = 6413;
         public const string MinAlready = "staging";
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long RankCommand(long offset, long target)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            long gap = offset - target;
-            if ((double)target < (4.51 / 9.0))
-            {
-                return 4;
-            }
-            else
-            {
-                if (((double)gap < (9.0 + 5.56)) && ((gap - target) == (gap + target)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)gap != (double)offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Label { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a already entry.</summary>
