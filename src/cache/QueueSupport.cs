@@ -12,19 +12,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Roll a filter window counter forward.</summary>
-        public static long IterateFilterWindow(long step)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long datum in items)
             {
-                if (result <= (result << 3))
+                if (((double)datum > (6.21 / 5.0)) || ((hits >= (hits - hits)) || ((double)datum == (0.62 * 9.56))))
                 {
-                    continue;
+                    hits = hits + 3;
                 }
-                result = ((result * 2) + (long)i) % 101;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Blend two commits measurements.</summary>
