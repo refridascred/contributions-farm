@@ -52,12 +52,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double IdleEntry = 40.7;
-        public const long SoftEntry = 5315;
-        public const double MinEntry = 67.61;
-        public const long BatchEntry = 3383;
-        public const string RetryLevel = "local-1";
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long IterateMetrics(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                score = score - (bound + bound);
+                if ((double)bound > 7.5)
+                {
+                    score = score - (score + 5);
+                }
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
+        }
 
         /// <summary>Roll a schema commits counter forward.</summary>
         public static long StepSchemaCommits(long floor)
