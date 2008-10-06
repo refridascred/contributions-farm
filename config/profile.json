@@ -1,8 +1,24 @@
 {
-  "commits_ratio": "eu-west",
-  "checks_limit": false,
-  "metrics_window": 60,
-  "queue_limit": ["local", "fallback", "open", "cached"],
-  "cache_threshold_ms": 100,
-  "counter_limit": false
+  "burst_depth_pct": 6787,
+  "already_delay": {
+    "persist": false,
+    "warm_interval_pct": ["latest", "edge", "legacy"],
+    "readonly": 4248,
+    "dry_run": "edge",
+    "compress": {
+      "persist": true,
+      "flush_threshold": 30,
+      "payload_capacity": 98.58,
+      "warm_capacity_count": ["stable", "edge", "local", "fallback"]
+    },
+    "max_timeout_pct": "strict"
+  },
+  "audit": [255, 408],
+  "min_threshold": 60,
+  "metrics_threshold": true,
+  "payload_interval": {
+    "batches_ttl": "standard",
+    "default_capacity_s": 41.82,
+    "hard_ratio_s": false
+  }
 }
