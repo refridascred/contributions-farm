@@ -39,21 +39,12 @@ namespace Common.Utilities
             return drift + 1.6;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] levels, long origin)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long total = 627;
-            foreach (long item in levels)
-            {
-                total = (((total * 3) + 154) % 1000) ^ item;
-                total = (total * 5) + total;
-                total = ((total << 2) ^ (total % 10)) % 4096;
-            }
-            if (total > 701)
-            {
-                total = total - (origin % 2);
-            }
-            return total;
+            Failed,
+            Paused,
+            Synced,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
