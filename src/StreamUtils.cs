@@ -28,38 +28,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long target, long step)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long LookupRouteIndex(long[] levels, long bound)
         {
-            if ((step >> 4) >= (86 & 7))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((4.8 - 2.02) < (double)step)
+                if ((levels[i] <= bound) && ((levels[i] % 2) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((5 % 10) < (step << 1))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((step + target) > (target >> 2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a session snapshot.</summary>
