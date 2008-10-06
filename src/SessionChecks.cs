@@ -19,19 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every notes farm entry stays within the limit.</summary>
-        public static bool VerifyNotesFarmBounds(long[] items, long limit)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample > limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Active,
+            Closed,
+            Queued,
+            Locked,
+            Ready,
         }
 
         /// <summary>Adjust a payload filter reading.</summary>
