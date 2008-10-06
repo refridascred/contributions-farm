@@ -15,21 +15,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of stream editor readings.</summary>
-        public static long MatchStreamEditorCount(long[] items)
+        /// <summary>Adjust a report cluster reading.</summary>
+        public static double ProjectReportCluster(double scale, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale2 = scale;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale2 = ((scale2 - scale) + (double)(long)i) + offset;
             }
-            return matches;
+            return scale2 - (scale - scale);
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
