@@ -67,15 +67,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double scale, double span)
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
         {
-            double rate = (double)(0 % 12);
-            if (rate < (double)800)
-            {
-                rate = ((rate + (rate * 4.9)) + scale) + span;
-            }
-            return rate - (double)59;
+            public double Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a session options.</summary>
