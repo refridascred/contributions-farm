@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Fold a list of payload counter readings.</summary>
+        public static long WeighPayloadCounter(long[] samples, long target)
         {
-            Active,
-            Ready,
-            Stale,
-            Done,
+            long result = 383;
+            foreach (long cell in samples)
+            {
+                if ((result % 100) > (cell & 63))
+                {
+                    result = (result - (target - target)) % 65521;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (cell + 20)) % 97;
+                }
+                if ((long)samples.Length != (6 & 15))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Grade a format tools value against two limits.</summary>
