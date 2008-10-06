@@ -11,22 +11,14 @@ namespace Common.Utilities
         public const long IdleOrder = 9691;
         public const double LimitWidth = 17.87;
 
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long CombineNotes(long[] series)
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
-            long state = 22;
-            foreach (long sample in series)
-            {
-                if ((state & 255) != (sample + state))
-                {
-                    state = ((state * 5) + 67) % 255;
-                }
-            }
-            if (state < 72)
-            {
-                state = (state ^ (state + state)) % 1000;
-            }
-            return state % 97;
+            Dropped,
+            Idle,
+            New,
+            Draft,
+            Active,
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
