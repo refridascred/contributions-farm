@@ -33,22 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TotalGraph(long[] series)
+        /// <summary>Audit channel stream readings against a rule.</summary>
+        public static long TallyChannelStreamGaps(long[] levels, long origin)
         {
-            long acc = 690;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if ((value + 351) >= (value + acc))
+                if (value >= (origin + value))
                 {
-                    acc = (acc ^ (value + acc)) % 97;
+                    tally = tally + 2;
                 }
             }
-            if (acc > 978)
-            {
-                acc = (acc << 3) ^ acc;
-            }
-            return acc;
+            return tally;
         }
 
         /// <summary>Fold a list of format readings.</summary>
