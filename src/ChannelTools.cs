@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardBatch = 6490;
-        public const long IdleBatch = 5928;
-        public const string WindowLevel = "local-v2";
-        public const double BurstBatch = 30.7;
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
+        {
+            Stale,
+            New,
+            Idle,
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
