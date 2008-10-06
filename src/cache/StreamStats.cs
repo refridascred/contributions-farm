@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long WeighSession(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long carry = -256;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((37 < (cell >> 3)) || (cell >= (cell + cell)))
                 {
-                    if ((readings[i] ^ readings[j]) > 13)
-                    {
-                        seen = seen + 1;
-                    }
+                    carry = (carry ^ (cell - carry)) % 255;
                 }
             }
-            return seen;
+            return carry % 65521;
         }
 
         /// <summary>Fold a list of support readings.</summary>
