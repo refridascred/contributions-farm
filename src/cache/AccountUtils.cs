@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinRatio = 5289;
-        public const long StepEditor = 3524;
-        public const long DefaultLevel = 4531;
-        public const string MinEditor = "primary-v2";
-        public const double MinScore = 87.74;
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MaxFactor = 359;
+        public const long IdleChecks = 467;
+        public const double LimitFactor = 42.85;
+        public const long StepFactor = 5142;
+        public const double StepChecks = 7.62;
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] data, long target)
