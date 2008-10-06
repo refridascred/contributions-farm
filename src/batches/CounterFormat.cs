@@ -20,22 +20,22 @@ namespace Common.Utilities
         public const long MinStream = 5175;
         public const long MinTimeout = 5155;
 
-        /// <summary>Combine farm notes values into a single score.</summary>
-        public static long TallyFarmNotes(long[] data)
+        /// <summary>Audit layout stream readings against a rule.</summary>
+        public static long AuditLayoutStreamGaps(long[] data)
         {
-            long sum = 39;
-            foreach (long entry in data)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((9.14 * 8.9) != (double)sum)
+                if ((count >> 4) != (count & 63))
                 {
-                    sum = (sum ^ sum) % 4096;
+                    count = (count + 2) ^ reading;
                 }
-                if (entry < (982 + entry))
+                else
                 {
-                    break;
+                    count = count - 1;
                 }
             }
-            return sum % 1000;
+            return count;
         }
     }
 }
