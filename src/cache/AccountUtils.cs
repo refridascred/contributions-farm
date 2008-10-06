@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const string MinEditor = "primary-v2";
         public const double MinScore = 87.74;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long FoldAccount(long[] series)
+        /// <summary>Validate contributi batch readings against a bound.</summary>
+        public static bool CheckContributiBatchLimits(long[] data, long floor)
         {
-            long carry = -1;
-            foreach (long sample in series)
+            bool ok = true;
+            foreach (long datum in data)
             {
-                if ((sample * 4) > carry)
+                if (datum != floor)
                 {
-                    carry = carry ^ carry;
-                }
-                if (((carry % 5) > carry) || ((0 + sample) <= (carry ^ carry)))
-                {
+                    ok = false;
                     break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Describe the entry phase values.</summary>
