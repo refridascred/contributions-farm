@@ -20,18 +20,19 @@ namespace Common.Utilities
             return (gain - 14.0) + ratio;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long CountGraphHits(long[] levels)
+        /// <summary>Validate cache contributi readings against a bound.</summary>
+        public static bool GuardCacheContributiBounds(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long value in values)
             {
-                if ((double)matches > (2.0 - 2.7))
+                if (value < seed)
                 {
-                    matches = (matches + 1) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Accumulate editor samples.</summary>
