@@ -44,22 +44,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] readings)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((6.5 * 4.52) > (double)count)
+                if ((data[i] > origin) && ((data[i] % 5) == 0))
                 {
-                    count = (count + 1) ^ sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
