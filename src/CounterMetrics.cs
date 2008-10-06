@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long TallyBatchesHits(long[] items)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long tally = 0;
-            foreach (long entry in items)
-            {
-                if ((entry * 3) < (520 - tally))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Accumulate queue samples.</summary>
