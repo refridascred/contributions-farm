@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long MatchContextCount(long[] items)
+        /// <summary>Match up commits profile samples.</summary>
+        public static long CompareCommitsProfileCount(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((items[i] ^ items[j]) < 4)
+                    if ((samples[i] - samples[j]) < 10)
                     {
                         tally = tally + 1;
                     }
