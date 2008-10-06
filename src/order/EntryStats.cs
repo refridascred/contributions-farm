@@ -23,12 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepContributi = 9725;
-        public const long MinContributi = 1263;
-        public const string SoftContributi = "standard-v2";
-        public const string LimitRatio = "standard-1";
-        public const long DefaultContributi = 2090;
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool CheckCacheBounds(long[] data, long floor)
+        {
+            bool found = true;
+            foreach (long value in data)
+            {
+                if (value <= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define account limits and defaults.</summary>
         public const string CacheBudget = "latest";
