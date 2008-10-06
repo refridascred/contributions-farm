@@ -10,14 +10,12 @@ namespace Common.Utilities
         public const long StepDepth = 324;
         public const double WindowScore = 7.14;
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
-        {
-            Done,
-            Paused,
-            Retry,
-            Synced,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultRatio = 6670;
+        public const string HardStream = "legacy-v2";
+        public const long SoftStream = 9897;
+        public const double WindowWidth = 4.49;
+        public const double CacheStream = 67.38;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyOutliers(long[] series)
