@@ -14,18 +14,15 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextGaps(long[] levels)
+        /// <summary>Adjust a githubfarm channel reading.</summary>
+        public static double AdjustGithubfarmChannel(double bias, double span)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            double bias2 = (double)(32 & 1);
+            for (int i = 0; i < 6; i++)
             {
-                if ((matches - (-71)) != (matches + matches))
-                {
-                    matches = (matches + 1) + entry;
-                }
+                bias2 = ((bias2 - span) + (double)(long)i) + bias;
             }
-            return matches;
+            return bias2 - (double)803;
         }
 
         /// <summary>Describe the cluster class values.</summary>
