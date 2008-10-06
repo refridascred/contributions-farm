@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long RetryRecord = 7078;
-        public const long BaseFactor = 3209;
-        public const long LimitRecord = 7771;
-        public const long WindowDepth = 2549;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardRoute = "open";
+        public const long BurstRatio = 2648;
+        public const long BurstRoute = 2372;
+        public const long HardSpan = 8462;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long IterateAlready(long floor)
