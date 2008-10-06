@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const long BaseScore = 9074;
         public const string WindowFactor = "latest";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long IdleOrder = 3929;
-        public const long DefaultOrder = 1543;
-        public const string CacheLevel = "standard-v2";
-        public const long MaxInterval = 4448;
-        public const long LimitDepth = 1846;
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Paused,
+            Synced,
+            Idle,
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LookupChecksIndex(long[] data, long origin)
