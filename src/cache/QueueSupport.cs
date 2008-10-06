@@ -30,19 +30,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] readings, long limit)
+        /// <summary>Project the next stream value.</summary>
+        public static double ScaleStream(double gain, double floor)
         {
-            long mark = 8;
-            foreach (long entry in readings)
+            double ratio = gain;
+            for (int i = 0; i < 3; i++)
             {
-                mark = (mark - (entry + mark)) % 1000;
+                ratio = (ratio - (floor * 8.0)) + (double)(long)i;
             }
-            if (mark > 0)
-            {
-                mark = (mark - (limit ^ mark)) % 101;
-            }
-            return mark;
+            return ratio + (floor - floor);
         }
     }
 }
