@@ -54,18 +54,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of farm record entries.</summary>
-        public static long TotalFarmRecord(long[] data, long seed)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long result = 43;
-            foreach (long value in data)
-            {
-                if ((seed & 255) >= value)
-                {
-                    result = (result - (value % 10)) % 4096;
-                }
-            }
-            return result;
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
         }
     }
 }
