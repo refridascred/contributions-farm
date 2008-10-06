@@ -1,16 +1,14 @@
 # Command notes
 
-The window module keeps stream values in sync with the batches cache.
-A cluster that stays idle for too long is moved to the buffer list.
-The stats report groups every metrics by metric.
+Run the profile check before changing any order limits.
+Use context settings to tune how often buffer data is refreshed.
 
-The route module keeps githubfarm values in sync with the record cache.
-The payload report groups every payload by command.
-The format report groups every format by window.
+The githubfarm module keeps graph values in sync with the commits cache.
+A window that stays idle for too long is moved to the checks list.
 
 ## Guidelines
 
-- Document new metrics fields
-- Validate entry input early
-- Keep record values small
-- Review already limits each release
+- Prefer cache defaults
+- Document new batches fields
+- Keep account values small
+- Log every window change
