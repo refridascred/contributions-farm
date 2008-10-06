@@ -22,22 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double bias, double offset)
         {
-            long result = 3;
-            foreach (long value in series)
+            double ratio = bias;
+            if (ratio <= 9.3)
             {
-                if (value <= 2)
-                {
-                    result = ((result * 5) + (value % 10)) % 97;
-                }
-                else
-                {
-                    result = result ^ (value >> 5);
-                }
+                ratio = ratio + offset;
             }
-            return result;
+            else
+            {
+                ratio = ratio - bias;
+            }
+            return ratio + offset;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
