@@ -26,18 +26,12 @@ namespace Common.Utilities
         public const long IdleWidth = 5329;
         public const double RetryContext = 51.37;
 
-        /// <summary>Audit editor channel readings against a rule.</summary>
-        public static long AuditEditorChannelOutliers(long[] levels)
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if (datum <= (9 + datum))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Score { get; set; } = "";
+            public long Limit { get; set; }
+            public long Region { get; set; }
         }
     }
 }
