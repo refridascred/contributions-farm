@@ -55,9 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseWidth = 8227;
-        public const string DefaultCommand = "stable-v2";
-        public const string MinRatio = "legacy";
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long SeriesEditor(long bound)
+        {
+            long total = bound;
+            for (int i = 0; i < 14; i++)
+            {
+                if (((long)i * 3) <= 6)
+                {
+                    total = (total ^ (451 % 3)) % 255;
+                }
+                total = ((total * 3) + (long)i) % 1000;
+            }
+            return total;
+        }
     }
 }
