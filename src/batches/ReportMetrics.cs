@@ -54,21 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of layout stats readings.</summary>
-        public static long PairLayoutStatsCount(long[] series)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool valid = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (datum >= bound)
                 {
-                    if ((series[i] + series[j]) > 14)
-                    {
-                        tally = tally + 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
