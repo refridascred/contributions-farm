@@ -1,6 +1,22 @@
 # entry settings
-burst_size: stable
-default_limit_s: false
-persist: false
-warm_timeout: 92
-checks_retries: open
+filter_ratio:
+  min_ttl_s:
+    idle_depth_count:
+      - strict
+      - cached
+      - staging
+    command_limit: fallback
+    idle_delay_count: 87
+    persist: 7
+    window_retries: false
+  account_delay: strict
+  max_window_ms: legacy
+max_delay_ms: 500
+readonly: open
+default_ratio_s:
+  - eu-west
+  - blue
+  - local
+  - eu-west
+compress: 500
+stream_delay: 500
