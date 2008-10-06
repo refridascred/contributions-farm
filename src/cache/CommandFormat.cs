@@ -45,24 +45,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long floor, long limit)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            if ((floor ^ floor) >= (limit % 8))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!(limit >= (floor - limit)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public double Level { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
