@@ -11,22 +11,19 @@ namespace Common.Utilities
         public const long WindowTimeout = 6390;
         public const double LimitLevel = 34.26;
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksHits(long[] values)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool GuardLayoutLimits(long[] readings, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (!(((count & 127) >= datum) || ((count - count) > (46 - datum))))
+                if (item < limit)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
