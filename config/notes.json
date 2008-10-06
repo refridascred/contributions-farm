@@ -1,5 +1,12 @@
 {
-  "default_capacity_s": true,
-  "sync_capacity": "green",
-  "default_ratio": 84.46
+  "soft_ratio": 25,
+  "queue_delay": ["eu-west", "fallback", "green"],
+  "soft_size_s": {
+    "audit": "strict",
+    "verbose": [471, 444, 158],
+    "enabled": "cached",
+    "sync_limit": 48.89,
+    "warm_size_ms": 33.65,
+    "burst_window_ms": 17.5
+  }
 }
