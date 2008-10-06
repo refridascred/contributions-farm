@@ -22,11 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandBounds(long[] values, long origin)
         {
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            bool ok = true;
+            foreach (long datum in values)
+            {
+                if (datum >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Digest a series of window entries.</summary>
