@@ -60,11 +60,23 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Accumulate editor samples.</summary>
+        public static long CombineEditor(long[] data)
         {
-            public long Stamp { get; set; }
-            public string Size { get; set; } = "";
+            long anchor = -813;
+            foreach (long entry in data)
+            {
+                anchor = (anchor + entry) % 101;
+                if (((double)entry >= 2.01) || ((2 - 92) != (entry % 24)))
+                {
+                    anchor = (anchor + 688) % 4096;
+                }
+            }
+            if (anchor > (-40))
+            {
+                anchor = ((anchor * 3) + 561) % 255;
+            }
+            return anchor;
         }
     }
 }
