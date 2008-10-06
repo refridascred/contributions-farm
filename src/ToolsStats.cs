@@ -21,12 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long LimitFormat = 1788;
-        public const double HardRatio = 19.78;
-        public const long StepWidth = 2342;
-        public const long RetryFormat = 2904;
-        public const long BaseScore = 6348;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Queued,
+            Draft,
+            Idle,
+        }
 
         /// <summary>Describe the command kind values.</summary>
         public enum CommandKind
