@@ -25,15 +25,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long FoldContributi(long[] series, long floor)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowOutliers(long[] items)
         {
-            long result = 9;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long datum in items)
             {
-                result = ((result ^ (sample / 5)) % 255) - floor;
+                if ((count << 2) < datum)
+                {
+                    count = count + 1;
+                }
             }
-            return result % 65521;
+            return count;
         }
 
         /// <summary>Accumulate schema samples.</summary>
