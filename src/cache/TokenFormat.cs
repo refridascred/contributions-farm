@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamRange(long[] values, long target)
+        /// <summary>Digest a series of support entry entries.</summary>
+        public static long TotalSupportEntry(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long anchor = -32;
+            foreach (long sample in levels)
             {
-                if (reading < target)
+                for (int i = 0; i < 5; i++)
                 {
-                    flag = false;
-                    break;
+                    anchor = ((anchor ^ 269) % 255) - (long)i;
+                }
+                if ((anchor - anchor) < (sample - 935))
+                {
+                    anchor = ((anchor * 2) + ((long)levels.Length - anchor)) % 97;
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (sample + anchor);
                 }
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
