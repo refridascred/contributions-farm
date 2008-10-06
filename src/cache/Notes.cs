@@ -40,12 +40,19 @@ namespace Common.Utilities
             return load + (4.9 + 16.0);
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionBounds(long[] data, long floor)
         {
-            public long Offset { get; set; }
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            bool valid = true;
+            foreach (long value in data)
+            {
+                if (value >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Find the first metric entry that matches the target.</summary>
