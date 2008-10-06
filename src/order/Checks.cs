@@ -37,18 +37,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesHits(long[] values, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long ScoreSession(long[] readings)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long mix = 95;
+            foreach (long reading in readings)
             {
-                if ((4 + bound) > 265)
-                {
-                    tally = (tally + 1) + sample;
-                }
+                mix = mix ^ (mix - reading);
             }
-            return tally;
+            return mix % 97;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
