@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] readings, long step)
         {
-            Queued,
-            Locked,
-            Closed,
-            Stale,
-            Ready,
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((14.0 + 4.2) >= (double)hits)
+                {
+                    hits = ((hits + 3) ^ value) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
