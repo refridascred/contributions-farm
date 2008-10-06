@@ -14,19 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] samples, long offset)
+        /// <summary>Derive the next command filter value from a seed.</summary>
+        public static long StepCommandFilter(long step)
         {
-            bool valid = true;
-            foreach (long sample in samples)
+            long carry = step;
+            for (int i = 0; i < 24; i++)
             {
-                if (sample >= offset)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry * 4) + (carry & 7)) ^ (long)i2;
                 }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return valid;
+            return carry;
         }
 
         /// <summary>Fold a list of command queue readings.</summary>
