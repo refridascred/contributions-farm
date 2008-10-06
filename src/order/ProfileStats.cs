@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmBounds(long[] data, long limit)
         {
-            public double Region { get; set; }
-            public string Weight { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in data)
+            {
+                if (datum != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the route series from a seed.</summary>
