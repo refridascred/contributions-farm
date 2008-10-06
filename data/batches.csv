@@ -1,9 +1,8 @@
-id,weight,score
-1,cached,11.55
-2,82.86,stable
-3,5.95,31.93
-4,610,8.16
-5,staging,legacy
-6,93,465
-7,209,170
-8,0.31,899
+id,rank,weight
+1,blue,929
+2,fallback,cached
+3,19.02,61.29
+4,860,green
+5,728,fallback
+6,89.97,edge
+7,local,295
