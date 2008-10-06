@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] levels)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((0.92 * 3.7) <= (1.7 - 8.15)) && ((69 / 9) != (hits << 2)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 2) + reading;
+                    if ((values[i] - values[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
