@@ -16,22 +16,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate queue samples.</summary>
-        public static long WeighQueue(long[] items, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool CheckSchemaRange(long[] items, long offset)
         {
-            long mark = 69;
-            foreach (long reading in items)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if (3.3 < (double)mark)
+                if (item < offset)
                 {
-                    mark = (((mark ^ 68) % 1000) - reading) - step;
+                    flag = false;
+                    break;
                 }
             }
-            if (mark < 92)
-            {
-                mark = ((mark * 3) + (mark + (-650))) % 65521;
-            }
-            return mark % 1000;
+            return flag;
         }
 
         /// <summary>Fold a list of buffer editor readings.</summary>
