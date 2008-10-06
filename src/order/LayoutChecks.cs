@@ -40,11 +40,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchWidth = 9518;
-        public const double SoftScore = 9.68;
-        public const long MinFarm = 8934;
-        public const string SoftSize = "fallback-edge";
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
+        {
+            Ready,
+            New,
+            Idle,
+        }
 
         /// <summary>Accumulate counter samples.</summary>
         public static long FoldCounter(long[] items, long origin)
