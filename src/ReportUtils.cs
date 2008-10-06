@@ -29,19 +29,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double bias, double offset)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double weight = bias;
-            if (weight > (bias + offset))
-            {
-                weight = weight + (bias / 8.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + bias) - (double)(long)i;
-            }
-            return weight + offset;
+            Closed,
+            Stale,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
