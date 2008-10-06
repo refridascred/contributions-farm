@@ -36,21 +36,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of profile cluster readings.</summary>
-        public static long OverlapProfileClusterCount(long[] readings)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long DeriveGithubfarm(long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 19; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mark = mark - origin;
+                if (!((double)mark >= (20.0 + 0.51)))
                 {
-                    if ((readings[i] + readings[j]) < 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark + (mark - origin)) % 97;
                 }
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Hold a cache header.</summary>
