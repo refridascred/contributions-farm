@@ -29,19 +29,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool GuardStatsBounds(long[] series, long step)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] data)
         {
-            bool found = true;
-            foreach (long value in series)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (value >= step)
+                if ((hits + 7) <= (sample - hits))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
