@@ -46,16 +46,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] data)
-        {
-            long mark = 18;
-            foreach (long entry in data)
-            {
-                mark = ((mark + (long)data.Length) % 4096) ^ entry;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long BaseBatch = 2344;
+        public const double DefaultBatch = 17.93;
+        public const long DefaultFactor = 1817;
 
         /// <summary>Match up cluster samples.</summary>
         public static long PairClusterCount(long[] series)
