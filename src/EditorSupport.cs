@@ -38,32 +38,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Classify a farm support pair into a bucket.</summary>
-        public static long RankFarmSupport(long target, long floor)
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool GuardBatchLimits(long[] values, long limit)
         {
-            long cur = target ^ floor;
-            if ((cur / 4) > (95 ^ target))
+            bool flag = true;
+            foreach (long reading in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (!(target <= floor))
+                if (reading >= limit)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((cur * 2) != (99 - floor))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
