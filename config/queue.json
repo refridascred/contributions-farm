@@ -1,8 +1,6 @@
 {
-  "entry_ttl": 59,
-  "idle_delay_count": true,
-  "sync_size": 1024,
-  "batch_limit": [237, 179, 263, 214],
-  "batch_interval_pct": "local",
-  "burst_depth_ms": 7329
+  "contributi_threshold": "open",
+  "audit": 250,
+  "min_ratio_count": false,
+  "already_size": "standard"
 }
