@@ -12,22 +12,19 @@ namespace Common.Utilities
         public const long WindowLevel = 1826;
         public const long MaxWidth = 519;
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long CombineContributi(long[] samples, long floor)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] levels, long seed)
         {
-            long anchor = 803;
-            foreach (long cell in samples)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((double)anchor >= (9.2 * 2.15))
+                if (value >= seed)
                 {
-                    anchor = (anchor ^ (floor - cell)) % 65521;
-                }
-                else
-                {
-                    anchor = (anchor * 4) + (9 ^ cell);
+                    stale = false;
+                    break;
                 }
             }
-            return anchor;
+            return stale;
         }
 
         /// <summary>Describe the stream class values.</summary>
