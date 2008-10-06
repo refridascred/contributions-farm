@@ -47,12 +47,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
-        {
-            public string Count { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long SoftInterval = 5273;
+        public const long MinScore = 3710;
+        public const string StepNotes = "cached";
     }
 }
