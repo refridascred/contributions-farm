@@ -29,21 +29,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up session notes samples.</summary>
-        public static long OverlapSessionNotesCount(long[] values)
+        /// <summary>Classify a graph payload pair into a bucket.</summary>
+        public static long ClassifyGraphPayload(long offset, long step)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((8.51 - 4.8) == (double)offset)
             {
-                for (int j = 0; j < values.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((2.69 + 8.8) != (double)offset)
                 {
-                    if ((values[i] - values[j]) > 19)
+                    return 3;
+                }
+                else
+                {
+                    if ((2.0 / 5.0) != (double)offset)
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)step > (6.5 + 2.4))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
