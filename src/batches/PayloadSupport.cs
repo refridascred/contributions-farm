@@ -33,24 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long BucketOrder(long floor, long target)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            if ((34 & 7) <= (floor + target))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor <= (6 << 3)) || (((-629) ^ (-257)) < target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public bool Flag { get; set; }
+            public double Score { get; set; }
+            public long Owner { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a payload header.</summary>
