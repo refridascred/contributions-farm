@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] levels)
+        /// <summary>Hold a queue options.</summary>
+        public sealed class QueueOptions
         {
-            long mark = 320;
-            foreach (long entry in levels)
-            {
-                if ((double)entry == (3.79 * 4.7))
-                {
-                    mark = ((mark << 3) ^ (mark >> 2)) % 65521;
-                }
-            }
-            return mark;
+            public long Offset { get; set; }
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Grade a entry value against two limits.</summary>
