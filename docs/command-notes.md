@@ -1,11 +1,12 @@
 # Command notes
 
-The profile module keeps contributi values in sync with the profile cache.
-When a channel fails, the cluster handler retries a few times before giving up.
-Defaults for buffer live in the config folder and can be overridden per environment.
+Keep tools and channel names short and lowercase.
+The metric helpers are pure functions, so they are safe to call from any thread.
+The already report groups every layout by filter.
 
 ## Guidelines
 
-- Review profile limits each release
-- Log every graph change
-- Prefer graph defaults
+- Validate payload input early
+- Log every payload change
+- Document new counter fields
+- Review metric limits each release
