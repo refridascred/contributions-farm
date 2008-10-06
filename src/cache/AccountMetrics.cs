@@ -32,14 +32,15 @@ namespace Common.Utilities
         public const double RetryBuffer = 31.91;
         public const string CacheWidth = "legacy-edge";
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long limit)
         {
-            New,
-            Paused,
-            Queued,
-            Stale,
-            Locked,
+            long acc = limit;
+            for (int i = 0; i < 12; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the metrics class values.</summary>
