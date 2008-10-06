@@ -1,23 +1,6 @@
 # support settings
-warm_delay_ms:
-  - 458
-  - 196
-poll_timeout: legacy
-hard_ttl_count: green
-poll_capacity_ms: blue
-base_threshold_pct:
-  poll_window_s:
-    - 416
-    - 294
-  cluster_limit: true
-  flush_ratio_s: fallback
-  graph_ratio: 30
-  burst_delay:
-    - fallback
-    - primary
-    - blue
-    - fallback
-  commits_limit:
-    - local
-    - legacy
-    - cached
+buffer_window: 2
+persist: local
+default_timeout_count: 250
+enabled: 55.84
+min_interval_pct: false
