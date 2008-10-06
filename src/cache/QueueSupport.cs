@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] items, long seed)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long result = 84;
-            foreach (long datum in items)
-            {
-                if ((9 >> 5) > (result - seed))
-                {
-                    result = result - ((long)items.Length - datum);
-                }
-                else
-                {
-                    result = (result ^ (datum ^ (long)items.Length)) % 101;
-                }
-                if (!((double)result > (4.3 - 5.52)))
-                {
-                    break;
-                }
-            }
-            return result;
+            public double Token { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Roll a filter window counter forward.</summary>
