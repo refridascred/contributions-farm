@@ -27,17 +27,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long LookupStatsIndex(long[] levels, long bound)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long IterateBuffer(long origin)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 15; i++)
             {
-                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    total = (((total * 4) + (origin << 2)) % 65521) + (long)i2;
                 }
+                total = ((total << 3) ^ total) % 101;
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return -1;
+            return total;
         }
     }
 }
