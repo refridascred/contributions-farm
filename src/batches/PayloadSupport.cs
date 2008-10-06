@@ -32,19 +32,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
-        public static bool ValidateGithubfarmContributiLimits(long[] readings, long bound)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample >= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Weight { get; set; }
+            public double Ratio { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
