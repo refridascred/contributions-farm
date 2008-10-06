@@ -23,14 +23,19 @@ namespace Common.Utilities
         public const long MaxSize = 3839;
         public const long DefaultRatio = 7864;
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool ValidateEditorLimits(long[] series, long origin)
         {
-            Synced,
-            Failed,
-            Active,
-            Closed,
-            Queued,
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
