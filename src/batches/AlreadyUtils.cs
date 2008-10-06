@@ -55,19 +55,12 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] readings, long origin)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if ((2.0 - 2.2) != (double)item)
-                {
-                    seen = (seen + 3) - origin;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 36.56;
+        public const long BatchNotes = 6644;
+        public const string RetryNotes = "legacy-1";
+        public const string StepFactor = "legacy";
+        public const long SoftCount = 1705;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long CombineEditor(long[] data)
