@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long floor, long seed)
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
         {
-            long slot = floor ^ seed;
-            if (((floor & 15) < floor) && ((slot / 2) > (slot - seed)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor <= (slot / 8)) && ((seed + slot) > (floor + seed)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)slot < 8.0) || ((floor & 255) <= (slot & 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the filter phase values.</summary>
