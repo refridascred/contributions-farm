@@ -47,12 +47,9 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
-        {
-            Stale,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchCounter = "stable";
+        public const long DefaultRatio = 7772;
+        public const long CacheCounter = 8146;
     }
 }
