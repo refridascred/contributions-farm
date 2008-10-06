@@ -14,38 +14,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long bound, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long TallyContextGaps(long[] levels)
         {
-            if (((4.0 + 5.0) == (double)floor) && ((floor + bound) == (floor % 2)))
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound * 4) >= (floor - bound))
+                if ((matches - (-71)) != (matches + matches))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((4.36 - 11.0) <= (double)bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((927 >> 5) > (bound + floor)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    matches = (matches + 1) + entry;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the cluster class values.</summary>
