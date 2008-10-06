@@ -1,14 +1,18 @@
 {
-  "cache_size": 71.48,
-  "flush_depth": 8409,
-  "retry_interval_s": {
-    "farm_capacity": 250,
-    "burst_ratio_ms": [97, 137, 318, 347],
-    "cache_retries_s": true,
-    "metric_ttl": 52,
-    "hard_delay_pct": false
+  "strict": "edge",
+  "flush_ratio_ms": 89,
+  "batch_capacity": {
+    "persist": 62.26,
+    "warm_threshold_count": {
+      "session_ratio": "fallback",
+      "retry_timeout_ms": ["edge", "fallback"],
+      "hard_capacity_pct": 7967,
+      "batches_ratio": false,
+      "checks_retries": 92.64
+    },
+    "hard_limit_count": false
   },
-  "context_interval": "open",
-  "layout_ratio": true,
-  "default_depth_s": true
+  "audit": "legacy",
+  "commits_timeout": false,
+  "support_retries": [354, 123, 360, 461]
 }
