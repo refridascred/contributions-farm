@@ -69,10 +69,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 3744;
-        public const string RetryChecks = "strict";
-        public const long StepLevel = 6533;
-        public const long StepCount = 3375;
+        /// <summary>Grade a layout value against two limits.</summary>
+        public static long GradeLayout(long floor, long step)
+        {
+            if (!((double)step < (9.0 / 2.0)))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((step ^ floor) <= (step + step)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
