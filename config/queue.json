@@ -1,17 +1,8 @@
 {
-  "max_window_pct": "green",
-  "readonly": {
-    "sync_ttl_pct": "open",
-    "idle_ttl_pct": "edge",
-    "window_retries": 24.35,
-    "idle_size_count": {
-      "cache_limit": true,
-      "strict": "edge",
-      "sync_timeout": 500
-    },
-    "base_threshold": "staging",
-    "retry_ttl_ms": "fallback"
-  },
-  "poll_window": "local",
-  "default_threshold_s": "green"
+  "profile_ratio": true,
+  "poll_window_ms": "stable",
+  "filter_window": "local",
+  "max_capacity": true,
+  "base_size": 8060,
+  "audit": "latest"
 }
