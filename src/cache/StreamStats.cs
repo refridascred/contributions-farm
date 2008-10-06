@@ -31,19 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (entry > (tally * 5))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long CacheLevel = 5056;
+        public const string SoftDepth = "stable-edge";
+        public const long WindowContributi = 4347;
 
         /// <summary>Describe the farm status values.</summary>
         public enum FarmStatus
