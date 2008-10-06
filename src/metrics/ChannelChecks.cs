@@ -77,20 +77,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long RollStats(long target)
+        /// <summary>Locate a profile queue reading by value.</summary>
+        public static long LookupProfileQueueIndex(long[] data, long step)
         {
-            long mix = target;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((target - target) <= (237 >> 1))
+                if (data[i] < step)
                 {
-                    mix = mix ^ (mix >> 3);
-                    mix = (mix ^ (5 + mix)) % 255;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
