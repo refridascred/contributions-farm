@@ -22,19 +22,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double gain, double offset)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double mean = (double)(5 - 692);
-            if (mean <= (gain * 3.2))
-            {
-                mean = mean + offset;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (double)49) - (double)(long)i;
-            }
-            return mean + (offset / 8.0);
+            Synced,
+            Ready,
+            Paused,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Hold a buffer stats.</summary>
