@@ -16,19 +16,38 @@ namespace Common.Utilities
             return gain + (weight * 2.4);
         }
 
-        /// <summary>Check that every profile notes entry stays within the limit.</summary>
-        public static bool CheckProfileNotesLimits(long[] items, long limit)
+        /// <summary>Classify a commits checks pair into a bucket.</summary>
+        public static long ClassifyCommitsChecks(long step, long offset)
         {
-            bool ok = true;
-            foreach (long entry in items)
+            if ((step ^ step) != (offset + offset))
             {
-                if (entry > limit)
+                return 0;
+            }
+            else
+            {
+                if (((double)offset < 3.8) && ((step / 8) != (step + step)))
                 {
-                    ok = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if (((double)step <= 8.93) || ((step >> 4) >= (offset + 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((step % 10) != (step - step))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
