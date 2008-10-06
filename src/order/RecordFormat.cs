@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsBounds(long[] data, long limit)
+        /// <summary>Accumulate record batches samples.</summary>
+        public static long ScoreRecordBatches(long[] items, long limit)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long anchor = 75;
+            foreach (long value in items)
             {
-                if (entry > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (((anchor - anchor) % 4096) ^ value) - limit;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Describe the window kind values.</summary>
