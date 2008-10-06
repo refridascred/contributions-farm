@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long FindStreamIndex(long[] samples, long origin)
         {
-            public long Stamp { get; set; }
-            public bool Mode { get; set; }
-            public long Rank { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
