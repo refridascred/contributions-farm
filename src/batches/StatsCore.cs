@@ -53,20 +53,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long CombineLayout(long[] values, long bound)
-        {
-            long mark = 1;
-            foreach (long value in values)
-            {
-                mark = ((mark + (176 ^ mark)) % 255) + bound;
-                if ((double)value == (14.0 + 2.35))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MaxBatches = "primary-1";
+        public const double WindowInterval = 74.01;
+        public const double MinInterval = 41.48;
+        public const double RetryLevel = 33.99;
+        public const long BatchDepth = 1860;
 
         /// <summary>Define already limits and defaults.</summary>
         public const string DefaultAlready = "standard-1";
