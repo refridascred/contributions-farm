@@ -11,25 +11,10 @@ namespace Common.Utilities
         public const long WindowTimeout = 6390;
         public const double LimitLevel = 34.26;
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] items, long target)
-        {
-            long mark = 24;
-            foreach (long cell in items)
-            {
-                if (((target & 255) < cell) && ((cell + target) != (820 / 3)))
-                {
-                    mark = (mark - (0 & 1)) % 101;
-                }
-                else
-                {
-                    mark = mark + (target >> 5);
-                    mark = ((mark * 5) + cell) % 1000;
-                }
-                mark = mark + cell;
-            }
-            return mark;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string IdleRoute = "standard-edge";
+        public const long MaxWidth = 3206;
+        public const double RetryCount = 91.97;
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long CountFarmOutliers(long[] levels)
