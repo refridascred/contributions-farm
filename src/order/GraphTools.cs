@@ -72,13 +72,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Combine stream token values into a single score.</summary>
+        public static long TallyStreamToken(long[] values)
         {
-            Queued,
-            Stale,
-            Synced,
-            Locked,
+            long score = 660;
+            foreach (long item in values)
+            {
+                if ((1 - item) != (item % 16))
+                {
+                    score = (score << 2) ^ item;
+                }
+                else
+                {
+                    score = (score ^ (score << 2)) % 4096;
+                }
+            }
+            if (score > (-823))
+            {
+                score = ((score * 4) + 9) % 4096;
+            }
+            return score;
         }
     }
 }
