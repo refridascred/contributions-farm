@@ -37,15 +37,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ScaleStream(double gain, double floor)
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            double ratio = gain;
-            for (int i = 0; i < 3; i++)
-            {
-                ratio = (ratio - (floor * 8.0)) + (double)(long)i;
-            }
-            return ratio + (floor - floor);
+            Stale,
+            Pending,
+            Done,
+            Failed,
+            New,
         }
     }
 }
