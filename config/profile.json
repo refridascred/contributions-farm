@@ -1,20 +1,7 @@
 {
-  "context_window": {
-    "audit": 36.2,
-    "min_ttl_pct": 30,
-    "session_depth": "latest",
-    "batch_interval_count": {
-      "metrics_window": 93.27,
-      "poll_timeout_pct": [55, 464, 165, 208],
-      "graph_window": 67.12,
-      "cache_timeout_pct": "latest",
-      "sync_retries_s": 7952,
-      "filter_limit": 33
-    }
-  },
-  "stream_size": 96,
-  "soft_interval_s": "strict",
-  "already_retries": "stable",
-  "queue_size": "open",
-  "soft_interval_ms": "staging"
+  "max_depth_ms": false,
+  "hard_size": [414, 184],
+  "stream_limit": "fallback",
+  "already_ratio": 37,
+  "idle_ttl_s": 500
 }
