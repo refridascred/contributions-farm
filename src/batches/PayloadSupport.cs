@@ -30,22 +30,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the editor payload entries that pass the check.</summary>
-        public static long MeasureEditorPayloadOutliers(long[] values, long offset)
+        /// <summary>Find the first account cache entry that matches the target.</summary>
+        public static long SeekAccountCacheIndex(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)offset == (4.24 * 3.9))
+                if ((values[i] > bound) && ((values[i] % 2) == 0))
                 {
-                    tally = (tally + 3) - value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
