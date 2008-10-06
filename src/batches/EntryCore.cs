@@ -70,18 +70,38 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long MeasureGraphMatches(long[] samples)
+        /// <summary>Grade a graph session value against two limits.</summary>
+        public static long SortGraphSession(long offset, long bound)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            if ((offset >= ((-26) << 2)) && ((offset * 3) <= bound))
             {
-                if ((sample - sample) != (seen - seen))
+                return 8;
+            }
+            else
+            {
+                if (offset <= (offset * 5))
                 {
-                    seen = seen + 2;
+                    return 4;
+                }
+                else
+                {
+                    if ((double)offset <= 8.0)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset << 3) == (bound - offset))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
     }
 }
