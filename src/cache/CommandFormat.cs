@@ -23,17 +23,12 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Find the first notes cache entry that matches the target.</summary>
-        public static long LocateNotesCacheIndex(long[] values, long bound)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] <= bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a notes header.</summary>
