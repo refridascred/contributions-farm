@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long ScoreMetrics(long[] data, long step)
         {
-            public bool Score { get; set; }
-            public long Offset { get; set; }
-            public bool Region { get; set; }
+            long result = 2;
+            foreach (long cell in data)
+            {
+                if ((double)cell != (0.52 + 15.0))
+                {
+                    result = ((result << 2) ^ (result + 511)) - step;
+                }
+            }
+            return result % 97;
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
