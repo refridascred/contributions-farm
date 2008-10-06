@@ -27,21 +27,31 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Count entry pairs that satisfy a relation.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long step, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((bound < (bound / 9)) && ((8 - step) != (step + step)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((341 / 7) < (step + step))
                 {
-                    if ((items[i] - items[j]) < 10)
+                    return 4;
+                }
+                else
+                {
+                    if (!((bound - 145) <= 788))
                     {
-                        tally = tally + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
     }
 }
