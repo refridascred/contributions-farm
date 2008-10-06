@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a queue options.</summary>
-        public sealed class QueueOptions
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheOutliers(long[] readings, long limit)
         {
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((limit - value) >= (tally / 3)))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a stream record.</summary>
