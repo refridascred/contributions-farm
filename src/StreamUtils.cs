@@ -29,13 +29,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Dropped,
-            Failed,
-            Locked,
-            Closed,
+            Done,
+            New,
+            Active,
         }
 
         /// <summary>Find the first editor metric entry that matches the target.</summary>
