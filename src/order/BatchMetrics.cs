@@ -16,15 +16,18 @@ namespace Common.Utilities
             return scale2 + (scale2 - scale2);
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long ScoreAlready(long[] values)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long target)
         {
-            long mix = 445;
-            foreach (long entry in values)
+            long carry = target;
+            for (int i = 0; i < 5; i++)
             {
-                mix = (((mix << 3) ^ (51 + mix)) % 255) ^ entry;
+                carry = carry + (carry / 6);
+                carry = carry ^ (-51);
+                carry = ((carry * 2) + (long)i) % 1000;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the metrics state values.</summary>
