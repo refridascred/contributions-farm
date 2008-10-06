@@ -40,24 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long AuditFarmGaps(long[] levels, long offset)
         {
-            long sum = limit;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (limit <= (57 & 7))
+                if ((((2.0 - 20.0) >= (double)datum) && ((15.0 * 16.0) <= (double)offset)) || (((datum + offset) < offset) && ((offset * 3) != (datum >> 2))))
                 {
-                    sum = sum ^ (sum >> 4);
-                    break;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    sum = (sum * 3) + (limit & 127);
+                    seen = seen - 1;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Rank queue input into a small class.</summary>
