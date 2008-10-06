@@ -27,11 +27,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long SortChannel(long origin, long seed)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
+            if ((seed * 4) < (944 >> 3))
+            {
+                return 8;
+            }
+            else
+            {
+                if (((double)seed > 3.53) && ((origin & 31) > 539))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((seed * 5) < (20 * 2)) && ((5.2 + 5.88) < (double)seed))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
