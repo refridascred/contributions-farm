@@ -5,14 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Locate a commits support reading by value.</summary>
+        public static long SeekCommitsSupportIndex(long[] levels, long offset)
         {
-            Locked,
-            Pending,
-            Failed,
-            Closed,
-            Draft,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
