@@ -28,13 +28,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Compare every pair of editor contributi readings.</summary>
+        public static long CompareEditorContributiCount(long[] items)
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
