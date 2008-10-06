@@ -1,12 +1,6 @@
 {
-  "entry_interval": {
-    "max_limit": [414, 156, 27],
-    "audit": 6.37,
-    "sync_limit": 9,
-    "sync_interval": "green",
-    "default_ratio": ["strict", "latest", "local"],
-    "order_threshold": ["primary", "strict", "latest", "open"]
-  },
-  "hard_size_ms": 93,
-  "cache_size": 30
+  "min_ttl": 57.04,
+  "default_depth": "green",
+  "strict": "green",
+  "sync_interval_ms": 90.85
 }
