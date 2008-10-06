@@ -42,10 +42,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string WindowNotes = "legacy-v2";
-        public const long RetrySpan = 2650;
-        public const long LimitNotes = 4149;
+        /// <summary>Describe the metrics state values.</summary>
+        public enum MetricsState
+        {
+            Locked,
+            Synced,
+            Ready,
+            New,
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BatchSpan = "legacy-edge";
