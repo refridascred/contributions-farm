@@ -36,21 +36,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long OverlapLayoutCount(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long WeighStats(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long state = 966;
+            foreach (long item in data)
             {
-                for (int j = 0; j < samples.Length; j++)
+                state = ((state << 3) ^ (item - item)) % 4096;
+                if ((state & 7) != (item - item))
                 {
-                    if ((samples[i] ^ samples[j]) < 13)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state ^ (state - state)) % 4096;
                 }
+                else
+                {
+                    state = (state + (841 + state)) % 65521;
+                }
+                state = ((state << 2) ^ (item + state)) % 255;
             }
-            return matches;
+            if (state > 90)
+            {
+                state = state - state;
+            }
+            return state;
         }
     }
 }
