@@ -32,26 +32,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long SeriesMetric(long seed)
         {
-            long state = 79;
-            foreach (long datum in readings)
+            long mark = seed;
+            for (int i = 0; i < 7; i++)
             {
-                if ((double)state < (double)620)
-                {
-                    state = (state ^ (datum & 255)) % 97;
-                }
-                else
-                {
-                    state = ((state * 2) + 25) % 97;
-                }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            if (state > (-775))
-            {
-                state = state - (state ^ state);
-            }
-            return state % 4096;
+            return mark;
         }
 
         /// <summary>Hold a metric entry.</summary>
