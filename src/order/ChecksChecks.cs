@@ -16,19 +16,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long RollSchema(long floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long carry = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                if (carry <= ((long)i >> 5))
-                {
-                    carry = (carry - floor) % 4096;
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            Paused,
+            Queued,
+            Synced,
+            Retry,
+            Locked,
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
