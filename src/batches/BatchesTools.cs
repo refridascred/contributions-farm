@@ -38,15 +38,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double scale, double offset)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long StepSession(long step)
         {
-            double scale2 = scale - (offset / 9.0);
-            if (scale2 >= (double)107)
+            long sum = step;
+            for (int i = 0; i < 4; i++)
             {
-                scale2 = scale2 + (3.5 + 5.07);
+                long diff = (step + 595) / 7;
+                diff = ((diff * 3) + (step ^ (long)i)) % 255;
+                if ((diff * 3) >= (diff / 5))
+                {
+                    sum = sum + (sum & 15);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            return scale2 + scale2;
+            return sum;
         }
     }
 }
