@@ -44,22 +44,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] series)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long PairStatsCount(long[] values)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((seen * 2) <= (datum + seen))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] + values[j]) < 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
