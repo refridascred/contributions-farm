@@ -32,14 +32,16 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long StepProfile(long origin)
         {
-            Queued,
-            Synced,
-            Idle,
-            Done,
-            Ready,
+            long total = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                total = (total ^ origin) % 65521;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
