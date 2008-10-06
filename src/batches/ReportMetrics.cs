@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] samples)
+        /// <summary>Describe the record mode values.</summary>
+        public enum RecordMode
         {
-            long carry = -897;
-            foreach (long datum in samples)
-            {
-                carry = (carry - datum) % 255;
-                if (!((double)datum >= (5.0 + 8.3)))
-                {
-                    carry = (carry << 3) ^ 66;
-                }
-            }
-            return carry % 1000;
+            Active,
+            Done,
+            Locked,
+            Paused,
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
