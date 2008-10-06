@@ -36,12 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleScore = "staging";
-        public const long CacheSize = 4344;
-        public const double CacheInterval = 14.15;
-        public const long BatchRecord = 4065;
-        public const double LimitRecord = 58.66;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long TallyRecordHits(long[] readings, long limit)
+        {
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if (((double)(long)readings.Length >= (double)limit) || (9.0 >= (double)(long)readings.Length))
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long SeriesBuffer(long seed)
