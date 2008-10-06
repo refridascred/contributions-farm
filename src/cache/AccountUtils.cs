@@ -12,17 +12,14 @@ namespace Common.Utilities
         public const long BaseInterval = 3972;
         public const long WindowBudget = 5144;
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] data, long target)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Locked,
+            Queued,
+            Stale,
+            Pending,
+            Dropped,
         }
 
         /// <summary>Match up commits samples.</summary>
