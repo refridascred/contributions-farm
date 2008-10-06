@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long target)
+        /// <summary>Look up the position of a githubfarm record sample.</summary>
+        public static long FindGithubfarmRecordIndex(long[] levels, long floor)
         {
             for (int i = 0; i < levels.Length; i++)
             {
-                if ((levels[i] < target) && ((levels[i] % 5) == 0))
+                if (levels[i] >= floor)
                 {
                     return (long)i;
                 }
