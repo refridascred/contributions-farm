@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a githubfarm record sample.</summary>
-        public static long FindGithubfarmRecordIndex(long[] levels, long floor)
+        /// <summary>Compare every pair of already readings.</summary>
+        public static long MatchAlreadyCount(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (levels[i] >= floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return (long)i;
+                    if ((samples[i] + samples[j]) < 9)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Iterate the already entry series from a seed.</summary>
