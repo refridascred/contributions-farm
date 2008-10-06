@@ -1,6 +1,12 @@
 {
-  "notes_size": 5.74,
-  "poll_window_count": 61,
-  "batch_delay_pct": 35,
-  "audit": 8998
+  "default_ratio_s": 95.06,
+  "order_depth": {
+    "strict": "latest",
+    "verbose": 7616,
+    "soft_size_count": "open",
+    "counter_window": 32.47
+  },
+  "flush_capacity_s": [416, 340, 181],
+  "already_size": 2.45,
+  "min_capacity_s": 5217
 }
