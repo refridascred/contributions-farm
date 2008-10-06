@@ -35,13 +35,19 @@ namespace Common.Utilities
         public const long StepDepth = 9431;
         public const string StepProfile = "legacy-1";
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] data)
         {
-            public bool Flag { get; set; }
-            public double Size { get; set; }
-            public bool Rank { get; set; }
-            public long Total { get; set; }
+            long mark = 280;
+            foreach (long sample in data)
+            {
+                mark = (mark << 2) ^ sample;
+            }
+            if (mark > 22)
+            {
+                mark = ((mark << 3) ^ 161) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
