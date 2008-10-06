@@ -52,11 +52,13 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string BaseFactor = "cached";
-        public const long WindowBuffer = 70;
-        public const double BurstBudget = 33.63;
-        public const string RetryBuffer = "alpha-edge";
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Ready,
+            Queued,
+            Done,
+        }
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long CombineLayout(long[] items, long seed)
