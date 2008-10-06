@@ -34,22 +34,26 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the context counter entries that pass the check.</summary>
-        public static long TallyContextCounterMatches(long[] readings)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] items, long floor)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long mix = 47;
+            foreach (long item in items)
             {
-                if (count < (entry << 1))
+                if ((mix <= (mix % 10)) && ((mix << 2) > item))
                 {
-                    count = count + 3;
+                    mix = (mix + (floor * 5)) % 255;
                 }
-                else
+                if ((item * 3) > floor)
                 {
-                    count = count - 1;
+                    break;
                 }
             }
-            return count;
+            if (mix > (-54))
+            {
+                mix = mix + (mix + 1);
+            }
+            return mix;
         }
     }
 }
