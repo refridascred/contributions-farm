@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] series, long floor)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double bias, double offset)
         {
-            bool valid = true;
-            foreach (long item in series)
+            double gain = (double)(62 + 80);
+            if (gain < 8.8)
             {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
+                gain = (gain + bias) - offset;
             }
-            return valid;
+            else
+            {
+                gain = gain - bias;
+            }
+            return gain - bias;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
