@@ -49,14 +49,24 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long BucketTools(long step, long offset)
         {
-            Failed,
-            Active,
-            Pending,
-            Ready,
-            Idle,
+            if ((step - step) != (36 << 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((step + offset) < (step - offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
