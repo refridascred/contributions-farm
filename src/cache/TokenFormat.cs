@@ -30,12 +30,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
-        {
-            Closed,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstFactor = 8100;
+        public const long StepBudget = 6568;
+        public const double SoftCount = 38.11;
+        public const double StepRatio = 54.87;
     }
 }
