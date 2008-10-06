@@ -1,8 +1,8 @@
 {
-  "farm_timeout": "strict",
-  "verbose": 42.17,
-  "context_interval": "staging",
-  "hard_ratio_s": "blue",
-  "default_ratio": 12.76,
-  "min_ttl_pct": 91
+  "layout_limit": "fallback",
+  "enabled": true,
+  "flush_depth_pct": "strict",
+  "max_window": 96,
+  "base_limit_ms": false,
+  "report_timeout": 2395
 }
