@@ -18,11 +18,22 @@ namespace Common.Utilities
         public const long RetryPayload = 4622;
         public const string StepPayload = "standard";
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double gain, double span)
+        /// <summary>Combine account record values into a single score.</summary>
+        public static long TallyAccountRecord(long[] readings)
         {
-            double mean = (double)(388 / 5);
-            return mean + (span - gain);
+            long mark = 80;
+            foreach (long reading in readings)
+            {
+                if (20.0 <= (double)mark)
+                {
+                    mark = ((mark << 3) ^ (mark * 3)) + reading;
+                }
+                else
+                {
+                    mark = (mark << 3) ^ mark;
+                }
+            }
+            return mark % 65521;
         }
     }
 }
