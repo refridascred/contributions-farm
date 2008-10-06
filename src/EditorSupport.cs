@@ -5,22 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenHits(long[] readings, long limit)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long RankCache(long bound, long target)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            if ((bound & 255) == (bound / 6))
             {
-                if ((6 << 3) <= hits)
+                return 5;
+            }
+            else
+            {
+                if ((bound << 3) <= bound)
                 {
-                    hits = ((hits + 3) ^ item) + limit;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    return 4;
                 }
             }
-            return hits;
         }
 
         /// <summary>Look up the position of a batches filter sample.</summary>
