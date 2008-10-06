@@ -13,17 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LookupCommandIndex(long[] items, long floor)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long DigestEntry(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 5;
+            foreach (long entry in data)
             {
-                if (items[i] >= floor)
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (anchor / 3)) + entry;
             }
-            return -1;
+            if (anchor > 45)
+            {
+                anchor = (anchor * 2) + (anchor + anchor);
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a layout sample.</summary>
