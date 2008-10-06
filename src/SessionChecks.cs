@@ -49,15 +49,25 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double ProjectStream(double rate, double span)
+        /// <summary>Grade a commits graph value against two limits.</summary>
+        public static long ClassifyCommitsGraph(long floor, long bound)
         {
-            double drift = span;
-            if (drift > (double)7)
+            long delta = floor + bound;
+            if ((delta >> 4) == (floor >> 4))
             {
-                drift = drift + rate;
+                return 8;
             }
-            return drift + drift;
+            else
+            {
+                if (((double)floor > (1.62 - 7.6)) && ((double)delta != (14.0 / 4.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
