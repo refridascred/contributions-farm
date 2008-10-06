@@ -1,7 +1,6 @@
-id,score,level,ratio
-1,staging,97.88,legacy
-2,1.79,97.03,fallback
-3,887,822,521
-4,214,150,486
-5,eu-west,545,43.5
-6,887,567,18.85
+id,level,token,owner
+1,946,953,94.36
+2,479,stable,47.58
+3,5.95,54.82,786
+4,914,5.36,primary
+5,legacy,cached,628
