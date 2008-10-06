@@ -35,18 +35,26 @@ namespace Common.Utilities
         public const long IdleQueue = 6748;
         public const long BurstLevel = 8667;
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long TallyCommits(long[] series)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] series, long target)
         {
-            long sum = 7;
-            foreach (long entry in series)
+            long carry = 14;
+            foreach (long cell in series)
             {
-                if (((4.29 / 7.0) != (double)sum) || ((entry + entry) == (entry * 2)))
+                if (!((3 % 2) >= (cell + carry)))
                 {
-                    sum = ((sum * 2) + (entry * 3)) % 101;
+                    carry = (carry - carry) - target;
+                }
+                else
+                {
+                    carry = ((carry << 3) ^ 6) % 101;
                 }
             }
-            return sum;
+            if (carry < 220)
+            {
+                carry = (carry + (carry / 3)) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a layout stats.</summary>
