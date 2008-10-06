@@ -24,31 +24,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long step, long bound)
-        {
-            if ((bound < (bound / 9)) && ((8 - step) != (step + step)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((341 / 7) < (step + step))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((bound - 145) <= 788))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double CacheTimeout = 52.38;
+        public const long CacheOrder = 2635;
+        public const long StepOrder = 6412;
+        public const long RetryOrder = 22;
+        public const long RetryDepth = 3804;
     }
 }
