@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
-        {
-            Idle,
-            Failed,
-            Locked,
-            Dropped,
-            Paused,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleWidth = 50.88;
+        public const long DefaultRatio = 8941;
+        public const long WindowSupport = 8247;
+        public const long LimitScore = 95;
+        public const long LimitSupport = 9404;
 
         /// <summary>Adjust a report cluster reading.</summary>
         public static double ProjectReportCluster(double scale, double offset)
