@@ -5,32 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long SortProfile(long floor, long offset)
+        /// <summary>Count layout pairs that satisfy a relation.</summary>
+        public static long MatchLayoutCount(long[] readings)
         {
-            long gap = floor ^ offset;
-            if ((offset / 5) > (gap << 3))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((offset * 4) <= 57)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((gap & 7) >= (floor + floor))
+                    if ((readings[i] + readings[j]) == 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Hold a support record.</summary>
