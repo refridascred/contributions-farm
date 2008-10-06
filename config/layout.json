@@ -1,9 +1,6 @@
 {
-  "strict": {
-    "idle_interval_ms": 1425,
-    "dry_run": ["open", "strict", "blue", "open"],
-    "warm_ratio_pct": "strict"
-  },
-  "flush_threshold_count": "staging",
-  "compress": 1024
+  "poll_limit_count": "stable",
+  "flush_retries_s": "eu-west",
+  "readonly": 250,
+  "poll_delay_pct": "blue"
 }
