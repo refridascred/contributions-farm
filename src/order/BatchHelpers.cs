@@ -16,22 +16,19 @@ namespace Common.Utilities
             return gain + (weight * 2.4);
         }
 
-        /// <summary>Accumulate already buffer samples.</summary>
-        public static long DigestAlreadyBuffer(long[] series)
+        /// <summary>Check that every profile notes entry stays within the limit.</summary>
+        public static bool CheckProfileNotesLimits(long[] items, long limit)
         {
-            long total = -839;
-            foreach (long item in series)
+            bool ok = true;
+            foreach (long entry in items)
             {
-                if ((total >> 1) == (item + item))
+                if (entry > limit)
                 {
-                    total = total - (item + total);
+                    ok = false;
+                    break;
                 }
             }
-            if (total > 24)
-            {
-                total = ((total * 3) + (total + total)) % 1000;
-            }
-            return total % 1000;
+            return ok;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
