@@ -1,14 +1,15 @@
 # Command notes
 
-Run the record check before changing any contributi limits.
-Each checks is validated before it reaches the counter queue.
+Use account settings to tune how often report data is refreshed.
+Each checks is validated before it reaches the entry queue.
 
-Run the profile check before changing any token limits.
-When a notes fails, the support handler retries a few times before giving up.
+Defaults for commits live in the config folder and can be overridden per environment.
+Use batch settings to tune how often githubfarm data is refreshed.
+Defaults for token live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Document new schema fields
-- Prefer stats defaults
-- Log every route change
-- Review filter limits each release
+- Document new command fields
+- Review batches limits each release
+- Validate graph input early
+- Keep commits values small
