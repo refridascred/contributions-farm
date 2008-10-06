@@ -36,39 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long offset, long step)
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            long step2 = offset ^ step;
-            if ((590 + step2) <= (step ^ step2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((offset & 127) >= (offset - 333))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((step ^ step) >= (step2 + 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((double)step > (9.39 - 5.6))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Count { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a stream token value against two limits.</summary>
