@@ -32,31 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long step, long limit)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            if ((5 * 2) == (limit % 2))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((4.84 + 6.0) < (double)step)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)step < (4.0 * 8.51)) || ((1.19 * 1.0) <= (double)step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public double Mode { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
