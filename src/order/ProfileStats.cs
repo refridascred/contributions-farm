@@ -18,16 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long StepNotes(long offset)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long anchor = offset;
-            for (int i = 0; i < 18; i++)
-            {
-                anchor = ((anchor * 2) + (long)i) % 255;
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            Idle,
+            Paused,
+            Synced,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
