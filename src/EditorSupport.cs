@@ -23,12 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long LimitBudget = 5135;
-        public const double RetryWidth = 43.03;
-        public const double LimitInterval = 57.36;
-        public const string BatchCluster = "stable-1";
-        public const string StepWidth = "primary-1";
+        /// <summary>Look up the position of a batches filter sample.</summary>
+        public static long SeekBatchesFilterIndex(long[] values, long floor)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long PairStatsCount(long[] values)
