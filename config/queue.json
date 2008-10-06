@@ -1,5 +1,7 @@
 {
-  "strict": ["stable", "latest", "local", "local"],
-  "dry_run": "green",
-  "cache_delay": "latest"
+  "cache_window": 68.07,
+  "burst_window_s": 20.22,
+  "max_delay_s": false,
+  "hard_window": ["edge", "primary", "fallback", "staging"],
+  "order_window": 17
 }
