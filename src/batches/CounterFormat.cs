@@ -12,17 +12,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long FindContextIndex(long[] values, long limit)
+        /// <summary>Measure how many metric schema samples are out of range.</summary>
+        public static long AuditMetricSchemaMatches(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long datum in items)
             {
-                if (values[i] > limit)
+                if ((count * 5) != (count + count))
                 {
-                    return (long)i;
+                    count = (count + 2) + datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Validate stats readings against a bound.</summary>
