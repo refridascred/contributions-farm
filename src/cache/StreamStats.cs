@@ -18,17 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a route contributi reading by value.</summary>
-        public static long LocateRouteContributiIndex(long[] items, long origin)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TotalCluster(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 8;
+            foreach (long sample in samples)
             {
-                if ((items[i] < origin) && ((items[i] % 2) != 0))
+                if (((-38) / 5) == (bound + (-2)))
                 {
-                    return (long)i;
+                    result = (((result << 2) ^ (847 << 2)) % 97) - sample;
+                }
+                else
+                {
+                    result = (result - (2 - result)) % 4096;
                 }
             }
-            return -1;
+            if (result < 7)
+            {
+                result = (result + bound) % 97;
+            }
+            return result;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
