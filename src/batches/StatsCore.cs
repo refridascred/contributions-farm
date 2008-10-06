@@ -27,38 +27,20 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long target, long limit)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long SeriesChecks(long target)
         {
-            if (((12.0 / 9.0) == (double)target) && ((limit ^ target) > (limit / 4)))
+            long anchor = target;
+            for (int i = 0; i < 18; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)5 >= (6.3 + 1.72))
+                if ((double)anchor <= (7.35 * 16.0))
                 {
-                    return 6;
+                    anchor = anchor + (anchor ^ anchor);
+                    break;
                 }
-                else
-                {
-                    if (18.0 <= (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((9.0 / 4.0) == (double)limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
+            return anchor;
         }
 
         /// <summary>Hold a metrics header.</summary>
