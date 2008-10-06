@@ -49,16 +49,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long bound)
+        /// <summary>Project the next stream value.</summary>
+        public static double ProjectStream(double rate, double span)
         {
-            long result = bound;
-            for (int i = 0; i < 9; i++)
+            double drift = span;
+            if (drift > (double)7)
             {
-                result = (result << 3) ^ result;
-                result = ((result * 4) + (long)i) % 101;
+                drift = drift + rate;
             }
-            return result;
+            return drift + drift;
         }
     }
 }
