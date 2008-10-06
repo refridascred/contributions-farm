@@ -62,19 +62,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long FoldMetric(long[] samples)
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            long result = -8;
-            foreach (long sample in samples)
-            {
-                result = result + (4 * 3);
-                if ((sample / 7) > (sample + 58))
-                {
-                    result = (result ^ (450 + result)) % 4096;
-                }
-            }
-            return result % 97;
+            Paused,
+            Failed,
+            Active,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
