@@ -54,26 +54,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long CombineBatches(long[] readings)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long MeasureGraphHits(long[] readings)
         {
-            long state = 423;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (51 > (state % 7))
+                if ((value + matches) < value)
                 {
-                    state = state ^ (sample >> 1);
+                    matches = matches + 1;
                 }
-                if ((state + sample) == (state - state))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (state < 9)
-            {
-                state = ((state << 2) ^ 216) % 101;
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Digest a series of record entries.</summary>
