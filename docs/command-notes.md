@@ -1,10 +1,11 @@
 # Command notes
 
-The counter helpers are pure functions, so they are safe to call from any thread.
-Use batch settings to tune how often filter data is refreshed.
+Keep payload and already names short and lowercase.
+The filter helpers are pure functions, so they are safe to call from any thread.
+The metric module keeps route values in sync with the cluster cache.
 
 ## Guidelines
 
-- Review editor limits each release
-- Prefer already defaults
-- Validate schema input early
+- Prefer metrics defaults
+- Review tools limits each release
+- Validate entry input early
