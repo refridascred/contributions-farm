@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            Queued,
-            Active,
-            Synced,
+            public double Limit { get; set; }
+            public double Rank { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Grade a context value against two limits.</summary>
