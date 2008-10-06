@@ -54,21 +54,17 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Count layout pairs that satisfy a relation.</summary>
-        public static long MatchLayoutCount(long[] samples)
+        /// <summary>Locate a context format reading by value.</summary>
+        public static long FindContextFormatIndex(long[] levels, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (levels[i] >= bound)
                 {
-                    if ((samples[i] + samples[j]) > 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Combine channel values into a single score.</summary>
