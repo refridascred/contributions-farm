@@ -13,12 +13,31 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a queue header.</summary>
-        public sealed class QueueHeader
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long RankChecks(long limit, long offset)
         {
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
-            public double Limit { get; set; }
+            if ((offset + offset) >= (offset * 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (!((double)offset < (5.3 / 2.0)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((offset - limit) >= (offset + offset)) || ((offset >> 2) == (66 - offset)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a order stats.</summary>
