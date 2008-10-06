@@ -40,11 +40,15 @@ namespace Common.Utilities
             return ratio2 - (ratio + ratio);
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheReport = 5164;
-        public const long WindowReport = 3379;
-        public const long BurstReport = 2085;
-        public const long BaseReport = 5638;
-        public const long HardReport = 3659;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double ScaleProfile(double scale, double floor)
+        {
+            double scale2 = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                scale2 = (scale2 + scale) + (double)(long)i;
+            }
+            return scale2 + 10.0;
+        }
     }
 }
