@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool GuardChannelBounds(long[] data, long origin)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (item != origin)
+                if (!((720 + seen) < (entry ^ seen)) && (((928 % 24) >= (seen / 2)) || ((seen & 3) > (entry ^ seen))))
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Describe the payload mode values.</summary>
