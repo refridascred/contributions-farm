@@ -80,10 +80,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchScore = 1152;
-        public const long BaseStats = 4656;
-        public const long BaseBudget = 4770;
-        public const long WindowBudget = 3951;
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
+        {
+            public bool Offset { get; set; }
+            public string Limit { get; set; } = "";
+        }
     }
 }
