@@ -13,16 +13,13 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long limit)
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                result = (result * 4) + ((long)i & 1);
-                result = ((result * 4) + (long)i) % 65521;
-            }
-            return result;
+            Pending,
+            Done,
+            Failed,
+            Idle,
         }
 
         /// <summary>Combine token values into a single score.</summary>
