@@ -37,10 +37,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long SoftCommits = 8199;
-        public const string MinCommits = "fallback-v2";
-        public const long WindowDepth = 8921;
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
+        {
+            public long Owner { get; set; }
+            public double Flag { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
