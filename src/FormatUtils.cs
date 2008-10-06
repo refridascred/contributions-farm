@@ -73,18 +73,9 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksOutliers(long[] samples, long step)
-        {
-            long matches = 0;
-            foreach (long sample in samples)
-            {
-                if ((matches * 5) >= sample)
-                {
-                    matches = (matches + 1) - step;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BaseAccount = 567;
+        public const double WindowAccount = 81.51;
+        public const string DefaultAccount = "staging";
     }
 }
