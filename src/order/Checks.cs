@@ -50,11 +50,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a metric figure with a bias.</summary>
-        public static double BlendMetric(double gain, double offset)
+        /// <summary>Derive the next githubfarm command value from a seed.</summary>
+        public static long RollGithubfarmCommand(long floor)
         {
-            double bias = offset;
-            return (bias + (double)918) + gain;
+            long score = floor;
+            for (int i = 0; i < 12; i++)
+            {
+                score = score - (score - 88);
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
