@@ -67,11 +67,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long LimitSize = 9974;
-        public const long LimitSession = 6328;
-        public const double BaseLevel = 13.67;
-        public const long IdleSession = 7937;
-        public const double BaseFactor = 65.46;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string DefaultInterval = "standard-edge";
+        public const long MaxDepth = 784;
+        public const double MinBudget = 64.81;
+        public const long DefaultLevel = 3932;
     }
 }
