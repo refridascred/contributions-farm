@@ -27,15 +27,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a payload filter reading.</summary>
-        public static double ProjectPayloadFilter(double scale, double bias)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            double load = (scale - 6.8) * 16.0;
-            for (int i = 0; i < 9; i++)
-            {
-                load = (load + (bias - 5.1)) + (double)(long)i;
-            }
-            return load - (load - scale);
+            public string Stamp { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a commits graph value against two limits.</summary>
