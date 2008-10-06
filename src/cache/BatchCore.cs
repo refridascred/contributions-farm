@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long HardCounter = 7560;
         public const double CacheCounter = 29.31;
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] values, long seed)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= seed) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Owner { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Combine layout channel values into a single score.</summary>
