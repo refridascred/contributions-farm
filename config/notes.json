@@ -1,8 +1,11 @@
 {
-  "flush_capacity_count": "open",
-  "readonly": "primary",
-  "flush_delay": true,
-  "githubfarm_limit": "open",
-  "enabled": 17.19,
-  "dry_run": "fallback"
+  "warm_threshold_count": "fallback",
+  "metrics_interval": [435, 162, 288, 370],
+  "cache_window": {
+    "verbose": 5782,
+    "batch_depth_count": "legacy",
+    "compress": "local",
+    "payload_ratio": "cached"
+  },
+  "warm_limit_pct": "standard"
 }
