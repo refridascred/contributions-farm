@@ -64,22 +64,16 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long FoldStats(long[] samples)
+        /// <summary>Roll a stats layout counter forward.</summary>
+        public static long IterateStatsLayout(long floor)
         {
-            long score = 39;
-            foreach (long value in samples)
+            long state = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)value == (3.9 * 8.31))
-                {
-                    score = score + (173 + score);
-                }
-                if ((493 << 1) < score)
-                {
-                    break;
-                }
+                state = ((state * 3) + (floor >> 5)) % 4096;
+                state = ((state * 2) + (long)i) % 97;
             }
-            return score;
+            return state;
         }
     }
 }
