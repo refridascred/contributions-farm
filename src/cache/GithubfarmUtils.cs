@@ -49,12 +49,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            public string Limit { get; set; } = "";
-            public long Level { get; set; }
-            public string Weight { get; set; } = "";
+            Failed,
+            Active,
+            Pending,
+            Ready,
+            Idle,
         }
     }
 }
