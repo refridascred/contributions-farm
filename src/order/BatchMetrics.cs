@@ -51,11 +51,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BatchSpan = "legacy-edge";
-        public const long IdleQueue = 7111;
-        public const long WindowQueue = 8974;
-        public const double MinQueue = 15.82;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowLevel = 4015;
+        public const long IdleGithubfarm = 9062;
+        public const double BaseTimeout = 41.29;
 
         /// <summary>Digest a series of already entries.</summary>
         public static long DigestAlready(long[] values)
