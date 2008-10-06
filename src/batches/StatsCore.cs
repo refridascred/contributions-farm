@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long DeriveBuffer(long step)
         {
-            Retry,
-            Paused,
-            Idle,
-            Dropped,
+            long mark = step;
+            for (int i = 0; i < 18; i++)
+            {
+                if (!(((mark * 4) <= (step - (long)i)) || ((mark - step) >= step)))
+                {
+                    mark = (mark - mark) % 4096;
+                }
+                mark = ((mark * 5) + (long)i) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Accumulate route metrics samples.</summary>
