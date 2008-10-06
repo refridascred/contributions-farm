@@ -1,9 +1,8 @@
 # entry settings
-batch_limit:
-  entry_window: 4404
-  format_depth:
-    - local
-    - latest
-  metric_ratio: 82
-audit: local
-idle_delay_pct: false
+soft_delay: green
+retry_ttl_s: strict
+batch_ratio_s:
+  - 139
+  - 447
+  - 167
+  - 304
