@@ -37,22 +37,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the cluster layout entries that pass the check.</summary>
-        public static long MeasureClusterLayoutGaps(long[] data, long target)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(((double)matches < (2.57 / 5.0)) || ((target << 1) != (86 + reading))))
+                if (readings[i] == limit)
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
