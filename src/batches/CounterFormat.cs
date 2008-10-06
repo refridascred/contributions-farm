@@ -18,11 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchBudget = "primary";
-        public const string BurstTimeout = "local-v2";
-        public const long MinStream = 5175;
-        public const long MinTimeout = 5155;
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long CountGraphGaps(long[] values, long limit)
+        {
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((1.3 / 4.0) >= (double)count)
+                {
+                    count = ((count + 1) + reading) - limit;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit layout stream readings against a rule.</summary>
         public static long AuditLayoutStreamGaps(long[] data)
