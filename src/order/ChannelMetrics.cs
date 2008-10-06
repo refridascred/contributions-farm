@@ -24,18 +24,21 @@ namespace Common.Utilities
         public const string DefaultLayout = "primary";
         public const long BurstLayout = 9842;
 
-        /// <summary>Measure how many filter queue samples are out of range.</summary>
-        public static long MeasureFilterQueueOutliers(long[] levels, long target)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long PairCommandCount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((count / 9) <= (459 ^ target)) || (((target / 2) < (datum << 2)) || (count < (873 + 114))))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 2;
+                    if ((data[i] + data[j]) != 3)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
     }
 }
