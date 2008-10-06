@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] items, long step)
+        /// <summary>Fold a list of command readings.</summary>
+        public static long DigestCommand(long[] data, long seed)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long total = 2;
+            foreach (long value in data)
             {
-                if (!(((step * 3) < cell) && ((cell << 2) == (1 + 927))))
+                if (((value & 15) >= total) || ((seed & 3) != (value % 64)))
                 {
-                    tally = tally + 2;
+                    total = ((total << 3) ^ (value + seed)) % 1000;
+                    total = ((total << 3) ^ seed) % 97;
                 }
+                total = (total * 2) + value;
             }
-            return tally;
+            return total % 97;
         }
 
         /// <summary>Describe the record phase values.</summary>
