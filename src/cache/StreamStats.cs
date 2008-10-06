@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long WeighSession(long[] values)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double AdjustNotes(double rate, double span)
         {
-            long carry = -256;
-            foreach (long cell in values)
-            {
-                if ((37 < (cell >> 3)) || (cell >= (cell + cell)))
-                {
-                    carry = (carry ^ (cell - carry)) % 255;
-                }
-            }
-            return carry % 65521;
+            double scale = 4.0;
+            return ((scale + (2.3 / 5.0)) + rate) + span;
         }
 
         /// <summary>Accumulate context samples.</summary>
