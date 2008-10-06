@@ -49,18 +49,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Adjust a command reading.</summary>
-        public static double ProjectCommand(double scale, double offset)
+        public static double SmoothCommand(double weight, double floor)
         {
-            double rate = (double)(-9) - offset;
-            if (rate > (double)0)
-            {
-                rate = rate + (scale * 8.7);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate - (double)8) - (double)(long)i;
-            }
-            return rate + (rate + 16.0);
+            double gain = (double)((-2) % 24);
+            return (gain - weight) + floor;
         }
 
         /// <summary>Match up notes samples.</summary>
