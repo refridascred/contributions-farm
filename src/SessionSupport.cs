@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long RollFilter(long limit)
         {
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            long total = limit;
+            for (int i = 0; i < 23; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
