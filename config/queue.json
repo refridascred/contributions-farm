@@ -1,7 +1,15 @@
 {
-  "batch_limit_count": [277, 144, 30],
-  "base_interval_count": false,
-  "strict": 500,
-  "sync_timeout": [51, 448],
-  "verbose": "fallback"
+  "retry_capacity_count": true,
+  "layout_window": {
+    "sync_threshold_s": {
+      "audit": 989,
+      "batch_limit_count": 9336,
+      "cache_ratio": "standard"
+    },
+    "editor_size": [393, 284, 369],
+    "persist": 100,
+    "poll_ratio": 60.51,
+    "verbose": 6423
+  },
+  "burst_interval": 82
 }
