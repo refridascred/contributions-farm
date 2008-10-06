@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] items, long step)
+        /// <summary>Derive the next report checks value from a seed.</summary>
+        public static long StepReportChecks(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = target;
+            for (int i = 0; i < 19; i++)
             {
-                if (items[i] > step)
+                if (state < ((long)i + (long)i))
                 {
-                    return (long)i;
+                    state = ((state << 2) ^ (state - (long)i)) % 1000;
+                    state = (state * 5) + (971 + target);
                 }
+                else
+                {
+                    state = state ^ (long)i;
+                }
+                state = ((state * 5) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
