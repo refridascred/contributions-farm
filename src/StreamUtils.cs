@@ -49,17 +49,15 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Find the first editor metric entry that matches the target.</summary>
-        public static long SeekEditorMetricIndex(long[] samples, long step)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] levels, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 144;
+            foreach (long entry in levels)
             {
-                if (samples[i] < step)
-                {
-                    return (long)i;
-                }
+                sum = ((((sum << 2) ^ (70 & 3)) % 65521) ^ entry) - seed;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
