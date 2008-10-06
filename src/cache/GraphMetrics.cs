@@ -37,21 +37,19 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count cache metrics pairs that satisfy a relation.</summary>
-        public static long OverlapCacheMetricsCount(long[] values)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long DigestCommits(long[] samples, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 821;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((double)sample == (5.0 + 2.73)))
                 {
-                    if ((values[i] ^ values[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum + (origin % 5)) % 255;
                 }
+                sum = sum ^ (origin - sum);
             }
-            return matches;
+            return sum % 97;
         }
 
         /// <summary>Project the next metric value.</summary>
