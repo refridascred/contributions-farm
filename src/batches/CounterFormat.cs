@@ -27,15 +27,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long TallyAlready(long[] readings, long limit)
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            long anchor = -531;
-            foreach (long item in readings)
-            {
-                anchor = (anchor + (limit + item)) % 97;
-            }
-            return anchor;
+            Done,
+            Locked,
+            Retry,
+            Draft,
+            Active,
         }
     }
 }
