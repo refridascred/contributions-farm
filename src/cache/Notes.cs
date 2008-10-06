@@ -74,32 +74,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long GradeReport(long offset, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long span = offset ^ target;
-            if (target >= 8)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset - offset) > target)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (span > (target * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit already filter readings against a rule.</summary>
