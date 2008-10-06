@@ -29,11 +29,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            public string Token { get; set; } = "";
+            public long Total { get; set; }
+            public double Ratio { get; set; }
             public bool Limit { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
