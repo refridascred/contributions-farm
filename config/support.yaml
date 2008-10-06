@@ -1,23 +1,15 @@
 # support settings
-soft_threshold_ms:
-  - fallback
-  - blue
-  - cached
-cache_limit_ms: 61
-verbose:
-  cache_ratio: true
-  already_timeout:
-    - 43
-    - 190
-    - 210
-    - 150
-  soft_depth_pct: fallback
-  order_ttl: 67.35
-  flush_depth_s: 60
-checks_delay: 37.12
-channel_ttl:
-  - strict
-  - staging
-  - standard
-  - eu-west
-report_timeout: legacy
+format_limit: 100
+default_delay: 3680
+idle_delay: staging
+idle_timeout:
+  default_timeout:
+    - strict
+    - standard
+  poll_depth_count: 45
+  enabled: 100
+base_threshold_pct:
+  - 298
+  - 68
+  - 363
+  - 6
