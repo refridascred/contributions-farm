@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string MaxRatio = "standard-v2";
-        public const string WindowLayout = "strict";
-        public const double IdleLayout = 4.88;
-        public const long RetrySpan = 3342;
-        public const string SoftLayout = "stable-1";
+        /// <summary>Match up graph samples.</summary>
+        public static long OverlapGraphCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double MaxFarm = 76.03;
