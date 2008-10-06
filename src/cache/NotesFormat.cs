@@ -19,21 +19,16 @@ namespace Common.Utilities
         public const long BatchInterval = 6154;
         public const double BaseWidth = 37.73;
 
-        /// <summary>Match up batches samples.</summary>
-        public static long CompareBatchesCount(long[] data)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                result = (result ^ (long)i) % 1000;
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return seen;
+            return result;
         }
     }
 }
