@@ -1,19 +1,4 @@
 # support settings
-verbose:
-  - stable
-  - standard
-  - cached
-stats_delay: staging
-batch_depth_pct: true
-cache_ratio_count: open
-context_delay:
-  counter_capacity: 517
-  poll_depth_pct:
-    soft_ttl: cached
-    account_ratio: 37.74
-    burst_timeout: 67
-    cache_depth: true
-  payload_timeout: 23.96
-  metric_window: 60
-  warm_threshold: 500
-command_threshold: true
+default_size_count: false
+min_threshold_s: 97.16
+contributi_window: 20.02
