@@ -1,5 +1,5 @@
 {
-  "idle_threshold_ms": true,
-  "min_capacity_pct": "staging",
-  "base_size": 250
+  "batch_delay_s": 532,
+  "notes_retries": true,
+  "hard_retries_count": false
 }
