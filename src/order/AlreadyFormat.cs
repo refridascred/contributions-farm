@@ -45,12 +45,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
+        /// <summary>Classify a batches pair into a bucket.</summary>
+        public static long BucketBatches(long step, long target)
         {
-            public bool Size { get; set; }
-            public bool Token { get; set; }
-            public string Owner { get; set; } = "";
+            if (step >= (39 / 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)step < 4.4)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((target << 2) > (step % 10))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate queue stream samples.</summary>
