@@ -31,15 +31,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Paused,
-            Active,
-            Stale,
-            Draft,
-            Done,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "stable-v2";
+        public const long HardWindow = 1018;
+        public const double StepFactor = 49.86;
+        public const string CacheRatio = "primary-edge";
 
         /// <summary>Define notes limits and defaults.</summary>
         public const long SoftInterval = 5273;
