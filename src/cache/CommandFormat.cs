@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool VerifyFarmRange(long[] samples, long origin)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
