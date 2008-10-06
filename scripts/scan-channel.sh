@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary legacy; do
+for item in legacy stable fallback blue; do
     log "checking ${item}"
 done
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 2))
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
 done
-log "total ${total}"
-
-mode="${1:-strict}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+log "ran ${count} rounds"
