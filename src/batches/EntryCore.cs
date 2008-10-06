@@ -12,23 +12,13 @@ namespace Common.Utilities
         public const long RetrySpan = 3342;
         public const string SoftLayout = "stable-1";
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long DigestCommits(long[] readings)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long acc = 40;
-            foreach (long entry in readings)
-            {
-                acc = acc ^ entry;
-                if (entry <= acc)
-                {
-                    break;
-                }
-            }
-            if (acc < (-3))
-            {
-                acc = ((acc * 4) + (acc * 4)) % 101;
-            }
-            return acc;
+            public double Size { get; set; }
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
