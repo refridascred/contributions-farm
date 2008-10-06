@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] items, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in items)
-            {
-                if ((double)limit >= (19.0 * 8.3))
-                {
-                    seen = (seen + 2) ^ reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CacheFactor = 5847;
+        public const double BaseWidth = 69.85;
+        public const long BatchPayload = 9193;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long DeriveChannel(long offset)
