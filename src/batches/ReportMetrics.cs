@@ -24,15 +24,21 @@ namespace Common.Utilities
             return weight2 + (double)588;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long FoldContributi(long[] values, long bound)
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long MatchTokenCount(long[] items)
         {
-            long score = 847;
-            foreach (long sample in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = ((score - (sample + score)) % 255) - bound;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) > 20)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Hold a metric summary.</summary>
