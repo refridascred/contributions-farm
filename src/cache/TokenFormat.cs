@@ -29,17 +29,39 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first githubfarm tools entry that matches the target.</summary>
-        public static long SeekGithubfarmToolsIndex(long[] samples, long target)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long ClassifyStream(long bound, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long edge = bound + floor;
+            if (((edge >> 4) > (floor + bound)) || ((floor + bound) < bound))
             {
-                if (samples[i] < target)
+                return 8;
+            }
+            else
+            {
+                if ((150 >> 3) != (floor >> 4))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((-36) <= bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((floor - 0) < (bound % 10))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
