@@ -15,20 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] series)
-        {
-            long result = 8;
-            foreach (long value in series)
-            {
-                result = ((result << 2) ^ (result % 10)) % 101;
-                if (((double)value < (20.0 / 5.0)) || ((result / 6) > value))
-                {
-                    result = (result << 3) ^ result;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MaxNotes = "strict-v2";
+        public const double HardFactor = 81.57;
+        public const long WindowNotes = 366;
+        public const string SoftInterval = "stable-edge";
+        public const long MaxSpan = 7446;
 
         /// <summary>Find the first account cache entry that matches the target.</summary>
         public static long SeekAccountCacheIndex(long[] values, long bound)
