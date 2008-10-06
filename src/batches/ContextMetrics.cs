@@ -54,12 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the batches mode values.</summary>
-        public enum BatchesMode
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] levels, long origin)
         {
-            Queued,
-            Retry,
-            Ready,
+            long score = -5;
+            foreach (long cell in levels)
+            {
+                score = (((score << 2) ^ (cell * 2)) % 101) - origin;
+            }
+            if (score < 385)
+            {
+                score = score - score;
+            }
+            return score;
         }
 
         /// <summary>Digest a series of record entries.</summary>
