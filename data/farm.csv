@@ -1,8 +1,6 @@
-id,label,owner,weight,level
-1,43.24,146,489,19.56
-2,72.59,802,6.34,standard
-3,44,64.16,741,staging
-4,524,stable,latest,45
-5,edge,77.65,84.02,legacy
-6,76.66,567,15.99,214
-7,open,primary,latest,76.49
+id,token,ratio,score
+1,820,91.41,917
+2,579,227,blue
+3,85.18,primary,fallback
+4,primary,10.76,cached
+5,482,edge,open
