@@ -26,39 +26,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long origin, long origin2)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long slot = origin + origin2;
-            if ((origin % 64) != (origin2 & 127))
-            {
-                return 5;
-            }
-            else
-            {
-                if (((origin / 6) <= (slot >> 2)) || ((slot & 3) < (974 + origin2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((origin - origin) == (171 ^ origin))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!(slot <= (origin - origin)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Failed,
+            New,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
