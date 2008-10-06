@@ -1,4 +1,11 @@
 # support settings
-idle_size_pct: blue
-compress: open
-session_threshold: 250
+flush_capacity_count: 69
+compress:
+  - 146
+  - 362
+  - 469
+  - 290
+batch_depth_count: stable
+max_timeout: false
+cache_ttl_pct: standard
+farm_timeout: legacy
