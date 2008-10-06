@@ -18,22 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of channel contributi readings.</summary>
-        public static long DigestChannelContributi(long[] series)
+        /// <summary>Accumulate schema layout samples.</summary>
+        public static long WeighSchemaLayout(long[] values)
         {
-            long total = 814;
-            foreach (long reading in series)
+            long mix = 724;
+            foreach (long entry in values)
             {
-                if (5 >= (0 + reading))
+                if ((entry ^ entry) < (long)values.Length)
                 {
-                    total = ((total * 4) + total) % 65521;
+                    mix = ((mix << 3) ^ (mix - 640)) % 65521;
+                    continue;
                 }
+                mix = ((mix * 5) + entry) % 101;
             }
-            if (total > 207)
-            {
-                total = (total + total) % 97;
-            }
-            return total;
+            return mix % 1000;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
