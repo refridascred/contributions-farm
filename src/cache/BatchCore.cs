@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Count the notes contributi entries that pass the check.</summary>
+        public static long TallyNotesContributiHits(long[] data)
         {
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Size { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (value <= (5 + value))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a already counter forward.</summary>
