@@ -28,31 +28,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long step, long target)
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            if ((double)step <= (18.0 * 5.57))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((9.66 - 2.6) < (double)step) || (step > (target - target)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (!((target * 4) <= step))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Synced,
+            Idle,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the commits class values.</summary>
