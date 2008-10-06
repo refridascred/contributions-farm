@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowOutliers(long[] data)
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool CheckStatsRange(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool flag = true;
+            foreach (long sample in samples)
             {
-                if (((6.2 / 7.0) > (double)item) && (count >= item))
+                if (sample <= seed)
                 {
-                    count = count + 2;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
