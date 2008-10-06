@@ -1,8 +1,8 @@
 {
-  "retry_timeout_count": 54.68,
-  "burst_size_s": "fallback",
-  "min_ttl_count": "legacy",
-  "verbose": "local",
-  "batch_depth_ms": ["eu-west", "stable", "primary"],
-  "readonly": false
+  "audit": 86.97,
+  "base_interval_count": "blue",
+  "retry_size": 31.89,
+  "strict": ["local", "latest", "fallback"],
+  "support_retries": 10.94,
+  "commits_retries": 1.42
 }
