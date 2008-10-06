@@ -41,18 +41,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] values, long offset)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] levels)
         {
-            long result = 7;
-            foreach (long value in values)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result + offset) != (offset + result))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    result = result ^ value;
+                    if ((levels[i] + levels[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
