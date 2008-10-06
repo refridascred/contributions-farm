@@ -20,14 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            Ready,
-            Failed,
-            Idle,
             Draft,
-            Done,
+            Ready,
+            Paused,
         }
 
         /// <summary>Describe the editor level values.</summary>
