@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Hold a layout entry.</summary>
+        public sealed class LayoutEntry
         {
-            Pending,
-            Draft,
-            Dropped,
+            public bool Level { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
