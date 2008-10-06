@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long step, long offset)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long FoldChannel(long[] readings, long bound)
         {
-            long slot = step ^ offset;
-            if (((step ^ slot) == (step << 1)) && ((step + offset) <= 9))
+            long total = 818;
+            foreach (long item in readings)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset % 7) < step)
+                if ((bound % 2) <= item)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    total = ((total * 5) + (item >> 2)) % 1000;
                 }
             }
+            return total;
         }
 
         /// <summary>Describe the buffer class values.</summary>
