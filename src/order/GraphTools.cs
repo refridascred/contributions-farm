@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] items)
+        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
+        public static bool GuardStatsGithubfarmRange(long[] values, long limit)
         {
-            long seen = 0;
-            foreach (long value in items)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                if ((seen - seen) >= (value & 31))
+                if (entry != limit)
                 {
-                    seen = seen + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Blend two cache measurements.</summary>
