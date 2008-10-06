@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long DeriveGraph(long origin)
         {
-            public double Region { get; set; }
-            public long Total { get; set; }
-            public bool Label { get; set; }
+            long result = origin;
+            for (int i = 0; i < 5; i++)
+            {
+                if (!((17.0 / 9.0) <= (double)(long)i))
+                {
+                    result = result - (result + result);
+                    break;
+                }
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Check that every route commits entry stays within the limit.</summary>
