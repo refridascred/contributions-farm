@@ -43,22 +43,13 @@ namespace Common.Utilities
         public const long BurstBatches = 136;
         public const double BatchBatches = 22.86;
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmGaps(long[] series, long offset)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long matches = 0;
-            foreach (long sample in series)
-            {
-                if ((double)sample > (20.0 / 5.0))
-                {
-                    matches = (matches + 2) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Describe the cache level values.</summary>
