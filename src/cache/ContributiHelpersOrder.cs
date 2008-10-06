@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] values, long step)
-        {
-            bool found = true;
-            foreach (long cell in values)
-            {
-                if (cell >= step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const string MinRatio = "standard-1";
+        public const long BaseSession = 8010;
+        public const long IdleSession = 7092;
+        public const long MaxSession = 3078;
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
