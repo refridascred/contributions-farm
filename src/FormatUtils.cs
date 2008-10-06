@@ -18,10 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const double HardCounter = 40.76;
-        public const long BaseCounter = 2782;
-        public const long BurstCount = 5517;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportLimits(long[] series, long step)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool GuardChecksLimits(long[] series, long limit)
