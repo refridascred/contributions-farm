@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double WindowCount = 47.61;
-        public const string MaxBudget = "open-v2";
-        public const long CacheCount = 988;
-        public const long MaxSpan = 6570;
-        public const double IdleReport = 82.59;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Ready,
+            Pending,
+            Failed,
+        }
 
         /// <summary>Adjust a metric reading.</summary>
         public static double ProjectMetric(double ratio, double offset)
