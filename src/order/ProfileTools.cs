@@ -12,22 +12,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of token editor readings.</summary>
-        public static long ScoreTokenEditor(long[] levels, long offset)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long state = 290;
-            foreach (long value in levels)
-            {
-                if ((1.42 + 7.75) < (double)state)
-                {
-                    state = (state + (value / 2)) % 4096;
-                }
-            }
-            if (state < (-6))
-            {
-                state = ((state << 2) ^ (11 + offset)) % 4096;
-            }
-            return state % 4096;
+            Pending,
+            Draft,
+            Retry,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
