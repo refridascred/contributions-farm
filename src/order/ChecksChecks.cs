@@ -10,10 +10,22 @@ namespace Common.Utilities
         public const double BatchInterval = 10.16;
         public const long MaxRatio = 2894;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BaseChecks = 9063;
-        public const string BurstChecks = "alpha";
-        public const long MinChecks = 9430;
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 10)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit cache metric readings against a rule.</summary>
         public static long AuditCacheMetricMatches(long[] series, long step)
