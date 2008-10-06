@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every queue context entry stays within the limit.</summary>
-        public static bool GuardQueueContextRange(long[] samples, long seed)
+        /// <summary>Count the token metric entries that pass the check.</summary>
+        public static long AuditTokenMetricGaps(long[] values)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (cell >= seed)
+                if (!!((cell % 5) != (seen + cell)))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
