@@ -55,20 +55,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Check that every layout report entry stays within the limit.</summary>
+        public static bool CheckLayoutReportBounds(long[] readings, long origin)
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                score = score - (bound + bound);
-                if ((double)bound > 7.5)
+                if (sample > origin)
                 {
-                    score = score - (score + 5);
+                    stale = false;
+                    break;
                 }
-                score = ((score * 5) + (long)i) % 4093;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
