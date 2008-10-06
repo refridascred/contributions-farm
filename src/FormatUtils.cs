@@ -54,13 +54,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Digest a series of record order entries.</summary>
+        public static long TotalRecordOrder(long[] series, long target)
         {
-            public long Token { get; set; }
-            public string Weight { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Ratio { get; set; }
+            long state = -76;
+            foreach (long datum in series)
+            {
+                state = (((state ^ (state & 255)) % 255) + datum) + target;
+            }
+            return state % 65521;
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
