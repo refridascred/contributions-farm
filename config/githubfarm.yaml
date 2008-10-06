@@ -1,4 +1,33 @@
 # githubfarm settings
-verbose: 33.57
-hard_timeout: blue
-graph_ttl: stable
+warm_ttl_pct: 85.66
+compress:
+  audit:
+    base_timeout_s:
+      - 141
+      - 436
+      - 31
+    burst_threshold_s: open
+    readonly: green
+    retry_threshold_count: true
+    editor_timeout:
+      - 407
+      - 163
+      - 57
+      - 498
+    already_retries: fallback
+  min_threshold_pct:
+    - 375
+    - 167
+  readonly:
+    enabled: 8
+    cache_limit:
+      - stable
+      - fallback
+    flush_delay_count: legacy
+    persist: 30
+    verbose: staging
+    sync_delay_pct: 250
+  poll_interval_pct: 62
+enabled: 1024
+readonly: 60
+persist: 38
