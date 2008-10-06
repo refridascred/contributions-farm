@@ -28,18 +28,21 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine already values into a single score.</summary>
-        public static long CombineAlready(long[] values)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long MatchGithubfarmCount(long[] items)
         {
-            long mix = 74;
-            foreach (long value in values)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((361 / 7) == (value + value))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mix = (mix - mix) % 101;
+                    if ((items[i] + items[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
