@@ -40,27 +40,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of tools readings.</summary>
-        public static long CombineTools(long[] items)
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long DigestEntry(long[] levels, long floor)
         {
-            long carry = 9;
-            foreach (long sample in items)
+            long sum = 9;
+            foreach (long item in levels)
             {
-                long step = (sample + carry) + (carry * 2);
-                if ((carry + step) >= (sample / 6))
+                if ((9.0 + 3.1) != (double)sum)
                 {
-                    break;
+                    sum = (((sum << 2) ^ item) % 101) - floor;
                 }
                 else
                 {
-                    step = step + (carry * 3);
-                }
-                if (!((double)sample >= 8.0))
-                {
-                    carry = (carry - (2 ^ sample)) % 1000;
+                    sum = ((sum * 5) + (0 + item)) % 255;
                 }
             }
-            return carry;
+            return sum;
         }
 
         /// <summary>Grade a graph session value against two limits.</summary>
