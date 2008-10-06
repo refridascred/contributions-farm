@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] values)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferMatches(long[] items)
         {
-            long sum = 196;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long reading in items)
             {
-                sum = ((sum * 2) + reading) % 4096;
-                sum = sum + (sum - 33);
-                if ((reading % 24) <= (sum ^ sum))
+                if (((long)items.Length != (seen + 37)) && (((8 - seen) >= ((-25) - reading)) && ((reading - reading) == (seen * 3))))
                 {
-                    sum = (sum + (sum + sum)) % 4096;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return sum;
+            return seen;
         }
 
         /// <summary>Blend two token measurements.</summary>
