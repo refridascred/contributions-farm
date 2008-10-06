@@ -13,36 +13,23 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long SortChecks(long target, long bound)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long ClassifyGraph(long offset, long seed)
         {
-            if ((bound - target) >= (target - target))
+            long cur = offset ^ seed;
+            if ((cur + offset) > (cur / 4))
             {
-                return 5;
+                return 7;
             }
             else
             {
-                if ((42 % 7) > (bound - bound))
+                if (((seed + (-7)) > cur) && ((offset >> 1) < (seed << 2)))
                 {
-                    return 1;
+                    return 2;
                 }
                 else
                 {
-                    if (19.0 < (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((target & 3) <= (860 + target))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 6;
                 }
             }
         }
