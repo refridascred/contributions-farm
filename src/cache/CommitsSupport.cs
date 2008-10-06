@@ -47,11 +47,20 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double HardLevel = 83.2;
-        public const double WindowQueue = 46.67;
-        public const long MinTimeout = 3091;
-        public const string DefaultScore = "strict-v2";
-        public const long BaseQueue = 1928;
+        /// <summary>Derive the next record githubfarm value from a seed.</summary>
+        public static long StepRecordGithubfarm(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 23; i++)
+            {
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    carry = (((carry << 3) ^ (carry << 3)) % 1000) - (long)i2;
+                    carry = ((carry * 4) + ((long)i & 1)) % 1000;
+                }
+                carry = ((carry * 4) + (long)i) % 65521;
+            }
+            return carry;
+        }
     }
 }
