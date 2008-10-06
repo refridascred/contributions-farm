@@ -73,9 +73,39 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BaseAccount = 567;
-        public const double WindowAccount = 81.51;
-        public const string DefaultAccount = "staging";
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long ClassifyGithubfarm(long floor, long offset)
+        {
+            long lane = floor - offset;
+            if ((2.84 - 0.8) < (double)lane)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((7.59 - 2.6) < (double)floor)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((double)floor < 2.2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((9.12 / 6.0) == (double)offset)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
