@@ -27,12 +27,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultRatio = 6670;
-        public const string HardStream = "legacy-v2";
-        public const long SoftStream = 9897;
-        public const double WindowWidth = 4.49;
-        public const double CacheStream = 67.38;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public long Label { get; set; }
+            public bool Rank { get; set; }
+            public bool Stamp { get; set; }
+            public long Weight { get; set; }
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long AuditAlreadyOutliers(long[] series)
