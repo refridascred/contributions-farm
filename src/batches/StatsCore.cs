@@ -58,20 +58,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] samples, long offset)
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            long score = 39;
-            foreach (long entry in samples)
-            {
-                score = ((score - offset) % 255) ^ entry;
-                score = score + (score + score);
-            }
-            if (score > 0)
-            {
-                score = ((score * 2) + (86 - offset)) % 255;
-            }
-            return score;
+            public double Total { get; set; }
+            public double Size { get; set; }
+            public long Count { get; set; }
         }
     }
 }
