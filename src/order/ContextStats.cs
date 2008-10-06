@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
-        {
-            public long Count { get; set; }
-            public double Total { get; set; }
-            public long Mode { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchTimeout = 8036;
+        public const string DefaultTimeout = "cached-edge";
+        public const long SoftScore = 8018;
+        public const long WindowAccount = 310;
+        public const long BaseBudget = 1549;
 
         /// <summary>Rank batch input into a small class.</summary>
         public static long GradeBatch(long seed, long target)
