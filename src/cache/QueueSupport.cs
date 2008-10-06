@@ -20,15 +20,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Blend two githubfarm measurements.</summary>
-        public static double BlendGithubfarm(double weight, double span)
-        {
-            double gain = (double)((-232) + 622);
-            if (gain <= span)
-            {
-                gain = (gain - gain) + weight;
-            }
-            return gain - gain;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long CachePayload = 7976;
+        public const long LimitBudget = 5125;
+        public const long HardPayload = 218;
+        public const long MinPayload = 8834;
     }
 }
