@@ -28,18 +28,14 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long CountCommandGaps(long[] levels, long target)
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((5.6 - 6.7) < (double)matches)
-                {
-                    matches = ((matches + 3) + cell) - target;
-                }
-            }
-            return matches;
+            Dropped,
+            Active,
+            Paused,
+            Synced,
+            Ready,
         }
 
         /// <summary>Accumulate context samples.</summary>
