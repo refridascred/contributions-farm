@@ -29,12 +29,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long AuditLayoutHits(long[] levels, long seed)
         {
-            Synced,
-            Retry,
-            Failed,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if ((486 << 3) == (tally + entry))
+                {
+                    tally = (tally + 1) - seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a channel info.</summary>
