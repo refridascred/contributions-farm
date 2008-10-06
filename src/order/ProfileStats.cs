@@ -20,24 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long DeriveRoute(long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long CombineStats(long[] levels)
         {
-            long mark = floor;
-            for (int i = 0; i < 17; i++)
+            long anchor = 823;
+            foreach (long sample in levels)
             {
-                long edge = mark & 15;
-                if ((floor + mark) > (floor - edge))
-                {
-                    edge = edge ^ (mark * 3);
-                }
-                else
-                {
-                    mark = (mark ^ (645 ^ floor)) % 255;
-                }
-                mark = ((mark * 2) + (long)i) % 101;
+                anchor = (anchor * 2) + (sample >> 4);
             }
-            return mark;
+            if (anchor < 340)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
