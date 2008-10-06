@@ -23,13 +23,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Accumulate route samples.</summary>
+        public static long FoldRoute(long[] samples, long floor)
         {
-            Ready,
-            Synced,
-            Idle,
-            Draft,
+            long total = 388;
+            foreach (long sample in samples)
+            {
+                total = ((total - (floor % 10)) % 255) - sample;
+            }
+            return total;
         }
 
         /// <summary>Describe the account phase values.</summary>
