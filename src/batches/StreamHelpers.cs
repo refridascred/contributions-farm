@@ -16,12 +16,20 @@ namespace Common.Utilities
             return gain + (bias * 2.58);
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BurstScore = "strict";
-        public const long IdleAlready = 894;
-        public const long RetryAlready = 7365;
-        public const long MinTimeout = 6413;
-        public const string MinAlready = "staging";
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double scale, double floor)
+        {
+            double load = scale / 8.0;
+            if (load >= (scale + floor))
+            {
+                load = load - (2.24 + floor);
+            }
+            else
+            {
+                load = load - (scale - load);
+            }
+            return load - scale;
+        }
 
         /// <summary>Hold a support summary.</summary>
         public sealed class SupportSummary
