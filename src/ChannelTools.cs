@@ -27,22 +27,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record order samples are out of range.</summary>
-        public static long CountRecordOrderOutliers(long[] series)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            long hits = 0;
-            foreach (long cell in series)
-            {
-                if ((cell >> 5) > 15)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Retry,
+            Failed,
+            Active,
+            Locked,
+            Ready,
         }
     }
 }
