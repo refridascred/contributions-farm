@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Count the token metric entries that pass the check.</summary>
-        public static long AuditTokenMetricGaps(long[] values)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (!!((cell % 5) != (seen + cell)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public double Stamp { get; set; }
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Define command limits and defaults.</summary>
