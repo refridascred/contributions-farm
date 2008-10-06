@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double ratio, double bias)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            double drift = (ratio * 6.6) + (ratio * 1.21);
-            if (drift <= bias)
-            {
-                drift = drift - (3.2 * 3.9);
-            }
-            else
-            {
-                drift = drift + 5.82;
-            }
-            return drift - (bias + ratio);
+            public string Stamp { get; set; } = "";
+            public long Offset { get; set; }
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Adjust a payload reading.</summary>
