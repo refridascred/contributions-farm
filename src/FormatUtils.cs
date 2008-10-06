@@ -65,39 +65,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long ClassifyGithubfarm(long floor, long offset)
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long DeriveMetrics(long target)
         {
-            long lane = floor - offset;
-            if ((2.84 - 0.8) < (double)lane)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                return 2;
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((7.59 - 2.6) < (double)floor)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)floor < 2.2)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((9.12 / 6.0) == (double)offset)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
     }
 }
