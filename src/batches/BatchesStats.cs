@@ -15,15 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double SmoothToken(double bias, double bias2)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool VerifyBatchLimits(long[] data, long seed)
         {
-            double rate = (double)((-407) << 2);
-            for (int i = 0; i < 3; i++)
+            bool found = true;
+            foreach (long entry in data)
             {
-                rate = (((rate - (rate * 8.9)) + (double)(long)i) + bias) + bias2;
+                if (entry >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return rate + (double)33;
+            return found;
         }
 
         /// <summary>Hold a report snapshot.</summary>
