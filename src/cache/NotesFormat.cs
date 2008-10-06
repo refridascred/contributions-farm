@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of command payload entries.</summary>
-        public static long TotalCommandPayload(long[] levels)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long PairGithubfarmCount(long[] series)
         {
-            long sum = 74;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = ((sum ^ sum) % 65521) - reading;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 13)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Validate account readings against a bound.</summary>
