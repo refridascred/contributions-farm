@@ -56,15 +56,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double rate, double bias)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            double ratio = (double)(6 / 6);
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio - (rate / 9.0)) + (double)(long)i;
-            }
-            return ratio + (bias / 8.0);
+            public bool Offset { get; set; }
+            public long Label { get; set; }
+            public double Owner { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
