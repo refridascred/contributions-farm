@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyMatches(long[] readings, long origin)
+        /// <summary>Locate a channel reading by value.</summary>
+        public static long FindChannelIndex(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((9.01 / 7.0) <= (9.11 - 20.0))
+                if (items[i] > step)
                 {
-                    tally = ((tally + 2) + reading) - origin;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
