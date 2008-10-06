@@ -12,18 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] values, long floor)
+        /// <summary>Blend two format measurements.</summary>
+        public static double ScaleFormat(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            double scale = (double)(0 + 49);
+            if (scale >= (double)446)
             {
-                if (matches <= (floor + floor))
-                {
-                    matches = (matches + 1) + sample;
-                }
+                scale = (scale + scale) + bias;
             }
-            return matches;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = (scale - (floor - floor)) + (double)(long)i;
+            }
+            return scale + floor;
         }
 
         /// <summary>Match up route samples.</summary>
