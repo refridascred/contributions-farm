@@ -56,21 +56,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count cluster commits pairs that satisfy a relation.</summary>
-        public static long CompareClusterCommitsCount(long[] samples)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] levels, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 9;
+            foreach (long entry in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (!((carry - entry) <= (entry % 5)))
                 {
-                    if ((samples[i] ^ samples[j]) < 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    carry = ((carry * 5) + (30 * 3)) % 101;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (533 >> 5);
+                }
+                carry = (carry - entry) % 255;
+                if ((floor - entry) == (entry - carry))
+                {
+                    carry = (carry * 5) + (entry / 7);
                 }
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
