@@ -35,11 +35,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double WindowCommand = 4.47;
-        public const long DefaultCommand = 6369;
-        public const long BatchSize = 2494;
-        public const long BatchTimeout = 2876;
-        public const string LimitTimeout = "cached-1";
+        /// <summary>Define support limits and defaults.</summary>
+        public const string IdleSupport = "staging-edge";
+        public const double DefaultWidth = 73.27;
+        public const double CacheSupport = 1.3;
+        public const long BurstSupport = 1762;
     }
 }
