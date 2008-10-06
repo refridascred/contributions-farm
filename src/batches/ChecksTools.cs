@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long WindowReport = 7934;
-        public const double SoftReport = 31.1;
-        public const long MinRatio = 9001;
-        public const long HardBudget = 5687;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountGaps(long[] levels, long step)
+        {
+            long matches = 0;
+            foreach (long sample in levels)
+            {
+                if ((((step + sample) == (sample >> 1)) || ((-592) > step)) && ((double)sample >= 3.5))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenGaps(long[] series, long floor)
