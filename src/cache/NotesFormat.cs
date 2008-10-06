@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteRange(long[] items, long bound)
+        /// <summary>Grade a support tools value against two limits.</summary>
+        public static long BucketSupportTools(long offset, long seed)
         {
-            bool ready = true;
-            foreach (long item in items)
+            if (1.9 > (double)seed)
             {
-                if (item < bound)
+                return 5;
+            }
+            else
+            {
+                if ((seed << 3) > (offset * 2))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (((4 << 2) > offset) && (14.0 <= (double)seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Count the context stream entries that pass the check.</summary>
