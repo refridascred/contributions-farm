@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((tally + datum) <= 93)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardSupport = 9219;
+        public const string BatchInterval = "staging-edge";
+        public const string BatchFactor = "alpha";
 
         /// <summary>Count schema already pairs that satisfy a relation.</summary>
         public static long MatchSchemaAlreadyCount(long[] values)
