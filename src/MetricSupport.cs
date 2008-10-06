@@ -33,21 +33,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] series)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Label { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
