@@ -16,19 +16,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool CheckSchemaRange(long[] items, long offset)
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item < offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Locked,
+            Ready,
+            Dropped,
+            Active,
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
