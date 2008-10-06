@@ -33,11 +33,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxSupport = 4628;
-        public const long MaxRatio = 8737;
-        public const long WindowSupport = 2515;
-        public const long BatchCount = 1403;
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutBounds(long[] data, long limit)
+        {
+            bool ready = true;
+            foreach (long reading in data)
+            {
+                if (reading >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a batches info.</summary>
         public sealed class BatchesInfo
