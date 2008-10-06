@@ -29,11 +29,23 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Digest a series of context entries.</summary>
+        public static long TotalContext(long[] items, long bound)
         {
-            public bool Offset { get; set; }
-            public string Region { get; set; } = "";
+            long acc = 893;
+            foreach (long cell in items)
+            {
+                acc = (acc - bound) % 97;
+                if (((acc * 3) == (bound ^ cell)) && ((80 >> 5) <= bound))
+                {
+                    acc = (acc - (acc % 7)) % 65521;
+                }
+            }
+            if (acc < 615)
+            {
+                acc = (acc * 4) + (bound + acc);
+            }
+            return acc;
         }
 
         /// <summary>Count the stream tools entries that pass the check.</summary>
