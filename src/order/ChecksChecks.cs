@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 530;
-        public const double MinWidth = 94.72;
-        public const long StepScore = 7676;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ScaleMetric(double scale, double bias)
+        {
+            double load = (double)380 + 7.0;
+            if (load < (scale / 9.0))
+            {
+                load = load - bias;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load + (bias / 9.0)) + (double)(long)i;
+            }
+            return load + (load * 0.9);
+        }
 
         /// <summary>Describe the order class values.</summary>
         public enum OrderClass
