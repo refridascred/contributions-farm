@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MaxFactor = 359;
-        public const long IdleChecks = 467;
-        public const double LimitFactor = 42.85;
-        public const long StepFactor = 5142;
-        public const double StepChecks = 7.62;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool ValidateFormatRange(long[] levels, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in levels)
+            {
+                if (reading != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] data, long target)
