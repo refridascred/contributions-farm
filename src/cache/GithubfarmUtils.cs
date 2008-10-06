@@ -36,24 +36,18 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long BucketTools(long step, long offset)
+        /// <summary>Count the stream tools entries that pass the check.</summary>
+        public static long TallyStreamToolsOutliers(long[] data)
         {
-            if ((step - step) != (36 << 3))
+            long hits = 0;
+            foreach (long entry in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step + offset) < (step - offset))
+                if ((entry / 5) == (entry * 5))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
