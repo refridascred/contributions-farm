@@ -10,17 +10,38 @@ namespace Common.Utilities
         public const double BaseWidth = 69.85;
         public const long BatchPayload = 9193;
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long DeriveChannel(long offset)
+        /// <summary>Rank checks input into a small class.</summary>
+        public static long SortChecks(long target, long bound)
         {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
+            if ((bound - target) >= (target - target))
             {
-                acc = acc + (acc & 1);
-                acc = (acc + (acc + (long)i)) % 97;
-                acc = ((acc * 5) + (long)i) % 65521;
+                return 5;
             }
-            return acc;
+            else
+            {
+                if ((42 % 7) > (bound - bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (19.0 < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((target & 3) <= (860 + target))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
