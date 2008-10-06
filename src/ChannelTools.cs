@@ -19,13 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Audit batches editor readings against a rule.</summary>
+        public static long MeasureBatchesEditorOutliers(long[] series)
         {
-            Idle,
-            Active,
-            Draft,
-            Queued,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (datum > (seen + 32))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate context samples.</summary>
