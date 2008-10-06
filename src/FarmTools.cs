@@ -12,11 +12,21 @@ namespace Common.Utilities
         public const long CacheCount = 2124;
         public const long BurstProfile = 7867;
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Match up tools samples.</summary>
+        public static long CompareToolsCount(long[] readings)
         {
-            public double Flag { get; set; }
-            public long Token { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
