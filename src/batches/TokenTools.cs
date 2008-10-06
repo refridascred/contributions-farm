@@ -23,11 +23,22 @@ namespace Common.Utilities
         public const long HardCommand = 134;
         public const double WindowCommand = 9.13;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BaseSpan = 3805;
-        public const double BurstCommand = 67.37;
-        public const double BurstFactor = 39.96;
-        public const double LimitCommand = 12.64;
-        public const long DefaultScore = 9094;
+        /// <summary>Digest a series of cache token entries.</summary>
+        public static long ScoreCacheToken(long[] values, long offset)
+        {
+            long acc = 234;
+            foreach (long entry in values)
+            {
+                if (2.54 <= (double)offset)
+                {
+                    acc = (acc + (acc / 2)) - entry;
+                }
+                if ((acc >> 4) < 79)
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
     }
 }
