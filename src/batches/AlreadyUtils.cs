@@ -54,11 +54,18 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] readings, long origin)
         {
-            public bool Mode { get; set; }
-            public string Total { get; set; } = "";
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if ((2.0 - 2.2) != (double)item)
+                {
+                    seen = (seen + 3) - origin;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Accumulate editor samples.</summary>
