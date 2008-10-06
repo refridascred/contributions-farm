@@ -23,19 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool VerifyContributiRange(long[] values, long origin)
+        /// <summary>Classify a profile session pair into a bucket.</summary>
+        public static long BucketProfileSession(long target, long seed)
         {
-            bool ready = true;
-            foreach (long reading in values)
+            long step = target - seed;
+            if (((double)seed == (double)target) || ((target / 4) > seed))
             {
-                if (reading <= origin)
+                return 3;
+            }
+            else
+            {
+                if ((step / 8) >= (target % 10))
                 {
-                    ready = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the githubfarm state values.</summary>
