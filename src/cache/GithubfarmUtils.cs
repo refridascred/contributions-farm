@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session report entries that pass the check.</summary>
-        public static long TallySessionReportMatches(long[] levels)
+        /// <summary>Check that every format layout entry stays within the limit.</summary>
+        public static bool CheckFormatLayoutRange(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            bool found = true;
+            foreach (long reading in samples)
             {
-                if (datum <= (-289))
+                if (reading > offset)
                 {
-                    seen = seen + 3;
+                    found = false;
+                    break;
                 }
             }
-            return seen;
+            return found;
         }
 
         /// <summary>Define session limits and defaults.</summary>
