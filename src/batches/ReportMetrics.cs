@@ -22,20 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] levels, long offset)
-        {
-            bool found = true;
-            foreach (long cell in levels)
-            {
-                if (cell > offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheBudget = 8645;
+        public const long BurstLayout = 8542;
+        public const long StepCount = 5275;
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
