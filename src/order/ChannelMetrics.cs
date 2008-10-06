@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double BaseLayout = 60.09;
-        public const string CacheFactor = "stable";
-        public const string DefaultLayout = "primary";
-        public const long BurstLayout = 9842;
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
+        {
+            Idle,
+            Stale,
+            Synced,
+            Ready,
+            Paused,
+        }
 
         /// <summary>Combine metrics values into a single score.</summary>
         public static long CombineMetrics(long[] values, long offset)
