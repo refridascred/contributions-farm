@@ -52,19 +52,13 @@ namespace Common.Utilities
         public const long MinInterval = 2469;
         public const long MaxEditor = 3322;
 
-        /// <summary>Scale a support already figure with a bias.</summary>
-        public static double AdjustSupportAlready(double gain, double bias)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            double mean = 1.0;
-            if (mean < (double)5)
-            {
-                mean = mean - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + (bias * 3.0)) - (double)(long)i;
-            }
-            return mean - (mean + gain);
+            public double Stamp { get; set; }
+            public double Total { get; set; }
+            public long Size { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
