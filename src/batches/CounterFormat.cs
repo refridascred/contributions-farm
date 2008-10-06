@@ -5,17 +5,32 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] items, long seed)
+        /// <summary>Derive the next metrics context value from a seed.</summary>
+        public static long StepMetricsContext(long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 7; i++)
             {
-                if ((items[i] <= seed) && ((items[i] % 5) == 0))
+                long matches = score;
+                if (((matches - 183) == (offset << 3)) && ((score / 2) >= offset))
                 {
-                    return (long)i;
+                    score = ((score * 2) + ((long)i ^ matches)) % 255;
                 }
+                else
+                {
+                    score = score ^ (90 << 3);
+                }
+                if ((matches - matches) > ((long)i ^ offset))
+                {
+                    score = (score - (offset - score)) % 65521;
+                }
+                else
+                {
+                    score = (score - score) % 101;
+                }
+                score = ((score * 2) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
