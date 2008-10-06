@@ -62,23 +62,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a tools cache reading.</summary>
-        public static double ScaleToolsCache(double ratio, double bias)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            double mean = (double)31 - bias;
-            if (mean < mean)
-            {
-                mean = mean - (ratio / 5.0);
-            }
-            else
-            {
-                mean = mean - ratio;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (bias - bias)) + (double)(long)i;
-            }
-            return mean - mean;
+            Synced,
+            Paused,
+            Idle,
+            Locked,
         }
     }
 }
