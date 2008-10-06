@@ -1,6 +1,22 @@
 {
-  "max_threshold_pct": 250,
-  "schema_limit": "eu-west",
-  "readonly": false,
-  "burst_retries_ms": 1541
+  "warm_interval": {
+    "readonly": [2, 283, 302],
+    "token_interval": 6388,
+    "batch_depth": true
+  },
+  "record_size": "local",
+  "payload_ratio": {
+    "burst_retries_s": 60,
+    "strict": 79,
+    "enabled": {
+      "compress": ["standard", "stable", "green"],
+      "base_threshold": 8857,
+      "token_capacity": 81.63,
+      "editor_limit": "standard"
+    },
+    "counter_retries": [70, 380, 475],
+    "burst_ratio": false,
+    "checks_interval": "staging"
+  },
+  "hard_ratio_ms": 8.72
 }
