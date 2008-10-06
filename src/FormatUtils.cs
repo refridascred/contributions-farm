@@ -22,15 +22,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long step)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelBounds(long[] items, long bound)
         {
-            long carry = step;
-            for (int i = 0; i < 14; i++)
+            bool ready = true;
+            foreach (long sample in items)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                if (sample >= bound)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return carry;
+            return ready;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
