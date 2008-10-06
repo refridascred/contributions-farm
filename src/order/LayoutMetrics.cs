@@ -34,9 +34,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double HardSpan = 23.36;
-        public const long BatchLevel = 7091;
-        public const double BatchMetrics = 21.25;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long StepDepth = 448;
+        public const long RetryDepth = 3780;
+        public const long HardFactor = 1293;
     }
 }
