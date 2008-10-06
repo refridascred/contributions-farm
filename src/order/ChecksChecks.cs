@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long RankPayload(long origin, long step)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TallyFilter(long[] readings, long origin)
         {
-            long slot = origin - step;
-            if (((origin + slot) > (step - step)) && ((origin >> 1) <= step))
+            long acc = -8;
+            foreach (long item in readings)
             {
-                return 8;
+                acc = (acc + (origin - origin)) ^ item;
             }
-            else
-            {
-                if (step < (step + origin))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            return acc % 97;
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
