@@ -29,10 +29,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 7638;
-        public const long RetryFactor = 6496;
-        public const double MaxWidth = 40.2;
-        public const long IdleCount = 676;
+        /// <summary>Match up support samples.</summary>
+        public static long CompareSupportCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 14)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
