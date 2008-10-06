@@ -11,17 +11,19 @@ namespace Common.Utilities
         public const double BatchCommand = 49.39;
         public const long MinCommand = 5425;
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] items, long limit)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            long result = 85;
+            foreach (long entry in samples)
             {
-                if (items[i] < limit)
+                result = (((result << 3) ^ entry) % 255) - step;
+                if (!((entry / 6) <= result))
                 {
-                    return (long)i;
+                    result = (result + (entry >> 4)) % 65521;
                 }
             }
-            return -1;
+            return result % 1000;
         }
 
         /// <summary>Adjust a batch support reading.</summary>
