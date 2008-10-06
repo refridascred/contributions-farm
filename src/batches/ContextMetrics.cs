@@ -51,21 +51,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long OverlapEditorCount(long[] readings)
+        /// <summary>Digest a series of cache format entries.</summary>
+        public static long DigestCacheFormat(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long sum = 990;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (sum + reading) % 97;
             }
-            return matches;
+            return sum % 1000;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
