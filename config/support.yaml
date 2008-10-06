@@ -1,6 +1,6 @@
 # support settings
-buffer_window: 2
-persist: local
-default_timeout_count: 250
-enabled: 55.84
-min_interval_pct: false
+batch_timeout_s: false
+retry_depth: stable
+strict: 22.91
+stats_depth: 1024
+sync_ttl: 4365
