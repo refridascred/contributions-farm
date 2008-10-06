@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultGithubfarm = 1902;
-        public const double DefaultSpan = 11.99;
-        public const double BaseInterval = 1.46;
-        public const double StepGithubfarm = 11.04;
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
+        {
+            public long Offset { get; set; }
+            public string Label { get; set; } = "";
+            public bool Count { get; set; }
+            public string Limit { get; set; } = "";
+        }
 
         /// <summary>Locate a profile reading by value.</summary>
         public static long LocateProfileIndex(long[] data, long floor)
