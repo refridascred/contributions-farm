@@ -61,18 +61,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long TallyBatchHits(long[] samples)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double SmoothFarm(double bias, double offset)
         {
-            long seen = 0;
-            foreach (long cell in samples)
+            double bias2 = offset;
+            if (bias2 < offset)
             {
-                if (seen < (cell % 64))
-                {
-                    seen = seen + 1;
-                }
+                bias2 = (bias2 + (bias2 / 8.0)) + bias;
             }
-            return seen;
+            return bias2 + (6.0 / 9.0);
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
