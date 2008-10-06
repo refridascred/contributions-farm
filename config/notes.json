@@ -1,7 +1,6 @@
 {
-  "readonly": true,
-  "batch_threshold": 95,
-  "strict": false,
-  "farm_limit": "primary",
-  "max_timeout_pct": 30
+  "cache_depth_ms": 100,
+  "cache_delay_count": 65.14,
+  "base_capacity": 100,
+  "entry_ratio": 250
 }
