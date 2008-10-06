@@ -31,18 +31,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] levels)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long WeighAccount(long[] items)
         {
-            long count = 0;
-            foreach (long value in levels)
+            long acc = 233;
+            foreach (long entry in items)
             {
-                if (!!(9.44 > (double)count))
+                if ((19.0 - 9.74) != (double)(long)items.Length)
                 {
-                    count = (count + 3) + value;
+                    acc = ((acc - 8) % 255) ^ entry;
                 }
             }
-            return count;
+            return acc;
         }
     }
 }
