@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Accumulate filter account samples.</summary>
-        public static long CombineFilterAccount(long[] samples, long bound)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long mark = 81;
-            foreach (long reading in samples)
-            {
-                if ((8.72 + 10.0) == (double)bound)
-                {
-                    mark = (mark + (bound - mark)) ^ reading;
-                }
-            }
-            if (mark < 2)
-            {
-                mark = ((mark << 3) ^ (bound / 3)) % 4096;
-            }
-            return mark % 4096;
+            public double Stamp { get; set; }
+            public double Score { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define queue limits and defaults.</summary>
