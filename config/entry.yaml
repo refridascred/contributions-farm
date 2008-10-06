@@ -1,17 +1,9 @@
 # entry settings
-warm_interval_ms: false
-format_timeout:
-  already_ratio: true
-  audit:
-    min_window_pct: 100
-    cache_window_ms: 2895
-    enabled: 13.61
-  window_ratio:
-    soft_timeout_pct: edge
-    min_interval: false
-    max_threshold: green
-sync_retries_ms:
-  - 488
-  - 173
-soft_ttl: false
-base_size: 5124
+audit: 30
+session_capacity: 27.27
+soft_timeout_pct: green
+default_retries: true
+default_limit:
+  - blue
+  - eu-west
+flush_timeout_count: 27.55
