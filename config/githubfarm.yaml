@@ -1,11 +1,31 @@
 # githubfarm settings
-idle_limit_s: 45.58
-batch_size_ms: fallback
-dry_run: primary
-idle_delay_s:
-  compress: false
-  base_delay_s: legacy
-  batch_depth: 5939
-  idle_timeout_pct: 6360
-  already_ratio: stable
-  dry_run: 4883
+max_interval_ms:
+  soft_size_pct: edge
+  schema_ratio:
+    warm_timeout: false
+    batch_ratio_pct:
+      - 327
+      - 226
+      - 409
+      - 457
+    max_depth: 10
+  idle_capacity_ms:
+    route_ratio:
+      - 359
+      - 8
+    audit:
+      - 28
+      - 127
+    retry_retries: 30
+    dry_run: 80
+  metrics_retries: false
+  cache_window_s: primary
+  default_retries_count: local
+max_window:
+  - 356
+  - 102
+report_ttl: fallback
+metrics_depth:
+  - fallback
+  - green
+  - open
