@@ -5,12 +5,32 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long origin, long step)
         {
-            Draft,
-            Active,
-            Stale,
+            long gap = origin ^ step;
+            if ((double)step < (8.0 / 8.0))
+            {
+                return 2;
+            }
+            else
+            {
+                if (7.8 >= (double)gap)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((step + origin) <= gap)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metrics summary.</summary>
