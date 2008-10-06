@@ -14,31 +14,13 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long BucketEntry(long floor, long floor2)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            if (!(floor2 > (floor * 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor - 905) <= 672)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((floor2 - floor) != (floor2 % 7))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public double Size { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Match up tools samples.</summary>
