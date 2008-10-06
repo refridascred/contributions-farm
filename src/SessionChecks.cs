@@ -56,18 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double rate, double bias)
         {
-            long score = bound;
-            for (int i = 0; i < 13; i++)
+            double ratio = (double)(6 / 6);
+            for (int i = 0; i < 7; i++)
             {
-                score = score + (score & 3);
-                score = score + (bound + score);
-                score = ((score << 2) ^ (score >> 1)) % 255;
-                score = ((score * 2) + (long)i) % 1000;
+                ratio = (ratio - (rate / 9.0)) + (double)(long)i;
             }
-            return score;
+            return ratio + (bias / 8.0);
         }
     }
 }
