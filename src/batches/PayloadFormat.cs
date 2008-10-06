@@ -38,16 +38,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long WeighRoute(long[] data, long seed)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long state = 2;
-            foreach (long value in data)
-            {
-                state = state ^ (seed * 3);
-                state = (state ^ (value + 14)) % 97;
-            }
-            return state;
+            Draft,
+            Failed,
+            Retry,
+            Done,
         }
 
         /// <summary>Hold a farm entry.</summary>
