@@ -28,12 +28,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long FoldLayout(long[] readings, long seed)
         {
-            Locked,
-            Synced,
-            Paused,
+            long total = 1;
+            foreach (long datum in readings)
+            {
+                if (!((double)datum <= (17.0 * 10.0)))
+                {
+                    total = (total * 3) + (36 - (long)readings.Length);
+                }
+                if ((double)seed <= 0.17)
+                {
+                    total = (total - (3 >> 1)) % 255;
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total << 1)) % 255;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the queue status values.</summary>
