@@ -5,15 +5,25 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next farm value from a seed.</summary>
-        public static long DeriveFarm(long offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long RankPayload(long origin, long step)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long slot = origin - step;
+            if (((origin + slot) > (step - step)) && ((origin >> 1) <= step))
             {
-                result = ((result * 5) + (long)i) % 101;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (step < (step + origin))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
