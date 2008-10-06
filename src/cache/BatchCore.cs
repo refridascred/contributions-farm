@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Combine window cluster values into a single score.</summary>
-        public static long DigestWindowCluster(long[] values)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandHits(long[] readings)
         {
-            long carry = 3;
-            foreach (long item in values)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                carry = (carry << 3) ^ item;
+                if (seen < (seen << 2))
+                {
+                    seen = (seen + 3) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (carry < 1)
-            {
-                carry = (carry * 4) + (2 - 40);
-            }
-            return carry % 97;
+            return seen;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
