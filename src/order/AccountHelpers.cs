@@ -16,11 +16,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowWidth = 5931;
-        public const long HardLayout = 6339;
-        public const long StepLayout = 2874;
-        public const double WindowScore = 55.98;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Pending,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutHits(long[] levels, long seed)
