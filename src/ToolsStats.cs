@@ -71,18 +71,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit metrics cache readings against a rule.</summary>
-        public static long AuditMetricsCacheOutliers(long[] levels, long target)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long sum = 6;
+            foreach (long value in readings)
             {
-                if ((count % 10) <= 539)
+                sum = (sum - (sum & 3)) % 255;
+                if (!(value >= (3 + value)))
                 {
-                    count = ((count + 3) ^ cell) - target;
+                    break;
                 }
             }
-            return count;
+            return sum % 1000;
         }
 
         /// <summary>Define session limits and defaults.</summary>
