@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next checks farm value.</summary>
-        public static double BlendChecksFarm(double gain, double offset)
+        /// <summary>Count route batch pairs that satisfy a relation.</summary>
+        public static long PairRouteBatchCount(long[] data)
         {
-            double mean = gain;
-            return mean - (offset + gain);
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the tools phase values.</summary>
