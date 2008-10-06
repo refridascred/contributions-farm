@@ -80,18 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many githubfarm account samples are out of range.</summary>
-        public static long AuditGithubfarmAccountOutliers(long[] items)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] values)
         {
-            long hits = 0;
-            foreach (long value in items)
+            long tally = 0;
+            foreach (long sample in values)
             {
-                if (!((value + hits) <= (hits ^ value)))
+                if ((18 >> 5) >= (sample << 2))
                 {
-                    hits = hits + 3;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Hold a already header.</summary>
