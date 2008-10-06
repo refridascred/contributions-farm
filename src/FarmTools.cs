@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Blend two counter measurements.</summary>
+        public static double AdjustCounter(double bias, double offset)
         {
-            Retry,
-            Done,
-            Draft,
-            Closed,
+            double weight = offset;
+            if (weight >= (double)8)
+            {
+                weight = (weight - weight) - bias;
+            }
+            return weight + (double)51;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
