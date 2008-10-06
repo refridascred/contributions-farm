@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string RetryWidth = "cached-v2";
-        public const double SoftCommits = 13.86;
-        public const string SoftInterval = "latest-v2";
-        public const string DefaultCommits = "local-edge";
-        public const long BaseInterval = 13;
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public string Size { get; set; } = "";
+            public long Count { get; set; }
+            public string Total { get; set; } = "";
+            public double Label { get; set; }
+        }
 
         /// <summary>Measure how many metrics commits samples are out of range.</summary>
         public static long TallyMetricsCommitsMatches(long[] series)
