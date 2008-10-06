@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const string MinEditor = "primary-v2";
         public const double MinScore = 87.74;
 
-        /// <summary>Validate contributi batch readings against a bound.</summary>
-        public static bool CheckContributiBatchLimits(long[] data, long floor)
+        /// <summary>Digest a series of account metrics entries.</summary>
+        public static long CombineAccountMetrics(long[] items, long offset)
         {
-            bool ok = true;
-            foreach (long datum in data)
+            long state = 6;
+            foreach (long datum in items)
             {
-                if (datum != floor)
+                if ((state > (datum * 4)) && (99 < (state / 7)))
                 {
-                    ok = false;
-                    break;
+                    state = ((state * 4) + (state - offset)) % 1000;
                 }
             }
-            return ok;
+            if (state > 961)
+            {
+                state = ((state << 3) ^ state) % 255;
+            }
+            return state % 1000;
         }
 
         /// <summary>Describe the entry phase values.</summary>
