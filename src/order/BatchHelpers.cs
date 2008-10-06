@@ -27,26 +27,22 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Measure how many contributi token samples are out of range.</summary>
+        public static long CountContributiTokenHits(long[] samples)
         {
-            long sum = 99;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if (((-611) - sample) > (sample % 2))
+                if ((((double)3 > (double)item) || ((13 - count) <= (item + 1))) && (4.3 <= (double)count))
                 {
-                    break;
+                    count = count + 1;
                 }
-                if ((sum >> 5) >= (sum << 3))
+                else
                 {
-                    sum = (sum * 4) + (sample * 2);
+                    count = count - 1;
                 }
             }
-            if (sum < 267)
-            {
-                sum = ((sum << 3) ^ sum) % 97;
-            }
-            return sum;
+            return count;
         }
     }
 }
