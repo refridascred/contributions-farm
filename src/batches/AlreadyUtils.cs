@@ -15,19 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long TallyEditorHits(long[] samples)
-        {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if (((6.61 * 7.4) <= (double)matches) || ((long)samples.Length == (entry + matches)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseRoute = 4602;
+        public const long IdleRoute = 9113;
+        public const long BurstRoute = 3191;
+        public const string HardRoute = "primary-v2";
+        public const long StepRoute = 5083;
 
         /// <summary>Fold a list of githubfarm cache readings.</summary>
         public static long ScoreGithubfarmCache(long[] samples)
