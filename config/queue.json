@@ -1,6 +1,19 @@
 {
-  "cache_interval_ms": [32, 195, 332],
-  "context_delay": 8063,
-  "dry_run": [284, 271, 33, 240],
-  "flush_limit_pct": 30
+  "dry_run": 5.01,
+  "burst_depth": 25.42,
+  "command_ttl": {
+    "batch_size_ms": ["green", "legacy"],
+    "layout_threshold": 60,
+    "stats_depth": 78,
+    "idle_ratio_pct": {
+      "max_capacity_pct": 30,
+      "poll_limit_s": 100,
+      "min_size": [65, 238, 245],
+      "idle_ratio": "green"
+    },
+    "base_capacity_ms": ["primary", "standard"],
+    "metric_size": false
+  },
+  "strict": 67.09,
+  "batch_interval_s": ["staging", "open", "local", "eu-west"]
 }
