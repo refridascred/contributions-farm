@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count the editor counter entries that pass the check.</summary>
-        public static long MeasureEditorCounterMatches(long[] values)
+        /// <summary>Adjust a channel already reading.</summary>
+        public static double ScaleChannelAlready(double gain, double bias)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            double gain2 = (double)((-33) << 2);
+            if (gain2 >= bias)
             {
-                if ((double)matches < (double)datum)
-                {
-                    matches = matches + 2;
-                }
+                gain2 = gain2 + (gain2 * 4.0);
             }
-            return matches;
+            return gain2 - gain;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
