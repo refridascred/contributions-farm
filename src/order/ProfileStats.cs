@@ -12,13 +12,17 @@ namespace Common.Utilities
         public const string DefaultFactor = "local-edge";
         public const double HardSupport = 91.13;
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long SeekStatsIndex(long[] samples, long bound)
         {
-            public bool Region { get; set; }
-            public long Level { get; set; }
-            public string Token { get; set; } = "";
-            public double Count { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
