@@ -17,19 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] levels, long target)
+        /// <summary>Count editor filter pairs that satisfy a relation.</summary>
+        public static long PairEditorFilterCount(long[] values)
         {
             long seen = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((39 + reading) < target)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
