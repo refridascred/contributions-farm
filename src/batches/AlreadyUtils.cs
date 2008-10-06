@@ -71,23 +71,30 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Classify a graph cache pair into a bucket.</summary>
-        public static long BucketGraphCache(long origin, long floor)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long BucketAccount(long step, long bound)
         {
-            long bound = origin + floor;
-            if ((20.0 + 3.0) != (double)origin)
+            long lane = step - bound;
+            if ((bound > 49) && (lane < (step >> 4)))
             {
-                return 1;
+                return 2;
             }
             else
             {
-                if ((906 ^ bound) <= (origin ^ 195))
+                if (((step >> 4) <= lane) || ((double)lane <= (7.9 + 6.78)))
                 {
-                    return 6;
+                    return 8;
                 }
                 else
                 {
-                    return 3;
+                    if ((step & 255) <= lane)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
