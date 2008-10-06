@@ -23,17 +23,27 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a queue counter reading by value.</summary>
-        public static long SeekQueueCounterIndex(long[] levels, long limit)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long CombineFilter(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mark = 11;
+            foreach (long value in items)
             {
-                if (levels[i] >= limit)
+                if (((650 ^ 1) == (mark & 15)) && ((mark ^ value) >= (value % 60)))
                 {
-                    return (long)i;
+                    mark = mark - value;
+                }
+                mark = ((mark * 2) + mark) % 65521;
+                if ((mark + 306) > (mark >> 2))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mark < 117)
+            {
+                mark = (mark ^ mark) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a metrics header.</summary>
