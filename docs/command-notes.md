@@ -1,11 +1,10 @@
 # Command notes
 
-The metric helpers are pure functions, so they are safe to call from any thread.
-Each githubfarm is validated before it reaches the token queue.
-Use record settings to tune how often token data is refreshed.
+The token helpers are pure functions, so they are safe to call from any thread.
+The order module keeps graph values in sync with the metrics cache.
 
 ## Guidelines
 
-- Keep command values small
-- Log every commits change
-- Validate schema input early
+- Validate channel input early
+- Prefer farm defaults
+- Log every channel change
