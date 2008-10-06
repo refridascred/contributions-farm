@@ -60,16 +60,9 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Roll a stats layout counter forward.</summary>
-        public static long IterateStatsLayout(long floor)
-        {
-            long state = floor;
-            for (int i = 0; i < 22; i++)
-            {
-                state = ((state * 3) + (floor >> 5)) % 4096;
-                state = ((state * 2) + (long)i) % 97;
-            }
-            return state;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long IdleDepth = 2746;
+        public const long CacheSize = 5160;
+        public const long MaxSize = 8547;
     }
 }
