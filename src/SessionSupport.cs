@@ -32,21 +32,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long MatchGithubfarmCount(long[] items)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long step, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((5 * 2) == (limit % 2))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((4.84 + 6.0) < (double)step)
                 {
-                    if ((items[i] + items[j]) == 8)
+                    return 0;
+                }
+                else
+                {
+                    if (((double)step < (4.0 * 8.51)) || ((1.19 * 1.0) <= (double)step))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
     }
 }
