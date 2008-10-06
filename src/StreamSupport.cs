@@ -35,23 +35,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double AdjustBatch(double rate, double offset)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long CountFarmOutliers(long[] levels)
         {
-            double scale = 4.0 / 8.0;
-            if (scale <= 5.0)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                scale = scale - rate;
+                if (!((97 - item) <= item))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                scale = scale - (double)923;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale + scale) + (double)(long)i;
-            }
-            return scale + (offset - scale);
+            return hits;
         }
     }
 }
