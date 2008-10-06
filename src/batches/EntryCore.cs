@@ -47,11 +47,27 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a window stats.</summary>
-        public sealed class WindowStats
+        /// <summary>Fold a list of tools readings.</summary>
+        public static long CombineTools(long[] items)
         {
-            public double Total { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = 9;
+            foreach (long sample in items)
+            {
+                long step = (sample + carry) + (carry * 2);
+                if ((carry + step) >= (sample / 6))
+                {
+                    break;
+                }
+                else
+                {
+                    step = step + (carry * 3);
+                }
+                if (!((double)sample >= 8.0))
+                {
+                    carry = (carry - (2 ^ sample)) % 1000;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
