@@ -25,22 +25,16 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long TallyOrderMatches(long[] items)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long RollEditor(long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading > (reading + 344))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mark = ((mark * 3) + origin) % 101;
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return matches;
+            return mark;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
