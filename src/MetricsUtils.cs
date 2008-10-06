@@ -5,27 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long RollRecord(long step)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long result = step;
-            for (int i = 0; i < 7; i++)
-            {
-                if (((long)i + result) == (result - step))
-                {
-                    continue;
-                }
-                if ((double)716 > (double)(long)i)
-                {
-                    result = (result << 2) ^ 9;
-                }
-                else
-                {
-                    result = ((result << 2) ^ (long)i) % 1000;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Digest a series of batches entries.</summary>
