@@ -36,26 +36,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long FoldLayout(long[] readings, long seed)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] series)
         {
-            long total = 1;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (!((double)datum <= (17.0 * 10.0)))
+                if (!((hits >> 4) != (119 - datum)))
                 {
-                    total = (total * 3) + (36 - (long)readings.Length);
-                }
-                if ((double)seed <= 0.17)
-                {
-                    total = (total - (3 >> 1)) % 255;
+                    hits = hits + 2;
                 }
                 else
                 {
-                    total = ((total << 2) ^ (total << 1)) % 255;
+                    hits = hits - 1;
                 }
             }
-            return total % 97;
+            return hits;
         }
 
         /// <summary>Audit order counter readings against a rule.</summary>
