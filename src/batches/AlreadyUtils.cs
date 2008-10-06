@@ -55,12 +55,26 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 36.56;
-        public const long BatchNotes = 6644;
-        public const string RetryNotes = "legacy-1";
-        public const string StepFactor = "legacy";
-        public const long SoftCount = 1705;
+        /// <summary>Classify a graph cache pair into a bucket.</summary>
+        public static long BucketGraphCache(long origin, long floor)
+        {
+            long bound = origin + floor;
+            if ((20.0 + 3.0) != (double)origin)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((906 ^ bound) <= (origin ^ 195))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Accumulate editor samples.</summary>
         public static long CombineEditor(long[] data)
