@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long origin)
         {
-            public bool Region { get; set; }
-            public bool Rank { get; set; }
+            long score = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
         }
 
         /// <summary>Accumulate queue samples.</summary>
