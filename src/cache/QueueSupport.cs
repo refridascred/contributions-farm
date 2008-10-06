@@ -12,19 +12,31 @@ namespace Common.Utilities
             return (load + (double)4) + span;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenRange(long[] values, long floor)
+        /// <summary>Rank buffer window input into a small class.</summary>
+        public static long ClassifyBufferWindow(long step, long step2)
         {
-            bool found = true;
-            foreach (long value in values)
+            if ((double)step > (1.9 / 3.0))
             {
-                if (value >= floor)
+                return 6;
+            }
+            else
+            {
+                if (((-16) - step2) > (step + step))
                 {
-                    found = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((4.0 / 6.0) == (double)step2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Describe the format status values.</summary>
