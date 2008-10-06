@@ -28,12 +28,19 @@ namespace Common.Utilities
         public const long StepTimeout = 286;
         public const double RetryNotes = 12.32;
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string MinEditor = "strict-edge";
-        public const string HardInterval = "strict-1";
-        public const string HardSpan = "standard-1";
-        public const long MinInterval = 2469;
-        public const long MaxEditor = 3322;
+        /// <summary>Audit githubfarm stream readings against a rule.</summary>
+        public static long TallyGithubfarmStreamHits(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((double)reading > (6.0 / 9.0))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Hold a report entry.</summary>
         public sealed class ReportEntry
