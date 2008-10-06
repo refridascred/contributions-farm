@@ -19,11 +19,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
+        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
+        public static long PairGithubfarmCount(long[] items)
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Combine checks values into a single score.</summary>
