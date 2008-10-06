@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double DefaultSchema = 43.55;
-        public const long MinInterval = 6686;
-        public const string BatchScore = "cached";
-        public const double RetrySchema = 84.59;
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
+        {
+            Draft,
+            Active,
+            Stale,
+        }
 
         /// <summary>Hold a metrics summary.</summary>
         public sealed class MetricsSummary
