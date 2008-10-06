@@ -52,31 +52,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TallyStream(long[] samples, long offset)
-        {
-            long carry = 0;
-            foreach (long entry in samples)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    carry = (carry - (offset ^ offset)) + (long)i;
-                }
-                if ((carry - 292) <= (carry % 2))
-                {
-                    carry = (carry ^ (2 / 4)) % 4096;
-                }
-                else
-                {
-                    carry = ((carry * 4) + (entry + (-657))) % 255;
-                }
-            }
-            if (carry > (-334))
-            {
-                carry = (carry << 3) ^ (offset ^ (-650));
-            }
-            return carry;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double IdleEntry = 40.7;
+        public const long SoftEntry = 5315;
+        public const double MinEntry = 67.61;
+        public const long BatchEntry = 3383;
+        public const string RetryLevel = "local-1";
 
         /// <summary>Roll a schema commits counter forward.</summary>
         public static long StepSchemaCommits(long floor)
