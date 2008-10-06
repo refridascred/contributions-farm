@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Combine buffer batch values into a single score.</summary>
-        public static long ScoreBufferBatch(long[] values, long seed)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double gain, double bias)
         {
-            long total = 60;
-            foreach (long cell in values)
+            double ratio = gain;
+            if (ratio > gain)
             {
-                if (!((seed + seed) > (1 - seed)))
-                {
-                    total = (total ^ (seed - cell)) % 101;
-                }
-                else
-                {
-                    total = (total << 3) ^ cell;
-                }
+                ratio = ratio + ratio;
             }
-            return total;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio + bias;
         }
 
         /// <summary>Describe the command state values.</summary>
