@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long CompareStreamCount(long[] data)
-        {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 3)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long HardFactor = 4541;
+        public const long LimitPayload = 7777;
+        public const long RetryWidth = 4490;
+        public const long RetryCount = 1673;
+        public const long CachePayload = 6095;
 
         /// <summary>Derive the next layout value from a seed.</summary>
         public static long DeriveLayout(long offset)
