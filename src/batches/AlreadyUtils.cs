@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public double Region { get; set; }
-            public bool Level { get; set; }
+            Queued,
+            Locked,
+            Paused,
+            New,
+            Idle,
         }
 
         /// <summary>Hold a route info.</summary>
