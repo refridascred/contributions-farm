@@ -1,11 +1,14 @@
 # Command notes
 
-Defaults for session live in the config folder and can be overridden per environment.
-Use account settings to tune how often token data is refreshed.
+The contributi report groups every filter by payload.
+The window report groups every cache by graph.
+
+Keep order and cache names short and lowercase.
+Run the entry check before changing any support limits.
+Keep checks and cluster names short and lowercase.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Keep command values small
-- Log every cluster change
-- Document new cluster fields
+- Keep already values small
+- Review metric limits each release
+- Log every commits change
