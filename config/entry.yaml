@@ -1,10 +1,7 @@
 # entry settings
-base_interval_count: stable
-payload_limit: 60
-min_depth_s: 17
-enabled:
-  - 392
-  - 378
-  - 183
-record_limit: strict
-channel_depth: primary
+session_window:
+  - 287
+  - 230
+  - 216
+max_ratio_s: 56.15
+max_threshold_ms: 9006
