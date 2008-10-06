@@ -1,11 +1,16 @@
 # githubfarm settings
-max_capacity_s: 94
-retry_capacity_count: 100
-stats_delay: 66.02
-format_limit:
-  burst_retries_pct: false
-  format_depth: 7.78
-  hard_ratio_pct: standard
-  default_window_ms: 39
-  strict: 250
-githubfarm_capacity: 44
+strict:
+  min_capacity_s: 87.6
+  enabled:
+    - strict
+    - fallback
+    - edge
+  warm_timeout_pct:
+    burst_limit_ms: fallback
+    strict: strict
+    batch_retries_pct: open
+    window_timeout: staging
+    poll_timeout: eu-west
+  buffer_delay: 100
+min_delay_pct: 90.84
+cache_limit_ms: 35.81
