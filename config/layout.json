@@ -1,8 +1,5 @@
 {
-  "audit": 86.97,
-  "base_interval_count": "blue",
-  "retry_size": 31.89,
-  "strict": ["local", "latest", "fallback"],
-  "support_retries": 10.94,
-  "commits_retries": 1.42
+  "sync_window_pct": 88.93,
+  "githubfarm_interval": 54.65,
+  "poll_threshold_count": false
 }
