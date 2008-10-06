@@ -48,12 +48,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
-        {
-            public long Mode { get; set; }
-            public string Count { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string BurstChannel = "legacy-v2";
+        public const double BaseChannel = 42.65;
+        public const string StepFactor = "strict-edge";
+        public const long MaxChannel = 5459;
+        public const string StepRatio = "staging";
     }
 }
