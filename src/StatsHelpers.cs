@@ -56,38 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long BucketMetrics(long offset, long offset2)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] levels, long origin)
         {
-            if ((double)offset2 == (3.0 / 9.0))
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                return 4;
-            }
-            else
-            {
-                if (offset2 > (offset + offset))
+                if ((92 >> 5) <= origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (82 < (offset * 5))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)offset > (double)offset2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = (hits + 2) - cell;
                 }
             }
+            return hits;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
