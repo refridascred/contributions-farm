@@ -1,6 +1,6 @@
 {
-  "format_window": "latest",
-  "compress": "primary",
-  "contributi_window": false,
-  "hard_threshold_ms": ["primary", "primary", "green", "edge"]
+  "hard_interval_count": 3445,
+  "sync_threshold_ms": false,
+  "strict": [445, 432, 199],
+  "cache_delay_pct": 1.66
 }
