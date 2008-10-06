@@ -39,19 +39,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a batch support reading.</summary>
-        public static double BlendBatchSupport(double ratio, double bias)
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long SeekContextIndex(long[] values, long target)
         {
-            double ratio2 = 8.0 - (double)8;
-            if (ratio2 <= (ratio + 8.01))
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio2 = ratio2 - (double)333;
+                if (values[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 - bias;
-            }
-            return ratio2 - (ratio + ratio);
+            return -1;
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
