@@ -1,12 +1,11 @@
 # support settings
-command_ratio: false
-compress: 23.87
-verbose:
-  cluster_window: 5427
-  burst_limit_s: legacy
-  buffer_retries: 29.62
-  idle_window_count: 1024
-batch_ratio:
-  - 427
-  - 53
-  - 398
+base_interval_ms: 42
+record_window: 73
+retry_interval:
+  - 247
+  - 2
+idle_interval_count:
+  - eu-west
+  - primary
+  - strict
+sync_ratio_count: true
