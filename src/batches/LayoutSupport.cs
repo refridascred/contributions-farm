@@ -62,9 +62,13 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchSize = "standard";
-        public const string IdleChecks = "local-1";
-        public const long BurstTimeout = 4127;
+        /// <summary>Describe the channel phase values.</summary>
+        public enum ChannelPhase
+        {
+            Pending,
+            Locked,
+            Ready,
+            Dropped,
+        }
     }
 }
