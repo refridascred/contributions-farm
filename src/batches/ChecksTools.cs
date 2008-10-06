@@ -25,17 +25,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first checks entry that matches the target.</summary>
-        public static long LookupChecksIndex(long[] samples, long bound)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Score { get; set; }
+            public bool Token { get; set; }
+            public long Count { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Project the next profile checks value.</summary>
