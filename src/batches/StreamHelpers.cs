@@ -51,13 +51,23 @@ namespace Common.Utilities
             return drift + (ratio / 8.0);
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Fold a list of order readings.</summary>
+        public static long DigestOrder(long[] samples)
         {
-            Locked,
-            Synced,
-            Queued,
-            Failed,
+            long carry = 145;
+            foreach (long value in samples)
+            {
+                carry = carry + (value % 5);
+                if ((double)value > (4.0 * 1.8))
+                {
+                    break;
+                }
+            }
+            if (carry < 54)
+            {
+                carry = ((carry << 2) ^ (carry / 8)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
