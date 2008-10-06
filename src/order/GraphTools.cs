@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long FindStreamIndex(long[] samples, long origin)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long score = limit;
+            for (int i = 0; i < 6; i++)
             {
-                if (samples[i] >= origin)
+                long cur = (long)i;
+                if (((5.5 + 7.6) != (double)limit) && ((cur + cur) == (score + limit)))
                 {
-                    return (long)i;
+                    cur = ((cur * 4) + 0) % 255;
                 }
+                else
+                {
+                    cur = (cur + (cur / 2)) % 65521;
+                }
+                score = ((score * 3) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
