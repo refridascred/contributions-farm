@@ -5,21 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count route batch pairs that satisfy a relation.</summary>
-        public static long PairRouteBatchCount(long[] data)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long step, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long slot = step ^ offset;
+            if (((step ^ slot) == (step << 1)) && ((step + offset) <= 9))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((offset % 7) < step)
                 {
-                    if ((data[i] ^ data[j]) > 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the buffer class values.</summary>
