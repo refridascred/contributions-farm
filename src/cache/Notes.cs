@@ -49,18 +49,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Audit already filter readings against a rule.</summary>
-        public static long CountAlreadyFilterOutliers(long[] series)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long seen = 0;
-            foreach (long value in series)
-            {
-                if ((((double)(-159) > (6.38 - 11.0)) && ((seen >> 5) >= (value - 325))) || ((double)value > (5.0 / 7.0)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Paused,
+            Retry,
+            Locked,
         }
     }
 }
