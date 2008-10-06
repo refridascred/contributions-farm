@@ -12,26 +12,39 @@ namespace Common.Utilities
         public const string DefaultFactor = "local-edge";
         public const double HardSupport = 91.13;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long TallyBatches(long[] data)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long SortContext(long step, long limit)
         {
-            long sum = 802;
-            foreach (long entry in data)
+            long offset = step ^ limit;
+            if ((1.73 - 9.7) >= (double)offset)
             {
-                if ((323 - 71) == (sum % 10))
+                return 3;
+            }
+            else
+            {
+                if ((double)step != (3.0 / 8.0))
                 {
-                    sum = (sum ^ entry) % 1000;
+                    return 2;
                 }
                 else
                 {
-                    sum = sum ^ (2 & 31);
-                }
-                if (((959 ^ sum) <= (sum + 11)) || ((sum % 5) < (sum ^ sum)))
-                {
-                    break;
+                    if ((limit - step) <= (offset - offset))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((20.0 * 4.88) < (double)offset)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
