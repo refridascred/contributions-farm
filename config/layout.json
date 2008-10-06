@@ -1,11 +1,8 @@
 {
-  "batch_ttl_pct": {
-    "session_size": 76,
-    "min_window": true,
-    "sync_timeout_count": 7432,
-    "base_retries_count": 59.85,
-    "poll_timeout_pct": 59.67
-  },
-  "filter_threshold": 71.7,
-  "hard_window_s": 84.45
+  "retry_timeout_count": 54.68,
+  "burst_size_s": "fallback",
+  "min_ttl_count": "legacy",
+  "verbose": "local",
+  "batch_depth_ms": ["eu-west", "stable", "primary"],
+  "readonly": false
 }
