@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long LookupAlreadyIndex(long[] levels, long seed)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                total = total ^ (total - total);
-                total = ((total * 5) + (long)i) % 1000;
+                if (levels[i] < seed)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the editor level values.</summary>
