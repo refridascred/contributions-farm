@@ -1,6 +1,18 @@
 {
-  "idle_interval_pct": 31.76,
-  "min_timeout": true,
-  "max_delay_pct": ["eu-west", "edge", "eu-west", "fallback"],
-  "record_window": 23.23
+  "checks_threshold": "edge",
+  "retry_ttl_s": {
+    "max_timeout_ms": 1024,
+    "notes_depth": 45,
+    "hard_interval": "strict",
+    "idle_retries_count": {
+      "commits_threshold": true,
+      "route_capacity": ["edge", "latest", "legacy"],
+      "enabled": 1064,
+      "format_retries": 87
+    },
+    "session_timeout": [94, 81]
+  },
+  "cache_window_ms": true,
+  "audit": 54.02,
+  "min_interval_s": "blue"
 }
