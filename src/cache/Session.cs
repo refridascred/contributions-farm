@@ -37,19 +37,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long SeriesEditor(long bound)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] readings, long origin)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)i * 3) <= 6)
+                if (readings[i] > origin)
                 {
-                    total = (total ^ (451 % 3)) % 255;
+                    return (long)i;
                 }
-                total = ((total * 3) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
     }
 }
