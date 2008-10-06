@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Compare every pair of session account readings.</summary>
-        public static long CompareSessionAccountCount(long[] samples)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long DigestFarm(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 55;
+            foreach (long entry in items)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((entry + entry) >= entry)
                 {
-                    if ((samples[i] ^ samples[j]) < 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = (score - (12 >> 3)) % 1000;
                 }
+                score = score - (score >> 4);
+                score = (score << 3) ^ (score + entry);
             }
-            return seen;
+            if (score > 791)
+            {
+                score = (score ^ (576 % 7)) % 1000;
+            }
+            return score % 1000;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
