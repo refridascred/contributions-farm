@@ -1,6 +1,7 @@
 {
-  "account_timeout": 46.92,
-  "enabled": 86.24,
-  "warm_ratio_ms": 80.71,
-  "idle_size_pct": 500
+  "idle_limit_ms": 27.26,
+  "readonly": ["eu-west", "primary", "strict"],
+  "base_threshold": "latest",
+  "soft_threshold": 5473,
+  "default_window_count": "stable"
 }
