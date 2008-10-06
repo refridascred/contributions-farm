@@ -1,6 +1,7 @@
 {
-  "burst_retries_ms": 18.17,
-  "dry_run": true,
-  "sync_capacity_count": true,
-  "cache_limit": true
+  "window_depth": 60,
+  "payload_retries": 60,
+  "audit": 84.76,
+  "stats_window": true,
+  "cache_ratio_ms": [181, 407, 396, 316]
 }
