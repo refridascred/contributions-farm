@@ -1,4 +1,7 @@
 # support settings
-default_size_count: false
-min_threshold_s: 97.16
-contributi_window: 20.02
+account_window: false
+compress: latest
+cache_timeout: 3691
+min_limit_count: green
+hard_threshold: 309
+hard_capacity_ms: 581
