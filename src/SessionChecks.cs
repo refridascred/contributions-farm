@@ -56,12 +56,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long bound)
         {
-            public long Offset { get; set; }
-            public string Total { get; set; } = "";
-            public long Token { get; set; }
+            long mark = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mark = (mark - (mark * 5)) % 101;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
     }
 }
