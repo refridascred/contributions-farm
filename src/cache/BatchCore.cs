@@ -32,17 +32,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] readings, long floor)
+        /// <summary>Iterate the format cache series from a seed.</summary>
+        public static long SeriesFormatCache(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long score = offset;
+            for (int i = 0; i < 17; i++)
             {
-                if (readings[i] >= floor)
-                {
-                    return (long)i;
-                }
+                score = score ^ (offset - offset);
+                score = ((score * 4) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
