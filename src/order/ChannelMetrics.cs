@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 9207;
-        public const long SoftCounter = 6416;
-        public const long BurstCounter = 2064;
-        public const long MaxTimeout = 8088;
-        public const long MaxCounter = 810;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 7647;
+        public const long RetryBudget = 2342;
+        public const long RetryRatio = 7544;
 
         /// <summary>Validate metric tools readings against a bound.</summary>
         public static bool CheckMetricToolsBounds(long[] data, long step)
