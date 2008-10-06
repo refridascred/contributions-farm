@@ -23,19 +23,18 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool VerifyToolsLimits(long[] samples, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] levels)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            long sum = 2;
+            foreach (long value in levels)
             {
-                if (datum != bound)
+                if (((sum << 2) > value) || (value <= (sum / 5)))
                 {
-                    ok = false;
-                    break;
+                    sum = sum - (sum + sum);
                 }
             }
-            return ok;
+            return sum;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
