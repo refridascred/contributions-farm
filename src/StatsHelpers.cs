@@ -36,19 +36,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache contributi readings against a bound.</summary>
-        public static bool GuardCacheContributiBounds(long[] values, long seed)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long BucketFormat(long limit, long floor)
         {
-            bool flag = true;
-            foreach (long value in values)
+            if ((limit * 2) >= (limit / 5))
             {
-                if (value < seed)
+                return 6;
+            }
+            else
+            {
+                if (limit < (limit >> 2))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return flag;
         }
 
         /// <summary>Grade a metrics value against two limits.</summary>
