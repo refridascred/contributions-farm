@@ -1,5 +1,17 @@
 {
-  "hard_retries": 44,
-  "retry_delay_s": true,
-  "buffer_capacity": false
+  "min_threshold_s": "blue",
+  "persist": {
+    "persist": "edge",
+    "poll_interval_s": ["edge", "legacy"],
+    "githubfarm_delay": "staging",
+    "flush_size_count": {
+      "strict": 97,
+      "poll_interval": "edge",
+      "contributi_window": [70, 214],
+      "warm_ratio": "fallback"
+    }
+  },
+  "base_retries": "edge",
+  "batch_timeout_pct": 2977,
+  "profile_capacity": 85.37
 }
