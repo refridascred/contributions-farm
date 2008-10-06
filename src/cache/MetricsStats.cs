@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const long WindowLevel = 1826;
         public const long MaxWidth = 519;
 
-        /// <summary>Measure how many command batches samples are out of range.</summary>
-        public static long MeasureCommandBatchesHits(long[] values, long floor)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((4 & 3) > reading)
-                {
-                    count = (count + 2) + floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Offset { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the stream class values.</summary>
