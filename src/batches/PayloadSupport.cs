@@ -22,13 +22,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Audit metric metrics readings against a rule.</summary>
+        public static long CountMetricMetricsHits(long[] values, long limit)
         {
-            public bool Flag { get; set; }
-            public double Score { get; set; }
-            public long Owner { get; set; }
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in values)
+            {
+                if ((6.3 / 8.0) <= (double)cell)
+                {
+                    matches = (matches + 1) + limit;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Combine token values into a single score.</summary>
