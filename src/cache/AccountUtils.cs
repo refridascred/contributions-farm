@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double WindowCount = 67.07;
-        public const long MaxGraph = 5877;
-        public const double BaseGraph = 8.47;
-        public const string StepGraph = "legacy-1";
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            New,
+            Dropped,
+            Ready,
+            Pending,
+        }
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] data, long target)
