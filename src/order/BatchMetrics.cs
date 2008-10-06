@@ -42,20 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatLimits(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long reading in data)
-            {
-                if (reading <= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string WindowNotes = "legacy-v2";
+        public const long RetrySpan = 2650;
+        public const long LimitNotes = 4149;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const string BatchSpan = "legacy-edge";
