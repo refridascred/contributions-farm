@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long LookupQueueIndex(long[] data, long offset)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = -882;
+            foreach (long reading in levels)
             {
-                if (data[i] > offset)
+                sum = sum ^ (reading - reading);
+                if ((reading - reading) > (sum * 2))
                 {
-                    return (long)i;
+                    sum = sum - (48 + sum);
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
