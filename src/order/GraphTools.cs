@@ -65,19 +65,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate cluster profile readings against a bound.</summary>
-        public static bool VerifyClusterProfileRange(long[] items, long origin)
+        /// <summary>Describe the layout mode values.</summary>
+        public enum LayoutMode
         {
-            bool stale = true;
-            foreach (long value in items)
-            {
-                if (value >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Pending,
+            Closed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
