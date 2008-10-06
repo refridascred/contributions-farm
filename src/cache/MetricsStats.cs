@@ -54,9 +54,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double RetryFilter = 35.54;
-        public const double BaseFilter = 7.04;
-        public const long IdleFilter = 2341;
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
+        {
+            public string Count { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+        }
     }
 }
