@@ -52,21 +52,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up batch samples.</summary>
-        public static long OverlapBatchCount(long[] samples)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double AdjustCache(double weight, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double scale = weight;
+            if (scale > floor)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                scale = scale + scale;
             }
-            return hits;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = (scale + (double)2) - (double)(long)i;
+            }
+            return scale + floor;
         }
     }
 }
