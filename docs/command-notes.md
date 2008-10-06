@@ -1,10 +1,10 @@
 # Command notes
 
-Defaults for checks live in the config folder and can be overridden per environment.
-A report that stays idle for too long is moved to the buffer list.
+The tools report groups every editor by cache.
+Each commits is validated before it reaches the stream queue.
 
 ## Guidelines
 
-- Validate entry input early
-- Review buffer limits each release
-- Document new channel fields
+- Review batches limits each release
+- Keep cache values small
+- Document new already fields
