@@ -30,10 +30,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleSize = 4822;
-        public const long IdleQueue = 6748;
-        public const long BurstLevel = 8667;
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
+        {
+            Pending,
+            Failed,
+            Locked,
+            Queued,
+            Synced,
+        }
 
         /// <summary>Digest a series of context entries.</summary>
         public static long FoldContext(long[] samples)
