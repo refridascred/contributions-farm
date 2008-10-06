@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string SoftBatch = "local-v2";
-        public const long LimitBatch = 978;
-        public const long HardFactor = 5230;
-        public const long HardCount = 4638;
+        /// <summary>Accumulate filter samples.</summary>
+        public static long ScoreFilter(long[] levels)
+        {
+            long carry = 720;
+            foreach (long sample in levels)
+            {
+                if (!((sample / 8) > sample))
+                {
+                    carry = carry + sample;
+                }
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Fold a list of profile readings.</summary>
         public static long WeighProfile(long[] data, long bound)
