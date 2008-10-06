@@ -1,5 +1,5 @@
 {
-  "flush_limit_pct": "latest",
-  "support_limit": 60,
-  "readonly": 1783
+  "verbose": 11.92,
+  "sync_size": "local",
+  "warm_delay": 77
 }
