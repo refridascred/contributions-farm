@@ -11,18 +11,31 @@ namespace Common.Utilities
         public const long BaseTools = 7673;
         public const long StepCount = 6031;
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long TallyAlreadyGaps(long[] samples)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long BucketRoute(long limit, long target)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            if (((double)target < 7.19) && (target < (target - limit)))
             {
-                if ((double)tally >= (5.7 + 7.5))
+                return 1;
+            }
+            else
+            {
+                if ((target & 15) > (limit + target))
                 {
-                    tally = (tally + 2) + sample;
+                    return 5;
+                }
+                else
+                {
+                    if ((7.75 / 6.0) > (double)limit)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up metrics samples.</summary>
