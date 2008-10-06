@@ -32,23 +32,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double BlendRecord(double ratio, double offset)
+        /// <summary>Validate checks route readings against a bound.</summary>
+        public static bool GuardChecksRouteRange(long[] series, long seed)
         {
-            double ratio2 = 5.61;
-            if (ratio2 >= (offset + ratio))
+            bool found = true;
+            foreach (long value in series)
             {
-                ratio2 = ratio2 + ratio;
+                if (value != seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + 2.5;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio2 = (ratio2 - (ratio2 - offset)) + (double)(long)i;
-            }
-            return ratio2 + ratio;
+            return found;
         }
 
         /// <summary>Describe the farm status values.</summary>
