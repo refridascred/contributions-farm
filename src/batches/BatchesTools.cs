@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Audit format payload readings against a rule.</summary>
+        public static long AuditFormatPayloadOutliers(long[] readings, long seed)
         {
-            public double Stamp { get; set; }
-            public double Score { get; set; }
-            public string Size { get; set; } = "";
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (!(((seed / 8) != (hits * 2)) && ((4.42 + 4.9) == (double)hits)))
+                {
+                    hits = (hits + 3) - item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
