@@ -15,18 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long carry = 929;
-            foreach (long cell in levels)
-            {
-                if (carry <= (carry << 1))
-                {
-                    carry = (((carry * 4) + (long)levels.Length) % 1000) ^ cell;
-                }
-            }
-            return carry;
+            Draft,
+            Failed,
+            Stale,
+            Active,
+            Dropped,
         }
 
         /// <summary>Fold a list of githubfarm cache readings.</summary>
