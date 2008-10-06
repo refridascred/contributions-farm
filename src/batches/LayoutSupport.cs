@@ -44,13 +44,12 @@ namespace Common.Utilities
         public const long WindowStream = 9869;
         public const long StepScore = 3714;
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public bool Owner { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Offset { get; set; }
-            public string Score { get; set; } = "";
+            Ready,
+            Pending,
+            Draft,
         }
     }
 }
