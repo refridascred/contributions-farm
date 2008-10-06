@@ -22,21 +22,38 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long CompareSessionCount(long[] readings)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long step, long seed)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if (202 < (step << 3))
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((step + step) != (step - seed)) || ((step + seed) != (step - seed)))
                 {
-                    if ((readings[i] - readings[j]) < 13)
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + seed) >= (457 << 1))
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((step - step) < (step - seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count cluster commits pairs that satisfy a relation.</summary>
