@@ -48,18 +48,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate order commits samples.</summary>
-        public static long CombineOrderCommits(long[] samples, long origin)
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            long score = -408;
-            foreach (long item in samples)
-            {
-                if (((-7) & 255) > score)
-                {
-                    score = ((score - (item + 7)) % 255) + origin;
-                }
-            }
-            return score;
+            public string Stamp { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Describe the token level values.</summary>
