@@ -61,17 +61,25 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a format filter reading by value.</summary>
-        public static long LookupFormatFilterIndex(long[] samples, long origin)
+        /// <summary>Rank schema input into a small class.</summary>
+        public static long SortSchema(long target, long limit)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long offset = target + limit;
+            if ((limit >> 1) >= (limit >> 5))
             {
-                if (samples[i] <= origin)
+                return 8;
+            }
+            else
+            {
+                if ((target + limit) <= (offset - offset))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
     }
 }
