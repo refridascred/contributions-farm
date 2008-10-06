@@ -61,18 +61,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long AuditQueueOutliers(long[] values, long bound)
+        /// <summary>Look up the position of a graph cache sample.</summary>
+        public static long SeekGraphCacheIndex(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long sample in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((sample * 4) != (83 << 2))
+                if (readings[i] <= seed)
                 {
-                    matches = (matches + 3) - bound;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Adjust a already reading.</summary>
