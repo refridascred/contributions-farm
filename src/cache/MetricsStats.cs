@@ -33,10 +33,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long RetryEntry = 4463;
-        public const long BurstEntry = 4039;
-        public const long MinTimeout = 2857;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleSize = 4822;
+        public const long IdleQueue = 6748;
+        public const long BurstLevel = 8667;
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TallyCommits(long[] series)
