@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Look up the position of a metric session sample.</summary>
-        public static long SeekMetricSessionIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long WindowReport = 7934;
+        public const double SoftReport = 31.1;
+        public const long MinRatio = 9001;
+        public const long HardBudget = 5687;
 
         /// <summary>Look up the position of a cache sample.</summary>
         public static long LookupCacheIndex(long[] samples, long target)
