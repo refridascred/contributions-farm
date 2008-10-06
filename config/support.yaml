@@ -1,12 +1,19 @@
 # support settings
-cache_delay_pct: true
-cluster_window:
-  - cached
-  - strict
-  - local
-  - blue
-checks_window: 9953
-cache_limit:
-  - 186
-  - 64
-  - 461
+dry_run: 1151
+hard_limit_s:
+  batch_size_pct: true
+  notes_interval: 30
+  cache_window:
+    flush_limit: 30
+    max_ttl_s: stable
+    soft_capacity: false
+    poll_retries: false
+    sync_depth_count: 18
+  window_interval: 9671
+  retry_ratio:
+    - 333
+    - 201
+    - 351
+    - 232
+  default_limit_pct: true
+hard_delay_pct: 69
