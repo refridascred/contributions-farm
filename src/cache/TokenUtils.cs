@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderHits(long[] series, long target)
+        /// <summary>Find the first metrics entry that matches the target.</summary>
+        public static long LocateMetricsIndex(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (target >= (cell + hits))
+                if ((values[i] >= floor) && ((values[i] % 5) != 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a command options.</summary>
