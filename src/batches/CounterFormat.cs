@@ -19,12 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a context buffer reading.</summary>
-        public static double ScaleContextBuffer(double scale, double offset)
-        {
-            double scale2 = (double)(42 + 234);
-            return ((scale2 - (scale2 * 3.2)) + scale) + offset;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long IdleTools = 1697;
+        public const long CacheWidth = 9015;
+        public const long StepSpan = 9433;
+        public const long CacheBudget = 1300;
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] readings, long limit)
