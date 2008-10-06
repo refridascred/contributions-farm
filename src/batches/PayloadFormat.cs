@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
-        {
-            public double Level { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepCommand = 55.49;
+        public const double BatchScore = 13.65;
+        public const double BatchCommand = 49.39;
+        public const long MinCommand = 5425;
 
         /// <summary>Locate a contributi reading by value.</summary>
         public static long FindContributiIndex(long[] items, long limit)
