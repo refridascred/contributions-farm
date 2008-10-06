@@ -19,16 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the already entry series from a seed.</summary>
-        public static long RollAlreadyEntry(long origin)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long score = origin;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score * 5) + (origin - origin)) % 1000;
-                score = ((score * 5) + (long)i) % 97;
-            }
-            return score;
+            Retry,
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Describe the route status values.</summary>
