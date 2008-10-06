@@ -21,13 +21,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] samples)
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public bool Weight { get; set; }
-            public long Score { get; set; }
+            long mix = 343;
+            foreach (long cell in samples)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = (((mix << 2) ^ (mix << 2)) % 97) + (long)i;
+                }
+                mix = (mix + (cell * 3)) % 4096;
+                if ((4.9 + 20.0) > (double)cell)
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
