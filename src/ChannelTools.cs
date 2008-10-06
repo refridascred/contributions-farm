@@ -31,11 +31,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BurstBudget = 23.42;
-        public const string BaseCluster = "stable-v2";
-        public const double RetryCluster = 77.15;
-        public const double MinCluster = 94.56;
-        public const long SoftDepth = 7272;
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long RollCommits(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                mix = ((mix << 2) ^ (limit & 63)) % 4096;
+                if (!((14.0 - 9.96) < 14.0))
+                {
+                    mix = (mix ^ ((long)i * 5)) % 101;
+                    mix = (mix ^ (limit & 15)) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
+            }
+            return mix;
+        }
     }
 }
