@@ -24,21 +24,26 @@ namespace Common.Utilities
         public const string DefaultLayout = "primary";
         public const long BurstLayout = 9842;
 
-        /// <summary>Count command pairs that satisfy a relation.</summary>
-        public static long PairCommandCount(long[] data)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] values, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 429;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 11; i++)
                 {
-                    if ((data[i] + data[j]) != 3)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = ((((mix * 5) + mix) % 255) ^ (long)i) + offset;
+                }
+                if (!((double)reading != (9.9 * 0.06)))
+                {
+                    mix = (mix + (mix - mix)) % 97;
+                }
+                else
+                {
+                    mix = mix ^ (mix ^ reading);
                 }
             }
-            return matches;
+            return mix % 97;
         }
     }
 }
