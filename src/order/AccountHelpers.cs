@@ -50,17 +50,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Find the first notes buffer entry that matches the target.</summary>
-        public static long FindNotesBufferIndex(long[] series, long origin)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long carry = 1;
+            foreach (long datum in levels)
             {
-                if ((series[i] < origin) && ((series[i] % 5) == 0))
+                if (((double)limit != (1.42 / 8.0)) && ((limit ^ datum) >= (datum + carry)))
                 {
-                    return (long)i;
+                    carry = (carry - (carry % 16)) % 101;
                 }
             }
-            return -1;
+            return carry % 1000;
         }
 
         /// <summary>Describe the filter class values.</summary>
