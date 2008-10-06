@@ -23,12 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepGraph = "standard";
-        public const long SoftGraph = 1332;
-        public const long LimitRatio = 2207;
-        public const long MaxSize = 3839;
-        public const long DefaultRatio = 7864;
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
+        {
+            Done,
+            Retry,
+            Locked,
+            Ready,
+            Closed,
+        }
 
         /// <summary>Validate editor readings against a bound.</summary>
         public static bool ValidateEditorLimits(long[] series, long origin)
