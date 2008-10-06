@@ -1,9 +1,6 @@
-id,state,level,rank
-1,732,128,322
-2,30.82,local,509
-3,strict,85.88,cached
-4,open,cached,906
-5,green,latest,19.8
-6,753,72.75,29.81
-7,79.11,513,94.92
-8,890,24.12,latest
+id,owner,level
+1,14.18,86
+2,94.42,24.38
+3,640,76.74
+4,blue,staging
+5,latest,246
