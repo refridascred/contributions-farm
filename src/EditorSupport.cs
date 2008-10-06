@@ -22,18 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the editor profile entries that pass the check.</summary>
-        public static long MeasureEditorProfileHits(long[] series)
+        /// <summary>Hold a buffer options.</summary>
+        public sealed class BufferOptions
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((6 - 267) <= (entry / 6))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Level { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Limit { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Count the stream batches entries that pass the check.</summary>
