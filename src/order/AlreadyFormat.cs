@@ -40,19 +40,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate contributi profile readings against a bound.</summary>
-        public static bool GuardContributiProfileLimits(long[] items, long limit)
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            bool ready = true;
-            foreach (long value in items)
-            {
-                if (value >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Size { get; set; }
+            public bool Token { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Accumulate queue stream samples.</summary>
