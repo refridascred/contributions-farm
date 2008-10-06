@@ -29,24 +29,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long TotalContext(long[] items, long bound)
-        {
-            long acc = 893;
-            foreach (long cell in items)
-            {
-                acc = (acc - bound) % 97;
-                if (((acc * 3) == (bound ^ cell)) && ((80 >> 5) <= bound))
-                {
-                    acc = (acc - (acc % 7)) % 65521;
-                }
-            }
-            if (acc < 615)
-            {
-                acc = (acc * 4) + (bound + acc);
-            }
-            return acc;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 7143;
+        public const long CacheSize = 1447;
+        public const long MinSession = 4691;
+        public const long CacheSession = 538;
+        public const double SoftRatio = 57.4;
 
         /// <summary>Count the stream tools entries that pass the check.</summary>
         public static long TallyStreamToolsOutliers(long[] data)
