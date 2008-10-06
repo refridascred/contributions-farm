@@ -19,23 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a account window figure with a bias.</summary>
-        public static double BlendAccountWindow(double ratio, double span)
+        /// <summary>Compare every pair of account readings.</summary>
+        public static long PairAccountCount(long[] data)
         {
-            double bias = 1.9;
-            if (bias >= (double)757)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias + ratio;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                bias = bias + span;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias - (span / 6.0)) + (double)(long)i;
-            }
-            return bias - span;
+            return count;
         }
 
         /// <summary>Adjust a session reading.</summary>
