@@ -22,14 +22,11 @@ namespace Common.Utilities
         public const double MinWidth = 50.25;
         public const long IdleFactor = 727;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            Draft,
-            Paused,
-            Failed,
-            Synced,
-            Closed,
+            public double Label { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
