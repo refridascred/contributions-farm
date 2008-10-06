@@ -1,11 +1,7 @@
 {
-  "warm_threshold_count": "fallback",
-  "metrics_interval": [435, 162, 288, 370],
-  "cache_window": {
-    "verbose": 5782,
-    "batch_depth_count": "legacy",
-    "compress": "local",
-    "payload_ratio": "cached"
-  },
-  "warm_limit_pct": "standard"
+  "window_size": 60,
+  "burst_retries_count": "green",
+  "sync_retries_ms": ["standard", "cached"],
+  "idle_ttl_pct": false,
+  "farm_depth": 60.59
 }
