@@ -12,11 +12,11 @@ namespace Common.Utilities
         public const long BurstRatio = 7478;
         public const long HardRoute = 2246;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double HardBudget = 18.98;
-        public const double MaxDepth = 83.18;
-        public const long DefaultTimeout = 241;
-        public const double BatchTimeout = 0.44;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string BatchBatches = "alpha";
+        public const long DefaultBudget = 7293;
+        public const long BaseInterval = 9437;
+        public const string CacheBatches = "alpha-edge";
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long HardInterval = 7932;
