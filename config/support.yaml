@@ -1,7 +1,6 @@
 # support settings
-account_window: false
-compress: latest
-cache_timeout: 3691
-min_limit_count: green
-hard_threshold: 309
-hard_capacity_ms: 581
+retry_limit_pct: 8792
+enabled: blue
+warm_ratio: cached
+soft_depth_s: 14.69
+min_retries: 95
