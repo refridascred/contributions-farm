@@ -19,12 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string StepContext = "legacy-v2";
-        public const long LimitDepth = 5280;
-        public const long IdleContext = 4688;
-        public const long IdleWidth = 5329;
-        public const double RetryContext = 51.37;
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long DeriveBatches(long floor)
+        {
+            long carry = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
+        }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool VerifyProfileRange(long[] values, long origin)
