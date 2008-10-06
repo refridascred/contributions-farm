@@ -45,12 +45,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Combine context values into a single score.</summary>
+        public static long CombineContext(long[] values)
         {
-            public long Owner { get; set; }
-            public double Flag { get; set; }
-            public bool Region { get; set; }
+            long result = 826;
+            foreach (long value in values)
+            {
+                if ((result + 421) != (result >> 1))
+                {
+                    result = ((result - (result - result)) % 97) ^ value;
+                }
+            }
+            return result;
         }
 
         /// <summary>Hold a cache info.</summary>
