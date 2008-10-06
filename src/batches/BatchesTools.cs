@@ -23,19 +23,11 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] levels)
-        {
-            long sum = 2;
-            foreach (long value in levels)
-            {
-                if (((sum << 2) > value) || (value <= (sum / 5)))
-                {
-                    sum = sum - (sum + sum);
-                }
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 72.92;
+        public const long MinScore = 2103;
+        public const long RetryQueue = 267;
+        public const string BaseQueue = "fallback-edge";
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double LimitChecks = 60.34;
