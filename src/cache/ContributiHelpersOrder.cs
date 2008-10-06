@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] series)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] levels, long limit)
         {
-            long acc = -75;
-            foreach (long reading in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if (!((67 & 255) > reading))
+                if ((double)limit >= (3.17 / 9.0))
                 {
-                    acc = (acc * 3) + ((long)series.Length - acc);
-                }
-                else
-                {
-                    acc = (acc + (reading + reading)) % 65521;
+                    matches = (matches + 3) + value;
                 }
             }
-            if (acc < 0)
-            {
-                acc = (acc << 2) ^ (acc - 553);
-            }
-            return acc % 4096;
+            return matches;
         }
 
         /// <summary>Hold a schema summary.</summary>
