@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksGaps(long[] readings)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long OverlapBatchCount(long[] items)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (matches <= (matches - matches))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    matches = (matches + 3) ^ datum;
+                    if ((items[i] ^ items[j]) < 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the metric mode values.</summary>
