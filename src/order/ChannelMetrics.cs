@@ -10,19 +10,25 @@ namespace Common.Utilities
         public const long RetryBudget = 2342;
         public const long RetryRatio = 7544;
 
-        /// <summary>Validate metric tools readings against a bound.</summary>
-        public static bool CheckMetricToolsBounds(long[] data, long step)
+        /// <summary>Rank stats schema input into a small class.</summary>
+        public static long BucketStatsSchema(long floor, long origin)
         {
-            bool valid = true;
-            foreach (long entry in data)
+            long offset = floor - origin;
+            if ((origin + origin) >= (origin ^ offset))
             {
-                if (entry < step)
+                return 8;
+            }
+            else
+            {
+                if ((double)origin >= (9.7 + 6.4))
                 {
-                    valid = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return valid;
         }
 
         /// <summary>Check that every already commits entry stays within the limit.</summary>
