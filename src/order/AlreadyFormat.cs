@@ -25,19 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] series, long origin)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] values, long offset)
         {
-            bool stale = true;
-            foreach (long entry in series)
+            long carry = 218;
+            foreach (long entry in values)
             {
-                if (entry != origin)
-                {
-                    stale = false;
-                    break;
-                }
+                carry = (carry * 2) + entry;
             }
-            return stale;
+            if (carry < 651)
+            {
+                carry = (carry ^ (offset << 3)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Hold a order stats.</summary>
