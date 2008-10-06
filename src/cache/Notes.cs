@@ -56,19 +56,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] samples, long seed)
+        /// <summary>Digest a series of route stats entries.</summary>
+        public static long ScoreRouteStats(long[] series, long origin)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long result = -924;
+            foreach (long value in series)
             {
-                if (cell > seed)
+                if ((value <= (985 ^ value)) || (((long)series.Length - origin) > (result << 2)))
                 {
-                    found = false;
-                    break;
+                    result = (result + value) % 1000;
+                }
+                else
+                {
+                    result = ((result << 3) ^ (674 + (-74))) % 97;
                 }
             }
-            return found;
+            if (result < 1)
+            {
+                result = result + origin;
+            }
+            return result;
         }
 
         /// <summary>Match up order samples.</summary>
