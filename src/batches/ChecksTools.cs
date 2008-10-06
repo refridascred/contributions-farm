@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TallyOrder(long[] samples, long floor)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] series, long step)
         {
-            long acc = 28;
-            foreach (long entry in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                if (series[i] <= step)
                 {
-                    acc = (((acc - (acc >> 3)) % 65521) ^ (long)i) - floor;
+                    return (long)i;
                 }
-                acc = (acc - (acc + entry)) % 97;
             }
-            return acc % 97;
+            return -1;
         }
 
         /// <summary>Scale a githubfarm entry figure with a bias.</summary>
