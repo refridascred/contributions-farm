@@ -43,11 +43,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const string DefaultWidth = "strict-1";
-        public const string WindowDepth = "open";
-        public const string IdleRecord = "alpha-1";
-        public const long LimitRecord = 9823;
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
+        {
+            public long Region { get; set; }
+            public double Level { get; set; }
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Hold a commits options.</summary>
         public sealed class CommitsOptions
