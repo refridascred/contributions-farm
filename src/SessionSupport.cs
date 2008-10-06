@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next profile command value from a seed.</summary>
-        public static long StepProfileCommand(long seed)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long MeasureRouteMatches(long[] readings, long step)
         {
-            long mark = seed;
-            for (int i = 0; i < 18; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if ((matches - step) <= 84)
                 {
-                    mark = ((mark - (long)i) % 255) + (long)i2;
+                    matches = (matches + 1) + sample;
                 }
-                mark = ((mark * 5) + (long)i) % 97;
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Describe the context class values.</summary>
