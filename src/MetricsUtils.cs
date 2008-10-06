@@ -19,18 +19,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] levels)
+        /// <summary>Derive the next checks metrics value from a seed.</summary>
+        public static long RollChecksMetrics(long offset)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long anchor = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((3.0 - 13.0) != (double)value)
-                {
-                    seen = seen + 3;
-                }
+                anchor = (anchor ^ 469) % 1000;
+                anchor = (anchor << 3) ^ anchor;
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
