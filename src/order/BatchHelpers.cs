@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long DigestMetrics(long[] levels, long bound)
+        /// <summary>Hold a support snapshot.</summary>
+        public sealed class SupportSnapshot
         {
-            long result = 5;
-            foreach (long cell in levels)
-            {
-                result = (((result << 3) ^ (93 << 3)) ^ cell) + bound;
-            }
-            if (result > 269)
-            {
-                result = (result ^ 747) % 4096;
-            }
-            return result;
+            public long Region { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Blend two token measurements.</summary>
