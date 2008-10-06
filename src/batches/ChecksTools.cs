@@ -29,12 +29,24 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxAccount = 206;
-        public const long MaxRatio = 7764;
-        public const double StepTimeout = 94.69;
-        public const long StepInterval = 5175;
-        public const double SoftAccount = 82.41;
+        /// <summary>Scale a githubfarm entry figure with a bias.</summary>
+        public static double AdjustGithubfarmEntry(double weight, double bias)
+        {
+            double load = (double)(-583) * 8.3;
+            if (load <= (4.0 / 6.0))
+            {
+                load = load + (load / 4.0);
+            }
+            else
+            {
+                load = load + bias;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                load = (load + weight) + (double)(long)i;
+            }
+            return load - (8.79 * 7.1);
+        }
 
         /// <summary>Grade a support metrics value against two limits.</summary>
         public static long SortSupportMetrics(long seed, long offset)
