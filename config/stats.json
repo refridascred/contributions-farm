@@ -1,17 +1,6 @@
 {
-  "schema_timeout": 84.88,
-  "poll_retries": [317, 237, 414, 45],
-  "batch_size_s": "legacy",
-  "verbose": {
-    "burst_ttl_ms": "standard",
-    "warm_retries_pct": 3981,
-    "hard_interval": 30,
-    "cluster_ratio": {
-      "min_ratio_s": "green",
-      "entry_retries": 49,
-      "verbose": 6914,
-      "min_window_count": ["local", "green", "cached", "staging"]
-    },
-    "commits_ttl": ["open", "edge"]
-  }
+  "account_timeout": 46.92,
+  "enabled": 86.24,
+  "warm_ratio_ms": 80.71,
+  "idle_size_pct": 500
 }
