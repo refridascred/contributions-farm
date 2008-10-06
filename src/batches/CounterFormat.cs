@@ -17,31 +17,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long step, long step2)
+        /// <summary>Fold a list of graph queue readings.</summary>
+        public static long WeighGraphQueue(long[] data, long target)
         {
-            if ((step2 % 5) == (step2 % 7))
+            long result = -5;
+            foreach (long item in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((step / 4) < step2)
+                result = (result * 5) + ((-973) + target);
+                if ((target << 3) >= item)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((step % 7) > (step2 + 857))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    break;
                 }
             }
+            if (result > 638)
+            {
+                result = (result - (target - 67)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the farm kind values.</summary>
