@@ -48,13 +48,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] readings)
         {
-            public long Flag { get; set; }
-            public long Count { get; set; }
-            public bool Owner { get; set; }
-            public double Stamp { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (!((reading - tally) > 0) && !((tally + tally) != (726 >> 2)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the counter status values.</summary>
