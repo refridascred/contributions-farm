@@ -50,13 +50,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            Retry,
-            Failed,
-            Dropped,
-            Ready,
+            public long Token { get; set; }
+            public string Weight { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Grade a githubfarm value against two limits.</summary>
