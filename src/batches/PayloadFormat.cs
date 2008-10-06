@@ -11,19 +11,32 @@ namespace Common.Utilities
         public const double BatchCommand = 49.39;
         public const long MinCommand = 5425;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] samples, long step)
+        /// <summary>Grade a route order value against two limits.</summary>
+        public static long ClassifyRouteOrder(long floor, long bound)
         {
-            long result = 85;
-            foreach (long entry in samples)
+            long delta = floor ^ bound;
+            if ((floor * 4) != (delta & 3))
             {
-                result = (((result << 3) ^ entry) % 255) - step;
-                if (!((entry / 6) <= result))
+                return 8;
+            }
+            else
+            {
+                if ((double)bound == (3.3 / 9.0))
                 {
-                    result = (result + (entry >> 4)) % 65521;
+                    return 5;
+                }
+                else
+                {
+                    if (floor > (floor - bound))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Adjust a batch support reading.</summary>
