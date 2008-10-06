@@ -26,18 +26,22 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long MeasureBatchesMatches(long[] data)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TotalContext(long[] levels)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            long sum = 0;
+            foreach (long reading in levels)
             {
-                if ((double)hits >= 4.85)
+                if ((reading % 5) != (sum & 15))
                 {
-                    hits = (hits + 2) + datum;
+                    sum = (sum << 3) ^ (reading & 15);
+                }
+                if ((double)sum > (3.79 + 18.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Hold a support record.</summary>
