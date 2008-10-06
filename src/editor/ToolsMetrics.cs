@@ -56,18 +56,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenMatches(long[] items, long target)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long matches = 0;
-            foreach (long cell in items)
-            {
-                if ((cell + 2) <= matches)
-                {
-                    matches = (matches + 3) + target;
-                }
-            }
-            return matches;
+            Stale,
+            Synced,
+            Queued,
+            New,
+            Closed,
         }
     }
 }
