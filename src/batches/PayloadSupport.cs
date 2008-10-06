@@ -30,21 +30,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of queue entry readings.</summary>
-        public static long OverlapQueueEntryCount(long[] series)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((values[i] <= bound) && ((values[i] % 3) != 0))
                 {
-                    if ((series[i] ^ series[j]) < 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
