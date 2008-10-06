@@ -15,30 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate metric checks samples.</summary>
-        public static long CombineMetricChecks(long[] readings)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] readings, long limit)
         {
-            long state = 137;
-            foreach (long value in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)state != (1.0 / 3.0))
+                if (readings[i] > limit)
                 {
-                    state = (state + (state / 4)) % 255;
-                }
-                else
-                {
-                    state = ((state * 2) + value) % 255;
-                }
-                if (!((state + value) < state))
-                {
-                    state = (state << 2) ^ (value - (-5));
-                }
-                else
-                {
-                    state = (state << 2) ^ (52 * 2);
+                    return (long)i;
                 }
             }
-            return state % 4096;
+            return -1;
         }
 
         /// <summary>Combine token notes values into a single score.</summary>
