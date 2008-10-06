@@ -16,14 +16,14 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            Dropped,
+            Closed,
+            Queued,
             Idle,
-            New,
-            Draft,
-            Active,
+            Done,
+            Ready,
         }
 
         /// <summary>Count the context counter entries that pass the check.</summary>
