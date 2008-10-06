@@ -19,17 +19,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LookupChecksIndex(long[] data, long origin)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ProjectStats(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double rate = offset;
+            if (rate < 7.0)
             {
-                if (data[i] > origin)
-                {
-                    return (long)i;
-                }
+                rate = rate - 8.6;
             }
-            return -1;
+            else
+            {
+                rate = rate - (double)988;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (weight * 1.06)) - (double)(long)i;
+            }
+            return rate - (rate - weight);
         }
 
         /// <summary>Check that every farm support entry stays within the limit.</summary>
