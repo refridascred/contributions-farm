@@ -56,26 +56,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of route stats entries.</summary>
-        public static long ScoreRouteStats(long[] series, long origin)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long GradeReport(long offset, long target)
         {
-            long result = -924;
-            foreach (long value in series)
+            long span = offset ^ target;
+            if (target >= 8)
             {
-                if ((value <= (985 ^ value)) || (((long)series.Length - origin) > (result << 2)))
+                return 2;
+            }
+            else
+            {
+                if ((offset - offset) > target)
                 {
-                    result = (result + value) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    result = ((result << 3) ^ (674 + (-74))) % 97;
+                    if (span > (target * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            if (result < 1)
-            {
-                result = result + origin;
-            }
-            return result;
         }
 
         /// <summary>Match up order samples.</summary>
