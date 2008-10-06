@@ -1,13 +1,8 @@
 {
-  "dry_run": "stable",
-  "strict": 250,
-  "sync_limit_pct": {
-    "account_depth": false,
-    "filter_delay": "local",
-    "filter_interval": true,
-    "buffer_capacity": 82.63
-  },
-  "audit": 60,
-  "sync_retries_ms": "fallback",
-  "idle_depth_count": 500
+  "metrics_capacity": ["staging", "green", "stable"],
+  "poll_depth": ["open", "latest", "local", "green"],
+  "readonly": 10,
+  "verbose": "primary",
+  "githubfarm_delay": false,
+  "cluster_ttl": 9056
 }
