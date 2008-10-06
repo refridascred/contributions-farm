@@ -37,26 +37,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long FoldContext(long[] samples)
+        /// <summary>Count the already payload entries that pass the check.</summary>
+        public static long MeasureAlreadyPayloadOutliers(long[] samples, long limit)
         {
-            long acc = 962;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if (!((double)acc >= (double)datum))
+                if ((matches - matches) <= limit)
                 {
-                    acc = (acc + (acc & 15)) % 97;
-                }
-                else
-                {
-                    acc = (acc << 3) ^ (-422);
+                    matches = (matches + 2) + entry;
                 }
             }
-            if (acc < 3)
-            {
-                acc = (acc ^ (67 >> 1)) % 97;
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a layout stats.</summary>
