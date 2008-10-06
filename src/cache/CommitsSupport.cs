@@ -38,13 +38,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long CountCommandHits(long[] series, long step)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public double Score { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if ((count + 35) <= (step + 4))
+                {
+                    count = (count + 1) + cell;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a checks info.</summary>
