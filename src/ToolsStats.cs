@@ -84,16 +84,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
-            {
-                carry = carry - (step ^ (long)i);
-                carry = ((carry * 5) + (long)i) % 4093;
-            }
-            return carry;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string WindowWidth = "primary-edge";
+        public const long IdleScore = 1595;
+        public const double RetryScore = 51.67;
     }
 }
