@@ -27,17 +27,31 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LocateCommandIndex(long[] levels, long limit)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long RankPayload(long floor, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((60 * 2) <= (offset + floor))
             {
-                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if ((4 < (offset % 97)) && ((floor >> 1) <= (floor % 7)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((540 + 907) <= offset)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Define account limits and defaults.</summary>
