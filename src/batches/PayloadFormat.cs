@@ -18,25 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a profile session pair into a bucket.</summary>
-        public static long BucketProfileSession(long target, long seed)
+        /// <summary>Fold a list of channel contributi readings.</summary>
+        public static long DigestChannelContributi(long[] series)
         {
-            long step = target - seed;
-            if (((double)seed == (double)target) || ((target / 4) > seed))
+            long total = 814;
+            foreach (long reading in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step / 8) >= (target % 10))
+                if (5 >= (0 + reading))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 8;
+                    total = ((total * 4) + total) % 65521;
                 }
             }
+            if (total > 207)
+            {
+                total = (total + total) % 97;
+            }
+            return total;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
