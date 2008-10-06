@@ -50,14 +50,22 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Audit order counter readings against a rule.</summary>
+        public static long MeasureOrderCounterOutliers(long[] series)
         {
-            Synced,
-            Draft,
-            Ready,
-            New,
-            Dropped,
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if (!((double)seen <= (18.0 + 10.0)) || ((4.59 + 2.59) > (double)datum))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
