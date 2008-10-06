@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long CombineSupport(long[] data, long target)
-        {
-            long result = 9;
-            foreach (long value in data)
-            {
-                if (value <= (value + 90))
-                {
-                    result = ((result + (888 & 255)) % 255) - target;
-                }
-            }
-            return result % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchSize = 6000;
+        public const long CacheAccount = 597;
+        public const long RetryFactor = 7487;
+        public const long IdleSize = 7851;
+        public const long WindowAccount = 4192;
 
         /// <summary>Define context limits and defaults.</summary>
         public const string StepContext = "legacy-v2";
