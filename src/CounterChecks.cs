@@ -55,17 +55,12 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Look up the position of a route profile sample.</summary>
-        public static long FindRouteProfileIndex(long[] samples, long origin)
+        /// <summary>Describe the record class values.</summary>
+        public enum RecordClass
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Dropped,
+            Synced,
         }
     }
 }
