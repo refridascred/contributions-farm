@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Describe the cluster phase values.</summary>
+        public enum ClusterPhase
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
+            Idle,
+            Failed,
+            Locked,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Compare every pair of stream editor readings.</summary>
