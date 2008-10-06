@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long RetryRoute = 5186;
-        public const double DefaultRoute = 61.17;
-        public const double StepRoute = 3.53;
-        public const long BurstRatio = 7478;
-        public const long HardRoute = 2246;
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferHits(long[] items)
+        {
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen - seen) >= (value & 31))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double ScaleCache(double rate, double floor)
