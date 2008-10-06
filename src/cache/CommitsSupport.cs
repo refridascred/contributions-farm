@@ -49,18 +49,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandHits(long[] series, long step)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long SeriesSupport(long offset)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long carry = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((count + 35) <= (step + 4))
+                long seen = (offset + (long)i) * 2;
+                if ((3 ^ offset) >= (seen + seen))
                 {
-                    count = (count + 1) + cell;
+                    seen = (seen << 2) ^ (6 ^ carry);
+                    break;
                 }
+                else
+                {
+                    long diff = seen % 2;
+                    seen = ((seen << 3) ^ (seen + diff)) % 65521;
+                }
+                carry = ((carry * 5) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
