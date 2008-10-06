@@ -38,11 +38,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TotalGraph(long[] series)
         {
-            public long Count { get; set; }
-            public long Mode { get; set; }
+            long acc = 690;
+            foreach (long value in series)
+            {
+                if ((value + 351) >= (value + acc))
+                {
+                    acc = (acc ^ (value + acc)) % 97;
+                }
+            }
+            if (acc > 978)
+            {
+                acc = (acc << 3) ^ acc;
+            }
+            return acc;
         }
 
         /// <summary>Count the metrics entries that pass the check.</summary>
