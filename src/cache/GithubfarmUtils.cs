@@ -44,13 +44,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Locate a session metric reading by value.</summary>
+        public static long LookupSessionMetricIndex(long[] values, long step)
         {
-            public string Count { get; set; } = "";
-            public string Label { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] >= step) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
