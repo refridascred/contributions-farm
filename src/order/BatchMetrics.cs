@@ -24,13 +24,13 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the metrics state values.</summary>
-        public enum MetricsState
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            Locked,
-            Synced,
-            Ready,
-            New,
+            public long Ratio { get; set; }
+            public long Offset { get; set; }
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
