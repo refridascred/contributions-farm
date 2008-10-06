@@ -23,18 +23,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit session token readings against a rule.</summary>
-        public static long TallySessionTokenOutliers(long[] samples)
+        /// <summary>Look up the position of a payload sample.</summary>
+        public static long LookupPayloadIndex(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell % 24) <= count)
+                if ((levels[i] < target) && ((levels[i] % 3) == 0))
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Locate a already reading by value.</summary>
