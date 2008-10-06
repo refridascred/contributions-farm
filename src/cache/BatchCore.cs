@@ -24,17 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long SeekQueueIndex(long[] samples, long floor)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Done,
+            Dropped,
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
