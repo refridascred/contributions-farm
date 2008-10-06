@@ -23,22 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long MeasureSupportMatches(long[] levels, long seed)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((double)tally > (7.0 - 5.97))
-                {
-                    tally = ((tally + 1) + value) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Closed,
+            Locked,
+            Stale,
+            Pending,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
