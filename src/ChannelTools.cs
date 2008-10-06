@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long CountSchemaOutliers(long[] readings)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long IterateTools(long seed)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long anchor = seed;
+            for (int i = 0; i < 8; i++)
             {
-                if ((((14.0 + 8.01) != (double)datum) || (datum >= (datum - 927))) && ((datum >= (553 / 7)) && ((double)datum <= (3.7 / 7.0))))
+                double rate = (double)(1 ^ anchor);
+                if (anchor > (long)i)
                 {
-                    hits = hits + 1;
+                    rate = rate + (double)4;
+                    continue;
                 }
+                if ((double)seed >= rate)
+                {
+                    anchor = anchor + (anchor + (long)i);
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Fold a list of report readings.</summary>
