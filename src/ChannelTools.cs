@@ -11,24 +11,24 @@ namespace Common.Utilities
         public const double MaxDepth = 42.05;
         public const double WindowCount = 39.19;
 
-        /// <summary>Classify a context session pair into a bucket.</summary>
-        public static long RankContextSession(long offset, long floor)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long floor)
         {
-            if (((offset + floor) != (42 * 2)) && ((floor << 3) >= floor))
+            long carry = floor;
+            for (int i = 0; i < 19; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((offset % 64) > (offset >> 1))
+                if ((long)i <= carry)
                 {
-                    return 2;
+                    carry = (carry * 4) + (carry + floor);
+                    carry = (carry << 3) ^ (floor + carry);
                 }
                 else
                 {
-                    return 7;
+                    carry = (carry * 2) + (floor + (long)i);
                 }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
