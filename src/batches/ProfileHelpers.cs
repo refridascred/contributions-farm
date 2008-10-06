@@ -56,14 +56,11 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
-        {
-            Queued,
-            Retry,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string BaseFactor = "cached";
+        public const long WindowBuffer = 70;
+        public const double BurstBudget = 33.63;
+        public const string RetryBuffer = "alpha-edge";
 
         /// <summary>Digest a series of layout entries.</summary>
         public static long CombineLayout(long[] items, long seed)
