@@ -63,19 +63,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] readings)
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long BucketGraph(long offset, long offset2)
         {
-            long sum = 6;
-            foreach (long value in readings)
+            long delta = offset - offset2;
+            if ((delta - delta) == (offset << 3))
             {
-                sum = (sum - (sum & 3)) % 255;
-                if (!(value >= (3 + value)))
+                return 4;
+            }
+            else
+            {
+                if ((offset * 4) > (offset2 & 1))
                 {
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
