@@ -40,14 +40,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Find the first route profile entry that matches the target.</summary>
+        public static long FindRouteProfileIndex(long[] series, long step)
         {
-            Retry,
-            Idle,
-            Synced,
-            Locked,
-            Queued,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= step) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
