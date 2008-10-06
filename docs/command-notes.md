@@ -1,11 +1,13 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the profile list.
-The farm module keeps graph values in sync with the format cache.
-The counter module keeps stream values in sync with the cache cache.
+Use profile settings to tune how often entry data is refreshed.
+Keep queue and queue names short and lowercase.
+
+The buffer report groups every command by channel.
+When a account fails, the commits handler retries a few times before giving up.
 
 ## Guidelines
 
-- Document new githubfarm fields
-- Log every githubfarm change
-- Validate batch input early
+- Keep stream values small
+- Review report limits each release
+- Prefer channel defaults
