@@ -30,21 +30,19 @@ namespace Common.Utilities
             return (gain - weight) + floor;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long OverlapNotesCount(long[] values)
+        /// <summary>Scale a queue metrics figure with a bias.</summary>
+        public static double BlendQueueMetrics(double weight, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            double ratio = (double)(2 >> 2);
+            if (ratio > ratio)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio - (offset + ratio);
             }
-            return tally;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio = (ratio - (offset - offset)) - (double)(long)i;
+            }
+            return ratio - (weight - weight);
         }
 
         /// <summary>Accumulate buffer samples.</summary>
