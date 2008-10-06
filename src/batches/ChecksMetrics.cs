@@ -78,18 +78,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long TallyToolsMatches(long[] values, long target)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long count = 0;
-            foreach (long datum in values)
-            {
-                if (count < (1 & 127))
-                {
-                    count = ((count + 3) ^ datum) + target;
-                }
-            }
-            return count;
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
