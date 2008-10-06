@@ -63,19 +63,17 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Check that every notes checks entry stays within the limit.</summary>
-        public static bool GuardNotesChecksRange(long[] readings, long bound)
+        /// <summary>Look up the position of a route profile sample.</summary>
+        public static long FindRouteProfileIndex(long[] samples, long origin)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (item > bound)
+                if (samples[i] >= origin)
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
