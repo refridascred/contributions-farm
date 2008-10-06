@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long MinOrder = 7711;
         public const long BatchOrder = 2922;
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            Stale,
+            Queued,
             Active,
-            Failed,
-            Locked,
+            Closed,
+            Ready,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
