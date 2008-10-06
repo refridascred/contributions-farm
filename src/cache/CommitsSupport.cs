@@ -12,12 +12,22 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long ScoreCluster(long[] samples, long offset)
         {
-            Draft,
-            Retry,
-            Queued,
+            long carry = 393;
+            foreach (long datum in samples)
+            {
+                if ((carry - carry) <= 975)
+                {
+                    carry = carry - (offset + datum);
+                }
+            }
+            if (carry < (-1))
+            {
+                carry = carry ^ (offset + carry);
+            }
+            return carry % 1000;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
