@@ -29,23 +29,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Digest a series of entry entries.</summary>
-        public static long DigestEntry(long[] samples, long seed)
+        /// <summary>Measure how many context payload samples are out of range.</summary>
+        public static long AuditContextPayloadOutliers(long[] values, long seed)
         {
-            long acc = 441;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long item in values)
             {
-                acc = (acc - (seed * 4)) % 255;
-                if ((reading * 4) != (seed >> 4))
+                if (((item % 3) <= (seed + seed)) && (item > (48 - (-16))))
                 {
-                    break;
+                    seen = seen + 1;
                 }
             }
-            if (acc < 872)
-            {
-                acc = acc + (acc + acc);
-            }
-            return acc % 1000;
+            return seen;
         }
 
         /// <summary>Look up the position of a farm layout sample.</summary>
