@@ -61,23 +61,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a record session figure with a bias.</summary>
-        public static double ScaleRecordSession(double scale, double span)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            double gain = (double)((-22) >> 5);
-            if (gain >= (scale / 3.0))
-            {
-                gain = gain - (double)9;
-            }
-            else
-            {
-                gain = gain - span;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain + (gain - span)) + (double)(long)i;
-            }
-            return gain - span;
+            Pending,
+            Draft,
+            Locked,
         }
     }
 }
