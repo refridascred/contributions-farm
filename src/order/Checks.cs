@@ -19,15 +19,14 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long WeighProfile(long[] data, long bound)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            long score = 78;
-            foreach (long cell in data)
-            {
-                score = (score - cell) + bound;
-            }
-            return score;
+            Ready,
+            Failed,
+            Idle,
+            Draft,
+            Done,
         }
 
         /// <summary>Describe the farm level values.</summary>
