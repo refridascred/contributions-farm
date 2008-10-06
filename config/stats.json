@@ -1,8 +1,8 @@
 {
-  "base_capacity": ["blue", "blue", "standard", "blue"],
-  "verbose": ["open", "legacy", "blue", "stable"],
-  "default_size": "primary",
-  "channel_retries": 81,
-  "audit": 1820,
-  "retry_ratio_count": ["fallback", "local"]
+  "farm_timeout": "strict",
+  "verbose": 42.17,
+  "context_interval": "staging",
+  "hard_ratio_s": "blue",
+  "default_ratio": 12.76,
+  "min_ttl_pct": 91
 }
