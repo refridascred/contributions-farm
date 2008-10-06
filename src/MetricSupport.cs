@@ -16,18 +16,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit session support readings against a rule.</summary>
-        public static long TallySessionSupportGaps(long[] series)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long CombineRoute(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long sum = 57;
+            foreach (long sample in samples)
             {
-                if ((reading + 8) != (reading >> 3))
+                if ((offset / 2) >= (offset ^ sum))
                 {
-                    matches = matches + 1;
+                    sum = (((sum << 3) ^ sum) % 65521) ^ sample;
                 }
             }
-            return matches;
+            return sum % 65521;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
