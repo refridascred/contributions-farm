@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchGraph = 1741;
-        public const long SoftDepth = 1460;
-        public const long HardFactor = 9317;
+        /// <summary>Measure how many cluster report samples are out of range.</summary>
+        public static long MeasureClusterReportMatches(long[] values)
+        {
+            long count = 0;
+            foreach (long item in values)
+            {
+                if ((item / 2) > count)
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Validate layout readings against a bound.</summary>
         public static bool GuardLayoutLimits(long[] readings, long limit)
