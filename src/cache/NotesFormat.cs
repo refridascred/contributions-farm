@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchBudget = 6088;
-        public const long DefaultSession = 1799;
-        public const string SoftSession = "strict-v2";
-        public const string RetryScore = "alpha";
-        public const long BurstSession = 8987;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteRange(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item < bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the context stream entries that pass the check.</summary>
         public static long CountContextStreamOutliers(long[] samples)
