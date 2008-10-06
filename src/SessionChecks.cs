@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyLimits(long[] values, long offset)
+        /// <summary>Hold a stats snapshot.</summary>
+        public sealed class StatsSnapshot
         {
-            bool found = true;
-            foreach (long reading in values)
-            {
-                if (reading < offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public bool Label { get; set; }
+            public string Region { get; set; } = "";
+            public double Score { get; set; }
         }
 
         /// <summary>Roll a stream counter forward.</summary>
