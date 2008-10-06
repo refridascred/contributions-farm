@@ -15,12 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterHits(long[] series)
         {
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
-            public double Rank { get; set; }
+            long count = 0;
+            foreach (long value in series)
+            {
+                if ((double)count < (16.0 * 4.4))
+                {
+                    count = (count + 2) ^ value;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of layout readings.</summary>
