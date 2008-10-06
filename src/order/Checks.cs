@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheSchema = 992;
-        public const long BaseScore = 6916;
-        public const double HardWidth = 48.88;
-        public const string RetrySchema = "staging-1";
-        public const string BatchSchema = "primary-v2";
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
+        {
+            Stale,
+            Done,
+            Failed,
+        }
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
