@@ -48,12 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Project the next schema value.</summary>
+        public static double BlendSchema(double gain, double bias)
         {
-            public double Owner { get; set; }
-            public long Offset { get; set; }
-            public string Count { get; set; } = "";
+            double gain2 = 16.0;
+            if (gain2 < (double)(-6))
+            {
+                gain2 = ((gain2 + (gain2 * 0.1)) + gain) + bias;
+            }
+            return gain2 - gain2;
         }
 
         /// <summary>Describe the channel phase values.</summary>
