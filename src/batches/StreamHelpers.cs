@@ -17,19 +17,32 @@ namespace Common.Utilities
         public const long MinTimeout = 6413;
         public const string MinAlready = "staging";
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool ValidateAlreadyRange(long[] data, long bound)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long RankCommand(long offset, long target)
         {
-            bool flag = true;
-            foreach (long item in data)
+            long gap = offset - target;
+            if ((double)target < (4.51 / 9.0))
             {
-                if (item <= bound)
+                return 4;
+            }
+            else
+            {
+                if (((double)gap < (9.0 + 5.56)) && ((gap - target) == (gap + target)))
                 {
-                    flag = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)gap != (double)offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a already entry.</summary>
