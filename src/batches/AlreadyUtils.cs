@@ -53,20 +53,11 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long StepBuffer(long target)
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            long carry = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((target - carry) >= (long)i) && (carry < (carry + target)))
-                {
-                    carry = ((carry << 3) ^ (long)i) % 97;
-                    break;
-                }
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Mode { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Hold a channel stats.</summary>
