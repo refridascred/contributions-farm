@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count format pairs that satisfy a relation.</summary>
-        public static long OverlapFormatCount(long[] values)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long MeasureSchemaMatches(long[] values, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (((long)values.Length + reading) == (reading - reading))
                 {
-                    if ((values[i] + values[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 1) - floor;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
