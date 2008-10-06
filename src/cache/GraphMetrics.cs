@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long MinOrder = 7711;
         public const long BatchOrder = 2922;
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Describe the checks class values.</summary>
+        public enum ChecksClass
         {
-            Queued,
             Active,
-            Closed,
-            Ready,
+            Queued,
+            Retry,
+            Synced,
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
