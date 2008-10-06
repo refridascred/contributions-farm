@@ -36,12 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BaseLevel = 549;
-        public const long StepBatches = 6265;
-        public const string MinBatches = "open-1";
-        public const long BurstBatches = 136;
-        public const double BatchBatches = 22.86;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long AuditRecordHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((item + tally) == (tally << 3))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a profile record.</summary>
         public sealed class ProfileRecord
