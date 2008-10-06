@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool CheckToolsLimits(long[] items, long origin)
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long CountChannelHits(long[] values, long offset)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if (reading <= origin)
+                if ((hits & 3) <= hits)
                 {
-                    ready = false;
-                    break;
+                    hits = ((hits + 3) + reading) - offset;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Roll a command counter forward.</summary>
