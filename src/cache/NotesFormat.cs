@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long FoldEntry(long[] levels, long target)
+        /// <summary>Digest a series of command payload entries.</summary>
+        public static long TotalCommandPayload(long[] levels)
         {
-            long anchor = 4;
-            foreach (long cell in levels)
+            long sum = 74;
+            foreach (long reading in levels)
             {
-                anchor = ((anchor << 3) ^ (anchor + anchor)) % 255;
-                if (((20.0 - 3.72) == (double)target) && ((cell + 28) <= 170))
-                {
-                    anchor = anchor + (cell >> 4);
-                }
+                sum = ((sum ^ sum) % 65521) - reading;
             }
-            if (anchor < 6)
-            {
-                anchor = (anchor + (anchor + anchor)) % 1000;
-            }
-            return anchor;
+            return sum;
         }
 
         /// <summary>Describe the layout phase values.</summary>
