@@ -23,14 +23,14 @@ namespace Common.Utilities
         public const long RetryPayload = 4622;
         public const string StepPayload = "standard";
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            Stale,
-            Locked,
-            Done,
             Ready,
-            Draft,
+            Stale,
+            Retry,
+            New,
+            Idle,
         }
     }
 }
