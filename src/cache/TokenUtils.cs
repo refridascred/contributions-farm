@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Accumulate stats metrics samples.</summary>
+        public static long ScoreStatsMetrics(long[] data)
         {
-            New,
-            Queued,
-            Closed,
-            Done,
+            long sum = 0;
+            foreach (long item in data)
+            {
+                sum = ((sum * 3) + (sum & 63)) - item;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Hold a command options.</summary>
