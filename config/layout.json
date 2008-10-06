@@ -1,5 +1,13 @@
 {
-  "batch_delay_s": 532,
-  "notes_retries": true,
-  "hard_retries_count": false
+  "warm_delay_s": "blue",
+  "hard_limit_count": 30,
+  "verbose": "eu-west",
+  "max_limit_ms": "cached",
+  "default_interval_pct": {
+    "cache_ttl": false,
+    "enabled": "latest",
+    "dry_run": "cached",
+    "cache_threshold_s": 1659,
+    "poll_delay": 59
+  }
 }
