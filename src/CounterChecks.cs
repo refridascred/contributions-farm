@@ -30,12 +30,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double weight, double span)
         {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Rank { get; set; }
+            double rate = weight;
+            if (rate >= rate)
+            {
+                rate = (rate + rate) + span;
+            }
+            return rate + weight;
         }
 
         /// <summary>Hold a counter options.</summary>
