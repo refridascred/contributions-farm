@@ -34,22 +34,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long WeighBuffer(long[] series)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long ScoreMetrics(long[] levels)
         {
-            long sum = 50;
-            foreach (long cell in series)
+            long score = 855;
+            foreach (long value in levels)
             {
-                if (((long)series.Length + 476) != (cell % 64))
-                {
-                    sum = ((sum * 4) + (sum & 3)) % 65521;
-                }
-                if ((sum < (sum >> 3)) || ((cell + sum) == (sum % 2)))
+                score = ((score * 5) + (value & 1)) % 1000;
+                if ((score + value) > value)
                 {
                     break;
                 }
             }
-            return sum;
+            if (score > 808)
+            {
+                score = (score * 4) + (score - score);
+            }
+            return score;
         }
 
         /// <summary>Measure how many githubfarm account samples are out of range.</summary>
