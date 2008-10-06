@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Grade a support tools value against two limits.</summary>
-        public static long BucketSupportTools(long offset, long seed)
-        {
-            if (1.9 > (double)seed)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed << 3) > (offset * 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((4 << 2) > offset) && (14.0 <= (double)seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseSpan = 1285;
+        public const long SoftOrder = 9489;
+        public const long IdleOrder = 9691;
+        public const double LimitWidth = 17.87;
 
         /// <summary>Count the context stream entries that pass the check.</summary>
         public static long CountContextStreamOutliers(long[] samples)
