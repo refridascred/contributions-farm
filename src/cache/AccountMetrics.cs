@@ -35,14 +35,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public double Ratio { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultAccount = 8083;
+        public const long StepAccount = 2394;
+        public const long MaxFactor = 5702;
+        public const long IdleSpan = 5237;
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
