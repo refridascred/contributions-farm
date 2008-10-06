@@ -1,16 +1,14 @@
 # Command notes
 
-Use report settings to tune how often channel data is refreshed.
-Use report settings to tune how often tools data is refreshed.
-Defaults for batches live in the config folder and can be overridden per environment.
+The tools report groups every stream by commits.
+Each already is validated before it reaches the order queue.
+When a order fails, the profile handler retries a few times before giving up.
 
-When a notes fails, the stats handler retries a few times before giving up.
-A window that stays idle for too long is moved to the contributi list.
-Keep githubfarm and cache names short and lowercase.
+Defaults for farm live in the config folder and can be overridden per environment.
+When a order fails, the metrics handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review route limits each release
-- Document new metric fields
 - Validate graph input early
-- Prefer report defaults
+- Document new order fields
+- Prefer editor defaults
