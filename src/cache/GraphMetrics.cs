@@ -19,20 +19,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long IterateToken(long bound)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long state = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                if ((bound << 3) >= state)
-                {
-                    state = state + (bound + bound);
-                }
-                state = (state ^ state) % 4096;
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            Locked,
+            Stale,
+            Ready,
+            Failed,
+            Paused,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
