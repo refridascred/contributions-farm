@@ -28,14 +28,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Check that every already commits entry stays within the limit.</summary>
+        public static bool CheckAlreadyCommitsBounds(long[] data, long offset)
         {
-            Failed,
-            Done,
-            Draft,
-            Dropped,
-            Pending,
+            bool flag = true;
+            foreach (long sample in data)
+            {
+                if (sample >= offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
