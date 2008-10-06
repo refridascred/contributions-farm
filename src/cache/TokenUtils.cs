@@ -23,20 +23,14 @@ namespace Common.Utilities
         public const long MaxSize = 3839;
         public const long DefaultRatio = 7864;
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long carry = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                carry = (carry + (carry + seed)) % 97;
-                if ((6 - (long)i) < (carry ^ 9))
-                {
-                    carry = (carry + seed) % 101;
-                }
-                carry = ((carry * 4) + (long)i) % 1000;
-            }
-            return carry;
+            Synced,
+            Failed,
+            Active,
+            Closed,
+            Queued,
         }
     }
 }
