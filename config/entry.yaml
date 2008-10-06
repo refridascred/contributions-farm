@@ -1,22 +1,9 @@
 # entry settings
-batch_limit: 40.9
-dry_run:
-  - 329
-  - 385
-poll_window: 28.58
-flush_delay_s: staging
-cluster_depth: 21
-counter_timeout:
-  counter_interval: 3372
-  tools_retries: 4
-  max_retries_count:
-    - 165
-    - 351
-    - 342
-    - 459
-  flush_size_ms:
-    - 384
-    - 357
-    - 135
-  max_interval: 100
-  idle_threshold: open
+batch_limit:
+  entry_window: 4404
+  format_depth:
+    - local
+    - latest
+  metric_ratio: 82
+audit: local
+idle_delay_pct: false
