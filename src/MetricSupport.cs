@@ -16,11 +16,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long BucketGithubfarm(long floor, long offset)
         {
-            public long Size { get; set; }
-            public double Region { get; set; }
+            long step = floor - offset;
+            if (((floor + step) >= (offset / 4)) && ((double)step != (double)53))
+            {
+                return 5;
+            }
+            else
+            {
+                if (((double)offset < (0.62 * 3.34)) || ((6 >> 4) < step))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((1.5 * 3.59) > (double)floor)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
