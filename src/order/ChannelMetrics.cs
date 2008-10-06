@@ -18,14 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Iterate the already entry series from a seed.</summary>
+        public static long RollAlreadyEntry(long origin)
         {
-            Idle,
-            Stale,
-            Synced,
-            Ready,
-            Paused,
+            long score = origin;
+            for (int i = 0; i < 23; i++)
+            {
+                score = ((score * 5) + (origin - origin)) % 1000;
+                score = ((score * 5) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
