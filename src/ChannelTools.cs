@@ -19,25 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long bound, long offset)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long next = bound + offset;
-            if ((offset + 48) <= offset)
-            {
-                return 5;
-            }
-            else
-            {
-                if (next >= bound)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Idle,
+            Active,
+            Draft,
+            Queued,
         }
 
         /// <summary>Accumulate context samples.</summary>
