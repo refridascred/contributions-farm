@@ -1,24 +1,20 @@
 # support settings
-enabled:
-  warm_threshold_s:
-    - edge
-    - green
-  flush_window_count:
-    - staging
-    - latest
-    - fallback
-  compress: 52.03
-  record_timeout: false
-  poll_window:
-    - 283
-    - 361
-  retry_size_pct:
-    burst_threshold: open
-    min_timeout_count: 27.49
-    dry_run: open
-    command_window: legacy
-    audit: 250
-    window_delay: 8.58
-token_threshold: 32.31
-min_threshold_s: 9529
-soft_delay_s: 1024
+cache_window: legacy
+report_threshold: 272
+soft_delay_s:
+  retry_ratio:
+    dry_run: 80.22
+    batch_ttl: 500
+    cache_interval_s: 74
+  githubfarm_ttl: 60
+  hard_ratio: true
+  profile_window:
+    - 434
+    - 14
+default_depth_ms:
+  - 239
+  - 112
+  - 352
+  - 444
+default_timeout: cached
+hard_timeout_ms: stable
