@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const string DefaultFactor = "local-edge";
         public const double HardSupport = 91.13;
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Hold a queue snapshot.</summary>
+        public sealed class QueueSnapshot
         {
-            Idle,
-            Paused,
-            Synced,
+            public bool Region { get; set; }
+            public long Level { get; set; }
+            public string Token { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
