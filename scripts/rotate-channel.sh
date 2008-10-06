@@ -7,10 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 7); do
+for i in $(seq 1 12); do
     total=$((total + i * 5))
 done
 log "total ${total}"
 
-CHANNEL_LIMIT=102
+CHANNEL_LIMIT=377
 log "limit is ${CHANNEL_LIMIT}"
+
+for item in staging fallback legacy standard; do
+    log "checking ${item}"
+done
