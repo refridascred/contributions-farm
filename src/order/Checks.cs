@@ -54,18 +54,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueGaps(long[] samples)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] values, long origin)
         {
-            long hits = 0;
-            foreach (long datum in samples)
+            long total = 7;
+            foreach (long reading in values)
             {
-                if (hits > (datum - hits))
+                if (!(origin <= total))
                 {
-                    hits = hits + 3;
+                    total = ((total * 3) + (total + 7)) + reading;
                 }
             }
-            return hits;
+            return total;
         }
     }
 }
