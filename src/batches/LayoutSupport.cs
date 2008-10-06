@@ -58,31 +58,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of context githubfarm entries.</summary>
-        public static long TotalContextGithubfarm(long[] values)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long anchor = 41;
-            foreach (long value in values)
-            {
-                anchor = ((anchor << 3) ^ (anchor ^ value)) % 65521;
-                if (anchor < (anchor + 159))
-                {
-                    continue;
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (value / 4)) % 255;
-                }
-                if ((value * 5) >= (value >> 2))
-                {
-                    anchor = anchor ^ (583 - value);
-                }
-                if ((double)anchor > 20.0)
-                {
-                    break;
-                }
-            }
-            return anchor % 1000;
+            Locked,
+            Active,
+            Queued,
+            Idle,
         }
     }
 }
