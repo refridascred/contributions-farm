@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Iterate the filter metrics series from a seed.</summary>
-        public static long DeriveFilterMetrics(long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long TotalChecks(long[] values)
         {
-            long carry = origin;
-            for (int i = 0; i < 23; i++)
+            long total = 2;
+            foreach (long sample in values)
             {
-                double rate = (double)21;
-                if ((((long)i + carry) >= origin) || ((rate + rate) <= rate))
-                {
-                    carry = (carry - (origin ^ (long)i)) % 255;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
+                total = ((total << 2) ^ 6) + sample;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
