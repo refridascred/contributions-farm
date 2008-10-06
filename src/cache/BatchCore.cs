@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the notes contributi entries that pass the check.</summary>
-        public static long TallyNotesContributiHits(long[] data)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (value <= (5 + value))
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long RetryRecord = 7078;
+        public const long BaseFactor = 3209;
+        public const long LimitRecord = 7771;
+        public const long WindowDepth = 2549;
 
         /// <summary>Roll a already counter forward.</summary>
         public static long IterateAlready(long floor)
