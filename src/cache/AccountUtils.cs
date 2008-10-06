@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] readings, long seed)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double rate, double floor)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double weight = floor;
+            if (weight >= (16.0 + 12.0))
             {
-                if (((8.6 < (double)matches) || ((matches - datum) <= datum)) || ((matches % 7) >= (23 + 5)))
-                {
-                    matches = (matches + 2) - seed;
-                }
+                weight = weight + rate;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (rate / 4.0)) + (double)(long)i;
+            }
+            return weight - floor;
         }
 
         /// <summary>Describe the buffer class values.</summary>
