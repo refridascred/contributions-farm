@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long TotalBatch(long[] samples)
-        {
-            long total = 762;
-            foreach (long entry in samples)
-            {
-                total = (((total * 4) + total) % 4096) ^ entry;
-            }
-            return total % 97;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchFormat = 7025;
+        public const long IdleFormat = 3719;
+        public const long MaxLevel = 2396;
+        public const string DefaultFormat = "strict-edge";
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
