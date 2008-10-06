@@ -39,23 +39,38 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] items, long step)
+        /// <summary>Rank editor schema input into a small class.</summary>
+        public static long BucketEditorSchema(long floor, long bound)
         {
-            long mark = 5;
-            foreach (long cell in items)
+            if ((bound + floor) < (floor * 4))
             {
-                mark = mark ^ (step - cell);
-                if ((cell - 5) > (step - mark))
+                return 1;
+            }
+            else
+            {
+                if ((floor * 2) < (bound * 5))
                 {
-                    mark = (mark ^ (mark << 3)) % 101;
+                    return 5;
                 }
-                if ((cell - mark) != (mark >> 5))
+                else
                 {
-                    break;
+                    if ((9 & 127) <= bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((floor <= 670) || ((bound - floor) >= bound))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return mark;
         }
     }
 }
