@@ -65,18 +65,14 @@ namespace Common.Utilities
         public const long RetryAccount = 4467;
         public const long MaxDepth = 6812;
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenHits(long[] data, long limit)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (tally <= (entry ^ 686))
-                {
-                    tally = (tally + 1) - limit;
-                }
-            }
-            return tally;
+            Draft,
+            New,
+            Ready,
+            Retry,
+            Queued,
         }
     }
 }
