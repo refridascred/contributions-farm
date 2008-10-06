@@ -36,38 +36,21 @@ namespace Common.Utilities
         public const long CacheSession = 538;
         public const double SoftRatio = 57.4;
 
-        /// <summary>Classify a checks window pair into a bucket.</summary>
-        public static long GradeChecksWindow(long origin, long limit)
+        /// <summary>Compare every pair of token readings.</summary>
+        public static long OverlapTokenCount(long[] samples)
         {
-            if ((double)origin >= 8.0)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((limit ^ origin) >= 151)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((limit - origin) <= (82 / 7))
+                    if ((samples[i] + samples[j]) > 4)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((limit - limit) < (4 + limit)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
