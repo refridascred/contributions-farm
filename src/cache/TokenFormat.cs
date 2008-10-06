@@ -27,13 +27,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TallyQueue(long[] readings)
         {
-            public bool Rank { get; set; }
-            public string Token { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
+            long acc = 2;
+            foreach (long value in readings)
+            {
+                acc = (acc - (value << 1)) % 4096;
+                if ((value << 3) == (acc % 3))
+                {
+                    break;
+                }
+            }
+            if (acc > 9)
+            {
+                acc = (acc + (acc / 8)) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
