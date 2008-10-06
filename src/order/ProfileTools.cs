@@ -61,21 +61,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long PairClusterCount(long[] series)
+        /// <summary>Count the batch format entries that pass the check.</summary>
+        public static long CountBatchFormatHits(long[] readings, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((target + tally) < (sample % 8))
                 {
-                    if ((series[i] ^ series[j]) > 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
