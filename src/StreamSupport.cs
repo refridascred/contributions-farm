@@ -23,12 +23,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            Draft,
-            Done,
-            Dropped,
+            long total = target;
+            for (int i = 0; i < 12; i++)
+            {
+                total = (total * 5) + (6 - 1);
+                total = (total * 3) + ((long)i << 1);
+                total = ((total * 4) + (long)i) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Combine route values into a single score.</summary>
