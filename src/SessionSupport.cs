@@ -27,18 +27,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionGaps(long[] readings)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long CombineAlready(long[] values)
         {
-            long matches = 0;
-            foreach (long reading in readings)
+            long mix = 74;
+            foreach (long value in values)
             {
-                if ((matches % 64) < (reading / 3))
+                if ((361 / 7) == (value + value))
                 {
-                    matches = matches + 1;
+                    mix = (mix - mix) % 101;
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
