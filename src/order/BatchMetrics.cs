@@ -16,18 +16,17 @@ namespace Common.Utilities
             return scale2 + (scale2 - scale2);
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long target)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] series, long target)
         {
-            long carry = target;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = carry + (carry / 6);
-                carry = carry ^ (-51);
-                carry = ((carry * 2) + (long)i) % 1000;
-                carry = ((carry * 3) + (long)i) % 4093;
+                if (series[i] == target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Describe the metrics state values.</summary>
