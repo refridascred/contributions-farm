@@ -52,24 +52,18 @@ namespace Common.Utilities
             return load - (8.79 * 7.1);
         }
 
-        /// <summary>Grade a support metrics value against two limits.</summary>
-        public static long SortSupportMetrics(long seed, long offset)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long CountGithubfarmOutliers(long[] values, long step)
         {
-            if ((double)3 >= (double)offset)
+            long count = 0;
+            foreach (long reading in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((9.0 * 17.0) == (double)offset)
+                if ((reading - reading) > count)
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 1;
+                    count = (count + 3) - step;
                 }
             }
+            return count;
         }
     }
 }
