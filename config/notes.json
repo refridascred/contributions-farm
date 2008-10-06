@@ -1,7 +1,10 @@
 {
-  "window_size": 60,
-  "burst_retries_count": "green",
-  "sync_retries_ms": ["standard", "cached"],
-  "idle_ttl_pct": false,
-  "farm_depth": 60.59
+  "layout_delay": "open",
+  "min_interval_pct": [381, 278],
+  "retry_retries": {
+    "enabled": [454, 376, 29, 159],
+    "cache_limit_s": 9663,
+    "sync_ttl_s": 500
+  },
+  "batch_ttl": 7550
 }
