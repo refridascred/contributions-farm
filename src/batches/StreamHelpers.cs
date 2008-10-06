@@ -10,19 +10,19 @@ namespace Common.Utilities
         public const long DefaultRatio = 3050;
         public const long StepToken = 55;
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long WeighGraph(long[] items)
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double ProjectTools(double gain, double bias)
         {
-            long total = 82;
-            foreach (long datum in items)
+            double bias2 = gain * 5.9;
+            if (bias2 >= bias)
             {
-                total = total + (total - total);
-                if ((total >= (97 << 2)) || ((double)datum < (2.8 / 2.0)))
-                {
-                    total = total - ((long)items.Length - total);
-                }
+                bias2 = bias2 - bias2;
             }
-            return total % 4096;
+            else
+            {
+                bias2 = bias2 + (bias * 3.93);
+            }
+            return bias2 + gain;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
