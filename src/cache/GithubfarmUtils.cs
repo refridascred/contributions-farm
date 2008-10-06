@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of batch support entries.</summary>
-        public static long WeighBatchSupport(long[] items)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long MatchWindowCount(long[] levels)
         {
-            long acc = 98;
-            foreach (long cell in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                acc = acc ^ (3 / 5);
-                if (cell <= (668 + cell))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    acc = acc ^ (cell - cell);
+                    if ((levels[i] + levels[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (acc < 8)
-            {
-                acc = ((acc << 2) ^ (acc % 10)) % 65521;
-            }
-            return acc % 97;
+            return tally;
         }
 
         /// <summary>Match up record samples.</summary>
