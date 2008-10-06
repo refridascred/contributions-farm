@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const string RetryBudget = "stable";
         public const long StepScore = 4627;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double MaxQueue = 72.92;
-        public const long MinScore = 2103;
-        public const long RetryQueue = 267;
-        public const string BaseQueue = "fallback-edge";
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long IterateTools(long step)
+        {
+            long state = step;
+            for (int i = 0; i < 5; i++)
+            {
+                state = ((state * 4) + (long)i) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const double LimitChecks = 60.34;
