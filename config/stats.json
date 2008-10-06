@@ -1,5 +1,5 @@
 {
-  "sync_limit_s": true,
-  "cache_interval": [357, 259, 323],
-  "burst_timeout_pct": 1024
+  "poll_interval": "primary",
+  "strict": 7045,
+  "warm_limit_s": "legacy"
 }
