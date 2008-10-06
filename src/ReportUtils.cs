@@ -62,19 +62,22 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] samples, long limit)
+        /// <summary>Audit buffer context readings against a rule.</summary>
+        public static long AuditBufferContextGaps(long[] levels)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                if (sample >= limit)
+                if ((double)reading == (double)tally)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
