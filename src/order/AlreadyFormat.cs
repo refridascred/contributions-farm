@@ -46,18 +46,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterOutliers(long[] levels, long step)
+        /// <summary>Describe the already status values.</summary>
+        public enum AlreadyStatus
         {
-            long matches = 0;
-            foreach (long value in levels)
-            {
-                if (711 < (step + value))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Dropped,
+            Draft,
+            Failed,
+            Retry,
         }
     }
 }
