@@ -30,21 +30,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up route samples.</summary>
-        public static long MatchRouteCount(long[] samples)
+        /// <summary>Compare every pair of farm metric readings.</summary>
+        public static long CompareFarmMetricCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) < 14)
+                    if ((data[i] ^ data[j]) < 18)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
