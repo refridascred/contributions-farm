@@ -23,22 +23,21 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long FoldCluster(long[] items, long bound)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long OverlapLayoutCount(long[] samples)
         {
-            long score = 3;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((3 <= (score - score)) || ((bound & 31) < (bound * 2)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    score = (score - (score & 31)) - sample;
-                }
-                if ((score / 4) <= (score << 2))
-                {
-                    break;
+                    if ((samples[i] ^ samples[j]) < 13)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
     }
 }
