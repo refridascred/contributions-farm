@@ -69,9 +69,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseFactor = "standard-1";
-        public const double HardBatch = 82.6;
-        public const long BaseBatch = 3806;
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 9720;
+        public const double BaseRecord = 98.34;
+        public const string HardRecord = "standard-edge";
     }
 }
