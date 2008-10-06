@@ -31,23 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a githubfarm entry figure with a bias.</summary>
-        public static double AdjustGithubfarmEntry(double weight, double bias)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            double load = (double)(-583) * 8.3;
-            if (load <= (4.0 / 6.0))
-            {
-                load = load + (load / 4.0);
-            }
-            else
-            {
-                load = load + bias;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                load = (load + weight) + (double)(long)i;
-            }
-            return load - (8.79 * 7.1);
+            Draft,
+            Queued,
+            Stale,
+            Synced,
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
