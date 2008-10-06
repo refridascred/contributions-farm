@@ -39,22 +39,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TallyContributi(long[] values)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long FindRecordIndex(long[] series, long target)
         {
-            long sum = 2;
-            foreach (long sample in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sum <= 3)
+                if ((series[i] == target) && ((series[i] % 3) != 0))
                 {
-                    sum = ((sum * 5) + (sum ^ sample)) % 101;
+                    return (long)i;
                 }
             }
-            if (sum < 838)
-            {
-                sum = sum - (96 % 8);
-            }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Audit buffer context readings against a rule.</summary>
