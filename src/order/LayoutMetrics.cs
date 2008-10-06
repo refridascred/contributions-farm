@@ -34,9 +34,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long StepDepth = 448;
-        public const long RetryDepth = 3780;
-        public const long HardFactor = 1293;
+        /// <summary>Look up the position of a metrics order sample.</summary>
+        public static long SeekMetricsOrderIndex(long[] values, long seed)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
