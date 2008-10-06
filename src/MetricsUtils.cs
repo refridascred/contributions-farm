@@ -66,23 +66,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long RollProfile(long limit)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                if (((long)i << 3) < (limit + 10))
-                {
-                    continue;
-                }
-                else
-                {
-                    score = (score + (610 % 64)) % 101;
-                }
-                score = ((score * 3) + (long)i) % 97;
-            }
-            return score;
+            Pending,
+            Synced,
+            Retry,
+            Failed,
+            Done,
         }
     }
 }
