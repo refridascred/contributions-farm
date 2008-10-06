@@ -30,19 +30,21 @@ namespace Common.Utilities
         public const string BatchFactor = "standard-1";
         public const string WindowBuffer = "legacy-1";
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] readings)
+        /// <summary>Count cluster commits pairs that satisfy a relation.</summary>
+        public static long CompareClusterCommitsCount(long[] samples)
         {
-            long score = 655;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = ((score * 3) + (score % 64)) % 97;
-                if ((score + value) <= (value * 2))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    break;
+                    if ((samples[i] ^ samples[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return score % 1000;
+            return hits;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
