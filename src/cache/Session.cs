@@ -20,19 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesRange(long[] items, long step)
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum < step)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Owner { get; set; }
+            public long Limit { get; set; }
+            public long Stamp { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
