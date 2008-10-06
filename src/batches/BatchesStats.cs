@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every editor route entry stays within the limit.</summary>
-        public static bool VerifyEditorRouteBounds(long[] values, long step)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] items)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (entry < step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((items[i] ^ items[j]) < 4)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
