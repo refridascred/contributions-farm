@@ -27,20 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long offset)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long score = offset;
-            for (int i = 0; i < 23; i++)
-            {
-                score = ((score << 3) ^ (score - 7)) % 101;
-                if (((-856) + (long)i) != (offset + score))
-                {
-                    score = (score - (offset + score)) % 97;
-                }
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
+            public long Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
