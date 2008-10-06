@@ -32,11 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitBatches = "latest-edge";
-        public const long DefaultBatches = 3136;
-        public const long HardTimeout = 337;
-        public const long MaxBatches = 4643;
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
+        {
+            public double Owner { get; set; }
+            public string Label { get; set; } = "";
+            public string Total { get; set; } = "";
+        }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamRange(long[] items, long bound)
