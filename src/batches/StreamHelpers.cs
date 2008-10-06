@@ -39,18 +39,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long CombineStats(long[] samples, long limit)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double floor)
         {
-            long mark = 448;
-            foreach (long value in samples)
+            double weight = 8.8;
+            if (weight > scale)
             {
-                if (limit > ((long)samples.Length + value))
-                {
-                    mark = (mark + (22 + mark)) % 97;
-                }
+                weight = weight + (double)7;
             }
-            return mark % 4096;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + floor;
         }
 
         /// <summary>Locate a queue reading by value.</summary>
