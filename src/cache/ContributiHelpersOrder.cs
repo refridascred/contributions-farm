@@ -13,13 +13,13 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-            public bool Rank { get; set; }
-            public bool Token { get; set; }
+            Done,
+            Paused,
+            Retry,
+            Synced,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
