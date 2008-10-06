@@ -1,8 +1,17 @@
 {
-  "metrics_capacity": ["staging", "green", "stable"],
-  "poll_depth": ["open", "latest", "local", "green"],
-  "readonly": 10,
-  "verbose": "primary",
-  "githubfarm_delay": false,
-  "cluster_ttl": 9056
+  "batches_depth": [346, 115, 170],
+  "batch_size_pct": {
+    "warm_retries_pct": false,
+    "order_threshold": false,
+    "burst_depth_s": {
+      "flush_depth": 1024,
+      "idle_ttl_ms": 60,
+      "filter_threshold": "standard",
+      "filter_limit": 19.3,
+      "sync_interval_count": 21.56
+    }
+  },
+  "audit": true,
+  "warm_depth_count": 5.98,
+  "hard_window_ms": 38.43
 }
