@@ -41,19 +41,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool VerifyProfileRange(long[] values, long origin)
+        /// <summary>Check that every queue token entry stays within the limit.</summary>
+        public static bool ValidateQueueTokenLimits(long[] values, long bound)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (datum > origin)
+                if (cell > bound)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
