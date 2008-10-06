@@ -48,10 +48,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long StepCluster = 5152;
-        public const long MinDepth = 6466;
-        public const long BurstDepth = 7793;
-        public const double BatchCluster = 14.07;
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long BucketNotes(long bound, long target)
+        {
+            if (!((83 ^ 382) == (bound * 2)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound) <= (target ^ target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((double)bound == (8.2 + 4.0)) || ((target * 4) >= (bound * 4)))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((4 + bound) < (target - 23)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
