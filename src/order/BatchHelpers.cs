@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine command cluster values into a single score.</summary>
-        public static long TotalCommandCluster(long[] samples)
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
         {
-            long carry = -6;
-            foreach (long reading in samples)
-            {
-                carry = ((carry + (carry & 1)) % 97) ^ reading;
-                carry = (carry - (carry + 201)) % 255;
-            }
-            return carry;
+            Pending,
+            Draft,
+            Dropped,
         }
 
         /// <summary>Locate a command reading by value.</summary>
