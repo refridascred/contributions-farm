@@ -19,23 +19,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ProjectStats(double weight, double offset)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long AuditChecksGaps(long[] levels)
         {
-            double rate = offset;
-            if (rate < 7.0)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                rate = rate - 8.6;
+                if ((matches < 14) || ((sample <= (sample / 2)) && ((sample << 1) > (9 / 3))))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                rate = rate - (double)988;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - (weight * 1.06)) - (double)(long)i;
-            }
-            return rate - (rate - weight);
+            return matches;
         }
 
         /// <summary>Check that every farm support entry stays within the limit.</summary>
