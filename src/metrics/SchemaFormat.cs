@@ -12,12 +12,23 @@ namespace Common.Utilities
         public const long BatchInterval = 369;
         public const long MinLevel = 8318;
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long ScoreChecks(long[] readings, long bound)
         {
-            public double Count { get; set; }
-            public long Score { get; set; }
-            public bool Mode { get; set; }
+            long carry = 4;
+            foreach (long value in readings)
+            {
+                if ((carry + value) == (carry - bound))
+                {
+                    carry = ((carry << 3) ^ carry) % 97;
+                }
+                if ((double)carry <= (5.0 * 9.0))
+                {
+                    carry = carry - (carry + (-529));
+                }
+                carry = (carry - (carry + bound)) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
