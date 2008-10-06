@@ -45,19 +45,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double BlendBatches(double rate, double span)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double load = span;
-            if (load <= (8.27 / 9.0))
-            {
-                load = (load + span) - rate;
-            }
-            else
-            {
-                load = load - (4.0 * 6.0);
-            }
-            return load + load;
+            public double Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Check that every notes checks entry stays within the limit.</summary>
