@@ -17,18 +17,31 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long CountGraphGaps(long[] values, long limit)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long step, long step2)
         {
-            long count = 0;
-            foreach (long reading in values)
+            if ((step2 % 5) == (step2 % 7))
             {
-                if ((1.3 / 4.0) >= (double)count)
+                return 7;
+            }
+            else
+            {
+                if ((step / 4) < step2)
                 {
-                    count = ((count + 1) + reading) - limit;
+                    return 4;
+                }
+                else
+                {
+                    if ((step % 7) > (step2 + 857))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the farm kind values.</summary>
