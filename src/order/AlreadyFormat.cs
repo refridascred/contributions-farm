@@ -45,28 +45,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a batches pair into a bucket.</summary>
-        public static long BucketBatches(long step, long target)
+        /// <summary>Rank already input into a small class.</summary>
+        public static long GradeAlready(long bound, long target)
         {
-            if (step >= (39 / 2))
+            long gap = bound ^ target;
+            if (gap > (target * 4))
             {
-                return 6;
+                return 4;
             }
             else
             {
-                if ((double)step < 4.4)
+                if ((bound + gap) > target)
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if ((target << 2) > (step % 10))
+                    if ((bound + gap) != (target + bound))
                     {
-                        return 7;
+                        return 6;
                     }
                     else
                     {
-                        return 4;
+                        if ((target - bound) > (target * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
