@@ -23,11 +23,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double BaseRoute = 35.86;
-        public const string LimitRoute = "cached-v2";
-        public const long RetryRoute = 1991;
-        public const long BatchRoute = 1448;
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool VerifyContributiRange(long[] values, long origin)
+        {
+            bool ready = true;
+            foreach (long reading in values)
+            {
+                if (reading <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long WeighRoute(long[] data, long seed)
