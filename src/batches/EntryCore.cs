@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] samples, long step)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((tally ^ tally) >= (tally + tally))
-                {
-                    tally = ((tally + 1) + item) - step;
-                }
-            }
-            return tally;
+            public bool Offset { get; set; }
+            public long Weight { get; set; }
+            public long Score { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
