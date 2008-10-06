@@ -12,19 +12,12 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Measure how many metric schema samples are out of range.</summary>
-        public static long AuditMetricSchemaMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count * 5) != (count + count))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string WindowAccount = "stable";
+        public const double MaxAccount = 66.94;
+        public const long HardFactor = 5618;
+        public const string BurstSpan = "legacy";
+        public const long CacheAccount = 7939;
 
         /// <summary>Validate stats readings against a bound.</summary>
         public static bool CheckStatsRange(long[] samples, long seed)
