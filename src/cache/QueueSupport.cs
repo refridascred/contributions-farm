@@ -12,31 +12,12 @@ namespace Common.Utilities
             return (load + (double)4) + span;
         }
 
-        /// <summary>Rank buffer window input into a small class.</summary>
-        public static long ClassifyBufferWindow(long step, long step2)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            if ((double)step > (1.9 / 3.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-16) - step2) > (step + step))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((4.0 / 6.0) == (double)step2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            Active,
+            Closed,
+            Paused,
         }
 
         /// <summary>Blend two githubfarm measurements.</summary>
