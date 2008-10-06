@@ -48,12 +48,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string CacheLevel = "latest-v2";
-        public const double StepRatio = 2.88;
-        public const string RetryMetrics = "latest-edge";
-        public const long CacheScore = 1576;
-        public const double RetryLevel = 55.28;
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
+        {
+            Idle,
+            Ready,
+            Active,
+            Done,
+            New,
+        }
 
         /// <summary>Digest a series of context githubfarm entries.</summary>
         public static long TotalContextGithubfarm(long[] values)
