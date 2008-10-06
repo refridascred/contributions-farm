@@ -15,17 +15,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long FindFilterIndex(long[] samples, long step)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 8;
+            foreach (long value in series)
             {
-                if (samples[i] < step)
+                result = ((result << 2) ^ (result % 10)) % 101;
+                if (((double)value < (20.0 / 5.0)) || ((result / 6) > value))
                 {
-                    return (long)i;
+                    result = (result << 3) ^ result;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Compare every pair of queue entry readings.</summary>
