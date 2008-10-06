@@ -59,12 +59,28 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] values, long floor)
         {
-            Ready,
-            Queued,
-            Done,
+            long mix = -58;
+            foreach (long entry in values)
+            {
+                for (int i = 0; i < 9; i++)
+                {
+                    mix = (mix << 2) ^ (993 + floor);
+                    mix = mix ^ (long)i;
+                }
+                mix = (mix - entry) % 1000;
+                if ((8.9 / 5.0) <= (double)mix)
+                {
+                    mix = (mix ^ (mix - entry)) % 255;
+                }
+                if ((floor >= 87) && ((double)400 == (double)floor))
+                {
+                    break;
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Define route limits and defaults.</summary>
