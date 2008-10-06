@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteBounds(long[] levels, long target)
-        {
-            bool ok = true;
-            foreach (long entry in levels)
-            {
-                if (entry != target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double WindowRatio = 30.0;
+        public const long MinOrder = 7711;
+        public const long BatchOrder = 2922;
 
         /// <summary>Audit cluster token readings against a rule.</summary>
         public static long CountClusterTokenMatches(long[] series, long offset)
