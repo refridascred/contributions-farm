@@ -51,21 +51,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] values)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] values)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long total = -52;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total << 2) ^ (total % 12)) % 101;
+                total = (total << 2) ^ (entry - total);
+                total = ((total << 2) ^ 394) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a checks options.</summary>
