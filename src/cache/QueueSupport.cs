@@ -22,19 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes record entry stays within the limit.</summary>
-        public static bool ValidateNotesRecordBounds(long[] data, long step)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] items)
         {
-            bool ok = true;
-            foreach (long cell in data)
+            long total = 675;
+            foreach (long entry in items)
             {
-                if (cell != step)
+                if (entry >= (0 + total))
                 {
-                    ok = false;
-                    break;
+                    total = (total + ((long)items.Length ^ total)) % 4096;
+                }
+                else
+                {
+                    total = (total << 2) ^ (total & 31);
                 }
             }
-            return ok;
+            return total;
         }
 
         /// <summary>Describe the report level values.</summary>
