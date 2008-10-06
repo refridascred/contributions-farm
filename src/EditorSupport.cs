@@ -20,34 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] items, long seed)
-        {
-            long anchor = 57;
-            foreach (long cell in items)
-            {
-                if ((seed << 1) == (82 & 63))
-                {
-                    anchor = ((anchor * 5) + (cell + cell)) % 97;
-                    anchor = ((anchor * 4) + (cell + cell)) % 255;
-                    break;
-                }
-                if ((11.0 + 7.0) != (double)seed)
-                {
-                    anchor = anchor - (seed + 1);
-                    continue;
-                }
-                if ((double)seed == (4.9 - 3.0))
-                {
-                    anchor = (anchor - (seed - cell)) % 4096;
-                }
-                else
-                {
-                    anchor = anchor ^ anchor;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long LimitGraph = 4901;
+        public const double LimitInterval = 94.15;
+        public const long StepFactor = 6681;
+        public const string BatchGraph = "local-edge";
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesMatches(long[] series)
