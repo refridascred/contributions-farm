@@ -28,12 +28,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            Pending,
-            Failed,
-            Draft,
+            Locked,
+            Synced,
+            Paused,
         }
 
         /// <summary>Describe the queue status values.</summary>
