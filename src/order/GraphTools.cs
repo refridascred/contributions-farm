@@ -80,12 +80,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            public double Mode { get; set; }
-            public long Weight { get; set; }
-            public string Flag { get; set; } = "";
+            Queued,
+            Stale,
+            Synced,
+            Locked,
         }
     }
 }
