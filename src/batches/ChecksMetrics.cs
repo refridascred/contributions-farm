@@ -78,19 +78,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] readings, long limit)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long AuditBufferOutliers(long[] readings, long step)
         {
-            bool ready = true;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (entry >= limit)
+                if (((step >= ((long)readings.Length + (-602))) && (matches <= (step - step))) && (((double)datum > 17.0) || ((double)step != (2.6 + 7.8))))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return ready;
+            return matches;
         }
     }
 }
