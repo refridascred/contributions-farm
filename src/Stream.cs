@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream helpers.</summary>
     public static class Stream
     {
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool GuardGithubfarmBounds(long[] items, long step)
+        /// <summary>Find the first githubfarm contributi entry that matches the target.</summary>
+        public static long LocateGithubfarmContributiIndex(long[] data, long seed)
         {
-            bool found = true;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= step)
+                if ((data[i] >= seed) && ((data[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a entry info.</summary>
