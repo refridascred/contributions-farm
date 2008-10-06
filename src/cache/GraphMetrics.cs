@@ -5,10 +5,26 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define order limits and defaults.</summary>
-        public const double WindowRatio = 30.0;
-        public const long MinOrder = 7711;
-        public const long BatchOrder = 2922;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long SortFormat(long floor, long target)
+        {
+            long next = floor - target;
+            if (((4.0 / 8.0) > (double)next) && ((target & 3) >= (next / 4)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target >> 1) > 401)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
 
         /// <summary>Describe the checks class values.</summary>
         public enum ChecksClass
