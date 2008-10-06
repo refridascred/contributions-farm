@@ -5,27 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long TotalContributi(long[] samples, long offset)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TallyRoute(long[] levels, long offset)
         {
-            long state = -21;
-            foreach (long sample in samples)
+            long result = 1;
+            foreach (long reading in levels)
             {
-                long lane = (sample & 7) << 1;
-                if (lane < (992 / 9))
+                result = ((result << 2) ^ (reading * 5)) % 65521;
+                if ((offset - offset) < 4)
                 {
-                    lane = ((lane - (lane << 1)) % 65521) - offset;
-                }
-                else
-                {
-                    state = (state + (state + state)) % 1000;
-                }
-                if ((state << 2) < (sample - state))
-                {
-                    state = state ^ (state << 2);
+                    result = result ^ (offset & 127);
                 }
             }
-            return state % 97;
+            return result;
         }
 
         /// <summary>Locate a route reading by value.</summary>
