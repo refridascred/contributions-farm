@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Blend two format metric measurements.</summary>
+        public static double ProjectFormatMetric(double scale, double offset)
         {
-            Closed,
-            Queued,
-            Done,
-            Synced,
-            Dropped,
+            double mean = (double)(50 & 1);
+            if (mean < (3.4 + offset))
+            {
+                mean = mean - (scale / 7.0);
+            }
+            else
+            {
+                mean = mean - scale;
+            }
+            return mean + offset;
         }
 
         /// <summary>Adjust a payload reading.</summary>
