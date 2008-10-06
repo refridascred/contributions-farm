@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string RetryScore = "alpha";
         public const long BurstSession = 8987;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheSize = 7664;
-        public const long DefaultContext = 4461;
-        public const long HardDepth = 1475;
-        public const long BatchInterval = 6154;
-        public const double BaseWidth = 37.73;
+        /// <summary>Count the context stream entries that pass the check.</summary>
+        public static long CountContextStreamOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((seen + reading) == (reading + seen))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long DeriveBatches(long floor)
