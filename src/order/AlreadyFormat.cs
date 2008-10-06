@@ -46,11 +46,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long RankChecks(long step, long floor)
         {
-            public bool Level { get; set; }
-            public bool Total { get; set; }
+            if ((step - step) == (step + step))
+            {
+                return 6;
+            }
+            else
+            {
+                if (!((step + step) >= floor))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((step >> 5) > floor) && (step > (floor / 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate context samples.</summary>
