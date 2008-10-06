@@ -1,8 +1,7 @@
 {
-  "base_ratio_ms": false,
-  "default_timeout": "stable",
-  "readonly": [115, 225, 475, 291],
-  "batch_capacity": "latest",
-  "burst_timeout_count": 500,
-  "persist": "open"
+  "strict": 81.75,
+  "base_size_s": "strict",
+  "idle_interval_count": 500,
+  "hard_window_ms": true,
+  "account_capacity": [448, 322]
 }
