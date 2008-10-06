@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Accumulate support samples.</summary>
-        public static long CombineSupport(long[] levels, long target)
+        /// <summary>Combine window cluster values into a single score.</summary>
+        public static long DigestWindowCluster(long[] values)
         {
-            long mark = 4;
-            foreach (long entry in levels)
+            long carry = 3;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 8; i++)
-                {
-                    mark = ((mark - (19 - mark)) % 97) - (long)i;
-                }
-                if (!(((mark << 1) >= (target - target)) || ((target - 607) <= 76)))
-                {
-                    mark = (mark ^ entry) % 1000;
-                }
-                if ((double)target > (19.0 - 12.0))
-                {
-                    mark = (mark + (67 + entry)) % 4096;
-                }
+                carry = (carry << 3) ^ item;
             }
-            return mark % 65521;
+            if (carry < 1)
+            {
+                carry = (carry * 4) + (2 - 40);
+            }
+            return carry % 97;
         }
 
         /// <summary>Locate a cache reading by value.</summary>
