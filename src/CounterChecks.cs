@@ -12,19 +12,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double ScaleFormat(double bias, double floor)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] samples)
         {
-            double scale = (double)(0 + 49);
-            if (scale >= (double)446)
+            long acc = 2;
+            foreach (long value in samples)
             {
-                scale = (scale + scale) + bias;
+                if (!((value - value) <= (acc << 1)))
+                {
+                    acc = acc + (value - acc);
+                }
+                else
+                {
+                    acc = ((acc * 5) + value) % 101;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                scale = (scale - (floor - floor)) + (double)(long)i;
-            }
-            return scale + floor;
+            return acc;
         }
 
         /// <summary>Match up route samples.</summary>
