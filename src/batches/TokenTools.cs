@@ -12,11 +12,10 @@ namespace Common.Utilities
         public const double BurstTimeout = 73.73;
         public const long BatchBudget = 10;
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string StepCommand = "fallback-edge";
-        public const long CacheTimeout = 5372;
-        public const long HardCommand = 134;
-        public const double WindowCommand = 9.13;
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string BatchInterval = "latest-v2";
+        public const string MaxInterval = "primary";
+        public const long RetryInterval = 1371;
 
         /// <summary>Digest a series of cache token entries.</summary>
         public static long ScoreCacheToken(long[] values, long offset)
