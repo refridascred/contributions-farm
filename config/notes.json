@@ -1,7 +1,7 @@
 {
-  "poll_ratio": 3350,
-  "burst_interval_pct": [321, 406, 25, 227],
-  "sync_ttl_count": 9083,
-  "verbose": 5202,
-  "warm_window": 97.28
+  "readonly": true,
+  "batch_threshold": 95,
+  "strict": false,
+  "farm_limit": "primary",
+  "max_timeout_pct": 30
 }
