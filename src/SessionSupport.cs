@@ -5,32 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long step, long floor)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long delta = step + floor;
-            if ((step << 2) < (step + step))
-            {
-                return 5;
-            }
-            else
-            {
-                if (delta <= (floor + delta))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((floor ^ 593) > floor) && (delta <= (-505)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public bool Flag { get; set; }
+            public bool Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
