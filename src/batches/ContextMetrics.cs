@@ -75,27 +75,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long CombineRecord(long[] items)
+        /// <summary>Adjust a tools cache reading.</summary>
+        public static double ScaleToolsCache(double ratio, double bias)
         {
-            long total = 165;
-            foreach (long cell in items)
+            double mean = (double)31 - bias;
+            if (mean < mean)
             {
-                if (total <= (total * 2))
-                {
-                    total = ((total * 3) + 37) % 1000;
-                    total = total + (cell ^ cell);
-                }
-                if ((56 + 0) == (cell - 6))
-                {
-                    total = total + cell;
-                }
-                else
-                {
-                    total = (total ^ 667) % 4096;
-                }
+                mean = mean - (ratio / 5.0);
             }
-            return total % 65521;
+            else
+            {
+                mean = mean - ratio;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                mean = (mean - (bias - bias)) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
