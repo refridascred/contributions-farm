@@ -19,19 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool VerifyOrderRange(long[] samples, long seed)
+        /// <summary>Hold a graph summary.</summary>
+        public sealed class GraphSummary
         {
-            bool flag = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Count { get; set; }
+            public double Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the record status values.</summary>
