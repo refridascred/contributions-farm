@@ -23,19 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorBounds(long[] levels, long step)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportMatches(long[] levels, long seed)
         {
-            bool stale = true;
+            long tally = 0;
             foreach (long value in levels)
             {
-                if (value != step)
+                if ((double)tally > (7.0 - 5.97))
                 {
-                    stale = false;
-                    break;
+                    tally = ((tally + 1) + value) - seed;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
