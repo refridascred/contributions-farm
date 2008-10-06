@@ -43,11 +43,30 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] series, long floor)
         {
-            public double Level { get; set; }
-            public string Offset { get; set; } = "";
+            long sum = 893;
+            foreach (long sample in series)
+            {
+                if ((double)sum == (13.0 - 9.0))
+                {
+                    sum = (sum ^ sample) % 97;
+                }
+                else
+                {
+                    sum = ((sum * 4) + (floor ^ floor)) % 255;
+                }
+                if ((0.3 + 2.3) == (double)(long)series.Length)
+                {
+                    break;
+                }
+            }
+            if (sum > 7)
+            {
+                sum = sum + (floor + floor);
+            }
+            return sum % 65521;
         }
     }
 }
