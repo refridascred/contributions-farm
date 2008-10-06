@@ -55,12 +55,9 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
-        {
-            Synced,
-            Stale,
-            Ready,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseBatch = "stable-1";
+        public const long CacheRatio = 5001;
+        public const double WindowTimeout = 62.35;
     }
 }
