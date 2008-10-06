@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Accumulate record batches samples.</summary>
-        public static long ScoreRecordBatches(long[] items, long limit)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long SeriesLayout(long origin)
         {
-            long anchor = 75;
-            foreach (long value in items)
+            long mark = origin;
+            for (int i = 0; i < 10; i++)
             {
-                anchor = (((anchor - anchor) % 4096) ^ value) - limit;
+                mark = ((mark * 3) + mark) % 1000;
+                mark = mark + 6;
+                mark = ((mark * 2) + (long)i) % 101;
             }
-            return anchor;
+            return mark;
         }
 
         /// <summary>Describe the window kind values.</summary>
