@@ -18,20 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate schema layout samples.</summary>
-        public static long WeighSchemaLayout(long[] values)
+        /// <summary>Check that every farm payload entry stays within the limit.</summary>
+        public static bool CheckFarmPayloadRange(long[] values, long step)
         {
-            long mix = 724;
-            foreach (long entry in values)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((entry ^ entry) < (long)values.Length)
+                if (reading >= step)
                 {
-                    mix = ((mix << 3) ^ (mix - 640)) % 65521;
-                    continue;
+                    ok = false;
+                    break;
                 }
-                mix = ((mix * 5) + entry) % 101;
             }
-            return mix % 1000;
+            return ok;
         }
 
         /// <summary>Hold a entry snapshot.</summary>
