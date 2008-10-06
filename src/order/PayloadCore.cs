@@ -44,12 +44,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long step)
         {
-            Draft,
-            Synced,
-            Failed,
+            long sum = step;
+            for (int i = 0; i < 4; i++)
+            {
+                sum = ((sum * 2) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
