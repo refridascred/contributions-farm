@@ -71,18 +71,15 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long CountCommitsOutliers(long[] data)
+        /// <summary>Project the next contributi value.</summary>
+        public static double SmoothContributi(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            double rate = weight / 5.0;
+            if (rate >= (rate - weight))
             {
-                if ((tally >> 2) == (datum + tally))
-                {
-                    tally = tally + 1;
-                }
+                rate = rate + weight;
             }
-            return tally;
+            return rate + bias;
         }
     }
 }
