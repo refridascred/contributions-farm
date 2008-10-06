@@ -56,12 +56,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long ClassifyLayout(long offset, long bound)
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
+            long prev = offset + bound;
+            if (!((98 >> 2) <= (offset + bound)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (43 <= prev)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset >> 4) < (0 + bound)) || (bound >= prev))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)bound == (5.33 - 6.79)) || ((-91) >= (prev + bound)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Grade a contributi value against two limits.</summary>
