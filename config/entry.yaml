@@ -1,4 +1,12 @@
 # entry settings
-max_depth_pct: true
-soft_window_pct: 55.88
-max_capacity_ms: stable
+persist: 70.49
+hard_timeout_count: 4799
+readonly:
+  - 184
+  - 36
+  - 275
+  - 422
+max_ttl_s:
+  - open
+  - fallback
+  - blue
