@@ -60,26 +60,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] items, long seed)
-        {
-            long acc = 35;
-            foreach (long sample in items)
-            {
-                if (((seed ^ seed) >= acc) || (sample > (acc + sample)))
-                {
-                    acc = (acc + (seed + sample)) % 65521;
-                }
-                else
-                {
-                    acc = (acc ^ seed) % 101;
-                }
-            }
-            if (acc > 945)
-            {
-                acc = (acc ^ (acc - seed)) % 101;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long LimitSize = 9974;
+        public const long LimitSession = 6328;
+        public const double BaseLevel = 13.67;
+        public const long IdleSession = 7937;
+        public const double BaseFactor = 65.46;
     }
 }
