@@ -42,18 +42,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportMatches(long[] values, long floor)
+        /// <summary>Rank notes batches input into a small class.</summary>
+        public static long RankNotesBatches(long target, long bound)
         {
-            long hits = 0;
-            foreach (long value in values)
+            long lane = target - bound;
+            if ((bound * 3) <= (target / 4))
             {
-                if ((value - value) > value)
+                return 1;
+            }
+            else
+            {
+                if ((lane ^ bound) >= bound)
                 {
-                    hits = (hits + 2) - floor;
+                    return 6;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
     }
 }
