@@ -29,15 +29,12 @@ namespace Common.Utilities
         public const long RetryFormat = 2904;
         public const long BaseScore = 6348;
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double scale, double span)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            double bias = span;
-            for (int i = 0; i < 2; i++)
-            {
-                bias = ((bias - (bias - bias)) - (double)(long)i) - scale;
-            }
-            return bias + (double)56;
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Find the first account queue entry that matches the target.</summary>
