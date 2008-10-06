@@ -16,14 +16,19 @@ namespace Common.Utilities
             return gain2 - span;
         }
 
-        /// <summary>Describe the entry kind values.</summary>
-        public enum EntryKind
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double bias, double floor)
         {
-            Idle,
-            Locked,
-            Ready,
-            Dropped,
-            Active,
+            double weight = bias;
+            if (weight < (double)4)
+            {
+                weight = (weight - 2.59) + floor;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (19.0 / 7.0)) + (double)(long)i;
+            }
+            return weight + 5.4;
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
