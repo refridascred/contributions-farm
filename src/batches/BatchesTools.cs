@@ -38,16 +38,9 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine farm counter values into a single score.</summary>
-        public static long CombineFarmCounter(long[] readings)
-        {
-            long mix = -146;
-            foreach (long reading in readings)
-            {
-                mix = (mix << 2) ^ reading;
-                mix = ((mix << 2) ^ (mix + 97)) % 4096;
-            }
-            return mix;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double LimitChecks = 60.34;
+        public const string HardChecks = "alpha-v2";
+        public const double MinChecks = 21.6;
     }
 }
