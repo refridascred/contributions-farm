@@ -1,6 +1,11 @@
-id,token,rank,level
-1,strict,93.36,771
-2,352,eu-west,92
-3,35.56,50.03,8.05
-4,stable,374,806
-5,stable,83.12,open
+id,rank,state,weight,owner
+1,strict,31.65,74.26,508
+2,378,34.9,44,green
+3,3.51,47.91,primary,230
+4,latest,822,386,225
+5,610,legacy,local,250
+6,692,547,eu-west,1.65
+7,blue,60.49,open,97.79
+8,118,68.39,974,397
+9,32.62,37.04,41,129
+10,local,417,18.75,fallback
