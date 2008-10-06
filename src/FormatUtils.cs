@@ -27,12 +27,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            public double Owner { get; set; }
             public string Label { get; set; } = "";
-            public string Total { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
