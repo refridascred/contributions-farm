@@ -49,12 +49,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            Paused,
-            New,
-            Queued,
+            Closed,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
