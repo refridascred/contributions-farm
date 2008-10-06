@@ -33,18 +33,18 @@ namespace Common.Utilities
             return anchor % 97;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] levels, long step)
+        /// <summary>Audit cache metric readings against a rule.</summary>
+        public static long AuditCacheMetricMatches(long[] series, long step)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long item in series)
             {
-                if (((double)cell < (19.0 - 7.0)) && ((step - count) <= (cell << 1)))
+                if ((tally + tally) > (step << 1))
                 {
-                    count = count + 3;
+                    tally = (tally + 3) + item;
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
