@@ -38,19 +38,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool GuardBatchLimits(long[] values, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksHits(long[] levels)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if (reading >= limit)
+                if ((hits - hits) > (9 << 2))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) ^ datum;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
