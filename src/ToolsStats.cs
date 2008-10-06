@@ -22,18 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LookupBufferIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long LimitFormat = 1788;
+        public const double HardRatio = 19.78;
+        public const long StepWidth = 2342;
+        public const long RetryFormat = 2904;
+        public const long BaseScore = 6348;
 
         /// <summary>Adjust a session reading.</summary>
         public static double SmoothSession(double rate, double offset)
