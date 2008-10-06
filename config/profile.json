@@ -1,8 +1,17 @@
 {
-  "cache_depth_ms": "open",
-  "cache_interval": "edge",
-  "batches_ttl": true,
-  "warm_threshold": "legacy",
-  "burst_interval": "strict",
-  "sync_limit_pct": 47.42
+  "flush_capacity_ms": "cached",
+  "session_ratio": 74,
+  "base_depth_s": {
+    "strict": "stable",
+    "base_ratio": {
+      "checks_ttl": "latest",
+      "default_delay": 30,
+      "cache_threshold": 34.73,
+      "audit": 4.59
+    },
+    "dry_run": [239, 338, 304, 77],
+    "compress": false,
+    "idle_threshold": 250,
+    "editor_threshold": 76.17
+  }
 }
