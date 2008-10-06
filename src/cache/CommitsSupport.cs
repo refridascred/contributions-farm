@@ -36,12 +36,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long GradeBuffer(long limit, long step)
         {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Weight { get; set; }
+            long gap = limit + step;
+            if ((limit + limit) < (0 ^ limit))
+            {
+                return 0;
+            }
+            else
+            {
+                if (gap <= (7 << 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if ((limit / 4) < (gap & 255))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step < (double)limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
