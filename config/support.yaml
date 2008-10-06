@@ -1,6 +1,9 @@
 # support settings
-batch_timeout_s: false
-retry_depth: stable
-strict: 22.91
-stats_depth: 1024
-sync_ttl: 4365
+soft_limit_s:
+  - primary
+  - local
+  - legacy
+  - fallback
+persist: local
+format_ttl: 61.67
+flush_limit_s: 30.85
