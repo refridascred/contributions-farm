@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
-        {
-            Synced,
-            Retry,
-            Failed,
-            Active,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowAlready = 71.7;
+        public const string IdleAlready = "alpha";
+        public const long SoftAlready = 1703;
+        public const string DefaultFactor = "open-edge";
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
