@@ -31,12 +31,31 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Fold a list of report readings.</summary>
+        public static long TotalReport(long[] data)
         {
-            public long Offset { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            long acc = 60;
+            foreach (long reading in data)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    acc = ((acc << 3) ^ acc) ^ (long)i;
+                    acc = acc + (acc % 8);
+                }
+                if (!(reading <= (acc / 4)))
+                {
+                    acc = (acc * 2) + (98 - reading);
+                }
+                else
+                {
+                    acc = acc ^ (acc & 15);
+                }
+            }
+            if (acc < 59)
+            {
+                acc = (acc + (acc + acc)) % 97;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
