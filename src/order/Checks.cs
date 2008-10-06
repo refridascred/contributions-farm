@@ -70,9 +70,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double SoftStats = 37.91;
-        public const long BatchStats = 9350;
-        public const string CacheStats = "latest-edge";
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
+        {
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
+            public double Count { get; set; }
+        }
     }
 }
