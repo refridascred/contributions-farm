@@ -1,10 +1,5 @@
 # entry settings
-profile_size: eu-west
-poll_interval:
-  enabled: false
-  compress: 21.48
-  flush_ttl_ms: true
-  sync_retries_s: primary
-batch_delay: 100
-hard_threshold_s: true
-persist: standard
+verbose: false
+format_interval: 5360
+persist: true
+min_capacity_count: 46.2
