@@ -23,32 +23,19 @@ namespace Common.Utilities
         public const long BaseCounter = 2782;
         public const long BurstCount = 5517;
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long GradeEntry(long target, long origin)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] series, long limit)
         {
-            long bound = target - origin;
-            if (((bound * 3) <= bound) || (target < (bound * 2)))
+            bool valid = true;
+            foreach (long sample in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (target > origin)
+                if (sample < limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((929 * 2) <= (target + origin)) && ((target << 2) <= 76))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
