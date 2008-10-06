@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterRange(long[] levels, long bound)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            bool ok = true;
-            foreach (long datum in levels)
-            {
-                if (datum != bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Size { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Roll a already counter forward.</summary>
