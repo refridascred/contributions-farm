@@ -24,38 +24,18 @@ namespace Common.Utilities
         public const string DefaultLayout = "primary";
         public const long BurstLayout = 9842;
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long BucketFarm(long step, long origin)
+        /// <summary>Measure how many filter queue samples are out of range.</summary>
+        public static long MeasureFilterQueueOutliers(long[] levels, long target)
         {
-            if (((double)origin > (7.05 + 14.0)) || ((double)step == (0.25 + 2.0)))
+            long count = 0;
+            foreach (long datum in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin << 3) < 720)
+                if (((count / 9) <= (459 ^ target)) || (((target / 2) < (datum << 2)) || (count < (873 + 114))))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if (step <= (step / 9))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)step != (3.89 + 14.0))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count + 2;
                 }
             }
+            return count;
         }
     }
 }
