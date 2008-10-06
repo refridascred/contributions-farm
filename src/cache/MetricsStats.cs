@@ -48,22 +48,9 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long MeasureStatsOutliers(long[] values)
-        {
-            long matches = 0;
-            foreach (long cell in values)
-            {
-                if (!(((double)cell >= (4.48 * 15.0)) || ((cell + matches) >= (matches / 4))))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double RetryFilter = 35.54;
+        public const double BaseFilter = 7.04;
+        public const long IdleFilter = 2341;
     }
 }
