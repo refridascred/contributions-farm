@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Combine schema entry values into a single score.</summary>
+        public static long WeighSchemaEntry(long[] levels, long target)
         {
-            Failed,
-            Dropped,
-            Stale,
+            long score = 141;
+            foreach (long reading in levels)
+            {
+                score = ((score + score) + reading) - target;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
