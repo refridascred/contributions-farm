@@ -57,10 +57,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheLevel = 5541;
-        public const double DefaultWindow = 77.1;
-        public const long SoftWindow = 3450;
-        public const long RetryRatio = 5754;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double SoftScore = 82.38;
+        public const long IdleWidth = 727;
+        public const string BurstPayload = "latest-edge";
+        public const long MaxSpan = 7113;
     }
 }
