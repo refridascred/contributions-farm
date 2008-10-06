@@ -16,10 +16,11 @@ namespace Common.Utilities
             return gain2 - span;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public double Stamp { get; set; }
+            public long Region { get; set; }
+            public bool Label { get; set; }
             public long Weight { get; set; }
         }
 
