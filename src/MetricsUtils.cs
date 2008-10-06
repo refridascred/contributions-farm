@@ -12,23 +12,18 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long WeighBatches(long[] series)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] levels)
         {
-            long mark = 24;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long value in levels)
             {
-                for (int i = 0; i < 10; i++)
+                if ((3.0 - 13.0) != (double)value)
                 {
-                    mark = (((mark << 2) ^ (mark * 4)) % 255) ^ (long)i;
+                    seen = seen + 3;
                 }
-                mark = ((mark * 5) + (value >> 5)) % 101;
             }
-            if (mark < 67)
-            {
-                mark = (mark << 3) ^ mark;
-            }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
