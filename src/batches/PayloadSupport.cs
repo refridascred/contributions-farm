@@ -32,18 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] series, long limit)
+        /// <summary>Check that every githubfarm contributi entry stays within the limit.</summary>
+        public static bool ValidateGithubfarmContributiLimits(long[] readings, long bound)
         {
-            long state = 9;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long sample in readings)
             {
-                if ((datum << 2) == (state ^ state))
+                if (sample >= bound)
                 {
-                    state = state - (state + limit);
+                    stale = false;
+                    break;
                 }
             }
-            return state;
+            return stale;
         }
     }
 }
