@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Fold a list of token session readings.</summary>
-        public static long CombineTokenSession(long[] data, long limit)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long CompareBatchesCount(long[] levels)
         {
-            long sum = 39;
-            foreach (long cell in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    sum = (((sum * 4) + (limit + (long)i)) % 1000) + cell;
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                sum = ((sum << 2) ^ 8) % 4096;
-                sum = ((sum << 2) ^ (sum + (long)data.Length)) % 1000;
             }
-            if (sum > 527)
-            {
-                sum = (sum + sum) % 255;
-            }
-            return sum;
+            return seen;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
