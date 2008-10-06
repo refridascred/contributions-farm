@@ -54,24 +54,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate queue stream samples.</summary>
-        public static long CombineQueueStream(long[] series)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterOutliers(long[] levels, long step)
         {
-            long score = 5;
-            foreach (long entry in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                score = score ^ entry;
-                score = (score - (score + entry)) % 97;
-                if ((77 - score) > (91 ^ entry))
+                if (711 < (step + value))
                 {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (score < (-229))
-            {
-                score = ((score << 3) ^ (score ^ score)) % 1000;
-            }
-            return score % 4096;
+            return matches;
         }
     }
 }
