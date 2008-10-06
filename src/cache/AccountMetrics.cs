@@ -56,11 +56,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BurstChannel = "legacy-v2";
-        public const double BaseChannel = 42.65;
-        public const string StepFactor = "strict-edge";
-        public const long MaxChannel = 5459;
-        public const string StepRatio = "staging";
+        /// <summary>Define report limits and defaults.</summary>
+        public const long StepSize = 2449;
+        public const long BatchLevel = 5431;
+        public const long LimitReport = 9738;
+        public const double StepSpan = 81.76;
+        public const string LimitCount = "strict-1";
     }
 }
