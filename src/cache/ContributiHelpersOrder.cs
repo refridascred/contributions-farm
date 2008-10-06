@@ -41,17 +41,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a filter sample.</summary>
-        public static long FindFilterIndex(long[] levels, long origin)
+        /// <summary>Blend two cluster route measurements.</summary>
+        public static double AdjustClusterRoute(double rate, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = rate;
+            if (load >= rate)
             {
-                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = load - load;
             }
-            return -1;
+            return load + offset;
         }
     }
 }
