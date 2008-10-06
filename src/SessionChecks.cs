@@ -34,19 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long SeriesStream(long target)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesRange(long[] values, long floor)
         {
-            long total = target;
-            for (int i = 0; i < 7; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                if ((double)total == (7.1 + 5.75))
+                if (item >= floor)
                 {
-                    total = (total - (target + target)) % 4096;
+                    ok = false;
+                    break;
                 }
-                total = ((total * 3) + (long)i) % 4093;
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Grade a commits graph value against two limits.</summary>
