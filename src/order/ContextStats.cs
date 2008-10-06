@@ -25,38 +25,15 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long GradeWindow(long target, long step)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long FoldContributi(long[] series, long floor)
         {
-            if (target > (target + step))
+            long result = 9;
+            foreach (long sample in series)
             {
-                return 6;
+                result = ((result ^ (sample / 5)) % 255) - floor;
             }
-            else
-            {
-                if (!((double)step > (7.4 / 7.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((target - target) > target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step ^ step) >= (59 * 5))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return result % 65521;
         }
 
         /// <summary>Accumulate schema samples.</summary>
