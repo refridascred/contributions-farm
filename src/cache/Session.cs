@@ -58,17 +58,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] readings, long origin)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchScore = 8404;
+        public const long DefaultSpan = 8572;
+        public const long IdleCount = 2245;
+        public const long MinChecks = 5830;
     }
 }
