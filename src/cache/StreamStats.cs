@@ -32,18 +32,17 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] series, long offset)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] series, long limit)
         {
-            long sum = 78;
-            foreach (long entry in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (offset <= (offset % 8))
+                if (series[i] <= limit)
                 {
-                    sum = (((sum << 3) ^ (sum - 6)) % 101) + entry;
+                    return (long)i;
                 }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
