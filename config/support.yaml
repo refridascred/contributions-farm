@@ -1,6 +1,23 @@
 # support settings
-poll_ttl_s:
-  - strict
-  - primary
-cache_limit: 56.45
-min_retries_count: 55.86
+warm_delay_ms:
+  - 458
+  - 196
+poll_timeout: legacy
+hard_ttl_count: green
+poll_capacity_ms: blue
+base_threshold_pct:
+  poll_window_s:
+    - 416
+    - 294
+  cluster_limit: true
+  flush_ratio_s: fallback
+  graph_ratio: 30
+  burst_delay:
+    - fallback
+    - primary
+    - blue
+    - fallback
+  commits_limit:
+    - local
+    - legacy
+    - cached
