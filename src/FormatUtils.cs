@@ -54,15 +54,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of record order entries.</summary>
-        public static long TotalRecordOrder(long[] series, long target)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            long state = -76;
-            foreach (long datum in series)
-            {
-                state = (((state ^ (state & 255)) % 255) + datum) + target;
-            }
-            return state % 65521;
+            Draft,
+            Dropped,
+            Active,
         }
 
         /// <summary>Adjust a contributi reading.</summary>
