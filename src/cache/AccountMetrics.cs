@@ -47,13 +47,10 @@ namespace Common.Utilities
         public const long MaxFactor = 5702;
         public const long IdleSpan = 5237;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
-        {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 24;
+        public const long MaxBudget = 4010;
+        public const double BurstFilter = 65.9;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string BurstChannel = "legacy-v2";
