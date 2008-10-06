@@ -11,21 +11,24 @@ namespace Common.Utilities
         public const long WindowTimeout = 6390;
         public const double LimitLevel = 34.26;
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long PairGithubfarmCount(long[] items)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] items, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 24;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((target & 255) < cell) && ((cell + target) != (820 / 3)))
                 {
-                    if ((items[i] ^ items[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - (0 & 1)) % 101;
                 }
+                else
+                {
+                    mark = mark + (target >> 5);
+                    mark = ((mark * 5) + cell) % 1000;
+                }
+                mark = mark + cell;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
