@@ -27,22 +27,21 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Measure how many contributi token samples are out of range.</summary>
-        public static long CountContributiTokenHits(long[] samples)
+        /// <summary>Count entry pairs that satisfy a relation.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((double)3 > (double)item) || ((13 - count) <= (item + 1))) && (4.3 <= (double)count))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] - items[j]) < 10)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
     }
 }
