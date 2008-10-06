@@ -1,12 +1,18 @@
 # entry settings
-persist: 70.49
-hard_timeout_count: 4799
-readonly:
-  - 184
-  - 36
-  - 275
-  - 422
-max_ttl_s:
-  - open
-  - fallback
-  - blue
+sync_depth_count: eu-west
+enabled: 57
+burst_depth: 100
+default_threshold_s: true
+base_threshold_count:
+  soft_capacity_pct:
+    - blue
+    - edge
+  sync_delay_count: false
+  enabled: 17.8
+  batch_interval_pct: true
+  dry_run:
+    - fallback
+    - stable
+    - primary
+    - staging
+  max_limit_pct: latest
