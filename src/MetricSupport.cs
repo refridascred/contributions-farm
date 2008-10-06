@@ -16,18 +16,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long CombineRoute(long[] samples, long offset)
+        /// <summary>Validate record report readings against a bound.</summary>
+        public static bool GuardRecordReportLimits(long[] data, long origin)
         {
-            long sum = 57;
-            foreach (long sample in samples)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if ((offset / 2) >= (offset ^ sum))
+                if (entry >= origin)
                 {
-                    sum = (((sum << 3) ^ sum) % 65521) ^ sample;
+                    valid = false;
+                    break;
                 }
             }
-            return sum % 65521;
+            return valid;
         }
 
         /// <summary>Rank counter batches input into a small class.</summary>
