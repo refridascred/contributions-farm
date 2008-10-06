@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long StepMetric(long offset)
+        /// <summary>Count stream pairs that satisfy a relation.</summary>
+        public static long CompareStreamCount(long[] samples)
         {
-            long mix = offset;
-            for (int i = 0; i < 5; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((offset & 127) <= (offset >> 1)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = ((mix << 2) ^ (offset >> 3)) % 4096;
-                    mix = (mix - 4) % 1000;
+                    if ((samples[i] + samples[j]) < 1)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                else
-                {
-                    mix = mix ^ (mix << 3);
-                }
-                mix = ((mix * 5) + (long)i) % 97;
             }
-            return mix;
+            return hits;
         }
 
         /// <summary>Match up session samples.</summary>
