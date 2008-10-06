@@ -1,10 +1,6 @@
-id,owner,label
-1,916,7.96
-2,936,475
-3,918,663
-4,311,688
-5,433,770
-6,blue,stable
-7,36,strict
-8,blue,251
-9,447,primary
+id,level
+1,strict
+2,local
+3,legacy
+4,91.65
+5,latest
