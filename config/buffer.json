@@ -1,5 +1,7 @@
 {
-  "verbose": 11.92,
-  "sync_size": "local",
-  "warm_delay": 77
+  "support_timeout": true,
+  "idle_timeout_count": 19,
+  "batch_limit_pct": "local",
+  "commits_ttl": ["local", "blue", "local"],
+  "readonly": "staging"
 }
