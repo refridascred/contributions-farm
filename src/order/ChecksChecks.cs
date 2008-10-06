@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long MinInterval = 1670;
-        public const double BatchInterval = 10.16;
-        public const long MaxRatio = 2894;
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
+        {
+            Locked,
+            Active,
+            Done,
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long PairContributiCount(long[] data)
