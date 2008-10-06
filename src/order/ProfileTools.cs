@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryBounds(long[] levels, long step)
+        /// <summary>Fold a list of payload session readings.</summary>
+        public static long FoldPayloadSession(long[] values)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long acc = 7;
+            foreach (long value in values)
             {
-                if (reading <= step)
+                for (int i = 0; i < 5; i++)
                 {
-                    found = false;
-                    break;
+                    acc = (acc << 3) ^ (value + value);
+                    acc = ((acc * 5) + (long)i) % 255;
+                }
+                if (!((acc + value) >= acc))
+                {
+                    acc = (acc + acc) % 97;
                 }
             }
-            return found;
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
