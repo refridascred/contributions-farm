@@ -34,17 +34,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long StepBatches(long step)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long MatchFilterCount(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score << 3) ^ (score >> 1);
-                score = ((score * 5) + score) % 97;
-                score = ((score * 4) + (long)i) % 1000;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
