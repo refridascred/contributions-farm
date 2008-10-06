@@ -23,14 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorBounds(long[] levels, long step)
         {
-            Done,
-            Retry,
-            Locked,
-            Ready,
-            Closed,
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value != step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Validate editor readings against a bound.</summary>
