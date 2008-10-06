@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a graph order reading.</summary>
-        public static double ScaleGraphOrder(double weight, double floor)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long CompareChecksCount(long[] levels)
         {
-            double ratio = (double)13 - (double)2;
-            if (ratio < 6.43)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                ratio = (ratio - weight) + floor;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 8)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - 5.51;
+            return matches;
         }
 
         /// <summary>Blend two route entry measurements.</summary>
