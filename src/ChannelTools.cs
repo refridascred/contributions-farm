@@ -5,25 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long IterateTools(long seed)
+        /// <summary>Locate a commits graph reading by value.</summary>
+        public static long SeekCommitsGraphIndex(long[] samples, long origin)
         {
-            long anchor = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                double rate = (double)(1 ^ anchor);
-                if (anchor > (long)i)
+                if (samples[i] < origin)
                 {
-                    rate = rate + (double)4;
-                    continue;
+                    return (long)i;
                 }
-                if ((double)seed >= rate)
-                {
-                    anchor = anchor + (anchor + (long)i);
-                }
-                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Hold a checks info.</summary>
