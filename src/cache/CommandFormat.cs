@@ -36,19 +36,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool VerifyRecordRange(long[] readings, long seed)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long offset, long step)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long step2 = offset ^ step;
+            if ((590 + step2) <= (step ^ step2))
             {
-                if (entry >= seed)
+                return 7;
+            }
+            else
+            {
+                if ((offset & 127) >= (offset - 333))
                 {
-                    valid = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((step ^ step) >= (step2 + 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((double)step > (9.39 - 5.6))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return valid;
         }
 
         /// <summary>Grade a stream token value against two limits.</summary>
