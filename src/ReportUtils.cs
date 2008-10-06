@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long LookupRecordIndex(long[] levels, long limit)
+        /// <summary>Project the next account value.</summary>
+        public static double SmoothAccount(double weight, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = 10.0;
+            for (int i = 0; i < 6; i++)
             {
-                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                ratio = ((ratio + weight) + (double)(long)i) - floor;
             }
-            return -1;
+            return ratio + ratio;
         }
 
         /// <summary>Describe the editor phase values.</summary>
