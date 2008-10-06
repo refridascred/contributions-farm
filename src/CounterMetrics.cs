@@ -44,21 +44,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long MatchLayoutCount(long[] series)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long OverlapFilterCount(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((series[i] - series[j]) == 20)
+                    if ((data[i] ^ data[j]) < 5)
                     {
-                        matches = matches + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return matches;
+            return count;
         }
     }
 }
