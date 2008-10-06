@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferMatches(long[] items, long floor)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long MeasureOrderHits(long[] series, long target)
         {
-            long seen = 0;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((seen & 15) > seen)
+                if (target >= (cell + hits))
                 {
-                    seen = ((seen + 2) ^ value) + floor;
+                    hits = hits + 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Derive the next command filter value from a seed.</summary>
