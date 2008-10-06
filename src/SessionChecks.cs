@@ -34,19 +34,32 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesRange(long[] values, long floor)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long step, long bound)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long slot = step - bound;
+            if ((bound > (bound % 24)) || (step >= ((-695) * 3)))
             {
-                if (item >= floor)
+                return 7;
+            }
+            else
+            {
+                if ((slot >> 4) > (step * 4))
                 {
-                    ok = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((bound - step) <= (slot - slot)) && (4.4 < (double)slot))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return ok;
         }
 
         /// <summary>Grade a commits graph value against two limits.</summary>
