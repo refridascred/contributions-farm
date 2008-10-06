@@ -1,27 +1,15 @@
 # support settings
-flush_threshold_pct:
-  default_window_s: false
-  poll_ratio_pct: latest
-  min_depth_pct: 88
-  poll_ratio_ms: strict
-  sync_threshold_pct: true
-poll_interval_pct: 63.78
-base_limit_count:
-  cluster_window:
-    - cached
-    - stable
-  flush_capacity_pct: 83.45
-  min_size_ms:
-    - 64
-    - 7
-  payload_interval: 78
-  burst_size_count:
-    soft_limit: 70
-    base_capacity_s: false
-    retry_depth: 100
-    cluster_timeout: staging
-  batch_window_pct: 65.09
-filter_depth: 8931
-soft_capacity_s:
-  - 281
-  - 394
+readonly: strict
+cache_capacity: 9029
+burst_threshold_pct:
+  compress: stable
+  batch_interval_pct: edge
+  idle_retries_pct: true
+  batch_ttl_count: 30
+  batch_depth: false
+poll_size_s: true
+warm_size_ms: 59
+cache_window:
+  - open
+  - legacy
+  - standard
