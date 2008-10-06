@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Adjust a notes reading.</summary>
-        public static double ProjectNotes(double ratio, double floor)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long seed)
         {
-            double ratio2 = floor + (ratio + ratio);
-            if (ratio2 < (ratio + 13.0))
+            long mix = seed;
+            for (int i = 0; i < 13; i++)
             {
-                ratio2 = ratio2 - (4.1 + floor);
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return ratio2 + 1.66;
+            return mix;
         }
 
         /// <summary>Fold a list of payload readings.</summary>
