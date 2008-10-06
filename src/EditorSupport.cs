@@ -69,19 +69,12 @@ namespace Common.Utilities
         public const long RetryAccount = 4467;
         public const long MaxDepth = 6812;
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long FoldChannel(long[] items, long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long sum = 334;
-            foreach (long sample in items)
-            {
-                sum = ((sum << 3) ^ (372 - target)) ^ sample;
-            }
-            if (sum < 793)
-            {
-                sum = ((sum << 3) ^ sum) % 65521;
-            }
-            return sum;
+            Retry,
+            Ready,
+            Synced,
         }
     }
 }
