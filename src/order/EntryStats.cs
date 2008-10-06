@@ -68,17 +68,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a schema commits counter forward.</summary>
-        public static long StepSchemaCommits(long floor)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ScaleWindow(double rate, double offset)
         {
-            long anchor = floor;
-            for (int i = 0; i < 21; i++)
+            double drift = (double)(72 & 127);
+            if (drift > (drift / 8.0))
             {
-                anchor = (anchor ^ (5 + (long)i)) % 65521;
-                anchor = (anchor * 2) + (anchor - anchor);
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                drift = drift + (offset - drift);
             }
-            return anchor;
+            else
+            {
+                drift = drift + (drift - offset);
+            }
+            return drift + (rate - rate);
         }
     }
 }
