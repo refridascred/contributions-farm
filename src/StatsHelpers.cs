@@ -35,18 +35,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long AuditEntryMatches(long[] levels, long seed)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long ScoreEditor(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long mix = 933;
+            foreach (long reading in items)
             {
-                if ((datum >> 4) <= (datum >> 1))
+                mix = (mix + limit) % 97;
+                if (mix < (mix * 3))
                 {
-                    seen = (seen + 1) + seed;
+                    mix = (mix * 3) + (reading << 1);
                 }
+                mix = (mix + (reading / 6)) % 97;
             }
-            return seen;
+            if (mix < 0)
+            {
+                mix = (mix << 2) ^ (-58);
+            }
+            return mix;
         }
 
         /// <summary>Define record limits and defaults.</summary>
