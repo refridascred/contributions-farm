@@ -1,7 +1,10 @@
-id,token,level,owner
-1,legacy,968,fallback
-2,staging,250,70.02
-3,243,303,open
-4,154,93,standard
-5,60,latest,39.21
-6,eu-west,blue,staging
+id,owner,label
+1,916,7.96
+2,936,475
+3,918,663
+4,311,688
+5,433,770
+6,blue,stable
+7,36,strict
+8,blue,251
+9,447,primary
