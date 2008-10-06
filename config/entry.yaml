@@ -1,9 +1,6 @@
 # entry settings
-audit: 30
-session_capacity: 27.27
-soft_timeout_pct: green
-default_retries: true
-default_limit:
-  - blue
-  - eu-west
-flush_timeout_count: 27.55
+command_threshold: 279
+retry_size: 1024
+batches_window: stable
+dry_run: 51
+enabled: 60
