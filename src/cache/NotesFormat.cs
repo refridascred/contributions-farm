@@ -16,14 +16,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountLimits(long[] values, long origin)
         {
-            Closed,
-            Queued,
-            Idle,
-            Done,
-            Ready,
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value > origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a window summary.</summary>
