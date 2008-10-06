@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long RollEntry(long target)
+        /// <summary>Combine buffer batch values into a single score.</summary>
+        public static long ScoreBufferBatch(long[] values, long seed)
         {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
+            long total = 60;
+            foreach (long cell in values)
             {
-                carry = carry ^ ((long)i / 6);
-                if ((target + target) < ((long)i - target))
+                if (!((seed + seed) > (1 - seed)))
                 {
-                    break;
+                    total = (total ^ (seed - cell)) % 101;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
+                else
+                {
+                    total = (total << 3) ^ cell;
+                }
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Describe the command state values.</summary>
