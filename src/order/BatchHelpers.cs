@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a layout entry.</summary>
-        public sealed class LayoutEntry
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            public bool Level { get; set; }
-            public bool Region { get; set; }
+            public bool Total { get; set; }
+            public double Mode { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
