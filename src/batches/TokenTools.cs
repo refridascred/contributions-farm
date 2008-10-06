@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 4330;
-        public const string CacheSize = "fallback-edge";
-        public const double WindowEntry = 47.93;
-        public const double BurstTimeout = 73.73;
-        public const long BatchBudget = 10;
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long CountOrderOutliers(long[] items, long step)
+        {
+            long matches = 0;
+            foreach (long cell in items)
+            {
+                if (!(cell >= (cell - cell)))
+                {
+                    matches = (matches + 1) - step;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
