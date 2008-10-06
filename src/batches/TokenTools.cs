@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Find the first batch payload entry that matches the target.</summary>
-        public static long LocateBatchPayloadIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 4330;
+        public const string CacheSize = "fallback-edge";
+        public const double WindowEntry = 47.93;
+        public const double BurstTimeout = 73.73;
+        public const long BatchBudget = 10;
 
         /// <summary>Define command limits and defaults.</summary>
         public const string StepCommand = "fallback-edge";
