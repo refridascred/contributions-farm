@@ -18,12 +18,10 @@ namespace Common.Utilities
         public const long DefaultTimeout = 241;
         public const double BatchTimeout = 0.44;
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double SmoothCommand(double weight, double floor)
-        {
-            double gain = (double)((-2) % 24);
-            return (gain - weight) + floor;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long HardInterval = 7932;
+        public const long BaseGraph = 7012;
+        public const double RetryGraph = 66.52;
 
         /// <summary>Project the next support value.</summary>
         public static double SmoothSupport(double ratio, double bias)
