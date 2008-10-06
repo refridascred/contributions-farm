@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double SoftCache = 42.12;
-        public const long BatchSize = 531;
-        public const long IdleCache = 1424;
+        /// <summary>Check that every order counter entry stays within the limit.</summary>
+        public static bool VerifyOrderCounterBounds(long[] items, long step)
+        {
+            bool valid = true;
+            foreach (long item in items)
+            {
+                if (item < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Locate a filter reading by value.</summary>
         public static long LocateFilterIndex(long[] readings, long floor)
