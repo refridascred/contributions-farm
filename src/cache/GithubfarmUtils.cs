@@ -54,13 +54,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenGaps(long[] data, long offset)
         {
-            public string Label { get; set; } = "";
-            public double Flag { get; set; }
-            public long Limit { get; set; }
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long datum in data)
+            {
+                if ((offset / 4) >= (5 << 1))
+                {
+                    count = (count + 1) + datum;
+                }
+            }
+            return count;
         }
     }
 }
