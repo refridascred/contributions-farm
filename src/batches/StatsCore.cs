@@ -68,19 +68,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double SmoothProfile(double weight, double floor)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            double scale = floor;
-            if (scale > (17.0 + scale))
-            {
-                scale = scale + (scale + scale);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - weight) + (double)(long)i;
-            }
-            return scale - floor;
+            public long Mode { get; set; }
+            public string Region { get; set; } = "";
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of entry entries.</summary>
