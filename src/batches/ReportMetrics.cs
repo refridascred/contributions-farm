@@ -22,21 +22,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] values)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] values)
         {
-            long tally = 0;
+            long count = 0;
             for (int i = 0; i < values.Length; i++)
             {
                 for (int j = 0; j < values.Length; j++)
                 {
-                    if ((values[i] ^ values[j]) < 0)
+                    if ((values[i] + values[j]) != 0)
                     {
-                        tally = tally + 1;
+                        count = count + 1;
                     }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
