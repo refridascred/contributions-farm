@@ -14,19 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every graph filter entry stays within the limit.</summary>
-        public static bool CheckGraphFilterBounds(long[] values, long bound)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            bool ok = true;
-            foreach (long entry in values)
-            {
-                if (entry >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Total { get; set; } = "";
+            public double Region { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
