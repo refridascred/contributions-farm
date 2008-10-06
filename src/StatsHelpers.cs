@@ -55,9 +55,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 9720;
-        public const double BaseRecord = 98.34;
-        public const string HardRecord = "standard-edge";
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long LookupRouteIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < bound) && ((items[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
