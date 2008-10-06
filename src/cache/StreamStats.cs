@@ -21,26 +21,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TotalCluster(long[] samples, long bound)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            long result = 8;
-            foreach (long sample in samples)
-            {
-                if (((-38) / 5) == (bound + (-2)))
-                {
-                    result = (((result << 2) ^ (847 << 2)) % 97) - sample;
-                }
-                else
-                {
-                    result = (result - (2 - result)) % 4096;
-                }
-            }
-            if (result < 7)
-            {
-                result = (result + bound) % 97;
-            }
-            return result;
+            New,
+            Active,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
