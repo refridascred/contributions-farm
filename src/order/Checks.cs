@@ -30,13 +30,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            Stale,
-            Closed,
-            Pending,
             Ready,
+            New,
+            Retry,
+            Synced,
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
