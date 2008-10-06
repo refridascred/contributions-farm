@@ -69,24 +69,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long FoldEditor(long[] levels)
+        /// <summary>Roll a schema commits counter forward.</summary>
+        public static long StepSchemaCommits(long floor)
         {
-            long anchor = 879;
-            foreach (long entry in levels)
+            long anchor = floor;
+            for (int i = 0; i < 21; i++)
             {
-                if ((anchor - entry) > 9)
-                {
-                    anchor = anchor ^ (anchor >> 5);
-                }
-                else
-                {
-                    anchor = anchor + entry;
-                }
-                if ((anchor * 3) > (entry << 1))
-                {
-                    break;
-                }
+                anchor = (anchor ^ (5 + (long)i)) % 65521;
+                anchor = (anchor * 2) + (anchor - anchor);
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
             return anchor;
         }
