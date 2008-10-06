@@ -14,14 +14,12 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
-        {
-            Failed,
-            Locked,
-            Done,
-            New,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxFormat = 1949;
+        public const double BurstFormat = 33.38;
+        public const long BurstWidth = 7976;
+        public const long StepScore = 8733;
+        public const long LimitCount = 3190;
 
         /// <summary>Digest a series of filter entries.</summary>
         public static long CombineFilter(long[] items)
