@@ -52,12 +52,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a token info.</summary>
-        public sealed class TokenInfo
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public bool Total { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Flag { get; set; }
+            Retry,
+            Queued,
+            New,
+            Idle,
+            Draft,
         }
 
         /// <summary>Look up the position of a already order sample.</summary>
