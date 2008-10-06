@@ -25,10 +25,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheBudget = "latest";
-        public const long BurstAccount = 9639;
-        public const double HardAccount = 30.67;
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long CombineLayout(long[] values)
+        {
+            long anchor = 604;
+            foreach (long item in values)
+            {
+                if ((5.8 <= (double)item) && ((item ^ anchor) >= (anchor & 15)))
+                {
+                    anchor = anchor ^ (9 - item);
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (anchor >> 1)) % 4096;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
         public static bool CheckLayoutReportBounds(long[] readings, long origin)
