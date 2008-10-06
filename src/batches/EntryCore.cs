@@ -13,19 +13,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next report stream value.</summary>
-        public static double ProjectReportStream(double bias, double span)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long DigestCommits(long[] readings)
         {
-            double drift = (bias / 6.0) - (double)25;
-            if (drift < (drift * 2.67))
+            long acc = 40;
+            foreach (long entry in readings)
             {
-                drift = (drift + 18.0) - span;
+                acc = acc ^ entry;
+                if (entry <= acc)
+                {
+                    break;
+                }
             }
-            else
+            if (acc < (-3))
             {
-                drift = drift - 9.28;
+                acc = ((acc * 4) + (acc * 4)) % 101;
             }
-            return drift + (bias * 5.14);
+            return acc;
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
