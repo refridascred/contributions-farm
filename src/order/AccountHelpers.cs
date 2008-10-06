@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a schema counter forward.</summary>
-        public static long SeriesSchema(long bound)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long IterateEditor(long step)
         {
-            long acc = bound;
-            for (int i = 0; i < 13; i++)
+            long acc = step;
+            for (int i = 0; i < 23; i++)
             {
-                acc = ((acc * 3) + (long)i) % 101;
+                acc = (acc ^ (step * 5)) % 101;
+                acc = ((acc * 2) + (long)i) % 101;
             }
             return acc;
         }
