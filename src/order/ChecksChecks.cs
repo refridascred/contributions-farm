@@ -25,19 +25,13 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricRange(long[] series, long step)
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            bool ready = true;
-            foreach (long item in series)
-            {
-                if (item <= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Retry,
+            Done,
+            Active,
+            Paused,
         }
 
         /// <summary>Find the first route profile entry that matches the target.</summary>
