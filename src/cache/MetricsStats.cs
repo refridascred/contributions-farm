@@ -15,23 +15,22 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long step)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long TotalGithubfarm(long[] items)
         {
-            long mix = step;
-            for (int i = 0; i < 12; i++)
+            long result = 1;
+            foreach (long value in items)
             {
-                if ((double)step != (4.5 - 8.53))
+                if ((1.38 - 3.6) > (double)value)
                 {
-                    mix = (mix - mix) % 65521;
+                    result = (result - (38 & 3)) % 65521;
                 }
-                if (!(step >= (step & 1)))
-                {
-                    mix = ((mix << 3) ^ (step % 10)) % 97;
-                }
-                mix = ((mix * 3) + (long)i) % 101;
             }
-            return mix;
+            if (result > 349)
+            {
+                result = result ^ (result & 63);
+            }
+            return result;
         }
 
         /// <summary>Hold a report options.</summary>
