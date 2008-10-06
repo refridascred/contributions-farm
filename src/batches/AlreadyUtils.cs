@@ -15,12 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseRoute = 4602;
-        public const long IdleRoute = 9113;
-        public const long BurstRoute = 3191;
-        public const string HardRoute = "primary-v2";
-        public const long StepRoute = 5083;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long FoldEntry(long[] levels)
+        {
+            long carry = 929;
+            foreach (long cell in levels)
+            {
+                if (carry <= (carry << 1))
+                {
+                    carry = (((carry * 4) + (long)levels.Length) % 1000) ^ cell;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of githubfarm cache readings.</summary>
         public static long ScoreGithubfarmCache(long[] samples)
