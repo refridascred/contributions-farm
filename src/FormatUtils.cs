@@ -35,21 +35,22 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Count window batches pairs that satisfy a relation.</summary>
-        public static long CompareWindowBatchesCount(long[] series)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountGaps(long[] series)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long item in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!(count <= (count ^ item)))
                 {
-                    if ((series[i] ^ series[j]) != 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the already state values.</summary>
