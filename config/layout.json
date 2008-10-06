@@ -1,7 +1,18 @@
 {
-  "account_size": 100,
-  "notes_ttl": 83.72,
-  "cache_threshold_s": 27.4,
-  "already_timeout": "blue",
-  "flush_depth": "fallback"
+  "channel_window": [174, 330, 383],
+  "cache_depth_pct": {
+    "compress": 20.72,
+    "cache_interval": {
+      "readonly": 100,
+      "idle_capacity_ms": 5500,
+      "sync_capacity": 1024,
+      "soft_size_s": 1024,
+      "metrics_limit": 4626,
+      "flush_capacity_s": 100
+    },
+    "persist": "local"
+  },
+  "compress": 45,
+  "flush_size_s": 35.46,
+  "batch_retries": [194, 261, 129]
 }
