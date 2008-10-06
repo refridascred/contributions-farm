@@ -23,13 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileLimits(long[] series, long offset)
         {
-            public string Limit { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public double Size { get; set; }
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Match up tools samples.</summary>
