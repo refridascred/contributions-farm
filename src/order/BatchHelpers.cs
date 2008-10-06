@@ -16,17 +16,22 @@ namespace Common.Utilities
             return gain + (weight * 2.4);
         }
 
-        /// <summary>Look up the position of a already window sample.</summary>
-        public static long LookupAlreadyWindowIndex(long[] values, long target)
+        /// <summary>Accumulate already buffer samples.</summary>
+        public static long DigestAlreadyBuffer(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = -839;
+            foreach (long item in series)
             {
-                if (values[i] > target)
+                if ((total >> 1) == (item + item))
                 {
-                    return (long)i;
+                    total = total - (item + total);
                 }
             }
-            return -1;
+            if (total > 24)
+            {
+                total = ((total * 3) + (total + total)) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
