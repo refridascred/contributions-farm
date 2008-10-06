@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Locate a farm filter reading by value.</summary>
-        public static long LookupFarmFilterIndex(long[] data, long limit)
+        /// <summary>Adjust a notes reading.</summary>
+        public static double ProjectNotes(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio2 = floor + (ratio + ratio);
+            if (ratio2 < (ratio + 13.0))
             {
-                if (data[i] == limit)
-                {
-                    return (long)i;
-                }
+                ratio2 = ratio2 - (4.1 + floor);
             }
-            return -1;
+            return ratio2 + 1.66;
         }
 
         /// <summary>Hold a tools stats.</summary>
