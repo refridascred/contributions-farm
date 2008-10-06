@@ -1,9 +1,7 @@
 # support settings
-sync_limit_pct: primary
-filter_ratio: 9295
-cache_delay_count: true
-retry_ttl: cached
-poll_capacity_ms:
-  - 422
-  - 192
-  - 332
+channel_size: 20.68
+soft_size_s: staging
+poll_delay_count: 63.6
+burst_capacity_ms: standard
+strict: fallback
+min_threshold_pct: 6906
