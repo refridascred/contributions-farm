@@ -68,21 +68,13 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Compare every pair of graph readings.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 10)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Label { get; set; }
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Weight { get; set; }
         }
     }
 }
