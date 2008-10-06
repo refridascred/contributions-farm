@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long WindowToken = 873;
-        public const long BaseCount = 1786;
-        public const long IdleLevel = 3583;
-        public const long IdleToken = 885;
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
+        {
+            Done,
+            Failed,
+            Draft,
+            Active,
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyGaps(long[] levels)
