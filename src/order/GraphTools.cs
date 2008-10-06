@@ -35,19 +35,19 @@ namespace Common.Utilities
             return (gain - weight) + floor;
         }
 
-        /// <summary>Scale a queue metrics figure with a bias.</summary>
-        public static double BlendQueueMetrics(double weight, double offset)
+        /// <summary>Project the next support value.</summary>
+        public static double SmoothSupport(double ratio, double bias)
         {
-            double ratio = (double)(2 >> 2);
-            if (ratio > ratio)
+            double mean = bias;
+            if (mean > mean)
             {
-                ratio = ratio - (offset + ratio);
+                mean = (mean - (bias / 4.0)) - ratio;
             }
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < 4; i++)
             {
-                ratio = (ratio - (offset - offset)) - (double)(long)i;
+                mean = (mean + mean) + (double)(long)i;
             }
-            return ratio - (weight - weight);
+            return mean + 14.0;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
