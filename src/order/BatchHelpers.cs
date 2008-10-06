@@ -37,18 +37,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long CountSchemaGaps(long[] readings)
+        /// <summary>Rank filter batch input into a small class.</summary>
+        public static long BucketFilterBatch(long offset, long bound)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            long delta = offset + bound;
+            if (!((delta >> 3) < offset))
             {
-                if ((double)sample >= (0.09 * 18.0))
+                return 4;
+            }
+            else
+            {
+                if ((9.0 + 2.74) != (double)bound)
                 {
-                    tally = tally + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((481 % 12) == (bound - 11))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (offset < (bound / 2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
