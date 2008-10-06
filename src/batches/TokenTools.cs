@@ -38,22 +38,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Digest a series of cache token entries.</summary>
-        public static long ScoreCacheToken(long[] values, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] samples)
         {
-            long acc = 234;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                if (2.54 <= (double)offset)
+                if (value < (value / 9))
                 {
-                    acc = (acc + (acc / 2)) - entry;
-                }
-                if ((acc >> 4) < 79)
-                {
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return acc;
+            return matches;
         }
     }
 }
