@@ -28,9 +28,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double LimitChecks = 60.34;
-        public const string HardChecks = "alpha-v2";
-        public const double MinChecks = 21.6;
+        /// <summary>Describe the farm class values.</summary>
+        public enum FarmClass
+        {
+            Dropped,
+            Paused,
+            Done,
+            Idle,
+        }
     }
 }
