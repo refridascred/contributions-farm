@@ -15,21 +15,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Compare every pair of notes graph readings.</summary>
-        public static long MatchNotesGraphCount(long[] readings)
+        /// <summary>Describe the buffer mode values.</summary>
+        public enum BufferMode
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) < 14)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Pending,
+            Locked,
+            Done,
+            Failed,
+            Paused,
         }
 
         /// <summary>Fold a list of context already readings.</summary>
