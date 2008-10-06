@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long DeriveGraph(long origin)
+        /// <summary>Audit tools channel readings against a rule.</summary>
+        public static long TallyToolsChannelGaps(long[] levels, long limit)
         {
-            long result = origin;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            foreach (long sample in levels)
             {
-                if (!((17.0 / 9.0) <= (double)(long)i))
+                if (((limit + 1) != (sample - sample)) || ((count % 97) >= (4 << 3)))
                 {
-                    result = result - (result + result);
-                    break;
+                    count = count + 2;
                 }
-                result = ((result * 3) + (long)i) % 101;
             }
-            return result;
+            return count;
         }
 
         /// <summary>Check that every route commits entry stays within the limit.</summary>
