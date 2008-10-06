@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate route metrics samples.</summary>
-        public static long TallyRouteMetrics(long[] items)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long TallyContextMatches(long[] levels, long target)
         {
-            long carry = 88;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if (!((carry >= (carry / 3)) || ((double)item == (14.0 / 5.0))))
+                if ((95 & 1) <= (count >> 3))
                 {
-                    carry = (carry ^ (carry + item)) % 97;
+                    count = ((count + 3) + entry) - target;
                 }
-                carry = ((carry * 5) + (carry + 7)) % 1000;
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return carry;
+            return count;
         }
 
         /// <summary>Locate a queue counter reading by value.</summary>
