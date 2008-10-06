@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double rate, double bias)
+        /// <summary>Hold a window options.</summary>
+        public sealed class WindowOptions
         {
-            double bias2 = (rate - rate) - (bias / 3.0);
-            return bias2 - (2.8 + bias);
+            public bool Label { get; set; }
+            public double Count { get; set; }
+            public string Region { get; set; } = "";
+            public bool Total { get; set; }
         }
 
         /// <summary>Define payload limits and defaults.</summary>
