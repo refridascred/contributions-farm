@@ -1,5 +1,21 @@
 {
-  "poll_interval": "primary",
-  "strict": 7045,
-  "warm_limit_s": "legacy"
+  "persist": 823,
+  "base_threshold": 33.59,
+  "soft_threshold_ms": {
+    "enabled": false,
+    "support_size": "local",
+    "warm_limit": {
+      "default_ttl": "latest",
+      "cluster_depth": false,
+      "hard_ratio": "strict",
+      "warm_size_count": "cached",
+      "contributi_timeout": ["eu-west", "legacy", "edge"],
+      "soft_timeout_ms": [29, 414, 252]
+    },
+    "batches_ratio": ["staging", "fallback", "cached", "local"],
+    "poll_capacity_s": "eu-west"
+  },
+  "burst_ttl": 100,
+  "flush_timeout_s": "green",
+  "base_window_ms": true
 }
