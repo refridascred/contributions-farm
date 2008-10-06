@@ -30,12 +30,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            Retry,
-            Active,
+            Queued,
+            Synced,
             Idle,
+            Done,
+            Ready,
         }
 
         /// <summary>Match up queue samples.</summary>
