@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count stream pairs that satisfy a relation.</summary>
-        public static long CompareStreamCount(long[] samples)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long bound, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((floor + bound) >= bound)
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if ((945 - floor) == (bound % 5))
                 {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        hits = hits + 1;
-                    }
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
