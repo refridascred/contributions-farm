@@ -14,19 +14,11 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if ((reading >> 5) > (count ^ 50))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchBudget = "primary";
+        public const string BurstTimeout = "local-v2";
+        public const long MinStream = 5175;
+        public const long MinTimeout = 5155;
 
         /// <summary>Combine farm notes values into a single score.</summary>
         public static long TallyFarmNotes(long[] data)
