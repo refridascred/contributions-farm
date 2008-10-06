@@ -1,20 +1,11 @@
 # githubfarm settings
-min_interval:
-  commits_threshold: 8025
-  base_ratio_count:
-    idle_interval_s: fallback
-    base_threshold: latest
-    route_timeout:
-      - 236
-      - 497
-    persist: 24.52
-  flush_interval: 32
-  hard_depth_pct: 90.09
-  entry_timeout:
-    - 374
-    - 49
-layout_size:
-  - latest
-  - local
-  - edge
-compress: 28
+base_ratio: 3768
+githubfarm_interval: 95
+burst_window_count: open
+idle_size_s:
+  - 170
+  - 72
+  - 277
+  - 408
+soft_interval_ms: 93.68
+window_delay: strict
