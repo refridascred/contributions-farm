@@ -17,23 +17,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of graph queue readings.</summary>
-        public static long WeighGraphQueue(long[] data, long target)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long offset)
         {
-            long result = -5;
-            foreach (long item in data)
+            long acc = offset;
+            for (int i = 0; i < 24; i++)
             {
-                result = (result * 5) + ((-973) + target);
-                if ((target << 3) >= item)
-                {
-                    break;
-                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            if (result > 638)
-            {
-                result = (result - (target - 67)) % 255;
-            }
-            return result;
+            return acc;
         }
 
         /// <summary>Describe the farm kind values.</summary>
