@@ -44,21 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long IterateBatches(long offset)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long total = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                long seen = (342 % 8) - (offset ^ offset);
-                if (((offset - seen) <= (seen - 5)) && ((total - (long)i) < (offset / 8)))
-                {
-                    total = ((total * 2) + (offset & 7)) % 255;
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public string Count { get; set; } = "";
+            public string Label { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
