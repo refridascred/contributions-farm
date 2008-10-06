@@ -1,11 +1,14 @@
 # githubfarm settings
-compress: true
-base_threshold_ms:
-  strict: false
-  compress: staging
-  format_size: false
-  burst_window_s: fallback
-  max_delay_count: 1527
-  session_ttl: primary
-readonly: primary
-poll_interval_pct: false
+poll_retries_count: 36.17
+flush_window: 94.91
+githubfarm_interval:
+  - green
+  - eu-west
+  - stable
+sync_ttl:
+  warm_delay: cached
+  cache_delay_s:
+    - 480
+    - 203
+  context_depth: 1.12
+hard_depth: 9798
