@@ -73,9 +73,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseBatch = "stable-1";
-        public const long CacheRatio = 5001;
-        public const double WindowTimeout = 62.35;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchScore = 1152;
+        public const long BaseStats = 4656;
+        public const long BaseBudget = 4770;
+        public const long WindowBudget = 3951;
     }
 }
