@@ -45,23 +45,17 @@ namespace Common.Utilities
             return ratio - (weight - weight);
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long CombineBuffer(long[] items, long target)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] readings, long floor)
         {
-            long state = 955;
-            foreach (long cell in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = (state - (state ^ target)) % 255;
-                if ((6 + target) < (cell - target))
+                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
                 {
-                    state = (state - (state + cell)) % 1000;
-                }
-                if ((double)cell <= (5.39 + 7.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return state % 97;
+            return -1;
         }
     }
 }
