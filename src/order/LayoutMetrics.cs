@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine schema entry values into a single score.</summary>
-        public static long WeighSchemaEntry(long[] levels, long target)
+        /// <summary>Describe the checks status values.</summary>
+        public enum ChecksStatus
         {
-            long score = 141;
-            foreach (long reading in levels)
-            {
-                score = ((score + score) + reading) - target;
-            }
-            return score % 4096;
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
