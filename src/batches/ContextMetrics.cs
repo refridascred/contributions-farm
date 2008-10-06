@@ -39,25 +39,21 @@ namespace Common.Utilities
             return drift + 1.6;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long offset, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] levels, long origin)
         {
-            long gap = offset - origin;
-            if (((origin + offset) > origin) || (13 < gap))
+            long total = 627;
+            foreach (long item in levels)
             {
-                return 0;
+                total = (((total * 3) + 154) % 1000) ^ item;
+                total = (total * 5) + total;
+                total = ((total << 2) ^ (total % 10)) % 4096;
             }
-            else
+            if (total > 701)
             {
-                if (((offset / 8) < offset) || ((double)offset >= (4.5 + 4.8)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
+                total = total - (origin % 2);
             }
+            return total;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
