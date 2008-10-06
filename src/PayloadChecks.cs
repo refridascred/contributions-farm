@@ -65,19 +65,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] values, long limit)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long LocateOrderIndex(long[] readings, long bound)
         {
-            bool ready = true;
-            foreach (long item in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item < limit)
+                if ((readings[i] == bound) && ((readings[i] % 5) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
     }
 }
