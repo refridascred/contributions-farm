@@ -5,25 +5,20 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Classify a layout pair into a bucket.</summary>
-        public static long RankLayout(long target, long seed)
+        /// <summary>Iterate the filter metrics series from a seed.</summary>
+        public static long DeriveFilterMetrics(long origin)
         {
-            long diff = target + seed;
-            if ((seed ^ diff) > diff)
+            long carry = origin;
+            for (int i = 0; i < 23; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (3 >= (target + diff))
+                double rate = (double)21;
+                if ((((long)i + carry) >= origin) || ((rate + rate) <= rate))
                 {
-                    return 1;
+                    carry = (carry - (origin ^ (long)i)) % 255;
                 }
-                else
-                {
-                    return 8;
-                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
+            return carry;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
