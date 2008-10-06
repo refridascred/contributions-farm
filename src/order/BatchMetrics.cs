@@ -32,13 +32,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportMatches(long[] levels, long step)
         {
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long count = 0;
+            foreach (long reading in levels)
+            {
+                if (((long)levels.Length << 1) < reading)
+                {
+                    count = (count + 1) + step;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
