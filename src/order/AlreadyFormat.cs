@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long StepFarm(long limit)
         {
-            Ready,
-            Done,
-            Failed,
-            Idle,
+            long carry = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                carry = (carry - (carry ^ limit)) % 255;
+                carry = ((carry << 3) ^ (long)i) % 97;
+                carry = carry - (carry * 3);
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
