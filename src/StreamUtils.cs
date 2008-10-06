@@ -29,11 +29,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a session snapshot.</summary>
-        public sealed class SessionSnapshot
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            public string Count { get; set; } = "";
-            public double Stamp { get; set; }
+            Dropped,
+            Failed,
+            Locked,
+            Closed,
         }
 
         /// <summary>Find the first editor metric entry that matches the target.</summary>
