@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long CountAccountHits(long[] items)
+        /// <summary>Look up the position of a buffer sample.</summary>
+        public static long SeekBufferIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((72 % 24) >= (hits + reading))
+                if (items[i] < seed)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the account level values.</summary>
