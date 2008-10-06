@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats snapshot.</summary>
-        public sealed class StatsSnapshot
+        /// <summary>Check that every notes farm entry stays within the limit.</summary>
+        public static bool VerifyNotesFarmBounds(long[] items, long limit)
         {
-            public bool Label { get; set; }
-            public string Region { get; set; } = "";
-            public double Score { get; set; }
+            bool flag = true;
+            foreach (long sample in items)
+            {
+                if (sample > limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
