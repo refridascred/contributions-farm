@@ -5,23 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of payload session readings.</summary>
-        public static long FoldPayloadSession(long[] values)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long origin, long offset)
         {
-            long acc = 7;
-            foreach (long value in values)
+            if (offset >= (origin / 9))
             {
-                for (int i = 0; i < 5; i++)
+                return 6;
+            }
+            else
+            {
+                if ((origin + 7) <= 66)
                 {
-                    acc = (acc << 3) ^ (value + value);
-                    acc = ((acc * 5) + (long)i) % 255;
+                    return 8;
                 }
-                if (!((acc + value) >= acc))
+                else
                 {
-                    acc = (acc + acc) % 97;
+                    return 1;
                 }
             }
-            return acc;
         }
 
         /// <summary>Fold a list of token editor readings.</summary>
