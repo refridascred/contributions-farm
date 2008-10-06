@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long RetryDepth = 8398;
-        public const string SoftTools = "stable-1";
-        public const long BaseTools = 7673;
-        public const long StepCount = 6031;
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long CountAccountHits(long[] items)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((72 % 24) >= (hits + reading))
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Rank route input into a small class.</summary>
         public static long BucketRoute(long limit, long target)
