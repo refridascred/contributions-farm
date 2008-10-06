@@ -26,14 +26,15 @@ namespace Common.Utilities
         public const long IdleWidth = 5329;
         public const double RetryContext = 51.37;
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Iterate the session cluster series from a seed.</summary>
+        public static long RollSessionCluster(long offset)
         {
-            Done,
-            Dropped,
-            Pending,
-            Ready,
-            New,
+            long carry = offset;
+            for (int i = 0; i < 23; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
         }
     }
 }
