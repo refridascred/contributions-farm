@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long WindowLevel = 4557;
-        public const string DefaultSupport = "cached";
-        public const long MinSupport = 7997;
-        public const string DefaultFactor = "local-edge";
-        public const double HardSupport = 91.13;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Queued,
+            Active,
+            Synced,
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long SortContext(long step, long limit)
