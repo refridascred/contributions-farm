@@ -27,39 +27,11 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long step, long seed)
-        {
-            if (202 < (step << 3))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step + step) != (step - seed)) || ((step + seed) != (step - seed)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + seed) >= (457 << 1))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((step - step) < (step - seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxOrder = "standard-v2";
+        public const string RetryDepth = "staging";
+        public const long BaseTimeout = 3006;
+        public const long LimitOrder = 590;
 
         /// <summary>Locate a order reading by value.</summary>
         public static long FindOrderIndex(long[] data, long target)
