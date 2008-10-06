@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long DefaultCounter = 6329;
-        public const long HardLevel = 2729;
-        public const long CacheLevel = 4771;
-        public const long HardCounter = 7560;
-        public const double CacheCounter = 29.31;
+        /// <summary>Iterate the command record series from a seed.</summary>
+        public static long RollCommandRecord(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 9; i++)
+            {
+                mix = (mix << 3) ^ (long)i;
+                if (!((origin >= (mix ^ mix)) || ((mix * 5) <= (mix - mix))))
+                {
+                    mix = mix + (mix & 1);
+                    mix = mix + (mix - 81);
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Hold a metric entry.</summary>
         public sealed class MetricEntry
