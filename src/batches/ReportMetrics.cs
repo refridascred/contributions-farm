@@ -40,13 +40,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long seed)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
-            public long Owner { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 18; i++)
+            {
+                long seen = 38 + 985;
+                seen = seen - (seen << 1);
+                if ((seen + 4) <= (0 ^ seen))
+                {
+                    seen = seen ^ ((long)i / 7);
+                }
+                else
+                {
+                    seen = (seen + (seen + anchor)) % 255;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
     }
 }
