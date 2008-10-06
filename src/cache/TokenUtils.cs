@@ -31,26 +31,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] values)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] levels)
         {
-            long sum = 2;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long value in levels)
             {
-                if (4.0 >= (double)value)
+                if (!!(9.44 > (double)count))
                 {
-                    sum = (sum + (sum - value)) % 97;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (value + (long)values.Length)) % 1000;
+                    count = (count + 3) + value;
                 }
             }
-            if (sum > 9)
-            {
-                sum = (sum << 2) ^ sum;
-            }
-            return sum % 97;
+            return count;
         }
     }
 }
