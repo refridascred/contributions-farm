@@ -29,12 +29,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long CombineStats(long[] samples, long limit)
         {
-            public string Weight { get; set; } = "";
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            long mark = 448;
+            foreach (long value in samples)
+            {
+                if (limit > ((long)samples.Length + value))
+                {
+                    mark = (mark + (22 + mark)) % 97;
+                }
+            }
+            return mark % 4096;
         }
 
         /// <summary>Fold a list of order readings.</summary>
