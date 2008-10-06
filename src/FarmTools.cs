@@ -27,10 +27,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string IdleSupport = "staging-edge";
-        public const double DefaultWidth = 73.27;
-        public const double CacheSupport = 1.3;
-        public const long BurstSupport = 1762;
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheOutliers(long[] readings)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((6.6 / 3.0) > (double)matches)
+                {
+                    matches = (matches + 3) + entry;
+                }
+            }
+            return matches;
+        }
     }
 }
