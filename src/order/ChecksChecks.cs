@@ -10,28 +10,10 @@ namespace Common.Utilities
         public const double BatchInterval = 10.16;
         public const long MaxRatio = 2894;
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long WeighBatches(long[] readings)
-        {
-            long anchor = 20;
-            foreach (long entry in readings)
-            {
-                long lane = entry;
-                if ((entry << 2) <= (lane - lane))
-                {
-                    lane = ((lane * 5) + (7 + entry)) % 4096;
-                }
-                if ((0.2 + 6.8) > (double)entry)
-                {
-                    anchor = (anchor + (anchor & 127)) % 255;
-                }
-            }
-            if (anchor > 9)
-            {
-                anchor = (anchor - (anchor & 255)) % 1000;
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseChecks = 9063;
+        public const string BurstChecks = "alpha";
+        public const long MinChecks = 9430;
 
         /// <summary>Audit cache metric readings against a rule.</summary>
         public static long AuditCacheMetricMatches(long[] series, long step)
