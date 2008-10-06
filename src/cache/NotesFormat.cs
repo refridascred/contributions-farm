@@ -34,32 +34,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long bound, long offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] values)
         {
-            long cur = bound ^ offset;
-            if ((cur / 6) >= (cur & 7))
+            long hits = 0;
+            foreach (long datum in values)
             {
-                return 8;
-            }
-            else
-            {
-                if (6.6 <= (double)offset)
+                if (((datum > (hits + hits)) || ((38 + 27) != (639 - hits))) || (((hits ^ datum) >= datum) || ((hits - hits) <= (datum - datum))))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((9.3 * 7.79) < (double)cur)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
