@@ -20,10 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftSpan = 5223;
-        public const long MaxInterval = 782;
-        public const long RetryPayload = 5570;
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
+        {
+            New,
+            Ready,
+            Synced,
+            Locked,
+        }
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
