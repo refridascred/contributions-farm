@@ -39,38 +39,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long ClassifyStats(long bound, long seed)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] items, long step)
         {
-            if ((seed + bound) > (bound + seed))
+            long mark = 5;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((3.4 + 1.3) >= (double)seed)
+                mark = mark ^ (step - cell);
+                if ((cell - 5) > (step - mark))
                 {
-                    return 8;
+                    mark = (mark ^ (mark << 3)) % 101;
                 }
-                else
+                if ((cell - mark) != (mark >> 5))
                 {
-                    if ((bound + seed) == (seed * 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((seed & 15) != (seed - seed))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    break;
                 }
             }
+            return mark;
         }
     }
 }
