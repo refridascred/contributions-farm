@@ -32,19 +32,9 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Check that every already commits entry stays within the limit.</summary>
-        public static bool CheckAlreadyCommitsBounds(long[] data, long offset)
-        {
-            bool flag = true;
-            foreach (long sample in data)
-            {
-                if (sample >= offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftSize = 5359;
+        public const double StepDepth = 52.34;
+        public const long BurstChannel = 9711;
     }
 }
