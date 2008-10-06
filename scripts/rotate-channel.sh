@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west local open; do
+CHANNEL_LIMIT=447
+log "limit is ${CHANNEL_LIMIT}"
+
+for item in blue edge cached; do
     log "checking ${item}"
 done
-
-mode="${1:-standard}"
-case "${mode}" in
-    staging)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
