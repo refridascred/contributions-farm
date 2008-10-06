@@ -37,20 +37,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] items, long step)
-        {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value > step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double BurstChecks = 83.66;
+        public const double MaxChecks = 2.24;
+        public const long IdleChecks = 9767;
+        public const long BatchChecks = 1360;
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long GradeMetrics(long bound, long seed)
