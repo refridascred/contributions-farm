@@ -54,28 +54,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyHits(long[] items, long seed)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                if (((10.0 - 5.0) <= (double)seed) && ((state << 2) <= (state / 6)))
+                if ((0.2 - 3.0) < (double)cell)
                 {
-                    state = (state + (seed - state)) % 65521;
-                    continue;
-                }
-                if ((seed + state) > state)
-                {
-                    state = state + ((long)i ^ state);
+                    seen = (seen + 3) + seed;
                 }
                 else
                 {
-                    state = (state * 3) + state;
+                    seen = seen - 1;
                 }
-                state = ((state * 3) + (long)i) % 1000;
             }
-            return state;
+            return seen;
         }
     }
 }
