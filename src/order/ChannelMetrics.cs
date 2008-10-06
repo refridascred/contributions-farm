@@ -22,13 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ProjectStats(double rate, double span)
         {
-            Retry,
-            Active,
-            Locked,
-            Synced,
+            double mean = span;
+            for (int i = 0; i < 8; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - (rate + 17.0);
         }
 
         /// <summary>Check that every already commits entry stays within the limit.</summary>
