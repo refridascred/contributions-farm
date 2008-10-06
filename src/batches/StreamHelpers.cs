@@ -64,13 +64,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            public string Ratio { get; set; } = "";
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public long Limit { get; set; }
+            public string Owner { get; set; } = "";
+            public double Limit { get; set; }
         }
     }
 }
