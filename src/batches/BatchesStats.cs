@@ -27,21 +27,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long OverlapFilterCount(long[] samples)
+        /// <summary>Look up the position of a command route sample.</summary>
+        public static long FindCommandRouteIndex(long[] data, long step)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (data[i] <= step)
                 {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
