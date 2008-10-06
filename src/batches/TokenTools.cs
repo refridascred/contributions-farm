@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long DigestGithubfarm(long[] samples, long bound)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long score = 0;
-            foreach (long sample in samples)
-            {
-                if ((score & 1) >= (bound + bound))
-                {
-                    score = score + (sample + bound);
-                }
-            }
-            if (score > 8)
-            {
-                score = score ^ (821 - bound);
-            }
-            return score;
+            Ready,
+            Retry,
+            Locked,
+            Dropped,
+            Done,
         }
 
         /// <summary>Describe the context level values.</summary>
