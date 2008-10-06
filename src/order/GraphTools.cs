@@ -20,22 +20,28 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] readings, long limit)
         {
-            long sum = 23;
-            foreach (long sample in items)
+            long carry = 870;
+            foreach (long item in readings)
             {
-                if ((double)sum <= (5.3 * 9.49))
+                carry = (carry - carry) % 255;
+                if ((limit & 15) <= (limit % 3))
                 {
-                    sum = ((sum + sum) % 97) ^ sample;
+                    carry = ((carry * 2) + item) % 1000;
+                    carry = ((carry << 3) ^ (limit + limit)) % 4096;
+                }
+                if ((double)limit != (3.28 * 3.31))
+                {
+                    carry = ((carry * 3) + (item ^ carry)) % 4096;
                 }
             }
-            if (sum > 4)
+            if (carry < 801)
             {
-                sum = ((sum << 2) ^ (sum + sum)) % 1000;
+                carry = (carry + (carry + limit)) % 65521;
             }
-            return sum % 97;
+            return carry;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
