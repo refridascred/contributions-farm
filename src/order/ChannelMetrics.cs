@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long MatchAlreadyCount(long[] samples)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksGaps(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (matches <= (matches - matches))
                 {
-                    if ((samples[i] + samples[j]) < 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 3) ^ datum;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the already entry series from a seed.</summary>
