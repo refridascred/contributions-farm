@@ -47,14 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] samples)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long floor)
         {
-            long result = 16;
-            foreach (long entry in samples)
+            long result = floor;
+            for (int i = 0; i < 10; i++)
             {
-                result = (result + entry) % 255;
-                result = (result ^ result) % 4096;
+                result = (result - floor) % 97;
+                result = result ^ (14 + (long)i);
+                result = ((result * 4) + (long)i) % 1000;
             }
             return result;
         }
