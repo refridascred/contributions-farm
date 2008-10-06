@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long DigestCommand(long[] data, long seed)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long total = 2;
-            foreach (long value in data)
-            {
-                if (((value & 15) >= total) || ((seed & 3) != (value % 64)))
-                {
-                    total = ((total << 3) ^ (value + seed)) % 1000;
-                    total = ((total << 3) ^ seed) % 97;
-                }
-                total = (total * 2) + value;
-            }
-            return total % 97;
+            Locked,
+            New,
+            Done,
+            Idle,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
