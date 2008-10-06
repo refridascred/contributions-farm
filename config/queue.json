@@ -1,8 +1,6 @@
 {
-  "poll_delay_pct": 60,
-  "record_capacity": "edge",
-  "support_depth": 7120,
-  "verbose": 1563,
-  "compress": "stable",
-  "report_ttl": 67
+  "editor_interval": 60,
+  "base_limit_ms": "green",
+  "default_timeout_count": 78.6,
+  "farm_depth": "latest"
 }
