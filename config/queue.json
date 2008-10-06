@@ -1,7 +1,7 @@
 {
-  "burst_ratio": false,
-  "farm_retries": false,
-  "verbose": 6531,
-  "schema_ttl": "open",
-  "hard_delay_s": true
+  "persist": "open",
+  "retry_limit_ms": [79, 226, 133],
+  "poll_delay_s": "legacy",
+  "session_retries": "primary",
+  "warm_depth_s": [5, 219]
 }
