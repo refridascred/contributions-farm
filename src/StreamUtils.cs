@@ -42,10 +42,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long MaxDepth = 932;
-        public const long BurstRatio = 4491;
-        public const string RetryLayout = "strict-edge";
+        /// <summary>Derive the next editor metric value from a seed.</summary>
+        public static long SeriesEditorMetric(long offset)
+        {
+            long acc = offset;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = acc ^ (97 ^ offset);
+                acc = ((acc * 4) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Describe the githubfarm phase values.</summary>
         public enum GithubfarmPhase
