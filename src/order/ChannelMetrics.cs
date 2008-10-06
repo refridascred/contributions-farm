@@ -22,19 +22,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterHits(long[] series)
-        {
-            long count = 0;
-            foreach (long value in series)
-            {
-                if ((double)count < (16.0 * 4.4))
-                {
-                    count = (count + 2) ^ value;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MinDepth = 653;
+        public const string MaxFactor = "standard-v2";
+        public const string MaxLevel = "cached";
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] samples)
