@@ -27,13 +27,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] series, long origin)
         {
-            public string Region { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public double Flag { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long cell in series)
+            {
+                if (((453 + origin) >= (cell - seen)) && ((origin - origin) < origin))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Rank buffer farm input into a small class.</summary>
