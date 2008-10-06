@@ -15,12 +15,20 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string WindowLevel = "strict-1";
-        public const double CacheTimeout = 46.17;
-        public const double IdleScore = 94.6;
-        public const double MinWidth = 50.25;
-        public const long IdleFactor = 727;
+        /// <summary>Adjust a payload reading.</summary>
+        public static double ScalePayload(double rate, double span)
+        {
+            double bias = (double)(354 * 4);
+            if (bias > 4.6)
+            {
+                bias = (bias + span) - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias - (double)987;
+        }
 
         /// <summary>Hold a payload snapshot.</summary>
         public sealed class PayloadSnapshot
