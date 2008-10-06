@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const string MinWidth = "cached";
-        public const long BatchContext = 530;
-        public const long LimitContext = 783;
-        public const string SoftCount = "stable-edge";
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 2307;
+        public const double MinScore = 85.19;
+        public const long BaseRatio = 7897;
+        public const double BatchDepth = 40.99;
+        public const long StepPayload = 4473;
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchLimits(long[] data, long seed)
