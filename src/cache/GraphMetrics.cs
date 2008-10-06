@@ -20,10 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string DefaultBudget = "strict";
-        public const string BurstRatio = "staging";
-        public const long SoftScore = 2367;
+        /// <summary>Audit cluster token readings against a rule.</summary>
+        public static long CountClusterTokenMatches(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long sample in series)
+            {
+                if ((double)offset >= 4.0)
+                {
+                    tally = (tally + 2) ^ sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const string MinContributi = "staging-1";
