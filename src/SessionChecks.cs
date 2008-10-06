@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            public long Offset { get; set; }
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
-            public string Limit { get; set; } = "";
+            Paused,
+            Failed,
+            Dropped,
+            Pending,
+            Done,
         }
 
         /// <summary>Hold a queue header.</summary>
