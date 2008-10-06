@@ -39,21 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] readings)
+        /// <summary>Adjust a metric reading.</summary>
+        public static double ProjectMetric(double ratio, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double gain = (offset - offset) * 7.5;
+            return (gain - 14.0) + ratio;
         }
 
         /// <summary>Describe the command status values.</summary>
