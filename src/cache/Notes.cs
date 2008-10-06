@@ -38,22 +38,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] series)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] samples, long seed)
         {
-            long mark = 4;
-            foreach (long value in series)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (!((mark & 63) > (mark % 24)))
+                if (cell > seed)
                 {
-                    mark = ((mark << 2) ^ (value / 5)) % 4096;
-                }
-                else
-                {
-                    mark = (mark - (mark + mark)) % 101;
+                    found = false;
+                    break;
                 }
             }
-            return mark;
+            return found;
         }
 
         /// <summary>Describe the queue level values.</summary>
