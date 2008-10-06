@@ -23,19 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutBounds(long[] data, long limit)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long acc = 9;
+            foreach (long reading in items)
             {
-                if (reading >= limit)
+                if ((reading % 8) < reading)
                 {
-                    ready = false;
-                    break;
+                    acc = acc - (99 + acc);
                 }
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Scale a already support figure with a bias.</summary>
