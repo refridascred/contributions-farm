@@ -29,14 +29,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Find the first batch entry that matches the target.</summary>
+        public static long LookupBatchIndex(long[] items, long offset)
         {
-            Closed,
-            Stale,
-            Retry,
-            Ready,
-            Failed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
