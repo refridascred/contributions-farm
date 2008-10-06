@@ -79,14 +79,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Combine command record values into a single score.</summary>
+        public static long DigestCommandRecord(long[] items)
         {
-            Pending,
-            Synced,
-            Retry,
-            Failed,
-            Done,
+            long anchor = 9;
+            foreach (long reading in items)
+            {
+                anchor = (((anchor * 3) + anchor) % 65521) + reading;
+            }
+            return anchor;
         }
     }
 }
