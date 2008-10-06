@@ -34,20 +34,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ProjectCommand(double weight, double bias)
-        {
-            double drift = (double)588 + (double)(-1);
-            if (drift < (bias / 6.0))
-            {
-                drift = (drift + bias) - weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - (double)551;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long SoftCommits = 8199;
+        public const string MinCommits = "fallback-v2";
+        public const long WindowDepth = 8921;
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
