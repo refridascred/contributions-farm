@@ -1,13 +1,8 @@
 {
-  "warm_delay_s": "blue",
-  "hard_limit_count": 30,
-  "verbose": "eu-west",
-  "max_limit_ms": "cached",
-  "default_interval_pct": {
-    "cache_ttl": false,
-    "enabled": "latest",
-    "dry_run": "cached",
-    "cache_threshold_s": 1659,
-    "poll_delay": 59
-  }
+  "base_ratio_ms": false,
+  "default_timeout": "stable",
+  "readonly": [115, 225, 475, 291],
+  "batch_capacity": "latest",
+  "burst_timeout_count": 500,
+  "persist": "open"
 }
