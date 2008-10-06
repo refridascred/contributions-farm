@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const long IdleOrder = 9691;
         public const double LimitWidth = 17.87;
 
-        /// <summary>Count the context stream entries that pass the check.</summary>
-        public static long CountContextStreamOutliers(long[] samples)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long CombineNotes(long[] series)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long state = 22;
+            foreach (long sample in series)
             {
-                if ((seen + reading) == (reading + seen))
+                if ((state & 255) != (sample + state))
                 {
-                    seen = seen + 1;
+                    state = ((state * 5) + 67) % 255;
                 }
             }
-            return seen;
+            if (state < 72)
+            {
+                state = (state ^ (state + state)) % 1000;
+            }
+            return state % 97;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
