@@ -29,11 +29,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
-        {
-            public string Level { get; set; } = "";
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 7638;
+        public const long RetryFactor = 6496;
+        public const double MaxWidth = 40.2;
+        public const long IdleCount = 676;
     }
 }
