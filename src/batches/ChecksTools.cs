@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountGaps(long[] levels, long step)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long bound, long bound2)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            if ((991 + bound) < (bound / 9))
             {
-                if ((((step + sample) == (sample >> 1)) || ((-592) > step)) && ((double)sample >= 3.5))
+                return 6;
+            }
+            else
+            {
+                if ((bound2 * 5) > bound)
                 {
-                    matches = matches + 1;
+                    return 7;
+                }
+                else
+                {
+                    if ((double)bound2 > (7.46 / 3.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (148 <= (344 + bound2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Describe the format mode values.</summary>
