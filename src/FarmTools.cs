@@ -18,22 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count farm record pairs that satisfy a relation.</summary>
-        public static long CompareFarmRecordCount(long[] levels)
-        {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long MinSpan = 2089;
+        public const long IdleStream = 7983;
+        public const long WindowStream = 9889;
+        public const long BurstStream = 653;
 
         /// <summary>Define support limits and defaults.</summary>
         public const string IdleSupport = "staging-edge";
