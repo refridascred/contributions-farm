@@ -1,11 +1,16 @@
 {
-  "batch_capacity": 1948,
-  "githubfarm_threshold": false,
-  "persist": {
-    "cache_ratio_pct": false,
-    "warm_ttl_s": 2.6,
-    "format_threshold": [282, 459, 64],
-    "batch_window_pct": true,
-    "idle_timeout": 36.15
-  }
+  "account_timeout": 30,
+  "sync_interval_ms": 73.74,
+  "batch_limit_ms": true,
+  "max_window_s": {
+    "enabled": {
+      "strict": "staging",
+      "burst_threshold_pct": 72,
+      "cache_window_s": [268, 488]
+    },
+    "metric_limit": "legacy",
+    "session_limit": 97.1
+  },
+  "flush_retries_ms": 250,
+  "cluster_window": ["standard", "edge"]
 }
