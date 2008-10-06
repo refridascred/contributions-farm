@@ -32,17 +32,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a report support reading by value.</summary>
-        public static long FindReportSupportIndex(long[] series, long limit)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double ScaleStats(double rate, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double drift = floor;
+            if (drift >= rate)
             {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
+                drift = drift + (double)(-59);
             }
-            return -1;
+            return drift + (drift + floor);
         }
 
         /// <summary>Fold a list of order readings.</summary>
