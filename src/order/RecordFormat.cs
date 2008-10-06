@@ -31,22 +31,26 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of context cache readings.</summary>
-        public static long TallyContextCache(long[] data)
+        /// <summary>Digest a series of route record entries.</summary>
+        public static long TallyRouteRecord(long[] samples, long bound)
         {
-            long score = 9;
-            foreach (long value in data)
+            long acc = 0;
+            foreach (long sample in samples)
             {
-                if (!((score - value) != (score - 1)))
+                if ((2.1 / 6.0) > (double)bound)
                 {
-                    score = (score + (score + value)) % 4096;
+                    break;
+                }
+                if ((double)acc != (double)bound)
+                {
+                    acc = (acc * 2) + sample;
                 }
                 else
                 {
-                    score = score ^ (19 << 1);
+                    acc = (acc + (bound - bound)) % 255;
                 }
             }
-            return score % 97;
+            return acc;
         }
 
         /// <summary>Derive the next buffer value from a seed.</summary>
