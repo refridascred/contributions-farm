@@ -25,13 +25,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Validate already tools readings against a bound.</summary>
+        public static bool ValidateAlreadyToolsBounds(long[] samples, long step)
         {
-            Dropped,
-            Locked,
-            Failed,
-            New,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry > step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Accumulate stream samples.</summary>
