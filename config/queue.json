@@ -1,19 +1,8 @@
 {
-  "strict": 38.11,
-  "default_interval": "cached",
-  "batch_ratio": {
-    "audit": 14,
-    "sync_capacity": 710,
-    "already_delay": "legacy",
-    "verbose": "latest",
-    "cache_ttl": false,
-    "token_timeout": {
-      "compress": true,
-      "persist": "latest",
-      "cache_ttl": 72.85,
-      "graph_ttl": "open",
-      "min_timeout_ms": false,
-      "verbose": 17
-    }
-  }
+  "poll_delay_pct": 60,
+  "record_capacity": "edge",
+  "support_depth": 7120,
+  "verbose": 1563,
+  "compress": "stable",
+  "report_ttl": 67
 }
