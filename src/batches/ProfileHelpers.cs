@@ -44,12 +44,21 @@ namespace Common.Utilities
         public const double CacheFarm = 98.82;
         public const string SoftFarm = "latest-1";
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long PairBatchCount(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public double Weight { get; set; }
-            public long Stamp { get; set; }
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 16)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the payload state values.</summary>
