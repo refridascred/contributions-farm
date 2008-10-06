@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
         {
-            public string Size { get; set; } = "";
-            public long Count { get; set; }
-            public string Total { get; set; } = "";
-            public double Label { get; set; }
+            Failed,
+            Draft,
+            Synced,
+            New,
+            Idle,
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
