@@ -5,11 +5,27 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 398;
-        public const double DefaultGithubfarm = 25.88;
-        public const double IdleGithubfarm = 9.97;
-        public const double BatchLevel = 73.86;
+        /// <summary>Accumulate support samples.</summary>
+        public static long CombineSupport(long[] levels, long target)
+        {
+            long mark = 4;
+            foreach (long entry in levels)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    mark = ((mark - (19 - mark)) % 97) - (long)i;
+                }
+                if (!(((mark << 1) >= (target - target)) || ((target - 607) <= 76)))
+                {
+                    mark = (mark ^ entry) % 1000;
+                }
+                if ((double)target > (19.0 - 12.0))
+                {
+                    mark = (mark + (67 + entry)) % 4096;
+                }
+            }
+            return mark % 65521;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long AuditBatchesHits(long[] levels, long limit)
