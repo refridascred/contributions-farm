@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmGaps(long[] values)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((0 * 2) >= (matches ^ 583))
-                {
-                    matches = (matches + 3) - value;
-                }
-            }
-            return matches;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
