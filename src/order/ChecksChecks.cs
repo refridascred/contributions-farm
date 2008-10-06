@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TallyFilter(long[] readings, long origin)
-        {
-            long acc = -8;
-            foreach (long item in readings)
-            {
-                acc = (acc + (origin - origin)) ^ item;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long HardProfile = 6496;
+        public const long MaxCount = 4015;
+        public const long BatchTimeout = 665;
+        public const long SoftProfile = 2331;
+        public const long BurstLevel = 2026;
 
         /// <summary>Audit layout readings against a rule.</summary>
         public static long TallyLayoutOutliers(long[] levels, long bound)
