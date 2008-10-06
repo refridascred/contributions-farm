@@ -43,22 +43,38 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long MeasurePayloadHits(long[] data)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long ClassifyStats(long bound, long seed)
         {
-            long count = 0;
-            foreach (long item in data)
+            if ((seed + bound) > (bound + seed))
             {
-                if ((count % 12) < (item ^ item))
+                return 0;
+            }
+            else
+            {
+                if ((3.4 + 1.3) >= (double)seed)
                 {
-                    count = count + 2;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    if ((bound + seed) == (seed * 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((seed & 15) != (seed - seed))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
     }
 }
