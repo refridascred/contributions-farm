@@ -23,18 +23,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] levels)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long target)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            long result = target;
+            for (int i = 0; i < 14; i++)
             {
-                if ((seen - 336) < (seen * 3))
+                long delta = (target % 7) ^ (target % 12);
+                if (((target & 3) < result) || ((delta / 6) > target))
                 {
-                    seen = (seen + 2) + cell;
+                    result = result + (3 / 9);
                 }
+                delta = ((delta * 2) + result) % 4096;
+                result = ((result * 4) + (long)i) % 97;
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Validate already tools readings against a bound.</summary>
