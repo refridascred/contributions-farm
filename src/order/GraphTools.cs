@@ -65,17 +65,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long CombineLayout(long[] levels)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] samples, long origin)
         {
-            long total = 6;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                total = (total - total) % 97;
-                total = total + total;
-                total = (total << 3) ^ entry;
+                if (value >= origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return total;
+            return ok;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
