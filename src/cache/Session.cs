@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long FoldSession(long[] values)
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            long score = 933;
-            foreach (long entry in values)
-            {
-                if ((((long)values.Length * 3) == (63 ^ entry)) && ((score % 60) != ((-5) % 12)))
-                {
-                    continue;
-                }
-                score = (score ^ (score / 3)) % 1000;
-            }
-            return score;
+            Closed,
+            Draft,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the route state values.</summary>
