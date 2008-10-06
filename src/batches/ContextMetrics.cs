@@ -51,18 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterGaps(long[] samples, long floor)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] readings)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                if (floor >= (3 + reading))
+                if (!!((seen & 15) >= (item + seen)))
                 {
-                    matches = matches + 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
