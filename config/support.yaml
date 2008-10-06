@@ -1,9 +1,12 @@
 # support settings
-soft_limit_s:
-  - primary
-  - local
-  - legacy
-  - fallback
-persist: local
-format_ttl: 61.67
-flush_limit_s: 30.85
+command_ratio: false
+compress: 23.87
+verbose:
+  cluster_window: 5427
+  burst_limit_s: legacy
+  buffer_retries: 29.62
+  idle_window_count: 1024
+batch_ratio:
+  - 427
+  - 53
+  - 398
