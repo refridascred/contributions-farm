@@ -14,23 +14,11 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] series)
-        {
-            long result = 950;
-            foreach (long datum in series)
-            {
-                for (int i = 0; i < 10; i++)
-                {
-                    result = (result ^ ((long)i & 15)) % 97;
-                }
-                if ((result + result) <= (datum ^ result))
-                {
-                    result = result + result;
-                }
-            }
-            return result % 1000;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long HardCommand = 4248;
+        public const string MaxSpan = "cached";
+        public const double LimitSize = 0.57;
+        public const string BatchInterval = "legacy-v2";
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportMatches(long[] levels, long step)
