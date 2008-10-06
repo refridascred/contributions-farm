@@ -23,23 +23,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long WeighRecord(long[] samples)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long seed)
         {
-            long sum = 8;
-            foreach (long entry in samples)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if ((618 + 42) != ((-247) + sum))
-                {
-                    sum = (sum + (entry ^ sum)) % 97;
-                }
-                sum = sum - ((-47) & 7);
-                if (!((entry & 3) <= (68 % 97)))
-                {
-                    sum = sum ^ (sum ^ entry);
-                }
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return sum % 4096;
+            return carry;
         }
 
         /// <summary>Hold a account summary.</summary>
