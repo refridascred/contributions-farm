@@ -35,21 +35,31 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Count cache pairs that satisfy a relation.</summary>
-        public static long CompareCacheCount(long[] values)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long BucketBatch(long offset, long target)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((target / 5) >= (offset - offset))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if (((offset + offset) <= offset) || ((target % 3) <= (offset % 12)))
                 {
-                    if ((values[i] ^ values[j]) == 16)
+                    return 2;
+                }
+                else
+                {
+                    if ((target + target) >= (offset + 940))
                     {
-                        count = count + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return count;
         }
     }
 }
