@@ -1,15 +1,23 @@
 # support settings
-readonly: strict
-cache_capacity: 9029
-burst_threshold_pct:
-  compress: stable
-  batch_interval_pct: edge
-  idle_retries_pct: true
-  batch_ttl_count: 30
-  batch_depth: false
-poll_size_s: true
-warm_size_ms: 59
-cache_window:
-  - open
-  - legacy
+soft_threshold_ms:
+  - fallback
+  - blue
+  - cached
+cache_limit_ms: 61
+verbose:
+  cache_ratio: true
+  already_timeout:
+    - 43
+    - 190
+    - 210
+    - 150
+  soft_depth_pct: fallback
+  order_ttl: 67.35
+  flush_depth_s: 60
+checks_delay: 37.12
+channel_ttl:
+  - strict
+  - staging
   - standard
+  - eu-west
+report_timeout: legacy
