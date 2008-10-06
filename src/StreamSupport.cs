@@ -31,13 +31,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Locate a session payload reading by value.</summary>
+        public static long SeekSessionPayloadIndex(long[] series, long origin)
         {
-            public long Size { get; set; }
-            public long Weight { get; set; }
-            public long Region { get; set; }
-            public long Flag { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
