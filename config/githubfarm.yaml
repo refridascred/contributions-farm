@@ -1,33 +1,20 @@
 # githubfarm settings
-warm_ttl_pct: 85.66
-compress:
-  audit:
-    base_timeout_s:
-      - 141
-      - 436
-      - 31
-    burst_threshold_s: open
-    readonly: green
-    retry_threshold_count: true
-    editor_timeout:
-      - 407
-      - 163
-      - 57
-      - 498
-    already_retries: fallback
-  min_threshold_pct:
-    - 375
-    - 167
-  readonly:
-    enabled: 8
-    cache_limit:
-      - stable
-      - fallback
-    flush_delay_count: legacy
-    persist: 30
-    verbose: staging
-    sync_delay_pct: 250
-  poll_interval_pct: 62
-enabled: 1024
-readonly: 60
-persist: 38
+min_interval:
+  commits_threshold: 8025
+  base_ratio_count:
+    idle_interval_s: fallback
+    base_threshold: latest
+    route_timeout:
+      - 236
+      - 497
+    persist: 24.52
+  flush_interval: 32
+  hard_depth_pct: 90.09
+  entry_timeout:
+    - 374
+    - 49
+layout_size:
+  - latest
+  - local
+  - edge
+compress: 28
