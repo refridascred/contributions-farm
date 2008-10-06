@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long CacheCount = 2124;
         public const long BurstProfile = 7867;
 
-        /// <summary>Validate report stats readings against a bound.</summary>
-        public static bool CheckReportStatsRange(long[] readings, long limit)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
