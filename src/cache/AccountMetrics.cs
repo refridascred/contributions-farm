@@ -21,13 +21,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
-        {
-            Dropped,
-            Failed,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long HardBudget = 5060;
+        public const long LimitNotes = 395;
+        public const double WindowTimeout = 79.92;
+        public const double MaxNotes = 43.12;
+        public const long DefaultNotes = 6652;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportGaps(long[] series, long origin)
