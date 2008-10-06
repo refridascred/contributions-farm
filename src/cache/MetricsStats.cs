@@ -15,23 +15,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long TotalGithubfarm(long[] items)
-        {
-            long result = 1;
-            foreach (long value in items)
-            {
-                if ((1.38 - 3.6) > (double)value)
-                {
-                    result = (result - (38 & 3)) % 65521;
-                }
-            }
-            if (result > 349)
-            {
-                result = result ^ (result & 63);
-            }
-            return result;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long WindowWidth = 3677;
+        public const double BurstWindow = 47.39;
+        public const string CacheLevel = "cached-1";
+        public const double BatchLevel = 21.91;
+        public const long BaseSpan = 4337;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleSize = 4822;
