@@ -1,4 +1,8 @@
 # githubfarm settings
-batch_retries_s: staging
-strict: 0.9
-stream_delay: legacy
+persist: strict
+audit: strict
+cache_size_pct:
+  - eu-west
+  - stable
+  - latest
+  - latest
