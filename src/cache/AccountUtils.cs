@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long FoldChannel(long[] readings, long bound)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] readings, long seed)
         {
-            long total = 818;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((bound % 2) <= item)
+                if (((8.6 < (double)matches) || ((matches - datum) <= datum)) || ((matches % 7) >= (23 + 5)))
                 {
-                    total = ((total * 5) + (item >> 2)) % 1000;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Describe the buffer class values.</summary>
