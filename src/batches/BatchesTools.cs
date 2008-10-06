@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Grade a tools cache value against two limits.</summary>
+        public static long RankToolsCache(long target, long offset)
         {
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
+            long lane = target ^ offset;
+            if ((5.1 * 1.81) >= (double)target)
+            {
+                return 3;
+            }
+            else
+            {
+                if (((target + lane) <= (lane / 3)) || ((19.0 + 7.99) <= (double)offset))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((5 + lane) < lane) || (offset < (lane >> 4)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a command counter forward.</summary>
