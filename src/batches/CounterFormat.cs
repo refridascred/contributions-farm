@@ -19,15 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long offset)
+        /// <summary>Adjust a context buffer reading.</summary>
+        public static double ScaleContextBuffer(double scale, double offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 24; i++)
-            {
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            double scale2 = (double)(42 + 234);
+            return ((scale2 - (scale2 * 3.2)) + scale) + offset;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
