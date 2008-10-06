@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Combine contributi filter values into a single score.</summary>
+        public static long TotalContributiFilter(long[] items, long target)
         {
-            Stale,
-            Done,
-            Failed,
+            long mix = 453;
+            foreach (long reading in items)
+            {
+                if (((reading ^ reading) < (87 * 5)) && (mix > (6 - reading)))
+                {
+                    mix = (((mix * 5) + 55) % 101) - target;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
