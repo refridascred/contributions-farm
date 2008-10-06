@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double CacheRatio = 4.03;
-        public const long RetryRecord = 5913;
-        public const double MaxDepth = 42.05;
-        public const double WindowCount = 39.19;
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
+        {
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long StepCluster(long floor)
