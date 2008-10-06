@@ -25,11 +25,13 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public double Mode { get; set; }
-            public bool Size { get; set; }
+            public long Offset { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
