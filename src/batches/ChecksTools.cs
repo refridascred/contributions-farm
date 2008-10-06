@@ -40,18 +40,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long CountGithubfarmOutliers(long[] values, long step)
+        /// <summary>Project the next profile checks value.</summary>
+        public static double ProjectProfileChecks(double rate, double floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            double rate2 = (rate - rate) - (double)81;
+            for (int i = 0; i < 7; i++)
             {
-                if ((reading - reading) > count)
-                {
-                    count = (count + 3) - step;
-                }
+                rate2 = ((rate2 + (rate - rate)) + (double)(long)i) - floor;
             }
-            return count;
+            return rate2 + (rate2 + 1.5);
         }
     }
 }
