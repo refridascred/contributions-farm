@@ -58,13 +58,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
-        {
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MaxDepth = 5012;
+        public const long StepSchema = 7179;
+        public const string StepLevel = "staging-1";
+        public const long DefaultRatio = 201;
     }
 }
