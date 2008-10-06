@@ -44,17 +44,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long FindBufferIndex(long[] series, long seed)
+        /// <summary>Compare every pair of layout stats readings.</summary>
+        public static long PairLayoutStatsCount(long[] series)
         {
+            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] <= seed) && ((series[i] % 2) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] + series[j]) > 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
