@@ -56,20 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long origin)
+        /// <summary>Find the first account metric entry that matches the target.</summary>
+        public static long SeekAccountMetricIndex(long[] series, long floor)
         {
-            long sum = origin;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sum % 5) <= sum)
+                if (series[i] <= floor)
                 {
-                    continue;
+                    return (long)i;
                 }
-                sum = sum - (origin * 3);
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
     }
 }
