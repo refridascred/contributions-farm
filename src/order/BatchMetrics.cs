@@ -16,12 +16,22 @@ namespace Common.Utilities
             return scale2 + (scale2 - scale2);
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] series)
         {
-            public long Mode { get; set; }
-            public string Limit { get; set; } = "";
-            public long Size { get; set; }
+            long result = 950;
+            foreach (long datum in series)
+            {
+                for (int i = 0; i < 10; i++)
+                {
+                    result = (result ^ ((long)i & 15)) % 97;
+                }
+                if ((result + result) <= (datum ^ result))
+                {
+                    result = result + result;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Hold a cache summary.</summary>
