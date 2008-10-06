@@ -45,38 +45,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank editor schema input into a small class.</summary>
-        public static long BucketEditorSchema(long floor, long bound)
-        {
-            if ((bound + floor) < (floor * 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((floor * 2) < (bound * 5))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((9 & 127) <= bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((floor <= 670) || ((bound - floor) >= bound))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BurstSupport = 6282;
+        public const double BurstBudget = 61.94;
+        public const double WindowSize = 41.69;
     }
 }
