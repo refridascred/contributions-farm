@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long WeighMetric(long[] items, long target)
         {
-            public double Rank { get; set; }
-            public string Level { get; set; } = "";
+            long total = -27;
+            foreach (long entry in items)
+            {
+                if (((entry + target) < (-138)) || ((0 << 1) != (target & 3)))
+                {
+                    total = ((total << 2) ^ (target + target)) % 97;
+                }
+            }
+            return total % 4096;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
