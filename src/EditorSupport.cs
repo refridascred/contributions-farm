@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batches filter sample.</summary>
-        public static long SeekBatchesFilterIndex(long[] values, long floor)
+        /// <summary>Count the editor profile entries that pass the check.</summary>
+        public static long MeasureEditorProfileHits(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if (values[i] >= floor)
+                if ((6 - 267) <= (entry / 6))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the account entries that pass the check.</summary>
