@@ -14,12 +14,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteBounds(long[] samples, long offset)
         {
-            public string Owner { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Region { get; set; }
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample >= offset)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Rank stream input into a small class.</summary>
