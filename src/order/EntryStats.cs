@@ -34,22 +34,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long TallyContextHits(long[] readings, long step)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                if ((double)sample != (double)264)
+                if ((double)matches >= (7.8 + 5.08))
                 {
-                    count = (count + 2) + step;
+                    matches = (matches + 3) + datum;
                 }
                 else
                 {
-                    count = count - 1;
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Adjust a cache reading.</summary>
