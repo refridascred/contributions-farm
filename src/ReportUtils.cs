@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double weight, double floor)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LookupRecordIndex(long[] levels, long limit)
         {
-            double gain = floor;
-            if (gain >= (double)9)
+            for (int i = 0; i < levels.Length; i++)
             {
-                gain = (gain - (floor - gain)) - weight;
+                if ((levels[i] >= limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain - (double)282) + (double)(long)i;
-            }
-            return gain + (double)(-29);
+            return -1;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
