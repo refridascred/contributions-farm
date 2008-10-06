@@ -19,15 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            long carry = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 65521;
-            }
-            return carry;
+            public bool Owner { get; set; }
+            public bool Stamp { get; set; }
+            public bool Rank { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
