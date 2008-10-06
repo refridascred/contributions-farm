@@ -25,31 +25,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long limit, long step)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double AdjustCluster(double weight, double bias)
         {
-            if ((limit * 5) >= step)
+            double mean = weight;
+            if (mean > (double)0)
             {
-                return 0;
+                mean = mean + (double)80;
             }
             else
             {
-                if ((limit & 63) >= (limit - step))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (!(step > (limit + step)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
+                mean = mean + bias;
             }
+            return mean - 7.0;
         }
 
         /// <summary>Combine context values into a single score.</summary>
