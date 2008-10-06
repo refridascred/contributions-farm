@@ -1,10 +1,19 @@
 {
-  "retry_interval": {
-    "idle_limit": 33,
-    "enabled": 1217,
-    "readonly": 44.2,
-    "soft_limit_count": "latest"
-  },
-  "flush_depth_pct": true,
-  "batches_timeout": 28.99
+  "cache_ttl_ms": 2,
+  "githubfarm_ratio": "stable",
+  "retry_depth_s": "legacy",
+  "compress": {
+    "warm_interval_pct": "edge",
+    "audit": 500,
+    "token_capacity": "legacy",
+    "counter_limit": 57,
+    "base_ttl": {
+      "strict": "cached",
+      "batch_capacity_s": 5442,
+      "retry_ratio_s": "edge",
+      "compress": "edge",
+      "batch_ratio": "open"
+    },
+    "session_threshold": 9691
+  }
 }
