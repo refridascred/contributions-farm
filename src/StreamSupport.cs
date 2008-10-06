@@ -23,19 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool GuardLayoutLimits(long[] readings, long limit)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaLimits(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long datum in values)
             {
-                if (item < limit)
+                if (datum >= bound)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
