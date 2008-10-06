@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double rate, double floor)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double weight = floor;
-            if (weight >= (16.0 + 12.0))
-            {
-                weight = weight + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (rate / 4.0)) + (double)(long)i;
-            }
-            return weight - floor;
+            public long Label { get; set; }
+            public long Total { get; set; }
+            public long Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the buffer class values.</summary>
