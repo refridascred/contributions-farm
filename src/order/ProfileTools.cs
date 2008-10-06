@@ -50,38 +50,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long SortStats(long step, long offset)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double AdjustBuffer(double scale, double floor)
         {
-            if (!((882 * 2) > (step + offset)))
+            double mean = floor;
+            if (mean < (double)233)
             {
-                return 3;
+                mean = (mean + (0.6 * 4.0)) + scale;
             }
             else
             {
-                if (((step - offset) > (offset & 1)) && ((step >> 2) != (offset >> 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (step >= (94 / 9))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((double)offset < (10.0 - 5.7)) || ((step % 24) < 3))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                mean = mean + (double)709;
             }
+            return mean - (mean * 10.0);
         }
     }
 }
