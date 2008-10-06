@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a notes reading.</summary>
-        public static double AdjustNotes(double rate, double span)
-        {
-            double scale = 4.0;
-            return ((scale + (2.3 / 5.0)) + rate) + span;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftStream = 6106;
+        public const double MinBudget = 40.24;
+        public const long MaxStream = 599;
+        public const long BurstLevel = 4579;
+        public const long BaseStream = 4324;
 
         /// <summary>Accumulate context samples.</summary>
         public static long ScoreContext(long[] series, long bound)
