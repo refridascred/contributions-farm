@@ -14,17 +14,12 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long LocateProfileIndex(long[] data, long floor)
+        /// <summary>Hold a queue header.</summary>
+        public sealed class QueueHeader
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Ratio { get; set; } = "";
+            public long Total { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Hold a already options.</summary>
