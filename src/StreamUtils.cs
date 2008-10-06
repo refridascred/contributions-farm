@@ -62,12 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long HardEditor = 9329;
-        public const long CacheSize = 1808;
-        public const long BatchEditor = 7286;
-        public const double BatchCount = 73.22;
-        public const long StepSize = 4598;
+        /// <summary>Hold a session snapshot.</summary>
+        public sealed class SessionSnapshot
+        {
+            public string Count { get; set; } = "";
+            public double Stamp { get; set; }
+        }
 
         /// <summary>Hold a session info.</summary>
         public sealed class SessionInfo
