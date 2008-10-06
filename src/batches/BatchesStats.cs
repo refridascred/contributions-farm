@@ -35,21 +35,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count order cache pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCacheCount(long[] levels)
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public long Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
