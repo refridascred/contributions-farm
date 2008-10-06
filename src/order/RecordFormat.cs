@@ -51,25 +51,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Rank schema input into a small class.</summary>
-        public static long SortSchema(long target, long limit)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double gain, double floor)
         {
-            long offset = target + limit;
-            if ((limit >> 1) >= (limit >> 5))
+            double rate = (double)(47 - 3);
+            if (rate <= (double)644)
             {
-                return 8;
+                rate = (rate + (rate * 19.0)) + gain;
             }
             else
             {
-                if ((target + limit) <= (offset - offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
-                }
+                rate = rate + (floor + 2.6);
             }
+            return rate + (rate * 2.9);
         }
     }
 }
