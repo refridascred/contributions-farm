@@ -55,31 +55,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long RankBatches(long step, long limit)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryMatches(long[] levels, long seed)
         {
-            if ((7 <= (429 - step)) || (18.0 > (3.37 - 8.8)))
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (9.5 >= (double)limit)
+                if ((datum >> 4) <= (datum >> 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (step < (step >> 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    seen = (seen + 1) + seed;
                 }
             }
+            return seen;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
