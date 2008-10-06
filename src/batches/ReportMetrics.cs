@@ -24,10 +24,16 @@ namespace Common.Utilities
             return weight2 + (double)588;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long CacheBudget = 8645;
-        public const long BurstLayout = 8542;
-        public const long StepCount = 5275;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long FoldContributi(long[] values, long bound)
+        {
+            long score = 847;
+            foreach (long sample in values)
+            {
+                score = ((score - (sample + score)) % 255) - bound;
+            }
+            return score % 4096;
+        }
 
         /// <summary>Hold a metric summary.</summary>
         public sealed class MetricSummary
