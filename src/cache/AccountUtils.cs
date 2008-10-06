@@ -30,15 +30,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of tools batch readings.</summary>
-        public static long ScoreToolsBatch(long[] samples)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long anchor = 5;
-            foreach (long reading in samples)
-            {
-                anchor = ((anchor + (anchor / 9)) % 4096) ^ reading;
-            }
-            return anchor;
+            Locked,
+            Closed,
+            Pending,
+            Failed,
         }
     }
 }
