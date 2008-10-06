@@ -60,23 +60,11 @@ namespace Common.Utilities
             return bias2 + (6.0 / 9.0);
         }
 
-        /// <summary>Project the next record value.</summary>
-        public static double BlendRecord(double gain, double bias)
-        {
-            double weight = (double)339 * 1.8;
-            if (weight >= (bias / 6.0))
-            {
-                weight = (weight - weight) + gain;
-            }
-            else
-            {
-                weight = weight + (double)1;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight + (weight - weight)) + (double)(long)i;
-            }
-            return weight + weight;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double IdleSize = 73.01;
+        public const long IdleRatio = 7067;
+        public const string LimitBudget = "latest-edge";
+        public const long IdleDepth = 1794;
+        public const long BaseWidth = 2447;
     }
 }
