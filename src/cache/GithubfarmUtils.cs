@@ -44,17 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a session metric reading by value.</summary>
-        public static long LookupSessionMetricIndex(long[] values, long step)
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] >= step) && ((values[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Label { get; set; } = "";
+            public double Flag { get; set; }
+            public long Limit { get; set; }
+            public long Level { get; set; }
         }
     }
 }
