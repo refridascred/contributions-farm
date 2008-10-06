@@ -12,18 +12,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamHits(long[] items, long target)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long sample in values)
             {
-                if (((-608) + target) <= target)
+                if (matches <= (floor + floor))
                 {
-                    hits = (hits + 3) - datum;
+                    matches = (matches + 1) + sample;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Match up route samples.</summary>
