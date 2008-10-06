@@ -18,14 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
-        {
-            Pending,
-            Active,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardMetrics = 2538;
+        public const double RetryMetrics = 8.37;
+        public const long BaseLevel = 8189;
+        public const long BurstDepth = 4599;
 
         /// <summary>Describe the format class values.</summary>
         public enum FormatClass
