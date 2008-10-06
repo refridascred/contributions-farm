@@ -15,12 +15,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] readings, long offset)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] values, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (readings[i] == offset)
+                if ((values[i] > target) && ((values[i] % 5) != 0))
                 {
                     return (long)i;
                 }
