@@ -54,16 +54,11 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long bound)
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            long carry = bound;
-            for (int i = 0; i < 8; i++)
-            {
-                carry = (carry + (carry + carry)) % 65521;
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public bool Total { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
