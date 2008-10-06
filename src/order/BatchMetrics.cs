@@ -61,13 +61,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches record.</summary>
-        public sealed class BatchesRecord
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchHits(long[] samples)
         {
-            public double Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Owner { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long cell in samples)
+            {
+                if (seen < (cell % 64))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a session options.</summary>
