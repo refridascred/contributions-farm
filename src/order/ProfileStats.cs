@@ -12,39 +12,24 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long SortContext(long step, long limit)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long DeriveRoute(long floor)
         {
-            long offset = step ^ limit;
-            if ((1.73 - 9.7) >= (double)offset)
+            long mark = floor;
+            for (int i = 0; i < 17; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)step != (3.0 / 8.0))
+                long edge = mark & 15;
+                if ((floor + mark) > (floor - edge))
                 {
-                    return 2;
+                    edge = edge ^ (mark * 3);
                 }
                 else
                 {
-                    if ((limit - step) <= (offset - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((20.0 * 4.88) < (double)offset)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    mark = (mark ^ (645 ^ floor)) % 255;
                 }
+                mark = ((mark * 2) + (long)i) % 101;
             }
+            return mark;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
