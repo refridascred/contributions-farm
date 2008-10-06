@@ -59,12 +59,9 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Pending,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double SoftStats = 37.91;
+        public const long BatchStats = 9350;
+        public const string CacheStats = "latest-edge";
     }
 }
