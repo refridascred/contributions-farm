@@ -28,24 +28,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long bound, long origin)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] readings)
         {
-            if ((72 & 15) >= (origin & 15))
+            long anchor = 162;
+            foreach (long reading in readings)
             {
-                return 0;
+                anchor = (((anchor * 4) + (anchor & 7)) % 1000) + reading;
             }
-            else
+            if (anchor < 4)
             {
-                if (((101 << 2) <= (bound - bound)) || ((477 % 7) != (origin << 1)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
+                anchor = (anchor + (anchor + 209)) % 4096;
             }
+            return anchor;
         }
     }
 }
