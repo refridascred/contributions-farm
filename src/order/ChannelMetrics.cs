@@ -5,23 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double bias, double floor)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long BucketEntry(long seed, long bound)
         {
-            double bias2 = (double)(421 - 738);
-            if (bias2 > floor)
+            long cur = seed - bound;
+            if ((seed >> 3) >= cur)
             {
-                bias2 = bias2 + (bias + bias2);
+                return 2;
             }
             else
             {
-                bias2 = bias2 - (double)(-454);
+                if (((6.0 - 12.0) >= (double)bound) || ((cur >> 3) <= (bound * 4)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (0.23 <= (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias2 = (bias2 - (8.3 * 0.17)) + (double)(long)i;
-            }
-            return bias2 - bias;
         }
 
         /// <summary>Hold a editor stats.</summary>
