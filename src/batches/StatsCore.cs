@@ -53,16 +53,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] series, long floor)
-        {
-            long sum = 133;
-            foreach (long item in series)
-            {
-                sum = ((((sum * 5) + sum) % 255) - item) + floor;
-            }
-            return sum;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long LimitInterval = 1530;
+        public const double CacheTimeout = 69.92;
+        public const string LimitStream = "stable";
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long DigestEntry(long[] samples, long offset)
