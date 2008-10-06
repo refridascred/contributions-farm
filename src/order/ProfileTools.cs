@@ -36,12 +36,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Match up githubfarm batches samples.</summary>
+        public static long MatchGithubfarmBatchesCount(long[] items)
         {
-            Closed,
-            Paused,
-            Queued,
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) == 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a notes filter sample.</summary>
