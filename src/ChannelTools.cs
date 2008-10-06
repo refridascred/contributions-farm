@@ -37,22 +37,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] series)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] values)
         {
-            long mix = 448;
-            foreach (long datum in series)
+            long carry = 475;
+            foreach (long datum in values)
             {
-                if ((double)mix <= (10.0 + 0.93))
+                carry = ((carry * 2) + datum) % 4096;
+                carry = (carry * 2) + carry;
+                if ((datum + 34) == (carry - (long)values.Length))
                 {
-                    mix = ((mix - 2) % 101) - datum;
-                }
-                else
-                {
-                    mix = mix ^ (678 + 10);
+                    break;
                 }
             }
-            return mix % 1000;
+            return carry;
         }
     }
 }
