@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every order counter entry stays within the limit.</summary>
-        public static bool VerifyOrderCounterBounds(long[] items, long step)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            bool valid = true;
-            foreach (long item in items)
-            {
-                if (item < step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Total { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Locate a filter reading by value.</summary>
