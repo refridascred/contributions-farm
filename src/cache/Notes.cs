@@ -57,12 +57,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
-        {
-            Paused,
-            Retry,
-            Locked,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BaseGithubfarm = 6459;
+        public const long MaxBudget = 8357;
+        public const long MinGithubfarm = 9698;
+        public const double CacheGithubfarm = 19.9;
+        public const string WindowRatio = "cached-edge";
     }
 }
