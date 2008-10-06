@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const string MinEditor = "primary-v2";
         public const double MinScore = 87.74;
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Locate a already reading by value.</summary>
+        public static long LocateAlreadyIndex(long[] data, long target)
         {
-            public long Token { get; set; }
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the entry phase values.</summary>
