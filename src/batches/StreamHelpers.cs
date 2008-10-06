@@ -10,25 +10,12 @@ namespace Common.Utilities
         public const long DefaultRatio = 3050;
         public const long StepToken = 55;
 
-        /// <summary>Grade a filter value against two limits.</summary>
-        public static long SortFilter(long bound, long seed)
-        {
-            if (((660 + seed) > 13) || ((bound ^ bound) == (seed / 3)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound <= 1.8)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string BurstScore = "strict";
+        public const long IdleAlready = 894;
+        public const long RetryAlready = 7365;
+        public const long MinTimeout = 6413;
+        public const string MinAlready = "staging";
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyRange(long[] data, long bound)
