@@ -1,17 +1,5 @@
 {
-  "poll_interval": 1831,
-  "flush_limit_ms": {
-    "retry_threshold": 250,
-    "retry_capacity": {
-      "max_ratio_s": 68.91,
-      "stream_interval": [57, 28],
-      "flush_interval_count": ["staging", "primary", "blue", "standard"],
-      "verbose": "standard",
-      "record_interval": 2921
-    },
-    "batch_size": "primary",
-    "warm_size": 500
-  },
-  "burst_window_count": 53,
-  "farm_window": true
+  "sync_limit_s": true,
+  "cache_interval": [357, 259, 323],
+  "burst_timeout_pct": 1024
 }
