@@ -37,17 +37,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] readings, long limit)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long CountSchemaGaps(long[] readings)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
+                if ((double)sample >= (0.09 * 18.0))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
