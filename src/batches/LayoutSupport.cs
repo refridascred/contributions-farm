@@ -48,11 +48,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultTimeout = 7240;
-        public const long BatchSchema = 9958;
-        public const string BurstSpan = "local-edge";
-        public const string IdleSchema = "primary-v2";
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
+        {
+            public bool Token { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Roll a account counter forward.</summary>
         public static long DeriveAccount(long seed)
