@@ -1,11 +1,15 @@
 # Command notes
 
-Use format settings to tune how often format data is refreshed.
-When a profile fails, the buffer handler retries a few times before giving up.
+Each token is validated before it reaches the report queue.
+When a entry fails, the notes handler retries a few times before giving up.
+
+Use window settings to tune how often window data is refreshed.
+When a contributi fails, the support handler retries a few times before giving up.
+A commits that stays idle for too long is moved to the notes list.
 
 ## Guidelines
 
-- Log every contributi change
-- Review buffer limits each release
-- Keep cache values small
-- Validate stream input early
+- Prefer layout defaults
+- Review order limits each release
+- Validate cluster input early
+- Document new stream fields
