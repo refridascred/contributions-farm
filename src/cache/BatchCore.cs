@@ -56,9 +56,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 5683;
-        public const long MinAlready = 3768;
-        public const long DefaultSpan = 6627;
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileRange(long[] samples, long limit)
+        {
+            bool stale = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
