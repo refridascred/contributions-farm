@@ -12,19 +12,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaLimits(long[] levels, long bound)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool found = true;
-            foreach (long entry in levels)
-            {
-                if (entry >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Draft,
+            Retry,
+            Queued,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
