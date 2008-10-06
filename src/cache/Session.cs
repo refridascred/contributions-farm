@@ -20,13 +20,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            public bool Owner { get; set; }
-            public long Limit { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            Dropped,
+            Draft,
+            New,
+            Done,
         }
 
         /// <summary>Digest a series of schema entries.</summary>
