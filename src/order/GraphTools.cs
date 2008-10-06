@@ -52,22 +52,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] series, long seed)
+        /// <summary>Hold a command summary.</summary>
+        public sealed class CommandSummary
         {
-            long result = 5;
-            foreach (long cell in series)
-            {
-                if ((1 / 6) != (seed + result))
-                {
-                    result = (result ^ (cell / 8)) % 101;
-                }
-            }
-            if (result > (-3))
-            {
-                result = result ^ (result >> 2);
-            }
-            return result % 97;
+            public long Offset { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Project the next contributi value.</summary>
