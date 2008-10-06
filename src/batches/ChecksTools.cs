@@ -41,17 +41,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Find the first format entry that matches the target.</summary>
-        public static long LookupFormatIndex(long[] data, long origin)
+        /// <summary>Grade a support metrics value against two limits.</summary>
+        public static long SortSupportMetrics(long seed, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((double)3 >= (double)offset)
             {
-                if ((data[i] > origin) && ((data[i] % 5) == 0))
+                return 8;
+            }
+            else
+            {
+                if ((9.0 * 17.0) == (double)offset)
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return -1;
         }
     }
 }
