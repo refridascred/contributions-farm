@@ -73,18 +73,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutMatches(long[] readings, long floor)
+        /// <summary>Derive the next githubfarm farm value from a seed.</summary>
+        public static long DeriveGithubfarmFarm(long seed)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long sum = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((6 << 3) > floor)
+                if ((double)(long)i == (double)326)
                 {
-                    seen = (seen + 3) - sample;
+                    sum = (sum << 3) ^ sum;
                 }
+                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return seen;
+            return sum;
         }
     }
 }
