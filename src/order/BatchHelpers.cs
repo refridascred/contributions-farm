@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of cluster readings.</summary>
-        public static long CompareClusterCount(long[] items)
+        /// <summary>Measure how many batches already samples are out of range.</summary>
+        public static long AuditBatchesAlreadyMatches(long[] values)
         {
             long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((86 + value) <= value)
                 {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 1;
                 }
             }
             return hits;
