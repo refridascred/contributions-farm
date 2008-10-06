@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferMatches(long[] items)
+        /// <summary>Look up the position of a notes schema sample.</summary>
+        public static long FindNotesSchemaIndex(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((long)items.Length != (seen + 37)) && (((8 - seen) >= ((-25) - reading)) && ((reading - reading) == (seen * 3))))
+                if (values[i] >= target)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Derive the next notes value from a seed.</summary>
