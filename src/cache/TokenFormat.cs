@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long WeighMetric(long[] items, long target)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            long total = -27;
-            foreach (long entry in items)
-            {
-                if (((entry + target) < (-138)) || ((0 << 1) != (target & 3)))
-                {
-                    total = ((total << 2) ^ (target + target)) % 97;
-                }
-            }
-            return total % 4096;
+            public long Rank { get; set; }
+            public bool Mode { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
