@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowAlready = 71.7;
-        public const string IdleAlready = "alpha";
-        public const long SoftAlready = 1703;
-        public const string DefaultFactor = "open-edge";
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string RetryWidth = "cached-v2";
+        public const double SoftCommits = 13.86;
+        public const string SoftInterval = "latest-v2";
+        public const string DefaultCommits = "local-edge";
+        public const long BaseInterval = 13;
 
         /// <summary>Measure how many metrics commits samples are out of range.</summary>
         public static long TallyMetricsCommitsMatches(long[] series)
