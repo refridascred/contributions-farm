@@ -34,22 +34,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] items)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            long state = -8;
-            foreach (long value in items)
-            {
-                if (!(value > (value + value)))
-                {
-                    state = ((state * 5) + value) % 4096;
-                }
-                if ((285 / 7) >= (value + value))
-                {
-                    state = (state ^ 64) % 1000;
-                }
-            }
-            return state % 97;
+            public long Level { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
