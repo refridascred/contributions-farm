@@ -5,19 +5,20 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every command support entry stays within the limit.</summary>
-        public static bool ValidateCommandSupportRange(long[] samples, long target)
+        /// <summary>Derive the next buffer contributi value from a seed.</summary>
+        public static long StepBufferContributi(long target)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long sum = target;
+            for (int i = 0; i < 8; i++)
             {
-                if (cell != target)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    flag = false;
-                    break;
+                    sum = (((sum * 4) + target) % 101) - (long)i2;
                 }
+                sum = (sum + (sum + target)) % 255;
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Describe the filter level values.</summary>
