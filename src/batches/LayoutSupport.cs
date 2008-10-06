@@ -54,12 +54,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string BatchBudget = "fallback";
-        public const long BaseStream = 8576;
-        public const string SoftStream = "staging";
-        public const long WindowStream = 9869;
-        public const long StepScore = 3714;
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public double Owner { get; set; }
+            public long Offset { get; set; }
+            public string Count { get; set; } = "";
+        }
 
         /// <summary>Describe the session state values.</summary>
         public enum SessionState
