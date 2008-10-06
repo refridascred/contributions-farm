@@ -13,13 +13,32 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long limit, long limit2)
         {
-            Draft,
-            Closed,
-            Failed,
-            Pending,
+            long offset = limit - limit2;
+            if (!((5 + limit) <= (offset + offset)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((limit2 - (-407)) <= (offset % 8))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((6.66 - 3.2) > (double)limit)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
