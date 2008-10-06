@@ -1,8 +1,7 @@
 {
-  "layout_limit": "fallback",
-  "enabled": true,
-  "flush_depth_pct": "strict",
-  "max_window": 96,
-  "base_limit_ms": false,
-  "report_timeout": 2395
+  "hard_interval": 68.38,
+  "min_depth": [214, 97],
+  "metrics_size": 60,
+  "cache_window": "fallback",
+  "persist": 64.96
 }
