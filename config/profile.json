@@ -1,15 +1,8 @@
 {
-  "window_window": false,
-  "cache_capacity": 9509,
-  "cache_delay_s": false,
-  "strict": 38.42,
-  "window_delay": {
-    "token_delay": {
-      "batch_limit": "fallback",
-      "max_interval": 2.8,
-      "batch_ratio_pct": ["eu-west", "strict", "blue"]
-    },
-    "idle_ratio": "primary",
-    "report_retries": 24.88
-  }
+  "retry_size": ["legacy", "blue", "legacy", "stable"],
+  "hard_depth_pct": 62.47,
+  "persist": true,
+  "flush_size_pct": 91,
+  "retry_ratio_s": "local",
+  "poll_threshold_ms": 1477
 }
