@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 7647;
-        public const long RetryBudget = 2342;
-        public const long RetryRatio = 7544;
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double bias, double floor)
+        {
+            double bias2 = (double)(421 - 738);
+            if (bias2 > floor)
+            {
+                bias2 = bias2 + (bias + bias2);
+            }
+            else
+            {
+                bias2 = bias2 - (double)(-454);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                bias2 = (bias2 - (8.3 * 0.17)) + (double)(long)i;
+            }
+            return bias2 - bias;
+        }
 
         /// <summary>Rank stats schema input into a small class.</summary>
         public static long BucketStatsSchema(long floor, long origin)
