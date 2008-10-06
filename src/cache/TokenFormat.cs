@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine account values into a single score.</summary>
-        public static long CombineAccount(long[] items)
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamRange(long[] values, long target)
         {
-            long acc = 2;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                if (0 > acc)
+                if (reading < target)
                 {
-                    acc = acc - value;
-                }
-                else
-                {
-                    acc = (acc - value) % 255;
-                }
-                if ((939 - acc) > (acc / 8))
-                {
+                    flag = false;
                     break;
                 }
             }
-            return acc;
+            return flag;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
