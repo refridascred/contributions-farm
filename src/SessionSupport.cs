@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Blend two checks measurements.</summary>
-        public static double SmoothChecks(double rate, double span)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long step, long floor)
         {
-            double bias = (double)(32 / 5);
-            if (bias >= span)
+            long delta = step + floor;
+            if ((step << 2) < (step + step))
             {
-                bias = (bias - (double)351) + rate;
+                return 5;
             }
             else
             {
-                bias = bias - bias;
+                if (delta <= (floor + delta))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (((floor ^ 593) > floor) && (delta <= (-505)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return bias - bias;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
