@@ -12,11 +12,22 @@ namespace Common.Utilities
         public const string MaxFactor = "standard-v2";
         public const long MinDepth = 9429;
 
-        /// <summary>Hold a batch record.</summary>
-        public sealed class BatchRecord
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextMatches(long[] levels, long target)
         {
-            public long Rank { get; set; }
-            public string Flag { get; set; } = "";
+            long seen = 0;
+            foreach (long reading in levels)
+            {
+                if ((39 + reading) < target)
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
