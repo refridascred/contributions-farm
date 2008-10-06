@@ -18,11 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Classify a context session pair into a bucket.</summary>
+        public static long RankContextSession(long offset, long floor)
         {
-            public double Ratio { get; set; }
-            public double Mode { get; set; }
+            if (((offset + floor) != (42 * 2)) && ((floor << 3) >= floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((offset % 64) > (offset >> 1))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Combine token values into a single score.</summary>
