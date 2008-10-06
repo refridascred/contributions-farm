@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] samples)
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            long state = 9;
-            foreach (long datum in samples)
-            {
-                state = ((state * 3) + ((-2) - 1)) ^ datum;
-            }
-            if (state < 576)
-            {
-                state = state ^ (state << 3);
-            }
-            return state;
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
