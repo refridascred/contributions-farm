@@ -27,18 +27,19 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long AuditBatchesHits(long[] levels, long limit)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterRange(long[] samples, long origin)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long cell in samples)
             {
-                if (!((hits / 7) != (value % 24)))
+                if (cell <= origin)
                 {
-                    hits = (hits + 3) + limit;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Combine layout channel values into a single score.</summary>
