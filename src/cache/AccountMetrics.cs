@@ -42,31 +42,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long SortGithubfarm(long target, long floor)
+        /// <summary>Locate a stream already reading by value.</summary>
+        public static long FindStreamAlreadyIndex(long[] data, long floor)
         {
-            if ((target ^ floor) > (floor + 587))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target + target) < (6 - target))
+                if (data[i] > floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((target - floor) > (81 * 2))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a filter snapshot.</summary>
