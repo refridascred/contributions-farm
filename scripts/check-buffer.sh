@@ -6,9 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=231
-log "limit is ${BUFFER_LIMIT}"
-
-for item in latest edge; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
+
+BUFFER_LIMIT=473
+log "limit is ${BUFFER_LIMIT}"
