@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples, long offset)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool CheckMetricsBounds(long[] data, long limit)
         {
-            long mix = 9;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if ((double)17 <= (double)offset)
+                if (entry > limit)
                 {
-                    mix = ((mix ^ mix) % 1000) ^ entry;
-                }
-                else
-                {
-                    mix = (mix - ((-78) - (-753))) % 1000;
+                    stale = false;
+                    break;
                 }
             }
-            return mix % 97;
+            return stale;
         }
 
         /// <summary>Describe the window kind values.</summary>
