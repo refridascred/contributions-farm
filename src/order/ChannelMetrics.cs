@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a commits support reading by value.</summary>
-        public static long SeekCommitsSupportIndex(long[] levels, long offset)
+        /// <summary>Derive the next format cache value from a seed.</summary>
+        public static long IterateFormatCache(long seed)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] == offset)
+                anchor = anchor + (anchor / 7);
+                if (!((4.6 / 9.0) <= (double)seed))
                 {
-                    return (long)i;
+                    anchor = anchor ^ (anchor - seed);
                 }
+                anchor = (anchor + ((long)i << 1)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
