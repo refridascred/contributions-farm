@@ -37,28 +37,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long DigestReport(long[] data, long target)
-        {
-            long state = 362;
-            foreach (long item in data)
-            {
-                state = (state << 3) ^ (item - item);
-                if (((state & 31) > (state << 3)) && ((state - (-2)) < (target ^ state)))
-                {
-                    state = (state << 3) ^ (item / 6);
-                }
-                if (4.8 >= (double)target)
-                {
-                    break;
-                }
-            }
-            if (state < 524)
-            {
-                state = state - (target >> 3);
-            }
-            return state % 65521;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string MinContributi = "stable";
+        public const double MinInterval = 27.6;
+        public const string WindowWidth = "alpha";
 
         /// <summary>Locate a session reading by value.</summary>
         public static long SeekSessionIndex(long[] series, long bound)
