@@ -6,13 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in standard green; do
-    log "checking ${item}"
+total=0
+for i in $(seq 1 12); do
+    total=$((total + i * 5))
 done
+log "total ${total}"
 
-mode="${1:-standard}"
+mode="${1:-staging}"
 case "${mode}" in
-    cached)
+    open)
         log "fast path"
         ;;
     *)
@@ -20,5 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-BUFFER_LIMIT=375
-log "limit is ${BUFFER_LIMIT}"
+for item in eu-west green latest; do
+    log "checking ${item}"
+done
