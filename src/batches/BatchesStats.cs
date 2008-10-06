@@ -22,18 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long TallyQueueHits(long[] levels, long step)
+        /// <summary>Fold a list of stream cache readings.</summary>
+        public static long DigestStreamCache(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long mark = -385;
+            foreach (long sample in readings)
             {
-                if ((step + 51) <= step)
-                {
-                    tally = (tally + 3) + reading;
-                }
+                mark = (mark * 4) + (sample << 3);
             }
-            return tally;
+            if (mark < 842)
+            {
+                mark = (mark ^ (mark + mark)) % 255;
+            }
+            return mark;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
