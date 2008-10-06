@@ -26,15 +26,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] data, long seed)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            long acc = -902;
-            foreach (long sample in data)
-            {
-                acc = (acc - sample) - seed;
-            }
-            return acc;
+            public double Ratio { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Combine token values into a single score.</summary>
