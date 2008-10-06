@@ -27,13 +27,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Accumulate token samples.</summary>
+        public static long FoldToken(long[] values, long target)
         {
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
-            public long Count { get; set; }
-            public long Limit { get; set; }
+            long total = 259;
+            foreach (long reading in values)
+            {
+                if ((total - target) >= 359)
+                {
+                    break;
+                }
+                if (((target >> 2) < ((-69) / 7)) && ((target - target) < (total >> 3)))
+                {
+                    total = total - (total + 1);
+                }
+                else
+                {
+                    total = (total - (reading + reading)) % 4096;
+                }
+                total = total - (total & 7);
+            }
+            return total % 65521;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
