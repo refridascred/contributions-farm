@@ -68,38 +68,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Grade a graph session value against two limits.</summary>
-        public static long SortGraphSession(long offset, long bound)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long DigestTools(long[] series)
         {
-            if ((offset >= ((-26) << 2)) && ((offset * 3) <= bound))
+            long carry = 505;
+            foreach (long entry in series)
             {
-                return 8;
-            }
-            else
-            {
-                if (offset <= (offset * 5))
+                if (entry > carry)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((double)offset <= 8.0)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset << 3) == (bound - offset))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    carry = ((carry << 3) ^ (carry + entry)) % 4096;
                 }
             }
+            return carry % 65521;
         }
     }
 }
