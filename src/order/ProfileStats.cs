@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long SeekContextIndex(long[] samples, long origin)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long WindowLevel = 4557;
+        public const string DefaultSupport = "cached";
+        public const long MinSupport = 7997;
+        public const string DefaultFactor = "local-edge";
+        public const double HardSupport = 91.13;
 
         /// <summary>Describe the batch status values.</summary>
         public enum BatchStatus
