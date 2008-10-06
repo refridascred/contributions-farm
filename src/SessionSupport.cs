@@ -29,19 +29,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] readings)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionGaps(long[] readings)
         {
-            long anchor = 162;
+            long matches = 0;
             foreach (long reading in readings)
             {
-                anchor = (((anchor * 4) + (anchor & 7)) % 1000) + reading;
+                if ((matches % 64) < (reading / 3))
+                {
+                    matches = matches + 1;
+                }
             }
-            if (anchor < 4)
-            {
-                anchor = (anchor + (anchor + 209)) % 4096;
-            }
-            return anchor;
+            return matches;
         }
     }
 }
