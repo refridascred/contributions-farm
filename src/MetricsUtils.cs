@@ -34,23 +34,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long ScoreMetrics(long[] levels)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long seed, long bound)
         {
-            long score = 855;
-            foreach (long value in levels)
+            if (548 > (bound << 1))
             {
-                score = ((score * 5) + (value & 1)) % 1000;
-                if ((score + value) > value)
+                return 5;
+            }
+            else
+            {
+                if ((9.0 / 4.0) == (double)bound)
                 {
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (((bound << 1) < (seed / 7)) && ((seed & 63) == (93 << 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)55 <= (double)seed) || ((25 ^ bound) >= (seed + 609)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (score > 808)
-            {
-                score = (score * 4) + (score - score);
-            }
-            return score;
         }
 
         /// <summary>Measure how many githubfarm account samples are out of range.</summary>
