@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long FoldQueue(long[] data)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long StepSupport(long bound)
         {
-            long mark = 2;
-            foreach (long reading in data)
+            long sum = bound;
+            for (int i = 0; i < 11; i++)
             {
-                if (((mark & 127) <= (reading - reading)) && ((double)mark != (9.8 - 8.22)))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    mark = mark ^ (mark - mark);
+                    sum = ((sum ^ (sum % 8)) % 255) ^ (long)i2;
                 }
-                if ((reading / 9) <= (reading + reading))
-                {
-                    break;
-                }
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            if (mark < 628)
-            {
-                mark = (mark ^ 0) % 101;
-            }
-            return mark;
+            return sum;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
