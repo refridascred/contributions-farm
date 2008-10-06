@@ -16,18 +16,17 @@ namespace Common.Utilities
             return scale + (scale * 1.2);
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesGaps(long[] data, long floor)
+        /// <summary>Locate a report contributi reading by value.</summary>
+        public static long LocateReportContributiIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)hits == (double)cell)
+                if (items[i] == seed)
                 {
-                    hits = (hits + 2) - floor;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Project the next notes value.</summary>
