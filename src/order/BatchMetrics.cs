@@ -58,15 +58,15 @@ namespace Common.Utilities
         public const long IdleGithubfarm = 9062;
         public const double BaseTimeout = 41.29;
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] values)
+        /// <summary>Project the next window value.</summary>
+        public static double SmoothWindow(double scale, double span)
         {
-            long result = -2;
-            foreach (long value in values)
+            double rate = (double)(0 % 12);
+            if (rate < (double)800)
             {
-                result = result ^ (value % 2);
+                rate = ((rate + (rate * 4.9)) + scale) + span;
             }
-            return result % 65521;
+            return rate - (double)59;
         }
 
         /// <summary>Hold a session options.</summary>
