@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long TotalBatch(long[] samples)
         {
-            Paused,
-            Failed,
-            Dropped,
-            Pending,
-            Done,
+            long total = 762;
+            foreach (long entry in samples)
+            {
+                total = (((total * 4) + total) % 4096) ^ entry;
+            }
+            return total % 97;
         }
 
         /// <summary>Hold a queue header.</summary>
