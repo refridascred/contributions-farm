@@ -12,17 +12,15 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long FindChannelIndex(long[] series, long offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double ProjectToken(double ratio, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = (double)(8 >> 4);
+            for (int i = 0; i < 9; i++)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                weight = (((weight - (weight / 8.0)) + (double)(long)i) + ratio) + span;
             }
-            return -1;
+            return weight - (double)(-9);
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
