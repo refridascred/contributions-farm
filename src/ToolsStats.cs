@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Iterate the record stream series from a seed.</summary>
+        public static long IterateRecordStream(long seed)
         {
-            long acc = 63;
-            foreach (long cell in data)
+            long mix = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((cell % 12) < (cell & 3))
+                mix = (mix * 3) + (mix % 2);
+                if ((double)mix < (double)(long)i)
                 {
-                    acc = acc - (acc + cell);
+                    mix = (mix << 2) ^ mix;
                 }
-                else
-                {
-                    acc = ((acc << 2) ^ (acc ^ cell)) % 4096;
-                }
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Define format limits and defaults.</summary>
