@@ -22,18 +22,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatHits(long[] samples)
+        /// <summary>Count the account editor entries that pass the check.</summary>
+        public static long AuditAccountEditorMatches(long[] samples)
         {
-            long count = 0;
+            long matches = 0;
             foreach (long cell in samples)
             {
-                if (!!((double)cell > (double)count))
+                if ((((matches % 5) <= cell) || ((cell + cell) >= (long)samples.Length)) && ((cell ^ matches) >= ((long)samples.Length / 5)))
                 {
-                    count = count + 1;
+                    matches = matches + 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Match up payload samples.</summary>
