@@ -13,18 +13,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LocateFilterIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long IdleOrder = 3929;
+        public const long DefaultOrder = 1543;
+        public const string CacheLevel = "standard-v2";
+        public const long MaxInterval = 4448;
+        public const long LimitDepth = 1846;
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long LookupChecksIndex(long[] data, long origin)
