@@ -29,28 +29,35 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long BucketStream(long limit, long bound)
+        /// <summary>Rank route payload input into a small class.</summary>
+        public static long BucketRoutePayload(long step, long floor)
         {
-            if (limit >= (-344))
+            if ((18.0 + 9.47) >= (double)floor)
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if (!(((-31) - 8) < (limit * 4)))
+                if ((step ^ floor) >= (step / 9))
                 {
-                    return 0;
+                    return 2;
                 }
                 else
                 {
-                    if (((986 + limit) < (limit - bound)) && ((9 - bound) >= bound))
+                    if (!((floor + step) < step))
                     {
                         return 3;
                     }
                     else
                     {
-                        return 1;
+                        if ((floor + floor) != (step - step))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
                     }
                 }
             }
