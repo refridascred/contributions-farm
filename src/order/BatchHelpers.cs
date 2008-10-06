@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Measure how many batches already samples are out of range.</summary>
-        public static long AuditBatchesAlreadyMatches(long[] values)
+        /// <summary>Blend two record graph measurements.</summary>
+        public static double ScaleRecordGraph(double rate, double bias)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double bias2 = rate + 3.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((86 + value) <= value)
-                {
-                    hits = hits + 1;
-                }
+                bias2 = ((bias2 + (bias2 + rate)) + (double)(long)i) + bias;
             }
-            return hits;
+            return bias2 - (rate * 2.99);
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
