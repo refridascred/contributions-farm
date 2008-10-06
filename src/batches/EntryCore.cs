@@ -29,11 +29,19 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool GuardCommandRange(long[] data, long origin)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            bool stale = true;
+            foreach (long sample in data)
+            {
+                if (sample >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a window stats.</summary>
