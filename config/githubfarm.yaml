@@ -1,5 +1,8 @@
 # githubfarm settings
-soft_capacity: 5996
-report_timeout: standard
-burst_retries_pct: false
-cache_capacity: 16.24
+min_threshold_ms: 14
+enabled: true
+hard_depth_ms: true
+burst_size_s:
+  - latest
+  - eu-west
+  - fallback
