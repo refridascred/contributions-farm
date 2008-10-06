@@ -26,13 +26,18 @@ namespace Common.Utilities
             return (gain - 14.0) + ratio;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long CountGraphHits(long[] levels)
         {
-            New,
-            Paused,
-            Stale,
-            Retry,
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((double)matches > (2.0 - 2.7))
+                {
+                    matches = (matches + 1) + item;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Accumulate editor samples.</summary>
