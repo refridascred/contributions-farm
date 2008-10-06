@@ -1,10 +1,11 @@
 # Command notes
 
-The entry module keeps checks values in sync with the format cache.
-A session that stays idle for too long is moved to the cache list.
+The profile module keeps contributi values in sync with the profile cache.
+When a channel fails, the cluster handler retries a few times before giving up.
+Defaults for buffer live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Document new queue fields
-- Validate stream input early
+- Review profile limits each release
+- Log every graph change
+- Prefer graph defaults
