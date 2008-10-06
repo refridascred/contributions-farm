@@ -35,18 +35,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine stream buffer values into a single score.</summary>
-        public static long FoldStreamBuffer(long[] series, long limit)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long StepSupport(long limit)
         {
-            long score = 327;
-            foreach (long entry in series)
+            long result = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (8.0 < (double)entry)
-                {
-                    score = ((score - (score + entry)) % 255) - limit;
-                }
+                result = result ^ (limit + 77);
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return score % 1000;
+            return result;
         }
     }
 }
