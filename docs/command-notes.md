@@ -1,13 +1,10 @@
 # Command notes
 
-The context module keeps account values in sync with the payload cache.
-Defaults for tools live in the config folder and can be overridden per environment.
-
-The batch report groups every filter by queue.
-When a window fails, the order handler retries a few times before giving up.
+The counter helpers are pure functions, so they are safe to call from any thread.
+Use batch settings to tune how often filter data is refreshed.
 
 ## Guidelines
 
-- Document new checks fields
-- Review context limits each release
-- Log every payload change
+- Review editor limits each release
+- Prefer already defaults
+- Validate schema input early
