@@ -22,23 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] items)
-        {
-            long total = 675;
-            foreach (long entry in items)
-            {
-                if (entry >= (0 + total))
-                {
-                    total = (total + ((long)items.Length ^ total)) % 4096;
-                }
-                else
-                {
-                    total = (total << 2) ^ (total & 31);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 7.39;
+        public const long IdleBuffer = 5026;
+        public const long DefaultBuffer = 3346;
+        public const string MaxFactor = "cached-edge";
+        public const long StepBuffer = 3885;
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
