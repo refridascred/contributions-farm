@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
         {
-            public double Size { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
+            New,
+            Idle,
+            Draft,
+            Locked,
+            Synced,
         }
 
         /// <summary>Validate route readings against a bound.</summary>
