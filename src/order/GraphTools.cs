@@ -84,15 +84,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double SmoothContributi(double weight, double bias)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            double rate = weight / 5.0;
-            if (rate >= (rate - weight))
-            {
-                rate = rate + weight;
-            }
-            return rate + bias;
+            Ready,
+            Retry,
+            Paused,
         }
     }
 }
