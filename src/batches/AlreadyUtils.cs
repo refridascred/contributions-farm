@@ -38,33 +38,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long BucketAccount(long step, long bound)
-        {
-            long lane = step - bound;
-            if ((bound > 49) && (lane < (step >> 4)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (((step >> 4) <= lane) || ((double)lane <= (7.9 + 6.78)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((step & 255) <= lane)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string MinEditor = "strict-edge";
+        public const string HardInterval = "strict-1";
+        public const string HardSpan = "standard-1";
+        public const long MinInterval = 2469;
+        public const long MaxEditor = 3322;
 
         /// <summary>Accumulate editor samples.</summary>
         public static long CombineEditor(long[] data)
