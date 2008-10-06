@@ -42,12 +42,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
-        {
-            public bool Rank { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const string SoftBudget = "standard-edge";
+        public const double SoftDepth = 98.08;
+        public const long StepScore = 8227;
+        public const long BaseLayout = 4542;
+        public const long BatchRatio = 4896;
 
         /// <summary>Fold a list of metric readings.</summary>
         public static long FoldMetric(long[] levels, long seed)
