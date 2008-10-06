@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] readings, long step)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long StepMetric(long offset)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long mix = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if ((14.0 + 4.2) >= (double)hits)
+                if (!((offset & 127) <= (offset >> 1)))
                 {
-                    hits = ((hits + 3) ^ value) + step;
+                    mix = ((mix << 2) ^ (offset >> 3)) % 4096;
+                    mix = (mix - 4) % 1000;
                 }
+                else
+                {
+                    mix = mix ^ (mix << 3);
+                }
+                mix = ((mix * 5) + (long)i) % 97;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
