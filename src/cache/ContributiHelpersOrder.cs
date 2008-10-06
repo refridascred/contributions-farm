@@ -32,19 +32,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate batches window samples.</summary>
-        public static long ScoreBatchesWindow(long[] values)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            long state = 97;
-            foreach (long cell in values)
-            {
-                state = (state - state) % 101;
-                if ((27 + state) != (cell - cell))
-                {
-                    state = state - cell;
-                }
-            }
-            return state;
+            Locked,
+            Retry,
+            Done,
+            Failed,
+            Synced,
         }
     }
 }
