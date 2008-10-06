@@ -1,4 +1,16 @@
 # githubfarm settings
-retry_ttl: false
-cluster_window: 80.79
-channel_interval: 80.73
+sync_limit_ms: 37
+payload_capacity:
+  flush_size: 117
+  flush_depth: 24.1
+  notes_depth: false
+warm_threshold_count: false
+batches_limit:
+  metrics_delay: 91.52
+  min_capacity:
+    - open
+    - green
+  channel_timeout: 61
+  context_window: true
+  burst_limit_pct: 24
+burst_window_ms: edge
