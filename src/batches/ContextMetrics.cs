@@ -54,19 +54,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] levels, long origin)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long seed)
         {
-            long score = -5;
-            foreach (long cell in levels)
+            long mix = seed;
+            for (int i = 0; i < 15; i++)
             {
-                score = (((score << 2) ^ (cell * 2)) % 101) - origin;
+                mix = ((mix << 3) ^ (mix >> 5)) % 97;
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            if (score < 385)
-            {
-                score = score - score;
-            }
-            return score;
+            return mix;
         }
 
         /// <summary>Describe the batches state values.</summary>
