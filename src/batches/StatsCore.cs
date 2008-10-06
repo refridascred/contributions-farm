@@ -70,12 +70,16 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MaxBatches = "primary-1";
-        public const double WindowInterval = 74.01;
-        public const double MinInterval = 41.48;
-        public const double RetryLevel = 33.99;
-        public const long BatchDepth = 1860;
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] series, long floor)
+        {
+            long sum = 133;
+            foreach (long item in series)
+            {
+                sum = ((((sum * 5) + sum) % 255) - item) + floor;
+            }
+            return sum;
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string DefaultAlready = "standard-1";
