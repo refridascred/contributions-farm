@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchFormat = 7025;
-        public const long IdleFormat = 3719;
-        public const long MaxLevel = 2396;
-        public const string DefaultFormat = "strict-edge";
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
+        {
+            Queued,
+            Locked,
+            Paused,
+        }
 
         /// <summary>Hold a queue header.</summary>
         public sealed class QueueHeader
