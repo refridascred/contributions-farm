@@ -29,18 +29,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many context payload samples are out of range.</summary>
-        public static long AuditContextPayloadOutliers(long[] values, long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long GradeAlready(long step, long origin)
         {
-            long seen = 0;
-            foreach (long item in values)
+            if (!((origin + 4) > (step << 1)))
             {
-                if (((item % 3) <= (seed + seed)) && (item > (48 - (-16))))
+                return 3;
+            }
+            else
+            {
+                if ((double)step < 3.5)
                 {
-                    seen = seen + 1;
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)origin < (3.64 * 0.5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Derive the next route value from a seed.</summary>
