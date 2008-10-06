@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long IterateEditor(long step)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long acc = step;
-            for (int i = 0; i < 23; i++)
-            {
-                acc = (acc ^ (step * 5)) % 101;
-                acc = ((acc * 2) + (long)i) % 101;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
