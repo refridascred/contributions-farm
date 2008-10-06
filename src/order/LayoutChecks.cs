@@ -33,19 +33,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueBounds(long[] levels, long step)
+        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
+        public static bool GuardSupportGithubfarmBounds(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            bool valid = true;
+            foreach (long cell in readings)
             {
-                if (cell >= step)
+                if (cell <= limit)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Accumulate counter samples.</summary>
