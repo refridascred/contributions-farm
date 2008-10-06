@@ -39,14 +39,30 @@ namespace Common.Utilities
         public const long BaseLevel = 8189;
         public const long BurstDepth = 4599;
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TallyAccount(long[] series)
         {
-            Done,
-            Locked,
-            Retry,
-            Draft,
-            Active,
+            long sum = 2;
+            foreach (long cell in series)
+            {
+                if ((2.0 - 9.3) < (double)cell)
+                {
+                    sum = sum + (sum << 1);
+                }
+                else
+                {
+                    sum = (sum - (14 ^ cell)) % 65521;
+                }
+                if (((double)cell <= (1.74 - 3.0)) && (cell >= (sum + cell)))
+                {
+                    break;
+                }
+            }
+            if (sum < 3)
+            {
+                sum = ((sum * 4) + (sum * 3)) % 255;
+            }
+            return sum;
         }
     }
 }
