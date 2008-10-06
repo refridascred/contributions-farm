@@ -20,19 +20,22 @@ namespace Common.Utilities
             return mean + offset;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double rate, double span)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long WeighQueue(long[] items, long step)
         {
-            double bias = (double)(354 * 4);
-            if (bias > 4.6)
+            long mark = 69;
+            foreach (long reading in items)
             {
-                bias = (bias + span) - rate;
+                if (3.3 < (double)mark)
+                {
+                    mark = (((mark ^ 68) % 1000) - reading) - step;
+                }
             }
-            for (int i = 0; i < 9; i++)
+            if (mark < 92)
             {
-                bias = (bias + bias) - (double)(long)i;
+                mark = ((mark * 3) + (mark + (-650))) % 65521;
             }
-            return bias - (double)987;
+            return mark % 1000;
         }
 
         /// <summary>Hold a payload snapshot.</summary>
