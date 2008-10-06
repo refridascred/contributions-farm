@@ -1,6 +1,6 @@
 {
-  "min_ttl": 57.04,
-  "default_depth": "green",
-  "strict": "green",
-  "sync_interval_ms": 90.85
+  "idle_window_pct": 59.19,
+  "strict": 5804,
+  "min_timeout": [332, 163, 447],
+  "audit": 1.06
 }
