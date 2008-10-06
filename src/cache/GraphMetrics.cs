@@ -30,11 +30,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long IterateToken(long bound)
         {
-            public long Ratio { get; set; }
-            public long Region { get; set; }
+            long state = bound;
+            for (int i = 0; i < 16; i++)
+            {
+                if ((bound << 3) >= state)
+                {
+                    state = state + (bound + bound);
+                }
+                state = (state ^ state) % 4096;
+                state = ((state * 2) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
