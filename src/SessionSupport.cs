@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many route samples are out of range.</summary>
-        public static long MeasureRouteMatches(long[] readings, long step)
+        /// <summary>Locate a farm filter reading by value.</summary>
+        public static long LookupFarmFilterIndex(long[] data, long limit)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((matches - step) <= 84)
+                if (data[i] == limit)
                 {
-                    matches = (matches + 1) + sample;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Audit report counter readings against a rule.</summary>
