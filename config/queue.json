@@ -1,6 +1,10 @@
 {
-  "editor_interval": 60,
-  "base_limit_ms": "green",
-  "default_timeout_count": 78.6,
-  "farm_depth": "latest"
+  "soft_threshold": "eu-west",
+  "retry_depth_count": "strict",
+  "sync_capacity_s": {
+    "warm_delay": ["latest", "standard", "stable"],
+    "persist": true,
+    "command_limit": [322, 217]
+  },
+  "default_capacity_count": [362, 52]
 }
