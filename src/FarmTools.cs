@@ -12,21 +12,14 @@ namespace Common.Utilities
         public const long CacheCount = 2124;
         public const long BurstProfile = 7867;
 
-        /// <summary>Match up tools samples.</summary>
-        public static long CompareToolsCount(long[] readings)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Closed,
+            Pending,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
