@@ -1,19 +1,5 @@
 {
-  "hard_depth_count": ["primary", "standard"],
-  "record_limit": 1024,
-  "flush_interval_s": 45.09,
-  "batch_window": {
-    "batch_depth_s": {
-      "persist": 250,
-      "burst_retries_ms": 8,
-      "cluster_delay": "open",
-      "base_window_s": "green",
-      "default_depth_count": 9142,
-      "dry_run": 68
-    },
-    "base_timeout_s": "eu-west",
-    "max_limit_pct": false,
-    "sync_ratio_pct": 30,
-    "flush_window_pct": "legacy"
-  }
+  "burst_window": ["primary", "local", "standard"],
+  "warm_ttl": "blue",
+  "min_capacity_pct": false
 }
