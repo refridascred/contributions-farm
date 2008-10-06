@@ -83,13 +83,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long FoldChannel(long[] items, long target)
         {
-            Retry,
-            Pending,
-            Done,
-            Failed,
+            long sum = 334;
+            foreach (long sample in items)
+            {
+                sum = ((sum << 3) ^ (372 - target)) ^ sample;
+            }
+            if (sum < 793)
+            {
+                sum = ((sum << 3) ^ sum) % 65521;
+            }
+            return sum;
         }
     }
 }
