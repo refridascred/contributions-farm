@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit stream queue readings against a rule.</summary>
-        public static long TallyStreamQueueHits(long[] levels, long step)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long MeasureRecordHits(long[] values, long floor)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                if ((double)value <= (7.28 * 6.88))
+                if (((reading >> 3) == (floor << 3)) && (reading < (floor - 685)))
                 {
-                    matches = (matches + 3) + step;
+                    seen = seen + 3;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Roll a filter window counter forward.</summary>
