@@ -51,11 +51,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double SmoothSession(double ratio, double offset)
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long SeekReportIndex(long[] series, long target)
         {
-            double ratio2 = offset;
-            return ratio2 + (4.7 - ratio);
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
