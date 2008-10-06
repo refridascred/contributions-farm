@@ -12,20 +12,21 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long StepOrder(long bound)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((bound << 3) < (92 % 24)) || ((mix >> 3) != ((long)i / 3)))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mix = ((mix * 5) + bound) % 255;
+                    if ((values[i] + values[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = (mix ^ mix) % 4096;
-                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Accumulate stream samples.</summary>
