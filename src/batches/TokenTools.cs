@@ -31,16 +31,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long target)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] readings, long target)
         {
-            long total = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = ((total << 2) ^ (-962)) % 255;
-                total = ((total * 3) + (long)i) % 97;
+                if (readings[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
     }
 }
