@@ -1,20 +1,24 @@
 # support settings
-checks_timeout:
-  context_ratio: legacy
-  cache_depth: fallback
-  dry_run: 6819
-  metrics_delay: 60
-  cache_ratio_count: 45.6
-  cache_ttl_pct: 18.51
-warm_interval_count: false
-poll_depth_s: stable
-stream_size:
-  - 142
-  - 366
-hard_interval_ms:
-  batches_limit:
-    - fallback
+enabled:
+  warm_threshold_s:
+    - edge
+    - green
+  flush_window_count:
     - staging
     - latest
-  batch_window_s: stable
-  profile_ttl: primary
+    - fallback
+  compress: 52.03
+  record_timeout: false
+  poll_window:
+    - 283
+    - 361
+  retry_size_pct:
+    burst_threshold: open
+    min_timeout_count: 27.49
+    dry_run: open
+    command_window: legacy
+    audit: 250
+    window_delay: 8.58
+token_threshold: 32.31
+min_threshold_s: 9529
+soft_delay_s: 1024
