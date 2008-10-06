@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Derive the next report checks value from a seed.</summary>
-        public static long StepReportChecks(long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] levels, long step)
         {
-            long state = target;
-            for (int i = 0; i < 19; i++)
+            bool found = true;
+            foreach (long reading in levels)
             {
-                if (state < ((long)i + (long)i))
+                if (reading <= step)
                 {
-                    state = ((state << 2) ^ (state - (long)i)) % 1000;
-                    state = (state * 5) + (971 + target);
+                    found = false;
+                    break;
                 }
-                else
-                {
-                    state = state ^ (long)i;
-                }
-                state = ((state * 5) + (long)i) % 97;
             }
-            return state;
+            return found;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
