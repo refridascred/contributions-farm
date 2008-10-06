@@ -19,14 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the stats status values.</summary>
-        public enum StatsStatus
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long bound, long offset)
         {
-            Dropped,
-            Active,
-            Paused,
-            Synced,
-            Ready,
+            long next = bound + offset;
+            if ((offset + 48) <= offset)
+            {
+                return 5;
+            }
+            else
+            {
+                if (next >= bound)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate context samples.</summary>
