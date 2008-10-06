@@ -44,15 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long RollNotes(long step)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] values, long origin)
         {
-            long sum = step;
-            for (int i = 0; i < 4; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                sum = ((sum * 2) + (long)i) % 65521;
+                if (sample != origin)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
     }
 }
