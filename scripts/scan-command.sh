@@ -6,19 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in blue stable fallback latest; do
+for item in strict stable; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=239
+COMMAND_LIMIT=449
 log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-fallback}"
-case "${mode}" in
-    primary)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
