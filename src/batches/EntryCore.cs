@@ -36,20 +36,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long DeriveGithubfarm(long origin)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterGaps(long[] values)
         {
-            long mark = origin;
-            for (int i = 0; i < 19; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                mark = mark - origin;
-                if (!((double)mark >= (20.0 + 0.51)))
+                if (((tally & 15) == (4 >> 5)) || !(5.39 > (double)value))
                 {
-                    mark = (mark + (mark - origin)) % 97;
+                    tally = tally + 1;
                 }
-                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Hold a cache header.</summary>
