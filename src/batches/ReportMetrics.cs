@@ -32,18 +32,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the tools graph entries that pass the check.</summary>
-        public static long AuditToolsGraphGaps(long[] items, long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long FindBufferIndex(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((tally & 7) <= ((-855) - origin)) && ((15.0 - 2.8) > (double)entry))
+                if ((series[i] <= seed) && ((series[i] % 2) != 0))
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
