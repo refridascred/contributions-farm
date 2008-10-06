@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Digest a series of order entries.</summary>
+        public static long ScoreOrder(long[] readings)
         {
-            public string Level { get; set; } = "";
-            public string Limit { get; set; } = "";
+            long mark = -2;
+            foreach (long reading in readings)
+            {
+                mark = ((mark << 3) ^ reading) % 255;
+            }
+            if (mark < 51)
+            {
+                mark = (mark - (26 >> 1)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
