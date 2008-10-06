@@ -19,19 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportLimits(long[] series, long step)
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long SeekRouteIndex(long[] readings, long floor)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (entry < step)
+                if ((readings[i] < floor) && ((readings[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
