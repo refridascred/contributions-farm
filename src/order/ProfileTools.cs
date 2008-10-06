@@ -36,22 +36,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up githubfarm batches samples.</summary>
-        public static long MatchGithubfarmBatchesCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitProfile = 2929;
+        public const long StepDepth = 9431;
+        public const string StepProfile = "legacy-1";
 
         /// <summary>Look up the position of a notes filter sample.</summary>
         public static long SeekNotesFilterIndex(long[] samples, long offset)
