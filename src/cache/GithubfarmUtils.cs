@@ -53,18 +53,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long TallyTokenGaps(long[] data, long offset)
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((offset / 4) >= (5 << 1))
-                {
-                    count = (count + 1) + datum;
-                }
-            }
-            return count;
+            Ready,
+            Stale,
+            Retry,
         }
     }
 }
