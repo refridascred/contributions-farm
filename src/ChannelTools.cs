@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const double RetryReport = 1.42;
-        public const string BatchInterval = "standard";
-        public const long WindowReport = 8534;
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long CountSchemaOutliers(long[] readings)
+        {
+            long hits = 0;
+            foreach (long datum in readings)
+            {
+                if ((((14.0 + 8.01) != (double)datum) || (datum >= (datum - 927))) && ((datum >= (553 / 7)) && ((double)datum <= (3.7 / 7.0))))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
         public static long WeighGithubfarm(long[] samples)
