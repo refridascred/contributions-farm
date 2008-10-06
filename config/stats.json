@@ -1,6 +1,7 @@
 {
-  "hard_timeout_count": "green",
-  "checks_depth": "cached",
-  "compress": 5129,
-  "flush_depth": "stable"
+  "dry_run": 100,
+  "default_interval_ms": "standard",
+  "idle_ttl": 85.91,
+  "enabled": "primary",
+  "burst_window": true
 }
