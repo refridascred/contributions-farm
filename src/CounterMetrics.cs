@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long bound)
+        /// <summary>Adjust a batch queue reading.</summary>
+        public static double ProjectBatchQueue(double gain, double span)
         {
-            long acc = bound;
-            for (int i = 0; i < 19; i++)
+            double gain2 = span;
+            if (gain2 > (gain2 * 9.13))
             {
-                long count = (long)i;
-                acc = (acc ^ (count + count)) % 1000;
-                if (!((bound % 7) >= (acc + acc)))
-                {
-                    acc = acc - ((long)i & 1);
-                    acc = ((acc * 5) + (acc % 12)) % 97;
-                }
-                acc = ((acc * 5) + (long)i) % 65521;
+                gain2 = (gain2 + (double)312) + gain;
             }
-            return acc;
+            return gain2 - span;
         }
 
         /// <summary>Describe the entry kind values.</summary>
