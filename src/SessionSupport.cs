@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report counter readings against a rule.</summary>
-        public static long TallyReportCounterGaps(long[] values, long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (((double)value <= (double)2) && ((matches / 5) > (value << 3)))
-                {
-                    matches = (matches + 1) + seed;
-                }
-            }
-            return matches;
+            New,
+            Idle,
+            Active,
+            Draft,
         }
 
         /// <summary>Hold a schema info.</summary>
