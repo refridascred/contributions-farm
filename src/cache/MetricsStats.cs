@@ -23,14 +23,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Pending,
             Failed,
-            Locked,
-            Queued,
-            Synced,
+            Paused,
+            Stale,
         }
 
         /// <summary>Count the already payload entries that pass the check.</summary>
