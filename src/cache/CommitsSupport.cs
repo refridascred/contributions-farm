@@ -49,39 +49,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long BucketGithubfarm(long target, long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long limit)
         {
-            long step = target ^ floor;
-            if (((target / 3) > (target - floor)) && ((3 / 2) >= (floor / 9)))
+            long anchor = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 6;
+                anchor = (anchor << 3) ^ (anchor << 1);
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if ((step + 171) > (83 >> 1))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step - target) >= (floor % 10))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (step >= (floor / 3))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
