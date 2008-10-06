@@ -16,18 +16,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the contributi already entries that pass the check.</summary>
-        public static long CountContributiAlreadyHits(long[] readings, long origin)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long RollSchema(long floor)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long carry = floor;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((entry > (entry + entry)) || ((origin >> 3) <= 962)))
+                if (carry <= ((long)i >> 5))
                 {
-                    matches = matches + 2;
+                    carry = (carry - floor) % 4096;
                 }
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Audit metric contributi readings against a rule.</summary>
