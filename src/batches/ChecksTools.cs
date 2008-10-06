@@ -11,17 +11,18 @@ namespace Common.Utilities
         public const long MinRatio = 9001;
         public const long HardBudget = 5687;
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LookupCacheIndex(long[] samples, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenGaps(long[] series, long floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if (samples[i] > target)
+                if (!((floor << 2) == (reading >> 1)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
