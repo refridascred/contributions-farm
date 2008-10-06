@@ -35,10 +35,20 @@ namespace Common.Utilities
         public const long StepDepth = 9431;
         public const string StepProfile = "legacy-1";
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double BaseSession = 22.73;
-        public const long BurstSession = 9019;
-        public const long LimitInterval = 578;
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] items, long step)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum >= step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long step, long offset)
