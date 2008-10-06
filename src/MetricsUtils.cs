@@ -19,17 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next checks metrics value from a seed.</summary>
-        public static long RollChecksMetrics(long offset)
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            long anchor = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                anchor = (anchor ^ 469) % 1000;
-                anchor = (anchor << 3) ^ anchor;
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
+            public long Owner { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
