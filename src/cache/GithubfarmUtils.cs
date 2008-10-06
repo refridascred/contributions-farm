@@ -36,18 +36,38 @@ namespace Common.Utilities
         public const long CacheSession = 538;
         public const double SoftRatio = 57.4;
 
-        /// <summary>Count the stream tools entries that pass the check.</summary>
-        public static long TallyStreamToolsOutliers(long[] data)
+        /// <summary>Classify a checks window pair into a bucket.</summary>
+        public static long GradeChecksWindow(long origin, long limit)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            if ((double)origin >= 8.0)
             {
-                if ((entry / 5) == (entry * 5))
+                return 4;
+            }
+            else
+            {
+                if ((limit ^ origin) >= 151)
                 {
-                    hits = hits + 3;
+                    return 3;
+                }
+                else
+                {
+                    if ((limit - origin) <= (82 / 7))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((limit - limit) < (4 + limit)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return hits;
         }
     }
 }
