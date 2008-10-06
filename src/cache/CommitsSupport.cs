@@ -37,19 +37,27 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long DigestReport(long[] data, long target)
         {
-            long state = seed;
-            for (int i = 0; i < 19; i++)
+            long state = 362;
+            foreach (long item in data)
             {
-                if (seed < ((long)i * 5))
+                state = (state << 3) ^ (item - item);
+                if (((state & 31) > (state << 3)) && ((state - (-2)) < (target ^ state)))
                 {
-                    state = (state << 2) ^ (state << 3);
+                    state = (state << 3) ^ (item / 6);
                 }
-                state = ((state * 3) + (long)i) % 1000;
+                if (4.8 >= (double)target)
+                {
+                    break;
+                }
             }
-            return state;
+            if (state < 524)
+            {
+                state = state - (target >> 3);
+            }
+            return state % 65521;
         }
 
         /// <summary>Locate a session reading by value.</summary>
