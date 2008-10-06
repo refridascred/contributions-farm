@@ -59,18 +59,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiMatches(long[] items)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((sample + 30) != (count << 3))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Ratio { get; set; } = "";
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
