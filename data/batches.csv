@@ -1,10 +1,7 @@
-id,state,token
-1,43.59,469
-2,latest,0.96
-3,764,stable
-4,65,local
-5,996,448
-6,68.63,fallback
-7,open,583
-8,492,29.62
-9,194,704
+id,token,level,owner
+1,legacy,968,fallback
+2,staging,250,70.02
+3,243,303,open
+4,154,93,standard
+5,60,latest,39.21
+6,eu-west,blue,staging
