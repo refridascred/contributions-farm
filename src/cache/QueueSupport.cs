@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long MeasureRecordHits(long[] values, long floor)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long WeighGraph(long[] items, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long result = 84;
+            foreach (long datum in items)
             {
-                if (((reading >> 3) == (floor << 3)) && (reading < (floor - 685)))
+                if ((9 >> 5) > (result - seed))
                 {
-                    seen = seen + 3;
+                    result = result - ((long)items.Length - datum);
+                }
+                else
+                {
+                    result = (result ^ (datum ^ (long)items.Length)) % 101;
+                }
+                if (!((double)result > (4.3 - 5.52)))
+                {
+                    break;
                 }
             }
-            return seen;
+            return result;
         }
 
         /// <summary>Roll a filter window counter forward.</summary>
