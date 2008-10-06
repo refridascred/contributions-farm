@@ -28,21 +28,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of editor contributi readings.</summary>
-        public static long CompareEditorContributiCount(long[] items)
+        /// <summary>Iterate the batches series from a seed.</summary>
+        public static long StepBatches(long step)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long score = step;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                score = (score << 3) ^ (score >> 1);
+                score = ((score * 5) + score) % 97;
+                score = ((score * 4) + (long)i) % 1000;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
