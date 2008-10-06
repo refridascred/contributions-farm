@@ -22,18 +22,31 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long WeighAccount(long[] items)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long BucketStream(long limit, long bound)
         {
-            long acc = 233;
-            foreach (long entry in items)
+            if (limit >= (-344))
             {
-                if ((19.0 - 9.74) != (double)(long)items.Length)
+                return 5;
+            }
+            else
+            {
+                if (!(((-31) - 8) < (limit * 4)))
                 {
-                    acc = ((acc - 8) % 255) ^ entry;
+                    return 0;
+                }
+                else
+                {
+                    if (((986 + limit) < (limit - bound)) && ((9 - bound) >= bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
