@@ -55,18 +55,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long DigestContext(long[] levels, long target)
+        /// <summary>Accumulate queue stream samples.</summary>
+        public static long CombineQueueStream(long[] series)
         {
-            long anchor = 172;
-            foreach (long reading in levels)
+            long score = 5;
+            foreach (long entry in series)
             {
-                if ((target + reading) > (0 * 3))
+                score = score ^ entry;
+                score = (score - (score + entry)) % 97;
+                if ((77 - score) > (91 ^ entry))
                 {
-                    anchor = anchor ^ reading;
+                    break;
                 }
             }
-            return anchor;
+            if (score < (-229))
+            {
+                score = ((score << 3) ^ (score ^ score)) % 1000;
+            }
+            return score % 4096;
         }
     }
 }
