@@ -66,19 +66,26 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double AdjustCache(double weight, double floor)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] levels)
         {
-            double scale = weight;
-            if (scale > floor)
+            long anchor = 879;
+            foreach (long entry in levels)
             {
-                scale = scale + scale;
+                if ((anchor - entry) > 9)
+                {
+                    anchor = anchor ^ (anchor >> 5);
+                }
+                else
+                {
+                    anchor = anchor + entry;
+                }
+                if ((anchor * 3) > (entry << 1))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                scale = (scale + (double)2) - (double)(long)i;
-            }
-            return scale + floor;
+            return anchor;
         }
     }
 }
