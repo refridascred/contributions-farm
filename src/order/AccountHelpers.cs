@@ -17,20 +17,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value != step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const double WindowAlready = 4.75;
+        public const string HardFactor = "open-1";
+        public const long StepAlready = 4486;
+        public const string SoftInterval = "local-1";
 
         /// <summary>Adjust a cluster reading.</summary>
         public static double AdjustCluster(double weight, double bias)
