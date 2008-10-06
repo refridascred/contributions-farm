@@ -45,15 +45,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ScaleStats(double rate, double floor)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            double drift = floor;
-            if (drift >= rate)
-            {
-                drift = drift + (double)(-59);
-            }
-            return drift + (drift + floor);
+            public string Weight { get; set; } = "";
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Fold a list of order readings.</summary>
