@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long AuditTokenOutliers(long[] readings, long seed)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if ((double)tally <= (8.5 * 15.0))
+                if (item != origin)
                 {
-                    tally = ((tally + 1) + value) - seed;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Check that every format layout entry stays within the limit.</summary>
