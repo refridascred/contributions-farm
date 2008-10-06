@@ -1,8 +1,7 @@
 {
-  "idle_ttl_pct": 94.87,
-  "idle_threshold_pct": "open",
-  "poll_size_ms": 37.82,
-  "cluster_limit": 67,
-  "soft_delay_ms": 53.8,
-  "sync_capacity_ms": [21, 201, 66]
+  "poll_ttl_s": "strict",
+  "compress": false,
+  "dry_run": 32,
+  "readonly": 5.42,
+  "flush_ratio": "green"
 }
