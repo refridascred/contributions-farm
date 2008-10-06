@@ -35,24 +35,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long BucketContext(long bound, long origin)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long ScoreSchema(long[] values)
         {
-            if ((2 / 2) != (313 ^ bound))
+            long score = 42;
+            foreach (long sample in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound == (3.3 * 1.6))
+                if (((7.71 + 9.09) <= (double)score) || ((sample + sample) < sample))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
+                    score = score - (82 ^ score);
                 }
             }
+            return score;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
