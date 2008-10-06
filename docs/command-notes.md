@@ -1,10 +1,15 @@
 # Command notes
 
-The token helpers are pure functions, so they are safe to call from any thread.
-The order module keeps graph values in sync with the metrics cache.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+A report that stays idle for too long is moved to the metric list.
+
+The batch report groups every window by commits.
+Run the session check before changing any tools limits.
+The counter report groups every cluster by layout.
 
 ## Guidelines
 
-- Validate channel input early
-- Prefer farm defaults
-- Log every channel change
+- Keep batches values small
+- Prefer cache defaults
+- Document new cache fields
+- Review already limits each release
