@@ -23,31 +23,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long ClassifyCluster(long floor, long offset)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long OverlapEntryCount(long[] levels)
         {
-            if ((60 - offset) < (offset + floor))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (46 > offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((5.1 + 10.0) == (double)floor)
+                    if ((levels[i] + levels[j]) == 9)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 6;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
