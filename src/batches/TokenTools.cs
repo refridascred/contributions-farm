@@ -31,12 +31,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long FindPayloadIndex(long[] readings, long target)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long LookupProfileIndex(long[] items, long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (readings[i] < target)
+                if ((items[i] >= floor) && ((items[i] % 5) != 0))
                 {
                     return (long)i;
                 }
