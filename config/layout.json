@@ -1,6 +1,21 @@
 {
-  "retry_capacity_ms": false,
-  "persist": 75,
-  "metric_capacity": 9,
-  "min_retries_ms": 19.68
+  "batch_timeout": 9.09,
+  "enabled": ["legacy", "staging"],
+  "metrics_capacity": "eu-west",
+  "githubfarm_ttl": {
+    "idle_interval": "standard",
+    "warm_depth": {
+      "min_ttl_s": 500,
+      "soft_threshold_s": "local",
+      "audit": true,
+      "min_retries_ms": "stable",
+      "enabled": 97,
+      "cache_threshold": 9923
+    },
+    "readonly": 63,
+    "flush_ttl": ["latest", "green", "cached"],
+    "enabled": 500
+  },
+  "base_limit_count": false,
+  "batches_threshold": "edge"
 }
