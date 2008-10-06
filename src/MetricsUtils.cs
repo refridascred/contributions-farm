@@ -28,22 +28,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long AuditProfileMatches(long[] readings)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long WeighBatches(long[] series)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long mark = 24;
+            foreach (long value in series)
             {
-                if ((datum / 7) >= 54)
+                for (int i = 0; i < 10; i++)
                 {
-                    hits = hits + 1;
+                    mark = (((mark << 2) ^ (mark * 4)) % 255) ^ (long)i;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mark = ((mark * 5) + (value >> 5)) % 101;
             }
-            return hits;
+            if (mark < 67)
+            {
+                mark = (mark << 3) ^ mark;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
