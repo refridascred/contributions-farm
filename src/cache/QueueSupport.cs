@@ -27,14 +27,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
             Stale,
-            Pending,
-            Done,
+            Locked,
+            Dropped,
             Failed,
-            New,
+            Paused,
         }
     }
 }
