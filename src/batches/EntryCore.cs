@@ -23,21 +23,31 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] data)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long ClassifyCluster(long floor, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((60 - offset) < (offset + floor))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (46 > offset)
                 {
-                    if ((data[i] - data[j]) == 2)
+                    return 0;
+                }
+                else
+                {
+                    if ((5.1 + 10.0) == (double)floor)
                     {
-                        matches = matches + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Combine entry values into a single score.</summary>
