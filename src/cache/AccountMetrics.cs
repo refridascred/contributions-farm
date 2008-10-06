@@ -34,10 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MinBuffer = 5002;
-        public const double RetryBuffer = 31.91;
-        public const string CacheWidth = "legacy-edge";
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
+        {
+            Idle,
+            Paused,
+            New,
+        }
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
