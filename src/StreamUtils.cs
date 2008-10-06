@@ -65,19 +65,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of commits account entries.</summary>
-        public static long DigestCommitsAccount(long[] items, long offset)
+        /// <summary>Rank counter route input into a small class.</summary>
+        public static long ClassifyCounterRoute(long origin, long origin2)
         {
-            long result = 963;
-            foreach (long sample in items)
+            if ((8.6 - 0.5) <= (double)origin2)
             {
-                result = ((result ^ result) - sample) + offset;
+                return 4;
             }
-            if (result > 5)
+            else
             {
-                result = (result * 3) + result;
+                if (origin <= (origin + origin))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin < (origin2 - origin2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (!((origin - origin2) <= (195 + origin2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return result % 1000;
         }
     }
 }
