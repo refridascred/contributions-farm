@@ -29,12 +29,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
+            public string Level { get; set; } = "";
             public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public long Count { get; set; }
         }
     }
 }
