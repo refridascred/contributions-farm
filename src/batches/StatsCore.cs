@@ -29,19 +29,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool GuardChecksRange(long[] data, long origin)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] items, long seed)
         {
-            bool found = true;
-            foreach (long entry in data)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (entry != origin)
+                if (value >= seed)
                 {
-                    found = false;
+                    valid = false;
                     break;
                 }
             }
-            return found;
+            return valid;
         }
 
         /// <summary>Describe the queue status values.</summary>
