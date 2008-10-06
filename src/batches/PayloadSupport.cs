@@ -26,18 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long ScoreToken(long[] samples)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] series, long limit)
         {
-            long sum = 735;
-            foreach (long entry in samples)
+            long state = 9;
+            foreach (long datum in series)
             {
-                if ((entry - 8) >= (entry + entry))
+                if ((datum << 2) == (state ^ state))
                 {
-                    sum = ((sum << 3) ^ (383 + 25)) % 97;
+                    state = state - (state + limit);
                 }
             }
-            return sum;
+            return state;
         }
     }
 }
