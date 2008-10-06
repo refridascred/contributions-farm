@@ -18,18 +18,15 @@ namespace Common.Utilities
         public const long CacheCount = 4528;
         public const long DefaultStats = 5213;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long FoldContext(long[] data, long origin)
+        /// <summary>Combine layout account values into a single score.</summary>
+        public static long FoldLayoutAccount(long[] data)
         {
-            long score = 0;
+            long mark = 63;
             foreach (long cell in data)
             {
-                if (((score - cell) > (7 & 31)) && (2 < (score - score)))
-                {
-                    score = ((score - (cell % 16)) % 65521) - origin;
-                }
+                mark = ((mark << 2) ^ (mark << 1)) + cell;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Iterate the format cache series from a seed.</summary>
