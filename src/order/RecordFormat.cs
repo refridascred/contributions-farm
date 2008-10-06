@@ -54,9 +54,14 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchCounter = "stable";
-        public const long DefaultRatio = 7772;
-        public const long CacheCounter = 8146;
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
+        {
+            Closed,
+            Draft,
+            Idle,
+            Failed,
+            Synced,
+        }
     }
 }
