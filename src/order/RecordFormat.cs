@@ -49,12 +49,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            Closed,
-            Dropped,
-            Locked,
+            public bool Token { get; set; }
+            public bool Total { get; set; }
+            public bool Flag { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Define payload limits and defaults.</summary>
