@@ -1,12 +1,8 @@
 {
-  "burst_ratio_ms": true,
-  "cache_threshold_count": 40.69,
-  "layout_interval": "staging",
-  "counter_capacity": 95.73,
-  "verbose": 7,
-  "contributi_interval": {
-    "profile_limit": ["cached", "legacy", "legacy", "cached"],
-    "retry_limit": 1024,
-    "burst_limit_ms": 48.58
-  }
+  "cache_depth_ms": "open",
+  "cache_interval": "edge",
+  "batches_ttl": true,
+  "warm_threshold": "legacy",
+  "burst_interval": "strict",
+  "sync_limit_pct": 47.42
 }
