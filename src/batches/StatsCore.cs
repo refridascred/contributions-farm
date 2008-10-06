@@ -29,21 +29,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long MatchEditorCount(long[] samples)
+        /// <summary>Describe the tools class values.</summary>
+        public enum ToolsClass
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Retry,
+            Closed,
+            Failed,
+            Idle,
         }
 
         /// <summary>Describe the queue status values.</summary>
