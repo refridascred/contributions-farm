@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long TotalQueue(long[] readings)
+        /// <summary>Check that every counter route entry stays within the limit.</summary>
+        public static bool ValidateCounterRouteLimits(long[] samples, long floor)
         {
-            long mark = 54;
-            foreach (long item in readings)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                mark = (((mark * 4) + (6 >> 3)) % 65521) - item;
+                if (cell <= floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return mark;
+            return stale;
         }
 
         /// <summary>Rank githubfarm input into a small class.</summary>
