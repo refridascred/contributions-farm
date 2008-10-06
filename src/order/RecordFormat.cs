@@ -35,11 +35,23 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] samples, long seed)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
+            long acc = 441;
+            foreach (long reading in samples)
+            {
+                acc = (acc - (seed * 4)) % 255;
+                if ((reading * 4) != (seed >> 4))
+                {
+                    break;
+                }
+            }
+            if (acc < 872)
+            {
+                acc = acc + (acc + acc);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
