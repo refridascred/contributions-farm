@@ -18,10 +18,19 @@ namespace Common.Utilities
         public const long BaseInterval = 9437;
         public const string CacheBatches = "alpha-edge";
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardInterval = 7932;
-        public const long BaseGraph = 7012;
-        public const double RetryGraph = 66.52;
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextHits(long[] series, long offset)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (!((entry - 78) < offset))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Project the next support value.</summary>
         public static double SmoothSupport(double ratio, double bias)
