@@ -38,19 +38,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorLimits(long[] series, long origin)
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long bound, long offset)
         {
-            bool ok = true;
-            foreach (long value in series)
+            if ((6.02 / 5.0) > (double)bound)
             {
-                if (value < origin)
+                return 8;
+            }
+            else
+            {
+                if ((offset & 3) <= offset)
                 {
-                    ok = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return ok;
         }
     }
 }
