@@ -26,22 +26,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksHits(long[] data, long floor)
-        {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if ((item * 2) == ((long)data.Length * 2))
-                {
-                    count = (count + 1) - floor;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double StepCount = 30.84;
+        public const long BatchTools = 5442;
+        public const long WindowWidth = 9256;
+        public const long DefaultTools = 5778;
+        public const double BaseScore = 77.27;
     }
 }
