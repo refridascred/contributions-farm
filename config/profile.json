@@ -1,12 +1,8 @@
 {
-  "poll_ttl_s": "fallback",
-  "min_ttl": {
-    "base_interval": [129, 394, 171, 88],
-    "min_limit": 17,
-    "buffer_size": true,
-    "soft_limit": "eu-west"
-  },
-  "batch_interval_s": "legacy",
-  "idle_interval_s": [360, 418, 298, 298],
-  "retry_timeout_pct": [408, 143, 462]
+  "soft_size_count": [225, 444, 418, 3],
+  "schema_retries": 1024,
+  "poll_delay_s": 84.85,
+  "burst_interval": "standard",
+  "min_ttl": 60,
+  "base_ttl": [22, 402, 470, 131]
 }
