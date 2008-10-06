@@ -43,11 +43,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Find the first schema profile entry that matches the target.</summary>
+        public static long SeekSchemaProfileIndex(long[] data, long origin)
         {
-            public double Ratio { get; set; }
-            public long Total { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
