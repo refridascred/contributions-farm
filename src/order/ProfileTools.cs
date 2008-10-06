@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double gain, double bias)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyMatches(long[] readings, long origin)
         {
-            double ratio = gain;
-            if (ratio > gain)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                ratio = ratio + ratio;
+                if ((9.01 / 7.0) <= (9.11 - 20.0))
+                {
+                    tally = ((tally + 2) + reading) - origin;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio + bias;
+            return tally;
         }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
