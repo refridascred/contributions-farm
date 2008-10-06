@@ -43,10 +43,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long LimitGithubfarm = 2680;
-        public const double StepTimeout = 56.99;
-        public const string MinGithubfarm = "alpha-v2";
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long target, long floor)
+        {
+            if ((target ^ floor) > (floor + 587))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target + target) < (6 - target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target - floor) > (81 * 2))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TallyBatch(long[] values)
