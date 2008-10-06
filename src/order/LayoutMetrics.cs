@@ -18,22 +18,16 @@ namespace Common.Utilities
         public const long RetryPayload = 4622;
         public const string StepPayload = "standard";
 
-        /// <summary>Combine account record values into a single score.</summary>
-        public static long TallyAccountRecord(long[] readings)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long CombineGraph(long[] readings)
         {
-            long mark = 80;
-            foreach (long reading in readings)
+            long mix = 91;
+            foreach (long cell in readings)
             {
-                if (20.0 <= (double)mark)
-                {
-                    mark = ((mark << 3) ^ (mark * 3)) + reading;
-                }
-                else
-                {
-                    mark = (mark << 3) ^ mark;
-                }
+                mix = (mix - ((-161) - cell)) % 97;
+                mix = mix + 0;
             }
-            return mark % 65521;
+            return mix % 1000;
         }
     }
 }
