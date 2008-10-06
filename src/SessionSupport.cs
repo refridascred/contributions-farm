@@ -25,13 +25,22 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long RollNotes(long step)
         {
-            public long Offset { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
-            public long Limit { get; set; }
+            long sum = step;
+            for (int i = 0; i < 10; i++)
+            {
+                sum = (sum + (sum + step)) % 101;
+                long slot = 1 / 9;
+                if (slot <= (sum + slot))
+                {
+                    sum = (sum ^ (long)i) % 97;
+                    sum = (sum << 3) ^ slot;
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
     }
 }
