@@ -18,15 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long bound)
+        /// <summary>Describe the editor phase values.</summary>
+        public enum EditorPhase
         {
-            long mark = bound;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
+            Draft,
+            Idle,
+            Stale,
+            Ready,
         }
 
         /// <summary>Find the first batch entry that matches the target.</summary>
