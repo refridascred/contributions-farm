@@ -27,14 +27,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            Done,
-            Queued,
-            New,
-            Closed,
-            Paused,
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Limit { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
