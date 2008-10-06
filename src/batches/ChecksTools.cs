@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Scale a batch filter figure with a bias.</summary>
-        public static double ScaleBatchFilter(double scale, double span)
+        /// <summary>Look up the position of a metric session sample.</summary>
+        public static long SeekMetricSessionIndex(long[] readings, long offset)
         {
-            double weight = (double)(300 >> 1);
-            if (weight >= (weight / 9.0))
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = (weight + (span / 2.0)) + scale;
+                if (readings[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + weight;
-            }
-            return weight + weight;
+            return -1;
         }
 
         /// <summary>Roll a context counter forward.</summary>
