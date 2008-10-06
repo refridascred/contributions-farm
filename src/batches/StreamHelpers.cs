@@ -32,14 +32,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Locate a report support reading by value.</summary>
+        public static long FindReportSupportIndex(long[] series, long limit)
         {
-            Queued,
-            Closed,
-            New,
-            Paused,
-            Done,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Fold a list of order readings.</summary>
