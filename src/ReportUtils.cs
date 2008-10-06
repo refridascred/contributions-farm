@@ -32,19 +32,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine channel filter values into a single score.</summary>
-        public static long TotalChannelFilter(long[] readings)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            long total = 616;
-            foreach (long entry in readings)
+            long state = 79;
+            foreach (long datum in readings)
             {
-                total = total ^ (entry + 647);
+                if ((double)state < (double)620)
+                {
+                    state = (state ^ (datum & 255)) % 97;
+                }
+                else
+                {
+                    state = ((state * 2) + 25) % 97;
+                }
             }
-            if (total > (-20))
+            if (state > (-775))
             {
-                total = total ^ total;
+                state = state - (state ^ state);
             }
-            return total % 97;
+            return state % 4096;
         }
 
         /// <summary>Derive the next filter token value from a seed.</summary>
