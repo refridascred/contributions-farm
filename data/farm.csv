@@ -1,7 +1,6 @@
-id,weight,ratio
-1,111,green
-2,32.35,cached
-3,primary,31.36
-4,61.89,791
-5,753,15.9
-6,39.36,open
+id,ratio,rank,region
+1,primary,open,cached
+2,85.49,407,stable
+3,3,964,blue
+4,659,390,staging
+5,cached,612,green
