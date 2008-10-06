@@ -48,22 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] series)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (!((hits >> 4) != (119 - datum)))
-                {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Pending,
+            Failed,
         }
 
         /// <summary>Audit order counter readings against a rule.</summary>
