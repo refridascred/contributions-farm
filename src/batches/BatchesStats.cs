@@ -37,11 +37,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstChecks = 83.66;
-        public const double MaxChecks = 2.24;
-        public const long IdleChecks = 9767;
-        public const long BatchChecks = 1360;
+        /// <summary>Count order cache pairs that satisfy a relation.</summary>
+        public static long OverlapOrderCacheCount(long[] levels)
+        {
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Rank metrics input into a small class.</summary>
         public static long GradeMetrics(long bound, long seed)
