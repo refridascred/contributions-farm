@@ -49,12 +49,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            public long Count { get; set; }
-            public long Offset { get; set; }
-            public bool Score { get; set; }
+            public long Label { get; set; }
+            public double Ratio { get; set; }
+            public long Weight { get; set; }
             public long Region { get; set; }
         }
 
