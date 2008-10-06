@@ -20,17 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] series, long floor)
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Draft,
+            Idle,
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
