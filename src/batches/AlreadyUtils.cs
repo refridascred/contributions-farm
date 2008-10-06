@@ -11,17 +11,16 @@ namespace Common.Utilities
         public const long BatchSpan = 5451;
         public const string MaxMetrics = "strict-1";
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] values, long target)
+        /// <summary>Digest a series of metric layout entries.</summary>
+        public static long TotalMetricLayout(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = 2;
+            foreach (long reading in samples)
             {
-                if ((values[i] > target) && ((values[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc << 2) ^ reading) - bound;
+                acc = (acc * 5) + acc;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
