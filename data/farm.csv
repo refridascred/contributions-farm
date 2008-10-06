@@ -1,7 +1,7 @@
-id,score,rank,state,label
-1,868,857,333,37.87
-2,799,cached,29.67,823
-3,263,941,498,268
-4,blue,blue,local,42.46
-5,102,eu-west,625,eu-west
-6,40.06,20.87,green,736
+id,weight,ratio
+1,111,green
+2,32.35,cached
+3,primary,31.36
+4,61.89,791
+5,753,15.9
+6,39.36,open
