@@ -42,19 +42,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsLimits(long[] values, long limit)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long FoldQueue(long[] data)
         {
-            bool ok = true;
-            foreach (long item in values)
+            long mark = 18;
+            foreach (long entry in data)
             {
-                if (item != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark + (long)data.Length) % 4096) ^ entry;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Match up cluster samples.</summary>
