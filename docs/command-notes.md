@@ -1,14 +1,11 @@
 # Command notes
 
-A already that stays idle for too long is moved to the order list.
-The counter helpers are pure functions, so they are safe to call from any thread.
-
-Keep contributi and stats names short and lowercase.
-Keep buffer and batch names short and lowercase.
-Keep metrics and metric names short and lowercase.
+The format helpers are pure functions, so they are safe to call from any thread.
+The graph module keeps token values in sync with the batches cache.
+The channel helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep notes values small
-- Validate cluster input early
-- Log every entry change
+- Review account limits each release
+- Keep schema values small
+- Log every queue change
