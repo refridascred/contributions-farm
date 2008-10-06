@@ -61,18 +61,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the batch format entries that pass the check.</summary>
-        public static long CountBatchFormatHits(long[] readings, long target)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long SortStats(long step, long offset)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            if (!((882 * 2) > (step + offset)))
             {
-                if ((target + tally) < (sample % 8))
+                return 3;
+            }
+            else
+            {
+                if (((step - offset) > (offset & 1)) && ((step >> 2) != (offset >> 3)))
                 {
-                    tally = tally + 2;
+                    return 7;
+                }
+                else
+                {
+                    if (step >= (94 / 9))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((double)offset < (10.0 - 5.7)) || ((step % 24) < 3))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
