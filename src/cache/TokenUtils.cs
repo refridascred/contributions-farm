@@ -49,24 +49,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long bound, long offset)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            if ((6.02 / 5.0) > (double)bound)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset & 3) <= offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
