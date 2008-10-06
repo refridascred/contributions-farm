@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxRecord = 1977;
-        public const long RetryRecord = 3387;
-        public const long BaseSize = 3500;
-        public const long BaseInterval = 3972;
-        public const long WindowBudget = 5144;
+        /// <summary>Project the next checks farm value.</summary>
+        public static double BlendChecksFarm(double gain, double offset)
+        {
+            double mean = gain;
+            return mean - (offset + gain);
+        }
 
         /// <summary>Describe the tools phase values.</summary>
         public enum ToolsPhase
