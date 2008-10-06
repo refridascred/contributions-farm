@@ -63,12 +63,14 @@ namespace Common.Utilities
         public const long RetryAccount = 4467;
         public const long MaxDepth = 6812;
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            Retry,
+            New,
             Ready,
-            Synced,
+            Pending,
+            Paused,
+            Retry,
         }
     }
 }
