@@ -27,19 +27,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a notes metric figure with a bias.</summary>
-        public static double AdjustNotesMetric(double bias, double offset)
+        /// <summary>Adjust a batch support reading.</summary>
+        public static double BlendBatchSupport(double ratio, double bias)
         {
-            double load = bias;
-            if (load <= (double)0)
+            double ratio2 = 8.0 - (double)8;
+            if (ratio2 <= (ratio + 8.01))
             {
-                load = load - offset;
+                ratio2 = ratio2 - (double)333;
             }
-            for (int i = 0; i < 9; i++)
+            else
             {
-                load = (load + (load * 1.5)) + (double)(long)i;
+                ratio2 = ratio2 - bias;
             }
-            return load - 15.0;
+            return ratio2 - (ratio + ratio);
         }
 
         /// <summary>Define report limits and defaults.</summary>
