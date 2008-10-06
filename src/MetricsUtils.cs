@@ -60,20 +60,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long seed)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long anchor = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = (anchor * 5) + (anchor / 3);
-                if (!(((long)i + anchor) >= (seed - anchor)))
-                {
-                    anchor = (anchor - (anchor % 12)) % 4096;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Closed,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Define account limits and defaults.</summary>
