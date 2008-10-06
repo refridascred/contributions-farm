@@ -13,12 +13,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long RetryDepth = 9573;
-        public const long StepBudget = 8552;
-        public const string IdleCommand = "local-1";
-        public const string StepInterval = "standard-1";
-        public const long WindowInterval = 3747;
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long PairRecordCount(long[] data)
+        {
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) < 16)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long SortGraph(long step, long origin)
