@@ -26,14 +26,32 @@ namespace Common.Utilities
         public const string StepInterval = "standard-1";
         public const long WindowInterval = 3747;
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long SortGraph(long step, long origin)
         {
-            Failed,
-            Idle,
-            Draft,
-            Paused,
-            Locked,
+            long bound = step + origin;
+            if (((step ^ bound) <= (step << 3)) && ((bound >> 1) < step))
+            {
+                return 4;
+            }
+            else
+            {
+                if (((bound - origin) < (origin + bound)) || (origin >= (bound - bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((bound < (bound ^ origin)) && ((9 / 7) >= step))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
