@@ -1,5 +1,15 @@
 {
-  "retry_size_ms": true,
-  "retry_capacity_ms": 32.01,
-  "min_depth_count": true
+  "window_window": false,
+  "cache_capacity": 9509,
+  "cache_delay_s": false,
+  "strict": 38.42,
+  "window_delay": {
+    "token_delay": {
+      "batch_limit": "fallback",
+      "max_interval": 2.8,
+      "batch_ratio_pct": ["eu-west", "strict", "blue"]
+    },
+    "idle_ratio": "primary",
+    "report_retries": 24.88
+  }
 }
