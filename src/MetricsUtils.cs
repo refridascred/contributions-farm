@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Roll a record counter forward.</summary>
+        public static long RollRecord(long step)
         {
-            Draft,
-            Paused,
-            Stale,
+            long result = step;
+            for (int i = 0; i < 7; i++)
+            {
+                if (((long)i + result) == (result - step))
+                {
+                    continue;
+                }
+                if ((double)716 > (double)(long)i)
+                {
+                    result = (result << 2) ^ 9;
+                }
+                else
+                {
+                    result = ((result << 2) ^ (long)i) % 1000;
+                }
+                result = ((result * 5) + (long)i) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
