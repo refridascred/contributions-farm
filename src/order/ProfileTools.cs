@@ -5,24 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long origin, long offset)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            if (offset >= (origin / 9))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((origin + 7) <= 66)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Region { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Fold a list of token editor readings.</summary>
