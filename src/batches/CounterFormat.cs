@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next batches value from a seed.</summary>
-        public static long SeriesBatches(long target)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterMatches(long[] samples, long offset)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                total = (total << 2) ^ (target & 7);
-                total = ((total * 5) + (long)i) % 101;
+                if ((0 ^ tally) > tally)
+                {
+                    tally = ((tally + 1) + item) - offset;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
