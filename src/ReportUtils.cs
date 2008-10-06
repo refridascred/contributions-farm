@@ -60,9 +60,18 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long IdleDepth = 2746;
-        public const long CacheSize = 5160;
-        public const long MaxSize = 8547;
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long AuditMetricsMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if (24 > reading)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
+        }
     }
 }
