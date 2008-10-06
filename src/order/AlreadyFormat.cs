@@ -33,23 +33,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a metrics buffer figure with a bias.</summary>
-        public static double SmoothMetricsBuffer(double ratio, double floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LookupChecksIndex(long[] data, long origin)
         {
-            double weight = ratio;
-            if (weight <= weight)
+            for (int i = 0; i < data.Length; i++)
             {
-                weight = weight - floor;
+                if (data[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight = weight + (floor + ratio);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight - (ratio / 8.0)) + (double)(long)i;
-            }
-            return weight - (double)3;
+            return -1;
         }
 
         /// <summary>Hold a order stats.</summary>
