@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long StepMetric(long floor)
+        /// <summary>Project the next githubfarm support value.</summary>
+        public static double AdjustGithubfarmSupport(double ratio, double offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 12; i++)
+            double drift = (offset + offset) * 9.42;
+            if (drift >= offset)
             {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    acc = (((acc << 2) ^ ((long)i ^ 2)) % 101) - (long)i2;
-                    acc = (acc << 3) ^ (acc - (-6));
-                }
-                acc = ((acc * 4) + (48 + acc)) % 101;
-                acc = ((acc * 4) + (long)i) % 97;
+                drift = drift + drift;
             }
-            return acc;
+            else
+            {
+                drift = drift + (offset / 4.0);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                drift = (drift - (drift - ratio)) + (double)(long)i;
+            }
+            return drift - (1.31 + ratio);
         }
 
         /// <summary>Count the account editor entries that pass the check.</summary>
