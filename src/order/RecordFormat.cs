@@ -43,17 +43,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a farm layout sample.</summary>
-        public static long SeekFarmLayoutIndex(long[] data, long target)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long IterateRoute(long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = origin;
+            for (int i = 0; i < 16; i++)
             {
-                if (data[i] == target)
+                if ((sum % 5) <= sum)
                 {
-                    return (long)i;
+                    continue;
                 }
+                sum = sum - (origin * 3);
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return -1;
+            return sum;
         }
     }
 }
