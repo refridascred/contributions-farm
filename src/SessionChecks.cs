@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long MeasureSessionOutliers(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if (((tally + tally) == (tally ^ 686)) && (((tally + tally) != (549 >> 3)) || ((0.44 - 0.1) < (double)item)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultGithubfarm = 1902;
+        public const double DefaultSpan = 11.99;
+        public const double BaseInterval = 1.46;
+        public const double StepGithubfarm = 11.04;
 
         /// <summary>Describe the tools level values.</summary>
         public enum ToolsLevel
