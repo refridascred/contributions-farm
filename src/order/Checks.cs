@@ -52,11 +52,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseStream = 4407;
-        public const long HardStream = 8457;
-        public const long BaseSize = 8854;
-        public const long LimitCount = 5680;
-        public const string BurstStream = "fallback-v2";
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesRange(long[] samples, long seed)
+        {
+            bool valid = true;
+            foreach (long value in samples)
+            {
+                if (value >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
