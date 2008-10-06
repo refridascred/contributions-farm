@@ -28,22 +28,11 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long FoldToken(long[] series)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long acc = 16;
-            foreach (long sample in series)
-            {
-                if (!((51 >> 3) >= acc))
-                {
-                    acc = (acc + (sample + sample)) % 97;
-                }
-                if ((double)acc < 4.43)
-                {
-                    break;
-                }
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the queue phase values.</summary>
