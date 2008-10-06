@@ -28,15 +28,22 @@ namespace Common.Utilities
         public const long BurstBatches = 136;
         public const double BatchBatches = 22.86;
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long ScoreSession(long[] readings)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmGaps(long[] series, long offset)
         {
-            long mix = 95;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long sample in series)
             {
-                mix = mix ^ (mix - reading);
+                if ((double)sample > (20.0 / 5.0))
+                {
+                    matches = (matches + 2) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mix % 97;
+            return matches;
         }
 
         /// <summary>Accumulate buffer samples.</summary>
