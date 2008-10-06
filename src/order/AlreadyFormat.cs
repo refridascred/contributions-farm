@@ -46,13 +46,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the already status values.</summary>
-        public enum AlreadyStatus
+        /// <summary>Grade a layout window value against two limits.</summary>
+        public static long SortLayoutWindow(long bound, long limit)
         {
-            Dropped,
-            Draft,
-            Failed,
-            Retry,
+            if (((bound ^ limit) >= ((-1) - limit)) || ((145 / 9) >= (bound % 8)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((5.0 / 6.0) <= (double)limit)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((limit >> 4) < (limit ^ bound))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((8.0 - 6.41) != (double)bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
