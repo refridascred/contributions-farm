@@ -20,19 +20,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] readings, long origin)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Stale,
+            Paused,
+            Ready,
+            Retry,
         }
 
         /// <summary>Combine already values into a single score.</summary>
