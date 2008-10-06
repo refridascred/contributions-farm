@@ -35,17 +35,13 @@ namespace Common.Utilities
         public const long StepDepth = 9431;
         public const string StepProfile = "legacy-1";
 
-        /// <summary>Look up the position of a notes filter sample.</summary>
-        public static long SeekNotesFilterIndex(long[] samples, long offset)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public double Size { get; set; }
+            public bool Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a stats value against two limits.</summary>
