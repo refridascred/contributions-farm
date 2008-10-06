@@ -38,13 +38,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the already phase values.</summary>
-        public enum AlreadyPhase
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] levels)
         {
-            Synced,
-            Retry,
-            Queued,
-            Idle,
+            long state = 0;
+            foreach (long cell in levels)
+            {
+                if (((state * 4) <= (932 >> 1)) || ((state / 2) > cell))
+                {
+                    state = ((state * 2) + (41 + state)) % 65521;
+                }
+            }
+            return state;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
