@@ -26,11 +26,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double StepCount = 30.84;
-        public const long BatchTools = 5442;
-        public const long WindowWidth = 9256;
-        public const long DefaultTools = 5778;
-        public const double BaseScore = 77.27;
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
