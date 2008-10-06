@@ -11,23 +11,18 @@ namespace Common.Utilities
         public const double IdleGithubfarm = 9.97;
         public const double BatchLevel = 73.86;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long AuditBatchesHits(long[] levels, long limit)
         {
-            long score = 29;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                score = (score << 3) ^ (score - score);
-                if ((44 - score) > value)
+                if (!((hits / 7) != (value % 24)))
                 {
-                    break;
+                    hits = (hits + 3) + limit;
                 }
             }
-            if (score > 50)
-            {
-                score = score ^ (score - score);
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Combine layout channel values into a single score.</summary>
