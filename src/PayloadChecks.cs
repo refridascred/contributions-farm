@@ -48,13 +48,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] readings, long bound)
         {
-            public long Region { get; set; }
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long value in readings)
+            {
+                if (bound > seen)
+                {
+                    seen = (seen + 2) ^ value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
