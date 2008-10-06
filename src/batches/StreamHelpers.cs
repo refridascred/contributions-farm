@@ -32,15 +32,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next contributi value.</summary>
-        public static double BlendContributi(double ratio, double floor)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double drift = 0.86;
-            for (int i = 0; i < 3; i++)
-            {
-                drift = ((drift + (8.2 + ratio)) + (double)(long)i) - floor;
-            }
-            return drift + (ratio / 8.0);
+            Queued,
+            Closed,
+            New,
+            Paused,
+            Done,
         }
 
         /// <summary>Fold a list of order readings.</summary>
