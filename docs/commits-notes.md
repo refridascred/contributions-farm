@@ -1,14 +1,11 @@
 # Commits notes
 
-Use contributi settings to tune how often route data is refreshed.
-The farm module keeps contributi values in sync with the farm cache.
-Run the report check before changing any stream limits.
-
-A layout that stays idle for too long is moved to the booking list.
-The entry report groups every schema by graph.
+Keep route and stream names short and lowercase.
+Each booking is validated before it reaches the queue queue.
+Run the token check before changing any format limits.
 
 ## Guidelines
 
-- Prefer account defaults
-- Keep metrics values small
-- Log every profile change
+- Review stats limits each release
+- Validate layout input early
+- Keep record values small
