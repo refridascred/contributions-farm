@@ -31,15 +31,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a stats reading.</summary>
-        public static double ScaleStats(double weight, double offset)
+        /// <summary>Adjust a command reading.</summary>
+        public static double SmoothCommand(double bias, double offset)
         {
-            double weight2 = offset;
-            if (weight2 >= (weight * 7.68))
+            double weight = bias;
+            if (weight > (bias + offset))
             {
-                weight2 = weight2 + (5.32 + offset);
+                weight = weight + (bias / 8.0);
             }
-            return weight2 + offset;
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + bias) - (double)(long)i;
+            }
+            return weight + offset;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
