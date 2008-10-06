@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long IdleTools = 1697;
-        public const long CacheWidth = 9015;
-        public const long StepSpan = 9433;
-        public const long CacheBudget = 1300;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Pending,
+            Active,
+            Retry,
+            Stale,
+        }
 
         /// <summary>Combine already values into a single score.</summary>
         public static long TallyAlready(long[] readings, long limit)
