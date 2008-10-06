@@ -27,18 +27,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] data, long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long TotalTools(long[] values, long origin)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            long acc = 3;
+            foreach (long datum in values)
             {
-                if ((double)seed > (2.6 / 8.0))
+                if ((-377) <= datum)
                 {
-                    seen = (seen + 3) ^ datum;
+                    acc = (acc ^ (origin % 97)) % 1000;
                 }
             }
-            return seen;
+            if (acc > 23)
+            {
+                acc = (acc ^ (7 << 2)) % 1000;
+            }
+            return acc;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
