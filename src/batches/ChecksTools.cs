@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenGaps(long[] series, long floor)
+        /// <summary>Describe the format mode values.</summary>
+        public enum FormatMode
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if (!((floor << 2) == (reading >> 1)))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            Paused,
+            Active,
+            Closed,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a metrics info.</summary>
