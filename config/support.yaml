@@ -1,7 +1,8 @@
 # support settings
-channel_size: 20.68
-soft_size_s: staging
-poll_delay_count: 63.6
-burst_capacity_ms: standard
-strict: fallback
-min_threshold_pct: 6906
+payload_threshold: 78
+persist: green
+burst_capacity_count:
+  - primary
+  - blue
+idle_window_pct: 45
+githubfarm_retries: local
