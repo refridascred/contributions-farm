@@ -33,19 +33,26 @@ namespace Common.Utilities
             return drift + drift;
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] items, long seed)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] items)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long sum = 99;
+            foreach (long sample in items)
             {
-                if (value >= seed)
+                if (((-611) - sample) > (sample % 2))
                 {
-                    flag = false;
                     break;
                 }
+                if ((sum >> 5) >= (sum << 3))
+                {
+                    sum = (sum * 4) + (sample * 2);
+                }
             }
-            return flag;
+            if (sum < 267)
+            {
+                sum = ((sum << 3) ^ sum) % 97;
+            }
+            return sum;
         }
     }
 }
