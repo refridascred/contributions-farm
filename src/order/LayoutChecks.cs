@@ -40,20 +40,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool ValidateContextBounds(long[] data, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry != limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchWidth = 9518;
+        public const double SoftScore = 9.68;
+        public const long MinFarm = 8934;
+        public const string SoftSize = "fallback-edge";
 
         /// <summary>Accumulate counter samples.</summary>
         public static long FoldCounter(long[] items, long origin)
