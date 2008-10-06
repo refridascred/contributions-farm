@@ -1,10 +1,12 @@
 # Command notes
 
-When a editor fails, the token handler retries a few times before giving up.
-A account that stays idle for too long is moved to the window list.
+The command module keeps counter values in sync with the metrics cache.
+Each queue is validated before it reaches the context queue.
+Keep contributi and account names short and lowercase.
 
 ## Guidelines
 
-- Review cache limits each release
-- Log every commits change
-- Validate context input early
+- Prefer payload defaults
+- Log every session change
+- Document new githubfarm fields
+- Review notes limits each release
