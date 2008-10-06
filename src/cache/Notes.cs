@@ -57,11 +57,17 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BaseGithubfarm = 6459;
-        public const long MaxBudget = 8357;
-        public const long MinGithubfarm = 9698;
-        public const double CacheGithubfarm = 19.9;
-        public const string WindowRatio = "cached-edge";
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
