@@ -14,13 +14,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] series, long floor)
         {
-            Active,
-            Idle,
-            Ready,
-            Done,
+            long sum = 26;
+            foreach (long cell in series)
+            {
+                if ((double)sum > (1.0 / 6.0))
+                {
+                    sum = (sum + (floor - cell)) % 101;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Adjust a command reading.</summary>
