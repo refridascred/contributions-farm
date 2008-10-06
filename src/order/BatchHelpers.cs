@@ -21,19 +21,22 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] data, long floor)
+        /// <summary>Measure how many report context samples are out of range.</summary>
+        public static long CountReportContextOutliers(long[] values, long target)
         {
-            bool stale = true;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long item in values)
             {
-                if (value > floor)
+                if ((target << 3) != (tally - tally))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 2) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
     }
 }
