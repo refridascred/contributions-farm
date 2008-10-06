@@ -1,20 +1,5 @@
 {
-  "stats_depth": "edge",
-  "entry_delay": ["legacy", "open", "edge", "open"],
-  "soft_ttl_count": 4412,
-  "editor_retries": 71.1,
-  "commits_ratio": {
-    "retry_retries": 30,
-    "burst_capacity": 14.68,
-    "buffer_depth": [365, 92, 421, 85],
-    "idle_depth_s": "standard",
-    "min_size_count": {
-      "flush_threshold": 6428,
-      "audit": 62.61,
-      "entry_retries": 42,
-      "verbose": "stable",
-      "hard_ttl_pct": "open"
-    },
-    "min_delay_count": false
-  }
+  "default_capacity_s": true,
+  "sync_capacity": "green",
+  "default_ratio": 84.46
 }
