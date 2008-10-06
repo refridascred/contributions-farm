@@ -25,22 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report context samples are out of range.</summary>
-        public static long CountReportContextOutliers(long[] values, long target)
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long item in values)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if ((target << 3) != (tally - tally))
+                if (value >= seed)
                 {
-                    tally = (tally + 2) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
     }
 }
