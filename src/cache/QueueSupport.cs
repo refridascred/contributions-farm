@@ -22,12 +22,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 7.39;
-        public const long IdleBuffer = 5026;
-        public const long DefaultBuffer = 3346;
-        public const string MaxFactor = "cached-edge";
-        public const long StepBuffer = 3885;
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
+        {
+            Idle,
+            Draft,
+            Retry,
+            Ready,
+            New,
+        }
 
         /// <summary>Describe the report level values.</summary>
         public enum ReportLevel
