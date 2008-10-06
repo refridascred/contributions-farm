@@ -18,19 +18,14 @@ namespace Common.Utilities
         public const long WindowLevel = 5310;
         public const long BatchMetric = 117;
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double ProjectProfile(double gain, double offset)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            double drift = offset;
-            if (drift > (drift * 2.0))
-            {
-                drift = drift + offset;
-            }
-            else
-            {
-                drift = drift + (double)4;
-            }
-            return drift + gain;
+            Pending,
+            Active,
+            Synced,
+            Ready,
+            Idle,
         }
     }
 }
