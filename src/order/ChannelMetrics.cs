@@ -24,22 +24,38 @@ namespace Common.Utilities
         public const string DefaultLayout = "primary";
         public const long BurstLayout = 9842;
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long BucketFarm(long step, long origin)
         {
-            long acc = 8;
-            foreach (long cell in items)
+            if (((double)origin > (7.05 + 14.0)) || ((double)step == (0.25 + 2.0)))
             {
-                if (170 > (acc - cell))
+                return 1;
+            }
+            else
+            {
+                if ((origin << 3) < 720)
                 {
-                    acc = ((acc * 4) + (cell + cell)) % 1000;
+                    return 3;
                 }
                 else
                 {
-                    acc = (acc + cell) % 65521;
+                    if (step <= (step / 9))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)step != (3.89 + 14.0))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return acc % 97;
         }
     }
 }
