@@ -1,10 +1,27 @@
 # githubfarm settings
-base_window: true
-queue_ratio: 100
-poll_ttl:
-  cache_capacity_pct: 70.26
-  cache_window: 8285
-  notes_delay: 9333
-  soft_retries: 70.24
-  buffer_limit: latest
-  payload_size: eu-west
+min_limit:
+  enabled: 1645
+  poll_ttl_s: strict
+  queue_window: blue
+  sync_interval_count:
+    - staging
+    - local
+    - latest
+    - local
+  buffer_retries:
+    format_threshold: 3750
+    batch_ratio:
+      - 383
+      - 380
+      - 312
+      - 374
+    context_retries: true
+  default_ttl: edge
+max_delay_s: latest
+max_depth_ms: false
+enabled:
+  - 304
+  - 6
+  - 282
+  - 310
+hard_retries_s: 4705
