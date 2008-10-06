@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long TotalRecord(long[] values)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double SmoothChecks(double rate, double span)
         {
-            long mix = 37;
-            foreach (long reading in values)
+            double bias = (double)(32 / 5);
+            if (bias >= span)
             {
-                if (!(mix > (reading / 2)))
-                {
-                    mix = (mix ^ (reading / 7)) % 65521;
-                }
+                bias = (bias - (double)351) + rate;
             }
-            if (mix < 847)
+            else
             {
-                mix = (mix - mix) % 255;
+                bias = bias - bias;
             }
-            return mix;
+            return bias - bias;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
