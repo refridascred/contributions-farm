@@ -1,16 +1,7 @@
 {
-  "cache_size": false,
-  "default_depth_s": "primary",
-  "enabled": "stable",
-  "poll_delay_count": {
-    "poll_limit": 1024,
-    "base_timeout": "strict",
-    "enabled": {
-      "githubfarm_interval": "edge",
-      "hard_window_pct": "stable",
-      "cache_interval_count": [236, 421]
-    }
-  },
-  "min_size": 100,
-  "verbose": "legacy"
+  "strict": 3294,
+  "sync_interval_ms": "fallback",
+  "idle_depth": 1024,
+  "readonly": false,
+  "cluster_window": 72
 }
