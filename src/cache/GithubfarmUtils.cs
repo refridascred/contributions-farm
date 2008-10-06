@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long MatchWindowCount(long[] levels)
+        /// <summary>Measure how many batch route samples are out of range.</summary>
+        public static long AuditBatchRouteOutliers(long[] levels, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (target > (target & 3))
                 {
-                    if ((levels[i] + levels[j]) == 20)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 1) + datum;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Check that every format layout entry stays within the limit.</summary>
