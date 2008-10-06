@@ -18,12 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long step)
         {
-            Failed,
-            Queued,
-            Draft,
+            long mix = step;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((double)step != (4.5 - 8.53))
+                {
+                    mix = (mix - mix) % 65521;
+                }
+                if (!(step >= (step & 1)))
+                {
+                    mix = ((mix << 3) ^ (step % 10)) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Hold a report options.</summary>
