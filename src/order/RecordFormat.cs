@@ -35,16 +35,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long RollBuffer(long limit)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long FindBufferIndex(long[] levels, long target)
         {
-            long carry = limit;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry - ((long)i + carry)) % 101;
-                carry = ((carry * 3) + (long)i) % 97;
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
