@@ -36,15 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double ScaleFarm(double ratio, double span)
+        /// <summary>Hold a metrics header.</summary>
+        public sealed class MetricsHeader
         {
-            double mean = (span - ratio) - 2.19;
-            if (mean < (mean / 4.0))
-            {
-                mean = mean - (ratio - mean);
-            }
-            return mean + (span + ratio);
+            public long Count { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Combine farm values into a single score.</summary>
