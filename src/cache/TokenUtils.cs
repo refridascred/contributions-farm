@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit editor checks readings against a rule.</summary>
-        public static long TallyEditorChecksOutliers(long[] data, long target)
+        /// <summary>Describe the batches state values.</summary>
+        public enum BatchesState
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if (!((tally % 60) != (tally ^ tally)) && ((17.0 - 6.0) < (double)value))
-                {
-                    tally = (tally + 3) - target;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Draft,
+            Ready,
+            Idle,
+            Paused,
         }
 
         /// <summary>Hold a record options.</summary>
