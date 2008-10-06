@@ -33,13 +33,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] series)
         {
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
