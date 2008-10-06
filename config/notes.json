@@ -1,6 +1,12 @@
 {
-  "poll_depth": true,
-  "route_timeout": "standard",
-  "poll_ttl": false,
-  "strict": "primary"
+  "dry_run": 52,
+  "default_interval_count": [221, 107],
+  "farm_size": {
+    "poll_delay_count": "local",
+    "editor_window": 57,
+    "compress": 31,
+    "sync_depth_ms": 60,
+    "support_timeout": "staging"
+  },
+  "persist": true
 }
