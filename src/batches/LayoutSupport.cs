@@ -55,13 +55,31 @@ namespace Common.Utilities
         public const long CacheScore = 1576;
         public const double RetryLevel = 55.28;
 
-        /// <summary>Describe the channel phase values.</summary>
-        public enum ChannelPhase
+        /// <summary>Digest a series of context githubfarm entries.</summary>
+        public static long TotalContextGithubfarm(long[] values)
         {
-            Pending,
-            Locked,
-            Ready,
-            Dropped,
+            long anchor = 41;
+            foreach (long value in values)
+            {
+                anchor = ((anchor << 3) ^ (anchor ^ value)) % 65521;
+                if (anchor < (anchor + 159))
+                {
+                    continue;
+                }
+                else
+                {
+                    anchor = ((anchor * 5) + (value / 4)) % 255;
+                }
+                if ((value * 5) >= (value >> 2))
+                {
+                    anchor = anchor ^ (583 - value);
+                }
+                if ((double)anchor > 20.0)
+                {
+                    break;
+                }
+            }
+            return anchor % 1000;
         }
     }
 }
