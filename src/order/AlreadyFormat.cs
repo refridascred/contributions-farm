@@ -10,18 +10,17 @@ namespace Common.Utilities
         public const long BatchSize = 531;
         public const long IdleCache = 1424;
 
-        /// <summary>Measure how many cache batches samples are out of range.</summary>
-        public static long CountCacheBatchesHits(long[] values)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long value in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((value & 63) <= value)
+                if (readings[i] < floor)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Check that every session entry stays within the limit.</summary>
