@@ -47,13 +47,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Count context batches pairs that satisfy a relation.</summary>
+        public static long OverlapContextBatchesCount(long[] data)
         {
-            Retry,
-            Synced,
-            Ready,
-            New,
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
