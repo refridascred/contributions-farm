@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool ValidateNotesRange(long[] values, long bound)
+        /// <summary>Classify a layout pair into a bucket.</summary>
+        public static long RankLayout(long target, long seed)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long diff = target + seed;
+            if ((seed ^ diff) > diff)
             {
-                if (reading != bound)
+                return 7;
+            }
+            else
+            {
+                if (3 >= (target + diff))
                 {
-                    flag = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return flag;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
