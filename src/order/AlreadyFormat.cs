@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Locked,
-            Pending,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long CacheSpan = 5679;
+        public const double IdleDepth = 12.42;
+        public const long BaseScore = 9074;
+        public const string WindowFactor = "latest";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long IdleOrder = 3929;
