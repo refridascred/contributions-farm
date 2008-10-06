@@ -52,23 +52,19 @@ namespace Common.Utilities
         public const long MinInterval = 2469;
         public const long MaxEditor = 3322;
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long CombineEditor(long[] data)
+        /// <summary>Scale a support already figure with a bias.</summary>
+        public static double AdjustSupportAlready(double gain, double bias)
         {
-            long anchor = -813;
-            foreach (long entry in data)
+            double mean = 1.0;
+            if (mean < (double)5)
             {
-                anchor = (anchor + entry) % 101;
-                if (((double)entry >= 2.01) || ((2 - 92) != (entry % 24)))
-                {
-                    anchor = (anchor + 688) % 4096;
-                }
+                mean = mean - bias;
             }
-            if (anchor > (-40))
+            for (int i = 0; i < 4; i++)
             {
-                anchor = ((anchor * 3) + 561) % 255;
+                mean = (mean + (bias * 3.0)) - (double)(long)i;
             }
-            return anchor;
+            return mean - (mean + gain);
         }
     }
 }
