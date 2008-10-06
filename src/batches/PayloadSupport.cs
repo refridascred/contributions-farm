@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long TotalGithubfarm(long[] levels)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long mark = 2;
-            foreach (long cell in levels)
-            {
-                mark = ((mark * 5) + (cell * 2)) % 101;
-            }
-            if (mark > 729)
-            {
-                mark = mark + (mark << 3);
-            }
-            return mark % 65521;
+            public bool Score { get; set; }
+            public long Offset { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Audit metric metrics readings against a rule.</summary>
