@@ -18,17 +18,11 @@ namespace Common.Utilities
         public const long RetryPayload = 4622;
         public const string StepPayload = "standard";
 
-        /// <summary>Look up the position of a metrics order sample.</summary>
-        public static long SeekMetricsOrderIndex(long[] values, long seed)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double gain, double span)
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (double)(388 / 5);
+            return mean + (span - gain);
         }
     }
 }
