@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardRoute = "open";
-        public const long BurstRatio = 2648;
-        public const long BurstRoute = 2372;
-        public const long HardSpan = 8462;
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
+        {
+            public long Count { get; set; }
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long SoftCount = 5803;
