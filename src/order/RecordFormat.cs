@@ -77,21 +77,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up entry batches samples.</summary>
-        public static long OverlapEntryBatchesCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheLevel = 5541;
+        public const double DefaultWindow = 77.1;
+        public const long SoftWindow = 3450;
+        public const long RetryRatio = 5754;
     }
 }
