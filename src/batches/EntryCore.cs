@@ -49,22 +49,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long DigestEntry(long[] levels, long floor)
+        /// <summary>Accumulate order commits samples.</summary>
+        public static long CombineOrderCommits(long[] samples, long origin)
         {
-            long sum = 9;
-            foreach (long item in levels)
+            long score = -408;
+            foreach (long item in samples)
             {
-                if ((9.0 + 3.1) != (double)sum)
+                if (((-7) & 255) > score)
                 {
-                    sum = (((sum << 2) ^ item) % 101) - floor;
-                }
-                else
-                {
-                    sum = ((sum * 5) + (0 + item)) % 255;
+                    score = ((score - (item + 7)) % 255) + origin;
                 }
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Describe the token level values.</summary>
