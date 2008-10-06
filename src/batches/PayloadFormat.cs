@@ -61,15 +61,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double ScaleProfile(double scale, double floor)
-        {
-            double scale2 = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                scale2 = (scale2 + scale) + (double)(long)i;
-            }
-            return scale2 + 10.0;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long WindowTimeout = 109;
+        public const long IdleRoute = 1841;
+        public const double BaseRoute = 70.07;
+        public const long CacheBudget = 253;
+        public const string RetryTimeout = "standard";
     }
 }
