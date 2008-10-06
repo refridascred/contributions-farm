@@ -82,19 +82,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every record context entry stays within the limit.</summary>
-        public static bool CheckRecordContextRange(long[] series, long limit)
-        {
-            bool flag = true;
-            foreach (long datum in series)
-            {
-                if (datum != limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long MaxSession = 9640;
+        public const long LimitSize = 837;
+        public const long HardFactor = 3360;
+        public const string HardSession = "primary-v2";
+        public const string MinWidth = "local-v2";
     }
 }
