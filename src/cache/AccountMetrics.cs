@@ -28,14 +28,10 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Synced,
-            Idle,
-            Paused,
-            Failed,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MinBuffer = 5002;
+        public const double RetryBuffer = 31.91;
+        public const string CacheWidth = "legacy-edge";
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
