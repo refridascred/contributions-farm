@@ -54,11 +54,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string DefaultAlready = "standard-1";
-        public const string WindowAlready = "latest-1";
-        public const long MinScore = 3332;
-        public const string IdleSize = "standard";
-        public const double BurstAlready = 88.4;
+        /// <summary>Digest a series of entry entries.</summary>
+        public static long DigestEntry(long[] samples, long offset)
+        {
+            long score = 39;
+            foreach (long entry in samples)
+            {
+                score = ((score - offset) % 255) ^ entry;
+                score = score + (score + score);
+            }
+            if (score > 0)
+            {
+                score = ((score * 2) + (86 - offset)) % 255;
+            }
+            return score;
+        }
     }
 }
