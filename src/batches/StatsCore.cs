@@ -55,13 +55,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Adjust a farm reading.</summary>
+        public static double ScaleFarm(double ratio, double span)
         {
-            Synced,
-            Closed,
-            Stale,
-            Retry,
+            double mean = (span - ratio) - 2.19;
+            if (mean < (mean / 4.0))
+            {
+                mean = mean - (ratio - mean);
+            }
+            return mean + (span + ratio);
         }
 
         /// <summary>Combine farm values into a single score.</summary>
