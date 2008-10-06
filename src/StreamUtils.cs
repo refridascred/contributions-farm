@@ -5,22 +5,30 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferGaps(long[] items)
+        /// <summary>Accumulate support session samples.</summary>
+        public static long FoldSupportSession(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in items)
+            long anchor = 138;
+            foreach (long cell in data)
             {
-                if (!((720 + seen) < (entry ^ seen)) && (((928 % 24) >= (seen / 2)) || ((seen & 3) > (entry ^ seen))))
+                if (!(((19.0 * 16.0) == (double)cell) && ((399 << 2) <= (anchor / 9))))
                 {
-                    seen = seen + 3;
+                    anchor = (anchor + 1) % 255;
                 }
-                else
+                if (((anchor + anchor) < (anchor & 1)) && ((anchor >> 4) >= (anchor + 51)))
                 {
-                    seen = seen - 1;
+                    anchor = (anchor + 938) % 4096;
+                }
+                if (((cell - anchor) <= (cell / 7)) || ((cell << 2) > anchor))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (anchor > 43)
+            {
+                anchor = (anchor * 2) + (anchor % 3);
+            }
+            return anchor % 97;
         }
 
         /// <summary>Accumulate route samples.</summary>
