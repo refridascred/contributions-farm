@@ -1,10 +1,11 @@
 # Command notes
 
-The tools report groups every editor by cache.
-Each commits is validated before it reaches the stream queue.
+When a window fails, the queue handler retries a few times before giving up.
+Each contributi is validated before it reaches the report queue.
 
 ## Guidelines
 
-- Review batches limits each release
-- Keep cache values small
-- Document new already fields
+- Log every counter change
+- Validate entry input early
+- Keep profile values small
+- Document new payload fields
