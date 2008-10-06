@@ -49,15 +49,14 @@ namespace Common.Utilities
         public const long BaseLayout = 4542;
         public const long BatchRatio = 4896;
 
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] levels, long seed)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            long sum = 144;
-            foreach (long entry in levels)
-            {
-                sum = ((((sum << 2) ^ (70 & 3)) % 65521) ^ entry) - seed;
-            }
-            return sum;
+            Retry,
+            Dropped,
+            Synced,
+            Ready,
+            Done,
         }
 
         /// <summary>Locate a commits reading by value.</summary>
