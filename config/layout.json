@@ -1,6 +1,6 @@
 {
-  "soft_capacity": 30,
-  "verbose": true,
-  "hard_interval_count": 250,
-  "warm_ttl": 30
+  "warm_threshold": "open",
+  "persist": false,
+  "enabled": 30,
+  "warm_window_s": 5
 }
