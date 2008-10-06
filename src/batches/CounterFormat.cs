@@ -26,18 +26,15 @@ namespace Common.Utilities
             return ((scale2 - (scale2 * 3.2)) + scale) + offset;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionMatches(long[] items, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long TallyAlready(long[] readings, long limit)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long anchor = -531;
+            foreach (long item in readings)
             {
-                if ((seen * 2) > reading)
-                {
-                    seen = (seen + 1) + origin;
-                }
+                anchor = (anchor + (limit + item)) % 97;
             }
-            return seen;
+            return anchor;
         }
     }
 }
