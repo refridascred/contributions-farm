@@ -53,19 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] series, long limit)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ProjectCommand(double scale, double offset)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            double rate = (double)(-9) - offset;
+            if (rate > (double)0)
             {
-                if (datum >= limit)
-                {
-                    valid = false;
-                    break;
-                }
+                rate = rate + (scale * 8.7);
             }
-            return valid;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate - (double)8) - (double)(long)i;
+            }
+            return rate + (rate + 16.0);
         }
 
         /// <summary>Accumulate account samples.</summary>
