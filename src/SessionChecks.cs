@@ -22,11 +22,18 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsMatches(long[] items)
         {
-            public string Stamp { get; set; } = "";
-            public string Mode { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (((sample + sample) >= 75) && !(sample > (sample % 16)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
