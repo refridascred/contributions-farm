@@ -5,15 +5,39 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Adjust a token buffer reading.</summary>
-        public static double AdjustTokenBuffer(double rate, double floor)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long SortGithubfarm(long offset, long seed)
         {
-            double scale = (rate + floor) / 4.0;
-            if (scale >= rate)
+            long gap = offset ^ seed;
+            if (((1.9 + 4.3) != (double)gap) && ((seed - seed) == (offset % 16)))
             {
-                scale = scale + (double)5;
+                return 5;
             }
-            return scale + (scale * 1.2);
+            else
+            {
+                if ((double)offset == (8.75 + 5.6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (!(offset < 673))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((offset + offset) < (seed * 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a format counter forward.</summary>
