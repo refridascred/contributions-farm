@@ -16,13 +16,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Queued,
-            New,
-            Locked,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "standard";
+        public const long SoftGraph = 1332;
+        public const long LimitRatio = 2207;
+        public const long MaxSize = 3839;
+        public const long DefaultRatio = 7864;
 
         /// <summary>Iterate the format series from a seed.</summary>
         public static long DeriveFormat(long seed)
