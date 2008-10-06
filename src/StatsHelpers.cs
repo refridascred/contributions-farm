@@ -36,25 +36,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long BucketFormat(long limit, long floor)
-        {
-            if ((limit * 2) >= (limit / 5))
-            {
-                return 6;
-            }
-            else
-            {
-                if (limit < (limit >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double StepSize = 25.22;
+        public const long SoftBatches = 2148;
+        public const long LimitBatches = 5622;
+        public const long HardWidth = 4726;
+        public const long DefaultRatio = 7099;
 
         /// <summary>Audit checks readings against a rule.</summary>
         public static long MeasureChecksMatches(long[] levels, long origin)
