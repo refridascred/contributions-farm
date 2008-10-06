@@ -47,20 +47,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Derive the next record githubfarm value from a seed.</summary>
-        public static long StepRecordGithubfarm(long step)
-        {
-            long carry = step;
-            for (int i = 0; i < 23; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    carry = (((carry << 3) ^ (carry << 3)) % 1000) - (long)i2;
-                    carry = ((carry * 4) + ((long)i & 1)) % 1000;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long SoftRatio = 2908;
+        public const double WindowLayout = 14.73;
+        public const double CacheCount = 1.05;
+        public const string SoftLayout = "latest";
+        public const long BurstLayout = 5112;
     }
 }
