@@ -65,13 +65,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the layout mode values.</summary>
-        public enum LayoutMode
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long CombineLayout(long[] levels)
         {
-            Pending,
-            Closed,
-            Draft,
-            Locked,
+            long total = 6;
+            foreach (long entry in levels)
+            {
+                total = (total - total) % 97;
+                total = total + total;
+                total = (total << 3) ^ entry;
+            }
+            return total;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
