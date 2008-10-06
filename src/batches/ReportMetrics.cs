@@ -56,24 +56,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long CombineMetrics(long[] data, long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long OverlapToolsCount(long[] levels)
         {
-            long score = 85;
-            foreach (long sample in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(step < (sample * 5)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    score = score - (sample + 9);
-                    score = (score ^ (sample - step)) % 1000;
+                    if ((levels[i] ^ levels[j]) < 12)
+                    {
+                        count = count + 1;
+                    }
                 }
-                score = score ^ (step >> 4);
             }
-            if (score < 514)
-            {
-                score = (score + (score + step)) % 4096;
-            }
-            return score;
+            return count;
         }
     }
 }
