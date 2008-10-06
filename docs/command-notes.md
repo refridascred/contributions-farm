@@ -1,13 +1,13 @@
 # Command notes
 
-Use profile settings to tune how often entry data is refreshed.
-Keep queue and queue names short and lowercase.
+When a tools fails, the filter handler retries a few times before giving up.
+Each batch is validated before it reaches the token queue.
 
-The buffer report groups every command by channel.
-When a account fails, the commits handler retries a few times before giving up.
+Run the layout check before changing any stream limits.
+Defaults for contributi live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep stream values small
-- Review report limits each release
+- Keep buffer values small
+- Document new token fields
 - Prefer channel defaults
