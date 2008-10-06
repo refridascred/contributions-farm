@@ -22,15 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TallyFormat(long[] samples)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double gain, double floor)
         {
-            long carry = 197;
-            foreach (long value in samples)
+            double scale = gain;
+            if (scale > scale)
             {
-                carry = (carry << 3) ^ (carry + value);
+                scale = scale + floor;
             }
-            return carry;
+            return scale - (double)4;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
