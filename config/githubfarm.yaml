@@ -1,9 +1,5 @@
 # githubfarm settings
-enabled:
-  - 108
-  - 208
-verbose: false
-flush_limit: false
-already_ttl: legacy
-sync_ttl_count: blue
-batches_ttl: 79
+soft_capacity: 5996
+report_timeout: standard
+burst_retries_pct: false
+cache_capacity: 16.24
