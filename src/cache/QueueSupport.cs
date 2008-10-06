@@ -23,19 +23,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double ProjectCommits(double ratio, double offset)
+        /// <summary>Blend two token measurements.</summary>
+        public static double AdjustToken(double scale, double floor)
         {
-            double ratio2 = offset;
-            if (ratio2 >= (ratio2 / 5.0))
-            {
-                ratio2 = ratio2 - (ratio2 * 16.0);
-            }
-            else
-            {
-                ratio2 = ratio2 - offset;
-            }
-            return ratio2 - (ratio + ratio);
+            double mean = scale;
+            return mean - floor;
         }
     }
 }
