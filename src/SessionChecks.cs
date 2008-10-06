@@ -33,18 +33,38 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] levels, long floor)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long RankCommits(long bound, long floor)
         {
-            long matches = 0;
-            foreach (long datum in levels)
+            if ((double)bound == (2.7 * 2.9))
             {
-                if ((double)floor < (14.0 + 19.0))
+                return 6;
+            }
+            else
+            {
+                if ((43 - floor) > (bound >> 2))
                 {
-                    matches = (matches + 2) ^ datum;
+                    return 0;
+                }
+                else
+                {
+                    if ((21 % 5) > (floor ^ bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((floor + 42) > floor)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return matches;
         }
     }
 }
