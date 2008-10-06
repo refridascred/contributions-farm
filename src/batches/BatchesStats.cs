@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the checks status values.</summary>
-        public enum ChecksStatus
-        {
-            Active,
-            Locked,
-            Stale,
-            New,
-            Draft,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string MinWidth = "cached";
+        public const long BatchContext = 530;
+        public const long LimitContext = 783;
+        public const string SoftCount = "stable-edge";
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchLimits(long[] data, long seed)
