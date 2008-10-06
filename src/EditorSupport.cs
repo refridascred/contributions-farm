@@ -69,18 +69,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Look up the position of a graph cache sample.</summary>
-        public static long SeekGraphCacheIndex(long[] readings, long seed)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitInterval = 34.44;
+        public const long DefaultWidth = 4880;
+        public const long SoftAccount = 8395;
+        public const long RetryAccount = 4467;
+        public const long MaxDepth = 6812;
 
         /// <summary>Combine channel values into a single score.</summary>
         public static long FoldChannel(long[] items, long target)
