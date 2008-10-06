@@ -34,12 +34,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepRatio = 3031;
-        public const long StepBatches = 235;
-        public const long RetryBatches = 8830;
-        public const double CacheBatches = 82.74;
-        public const long MaxBatches = 1887;
+        /// <summary>Combine token values into a single score.</summary>
+        public static long FoldToken(long[] series)
+        {
+            long acc = 16;
+            foreach (long sample in series)
+            {
+                if (!((51 >> 3) >= acc))
+                {
+                    acc = (acc + (sample + sample)) % 97;
+                }
+                if ((double)acc < 4.43)
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
