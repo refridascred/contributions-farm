@@ -50,13 +50,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Digest a series of cluster format entries.</summary>
+        public static long ScoreClusterFormat(long[] levels, long seed)
         {
-            Closed,
-            Retry,
-            Paused,
-            Queued,
+            long mark = 962;
+            foreach (long entry in levels)
+            {
+                if (((mark + mark) != (mark % 64)) && ((entry + mark) < (seed * 3)))
+                {
+                    mark = (mark * 5) + (entry & 7);
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ (entry / 9)) % 65521;
+                }
+            }
+            if (mark < (-79))
+            {
+                mark = mark - mark;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of record entries.</summary>
