@@ -21,21 +21,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 16; i++)
-            {
-                if (((126 >> 2) > target) || ((target >> 3) > target))
-                {
-                    sum = (sum << 3) ^ sum;
-                    break;
-                }
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BaseLevel = 549;
+        public const long StepBatches = 6265;
+        public const string MinBatches = "open-1";
+        public const long BurstBatches = 136;
+        public const double BatchBatches = 22.86;
 
         /// <summary>Accumulate session samples.</summary>
         public static long ScoreSession(long[] readings)
