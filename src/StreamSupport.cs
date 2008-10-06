@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] data, long bound)
         {
-            public string Size { get; set; } = "";
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Stamp { get; set; }
+            bool stale = true;
+            foreach (long value in data)
+            {
+                if (value != bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
