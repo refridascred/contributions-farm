@@ -1,14 +1,13 @@
 # Command notes
 
-The tools report groups every stream by commits.
-Each already is validated before it reaches the order queue.
-When a order fails, the profile handler retries a few times before giving up.
+The context module keeps account values in sync with the payload cache.
+Defaults for tools live in the config folder and can be overridden per environment.
 
-Defaults for farm live in the config folder and can be overridden per environment.
-When a order fails, the metrics handler retries a few times before giving up.
+The batch report groups every filter by queue.
+When a window fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate graph input early
-- Document new order fields
-- Prefer editor defaults
+- Document new checks fields
+- Review context limits each release
+- Log every payload change
