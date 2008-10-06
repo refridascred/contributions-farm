@@ -5,29 +5,24 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long SeriesLayout(long step)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long BucketPayload(long limit, long limit2)
         {
-            long score = step;
-            for (int i = 0; i < 17; i++)
+            if ((double)limit2 == (8.47 * 2.8))
             {
-                if (((step % 10) < (3 % 60)) && ((step / 7) < (291 >> 2)))
+                return 7;
+            }
+            else
+            {
+                if ((limit + limit2) > (limit2 / 5))
                 {
-                    score = (score - (618 >> 2)) % 255;
-                    score = ((score << 2) ^ (score / 6)) % 65521;
+                    return 4;
                 }
                 else
                 {
-                    score = ((score << 3) ^ (step + 884)) % 97;
+                    return 2;
                 }
-                score = score - (0 - score);
-                if ((11.0 / 9.0) >= (double)step)
-                {
-                    score = score ^ (long)i;
-                }
-                score = ((score * 5) + (long)i) % 65521;
             }
-            return score;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
