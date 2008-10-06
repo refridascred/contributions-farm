@@ -19,21 +19,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long MatchTokenCount(long[] items)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long DeriveChannel(long offset)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) > 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                acc = acc + (acc & 1);
+                acc = (acc + (acc + (long)i)) % 97;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Count the tools graph entries that pass the check.</summary>
