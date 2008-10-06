@@ -23,26 +23,25 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a report commits counter forward.</summary>
-        public static long IterateReportCommits(long bound)
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long DeriveStream(long floor)
         {
-            long mix = bound;
-            for (int i = 0; i < 16; i++)
+            long result = floor;
+            for (int i = 0; i < 7; i++)
             {
-                mix = (mix << 2) ^ mix;
-                if (!((long)i <= bound))
+                for (int i2 = 0; i2 < 5; i2++)
                 {
-                    mix = (mix * 3) + ((long)i * 4);
-                    mix = ((mix * 5) + ((long)i + (long)i)) % 1000;
+                    result = ((result << 2) ^ floor) ^ (long)i2;
                 }
-                if (!((((long)i + bound) <= ((long)i ^ (long)i)) || ((mix + (long)i) == (bound << 1))))
+                for (int i3 = 0; i3 < 10; i3++)
                 {
-                    mix = (mix << 2) ^ (bound * 5);
-                    mix = ((mix << 2) ^ (bound + bound)) % 101;
+                    result = ((result + (floor - (long)i)) % 97) - (long)i3;
+                    result = (result << 2) ^ floor;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
+                result = result ^ ((long)i % 60);
+                result = ((result * 5) + (long)i) % 101;
             }
-            return mix;
+            return result;
         }
 
         /// <summary>Match up metrics samples.</summary>
