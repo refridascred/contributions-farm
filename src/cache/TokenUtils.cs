@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferMatches(long[] items, long floor)
         {
-            Draft,
-            Ready,
-            Idle,
-            Paused,
+            long seen = 0;
+            foreach (long value in items)
+            {
+                if ((seen & 15) > seen)
+                {
+                    seen = ((seen + 2) ^ value) + floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next command filter value from a seed.</summary>
