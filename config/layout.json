@@ -1,6 +1,16 @@
 {
-  "warm_threshold": "open",
-  "persist": false,
-  "enabled": 30,
-  "warm_window_s": 5
+  "cache_delay": ["edge", "strict"],
+  "compress": true,
+  "audit": "cached",
+  "warm_depth_ms": {
+    "flush_delay_pct": [456, 224],
+    "enabled": 100,
+    "strict": {
+      "max_retries_s": 100,
+      "max_interval_count": 1024,
+      "default_ratio_ms": 35,
+      "dry_run": "standard",
+      "cache_depth": 87
+    }
+  }
 }
