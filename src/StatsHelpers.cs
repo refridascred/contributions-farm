@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Project the next githubfarm support value.</summary>
-        public static double AdjustGithubfarmSupport(double ratio, double offset)
+        /// <summary>Measure how many graph samples are out of range.</summary>
+        public static long TallyGraphGaps(long[] values, long floor)
         {
-            double drift = (offset + offset) * 9.42;
-            if (drift >= offset)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                drift = drift + drift;
+                if ((floor - datum) != (2 - matches))
+                {
+                    matches = matches + 3;
+                }
             }
-            else
-            {
-                drift = drift + (offset / 4.0);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - (drift - ratio)) + (double)(long)i;
-            }
-            return drift - (1.31 + ratio);
+            return matches;
         }
 
         /// <summary>Count the account editor entries that pass the check.</summary>
