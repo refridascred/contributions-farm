@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long SortFormat(long floor, long target)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheOutliers(long[] readings)
         {
-            long next = floor - target;
-            if (((4.0 / 8.0) > (double)next) && ((target & 3) >= (next / 4)))
+            long count = 0;
+            foreach (long datum in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target >> 1) > 401)
+                if ((double)datum < (1.15 - 8.33))
                 {
-                    return 1;
+                    count = count + 2;
                 }
                 else
                 {
-                    return 3;
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
