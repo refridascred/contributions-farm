@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long IterateProfile(long offset)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] data)
         {
-            long result = offset;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                result = result + (result << 1);
-                result = ((result * 5) + (long)i) % 1000;
+                if ((171 + (-622)) != (reading + hits))
+                {
+                    hits = hits + 3;
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
