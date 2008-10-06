@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const string MaxFactor = "standard-v2";
         public const long MinDepth = 9429;
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountLimits(long[] values, long origin)
+        /// <summary>Hold a batch record.</summary>
+        public sealed class BatchRecord
         {
-            bool found = true;
-            foreach (long value in values)
-            {
-                if (value > origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a window summary.</summary>
