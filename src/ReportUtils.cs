@@ -57,39 +57,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long seed, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] values)
         {
-            long gap = seed ^ floor;
-            if ((double)floor == (5.78 / 8.0))
+            long mix = 584;
+            foreach (long datum in values)
             {
-                return 0;
-            }
-            else
-            {
-                if ((gap << 3) > (floor - seed))
+                if (!((datum * 3) > (mix + datum)))
                 {
-                    return 7;
+                    mix = (mix + (mix - datum)) % 255;
                 }
                 else
                 {
-                    if (floor >= gap)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed <= 788)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    mix = (mix - datum) % 255;
                 }
             }
+            return mix % 65521;
         }
     }
 }
