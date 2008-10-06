@@ -41,18 +41,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Fold a list of notes graph readings.</summary>
-        public static long FoldNotesGraph(long[] series)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long sum = 827;
-            foreach (long reading in series)
-            {
-                if (!((reading / 8) > (reading + sum)))
-                {
-                    sum = (sum << 2) ^ (reading >> 1);
-                }
-            }
-            return sum;
+            public double Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
