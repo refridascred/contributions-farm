@@ -14,14 +14,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Hold a metrics summary.</summary>
+        public sealed class MetricsSummary
         {
-            Pending,
-            Locked,
-            Done,
-            Failed,
-            Paused,
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
