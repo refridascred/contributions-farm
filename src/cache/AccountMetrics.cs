@@ -47,11 +47,12 @@ namespace Common.Utilities
         public const long MaxFactor = 5702;
         public const long IdleSpan = 5237;
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Define channel limits and defaults.</summary>
