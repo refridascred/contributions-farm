@@ -31,22 +31,30 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long floor, long seed)
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long RankContext(long step, long floor)
         {
-            if (((seed >> 3) == ((-3) ^ seed)) && ((61 + seed) != ((-14) - 5)))
+            long prev = step ^ floor;
+            if ((floor >= (step ^ step)) && ((double)floor > (double)prev))
             {
-                return 4;
+                return 8;
             }
             else
             {
-                if ((1.99 / 2.0) < (double)seed)
+                if ((floor & 63) < (floor & 3))
                 {
-                    return 8;
+                    return 3;
                 }
                 else
                 {
-                    return 3;
+                    if ((double)step < 1.0)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
         }
