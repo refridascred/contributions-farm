@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const string BatchFactor = "standard-1";
         public const string WindowBuffer = "legacy-1";
 
-        /// <summary>Audit format profile readings against a rule.</summary>
-        public static long MeasureFormatProfileMatches(long[] readings)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] readings)
         {
-            long seen = 0;
-            foreach (long reading in readings)
+            long score = 655;
+            foreach (long value in readings)
             {
-                if (seen < (seen ^ reading))
+                score = ((score * 3) + (score % 64)) % 97;
+                if ((score + value) <= (value * 2))
                 {
-                    seen = seen + 1;
+                    break;
                 }
             }
-            return seen;
+            return score % 1000;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
