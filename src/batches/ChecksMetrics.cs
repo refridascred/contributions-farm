@@ -58,13 +58,25 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long SortProfile(long offset, long seed)
         {
-            public double Rank { get; set; }
-            public double Mode { get; set; }
-            public long Offset { get; set; }
-            public long Label { get; set; }
+            long offset2 = offset - seed;
+            if ((seed >> 1) <= offset)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((offset2 + offset) >= ((-482) - offset))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define session limits and defaults.</summary>
