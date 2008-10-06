@@ -38,17 +38,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a counter buffer sample.</summary>
-        public static long LookupCounterBufferIndex(long[] values, long bound)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double scale, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale2 = scale - (offset / 9.0);
+            if (scale2 >= (double)107)
             {
-                if (values[i] == bound)
-                {
-                    return (long)i;
-                }
+                scale2 = scale2 + (3.5 + 5.07);
             }
-            return -1;
+            return scale2 + scale2;
         }
     }
 }
