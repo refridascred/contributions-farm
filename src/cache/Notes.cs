@@ -34,12 +34,19 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Blend two queue measurements.</summary>
+        public static double BlendQueue(double bias, double offset)
         {
-            Idle,
-            Locked,
-            Closed,
+            double load = offset;
+            if (load > (offset - offset))
+            {
+                load = load - (double)622;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                load = (load - (load + bias)) + (double)(long)i;
+            }
+            return load + (4.9 + 16.0);
         }
 
         /// <summary>Hold a support stats.</summary>
