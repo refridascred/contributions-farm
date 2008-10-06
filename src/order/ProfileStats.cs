@@ -41,14 +41,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 5; i++)
+            long mark = 33;
+            foreach (long cell in levels)
             {
-                mark = mark - (mark * 3);
-                mark = ((mark * 4) + (long)i) % 65521;
+                mark = (mark + mark) % 1000;
+                if ((cell + 2) > (mark % 8))
+                {
+                    mark = (mark ^ (843 + 2)) % 65521;
+                }
+            }
+            if (mark < 4)
+            {
+                mark = (mark + (mark * 2)) % 97;
             }
             return mark;
         }
