@@ -10,11 +10,16 @@ namespace Common.Utilities
         public const double MaxChannel = 58.81;
         public const long BatchChannel = 9399;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 76.03;
-        public const long HardSize = 6326;
-        public const long StepCount = 8467;
-        public const long DefaultFarm = 3926;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long TallyGithubfarm(long[] series, long offset)
+        {
+            long carry = 0;
+            foreach (long entry in series)
+            {
+                carry = (carry + (offset >> 5)) - entry;
+            }
+            return carry;
+        }
 
         /// <summary>Iterate the schema payload series from a seed.</summary>
         public static long DeriveSchemaPayload(long floor)
