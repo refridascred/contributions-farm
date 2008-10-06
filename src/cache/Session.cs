@@ -26,15 +26,13 @@ namespace Common.Utilities
         public const long WindowSupport = 2515;
         public const long BatchCount = 1403;
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double ratio, double bias)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            double mean = ratio;
-            if (mean <= (ratio / 3.0))
-            {
-                mean = mean - (double)10;
-            }
-            return mean - bias;
+            public long Flag { get; set; }
+            public long Count { get; set; }
+            public bool Owner { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
