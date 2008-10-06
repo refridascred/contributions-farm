@@ -15,17 +15,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LocateContextIndex(long[] readings, long origin)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TallyOrder(long[] data, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 503;
+            foreach (long datum in data)
             {
-                if (readings[i] < origin)
+                if ((((-117) - datum) > acc) && ((0.33 / 3.0) <= (double)datum))
                 {
-                    return (long)i;
+                    acc = ((acc + (datum + acc)) % 255) - origin;
                 }
             }
-            return -1;
+            return acc % 1000;
         }
 
         /// <summary>Fold a list of layout readings.</summary>
