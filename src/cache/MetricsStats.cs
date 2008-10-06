@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Fold a list of checks account readings.</summary>
+        public static long TallyChecksAccount(long[] values, long seed)
         {
-            New,
-            Pending,
-            Stale,
-            Locked,
-            Paused,
+            long acc = 407;
+            foreach (long sample in values)
+            {
+                if ((seed ^ sample) <= seed)
+                {
+                    acc = (acc ^ (51 >> 1)) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ sample) % 4096;
+                }
+            }
+            return acc % 97;
         }
 
         /// <summary>Define window limits and defaults.</summary>
