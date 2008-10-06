@@ -56,14 +56,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
-        {
-            Synced,
-            Done,
-            Closed,
-            Idle,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultSpan = 6051;
+        public const string HardInterval = "primary-1";
+        public const long RetrySize = 9547;
+        public const long MaxToken = 917;
 
         /// <summary>Count cache graph pairs that satisfy a relation.</summary>
         public static long MatchCacheGraphCount(long[] levels)
