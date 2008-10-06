@@ -20,11 +20,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardMetrics = 2538;
-        public const double RetryMetrics = 8.37;
-        public const long BaseLevel = 8189;
-        public const long BurstDepth = 4599;
+        /// <summary>Find the first context entry that matches the target.</summary>
+        public static long FindContextIndex(long[] values, long limit)
+        {
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Digest a series of account entries.</summary>
         public static long TallyAccount(long[] series)
