@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long TallyEditorOutliers(long[] data, long floor)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if ((count + entry) <= 85)
-                {
-                    count = (count + 3) - floor;
-                }
-            }
-            return count;
+            public string Size { get; set; } = "";
+            public long Level { get; set; }
+            public long Label { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
