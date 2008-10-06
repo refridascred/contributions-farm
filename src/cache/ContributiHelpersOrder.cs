@@ -36,18 +36,19 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyOutliers(long[] series)
+        /// <summary>Accumulate batches window samples.</summary>
+        public static long ScoreBatchesWindow(long[] values)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            long state = 97;
+            foreach (long cell in values)
             {
-                if (((-88) - seen) > seen)
+                state = (state - state) % 101;
+                if ((27 + state) != (cell - cell))
                 {
-                    seen = (seen + 3) + cell;
+                    state = state - cell;
                 }
             }
-            return seen;
+            return state;
         }
     }
 }
