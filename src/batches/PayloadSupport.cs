@@ -30,18 +30,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long OverlapBatchesCount(long[] samples)
+        /// <summary>Count the editor payload entries that pass the check.</summary>
+        public static long MeasureEditorPayloadOutliers(long[] values, long offset)
         {
             long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)offset == (4.24 * 3.9))
                 {
-                    if ((samples[i] ^ samples[j]) == 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = (tally + 3) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
