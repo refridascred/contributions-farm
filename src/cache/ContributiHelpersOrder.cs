@@ -19,10 +19,12 @@ namespace Common.Utilities
             return result % 4096;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const string BatchChecks = "local";
-        public const long RetryChecks = 5637;
-        public const long CacheCount = 555;
+        /// <summary>Define context limits and defaults.</summary>
+        public const string StepContext = "legacy-v2";
+        public const long LimitDepth = 5280;
+        public const long IdleContext = 4688;
+        public const long IdleWidth = 5329;
+        public const double RetryContext = 51.37;
 
         /// <summary>Hold a batches entry.</summary>
         public sealed class BatchesEntry
