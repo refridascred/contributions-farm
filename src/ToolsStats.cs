@@ -86,11 +86,16 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long MaxSession = 9640;
-        public const long LimitSize = 837;
-        public const long HardFactor = 3360;
-        public const string HardSession = "primary-v2";
-        public const string MinWidth = "local-v2";
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 4; i++)
+            {
+                carry = carry - (step ^ (long)i);
+                carry = ((carry * 5) + (long)i) % 4093;
+            }
+            return carry;
+        }
     }
 }
