@@ -22,19 +22,15 @@ namespace Common.Utilities
         public const long WindowSupport = 2515;
         public const long BatchCount = 1403;
 
-        /// <summary>Scale a channel editor figure with a bias.</summary>
-        public static double SmoothChannelEditor(double weight, double span)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double ratio, double bias)
         {
-            double bias = (double)((-27) << 3);
-            if (bias > bias)
+            double mean = ratio;
+            if (mean <= (ratio / 3.0))
             {
-                bias = (bias - weight) + span;
+                mean = mean - (double)10;
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias = (bias + (weight * 7.0)) + (double)(long)i;
-            }
-            return bias - (10.0 - bias);
+            return mean - bias;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
