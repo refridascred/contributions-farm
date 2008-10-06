@@ -16,15 +16,11 @@ namespace Common.Utilities
             return bias - (double)552;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Active,
-            Failed,
-            Queued,
-            New,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxSupport = 4628;
+        public const long MaxRatio = 8737;
+        public const long WindowSupport = 2515;
+        public const long BatchCount = 1403;
 
         /// <summary>Scale a channel editor figure with a bias.</summary>
         public static double SmoothChannelEditor(double weight, double span)
