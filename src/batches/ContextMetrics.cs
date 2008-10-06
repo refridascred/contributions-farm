@@ -39,19 +39,22 @@ namespace Common.Utilities
             return drift + 1.6;
         }
 
-        /// <summary>Check that every already entry stays within the limit.</summary>
-        public static bool VerifyAlreadyLimits(long[] items, long floor)
+        /// <summary>Combine filter schema values into a single score.</summary>
+        public static long ScoreFilterSchema(long[] values)
         {
-            bool ready = true;
-            foreach (long cell in items)
+            long carry = 28;
+            foreach (long datum in values)
             {
-                if (cell != floor)
+                if ((carry - carry) >= (carry + carry))
                 {
-                    ready = false;
-                    break;
+                    carry = carry + (carry + datum);
                 }
             }
-            return ready;
+            if (carry > 55)
+            {
+                carry = (carry + (carry >> 5)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Match up editor samples.</summary>
