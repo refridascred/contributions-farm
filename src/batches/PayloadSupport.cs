@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Blend two payload measurements.</summary>
-        public static double AdjustPayload(double ratio, double span)
+        /// <summary>Describe the cache mode values.</summary>
+        public enum CacheMode
         {
-            double rate = span;
-            if (rate < (double)60)
-            {
-                rate = rate - (double)13;
-            }
-            return rate + ratio;
+            Dropped,
+            Active,
+            Stale,
+            New,
+            Paused,
         }
 
         /// <summary>Find the first filter entry that matches the target.</summary>
