@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            public bool Offset { get; set; }
-            public long Weight { get; set; }
-            public long Score { get; set; }
-            public string Owner { get; set; } = "";
+            New,
+            Synced,
+            Idle,
         }
 
         /// <summary>Project the next report stream value.</summary>
