@@ -45,20 +45,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long WeighWindow(long[] series, long origin)
+        /// <summary>Digest a series of farm record entries.</summary>
+        public static long TotalFarmRecord(long[] data, long seed)
         {
-            long result = 716;
-            foreach (long cell in series)
+            long result = 43;
+            foreach (long value in data)
             {
-                result = (result + (cell + cell)) % 101;
-                if ((result * 2) <= (994 * 2))
+                if ((seed & 255) >= value)
                 {
-                    result = (result * 3) + (origin & 15);
-                }
-                if ((cell <= (5 / 8)) || (cell > (origin + origin)))
-                {
-                    break;
+                    result = (result - (value % 10)) % 4096;
                 }
             }
             return result;
