@@ -64,12 +64,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Grade a already entry value against two limits.</summary>
+        public static long GradeAlreadyEntry(long target, long seed)
         {
-            Paused,
-            Failed,
-            Active,
+            if ((target << 3) <= seed)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((seed - seed) <= seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
