@@ -27,27 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long FoldToken(long[] values, long target)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] data, long seed)
         {
-            long total = 259;
-            foreach (long reading in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((total - target) >= 359)
+                if ((double)seed > (2.6 / 8.0))
                 {
-                    break;
+                    seen = (seen + 3) ^ datum;
                 }
-                if (((target >> 2) < ((-69) / 7)) && ((target - target) < (total >> 3)))
-                {
-                    total = total - (total + 1);
-                }
-                else
-                {
-                    total = (total - (reading + reading)) % 4096;
-                }
-                total = total - (total & 7);
             }
-            return total % 65521;
+            return seen;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
