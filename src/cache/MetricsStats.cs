@@ -12,12 +12,22 @@ namespace Common.Utilities
         public const long WindowLevel = 1826;
         public const long MaxWidth = 519;
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long CombineContributi(long[] samples, long floor)
         {
-            public double Offset { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            long anchor = 803;
+            foreach (long cell in samples)
+            {
+                if ((double)anchor >= (9.2 * 2.15))
+                {
+                    anchor = (anchor ^ (floor - cell)) % 65521;
+                }
+                else
+                {
+                    anchor = (anchor * 4) + (9 ^ cell);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the stream class values.</summary>
