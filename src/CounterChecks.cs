@@ -22,21 +22,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Compare every pair of farm metric readings.</summary>
-        public static long CompareFarmMetricCount(long[] data)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiHits(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (3.7 >= (double)datum)
                 {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
+                    count = (count + 2) - origin;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
