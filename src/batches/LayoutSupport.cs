@@ -19,13 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
-        {
-            public long Count { get; set; }
-            public double Rank { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long RetryDepth = 9573;
+        public const long StepBudget = 8552;
+        public const string IdleCommand = "local-1";
+        public const string StepInterval = "standard-1";
+        public const long WindowInterval = 3747;
 
         /// <summary>Describe the record status values.</summary>
         public enum RecordStatus
