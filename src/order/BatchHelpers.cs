@@ -26,11 +26,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double CacheTimeout = 52.38;
-        public const long CacheOrder = 2635;
-        public const long StepOrder = 6412;
-        public const long RetryOrder = 22;
-        public const long RetryDepth = 3804;
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] readings, long limit)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= limit) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
