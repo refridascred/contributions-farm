@@ -40,18 +40,17 @@ namespace Common.Utilities
             return mean - 7.0;
         }
 
-        /// <summary>Combine context values into a single score.</summary>
-        public static long CombineContext(long[] values)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] levels, long limit)
         {
-            long result = 826;
-            foreach (long value in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((result + 421) != (result >> 1))
+                if ((levels[i] >= limit) && ((levels[i] % 3) == 0))
                 {
-                    result = ((result - (result - result)) % 97) ^ value;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Hold a cache info.</summary>
