@@ -1,7 +1,6 @@
-id,score,rank
-1,90.01,496
-2,270,local
-3,blue,56
-4,69.27,56.21
-5,16.79,59.92
-6,972,6.12
+id,weight,score
+1,28.07,8.19
+2,local,legacy
+3,edge,legacy
+4,7.96,blue
+5,39.09,366
