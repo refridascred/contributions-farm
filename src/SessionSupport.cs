@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long RollFilter(long limit)
+        /// <summary>Derive the next profile command value from a seed.</summary>
+        public static long StepProfileCommand(long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
+            long mark = seed;
+            for (int i = 0; i < 18; i++)
             {
-                total = ((total * 4) + (long)i) % 101;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = ((mark - (long)i) % 255) + (long)i2;
+                }
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
