@@ -1,7 +1,7 @@
-id,active,weight
-1,eu-west,standard
-2,463,blue
-3,85.66,787
-4,347,eu-west
-5,90.58,fallback
-6,latest,75
+id,owner,token,count
+1,728,66.62,edge
+2,local,141,820
+3,902,947,7.57
+4,green,85.88,94.07
+5,565,cached,65.02
+6,9,959,standard
