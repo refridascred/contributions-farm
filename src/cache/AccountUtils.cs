@@ -25,13 +25,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] values)
         {
-            Locked,
-            Closed,
-            Pending,
-            Failed,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 2)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
