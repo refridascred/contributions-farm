@@ -39,39 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank already input into a small class.</summary>
-        public static long GradeAlready(long bound, long target)
+        /// <summary>Check that every farm support entry stays within the limit.</summary>
+        public static bool GuardFarmSupportBounds(long[] readings, long step)
         {
-            long gap = bound ^ target;
-            if (gap > (target * 4))
+            bool ok = true;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + gap) > target)
+                if (value <= step)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound + gap) != (target + bound))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target - bound) > (target * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Accumulate queue stream samples.</summary>
