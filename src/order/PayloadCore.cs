@@ -37,18 +37,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first queue entry that matches the target.</summary>
-        public static long FindQueueIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] >= floor) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheRecord = 9404;
+        public const long HardBudget = 9562;
+        public const long LimitRecord = 4406;
+        public const string StepRecord = "stable-1";
 
         /// <summary>Rank notes batches input into a small class.</summary>
         public static long RankNotesBatches(long target, long bound)
