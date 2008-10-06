@@ -20,32 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long limit, long limit2)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long offset = limit - limit2;
-            if (!((5 + limit) <= (offset + offset)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((limit2 - (-407)) <= (offset % 8))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((6.66 - 3.2) > (double)limit)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Active,
+            Idle,
+            Ready,
+            Done,
         }
 
         /// <summary>Adjust a command reading.</summary>
