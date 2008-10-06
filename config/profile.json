@@ -1,11 +1,19 @@
 {
-  "default_ratio_count": 3190,
-  "batch_depth": true,
-  "warm_threshold_s": {
-    "hard_interval_pct": 60,
-    "strict": [349, 186],
-    "min_delay_s": 40
+  "batch_delay": [65, 172, 311],
+  "poll_interval_ms": "cached",
+  "idle_threshold": true,
+  "command_timeout": {
+    "base_timeout_count": 7193,
+    "strict": {
+      "readonly": "standard",
+      "metric_delay": true,
+      "persist": 8.52
+    },
+    "poll_window_ms": 48.66,
+    "default_delay": false,
+    "poll_timeout_ms": "blue",
+    "idle_window_count": "strict"
   },
-  "token_interval": 35,
-  "idle_interval_count": "blue"
+  "retry_capacity_pct": "local",
+  "min_limit_count": "local"
 }
