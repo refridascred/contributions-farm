@@ -66,18 +66,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long DigestTools(long[] series)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long carry = 505;
-            foreach (long entry in series)
-            {
-                if (entry > carry)
-                {
-                    carry = ((carry << 3) ^ (carry + entry)) % 4096;
-                }
-            }
-            return carry % 65521;
+            Synced,
+            Stale,
+            Ready,
         }
     }
 }
