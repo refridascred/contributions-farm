@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two counter measurements.</summary>
-        public static double AdjustCounter(double bias, double offset)
+        /// <summary>Check that every graph filter entry stays within the limit.</summary>
+        public static bool CheckGraphFilterBounds(long[] values, long bound)
         {
-            double weight = offset;
-            if (weight >= (double)8)
+            bool ok = true;
+            foreach (long entry in values)
             {
-                weight = (weight - weight) - bias;
+                if (entry >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return weight + (double)51;
+            return ok;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
