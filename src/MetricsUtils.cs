@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a contributi queue value against two limits.</summary>
-        public static long SortContributiQueue(long step, long origin)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteGaps(long[] values, long step)
         {
-            if ((529 >= (step * 3)) && ((origin & 127) > (origin + step)))
+            long count = 0;
+            foreach (long cell in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((step << 3) != (origin % 60))
+                if ((count <= (cell + 842)) || ((count - 8) > (cell - 4)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((step / 7) < origin)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = (count + 2) - step;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
