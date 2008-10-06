@@ -22,23 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] data)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long carry = -931;
-            foreach (long cell in data)
-            {
-                carry = (carry << 3) ^ cell;
-                if (((5.0 + 20.0) != (double)cell) && ((8.8 - 6.0) < 8.3))
-                {
-                    carry = (carry * 5) + (cell % 60);
-                }
-                if (!((carry - carry) <= (cell * 2)))
-                {
-                    carry = (carry * 2) + (7 + cell);
-                }
-            }
-            return carry;
+            public double Weight { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the token phase values.</summary>
