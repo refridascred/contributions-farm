@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Check that every stats channel entry stays within the limit.</summary>
-        public static bool VerifyStatsChannelBounds(long[] data, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool GuardChannelBounds(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long entry in data)
+            bool stale = true;
+            foreach (long item in data)
             {
-                if (entry >= floor)
+                if (item != origin)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Locate a route reading by value.</summary>
