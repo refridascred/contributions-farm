@@ -12,22 +12,14 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Measure how many counter context samples are out of range.</summary>
-        public static long MeasureCounterContextOutliers(long[] samples, long target)
+        /// <summary>Describe the token level values.</summary>
+        public enum TokenLevel
         {
-            long hits = 0;
-            foreach (long entry in samples)
-            {
-                if ((target > hits) || (((72 & 31) >= (entry ^ entry)) || ((entry >> 2) > (target + hits))))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Draft,
+            Dropped,
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Compare every pair of farm metric readings.</summary>
