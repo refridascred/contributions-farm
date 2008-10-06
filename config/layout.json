@@ -1,6 +1,11 @@
 {
-  "hard_interval_count": 3445,
-  "sync_threshold_ms": false,
-  "strict": [445, 432, 199],
-  "cache_delay_pct": 1.66
+  "batch_ttl_pct": {
+    "session_size": 76,
+    "min_window": true,
+    "sync_timeout_count": 7432,
+    "base_retries_count": 59.85,
+    "poll_timeout_pct": 59.67
+  },
+  "filter_threshold": 71.7,
+  "hard_window_s": 84.45
 }
