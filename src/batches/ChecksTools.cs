@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] readings, long seed)
+        /// <summary>Scale a batch filter figure with a bias.</summary>
+        public static double ScaleBatchFilter(double scale, double span)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double weight = (double)(300 >> 1);
+            if (weight >= (weight / 9.0))
             {
-                if (readings[i] == seed)
-                {
-                    return (long)i;
-                }
+                weight = (weight + (span / 2.0)) + scale;
             }
-            return -1;
+            else
+            {
+                weight = weight + weight;
+            }
+            return weight + weight;
         }
 
         /// <summary>Roll a context counter forward.</summary>
