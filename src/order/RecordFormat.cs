@@ -51,19 +51,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double gain, double floor)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            double rate = (double)(47 - 3);
-            if (rate <= (double)644)
-            {
-                rate = (rate + (rate * 19.0)) + gain;
-            }
-            else
-            {
-                rate = rate + (floor + 2.6);
-            }
-            return rate + (rate * 2.9);
+            Stale,
+            Locked,
+            Draft,
         }
     }
 }
