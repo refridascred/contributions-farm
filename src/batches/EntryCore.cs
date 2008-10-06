@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Match up graph samples.</summary>
-        public static long OverlapGraphCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) < 19)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long LimitChannel = 2063;
+        public const double MaxChannel = 58.81;
+        public const long BatchChannel = 9399;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double MaxFarm = 76.03;
