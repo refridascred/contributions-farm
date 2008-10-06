@@ -68,23 +68,29 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long SortProfile(long offset, long seed)
+        /// <summary>Grade a githubfarm command value against two limits.</summary>
+        public static long BucketGithubfarmCommand(long floor, long bound)
         {
-            long offset2 = offset - seed;
-            if ((seed >> 1) <= offset)
+            if ((97 >= (floor ^ 79)) && ((floor >> 5) > (floor << 1)))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((offset2 + offset) >= ((-482) - offset))
+                if ((floor + 696) <= (bound >> 5))
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    return 2;
+                    if ((bound << 2) < (bound - bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
         }
