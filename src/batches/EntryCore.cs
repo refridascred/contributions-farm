@@ -16,21 +16,19 @@ namespace Common.Utilities
         public const long StepCount = 8467;
         public const long DefaultFarm = 3926;
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long OverlapEntryCount(long[] levels)
+        /// <summary>Iterate the schema payload series from a seed.</summary>
+        public static long DeriveSchemaPayload(long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = floor;
+            for (int i = 0; i < 14; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((2 << 1) < (floor - floor))
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = sum + (52 >> 3);
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return seen;
+            return sum;
         }
 
         /// <summary>Classify a order route pair into a bucket.</summary>
