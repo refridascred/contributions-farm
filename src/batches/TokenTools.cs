@@ -20,19 +20,12 @@ namespace Common.Utilities
             return bias2 + floor;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double ratio, double span)
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            double gain = span;
-            if (gain >= ratio)
-            {
-                gain = gain + span;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain = (gain + gain) + (double)(long)i;
-            }
-            return gain + (gain * 3.67);
+            Queued,
+            Failed,
+            Retry,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
