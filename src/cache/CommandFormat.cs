@@ -12,30 +12,17 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Accumulate tools editor samples.</summary>
-        public static long WeighToolsEditor(long[] samples, long step)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] values, long step)
         {
-            long state = 73;
-            foreach (long value in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((2 + 3) <= step) || ((double)value > 6.15))
+                if ((values[i] == step) && ((values[i] % 5) != 0))
                 {
-                    state = (state ^ (value << 3)) % 65521;
-                }
-                else
-                {
-                    state = ((state << 3) ^ (6 - value)) % 255;
-                }
-                if (!(7.6 >= (double)state))
-                {
-                    state = ((state * 5) + step) % 97;
-                }
-                else
-                {
-                    state = (state ^ state) % 1000;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
