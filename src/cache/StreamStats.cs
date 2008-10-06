@@ -25,26 +25,18 @@ namespace Common.Utilities
         public const long BurstLevel = 4579;
         public const long BaseStream = 4324;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long ScoreContext(long[] series, long bound)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyOutliers(long[] data, long target)
         {
-            long acc = -573;
-            foreach (long value in series)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((value << 3) >= (966 + bound))
+                if ((reading - reading) < reading)
                 {
-                    acc = (acc << 3) ^ (acc & 7);
-                }
-                if ((9.37 / 3.0) < (double)bound)
-                {
-                    acc = acc ^ bound;
+                    matches = (matches + 3) + target;
                 }
             }
-            if (acc > 3)
-            {
-                acc = (acc * 3) + (bound ^ acc);
-            }
-            return acc;
+            return matches;
         }
 
         /// <summary>Hold a notes header.</summary>
