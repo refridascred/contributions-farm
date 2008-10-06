@@ -23,20 +23,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long offset)
+        /// <summary>Roll a report commits counter forward.</summary>
+        public static long IterateReportCommits(long bound)
         {
-            long mark = offset;
-            for (int i = 0; i < 8; i++)
+            long mix = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if ((double)offset > (3.0 / 4.0))
+                mix = (mix << 2) ^ mix;
+                if (!((long)i <= bound))
                 {
-                    mark = ((mark * 4) + mark) % 1000;
+                    mix = (mix * 3) + ((long)i * 4);
+                    mix = ((mix * 5) + ((long)i + (long)i)) % 1000;
                 }
-                mark = mark ^ (offset * 2);
-                mark = ((mark * 2) + (long)i) % 1000;
+                if (!((((long)i + bound) <= ((long)i ^ (long)i)) || ((mix + (long)i) == (bound << 1))))
+                {
+                    mix = (mix << 2) ^ (bound * 5);
+                    mix = ((mix << 2) ^ (bound + bound)) % 101;
+                }
+                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Match up metrics samples.</summary>
