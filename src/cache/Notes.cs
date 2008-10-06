@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Fold a list of editor graph readings.</summary>
-        public static long CombineEditorGraph(long[] levels)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LocateEntryIndex(long[] data, long target)
         {
-            long state = 3;
-            foreach (long sample in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state >> 2) <= (state - state))
+                if ((data[i] < target) && ((data[i] % 5) == 0))
                 {
-                    state = (state + (sample + sample)) % 101;
-                }
-                else
-                {
-                    state = ((state << 2) ^ (sample + sample)) % 65521;
+                    return (long)i;
                 }
             }
-            if (state < 71)
-            {
-                state = state ^ (state + 529);
-            }
-            return state % 1000;
+            return -1;
         }
 
         /// <summary>Hold a checks info.</summary>
