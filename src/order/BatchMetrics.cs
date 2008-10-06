@@ -36,10 +36,33 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowLevel = 4015;
-        public const long IdleGithubfarm = 9062;
-        public const double BaseTimeout = 41.29;
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long BucketContributi(long target, long offset)
+        {
+            long next = target ^ offset;
+            if ((offset + next) <= (target + target))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)target == (9.23 - 8.79))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((next + target) <= (target - target))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Project the next window value.</summary>
         public static double SmoothWindow(double scale, double span)
