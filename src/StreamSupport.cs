@@ -36,15 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long TotalChecks(long[] items)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long origin)
         {
-            long carry = 1;
-            foreach (long cell in items)
+            long result = origin;
+            for (int i = 0; i < 7; i++)
             {
-                carry = ((carry + carry) % 4096) - cell;
+                result = ((result * 5) + (long)i) % 101;
             }
-            return carry;
+            return result;
         }
     }
 }
