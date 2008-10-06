@@ -12,17 +12,26 @@ namespace Common.Utilities
         public const string DefaultFactor = "local-edge";
         public const double HardSupport = 91.13;
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] samples, long bound)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long TallyBatches(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 802;
+            foreach (long entry in data)
             {
-                if (samples[i] == bound)
+                if ((323 - 71) == (sum % 10))
                 {
-                    return (long)i;
+                    sum = (sum ^ entry) % 1000;
+                }
+                else
+                {
+                    sum = sum ^ (2 & 31);
+                }
+                if (((959 ^ sum) <= (sum + 11)) || ((sum % 5) < (sum ^ sum)))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
