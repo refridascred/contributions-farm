@@ -20,11 +20,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double ProjectEditor(double bias, double floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterMatches(long[] series, long bound)
         {
-            double ratio = (double)412 - (4.58 / 6.0);
-            return ((ratio - ratio) + bias) + floor;
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if (!(((double)value != (double)bound) || ((197 - value) != (75 + value))))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Roll a account counter forward.</summary>
