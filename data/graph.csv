@@ -1,10 +1,6 @@
-id,rank,weight
-1,stable,staging
-2,staging,84.88
-3,83.05,92.95
-4,50.23,142
-5,local,26.79
-6,545,77.26
-7,939,90.38
-8,59.41,251
-9,primary,open
+id,rank,owner,level,token
+1,32,716,70.93,98.44
+2,blue,eu-west,560,9.32
+3,391,97.45,79.45,strict
+4,973,33.97,96,local
+5,851,510,strict,66.04
