@@ -48,10 +48,13 @@ namespace Common.Utilities
         public const long MaxFactor = 5702;
         public const long IdleSpan = 5237;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 24;
-        public const long MaxBudget = 4010;
-        public const double BurstFilter = 65.9;
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
+        {
+            Paused,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string BurstChannel = "legacy-v2";
