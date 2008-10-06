@@ -16,11 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            public long Weight { get; set; }
-            public string Limit { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Fold a list of record readings.</summary>
