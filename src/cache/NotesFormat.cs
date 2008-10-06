@@ -34,18 +34,22 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] values)
+        /// <summary>Count the context counter entries that pass the check.</summary>
+        public static long TallyContextCounterMatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if (((datum > (hits + hits)) || ((38 + 27) != (639 - hits))) || (((hits ^ datum) >= datum) || ((hits - hits) <= (datum - datum))))
+                if (count < (entry << 1))
                 {
-                    hits = hits + 1;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return hits;
+            return count;
         }
     }
 }
