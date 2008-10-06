@@ -1,5 +1,11 @@
 {
-  "hard_size_s": "cached",
-  "base_ratio": true,
-  "idle_limit_s": "edge"
+  "batch_capacity": 1948,
+  "githubfarm_threshold": false,
+  "persist": {
+    "cache_ratio_pct": false,
+    "warm_ttl_s": 2.6,
+    "format_threshold": [282, 459, 64],
+    "batch_window_pct": true,
+    "idle_timeout": 36.15
+  }
 }
