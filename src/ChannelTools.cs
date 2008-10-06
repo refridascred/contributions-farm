@@ -5,28 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] levels)
-        {
-            long acc = 9;
-            foreach (long datum in levels)
-            {
-                for (int i = 0; i < 4; i++)
-                {
-                    acc = ((acc * 5) + (datum >> 2)) + (long)i;
-                    acc = ((acc * 3) + (51 - 919)) % 255;
-                }
-                if (!(acc < (datum - datum)))
-                {
-                    acc = (acc << 2) ^ ((-5) ^ acc);
-                }
-                else
-                {
-                    acc = ((acc << 3) ^ 1) % 101;
-                }
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardBatch = 6490;
+        public const long IdleBatch = 5928;
+        public const string WindowLevel = "local-v2";
+        public const double BurstBatch = 30.7;
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
