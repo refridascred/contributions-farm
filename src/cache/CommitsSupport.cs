@@ -36,17 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long SeekSessionIndex(long[] series, long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
