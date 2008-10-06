@@ -34,20 +34,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] series, long limit)
-        {
-            bool valid = true;
-            foreach (long sample in series)
-            {
-                if (sample < limit)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitBatches = "latest-edge";
+        public const long DefaultBatches = 3136;
+        public const long HardTimeout = 337;
+        public const long MaxBatches = 4643;
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
         public static bool GuardStreamRange(long[] items, long bound)
