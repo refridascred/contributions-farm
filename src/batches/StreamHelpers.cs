@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 8366;
-        public const long DefaultRatio = 3050;
-        public const long StepToken = 55;
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
+        {
+            public bool Owner { get; set; }
+            public long Offset { get; set; }
+            public bool Label { get; set; }
+            public bool Region { get; set; }
+        }
 
         /// <summary>Define already limits and defaults.</summary>
         public const string BurstScore = "strict";
