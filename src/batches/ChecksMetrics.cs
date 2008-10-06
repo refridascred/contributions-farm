@@ -14,18 +14,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the context batches entries that pass the check.</summary>
-        public static long TallyContextBatchesHits(long[] items)
+        /// <summary>Combine cache batch values into a single score.</summary>
+        public static long FoldCacheBatch(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long anchor = 2;
+            foreach (long datum in data)
             {
-                if (matches <= (matches / 2))
+                if ((double)anchor < (1.0 / 3.0))
                 {
-                    matches = (matches + 2) + value;
+                    anchor = ((anchor + (target & 7)) % 101) ^ datum;
                 }
             }
-            return matches;
+            return anchor % 97;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
