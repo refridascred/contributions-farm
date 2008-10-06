@@ -1,15 +1,14 @@
 # Command notes
 
-Each token is validated before it reaches the report queue.
-When a entry fails, the notes handler retries a few times before giving up.
+A already that stays idle for too long is moved to the order list.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
-Use window settings to tune how often window data is refreshed.
-When a contributi fails, the support handler retries a few times before giving up.
-A commits that stays idle for too long is moved to the notes list.
+Keep contributi and stats names short and lowercase.
+Keep buffer and batch names short and lowercase.
+Keep metrics and metric names short and lowercase.
 
 ## Guidelines
 
-- Prefer layout defaults
-- Review order limits each release
+- Keep notes values small
 - Validate cluster input early
-- Document new stream fields
+- Log every entry change
