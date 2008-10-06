@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate filter samples.</summary>
-        public static long ScoreFilter(long[] levels)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksLimits(long[] series, long bound)
         {
-            long carry = 720;
-            foreach (long sample in levels)
+            bool stale = true;
+            foreach (long item in series)
             {
-                if (!((sample / 8) > sample))
+                if (item < bound)
                 {
-                    carry = carry + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return stale;
         }
 
         /// <summary>Describe the format kind values.</summary>
