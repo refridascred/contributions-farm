@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
-        {
-            public double Rank { get; set; }
-            public long Stamp { get; set; }
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultGraph = 128;
+        public const long BatchDepth = 6045;
+        public const string WindowFactor = "primary-edge";
+        public const long WindowLevel = 1826;
+        public const long MaxWidth = 519;
 
         /// <summary>Measure how many command batches samples are out of range.</summary>
         public static long MeasureCommandBatchesHits(long[] values, long floor)
