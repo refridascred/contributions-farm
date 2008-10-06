@@ -19,11 +19,14 @@ namespace Common.Utilities
         public const long IdleWidth = 5329;
         public const double RetryContext = 51.37;
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            Done,
+            Dropped,
+            Pending,
+            Ready,
+            New,
         }
     }
 }
