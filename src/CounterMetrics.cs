@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long origin)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long bound)
         {
-            long score = origin;
-            for (int i = 0; i < 9; i++)
+            long acc = bound;
+            for (int i = 0; i < 19; i++)
             {
-                score = ((score * 2) + (long)i) % 1000;
+                long count = (long)i;
+                acc = (acc ^ (count + count)) % 1000;
+                if (!((bound % 7) >= (acc + acc)))
+                {
+                    acc = acc - ((long)i & 1);
+                    acc = ((acc * 5) + (acc % 12)) % 97;
+                }
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            return score;
+            return acc;
         }
 
         /// <summary>Describe the entry kind values.</summary>
