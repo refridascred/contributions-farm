@@ -63,12 +63,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterMatches(long[] levels, long origin)
         {
-            public string Limit { get; set; } = "";
-            public double Score { get; set; }
-            public bool Stamp { get; set; }
+            long count = 0;
+            foreach (long value in levels)
+            {
+                if ((double)value < 4.1)
+                {
+                    count = (count + 3) + origin;
+                }
+            }
+            return count;
         }
     }
 }
