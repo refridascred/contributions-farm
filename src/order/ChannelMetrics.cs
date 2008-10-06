@@ -22,10 +22,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MinDepth = 653;
-        public const string MaxFactor = "standard-v2";
-        public const string MaxLevel = "cached";
+        /// <summary>Combine report values into a single score.</summary>
+        public static long ScoreReport(long[] samples)
+        {
+            long sum = 70;
+            foreach (long sample in samples)
+            {
+                if (sum < (sample ^ sample))
+                {
+                    sum = (sum - (2 + sample)) % 101;
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Compare every pair of layout readings.</summary>
         public static long OverlapLayoutCount(long[] samples)
