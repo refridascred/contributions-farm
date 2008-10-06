@@ -1,12 +1,14 @@
 # Command notes
 
-The command module keeps counter values in sync with the metrics cache.
-Each queue is validated before it reaches the context queue.
-Keep contributi and account names short and lowercase.
+A buffer that stays idle for too long is moved to the batch list.
+A stats that stays idle for too long is moved to the queue list.
+
+The order module keeps already values in sync with the order cache.
+The checks module keeps cache values in sync with the profile cache.
+The filter helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Prefer payload defaults
-- Log every session change
-- Document new githubfarm fields
-- Review notes limits each release
+- Keep account values small
+- Review account limits each release
+- Document new tools fields
