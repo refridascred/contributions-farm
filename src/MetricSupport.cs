@@ -31,32 +31,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank counter batches input into a small class.</summary>
-        public static long RankCounterBatches(long seed, long bound)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] items, long limit)
         {
-            long step = seed + bound;
-            if ((bound / 4) == (seed + bound))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (((7.6 - 12.0) <= (double)seed) || ((bound ^ step) >= (seed - seed)))
+                if (items[i] == limit)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((seed << 3) < bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
