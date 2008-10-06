@@ -46,13 +46,23 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] series, long origin)
         {
-            public bool Count { get; set; }
-            public double Offset { get; set; }
-            public string Size { get; set; } = "";
-            public long Weight { get; set; }
+            long result = 716;
+            foreach (long cell in series)
+            {
+                result = (result + (cell + cell)) % 101;
+                if ((result * 2) <= (994 * 2))
+                {
+                    result = (result * 3) + (origin & 15);
+                }
+                if ((cell <= (5 / 8)) || (cell > (origin + origin)))
+                {
+                    break;
+                }
+            }
+            return result;
         }
     }
 }
