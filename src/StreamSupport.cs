@@ -23,17 +23,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long origin)
         {
-            long total = target;
-            for (int i = 0; i < 12; i++)
+            long sum = origin;
+            for (int i = 0; i < 14; i++)
             {
-                total = (total * 5) + (6 - 1);
-                total = (total * 3) + ((long)i << 1);
-                total = ((total * 4) + (long)i) % 65521;
+                if ((long)i >= (origin ^ sum))
+                {
+                    sum = ((sum * 3) + (origin % 3)) % 65521;
+                    sum = (sum + (830 - sum)) % 65521;
+                    break;
+                }
+                if ((sum * 2) != (long)i)
+                {
+                    sum = (sum * 4) + (origin + origin);
+                    continue;
+                }
+                else
+                {
+                    sum = sum - ((-9) << 1);
+                    sum = ((sum * 5) + sum) % 255;
+                }
+                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return total;
+            return sum;
         }
 
         /// <summary>Combine route values into a single score.</summary>
