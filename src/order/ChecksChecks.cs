@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double BlendStats(double weight, double span)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            double mean = (double)(8 - 6);
-            if (mean > (double)4)
-            {
-                mean = ((mean + (double)1) - weight) + span;
-            }
-            else
-            {
-                mean = mean - (double)126;
-            }
-            return mean - (double)0;
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the filter level values.</summary>
