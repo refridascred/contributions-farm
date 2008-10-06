@@ -22,21 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long MatchRecordCount(long[] readings)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long TallyAccountHits(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)origin == (3.8 * 6.8))
                 {
-                    if ((readings[i] + readings[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 1) + datum;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Locate a command reading by value.</summary>
