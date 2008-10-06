@@ -1,7 +1,5 @@
 {
-  "audit": 8636,
-  "poll_delay_pct": 88.52,
-  "window_interval": "staging",
-  "metric_capacity": "blue",
-  "soft_ttl_pct": "legacy"
+  "hard_retries": 44,
+  "retry_delay_s": true,
+  "buffer_capacity": false
 }
