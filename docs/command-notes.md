@@ -1,11 +1,11 @@
 # Command notes
 
-When a window fails, the queue handler retries a few times before giving up.
-Each contributi is validated before it reaches the report queue.
+A githubfarm that stays idle for too long is moved to the support list.
+Run the contributi check before changing any context limits.
 
 ## Guidelines
 
-- Log every counter change
-- Validate entry input early
-- Keep profile values small
-- Document new payload fields
+- Review githubfarm limits each release
+- Log every schema change
+- Prefer account defaults
+- Validate window input early
