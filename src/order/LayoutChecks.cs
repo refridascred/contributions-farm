@@ -64,10 +64,21 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitCount = 7752;
-        public const long MinTimeout = 2211;
-        public const long SoftBudget = 4380;
-        public const string BurstReport = "open-v2";
+        /// <summary>Count cache graph pairs that satisfy a relation.</summary>
+        public static long MatchCacheGraphCount(long[] levels)
+        {
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
