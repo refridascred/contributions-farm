@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] items, long offset)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheSchema = 992;
+        public const long BaseScore = 6916;
+        public const double HardWidth = 48.88;
+        public const string RetrySchema = "staging-1";
+        public const string BatchSchema = "primary-v2";
 
         /// <summary>Describe the checks state values.</summary>
         public enum ChecksState
