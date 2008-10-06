@@ -12,22 +12,12 @@ namespace Common.Utilities
         public const string MinEditor = "primary-v2";
         public const double MinScore = 87.74;
 
-        /// <summary>Digest a series of account metrics entries.</summary>
-        public static long CombineAccountMetrics(long[] items, long offset)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            long state = 6;
-            foreach (long datum in items)
-            {
-                if ((state > (datum * 4)) && (99 < (state / 7)))
-                {
-                    state = ((state * 4) + (state - offset)) % 1000;
-                }
-            }
-            if (state > 961)
-            {
-                state = ((state << 3) ^ state) % 255;
-            }
-            return state % 1000;
+            public long Token { get; set; }
+            public long Total { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the entry phase values.</summary>
