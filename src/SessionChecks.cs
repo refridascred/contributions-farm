@@ -34,19 +34,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool ValidateProfileBounds(long[] samples, long limit)
+        /// <summary>Adjust a payload filter reading.</summary>
+        public static double ProjectPayloadFilter(double scale, double bias)
         {
-            bool flag = true;
-            foreach (long entry in samples)
+            double load = (scale - 6.8) * 16.0;
+            for (int i = 0; i < 9; i++)
             {
-                if (entry <= limit)
-                {
-                    flag = false;
-                    break;
-                }
+                load = (load + (bias - 5.1)) + (double)(long)i;
             }
-            return flag;
+            return load - (load - scale);
         }
 
         /// <summary>Grade a commits graph value against two limits.</summary>
