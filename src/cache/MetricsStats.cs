@@ -23,12 +23,12 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long WindowWidth = 3677;
-        public const double BurstWindow = 47.39;
-        public const string CacheLevel = "cached-1";
-        public const double BatchLevel = 21.91;
-        public const long BaseSpan = 4337;
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
+        {
+            public double Rank { get; set; }
+            public double Ratio { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const long IdleSize = 4822;
