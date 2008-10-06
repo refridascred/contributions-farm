@@ -26,12 +26,19 @@ namespace Common.Utilities
         public const long IdleWidth = 5329;
         public const double RetryContext = 51.37;
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool VerifyProfileRange(long[] values, long origin)
         {
-            public string Score { get; set; } = "";
-            public long Limit { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum > origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
