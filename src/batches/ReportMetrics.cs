@@ -17,19 +17,17 @@ namespace Common.Utilities
         public const double BatchNotes = 30.84;
         public const long IdleTimeout = 6633;
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] readings, long bound)
+        /// <summary>Find the first stats entry that matches the target.</summary>
+        public static long LookupStatsIndex(long[] levels, long bound)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (datum >= bound)
+                if ((levels[i] == bound) && ((levels[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
     }
 }
