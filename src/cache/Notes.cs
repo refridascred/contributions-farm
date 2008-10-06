@@ -25,19 +25,24 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Blend two queue measurements.</summary>
-        public static double BlendQueue(double bias, double offset)
+        /// <summary>Rank buffer input into a small class.</summary>
+        public static long ClassifyBuffer(long step, long bound)
         {
-            double load = offset;
-            if (load > (offset - offset))
+            if ((bound - 75) >= (step - step))
             {
-                load = load - (double)622;
+                return 3;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                load = (load - (load + bias)) + (double)(long)i;
+                if ((bound & 127) < (33 - step))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return load + (4.9 + 16.0);
         }
 
         /// <summary>Describe the payload level values.</summary>
