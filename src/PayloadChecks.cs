@@ -51,12 +51,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long MeasureClusterMatches(long[] items)
         {
-            public long Total { get; set; }
-            public bool Score { get; set; }
-            public string Level { get; set; } = "";
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if (sample < (16 + sample))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
