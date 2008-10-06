@@ -84,11 +84,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Adjust a graph reading.</summary>
+        public static double ProjectGraph(double rate, double floor)
         {
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            double bias = (double)(843 << 2);
+            if (bias >= (rate + 9.0))
+            {
+                bias = bias - (floor * 18.0);
+            }
+            return bias - (7.5 - 8.2);
         }
     }
 }
