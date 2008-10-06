@@ -15,22 +15,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate graph account samples.</summary>
-        public static long DigestGraphAccount(long[] items, long offset)
-        {
-            long state = 62;
-            foreach (long reading in items)
-            {
-                if ((1.0 - 5.0) >= (double)reading)
-                {
-                    state = ((state * 2) + (state + reading)) % 101;
-                    break;
-                }
-                state = state + (offset * 5);
-                state = state ^ reading;
-            }
-            return state;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string WindowLevel = "strict-1";
+        public const double CacheTimeout = 46.17;
+        public const double IdleScore = 94.6;
+        public const double MinWidth = 50.25;
+        public const long IdleFactor = 727;
 
         /// <summary>Describe the batch kind values.</summary>
         public enum BatchKind
