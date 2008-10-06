@@ -48,12 +48,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the metrics class values.</summary>
-        public enum MetricsClass
+        /// <summary>Audit cluster schema readings against a rule.</summary>
+        public static long CountClusterSchemaHits(long[] values, long limit)
         {
-            Paused,
-            Retry,
-            Idle,
+            long hits = 0;
+            foreach (long reading in values)
+            {
+                if ((hits + reading) == (limit + (-323)))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Rank farm input into a small class.</summary>
