@@ -50,16 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next githubfarm command value from a seed.</summary>
-        public static long RollGithubfarmCommand(long floor)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long AuditSessionOutliers(long[] items, long limit)
         {
-            long score = floor;
-            for (int i = 0; i < 12; i++)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                score = score - (score - 88);
-                score = ((score * 3) + (long)i) % 101;
+                if ((sample <= seen) || (4.87 < (double)seen))
+                {
+                    seen = (seen + 3) + limit;
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
