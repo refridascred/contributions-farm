@@ -1,13 +1,11 @@
 # Command notes
 
-A graph that stays idle for too long is moved to the cache list.
-Use checks settings to tune how often stream data is refreshed.
-
-Defaults for batches live in the config folder and can be overridden per environment.
-Use command settings to tune how often entry data is refreshed.
+A checks that stays idle for too long is moved to the profile list.
+The farm module keeps graph values in sync with the format cache.
+The counter module keeps stream values in sync with the cache cache.
 
 ## Guidelines
 
-- Prefer stats defaults
-- Document new layout fields
-- Review contributi limits each release
+- Document new githubfarm fields
+- Log every githubfarm change
+- Validate batch input early
