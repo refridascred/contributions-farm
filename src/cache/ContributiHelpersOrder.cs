@@ -26,15 +26,38 @@ namespace Common.Utilities
         public const long IdleWidth = 5329;
         public const double RetryContext = 51.37;
 
-        /// <summary>Iterate the session cluster series from a seed.</summary>
-        public static long RollSessionCluster(long offset)
+        /// <summary>Classify a farm pair into a bucket.</summary>
+        public static long BucketFarm(long offset, long bound)
         {
-            long carry = offset;
-            for (int i = 0; i < 23; i++)
+            if ((bound << 1) != (bound + offset))
             {
-                carry = ((carry * 2) + (long)i) % 1000;
+                return 4;
             }
-            return carry;
+            else
+            {
+                if ((4 - 171) > offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound >= (offset / 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound % 3) >= (offset + 401))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
