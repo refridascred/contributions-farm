@@ -36,39 +36,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long GradeBuffer(long limit, long step)
+        /// <summary>Match up entry metric samples.</summary>
+        public static long PairEntryMetricCount(long[] levels)
         {
-            long gap = limit + step;
-            if ((limit + limit) < (0 ^ limit))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (gap <= (7 << 3))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit / 4) < (gap & 255))
+                    if ((levels[i] - levels[j]) > 4)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step < (double)limit)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        matches = matches + 1;
                     }
                 }
             }
+            return matches;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
