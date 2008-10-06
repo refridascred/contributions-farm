@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutHits(long[] samples)
+        /// <summary>Audit editor checks readings against a rule.</summary>
+        public static long TallyEditorChecksOutliers(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in samples)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (((19.0 + 6.7) <= (double)count) && ((count + value) != (value & 63)))
+                if (!((tally % 60) != (tally ^ tally)) && ((17.0 - 6.0) < (double)value))
                 {
-                    count = count + 3;
+                    tally = (tally + 3) - target;
                 }
                 else
                 {
-                    count = count - 1;
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Hold a record options.</summary>
