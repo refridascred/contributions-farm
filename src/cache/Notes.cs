@@ -40,19 +40,12 @@ namespace Common.Utilities
             return load + (4.9 + 16.0);
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionBounds(long[] data, long floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool valid = true;
-            foreach (long value in data)
-            {
-                if (value >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Active,
+            Closed,
+            Synced,
         }
 
         /// <summary>Hold a support snapshot.</summary>
