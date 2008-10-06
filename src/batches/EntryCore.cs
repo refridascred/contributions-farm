@@ -52,11 +52,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Classify a order route pair into a bucket.</summary>
+        public static long RankOrderRoute(long seed, long seed2)
         {
-            public string Stamp { get; set; } = "";
-            public bool Count { get; set; }
+            long lane = seed + seed2;
+            if ((414 / 2) >= lane)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((lane / 8) <= (seed + lane)) && ((701 >> 3) != (seed2 / 6)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (lane >= 52)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((84 + seed2) <= (lane - seed2)) && ((seed2 + seed2) <= (lane & 3)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define batch limits and defaults.</summary>
