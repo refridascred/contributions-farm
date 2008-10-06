@@ -39,18 +39,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long MeasureAccountMatches(long[] data)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long TallyBufferGaps(long[] data)
         {
-            long hits = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((7 << 1) < (hits >> 1))
+                if ((tally ^ item) != (tally & 15))
                 {
-                    hits = (hits + 3) + entry;
+                    tally = tally + 2;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Match up context samples.</summary>
