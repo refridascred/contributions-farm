@@ -1,10 +1,7 @@
 {
-  "soft_threshold": "eu-west",
-  "retry_depth_count": "strict",
-  "sync_capacity_s": {
-    "warm_delay": ["latest", "standard", "stable"],
-    "persist": true,
-    "command_limit": [322, 217]
-  },
-  "default_capacity_count": [362, 52]
+  "audit": 8636,
+  "poll_delay_pct": 88.52,
+  "window_interval": "staging",
+  "metric_capacity": "blue",
+  "soft_ttl_pct": "legacy"
 }
