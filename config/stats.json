@@ -1,6 +1,8 @@
 {
-  "layout_interval": 1199,
-  "warm_delay": 93,
-  "warm_ttl_pct": "latest",
-  "sync_capacity_pct": 4088
+  "retry_delay": 30,
+  "min_window": "local",
+  "farm_depth": true,
+  "cache_delay_s": 100,
+  "cache_retries_s": true,
+  "max_ratio": false
 }
