@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            public bool Total { get; set; }
-            public long Size { get; set; }
+            Active,
+            Locked,
+            Dropped,
+            Idle,
+            Stale,
         }
 
         /// <summary>Combine graph values into a single score.</summary>
