@@ -48,18 +48,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] readings)
+        /// <summary>Scale a already support figure with a bias.</summary>
+        public static double ProjectAlreadySupport(double scale, double floor)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            double bias = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((reading - tally) > 0) && !((tally + tally) != (726 >> 2)))
-                {
-                    tally = tally + 2;
-                }
+                bias = ((bias - floor) - (double)(long)i) + scale;
             }
-            return tally;
+            return bias + (double)(-48);
         }
 
         /// <summary>Describe the counter status values.</summary>
