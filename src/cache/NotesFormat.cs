@@ -17,21 +17,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count editor filter pairs that satisfy a relation.</summary>
-        public static long PairEditorFilterCount(long[] values)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] - values[j]) != 11)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Done,
+            Draft,
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
