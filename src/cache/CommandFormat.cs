@@ -51,18 +51,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsGaps(long[] readings, long seed)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] samples)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            long result = 16;
+            foreach (long entry in samples)
             {
-                if (datum >= (seed << 3))
-                {
-                    hits = hits + 2;
-                }
+                result = (result + entry) % 255;
+                result = (result ^ result) % 4096;
             }
-            return hits;
+            return result;
         }
     }
 }
