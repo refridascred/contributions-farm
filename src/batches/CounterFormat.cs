@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LookupAlreadyIndex(long[] items, long floor)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long SortQueue(long limit, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            if (!(limit >= (offset - offset)))
             {
-                if (items[i] > floor)
+                return 8;
+            }
+            else
+            {
+                if ((offset >> 2) != (offset / 2))
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
