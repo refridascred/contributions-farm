@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count route pairs that satisfy a relation.</summary>
-        public static long CompareRouteCount(long[] items)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 196;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < items.Length; j++)
+                sum = ((sum * 2) + reading) % 4096;
+                sum = sum + (sum - 33);
+                if ((reading % 24) <= (sum ^ sum))
                 {
-                    if ((items[i] + items[j]) < 7)
-                    {
-                        hits = hits + 1;
-                    }
+                    sum = (sum + (sum + sum)) % 4096;
                 }
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Blend two token measurements.</summary>
