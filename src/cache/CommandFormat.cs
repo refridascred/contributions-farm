@@ -23,12 +23,15 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double rate, double offset)
         {
-            Ready,
-            Synced,
-            Draft,
+            double mean = offset - rate;
+            if (mean < (double)217)
+            {
+                mean = mean - (3.0 + rate);
+            }
+            return mean - (9.3 + offset);
         }
 
         /// <summary>Hold a notes header.</summary>
