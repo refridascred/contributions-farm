@@ -48,13 +48,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            public double Mode { get; set; }
-            public double Weight { get; set; }
-            public long Region { get; set; }
-            public long Token { get; set; }
+            Paused,
+            Stale,
+            Failed,
         }
 
         /// <summary>Define account limits and defaults.</summary>
