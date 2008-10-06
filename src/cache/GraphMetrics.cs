@@ -10,18 +10,24 @@ namespace Common.Utilities
         public const long MinOrder = 7711;
         public const long BatchOrder = 2922;
 
-        /// <summary>Audit cluster token readings against a rule.</summary>
-        public static long CountClusterTokenMatches(long[] series, long offset)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long target)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long result = target;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)offset >= 4.0)
+                if (((long)i * 4) < ((long)i << 1))
                 {
-                    tally = (tally + 2) ^ sample;
+                    result = (result - (result + (long)i)) % 4096;
                 }
+                else
+                {
+                    result = (result << 3) ^ (result & 1);
+                    result = (result - (result - target)) % 4096;
+                }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
