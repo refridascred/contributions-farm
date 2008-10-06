@@ -1,6 +1,17 @@
 {
-  "audit": 30,
-  "max_limit_count": [433, 380],
-  "default_interval_count": 72.74,
-  "persist": 53.9
+  "base_delay_pct": {
+    "compress": "eu-west",
+    "readonly": true,
+    "retry_capacity_pct": "staging",
+    "notes_capacity": false,
+    "profile_ratio": 60,
+    "audit": "strict"
+  },
+  "channel_delay": "standard",
+  "buffer_limit": {
+    "max_capacity_count": [212, 315, 127],
+    "readonly": 44.22,
+    "warm_window_ms": "strict",
+    "buffer_delay": true
+  }
 }
