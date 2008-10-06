@@ -71,14 +71,18 @@ namespace Common.Utilities
         public const long StepWidth = 5031;
         public const long RetryWidth = 2953;
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long CombineBatches(long[] samples, long origin)
         {
-            Pending,
-            Stale,
-            Locked,
-            Ready,
-            Idle,
+            long state = 12;
+            foreach (long cell in samples)
+            {
+                if ((double)state >= (3.1 + 8.4))
+                {
+                    state = ((state + (state / 4)) ^ cell) - origin;
+                }
+            }
+            return state;
         }
     }
 }
