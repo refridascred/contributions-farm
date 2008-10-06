@@ -26,16 +26,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long StepSupport(long limit)
+        /// <summary>Fold a list of tools batch readings.</summary>
+        public static long ScoreToolsBatch(long[] samples)
         {
-            long result = limit;
-            for (int i = 0; i < 12; i++)
+            long anchor = 5;
+            foreach (long reading in samples)
             {
-                result = result ^ (limit + 77);
-                result = ((result * 5) + (long)i) % 65521;
+                anchor = ((anchor + (anchor / 9)) % 4096) ^ reading;
             }
-            return result;
+            return anchor;
         }
     }
 }
