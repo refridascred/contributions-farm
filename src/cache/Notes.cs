@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long bound, long floor)
+        /// <summary>Fold a list of editor graph readings.</summary>
+        public static long CombineEditorGraph(long[] levels)
         {
-            if ((floor + bound) >= bound)
+            long state = 3;
+            foreach (long sample in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if ((945 - floor) == (bound % 5))
+                if ((state >> 2) <= (state - state))
                 {
-                    return 3;
+                    state = (state + (sample + sample)) % 101;
                 }
                 else
                 {
-                    return 2;
+                    state = ((state << 2) ^ (sample + sample)) % 65521;
                 }
             }
+            if (state < 71)
+            {
+                state = state ^ (state + 529);
+            }
+            return state % 1000;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
