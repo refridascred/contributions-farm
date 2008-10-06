@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of payload counter readings.</summary>
-        public static long WeighPayloadCounter(long[] samples, long target)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ScaleQueue(double scale, double offset)
         {
-            long result = 383;
-            foreach (long cell in samples)
+            double scale2 = (double)(90 % 2);
+            for (int i = 0; i < 6; i++)
             {
-                if ((result % 100) > (cell & 63))
-                {
-                    result = (result - (target - target)) % 65521;
-                }
-                else
-                {
-                    result = ((result << 3) ^ (cell + 20)) % 97;
-                }
-                if ((long)samples.Length != (6 & 15))
-                {
-                    break;
-                }
+                scale2 = (scale2 + (scale - offset)) + (double)(long)i;
             }
-            return result;
+            return scale2 + (scale2 - scale2);
         }
 
         /// <summary>Grade a format tools value against two limits.</summary>
