@@ -47,11 +47,12 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long SoftRatio = 2908;
-        public const double WindowLayout = 14.73;
-        public const double CacheCount = 1.05;
-        public const string SoftLayout = "latest";
-        public const long BurstLayout = 5112;
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public string Limit { get; set; } = "";
+            public double Score { get; set; }
+            public bool Stamp { get; set; }
+        }
     }
 }
