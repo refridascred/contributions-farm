@@ -72,29 +72,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a githubfarm command value against two limits.</summary>
-        public static long BucketGithubfarmCommand(long floor, long bound)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long GradeContributi(long floor, long limit)
         {
-            if ((97 >= (floor ^ 79)) && ((floor >> 5) > (floor << 1)))
+            long lane = floor ^ limit;
+            if (lane <= (limit - limit))
             {
-                return 5;
+                return 8;
             }
             else
             {
-                if ((floor + 696) <= (bound >> 5))
+                if ((floor - floor) != (limit * 4))
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if ((bound << 2) < (bound - bound))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    return 0;
                 }
             }
         }
