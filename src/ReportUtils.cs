@@ -62,31 +62,19 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long limit, long offset)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool GuardGithubfarmBounds(long[] samples, long limit)
         {
-            if (((limit - limit) < limit) && ((double)limit < 3.91))
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)4 > (double)limit)
+                if (sample >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (offset < (offset - offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
