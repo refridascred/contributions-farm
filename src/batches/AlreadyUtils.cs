@@ -41,34 +41,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Fold a list of githubfarm cache readings.</summary>
-        public static long ScoreGithubfarmCache(long[] samples)
+        /// <summary>Combine token notes values into a single score.</summary>
+        public static long ScoreTokenNotes(long[] samples, long offset)
         {
-            long carry = 90;
-            foreach (long reading in samples)
+            long mix = 68;
+            foreach (long cell in samples)
             {
-                if (carry < (carry + reading))
+                mix = (mix - (243 / 6)) % 65521;
+                if (((cell ^ mix) >= 158) || ((mix ^ mix) >= (61 + mix)))
                 {
-                    carry = (carry - 86) % 97;
-                    continue;
+                    mix = mix ^ offset;
                 }
-                else
-                {
-                    carry = ((carry * 4) + reading) % 97;
-                }
-                if ((19 < carry) || ((double)(long)samples.Length == (0.03 - 10.0)))
-                {
-                    carry = ((carry << 2) ^ (long)samples.Length) % 1000;
-                    carry = carry - (7 + reading);
-                }
-                else
-                {
-                    carry = (carry ^ (carry / 8)) % 1000;
-                    carry = ((carry * 3) + (carry - carry)) % 4096;
-                }
-                carry = ((carry * 4) + (reading >> 3)) % 255;
             }
-            return carry % 65521;
+            return mix % 65521;
         }
 
         /// <summary>Rank account input into a small class.</summary>
