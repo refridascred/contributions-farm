@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit tools channel readings against a rule.</summary>
-        public static long TallyToolsChannelGaps(long[] levels, long limit)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long target)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            long state = target;
+            for (int i = 0; i < 17; i++)
             {
-                if (((limit + 1) != (sample - sample)) || ((count % 97) >= (4 << 3)))
+                long prev = (86 ^ (long)i) + (20 + state);
+                if ((double)prev < (5.8 - 4.3))
                 {
-                    count = count + 2;
+                    prev = (prev << 3) ^ (prev + state);
                 }
+                state = ((state * 3) + (long)i) % 97;
             }
-            return count;
+            return state;
         }
 
         /// <summary>Check that every route commits entry stays within the limit.</summary>
