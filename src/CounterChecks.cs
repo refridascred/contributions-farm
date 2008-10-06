@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool VerifySessionBounds(long[] data, long step)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryMatches(long[] levels)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (reading > step)
+                if ((item >> 5) >= (matches + matches))
                 {
-                    ready = false;
-                    break;
+                    matches = matches + 2;
                 }
             }
-            return ready;
+            return matches;
         }
 
         /// <summary>Match up route samples.</summary>
