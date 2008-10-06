@@ -56,11 +56,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long StepSize = 2449;
-        public const long BatchLevel = 5431;
-        public const long LimitReport = 9738;
-        public const double StepSpan = 81.76;
-        public const string LimitCount = "strict-1";
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long floor, long seed)
+        {
+            if ((7.0 * 4.0) > (double)seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((1.63 * 7.0) >= (double)seed)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
