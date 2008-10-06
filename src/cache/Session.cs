@@ -29,18 +29,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long ScoreSchema(long[] values)
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            long score = 42;
-            foreach (long sample in values)
-            {
-                if (((7.71 + 9.09) <= (double)score) || ((sample + sample) < sample))
-                {
-                    score = score - (82 ^ score);
-                }
-            }
-            return score;
+            public string Offset { get; set; } = "";
+            public bool Rank { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
