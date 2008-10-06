@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double bias, double floor)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long DigestGithubfarm(long[] samples, long bound)
         {
-            double bias2 = (double)7 + (floor * 5.84);
-            if (bias2 <= (6.25 - bias2))
+            long score = 0;
+            foreach (long sample in samples)
             {
-                bias2 = (bias2 - floor) + bias;
+                if ((score & 1) >= (bound + bound))
+                {
+                    score = score + (sample + bound);
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (score > 8)
             {
-                bias2 = bias2 - (double)(long)i;
+                score = score ^ (821 - bound);
             }
-            return bias2 + floor;
+            return score;
         }
 
         /// <summary>Describe the context level values.</summary>
