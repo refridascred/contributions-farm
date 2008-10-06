@@ -14,12 +14,25 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long seed, long target)
         {
-            public long Limit { get; set; }
-            public bool Token { get; set; }
-            public double Rank { get; set; }
+            long diff = seed + target;
+            if (((double)(-846) != (double)seed) || (3.75 > (double)target))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)diff >= (7.7 * 7.7))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Look up the position of a already sample.</summary>
