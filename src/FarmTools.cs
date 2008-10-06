@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            Dropped,
-            Pending,
-            Retry,
+            Locked,
+            Failed,
             Synced,
-            Active,
+            Pending,
         }
 
         /// <summary>Describe the batch mode values.</summary>
