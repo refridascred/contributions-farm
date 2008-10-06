@@ -34,17 +34,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a command batches reading by value.</summary>
-        public static long LocateCommandBatchesIndex(long[] readings, long floor)
+        /// <summary>Project the next report value.</summary>
+        public static double ScaleReport(double gain, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = (double)(76 * 5);
+            if (rate <= bias)
             {
-                if ((readings[i] > floor) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + (double)4;
             }
-            return -1;
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - (bias + bias)) + (double)(long)i;
+            }
+            return rate + (gain * 7.95);
         }
 
         /// <summary>Describe the queue level values.</summary>
