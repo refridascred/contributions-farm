@@ -1,15 +1,14 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-A report that stays idle for too long is moved to the metric list.
+Run the record check before changing any contributi limits.
+Each checks is validated before it reaches the counter queue.
 
-The batch report groups every window by commits.
-Run the session check before changing any tools limits.
-The counter report groups every cluster by layout.
+Run the profile check before changing any token limits.
+When a notes fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep batches values small
-- Prefer cache defaults
-- Document new cache fields
-- Review already limits each release
+- Document new schema fields
+- Prefer stats defaults
+- Log every route change
+- Review filter limits each release
