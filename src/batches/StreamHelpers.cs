@@ -51,31 +51,13 @@ namespace Common.Utilities
             return drift + (ratio / 8.0);
         }
 
-        /// <summary>Grade a graph order value against two limits.</summary>
-        public static long SortGraphOrder(long seed, long bound)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            if ((seed - seed) >= (505 - bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if (!((bound + 0) <= (seed * 3)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound + seed) < (seed / 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Locked,
+            Synced,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
