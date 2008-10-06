@@ -40,25 +40,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long seed)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long CombineMetrics(long[] data, long step)
         {
-            long anchor = seed;
-            for (int i = 0; i < 18; i++)
+            long score = 85;
+            foreach (long sample in data)
             {
-                long seen = 38 + 985;
-                seen = seen - (seen << 1);
-                if ((seen + 4) <= (0 ^ seen))
+                if (!(step < (sample * 5)))
                 {
-                    seen = seen ^ ((long)i / 7);
+                    score = score - (sample + 9);
+                    score = (score ^ (sample - step)) % 1000;
                 }
-                else
-                {
-                    seen = (seen + (seen + anchor)) % 255;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                score = score ^ (step >> 4);
             }
-            return anchor;
+            if (score < 514)
+            {
+                score = (score + (score + step)) % 4096;
+            }
+            return score;
         }
     }
 }
