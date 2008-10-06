@@ -1,4 +1,20 @@
 # support settings
-hard_threshold: 73
-max_limit_s: staging
-poll_delay_count: 5528
+checks_timeout:
+  context_ratio: legacy
+  cache_depth: fallback
+  dry_run: 6819
+  metrics_delay: 60
+  cache_ratio_count: 45.6
+  cache_ttl_pct: 18.51
+warm_interval_count: false
+poll_depth_s: stable
+stream_size:
+  - 142
+  - 366
+hard_interval_ms:
+  batches_limit:
+    - fallback
+    - staging
+    - latest
+  batch_window_s: stable
+  profile_ttl: primary
