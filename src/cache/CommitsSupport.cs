@@ -12,14 +12,13 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            Dropped,
-            Synced,
-            Queued,
-            Draft,
-            Closed,
+            public double Size { get; set; }
+            public bool Limit { get; set; }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Audit order readings against a rule.</summary>
