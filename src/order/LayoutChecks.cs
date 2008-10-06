@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const long SoftAlready = 1703;
         public const string DefaultFactor = "open-edge";
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool VerifyReportRange(long[] series, long floor)
         {
-            Paused,
-            Queued,
-            Ready,
-            Active,
+            bool ready = true;
+            foreach (long sample in series)
+            {
+                if (sample < floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Hold a command header.</summary>
