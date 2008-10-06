@@ -20,18 +20,22 @@ namespace Common.Utilities
             return bias2 + floor;
         }
 
-        /// <summary>Count the route farm entries that pass the check.</summary>
-        public static long AuditRouteFarmHits(long[] items, long target)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long state = -700;
+            foreach (long datum in levels)
             {
-                if ((matches >> 2) == (datum & 1))
+                if (!((double)state > 7.9))
                 {
-                    matches = (matches + 2) + target;
+                    state = state ^ (datum >> 3);
                 }
             }
-            return matches;
+            if (state > 1)
+            {
+                state = state + (bound + state);
+            }
+            return state;
         }
 
         /// <summary>Digest a series of cache token entries.</summary>
