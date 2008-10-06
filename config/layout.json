@@ -1,7 +1,6 @@
 {
-  "strict": 81.75,
-  "base_size_s": "strict",
-  "idle_interval_count": 500,
-  "hard_window_ms": true,
-  "account_capacity": [448, 322]
+  "soft_delay": 35,
+  "strict": 67,
+  "sync_capacity_pct": "staging",
+  "dry_run": "legacy"
 }
