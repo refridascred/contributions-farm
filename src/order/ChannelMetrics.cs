@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 8088;
         public const long MaxCounter = 810;
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double ProjectStats(double rate, double span)
+        /// <summary>Validate metric tools readings against a bound.</summary>
+        public static bool CheckMetricToolsBounds(long[] data, long step)
         {
-            double mean = span;
-            for (int i = 0; i < 8; i++)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                mean = mean - (double)(long)i;
+                if (entry < step)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mean - (rate + 17.0);
+            return valid;
         }
 
         /// <summary>Check that every already commits entry stays within the limit.</summary>
