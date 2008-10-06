@@ -38,12 +38,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double BaseCluster = 61.29;
-        public const long SoftWidth = 7496;
-        public const double MaxScore = 72.47;
-        public const long StepWidth = 5031;
-        public const long RetryWidth = 2953;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+            public double Score { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double HardLevel = 83.2;
