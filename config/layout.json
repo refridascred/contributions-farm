@@ -1,15 +1,7 @@
 {
-  "sync_threshold_count": "latest",
-  "filter_timeout": 658,
-  "max_interval": false,
-  "cache_capacity_count": 60,
-  "batch_ttl_pct": {
-    "compress": ["edge", "strict", "eu-west"],
-    "flush_retries_ms": "latest",
-    "base_delay_s": "stable",
-    "readonly": 60,
-    "already_ttl": 21.81,
-    "soft_retries_ms": [68, 400, 136]
-  },
-  "checks_delay": true
+  "account_size": 100,
+  "notes_ttl": 83.72,
+  "cache_threshold_s": 27.4,
+  "already_timeout": "blue",
+  "flush_depth": "fallback"
 }
