@@ -1,11 +1,12 @@
 # support settings
-base_interval_ms: 42
-record_window: 73
-retry_interval:
-  - 247
-  - 2
-idle_interval_count:
-  - eu-west
-  - primary
-  - strict
-sync_ratio_count: true
+retry_depth_ms:
+  - 278
+  - 121
+  - 59
+  - 416
+farm_depth:
+  - 125
+  - 286
+retry_ratio: fallback
+batches_threshold: 30.81
+warm_size: edge
