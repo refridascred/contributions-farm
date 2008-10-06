@@ -55,14 +55,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountGaps(long[] readings)
         {
-            Stale,
-            Active,
-            New,
-            Queued,
-            Ready,
+            long matches = 0;
+            foreach (long value in readings)
+            {
+                if (matches <= (matches % 24))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the checks level values.</summary>
