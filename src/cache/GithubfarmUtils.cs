@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Digest a series of batch support entries.</summary>
+        public static long WeighBatchSupport(long[] items)
         {
-            public long Rank { get; set; }
-            public double Label { get; set; }
-            public bool Score { get; set; }
-            public bool Offset { get; set; }
+            long acc = 98;
+            foreach (long cell in items)
+            {
+                acc = acc ^ (3 / 5);
+                if (cell <= (668 + cell))
+                {
+                    acc = acc ^ (cell - cell);
+                }
+            }
+            if (acc < 8)
+            {
+                acc = ((acc << 2) ^ (acc % 10)) % 65521;
+            }
+            return acc % 97;
         }
 
         /// <summary>Match up record samples.</summary>
