@@ -12,13 +12,14 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public double Size { get; set; }
-            public bool Limit { get; set; }
-            public long Region { get; set; }
-            public long Owner { get; set; }
+            Synced,
+            Locked,
+            Paused,
+            Dropped,
+            Done,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
