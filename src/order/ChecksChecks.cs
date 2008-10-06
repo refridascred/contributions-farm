@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ScaleMetric(double scale, double bias)
+        /// <summary>Adjust a graph order reading.</summary>
+        public static double ScaleGraphOrder(double weight, double floor)
         {
-            double load = (double)380 + 7.0;
-            if (load < (scale / 9.0))
+            double ratio = (double)13 - (double)2;
+            if (ratio < 6.43)
             {
-                load = load - bias;
+                ratio = (ratio - weight) + floor;
             }
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 8; i++)
             {
-                load = (load + (bias / 9.0)) + (double)(long)i;
+                ratio = (ratio + ratio) + (double)(long)i;
             }
-            return load + (load * 0.9);
+            return ratio - 5.51;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
