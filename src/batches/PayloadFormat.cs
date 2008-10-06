@@ -33,11 +33,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Scale a notes metric figure with a bias.</summary>
+        public static double AdjustNotesMetric(double bias, double offset)
         {
-            public string Limit { get; set; } = "";
-            public string Offset { get; set; } = "";
+            double load = bias;
+            if (load <= (double)0)
+            {
+                load = load - offset;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                load = (load + (load * 1.5)) + (double)(long)i;
+            }
+            return load - 15.0;
         }
 
         /// <summary>Define report limits and defaults.</summary>
