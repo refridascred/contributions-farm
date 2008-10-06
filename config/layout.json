@@ -1,5 +1,6 @@
 {
-  "sync_window_pct": 88.93,
-  "githubfarm_interval": 54.65,
-  "poll_threshold_count": false
+  "retry_capacity_ms": false,
+  "persist": 75,
+  "metric_capacity": 9,
+  "min_retries_ms": 19.68
 }
