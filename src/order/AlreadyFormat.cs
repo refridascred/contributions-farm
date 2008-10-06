@@ -48,38 +48,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Grade a layout window value against two limits.</summary>
-        public static long SortLayoutWindow(long bound, long limit)
-        {
-            if (((bound ^ limit) >= ((-1) - limit)) || ((145 / 9) >= (bound % 8)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((5.0 / 6.0) <= (double)limit)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((limit >> 4) < (limit ^ bound))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((8.0 - 6.41) != (double)bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardSpan = 4796;
+        public const double BaseFactor = 50.82;
+        public const string HardLevel = "open-edge";
+        public const double MaxTimeout = 74.45;
     }
 }
