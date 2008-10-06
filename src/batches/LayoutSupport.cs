@@ -47,11 +47,32 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] samples)
         {
-            public bool Token { get; set; }
-            public long Flag { get; set; }
+            long score = -79;
+            foreach (long reading in samples)
+            {
+                if ((((long)samples.Length * 5) != (score ^ reading)) && ((reading << 2) > (score - reading)))
+                {
+                    score = (score - 66) % 101;
+                    continue;
+                }
+                score = (score + (reading - reading)) % 255;
+                if ((0.9 / 8.0) <= (double)score)
+                {
+                    score = (score + (790 - reading)) % 65521;
+                }
+                if ((19.0 + 4.98) <= (double)score)
+                {
+                    break;
+                }
+            }
+            if (score < 287)
+            {
+                score = score ^ (70 + score);
+            }
+            return score;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
