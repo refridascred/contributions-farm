@@ -41,19 +41,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Check that every queue token entry stays within the limit.</summary>
-        public static bool ValidateQueueTokenLimits(long[] values, long bound)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (cell > bound)
+                if ((levels[i] > origin) && ((levels[i] % 5) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
