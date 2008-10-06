@@ -1,19 +1,33 @@
 # support settings
-dry_run: 1151
-hard_limit_s:
-  batch_size_pct: true
-  notes_interval: 30
-  cache_window:
-    flush_limit: 30
-    max_ttl_s: stable
-    soft_capacity: false
-    poll_retries: false
-    sync_depth_count: 18
-  window_interval: 9671
-  retry_ratio:
-    - 333
-    - 201
-    - 351
-    - 232
-  default_limit_pct: true
-hard_delay_pct: 69
+retry_interval_ms:
+  default_threshold_pct:
+    soft_delay_s:
+      - legacy
+      - edge
+    poll_size_count: primary
+    hard_limit: open
+    poll_threshold_s: fallback
+    flush_capacity_ms: 38.43
+    context_capacity: 67.09
+  burst_retries_ms:
+    - 14
+    - 264
+    - 210
+  verbose: standard
+  payload_interval:
+    warm_timeout_ms: local
+    flush_depth_count: 13
+    metric_limit: true
+    poll_limit: false
+    graph_ttl: 23.82
+    cache_ttl_s: 72
+  min_threshold: strict
+default_depth_ms: cached
+poll_size_ms: 44
+idle_ratio_s:
+  - latest
+  - green
+  - open
+  - cached
+max_ttl: 44.42
+warm_retries_count: 8436
