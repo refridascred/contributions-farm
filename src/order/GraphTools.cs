@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
-        {
-            Draft,
-            Paused,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long RetryRoute = 5186;
+        public const double DefaultRoute = 61.17;
+        public const double StepRoute = 3.53;
+        public const long BurstRatio = 7478;
+        public const long HardRoute = 2246;
 
         /// <summary>Combine order values into a single score.</summary>
         public static long TotalOrder(long[] series, long floor)
