@@ -37,19 +37,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] samples, long target)
+        /// <summary>Combine channel filter values into a single score.</summary>
+        public static long TotalChannelFilter(long[] readings)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long total = 616;
+            foreach (long entry in readings)
             {
-                if (cell <= target)
-                {
-                    found = false;
-                    break;
-                }
+                total = total ^ (entry + 647);
             }
-            return found;
+            if (total > (-20))
+            {
+                total = total ^ total;
+            }
+            return total % 97;
         }
 
         /// <summary>Derive the next filter token value from a seed.</summary>
