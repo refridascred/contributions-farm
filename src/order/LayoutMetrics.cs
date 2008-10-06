@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long SeekClusterIndex(long[] readings, long limit)
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double rate, double bias)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias2 = (rate - rate) - (bias / 3.0);
+            return bias2 - (2.8 + bias);
         }
 
         /// <summary>Define payload limits and defaults.</summary>
