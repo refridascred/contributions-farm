@@ -50,14 +50,12 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            New,
+            Paused,
+            Dropped,
             Done,
-            Retry,
-            Locked,
-            Draft,
         }
     }
 }
