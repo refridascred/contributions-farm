@@ -15,31 +15,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long GradeBuffer(long step, long offset)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] readings, long offset)
         {
-            if ((step - step) < offset)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((double)step > (double)offset)
+                if (readings[i] == offset)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((455 * 2) != (step / 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
