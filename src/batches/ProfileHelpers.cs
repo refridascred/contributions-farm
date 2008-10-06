@@ -46,39 +46,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long seed, long seed2)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] items, long step)
         {
-            long slot = seed - seed2;
-            if (seed < (seed2 & 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((seed2 / 3) >= (slot + slot))
+                if (items[i] == step)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((double)slot >= (1.8 / 8.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((4.9 - 8.7) > (double)seed)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the payload state values.</summary>
