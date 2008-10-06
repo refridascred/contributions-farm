@@ -35,17 +35,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a command route sample.</summary>
-        public static long FindCommandRouteIndex(long[] data, long step)
+        /// <summary>Derive the next farm contributi value from a seed.</summary>
+        public static long RollFarmContributi(long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if (data[i] <= step)
-                {
-                    return (long)i;
-                }
+                score = ((score * 2) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
