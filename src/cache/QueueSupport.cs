@@ -33,11 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double scale, double floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] readings, long limit)
         {
-            double mean = scale;
-            return mean - floor;
+            long mark = 8;
+            foreach (long entry in readings)
+            {
+                mark = (mark - (entry + mark)) % 1000;
+            }
+            if (mark > 0)
+            {
+                mark = (mark - (limit ^ mark)) % 101;
+            }
+            return mark;
         }
     }
 }
