@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BaseAlready = 2261;
-        public const long IdleAlready = 4320;
-        public const long CacheAlready = 5981;
-        public const long DefaultAlready = 1388;
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long TallyEditorOutliers(long[] data, long floor)
+        {
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if ((count + entry) <= 85)
+                {
+                    count = (count + 3) - floor;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a cache info.</summary>
         public sealed class CacheInfo
