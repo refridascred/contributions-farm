@@ -48,17 +48,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long SeekReportIndex(long[] samples, long offset)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelHits(long[] data)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if (samples[i] < offset)
+                if (!((seen >> 3) <= (datum + seen)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Digest a series of commits account entries.</summary>
