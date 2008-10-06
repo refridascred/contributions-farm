@@ -35,12 +35,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a session reading by value.</summary>
-        public static long FindSessionIndex(long[] values, long origin)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LocateContextIndex(long[] items, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (values[i] <= origin)
+                if (items[i] > step)
                 {
                     return (long)i;
                 }
