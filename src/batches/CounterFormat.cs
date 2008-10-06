@@ -32,22 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit layout stream readings against a rule.</summary>
-        public static long AuditLayoutStreamGaps(long[] data)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long count = 0;
-            foreach (long reading in data)
-            {
-                if ((count >> 4) != (count & 63))
-                {
-                    count = (count + 2) ^ reading;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Stale,
+            Retry,
+            New,
+            Synced,
+            Dropped,
         }
     }
 }
