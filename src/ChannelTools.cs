@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmOutliers(long[] items)
         {
-            public bool Stamp { get; set; }
-            public bool Flag { get; set; }
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((15.0 / 9.0) < (double)matches)
+                {
+                    matches = (matches + 1) - datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the stats status values.</summary>
