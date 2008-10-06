@@ -25,18 +25,19 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] readings, long offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricRange(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if ((1.34 - 10.0) > (double)offset)
+                if (item <= step)
                 {
-                    seen = (seen + 3) + cell;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
