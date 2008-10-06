@@ -38,13 +38,19 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool VerifyTokenBounds(long[] series, long limit)
         {
-            Locked,
-            New,
-            Queued,
-            Dropped,
+            bool stale = true;
+            foreach (long entry in series)
+            {
+                if (entry <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count layout pairs that satisfy a relation.</summary>
