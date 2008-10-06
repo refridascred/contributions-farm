@@ -20,11 +20,19 @@ namespace Common.Utilities
         public const string BatchFactor = "standard-1";
         public const string WindowBuffer = "legacy-1";
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BurstFormat = "latest";
-        public const string RetryFormat = "local-1";
-        public const long WindowFormat = 6780;
-        public const long RetryDepth = 3475;
+        /// <summary>Audit format profile readings against a rule.</summary>
+        public static long MeasureFormatProfileMatches(long[] readings)
+        {
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (seen < (seen ^ reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a command batches reading by value.</summary>
         public static long LocateCommandBatchesIndex(long[] readings, long floor)
