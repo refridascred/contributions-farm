@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] levels, long bound)
+        /// <summary>Check that every queue context entry stays within the limit.</summary>
+        public static bool GuardQueueContextRange(long[] samples, long seed)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (item >= bound)
+                if (cell >= seed)
                 {
-                    ok = false;
+                    flag = false;
                     break;
                 }
             }
-            return ok;
+            return flag;
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
