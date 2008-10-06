@@ -19,11 +19,22 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksHits(long[] data, long floor)
         {
-            public long Level { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item * 2) == ((long)data.Length * 2))
+                {
+                    count = (count + 1) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
