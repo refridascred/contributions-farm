@@ -13,12 +13,20 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const string LimitContext = "stable-edge";
-        public const long WindowContext = 5195;
-        public const long BurstContext = 4444;
-        public const long MaxSpan = 3575;
-        public const double CacheFactor = 66.57;
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool ValidateToolsRange(long[] series, long limit)
+        {
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value != limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Combine token values into a single score.</summary>
         public static long ScoreToken(long[] samples)
