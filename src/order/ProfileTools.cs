@@ -20,23 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmOutliers(long[] levels, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if (!(839 < (cell << 1)))
-                {
-                    hits = (hits + 1) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long DefaultRecord = 580;
+        public const long BurstRecord = 5296;
+        public const long MaxRatio = 2852;
+        public const string HardRatio = "legacy-1";
+        public const string HardDepth = "primary-edge";
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long LimitProfile = 2929;
