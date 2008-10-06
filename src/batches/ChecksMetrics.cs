@@ -105,21 +105,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] values)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryBounds(long[] readings, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (entry >= limit)
                 {
-                    if ((values[i] - values[j]) > 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
