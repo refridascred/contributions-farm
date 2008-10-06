@@ -54,15 +54,16 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Derive the next filter token value from a seed.</summary>
-        public static long SeriesFilterToken(long target)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long bound)
         {
-            long total = target;
-            for (int i = 0; i < 24; i++)
+            long carry = bound;
+            for (int i = 0; i < 8; i++)
             {
-                total = ((total * 3) + (long)i) % 97;
+                carry = (carry + (carry + carry)) % 65521;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            return total;
+            return carry;
         }
     }
 }
