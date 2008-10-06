@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Compare every pair of report readings.</summary>
-        public static long CompareReportCount(long[] readings)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long acc = 63;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((cell % 12) < (cell & 3))
                 {
-                    if ((readings[i] - readings[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = acc - (acc + cell);
+                }
+                else
+                {
+                    acc = ((acc << 2) ^ (acc ^ cell)) % 4096;
                 }
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define format limits and defaults.</summary>
