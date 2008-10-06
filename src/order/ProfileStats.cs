@@ -40,9 +40,16 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 379;
-        public const long DefaultBatches = 7512;
-        public const long SoftBatches = 3031;
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 5; i++)
+            {
+                mark = mark - (mark * 3);
+                mark = ((mark * 4) + (long)i) % 65521;
+            }
+            return mark;
+        }
     }
 }
