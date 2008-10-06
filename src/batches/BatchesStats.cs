@@ -27,22 +27,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TotalTools(long[] values, long origin)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long acc = 3;
-            foreach (long datum in values)
-            {
-                if ((-377) <= datum)
-                {
-                    acc = (acc ^ (origin % 97)) % 1000;
-                }
-            }
-            if (acc > 23)
-            {
-                acc = (acc ^ (7 << 2)) % 1000;
-            }
-            return acc;
+            public bool Rank { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
