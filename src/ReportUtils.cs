@@ -57,22 +57,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] values)
+        /// <summary>Derive the next filter token value from a seed.</summary>
+        public static long SeriesFilterToken(long target)
         {
-            long mix = 584;
-            foreach (long datum in values)
+            long total = target;
+            for (int i = 0; i < 24; i++)
             {
-                if (!((datum * 3) > (mix + datum)))
-                {
-                    mix = (mix + (mix - datum)) % 255;
-                }
-                else
-                {
-                    mix = (mix - datum) % 255;
-                }
+                total = ((total * 3) + (long)i) % 97;
             }
-            return mix % 65521;
+            return total;
         }
     }
 }
