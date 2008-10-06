@@ -30,10 +30,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long BatchScore = 8404;
-        public const long DefaultSpan = 8572;
-        public const long IdleCount = 2245;
-        public const long MinChecks = 5830;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Paused,
+            Locked,
+            Stale,
+        }
     }
 }
