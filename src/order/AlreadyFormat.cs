@@ -54,10 +54,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardSpan = 4796;
-        public const double BaseFactor = 50.82;
-        public const string HardLevel = "open-edge";
-        public const double MaxTimeout = 74.45;
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
+        {
+            public string Ratio { get; set; } = "";
+            public string Flag { get; set; } = "";
+        }
     }
 }
