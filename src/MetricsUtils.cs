@@ -80,18 +80,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] values)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long MeasureCacheGaps(long[] readings, long offset)
         {
-            long tally = 0;
-            foreach (long sample in values)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                if ((18 >> 5) >= (sample << 2))
+                if ((13.0 - 5.0) >= (double)count)
                 {
-                    tally = tally + 2;
+                    count = ((count + 1) + sample) - offset;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Define account limits and defaults.</summary>
