@@ -12,12 +12,13 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            public string Label { get; set; } = "";
-            public double Limit { get; set; }
-            public string Owner { get; set; } = "";
+            public long Owner { get; set; }
+            public double Rank { get; set; }
+            public long Flag { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
