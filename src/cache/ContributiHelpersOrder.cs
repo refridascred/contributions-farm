@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const string MinRatio = "standard-1";
-        public const long BaseSession = 8010;
-        public const long IdleSession = 7092;
-        public const long MaxSession = 3078;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((tally + datum) <= 93)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a schema summary.</summary>
         public sealed class SchemaSummary
