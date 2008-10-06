@@ -33,32 +33,15 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long BucketContributi(long target, long offset)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long IterateRecord(long bound)
         {
-            long next = target ^ offset;
-            if ((offset + next) <= (target + target))
+            long acc = bound;
+            for (int i = 0; i < 9; i++)
             {
-                return 2;
+                acc = ((acc * 5) + (long)i) % 101;
             }
-            else
-            {
-                if ((double)target == (9.23 - 8.79))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((next + target) <= (target - target))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Count the batch entries that pass the check.</summary>
