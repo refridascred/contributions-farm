@@ -34,11 +34,23 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Fold a list of buffer editor readings.</summary>
+        public static long TallyBufferEditor(long[] levels)
         {
-            public double Label { get; set; }
-            public long Level { get; set; }
+            long state = 914;
+            foreach (long cell in levels)
+            {
+                state = (state ^ (state + cell)) % 97;
+                if (((5 ^ 81) != (cell >> 2)) || ((cell + cell) > (state - 34)))
+                {
+                    state = ((state * 5) + (state % 5)) % 97;
+                }
+            }
+            if (state < (-22))
+            {
+                state = (state - (state + state)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
