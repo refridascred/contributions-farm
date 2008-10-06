@@ -73,14 +73,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long WeighStats(long[] levels, long origin)
         {
-            Failed,
-            Done,
-            Active,
-            Stale,
-            Draft,
+            long anchor = 399;
+            foreach (long item in levels)
+            {
+                anchor = (anchor + (anchor - origin)) ^ item;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Hold a order options.</summary>
