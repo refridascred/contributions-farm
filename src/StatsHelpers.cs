@@ -42,24 +42,38 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long ScoreEditor(long[] items, long limit)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long BucketMetrics(long offset, long offset2)
         {
-            long mix = 933;
-            foreach (long reading in items)
+            if ((double)offset2 == (3.0 / 9.0))
             {
-                mix = (mix + limit) % 97;
-                if (mix < (mix * 3))
+                return 4;
+            }
+            else
+            {
+                if (offset2 > (offset + offset))
                 {
-                    mix = (mix * 3) + (reading << 1);
+                    return 3;
                 }
-                mix = (mix + (reading / 6)) % 97;
+                else
+                {
+                    if (82 < (offset * 5))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((double)offset > (double)offset2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
             }
-            if (mix < 0)
-            {
-                mix = (mix << 2) ^ (-58);
-            }
-            return mix;
         }
 
         /// <summary>Look up the position of a route sample.</summary>
