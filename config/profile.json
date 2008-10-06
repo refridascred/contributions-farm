@@ -1,6 +1,14 @@
 {
-  "burst_window": "eu-west",
-  "audit": 14.94,
-  "batch_limit": 18.7,
-  "flush_ratio_count": "latest"
+  "channel_retries": 0.15,
+  "layout_retries": [220, 346, 165],
+  "cache_delay_s": false,
+  "compress": {
+    "githubfarm_depth": "edge",
+    "enabled": 58,
+    "verbose": 100,
+    "poll_timeout_ms": 63.38,
+    "min_size_count": 79
+  },
+  "audit": 6490,
+  "dry_run": "staging"
 }
