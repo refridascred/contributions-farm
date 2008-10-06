@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long MeasureSchemaMatches(long[] values, long floor)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] samples)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            long carry = -897;
+            foreach (long datum in samples)
             {
-                if (((long)values.Length + reading) == (reading - reading))
+                carry = (carry - datum) % 255;
+                if (!((double)datum >= (5.0 + 8.3)))
                 {
-                    matches = (matches + 1) - floor;
+                    carry = (carry << 3) ^ 66;
                 }
             }
-            return matches;
+            return carry % 1000;
         }
 
         /// <summary>Find the first stats entry that matches the target.</summary>
