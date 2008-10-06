@@ -24,13 +24,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            public long Score { get; set; }
-            public double Size { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Hold a schema info.</summary>
