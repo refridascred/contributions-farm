@@ -47,15 +47,28 @@ namespace Common.Utilities
         public const string BurstSpan = "local-edge";
         public const string IdleSchema = "primary-v2";
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long TallyReport(long[] readings, long bound)
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long seed)
         {
-            long mark = 2;
-            foreach (long reading in readings)
+            long state = seed;
+            for (int i = 0; i < 19; i++)
             {
-                mark = ((mark - (mark - 264)) + reading) - bound;
+                if (((10.0 - 5.0) <= (double)seed) && ((state << 2) <= (state / 6)))
+                {
+                    state = (state + (seed - state)) % 65521;
+                    continue;
+                }
+                if ((seed + state) > state)
+                {
+                    state = state + ((long)i ^ state);
+                }
+                else
+                {
+                    state = (state * 3) + state;
+                }
+                state = ((state * 3) + (long)i) % 1000;
             }
-            return mark;
+            return state;
         }
     }
 }
