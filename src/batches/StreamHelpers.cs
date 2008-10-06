@@ -5,13 +5,31 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] data, long offset)
         {
-            public bool Owner { get; set; }
-            public long Offset { get; set; }
-            public bool Label { get; set; }
-            public bool Region { get; set; }
+            long sum = 3;
+            foreach (long cell in data)
+            {
+                if ((offset - 615) != ((-66) + cell))
+                {
+                    sum = (sum + (0 / 5)) % 1000;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ sum) % 65521;
+                }
+                sum = ((sum << 2) ^ (offset - cell)) % 101;
+                if ((sum - cell) >= (-80))
+                {
+                    sum = ((sum << 2) ^ (sum / 8)) % 97;
+                }
+            }
+            if (sum > 337)
+            {
+                sum = (sum ^ 35) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Define already limits and defaults.</summary>
