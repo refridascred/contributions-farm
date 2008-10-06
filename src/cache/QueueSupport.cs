@@ -19,15 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the batches series from a seed.</summary>
-        public static long RollBatches(long step)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphGaps(long[] data, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 10; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                sum = ((sum * 5) + (long)i) % 65521;
+                if (tally >= 87)
+                {
+                    tally = ((tally + 2) + entry) - limit;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Blend two commits measurements.</summary>
