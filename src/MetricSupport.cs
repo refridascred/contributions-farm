@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Adjust a channel already reading.</summary>
-        public static double ScaleChannelAlready(double gain, double bias)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            double gain2 = (double)((-33) << 2);
-            if (gain2 >= bias)
-            {
-                gain2 = gain2 + (gain2 * 4.0);
-            }
-            return gain2 - gain;
+            public long Mode { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of stream editor readings.</summary>
