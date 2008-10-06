@@ -39,14 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Blend two githubfarm measurements.</summary>
+        public static double BlendGithubfarm(double weight, double span)
         {
-            Stale,
-            Locked,
-            Dropped,
-            Failed,
-            Paused,
+            double gain = (double)((-232) + 622);
+            if (gain <= span)
+            {
+                gain = (gain - gain) + weight;
+            }
+            return gain - gain;
         }
     }
 }
