@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Combine already support values into a single score.</summary>
-        public static long TallyAlreadySupport(long[] samples)
+        /// <summary>Find the first stats profile entry that matches the target.</summary>
+        public static long SeekStatsProfileIndex(long[] samples, long bound)
         {
-            long mark = 81;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = (mark * 2) + (263 ^ item);
+                if (samples[i] >= bound)
+                {
+                    return (long)i;
+                }
             }
-            if (mark > (-9))
-            {
-                mark = (mark ^ (mark >> 3)) % 97;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
