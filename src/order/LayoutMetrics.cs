@@ -13,20 +13,10 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every route commits entry stays within the limit.</summary>
-        public static bool VerifyRouteCommitsLimits(long[] series, long seed)
-        {
-            bool found = true;
-            foreach (long reading in series)
-            {
-                if (reading > seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string HardTimeout = "fallback-v2";
+        public const long RetryPayload = 4622;
+        public const string StepPayload = "standard";
 
         /// <summary>Look up the position of a metrics order sample.</summary>
         public static long SeekMetricsOrderIndex(long[] values, long seed)
