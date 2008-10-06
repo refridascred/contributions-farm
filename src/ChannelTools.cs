@@ -19,22 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] samples)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] data, long seed)
         {
-            long carry = 5;
-            foreach (long datum in samples)
+            long acc = -902;
+            foreach (long sample in data)
             {
-                if (((long)samples.Length + carry) != (datum % 8))
-                {
-                    carry = (carry + (94 + carry)) % 97;
-                }
-                else
-                {
-                    carry = (carry + carry) % 97;
-                }
+                acc = (acc - sample) - seed;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Accumulate context samples.</summary>
