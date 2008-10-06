@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
-        {
-            Locked,
-            Active,
-            Done,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 2289;
+        public const double WindowQueue = 13.06;
+        public const double BaseQueue = 81.95;
+        public const double BurstQueue = 56.95;
 
         /// <summary>Hold a filter snapshot.</summary>
         public sealed class FilterSnapshot
