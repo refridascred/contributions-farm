@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long DeriveBuffer(long step)
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            long mark = step;
-            for (int i = 0; i < 18; i++)
-            {
-                if (!(((mark * 4) <= (step - (long)i)) || ((mark - step) >= step)))
-                {
-                    mark = (mark - mark) % 4096;
-                }
-                mark = ((mark * 5) + (long)i) % 101;
-            }
-            return mark;
+            public long Ratio { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Accumulate route metrics samples.</summary>
