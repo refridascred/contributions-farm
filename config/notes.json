@@ -1,12 +1,7 @@
 {
-  "dry_run": 52,
-  "default_interval_count": [221, 107],
-  "farm_size": {
-    "poll_delay_count": "local",
-    "editor_window": 57,
-    "compress": 31,
-    "sync_depth_ms": 60,
-    "support_timeout": "staging"
-  },
-  "persist": true
+  "poll_ratio": 3350,
+  "burst_interval_pct": [321, 406, 25, 227],
+  "sync_ttl_count": 9083,
+  "verbose": 5202,
+  "warm_window": 97.28
 }
