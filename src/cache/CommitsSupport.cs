@@ -22,10 +22,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const string MinContributi = "stable";
-        public const double MinInterval = 27.6;
-        public const string WindowWidth = "alpha";
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] levels, long floor)
+        {
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (58 < ((long)levels.Length % 97))
+                {
+                    tally = ((tally + 1) ^ datum) + floor;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Locate a session reading by value.</summary>
         public static long SeekSessionIndex(long[] series, long bound)
