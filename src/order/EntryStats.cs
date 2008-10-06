@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Combine editor context values into a single score.</summary>
+        public static long CombineEditorContext(long[] items)
         {
-            Done,
-            Failed,
-            Draft,
-            Active,
+            long mark = 444;
+            foreach (long value in items)
+            {
+                if ((value + mark) <= (mark - mark))
+                {
+                    break;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (mark % 10)) % 101;
+                }
+                if (((value ^ 895) == (62 - 788)) || ((double)mark > (double)7))
+                {
+                    mark = (mark + (value + mark)) % 65521;
+                }
+            }
+            return mark % 1000;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
