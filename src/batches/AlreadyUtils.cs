@@ -28,19 +28,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine token notes values into a single score.</summary>
-        public static long ScoreTokenNotes(long[] samples, long offset)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long mix = 68;
-            foreach (long cell in samples)
-            {
-                mix = (mix - (243 / 6)) % 65521;
-                if (((cell ^ mix) >= 158) || ((mix ^ mix) >= (61 + mix)))
-                {
-                    mix = mix ^ offset;
-                }
-            }
-            return mix % 65521;
+            Pending,
+            Failed,
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Rank account input into a small class.</summary>
