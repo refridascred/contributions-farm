@@ -1,12 +1,7 @@
 # support settings
-default_delay_ms: 13
-max_ratio:
-  batch_capacity_s: primary
-  buffer_retries: true
-  tools_threshold:
-    - 365
-    - 128
-    - 191
-    - 440
-  min_size_pct: false
-default_size_ms: open
+poll_delay: primary
+window_interval:
+  - 99
+  - 183
+  - 333
+cache_ratio: open
