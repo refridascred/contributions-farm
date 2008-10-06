@@ -12,11 +12,13 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            public double Flag { get; set; }
-            public double Weight { get; set; }
+            public long Mode { get; set; }
+            public long Rank { get; set; }
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
