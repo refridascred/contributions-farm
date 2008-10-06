@@ -22,23 +22,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long StepStats(long origin)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] data)
         {
-            long anchor = origin;
-            for (int i = 0; i < 23; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (((anchor / 2) > origin) && ((origin + (long)i) <= (origin * 2)))
+                if ((count + reading) >= (count * 4))
                 {
-                    continue;
+                    count = count + 1;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
+                else
                 {
-                    anchor = ((anchor - (4 * 3)) % 1000) - (long)i2;
+                    count = count - 1;
                 }
-                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return anchor;
+            return count;
         }
     }
 }
