@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate report graph readings against a bound.</summary>
-        public static bool VerifyReportGraphLimits(long[] samples, long floor)
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            bool ok = true;
-            foreach (long datum in samples)
-            {
-                if (datum <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Queued,
+            Ready,
+            Active,
         }
 
         /// <summary>Combine token values into a single score.</summary>
