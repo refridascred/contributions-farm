@@ -23,25 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long floor)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
-            {
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    result = ((result << 2) ^ floor) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 10; i3++)
-                {
-                    result = ((result + (floor - (long)i)) % 97) - (long)i3;
-                    result = (result << 2) ^ floor;
-                }
-                result = result ^ ((long)i % 60);
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            Ready,
+            Retry,
+            Locked,
         }
 
         /// <summary>Hold a tools record.</summary>
