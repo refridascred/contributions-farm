@@ -6,16 +6,22 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging primary; do
+for item in standard green; do
     log "checking ${item}"
 done
 
-mode="${1:-edge}"
+mode="${1:-legacy}"
 case "${mode}" in
-    staging)
+    eu-west)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+count=0
+while [ "${count}" -lt 2 ]; do
+    count=$((count + 1))
+done
+log "ran ${count} rounds"
