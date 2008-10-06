@@ -48,16 +48,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next schema value.</summary>
-        public static double BlendSchema(double gain, double bias)
-        {
-            double gain2 = 16.0;
-            if (gain2 < (double)(-6))
-            {
-                gain2 = ((gain2 + (gain2 * 0.1)) + gain) + bias;
-            }
-            return gain2 - gain2;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string CacheLevel = "latest-v2";
+        public const double StepRatio = 2.88;
+        public const string RetryMetrics = "latest-edge";
+        public const long CacheScore = 1576;
+        public const double RetryLevel = 55.28;
 
         /// <summary>Describe the channel phase values.</summary>
         public enum ChannelPhase
