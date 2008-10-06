@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long MeasureCommandHits(long[] samples)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long CountFilterMatches(long[] readings, long floor)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long item in readings)
             {
-                if (sample >= (sample << 2))
+                if (!((double)item < (8.0 * 8.42)))
                 {
-                    hits = hits + 1;
+                    matches = (matches + 3) - floor;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Locate a context reading by value.</summary>
