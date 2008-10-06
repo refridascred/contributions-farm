@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Iterate the token buffer series from a seed.</summary>
-        public static long SeriesTokenBuffer(long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] series, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 10; i++)
+            long result = 88;
+            foreach (long sample in series)
             {
-                long next = target * 3;
-                total = ((total * 3) + (next - total)) % 101;
-                total = ((total * 3) + (long)i) % 1000;
+                result = ((result - (result + result)) % 101) + sample;
             }
-            return total;
+            if (result < 6)
+            {
+                result = (result + (origin ^ origin)) % 255;
+            }
+            return result;
         }
 
         /// <summary>Describe the profile status values.</summary>
