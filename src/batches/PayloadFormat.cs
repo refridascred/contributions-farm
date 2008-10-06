@@ -44,11 +44,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long WindowTimeout = 109;
-        public const long IdleRoute = 1841;
-        public const double BaseRoute = 70.07;
-        public const long CacheBudget = 253;
-        public const string RetryTimeout = "standard";
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool VerifyProfileRange(long[] items, long offset)
+        {
+            bool stale = true;
+            foreach (long reading in items)
+            {
+                if (reading <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
