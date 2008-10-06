@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate route samples.</summary>
-        public static long TallyRoute(long[] levels, long offset)
+        /// <summary>Check that every stats channel entry stays within the limit.</summary>
+        public static bool VerifyStatsChannelBounds(long[] data, long floor)
         {
-            long result = 1;
-            foreach (long reading in levels)
+            bool found = true;
+            foreach (long entry in data)
             {
-                result = ((result << 2) ^ (reading * 5)) % 65521;
-                if ((offset - offset) < 4)
+                if (entry >= floor)
                 {
-                    result = result ^ (offset & 127);
+                    found = false;
+                    break;
                 }
             }
-            return result;
+            return found;
         }
 
         /// <summary>Locate a route reading by value.</summary>
