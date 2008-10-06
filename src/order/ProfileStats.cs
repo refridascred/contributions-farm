@@ -26,17 +26,24 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Look up the position of a context sample.</summary>
-        public static long LocateContextIndex(long[] items, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = -459;
+            foreach (long value in data)
             {
-                if (items[i] > step)
+                double gain = (double)score - (double)score;
+                if (gain < (double)score)
                 {
-                    return (long)i;
+                    break;
                 }
+                score = ((score * 3) + (value + score)) % 65521;
             }
-            return -1;
+            if (score < 2)
+            {
+                score = ((score * 2) + (offset - 0)) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
