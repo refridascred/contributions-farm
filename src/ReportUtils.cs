@@ -25,17 +25,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] items, long offset)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long TallyOrderMatches(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                if (items[i] < offset)
+                if (reading > (reading + 344))
                 {
-                    return (long)i;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
