@@ -20,11 +20,29 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long LimitGraph = 4901;
-        public const double LimitInterval = 94.15;
-        public const long StepFactor = 6681;
-        public const string BatchGraph = "local-edge";
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long origin)
+        {
+            long result = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    result = (((result * 5) + (0 % 100)) % 97) + (long)i2;
+                }
+                if (((long)i >> 1) != (origin & 7))
+                {
+                    result = ((result * 3) + (result + result)) % 255;
+                    break;
+                }
+                for (int i3 = 0; i3 < 10; i3++)
+                {
+                    result = ((result - (origin % 10)) % 4096) - (long)i3;
+                }
+                result = ((result * 3) + (long)i) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Audit batches readings against a rule.</summary>
         public static long TallyBatchesMatches(long[] series)
