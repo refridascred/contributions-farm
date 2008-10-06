@@ -56,13 +56,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            public bool Offset { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
-            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public string Total { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
