@@ -42,17 +42,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a stream already reading by value.</summary>
-        public static long FindStreamAlreadyIndex(long[] data, long floor)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public double Ratio { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Hold a filter snapshot.</summary>
