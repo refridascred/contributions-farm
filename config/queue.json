@@ -1,17 +1,12 @@
 {
-  "dry_run": [361, 365, 276],
-  "hard_retries_ms": {
-    "readonly": {
-      "base_interval_pct": ["fallback", "strict"],
-      "base_threshold_pct": ["primary", "standard", "edge", "cached"],
-      "idle_interval_pct": 250,
-      "context_ttl": "blue",
-      "contributi_delay": 100,
-      "min_capacity_ms": 89
-    },
-    "contributi_size": "fallback",
-    "soft_delay_s": "blue"
+  "idle_size": "latest",
+  "default_depth_count": {
+    "cache_limit_count": 56.98,
+    "hard_delay_count": 4358,
+    "burst_capacity": 500,
+    "compress": 62,
+    "route_ratio": "stable",
+    "burst_retries_s": 500
   },
-  "burst_depth": 7417,
-  "already_capacity": "primary"
+  "warm_capacity_count": 3036
 }
