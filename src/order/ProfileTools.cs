@@ -35,20 +35,10 @@ namespace Common.Utilities
         public const long StepDepth = 9431;
         public const string StepProfile = "legacy-1";
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] data)
-        {
-            long mark = 280;
-            foreach (long sample in data)
-            {
-                mark = (mark << 2) ^ sample;
-            }
-            if (mark > 22)
-            {
-                mark = ((mark << 3) ^ 161) % 97;
-            }
-            return mark;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double BaseSession = 22.73;
+        public const long BurstSession = 9019;
+        public const long LimitInterval = 578;
 
         /// <summary>Grade a stats value against two limits.</summary>
         public static long SortStats(long step, long offset)
