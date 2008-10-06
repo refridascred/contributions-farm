@@ -31,33 +31,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long RankContext(long step, long floor)
-        {
-            long prev = step ^ floor;
-            if ((floor >= (step ^ step)) && ((double)floor > (double)prev))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor & 63) < (floor & 3))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step < 1.0)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleScore = "staging";
+        public const long CacheSize = 4344;
+        public const double CacheInterval = 14.15;
+        public const long BatchRecord = 4065;
+        public const double LimitRecord = 58.66;
 
         /// <summary>Iterate the buffer series from a seed.</summary>
         public static long SeriesBuffer(long seed)
