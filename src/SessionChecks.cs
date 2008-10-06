@@ -34,32 +34,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long step, long bound)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool ValidateProfileBounds(long[] samples, long limit)
         {
-            long slot = step - bound;
-            if ((bound > (bound % 24)) || (step >= ((-695) * 3)))
+            bool flag = true;
+            foreach (long entry in samples)
             {
-                return 7;
-            }
-            else
-            {
-                if ((slot >> 4) > (step * 4))
+                if (entry <= limit)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((bound - step) <= (slot - slot)) && (4.4 < (double)slot))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Grade a commits graph value against two limits.</summary>
