@@ -12,19 +12,11 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryMatches(long[] levels)
-        {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((item >> 5) >= (matches + matches))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxCount = 4239;
+        public const double WindowStats = 62.13;
+        public const long SoftBudget = 4586;
+        public const long MaxSpan = 7062;
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] samples)
