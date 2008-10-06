@@ -1,24 +1,6 @@
 # entry settings
-idle_capacity_ms:
-  - 375
-  - 64
-  - 169
-max_depth_ms:
-  max_size: false
-  base_capacity_ms: 30
-  idle_limit_pct: 72.29
-  cache_depth_pct:
-    - 450
-    - 137
-    - 345
-    - 290
-  enabled: primary
-  persist:
-    batches_timeout: 3723
-    base_ttl_s:
-      - 71
-      - 347
-    compress: fallback
-    min_threshold_s: 31
-support_interval: 250
-batch_interval_count: 11.83
+burst_size: stable
+default_limit_s: false
+persist: false
+warm_timeout: 92
+checks_retries: open
