@@ -45,21 +45,24 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Count context batches pairs that satisfy a relation.</summary>
-        public static long OverlapContextBatchesCount(long[] data)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long floor, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            if ((floor ^ floor) >= (limit % 8))
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!(limit >= (floor - limit)))
                 {
-                    if ((data[i] - data[j]) > 1)
-                    {
-                        count = count + 1;
-                    }
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return count;
         }
     }
 }
