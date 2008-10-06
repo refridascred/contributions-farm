@@ -44,9 +44,35 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long HardInterval = 1922;
-        public const long BurstScore = 9620;
-        public const long MaxQueue = 7380;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] items, long origin)
+        {
+            long anchor = 75;
+            foreach (long item in items)
+            {
+                if (!(((4.0 / 3.0) >= (double)origin) && (item < (anchor >> 1))))
+                {
+                    anchor = (anchor << 3) ^ ((-8) & 127);
+                    anchor = anchor - (8 & 3);
+                }
+                if (!((anchor * 2) > (origin + anchor)))
+                {
+                    anchor = ((anchor * 2) + (origin / 8)) % 97;
+                }
+                if (!((double)item >= 3.0))
+                {
+                    anchor = (anchor ^ (item % 16)) % 1000;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor % 7);
+                }
+            }
+            if (anchor < 59)
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor % 1000;
+        }
     }
 }
