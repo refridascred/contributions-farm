@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] samples, long origin)
+        /// <summary>Find the first notes cache entry that matches the target.</summary>
+        public static long LocateNotesCacheIndex(long[] values, long bound)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item >= origin)
+                if ((values[i] <= bound) && ((values[i] % 3) == 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Describe the support mode values.</summary>
