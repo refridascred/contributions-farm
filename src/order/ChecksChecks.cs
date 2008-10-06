@@ -30,13 +30,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] series, long seed)
         {
-            Synced,
-            Draft,
-            Ready,
-            Idle,
+            bool ok = true;
+            foreach (long reading in series)
+            {
+                if (reading > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
