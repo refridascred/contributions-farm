@@ -1,7 +1,10 @@
 # githubfarm settings
-strict: eu-west
-base_threshold:
-  - 475
-  - 77
-flush_delay_pct: 30
-readonly: false
+base_window: true
+queue_ratio: 100
+poll_ttl:
+  cache_capacity_pct: 70.26
+  cache_window: 8285
+  notes_delay: 9333
+  soft_retries: 70.24
+  buffer_limit: latest
+  payload_size: eu-west
