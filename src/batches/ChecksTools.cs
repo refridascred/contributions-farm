@@ -29,17 +29,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long StepProfile(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                total = (total ^ origin) % 65521;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxAccount = 206;
+        public const long MaxRatio = 7764;
+        public const double StepTimeout = 94.69;
+        public const long StepInterval = 5175;
+        public const double SoftAccount = 82.41;
 
         /// <summary>Grade a support metrics value against two limits.</summary>
         public static long SortSupportMetrics(long seed, long offset)
