@@ -1,12 +1,8 @@
 {
-  "batch_limit_s": "blue",
-  "idle_threshold": 26.22,
-  "audit": {
-    "counter_window": "green",
-    "default_limit_ms": "local",
-    "cluster_retries": ["fallback", "open", "eu-west"],
-    "hard_timeout": 1228
-  },
-  "compress": 65.78,
-  "default_ratio": [403, 396]
+  "compress": "open",
+  "idle_depth_pct": 57,
+  "window_retries": "staging",
+  "base_retries_s": "eu-west",
+  "hard_interval": false,
+  "max_limit": [282, 164]
 }
