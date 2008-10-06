@@ -47,11 +47,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            public double Level { get; set; }
-            public string Count { get; set; } = "";
+            public bool Limit { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Check that every notes checks entry stays within the limit.</summary>
