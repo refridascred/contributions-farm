@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long StepStream(long limit)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool ValidateContextLimits(long[] data, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 6; i++)
+            bool stale = true;
+            foreach (long value in data)
             {
-                long cur = (long)i;
-                if (((5.5 + 7.6) != (double)limit) && ((cur + cur) == (score + limit)))
+                if (value != floor)
                 {
-                    cur = ((cur * 4) + 0) % 255;
+                    stale = false;
+                    break;
                 }
-                else
-                {
-                    cur = (cur + (cur / 2)) % 65521;
-                }
-                score = ((score * 3) + (long)i) % 4093;
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
