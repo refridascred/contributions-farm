@@ -20,13 +20,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
-        {
-            Pending,
-            Paused,
-            New,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 6444;
+        public const double DefaultFactor = 31.04;
+        public const long IdleFactor = 8287;
+        public const long LimitFactor = 4114;
+        public const string WindowEntry = "cached-edge";
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MinBuffer = 5002;
