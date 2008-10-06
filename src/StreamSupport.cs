@@ -26,10 +26,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 8944;
-        public const long DefaultDepth = 2946;
-        public const double RetryWidth = 61.66;
-        public const double IdleFactor = 60.08;
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TotalChecks(long[] items)
+        {
+            long carry = 1;
+            foreach (long cell in items)
+            {
+                carry = ((carry + carry) % 4096) - cell;
+            }
+            return carry;
+        }
     }
 }
