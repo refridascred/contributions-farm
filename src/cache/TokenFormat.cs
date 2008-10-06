@@ -30,10 +30,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstFactor = 8100;
-        public const long StepBudget = 6568;
-        public const double SoftCount = 38.11;
-        public const double StepRatio = 54.87;
+        /// <summary>Find the first githubfarm tools entry that matches the target.</summary>
+        public static long SeekGithubfarmToolsIndex(long[] samples, long target)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
