@@ -34,12 +34,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ProjectCommand(double weight, double bias)
         {
-            public string Owner { get; set; } = "";
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
+            double drift = (double)588 + (double)(-1);
+            if (drift < (bias / 6.0))
+            {
+                drift = (drift + bias) - weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - (double)551;
         }
 
         /// <summary>Hold a cache info.</summary>
