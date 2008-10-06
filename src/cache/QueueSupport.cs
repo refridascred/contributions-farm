@@ -22,15 +22,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long RollGraph(long offset)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TallyFormat(long[] samples)
         {
-            long mark = offset;
-            for (int i = 0; i < 18; i++)
+            long carry = 197;
+            foreach (long value in samples)
             {
-                mark = ((mark * 5) + (long)i) % 1000;
+                carry = (carry << 3) ^ (carry + value);
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
