@@ -1,6 +1,5 @@
 {
-  "contributi_threshold": "open",
-  "audit": 250,
-  "min_ratio_count": false,
-  "already_size": "standard"
+  "min_delay_s": "eu-west",
+  "cache_threshold_pct": "blue",
+  "layout_depth": [64, 180, 88]
 }
