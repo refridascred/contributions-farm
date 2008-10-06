@@ -33,12 +33,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public string Label { get; set; } = "";
-            public string Token { get; set; } = "";
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long BaseCount = 4882;
+        public const long LimitCount = 6672;
+        public const double WindowCount = 71.32;
+        public const long HardDepth = 2399;
+        public const double IdleBudget = 30.37;
 
         /// <summary>Validate metrics commits readings against a bound.</summary>
         public static bool CheckMetricsCommitsBounds(long[] samples, long seed)
