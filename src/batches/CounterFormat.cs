@@ -12,12 +12,14 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string WindowAccount = "stable";
-        public const double MaxAccount = 66.94;
-        public const long HardFactor = 5618;
-        public const string BurstSpan = "legacy";
-        public const long CacheAccount = 7939;
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
+        {
+            Synced,
+            Paused,
+            Active,
+            New,
+        }
 
         /// <summary>Count graph pairs that satisfy a relation.</summary>
         public static long CompareGraphCount(long[] samples)
