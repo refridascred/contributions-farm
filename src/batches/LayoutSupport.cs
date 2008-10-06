@@ -44,21 +44,13 @@ namespace Common.Utilities
         public const long WindowStream = 9869;
         public const long StepScore = 3714;
 
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long CompareQueueCount(long[] items)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public bool Owner { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Offset { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
