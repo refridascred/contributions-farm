@@ -79,15 +79,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine command record values into a single score.</summary>
-        public static long DigestCommandRecord(long[] items)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long anchor = 9;
-            foreach (long reading in items)
-            {
-                anchor = (((anchor * 3) + anchor) % 65521) + reading;
-            }
-            return anchor;
+            public double Rank { get; set; }
+            public double Label { get; set; }
+            public long Limit { get; set; }
+            public string Mode { get; set; } = "";
         }
     }
 }
