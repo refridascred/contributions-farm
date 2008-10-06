@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountBounds(long[] levels, long offset)
         {
-            public bool Total { get; set; }
-            public double Mode { get; set; }
-            public long Label { get; set; }
+            bool ok = true;
+            foreach (long item in levels)
+            {
+                if (item < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
