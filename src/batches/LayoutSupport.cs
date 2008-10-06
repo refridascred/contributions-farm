@@ -47,33 +47,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] samples)
-        {
-            long score = -79;
-            foreach (long reading in samples)
-            {
-                if ((((long)samples.Length * 5) != (score ^ reading)) && ((reading << 2) > (score - reading)))
-                {
-                    score = (score - 66) % 101;
-                    continue;
-                }
-                score = (score + (reading - reading)) % 255;
-                if ((0.9 / 8.0) <= (double)score)
-                {
-                    score = (score + (790 - reading)) % 65521;
-                }
-                if ((19.0 + 4.98) <= (double)score)
-                {
-                    break;
-                }
-            }
-            if (score < 287)
-            {
-                score = score ^ (70 + score);
-            }
-            return score;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const string BatchBudget = "fallback";
+        public const long BaseStream = 8576;
+        public const string SoftStream = "staging";
+        public const long WindowStream = 9869;
+        public const long StepScore = 3714;
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long CountAlreadyHits(long[] items, long seed)
