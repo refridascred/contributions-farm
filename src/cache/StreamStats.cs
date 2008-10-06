@@ -18,18 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long LookupBufferIndex(long[] items, long seed)
         {
-            long sum = 19;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum >> 5) != (datum % 16))
+                if ((items[i] < seed) && ((items[i] % 5) == 0))
                 {
-                    sum = (sum << 3) ^ 73;
+                    return (long)i;
                 }
             }
-            return sum % 4096;
+            return -1;
         }
 
         /// <summary>Validate checks route readings against a bound.</summary>
