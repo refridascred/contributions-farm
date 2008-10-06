@@ -31,18 +31,14 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the already payload entries that pass the check.</summary>
-        public static long MeasureAlreadyPayloadOutliers(long[] samples, long limit)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((matches - matches) <= limit)
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            Paused,
+            Active,
+            Stale,
+            Draft,
+            Done,
         }
 
         /// <summary>Define notes limits and defaults.</summary>
