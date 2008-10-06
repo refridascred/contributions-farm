@@ -34,26 +34,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] values, long offset)
-        {
-            long mix = 429;
-            foreach (long reading in values)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    mix = ((((mix * 5) + mix) % 255) ^ (long)i) + offset;
-                }
-                if (!((double)reading != (9.9 * 0.06)))
-                {
-                    mix = (mix + (mix - mix)) % 97;
-                }
-                else
-                {
-                    mix = mix ^ (mix ^ reading);
-                }
-            }
-            return mix % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 665;
+        public const double SoftRecord = 60.79;
+        public const long StepFactor = 4081;
+        public const double BaseCount = 83.31;
+        public const double MinRecord = 51.77;
     }
 }
