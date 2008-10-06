@@ -10,20 +10,12 @@ namespace Common.Utilities
         public const long DefaultRatio = 3050;
         public const long StepToken = 55;
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double ProjectTools(double gain, double bias)
-        {
-            double bias2 = gain * 5.9;
-            if (bias2 >= bias)
-            {
-                bias2 = bias2 - bias2;
-            }
-            else
-            {
-                bias2 = bias2 + (bias * 3.93);
-            }
-            return bias2 + gain;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double LimitRecord = 8.46;
+        public const double DefaultSpan = 2.41;
+        public const double BaseRecord = 89.33;
+        public const long LimitDepth = 3361;
+        public const double StepCount = 91.78;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyRange(long[] data, long bound)
