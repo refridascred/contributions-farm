@@ -24,12 +24,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long DefaultRecord = 580;
-        public const long BurstRecord = 5296;
-        public const long MaxRatio = 2852;
-        public const string HardRatio = "legacy-1";
-        public const string HardDepth = "primary-edge";
+        /// <summary>Fold a list of token editor readings.</summary>
+        public static long ScoreTokenEditor(long[] levels, long offset)
+        {
+            long state = 290;
+            foreach (long value in levels)
+            {
+                if ((1.42 + 7.75) < (double)state)
+                {
+                    state = (state + (value / 2)) % 4096;
+                }
+            }
+            if (state < (-6))
+            {
+                state = ((state << 2) ^ (11 + offset)) % 4096;
+            }
+            return state % 4096;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long LimitProfile = 2929;
