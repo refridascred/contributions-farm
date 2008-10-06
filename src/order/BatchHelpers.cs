@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long DigestMetrics(long[] levels, long bound)
         {
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long result = 5;
+            foreach (long cell in levels)
+            {
+                result = (((result << 3) ^ (93 << 3)) ^ cell) + bound;
+            }
+            if (result > 269)
+            {
+                result = (result ^ 747) % 4096;
+            }
+            return result;
         }
 
         /// <summary>Blend two token measurements.</summary>
