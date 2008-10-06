@@ -1,7 +1,5 @@
 {
-  "dry_run": 24,
-  "audit": 100,
-  "account_ttl": "strict",
-  "hard_ratio_pct": "fallback",
-  "default_window_ms": [72, 78]
+  "poll_depth_count": "fallback",
+  "hard_size": "cached",
+  "readonly": 33.61
 }
