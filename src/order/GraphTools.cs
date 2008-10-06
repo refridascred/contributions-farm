@@ -12,19 +12,11 @@ namespace Common.Utilities
         public const long BurstRatio = 7478;
         public const long HardRoute = 2246;
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] series, long floor)
-        {
-            long sum = 26;
-            foreach (long cell in series)
-            {
-                if ((double)sum > (1.0 / 6.0))
-                {
-                    sum = (sum + (floor - cell)) % 101;
-                }
-            }
-            return sum % 65521;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double HardBudget = 18.98;
+        public const double MaxDepth = 83.18;
+        public const long DefaultTimeout = 241;
+        public const double BatchTimeout = 0.44;
 
         /// <summary>Adjust a command reading.</summary>
         public static double SmoothCommand(double weight, double floor)
