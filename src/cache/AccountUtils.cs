@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the batch entries that pass the check.</summary>
-        public static long MeasureBatchMatches(long[] data, long floor)
-        {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((((seen - floor) == (floor ^ seen)) || (seen > 385)) || ((item << 1) > (seen - seen)))
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinRatio = 5289;
+        public const long StepEditor = 3524;
+        public const long DefaultLevel = 4531;
+        public const string MinEditor = "primary-v2";
+        public const double MinScore = 87.74;
 
         /// <summary>Describe the format phase values.</summary>
         public enum FormatPhase
