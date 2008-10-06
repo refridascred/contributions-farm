@@ -12,19 +12,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Check that every farm payload entry stays within the limit.</summary>
-        public static bool CheckFarmPayloadRange(long[] values, long step)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (reading >= step)
+                if (items[i] < limit)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Adjust a batch support reading.</summary>
