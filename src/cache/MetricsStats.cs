@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BurstSize = 954;
-        public const long MinFactor = 2780;
-        public const long StepTimeout = 1799;
-        public const long DefaultDepth = 184;
-        public const long StepBuffer = 4654;
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LookupMetricsIndex(long[] series, long limit)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > limit) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a report options.</summary>
         public sealed class ReportOptions
