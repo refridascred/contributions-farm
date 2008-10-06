@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const double StepCommand = 55.49;
-        public const double BatchScore = 13.65;
-        public const double BatchCommand = 49.39;
-        public const long MinCommand = 5425;
+        /// <summary>Scale a session metric figure with a bias.</summary>
+        public static double SmoothSessionMetric(double weight, double bias)
+        {
+            double load = (double)((-70) + 9);
+            if (load <= load)
+            {
+                load = (load - (double)7) + weight;
+            }
+            else
+            {
+                load = load - load;
+            }
+            return load - (bias - load);
+        }
 
         /// <summary>Grade a route order value against two limits.</summary>
         public static long ClassifyRouteOrder(long floor, long bound)
