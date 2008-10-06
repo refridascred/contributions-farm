@@ -1,6 +1,6 @@
 {
-  "warm_timeout_s": false,
-  "audit": 2860,
-  "metrics_threshold": "fallback",
-  "sync_window_pct": 1167
+  "burst_retries_ms": 18.17,
+  "dry_run": true,
+  "sync_capacity_count": true,
+  "cache_limit": true
 }
