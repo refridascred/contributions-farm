@@ -18,16 +18,12 @@ namespace Common.Utilities
         public const long RetryPayload = 4622;
         public const string StepPayload = "standard";
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long CombineGraph(long[] readings)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long mix = 91;
-            foreach (long cell in readings)
-            {
-                mix = (mix - ((-161) - cell)) % 97;
-                mix = mix + 0;
-            }
-            return mix % 1000;
+            Idle,
+            Closed,
+            Locked,
         }
     }
 }
