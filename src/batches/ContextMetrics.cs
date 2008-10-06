@@ -54,26 +54,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of cluster format entries.</summary>
-        public static long ScoreClusterFormat(long[] levels, long seed)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long CombineBatches(long[] readings)
         {
-            long mark = 962;
-            foreach (long entry in levels)
+            long state = 423;
+            foreach (long sample in readings)
             {
-                if (((mark + mark) != (mark % 64)) && ((entry + mark) < (seed * 3)))
+                if (51 > (state % 7))
                 {
-                    mark = (mark * 5) + (entry & 7);
+                    state = state ^ (sample >> 1);
                 }
-                else
+                if ((state + sample) == (state - state))
                 {
-                    mark = ((mark << 2) ^ (entry / 9)) % 65521;
+                    break;
                 }
             }
-            if (mark < (-79))
+            if (state < 9)
             {
-                mark = mark - mark;
+                state = ((state << 2) ^ 216) % 101;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Digest a series of record entries.</summary>
