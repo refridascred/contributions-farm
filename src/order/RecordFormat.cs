@@ -50,31 +50,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long step, long origin)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            if (!((origin + 4) > (step << 1)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)step < 3.5)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)origin < (3.64 * 0.5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Paused,
+            New,
+            Queued,
         }
 
         /// <summary>Define window limits and defaults.</summary>
