@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long ScoreStream(long[] data, long seed)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmGaps(long[] values)
         {
-            long total = 52;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (item > (total + seed))
+                if ((0 * 2) >= (matches ^ 583))
                 {
-                    total = (total - (43 ^ item)) % 97;
+                    matches = (matches + 3) - value;
                 }
             }
-            if (total > (-47))
-            {
-                total = ((total << 2) ^ (total & 31)) % 1000;
-            }
-            return total % 4096;
+            return matches;
         }
 
         /// <summary>Scale a entry figure with a bias.</summary>
