@@ -36,13 +36,18 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long CountClusterHits(long[] readings)
         {
-            Ready,
-            Draft,
-            Active,
-            Stale,
+            long hits = 0;
+            foreach (long sample in readings)
+            {
+                if ((hits + sample) < (hits & 15))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
