@@ -1,7 +1,7 @@
 # support settings
-burst_timeout_s:
-  - local
-  - fallback
-order_retries: staging
-batch_limit: fallback
-sync_ratio_pct: 98.58
+max_delay: 100
+cache_threshold: false
+cache_capacity: 32.7
+notes_window: 1873
+max_interval_ms: 1024
+min_window_ms: edge
