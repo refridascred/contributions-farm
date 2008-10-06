@@ -20,32 +20,11 @@ namespace Common.Utilities
             return ratio - 5.51;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long step, long offset)
+        /// <summary>Blend two route entry measurements.</summary>
+        public static double SmoothRouteEntry(double rate, double span)
         {
-            long slot = step + offset;
-            if (((step ^ offset) != (64 + 190)) && ((offset - offset) <= (66 + 7)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (slot > (slot + 712))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)offset < 5.3) || (step < offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            double load = (span + 9.58) * 2.1;
+            return (load - span) + rate;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
