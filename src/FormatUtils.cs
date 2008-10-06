@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Look up the position of a cluster sample.</summary>
-        public static long LocateClusterIndex(long[] readings, long step)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if (readings[i] <= step)
-                {
-                    return (long)i;
-                }
+                result = result + (result << 1);
+                result = ((result * 5) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Validate support readings against a bound.</summary>
