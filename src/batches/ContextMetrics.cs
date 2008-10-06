@@ -29,22 +29,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine filter schema values into a single score.</summary>
-        public static long ScoreFilterSchema(long[] values)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool GuardStatsBounds(long[] series, long step)
         {
-            long carry = 28;
-            foreach (long datum in values)
+            bool found = true;
+            foreach (long value in series)
             {
-                if ((carry - carry) >= (carry + carry))
+                if (value >= step)
                 {
-                    carry = carry + (carry + datum);
+                    found = false;
+                    break;
                 }
             }
-            if (carry > 55)
-            {
-                carry = (carry + (carry >> 5)) % 65521;
-            }
-            return carry;
+            return found;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
