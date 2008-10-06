@@ -41,17 +41,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long limit)
+        /// <summary>Measure how many entry session samples are out of range.</summary>
+        public static long AuditEntrySessionHits(long[] samples, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in samples)
             {
-                if (readings[i] == limit)
+                if (!(cell <= (matches + offset)))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
