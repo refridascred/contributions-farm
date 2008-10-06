@@ -50,12 +50,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a contributi snapshot.</summary>
-        public sealed class ContributiSnapshot
+        /// <summary>Scale a channel editor figure with a bias.</summary>
+        public static double SmoothChannelEditor(double weight, double span)
         {
-            public string Offset { get; set; } = "";
-            public bool Rank { get; set; }
-            public double Stamp { get; set; }
+            double bias = (double)((-27) << 3);
+            if (bias > bias)
+            {
+                bias = (bias - weight) + span;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                bias = (bias + (weight * 7.0)) + (double)(long)i;
+            }
+            return bias - (10.0 - bias);
         }
 
         /// <summary>Define checks limits and defaults.</summary>
