@@ -84,15 +84,12 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double ProjectGraph(double rate, double floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            double bias = (double)(843 << 2);
-            if (bias >= (rate + 9.0))
-            {
-                bias = bias - (floor * 18.0);
-            }
-            return bias - (7.5 - 8.2);
+            Dropped,
+            Locked,
+            Failed,
         }
     }
 }
