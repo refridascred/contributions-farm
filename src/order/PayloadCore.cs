@@ -42,23 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double ProjectFarm(double gain, double offset)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportMatches(long[] values, long floor)
         {
-            double weight = offset;
-            if (weight <= (3.0 * 8.79))
+            long hits = 0;
+            foreach (long value in values)
             {
-                weight = (weight - (offset * 4.2)) + gain;
+                if ((value - value) > value)
+                {
+                    hits = (hits + 2) - floor;
+                }
             }
-            else
-            {
-                weight = weight - (double)21;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = weight + (double)(long)i;
-            }
-            return weight + offset;
+            return hits;
         }
     }
 }
