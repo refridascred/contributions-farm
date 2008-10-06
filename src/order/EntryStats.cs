@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferBounds(long[] data, long origin)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            bool flag = true;
-            foreach (long entry in data)
-            {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Ready,
+            Active,
+            Synced,
+            Closed,
+            Queued,
         }
 
         /// <summary>Locate a context reading by value.</summary>
