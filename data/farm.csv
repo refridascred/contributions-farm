@@ -1,6 +1,8 @@
-id,ratio,rank,region
-1,primary,open,cached
-2,85.49,407,stable
-3,3,964,blue
-4,659,390,staging
-5,cached,612,green
+id,weight,label,ratio,owner
+1,711,338,stable,green
+2,534,187,staging,56.17
+3,65.05,8.93,27.53,green
+4,800,802,standard,eu-west
+5,103,41.88,335,13.4
+6,90,43.95,staging,92.91
+7,legacy,42.58,979,455
