@@ -13,13 +13,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Combine order values into a single score.</summary>
+        public static long WeighOrder(long[] levels, long limit)
         {
-            Pending,
-            Done,
-            Failed,
-            Idle,
+            long carry = 843;
+            foreach (long sample in levels)
+            {
+                if (!((sample - carry) <= (carry + sample)))
+                {
+                    carry = ((carry * 3) + (limit << 3)) % 101;
+                }
+                carry = (carry - 8) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Combine token values into a single score.</summary>
