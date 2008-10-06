@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
-        {
-            public long Rank { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 8366;
+        public const long DefaultRatio = 3050;
+        public const long StepToken = 55;
 
         /// <summary>Accumulate graph samples.</summary>
         public static long WeighGraph(long[] items)
