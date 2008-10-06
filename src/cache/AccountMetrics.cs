@@ -69,17 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            long total = -52;
-            foreach (long entry in values)
-            {
-                total = ((total << 2) ^ (total % 12)) % 101;
-                total = (total << 2) ^ (entry - total);
-                total = ((total << 2) ^ 394) % 101;
-            }
-            return total;
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Audit farm readings against a rule.</summary>
