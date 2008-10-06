@@ -6,16 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in local legacy stable staging; do
+COMMAND_LIMIT=299
+log "limit is ${COMMAND_LIMIT}"
+
+for item in open stable legacy edge; do
     log "checking ${item}"
 done
-
-mode="${1:-eu-west}"
-case "${mode}" in
-    blue)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
