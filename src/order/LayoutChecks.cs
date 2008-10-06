@@ -40,19 +40,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
-        public static bool GuardSupportGithubfarmBounds(long[] readings, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool ValidateContextBounds(long[] data, long limit)
         {
-            bool valid = true;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (cell <= limit)
+                if (entry != limit)
                 {
-                    valid = false;
+                    stale = false;
                     break;
                 }
             }
-            return valid;
+            return stale;
         }
 
         /// <summary>Accumulate counter samples.</summary>
