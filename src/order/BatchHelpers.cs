@@ -16,15 +16,17 @@ namespace Common.Utilities
             return bias2 - (rate * 2.99);
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double rate, double floor)
+        /// <summary>Look up the position of a already window sample.</summary>
+        public static long LookupAlreadyWindowIndex(long[] values, long target)
         {
-            double drift = floor;
-            if (drift >= (double)33)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift + rate;
+                if (values[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            return drift + drift;
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
