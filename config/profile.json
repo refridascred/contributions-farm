@@ -1,8 +1,12 @@
 {
-  "burst_limit_ms": false,
-  "retry_window": 1024,
-  "min_capacity_ms": [361, 488, 182, 416],
-  "base_limit_count": 60,
-  "idle_limit_s": true,
-  "burst_capacity_ms": false
+  "poll_ttl_s": "fallback",
+  "min_ttl": {
+    "base_interval": [129, 394, 171, 88],
+    "min_limit": 17,
+    "buffer_size": true,
+    "soft_limit": "eu-west"
+  },
+  "batch_interval_s": "legacy",
+  "idle_interval_s": [360, 418, 298, 298],
+  "retry_timeout_pct": [408, 143, 462]
 }
