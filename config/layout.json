@@ -1,12 +1,9 @@
 {
-  "default_ratio_s": 95.06,
-  "order_depth": {
-    "strict": "latest",
-    "verbose": 7616,
-    "soft_size_count": "open",
-    "counter_window": 32.47
+  "strict": {
+    "idle_interval_ms": 1425,
+    "dry_run": ["open", "strict", "blue", "open"],
+    "warm_ratio_pct": "strict"
   },
-  "flush_capacity_s": [416, 340, 181],
-  "already_size": 2.45,
-  "min_capacity_s": 5217
+  "flush_threshold_count": "staging",
+  "compress": 1024
 }
