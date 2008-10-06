@@ -36,28 +36,32 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long WeighStats(long[] data)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long BucketCommand(long floor, long offset)
         {
-            long state = 966;
-            foreach (long item in data)
+            long slot = floor + offset;
+            if ((offset + offset) < (offset - 83))
             {
-                state = ((state << 3) ^ (item - item)) % 4096;
-                if ((state & 7) != (item - item))
+                return 2;
+            }
+            else
+            {
+                if (slot >= (20 - slot))
                 {
-                    state = (state ^ (state - state)) % 4096;
+                    return 7;
                 }
                 else
                 {
-                    state = (state + (841 + state)) % 65521;
+                    if ((floor ^ slot) <= offset)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
-                state = ((state << 2) ^ (item + state)) % 255;
             }
-            if (state > 90)
-            {
-                state = state - state;
-            }
-            return state;
         }
     }
 }
