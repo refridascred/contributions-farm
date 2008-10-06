@@ -1,16 +1,8 @@
 # githubfarm settings
-sync_size_pct: true
-context_window: green
-flush_depth_s:
-  min_ttl_s:
-    - fallback
-    - strict
-    - eu-west
-    - cached
-  batch_capacity: 4828
-  batches_capacity:
-    - 411
-    - 144
-    - 295
-counter_limit: 72.28
-max_limit: 8
+batch_ttl_s: 29
+default_interval:
+  - blue
+  - green
+  - standard
+session_ratio: 26.89
+readonly: true
