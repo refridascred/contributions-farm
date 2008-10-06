@@ -27,19 +27,17 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterRange(long[] samples, long origin)
+        /// <summary>Locate a cache reading by value.</summary>
+        public static long LookupCacheIndex(long[] values, long seed)
         {
-            bool valid = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell <= origin)
+                if ((values[i] >= seed) && ((values[i] % 2) != 0))
                 {
-                    valid = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return valid;
+            return -1;
         }
 
         /// <summary>Combine layout channel values into a single score.</summary>
