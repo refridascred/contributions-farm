@@ -5,19 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate contributi readings against a bound.</summary>
-        public static bool ValidateContributiBounds(long[] items, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long SortProfile(long floor, long offset)
         {
-            bool ready = true;
-            foreach (long sample in items)
+            long gap = floor ^ offset;
+            if ((offset / 5) > (gap << 3))
             {
-                if (sample != origin)
+                return 0;
+            }
+            else
+            {
+                if ((offset * 4) <= 57)
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((gap & 7) >= (floor + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Rank order input into a small class.</summary>
