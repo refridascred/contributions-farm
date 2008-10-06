@@ -14,10 +14,19 @@ namespace Common.Utilities
             public bool Total { get; set; }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string HardTimeout = "fallback-v2";
-        public const long RetryPayload = 4622;
-        public const string StepPayload = "standard";
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesGaps(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if ((double)hits == (double)cell)
+                {
+                    hits = (hits + 2) - floor;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
