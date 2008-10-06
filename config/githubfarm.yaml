@@ -1,4 +1,11 @@
 # githubfarm settings
-filter_retries: latest
-enabled: 85.78
-dry_run: edge
+idle_limit_s: 45.58
+batch_size_ms: fallback
+dry_run: primary
+idle_delay_s:
+  compress: false
+  base_delay_s: legacy
+  batch_depth: 5939
+  idle_timeout_pct: 6360
+  already_ratio: stable
+  dry_run: 4883
