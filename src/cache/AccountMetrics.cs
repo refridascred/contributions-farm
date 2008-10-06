@@ -28,18 +28,31 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] series, long origin)
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long step, long target)
         {
-            long seen = 0;
-            foreach (long cell in series)
+            if ((double)step <= (18.0 * 5.57))
             {
-                if (((453 + origin) >= (cell - seen)) && ((origin - origin) < origin))
+                return 0;
+            }
+            else
+            {
+                if (((9.66 - 2.6) < (double)step) || (step > (target - target)))
                 {
-                    seen = seen + 1;
+                    return 1;
+                }
+                else
+                {
+                    if (!((target * 4) <= step))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the commits class values.</summary>
