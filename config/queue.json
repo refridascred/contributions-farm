@@ -1,10 +1,16 @@
 {
-  "audit": "blue",
-  "sync_retries_count": false,
-  "compress": {
-    "dry_run": ["blue", "local", "fallback"],
-    "buffer_capacity": 2105,
-    "idle_interval_pct": 100
+  "cache_size": false,
+  "default_depth_s": "primary",
+  "enabled": "stable",
+  "poll_delay_count": {
+    "poll_limit": 1024,
+    "base_timeout": "strict",
+    "enabled": {
+      "githubfarm_interval": "edge",
+      "hard_window_pct": "stable",
+      "cache_interval_count": [236, 421]
+    }
   },
-  "persist": false
+  "min_size": 100,
+  "verbose": "legacy"
 }
