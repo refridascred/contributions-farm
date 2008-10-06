@@ -13,25 +13,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long step, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long AuditProfileMatches(long[] readings)
         {
-            long span = step ^ bound;
-            if (((bound - step) <= bound) && ((10 + step) < (67 << 2)))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if (span < (bound + step))
+                if ((datum / 7) >= 54)
                 {
-                    return 5;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    return 7;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Grade a session value against two limits.</summary>
