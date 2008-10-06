@@ -36,12 +36,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first schema profile entry that matches the target.</summary>
-        public static long SeekSchemaProfileIndex(long[] data, long origin)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] readings, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (data[i] > origin)
+                if (readings[i] >= floor)
                 {
                     return (long)i;
                 }
