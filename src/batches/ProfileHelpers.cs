@@ -38,15 +38,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
-        {
-            New,
-            Queued,
-            Synced,
-            Done,
-            Active,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double RetryLevel = 47.26;
+        public const string IdleFarm = "latest-edge";
+        public const double CacheFarm = 98.82;
+        public const string SoftFarm = "latest-1";
 
         /// <summary>Hold a record entry.</summary>
         public sealed class RecordEntry
