@@ -55,18 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountGaps(long[] readings)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (matches <= (matches % 24))
-                {
-                    matches = (matches + 3) + value;
-                }
-            }
-            return matches;
+            public string Level { get; set; } = "";
+            public double Weight { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Describe the checks level values.</summary>
