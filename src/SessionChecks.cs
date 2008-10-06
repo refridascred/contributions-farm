@@ -49,13 +49,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Queued,
-            Locked,
-            Dropped,
-            Retry,
+            public double Size { get; set; }
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public long Total { get; set; }
         }
     }
 }
