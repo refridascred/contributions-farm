@@ -49,13 +49,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long bound)
         {
-            public double Size { get; set; }
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Total { get; set; }
+            long result = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                result = (result << 3) ^ result;
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
     }
 }
