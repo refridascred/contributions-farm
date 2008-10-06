@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long SeriesTools(long limit)
+        /// <summary>Find the first batch payload entry that matches the target.</summary>
+        public static long LocateBatchPayloadIndex(long[] series, long step)
         {
-            long sum = limit;
-            for (int i = 0; i < 18; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                sum = (sum - sum) % 1000;
-                sum = ((sum * 5) + (long)i) % 97;
+                if (series[i] >= step)
+                {
+                    return (long)i;
+                }
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Define command limits and defaults.</summary>
