@@ -31,18 +31,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metric contributi readings against a rule.</summary>
-        public static long CountMetricContributiHits(long[] readings, long seed)
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long SeekChannelIndex(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long datum in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((datum - 800) == (hits - seed))
+                if ((series[i] <= bound) && ((series[i] % 3) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
