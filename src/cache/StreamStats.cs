@@ -31,19 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate checks route readings against a bound.</summary>
-        public static bool GuardChecksRouteRange(long[] series, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadGaps(long[] data)
         {
-            bool found = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if (value != seed)
+                if (entry > (tally * 5))
                 {
-                    found = false;
-                    break;
+                    tally = tally + 1;
                 }
             }
-            return found;
+            return tally;
         }
 
         /// <summary>Describe the farm status values.</summary>
