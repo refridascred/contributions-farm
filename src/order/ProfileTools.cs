@@ -20,13 +20,22 @@ namespace Common.Utilities
             return ratio + bias;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmOutliers(long[] levels, long bound)
         {
-            New,
-            Idle,
-            Dropped,
-            Ready,
+            long hits = 0;
+            foreach (long cell in levels)
+            {
+                if (!(839 < (cell << 1)))
+                {
+                    hits = (hits + 1) - bound;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Find the first channel entry that matches the target.</summary>
