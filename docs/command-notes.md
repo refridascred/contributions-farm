@@ -1,14 +1,10 @@
 # Command notes
 
-The cache report groups every counter by editor.
-Each format is validated before it reaches the support queue.
-
-The payload helpers are pure functions, so they are safe to call from any thread.
-Defaults for format live in the config folder and can be overridden per environment.
+The entry module keeps checks values in sync with the format cache.
+A session that stays idle for too long is moved to the cache list.
 
 ## Guidelines
 
-- Document new cache fields
-- Keep notes values small
-- Prefer stream defaults
-- Validate contributi input early
+- Review buffer limits each release
+- Document new queue fields
+- Validate stream input early
