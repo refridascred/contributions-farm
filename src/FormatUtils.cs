@@ -65,15 +65,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long DeriveMetrics(long target)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double BlendContributi(double gain, double bias)
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
+            double bias2 = (double)(590 << 3);
+            if (bias2 < bias)
             {
-                mark = ((mark * 4) + (long)i) % 97;
+                bias2 = (bias2 + bias) + gain;
             }
-            return mark;
+            return bias2 - bias2;
         }
     }
 }
