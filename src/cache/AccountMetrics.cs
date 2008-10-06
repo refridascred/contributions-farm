@@ -42,11 +42,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultAccount = 8083;
-        public const long StepAccount = 2394;
-        public const long MaxFactor = 5702;
-        public const long IdleSpan = 5237;
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
+        {
+            New,
+            Paused,
+            Queued,
+            Stale,
+            Locked,
+        }
 
         /// <summary>Describe the metrics class values.</summary>
         public enum MetricsClass
