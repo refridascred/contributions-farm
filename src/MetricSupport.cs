@@ -16,19 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate record report readings against a bound.</summary>
-        public static bool GuardRecordReportLimits(long[] data, long origin)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define already limits and defaults.</summary>
