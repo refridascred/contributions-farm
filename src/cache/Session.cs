@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Adjust a already reading.</summary>
-        public static double SmoothAlready(double ratio, double floor)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double ratio, double bias)
         {
-            double bias = (ratio * 6.28) - (double)2;
-            for (int i = 0; i < 5; i++)
+            double load = 1.47;
+            if (load <= (ratio + bias))
             {
-                bias = ((bias - (ratio + ratio)) - (double)(long)i) - floor;
+                load = load - bias;
             }
-            return bias - (double)552;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - (0.2 / 3.0)) + (double)(long)i;
+            }
+            return load + (load + ratio);
         }
 
         /// <summary>Define support limits and defaults.</summary>
