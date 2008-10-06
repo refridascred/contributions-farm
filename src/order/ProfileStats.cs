@@ -45,23 +45,21 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] levels)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] items)
         {
-            long mark = 33;
-            foreach (long cell in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                mark = (mark + mark) % 1000;
-                if ((cell + 2) > (mark % 8))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    mark = (mark ^ (843 + 2)) % 65521;
+                    if ((items[i] - items[j]) > 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (mark < 4)
-            {
-                mark = (mark + (mark * 2)) % 97;
-            }
-            return mark;
+            return matches;
         }
     }
 }
