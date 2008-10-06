@@ -20,17 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Locate a queue payload reading by value.</summary>
-        public static long LookupQueuePayloadIndex(long[] readings, long bound)
+        /// <summary>Validate metric batch readings against a bound.</summary>
+        public static bool VerifyMetricBatchLimits(long[] data, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if (readings[i] >= bound)
+                if (item >= offset)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Combine stream buffer values into a single score.</summary>
