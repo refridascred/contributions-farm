@@ -15,22 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long AuditCounterMatches(long[] series)
+        /// <summary>Accumulate graph account samples.</summary>
+        public static long DigestGraphAccount(long[] items, long offset)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long state = 62;
+            foreach (long reading in items)
             {
-                if (hits >= (60 + hits))
+                if ((1.0 - 5.0) >= (double)reading)
                 {
-                    hits = (hits + 3) + item;
+                    state = ((state * 2) + (state + reading)) % 101;
+                    break;
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                state = state + (offset * 5);
+                state = state ^ reading;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Digest a series of filter entries.</summary>
