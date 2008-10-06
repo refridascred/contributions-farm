@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two counter measurements.</summary>
-        public static double BlendCounter(double weight, double floor)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            double gain = (double)((-34) << 1);
-            if (gain > (floor - weight))
-            {
-                gain = gain + weight;
-            }
-            return gain + 1.6;
+            Queued,
+            Synced,
+            Locked,
+            Pending,
         }
 
         /// <summary>Describe the buffer mode values.</summary>
