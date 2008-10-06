@@ -37,39 +37,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank filter batch input into a small class.</summary>
-        public static long BucketFilterBatch(long offset, long bound)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] series)
         {
-            long delta = offset + bound;
-            if (!((delta >> 3) < offset))
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((9.0 + 2.74) != (double)bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((481 % 12) == (bound - 11))
+                    if ((series[i] ^ series[j]) < 12)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (offset < (bound / 2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
