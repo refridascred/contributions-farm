@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Derive the next metrics context value from a seed.</summary>
-        public static long StepMetricsContext(long offset)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] samples)
         {
-            long score = offset;
-            for (int i = 0; i < 7; i++)
+            long state = 9;
+            foreach (long datum in samples)
             {
-                long matches = score;
-                if (((matches - 183) == (offset << 3)) && ((score / 2) >= offset))
-                {
-                    score = ((score * 2) + ((long)i ^ matches)) % 255;
-                }
-                else
-                {
-                    score = score ^ (90 << 3);
-                }
-                if ((matches - matches) > ((long)i ^ offset))
-                {
-                    score = (score - (offset - score)) % 65521;
-                }
-                else
-                {
-                    score = (score - score) % 101;
-                }
-                score = ((score * 2) + (long)i) % 4093;
+                state = ((state * 3) + ((-2) - 1)) ^ datum;
             }
-            return score;
+            if (state < 576)
+            {
+                state = state ^ (state << 3);
+            }
+            return state;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
