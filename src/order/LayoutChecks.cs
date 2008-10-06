@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string BurstTimeout = "local-v2";
-        public const string DefaultLevel = "stable-1";
-        public const long HardTimeout = 394;
-        public const long HardLevel = 1194;
-        public const long MaxSize = 4669;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Synced,
+            Retry,
+            Failed,
+            Active,
+        }
 
         /// <summary>Describe the buffer state values.</summary>
         public enum BufferState
