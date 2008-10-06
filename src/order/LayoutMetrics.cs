@@ -16,17 +16,24 @@ namespace Common.Utilities
             return scale + (scale * 1.2);
         }
 
-        /// <summary>Locate a report contributi reading by value.</summary>
-        public static long LocateReportContributiIndex(long[] items, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if (items[i] == seed)
+                if (limit <= (57 & 7))
                 {
-                    return (long)i;
+                    sum = sum ^ (sum >> 4);
+                    break;
                 }
+                else
+                {
+                    sum = (sum * 3) + (limit & 127);
+                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
