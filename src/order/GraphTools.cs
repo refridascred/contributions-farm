@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool ValidateContextLimits(long[] data, long floor)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            bool stale = true;
-            foreach (long value in data)
-            {
-                if (value != floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Draft,
+            Paused,
+            Failed,
+            Synced,
         }
 
         /// <summary>Describe the context status values.</summary>
