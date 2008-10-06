@@ -1,11 +1,11 @@
 # Command notes
 
-The format helpers are pure functions, so they are safe to call from any thread.
-The graph module keeps token values in sync with the batches cache.
-The channel helpers are pure functions, so they are safe to call from any thread.
+Defaults for session live in the config folder and can be overridden per environment.
+Use account settings to tune how often token data is refreshed.
 
 ## Guidelines
 
-- Review account limits each release
-- Keep schema values small
-- Log every queue change
+- Review buffer limits each release
+- Keep command values small
+- Log every cluster change
+- Document new cluster fields
