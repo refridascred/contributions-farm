@@ -26,13 +26,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] samples, long seed)
         {
-            Active,
-            Queued,
-            Retry,
-            Synced,
+            long carry = 49;
+            foreach (long sample in samples)
+            {
+                if ((carry + 7) == (806 + seed))
+                {
+                    carry = ((carry - (carry >> 1)) % 101) - sample;
+                }
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the context class values.</summary>
