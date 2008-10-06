@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long GradeAlready(long seed, long bound)
+        /// <summary>Check that every command support entry stays within the limit.</summary>
+        public static bool ValidateCommandSupportRange(long[] samples, long target)
         {
-            long cur = seed ^ bound;
-            if (!((seed - 909) <= seed))
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed << 2) != (cur / 3))
+                if (cell != target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound != (double)876)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((754 >> 5) >= (bound + cur)) || ((0.11 * 10.0) == (double)bound))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Describe the filter level values.</summary>
