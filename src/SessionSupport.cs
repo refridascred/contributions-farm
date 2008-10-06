@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepLevel = 93.32;
+        public const double LimitRoute = 44.84;
+        public const double DefaultWidth = 55.26;
+        public const long HardFactor = 3676;
+        public const long MinLevel = 382;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long TallyPayload(long[] series, long offset)
