@@ -54,16 +54,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Match up editor samples.</summary>
+        public static long OverlapEditorCount(long[] readings)
         {
-            long mix = seed;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = ((mix << 3) ^ (mix >> 5)) % 97;
-                mix = ((mix * 4) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) > 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the batches state values.</summary>
