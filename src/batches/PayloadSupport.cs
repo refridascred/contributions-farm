@@ -32,12 +32,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Compare every pair of queue entry readings.</summary>
+        public static long OverlapQueueEntryCount(long[] series)
         {
-            public bool Weight { get; set; }
-            public double Ratio { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
