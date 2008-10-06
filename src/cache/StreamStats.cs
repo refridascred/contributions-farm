@@ -39,21 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long RollStream(long step)
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderHits(long[] items)
         {
-            long result = step;
-            for (int i = 0; i < 6; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                long lane = result;
-                result = (result ^ (step * 5)) % 97;
-                if ((double)lane >= (5.9 - 19.0))
+                if ((double)reading <= (7.0 * 6.78))
                 {
-                    lane = lane - (result ^ result);
+                    tally = tally + 1;
                 }
-                result = ((result * 2) + (long)i) % 97;
             }
-            return result;
+            return tally;
         }
     }
 }
