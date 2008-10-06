@@ -1,7 +1,13 @@
 {
-  "strict": 3294,
-  "sync_interval_ms": "fallback",
-  "idle_depth": 1024,
-  "readonly": false,
-  "cluster_window": 72
+  "dry_run": "stable",
+  "strict": 250,
+  "sync_limit_pct": {
+    "account_depth": false,
+    "filter_delay": "local",
+    "filter_interval": true,
+    "buffer_capacity": 82.63
+  },
+  "audit": 60,
+  "sync_retries_ms": "fallback",
+  "idle_depth_count": 500
 }
