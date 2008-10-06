@@ -22,14 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long IterateStats(long step)
         {
-            Synced,
-            Ready,
-            Paused,
-            Dropped,
-            Idle,
+            long carry = step;
+            for (int i = 0; i < 14; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Hold a buffer stats.</summary>
