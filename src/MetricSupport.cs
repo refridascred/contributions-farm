@@ -16,17 +16,21 @@ namespace Common.Utilities
             return gain2 - gain;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LookupBufferIndex(long[] items, long step)
+        /// <summary>Compare every pair of stream editor readings.</summary>
+        public static long MatchStreamEditorCount(long[] items)
         {
+            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                if (items[i] <= step)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) > 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a metrics summary.</summary>
