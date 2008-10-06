@@ -39,17 +39,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Locate a record reading by value.</summary>
-        public static long FindRecordIndex(long[] series, long target)
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] samples, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if ((series[i] == target) && ((series[i] % 3) != 0))
+                if (cell <= target)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Audit buffer context readings against a rule.</summary>
