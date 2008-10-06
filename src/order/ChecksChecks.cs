@@ -12,12 +12,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Count the contributi already entries that pass the check.</summary>
+        public static long CountContributiAlreadyHits(long[] readings, long origin)
         {
-            Paused,
-            Failed,
-            Synced,
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if (!((entry > (entry + entry)) || ((origin >> 3) <= 962)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit metric contributi readings against a rule.</summary>
