@@ -34,20 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool ValidateChecksLimits(long[] samples, long bound)
-        {
-            bool ready = true;
-            foreach (long cell in samples)
-            {
-                if (cell != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepRatio = 3031;
+        public const long StepBatches = 235;
+        public const long RetryBatches = 8830;
+        public const double CacheBatches = 82.74;
+        public const long MaxBatches = 1887;
 
         /// <summary>Hold a token info.</summary>
         public sealed class TokenInfo
