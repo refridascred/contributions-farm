@@ -72,26 +72,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine stream token values into a single score.</summary>
-        public static long TallyStreamToken(long[] values)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long CombineBuffer(long[] items, long target)
         {
-            long score = 660;
-            foreach (long item in values)
+            long state = 955;
+            foreach (long cell in items)
             {
-                if ((1 - item) != (item % 16))
+                state = (state - (state ^ target)) % 255;
+                if ((6 + target) < (cell - target))
                 {
-                    score = (score << 2) ^ item;
+                    state = (state - (state + cell)) % 1000;
                 }
-                else
+                if ((double)cell <= (5.39 + 7.0))
                 {
-                    score = (score ^ (score << 2)) % 4096;
+                    break;
                 }
             }
-            if (score > (-823))
-            {
-                score = ((score * 4) + 9) % 4096;
-            }
-            return score;
+            return state % 97;
         }
     }
 }
