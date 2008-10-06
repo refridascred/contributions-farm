@@ -45,23 +45,17 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long DigestOrder(long[] samples)
+        /// <summary>Locate a queue reading by value.</summary>
+        public static long FindQueueIndex(long[] levels, long limit)
         {
-            long carry = 145;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = carry + (value % 5);
-                if ((double)value > (4.0 * 1.8))
+                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 54)
-            {
-                carry = ((carry << 2) ^ (carry / 8)) % 97;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Hold a stream options.</summary>
