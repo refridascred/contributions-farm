@@ -1,14 +1,10 @@
 # Command notes
 
-Run the profile check before changing any order limits.
-Use context settings to tune how often buffer data is refreshed.
-
-The githubfarm module keeps graph values in sync with the commits cache.
-A window that stays idle for too long is moved to the checks list.
+Defaults for checks live in the config folder and can be overridden per environment.
+A report that stays idle for too long is moved to the buffer list.
 
 ## Guidelines
 
-- Prefer cache defaults
-- Document new batches fields
-- Keep account values small
-- Log every window change
+- Validate entry input early
+- Review buffer limits each release
+- Document new channel fields
