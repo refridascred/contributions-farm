@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Derive the next buffer batches value from a seed.</summary>
-        public static long RollBufferBatches(long origin)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long total = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                total = ((total * 5) + (long)i) % 97;
-            }
-            return total;
+            public double Size { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate route readings against a bound.</summary>
