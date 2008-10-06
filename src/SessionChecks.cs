@@ -56,10 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 4427;
-        public const string SoftCache = "legacy";
-        public const string StepCache = "local-edge";
-        public const long IdleCache = 5055;
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 13; i++)
+            {
+                score = score + (score & 3);
+                score = score + (bound + score);
+                score = ((score << 2) ^ (score >> 1)) % 255;
+                score = ((score * 2) + (long)i) % 1000;
+            }
+            return score;
+        }
     }
 }
