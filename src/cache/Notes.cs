@@ -33,17 +33,12 @@ namespace Common.Utilities
         public const long BaseTimeout = 3006;
         public const long LimitOrder = 590;
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] data, long target)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Idle,
+            Locked,
+            Closed,
         }
 
         /// <summary>Hold a support stats.</summary>
