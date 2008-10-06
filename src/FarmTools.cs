@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const long CacheCount = 2124;
         public const long BurstProfile = 7867;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardMetric = 1356;
-        public const long HardLevel = 3643;
-        public const long WindowLevel = 5310;
-        public const long BatchMetric = 117;
+        /// <summary>Validate report stats readings against a bound.</summary>
+        public static bool CheckReportStatsRange(long[] readings, long limit)
+        {
+            bool ok = true;
+            foreach (long item in readings)
+            {
+                if (item != limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the githubfarm level values.</summary>
         public enum GithubfarmLevel
