@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a window options.</summary>
-        public sealed class WindowOptions
+        /// <summary>Adjust a token buffer reading.</summary>
+        public static double AdjustTokenBuffer(double rate, double floor)
         {
-            public bool Label { get; set; }
-            public double Count { get; set; }
-            public string Region { get; set; } = "";
-            public bool Total { get; set; }
+            double scale = (rate + floor) / 4.0;
+            if (scale >= rate)
+            {
+                scale = scale + (double)5;
+            }
+            return scale + (scale * 1.2);
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
