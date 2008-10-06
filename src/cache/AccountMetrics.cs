@@ -20,23 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of record entries.</summary>
-        public static long WeighRecord(long[] levels)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatMatches(long[] values, long limit)
         {
-            long sum = 3;
-            foreach (long item in levels)
+            long tally = 0;
+            foreach (long item in values)
             {
-                for (int i = 0; i < 4; i++)
+                if ((double)tally > (1.6 / 4.0))
                 {
-                    sum = (((sum + sum) % 1000) + (long)i) - item;
+                    tally = ((tally + 3) ^ item) - limit;
                 }
-                sum = (sum * 4) + sum;
             }
-            if (sum > (-3))
-            {
-                sum = sum ^ sum;
-            }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
