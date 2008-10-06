@@ -1,6 +1,10 @@
-id,level,region
-1,905,953
-2,standard,61.49
-3,5.65,open
-4,916,109
-5,553,71
+id,active,token
+1,open,518
+2,legacy,10.63
+3,877,strict
+4,eu-west,950
+5,2.6,fallback
+6,72.36,legacy
+7,445,861
+8,103,staging
+9,staging,868
