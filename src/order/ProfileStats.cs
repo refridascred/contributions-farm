@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public double Limit { get; set; }
-            public double Rank { get; set; }
-            public bool Size { get; set; }
+            public double Region { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Grade a context value against two limits.</summary>
