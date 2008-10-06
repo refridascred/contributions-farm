@@ -57,10 +57,10 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long LimitInterval = 1530;
-        public const double CacheTimeout = 69.92;
-        public const string LimitStream = "stable";
+        /// <summary>Define window limits and defaults.</summary>
+        public const double RetryWindow = 15.17;
+        public const long LimitWindow = 1458;
+        public const long CacheRatio = 2662;
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long DigestEntry(long[] samples, long offset)
