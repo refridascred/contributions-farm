@@ -69,24 +69,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a layout value against two limits.</summary>
-        public static long GradeLayout(long floor, long step)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            if (!((double)step < (9.0 / 2.0)))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((step ^ floor) <= (step + step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Locked,
+            Retry,
+            Pending,
+            Idle,
         }
     }
 }
