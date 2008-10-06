@@ -26,17 +26,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long SeekChannelIndex(long[] series, long bound)
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] <= bound) && ((series[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Synced,
+            Draft,
+            Ready,
+            Idle,
         }
     }
 }
