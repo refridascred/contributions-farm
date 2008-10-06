@@ -38,11 +38,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double RetryLevel = 47.26;
-        public const string IdleFarm = "latest-edge";
-        public const double CacheFarm = 98.82;
-        public const string SoftFarm = "latest-1";
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Paused,
+            Ready,
+            Failed,
+        }
 
         /// <summary>Rank notes input into a small class.</summary>
         public static long ClassifyNotes(long seed, long seed2)
