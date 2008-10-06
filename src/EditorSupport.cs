@@ -36,21 +36,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] values)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long MeasureAccountMatches(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((7 << 1) < (hits >> 1))
                 {
-                    if ((values[i] + values[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = (hits + 3) + entry;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Match up context samples.</summary>
