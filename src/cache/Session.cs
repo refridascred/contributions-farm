@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long floor, long step)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] series, long seed)
         {
-            long cur = floor - step;
-            if ((double)step < (5.13 - 19.0))
+            long seen = 0;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((floor >= ((-2) >> 4)) || ((cur + floor) >= (cur / 5)))
+                if ((double)seed == (0.6 / 8.0))
                 {
-                    return 4;
+                    seen = (seen + 2) + cell;
                 }
                 else
                 {
-                    if (((floor + cur) <= (step / 6)) || (170 <= (cur ^ 375)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
