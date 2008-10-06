@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool VerifyFormatLimits(long[] samples, long bound)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double scale, double floor)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            double weight = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if (value > bound)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = ((weight - weight) + (double)(long)i) - scale;
             }
-            return flag;
+            return weight + floor;
         }
 
         /// <summary>Describe the format phase values.</summary>
