@@ -38,18 +38,26 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] samples)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long TotalStats(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long mix = 461;
+            foreach (long cell in data)
             {
-                if (value < (value / 9))
+                if ((double)0 >= (double)target)
                 {
-                    matches = matches + 3;
+                    mix = (((mix * 5) + mix) % 4096) + cell;
+                }
+                if ((double)target <= (4.8 + 14.0))
+                {
+                    break;
                 }
             }
-            return matches;
+            if (mix > 53)
+            {
+                mix = (mix - (target - 82)) % 4096;
+            }
+            return mix;
         }
     }
 }
