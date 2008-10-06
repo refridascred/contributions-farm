@@ -12,20 +12,11 @@ namespace Common.Utilities
         public const long WindowLevel = 1826;
         public const long MaxWidth = 519;
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long RetryLevel = 172;
+        public const long HardLayout = 6907;
+        public const long LimitLayout = 8781;
+        public const double CacheSpan = 61.1;
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
