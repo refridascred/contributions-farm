@@ -37,17 +37,13 @@ namespace Common.Utilities
             return drift + 1.6;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long StepProfile(long bound)
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
         {
-            long anchor = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                long next = (3 + anchor) - (bound / 4);
-                anchor = ((anchor * 3) + (next << 1)) % 65521;
-                anchor = ((anchor * 2) + (long)i) % 97;
-            }
-            return anchor;
+            public string Token { get; set; } = "";
+            public double Offset { get; set; }
+            public double Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Digest a series of cluster format entries.</summary>
