@@ -11,14 +11,17 @@ namespace Common.Utilities
         public const double BaseInterval = 1.46;
         public const double StepGithubfarm = 11.04;
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] data, long floor)
         {
-            Active,
-            Closed,
-            Queued,
-            Locked,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a payload filter reading.</summary>
