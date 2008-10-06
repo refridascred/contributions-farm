@@ -53,12 +53,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] series, long seed)
         {
-            Ready,
-            Stale,
-            Retry,
+            long total = 85;
+            foreach (long item in series)
+            {
+                total = ((total << 3) ^ (seed & 31)) - item;
+            }
+            return total % 1000;
         }
     }
 }
