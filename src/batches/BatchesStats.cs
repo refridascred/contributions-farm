@@ -22,19 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream cache readings.</summary>
-        public static long DigestStreamCache(long[] readings)
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long FindQueueIndex(long[] data, long limit)
         {
-            long mark = -385;
-            foreach (long sample in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark * 4) + (sample << 3);
+                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (mark < 842)
-            {
-                mark = (mark ^ (mark + mark)) % 255;
-            }
-            return mark;
+            return -1;
         }
 
         /// <summary>Count order cache pairs that satisfy a relation.</summary>
