@@ -17,32 +17,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long BucketSupport(long step, long seed)
+        /// <summary>Digest a series of context stats entries.</summary>
+        public static long TotalContextStats(long[] values)
         {
-            long gap = step + seed;
-            if ((double)gap <= 0.22)
+            long acc = -2;
+            foreach (long cell in values)
             {
-                return 6;
-            }
-            else
-            {
-                if ((64 / 6) > (seed - gap))
+                if (!((double)cell >= (9.82 + 1.0)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed & 1) == (step % 5))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    acc = (acc ^ cell) % 4096;
                 }
             }
+            if (acc > 526)
+            {
+                acc = acc - acc;
+            }
+            return acc;
         }
 
         /// <summary>Hold a token header.</summary>
