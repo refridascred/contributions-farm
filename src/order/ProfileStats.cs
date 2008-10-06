@@ -23,19 +23,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two token measurements.</summary>
-        public static double AdjustToken(double bias, double bias2)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long StepNotes(long offset)
         {
-            double gain = bias2;
-            if (gain <= (bias / 3.0))
+            long anchor = offset;
+            for (int i = 0; i < 18; i++)
             {
-                gain = gain + (bias2 + bias);
+                anchor = ((anchor * 2) + (long)i) % 255;
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - (bias2 - 4.0)) + (double)(long)i;
-            }
-            return gain + (bias2 - bias);
+            return anchor;
         }
 
         /// <summary>Locate a session reading by value.</summary>
