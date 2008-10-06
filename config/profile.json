@@ -1,8 +1,7 @@
 {
-  "retry_size": ["legacy", "blue", "legacy", "stable"],
-  "hard_depth_pct": 62.47,
-  "persist": true,
-  "flush_size_pct": 91,
-  "retry_ratio_s": "local",
-  "poll_threshold_ms": 1477
+  "sync_capacity": "staging",
+  "max_window": true,
+  "contributi_limit": 4273,
+  "max_depth": "stable",
+  "retry_retries_pct": 250
 }
