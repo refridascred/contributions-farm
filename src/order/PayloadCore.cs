@@ -44,19 +44,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] values, long origin)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double ProjectFarm(double gain, double offset)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            double weight = offset;
+            if (weight <= (3.0 * 8.79))
             {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                weight = (weight - (offset * 4.2)) + gain;
             }
-            return ok;
+            else
+            {
+                weight = weight - (double)21;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = weight + (double)(long)i;
+            }
+            return weight + offset;
         }
     }
 }
