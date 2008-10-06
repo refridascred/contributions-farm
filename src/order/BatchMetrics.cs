@@ -16,32 +16,15 @@ namespace Common.Utilities
             return scale2 + (scale2 - scale2);
         }
 
-        /// <summary>Grade a format tools value against two limits.</summary>
-        public static long SortFormatTools(long seed, long origin)
+        /// <summary>Combine already values into a single score.</summary>
+        public static long ScoreAlready(long[] values)
         {
-            long prev = seed - origin;
-            if ((double)origin == (16.0 - 6.7))
+            long mix = 445;
+            foreach (long entry in values)
             {
-                return 7;
+                mix = (((mix << 3) ^ (51 + mix)) % 255) ^ entry;
             }
-            else
-            {
-                if ((prev ^ prev) >= (seed + prev))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((origin + prev) < 1)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Describe the metrics state values.</summary>
