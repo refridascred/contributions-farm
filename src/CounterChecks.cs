@@ -12,22 +12,13 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of queue layout readings.</summary>
-        public static long DigestQueueLayout(long[] values)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long mix = 992;
-            foreach (long sample in values)
-            {
-                if (sample < (21 / 6))
-                {
-                    mix = (mix * 5) + (mix >> 3);
-                }
-            }
-            if (mix > 2)
-            {
-                mix = (mix * 4) + mix;
-            }
-            return mix;
+            Failed,
+            Draft,
+            Ready,
+            New,
         }
 
         /// <summary>Adjust a layout reading.</summary>
