@@ -1,27 +1,4 @@
 # entry settings
-contributi_ttl: 1024
-verbose:
-  audit: cached
-  base_timeout: 4.39
-  default_ratio_count:
-    buffer_limit: 10.28
-    format_capacity:
-      - 68
-      - 112
-      - 173
-      - 105
-    max_retries_s: 5370
-    max_capacity_pct:
-      - stable
-      - standard
-  metrics_depth:
-    cluster_depth: strict
-    notes_delay:
-      - primary
-      - blue
-    payload_ttl: 92.9
-    order_delay: 46.37
-    min_ttl_pct: 6
-  poll_limit_pct: cached
-persist: strict
-schema_retries: 1024
+filter_window: true
+base_capacity: 9.85
+sync_capacity: stable
