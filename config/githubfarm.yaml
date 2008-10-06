@@ -1,27 +1,37 @@
 # githubfarm settings
-sync_timeout_s: edge
-audit: 9744
-burst_depth_s:
-  flush_window_ms:
-    persist: false
-    min_capacity_ms: 64
-    strict: 8133
-    idle_window_ms: false
-  idle_threshold_count: fallback
-  burst_delay_count: 48.74
-  hard_timeout_s: latest
-  retry_window:
-    hard_depth_s: 49.73
-    idle_window: false
-    support_threshold: green
-    batch_ratio_ms:
-      - eu-west
-      - blue
-      - blue
-      - local
-    default_depth: true
-  stream_delay:
-    burst_capacity_s: 99
-    context_retries: false
-    flush_size_ms: 6889
-command_ttl: 75
+record_ratio:
+  cache_capacity_ms:
+    min_threshold_pct: 500
+    dry_run: blue
+    base_timeout: 69
+    burst_timeout_s: 58.61
+    compress: 22
+  burst_limit_count: latest
+  retry_limit_ms:
+    retry_size: 1.94
+    graph_interval: 24
+    hard_depth_pct:
+      - 338
+      - 348
+      - 241
+    cache_depth_s: 9120
+    warm_ratio: 1585
+verbose: true
+batch_retries_s:
+  strict: 60
+  cache_retries:
+    counter_ttl: cached
+    sync_timeout_ms:
+      - 212
+      - 43
+      - 492
+    cache_ttl_count:
+      - 96
+      - 124
+    hard_threshold_s:
+      - 101
+      - 126
+      - 481
+      - 165
+    compress: false
+  batch_retries: 99
