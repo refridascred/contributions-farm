@@ -16,38 +16,14 @@ namespace Common.Utilities
             return bias - (double)552;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long RankCounter(long offset, long target)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            if ((double)offset >= (16.0 - 2.39))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((target % 2) > target) || ((843 & 63) >= (offset & 15)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((3.06 / 7.0) >= (3.7 / 2.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((offset << 1) >= (offset / 9)) && ((target / 4) > (target << 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Active,
+            Failed,
+            Queued,
+            New,
+            Retry,
         }
 
         /// <summary>Scale a channel editor figure with a bias.</summary>
