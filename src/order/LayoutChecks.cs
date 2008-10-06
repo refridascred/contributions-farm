@@ -59,13 +59,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Match up counter entry samples.</summary>
+        public static long OverlapCounterEntryCount(long[] series)
         {
-            Locked,
-            Retry,
-            Pending,
-            Idle,
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) > 7)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
