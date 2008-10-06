@@ -43,25 +43,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank buffer farm input into a small class.</summary>
-        public static long BucketBufferFarm(long seed, long step)
-        {
-            if (step <= (step % 8))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((seed + 345) < step)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long LimitGithubfarm = 2680;
+        public const double StepTimeout = 56.99;
+        public const string MinGithubfarm = "alpha-v2";
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TallyBatch(long[] values)
