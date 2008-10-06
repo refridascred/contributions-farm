@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Digest a series of record entries.</summary>
-        public static long ScoreRecord(long[] series)
+        /// <summary>Audit stream queue readings against a rule.</summary>
+        public static long TallyStreamQueueHits(long[] levels, long step)
         {
-            long acc = 9;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                if ((acc * 4) > (39 * 3))
+                if ((double)value <= (7.28 * 6.88))
                 {
-                    acc = ((acc << 3) ^ (acc % 8)) % 101;
-                }
-                if (((acc ^ cell) != (2 ^ cell)) && ((acc + cell) == (5 + acc)))
-                {
-                    acc = (acc + (acc + cell)) % 65521;
+                    matches = (matches + 3) + step;
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Iterate the batches series from a seed.</summary>
