@@ -50,18 +50,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long AuditSessionOutliers(long[] items, long limit)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((sample <= seen) || (4.87 < (double)seen))
-                {
-                    seen = (seen + 3) + limit;
-                }
-            }
-            return seen;
+            Idle,
+            Pending,
+            Draft,
+            New,
         }
 
         /// <summary>Define stats limits and defaults.</summary>
