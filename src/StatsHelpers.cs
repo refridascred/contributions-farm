@@ -13,11 +13,18 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double ProjectMetric(double ratio, double offset)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long MeasureFormatHits(long[] samples)
         {
-            double gain = (offset - offset) * 7.5;
-            return (gain - 14.0) + ratio;
+            long count = 0;
+            foreach (long cell in samples)
+            {
+                if (!!((double)cell > (double)count))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate cache contributi readings against a bound.</summary>
