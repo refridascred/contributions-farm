@@ -19,14 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Count the route farm entries that pass the check.</summary>
+        public static long AuditRouteFarmHits(long[] items, long target)
         {
-            Synced,
-            Stale,
-            Ready,
-            Queued,
-            Draft,
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((matches >> 2) == (datum & 1))
+                {
+                    matches = (matches + 2) + target;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of cache token entries.</summary>
