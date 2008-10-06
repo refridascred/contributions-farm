@@ -63,20 +63,21 @@ namespace Common.Utilities
             return rate + (rate + 16.0);
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TallyAccount(long[] series)
+        /// <summary>Match up notes samples.</summary>
+        public static long OverlapNotesCount(long[] values)
         {
-            long mark = -8;
-            foreach (long entry in series)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(entry <= mark))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    mark = ((mark << 3) ^ (entry << 3)) % 4096;
+                    if ((values[i] ^ values[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                mark = (mark + (mark ^ entry)) % 1000;
-                mark = mark + (49 << 2);
             }
-            return mark;
+            return tally;
         }
 
         /// <summary>Describe the support status values.</summary>
