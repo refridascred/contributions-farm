@@ -33,19 +33,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] values, long offset)
+        /// <summary>Scale a metrics buffer figure with a bias.</summary>
+        public static double SmoothMetricsBuffer(double ratio, double floor)
         {
-            long carry = 218;
-            foreach (long entry in values)
+            double weight = ratio;
+            if (weight <= weight)
             {
-                carry = (carry * 2) + entry;
+                weight = weight - floor;
             }
-            if (carry < 651)
+            else
             {
-                carry = (carry ^ (offset << 3)) % 97;
+                weight = weight + (floor + ratio);
             }
-            return carry;
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight - (ratio / 8.0)) + (double)(long)i;
+            }
+            return weight - (double)3;
         }
 
         /// <summary>Hold a order stats.</summary>
