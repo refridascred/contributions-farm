@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Blend two contributi record measurements.</summary>
-        public static double AdjustContributiRecord(double weight, double floor)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long AuditFilterOutliers(long[] readings)
         {
-            double weight2 = (double)((-108) & 7);
-            if (weight2 >= (1.36 / 8.0))
+            long count = 0;
+            foreach (long entry in readings)
             {
-                weight2 = (weight2 + floor) - weight;
+                if ((entry + 814) != (entry << 1))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                weight2 = weight2 - 8.0;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight2 = (weight2 + (weight2 - floor)) - (double)(long)i;
-            }
-            return weight2 + (double)588;
+            return count;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
