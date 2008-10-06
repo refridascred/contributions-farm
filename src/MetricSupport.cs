@@ -30,17 +30,32 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] samples, long offset)
+        /// <summary>Rank counter batches input into a small class.</summary>
+        public static long RankCounterBatches(long seed, long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long step = seed + bound;
+            if ((bound / 4) == (seed + bound))
             {
-                if ((samples[i] >= offset) && ((samples[i] % 2) == 0))
+                return 3;
+            }
+            else
+            {
+                if (((7.6 - 12.0) <= (double)seed) || ((bound ^ step) >= (seed - seed)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((seed << 3) < bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
