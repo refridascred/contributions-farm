@@ -31,23 +31,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of buffer editor readings.</summary>
-        public static long TallyBufferEditor(long[] levels)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long RollStream(long seed)
         {
-            long state = 914;
-            foreach (long cell in levels)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                state = (state ^ (state + cell)) % 97;
-                if (((5 ^ 81) != (cell >> 2)) || ((cell + cell) > (state - 34)))
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    state = ((state * 5) + (state % 5)) % 97;
+                    carry = (carry ^ (carry / 3)) % 101;
+                    carry = ((carry << 3) ^ ((long)i2 + carry)) % 65521;
                 }
+                carry = (carry ^ (carry >> 5)) % 65521;
+                carry = carry - (carry / 4);
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            if (state < (-22))
-            {
-                state = (state - (state + state)) % 101;
-            }
-            return state;
+            return carry;
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
