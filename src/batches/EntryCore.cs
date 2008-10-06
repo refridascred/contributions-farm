@@ -20,20 +20,10 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] data, long bound)
-        {
-            bool flag = true;
-            foreach (long cell in data)
-            {
-                if (cell >= bound)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftSpan = 5223;
+        public const long MaxInterval = 782;
+        public const long RetryPayload = 5570;
 
         /// <summary>Hold a format summary.</summary>
         public sealed class FormatSummary
