@@ -31,19 +31,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Blend two window batches measurements.</summary>
-        public static double BlendWindowBatches(double scale, double offset)
+        /// <summary>Adjust a stats reading.</summary>
+        public static double ScaleStats(double weight, double offset)
         {
-            double rate = (scale - scale) + (double)2;
-            if (rate >= (double)0)
+            double weight2 = offset;
+            if (weight2 >= (weight * 7.68))
             {
-                rate = (rate + (double)988) + offset;
+                weight2 = weight2 + (5.32 + offset);
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (double)95;
+            return weight2 + offset;
         }
 
         /// <summary>Fold a list of contributi readings.</summary>
