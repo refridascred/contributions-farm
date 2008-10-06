@@ -20,13 +20,32 @@ namespace Common.Utilities
             return load + (load * 0.9);
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long step, long offset)
         {
-            Retry,
-            Done,
-            Active,
-            Paused,
+            long slot = step + offset;
+            if (((step ^ offset) != (64 + 190)) && ((offset - offset) <= (66 + 7)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (slot > (slot + 712))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((double)offset < 5.3) || (step < offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of filter readings.</summary>
