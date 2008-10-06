@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long floor, long step)
         {
-            Dropped,
-            Done,
-            Pending,
-            Stale,
-            Idle,
+            long cur = floor - step;
+            if ((double)step < (5.13 - 19.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((floor >= ((-2) >> 4)) || ((cur + floor) >= (cur / 5)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((floor + cur) <= (step / 6)) || (170 <= (cur ^ 375)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Define support limits and defaults.</summary>
