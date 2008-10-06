@@ -57,16 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long bound)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] levels, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                mark = (mark - (mark * 5)) % 101;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((double)floor < (14.0 + 19.0))
+                {
+                    matches = (matches + 2) ^ datum;
+                }
             }
-            return mark;
+            return matches;
         }
     }
 }
