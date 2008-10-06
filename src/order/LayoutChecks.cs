@@ -35,14 +35,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueBounds(long[] levels, long step)
         {
-            Retry,
-            Queued,
-            New,
-            Idle,
-            Draft,
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell >= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Look up the position of a already order sample.</summary>
