@@ -20,15 +20,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Ready,
-            Synced,
-            Idle,
-            Paused,
-            Queued,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long LimitBudget = 5135;
+        public const double RetryWidth = 43.03;
+        public const double LimitInterval = 57.36;
+        public const string BatchCluster = "stable-1";
+        public const string StepWidth = "primary-1";
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
         public static long PairStatsCount(long[] values)
