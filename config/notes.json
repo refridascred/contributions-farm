@@ -1,15 +1,8 @@
 {
-  "cache_limit": 44.37,
-  "soft_timeout": {
-    "flush_depth": {
-      "sync_delay_ms": [185, 31, 350],
-      "stats_size": 18.91,
-      "default_depth_s": 952
-    },
-    "min_size_pct": 30,
-    "schema_delay": 1595
-  },
-  "retry_limit_count": "standard",
-  "batch_ttl_pct": ["primary", "primary", "stable"],
-  "token_capacity": "legacy"
+  "idle_ttl_pct": 94.87,
+  "idle_threshold_pct": "open",
+  "poll_size_ms": 37.82,
+  "cluster_limit": 67,
+  "soft_delay_ms": 53.8,
+  "sync_capacity_ms": [21, 201, 66]
 }
