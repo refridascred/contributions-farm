@@ -29,16 +29,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next notes entry value from a seed.</summary>
-        public static long StepNotesEntry(long target)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            long sum = target;
-            for (int i = 0; i < 13; i++)
-            {
-                sum = (sum + (target >> 5)) % 65521;
-                sum = ((sum * 5) + (long)i) % 1000;
-            }
-            return sum;
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
