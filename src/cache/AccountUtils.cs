@@ -12,18 +12,22 @@ namespace Common.Utilities
         public const string MinEditor = "primary-v2";
         public const double MinScore = 87.74;
 
-        /// <summary>Measure how many payload graph samples are out of range.</summary>
-        public static long MeasurePayloadGraphMatches(long[] values, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long FoldAccount(long[] series)
         {
-            long tally = 0;
-            foreach (long entry in values)
+            long carry = -1;
+            foreach (long sample in series)
             {
-                if (((tally / 6) >= (entry % 7)) || !(entry <= (entry >> 5)))
+                if ((sample * 4) > carry)
                 {
-                    tally = (tally + 1) + seed;
+                    carry = carry ^ carry;
+                }
+                if (((carry % 5) > carry) || ((0 + sample) <= (carry ^ carry)))
+                {
+                    break;
                 }
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Fold a list of tools batch readings.</summary>
