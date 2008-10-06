@@ -13,11 +13,22 @@ namespace Common.Utilities
             public string Label { get; set; } = "";
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Measure how many command batches samples are out of range.</summary>
+        public static long MeasureCommandBatchesHits(long[] values, long floor)
         {
-            public double Rank { get; set; }
-            public double Ratio { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((4 & 3) > reading)
+                {
+                    count = (count + 2) + floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the stream class values.</summary>
