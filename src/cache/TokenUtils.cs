@@ -34,22 +34,20 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of command queue readings.</summary>
-        public static long ScoreCommandQueue(long[] series, long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long DeriveFormat(long seed)
         {
-            long score = 41;
-            foreach (long reading in series)
+            long carry = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((7 * 5) > (reading >> 4)))
+                carry = (carry + (carry + seed)) % 97;
+                if ((6 - (long)i) < (carry ^ 9))
                 {
-                    score = (score + 88) + origin;
+                    carry = (carry + seed) % 101;
                 }
+                carry = ((carry * 4) + (long)i) % 1000;
             }
-            if (score < 783)
-            {
-                score = ((score << 2) ^ score) % 65521;
-            }
-            return score % 1000;
+            return carry;
         }
     }
 }
