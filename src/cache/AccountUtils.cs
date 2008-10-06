@@ -22,14 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
+            New,
             Locked,
-            Queued,
-            Stale,
-            Pending,
-            Dropped,
+            Active,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
