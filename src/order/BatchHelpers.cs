@@ -17,38 +17,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Classify a commits checks pair into a bucket.</summary>
-        public static long ClassifyCommitsChecks(long step, long offset)
+        /// <summary>Hold a payload options.</summary>
+        public sealed class PayloadOptions
         {
-            if ((step ^ step) != (offset + offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (((double)offset < 3.8) && ((step / 8) != (step + step)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)step <= 8.93) || ((step >> 4) >= (offset + 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((step % 10) != (step - step))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public string Flag { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
