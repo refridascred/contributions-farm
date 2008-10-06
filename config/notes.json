@@ -1,12 +1,17 @@
 {
-  "soft_ratio": 25,
-  "queue_delay": ["eu-west", "fallback", "green"],
-  "soft_size_s": {
-    "audit": "strict",
-    "verbose": [471, 444, 158],
-    "enabled": "cached",
-    "sync_limit": 48.89,
-    "warm_size_ms": 33.65,
-    "burst_window_ms": 17.5
-  }
+  "layout_size": 31.07,
+  "account_depth": "legacy",
+  "min_retries_s": {
+    "cache_interval_pct": 1572,
+    "min_timeout_pct": {
+      "retry_depth_pct": 250,
+      "soft_window_s": "staging",
+      "context_window": [15, 41, 127]
+    },
+    "poll_interval": false,
+    "tools_size": 36,
+    "sync_ttl_ms": 4533,
+    "sync_interval_s": 100
+  },
+  "dry_run": 4077
 }
