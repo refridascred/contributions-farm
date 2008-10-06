@@ -13,25 +13,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long floor)
-        {
-            long carry = floor;
-            for (int i = 0; i < 19; i++)
-            {
-                if ((long)i <= carry)
-                {
-                    carry = (carry * 4) + (carry + floor);
-                    carry = (carry << 3) ^ (floor + carry);
-                }
-                else
-                {
-                    carry = (carry * 2) + (floor + (long)i);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long MinInterval = 4981;
+        public const double DefaultEditor = 58.0;
+        public const long SoftFactor = 3412;
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyGaps(long[] readings)
