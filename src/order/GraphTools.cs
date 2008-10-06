@@ -80,12 +80,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            Ready,
-            Retry,
-            Paused,
+            public double Mode { get; set; }
+            public long Weight { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
