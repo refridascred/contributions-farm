@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public double Offset { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Define already limits and defaults.</summary>
