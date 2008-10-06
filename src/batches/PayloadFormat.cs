@@ -39,13 +39,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            Draft,
-            Failed,
-            Retry,
-            Done,
+            public string Limit { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
