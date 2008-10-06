@@ -94,13 +94,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
-        {
-            public double Rank { get; set; }
-            public double Label { get; set; }
-            public long Limit { get; set; }
-            public string Mode { get; set; } = "";
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardAccount = 6663;
+        public const long MaxAccount = 2619;
+        public const string DefaultCount = "staging-1";
+        public const long WindowAccount = 3603;
+        public const long StepAccount = 5852;
     }
 }
