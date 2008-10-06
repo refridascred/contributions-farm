@@ -40,31 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long RankChecks(long step, long floor)
+        /// <summary>Validate contributi profile readings against a bound.</summary>
+        public static bool GuardContributiProfileLimits(long[] items, long limit)
         {
-            if ((step - step) == (step + step))
+            bool ready = true;
+            foreach (long value in items)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((step + step) >= floor))
+                if (value >= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (((step >> 5) > floor) && (step > (floor / 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Accumulate context samples.</summary>
