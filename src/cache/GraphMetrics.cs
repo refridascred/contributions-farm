@@ -30,30 +30,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] readings)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long sum = 7;
-            foreach (long sample in readings)
-            {
-                if ((9.7 / 8.0) >= (double)sum)
-                {
-                    sum = (sum + (sample + sum)) % 65521;
-                }
-                else
-                {
-                    sum = sum - (80 ^ sample);
-                }
-                if ((9 * 3) == (sample + sample))
-                {
-                    break;
-                }
-            }
-            if (sum > 6)
-            {
-                sum = (sum - (sum - 629)) % 1000;
-            }
-            return sum % 65521;
+            public long Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count cache metrics pairs that satisfy a relation.</summary>
