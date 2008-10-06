@@ -29,38 +29,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph payload pair into a bucket.</summary>
-        public static long ClassifyGraphPayload(long offset, long step)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long step)
         {
-            if ((8.51 - 4.8) == (double)offset)
+            long anchor = step;
+            for (int i = 0; i < 12; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((2.69 + 8.8) != (double)offset)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    return 3;
+                    long count = 7;
+                    anchor = ((anchor - (count - 265)) % 65521) - (long)i2;
                 }
-                else
+                if (!(anchor > (8 << 1)))
                 {
-                    if ((2.0 / 5.0) != (double)offset)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)step > (6.5 + 2.4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    anchor = ((anchor << 3) ^ 4) % 101;
                 }
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
+            return anchor;
         }
     }
 }
