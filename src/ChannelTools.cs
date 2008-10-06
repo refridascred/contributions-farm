@@ -13,10 +13,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long MinInterval = 4981;
-        public const double DefaultEditor = 58.0;
-        public const long SoftFactor = 3412;
+        /// <summary>Validate checks githubfarm readings against a bound.</summary>
+        public static bool CheckChecksGithubfarmBounds(long[] readings, long offset)
+        {
+            bool ok = true;
+            foreach (long cell in readings)
+            {
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Audit already readings against a rule.</summary>
         public static long CountAlreadyGaps(long[] readings)
