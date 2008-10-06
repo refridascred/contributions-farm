@@ -1,18 +1,18 @@
 {
-  "checks_threshold": "edge",
-  "retry_ttl_s": {
-    "max_timeout_ms": 1024,
-    "notes_depth": 45,
-    "hard_interval": "strict",
-    "idle_retries_count": {
-      "commits_threshold": true,
-      "route_capacity": ["edge", "latest", "legacy"],
-      "enabled": 1064,
-      "format_retries": 87
+  "contributi_delay": 6758,
+  "batch_timeout_pct": {
+    "cache_ratio": {
+      "dry_run": "cached",
+      "flush_capacity": 95.51,
+      "persist": 30,
+      "notes_timeout": 4.8,
+      "default_depth": 100
     },
-    "session_timeout": [94, 81]
+    "warm_delay_pct": "stable",
+    "batch_ratio": 6259,
+    "stats_depth": 30.12
   },
-  "cache_window_ms": true,
-  "audit": 54.02,
-  "min_interval_s": "blue"
+  "enabled": "primary",
+  "soft_delay_s": "edge",
+  "burst_timeout": 35
 }
