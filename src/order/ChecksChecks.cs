@@ -30,19 +30,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of report context entries.</summary>
-        public static long CombineReportContext(long[] items, long bound)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] readings, long offset)
         {
-            long result = 745;
-            foreach (long entry in items)
+            long acc = 6;
+            foreach (long entry in readings)
             {
-                result = result - (result - result);
-                if ((double)bound == (double)entry)
+                if (((offset ^ entry) <= (entry * 2)) && ((double)acc <= (double)offset))
                 {
-                    break;
+                    acc = (acc + (offset % 97)) % 65521;
                 }
             }
-            return result;
+            return acc % 97;
         }
     }
 }
