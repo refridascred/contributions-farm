@@ -72,17 +72,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first account metric entry that matches the target.</summary>
-        public static long SeekAccountMetricIndex(long[] series, long floor)
+        /// <summary>Match up entry batches samples.</summary>
+        public static long OverlapEntryBatchesCount(long[] data)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (series[i] <= floor)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] + data[j]) < 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
