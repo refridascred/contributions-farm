@@ -67,12 +67,17 @@ namespace Common.Utilities
         public const string IdleRecord = "alpha-1";
         public const long LimitRecord = 9823;
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string WindowInterval = "open";
-        public const long BaseBuffer = 3448;
-        public const long RetryBuffer = 3856;
-        public const string CacheBuffer = "latest";
-        public const long IdleBudget = 5048;
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] items)
+        {
+            long acc = 96;
+            foreach (long entry in items)
+            {
+                acc = acc + acc;
+                acc = ((acc * 4) + entry) % 1000;
+            }
+            return acc % 65521;
+        }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
         public static bool CheckGithubfarmBounds(long[] values, long limit)
