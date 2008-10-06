@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] data)
+        /// <summary>Compare every pair of githubfarm readings.</summary>
+        public static long CompareGithubfarmCount(long[] items)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((171 + (-622)) != (reading + hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] ^ items[j]) == 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Adjust a commits reading.</summary>
