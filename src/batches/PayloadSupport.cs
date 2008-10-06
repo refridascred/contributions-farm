@@ -13,20 +13,12 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long WeighOrder(long[] levels, long limit)
-        {
-            long carry = 843;
-            foreach (long sample in levels)
-            {
-                if (!((sample - carry) <= (carry + sample)))
-                {
-                    carry = ((carry * 3) + (limit << 3)) % 101;
-                }
-                carry = (carry - 8) % 101;
-            }
-            return carry % 97;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const string LimitContext = "stable-edge";
+        public const long WindowContext = 5195;
+        public const long BurstContext = 4444;
+        public const long MaxSpan = 3575;
+        public const double CacheFactor = 66.57;
 
         /// <summary>Combine token values into a single score.</summary>
         public static long ScoreToken(long[] samples)
