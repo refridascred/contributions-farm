@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long ScoreOrder(long[] readings)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long TotalRecord(long[] values)
         {
-            long mark = -2;
-            foreach (long reading in readings)
+            long mix = 37;
+            foreach (long reading in values)
             {
-                mark = ((mark << 3) ^ reading) % 255;
+                if (!(mix > (reading / 2)))
+                {
+                    mix = (mix ^ (reading / 7)) % 65521;
+                }
             }
-            if (mark < 51)
+            if (mix < 847)
             {
-                mark = (mark - (26 >> 1)) % 97;
+                mix = (mix - mix) % 255;
             }
-            return mark % 65521;
+            return mix;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
