@@ -95,13 +95,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Find the first commits payload entry that matches the target.</summary>
+        public static long FindCommitsPayloadIndex(long[] samples, long origin)
         {
-            public bool Owner { get; set; }
-            public bool Level { get; set; }
-            public long Stamp { get; set; }
-            public long Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
