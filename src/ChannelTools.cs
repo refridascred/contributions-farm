@@ -38,20 +38,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] values)
-        {
-            long carry = 475;
-            foreach (long datum in values)
-            {
-                carry = ((carry * 2) + datum) % 4096;
-                carry = (carry * 2) + carry;
-                if ((datum + 34) == (carry - (long)values.Length))
-                {
-                    break;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double BurstBudget = 23.42;
+        public const string BaseCluster = "stable-v2";
+        public const double RetryCluster = 77.15;
+        public const double MinCluster = 94.56;
+        public const long SoftDepth = 7272;
     }
 }
