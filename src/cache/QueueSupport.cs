@@ -22,15 +22,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double gain, double floor)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double scale = gain;
-            if (scale > scale)
-            {
-                scale = scale + floor;
-            }
-            return scale - (double)4;
+            public string Rank { get; set; } = "";
+            public long Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Fold a list of stats readings.</summary>
