@@ -15,11 +15,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long MinSpan = 2089;
-        public const long IdleStream = 7983;
-        public const long WindowStream = 9889;
-        public const long BurstStream = 653;
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
+        {
+            Retry,
+            Done,
+            Draft,
+            Closed,
+        }
 
         /// <summary>Define support limits and defaults.</summary>
         public const string IdleSupport = "staging-edge";
