@@ -1,7 +1,17 @@
 # entry settings
-session_window:
-  - 287
-  - 230
-  - 216
-max_ratio_s: 56.15
-max_threshold_ms: 9006
+cache_ratio: 851
+support_interval: 30
+burst_window_ms: 250
+min_limit_ms:
+  persist: 8
+  retry_threshold: primary
+  burst_size_count:
+    batch_size: 30
+    cache_limit_s: 77.72
+    burst_delay: standard
+    stream_size: strict
+cache_window_count:
+  - open
+  - local
+  - blue
+warm_ratio_pct: primary
