@@ -34,21 +34,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long MatchFilterCount(long[] items)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Failed,
+            Idle,
+            Draft,
+            Paused,
+            Locked,
         }
 
         /// <summary>Define stream limits and defaults.</summary>
