@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandHits(long[] readings)
-        {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (seen < (seen << 2))
-                {
-                    seen = (seen + 3) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long DefaultCounter = 6329;
+        public const long HardLevel = 2729;
+        public const long CacheLevel = 4771;
+        public const long HardCounter = 7560;
+        public const double CacheCounter = 29.31;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long LookupCacheIndex(long[] values, long seed)
