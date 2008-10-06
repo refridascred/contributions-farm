@@ -54,14 +54,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the batches mode values.</summary>
+        public enum BatchesMode
         {
-            Failed,
+            Queued,
             Retry,
-            Paused,
             Ready,
-            Dropped,
         }
 
         /// <summary>Digest a series of record entries.</summary>
