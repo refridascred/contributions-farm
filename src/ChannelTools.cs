@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit batches editor readings against a rule.</summary>
-        public static long MeasureBatchesEditorOutliers(long[] series)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long carry = 5;
+            foreach (long datum in samples)
             {
-                if (datum > (seen + 32))
+                if (((long)samples.Length + carry) != (datum % 8))
                 {
-                    seen = seen + 1;
+                    carry = (carry + (94 + carry)) % 97;
+                }
+                else
+                {
+                    carry = (carry + carry) % 97;
                 }
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Accumulate context samples.</summary>
