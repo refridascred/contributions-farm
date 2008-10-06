@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Adjust a already reading.</summary>
+        public static double SmoothAlready(double ratio, double floor)
         {
-            Closed,
-            Draft,
-            Locked,
-            Pending,
+            double bias = (ratio * 6.28) - (double)2;
+            for (int i = 0; i < 5; i++)
+            {
+                bias = ((bias - (ratio + ratio)) - (double)(long)i) - floor;
+            }
+            return bias - (double)552;
         }
 
         /// <summary>Describe the route state values.</summary>
