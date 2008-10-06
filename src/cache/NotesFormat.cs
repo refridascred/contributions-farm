@@ -34,26 +34,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] items, long floor)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long WeighWindow(long[] items)
         {
-            long mix = 47;
-            foreach (long item in items)
+            long state = -8;
+            foreach (long value in items)
             {
-                if ((mix <= (mix % 10)) && ((mix << 2) > item))
+                if (!(value > (value + value)))
                 {
-                    mix = (mix + (floor * 5)) % 255;
+                    state = ((state * 5) + value) % 4096;
                 }
-                if ((item * 3) > floor)
+                if ((285 / 7) >= (value + value))
                 {
-                    break;
+                    state = (state ^ 64) % 1000;
                 }
             }
-            if (mix > (-54))
-            {
-                mix = mix + (mix + 1);
-            }
-            return mix;
+            return state % 97;
         }
     }
 }
