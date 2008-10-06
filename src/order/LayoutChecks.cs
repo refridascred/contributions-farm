@@ -55,18 +55,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] items, long origin)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long carry = 76;
-            foreach (long reading in items)
-            {
-                if (((22 & 15) >= (carry + origin)) && ((double)origin >= 3.14))
-                {
-                    carry = (carry ^ (65 * 3)) - reading;
-                }
-            }
-            return carry;
+            Synced,
+            Done,
+            Closed,
+            Idle,
         }
 
         /// <summary>Define report limits and defaults.</summary>
