@@ -21,12 +21,14 @@ namespace Common.Utilities
         public const long RetryPayload = 4622;
         public const string StepPayload = "standard";
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            Idle,
-            Closed,
+            Stale,
             Locked,
+            Done,
+            Ready,
+            Draft,
         }
     }
 }
