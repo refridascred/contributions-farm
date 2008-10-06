@@ -1,6 +1,10 @@
-id,token,ratio,score
-1,820,91.41,917
-2,579,227,blue
-3,85.18,primary,fallback
-4,primary,10.76,cached
-5,482,edge,open
+id,rank,region,count
+1,89,952,65.22
+2,20.95,971,102
+3,774,edge,214
+4,840,91.09,94.8
+5,106,local,130
+6,682,55.47,stable
+7,71.7,783,strict
+8,95.3,299,staging
+9,570,724,403
