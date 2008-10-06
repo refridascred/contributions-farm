@@ -1,5 +1,6 @@
 {
-  "poll_depth_count": "fallback",
-  "hard_size": "cached",
-  "readonly": 33.61
+  "poll_depth": true,
+  "route_timeout": "standard",
+  "poll_ttl": false,
+  "strict": "primary"
 }
