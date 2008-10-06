@@ -17,11 +17,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            public string Flag { get; set; } = "";
-            public long Rank { get; set; }
+            Draft,
+            New,
+            Failed,
+            Done,
         }
 
         /// <summary>Define order limits and defaults.</summary>
