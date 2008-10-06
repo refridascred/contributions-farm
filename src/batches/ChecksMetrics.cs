@@ -68,25 +68,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long floor, long limit)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long lane = floor ^ limit;
-            if (lane <= (limit - limit))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor - floor) != (limit * 4))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            Failed,
+            Done,
+            Active,
+            Stale,
+            Draft,
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
