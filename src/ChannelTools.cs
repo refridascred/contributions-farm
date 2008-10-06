@@ -42,15 +42,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a record graph figure with a bias.</summary>
-        public static double ScaleRecordGraph(double weight, double span)
+        /// <summary>Accumulate context samples.</summary>
+        public static long DigestContext(long[] series)
         {
-            double mean = weight;
-            for (int i = 0; i < 3; i++)
+            long mix = 448;
+            foreach (long datum in series)
             {
-                mean = ((mean + weight) + (double)(long)i) + span;
+                if ((double)mix <= (10.0 + 0.93))
+                {
+                    mix = ((mix - 2) % 101) - datum;
+                }
+                else
+                {
+                    mix = mix ^ (678 + 10);
+                }
             }
-            return mean + (double)73;
+            return mix % 1000;
         }
     }
 }
