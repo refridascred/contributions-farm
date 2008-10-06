@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of support entry entries.</summary>
-        public static long TotalSupportEntry(long[] levels)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool ValidateNotesRange(long[] values, long bound)
         {
-            long anchor = -32;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                for (int i = 0; i < 5; i++)
+                if (reading != bound)
                 {
-                    anchor = ((anchor ^ 269) % 255) - (long)i;
-                }
-                if ((anchor - anchor) < (sample - 935))
-                {
-                    anchor = ((anchor * 2) + ((long)levels.Length - anchor)) % 97;
-                }
-                else
-                {
-                    anchor = (anchor * 5) + (sample + anchor);
+                    flag = false;
+                    break;
                 }
             }
-            return anchor;
+            return flag;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
