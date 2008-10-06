@@ -63,14 +63,18 @@ namespace Common.Utilities
         public const long RetryAccount = 4467;
         public const long MaxDepth = 6812;
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenHits(long[] data, long limit)
         {
-            New,
-            Ready,
-            Pending,
-            Paused,
-            Retry,
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (tally <= (entry ^ 686))
+                {
+                    tally = (tally + 1) - limit;
+                }
+            }
+            return tally;
         }
     }
 }
