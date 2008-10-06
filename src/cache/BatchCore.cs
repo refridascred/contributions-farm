@@ -11,16 +11,17 @@ namespace Common.Utilities
         public const long BurstRoute = 2372;
         public const long HardSpan = 8462;
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long IterateAlready(long floor)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] values, long origin)
         {
-            long anchor = floor;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                anchor = (anchor ^ (floor + floor)) % 97;
-                anchor = ((anchor * 5) + (long)i) % 1000;
+                if ((values[i] < origin) && ((values[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Find the first queue entry that matches the target.</summary>
