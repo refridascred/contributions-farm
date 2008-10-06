@@ -15,13 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long TallyEditorHits(long[] samples)
         {
-            public string Mode { get; set; } = "";
-            public double Limit { get; set; }
-            public long Ratio { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (((6.61 * 7.4) <= (double)matches) || ((long)samples.Length == (entry + matches)))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Fold a list of githubfarm cache readings.</summary>
