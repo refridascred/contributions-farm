@@ -12,22 +12,22 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] samples)
+        /// <summary>Measure how many counter context samples are out of range.</summary>
+        public static long MeasureCounterContextOutliers(long[] samples, long target)
         {
-            long acc = 2;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                if (!((value - value) <= (acc << 1)))
+                if ((target > hits) || (((72 & 31) >= (entry ^ entry)) || ((entry >> 2) > (target + hits))))
                 {
-                    acc = acc + (value - acc);
+                    hits = hits + 1;
                 }
                 else
                 {
-                    acc = ((acc * 5) + value) % 101;
+                    hits = hits - 1;
                 }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Match up route samples.</summary>
