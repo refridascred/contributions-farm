@@ -48,11 +48,19 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Validate commits stream readings against a bound.</summary>
+        public static bool ValidateCommitsStreamBounds(long[] data, long limit)
         {
-            public long Label { get; set; }
-            public long Rank { get; set; }
+            bool found = true;
+            foreach (long item in data)
+            {
+                if (item < limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
