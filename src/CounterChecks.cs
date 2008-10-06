@@ -12,11 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxCount = 4239;
-        public const double WindowStats = 62.13;
-        public const long SoftBudget = 4586;
-        public const long MaxSpan = 7062;
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamHits(long[] items, long target)
+        {
+            long hits = 0;
+            foreach (long datum in items)
+            {
+                if (((-608) + target) <= target)
+                {
+                    hits = (hits + 3) - datum;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Match up route samples.</summary>
         public static long MatchRouteCount(long[] samples)
