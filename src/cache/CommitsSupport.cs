@@ -76,18 +76,11 @@ namespace Common.Utilities
         public const long StepWidth = 5031;
         public const long RetryWidth = 2953;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long CombineBatches(long[] samples, long origin)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long state = 12;
-            foreach (long cell in samples)
-            {
-                if ((double)state >= (3.1 + 8.4))
-                {
-                    state = ((state + (state / 4)) ^ cell) - origin;
-                }
-            }
-            return state;
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
