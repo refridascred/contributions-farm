@@ -22,12 +22,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] series, long offset)
         {
-            public string Rank { get; set; } = "";
-            public long Total { get; set; }
-            public double Ratio { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] == offset) && ((series[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Project the next stream value.</summary>
