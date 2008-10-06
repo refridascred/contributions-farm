@@ -1,7 +1,24 @@
 # support settings
-poll_delay: primary
-window_interval:
-  - 99
-  - 183
-  - 333
-cache_ratio: open
+format_ttl: eu-west
+flush_timeout: staging
+persist:
+  audit:
+    base_size: false
+    idle_size_ms: 8943
+    githubfarm_limit: true
+    default_retries: 82
+  dry_run:
+    - cached
+    - eu-west
+    - edge
+    - eu-west
+  persist: blue
+  soft_ratio_pct: stable
+  cache_limit_pct: strict
+  flush_threshold_pct: 100
+context_delay: fallback
+verbose:
+  min_limit_ms: stable
+  compress: false
+  burst_limit_pct: 32.11
+  default_threshold_count: eu-west
