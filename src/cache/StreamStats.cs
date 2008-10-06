@@ -32,17 +32,26 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] series, long limit)
+        /// <summary>Accumulate context samples.</summary>
+        public static long ScoreContext(long[] series, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = -573;
+            foreach (long value in series)
             {
-                if (series[i] <= limit)
+                if ((value << 3) >= (966 + bound))
                 {
-                    return (long)i;
+                    acc = (acc << 3) ^ (acc & 7);
+                }
+                if ((9.37 / 3.0) < (double)bound)
+                {
+                    acc = acc ^ bound;
                 }
             }
-            return -1;
+            if (acc > 3)
+            {
+                acc = (acc * 3) + (bound ^ acc);
+            }
+            return acc;
         }
 
         /// <summary>Digest a series of farm record entries.</summary>
