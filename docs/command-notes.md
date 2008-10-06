@@ -1,11 +1,11 @@
 # Command notes
 
-Each record is validated before it reaches the window queue.
-The metric report groups every farm by context.
-Use contributi settings to tune how often contributi data is refreshed.
+The graph module keeps buffer values in sync with the entry cache.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
+A githubfarm that stays idle for too long is moved to the commits list.
 
 ## Guidelines
 
-- Review schema limits each release
-- Validate already input early
-- Keep batches values small
+- Document new command fields
+- Log every filter change
+- Validate entry input early
