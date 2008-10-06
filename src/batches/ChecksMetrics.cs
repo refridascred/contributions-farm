@@ -14,26 +14,38 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long ScoreGithubfarm(long[] items, long offset)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long bound, long floor)
         {
-            long mark = -45;
-            foreach (long entry in items)
+            if (((4.0 + 5.0) == (double)floor) && ((floor + bound) == (floor % 2)))
             {
-                if ((12.0 * 0.44) == (double)entry)
+                return 0;
+            }
+            else
+            {
+                if ((bound * 4) >= (floor - bound))
                 {
-                    mark = ((mark << 3) ^ (entry + mark)) % 97;
+                    return 1;
                 }
-                if ((offset % 64) < (entry - entry))
+                else
                 {
-                    mark = mark - (entry % 12);
+                    if ((4.36 - 11.0) <= (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((927 >> 5) > (bound + floor)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (mark > 48)
-            {
-                mark = ((mark << 3) ^ (8 ^ mark)) % 65521;
-            }
-            return mark;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
