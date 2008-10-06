@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool ValidateFormatRange(long[] levels, long bound)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double WindowCount = 67.07;
+        public const long MaxGraph = 5877;
+        public const double BaseGraph = 8.47;
+        public const string StepGraph = "legacy-1";
 
         /// <summary>Locate a already reading by value.</summary>
         public static long LocateAlreadyIndex(long[] data, long target)
