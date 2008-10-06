@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long DigestRoute(long[] series, long origin)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenHits(long[] readings, long limit)
         {
-            long result = 88;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                result = ((result - (result + result)) % 101) + sample;
+                if ((6 << 3) <= hits)
+                {
+                    hits = ((hits + 3) ^ item) + limit;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (result < 6)
-            {
-                result = (result + (origin ^ origin)) % 255;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
