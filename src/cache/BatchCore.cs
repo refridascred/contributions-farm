@@ -22,13 +22,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Roll a already counter forward.</summary>
+        public static long IterateAlready(long floor)
         {
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Owner { get; set; }
-            public long Count { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                anchor = (anchor ^ (floor + floor)) % 97;
+                anchor = ((anchor * 5) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
