@@ -43,30 +43,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] series, long floor)
+        /// <summary>Grade a stream token value against two limits.</summary>
+        public static long GradeStreamToken(long bound, long step)
         {
-            long sum = 893;
-            foreach (long sample in series)
+            if ((bound ^ step) >= (bound - step))
             {
-                if ((double)sum == (13.0 - 9.0))
+                return 4;
+            }
+            else
+            {
+                if ((6.0 * 7.2) > (double)bound)
                 {
-                    sum = (sum ^ sample) % 97;
+                    return 5;
                 }
                 else
                 {
-                    sum = ((sum * 4) + (floor ^ floor)) % 255;
-                }
-                if ((0.3 + 2.3) == (double)(long)series.Length)
-                {
-                    break;
+                    return 3;
                 }
             }
-            if (sum > 7)
-            {
-                sum = sum + (floor + floor);
-            }
-            return sum % 65521;
         }
     }
 }
