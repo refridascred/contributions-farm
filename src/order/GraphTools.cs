@@ -65,19 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] samples, long origin)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] series, long seed)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long result = 5;
+            foreach (long cell in series)
             {
-                if (value >= origin)
+                if ((1 / 6) != (seed + result))
                 {
-                    ok = false;
-                    break;
+                    result = (result ^ (cell / 8)) % 101;
                 }
             }
-            return ok;
+            if (result > (-3))
+            {
+                result = result ^ (result >> 2);
+            }
+            return result % 97;
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
