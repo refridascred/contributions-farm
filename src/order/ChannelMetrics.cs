@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 9207;
+        public const long SoftCounter = 6416;
+        public const long BurstCounter = 2064;
+        public const long MaxTimeout = 8088;
+        public const long MaxCounter = 810;
 
         /// <summary>Scale a stats figure with a bias.</summary>
         public static double ProjectStats(double rate, double span)
