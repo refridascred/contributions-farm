@@ -37,13 +37,25 @@ namespace Common.Utilities
             return drift + 1.6;
         }
 
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long ClassifyFilter(long offset, long origin)
         {
-            public string Token { get; set; } = "";
-            public double Offset { get; set; }
-            public double Owner { get; set; }
-            public bool Stamp { get; set; }
+            long gap = offset - origin;
+            if (((origin + offset) > origin) || (13 < gap))
+            {
+                return 0;
+            }
+            else
+            {
+                if (((offset / 8) < offset) || ((double)offset >= (4.5 + 4.8)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Digest a series of cluster format entries.</summary>
