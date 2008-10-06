@@ -51,14 +51,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public long Token { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long HardLevel = 8412;
+        public const long HardBudget = 1021;
+        public const double BatchAccount = 69.64;
+        public const string StepAccount = "primary-1";
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double StepQueue = 5.5;
