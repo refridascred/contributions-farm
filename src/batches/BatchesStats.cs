@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 2307;
-        public const double MinScore = 85.19;
-        public const long BaseRatio = 7897;
-        public const double BatchDepth = 40.99;
-        public const long StepPayload = 4473;
+        /// <summary>Check that every editor route entry stays within the limit.</summary>
+        public static bool VerifyEditorRouteBounds(long[] values, long step)
+        {
+            bool flag = true;
+            foreach (long entry in values)
+            {
+                if (entry < step)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Check that every batch entry stays within the limit.</summary>
         public static bool VerifyBatchLimits(long[] data, long seed)
