@@ -60,39 +60,11 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Grade a profile metrics value against two limits.</summary>
-        public static long ClassifyProfileMetrics(long floor, long bound)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            long bound2 = floor - bound;
-            if ((floor - bound) >= (floor - floor))
-            {
-                return 2;
-            }
-            else
-            {
-                if (bound >= bound2)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound & 7) < (75 - bound2))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((bound / 3) >= 22) && ((bound ^ bound2) > (floor ^ bound)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Stamp { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
