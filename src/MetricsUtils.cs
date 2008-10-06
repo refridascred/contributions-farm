@@ -60,12 +60,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            Closed,
-            Retry,
-            Dropped,
+            public bool Score { get; set; }
+            public double Size { get; set; }
+            public long Total { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Iterate the command series from a seed.</summary>
