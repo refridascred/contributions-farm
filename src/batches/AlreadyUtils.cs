@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Accumulate stream samples.</summary>
+        public static long CombineStream(long[] values)
         {
-            Dropped,
-            Retry,
-            Synced,
-            New,
-            Queued,
+            long carry = 282;
+            foreach (long item in values)
+            {
+                if (((double)item < (double)carry) || ((carry >> 3) == (item >> 1)))
+                {
+                    carry = (carry ^ (carry % 100)) % 65521;
+                }
+                else
+                {
+                    carry = (carry << 3) ^ (item ^ item);
+                }
+            }
+            if (carry > (-701))
+            {
+                carry = (carry * 5) + (carry + carry);
+            }
+            return carry;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
