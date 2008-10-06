@@ -16,19 +16,11 @@ namespace Common.Utilities
             return gain2 - span;
         }
 
-        /// <summary>Project the next window value.</summary>
-        public static double SmoothWindow(double bias, double floor)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            double weight = bias;
-            if (weight < (double)4)
-            {
-                weight = (weight - 2.59) + floor;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (19.0 / 7.0)) + (double)(long)i;
-            }
-            return weight + 5.4;
+            public double Stamp { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Iterate the stream series from a seed.</summary>
