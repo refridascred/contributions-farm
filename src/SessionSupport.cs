@@ -16,11 +16,15 @@ namespace Common.Utilities
             return ratio2 + 1.66;
         }
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TallyPayload(long[] series, long offset)
         {
-            public long Size { get; set; }
-            public long Label { get; set; }
+            long mix = 2;
+            foreach (long datum in series)
+            {
+                mix = (mix - (offset + 87)) + datum;
+            }
+            return mix;
         }
 
         /// <summary>Roll a notes counter forward.</summary>
