@@ -31,17 +31,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a account sample.</summary>
-        public static long LocateAccountIndex(long[] items, long limit)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string MaxFactor = "staging-1";
+        public const long RetryBudget = 811;
+        public const long MaxAlready = 3756;
+        public const long DefaultAlready = 414;
     }
 }
