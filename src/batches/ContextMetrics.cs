@@ -74,13 +74,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long StepWindow(long floor)
         {
-            Synced,
-            Paused,
-            Idle,
-            Locked,
+            long sum = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
         }
     }
 }
