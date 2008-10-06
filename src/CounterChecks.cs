@@ -45,18 +45,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Count the stream batch entries that pass the check.</summary>
-        public static long TallyStreamBatchMatches(long[] values)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double BlendBatches(double rate, double span)
         {
-            long hits = 0;
-            foreach (long item in values)
+            double load = span;
+            if (load <= (8.27 / 9.0))
             {
-                if ((38 > item) || (((hits + item) <= item) || ((3.4 - 2.98) == (double)item)))
-                {
-                    hits = hits + 1;
-                }
+                load = (load + span) - rate;
             }
-            return hits;
+            else
+            {
+                load = load - (4.0 * 6.0);
+            }
+            return load + load;
         }
 
         /// <summary>Check that every notes checks entry stays within the limit.</summary>
