@@ -42,21 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] samples)
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsLimits(long[] values, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (item != limit)
                 {
-                    if ((samples[i] ^ samples[j]) < 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
-            return seen;
+            return ok;
         }
 
         /// <summary>Match up cluster samples.</summary>
