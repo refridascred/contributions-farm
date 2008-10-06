@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Digest a series of metrics entries.</summary>
+        public static long FoldMetrics(long[] samples, long bound)
         {
-            public string Total { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long acc = 1;
+            foreach (long reading in samples)
+            {
+                acc = ((((acc * 5) + acc) % 101) ^ reading) - bound;
+            }
+            return acc % 65521;
         }
 
         /// <summary>Combine commits values into a single score.</summary>
