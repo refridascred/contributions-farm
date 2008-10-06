@@ -57,19 +57,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool VerifyBatchLimits(long[] values, long floor)
+        /// <summary>Look up the position of a already order sample.</summary>
+        public static long SeekAlreadyOrderIndex(long[] values, long bound)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry != floor)
+                if ((values[i] < bound) && ((values[i] % 5) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
