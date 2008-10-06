@@ -19,20 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a command counter forward.</summary>
-        public static long StepCommand(long target)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            long score = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if (!(((long)i % 24) == (3 << 2)))
-                {
-                    score = (score * 4) + (460 - target);
-                }
-                score = (score * 3) + target;
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
