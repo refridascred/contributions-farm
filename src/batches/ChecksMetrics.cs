@@ -25,12 +25,17 @@ namespace Common.Utilities
             return bias2 - (double)803;
         }
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long SeekContributiIndex(long[] series, long seed)
         {
-            Dropped,
-            Pending,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
