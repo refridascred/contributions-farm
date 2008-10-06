@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Describe the cluster phase values.</summary>
-        public enum ClusterPhase
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Queued,
-            Locked,
-            Paused,
+            Dropped,
+            Retry,
+            Synced,
             New,
-            Idle,
+            Queued,
         }
 
         /// <summary>Locate a format reading by value.</summary>
