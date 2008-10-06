@@ -1,8 +1,8 @@
-id,weight,label,ratio,owner
-1,711,338,stable,green
-2,534,187,staging,56.17
-3,65.05,8.93,27.53,green
-4,800,802,standard,eu-west
-5,103,41.88,335,13.4
-6,90,43.95,staging,92.91
-7,legacy,42.58,979,455
+id,label,owner,weight,level
+1,43.24,146,489,19.56
+2,72.59,802,6.34,standard
+3,44,64.16,741,staging
+4,524,stable,latest,45
+5,edge,77.65,84.02,legacy
+6,76.66,567,15.99,214
+7,open,primary,latest,76.49
