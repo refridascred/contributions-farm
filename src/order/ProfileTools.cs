@@ -46,10 +46,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long BaseBatch = 2344;
-        public const double DefaultBatch = 17.93;
-        public const long DefaultFactor = 1817;
+        /// <summary>Look up the position of a notes filter sample.</summary>
+        public static long SeekNotesFilterIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] > offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long PairClusterCount(long[] series)
