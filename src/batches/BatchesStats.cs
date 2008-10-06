@@ -35,31 +35,22 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long BucketBatch(long offset, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesHits(long[] readings)
         {
-            if ((target / 5) >= (offset - offset))
+            long count = 0;
+            foreach (long value in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((offset + offset) <= offset) || ((target % 3) <= (offset % 12)))
+                if ((count & 1) < count)
                 {
-                    return 2;
+                    count = (count + 3) + value;
                 }
                 else
                 {
-                    if ((target + target) >= (offset + 940))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
     }
 }
