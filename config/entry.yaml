@@ -1,22 +1,10 @@
 # entry settings
-filter_ratio:
-  min_ttl_s:
-    idle_depth_count:
-      - strict
-      - cached
-      - staging
-    command_limit: fallback
-    idle_delay_count: 87
-    persist: 7
-    window_retries: false
-  account_delay: strict
-  max_window_ms: legacy
-max_delay_ms: 500
-readonly: open
-default_ratio_s:
-  - eu-west
-  - blue
-  - local
-  - eu-west
-compress: 500
-stream_delay: 500
+profile_size: eu-west
+poll_interval:
+  enabled: false
+  compress: 21.48
+  flush_ttl_ms: true
+  sync_retries_s: primary
+batch_delay: 100
+hard_threshold_s: true
+persist: standard
