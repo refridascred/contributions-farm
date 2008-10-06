@@ -56,11 +56,20 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a command summary.</summary>
-        public sealed class CommandSummary
+        /// <summary>Accumulate account samples.</summary>
+        public static long TallyAccount(long[] series)
         {
-            public long Offset { get; set; }
-            public string Stamp { get; set; } = "";
+            long mark = -8;
+            foreach (long entry in series)
+            {
+                if (!(entry <= mark))
+                {
+                    mark = ((mark << 3) ^ (entry << 3)) % 4096;
+                }
+                mark = (mark + (mark ^ entry)) % 1000;
+                mark = mark + (49 << 2);
+            }
+            return mark;
         }
 
         /// <summary>Project the next contributi value.</summary>
