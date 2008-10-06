@@ -22,15 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountOutliers(long[] levels)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long TallyQueueHits(long[] levels, long step)
         {
             long tally = 0;
-            foreach (long datum in levels)
+            foreach (long reading in levels)
             {
-                if ((double)datum >= (1.1 - 0.7))
+                if ((step + 51) <= step)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 3) + reading;
                 }
             }
             return tally;
