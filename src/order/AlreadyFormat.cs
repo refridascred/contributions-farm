@@ -11,12 +11,18 @@ namespace Common.Utilities
         public const long BaseScore = 9074;
         public const string WindowFactor = "latest";
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderHits(long[] levels)
         {
-            Paused,
-            Synced,
-            Idle,
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (count <= (7 % 8))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
