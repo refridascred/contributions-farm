@@ -53,11 +53,20 @@ namespace Common.Utilities
             return carry % 65521;
         }
 
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long target)
         {
-            public bool Label { get; set; }
-            public long Limit { get; set; }
+            long carry = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if (((target - carry) >= (long)i) && (carry < (carry + target)))
+                {
+                    carry = ((carry << 3) ^ (long)i) % 97;
+                    break;
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Hold a channel stats.</summary>
