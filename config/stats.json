@@ -1,17 +1,6 @@
 {
-  "compress": "primary",
-  "max_size_ms": {
-    "flush_limit_count": 9608,
-    "farm_retries": {
-      "poll_timeout_ms": 28.72,
-      "token_limit": 9282,
-      "soft_delay": "local",
-      "cache_interval_count": ["strict", "staging", "staging"]
-    },
-    "min_timeout": 39.27,
-    "warm_window": "edge",
-    "cache_threshold": 8598,
-    "soft_delay": "primary"
-  },
-  "enabled": 60
+  "max_threshold_pct": 250,
+  "schema_limit": "eu-west",
+  "readonly": false,
+  "burst_retries_ms": 1541
 }
