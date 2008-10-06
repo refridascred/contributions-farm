@@ -27,31 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long SortChannel(long origin, long seed)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            if ((seed * 4) < (944 >> 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)seed > 3.53) && ((origin & 31) > 539))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((seed * 5) < (20 * 2)) && ((5.2 + 5.88) < (double)seed))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public bool Rank { get; set; }
+            public string Token { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
