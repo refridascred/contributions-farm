@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftCount = 3525;
-        public const long MinBudget = 5024;
-        public const long DefaultFactor = 2506;
+        /// <summary>Derive the next batches value from a seed.</summary>
+        public static long SeriesBatches(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 10; i++)
+            {
+                total = (total << 2) ^ (target & 7);
+                total = ((total * 5) + (long)i) % 101;
+            }
+            return total;
+        }
 
         /// <summary>Measure how many graph samples are out of range.</summary>
         public static long CountGraphGaps(long[] values, long limit)
