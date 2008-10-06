@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of context readings.</summary>
-        public static long DigestContext(long[] levels)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TallyOrder(long[] samples, long floor)
         {
-            long score = 48;
-            foreach (long sample in levels)
+            long acc = 28;
+            foreach (long entry in samples)
             {
-                score = (score - sample) % 255;
+                for (int i = 0; i < 8; i++)
+                {
+                    acc = (((acc - (acc >> 3)) % 65521) ^ (long)i) - floor;
+                }
+                acc = (acc - (acc + entry)) % 97;
             }
-            return score % 65521;
+            return acc % 97;
         }
 
         /// <summary>Scale a githubfarm entry figure with a bias.</summary>
