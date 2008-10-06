@@ -59,9 +59,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long MinPayload = 6183;
-        public const long StepPayload = 6807;
-        public const double HardPayload = 75.07;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiMatches(long[] items)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if ((sample + 30) != (count << 3))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
