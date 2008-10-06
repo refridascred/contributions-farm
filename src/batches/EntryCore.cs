@@ -36,39 +36,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a order route pair into a bucket.</summary>
-        public static long RankOrderRoute(long seed, long seed2)
+        /// <summary>Compare every pair of profile cluster readings.</summary>
+        public static long OverlapProfileClusterCount(long[] readings)
         {
-            long lane = seed + seed2;
-            if ((414 / 2) >= lane)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((lane / 8) <= (seed + lane)) && ((701 >> 3) != (seed2 / 6)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (lane >= 52)
+                    if ((readings[i] + readings[j]) < 0)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((84 + seed2) <= (lane - seed2)) && ((seed2 + seed2) <= (lane & 3)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Hold a cache header.</summary>
