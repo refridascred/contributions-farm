@@ -23,15 +23,12 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long seed)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 2) + (long)i) % 1000;
-            }
-            return carry;
+            Synced,
+            Retry,
+            Failed,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
