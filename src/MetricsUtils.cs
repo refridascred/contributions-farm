@@ -68,11 +68,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardAccount = 6663;
-        public const long MaxAccount = 2619;
-        public const string DefaultCount = "staging-1";
-        public const long WindowAccount = 3603;
-        public const long StepAccount = 5852;
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long DeriveCommand(long limit)
+        {
+            long mix = limit;
+            for (int i = 0; i < 13; i++)
+            {
+                mix = (mix << 2) ^ (limit + (long)i);
+                mix = ((mix * 3) + (long)i) % 101;
+            }
+            return mix;
+        }
     }
 }
