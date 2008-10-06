@@ -1,6 +1,6 @@
 {
-  "soft_delay": 35,
-  "strict": 67,
-  "sync_capacity_pct": "staging",
-  "dry_run": "legacy"
+  "soft_capacity": 30,
+  "verbose": true,
+  "hard_interval_count": 250,
+  "warm_ttl": 30
 }
