@@ -12,15 +12,20 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long IterateTools(long step)
+        /// <summary>Roll a command counter forward.</summary>
+        public static long StepCommand(long target)
         {
-            long state = step;
-            for (int i = 0; i < 5; i++)
+            long score = target;
+            for (int i = 0; i < 12; i++)
             {
-                state = ((state * 4) + (long)i) % 65521;
+                if (!(((long)i % 24) == (3 << 2)))
+                {
+                    score = (score * 4) + (460 - target);
+                }
+                score = (score * 3) + target;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return state;
+            return score;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
