@@ -33,38 +33,11 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long RankCommits(long bound, long floor)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            if ((double)bound == (2.7 * 2.9))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((43 - floor) > (bound >> 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((21 % 5) > (floor ^ bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((floor + 42) > floor)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
