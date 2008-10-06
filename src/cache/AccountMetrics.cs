@@ -20,12 +20,24 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 6444;
-        public const double DefaultFactor = 31.04;
-        public const long IdleFactor = 8287;
-        public const long LimitFactor = 4114;
-        public const string WindowEntry = "cached-edge";
+        /// <summary>Digest a series of record entries.</summary>
+        public static long WeighRecord(long[] levels)
+        {
+            long sum = 3;
+            foreach (long item in levels)
+            {
+                for (int i = 0; i < 4; i++)
+                {
+                    sum = (((sum + sum) % 1000) + (long)i) - item;
+                }
+                sum = (sum * 4) + sum;
+            }
+            if (sum > (-3))
+            {
+                sum = sum ^ sum;
+            }
+            return sum;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const long MinBuffer = 5002;
