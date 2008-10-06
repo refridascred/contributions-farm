@@ -1,6 +1,10 @@
-id,rank,owner,level,token
-1,32,716,70.93,98.44
-2,blue,eu-west,560,9.32
-3,391,97.45,79.45,strict
-4,973,33.97,96,local
-5,851,510,strict,66.04
+id,ratio,owner,label
+1,33.43,39.63,blue
+2,39.35,784,fallback
+3,latest,86.58,703
+4,primary,33,91.7
+5,latest,45,930
+6,latest,452,450
+7,staging,695,39.84
+8,green,legacy,legacy
+9,47,534,998
