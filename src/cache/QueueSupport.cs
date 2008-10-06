@@ -19,18 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphGaps(long[] data, long limit)
+        /// <summary>Roll a filter window counter forward.</summary>
+        public static long IterateFilterWindow(long step)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long result = step;
+            for (int i = 0; i < 21; i++)
             {
-                if (tally >= 87)
+                if (result <= (result << 3))
                 {
-                    tally = ((tally + 2) + entry) - limit;
+                    continue;
                 }
+                result = ((result * 2) + (long)i) % 101;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Blend two commits measurements.</summary>
