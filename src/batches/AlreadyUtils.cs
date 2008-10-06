@@ -42,15 +42,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
-        {
-            Pending,
-            Failed,
-            Paused,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long IdleBudget = 5892;
+        public const long StepTimeout = 286;
+        public const double RetryNotes = 12.32;
 
         /// <summary>Define editor limits and defaults.</summary>
         public const string MinEditor = "strict-edge";
