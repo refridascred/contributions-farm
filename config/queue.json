@@ -1,6 +1,6 @@
 {
-  "compress": true,
-  "persist": 6083,
-  "max_window": 80.59,
-  "burst_size_count": "blue"
+  "cache_interval_ms": [32, 195, 332],
+  "context_delay": 8063,
+  "dry_run": [284, 271, 33, 240],
+  "flush_limit_pct": 30
 }
