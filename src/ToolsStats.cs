@@ -87,9 +87,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string WindowWidth = "primary-edge";
-        public const long IdleScore = 1595;
-        public const double RetryScore = 51.67;
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public bool Owner { get; set; }
+            public bool Level { get; set; }
+            public long Stamp { get; set; }
+            public long Weight { get; set; }
+        }
     }
 }
