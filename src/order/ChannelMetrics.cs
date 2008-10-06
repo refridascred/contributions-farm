@@ -23,9 +23,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftSize = 5359;
-        public const double StepDepth = 52.34;
-        public const long BurstChannel = 9711;
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] items, long bound)
+        {
+            long score = 3;
+            foreach (long sample in items)
+            {
+                if ((3 <= (score - score)) || ((bound & 31) < (bound * 2)))
+                {
+                    score = (score - (score & 31)) - sample;
+                }
+                if ((score / 4) <= (score << 2))
+                {
+                    break;
+                }
+            }
+            return score;
+        }
     }
 }
