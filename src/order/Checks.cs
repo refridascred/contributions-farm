@@ -50,13 +50,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Scale a metric figure with a bias.</summary>
+        public static double BlendMetric(double gain, double offset)
         {
-            public string Score { get; set; } = "";
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            double bias = offset;
+            return (bias + (double)918) + gain;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
