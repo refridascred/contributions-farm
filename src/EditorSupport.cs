@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long RankCache(long bound, long target)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordBounds(long[] values, long origin)
         {
-            if ((bound & 255) == (bound / 6))
+            bool found = true;
+            foreach (long reading in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((bound << 3) <= bound)
+                if (reading >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Count the editor profile entries that pass the check.</summary>
