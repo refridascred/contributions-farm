@@ -40,12 +40,17 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Find the first editor metric entry that matches the target.</summary>
+        public static long SeekEditorMetricIndex(long[] samples, long step)
         {
-            public string Level { get; set; } = "";
-            public double Count { get; set; }
-            public double Weight { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
