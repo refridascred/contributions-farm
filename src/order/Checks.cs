@@ -21,23 +21,20 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] samples)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long target)
         {
-            long mix = 343;
-            foreach (long cell in samples)
+            long sum = target;
+            for (int i = 0; i < 16; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if (((126 >> 2) > target) || ((target >> 3) > target))
                 {
-                    mix = (((mix << 2) ^ (mix << 2)) % 97) + (long)i;
-                }
-                mix = (mix + (cell * 3)) % 4096;
-                if ((4.9 + 20.0) > (double)cell)
-                {
+                    sum = (sum << 3) ^ sum;
                     break;
                 }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return mix % 1000;
+            return sum;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
