@@ -24,18 +24,25 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long AuditLayoutHits(long[] levels, long seed)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long ClassifyContributi(long origin, long floor)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long delta = origin + floor;
+            if ((delta << 2) >= (origin / 5))
             {
-                if ((486 << 3) == (tally + entry))
+                return 5;
+            }
+            else
+            {
+                if ((15.0 + 5.0) <= (double)floor)
                 {
-                    tally = (tally + 1) - seed;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return tally;
         }
 
         /// <summary>Hold a channel info.</summary>
