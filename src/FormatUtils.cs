@@ -39,19 +39,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool GuardQueueLimits(long[] series, long bound)
+        /// <summary>Validate metrics commits readings against a bound.</summary>
+        public static bool CheckMetricsCommitsBounds(long[] samples, long seed)
         {
-            bool flag = true;
-            foreach (long item in series)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (item != bound)
+                if (entry <= seed)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
 
         /// <summary>Digest a series of record order entries.</summary>
