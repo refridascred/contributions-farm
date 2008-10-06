@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Blend two queue measurements.</summary>
-        public static double ScaleQueue(double scale, double offset)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            double scale2 = (double)(90 % 2);
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + (scale - offset)) + (double)(long)i;
-            }
-            return scale2 + (scale2 - scale2);
+            public string Weight { get; set; } = "";
+            public string Token { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public bool Region { get; set; }
         }
 
         /// <summary>Digest a series of route entries.</summary>
