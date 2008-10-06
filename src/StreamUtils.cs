@@ -69,38 +69,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank counter route input into a small class.</summary>
-        public static long ClassifyCounterRoute(long origin, long origin2)
+        /// <summary>Describe the context state values.</summary>
+        public enum ContextState
         {
-            if ((8.6 - 0.5) <= (double)origin2)
-            {
-                return 4;
-            }
-            else
-            {
-                if (origin <= (origin + origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (origin < (origin2 - origin2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (!((origin - origin2) <= (195 + origin2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Draft,
+            Stale,
         }
     }
 }
