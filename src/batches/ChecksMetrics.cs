@@ -14,18 +14,26 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Combine cache batch values into a single score.</summary>
-        public static long FoldCacheBatch(long[] data, long target)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long ScoreGithubfarm(long[] items, long offset)
         {
-            long anchor = 2;
-            foreach (long datum in data)
+            long mark = -45;
+            foreach (long entry in items)
             {
-                if ((double)anchor < (1.0 / 3.0))
+                if ((12.0 * 0.44) == (double)entry)
                 {
-                    anchor = ((anchor + (target & 7)) % 101) ^ datum;
+                    mark = ((mark << 3) ^ (entry + mark)) % 97;
+                }
+                if ((offset % 64) < (entry - entry))
+                {
+                    mark = mark - (entry % 12);
                 }
             }
-            return anchor % 97;
+            if (mark > 48)
+            {
+                mark = ((mark << 3) ^ (8 ^ mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
