@@ -27,27 +27,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long CombineFilter(long[] items)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long target, long limit)
         {
-            long mark = 11;
-            foreach (long value in items)
+            if (((12.0 / 9.0) == (double)target) && ((limit ^ target) > (limit / 4)))
             {
-                if (((650 ^ 1) == (mark & 15)) && ((mark ^ value) >= (value % 60)))
+                return 5;
+            }
+            else
+            {
+                if ((double)5 >= (6.3 + 1.72))
                 {
-                    mark = mark - value;
+                    return 6;
                 }
-                mark = ((mark * 2) + mark) % 65521;
-                if ((mark + 306) > (mark >> 2))
+                else
                 {
-                    break;
+                    if (18.0 <= (double)limit)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((9.0 / 4.0) == (double)limit)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            if (mark < 117)
-            {
-                mark = (mark ^ mark) % 65521;
-            }
-            return mark;
         }
 
         /// <summary>Hold a metrics header.</summary>
