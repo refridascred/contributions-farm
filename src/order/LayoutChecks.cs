@@ -63,21 +63,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up counter entry samples.</summary>
-        public static long OverlapCounterEntryCount(long[] series)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Paused,
+            Dropped,
+            Active,
+            Ready,
         }
     }
 }
