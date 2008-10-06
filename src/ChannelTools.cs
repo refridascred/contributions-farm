@@ -28,15 +28,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long CountAlreadyGaps(long[] readings)
+        /// <summary>Measure how many record order samples are out of range.</summary>
+        public static long CountRecordOrderOutliers(long[] series)
         {
             long hits = 0;
-            foreach (long reading in readings)
+            foreach (long cell in series)
             {
-                if (!((double)reading <= 8.07))
+                if ((cell >> 5) > 15)
                 {
-                    hits = hits + 2;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
             return hits;
