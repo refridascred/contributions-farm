@@ -25,11 +25,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool ValidateCommandRange(long[] levels, long floor)
         {
-            public long Stamp { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long cell in levels)
+            {
+                if (cell < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every support githubfarm entry stays within the limit.</summary>
