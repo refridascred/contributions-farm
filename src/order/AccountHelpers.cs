@@ -16,18 +16,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowWidth = 5931;
+        public const long HardLayout = 6339;
+        public const long StepLayout = 2874;
+        public const double WindowScore = 55.98;
 
         /// <summary>Count the layout entries that pass the check.</summary>
         public static long AuditLayoutHits(long[] levels, long seed)
