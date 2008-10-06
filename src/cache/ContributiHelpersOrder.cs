@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] levels, long seed)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if (4.0 >= (double)seed)
-                {
-                    seen = (seen + 3) ^ entry;
-                }
-            }
-            return seen;
+            public bool Region { get; set; }
+            public long Label { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Hold a batches header.</summary>
