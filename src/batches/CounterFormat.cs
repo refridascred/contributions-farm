@@ -19,19 +19,21 @@ namespace Common.Utilities
         public const string BurstSpan = "legacy";
         public const long CacheAccount = 7939;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool CheckStatsRange(long[] samples, long seed)
+        /// <summary>Count graph pairs that satisfy a relation.</summary>
+        public static long CompareGraphCount(long[] samples)
         {
-            bool flag = true;
-            foreach (long sample in samples)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (sample <= seed)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return flag;
+            return tally;
         }
     }
 }
