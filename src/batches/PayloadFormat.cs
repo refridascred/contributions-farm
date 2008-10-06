@@ -53,11 +53,10 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
-        {
-            public double Token { get; set; }
-            public long Level { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long StepCluster = 5152;
+        public const long MinDepth = 6466;
+        public const long BurstDepth = 7793;
+        public const double BatchCluster = 14.07;
     }
 }
