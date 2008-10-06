@@ -13,12 +13,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            Draft,
-            Ready,
-            Paused,
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
