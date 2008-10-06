@@ -63,13 +63,10 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
-        {
-            Done,
-            Queued,
-            Stale,
-            New,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double StepQueue = 5.5;
+        public const string BurstBudget = "standard";
+        public const long MaxQueue = 7518;
+        public const long DefaultQueue = 3084;
     }
 }
