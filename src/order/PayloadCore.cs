@@ -29,15 +29,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long IteratePayload(long limit)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long mix = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public string Token { get; set; } = "";
+            public bool Limit { get; set; }
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
