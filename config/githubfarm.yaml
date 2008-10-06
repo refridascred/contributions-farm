@@ -1,14 +1,4 @@
 # githubfarm settings
-poll_retries_count: 36.17
-flush_window: 94.91
-githubfarm_interval:
-  - green
-  - eu-west
-  - stable
-sync_ttl:
-  warm_delay: cached
-  cache_delay_s:
-    - 480
-    - 203
-  context_depth: 1.12
-hard_depth: 9798
+filter_retries: latest
+enabled: 85.78
+dry_run: edge
