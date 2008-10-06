@@ -44,12 +44,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            public long Region { get; set; }
-            public double Level { get; set; }
-            public double Stamp { get; set; }
+            public bool Token { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
