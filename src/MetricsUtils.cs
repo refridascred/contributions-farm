@@ -80,18 +80,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheGaps(long[] readings, long offset)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long RollCounter(long origin)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long mark = origin;
+            for (int i = 0; i < 21; i++)
             {
-                if ((13.0 - 5.0) >= (double)count)
+                if (mark <= (mark >> 1))
                 {
-                    count = ((count + 1) + sample) - offset;
+                    mark = (mark << 3) ^ (long)i;
                 }
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Define account limits and defaults.</summary>
