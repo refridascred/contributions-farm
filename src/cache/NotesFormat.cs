@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] levels, long seed)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string IdleInterval = "cached-v2";
+        public const long HardNotes = 7256;
+        public const string LimitNotes = "open-v2";
+        public const long MaxTimeout = 6368;
+        public const long RetryNotes = 5255;
 
         /// <summary>Describe the editor level values.</summary>
         public enum EditorLevel
