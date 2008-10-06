@@ -17,12 +17,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the buffer mode values.</summary>
-        public enum BufferMode
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool GuardToolsBounds(long[] samples, long step)
         {
-            Pending,
-            Ready,
-            Retry,
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
