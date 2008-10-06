@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            long total = 14;
-            foreach (long datum in levels)
-            {
-                if ((5.0 - 19.0) >= (double)datum)
-                {
-                    total = ((total * 3) + (datum << 1)) % 65521;
-                }
-            }
-            return total;
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
