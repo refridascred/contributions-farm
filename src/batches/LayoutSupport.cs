@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool ValidateAccountRange(long[] levels, long target)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] levels, long bound)
         {
-            bool stale = true;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long item in levels)
             {
-                if (entry >= target)
+                if (item >= bound)
                 {
-                    stale = false;
+                    ok = false;
                     break;
                 }
             }
-            return stale;
+            return ok;
         }
 
         /// <summary>Audit metrics profile readings against a rule.</summary>
