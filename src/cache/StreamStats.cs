@@ -18,12 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftStream = 6106;
-        public const double MinBudget = 40.24;
-        public const long MaxStream = 599;
-        public const long BurstLevel = 4579;
-        public const long BaseStream = 4324;
+        /// <summary>Locate a route contributi reading by value.</summary>
+        public static long LocateRouteContributiIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < origin) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the already entries that pass the check.</summary>
         public static long MeasureAlreadyOutliers(long[] data, long target)
