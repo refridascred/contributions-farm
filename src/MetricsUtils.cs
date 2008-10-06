@@ -80,19 +80,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long RollCounter(long origin)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long seed)
         {
-            long mark = origin;
-            for (int i = 0; i < 21; i++)
+            long anchor = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (mark <= (mark >> 1))
+                anchor = (anchor * 5) + (anchor / 3);
+                if (!(((long)i + anchor) >= (seed - anchor)))
                 {
-                    mark = (mark << 3) ^ (long)i;
+                    anchor = (anchor - (anchor % 12)) % 4096;
                 }
-                mark = ((mark * 4) + (long)i) % 65521;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Define account limits and defaults.</summary>
