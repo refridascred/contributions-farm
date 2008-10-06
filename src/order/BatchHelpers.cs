@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Count cache payload pairs that satisfy a relation.</summary>
+        public static long OverlapCachePayloadCount(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) > 10)
+                    if ((data[i] ^ data[j]) != 6)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
