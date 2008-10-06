@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBatches = 343;
-        public const string RetryBudget = "stable";
-        public const long StepScore = 4627;
+        /// <summary>Match up editor samples.</summary>
+        public static long PairEditorCount(long[] levels)
+        {
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a tools counter forward.</summary>
         public static long IterateTools(long step)
