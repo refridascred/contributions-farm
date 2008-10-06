@@ -33,22 +33,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long TallyContextMatches(long[] levels, long target)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long count = 0;
-            foreach (long entry in levels)
-            {
-                if ((95 & 1) <= (count >> 3))
-                {
-                    count = ((count + 3) + entry) - target;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Failed,
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Locate a queue counter reading by value.</summary>
