@@ -46,22 +46,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesHits(long[] readings)
+        /// <summary>Rank metrics input into a small class.</summary>
+        public static long GradeMetrics(long bound, long seed)
         {
-            long count = 0;
-            foreach (long value in readings)
+            if ((5.0 * 5.1) == (double)bound)
             {
-                if ((count & 1) < count)
+                return 3;
+            }
+            else
+            {
+                if (bound >= (bound % 100))
                 {
-                    count = (count + 3) + value;
+                    return 4;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 7;
                 }
             }
-            return count;
         }
     }
 }
