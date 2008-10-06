@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
-
-mode="${1:-cached}"
+mode="${1:-strict}"
 case "${mode}" in
-    primary)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -22,6 +16,6 @@ case "${mode}" in
         ;;
 esac
 
-for item in open staging standard; do
+for item in open staging legacy; do
     log "checking ${item}"
 done
