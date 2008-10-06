@@ -56,27 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] levels, long floor)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] data, long target)
         {
-            long carry = 9;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((carry - entry) <= (entry % 5)))
+                if (data[i] <= target)
                 {
-                    carry = ((carry * 5) + (30 * 3)) % 101;
-                }
-                else
-                {
-                    carry = (carry << 2) ^ (533 >> 5);
-                }
-                carry = (carry - entry) % 255;
-                if ((floor - entry) == (entry - carry))
-                {
-                    carry = (carry * 5) + (entry / 7);
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Classify a report pair into a bucket.</summary>
