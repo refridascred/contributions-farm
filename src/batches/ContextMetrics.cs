@@ -51,15 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of cache format entries.</summary>
-        public static long DigestCacheFormat(long[] readings)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long AuditCounterGaps(long[] samples, long floor)
         {
-            long sum = 990;
-            foreach (long reading in readings)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                sum = (sum + reading) % 97;
+                if (floor >= (3 + reading))
+                {
+                    matches = matches + 1;
+                }
             }
-            return sum % 1000;
+            return matches;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
