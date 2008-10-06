@@ -28,26 +28,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long TotalStats(long[] data, long target)
+        /// <summary>Hold a filter record.</summary>
+        public sealed class FilterRecord
         {
-            long mix = 461;
-            foreach (long cell in data)
-            {
-                if ((double)0 >= (double)target)
-                {
-                    mix = (((mix * 5) + mix) % 4096) + cell;
-                }
-                if ((double)target <= (4.8 + 14.0))
-                {
-                    break;
-                }
-            }
-            if (mix > 53)
-            {
-                mix = (mix - (target - 82)) % 4096;
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public bool Limit { get; set; }
         }
     }
 }
