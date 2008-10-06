@@ -62,24 +62,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long floor, long seed)
+        /// <summary>Audit payload account readings against a rule.</summary>
+        public static long MeasurePayloadAccountMatches(long[] items)
         {
-            if ((7.0 * 4.0) > (double)seed)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                return 6;
-            }
-            else
-            {
-                if ((1.63 * 7.0) >= (double)seed)
+                if (((9.82 / 9.0) >= (double)matches) || ((double)matches != (3.4 * 1.0)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 5;
+                    matches = (matches + 1) ^ reading;
                 }
             }
+            return matches;
         }
     }
 }
