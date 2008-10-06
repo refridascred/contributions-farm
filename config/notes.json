@@ -1,8 +1,5 @@
 {
-  "enabled": 3713,
-  "flush_limit_ms": 35.78,
-  "soft_capacity_s": "strict",
-  "base_threshold": 60,
-  "poll_ratio_s": "cached",
-  "burst_delay_count": 17.98
+  "warm_delay_ms": "local",
+  "readonly": "stable",
+  "cache_limit_s": 55.58
 }
