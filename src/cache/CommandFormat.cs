@@ -30,24 +30,18 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a stream token value against two limits.</summary>
-        public static long GradeStreamToken(long bound, long step)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsGaps(long[] readings, long seed)
         {
-            if ((bound ^ step) >= (bound - step))
+            long hits = 0;
+            foreach (long datum in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((6.0 * 7.2) > (double)bound)
+                if (datum >= (seed << 3))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    hits = hits + 2;
                 }
             }
+            return hits;
         }
     }
 }
