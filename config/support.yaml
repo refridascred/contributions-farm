@@ -1,6 +1,7 @@
 # support settings
-retry_limit_pct: 8792
-enabled: blue
-warm_ratio: cached
-soft_depth_s: 14.69
-min_retries: 95
+burst_timeout_s:
+  - local
+  - fallback
+order_retries: staging
+batch_limit: fallback
+sync_ratio_pct: 98.58
