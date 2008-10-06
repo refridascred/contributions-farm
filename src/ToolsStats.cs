@@ -38,17 +38,32 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first account queue entry that matches the target.</summary>
-        public static long LookupAccountQueueIndex(long[] readings, long seed)
+        /// <summary>Classify a report session pair into a bucket.</summary>
+        public static long GradeReportSession(long bound, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long gap = bound ^ limit;
+            if ((limit / 2) <= (bound % 10))
             {
-                if ((readings[i] > seed) && ((readings[i] % 3) == 0))
+                return 3;
+            }
+            else
+            {
+                if (6.8 < (double)gap)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((856 * 2) != (bound - limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
