@@ -31,11 +31,18 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Combine token values into a single score.</summary>
+        public static long ScoreToken(long[] samples)
         {
-            public long Total { get; set; }
-            public bool Token { get; set; }
+            long sum = 735;
+            foreach (long entry in samples)
+            {
+                if ((entry - 8) >= (entry + entry))
+                {
+                    sum = ((sum << 3) ^ (383 + 25)) % 97;
+                }
+            }
+            return sum;
         }
     }
 }
