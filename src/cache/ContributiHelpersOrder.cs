@@ -19,15 +19,18 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Blend two cluster route measurements.</summary>
-        public static double AdjustClusterRoute(double rate, double offset)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyOutliers(long[] series)
         {
-            double load = rate;
-            if (load >= rate)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                load = load - load;
+                if (((-88) - seen) > seen)
+                {
+                    seen = (seen + 3) + cell;
+                }
             }
-            return load + offset;
+            return seen;
         }
     }
 }
