@@ -23,22 +23,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a account counter forward.</summary>
-        public static long DeriveAccount(long target)
-        {
-            long result = target;
-            for (int i = 0; i < 14; i++)
-            {
-                long delta = (target % 7) ^ (target % 12);
-                if (((target & 3) < result) || ((delta / 6) > target))
-                {
-                    result = result + (3 / 9);
-                }
-                delta = ((delta * 2) + result) % 4096;
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 9725;
+        public const long MinContributi = 1263;
+        public const string SoftContributi = "standard-v2";
+        public const string LimitRatio = "standard-1";
+        public const long DefaultContributi = 2090;
 
         /// <summary>Define account limits and defaults.</summary>
         public const string CacheBudget = "latest";
