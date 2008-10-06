@@ -1,18 +1,14 @@
 # entry settings
-sync_depth_count: eu-west
-enabled: 57
-burst_depth: 100
-default_threshold_s: true
-base_threshold_count:
-  soft_capacity_pct:
-    - blue
-    - edge
-  sync_delay_count: false
-  enabled: 17.8
-  batch_interval_pct: true
-  dry_run:
-    - fallback
-    - stable
-    - primary
-    - staging
-  max_limit_pct: latest
+enabled: false
+verbose: staging
+batch_interval: 20
+max_threshold: 22.94
+command_timeout:
+  enabled: 1860
+  hard_ttl_pct: true
+  retry_ratio_count: 62.52
+  soft_capacity_s:
+    - 55
+    - 91
+  filter_ratio: open
+retry_timeout_s: primary
