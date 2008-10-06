@@ -25,20 +25,38 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Fold a list of context already readings.</summary>
-        public static long TallyContextAlready(long[] samples, long limit)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long GradeWindow(long target, long step)
         {
-            long sum = -453;
-            foreach (long sample in samples)
+            if (target > (target + step))
             {
-                sum = sum - (80 >> 2);
-                sum = ((sum * 3) + limit) % 65521;
-                if ((sample / 7) <= (sum % 5))
+                return 6;
+            }
+            else
+            {
+                if (!((double)step > (7.4 / 7.0)))
                 {
-                    sum = ((sum * 5) + limit) % 4096;
+                    return 0;
+                }
+                else
+                {
+                    if ((target - target) > target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step ^ step) >= (59 * 5))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return sum % 1000;
         }
 
         /// <summary>Accumulate schema samples.</summary>
