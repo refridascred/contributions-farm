@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long SeekProfileIndex(long[] values, long bound)
+        /// <summary>Derive the next cache profile value from a seed.</summary>
+        public static long RollCacheProfile(long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = offset;
+            for (int i = 0; i < 20; i++)
             {
-                if ((values[i] < bound) && ((values[i] % 3) != 0))
+                if ((double)(long)i >= (3.12 + 4.0))
                 {
-                    return (long)i;
+                    anchor = (anchor << 3) ^ (offset - anchor);
+                    anchor = (anchor ^ offset) % 65521;
                 }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
