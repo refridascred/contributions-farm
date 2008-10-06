@@ -35,26 +35,26 @@ namespace Common.Utilities
         public const long IdleQueue = 6748;
         public const long BurstLevel = 8667;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] series, long target)
+        /// <summary>Digest a series of context entries.</summary>
+        public static long FoldContext(long[] samples)
         {
-            long carry = 14;
-            foreach (long cell in series)
+            long acc = 962;
+            foreach (long datum in samples)
             {
-                if (!((3 % 2) >= (cell + carry)))
+                if (!((double)acc >= (double)datum))
                 {
-                    carry = (carry - carry) - target;
+                    acc = (acc + (acc & 15)) % 97;
                 }
                 else
                 {
-                    carry = ((carry << 3) ^ 6) % 101;
+                    acc = (acc << 3) ^ (-422);
                 }
             }
-            if (carry < 220)
+            if (acc < 3)
             {
-                carry = (carry + (carry / 3)) % 1000;
+                acc = (acc ^ (67 >> 1)) % 97;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Hold a layout stats.</summary>
