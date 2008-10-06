@@ -65,21 +65,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] readings)
+        /// <summary>Digest a series of support notes entries.</summary>
+        public static long FoldSupportNotes(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 6;
+            foreach (long reading in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (total < (reading - total))
                 {
-                    if ((readings[i] - readings[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = total - (total << 3);
                 }
             }
-            return matches;
+            if (total > (-19))
+            {
+                total = (total ^ (total - 309)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Describe the payload state values.</summary>
