@@ -34,15 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next farm contributi value from a seed.</summary>
-        public static long RollFarmContributi(long seed)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long score = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score * 2) + (long)i) % 1000;
-            }
-            return score;
+            Done,
+            Retry,
+            Closed,
         }
 
         /// <summary>Rank metrics input into a small class.</summary>
