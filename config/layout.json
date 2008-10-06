@@ -1,12 +1,15 @@
 {
-  "editor_delay": 62,
-  "burst_window_pct": "fallback",
-  "compress": "green",
-  "soft_window": {
-    "readonly": "open",
-    "warm_delay_ms": false,
-    "dry_run": "staging"
+  "sync_threshold_count": "latest",
+  "filter_timeout": 658,
+  "max_interval": false,
+  "cache_capacity_count": 60,
+  "batch_ttl_pct": {
+    "compress": ["edge", "strict", "eu-west"],
+    "flush_retries_ms": "latest",
+    "base_delay_s": "stable",
+    "readonly": 60,
+    "already_ttl": 21.81,
+    "soft_retries_ms": [68, 400, 136]
   },
-  "idle_ttl_count": [111, 234, 11],
-  "editor_size": "fallback"
+  "checks_delay": true
 }
