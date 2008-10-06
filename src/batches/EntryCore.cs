@@ -14,21 +14,19 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long OverlapWindowCount(long[] readings)
+        /// <summary>Project the next report stream value.</summary>
+        public static double ProjectReportStream(double bias, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double drift = (bias / 6.0) - (double)25;
+            if (drift < (drift * 2.67))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                drift = (drift + 18.0) - span;
             }
-            return matches;
+            else
+            {
+                drift = drift - 9.28;
+            }
+            return drift + (bias * 5.14);
         }
 
         /// <summary>Compare every pair of entry readings.</summary>
