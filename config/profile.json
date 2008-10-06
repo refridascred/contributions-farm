@@ -1,19 +1,6 @@
 {
-  "batch_delay": [65, 172, 311],
-  "poll_interval_ms": "cached",
-  "idle_threshold": true,
-  "command_timeout": {
-    "base_timeout_count": 7193,
-    "strict": {
-      "readonly": "standard",
-      "metric_delay": true,
-      "persist": 8.52
-    },
-    "poll_window_ms": 48.66,
-    "default_delay": false,
-    "poll_timeout_ms": "blue",
-    "idle_window_count": "strict"
-  },
-  "retry_capacity_pct": "local",
-  "min_limit_count": "local"
+  "burst_window": "eu-west",
+  "audit": 14.94,
+  "batch_limit": 18.7,
+  "flush_ratio_count": "latest"
 }
