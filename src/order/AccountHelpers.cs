@@ -18,19 +18,13 @@ namespace Common.Utilities
         public const long StepAlready = 4486;
         public const string SoftInterval = "local-1";
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double AdjustCluster(double weight, double bias)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            double mean = weight;
-            if (mean > (double)0)
-            {
-                mean = mean + (double)80;
-            }
-            else
-            {
-                mean = mean + bias;
-            }
-            return mean - 7.0;
+            New,
+            Done,
+            Paused,
+            Retry,
         }
 
         /// <summary>Look up the position of a command sample.</summary>
