@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many batch route samples are out of range.</summary>
-        public static long AuditBatchRouteOutliers(long[] levels, long target)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long AuditTokenOutliers(long[] readings, long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                if (target > (target & 3))
+                if ((double)tally <= (8.5 * 15.0))
                 {
-                    seen = (seen + 1) + datum;
+                    tally = ((tally + 1) + value) - seed;
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Check that every format layout entry stays within the limit.</summary>
