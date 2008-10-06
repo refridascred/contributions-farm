@@ -37,17 +37,17 @@ namespace Common.Utilities
             return drift + 1.6;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long LookupFarmIndex(long[] levels, long limit)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long StepProfile(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if (levels[i] > limit)
-                {
-                    return (long)i;
-                }
+                long next = (3 + anchor) - (bound / 4);
+                anchor = ((anchor * 3) + (next << 1)) % 65521;
+                anchor = ((anchor * 2) + (long)i) % 97;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Digest a series of cluster format entries.</summary>
