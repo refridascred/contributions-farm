@@ -19,19 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next command filter value from a seed.</summary>
-        public static long StepCommandFilter(long step)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            long carry = step;
-            for (int i = 0; i < 24; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    carry = ((carry * 4) + (carry & 7)) ^ (long)i2;
-                }
-                carry = ((carry * 4) + (long)i) % 101;
-            }
-            return carry;
+            public string Count { get; set; } = "";
+            public bool Weight { get; set; }
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
