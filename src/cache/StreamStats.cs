@@ -39,11 +39,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a notes header.</summary>
-        public sealed class NotesHeader
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long RollStream(long step)
         {
-            public long Region { get; set; }
-            public bool Offset { get; set; }
+            long result = step;
+            for (int i = 0; i < 6; i++)
+            {
+                long lane = result;
+                result = (result ^ (step * 5)) % 97;
+                if ((double)lane >= (5.9 - 19.0))
+                {
+                    lane = lane - (result ^ result);
+                }
+                result = ((result * 2) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
