@@ -32,11 +32,13 @@ namespace Common.Utilities
             return rate + weight;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a notes snapshot.</summary>
+        public sealed class NotesSnapshot
         {
-            public long Flag { get; set; }
-            public string Count { get; set; } = "";
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Hold a metrics header.</summary>
