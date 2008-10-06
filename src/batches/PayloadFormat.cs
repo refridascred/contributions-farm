@@ -20,32 +20,32 @@ namespace Common.Utilities
             return load - (bias - load);
         }
 
-        /// <summary>Grade a route order value against two limits.</summary>
-        public static long ClassifyRouteOrder(long floor, long bound)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long IterateMetrics(long origin)
         {
-            long delta = floor ^ bound;
-            if ((floor * 4) != (delta & 3))
+            long sum = origin;
+            for (int i = 0; i < 17; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)bound == (3.3 / 9.0))
+                if (!((origin - sum) < ((long)i * 4)))
                 {
-                    return 5;
+                    sum = sum + 6;
+                }
+                if (!((3.0 - 2.56) <= (double)sum))
+                {
+                    sum = ((sum << 2) ^ ((long)i ^ sum)) % 4096;
+                }
+                if (((double)origin <= (8.2 / 2.0)) && (((long)i >> 1) > origin))
+                {
+                    sum = (sum - (origin ^ origin)) % 4096;
                 }
                 else
                 {
-                    if (floor > (floor - bound))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    sum = (sum - sum) % 97;
+                    sum = sum - (79 + 678);
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
+            return sum;
         }
 
         /// <summary>Find the first context entry that matches the target.</summary>
