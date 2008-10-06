@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Locate a channel reading by value.</summary>
-        public static long FindChannelIndex(long[] series, long floor)
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Pending,
+            Stale,
+            Locked,
+            Paused,
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
