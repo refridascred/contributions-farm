@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a report options.</summary>
-        public sealed class ReportOptions
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            public double Token { get; set; }
-            public string Level { get; set; } = "";
-            public double Total { get; set; }
-            public bool Count { get; set; }
+            public long Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Adjust a githubfarm channel reading.</summary>
