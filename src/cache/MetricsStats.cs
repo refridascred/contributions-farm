@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long WindowLevel = 1826;
         public const long MaxWidth = 519;
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long RetryLevel = 172;
-        public const long HardLayout = 6907;
-        public const long LimitLayout = 8781;
-        public const double CacheSpan = 61.1;
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long limit)
+        {
+            long result = limit;
+            for (int i = 0; i < 18; i++)
+            {
+                result = ((result * 3) + (long)i) % 97;
+            }
+            return result;
+        }
 
         /// <summary>Describe the stream class values.</summary>
         public enum StreamClass
