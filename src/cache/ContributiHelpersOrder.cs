@@ -19,13 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Count schema already pairs that satisfy a relation.</summary>
+        public static long MatchSchemaAlreadyCount(long[] values)
         {
-            public long Label { get; set; }
-            public bool Rank { get; set; }
-            public bool Stamp { get; set; }
-            public long Weight { get; set; }
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the context class values.</summary>
