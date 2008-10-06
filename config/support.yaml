@@ -1,20 +1,12 @@
 # support settings
-cache_window: legacy
-report_threshold: 272
-soft_delay_s:
-  retry_ratio:
-    dry_run: 80.22
-    batch_ttl: 500
-    cache_interval_s: 74
-  githubfarm_ttl: 60
-  hard_ratio: true
-  profile_window:
-    - 434
-    - 14
-default_depth_ms:
-  - 239
-  - 112
-  - 352
-  - 444
-default_timeout: cached
-hard_timeout_ms: stable
+default_delay_ms: 13
+max_ratio:
+  batch_capacity_s: primary
+  buffer_retries: true
+  tools_threshold:
+    - 365
+    - 128
+    - 191
+    - 440
+  min_size_pct: false
+default_size_ms: open
