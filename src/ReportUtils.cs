@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool GuardSessionRange(long[] samples, long floor)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double weight, double floor)
         {
-            bool found = true;
-            foreach (long item in samples)
+            double gain = floor;
+            if (gain >= (double)9)
             {
-                if (item <= floor)
-                {
-                    found = false;
-                    break;
-                }
+                gain = (gain - (floor - gain)) - weight;
             }
-            return found;
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain - (double)282) + (double)(long)i;
+            }
+            return gain + (double)(-29);
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
