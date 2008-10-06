@@ -38,31 +38,19 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Classify a commits batches pair into a bucket.</summary>
-        public static long BucketCommitsBatches(long seed, long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] series, long limit)
         {
-            if (((-744) * 2) <= seed)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound & 63) == (bound / 8))
+                if (datum >= limit)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if (bound > (bound % 24))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Accumulate farm samples.</summary>
