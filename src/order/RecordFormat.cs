@@ -26,15 +26,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long limit)
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 97;
-            }
-            return mix;
+            Ready,
+            Draft,
+            Active,
+            Stale,
         }
 
         /// <summary>Hold a profile record.</summary>
