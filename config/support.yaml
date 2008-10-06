@@ -1,12 +1,12 @@
 # support settings
-base_size: 19.77
-hard_ttl:
-  - green
-  - latest
-  - green
-  - staging
-editor_window:
+cache_delay_pct: true
+cluster_window:
   - cached
-  - fallback
+  - strict
+  - local
   - blue
-soft_timeout_pct: 87
+checks_window: 9953
+cache_limit:
+  - 186
+  - 64
+  - 461
