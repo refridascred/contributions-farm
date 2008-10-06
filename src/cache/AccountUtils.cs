@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next command value.</summary>
-        public static double ScaleCommand(double scale, double floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchMatches(long[] data, long floor)
         {
-            double weight = floor;
-            for (int i = 0; i < 9; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                weight = ((weight - weight) + (double)(long)i) - scale;
+                if ((((seen - floor) == (floor ^ seen)) || (seen > 385)) || ((item << 1) > (seen - seen)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return weight + floor;
+            return seen;
         }
 
         /// <summary>Describe the format phase values.</summary>
