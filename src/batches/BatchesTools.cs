@@ -23,22 +23,19 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long AuditBatchOutliers(long[] levels)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsLimits(long[] samples, long bound)
         {
-            long hits = 0;
-            foreach (long entry in levels)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                if ((17.0 - 5.1) > (double)entry)
+                if (datum != bound)
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Look up the position of a counter buffer sample.</summary>
