@@ -1,7 +1,13 @@
 {
-  "hard_capacity_count": "stable",
-  "burst_ratio_count": "edge",
-  "retry_ratio_pct": 500,
-  "batch_capacity_ms": 45.23,
-  "filter_retries": 250
+  "persist": ["fallback", "cached"],
+  "retry_timeout_s": [20, 180, 16, 259],
+  "enabled": true,
+  "profile_timeout": {
+    "min_limit_ms": 7758,
+    "cluster_size": [313, 39],
+    "flush_depth": "fallback",
+    "batch_limit_count": false,
+    "max_size": "standard"
+  },
+  "cache_size_pct": "local"
 }
