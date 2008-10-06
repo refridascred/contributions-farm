@@ -29,38 +29,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank route payload input into a small class.</summary>
-        public static long BucketRoutePayload(long step, long floor)
+        /// <summary>Fold a list of command queue readings.</summary>
+        public static long ScoreCommandQueue(long[] series, long origin)
         {
-            if ((18.0 + 9.47) >= (double)floor)
+            long score = 41;
+            foreach (long reading in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step ^ floor) >= (step / 9))
+                if (!((7 * 5) > (reading >> 4)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((floor + step) < step))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((floor + floor) != (step - step))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    score = (score + 88) + origin;
                 }
             }
+            if (score < 783)
+            {
+                score = ((score << 2) ^ score) % 65521;
+            }
+            return score % 1000;
         }
     }
 }
