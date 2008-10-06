@@ -12,18 +12,15 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] items)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long RollGraph(long offset)
         {
-            long hits = 0;
-            foreach (long datum in items)
+            long mark = offset;
+            for (int i = 0; i < 18; i++)
             {
-                if (((double)datum > (6.21 / 5.0)) || ((hits >= (hits - hits)) || ((double)datum == (0.62 * 9.56))))
-                {
-                    hits = hits + 3;
-                }
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Blend two commits measurements.</summary>
