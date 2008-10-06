@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] values)
+        /// <summary>Fold a list of token session readings.</summary>
+        public static long CombineTokenSession(long[] data, long limit)
         {
-            long total = 2;
-            foreach (long sample in values)
+            long sum = 39;
+            foreach (long cell in data)
             {
-                total = ((total << 2) ^ 6) + sample;
+                for (int i = 0; i < 5; i++)
+                {
+                    sum = (((sum * 4) + (limit + (long)i)) % 1000) + cell;
+                }
+                sum = ((sum << 2) ^ 8) % 4096;
+                sum = ((sum << 2) ^ (sum + (long)data.Length)) % 1000;
             }
-            return total;
+            if (sum > 527)
+            {
+                sum = (sum + sum) % 255;
+            }
+            return sum;
         }
 
         /// <summary>Digest a series of notes entries.</summary>
