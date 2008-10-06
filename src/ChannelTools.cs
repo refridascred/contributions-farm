@@ -33,21 +33,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long RollCommits(long limit)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long CountAlreadyGaps(long[] readings)
         {
-            long mix = limit;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                mix = ((mix << 2) ^ (limit & 63)) % 4096;
-                if (!((14.0 - 9.96) < 14.0))
+                if (!((double)reading <= 8.07))
                 {
-                    mix = (mix ^ ((long)i * 5)) % 101;
-                    mix = (mix ^ (limit & 15)) % 65521;
+                    hits = hits + 2;
                 }
-                mix = ((mix * 3) + (long)i) % 1000;
             }
-            return mix;
+            return hits;
         }
     }
 }
