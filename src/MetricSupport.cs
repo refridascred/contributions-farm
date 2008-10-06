@@ -20,32 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long BucketGithubfarm(long floor, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountOutliers(long[] readings)
         {
-            long step = floor - offset;
-            if (((floor + step) >= (offset / 4)) && ((double)step != (double)53))
+            long hits = 0;
+            foreach (long value in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((double)offset < (0.62 * 3.34)) || ((6 >> 4) < step))
+                if ((11.0 - 5.64) >= (double)hits)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((1.5 * 3.59) > (double)floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    hits = (hits + 3) + value;
                 }
             }
+            return hits;
         }
 
         /// <summary>Digest a series of session entries.</summary>
