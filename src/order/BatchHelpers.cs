@@ -12,13 +12,17 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Find the first channel entry that matches the target.</summary>
+        public static long FindChannelIndex(long[] series, long offset)
         {
-            public long Owner { get; set; }
-            public double Rank { get; set; }
-            public long Flag { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many report context samples are out of range.</summary>
