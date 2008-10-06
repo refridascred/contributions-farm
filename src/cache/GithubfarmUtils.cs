@@ -34,12 +34,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 7143;
-        public const long CacheSize = 1447;
-        public const long MinSession = 4691;
-        public const long CacheSession = 538;
-        public const double SoftRatio = 57.4;
+        /// <summary>Rank batches entry input into a small class.</summary>
+        public static long SortBatchesEntry(long bound, long step)
+        {
+            if ((step + bound) >= (step + 774))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((bound / 3) >= (183 - bound))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((bound << 3) < (bound ^ bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((3 + bound) > bound)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Hold a tools snapshot.</summary>
         public sealed class ToolsSnapshot
