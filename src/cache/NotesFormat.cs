@@ -34,16 +34,32 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long DeriveBatches(long floor)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long bound, long offset)
         {
-            long result = floor;
-            for (int i = 0; i < 7; i++)
+            long cur = bound ^ offset;
+            if ((cur / 6) >= (cur & 7))
             {
-                result = (result ^ (long)i) % 1000;
-                result = ((result * 4) + (long)i) % 4093;
+                return 8;
             }
-            return result;
+            else
+            {
+                if (6.6 <= (double)offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((9.3 * 7.79) < (double)cur)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
     }
 }
