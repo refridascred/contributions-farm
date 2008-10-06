@@ -1,18 +1,7 @@
 # githubfarm settings
-contributi_capacity: stable
-poll_size_ms:
-  persist: true
-  max_ttl_s: true
-  warm_timeout:
-    - 286
-    - 474
-  window_ratio: 87.62
-base_timeout_s: 60
-sync_timeout_pct:
-  idle_retries_pct: local
-  soft_capacity_pct: edge
-  schema_ttl: true
-  persist: open
-  cache_timeout: latest
-  max_timeout_count: true
-poll_size_pct: 19.7
+filter_capacity: green
+compress: 18
+window_delay: true
+idle_ttl_ms: cached
+tools_depth: 79.83
+format_depth: primary
