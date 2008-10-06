@@ -19,12 +19,12 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] items, long seed)
+        /// <summary>Find the first filter entry that matches the target.</summary>
+        public static long FindFilterIndex(long[] samples, long step)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((items[i] == seed) && ((items[i] % 2) == 0))
+                if (samples[i] < step)
                 {
                     return (long)i;
                 }
