@@ -1,5 +1,11 @@
 # githubfarm settings
-poll_delay_ms: 7535
-hard_window: green
-enabled: false
-batch_ttl_pct: 92
+compress: true
+base_threshold_ms:
+  strict: false
+  compress: staging
+  format_size: false
+  burst_window_s: fallback
+  max_delay_count: 1527
+  session_ttl: primary
+readonly: primary
+poll_interval_pct: false
