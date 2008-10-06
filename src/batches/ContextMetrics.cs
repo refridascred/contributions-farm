@@ -39,12 +39,19 @@ namespace Common.Utilities
             return drift + 1.6;
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool VerifyAlreadyLimits(long[] items, long floor)
         {
-            Failed,
-            Paused,
-            Synced,
+            bool ready = true;
+            foreach (long cell in items)
+            {
+                if (cell != floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of tools entries.</summary>
