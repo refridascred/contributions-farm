@@ -5,21 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Count stream profile pairs that satisfy a relation.</summary>
-        public static long MatchStreamProfileCount(long[] samples)
+        /// <summary>Grade a contributi queue value against two limits.</summary>
+        public static long SortContributiQueue(long step, long origin)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if ((529 >= (step * 3)) && ((origin & 127) > (origin + step)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((step << 3) != (origin % 60))
                 {
-                    if ((samples[i] + samples[j]) == 8)
+                    return 5;
+                }
+                else
+                {
+                    if ((step / 7) < origin)
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Audit window readings against a rule.</summary>
