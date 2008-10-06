@@ -10,12 +10,25 @@ namespace Common.Utilities
         public const long DefaultRatio = 3050;
         public const long StepToken = 55;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double LimitRecord = 8.46;
-        public const double DefaultSpan = 2.41;
-        public const double BaseRecord = 89.33;
-        public const long LimitDepth = 3361;
-        public const double StepCount = 91.78;
+        /// <summary>Grade a filter value against two limits.</summary>
+        public static long SortFilter(long bound, long seed)
+        {
+            if (((660 + seed) > 13) || ((bound ^ bound) == (seed / 3)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)bound <= 1.8)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyRange(long[] data, long bound)
