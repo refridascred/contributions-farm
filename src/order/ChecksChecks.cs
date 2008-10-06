@@ -19,17 +19,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first route profile entry that matches the target.</summary>
-        public static long FindRouteProfileIndex(long[] series, long step)
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long CompareFilterCount(long[] series)
         {
+            long tally = 0;
             for (int i = 0; i < series.Length; i++)
             {
-                if ((series[i] <= step) && ((series[i] % 2) != 0))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return (long)i;
+                    if ((series[i] - series[j]) != 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
     }
 }
