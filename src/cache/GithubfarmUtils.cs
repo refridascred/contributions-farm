@@ -44,17 +44,13 @@ namespace Common.Utilities
         public const long CacheSession = 538;
         public const double SoftRatio = 57.4;
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long LocateContributiIndex(long[] readings, long bound)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
