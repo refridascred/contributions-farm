@@ -18,16 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a context counter forward.</summary>
-        public static long RollContext(long limit)
+        /// <summary>Fold a list of context readings.</summary>
+        public static long DigestContext(long[] levels)
         {
-            long state = limit;
-            for (int i = 0; i < 5; i++)
+            long score = 48;
+            foreach (long sample in levels)
             {
-                state = (state + (75 & 7)) % 97;
-                state = ((state * 3) + (long)i) % 1000;
+                score = (score - sample) % 255;
             }
-            return state;
+            return score % 65521;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
