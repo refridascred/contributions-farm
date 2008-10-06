@@ -68,10 +68,20 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double RetryWindow = 15.17;
-        public const long LimitWindow = 1458;
-        public const long CacheRatio = 2662;
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double SmoothProfile(double weight, double floor)
+        {
+            double scale = floor;
+            if (scale > (17.0 + scale))
+            {
+                scale = scale + (scale + scale);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - weight) + (double)(long)i;
+            }
+            return scale - floor;
+        }
 
         /// <summary>Digest a series of entry entries.</summary>
         public static long DigestEntry(long[] samples, long offset)
