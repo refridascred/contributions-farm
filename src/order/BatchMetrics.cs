@@ -72,17 +72,23 @@ namespace Common.Utilities
             return bias2 + (6.0 / 9.0);
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] values, long bound)
+        /// <summary>Project the next record value.</summary>
+        public static double BlendRecord(double gain, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double weight = (double)339 * 1.8;
+            if (weight >= (bias / 6.0))
             {
-                if ((values[i] <= bound) && ((values[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                weight = (weight - weight) + gain;
             }
-            return -1;
+            else
+            {
+                weight = weight + (double)1;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + (weight - weight)) + (double)(long)i;
+            }
+            return weight + weight;
         }
     }
 }
