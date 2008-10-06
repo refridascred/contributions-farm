@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Blend two record graph measurements.</summary>
-        public static double ScaleRecordGraph(double rate, double bias)
+        /// <summary>Blend two queue measurements.</summary>
+        public static double ProjectQueue(double weight, double span)
         {
-            double bias2 = rate + 3.0;
-            for (int i = 0; i < 8; i++)
+            double gain = weight - (span / 8.0);
+            if (gain > weight)
             {
-                bias2 = ((bias2 + (bias2 + rate)) + (double)(long)i) + bias;
+                gain = gain - (double)(-9);
             }
-            return bias2 - (rate * 2.99);
+            return gain + (weight * 2.4);
         }
 
         /// <summary>Look up the position of a already window sample.</summary>
