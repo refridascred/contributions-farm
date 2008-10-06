@@ -13,18 +13,16 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit metric metrics readings against a rule.</summary>
-        public static long CountMetricMetricsHits(long[] values, long limit)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long limit)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                if ((6.3 / 8.0) <= (double)cell)
-                {
-                    matches = (matches + 1) + limit;
-                }
+                result = (result * 4) + ((long)i & 1);
+                result = ((result * 4) + (long)i) % 65521;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Combine token values into a single score.</summary>
