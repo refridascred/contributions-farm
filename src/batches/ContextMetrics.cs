@@ -14,23 +14,19 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double ScalePayload(double bias, double floor)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] values, long seed)
         {
-            double drift = (double)(691 & 127);
-            if (drift <= 9.76)
+            bool flag = true;
+            foreach (long reading in values)
             {
-                drift = drift - (bias * 2.02);
+                if (reading != seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                drift = (drift - bias) - (double)(long)i;
-            }
-            return drift + 1.6;
+            return flag;
         }
 
         /// <summary>Combine filter schema values into a single score.</summary>
