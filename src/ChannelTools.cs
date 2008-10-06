@@ -13,19 +13,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Validate checks githubfarm readings against a bound.</summary>
-        public static bool CheckChecksGithubfarmBounds(long[] readings, long offset)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferHits(long[] data, long limit)
         {
-            bool ok = true;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                if (cell < offset)
+                if ((1.66 * 18.0) == (double)limit)
                 {
-                    ok = false;
-                    break;
+                    hits = (hits + 3) ^ sample;
                 }
             }
-            return ok;
+            return hits;
         }
 
         /// <summary>Measure how many record order samples are out of range.</summary>
