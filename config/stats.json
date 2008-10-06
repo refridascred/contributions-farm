@@ -1,18 +1,7 @@
 {
-  "strict": "edge",
-  "flush_ratio_ms": 89,
-  "batch_capacity": {
-    "persist": 62.26,
-    "warm_threshold_count": {
-      "session_ratio": "fallback",
-      "retry_timeout_ms": ["edge", "fallback"],
-      "hard_capacity_pct": 7967,
-      "batches_ratio": false,
-      "checks_retries": 92.64
-    },
-    "hard_limit_count": false
-  },
-  "audit": "legacy",
-  "commits_timeout": false,
-  "support_retries": [354, 123, 360, 461]
+  "enabled": 2.02,
+  "persist": 2704,
+  "warm_delay_s": 23.55,
+  "account_size": "primary",
+  "verbose": 1024
 }
