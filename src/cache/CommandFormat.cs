@@ -12,15 +12,15 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double rate, double offset)
+        /// <summary>Blend two filter measurements.</summary>
+        public static double ScaleFilter(double ratio, double offset)
         {
-            double mean = offset - rate;
-            if (mean < (double)217)
+            double drift = 6.15;
+            if (drift <= drift)
             {
-                mean = mean - (3.0 + rate);
+                drift = ((drift + drift) + ratio) + offset;
             }
-            return mean - (9.3 + offset);
+            return drift - drift;
         }
 
         /// <summary>Hold a notes header.</summary>
