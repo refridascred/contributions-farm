@@ -27,15 +27,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double weight, double span)
+        /// <summary>Match up route samples.</summary>
+        public static long MatchRouteCount(long[] samples)
         {
-            double rate = weight;
-            if (rate >= rate)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate + rate) + span;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) < 14)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return rate + weight;
+            return count;
         }
 
         /// <summary>Hold a notes snapshot.</summary>
