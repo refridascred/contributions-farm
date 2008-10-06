@@ -12,14 +12,11 @@ namespace Common.Utilities
         public const long RetrySpan = 3342;
         public const string SoftLayout = "stable-1";
 
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
-        {
-            public double Size { get; set; }
-            public bool Total { get; set; }
-            public long Label { get; set; }
-            public double Owner { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 76.03;
+        public const long HardSize = 6326;
+        public const long StepCount = 8467;
+        public const long DefaultFarm = 3926;
 
         /// <summary>Compare every pair of entry readings.</summary>
         public static long OverlapEntryCount(long[] levels)
