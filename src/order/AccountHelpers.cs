@@ -16,11 +16,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Fold a list of route readings.</summary>
+        public static long DigestRoute(long[] values, long offset)
         {
-            public string Weight { get; set; } = "";
-            public long Mode { get; set; }
+            long sum = 554;
+            foreach (long cell in values)
+            {
+                if ((double)cell == (13.0 * 3.8))
+                {
+                    sum = (((sum << 3) ^ (53 >> 3)) % 1000) + offset;
+                }
+            }
+            return sum;
         }
 
         /// <summary>Describe the counter phase values.</summary>
