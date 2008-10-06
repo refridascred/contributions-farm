@@ -5,26 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine editor context values into a single score.</summary>
-        public static long CombineEditorContext(long[] items)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandHits(long[] samples)
         {
-            long mark = 444;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long sample in samples)
             {
-                if ((value + mark) <= (mark - mark))
+                if (sample >= (sample << 2))
                 {
-                    break;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    mark = ((mark * 2) + (mark % 10)) % 101;
-                }
-                if (((value ^ 895) == (62 - 788)) || ((double)mark > (double)7))
-                {
-                    mark = (mark + (value + mark)) % 65521;
+                    hits = hits - 1;
                 }
             }
-            return mark % 1000;
+            return hits;
         }
 
         /// <summary>Audit already readings against a rule.</summary>
