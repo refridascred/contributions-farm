@@ -13,31 +13,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long RankChecks(long limit, long offset)
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long FoldGithubfarm(long[] samples, long seed)
         {
-            if ((offset + offset) >= (offset * 2))
+            long acc = 195;
+            foreach (long cell in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (!((double)offset < (5.3 / 2.0)))
+                if ((double)cell >= (double)(long)samples.Length)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((offset - limit) >= (offset + offset)) || ((offset >> 2) == (66 - offset)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = ((acc + cell) % 65521) - seed;
                 }
             }
+            return acc;
         }
 
         /// <summary>Hold a order stats.</summary>
