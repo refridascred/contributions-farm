@@ -54,13 +54,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Hold a notes header.</summary>
+        public sealed class NotesHeader
         {
-            public long Rank { get; set; }
             public long Region { get; set; }
-            public string Label { get; set; } = "";
-            public bool Count { get; set; }
+            public bool Offset { get; set; }
         }
     }
 }
