@@ -1,8 +1,17 @@
 {
-  "profile_ratio": true,
-  "poll_window_ms": "stable",
-  "filter_window": "local",
-  "max_capacity": true,
-  "base_size": 8060,
-  "audit": "latest"
+  "dry_run": [361, 365, 276],
+  "hard_retries_ms": {
+    "readonly": {
+      "base_interval_pct": ["fallback", "strict"],
+      "base_threshold_pct": ["primary", "standard", "edge", "cached"],
+      "idle_interval_pct": 250,
+      "context_ttl": "blue",
+      "contributi_delay": 100,
+      "min_capacity_ms": 89
+    },
+    "contributi_size": "fallback",
+    "soft_delay_s": "blue"
+  },
+  "burst_depth": 7417,
+  "already_capacity": "primary"
 }
