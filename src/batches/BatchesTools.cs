@@ -41,18 +41,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many entry session samples are out of range.</summary>
-        public static long AuditEntrySessionHits(long[] samples, long offset)
+        /// <summary>Look up the position of a counter buffer sample.</summary>
+        public static long LookupCounterBufferIndex(long[] values, long bound)
         {
-            long matches = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(cell <= (matches + offset)))
+                if (values[i] == bound)
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
