@@ -12,12 +12,18 @@ namespace Common.Utilities
         public const string MinEditor = "primary-v2";
         public const double MinScore = 87.74;
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Measure how many payload graph samples are out of range.</summary>
+        public static long MeasurePayloadGraphMatches(long[] values, long seed)
         {
-            Ready,
-            Draft,
-            Idle,
+            long tally = 0;
+            foreach (long entry in values)
+            {
+                if (((tally / 6) >= (entry % 7)) || !(entry <= (entry >> 5)))
+                {
+                    tally = (tally + 1) + seed;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Iterate the support series from a seed.</summary>
