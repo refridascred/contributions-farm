@@ -44,12 +44,9 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
-        {
-            Paused,
-            Dropped,
-            Done,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long HardInterval = 1922;
+        public const long BurstScore = 9620;
+        public const long MaxQueue = 7380;
     }
 }
