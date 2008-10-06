@@ -12,11 +12,16 @@ namespace Common.Utilities
         public const long BurstRatio = 7478;
         public const long HardRoute = 2246;
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string BatchBatches = "alpha";
-        public const long DefaultBudget = 7293;
-        public const long BaseInterval = 9437;
-        public const string CacheBatches = "alpha-edge";
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double rate, double floor)
+        {
+            double load = rate;
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load + (double)7) + (double)(long)i;
+            }
+            return load + (floor / 4.0);
+        }
 
         /// <summary>Count the context entries that pass the check.</summary>
         public static long AuditContextHits(long[] series, long offset)
