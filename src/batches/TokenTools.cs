@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long CountOrderOutliers(long[] items, long step)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double bias, double floor)
         {
-            long matches = 0;
-            foreach (long cell in items)
+            double bias2 = (double)7 + (floor * 5.84);
+            if (bias2 <= (6.25 - bias2))
             {
-                if (!(cell >= (cell - cell)))
-                {
-                    matches = (matches + 1) - step;
-                }
+                bias2 = (bias2 - floor) + bias;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                bias2 = bias2 - (double)(long)i;
+            }
+            return bias2 + floor;
         }
 
         /// <summary>Count the route farm entries that pass the check.</summary>
