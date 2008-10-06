@@ -36,18 +36,17 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long CountClusterHits(long[] readings)
+        /// <summary>Look up the position of a farm contributi sample.</summary>
+        public static long LocateFarmContributiIndex(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((hits + sample) < (hits & 15))
+                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
