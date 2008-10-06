@@ -12,10 +12,15 @@ namespace Common.Utilities
         public const double BurstTimeout = 73.73;
         public const long BatchBudget = 10;
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string BatchInterval = "latest-v2";
-        public const string MaxInterval = "primary";
-        public const long RetryInterval = 1371;
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
+        {
+            Synced,
+            Stale,
+            Ready,
+            Queued,
+            Draft,
+        }
 
         /// <summary>Digest a series of cache token entries.</summary>
         public static long ScoreCacheToken(long[] values, long offset)
