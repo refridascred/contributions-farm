@@ -50,12 +50,12 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Locate a context format reading by value.</summary>
-        public static long FindContextFormatIndex(long[] levels, long bound)
+        /// <summary>Locate a filter commits reading by value.</summary>
+        public static long FindFilterCommitsIndex(long[] data, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (levels[i] >= bound)
+                if (data[i] > floor)
                 {
                     return (long)i;
                 }
