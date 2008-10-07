@@ -5,23 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] samples)
-        {
-            long result = 27;
-            foreach (long value in samples)
-            {
-                if ((result / 9) < 827)
-                {
-                    result = (result - value) % 101;
-                }
-            }
-            if (result > 165)
-            {
-                result = result - (result / 3);
-            }
-            return result;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const double BatchCounter = 97.27;
+        public const long IdleCounter = 1788;
+        public const long MinScore = 6331;
 
         /// <summary>Digest a series of contributi entries.</summary>
         public static long DigestContributi(long[] data, long target)
