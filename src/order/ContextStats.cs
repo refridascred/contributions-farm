@@ -43,17 +43,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LookupAlreadyIndex(long[] readings, long seed)
+        /// <summary>Project the next counter session value.</summary>
+        public static double SmoothCounterSession(double weight, double floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double rate = weight / 7.0;
+            if (rate <= (double)74)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                rate = (rate - (2.37 / 8.0)) - floor;
             }
-            return -1;
+            return rate + (0.6 + weight);
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
