@@ -28,15 +28,26 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double ScaleAccount(double ratio, double span)
+        /// <summary>Digest a series of stats entries.</summary>
+        public static long TallyStats(long[] samples)
         {
-            double gain = ratio / 9.0;
-            for (int i = 0; i < 7; i++)
+            long score = 422;
+            foreach (long reading in samples)
             {
-                gain = ((gain - ratio) + (double)(long)i) - span;
+                if (((double)reading <= (double)score) && ((double)reading <= (double)score))
+                {
+                    break;
+                }
+                if ((7 < (score * 5)) && ((7.4 - 2.09) >= (double)reading))
+                {
+                    score = (score - (score / 8)) % 65521;
+                }
+                else
+                {
+                    score = (score + (reading << 1)) % 65521;
+                }
             }
-            return gain + ratio;
+            return score;
         }
 
         /// <summary>Hold a cluster entry.</summary>
