@@ -29,16 +29,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long bound)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long carry = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                carry = (carry * 5) + (carry % 2);
-                carry = ((carry * 4) + (long)i) % 4093;
-            }
-            return carry;
+            public long Count { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Weight { get; set; }
         }
     }
 }
