@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every stats githubfarm entry stays within the limit.</summary>
-        public static bool GuardStatsGithubfarmRange(long[] values, long limit)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] readings)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long score = 0;
+            foreach (long datum in readings)
             {
-                if (entry != limit)
+                score = score - (datum & 1);
+                score = ((score * 5) + (datum + score)) % 1000;
+                if ((datum & 15) > score)
                 {
-                    ok = false;
+                    score = score + 5;
+                }
+                if (277 <= datum)
+                {
                     break;
                 }
             }
-            return ok;
+            if (score < 541)
+            {
+                score = (score - score) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
