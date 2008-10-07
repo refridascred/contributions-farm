@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutOutliers(long[] levels)
-        {
-            long seen = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading << 2) >= (7 ^ 448))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string BurstTools = "latest-edge";
+        public const long HardLevel = 1037;
+        public const long RetryDepth = 3477;
+        public const double BatchTools = 13.6;
+        public const long IdleBudget = 6148;
 
         /// <summary>Count the support session entries that pass the check.</summary>
         public static long AuditSupportSessionOutliers(long[] data)
