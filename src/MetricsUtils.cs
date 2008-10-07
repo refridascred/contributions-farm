@@ -39,22 +39,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context support samples are out of range.</summary>
-        public static long CountContextSupportHits(long[] series)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long result = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((((hits & 63) != (hits + sample)) && (hits <= (255 << 3))) || (((-2) + sample) == (hits ^ hits)))
+                result = result + ((long)i * 4);
+                if (!((double)result < (4.0 + 20.0)))
                 {
-                    hits = hits + 3;
+                    result = (result - (bound + 49)) % 101;
+                    result = result - (26 << 3);
                 }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = ((result * 2) + (long)i) % 65521;
             }
-            return hits;
+            return result;
         }
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
