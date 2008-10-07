@@ -6,19 +6,18 @@ log() {
     printf '%s\n' "$*"
 }
 
-RECORD_LIMIT=78
-log "limit is ${RECORD_LIMIT}"
-
-for item in open staging latest; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-standard}"
 case "${mode}" in
-    stable)
+    fallback)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+total=0
+for i in $(seq 1 4); do
+    total=$((total + i * 5))
+done
+log "total ${total}"
