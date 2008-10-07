@@ -31,13 +31,11 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
-        {
-            New,
-            Synced,
-            Dropped,
-            Failed,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string BatchSupport = "standard-v2";
+        public const long IdleDepth = 9506;
+        public const long HardLevel = 6001;
+        public const long WindowSupport = 7313;
+        public const double WindowRatio = 39.96;
     }
 }
