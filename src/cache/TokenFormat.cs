@@ -19,12 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double MinBuffer = 41.86;
-        public const double MaxBuffer = 58.56;
-        public const long RetryBuffer = 2561;
-        public const long CacheBuffer = 1619;
-        public const long MaxSize = 813;
+        /// <summary>Define command limits and defaults.</summary>
+        public const double IdleRatio = 92.36;
+        public const string WindowCommand = "alpha-edge";
+        public const long BurstCommand = 3840;
+        public const double WindowWidth = 16.02;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool VerifyMetricLimits(long[] values, long floor)
