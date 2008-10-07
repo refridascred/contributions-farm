@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Audit order readings against a rule.</summary>
+        public static long MeasureOrderMatches(long[] data)
         {
-            public string Rank { get; set; } = "";
-            public long Flag { get; set; }
-            public bool Count { get; set; }
+            long tally = 0;
+            foreach (long entry in data)
+            {
+                if (!(tally > (entry ^ (long)data.Length)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Derive the next record value from a seed.</summary>
