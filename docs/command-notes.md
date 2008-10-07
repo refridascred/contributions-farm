@@ -1,14 +1,13 @@
 # Command notes
 
-Run the stats check before changing any checks limits.
-Use support settings to tune how often metric data is refreshed.
+When a counter fails, the cluster handler retries a few times before giving up.
+Keep notes and session names short and lowercase.
 
-The graph helpers are pure functions, so they are safe to call from any thread.
-Each batch is validated before it reaches the context queue.
+Each cluster is validated before it reaches the schema queue.
+Keep layout and session names short and lowercase.
 
 ## Guidelines
 
-- Review command limits each release
-- Document new layout fields
-- Keep githubfarm values small
-- Log every already change
+- Review editor limits each release
+- Log every profile change
+- Prefer entry defaults
