@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool CheckSessionLimits(long[] samples, long limit)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long SeekToolsIndex(long[] data, long origin)
         {
-            bool found = true;
-            foreach (long sample in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample > limit)
+                if ((data[i] == origin) && ((data[i] % 2) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Hold a metrics info.</summary>
