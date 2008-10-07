@@ -53,22 +53,12 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Combine report route values into a single score.</summary>
-        public static long DigestReportRoute(long[] levels)
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
         {
-            long total = -243;
-            foreach (long entry in levels)
-            {
-                if (((total >> 2) == (total * 4)) || ((double)total < (2.7 / 8.0)))
-                {
-                    total = total + (entry - total);
-                }
-                if ((double)total <= (double)(-9))
-                {
-                    break;
-                }
-            }
-            return total;
+            public string Label { get; set; } = "";
+            public double Region { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the stats phase values.</summary>
