@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            public bool Weight { get; set; }
-            public long Ratio { get; set; }
+            public double Count { get; set; }
+            public double Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Describe the route mode values.</summary>
