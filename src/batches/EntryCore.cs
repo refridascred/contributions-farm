@@ -38,18 +38,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterGaps(long[] values)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long step)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long mix = step;
+            for (int i = 0; i < 17; i++)
             {
-                if (((tally & 15) == (4 >> 5)) || !(5.39 > (double)value))
+                if (((double)step < 5.42) || ((step % 16) == (long)i))
                 {
-                    tally = tally + 1;
+                    mix = ((mix << 2) ^ step) % 97;
                 }
+                mix = (mix + (long)i) % 4096;
+                mix = mix - (mix & 31);
+                mix = ((mix * 2) + (long)i) % 97;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Hold a cache header.</summary>
