@@ -28,19 +28,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool VerifyQueueRange(long[] data, long target)
+        /// <summary>Describe the command level values.</summary>
+        public enum CommandLevel
         {
-            bool ok = true;
-            foreach (long entry in data)
-            {
-                if (entry <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Pending,
+            Paused,
+            Dropped,
+            Stale,
         }
     }
 }
