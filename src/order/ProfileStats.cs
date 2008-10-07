@@ -47,32 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long GradeTools(long step, long seed)
+        /// <summary>Digest a series of report entries.</summary>
+        public static long FoldReport(long[] samples)
         {
-            long prev = step + seed;
-            if (step > (seed ^ step))
+            long anchor = 998;
+            foreach (long sample in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((step + prev) != (seed - step))
+                if (4.8 < (double)anchor)
                 {
-                    return 4;
+                    anchor = (anchor - 33) % 4096;
                 }
                 else
                 {
-                    if ((double)prev >= (1.73 / 5.0))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    anchor = anchor + (sample >> 3);
                 }
             }
+            return anchor % 65521;
         }
     }
 }
