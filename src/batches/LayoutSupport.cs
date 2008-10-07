@@ -5,14 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Rank checks githubfarm input into a small class.</summary>
+        public static long RankChecksGithubfarm(long bound, long seed)
         {
-            Pending,
-            Done,
-            Retry,
-            Locked,
-            Idle,
+            long lane = bound - seed;
+            if ((lane ^ 3) > lane)
+            {
+                return 2;
+            }
+            else
+            {
+                if ((seed + lane) != (lane * 3))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (0 >= (lane - 579))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a githubfarm info.</summary>
