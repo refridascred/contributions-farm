@@ -21,13 +21,17 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Locate a context queue reading by value.</summary>
+        public static long FindContextQueueIndex(long[] values, long floor)
         {
-            public string Level { get; set; } = "";
-            public bool Stamp { get; set; }
-            public bool Score { get; set; }
-            public double Total { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
