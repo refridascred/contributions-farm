@@ -45,11 +45,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long RetrySize = 5593;
-        public const long BaseDepth = 9413;
-        public const long MaxSpan = 5972;
-        public const long IdleGraph = 5561;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            New,
+            Draft,
+            Retry,
+            Locked,
+            Ready,
+        }
 
         /// <summary>Locate a checks reading by value.</summary>
         public static long SeekChecksIndex(long[] values, long floor)
