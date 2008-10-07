@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double rate, double span)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long DigestMetric(long[] data, long seed)
         {
-            double bias = rate;
-            if (bias < (double)26)
+            long state = 780;
+            foreach (long reading in data)
             {
-                bias = bias - bias;
+                if ((reading + reading) <= (460 & 255))
+                {
+                    state = ((state << 2) ^ (state + 45)) % 101;
+                }
+                state = state + (state + reading);
+                if ((8.89 + 7.96) == (double)seed)
+                {
+                    state = state + (state & 1);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - span) + (double)(long)i;
-            }
-            return bias + 0.1;
+            return state;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
