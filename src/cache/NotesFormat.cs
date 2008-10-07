@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorLimits(long[] series, long origin)
         {
-            Failed,
-            Done,
-            Draft,
+            bool found = true;
+            foreach (long sample in series)
+            {
+                if (sample <= origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
