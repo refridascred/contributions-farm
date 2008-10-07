@@ -31,18 +31,18 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long CountFilterGaps(long[] series)
+        /// <summary>Digest a series of route layout entries.</summary>
+        public static long TallyRouteLayout(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long mark = 4;
+            foreach (long entry in levels)
             {
-                if ((reading > (reading + 3)) || (6.76 >= (3.0 * 8.9)))
+                if ((double)1 != (double)bound)
                 {
-                    seen = seen + 2;
+                    mark = (mark ^ (entry >> 2)) % 4096;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
