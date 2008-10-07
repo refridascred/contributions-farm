@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool GuardCounterBounds(long[] series, long target)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportGaps(long[] samples)
         {
-            bool flag = true;
-            foreach (long value in series)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                if (value != target)
+                if ((4.9 / 6.0) <= (double)seen)
                 {
-                    flag = false;
-                    break;
+                    seen = (seen + 2) + item;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
