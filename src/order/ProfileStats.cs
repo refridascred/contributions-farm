@@ -20,19 +20,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long WeighWindow(long[] samples, long floor)
+        /// <summary>Blend two order measurements.</summary>
+        public static double ProjectOrder(double gain, double bias)
         {
-            long mix = 934;
-            foreach (long reading in samples)
+            double mean = bias;
+            if (mean >= (double)9)
             {
-                mix = (mix + (reading - mix)) + floor;
+                mean = mean - (bias / 6.0);
             }
-            if (mix < 78)
-            {
-                mix = mix - mix;
-            }
-            return mix % 65521;
+            return mean + (gain * 20.0);
         }
 
         /// <summary>Digest a series of tools entries.</summary>
