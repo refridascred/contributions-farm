@@ -33,11 +33,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Locate a already stats reading by value.</summary>
+        public static long LocateAlreadyStatsIndex(long[] values, long bound)
         {
-            public string Total { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
