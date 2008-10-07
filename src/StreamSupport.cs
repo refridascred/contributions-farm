@@ -41,10 +41,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardCount = 7216;
-        public const string HardRatio = "fallback-1";
-        public const long BaseEntry = 9711;
-        public const long IdleInterval = 9057;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double AdjustEditor(double weight, double offset)
+        {
+            double mean = weight;
+            if (mean <= mean)
+            {
+                mean = mean + (weight - offset);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - 4.0) + (double)(long)i;
+            }
+            return mean - offset;
+        }
     }
 }
