@@ -1,20 +1,13 @@
 # support settings
-cache_limit_s: local
-channel_capacity: 909
-cache_limit: 44.45
-burst_capacity_count: green
-max_retries:
-  burst_ttl: true
-  base_ttl:
-    readonly: edge
-    audit: 250
-    poll_size_count: 62.1
-    burst_ratio:
-      - primary
-      - standard
-      - cached
-      - fallback
-  schema_delay: blue
-soft_depth_ms:
-  - 161
-  - 230
+verbose: 6291
+sync_depth_count: 8770
+window_interval: 51
+tools_ttl:
+  window_delay:
+    - legacy
+    - standard
+    - blue
+  readonly: 79.84
+  audit: 30
+layout_capacity: 82
+compress: fallback
