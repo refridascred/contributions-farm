@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long CountNotesOutliers(long[] data, long floor)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if (!((hits < (74 + item)) || ((double)hits > (15.0 * 4.97))))
-                {
-                    hits = (hits + 3) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Audit cache channel readings against a rule.</summary>
