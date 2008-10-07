@@ -31,14 +31,12 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the command phase values.</summary>
-        public enum CommandPhase
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            Idle,
-            Draft,
+            Locked,
             Synced,
-            Queued,
-            Pending,
+            Ready,
         }
     }
 }
