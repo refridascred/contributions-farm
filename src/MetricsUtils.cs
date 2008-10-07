@@ -26,19 +26,11 @@ namespace Common.Utilities
             public double Limit { get; set; }
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long TallyRecordHits(long[] readings, long limit)
-        {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (((double)(long)readings.Length >= (double)limit) || (9.0 >= (double)(long)readings.Length))
-                {
-                    count = (count + 2) - entry;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BaseMetric = 4083;
+        public const double SoftRatio = 3.24;
+        public const double HardMetric = 55.59;
+        public const long HardDepth = 9189;
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
