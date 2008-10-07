@@ -1,21 +1,5 @@
 {
-  "retry_depth": {
-    "burst_ttl_count": {
-      "min_retries_count": [127, 234, 411],
-      "record_limit": "primary",
-      "dry_run": 15.5,
-      "retry_ratio": "fallback",
-      "compress": "edge",
-      "flush_size_ms": false
-    },
-    "schema_capacity": false,
-    "compress": "staging",
-    "burst_capacity": "strict",
-    "retry_delay_ms": "blue"
-  },
-  "batch_ttl": "eu-west",
-  "retry_window_s": "blue",
-  "verbose": 9199,
-  "token_ratio": 100,
-  "persist": 85.9
+  "flush_retries": "latest",
+  "cache_limit": 59,
+  "hard_capacity": 250
 }
