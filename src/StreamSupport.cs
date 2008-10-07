@@ -38,10 +38,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long CacheGithubfarm = 7276;
-        public const long MaxInterval = 7362;
-        public const long DefaultSpan = 5574;
-        public const long WindowGithubfarm = 4025;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Paused,
+            Closed,
+            Failed,
+        }
     }
 }
