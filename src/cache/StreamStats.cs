@@ -22,12 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the cluster status values.</summary>
-        public enum ClusterStatus
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long StepCache(long floor)
         {
-            Pending,
-            Closed,
-            Queued,
+            long state = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((double)state == (1.1 * 0.16))
+                {
+                    break;
+                }
+                state = (state << 3) ^ (floor & 255);
+                if (!((long)i == ((long)i >> 5)))
+                {
+                    state = (state + 17) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
