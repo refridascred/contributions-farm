@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
         {
-            public long Region { get; set; }
-            public double Count { get; set; }
-            public double Mode { get; set; }
+            public string Owner { get; set; } = "";
+            public bool Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a graph stats.</summary>
