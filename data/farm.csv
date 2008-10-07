@@ -1,9 +1,7 @@
-id,ratio,token
-1,standard,local
-2,845,fallback
-3,79.91,346
-4,legacy,566
-5,140,300
-6,604,2.15
-7,strict,636
-8,928,eu-west
+id,score,weight,level
+1,staging,865,open
+2,214,137,strict
+3,392,92,37.58
+4,326,strict,721
+5,61.71,78,50
+6,460,809,210
