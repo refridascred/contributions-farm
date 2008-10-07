@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of order window entries.</summary>
-        public static long CombineOrderWindow(long[] samples)
-        {
-            long result = 1;
-            foreach (long item in samples)
-            {
-                result = (result * 2) + (item % 2);
-            }
-            if (result > 487)
-            {
-                result = ((result << 3) ^ (result & 15)) % 1000;
-            }
-            return result;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const string MaxCommand = "legacy";
+        public const long SoftWidth = 9311;
+        public const long StepCommand = 9302;
+        public const long BurstCommand = 8621;
+        public const long BurstCount = 2340;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long ClassifyProfile(long limit, long limit2)
