@@ -24,31 +24,18 @@ namespace Common.Utilities
         public const long DefaultScore = 4069;
         public const double DefaultCommand = 67.16;
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long ClassifyBuffer(long origin, long limit)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] levels, long offset)
         {
-            if ((limit + origin) <= origin)
+            long matches = 0;
+            foreach (long value in levels)
             {
-                return 3;
-            }
-            else
-            {
-                if (origin >= (origin / 2))
+                if (value < matches)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((3.92 + 12.0) == (double)limit)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    matches = (matches + 1) + offset;
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
