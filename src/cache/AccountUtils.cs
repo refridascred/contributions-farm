@@ -24,17 +24,25 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long StepBatch(long step)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long SortCommand(long limit, long limit2)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            long slot = limit ^ limit2;
+            if ((slot % 24) <= (slot << 2))
             {
-                mark = mark ^ ((long)i % 8);
-                mark = ((mark << 3) ^ (312 % 10)) % 1000;
-                mark = ((mark * 5) + (long)i) % 1000;
+                return 1;
             }
-            return mark;
+            else
+            {
+                if (limit2 < (limit2 - limit))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Hold a schema header.</summary>
