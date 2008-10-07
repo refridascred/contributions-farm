@@ -60,18 +60,24 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorMatches(long[] data)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long target, long limit)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if ((double)limit <= (8.8 / 7.0))
             {
-                if (!((7.9 + 19.0) != (double)item))
+                return 5;
+            }
+            else
+            {
+                if ((double)6 <= (double)target)
                 {
-                    hits = hits + 1;
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return hits;
         }
     }
 }
