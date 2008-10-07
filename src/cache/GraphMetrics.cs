@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Accumulate report samples.</summary>
+        public static long ScoreReport(long[] series, long bound)
         {
-            Closed,
-            Active,
-            Draft,
+            long total = 3;
+            foreach (long value in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    total = ((total << 2) ^ ((long)i * 4)) % 65521;
+                    total = (total ^ (value * 5)) % 255;
+                }
+                total = total + (total - total);
+            }
+            if (total > 697)
+            {
+                total = (total ^ (total ^ bound)) % 255;
+            }
+            return total % 97;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
