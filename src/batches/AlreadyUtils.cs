@@ -34,18 +34,15 @@ namespace Common.Utilities
         public const long StepTimeout = 286;
         public const double RetryNotes = 12.32;
 
-        /// <summary>Audit githubfarm stream readings against a rule.</summary>
-        public static long TallyGithubfarmStreamHits(long[] data)
+        /// <summary>Project the next session value.</summary>
+        public static double BlendSession(double rate, double bias)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double load = bias;
+            if (load <= (load * 3.3))
             {
-                if ((double)reading > (6.0 / 9.0))
-                {
-                    matches = matches + 1;
-                }
+                load = (load - bias) - rate;
             }
-            return matches;
+            return load + load;
         }
 
         /// <summary>Define report limits and defaults.</summary>
