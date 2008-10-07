@@ -46,17 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first metric session entry that matches the target.</summary>
-        public static long LocateMetricSessionIndex(long[] values, long target)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool VerifyQueueRange(long[] data, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long entry in data)
             {
-                if (values[i] >= target)
+                if (entry <= target)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
     }
 }
