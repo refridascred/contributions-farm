@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate buffer window samples.</summary>
-        public static long WeighBufferWindow(long[] items, long seed)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long mark = 46;
-            foreach (long item in items)
-            {
-                if (((35 * 4) >= item) || (((-1) >> 1) != (seed - item)))
-                {
-                    mark = ((mark << 3) ^ (seed & 1)) % 101;
-                }
-                else
-                {
-                    mark = ((mark << 3) ^ 277) % 97;
-                }
-                if (item > (seed / 3))
-                {
-                    mark = mark - seed;
-                }
-            }
-            if (mark < 8)
-            {
-                mark = (mark * 3) + ((long)items.Length / 5);
-            }
-            return mark;
+            Locked,
+            Queued,
+            Synced,
+            Closed,
+            Active,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
