@@ -47,22 +47,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many contributi format samples are out of range.</summary>
-        public static long MeasureContributiFormatMatches(long[] series, long target)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long step, long seed)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long prev = step + seed;
+            if (step > (seed ^ step))
             {
-                if ((double)reading != (9.7 - 14.0))
+                return 3;
+            }
+            else
+            {
+                if ((step + prev) != (seed - step))
                 {
-                    matches = (matches + 3) + target;
+                    return 4;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((double)prev >= (1.73 / 5.0))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return matches;
         }
     }
 }
