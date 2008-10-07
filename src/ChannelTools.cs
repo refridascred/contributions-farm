@@ -23,15 +23,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Blend two graph layout measurements.</summary>
-        public static double AdjustGraphLayout(double bias, double bias2)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] series, long seed)
         {
-            double drift = bias2;
-            if (drift >= (bias / 2.0))
+            bool ok = true;
+            foreach (long datum in series)
             {
-                drift = drift - drift;
+                if (datum <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return drift + bias;
+            return ok;
         }
     }
 }
