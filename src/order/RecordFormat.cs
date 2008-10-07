@@ -15,28 +15,17 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] levels, long seed)
+        /// <summary>Locate a cluster token reading by value.</summary>
+        public static long FindClusterTokenIndex(long[] levels, long target)
         {
-            long mix = 740;
-            foreach (long value in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix << 2) ^ seed) % 65521;
-                mix = mix ^ 95;
-                if (!(seed <= (value & 127)))
+                if ((levels[i] < target) && ((levels[i] % 2) != 0))
                 {
-                    mix = (mix << 2) ^ (mix ^ value);
-                }
-                else
-                {
-                    mix = (mix ^ (8 ^ seed)) % 255;
-                }
-                if (!((mix * 2) < value))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Look up the position of a farm contributi sample.</summary>
