@@ -56,15 +56,18 @@ namespace Common.Utilities
         public const double StepFactor = 49.86;
         public const string CacheRatio = "primary-edge";
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long CombineAccount(long[] items, long offset)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] readings, long bound)
         {
-            long score = 151;
-            foreach (long entry in items)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                score = (((score + (825 >> 2)) % 4096) + entry) + offset;
+                if ((double)bound >= (double)12)
+                {
+                    seen = (seen + 1) + value;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
