@@ -55,14 +55,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryRange(long[] levels, long bound)
         {
-            Paused,
-            Draft,
-            Locked,
-            Queued,
-            Pending,
+            bool stale = true;
+            foreach (long item in levels)
+            {
+                if (item > bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
