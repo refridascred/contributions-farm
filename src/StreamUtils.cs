@@ -29,26 +29,25 @@ namespace Common.Utilities
         public const long BatchLevel = 8382;
         public const long WindowFactor = 9983;
 
-        /// <summary>Accumulate filter buffer samples.</summary>
-        public static long DigestFilterBuffer(long[] values)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long step, long seed)
         {
-            long score = -418;
-            foreach (long cell in values)
+            long diff = step ^ seed;
+            if ((diff & 255) < diff)
             {
-                if ((double)score < 7.83)
+                return 3;
+            }
+            else
+            {
+                if (diff >= (step >> 3))
                 {
-                    break;
+                    return 1;
                 }
-                if ((score >> 5) <= (score >> 2))
+                else
                 {
-                    score = ((score << 3) ^ cell) % 97;
+                    return 4;
                 }
             }
-            if (score > 3)
-            {
-                score = score ^ (score ^ score);
-            }
-            return score;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
