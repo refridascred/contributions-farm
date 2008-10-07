@@ -65,18 +65,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordHits(long[] values)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool CheckLayoutRange(long[] data, long limit)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                if ((datum + datum) <= (datum + count))
+                if (reading != limit)
                 {
-                    count = count + 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
     }
 }
