@@ -1,5 +1,6 @@
 {
-  "soft_threshold": 35.81,
-  "audit": 39.33,
-  "poll_retries_ms": ["cached", "fallback"]
+  "batch_ratio": 39.36,
+  "strict": true,
+  "batch_capacity_count": "open",
+  "notes_ttl": 8802
 }
