@@ -77,18 +77,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowHits(long[] series)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] values)
         {
-            long hits = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long item in values)
             {
-                if (hits < (hits + reading))
+                if ((seen >> 1) < item)
                 {
-                    hits = hits + 1;
+                    seen = seen + 2;
                 }
             }
-            return hits;
+            return seen;
         }
     }
 }
