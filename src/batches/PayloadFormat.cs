@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Project the next batch value.</summary>
-        public static double AdjustBatch(double bias, double floor)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            double load = (double)(2 + 2);
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load - (7.87 + bias)) + (double)(long)i;
-            }
-            return load - (floor - bias);
+            Failed,
+            Done,
+            Retry,
+            Active,
+            Ready,
         }
 
         /// <summary>Hold a token stats.</summary>
