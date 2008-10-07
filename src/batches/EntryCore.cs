@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long DeriveMetric(long bound)
-        {
-            long score = bound;
-            for (int i = 0; i < 20; i++)
-            {
-                score = score + bound;
-                score = ((score * 4) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long DefaultCluster = 6875;
+        public const long LimitCount = 282;
+        public const long MinScore = 7731;
+        public const long SoftCluster = 3531;
+        public const double StepRatio = 23.3;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardDepth = 912;
