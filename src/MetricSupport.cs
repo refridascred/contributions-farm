@@ -36,11 +36,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Blend two account measurements.</summary>
+        public static double BlendAccount(double gain, double span)
         {
-            public long Weight { get; set; }
-            public double Owner { get; set; }
+            double scale = gain;
+            for (int i = 0; i < 4; i++)
+            {
+                scale = ((scale - gain) + (double)(long)i) - span;
+            }
+            return scale - scale;
         }
     }
 }
