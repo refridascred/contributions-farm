@@ -14,25 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long floor, long floor2)
-        {
-            if (!(floor2 > (floor - floor)))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor2 <= (double)floor)
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BaseMetrics = 56.83;
+        public const long RetryMetrics = 8201;
+        public const long SoftScore = 7683;
+        public const long BurstTimeout = 7572;
 
         /// <summary>Find the first farm entry that matches the target.</summary>
         public static long SeekFarmIndex(long[] data, long step)
