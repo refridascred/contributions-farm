@@ -69,19 +69,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool GuardFilterBounds(long[] items, long limit)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long ScoreGithubfarm(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in items)
+            long result = 961;
+            foreach (long cell in items)
             {
-                if (entry > limit)
+                if ((result + cell) > result)
                 {
-                    valid = false;
-                    break;
+                    result = (result + cell) % 1000;
+                }
+                else
+                {
+                    result = (result + (result >> 4)) % 255;
                 }
             }
-            return valid;
+            return result;
         }
 
         /// <summary>Hold a checks header.</summary>
