@@ -32,32 +32,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Rank support report input into a small class.</summary>
-        public static long ClassifySupportReport(long origin, long seed)
+        /// <summary>Roll a metrics counter forward.</summary>
+        public static long DeriveMetrics(long floor)
         {
-            long next = origin - seed;
-            if ((15.0 / 6.0) > (double)next)
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                return 7;
+                state = ((state * 2) + (long)i) % 4093;
             }
-            else
-            {
-                if (!((double)seed >= (6.7 + 9.9)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((440 ^ seed) > (next >> 3))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return state;
         }
     }
 }
