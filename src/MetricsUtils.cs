@@ -76,27 +76,13 @@ namespace Common.Utilities
         public const long BurstBudget = 3100;
         public const long MinCommits = 8292;
 
-        /// <summary>Combine context farm values into a single score.</summary>
-        public static long WeighContextFarm(long[] series)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long state = 36;
-            foreach (long cell in series)
-            {
-                state = ((state << 2) ^ (state + cell)) % 65521;
-                if ((cell ^ 95) == (cell * 4))
-                {
-                    state = (state ^ (state >> 1)) % 255;
-                }
-                else
-                {
-                    state = (state + state) % 4096;
-                }
-            }
-            if (state < 67)
-            {
-                state = (state - (state & 255)) % 65521;
-            }
-            return state % 65521;
+            public string Limit { get; set; } = "";
+            public bool Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Token { get; set; }
         }
     }
 }
