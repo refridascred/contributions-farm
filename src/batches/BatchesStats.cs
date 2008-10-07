@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a report reading by value.</summary>
-        public static long SeekReportIndex(long[] samples, long seed)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] >= seed) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Score { get; set; } = "";
+            public string Label { get; set; } = "";
+            public long Region { get; set; }
         }
 
         /// <summary>Describe the command class values.</summary>
