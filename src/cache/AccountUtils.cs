@@ -33,18 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] levels)
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((((3.1 / 2.0) != (double)seen) && ((seen - seen) <= (seen << 2))) || (cell >= (cell - seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the notes payload entries that pass the check.</summary>
