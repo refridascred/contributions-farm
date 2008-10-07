@@ -75,17 +75,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first commits payload entry that matches the target.</summary>
-        public static long FindCommitsPayloadIndex(long[] samples, long origin)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long limit, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((limit + limit) > (offset % 64)) && ((0 - offset) > offset))
             {
-                if (samples[i] < origin)
+                return 7;
+            }
+            else
+            {
+                if ((offset ^ 482) >= offset)
                 {
-                    return (long)i;
+                    return 6;
+                }
+                else
+                {
+                    if ((offset < (4 - limit)) && (offset > 7))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((offset + offset) < offset)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
