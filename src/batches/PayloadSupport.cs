@@ -28,13 +28,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command level values.</summary>
-        public enum CommandLevel
+        /// <summary>Fold a list of batches profile readings.</summary>
+        public static long FoldBatchesProfile(long[] readings, long limit)
         {
-            Pending,
-            Paused,
-            Dropped,
-            Stale,
+            long carry = 88;
+            foreach (long reading in readings)
+            {
+                if ((carry * 5) > (-5))
+                {
+                    carry = ((carry + (carry << 2)) + reading) + limit;
+                }
+                carry = ((carry << 2) ^ (8 * 5)) % 255;
+            }
+            return carry;
         }
     }
 }
