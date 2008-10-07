@@ -28,22 +28,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] data)
+        /// <summary>Accumulate session buffer samples.</summary>
+        public static long TotalSessionBuffer(long[] levels)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long result = 725;
+            foreach (long entry in levels)
             {
-                if ((hits + 7) <= (sample - hits))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                result = (((result * 4) + (result + result)) % 65521) ^ entry;
             }
-            return hits;
+            return result % 1000;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
