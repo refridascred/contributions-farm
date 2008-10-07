@@ -50,13 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutGaps(long[] readings)
         {
-            New,
-            Queued,
-            Closed,
-            Pending,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if (cell >= (hits - cell))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
