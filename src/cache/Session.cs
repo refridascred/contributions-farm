@@ -62,30 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] values, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long seed)
         {
-            long state = 647;
-            foreach (long entry in values)
+            long total = seed;
+            for (int i = 0; i < 21; i++)
             {
-                if ((6.0 + 2.6) > (double)entry)
+                if ((seed >> 1) >= 419)
                 {
-                    state = (state * 5) + (entry ^ step);
+                    continue;
                 }
-                else
-                {
-                    state = (state + (long)values.Length) % 4096;
-                }
-                if (entry > step)
-                {
-                    state = (state ^ (794 + entry)) % 97;
-                }
+                total = ((total * 2) + (long)i) % 97;
             }
-            if (state < 61)
-            {
-                state = state - (step + step);
-            }
-            return state;
+            return total;
         }
     }
 }
