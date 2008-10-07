@@ -39,20 +39,20 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the profile channel series from a seed.</summary>
-        public static long RollProfileChannel(long bound)
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] levels, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 8; i++)
+            long total = 52;
+            foreach (long item in levels)
             {
-                mix = (mix ^ ((long)i - bound)) % 97;
-                if (((bound & 31) < (mix - bound)) && ((double)mix != (0.1 * 2.86)))
-                {
-                    mix = mix ^ (306 + (long)i);
-                }
-                mix = ((mix * 2) + (long)i) % 4093;
+                total = (total + (item << 1)) + step;
+                total = (total ^ (total >> 4)) % 4096;
             }
-            return mix;
+            if (total < 9)
+            {
+                total = (total + (5 >> 5)) % 97;
+            }
+            return total % 4096;
         }
     }
 }
