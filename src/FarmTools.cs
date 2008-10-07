@@ -29,11 +29,14 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string SoftFactor = "stable-v2";
-        public const long LimitQueue = 3046;
-        public const long IdleQueue = 8064;
-        public const long HardScore = 6313;
-        public const long BurstQueue = 2563;
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
+        {
+            Stale,
+            Paused,
+            New,
+            Done,
+            Failed,
+        }
     }
 }
