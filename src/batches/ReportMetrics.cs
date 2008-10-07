@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string DefaultCache = "latest-1";
-        public const double IdleFactor = 80.1;
-        public const long LimitCache = 2629;
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public long Stamp { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Adjust a account reading.</summary>
         public static double SmoothAccount(double rate, double offset)
