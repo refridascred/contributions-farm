@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of farm readings.</summary>
-        public static long MatchFarmCount(long[] data)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long WeighGraph(long[] data, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = -6;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (sample < acc)
                 {
-                    if ((data[i] - data[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = (acc + sample) - target;
                 }
             }
-            return tally;
+            return acc % 97;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
