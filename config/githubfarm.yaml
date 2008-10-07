@@ -1,7 +1,8 @@
 # githubfarm settings
-stats_window: 43.06
-schema_ttl: green
-flush_retries_ms: eu-west
-persist:
-  - 1
-  - 209
+base_limit_pct:
+  - edge
+  - legacy
+  - strict
+batch_ratio_pct: true
+flush_ratio: 96.73
+readonly: false
