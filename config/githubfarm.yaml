@@ -1,17 +1,8 @@
 # githubfarm settings
-base_delay_count: 53.47
-poll_limit: true
-batch_capacity:
-  cache_timeout_s: false
-  default_ttl: strict
-  verbose: 66.57
-  warm_size_pct:
-    soft_timeout: 60
-    min_limit_count: 100
-    flush_interval: false
-    checks_retries: open
-    batch_delay_pct:
-      - green
-      - open
-  burst_ttl: false
-  dry_run: 57
+compress: 2847
+soft_limit_count: 100
+sync_ratio: blue
+hard_threshold:
+  retry_capacity_pct: strict
+  verbose: legacy
+  min_interval_count: 500
