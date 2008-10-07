@@ -1,9 +1,6 @@
-id,active,count,score,ratio
-1,295,eu-west,green,32.92
-2,legacy,strict,edge,21.65
-3,fallback,317,latest,11.04
-4,615,edge,716,local
-5,995,48.93,914,cached
-6,44.24,90.87,957,101
-7,latest,20,921,legacy
-8,931,cached,382,52.15
+id,weight,active,token
+1,16.82,533,eu-west
+2,strict,eu-west,edge
+3,425,55.89,11
+4,41.5,73.95,standard
+5,484,52.69,local
