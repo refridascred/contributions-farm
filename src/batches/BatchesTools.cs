@@ -21,18 +21,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportHits(long[] levels)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long CombineTools(long[] items, long bound)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long mark = 473;
+            foreach (long sample in items)
             {
-                if (((-946) + 22) >= (cell + (-8)))
+                if (((bound / 5) <= (bound & 15)) || ((mark % 5) >= 62))
                 {
-                    hits = hits + 3;
+                    mark = mark + (sample + 49);
                 }
             }
-            return hits;
+            return mark;
         }
     }
 }
