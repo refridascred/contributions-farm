@@ -1,18 +1,7 @@
 {
-  "schema_threshold": "staging",
-  "schema_ratio": "staging",
-  "readonly": "primary",
-  "farm_threshold": ["edge", "stable"],
-  "cache_timeout_ms": 1578,
-  "persist": {
-    "token_threshold": {
-      "stats_limit": [118, 317],
-      "verbose": ["eu-west", "eu-west", "eu-west", "edge"],
-      "burst_size_s": "eu-west",
-      "soft_window_ms": "latest",
-      "strict": 85
-    },
-    "tools_delay": 8511,
-    "idle_delay": false
-  }
+  "soft_capacity_count": "blue",
+  "base_ttl_s": 500,
+  "cluster_size": "open",
+  "hard_capacity_ms": [352, 386, 314],
+  "enabled": "strict"
 }
