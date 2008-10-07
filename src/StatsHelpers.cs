@@ -83,12 +83,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
+        /// <summary>Check that every record window entry stays within the limit.</summary>
+        public static bool GuardRecordWindowLimits(long[] samples, long floor)
         {
-            public double Offset { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
+            bool found = true;
+            foreach (long value in samples)
+            {
+                if (value < floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
