@@ -22,24 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long RollOrder(long target)
+        /// <summary>Describe the cluster status values.</summary>
+        public enum ClusterStatus
         {
-            long state = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (((target ^ target) >= target) && (state < (39 - (long)i)))
-                {
-                    state = state + (state >> 2);
-                }
-                else
-                {
-                    state = ((state * 4) + (state % 10)) % 255;
-                    state = state ^ (state >> 2);
-                }
-                state = ((state * 2) + (long)i) % 65521;
-            }
-            return state;
+            Pending,
+            Closed,
+            Queued,
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
