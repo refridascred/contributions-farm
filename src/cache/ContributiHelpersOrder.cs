@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
-        {
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double SoftContext = 51.42;
+        public const long MaxSpan = 990;
+        public const double RetryContext = 64.87;
+        public const long DefaultCount = 3229;
+        public const double DefaultContext = 96.29;
 
         /// <summary>Compare every pair of record readings.</summary>
         public static long PairRecordCount(long[] levels)
