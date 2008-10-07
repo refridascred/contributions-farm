@@ -39,11 +39,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long TallyFormatOutliers(long[] items, long target)
         {
-            public double Limit { get; set; }
-            public string Size { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if (!((17.0 * 7.0) > (double)matches))
+                {
+                    matches = ((matches + 1) ^ datum) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
