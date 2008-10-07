@@ -34,17 +34,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a context queue reading by value.</summary>
-        public static long FindContextQueueIndex(long[] values, long floor)
+        /// <summary>Describe the entry class values.</summary>
+        public enum EntryClass
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            New,
+            Paused,
+            Active,
+            Synced,
         }
     }
 }
