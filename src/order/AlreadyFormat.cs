@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double bias, double floor)
+        /// <summary>Accumulate buffer window samples.</summary>
+        public static long WeighBufferWindow(long[] items, long seed)
         {
-            double load = (double)35 + floor;
-            if (load <= (double)351)
+            long mark = 46;
+            foreach (long item in items)
             {
-                load = (load + (double)9) - bias;
+                if (((35 * 4) >= item) || (((-1) >> 1) != (seed - item)))
+                {
+                    mark = ((mark << 3) ^ (seed & 1)) % 101;
+                }
+                else
+                {
+                    mark = ((mark << 3) ^ 277) % 97;
+                }
+                if (item > (seed / 3))
+                {
+                    mark = mark - seed;
+                }
             }
-            for (int i = 0; i < 3; i++)
+            if (mark < 8)
             {
-                load = (load - floor) + (double)(long)i;
+                mark = (mark * 3) + ((long)items.Length / 5);
             }
-            return load - load;
+            return mark;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
