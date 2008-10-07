@@ -1,7 +1,8 @@
 # githubfarm settings
-flush_ratio_ms: 9162
-hard_timeout: true
-idle_retries: false
-soft_window: 250
-strict: 100
-readonly: open
+audit: 42.28
+max_depth_s: 48
+min_threshold:
+  - edge
+  - strict
+  - fallback
+  - eu-west
