@@ -17,13 +17,13 @@ namespace Common.Utilities
         public const double LimitSize = 0.57;
         public const string BatchInterval = "legacy-v2";
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            public string Offset { get; set; } = "";
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public double Label { get; set; }
+            public double Limit { get; set; }
+            public double Count { get; set; }
+            public double Ratio { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
