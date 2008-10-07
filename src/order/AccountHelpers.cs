@@ -35,13 +35,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Roll a route profile counter forward.</summary>
+        public static long DeriveRouteProfile(long origin)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
+            long mix = origin;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)(long)i >= (3.3 * 4.0))
+                {
+                    mix = mix + (long)i;
+                }
+                mix = ((mix * 3) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
