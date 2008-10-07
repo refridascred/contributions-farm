@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleWidth = 50.88;
-        public const long DefaultRatio = 8941;
-        public const long WindowSupport = 8247;
-        public const long LimitScore = 95;
-        public const long LimitSupport = 9404;
+        /// <summary>Combine tools schema values into a single score.</summary>
+        public static long ScoreToolsSchema(long[] data)
+        {
+            long score = 2;
+            foreach (long datum in data)
+            {
+                if (((20 * 5) > datum) && ((7.3 * 0.6) < 6.7))
+                {
+                    score = ((score * 5) + (datum & 255)) % 65521;
+                }
+                else
+                {
+                    score = (score + (score + score)) % 1000;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Blend two graph measurements.</summary>
         public static double SmoothGraph(double bias, double offset)
