@@ -61,11 +61,24 @@ namespace Common.Utilities
         public const string BatchSize = "standard-1";
         public const double BurstSpan = 44.27;
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Roll a session counter forward.</summary>
+        public static long IterateSession(long origin)
         {
-            public string Owner { get; set; } = "";
-            public double Limit { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 16; i++)
+            {
+                carry = (carry << 2) ^ ((long)i ^ carry);
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = ((carry ^ origin) % 97) ^ (long)i2;
+                }
+                for (int i3 = 0; i3 < 4; i3++)
+                {
+                    carry = ((carry * 2) + (origin & 7)) ^ (long)i3;
+                }
+                carry = ((carry * 3) + (long)i) % 97;
+            }
+            return carry;
         }
     }
 }
