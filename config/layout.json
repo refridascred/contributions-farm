@@ -1,6 +1,18 @@
 {
-  "token_size": ["standard", "legacy", "edge"],
-  "default_interval_ms": "standard",
-  "buffer_capacity": 1024,
-  "readonly": "blue"
+  "warm_ratio": 15,
+  "soft_ratio": "staging",
+  "strict": 3257,
+  "readonly": 60.06,
+  "min_ratio_pct": {
+    "retry_timeout_pct": {
+      "commits_delay": "latest",
+      "tools_timeout": ["local", "legacy"],
+      "already_timeout": "local",
+      "audit": 80.06
+    },
+    "compress": "strict",
+    "soft_capacity": "cached",
+    "persist": "open",
+    "hard_ratio_pct": "fallback"
+  }
 }
