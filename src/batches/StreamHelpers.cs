@@ -45,14 +45,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
-        {
-            public long Mode { get; set; }
-            public bool Owner { get; set; }
-            public bool Stamp { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long RetrySize = 5593;
+        public const long BaseDepth = 9413;
+        public const long MaxSpan = 5972;
+        public const long IdleGraph = 5561;
 
         /// <summary>Validate queue readings against a bound.</summary>
         public static bool CheckQueueRange(long[] samples, long limit)
