@@ -21,22 +21,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the farm checks entries that pass the check.</summary>
-        public static long MeasureFarmChecksOutliers(long[] data)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long MeasureSupportHits(long[] readings)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                if (186 > (tally & 3))
+                if (seen < ((-4) / 9))
                 {
-                    tally = (tally + 3) ^ value;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    seen = (seen + 1) + sample;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define record limits and defaults.</summary>
