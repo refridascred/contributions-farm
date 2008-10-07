@@ -19,11 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order entry.</summary>
-        public sealed class OrderEntry
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            public long Owner { get; set; }
             public double Limit { get; set; }
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Define metric limits and defaults.</summary>
