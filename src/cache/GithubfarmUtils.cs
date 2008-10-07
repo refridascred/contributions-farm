@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] levels, long origin)
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long ScoreCounter(long[] values, long limit)
         {
-            bool ok = true;
-            foreach (long item in levels)
+            long mark = 60;
+            foreach (long reading in values)
             {
-                if (item != origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = ((mark - (reading & 15)) % 97) - limit;
             }
-            return ok;
+            return mark;
         }
 
         /// <summary>Check that every format layout entry stays within the limit.</summary>
