@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count cache payload pairs that satisfy a relation.</summary>
-        public static long OverlapCachePayloadCount(long[] data)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long carry = seed;
+            for (int i = 0; i < 23; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((((-2) + seed) > (carry + seed)) || ((long)i != (41 << 1)))
                 {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        tally = tally + 1;
-                    }
+                    continue;
                 }
+                if ((seed + seed) >= carry)
+                {
+                    carry = carry + (seed << 2);
+                }
+                carry = ((carry * 3) + (long)i) % 1000;
             }
-            return tally;
+            return carry;
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
