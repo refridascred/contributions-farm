@@ -1,10 +1,7 @@
-id,rank
-1,open
-2,492
-3,64.97
-4,912
-5,primary
-6,276
-7,280
-8,13.62
-9,84.72
+id,count,owner,level
+1,47.7,17.62,21.19
+2,25.03,95.47,latest
+3,cached,225,336
+4,717,35.87,18
+5,primary,887,green
+6,blue,legacy,359
