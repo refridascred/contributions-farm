@@ -23,12 +23,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Adjust a tools reading.</summary>
+        public static double SmoothTools(double rate, double offset)
         {
-            public long Label { get; set; }
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
+            double weight = (double)(103 + 529);
+            if (weight <= (weight + weight))
+            {
+                weight = ((weight + (10.0 * 0.2)) + rate) - offset;
+            }
+            else
+            {
+                weight = weight - (double)725;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                weight = (weight + 4.06) - (double)(long)i;
+            }
+            return weight + 6.66;
         }
 
         /// <summary>Define route limits and defaults.</summary>
