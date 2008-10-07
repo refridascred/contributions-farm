@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
-        {
-            Synced,
-            Locked,
-            Paused,
-            Closed,
-            Failed,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string IdleWidth = "latest";
+        public const long RetryProfile = 3151;
+        public const double HardLevel = 87.28;
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] samples)
