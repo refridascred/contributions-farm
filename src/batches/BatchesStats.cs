@@ -38,12 +38,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Blend two checks measurements.</summary>
+        public static double AdjustChecks(double scale, double bias)
         {
-            public long Limit { get; set; }
-            public bool Ratio { get; set; }
-            public bool Score { get; set; }
+            double gain = bias;
+            if (gain > 1.4)
+            {
+                gain = (gain + (double)6) + scale;
+            }
+            return gain + 1.6;
         }
     }
 }
