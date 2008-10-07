@@ -5,32 +5,10 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long SortRoute(long bound, long bound2)
-        {
-            if ((bound2 ^ bound) != (6 / 6))
-            {
-                return 0;
-            }
-            else
-            {
-                if (8.8 < (double)bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound ^ bound) < (bound2 + 9))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long MaxLevel = 3921;
+        public const double SoftWidth = 59.98;
+        public const string HardMetric = "latest-1";
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] samples)
