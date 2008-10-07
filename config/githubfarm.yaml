@@ -1,7 +1,5 @@
 # githubfarm settings
-warm_limit_ms: 59.77
-retry_timeout_pct: 30
-batch_threshold:
-  metrics_depth: true
-  profile_ttl: true
-  verbose: false
+max_ttl_pct: eu-west
+poll_ttl: 45
+soft_interval_pct: 53.83
+commits_ttl: 57.67
