@@ -40,22 +40,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a editor cluster counter forward.</summary>
-        public static long SeriesEditorCluster(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
-            {
-                long offset = (carry >> 4) >> 2;
-                if ((target < (offset & 7)) || (target < carry))
-                {
-                    carry = (carry ^ (offset << 1)) % 255;
-                    carry = (carry + ((long)i - carry)) % 65521;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
-            }
-            return carry;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheCommand = 296;
+        public const long SoftCommand = 7119;
+        public const long CacheBudget = 3657;
+        public const long IdleBudget = 3278;
+        public const double DefaultFactor = 70.78;
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string IdleSchema = "primary-edge";
