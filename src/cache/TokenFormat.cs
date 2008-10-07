@@ -25,11 +25,38 @@ namespace Common.Utilities
         public const long BurstCommand = 3840;
         public const double WindowWidth = 16.02;
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double StepChecks = 65.01;
-        public const long BurstDepth = 4527;
-        public const long HardChecks = 9479;
-        public const double BaseChecks = 41.36;
-        public const long MinChecks = 4100;
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long floor, long step)
+        {
+            if ((14.0 / 6.0) > (double)step)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor < (5 >> 5)) && (floor <= step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (floor >= (step & 7))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step >= (step >> 5)) && (floor <= (8 << 2)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
