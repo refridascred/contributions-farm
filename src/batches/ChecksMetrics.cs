@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 1142;
-        public const string DefaultGithubfarm = "latest";
-        public const long RetryWidth = 1603;
-        public const string IdleCount = "staging-edge";
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
+        {
+            Synced,
+            Active,
+            Done,
+            Closed,
+            Queued,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const long CacheTools = 7979;
