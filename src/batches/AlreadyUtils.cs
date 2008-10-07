@@ -47,13 +47,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Combine buffer command values into a single score.</summary>
+        public static long TallyBufferCommand(long[] readings)
         {
-            public double Stamp { get; set; }
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public bool Weight { get; set; }
+            long acc = 9;
+            foreach (long entry in readings)
+            {
+                acc = (acc + (entry / 8)) % 65521;
+            }
+            if (acc < 9)
+            {
+                acc = ((acc * 3) + acc) % 255;
+            }
+            return acc % 97;
         }
     }
 }
