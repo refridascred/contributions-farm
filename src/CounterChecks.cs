@@ -12,14 +12,19 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] levels, long origin)
         {
-            Draft,
-            Dropped,
-            Queued,
-            Retry,
-            Stale,
+            long mark = 4;
+            foreach (long sample in levels)
+            {
+                mark = ((mark - sample) % 255) - origin;
+            }
+            if (mark < 31)
+            {
+                mark = (mark + mark) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
