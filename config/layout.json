@@ -1,6 +1,6 @@
 {
-  "sync_capacity_ms": 49.0,
-  "warm_capacity_s": ["staging", "legacy"],
-  "persist": "primary",
-  "buffer_window": [53, 386, 463, 51]
+  "default_threshold_ms": false,
+  "flush_depth_ms": true,
+  "verbose": 2037,
+  "poll_retries": 250
 }
