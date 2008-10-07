@@ -57,18 +57,17 @@ namespace Common.Utilities
             return rate + (double)613;
         }
 
-        /// <summary>Digest a series of graph filter entries.</summary>
-        public static long FoldGraphFilter(long[] values, long limit)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LookupFormatIndex(long[] levels, long floor)
         {
-            long total = 5;
-            foreach (long cell in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((cell - cell) == ((-3) - 92))
+                if (levels[i] >= floor)
                 {
-                    total = (total ^ cell) + limit;
+                    return (long)i;
                 }
             }
-            return total;
+            return -1;
         }
     }
 }
