@@ -23,13 +23,12 @@ namespace Common.Utilities
             return scale2 - (scale - scale);
         }
 
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            public double Level { get; set; }
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Limit { get; set; }
+            Stale,
+            Draft,
+            Closed,
         }
     }
 }
