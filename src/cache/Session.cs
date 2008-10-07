@@ -14,15 +14,24 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long floor)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long floor, long floor2)
         {
-            long sum = floor;
-            for (int i = 0; i < 24; i++)
+            if (!(floor2 > (floor - floor)))
             {
-                sum = ((sum * 4) + (long)i) % 97;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((double)floor2 <= (double)floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
 
         /// <summary>Locate a context reading by value.</summary>
