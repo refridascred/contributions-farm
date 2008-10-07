@@ -31,13 +31,13 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public bool Limit { get; set; }
-            public long Total { get; set; }
-            public long Rank { get; set; }
-            public long Region { get; set; }
+            Closed,
+            Failed,
+            Ready,
+            Pending,
         }
     }
 }
