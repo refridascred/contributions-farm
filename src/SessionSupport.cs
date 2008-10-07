@@ -33,19 +33,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] series, long floor)
+        /// <summary>Combine githubfarm profile values into a single score.</summary>
+        public static long FoldGithubfarmProfile(long[] items)
         {
-            bool ready = true;
-            foreach (long reading in series)
+            long carry = 89;
+            foreach (long datum in items)
             {
-                if (reading <= floor)
+                if ((double)datum == (10.0 / 6.0))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry - (datum + datum)) % 1000;
                 }
             }
-            return ready;
+            return carry % 1000;
         }
     }
 }
