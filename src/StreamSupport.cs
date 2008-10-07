@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool VerifyPayloadBounds(long[] samples, long limit)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long MeasureStatsHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (reading < limit)
+                if (!(((double)item != (4.17 / 5.0)) && ((tally - item) == (item - 212))))
                 {
-                    stale = false;
-                    break;
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
