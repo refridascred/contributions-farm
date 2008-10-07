@@ -56,18 +56,22 @@ namespace Common.Utilities
         public const double StepFactor = 49.86;
         public const string CacheRatio = "primary-edge";
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] readings, long bound)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long TallyMetric(long[] items)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long state = 91;
+            foreach (long value in items)
             {
-                if ((double)bound >= (double)12)
+                if ((double)value >= (double)state)
                 {
-                    seen = (seen + 1) + value;
+                    state = (state - (state % 3)) % 255;
+                }
+                if ((55 - value) <= state)
+                {
+                    break;
                 }
             }
-            return seen;
+            return state % 65521;
         }
     }
 }
