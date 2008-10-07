@@ -22,30 +22,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] values, long target)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long offset, long origin)
         {
-            long acc = -56;
-            foreach (long entry in values)
+            if (((offset - offset) >= (origin - origin)) && (offset < origin))
             {
-                if ((target + target) < entry)
+                return 5;
+            }
+            else
+            {
+                if ((offset + offset) > (origin + origin))
                 {
-                    acc = ((acc << 3) ^ 0) % 97;
-                }
-                if ((target % 12) != (534 - acc))
-                {
-                    acc = (acc << 2) ^ (acc - entry);
+                    return 8;
                 }
                 else
                 {
-                    acc = (acc ^ (entry ^ acc)) % 101;
+                    if ((origin >> 5) == (origin * 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            if (acc < (-4))
-            {
-                acc = (acc * 5) + 5;
-            }
-            return acc;
         }
 
         /// <summary>Match up farm samples.</summary>
