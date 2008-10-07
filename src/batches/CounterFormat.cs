@@ -20,18 +20,9 @@ namespace Common.Utilities
         public const string SoftScore = "strict";
         public const long BaseRatio = 9626;
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] samples, long offset)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (offset <= (seen << 1))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepChecks = 5292;
+        public const long HardSize = 8942;
+        public const long BaseChecks = 613;
     }
 }
