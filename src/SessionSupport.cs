@@ -19,18 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferOutliers(long[] readings, long floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if (!(entry < seen))
-                {
-                    seen = (seen + 1) - floor;
-                }
-            }
-            return seen;
+            public bool Rank { get; set; }
+            public long Owner { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Rank githubfarm stats input into a small class.</summary>
