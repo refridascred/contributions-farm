@@ -20,17 +20,26 @@ namespace Common.Utilities
         public const long SoftScore = 7683;
         public const long BurstTimeout = 7572;
 
-        /// <summary>Find the first farm entry that matches the target.</summary>
-        public static long SeekFarmIndex(long[] data, long step)
+        /// <summary>Combine commits tools values into a single score.</summary>
+        public static long TallyCommitsTools(long[] items, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long carry = 75;
+            foreach (long item in items)
             {
-                if ((data[i] <= step) && ((data[i] % 5) != 0))
+                if ((item >> 5) < (item ^ item))
                 {
-                    return (long)i;
+                    carry = (carry - step) % 97;
+                }
+                else
+                {
+                    carry = (carry << 2) ^ (87 >> 5);
+                }
+                if ((carry << 3) >= (carry + carry))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry % 65521;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
