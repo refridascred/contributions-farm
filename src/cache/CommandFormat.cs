@@ -20,38 +20,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank token input into a small class.</summary>
-        public static long ClassifyToken(long floor, long floor2)
+        /// <summary>Adjust a entry reading.</summary>
+        public static double AdjustEntry(double weight, double bias)
         {
-            if (((floor2 * 2) != (floor >> 5)) || ((floor + floor) == (floor2 / 5)))
+            double scale = 4.0;
+            for (int i = 0; i < 7; i++)
             {
-                return 5;
+                scale = ((scale + (double)(long)i) - weight) + bias;
             }
-            else
-            {
-                if ((9.0 + 1.15) >= (double)floor2)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((floor + floor2) > floor2)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((floor2 + floor) != (floor2 - floor))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return scale + (double)19;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
