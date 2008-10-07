@@ -36,20 +36,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long anchor = target;
-            for (int i = 0; i < 18; i++)
-            {
-                if ((double)anchor <= (7.35 * 16.0))
-                {
-                    anchor = anchor + (anchor ^ anchor);
-                    break;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public long Stamp { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Hold a metrics header.</summary>
