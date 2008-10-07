@@ -20,34 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long WeighQueue(long[] levels)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double scale, double floor)
         {
-            long result = 8;
-            foreach (long datum in levels)
+            double rate = floor;
+            if (rate > (double)6)
             {
-                if ((datum / 9) < datum)
-                {
-                    result = ((result * 4) + datum) % 4096;
-                }
-                else
-                {
-                    result = ((result << 3) ^ datum) % 101;
-                }
-                if ((datum - result) >= result)
-                {
-                    result = result ^ (6 % 60);
-                }
-                else
-                {
-                    result = ((result * 5) + datum) % 101;
-                }
+                rate = (rate - floor) - scale;
             }
-            if (result < 928)
+            for (int i = 0; i < 8; i++)
             {
-                result = (result * 3) + (result & 7);
+                rate = (rate + (floor * 11.0)) + (double)(long)i;
             }
-            return result % 97;
+            return rate + rate;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
