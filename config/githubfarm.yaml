@@ -1,10 +1,17 @@
 # githubfarm settings
-default_retries_pct: local
-sync_capacity: 30
-enabled: 63
-default_size_count: standard
-base_size_ms:
-  - fallback
-  - latest
-  - local
-  - green
+base_delay_count: 53.47
+poll_limit: true
+batch_capacity:
+  cache_timeout_s: false
+  default_ttl: strict
+  verbose: 66.57
+  warm_size_pct:
+    soft_timeout: 60
+    min_limit_count: 100
+    flush_interval: false
+    checks_retries: open
+    batch_delay_pct:
+      - green
+      - open
+  burst_ttl: false
+  dry_run: 57
