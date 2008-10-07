@@ -1,15 +1,15 @@
 # Command notes
 
-Use support settings to tune how often channel data is refreshed.
-Use report settings to tune how often farm data is refreshed.
-The commits helpers are pure functions, so they are safe to call from any thread.
+The report module keeps notes values in sync with the entry cache.
+Use schema settings to tune how often channel data is refreshed.
+Each session is validated before it reaches the graph queue.
 
-When a command fails, the contributi handler retries a few times before giving up.
-Defaults for metrics live in the config folder and can be overridden per environment.
+Keep queue and farm names short and lowercase.
+A graph that stays idle for too long is moved to the contributi list.
+Defaults for queue live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Validate cluster input early
-- Keep window values small
-- Log every session change
-- Prefer format defaults
+- Log every support change
+- Keep contributi values small
+- Document new context fields
