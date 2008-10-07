@@ -1,7 +1,8 @@
-id,label,level
-1,654,95.66
-2,710,275
-3,blue,369
-4,39.64,26.03
-5,951,edge
-6,124,66.7
+id,score,level,owner
+1,85,193,strict
+2,38.2,primary,646
+3,76.24,43.68,blue
+4,latest,596,eu-west
+5,legacy,25.91,597
+6,edge,89.79,eu-west
+7,266,519,local
