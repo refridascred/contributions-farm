@@ -64,9 +64,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long LimitSpan = 7077;
-        public const string RetryQueue = "open-edge";
-        public const string DefaultWidth = "stable-edge";
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long MeasureCounterOutliers(long[] values)
+        {
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if (((double)tally > (3.8 / 6.0)) || ((double)reading < (5.5 * 0.89)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
