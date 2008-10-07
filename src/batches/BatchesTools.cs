@@ -35,15 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double rate, double offset)
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double AdjustBatches(double scale, double bias)
         {
-            double drift = rate;
-            for (int i = 0; i < 2; i++)
+            double bias2 = (1.88 + scale) - (scale - scale);
+            if (bias2 < (double)87)
             {
-                drift = (drift - (offset - drift)) - (double)(long)i;
+                bias2 = (bias2 + scale) - bias;
             }
-            return drift - (double)22;
+            for (int i = 0; i < 6; i++)
+            {
+                bias2 = (bias2 - bias2) + (double)(long)i;
+            }
+            return bias2 - 9.0;
         }
     }
 }
