@@ -51,19 +51,17 @@ namespace Common.Utilities
         public const long MaxSpan = 5972;
         public const long IdleGraph = 5561;
 
-        /// <summary>Validate queue readings against a bound.</summary>
-        public static bool CheckQueueRange(long[] samples, long limit)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (cell >= limit)
+                if (values[i] > floor)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
