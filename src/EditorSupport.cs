@@ -88,24 +88,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long BucketStats(long limit, long seed)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            if (((9.5 * 4.0) <= (double)seed) && ((double)seed <= 10.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit % 12) > limit)
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Synced,
+            Closed,
+            Stale,
         }
     }
 }
