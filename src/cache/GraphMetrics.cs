@@ -25,19 +25,12 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Audit session buffer readings against a rule.</summary>
-        public static long MeasureSessionBufferOutliers(long[] values)
-        {
-            long hits = 0;
-            foreach (long cell in values)
-            {
-                if ((hits > (6 - cell)) && ((cell >> 5) > cell))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string LimitTools = "open";
+        public const long WindowCount = 1496;
+        public const long IdleTools = 9651;
+        public const long StepTools = 3456;
+        public const double HardCount = 59.17;
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long PairSessionCount(long[] levels)
