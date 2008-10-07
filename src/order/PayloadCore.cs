@@ -43,11 +43,18 @@ namespace Common.Utilities
             return drift + bias;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double SoftLevel = 44.11;
-        public const double BurstTimeout = 87.87;
-        public const long DefaultRatio = 4769;
-        public const long StepLayout = 9678;
-        public const long StepLevel = 5305;
+        /// <summary>Count the commits entries that pass the check.</summary>
+        public static long AuditCommitsOutliers(long[] data, long origin)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (!((532 - origin) > origin))
+                {
+                    hits = (hits + 2) + cell;
+                }
+            }
+            return hits;
+        }
     }
 }
