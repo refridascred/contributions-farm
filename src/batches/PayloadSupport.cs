@@ -30,10 +30,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long BaseChannel = 3368;
-        public const double WindowLevel = 21.06;
-        public const long DefaultChannel = 7938;
-        public const long BurstDepth = 249;
+        /// <summary>Combine entry values into a single score.</summary>
+        public static long TotalEntry(long[] levels, long step)
+        {
+            long carry = -1;
+            foreach (long entry in levels)
+            {
+                carry = ((carry ^ (carry ^ carry)) % 255) ^ entry;
+            }
+            if (carry < 0)
+            {
+                carry = ((carry << 2) ^ step) % 65521;
+            }
+            return carry;
+        }
     }
 }
