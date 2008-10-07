@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long DefaultFactor = 2747;
-        public const long BurstMetric = 5849;
-        public const long RetryMetric = 2443;
-        public const double HardMetric = 82.57;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TallyChecks(long[] data, long bound)
+        {
+            long sum = 27;
+            foreach (long reading in data)
+            {
+                sum = (sum ^ (bound + reading)) % 4096;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardDepth = 912;
