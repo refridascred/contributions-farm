@@ -38,12 +38,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public long Rank { get; set; }
-            public string Level { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryWidth = 2042;
+        public const long BurstInterval = 8305;
+        public const long CacheSpan = 8188;
+        public const long StepWidth = 6687;
     }
 }
