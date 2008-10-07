@@ -43,19 +43,14 @@ namespace Common.Utilities
         public const long IdleWindow = 4261;
         public const long MaxWindow = 6109;
 
-        /// <summary>Check that every layout report entry stays within the limit.</summary>
-        public static bool CheckLayoutReportBounds(long[] readings, long origin)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample > origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Draft,
+            Queued,
+            Synced,
+            Idle,
         }
 
         /// <summary>Define report limits and defaults.</summary>
