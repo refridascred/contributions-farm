@@ -39,24 +39,22 @@ namespace Common.Utilities
         public const long IdleCounter = 4377;
         public const long IdleBudget = 4016;
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long DigestBuffer(long[] series, long step)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long target)
         {
-            long score = 694;
-            foreach (long sample in series)
+            long score = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((score >> 1) <= (48 / 2))
+                if ((double)score == (0.42 * 0.43))
                 {
-                    score = (score ^ (69 - step)) % 1000;
+                    score = (score << 3) ^ ((long)i ^ target);
                 }
                 else
                 {
-                    score = (score ^ (sample + step)) % 65521;
+                    score = score - (target / 2);
+                    score = (score + (score + target)) % 255;
                 }
-            }
-            if (score < 476)
-            {
-                score = (score << 2) ^ (score / 3);
+                score = ((score * 2) + (long)i) % 1000;
             }
             return score;
         }
