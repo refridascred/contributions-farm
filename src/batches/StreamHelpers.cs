@@ -31,31 +31,18 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long TotalReport(long[] data)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long CountFilterGaps(long[] series)
         {
-            long acc = 60;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long reading in series)
             {
-                for (int i = 0; i < 11; i++)
+                if ((reading > (reading + 3)) || (6.76 >= (3.0 * 8.9)))
                 {
-                    acc = ((acc << 3) ^ acc) ^ (long)i;
-                    acc = acc + (acc % 8);
-                }
-                if (!(reading <= (acc / 4)))
-                {
-                    acc = (acc * 2) + (98 - reading);
-                }
-                else
-                {
-                    acc = acc ^ (acc & 15);
+                    seen = seen + 2;
                 }
             }
-            if (acc < 59)
-            {
-                acc = (acc + (acc + acc)) % 97;
-            }
-            return acc % 4096;
+            return seen;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
