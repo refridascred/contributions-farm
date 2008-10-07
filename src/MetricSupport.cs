@@ -27,17 +27,23 @@ namespace Common.Utilities
             return weight - (bias / 8.0);
         }
 
-        /// <summary>Locate a schema queue reading by value.</summary>
-        public static long LocateSchemaQueueIndex(long[] readings, long origin)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long CombineChecks(long[] readings, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = 7;
+            foreach (long datum in readings)
             {
-                if (readings[i] >= origin)
+                if ((bound + bound) <= (bound / 9))
                 {
-                    return (long)i;
+                    result = (result + (datum ^ 117)) % 255;
                 }
+                result = ((result << 3) ^ (datum * 4)) % 97;
             }
-            return -1;
+            if (result > 268)
+            {
+                result = ((result << 3) ^ (result ^ bound)) % 65521;
+            }
+            return result;
         }
     }
 }
