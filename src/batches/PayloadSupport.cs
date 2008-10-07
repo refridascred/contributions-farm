@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long CacheSize = 6602;
-        public const long MaxLevel = 7554;
-        public const long SoftTimeout = 8066;
-        public const string StepStream = "stable";
-        public const string SoftStream = "fallback-edge";
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksOutliers(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((reading - 21) != (56 & 127))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
         public static long RankEntry(long target, long limit)
