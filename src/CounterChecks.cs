@@ -12,19 +12,18 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] levels, long origin)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] series, long origin)
         {
-            long mark = 4;
-            foreach (long sample in levels)
+            long count = 0;
+            foreach (long value in series)
             {
-                mark = ((mark - sample) % 255) - origin;
+                if (((-2) / 2) == (9 + origin))
+                {
+                    count = (count + 1) + value;
+                }
             }
-            if (mark < 31)
-            {
-                mark = (mark + mark) % 1000;
-            }
-            return mark % 4096;
+            return count;
         }
 
         /// <summary>Hold a farm stats.</summary>
