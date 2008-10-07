@@ -43,13 +43,38 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long BucketFormat(long bound, long offset)
         {
-            public bool Token { get; set; }
-            public bool Total { get; set; }
-            public bool Flag { get; set; }
-            public string Offset { get; set; } = "";
+            if ((double)bound < (9.3 / 8.0))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((8 > (offset * 4)) || (offset > (offset / 8)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (bound > (bound & 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((bound + offset) <= (offset >> 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
