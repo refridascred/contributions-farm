@@ -31,13 +31,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Grade a record farm value against two limits.</summary>
+        public static long RankRecordFarm(long seed, long limit)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public string Label { get; set; } = "";
-            public double Total { get; set; }
+            if ((double)seed < (2.3 + 8.0))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((limit ^ seed) <= seed)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((seed << 2) == (seed + seed)) && ((seed / 6) < (limit - seed)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((seed + limit) == (limit - 357)) && ((seed - seed) <= (seed * 5)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the session status values.</summary>
