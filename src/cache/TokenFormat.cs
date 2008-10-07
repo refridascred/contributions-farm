@@ -10,15 +10,18 @@ namespace Common.Utilities
         public const string RetryWidth = "local-edge";
         public const string IdleCache = "open";
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferHits(long[] items)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long OverlapOrderCount(long[] series)
         {
             long hits = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((hits - item) >= (94 << 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
