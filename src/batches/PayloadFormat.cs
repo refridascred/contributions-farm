@@ -37,19 +37,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every tools cache entry stays within the limit.</summary>
-        public static bool GuardToolsCacheLimits(long[] levels, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] data)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long count = 0;
+            foreach (long value in data)
             {
-                if (datum <= seed)
+                if (618 > (value / 5))
                 {
-                    ok = false;
-                    break;
+                    count = count + 3;
                 }
             }
-            return ok;
+            return count;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
