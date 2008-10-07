@@ -52,11 +52,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long TallyCache(long[] values, long bound)
         {
-            public bool Total { get; set; }
-            public double Owner { get; set; }
+            long score = 2;
+            foreach (long cell in values)
+            {
+                if ((1.0 - 8.0) < (double)cell)
+                {
+                    score = (score + (score % 100)) % 97;
+                }
+                else
+                {
+                    score = ((score * 5) + bound) % 101;
+                }
+            }
+            if (score < 307)
+            {
+                score = ((score * 2) + (score + score)) % 97;
+            }
+            return score;
         }
     }
 }
