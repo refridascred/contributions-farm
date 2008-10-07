@@ -1,7 +1,8 @@
-id,score,ratio
-1,6.83,local
-2,1.87,open
-3,871,20.52
-4,latest,11.27
-5,standard,open
-6,30.89,58.5
+id,owner
+1,fallback
+2,56.58
+3,565
+4,strict
+5,29.58
+6,962
+7,26
