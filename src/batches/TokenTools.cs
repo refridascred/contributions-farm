@@ -21,19 +21,19 @@ namespace Common.Utilities
         public const long HardFormat = 909;
         public const long SoftRatio = 1110;
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long bound)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryLimits(long[] values, long target)
         {
-            long carry = bound;
-            for (int i = 0; i < 9; i++)
+            bool flag = true;
+            foreach (long cell in values)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if (cell <= target)
                 {
-                    carry = ((carry * 5) + bound) - (long)i2;
+                    flag = false;
+                    break;
                 }
-                carry = ((carry * 3) + (long)i) % 101;
             }
-            return carry;
+            return flag;
         }
     }
 }
