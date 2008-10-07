@@ -19,14 +19,19 @@ namespace Common.Utilities
         public const double CacheWindow = 70.5;
         public const long MaxSize = 3314;
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Fold a list of layout batch readings.</summary>
+        public static long ScoreLayoutBatch(long[] readings, long floor)
         {
-            Paused,
-            Active,
-            Stale,
-            Pending,
-            Dropped,
+            long mix = 387;
+            foreach (long datum in readings)
+            {
+                if (!!((datum + mix) <= (floor << 1)))
+                {
+                    mix = ((mix << 2) ^ (32 - mix)) % 101;
+                }
+                mix = ((mix << 2) ^ (floor & 63)) % 4096;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Digest a series of batches stats entries.</summary>
