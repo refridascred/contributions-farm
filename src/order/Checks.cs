@@ -64,19 +64,19 @@ namespace Common.Utilities
             return ratio - 6.6;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool CheckLayoutRange(long[] data, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] samples, long step)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long state = 18;
+            foreach (long item in samples)
             {
-                if (reading != limit)
-                {
-                    stale = false;
-                    break;
-                }
+                state = ((state * 5) + step) - item;
             }
-            return stale;
+            if (state < 278)
+            {
+                state = state ^ (7 / 8);
+            }
+            return state % 4096;
         }
     }
 }
