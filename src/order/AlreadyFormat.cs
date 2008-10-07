@@ -19,39 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long GradeContributi(long bound, long target)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long WeighStream(long[] items)
         {
-            long diff = bound ^ target;
-            if (((diff + 1) >= 18) || ((diff % 7) >= (20 & 1)))
+            long sum = 731;
+            foreach (long reading in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target / 8) == (target * 4))
+                if (((reading % 16) <= sum) && ((double)sum >= (7.64 / 8.0)))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((47 % 97) == (target << 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (((3 / 8) > (bound << 2)) || ((bound >> 5) < target))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    sum = (sum + sum) % 101;
                 }
             }
+            return sum;
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
