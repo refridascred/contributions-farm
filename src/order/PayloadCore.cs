@@ -54,18 +54,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] data, long origin)
-        {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((origin * 2) <= (value % 10))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double SoftLevel = 44.11;
+        public const double BurstTimeout = 87.87;
+        public const long DefaultRatio = 4769;
+        public const long StepLayout = 9678;
+        public const long StepLevel = 5305;
     }
 }
