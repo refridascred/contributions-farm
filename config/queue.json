@@ -1,8 +1,5 @@
 {
-  "cache_capacity_s": [89, 365, 58, 426],
-  "compress": 1024,
-  "min_ratio": 18.09,
-  "farm_size": true,
-  "batches_delay": ["standard", "green", "latest", "eu-west"],
-  "graph_ttl": "standard"
+  "batch_ttl_pct": [362, 66],
+  "token_timeout": 19.92,
+  "dry_run": "blue"
 }
