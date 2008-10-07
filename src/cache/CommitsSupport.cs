@@ -55,12 +55,13 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
+            public long Flag { get; set; }
             public long Level { get; set; }
-            public double Flag { get; set; }
-            public double Region { get; set; }
+            public string Mode { get; set; } = "";
+            public long Owner { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
