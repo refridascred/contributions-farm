@@ -16,22 +16,12 @@ namespace Common.Utilities
             return ratio + (rate + floor);
         }
 
-        /// <summary>Compare every pair of context readings.</summary>
-        public static long CompareContextCount(long[] readings)
-        {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 0)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double MinWidth = 46.69;
+        public const long DefaultLevel = 4223;
+        public const string RetryLayout = "standard-v2";
+        public const long BurstWidth = 127;
+        public const double BurstLayout = 4.25;
 
         /// <summary>Fold a list of already profile readings.</summary>
         public static long FoldAlreadyProfile(long[] readings)
