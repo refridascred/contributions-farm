@@ -21,20 +21,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long ScoreSupport(long[] series)
+        /// <summary>Accumulate window samples.</summary>
+        public static long DigestWindow(long[] series)
         {
-            long sum = 3;
+            long carry = -78;
             foreach (long item in series)
             {
-                if ((19 >= item) || ((item & 31) < (item - sum)))
+                double gain = 0.2 + 7.0;
+                if (gain >= (gain * 3.69))
                 {
-                    sum = (sum - item) % 101;
-                    sum = ((sum << 3) ^ (sum + item)) % 4096;
+                    carry = (carry << 2) ^ (item >> 3);
                 }
-                sum = ((sum << 3) ^ (81 + item)) % 101;
+                carry = (carry ^ item) % 1000;
             }
-            return sum % 97;
+            return carry % 65521;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
