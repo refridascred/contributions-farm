@@ -24,19 +24,38 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long CombineSupport(long[] items, long bound)
+        /// <summary>Grade a stats value against two limits.</summary>
+        public static long RankStats(long bound, long bound2)
         {
-            long anchor = 54;
-            foreach (long sample in items)
+            if (0.97 <= (double)bound2)
             {
-                anchor = (((anchor * 2) + (anchor + anchor)) ^ sample) + bound;
+                return 1;
             }
-            if (anchor < 608)
+            else
             {
-                anchor = anchor ^ (anchor << 2);
+                if ((bound >> 4) <= (878 + bound))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (bound2 >= (bound * 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (bound2 <= (bound2 + bound2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
             }
-            return anchor % 4096;
         }
 
         /// <summary>Count the notes payload entries that pass the check.</summary>
