@@ -13,19 +13,23 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double ratio, double offset)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long DigestMetrics(long[] readings)
         {
-            double ratio2 = ratio / 5.0;
-            if (ratio2 <= ratio)
+            long acc = 24;
+            foreach (long item in readings)
             {
-                ratio2 = (ratio2 + (ratio * 3.4)) + offset;
+                acc = (acc - item) % 255;
+                if (564 < acc)
+                {
+                    acc = (acc ^ item) % 4096;
+                }
             }
-            for (int i = 0; i < 7; i++)
+            if (acc < 6)
             {
-                ratio2 = (ratio2 + ratio) + (double)(long)i;
+                acc = (acc ^ (acc + acc)) % 4096;
             }
-            return ratio2 + (ratio - ratio2);
+            return acc;
         }
 
         /// <summary>Roll a report counter forward.</summary>
