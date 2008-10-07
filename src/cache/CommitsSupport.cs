@@ -13,17 +13,39 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Locate a layout reading by value.</summary>
-        public static long LookupLayoutIndex(long[] levels, long target)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long ClassifyToken(long floor, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long span = floor - target;
+            if (floor > (0 >> 5))
             {
-                if (levels[i] > target)
+                return 8;
+            }
+            else
+            {
+                if ((target >> 5) <= (789 * 2))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (floor < target)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (((span - target) > span) && ((double)floor < (double)target))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the layout window entries that pass the check.</summary>
