@@ -33,11 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftSize = 94.09;
-        public const long IdleSize = 6543;
-        public const string MinScore = "legacy-1";
-        public const long SoftSpan = 4511;
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] levels)
+        {
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((((3.1 / 2.0) != (double)seen) && ((seen - seen) <= (seen << 2))) || (cell >= (cell - seen)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count the notes payload entries that pass the check.</summary>
         public static long AuditNotesPayloadMatches(long[] series)
