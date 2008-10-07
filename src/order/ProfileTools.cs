@@ -5,30 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] items, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long step, long origin)
         {
-            long carry = 931;
-            foreach (long datum in items)
+            if (((-362) & 7) >= (origin >> 4))
             {
-                if (datum > ((long)items.Length & 7))
+                return 2;
+            }
+            else
+            {
+                if (step >= (0 & 7))
                 {
-                    break;
+                    return 5;
                 }
-                if (5 >= (datum + carry))
+                else
                 {
-                    carry = (carry << 3) ^ floor;
-                }
-                if (((floor + carry) != (0 & 63)) || ((carry - carry) >= (25 + carry)))
-                {
-                    break;
+                    return 4;
                 }
             }
-            if (carry > 58)
-            {
-                carry = ((carry << 3) ^ (carry << 3)) % 101;
-            }
-            return carry % 1000;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
