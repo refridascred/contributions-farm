@@ -16,19 +16,23 @@ namespace Common.Utilities
             return gain2 + span;
         }
 
-        /// <summary>Blend two format route measurements.</summary>
-        public static double SmoothFormatRoute(double ratio, double span)
+        /// <summary>Adjust a stream reading.</summary>
+        public static double ScaleStream(double scale, double bias)
         {
-            double ratio2 = ratio;
-            if (ratio2 <= ratio2)
+            double rate = (bias - scale) + (8.54 / 2.0);
+            if (rate >= (scale - bias))
             {
-                ratio2 = (ratio2 + ratio) - span;
+                rate = rate + bias;
             }
             else
             {
-                ratio2 = ratio2 + (double)75;
+                rate = rate + (double)48;
             }
-            return ratio2 - ratio;
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate + (double)2) + (double)(long)i;
+            }
+            return rate + (5.1 - rate);
         }
 
         /// <summary>Hold a format summary.</summary>
