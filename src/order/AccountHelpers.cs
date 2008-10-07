@@ -65,31 +65,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long RankSession(long origin, long bound)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            if (((2.1 / 9.0) < (double)origin) && ((0.9 * 9.8) <= (double)origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if (bound >= (origin ^ origin))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (!((1.8 / 5.0) != (double)bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Paused,
+            Failed,
+            Draft,
+            Active,
+            Queued,
         }
     }
 }
