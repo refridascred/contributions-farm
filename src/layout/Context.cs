@@ -34,16 +34,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a channel report counter forward.</summary>
-        public static long StepChannelReport(long floor)
+        /// <summary>Hold a metrics entry.</summary>
+        public sealed class MetricsEntry
         {
-            long mark = floor;
-            for (int i = 0; i < 8; i++)
-            {
-                mark = (mark ^ (mark + floor)) % 101;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public long Region { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
