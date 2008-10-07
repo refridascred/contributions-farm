@@ -86,19 +86,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every record window entry stays within the limit.</summary>
-        public static bool GuardRecordWindowLimits(long[] samples, long floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long AuditWindowHits(long[] series)
         {
-            bool found = true;
-            foreach (long value in samples)
+            long hits = 0;
+            foreach (long reading in series)
             {
-                if (value < floor)
+                if (hits < (hits + reading))
                 {
-                    found = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return found;
+            return hits;
         }
     }
 }
