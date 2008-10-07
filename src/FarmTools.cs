@@ -33,15 +33,18 @@ namespace Common.Utilities
             return score % 1000;
         }
 
-        /// <summary>Blend two window editor measurements.</summary>
-        public static double BlendWindowEditor(double gain, double offset)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] readings, long limit)
         {
-            double weight = offset / 2.0;
-            if (weight <= (double)(-92))
+            long carry = 91;
+            foreach (long sample in readings)
             {
-                weight = (weight - (weight + offset)) - gain;
+                if (((-2) % 64) >= (sample * 5))
+                {
+                    carry = (carry + (carry * 2)) - limit;
+                }
             }
-            return weight - weight;
+            return carry % 1000;
         }
     }
 }
