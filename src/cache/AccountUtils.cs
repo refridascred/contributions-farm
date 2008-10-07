@@ -21,11 +21,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Combine support values into a single score.</summary>
+        public static long CombineSupport(long[] items, long bound)
         {
-            public long Rank { get; set; }
-            public bool Flag { get; set; }
+            long anchor = 54;
+            foreach (long sample in items)
+            {
+                anchor = (((anchor * 2) + (anchor + anchor)) ^ sample) + bound;
+            }
+            if (anchor < 608)
+            {
+                anchor = anchor ^ (anchor << 2);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Count the notes payload entries that pass the check.</summary>
