@@ -15,13 +15,21 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
+        /// <summary>Compare every pair of command readings.</summary>
+        public static long PairCommandCount(long[] samples)
         {
-            Failed,
-            Queued,
-            Active,
-            Pending,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 11)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Match up session samples.</summary>
