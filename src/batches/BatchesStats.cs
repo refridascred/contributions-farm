@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            public long Mode { get; set; }
-            public bool Offset { get; set; }
+            Failed,
+            New,
+            Synced,
+            Paused,
+            Locked,
         }
 
         /// <summary>Count the metric support entries that pass the check.</summary>
