@@ -76,14 +76,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the order class values.</summary>
-        public enum OrderClass
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long TallyCommits(long[] samples, long step)
         {
-            Done,
-            Idle,
-            Retry,
-            Active,
-            Paused,
+            long state = 1;
+            foreach (long cell in samples)
+            {
+                state = (((state - state) % 101) + cell) + step;
+                state = state ^ 580;
+            }
+            if (state > 693)
+            {
+                state = state - (state / 8);
+            }
+            return state;
         }
     }
 }
