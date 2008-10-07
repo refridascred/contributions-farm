@@ -33,16 +33,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long limit)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long anchor = limit;
-            for (int i = 0; i < 4; i++)
-            {
-                anchor = ((anchor << 3) ^ (anchor - limit)) % 4096;
-                anchor = ((anchor * 2) + (long)i) % 1000;
-            }
-            return anchor;
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
