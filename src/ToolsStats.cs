@@ -38,38 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long offset, long seed)
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
         {
-            if (((double)offset < (9.1 + 16.0)) && ((double)seed >= (6.96 * 8.3)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset == (0.7 * 3.69))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((offset % 5) < seed) && ((seed - offset) > (seed ^ seed)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (seed < (offset ^ 9))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public double Count { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a layout header.</summary>
