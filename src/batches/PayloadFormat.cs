@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Scale a session metric figure with a bias.</summary>
-        public static double SmoothSessionMetric(double weight, double bias)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool CheckPayloadLimits(long[] data, long limit)
         {
-            double load = (double)((-70) + 9);
-            if (load <= load)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                load = (load - (double)7) + weight;
+                if (sample <= limit)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                load = load - load;
-            }
-            return load - (bias - load);
+            return ok;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
