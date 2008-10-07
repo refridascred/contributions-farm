@@ -49,11 +49,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            public long Token { get; set; }
-            public long Level { get; set; }
+            Retry,
+            Draft,
+            Failed,
+            Idle,
+            Stale,
         }
     }
 }
