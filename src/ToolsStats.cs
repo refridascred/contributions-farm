@@ -21,13 +21,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public double Label { get; set; }
-            public long Weight { get; set; }
-            public string Level { get; set; } = "";
-            public bool Owner { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Project the next order counter value.</summary>
