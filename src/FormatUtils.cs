@@ -20,14 +20,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double bias, double bias2)
         {
-            Failed,
-            Ready,
-            Paused,
-            Stale,
-            Retry,
+            double weight = (bias2 + bias2) / 5.0;
+            return weight + bias;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
