@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double SmoothGithubfarm(double gain, double offset)
         {
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public double Offset { get; set; }
-            public string Token { get; set; } = "";
+            double ratio = (double)(887 - 4);
+            if (ratio >= (gain / 9.0))
+            {
+                ratio = (ratio + gain) + offset;
+            }
+            else
+            {
+                ratio = ratio - (double)220;
+            }
+            return ratio - ratio;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
