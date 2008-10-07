@@ -1,10 +1,15 @@
 # entry settings
-batches_retries:
-  - 175
-  - 124
-  - 358
-  - 280
-poll_retries: 41.01
-hard_ttl_count: legacy
-poll_size_ms: fallback
-burst_depth: 8.44
+soft_delay_ms: true
+cache_interval:
+  persist: 38
+  sync_timeout_count:
+    - 60
+    - 322
+  soft_size_pct:
+    - 392
+    - 96
+    - 94
+default_delay_count: 10
+retry_capacity: 30
+strict: 9856
+format_ttl: 4563
