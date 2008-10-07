@@ -23,21 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] values)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesLimits(long[] readings, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            bool ready = true;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item != floor)
                 {
-                    if ((values[i] + values[j]) == 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Describe the token kind values.</summary>
