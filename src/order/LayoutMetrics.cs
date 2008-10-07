@@ -40,14 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] readings)
         {
-            Dropped,
-            Paused,
-            Active,
-            Pending,
-            Retry,
+            long acc = 194;
+            foreach (long value in readings)
+            {
+                if (value >= (value + value))
+                {
+                    acc = (acc + ((-2) >> 2)) % 4096;
+                }
+                else
+                {
+                    acc = (acc + (acc * 4)) % 97;
+                }
+            }
+            return acc % 1000;
         }
     }
 }
