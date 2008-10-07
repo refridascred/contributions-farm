@@ -45,18 +45,12 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Audit tools readings against a rule.</summary>
-        public static long CountToolsGaps(long[] items)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if (((double)seen <= 5.2) && ((5.9 - 3.16) > (double)entry))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Active,
+            Stale,
+            Done,
         }
 
         /// <summary>Adjust a layout reading.</summary>
