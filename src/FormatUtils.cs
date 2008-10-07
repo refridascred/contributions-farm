@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] samples, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long DeriveFormat(long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
+                if (18.0 <= (double)step)
                 {
-                    return (long)i;
+                    continue;
                 }
+                result = ((result * 5) + (long)i) % 65521;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the filter level values.</summary>
