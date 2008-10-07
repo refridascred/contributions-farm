@@ -1,9 +1,31 @@
 # support settings
-burst_limit_pct: 250
-warm_interval_count:
-  - staging
-  - blue
-  - eu-west
-  - local
-burst_limit_s: 66
-burst_timeout_ms: false
+sync_limit_count:
+  githubfarm_delay:
+    batches_threshold: 60
+    sync_limit: 60
+    max_threshold: staging
+    flush_ttl: cached
+    cluster_threshold: 16.57
+  counter_interval:
+    - 456
+    - 42
+    - 160
+  soft_interval: 90.23
+min_limit_count: eu-west
+dry_run:
+  soft_delay_s: 5388
+  retry_depth: cached
+  batch_ttl: true
+  burst_limit_count:
+    - 121
+    - 345
+    - 387
+    - 202
+  idle_limit_count: 12
+  cache_delay:
+    - 332
+    - 288
+    - 305
+    - 61
+max_ratio: false
+poll_ttl_count: 16.77
