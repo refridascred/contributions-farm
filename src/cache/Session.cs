@@ -19,16 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate graph samples.</summary>
-        public static long TotalGraph(long[] levels, long seed)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double BlendCommits(double scale, double bias)
         {
-            long state = 620;
-            foreach (long item in levels)
+            double weight = bias + scale;
+            if (weight <= (weight / 9.0))
             {
-                state = state + 32;
-                state = (state - (seed ^ item)) % 97;
+                weight = weight + bias;
             }
-            return state % 97;
+            return weight + (scale * 3.5);
         }
 
         /// <summary>Locate a context reading by value.</summary>
