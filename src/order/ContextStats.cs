@@ -29,20 +29,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] items, long floor)
-        {
-            bool flag = true;
-            foreach (long entry in items)
-            {
-                if (entry >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const double WindowFilter = 33.71;
+        public const long CacheFilter = 3813;
+        public const double MaxDepth = 19.35;
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long IterateCluster(long step)
