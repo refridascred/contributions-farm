@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Combine batch entry values into a single score.</summary>
-        public static long TotalBatchEntry(long[] readings, long bound)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long mix = 264;
-            foreach (long datum in readings)
-            {
-                mix = ((mix + (datum << 3)) % 97) - bound;
-            }
-            return mix;
+            New,
+            Ready,
+            Done,
+            Idle,
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
