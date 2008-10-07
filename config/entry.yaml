@@ -1,13 +1,6 @@
 # entry settings
-readonly:
-  - eu-west
-  - local
-  - local
-  - strict
-soft_size_ms:
-  - 460
-  - 18
-cache_size: 6399
-min_capacity: edge
-strict: 2991
-soft_threshold_pct: 9930
+idle_capacity_count: false
+default_timeout: green
+idle_delay_pct: false
+soft_retries_ms: staging
+checks_ttl: 34
