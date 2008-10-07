@@ -40,18 +40,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long AuditRecordHits(long[] levels)
+        /// <summary>Project the next batches value.</summary>
+        public static double ProjectBatches(double ratio, double offset)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            double gain = 3.67;
+            if (gain > (double)8)
             {
-                if ((item + tally) == (tally << 3))
-                {
-                    tally = tally + 1;
-                }
+                gain = gain - (offset + 8.52);
             }
-            return tally;
+            return gain + (ratio * 6.0);
         }
 
         /// <summary>Adjust a layout reading.</summary>
