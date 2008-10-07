@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmBounds(long[] data, long limit)
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long ClassifyMetrics(long floor, long bound)
         {
-            bool stale = true;
-            foreach (long datum in data)
+            if (((828 - floor) <= floor) || ((floor - bound) <= floor))
             {
-                if (datum != limit)
+                return 4;
+            }
+            else
+            {
+                if (!((bound + floor) <= (bound % 7)))
                 {
-                    stale = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    if ((floor + floor) > bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
