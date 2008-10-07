@@ -22,17 +22,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a profile format reading by value.</summary>
-        public static long FindProfileFormatIndex(long[] items, long seed)
+        /// <summary>Derive the next filter window value from a seed.</summary>
+        public static long SeriesFilterWindow(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = bound;
+            for (int i = 0; i < 6; i++)
             {
-                if (items[i] < seed)
-                {
-                    return (long)i;
-                }
+                score = score ^ (bound + bound);
+                score = ((score * 5) + (long)i) % 4093;
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Blend two commits measurements.</summary>
