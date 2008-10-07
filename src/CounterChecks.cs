@@ -55,12 +55,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultTimeout = 7524;
-        public const string RetryCount = "standard-edge";
-        public const long LimitDepth = 2540;
-        public const long MinCount = 4128;
-        public const long BatchGithubfarm = 2435;
+        /// <summary>Project the next context value.</summary>
+        public static double BlendContext(double weight, double bias)
+        {
+            double bias2 = (double)(74 ^ 7);
+            if (bias2 >= 4.2)
+            {
+                bias2 = ((bias2 + 5.2) - weight) - bias;
+            }
+            else
+            {
+                bias2 = bias2 + bias2;
+            }
+            return bias2 + (double)379;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterBounds(long[] items, long limit)
