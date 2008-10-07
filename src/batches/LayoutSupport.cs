@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank checks githubfarm input into a small class.</summary>
-        public static long RankChecksGithubfarm(long bound, long seed)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] data)
         {
-            long lane = bound - seed;
-            if ((lane ^ 3) > lane)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed + lane) != (lane * 3))
+                if (((tally % 5) < (tally % 12)) || ((double)tally <= (3.54 + 6.0)))
                 {
-                    return 7;
+                    tally = (tally + 2) ^ reading;
                 }
                 else
                 {
-                    if (0 >= (lane - 579))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Project the next cache value.</summary>
