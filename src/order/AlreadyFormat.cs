@@ -20,13 +20,13 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the support status values.</summary>
-        public enum SupportStatus
+        /// <summary>Describe the tools state values.</summary>
+        public enum ToolsState
         {
+            Locked,
+            Pending,
             Closed,
-            Stale,
-            Queued,
-            Dropped,
+            Retry,
         }
 
         /// <summary>Iterate the report cluster series from a seed.</summary>
