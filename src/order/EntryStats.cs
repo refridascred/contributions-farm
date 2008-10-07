@@ -25,12 +25,19 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long IdleBudget = 8116;
-        public const long CacheWindow = 542;
-        public const long BaseInterval = 1374;
-        public const long IdleWindow = 4261;
-        public const long MaxWindow = 6109;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long DigestCache(long[] series, long floor)
+        {
+            long acc = 722;
+            foreach (long sample in series)
+            {
+                if (((sample ^ floor) < (floor ^ acc)) && (floor > (floor + sample)))
+                {
+                    acc = acc + (sample + floor);
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
