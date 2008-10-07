@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
-        {
-            public long Flag { get; set; }
-            public bool Offset { get; set; }
-            public bool Limit { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleSpan = 5145;
+        public const long HardEntry = 3682;
+        public const long SoftScore = 7909;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long AuditRecordOutliers(long[] levels, long limit)
