@@ -31,15 +31,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Project the next profile checks value.</summary>
-        public static double ProjectProfileChecks(double rate, double floor)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            double rate2 = (rate - rate) - (double)81;
-            for (int i = 0; i < 7; i++)
-            {
-                rate2 = ((rate2 + (rate - rate)) + (double)(long)i) - floor;
-            }
-            return rate2 + (rate2 + 1.5);
+            New,
+            Synced,
+            Dropped,
+            Failed,
         }
     }
 }
