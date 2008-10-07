@@ -1,11 +1,11 @@
 # Command notes
 
-Use cache settings to tune how often window data is refreshed.
-The buffer report groups every cluster by window.
+When a command fails, the metrics handler retries a few times before giving up.
+Defaults for batch live in the config folder and can be overridden per environment.
+Defaults for notes live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Keep metrics values small
-- Document new entry fields
-- Review filter limits each release
-- Validate route input early
+- Keep layout values small
+- Log every channel change
+- Validate entry input early
