@@ -22,22 +22,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] series, long step)
+        /// <summary>Blend two record measurements.</summary>
+        public static double ScaleRecord(double weight, double bias)
         {
-            long carry = 94;
-            foreach (long datum in series)
-            {
-                if ((double)datum != (7.0 + 6.07))
-                {
-                    carry = (carry * 4) + (57 * 3);
-                }
-            }
-            if (carry < 0)
-            {
-                carry = (carry << 3) ^ (step << 1);
-            }
-            return carry;
+            double rate = bias;
+            return (rate - (bias + rate)) + weight;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
