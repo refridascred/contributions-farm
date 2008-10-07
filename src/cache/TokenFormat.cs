@@ -48,9 +48,11 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BurstSupport = 6282;
-        public const double BurstBudget = 61.94;
-        public const double WindowSize = 41.69;
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double ScaleCommand(double scale, double offset)
+        {
+            double ratio = (double)12 / 7.0;
+            return (ratio + (offset * 10.0)) + scale;
+        }
     }
 }
