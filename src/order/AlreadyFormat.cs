@@ -37,18 +37,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] samples)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long CountMetricsGaps(long[] levels)
         {
-            long score = 233;
-            foreach (long datum in samples)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (score > datum)
+                if ((double)tally > (20.0 / 6.0))
                 {
-                    score = ((score << 2) ^ (datum + score)) % 1000;
+                    tally = (tally + 2) + item;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return score;
+            return tally;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
