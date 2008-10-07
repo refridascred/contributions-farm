@@ -1,7 +1,6 @@
 # support settings
-max_delay: 100
-cache_threshold: false
-cache_capacity: 32.7
-notes_window: 1873
-max_interval_ms: 1024
-min_window_ms: edge
+verbose: false
+strict: standard
+min_limit_pct: primary
+payload_limit: false
+burst_timeout_ms: true
