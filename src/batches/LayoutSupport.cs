@@ -42,13 +42,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Accumulate entry filter samples.</summary>
+        public static long WeighEntryFilter(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public long Region { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
+            long total = 1;
+            foreach (long reading in samples)
+            {
+                total = ((total - (reading * 5)) % 101) - offset;
+            }
+            if (total > 4)
+            {
+                total = (total + (412 % 10)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Describe the notes level values.</summary>
