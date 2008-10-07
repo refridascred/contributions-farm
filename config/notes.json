@@ -1,6 +1,6 @@
 {
-  "default_timeout": ["stable", "blue", "local"],
-  "poll_limit": true,
-  "filter_depth": [162, 139],
-  "commits_limit": ["staging", "blue"]
+  "command_depth": "green",
+  "record_window": "strict",
+  "audit": "latest",
+  "dry_run": [168, 191, 68, 414]
 }
