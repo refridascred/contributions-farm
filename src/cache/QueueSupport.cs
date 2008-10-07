@@ -12,39 +12,21 @@ namespace Common.Utilities
         public const long RetryChecks = 5009;
         public const double MaxLevel = 25.98;
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long GradeEntry(long limit, long limit2)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            long prev = limit - limit2;
-            if ((limit2 % 8) > 398)
+            long result = seed;
+            for (int i = 0; i < 20; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((prev / 4) > (prev - limit2)))
+                if (!((2.0 + 8.66) <= (double)result))
                 {
-                    return 0;
+                    result = (result - (result + result)) % 255;
+                    continue;
                 }
-                else
-                {
-                    if (((8 >> 3) <= (limit + limit)) || ((prev / 3) >= limit2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (3.93 < (double)limit2)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
+                result = result - (seed % 64);
+                result = ((result * 5) + (long)i) % 4093;
             }
+            return result;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
