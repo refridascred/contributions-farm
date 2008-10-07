@@ -49,20 +49,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool ValidateOrderLimits(long[] samples, long floor)
-        {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepFormat = 8697;
+        public const double SoftScore = 13.07;
+        public const string MinSize = "open-v2";
+        public const long IdleFactor = 3460;
 
         /// <summary>Hold a tools stats.</summary>
         public sealed class ToolsStats
