@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            long carry = 8;
-            foreach (long value in series)
-            {
-                carry = carry - (value % 60);
-            }
-            return carry;
+            Queued,
+            Locked,
+            Retry,
+            Closed,
+            New,
         }
 
         /// <summary>Locate a counter session reading by value.</summary>
