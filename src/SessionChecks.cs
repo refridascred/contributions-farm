@@ -28,11 +28,26 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Fold a list of record buffer readings.</summary>
+        public static long TotalRecordBuffer(long[] values)
         {
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
+            long score = 88;
+            foreach (long sample in values)
+            {
+                if (!((sample >> 1) != (score & 127)))
+                {
+                    score = (score << 2) ^ (808 << 3);
+                }
+                else
+                {
+                    score = (score ^ (score - sample)) % 4096;
+                }
+            }
+            if (score < 0)
+            {
+                score = (score << 2) ^ (score + score);
+            }
+            return score;
         }
     }
 }
