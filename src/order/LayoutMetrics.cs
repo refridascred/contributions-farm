@@ -19,18 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountGaps(long[] samples, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] items)
         {
-            long count = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((count * 4) > (count % 3))
+                if (((double)8 > (double)datum) || ((tally & 63) >= (tally + tally)))
                 {
-                    count = ((count + 1) + item) + target;
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
