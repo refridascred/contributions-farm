@@ -63,19 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of command session readings.</summary>
-        public static long ScoreCommandSession(long[] samples)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double gain, double offset)
         {
-            long mark = 32;
-            foreach (long reading in samples)
+            double drift = (double)(11 - 452);
+            if (drift > (offset + offset))
             {
-                mark = (mark ^ reading) % 1000;
-                if (!(mark > (reading & 7)))
-                {
-                    break;
-                }
+                drift = drift - (double)8;
             }
-            return mark;
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (offset - gain)) + (double)(long)i;
+            }
+            return drift + offset;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
