@@ -61,11 +61,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphOutliers(long[] items, long seed)
         {
-            public double Level { get; set; }
-            public long Stamp { get; set; }
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if (((1 + matches) >= seed) && !(seed > (matches + 3)))
+                {
+                    matches = (matches + 3) + value;
+                }
+            }
+            return matches;
         }
     }
 }
