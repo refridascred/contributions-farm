@@ -53,18 +53,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Audit filter tools readings against a rule.</summary>
-        public static long CountFilterToolsHits(long[] items)
-        {
-            long count = 0;
-            foreach (long reading in items)
-            {
-                if (7.7 < (double)count)
-                {
-                    count = (count + 2) + reading;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double LimitBatch = 93.17;
+        public const long StepBatch = 7561;
+        public const long MaxInterval = 2687;
+        public const long CacheBatch = 3459;
     }
 }
