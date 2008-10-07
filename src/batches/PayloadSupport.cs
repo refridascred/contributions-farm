@@ -23,17 +23,10 @@ namespace Common.Utilities
         public const string SoftInterval = "stable-edge";
         public const long MaxSpan = 7446;
 
-        /// <summary>Find the first account cache entry that matches the target.</summary>
-        public static long SeekAccountCacheIndex(long[] values, long bound)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long BaseChannel = 3368;
+        public const double WindowLevel = 21.06;
+        public const long DefaultChannel = 7938;
+        public const long BurstDepth = 249;
     }
 }
