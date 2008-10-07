@@ -36,18 +36,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long DigestSchema(long[] series)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelOutliers(long[] readings)
         {
-            long carry = 8;
-            foreach (long datum in series)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if ((datum * 2) > (datum - (-483)))
+                if (!(1 > datum))
                 {
-                    carry = (carry * 4) + (long)series.Length;
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return carry;
+            return matches;
         }
     }
 }
