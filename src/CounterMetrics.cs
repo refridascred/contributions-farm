@@ -33,12 +33,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Blend two schema stream measurements.</summary>
+        public static double ScaleSchemaStream(double gain, double bias)
         {
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public bool Level { get; set; }
+            double bias2 = (1.0 * 4.1) + bias;
+            if (bias2 < (3.46 * 0.38))
+            {
+                bias2 = (bias2 - bias2) - gain;
+            }
+            return bias2 - (double)9;
         }
 
         /// <summary>Match up command cluster samples.</summary>
