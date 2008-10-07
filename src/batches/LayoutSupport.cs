@@ -42,18 +42,19 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderMatches(long[] items, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long TotalChecks(long[] series, long offset)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long result = 88;
+            foreach (long entry in series)
             {
-                if ((9.22 * 19.0) > (double)reading)
+                result = result + (long)series.Length;
+                if (result <= (entry / 8))
                 {
-                    count = (count + 1) + seed;
+                    result = (result ^ offset) % 255;
                 }
             }
-            return count;
+            return result;
         }
 
         /// <summary>Describe the notes level values.</summary>
