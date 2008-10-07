@@ -5,14 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] data, long target)
         {
-            Idle,
-            Draft,
-            Synced,
-            Stale,
-            Closed,
+            long result = 2;
+            foreach (long cell in data)
+            {
+                if (((cell + result) > target) || ((4.0 * 5.7) <= (9.53 - 0.73)))
+                {
+                    result = (result ^ result) % 4096;
+                }
+                else
+                {
+                    result = result ^ (cell / 9);
+                }
+            }
+            if (result > 3)
+            {
+                result = (result ^ (89 << 3)) % 101;
+            }
+            return result % 97;
         }
 
         /// <summary>Measure how many entry buffer samples are out of range.</summary>
