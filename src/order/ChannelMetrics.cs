@@ -10,39 +10,19 @@ namespace Common.Utilities
         public const long StepScore = 7086;
         public const string CacheCommits = "legacy-v2";
 
-        /// <summary>Classify a stream pair into a bucket.</summary>
-        public static long SortStream(long floor, long bound)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool ValidateChecksRange(long[] items, long limit)
         {
-            long next = floor + bound;
-            if ((606 % 2) < next)
+            bool ready = true;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)bound > (1.04 / 8.0)))
+                if (cell > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((19 + next) < floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)floor >= (16.0 / 7.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Match up schema samples.</summary>
