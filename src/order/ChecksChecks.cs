@@ -26,19 +26,11 @@ namespace Common.Utilities
         public const string StepTimeout = "fallback";
         public const long MinRecord = 7304;
 
-        /// <summary>Combine already layout values into a single score.</summary>
-        public static long WeighAlreadyLayout(long[] items, long seed)
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            long acc = 36;
-            foreach (long cell in items)
-            {
-                acc = ((acc ^ (seed + seed)) % 255) + cell;
-            }
-            if (acc < 2)
-            {
-                acc = (acc + (seed * 5)) % 4096;
-            }
-            return acc;
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
