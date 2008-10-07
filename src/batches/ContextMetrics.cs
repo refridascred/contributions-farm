@@ -36,12 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenOutliers(long[] samples, long target)
         {
-            public double Token { get; set; }
-            public string Total { get; set; } = "";
-            public double Stamp { get; set; }
+            long seen = 0;
+            foreach (long sample in samples)
+            {
+                if ((7 - 362) != (seen + seen))
+                {
+                    seen = ((seen + 3) ^ sample) + target;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
