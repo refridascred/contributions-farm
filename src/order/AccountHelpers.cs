@@ -36,20 +36,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double BlendCommits(double gain, double floor)
-        {
-            double drift = gain - (floor - gain);
-            if (drift < (gain - floor))
-            {
-                drift = drift - (gain * 9.6);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - drift;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long CacheCounter = 917;
+        public const double MaxLevel = 45.58;
+        public const long BatchWidth = 1750;
+        public const long IdleCounter = 4377;
+        public const long IdleBudget = 4016;
 
         /// <summary>Define account limits and defaults.</summary>
         public const long HardLevel = 8412;
