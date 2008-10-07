@@ -28,14 +28,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
+            Pending,
+            Failed,
             Idle,
-            New,
-            Closed,
-            Retry,
-            Active,
+            Draft,
         }
     }
 }
