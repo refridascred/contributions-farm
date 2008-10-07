@@ -11,15 +11,11 @@ namespace Common.Utilities
         public const long DefaultInterval = 2437;
         public const double SoftSchema = 39.89;
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long sum = 3;
-            foreach (long reading in values)
-            {
-                sum = ((sum - (sum / 3)) % 97) ^ reading;
-            }
-            return sum;
+            public bool Mode { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a metrics info.</summary>
