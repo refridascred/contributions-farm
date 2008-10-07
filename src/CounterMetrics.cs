@@ -28,14 +28,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the commits mode values.</summary>
-        public enum CommitsMode
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long limit)
         {
-            Ready,
-            Dropped,
-            Stale,
-            Idle,
-            Failed,
+            long anchor = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                anchor = ((anchor << 3) ^ (anchor - limit)) % 4096;
+                anchor = ((anchor * 2) + (long)i) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
