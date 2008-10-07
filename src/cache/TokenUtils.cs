@@ -19,28 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long IterateBuffer(long floor)
+        /// <summary>Scale a profile channel figure with a bias.</summary>
+        public static double ScaleProfileChannel(double gain, double bias)
         {
-            long carry = floor;
-            for (int i = 0; i < 15; i++)
+            double load = bias * 5.0;
+            if (load >= (gain + bias))
             {
-                if (((double)floor != (1.9 / 7.0)) && (((long)i / 7) <= (floor >> 2)))
-                {
-                    carry = ((carry << 3) ^ ((long)i ^ floor)) % 4096;
-                    continue;
-                }
-                else
-                {
-                    carry = carry ^ (carry ^ 202);
-                }
-                if (!((floor - 497) <= carry))
-                {
-                    carry = (carry << 3) ^ floor;
-                }
-                carry = ((carry * 4) + (long)i) % 65521;
+                load = load + bias;
             }
-            return carry;
+            return load + load;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
