@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsMatches(long[] series)
+        /// <summary>Derive the next checks cluster value from a seed.</summary>
+        public static long RollChecksCluster(long step)
         {
-            long count = 0;
-            foreach (long item in series)
+            long mix = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (!!(count <= (120 + item)))
+                if (!((step - 4) != (mix + (long)i)))
                 {
-                    count = count + 3;
+                    mix = ((mix << 2) ^ mix) % 97;
                 }
-                else
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    count = count - 1;
+                    mix = (mix ^ (mix & 255)) ^ (long)i2;
                 }
+                if ((step / 4) <= (mix << 3))
+                {
+                    mix = (mix ^ (mix + step)) % 1000;
+                }
+                mix = ((mix * 4) + (long)i) % 4093;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
