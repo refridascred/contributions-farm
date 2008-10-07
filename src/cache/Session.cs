@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long SeriesStream(long limit)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long FoldEditor(long[] series)
         {
-            long score = limit;
-            for (int i = 0; i < 4; i++)
+            long score = 2;
+            foreach (long cell in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((score + cell) == (score % 97))
                 {
-                    score = ((score - (score << 1)) % 255) - (long)i2;
+                    score = (score - (score ^ 695)) % 1000;
                 }
-                score = ((score * 3) + (long)i) % 101;
+                if ((cell & 31) == (cell - cell))
+                {
+                    score = score ^ (score << 2);
+                }
+                if (!(score <= (cell * 5)))
+                {
+                    break;
+                }
             }
             return score;
         }
