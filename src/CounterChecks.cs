@@ -35,11 +35,12 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            public bool Offset { get; set; }
-            public string Size { get; set; } = "";
+            Active,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Hold a already summary.</summary>
