@@ -70,14 +70,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a stats header.</summary>
+        public sealed class StatsHeader
         {
-            Draft,
-            New,
-            Ready,
-            Retry,
-            Queued,
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
