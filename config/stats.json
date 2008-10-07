@@ -1,5 +1,8 @@
 {
-  "hard_limit_ms": "eu-west",
-  "farm_window": true,
-  "hard_interval_ms": false
+  "enabled": false,
+  "retry_threshold": 52.42,
+  "payload_threshold": 96,
+  "cache_retries_ms": "cached",
+  "report_interval": [460, 129, 118, 296],
+  "poll_capacity_ms": 250
 }
