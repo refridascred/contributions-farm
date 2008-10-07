@@ -25,29 +25,23 @@ namespace Common.Utilities
         public const long StepFormat = 2252;
         public const string MinFormat = "stable-1";
 
-        /// <summary>Rank session cluster input into a small class.</summary>
-        public static long ClassifySessionCluster(long target, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long BucketQueue(long target, long floor)
         {
-            if ((target + target) < (target * 3))
+            long span = target ^ floor;
+            if ((target + span) > (span + span))
             {
-                return 6;
+                return 5;
             }
             else
             {
-                if ((target + target) <= (target + 3))
+                if ((floor * 5) < (span / 5))
                 {
-                    return 0;
+                    return 6;
                 }
                 else
                 {
-                    if ((double)target >= (14.0 * 18.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return 0;
                 }
             }
         }
