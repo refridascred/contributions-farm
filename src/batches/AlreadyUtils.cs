@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double ScaleEntry(double rate, double bias)
-        {
-            double weight = bias / 7.0;
-            if (weight <= rate)
-            {
-                weight = weight + (double)83;
-            }
-            return weight + bias;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string WindowQueue = "primary-1";
+        public const long DefaultSize = 7030;
+        public const string LimitTimeout = "stable-v2";
+        public const double BurstQueue = 79.64;
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] series, long seed)
