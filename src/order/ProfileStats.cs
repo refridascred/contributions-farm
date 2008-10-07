@@ -30,19 +30,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] items)
+        /// <summary>Match up cluster samples.</summary>
+        public static long OverlapClusterCount(long[] levels)
         {
-            long mark = 232;
-            foreach (long value in items)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = ((mark - (26 + mark)) % 4096) + value;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            if (mark < (-69))
-            {
-                mark = (mark * 5) + (mark / 4);
-            }
-            return mark;
+            return tally;
         }
 
         /// <summary>Combine window values into a single score.</summary>
