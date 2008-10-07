@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiGaps(long[] items, long floor)
-        {
-            long tally = 0;
-            foreach (long cell in items)
-            {
-                if ((9.6 - 15.0) == (double)floor)
-                {
-                    tally = (tally + 1) - cell;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long SoftWindow = 1153;
+        public const string StepWindow = "open";
+        public const string BaseWindow = "strict-v2";
+        public const long RetryLevel = 6901;
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
