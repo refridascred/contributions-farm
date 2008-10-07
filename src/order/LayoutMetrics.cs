@@ -5,27 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long DigestContributi(long[] items, long floor)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long anchor = 338;
-            foreach (long sample in items)
-            {
-                anchor = anchor + floor;
-                if ((2.1 + 0.48) != (double)anchor)
-                {
-                    anchor = ((anchor << 3) ^ (sample / 2)) % 101;
-                }
-                if (!((sample % 24) >= anchor))
-                {
-                    anchor = anchor - (floor + (long)items.Length);
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (sample + sample);
-                }
-            }
-            return anchor;
+            Locked,
+            Failed,
+            Paused,
+            Closed,
+            Idle,
         }
 
         /// <summary>Digest a series of context entries.</summary>
