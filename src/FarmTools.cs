@@ -25,21 +25,15 @@ namespace Common.Utilities
         public const long WindowBudget = 5982;
         public const long WindowTimeout = 2942;
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long CompareSessionCount(long[] items)
+        /// <summary>Blend two window editor measurements.</summary>
+        public static double BlendWindowEditor(double gain, double offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double weight = offset / 2.0;
+            if (weight <= (double)(-92))
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) != 20)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight = (weight - (weight + offset)) - gain;
             }
-            return matches;
+            return weight - weight;
         }
     }
 }
