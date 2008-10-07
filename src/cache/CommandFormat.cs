@@ -25,18 +25,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit channel stream readings against a rule.</summary>
-        public static long TallyChannelStreamGaps(long[] levels, long origin)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] samples, long bound)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value >= (origin + value))
+                if (samples[i] == bound)
                 {
-                    tally = tally + 2;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
