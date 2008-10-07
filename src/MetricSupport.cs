@@ -20,18 +20,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the editor farm entries that pass the check.</summary>
-        public static long AuditEditorFarmOutliers(long[] items, long limit)
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if (((sample - limit) == (6 & 255)) && (limit >= (sample >> 4)))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            public string Limit { get; set; } = "";
+            public long Mode { get; set; }
         }
     }
 }
