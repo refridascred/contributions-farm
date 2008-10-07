@@ -51,12 +51,17 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long FindProfileIndex(long[] values, long origin)
         {
-            public long Weight { get; set; }
-            public long Limit { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > origin) && ((values[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
