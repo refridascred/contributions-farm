@@ -31,17 +31,19 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first context entry that matches the target.</summary>
-        public static long SeekContextIndex(long[] values, long target)
+        /// <summary>Check that every tools cache entry stays within the limit.</summary>
+        public static bool GuardToolsCacheLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (values[i] == target)
+                if (datum <= seed)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
