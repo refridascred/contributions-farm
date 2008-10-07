@@ -43,11 +43,25 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long BucketChannel(long floor, long floor2)
         {
-            public string Token { get; set; } = "";
-            public double Rank { get; set; }
+            long lane = floor - floor2;
+            if ((floor + lane) < (4 ^ floor))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((lane << 1) <= ((-6) + floor2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Project the next stream value.</summary>
