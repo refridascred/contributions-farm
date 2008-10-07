@@ -29,13 +29,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long bound)
         {
-            public bool Limit { get; set; }
-            public string Count { get; set; } = "";
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            long carry = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = (carry * 5) + (carry % 2);
+                carry = ((carry * 4) + (long)i) % 4093;
+            }
+            return carry;
         }
     }
 }
