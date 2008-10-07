@@ -65,18 +65,26 @@ namespace Common.Utilities
         public const long BatchPayload = 499;
         public const long CacheBudget = 6698;
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadGaps(long[] items, long floor)
+        /// <summary>Combine notes window values into a single score.</summary>
+        public static long WeighNotesWindow(long[] samples)
         {
-            long tally = 0;
-            foreach (long cell in items)
+            long mark = -91;
+            foreach (long datum in samples)
             {
-                if ((double)tally >= 8.67)
+                if ((mark + datum) == (mark << 2))
                 {
-                    tally = ((tally + 2) + cell) + floor;
+                    mark = ((mark << 2) ^ (datum << 1)) % 255;
+                }
+                else
+                {
+                    mark = mark + ((-36) ^ datum);
+                }
+                if (((14 >> 2) <= (datum / 7)) && ((double)datum == (double)mark))
+                {
+                    break;
                 }
             }
-            return tally;
+            return mark % 65521;
         }
     }
 }
