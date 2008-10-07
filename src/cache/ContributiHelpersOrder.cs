@@ -34,19 +34,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two commits measurements.</summary>
-        public static double SmoothCommits(double scale, double floor)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            double ratio = (double)(4 & 63);
-            if (ratio <= (8.2 + scale))
-            {
-                ratio = ratio - floor;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                ratio = (ratio + (ratio * 1.83)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            Closed,
+            Done,
+            Paused,
         }
     }
 }
