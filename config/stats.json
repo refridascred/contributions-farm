@@ -1,15 +1,8 @@
 {
-  "audit": 100,
-  "buffer_delay": {
-    "retry_ttl_ms": 88.59,
-    "audit": 0.64,
-    "compress": "cached",
-    "default_limit": 31,
-    "burst_timeout": "latest",
-    "soft_size_ms": "blue"
-  },
-  "dry_run": 64.66,
-  "soft_limit": 60,
-  "min_size_s": [403, 341, 356],
-  "verbose": "open"
+  "audit": 7235,
+  "filter_timeout": ["local", "local"],
+  "default_ttl_pct": 11,
+  "support_ratio": "standard",
+  "idle_timeout_s": [386, 334, 109, 116],
+  "base_ttl": true
 }
