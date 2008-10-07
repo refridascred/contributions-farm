@@ -23,19 +23,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheLimits(long[] values, long floor)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] levels, long limit)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (value != floor)
+                if (!(((count - cell) <= (692 >> 1)) && ((count + cell) >= (limit + limit))))
                 {
-                    ready = false;
-                    break;
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return ready;
+            return count;
         }
 
         /// <summary>Describe the checks class values.</summary>
