@@ -55,21 +55,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] levels)
+        /// <summary>Accumulate profile order samples.</summary>
+        public static long WeighProfileOrder(long[] readings, long step)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 23;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((2.83 / 9.0) > (double)step) && ((step / 3) >= step))
                 {
-                    if ((levels[i] + levels[j]) == 9)
-                    {
-                        count = count + 1;
-                    }
+                    mix = mix ^ datum;
+                }
+                else
+                {
+                    mix = (mix ^ (datum / 3)) % 97;
                 }
             }
-            return count;
+            if (mix > 508)
+            {
+                mix = (mix + mix) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Blend two cache measurements.</summary>
