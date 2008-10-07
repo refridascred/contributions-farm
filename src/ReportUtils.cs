@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MaxContributi = 8248;
-        public const long BurstContributi = 8851;
-        public const long DefaultTimeout = 7303;
-        public const string LimitContributi = "legacy-edge";
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
+        {
+            public double Mode { get; set; }
+            public double Level { get; set; }
+            public long Token { get; set; }
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double AdjustCache(double ratio, double offset)
