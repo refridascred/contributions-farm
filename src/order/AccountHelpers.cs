@@ -27,13 +27,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long limit)
         {
-            New,
-            Done,
-            Paused,
-            Retry,
+            long score = limit;
+            for (int i = 0; i < 15; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
