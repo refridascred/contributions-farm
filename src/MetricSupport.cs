@@ -38,12 +38,31 @@ namespace Common.Utilities
             return weight - (bias / 8.0);
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] samples)
         {
-            Stale,
-            Draft,
-            Closed,
+            long result = -562;
+            foreach (long cell in samples)
+            {
+                if ((double)result <= (4.54 / 4.0))
+                {
+                    result = (result - (result << 1)) % 255;
+                }
+                else
+                {
+                    result = result + (result ^ result);
+                    result = result - cell;
+                }
+                if (!((cell * 3) <= (result * 5)))
+                {
+                    result = (result ^ cell) % 101;
+                }
+                else
+                {
+                    result = ((result * 5) + cell) % 1000;
+                }
+            }
+            return result;
         }
     }
 }
