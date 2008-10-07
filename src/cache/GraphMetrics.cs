@@ -64,17 +64,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long LookupWindowIndex(long[] data, long seed)
+        /// <summary>Grade a contributi value against two limits.</summary>
+        public static long SortContributi(long origin, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((origin % 24) > (seed / 5))
             {
-                if (data[i] == seed)
+                return 7;
+            }
+            else
+            {
+                if (!((double)origin >= (double)seed))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    if ((origin <= (155 - origin)) && ((seed & 1) <= (seed + origin)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
