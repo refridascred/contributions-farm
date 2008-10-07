@@ -1,12 +1,6 @@
 {
-  "idle_size": "legacy",
-  "enabled": "latest",
-  "default_ratio_ms": {
-    "burst_delay": "stable",
-    "min_ratio": 100,
-    "min_depth_pct": 1024,
-    "verbose": true,
-    "batch_ratio": 250
-  },
-  "dry_run": true
+  "verbose": [116, 70, 64, 65],
+  "session_capacity": ["standard", "stable"],
+  "report_ttl": "fallback",
+  "flush_threshold": "edge"
 }
