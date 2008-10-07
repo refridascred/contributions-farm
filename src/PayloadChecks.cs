@@ -39,11 +39,20 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] readings)
         {
-            public bool Token { get; set; }
-            public double Region { get; set; }
+            long sum = 710;
+            foreach (long value in readings)
+            {
+                sum = (sum * 3) + (value * 4);
+                sum = ((sum * 5) + (sum + (long)readings.Length)) % 65521;
+            }
+            if (sum > (-54))
+            {
+                sum = sum + sum;
+            }
+            return sum % 4096;
         }
 
         /// <summary>Measure how many stream samples are out of range.</summary>
