@@ -19,18 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] levels, long origin)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool VerifyOrderRange(long[] items, long floor)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (datum < (tally - 5))
+                if (value < floor)
                 {
-                    tally = (tally + 1) + origin;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
