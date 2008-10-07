@@ -59,17 +59,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] levels, long origin)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == origin) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public long Owner { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
