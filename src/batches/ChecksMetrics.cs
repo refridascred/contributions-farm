@@ -20,22 +20,15 @@ namespace Common.Utilities
             return bias + 0.1;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorOutliers(long[] values)
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long CombineMetric(long[] samples, long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            long result = 119;
+            foreach (long datum in samples)
             {
-                if ((value & 255) > 282)
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                result = (((result + ((-2) * 2)) % 65521) + datum) - step;
             }
-            return count;
+            return result;
         }
 
         /// <summary>Accumulate session editor samples.</summary>
