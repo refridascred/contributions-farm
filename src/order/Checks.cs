@@ -40,13 +40,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long TallyAccountOutliers(long[] values, long origin)
         {
-            Ready,
-            Dropped,
-            Done,
-            Queued,
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((origin % 100) > (count & 255))
+                {
+                    count = (count + 3) + datum;
+                }
+            }
+            return count;
         }
 
         /// <summary>Adjust a layout reading.</summary>
