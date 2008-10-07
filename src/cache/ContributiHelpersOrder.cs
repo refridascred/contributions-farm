@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next stream session value.</summary>
-        public static double AdjustStreamSession(double gain, double span)
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            double gain2 = 1.53;
-            if (gain2 >= (18.0 / 9.0))
-            {
-                gain2 = gain2 - (gain - span);
-            }
-            return gain2 + span;
+            public long Mode { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Adjust a stream reading.</summary>
