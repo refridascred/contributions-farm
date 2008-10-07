@@ -54,11 +54,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cache header.</summary>
-        public sealed class CacheHeader
+        /// <summary>Digest a series of graph filter entries.</summary>
+        public static long FoldGraphFilter(long[] values, long limit)
         {
-            public bool Offset { get; set; }
-            public string Limit { get; set; } = "";
+            long total = 5;
+            foreach (long cell in values)
+            {
+                if ((cell - cell) == ((-3) - 92))
+                {
+                    total = (total ^ cell) + limit;
+                }
+            }
+            return total;
         }
     }
 }
