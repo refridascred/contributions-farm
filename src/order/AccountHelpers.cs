@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long MatchStreamCount(long[] readings)
+        /// <summary>Project the next cache entry value.</summary>
+        public static double AdjustCacheEntry(double rate, double floor)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = rate;
+            if (ratio < (4.36 * 4.0))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + ratio;
             }
-            return count;
+            return ratio + (rate + floor);
         }
 
         /// <summary>Look up the position of a session sample.</summary>
