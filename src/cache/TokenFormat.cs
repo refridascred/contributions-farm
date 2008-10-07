@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double SoftTimeout = 55.98;
-        public const long DefaultNotes = 8227;
-        public const string RetryNotes = "cached-v2";
-        public const string HardLevel = "cached";
-        public const long CacheNotes = 8669;
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long DigestGithubfarm(long[] samples, long limit)
+        {
+            long carry = 416;
+            foreach (long reading in samples)
+            {
+                carry = (carry - (carry - carry)) % 4096;
+                carry = (carry - (reading + carry)) % 4096;
+                if (((carry + carry) >= (limit ^ reading)) || ((double)reading < 4.94))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Look up the position of a graph sample.</summary>
         public static long SeekGraphIndex(long[] levels, long seed)
