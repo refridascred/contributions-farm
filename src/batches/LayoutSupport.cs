@@ -73,11 +73,25 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double gain, double bias)
+        /// <summary>Derive the next report counter value from a seed.</summary>
+        public static long StepReportCounter(long target)
         {
-            double ratio = gain - 3.0;
-            return ratio - bias;
+            long result = target;
+            for (int i = 0; i < 19; i++)
+            {
+                if ((double)target <= (double)5)
+                {
+                    result = result - (result % 60);
+                    break;
+                }
+                long step = (long)i;
+                if (step < ((long)i - target))
+                {
+                    step = (step + (result << 3)) % 65521;
+                }
+                result = ((result * 5) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
