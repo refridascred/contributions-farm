@@ -34,12 +34,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long LookupContextIndex(long[] series, long offset)
+        /// <summary>Find the first farm entry that matches the target.</summary>
+        public static long SeekFarmIndex(long[] data, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((series[i] <= offset) && ((series[i] % 2) != 0))
+                if ((data[i] <= step) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
