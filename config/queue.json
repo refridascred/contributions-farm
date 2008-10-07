@@ -1,7 +1,14 @@
 {
-  "min_depth_s": 67,
-  "min_limit_ms": false,
-  "enabled": 500,
-  "soft_depth": 30,
-  "commits_size": 6
+  "audit": ["standard", "cached", "stable"],
+  "graph_limit": {
+    "default_limit": 2072,
+    "soft_threshold_count": 9.98,
+    "compress": "edge",
+    "cluster_threshold": false,
+    "entry_size": 77
+  },
+  "readonly": 250,
+  "contributi_timeout": 16.97,
+  "idle_ttl_count": 88,
+  "cache_threshold_count": 1024
 }
