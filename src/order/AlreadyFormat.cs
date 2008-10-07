@@ -20,11 +20,18 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const string MinSupport = "strict-edge";
-        public const long MinSize = 983;
-        public const long LimitSupport = 853;
-        public const long BaseSupport = 4717;
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long FindSupportIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the report cluster series from a seed.</summary>
         public static long IterateReportCluster(long seed)
