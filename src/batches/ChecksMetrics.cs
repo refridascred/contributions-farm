@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool VerifyChannelLimits(long[] samples, long step)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double rate, double span)
         {
-            bool ok = true;
-            foreach (long datum in samples)
+            double bias = rate;
+            if (bias < (double)26)
             {
-                if (datum != step)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = bias - bias;
             }
-            return ok;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - span) + (double)(long)i;
+            }
+            return bias + 0.1;
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
