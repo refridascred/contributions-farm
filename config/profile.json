@@ -1,6 +1,16 @@
 {
-  "metrics_timeout": 77.62,
-  "flush_capacity_ms": [174, 163, 172],
-  "batch_delay": 500,
-  "max_threshold": [50, 184, 143, 433]
+  "batch_delay_count": {
+    "idle_ratio_s": ["edge", "latest"],
+    "channel_ratio": "green",
+    "channel_limit": 6093,
+    "stream_limit": 47.86
+  },
+  "order_interval": true,
+  "cache_threshold_s": {
+    "enabled": true,
+    "hard_delay_s": 250,
+    "cache_ratio": "staging",
+    "burst_retries": 5.19
+  },
+  "report_window": "primary"
 }
