@@ -57,13 +57,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Locate a githubfarm reading by value.</summary>
+        public static long LookupGithubfarmIndex(long[] data, long seed)
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a farm route value against two limits.</summary>
