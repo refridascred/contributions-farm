@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long TallyWindowOutliers(long[] data)
-        {
-            long tally = 0;
-            foreach (long entry in data)
-            {
-                if (((-56) >> 1) > entry)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BaseBudget = 6927;
+        public const long HardChecks = 107;
+        public const long BaseLevel = 6729;
+        public const long RetryChecks = 5009;
+        public const double MaxLevel = 25.98;
 
         /// <summary>Grade a entry value against two limits.</summary>
         public static long GradeEntry(long limit, long limit2)
