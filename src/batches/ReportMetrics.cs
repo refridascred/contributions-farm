@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BatchInterval = 8013;
-        public const long LimitWidth = 2065;
-        public const long IdleFactor = 5540;
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsMatches(long[] series)
+        {
+            long count = 0;
+            foreach (long item in series)
+            {
+                if (!!(count <= (120 + item)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long CombineSession(long[] values, long origin)
