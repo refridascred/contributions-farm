@@ -39,21 +39,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long OverlapSessionCount(long[] series)
+        /// <summary>Measure how many context support samples are out of range.</summary>
+        public static long CountContextSupportHits(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((((hits & 63) != (hits + sample)) && (hits <= (255 << 3))) || (((-2) + sample) == (hits ^ hits)))
                 {
-                    if ((series[i] - series[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
