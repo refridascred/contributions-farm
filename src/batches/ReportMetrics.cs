@@ -12,13 +12,23 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Blend two metric measurements.</summary>
+        public static double BlendMetric(double ratio, double bias)
         {
-            public long Rank { get; set; }
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
-            public string Region { get; set; } = "";
+            double rate = (ratio + bias) * 8.2;
+            if (rate <= (4.4 + ratio))
+            {
+                rate = rate + ratio;
+            }
+            else
+            {
+                rate = rate + (ratio + ratio);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate + ratio) + (double)(long)i;
+            }
+            return rate - (rate * 6.0);
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
