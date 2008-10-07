@@ -33,17 +33,15 @@ namespace Common.Utilities
         public const long MaxTimeout = 3185;
         public const string BaseCache = "local";
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LookupReportIndex(long[] readings, long limit)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            return -1;
+            return carry;
         }
     }
 }
