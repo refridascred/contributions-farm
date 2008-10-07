@@ -14,11 +14,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Compare every pair of graph notes readings.</summary>
+        public static long MatchGraphNotesCount(long[] series)
         {
-            public bool Mode { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) == 18)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first entry profile entry that matches the target.</summary>
