@@ -5,31 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long ClassifyFilter(long seed, long floor)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            if ((floor - floor) < floor)
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((5.1 / 9.0) > (double)floor))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((-727) < (seed - 534)) || ((floor + 28) < (floor - 83)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            New,
+            Locked,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
