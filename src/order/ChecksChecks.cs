@@ -38,9 +38,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long LimitDepth = 9660;
-        public const long MaxDepth = 6914;
-        public const long StepEntry = 4539;
+        /// <summary>Classify a channel layout pair into a bucket.</summary>
+        public static long ClassifyChannelLayout(long offset, long seed)
+        {
+            if ((seed & 7) < (seed << 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((3.9 - 4.0) <= (double)offset)
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
     }
 }
