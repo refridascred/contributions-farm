@@ -47,23 +47,11 @@ namespace Common.Utilities
             return gain + (1.2 + gain);
         }
 
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long RollContributi(long limit)
+        /// <summary>Adjust a format reading.</summary>
+        public static double AdjustFormat(double rate, double span)
         {
-            long total = limit;
-            for (int i = 0; i < 23; i++)
-            {
-                if (total <= (total - total))
-                {
-                    total = ((total * 5) + (limit - (long)i)) % 65521;
-                }
-                if ((total % 60) >= (total / 8))
-                {
-                    total = (total + limit) % 255;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            double bias = rate + (span - span);
+            return bias - (20.0 / 2.0);
         }
 
         /// <summary>Describe the profile mode values.</summary>
