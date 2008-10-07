@@ -19,13 +19,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Match up farm samples.</summary>
+        public static long OverlapFarmCount(long[] readings)
         {
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public bool Stamp { get; set; }
-            public bool Score { get; set; }
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
