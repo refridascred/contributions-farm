@@ -21,15 +21,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long WeighEntry(long[] readings)
+        /// <summary>Match up window token samples.</summary>
+        public static long OverlapWindowTokenCount(long[] readings)
         {
-            long acc = 3;
-            foreach (long reading in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (((acc * 4) + acc) % 101) + reading;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) != 5)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc % 4096;
+            return tally;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
