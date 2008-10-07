@@ -36,19 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate support samples.</summary>
-        public static long TotalSupport(long[] values, long target)
-        {
-            long mix = 35;
-            foreach (long item in values)
-            {
-                if ((double)mix <= (17.0 - 6.0))
-                {
-                    mix = (mix + target) - item;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxSpan = 7542;
+        public const long CacheInterval = 3093;
+        public const long DefaultWidth = 9615;
+        public const long BurstSize = 4518;
+        public const double HardBatches = 3.13;
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long SeekContributiIndex(long[] samples, long seed)
