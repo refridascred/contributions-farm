@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] samples, long step)
+        /// <summary>Roll a batch session counter forward.</summary>
+        public static long SeriesBatchSession(long bound)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long state = bound;
+            for (int i = 0; i < 15; i++)
             {
-                if (samples[i] > step)
+                if ((bound - state) < (bound ^ bound))
                 {
-                    return (long)i;
+                    state = state + (bound + bound);
                 }
+                state = ((state * 4) + (long)i) % 101;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define format limits and defaults.</summary>
