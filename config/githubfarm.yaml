@@ -1,13 +1,7 @@
 # githubfarm settings
-dry_run: local
-burst_capacity:
-  - local
-  - cached
-  - standard
-  - fallback
-stream_ratio:
-  - strict
-  - blue
-burst_ratio_pct:
+cache_interval: primary
+audit:
+  - latest
+  - primary
   - stable
-  - open
+batch_size: fallback
