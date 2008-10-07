@@ -21,16 +21,27 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long StepGraph(long floor)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long FoldReport(long[] readings)
         {
-            long state = floor;
-            for (int i = 0; i < 14; i++)
+            long anchor = 57;
+            foreach (long item in readings)
             {
-                state = (state + (floor << 3)) % 101;
-                state = ((state * 3) + (long)i) % 101;
+                anchor = anchor ^ anchor;
+                if (((7.0 - 1.61) <= (0.4 / 3.0)) && ((anchor - (long)readings.Length) >= (anchor - anchor)))
+                {
+                    anchor = (anchor * 5) + (167 + item);
+                }
+                else
+                {
+                    anchor = ((anchor << 2) ^ 1) % 4096;
+                }
             }
-            return state;
+            if (anchor > 0)
+            {
+                anchor = anchor - (anchor ^ anchor);
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
