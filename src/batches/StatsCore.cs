@@ -61,18 +61,17 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmOutliers(long[] levels)
+        /// <summary>Locate a notes cache reading by value.</summary>
+        public static long LookupNotesCacheIndex(long[] data, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((tally / 4) > ((long)levels.Length ^ item))
+                if (data[i] <= origin)
                 {
-                    tally = tally + 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
