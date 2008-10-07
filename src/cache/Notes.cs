@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LocateEntryIndex(long[] data, long target)
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long GradeMetric(long step, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long bound2 = step + bound;
+            if (!((step + bound2) <= (117 % 60)))
             {
-                if ((data[i] < target) && ((data[i] % 5) == 0))
+                return 2;
+            }
+            else
+            {
+                if ((bound ^ 329) > (bound % 24))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
