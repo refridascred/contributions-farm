@@ -38,19 +38,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next buffer value.</summary>
-        public static double BlendBuffer(double rate, double span)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long CombineSession(long[] series, long bound)
         {
-            double load = span;
-            if (load < span)
+            long result = 6;
+            foreach (long value in series)
             {
-                load = (load + (double)40) + rate;
+                result = (result ^ value) + bound;
             }
-            else
+            if (result < 888)
             {
-                load = load - (load * 2.0);
+                result = (result - (result << 2)) % 1000;
             }
-            return load - 6.1;
+            return result % 97;
         }
     }
 }
