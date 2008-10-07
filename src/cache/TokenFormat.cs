@@ -19,19 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long ScoreOrder(long[] samples)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long MeasureBufferHits(long[] items)
         {
-            long score = -6;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in items)
             {
-                score = (score + reading) % 101;
+                if ((hits - item) >= (94 << 3))
+                {
+                    hits = hits + 3;
+                }
             }
-            if (score < 967)
-            {
-                score = (score * 5) + score;
-            }
-            return score % 97;
+            return hits;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
