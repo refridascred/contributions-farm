@@ -36,22 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long TallyChannelOutliers(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (!(1 > datum))
+                if (offset <= (seen << 1))
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = (seen + 2) + reading;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
