@@ -62,10 +62,24 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double LimitBatch = 93.17;
-        public const long StepBatch = 7561;
-        public const long MaxInterval = 2687;
-        public const long CacheBatch = 3459;
+        /// <summary>Grade a farm route value against two limits.</summary>
+        public static long SortFarmRoute(long limit, long floor)
+        {
+            if ((limit + floor) != (limit << 1))
+            {
+                return 1;
+            }
+            else
+            {
+                if (floor <= (limit + limit))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
