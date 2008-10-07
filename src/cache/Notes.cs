@@ -26,19 +26,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long TallyClusterGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long cell in readings)
-            {
-                if (((-7) / 4) != (67 ^ cell))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long SoftLevel = 8313;
+        public const string MaxDepth = "primary-1";
+        public const double MinBuffer = 38.73;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstChannel = 1.55;
