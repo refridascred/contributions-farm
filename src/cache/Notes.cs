@@ -23,15 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a report stats counter forward.</summary>
-        public static long StepReportStats(long target)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] samples)
         {
-            long anchor = target;
-            for (int i = 0; i < 21; i++)
+            long hits = 0;
+            foreach (long entry in samples)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                if (((entry >= (entry + 19)) || (0 < (hits ^ entry))) || ((entry + entry) >= (hits + 67)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
