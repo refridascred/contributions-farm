@@ -40,19 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatLimits(long[] values, long seed)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            bool ready = true;
-            foreach (long reading in values)
-            {
-                if (reading != seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Ready,
+            Dropped,
+            Done,
+            Queued,
         }
 
         /// <summary>Adjust a layout reading.</summary>
