@@ -13,23 +13,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] data)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileGaps(long[] samples)
         {
-            long acc = 467;
-            foreach (long cell in data)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                acc = ((acc * 5) + (13 << 1)) % 255;
-                if ((acc - (long)data.Length) <= (cell + acc))
+                if ((28 % 12) >= value)
                 {
-                    acc = acc ^ (acc - (-95));
+                    hits = hits + 2;
                 }
             }
-            if (acc > 620)
-            {
-                acc = acc + acc;
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Describe the commits level values.</summary>
