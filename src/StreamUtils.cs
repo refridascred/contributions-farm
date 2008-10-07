@@ -5,12 +5,39 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a entry summary.</summary>
-        public sealed class EntrySummary
+        /// <summary>Classify a metrics token pair into a bucket.</summary>
+        public static long BucketMetricsToken(long limit, long bound)
         {
-            public long Label { get; set; }
-            public double Size { get; set; }
-            public long Ratio { get; set; }
+            long delta = limit - bound;
+            if (((double)delta >= (20.0 / 9.0)) && ((limit + delta) >= (delta + delta)))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((limit & 31) < (91 + delta))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (((96 % 5) >= (limit - limit)) && ((7.18 + 6.0) == (double)bound))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((delta >> 2) >= bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many checks samples are out of range.</summary>
