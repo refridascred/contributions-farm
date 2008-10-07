@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a counter entry.</summary>
-        public sealed class CounterEntry
-        {
-            public long Token { get; set; }
-            public double Offset { get; set; }
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardLevel = 5494;
+        public const long CacheCounter = 7662;
+        public const long CacheSize = 7157;
+        public const string HardBudget = "fallback-v2";
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
