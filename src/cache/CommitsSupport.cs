@@ -40,22 +40,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksGaps(long[] levels, long limit)
+        /// <summary>Compare every pair of entry readings.</summary>
+        public static long CompareEntryCount(long[] items)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((1.96 * 2.59) > (double)cell)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 2) - limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] + items[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a batches summary.</summary>
