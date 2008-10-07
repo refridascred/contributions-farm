@@ -37,24 +37,16 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Grade a route stats value against two limits.</summary>
-        public static long SortRouteStats(long origin, long step)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long StepRoute(long origin)
         {
-            if (((origin + step) >= (step & 127)) && ((9.88 / 3.0) >= (double)origin))
+            long state = origin;
+            for (int i = 0; i < 4; i++)
             {
-                return 3;
+                state = (state - (origin + (long)i)) % 97;
+                state = ((state * 3) + (long)i) % 97;
             }
-            else
-            {
-                if ((1.17 >= (double)origin) || ((double)step < (4.0 - 5.0)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return state;
         }
     }
 }
