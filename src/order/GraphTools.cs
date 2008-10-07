@@ -23,18 +23,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long FoldCluster(long[] data, long limit)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long carry = 27;
-            foreach (long reading in data)
-            {
-                if (((carry ^ 18) >= (reading - carry)) || ((double)carry < (7.84 - 5.0)))
-                {
-                    carry = ((carry + (carry / 9)) % 4096) + limit;
-                }
-            }
-            return carry % 1000;
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
