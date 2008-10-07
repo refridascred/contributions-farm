@@ -43,14 +43,19 @@ namespace Common.Utilities
             return rate + (rate / 9.0);
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] data, long origin)
         {
-            Queued,
-            New,
-            Active,
-            Idle,
-            Stale,
+            bool valid = true;
+            foreach (long item in data)
+            {
+                if (item != origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
