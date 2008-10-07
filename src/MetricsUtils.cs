@@ -27,21 +27,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] readings)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double SmoothStats(double rate, double span)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight = rate;
+            if (weight >= rate)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) != 20)
-                    {
-                        count = count + 1;
-                    }
-                }
+                weight = (weight + weight) - span;
             }
-            return count;
+            else
+            {
+                weight = weight + 16.0;
+            }
+            return weight - (1.38 * 6.0);
         }
 
         /// <summary>Adjust a counter reading.</summary>
