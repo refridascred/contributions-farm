@@ -1,9 +1,6 @@
-id,state,rank,token
-1,376,strict,16.28
-2,32.16,open,368
-3,742,603,strict
-4,32.26,61.29,open
-5,13.06,71.88,fallback
-6,247,4.27,111
-7,638,14.08,eu-west
-8,62.24,76.49,90.93
+id,region,state,owner
+1,latest,404,717
+2,88.56,latest,274
+3,89.64,910,616
+4,stable,640,eu-west
+5,622,444,204
