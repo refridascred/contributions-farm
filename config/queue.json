@@ -1,7 +1,8 @@
 {
-  "enabled": false,
-  "buffer_interval": 47.34,
-  "soft_delay_ms": ["open", "primary", "open", "fallback"],
-  "warm_size_ms": "eu-west",
-  "profile_delay": "eu-west"
+  "cache_capacity_s": [89, 365, 58, 426],
+  "compress": 1024,
+  "min_ratio": 18.09,
+  "farm_size": true,
+  "batches_delay": ["standard", "green", "latest", "eu-west"],
+  "graph_ttl": "standard"
 }
