@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Validate token queue readings against a bound.</summary>
-        public static bool CheckTokenQueueLimits(long[] levels, long offset)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long OverlapBufferCount(long[] samples)
         {
-            bool found = true;
-            foreach (long reading in levels)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (reading >= offset)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((samples[i] - samples[j]) < 6)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
