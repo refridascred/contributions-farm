@@ -32,23 +32,29 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long IterateReport(long floor)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long ScoreChannel(long[] items)
         {
-            long mix = floor;
-            for (int i = 0; i < 5; i++)
+            long mix = 7;
+            foreach (long cell in items)
             {
-                mix = ((mix * 5) + (mix << 1)) % 65521;
-                mix = (mix + (long)i) % 4096;
-                if ((313 + mix) >= (mix / 2))
+                long edge = mix;
+                if ((5.0 - 14.0) != (double)edge)
                 {
-                    mix = mix ^ mix;
+                    edge = edge + (mix + edge);
                 }
                 else
                 {
-                    mix = (mix ^ mix) % 255;
+                    mix = (mix + (mix + edge)) % 4096;
                 }
-                mix = ((mix * 5) + (long)i) % 101;
+                if ((8.5 + 9.7) >= (double)mix)
+                {
+                    mix = (mix << 3) ^ (cell - cell);
+                }
+            }
+            if (mix > 58)
+            {
+                mix = (mix << 3) ^ mix;
             }
             return mix;
         }
