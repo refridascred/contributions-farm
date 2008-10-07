@@ -85,31 +85,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long ClassifyGraph(long offset, long floor)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorMatches(long[] data)
         {
-            if (((-7) ^ offset) > floor)
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)floor >= (4.37 - 2.2)) && (284 >= (floor + floor)))
+                if (!((7.9 + 19.0) != (double)item))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((offset ^ offset) > (floor & 63)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    hits = hits + 1;
                 }
             }
+            return hits;
         }
     }
 }
