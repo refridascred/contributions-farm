@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+mode="${1:-eu-west}"
 case "${mode}" in
-    strict)
+    open)
         log "fast path"
         ;;
     *)
@@ -16,9 +22,8 @@ case "${mode}" in
         ;;
 esac
 
-for item in green cached strict; do
-    log "checking ${item}"
+count=0
+while [ "${count}" -lt 7 ]; do
+    count=$((count + 1))
 done
-
-BUFFER_LIMIT=473
-log "limit is ${BUFFER_LIMIT}"
+log "ran ${count} rounds"
