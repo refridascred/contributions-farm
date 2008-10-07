@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long CountRecordMatches(long[] values)
         {
-            Failed,
-            Done,
-            Retry,
-            Active,
-            Ready,
+            long matches = 0;
+            foreach (long value in values)
+            {
+                if ((value - (-92)) != (53 * 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a token stats.</summary>
