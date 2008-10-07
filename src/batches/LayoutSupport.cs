@@ -57,14 +57,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the notes level values.</summary>
-        public enum NotesLevel
+        /// <summary>Hold a farm snapshot.</summary>
+        public sealed class FarmSnapshot
         {
-            Closed,
-            Done,
-            Queued,
-            New,
-            Dropped,
+            public long Stamp { get; set; }
+            public string Total { get; set; } = "";
+            public double Count { get; set; }
         }
 
         /// <summary>Digest a series of farm token entries.</summary>
