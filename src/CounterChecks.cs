@@ -43,25 +43,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long BucketChannel(long floor, long floor2)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool VerifySupportLimits(long[] values, long floor)
         {
-            long lane = floor - floor2;
-            if ((floor + lane) < (4 ^ floor))
+            bool stale = true;
+            foreach (long datum in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((lane << 1) <= ((-6) + floor2))
+                if (datum >= floor)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 3;
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Project the next stream value.</summary>
