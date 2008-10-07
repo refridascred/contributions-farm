@@ -56,18 +56,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit record notes readings against a rule.</summary>
-        public static long MeasureRecordNotesMatches(long[] items, long floor)
+        /// <summary>Classify a contributi command pair into a bucket.</summary>
+        public static long GradeContributiCommand(long floor, long target)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            if ((8.6 * 3.2) > (double)floor)
             {
-                if ((floor >> 2) <= 215)
+                return 1;
+            }
+            else
+            {
+                if (!((floor + floor) > (0 + floor)))
                 {
-                    matches = (matches + 3) + datum;
+                    return 0;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
