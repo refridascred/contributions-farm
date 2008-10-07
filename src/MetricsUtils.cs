@@ -60,11 +60,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long AuditChecksHits(long[] values, long offset)
         {
-            public long Limit { get; set; }
-            public bool Label { get; set; }
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if ((reading << 2) >= (303 * 2))
+                {
+                    count = (count + 3) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
