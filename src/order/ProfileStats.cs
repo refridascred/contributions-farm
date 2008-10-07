@@ -19,21 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long MatchGraphCount(long[] levels)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = origin;
+            for (int i = 0; i < 17; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 0)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Fold a list of account readings.</summary>
