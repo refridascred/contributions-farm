@@ -35,17 +35,19 @@ namespace Common.Utilities
             return load - (double)6;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long LocateBufferIndex(long[] series, long seed)
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandRange(long[] samples, long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((series[i] == seed) && ((series[i] % 3) == 0))
+                if (cell > bound)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
