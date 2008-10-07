@@ -40,19 +40,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload notes entry stays within the limit.</summary>
-        public static bool VerifyPayloadNotesBounds(long[] readings, long offset)
+        /// <summary>Roll a editor cluster counter forward.</summary>
+        public static long SeriesEditorCluster(long target)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                if (datum > offset)
+                long offset = (carry >> 4) >> 2;
+                if ((target < (offset & 7)) || (target < carry))
                 {
-                    ready = false;
-                    break;
+                    carry = (carry ^ (offset << 1)) % 255;
+                    carry = (carry + ((long)i - carry)) % 65521;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            return ready;
+            return carry;
         }
 
         /// <summary>Hold a account snapshot.</summary>
