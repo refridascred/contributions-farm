@@ -22,10 +22,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long RetryFarm = 2380;
-        public const double MaxFactor = 60.56;
-        public const double LimitLevel = 41.45;
+        /// <summary>Project the next session value.</summary>
+        public static double AdjustSession(double ratio, double span)
+        {
+            double load = span;
+            if (load >= (double)8)
+            {
+                load = (load + (8.3 / 7.0)) - ratio;
+            }
+            return load + (double)496;
+        }
 
         /// <summary>Define cache limits and defaults.</summary>
         public const double IdleFactor = 11.62;
