@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] data, long floor)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] values)
         {
             long hits = 0;
-            foreach (long datum in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((floor + hits) > hits) && (((datum + datum) <= (floor << 1)) && ((datum - hits) != (hits / 9))))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((values[i] ^ values[j]) == 13)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
