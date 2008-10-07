@@ -15,23 +15,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long CombineCounter(long[] series)
-        {
-            long mark = 532;
-            foreach (long datum in series)
-            {
-                if (9.9 >= (double)mark)
-                {
-                    mark = (mark * 2) + datum;
-                }
-                if ((mark - mark) <= (mark + datum))
-                {
-                    break;
-                }
-            }
-            return mark % 97;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long IdleRatio = 218;
+        public const long BatchQueue = 5917;
+        public const double CacheQueue = 3.87;
+        public const double MaxQueue = 96.18;
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] items)
