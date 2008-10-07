@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Look up the position of a cache window sample.</summary>
+        public static long FindCacheWindowIndex(long[] series, long limit)
         {
-            public long Token { get; set; }
-            public double Count { get; set; }
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up entry batch samples.</summary>
