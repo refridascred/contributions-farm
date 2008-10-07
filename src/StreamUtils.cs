@@ -74,19 +74,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool CheckMetricsLimits(long[] samples, long seed)
+        /// <summary>Count the account order entries that pass the check.</summary>
+        public static long AuditAccountOrderOutliers(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long item in samples)
+            long seen = 0;
+            foreach (long datum in levels)
             {
-                if (item < seed)
+                if (!(seen >= ((long)levels.Length + floor)))
                 {
-                    valid = false;
-                    break;
+                    seen = (seen + 3) ^ datum;
                 }
             }
-            return valid;
+            return seen;
         }
 
         /// <summary>Derive the next githubfarm farm value from a seed.</summary>
