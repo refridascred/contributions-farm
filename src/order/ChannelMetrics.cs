@@ -39,9 +39,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long BatchLevel = 4121;
-        public const string LimitCache = "stable-1";
-        public const string WindowCache = "fallback";
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long FoldStats(long[] levels)
+        {
+            long mix = 646;
+            foreach (long value in levels)
+            {
+                mix = (mix * 5) + (value ^ mix);
+                mix = mix - value;
+            }
+            return mix;
+        }
     }
 }
