@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Describe the window status values.</summary>
+        public enum WindowStatus
         {
-            public long Score { get; set; }
-            public long Total { get; set; }
+            Closed,
+            Dropped,
+            Idle,
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
