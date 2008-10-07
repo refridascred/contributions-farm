@@ -1,5 +1,5 @@
 {
-  "route_window": 54.69,
-  "compress": ["local", "latest", "primary"],
-  "batch_limit": 1031
+  "retry_limit": 81.65,
+  "cache_retries_s": 696,
+  "window_depth": ["staging", "edge"]
 }
