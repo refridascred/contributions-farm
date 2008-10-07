@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank order input into a small class.</summary>
-        public static long ClassifyOrder(long seed, long bound)
+        /// <summary>Count the layout order entries that pass the check.</summary>
+        public static long CountLayoutOrderOutliers(long[] samples, long limit)
         {
-            if (bound > seed)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed > (bound % 16))
+                if ((double)hits != (4.1 - 14.0))
                 {
-                    return 7;
+                    hits = ((hits + 2) - cell) - limit;
                 }
                 else
                 {
-                    return 2;
+                    hits = hits - 1;
                 }
             }
+            return hits;
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
