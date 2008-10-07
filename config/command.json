@@ -1,13 +1,6 @@
 {
-  "checks_ratio": [102, 490, 364],
-  "verbose": "cached",
-  "checks_retries": {
-    "batch_size_count": "strict",
-    "default_retries_ms": false,
-    "burst_interval": "open",
-    "min_depth": 82,
-    "audit": "fallback"
-  },
-  "idle_interval": 5969,
-  "sync_timeout_s": [139, 115, 370, 171]
+  "format_limit": "cached",
+  "burst_depth_pct": 1.43,
+  "cache_capacity_pct": 1237,
+  "cache_threshold": false
 }
