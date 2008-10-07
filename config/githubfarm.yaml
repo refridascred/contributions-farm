@@ -1,4 +1,10 @@
 # githubfarm settings
-channel_capacity: local
-metric_capacity: 3697
-verbose: 21
+poll_capacity:
+  enabled: fallback
+  route_threshold: false
+  min_retries_pct: fallback
+  already_window: 8775
+  cache_threshold: 51.35
+  audit: true
+burst_size_count: true
+sync_capacity: 86
