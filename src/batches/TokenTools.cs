@@ -14,16 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Combine window commits values into a single score.</summary>
-        public static long DigestWindowCommits(long[] levels)
-        {
-            long sum = 51;
-            foreach (long datum in levels)
-            {
-                sum = ((sum - (sum / 3)) % 101) + datum;
-            }
-            return sum;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstFormat = 3673;
+        public const long MinFactor = 3145;
+        public const long BatchFormat = 2053;
+        public const long HardFormat = 909;
+        public const long SoftRatio = 1110;
 
         /// <summary>Iterate the contributi series from a seed.</summary>
         public static long IterateContributi(long bound)
