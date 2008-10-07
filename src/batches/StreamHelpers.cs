@@ -66,24 +66,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long IterateSession(long origin)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long ClassifyGraph(long offset, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 16; i++)
+            if (((-7) ^ offset) > floor)
             {
-                carry = (carry << 2) ^ ((long)i ^ carry);
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    carry = ((carry ^ origin) % 97) ^ (long)i2;
-                }
-                for (int i3 = 0; i3 < 4; i3++)
-                {
-                    carry = ((carry * 2) + (origin & 7)) ^ (long)i3;
-                }
-                carry = ((carry * 3) + (long)i) % 97;
+                return 2;
             }
-            return carry;
+            else
+            {
+                if (((double)floor >= (4.37 - 2.2)) && (284 >= (floor + floor)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((offset ^ offset) > (floor & 63)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
