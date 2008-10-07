@@ -50,18 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long TallyLayoutGaps(long[] data, long seed)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if ((9.86 + 7.0) == (double)seed)
-                {
-                    seen = (seen + 3) ^ reading;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public long Ratio { get; set; }
         }
     }
 }
