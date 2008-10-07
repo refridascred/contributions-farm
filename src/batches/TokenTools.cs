@@ -32,10 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long CacheFactor = 2931;
-        public const long IdleSession = 8997;
-        public const double RetryScore = 0.75;
-        public const long HardDepth = 837;
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long DeriveCache(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 22; i++)
+            {
+                if (!((target - 79) < total))
+                {
+                    total = (total + target) % 65521;
+                }
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
