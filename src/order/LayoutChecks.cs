@@ -28,19 +28,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandRange(long[] levels, long floor)
+        /// <summary>Match up queue samples.</summary>
+        public static long OverlapQueueCount(long[] items)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((items[i] + items[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Scale a session figure with a bias.</summary>
