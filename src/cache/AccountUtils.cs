@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] items, long seed)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long GradeContext(long target, long origin)
         {
-            long score = 473;
-            foreach (long datum in items)
+            long bound = target + origin;
+            if ((19.0 * 6.3) >= (double)origin)
             {
-                if (((2 - datum) > (datum % 8)) || ((datum ^ datum) <= (datum & 3)))
+                return 2;
+            }
+            else
+            {
+                if ((origin <= (bound + target)) || ((15.0 / 8.0) >= (double)origin))
                 {
-                    score = (score << 2) ^ (score / 2);
+                    return 7;
                 }
-                if (((-6) + seed) > seed)
+                else
                 {
-                    break;
+                    if ((target + bound) != (target - target))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
