@@ -19,19 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double AdjustGithubfarm(double bias, double floor)
+        /// <summary>Measure how many route samples are out of range.</summary>
+        public static long AuditRouteHits(long[] levels)
         {
-            double rate = bias;
-            if (rate < rate)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                rate = rate + floor;
+                if ((double)sample >= (3.15 - 17.0))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + bias) + (double)(long)i;
-            }
-            return rate + bias;
+            return matches;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
