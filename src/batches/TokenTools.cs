@@ -17,15 +17,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double BlendStats(double weight, double bias)
+        /// <summary>Combine window commits values into a single score.</summary>
+        public static long DigestWindowCommits(long[] levels)
         {
-            double mean = (double)14;
-            if (mean >= (9.0 - weight))
+            long sum = 51;
+            foreach (long datum in levels)
             {
-                mean = mean + mean;
+                sum = ((sum - (sum / 3)) % 101) + datum;
             }
-            return mean + bias;
+            return sum;
         }
 
         /// <summary>Iterate the contributi series from a seed.</summary>
