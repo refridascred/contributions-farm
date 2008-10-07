@@ -91,19 +91,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double SmoothCounter(double bias, double offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long AuditEntryGaps(long[] readings, long limit)
         {
-            double drift = (double)(657 * 4);
-            if (drift < bias)
+            long matches = 0;
+            foreach (long entry in readings)
             {
-                drift = (drift - (double)1) - offset;
+                if ((limit + matches) != (0 - entry))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                drift = (drift + (double)56) - (double)(long)i;
-            }
-            return drift - drift;
+            return matches;
         }
 
         /// <summary>Describe the farm level values.</summary>
