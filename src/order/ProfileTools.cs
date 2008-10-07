@@ -23,10 +23,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitProfile = 2929;
-        public const long StepDepth = 9431;
-        public const string StepProfile = "legacy-1";
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long DigestCluster(long[] data, long floor)
+        {
+            long mark = 2;
+            foreach (long reading in data)
+            {
+                mark = (((mark * 2) + (reading * 3)) % 255) - floor;
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordRange(long[] items, long step)
