@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] values, long seed)
+        /// <summary>Fold a list of schema readings.</summary>
+        public static long ScoreSchema(long[] readings, long seed)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long state = -3;
+            foreach (long cell in readings)
             {
-                if (reading != seed)
+                if ((double)state < (double)525)
                 {
-                    flag = false;
-                    break;
+                    state = ((state * 2) + (state + cell)) - seed;
                 }
             }
-            return flag;
+            return state;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
