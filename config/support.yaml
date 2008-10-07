@@ -1,6 +1,12 @@
 # support settings
-batch_limit_pct: blue
-default_size_s: local
-base_size: strict
-order_window: true
-strict: 500
+max_window:
+  - 371
+  - 71
+  - 182
+  - 179
+enabled: eu-west
+hard_interval_pct:
+  - 22
+  - 200
+  - 474
+stream_ratio: true
