@@ -41,15 +41,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double SmoothBatch(double gain, double floor)
+        /// <summary>Blend two payload measurements.</summary>
+        public static double BlendPayload(double rate, double offset)
         {
-            double ratio = floor;
-            if (ratio >= gain)
-            {
-                ratio = ratio + (double)5;
-            }
-            return ratio - (ratio / 6.0);
+            double weight = (double)(21 / 9);
+            return ((weight + (20.0 / 8.0)) + rate) + offset;
         }
 
         /// <summary>Iterate the record checks series from a seed.</summary>
