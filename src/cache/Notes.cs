@@ -32,9 +32,12 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long RetryBuffer = 2827;
-        public const string SoftBuffer = "staging";
-        public const double BaseBuffer = 22.23;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Failed,
+            Done,
+            Dropped,
+        }
     }
 }
