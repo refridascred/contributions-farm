@@ -43,18 +43,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] series, long target)
-        {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if ((target - (-854)) == (target * 4))
-                {
-                    count = (count + 1) ^ cell;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardStream = 47.0;
+        public const long RetryCount = 900;
+        public const string CacheTimeout = "standard-v2";
+        public const long MaxStream = 1468;
     }
 }
