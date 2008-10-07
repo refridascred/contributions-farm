@@ -14,19 +14,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileLimits(long[] series, long offset)
+        /// <summary>Find the first order checks entry that matches the target.</summary>
+        public static long LocateOrderChecksIndex(long[] samples, long origin)
         {
-            bool ok = true;
-            foreach (long value in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (value > offset)
+                if (samples[i] <= origin)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Count the window record entries that pass the check.</summary>
