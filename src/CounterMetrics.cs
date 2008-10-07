@@ -37,16 +37,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Blend two schema stream measurements.</summary>
-        public static double ScaleSchemaStream(double gain, double bias)
-        {
-            double bias2 = (1.0 * 4.1) + bias;
-            if (bias2 < (3.46 * 0.38))
-            {
-                bias2 = (bias2 - bias2) - gain;
-            }
-            return bias2 - (double)9;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double BaseSize = 36.36;
+        public const long BurstRecord = 3045;
+        public const long WindowRecord = 5997;
+        public const string BurstInterval = "primary-1";
+        public const long BaseRecord = 7189;
 
         /// <summary>Match up command cluster samples.</summary>
         public static long CompareCommandClusterCount(long[] readings)
