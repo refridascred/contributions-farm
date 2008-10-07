@@ -35,21 +35,31 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of session readings.</summary>
-        public static long MatchSessionCount(long[] values)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long step, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((step + bound) < (34 + step)) || ((step + step) < (bound % 7)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((bound >> 2) <= (step - 3))
                 {
-                    if ((values[i] - values[j]) == 11)
+                    return 8;
+                }
+                else
+                {
+                    if (((9.0 - 4.0) < (double)step) && ((step ^ step) > (step + bound)))
                     {
-                        tally = tally + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
