@@ -25,26 +25,12 @@ namespace Common.Utilities
         public const long MinRatio = 854;
         public const long IdleSpan = 1207;
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long SeriesRoute(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc << 3) ^ offset) % 1000;
-                if (((4.78 * 20.0) >= (double)acc) && ((offset + acc) > offset))
-                {
-                    acc = ((acc * 5) + acc) % 101;
-                    break;
-                }
-                else
-                {
-                    acc = ((acc * 5) + (offset % 64)) % 65521;
-                }
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long HardTimeout = 9215;
+        public const double MinSpan = 90.37;
+        public const long LimitBudget = 9524;
+        public const double DefaultSize = 54.06;
+        public const double HardTools = 64.52;
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
