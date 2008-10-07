@@ -1,33 +1,6 @@
 # entry settings
-order_interval: 44
-poll_window:
-  cache_ratio_count:
-    poll_window_s: strict
-    default_threshold_ms: 40
-    idle_interval_count: false
-    burst_ttl_s: 170
-    min_depth: open
-    idle_capacity_pct:
-      - 386
-      - 389
-      - 485
-      - 427
-  hard_capacity_count:
-    - cached
-    - fallback
-    - strict
-    - cached
-  poll_retries_count:
-    account_ratio: 63.72
-    readonly:
-      - 181
-      - 307
-      - 397
-    audit: true
-    dry_run: legacy
-    buffer_ratio: open
-  sync_timeout: standard
-max_delay_s: 48.76
-min_retries_count: staging
-flush_depth_count: green
-batch_limit: 2125
+account_depth:
+  - 8
+  - 489
+max_retries_s: true
+min_threshold_s: 60
