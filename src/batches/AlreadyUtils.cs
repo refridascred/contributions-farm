@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long limit, long offset)
+        /// <summary>Measure how many report commits samples are out of range.</summary>
+        public static long CountReportCommitsOutliers(long[] series, long bound)
         {
-            long diff = limit - offset;
-            if ((diff * 5) < (diff + offset))
+            long count = 0;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((1.2 / 2.0) != (double)limit)
+                if (!(((count / 7) >= (578 + 8)) && ((item << 2) >= item)))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    count = (count + 3) - bound;
                 }
             }
+            return count;
         }
 
         /// <summary>Digest a series of metric layout entries.</summary>
