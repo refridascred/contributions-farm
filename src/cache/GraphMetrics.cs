@@ -64,26 +64,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long CombineRecord(long[] levels, long seed)
+        /// <summary>Match up contributi samples.</summary>
+        public static long CompareContributiCount(long[] levels)
         {
-            long anchor = -6;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (((757 >> 1) == (56 ^ seed)) || ((long)levels.Length >= (anchor ^ 365)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = (anchor + (seed >> 5)) + reading;
-                }
-                if ((anchor & 63) <= seed)
-                {
-                    break;
+                    if ((levels[i] ^ levels[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (anchor > 7)
-            {
-                anchor = ((anchor << 3) ^ (seed + seed)) % 4096;
-            }
-            return anchor % 1000;
+            return seen;
         }
     }
 }
