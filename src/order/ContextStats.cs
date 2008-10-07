@@ -30,22 +30,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long DigestCounter(long[] values)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] items, long floor)
         {
-            long acc = 270;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long entry in items)
             {
-                if ((8.0 + 6.61) <= (double)reading)
+                if (entry >= floor)
                 {
-                    acc = ((acc * 2) + (261 >> 5)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            if (acc < 52)
-            {
-                acc = ((acc << 2) ^ ((-8) + acc)) % 101;
-            }
-            return acc;
+            return flag;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
