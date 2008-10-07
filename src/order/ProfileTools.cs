@@ -5,12 +5,30 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] items, long floor)
         {
-            public long Score { get; set; }
-            public long Offset { get; set; }
-            public long Level { get; set; }
+            long carry = 931;
+            foreach (long datum in items)
+            {
+                if (datum > ((long)items.Length & 7))
+                {
+                    break;
+                }
+                if (5 >= (datum + carry))
+                {
+                    carry = (carry << 3) ^ floor;
+                }
+                if (((floor + carry) != (0 & 63)) || ((carry - carry) >= (25 + carry)))
+                {
+                    break;
+                }
+            }
+            if (carry > 58)
+            {
+                carry = ((carry << 3) ^ (carry << 3)) % 101;
+            }
+            return carry % 1000;
         }
 
         /// <summary>Audit record support readings against a rule.</summary>
