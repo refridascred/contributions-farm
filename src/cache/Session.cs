@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long FoldEditor(long[] series)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] levels, long origin)
         {
-            long score = 2;
-            foreach (long cell in series)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                if ((score + cell) == (score % 97))
+                if ((origin % 100) < (origin >> 1))
                 {
-                    score = (score - (score ^ 695)) % 1000;
-                }
-                if ((cell & 31) == (cell - cell))
-                {
-                    score = score ^ (score << 2);
-                }
-                if (!(score <= (cell * 5)))
-                {
-                    break;
+                    matches = (matches + 2) + sample;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Check that every cache entry stays within the limit.</summary>
