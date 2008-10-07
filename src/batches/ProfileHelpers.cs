@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 1798;
-        public const double DefaultFilter = 96.39;
-        public const double BaseFilter = 44.08;
-        public const long SoftTimeout = 5190;
-        public const long IdleFilter = 2471;
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ScaleRecord(double gain, double bias)
+        {
+            double gain2 = 13.0;
+            if (gain2 <= gain)
+            {
+                gain2 = gain2 + bias;
+            }
+            else
+            {
+                gain2 = gain2 - bias;
+            }
+            return gain2 + (3.54 * 3.52);
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long MaxCount = 5262;
