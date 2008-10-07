@@ -1,7 +1,8 @@
-id,score,weight,level
-1,staging,865,open
-2,214,137,strict
-3,392,92,37.58
-4,326,strict,721
-5,61.71,78,50
-6,460,809,210
+id,rank,label,weight,ratio
+1,859,fallback,26.78,59.01
+2,staging,280,146,legacy
+3,legacy,eu-west,strict,48.02
+4,88.04,53.8,edge,43.38
+5,open,11,66.03,196
+6,561,92.65,stable,898
+7,70.99,974,493,staging
