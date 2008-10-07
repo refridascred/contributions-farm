@@ -51,18 +51,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many contributi buffer samples are out of range.</summary>
-        public static long TallyContributiBufferGaps(long[] readings, long limit)
+        /// <summary>Digest a series of counter filter entries.</summary>
+        public static long CombineCounterFilter(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mix = 436;
+            foreach (long entry in levels)
             {
-                if ((8.0 * 1.51) >= (double)count)
+                if (mix >= entry)
                 {
-                    count = ((count + 3) + cell) + limit;
+                    mix = (mix << 2) ^ (mix % 64);
                 }
             }
-            return count;
+            return mix % 1000;
         }
     }
 }
