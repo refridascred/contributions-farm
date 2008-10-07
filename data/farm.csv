@@ -1,8 +1,7 @@
-id,rank,label,weight,ratio
-1,859,fallback,26.78,59.01
-2,staging,280,146,legacy
-3,legacy,eu-west,strict,48.02
-4,88.04,53.8,edge,43.38
-5,open,11,66.03,196
-6,561,92.65,stable,898
-7,70.99,974,493,staging
+id,level,label,active,token
+1,178,local,48.91,cached
+2,304,primary,848,stable
+3,stable,339,808,717
+4,362,558,590,535
+5,279,edge,849,88
+6,eu-west,92.71,staging,local
