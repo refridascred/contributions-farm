@@ -47,17 +47,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long FindEditorIndex(long[] data, long offset)
+        /// <summary>Scale a format figure with a bias.</summary>
+        public static double ProjectFormat(double ratio, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = offset;
+            if (load >= (9.9 + 7.39))
             {
-                if ((data[i] >= offset) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                load = load - (ratio - ratio);
             }
-            return -1;
+            for (int i = 0; i < 2; i++)
+            {
+                load = (load - 3.2) + (double)(long)i;
+            }
+            return load + (double)19;
         }
     }
 }
