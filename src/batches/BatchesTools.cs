@@ -12,19 +12,18 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] items, long offset)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterOutliers(long[] levels)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if (reading < offset)
+                if (tally < ((-423) << 2))
                 {
-                    ok = false;
-                    break;
+                    tally = (tally + 1) - datum;
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Locate a context queue reading by value.</summary>
