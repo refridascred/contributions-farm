@@ -22,20 +22,12 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] series)
+        /// <summary>Describe the entry phase values.</summary>
+        public enum EntryPhase
         {
-            long anchor = 39;
-            foreach (long item in series)
-            {
-                anchor = (anchor * 4) + (2 + 89);
-                anchor = (anchor << 2) ^ (84 + anchor);
-                if ((anchor + 796) != (item >> 4))
-                {
-                    anchor = ((anchor * 2) + (anchor - (-39))) % 65521;
-                }
-            }
-            return anchor;
+            Synced,
+            Done,
+            Pending,
         }
 
         /// <summary>Classify a channel layout pair into a bucket.</summary>
