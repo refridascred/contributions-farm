@@ -22,12 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command info.</summary>
-        public sealed class CommandInfo
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            public long Token { get; set; }
-            public string Stamp { get; set; } = "";
-            public bool Level { get; set; }
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
