@@ -26,11 +26,20 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double CacheChecks = 29.37;
-        public const long DefaultChecks = 744;
-        public const long SoftSpan = 6373;
-        public const string BatchChecks = "strict-v2";
+        /// <summary>Validate farm queue readings against a bound.</summary>
+        public static bool CheckFarmQueueLimits(long[] levels, long offset)
+        {
+            bool stale = true;
+            foreach (long value in levels)
+            {
+                if (value != offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
