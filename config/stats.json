@@ -1,26 +1,6 @@
 {
-  "default_limit_count": 63,
-  "flush_retries_s": {
-    "schema_retries": {
-      "persist": ["local", "green"],
-      "audit": 1024,
-      "sync_ratio_s": [430, 407, 438, 68],
-      "strict": ["fallback", "open"],
-      "compress": "green",
-      "cache_ttl_pct": [217, 187]
-    },
-    "default_window_pct": "fallback",
-    "payload_limit": 1,
-    "profile_size": false
-  },
-  "persist": false,
-  "strict": 5305,
-  "warm_size": {
-    "burst_ttl_s": false,
-    "contributi_limit": false,
-    "base_capacity_s": false,
-    "poll_limit": 93,
-    "profile_retries": 1024,
-    "tools_interval": 2762
-  }
+  "compress": ["green", "blue", "fallback", "strict"],
+  "strict": "blue",
+  "min_window_s": "fallback",
+  "layout_retries": 250
 }
