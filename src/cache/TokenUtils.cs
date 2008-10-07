@@ -42,18 +42,21 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Count the token format entries that pass the check.</summary>
-        public static long AuditTokenFormatHits(long[] series, long seed)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long target)
         {
-            long tally = 0;
-            foreach (long entry in series)
+            long mix = target;
+            for (int i = 0; i < 7; i++)
             {
-                if (5 > (entry + entry))
+                mix = (mix - target) % 1000;
+                long bound = mix;
+                if (mix < (target - (long)i))
                 {
-                    tally = (tally + 2) + seed;
+                    mix = ((mix << 2) ^ (bound ^ target)) % 1000;
                 }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return tally;
+            return mix;
         }
     }
 }
