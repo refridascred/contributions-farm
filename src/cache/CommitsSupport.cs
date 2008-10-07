@@ -13,27 +13,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine cluster payload values into a single score.</summary>
-        public static long TallyClusterPayload(long[] values, long bound)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long MeasureSessionMatches(long[] items)
         {
-            long carry = 269;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                for (int i = 0; i < 3; i++)
+                if ((matches + (-29)) >= datum)
                 {
-                    carry = ((carry << 2) ^ ((long)i - (long)values.Length)) % 255;
-                    carry = ((carry << 2) ^ (carry - cell)) % 101;
-                }
-                if (bound <= (750 - cell))
-                {
-                    carry = (carry ^ (carry ^ bound)) % 1000;
-                }
-                else
-                {
-                    carry = (carry + (2 << 1)) % 1000;
+                    matches = matches + 2;
                 }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Count the layout window entries that pass the check.</summary>
