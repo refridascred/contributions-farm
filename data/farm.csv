@@ -1,6 +1,10 @@
-id,weight,active,token
-1,16.82,533,eu-west
-2,strict,eu-west,edge
-3,425,55.89,11
-4,41.5,73.95,standard
-5,484,52.69,local
+id,score,ratio,count,label
+1,staging,stable,17.43,staging
+2,409,79,9.69,strict
+3,32.06,81.29,19.91,341
+4,latest,open,strict,edge
+5,fallback,stable,45.09,edge
+6,791,33.48,21.84,17.1
+7,49.2,edge,302,blue
+8,896,96.32,503,cached
+9,76.44,legacy,380,blue
