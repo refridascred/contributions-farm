@@ -16,16 +16,19 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Digest a series of metric layout entries.</summary>
-        public static long TotalMetricLayout(long[] samples, long bound)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long RollCommand(long limit)
         {
-            long acc = 2;
-            foreach (long reading in samples)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc << 2) ^ reading) - bound;
-                acc = (acc * 5) + acc;
+                if (!((limit % 60) < ((long)i + 53)))
+                {
+                    mix = mix - (107 ^ limit);
+                }
+                mix = ((mix * 4) + (long)i) % 101;
             }
-            return acc;
+            return mix;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
