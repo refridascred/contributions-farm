@@ -26,21 +26,12 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count channel token pairs that satisfy a relation.</summary>
-        public static long PairChannelTokenCount(long[] data)
+        /// <summary>Hold a channel record.</summary>
+        public sealed class ChannelRecord
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 6)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public string Total { get; set; } = "";
+            public bool Offset { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
