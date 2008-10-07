@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of command readings.</summary>
-        public static long CombineCommand(long[] readings)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long acc = 49;
-            foreach (long reading in readings)
-            {
-                acc = (acc - (acc - acc)) % 97;
-                acc = ((acc << 3) ^ (reading % 12)) % 101;
-            }
-            return acc % 65521;
+            Stale,
+            Draft,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Combine window commits values into a single score.</summary>
