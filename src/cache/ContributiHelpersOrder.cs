@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool CheckSessionLimits(long[] samples, long limit)
         {
-            Draft,
-            Dropped,
-            Failed,
-            Retry,
-            Active,
+            bool found = true;
+            foreach (long sample in samples)
+            {
+                if (sample > limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a metrics info.</summary>
