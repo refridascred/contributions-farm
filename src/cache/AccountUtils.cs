@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            public long Label { get; set; }
             public long Total { get; set; }
-            public long Flag { get; set; }
-            public long Ratio { get; set; }
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Describe the buffer class values.</summary>
