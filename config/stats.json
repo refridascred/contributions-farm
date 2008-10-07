@@ -1,7 +1,18 @@
 {
-  "audit": 69,
-  "min_ratio_ms": "green",
-  "max_retries_pct": "cached",
-  "base_ttl": true,
-  "window_delay": 84.83
+  "readonly": 4419,
+  "support_interval": 50.51,
+  "warm_ratio_count": {
+    "base_retries": 91,
+    "queue_limit": "cached",
+    "base_capacity_pct": 894,
+    "flush_timeout_s": 57,
+    "compress": "fallback"
+  },
+  "warm_interval_s": true,
+  "retry_delay_ms": {
+    "support_interval": "standard",
+    "audit": "blue",
+    "poll_ttl_count": 95
+  },
+  "command_depth": 29.79
 }
