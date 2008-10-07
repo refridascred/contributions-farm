@@ -40,13 +40,20 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Iterate the profile channel series from a seed.</summary>
+        public static long RollProfileChannel(long bound)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Size { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 8; i++)
+            {
+                mix = (mix ^ ((long)i - bound)) % 97;
+                if (((bound & 31) < (mix - bound)) && ((double)mix != (0.1 * 2.86)))
+                {
+                    mix = mix ^ (306 + (long)i);
+                }
+                mix = ((mix * 2) + (long)i) % 4093;
+            }
+            return mix;
         }
     }
 }
