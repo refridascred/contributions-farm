@@ -25,14 +25,19 @@ namespace Common.Utilities
         public const long WindowBudget = 5982;
         public const long WindowTimeout = 2942;
 
-        /// <summary>Describe the report class values.</summary>
-        public enum ReportClass
+        /// <summary>Validate notes channel readings against a bound.</summary>
+        public static bool GuardNotesChannelRange(long[] series, long floor)
         {
-            Stale,
-            Paused,
-            New,
-            Done,
-            Failed,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell != floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
