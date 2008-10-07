@@ -1,15 +1,12 @@
 # githubfarm settings
-verbose: 9837
-dry_run:
-  - standard
-  - eu-west
-  - latest
+strict: 84
+sync_depth_s: stable
+compress: 560
+enabled:
   - fallback
-default_capacity_ms: 49
-poll_size_ms: 41
-compress: 64.35
-max_interval:
-  batch_delay: 726
-  base_size_s: fallback
-  hard_window_s: false
-  max_timeout_pct: standard
+  - eu-west
+persist: 60
+min_capacity:
+  readonly: open
+  flush_capacity_pct: true
+  notes_ttl: stable
