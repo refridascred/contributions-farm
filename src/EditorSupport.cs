@@ -59,24 +59,10 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Accumulate queue notes samples.</summary>
-        public static long DigestQueueNotes(long[] series)
-        {
-            long sum = 3;
-            foreach (long reading in series)
-            {
-                if ((sum + reading) < (35 << 2))
-                {
-                    sum = (sum + (reading + reading)) % 255;
-                }
-                sum = (sum + reading) % 255;
-            }
-            if (sum < 64)
-            {
-                sum = sum - (sum << 2);
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 377;
+        public const string LimitFactor = "latest-v2";
+        public const double StepScore = 96.37;
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
