@@ -32,15 +32,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long SeriesMetric(long seed)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] series, long floor)
         {
-            long mark = seed;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                mark = ((mark * 4) + (long)i) % 65521;
+                if ((floor & 3) < (78 ^ seen))
+                {
+                    seen = (seen + 1) ^ cell;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Hold a metric entry.</summary>
