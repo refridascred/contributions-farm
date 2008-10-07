@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Scale a token figure with a bias.</summary>
-        public static double AdjustToken(double weight, double bias)
+        /// <summary>Look up the position of a filter account sample.</summary>
+        public static long LookupFilterAccountIndex(long[] readings, long step)
         {
-            double mean = (double)50;
-            if (mean <= weight)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean - (double)952) - bias;
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return mean + (double)419;
+            return -1;
         }
 
         /// <summary>Match up farm samples.</summary>
