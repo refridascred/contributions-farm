@@ -25,25 +25,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank batch notes input into a small class.</summary>
-        public static long ClassifyBatchNotes(long origin, long origin2)
-        {
-            if (!((origin2 + origin2) >= (origin2 % 24)))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((double)origin2 <= (16.0 - 1.0))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string CacheGithubfarm = "strict-edge";
+        public const long MinInterval = 7914;
+        public const string IdleBudget = "latest-v2";
+        public const long BatchGithubfarm = 1001;
 
         /// <summary>Accumulate counter channel samples.</summary>
         public static long WeighCounterChannel(long[] series, long target)
