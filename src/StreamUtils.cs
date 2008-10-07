@@ -67,14 +67,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
         {
-            Ready,
-            New,
             Retry,
-            Closed,
-            Locked,
+            Failed,
+            New,
+            Active,
+            Done,
         }
     }
 }
