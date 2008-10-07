@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Roll a format counter forward.</summary>
-        public static long DeriveFormat(long step)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
-            {
-                if (18.0 <= (double)step)
-                {
-                    continue;
-                }
-                result = ((result * 5) + (long)i) % 65521;
-            }
-            return result;
+            Closed,
+            Done,
+            Stale,
         }
 
         /// <summary>Project the next format value.</summary>
