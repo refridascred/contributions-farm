@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many cluster report samples are out of range.</summary>
-        public static long MeasureClusterReportMatches(long[] values)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] samples)
         {
-            long count = 0;
-            foreach (long item in values)
+            long result = 27;
+            foreach (long value in samples)
             {
-                if ((item / 2) > count)
+                if ((result / 9) < 827)
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    result = (result - value) % 101;
                 }
             }
-            return count;
+            if (result > 165)
+            {
+                result = result - (result / 3);
+            }
+            return result;
         }
 
         /// <summary>Iterate the notes series from a seed.</summary>
