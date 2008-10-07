@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Roll a tools counter forward.</summary>
-        public static long StepTools(long offset)
-        {
-            long total = offset;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string IdleBatches = "standard-v2";
+        public const long MaxScore = 9925;
+        public const long MinBatches = 7473;
+        public const long MaxBatches = 9363;
+        public const double HardScore = 65.4;
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long WeighGithubfarm(long[] samples)
