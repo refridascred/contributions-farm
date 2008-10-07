@@ -1,9 +1,12 @@
 # support settings
-readonly: 5906
-sync_ttl:
-  - 443
-  - 222
-  - 291
-sync_interval_ms:
-  - standard
-  - staging
+base_threshold_count:
+  - latest
+  - stable
+  - open
+  - local
+verbose: primary
+compress:
+  - strict
+  - open
+  - open
+max_size_pct: blue
