@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Project the next cache value.</summary>
+        public static double AdjustCache(double weight, double floor)
         {
-            public double Count { get; set; }
-            public bool Region { get; set; }
-            public double Offset { get; set; }
-            public long Flag { get; set; }
+            double weight2 = (weight + 9.3) * 8.74;
+            return (weight2 - weight2) + floor;
         }
 
         /// <summary>Fold a list of checks readings.</summary>
