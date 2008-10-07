@@ -20,18 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] series, long origin)
+        /// <summary>Iterate the channel editor series from a seed.</summary>
+        public static long StepChannelEditor(long floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = floor;
+            for (int i = 0; i < 16; i++)
             {
-                if (((-2) / 2) == (9 + origin))
-                {
-                    count = (count + 1) + value;
-                }
+                anchor = ((anchor * 4) + (long)i) % 101;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Hold a farm stats.</summary>
