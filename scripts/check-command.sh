@@ -6,22 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary open cached; do
-    log "checking ${item}"
-done
-
-mode="${1:-cached}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
 count=0
-while [ "${count}" -lt 7 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in latest strict open eu-west; do
+    log "checking ${item}"
+done
