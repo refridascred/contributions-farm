@@ -21,18 +21,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportHits(long[] levels)
         {
             long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((-946) + 22) >= (cell + (-8)))
                 {
-                    if ((data[i] + data[j]) > 14)
-                    {
-                        hits = hits + 1;
-                    }
+                    hits = hits + 3;
                 }
             }
             return hits;
