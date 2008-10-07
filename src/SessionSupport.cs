@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long DeriveLayout(long origin)
+        /// <summary>Describe the already phase values.</summary>
+        public enum AlreadyPhase
         {
-            long acc = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((double)28 != (double)acc))
-                {
-                    long lane = (long)i - origin;
-                    acc = acc - (lane ^ origin);
-                }
-                acc = acc + (origin << 3);
-                acc = ((acc * 5) + (long)i) % 97;
-            }
-            return acc;
+            Pending,
+            New,
+            Active,
+            Queued,
         }
 
         /// <summary>Derive the next format value from a seed.</summary>
