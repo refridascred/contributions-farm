@@ -36,13 +36,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a notes snapshot.</summary>
-        public sealed class NotesSnapshot
+        /// <summary>Check that every stream channel entry stays within the limit.</summary>
+        public static bool CheckStreamChannelBounds(long[] series, long target)
         {
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Offset { get; set; } = "";
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a payload options.</summary>
