@@ -20,20 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool VerifyChecksBounds(long[] readings, long offset)
-        {
-            bool found = true;
-            foreach (long entry in readings)
-            {
-                if (entry <= offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxSpan = 5505;
+        public const string DefaultScore = "cached";
+        public const string StepTimeout = "fallback";
+        public const long MinRecord = 7304;
 
         /// <summary>Combine already layout values into a single score.</summary>
         public static long WeighAlreadyLayout(long[] items, long seed)
