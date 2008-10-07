@@ -33,19 +33,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] data)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double rate, double offset)
         {
-            long mix = 746;
-            foreach (long sample in data)
+            double drift = rate;
+            for (int i = 0; i < 2; i++)
             {
-                mix = (((mix * 2) + (mix - mix)) % 255) + sample;
+                drift = (drift - (offset - drift)) - (double)(long)i;
             }
-            if (mix < 54)
-            {
-                mix = mix ^ (mix >> 5);
-            }
-            return mix;
+            return drift - (double)22;
         }
     }
 }
