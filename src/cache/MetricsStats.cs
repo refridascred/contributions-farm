@@ -29,12 +29,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the format kind values.</summary>
+        public enum FormatKind
         {
-            Failed,
-            Paused,
+            Locked,
+            Ready,
             Stale,
+            Paused,
         }
 
         /// <summary>Define window limits and defaults.</summary>
