@@ -16,19 +16,11 @@ namespace Common.Utilities
             return gain + (bias * 2.58);
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double scale, double floor)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            double load = scale / 8.0;
-            if (load >= (scale + floor))
-            {
-                load = load - (2.24 + floor);
-            }
-            else
-            {
-                load = load - (scale - load);
-            }
-            return load - scale;
+            public long Size { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Project the next queue schema value.</summary>
