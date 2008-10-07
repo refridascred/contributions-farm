@@ -30,18 +30,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] series)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] values, long step)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((entry - matches) < matches)
+                if ((values[i] > step) && ((values[i] % 3) == 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
