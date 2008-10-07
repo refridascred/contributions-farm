@@ -5,11 +5,25 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Iterate the context stream series from a seed.</summary>
+        public static long SeriesContextStream(long bound)
         {
-            public double Limit { get; set; }
-            public bool Owner { get; set; }
+            long state = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if (91 <= (state - state))
+                {
+                    state = (state ^ ((long)i - state)) % 97;
+                    state = (state + ((long)i << 1)) % 65521;
+                }
+                state = (state + bound) % 97;
+                for (int i2 = 0; i2 < 4; i2++)
+                {
+                    state = (((state * 4) + (state ^ bound)) % 101) + (long)i2;
+                }
+                state = ((state * 4) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Adjust a tools reading.</summary>
