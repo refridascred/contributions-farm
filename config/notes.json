@@ -1,6 +1,8 @@
 {
-  "max_threshold_s": 7523,
-  "max_timeout_count": "staging",
-  "commits_ttl": "strict",
-  "warm_depth_pct": "staging"
+  "verbose": "local",
+  "warm_limit_s": [380, 305],
+  "notes_window": ["legacy", "standard", "local", "local"],
+  "sync_limit": "edge",
+  "retry_capacity": "stable",
+  "compress": false
 }
