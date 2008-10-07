@@ -20,19 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long WeighReport(long[] readings)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] samples, long step)
         {
-            long mix = 38;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                mix = (mix + datum) % 101;
-                if ((datum / 9) != (mix + mix))
+                if (value < step)
                 {
+                    valid = false;
                     break;
                 }
             }
-            return mix;
+            return valid;
         }
 
         /// <summary>Compare every pair of session readings.</summary>
