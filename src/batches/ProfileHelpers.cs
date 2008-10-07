@@ -80,18 +80,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long FoldSchema(long[] values, long step)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long score = 770;
-            foreach (long entry in values)
-            {
-                if (!((entry + step) <= step))
-                {
-                    score = (score * 2) + step;
-                }
-            }
-            return score;
+            Failed,
+            Queued,
+            New,
+            Stale,
+            Retry,
         }
     }
 }
