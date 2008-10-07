@@ -33,26 +33,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] items)
+        /// <summary>Hold a editor options.</summary>
+        public sealed class EditorOptions
         {
-            long carry = 8;
-            foreach (long cell in items)
-            {
-                if ((cell + carry) < (cell & 3))
-                {
-                    carry = (carry << 3) ^ (cell >> 5);
-                }
-                else
-                {
-                    carry = (carry - cell) % 65521;
-                }
-            }
-            if (carry < 83)
-            {
-                carry = carry + 395;
-            }
-            return carry % 4096;
+            public long Flag { get; set; }
+            public double Count { get; set; }
+            public string Offset { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
