@@ -74,22 +74,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long TallyMetric(long[] items)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long state = 91;
-            foreach (long value in items)
-            {
-                if ((double)value >= (double)state)
-                {
-                    state = (state - (state % 3)) % 255;
-                }
-                if ((55 - value) <= state)
-                {
-                    break;
-                }
-            }
-            return state % 65521;
+            Dropped,
+            Failed,
+            Locked,
         }
     }
 }
