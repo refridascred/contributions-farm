@@ -32,12 +32,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long MeasureContextMatches(long[] readings, long offset)
         {
-            Draft,
-            Active,
-            Pending,
+            long seen = 0;
+            foreach (long reading in readings)
+            {
+                if (((3 > (seen % 8)) || ((26 & 3) < (reading % 3))) || (((reading + reading) < (offset % 97)) || (seen < (8 + offset))))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up payload samples.</summary>
