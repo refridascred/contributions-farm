@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Measure how many window metric samples are out of range.</summary>
+        public static long CountWindowMetricOutliers(long[] series, long bound)
         {
-            Ready,
-            Paused,
-            New,
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if (((-7) - bound) == (sample + sample))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
