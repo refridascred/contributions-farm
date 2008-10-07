@@ -37,22 +37,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of contributi buffer readings.</summary>
-        public static long WeighContributiBuffer(long[] items, long bound)
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            long mix = -383;
-            foreach (long datum in items)
-            {
-                if (((397 + mix) >= mix) || ((bound + bound) >= datum))
-                {
-                    mix = ((mix * 2) + ((long)items.Length << 3)) % 4096;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (datum / 9);
-                }
-            }
-            return mix;
+            public string Rank { get; set; } = "";
+            public string Offset { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Hold a already stats.</summary>
