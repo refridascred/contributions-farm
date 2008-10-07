@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool ValidatePayloadBounds(long[] samples, long floor)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportOutliers(long[] values)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (reading > floor)
+                if ((double)9 > (double)tally)
                 {
-                    valid = false;
-                    break;
+                    tally = (tally + 2) - datum;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return valid;
+            return tally;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
