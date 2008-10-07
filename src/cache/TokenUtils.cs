@@ -30,32 +30,12 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long GradeCache(long origin, long step)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            long bound = origin - step;
-            if ((origin ^ origin) < (origin - (-6)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step % 5) <= (bound / 3)) && ((0.5 * 2.1) == (double)bound))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (bound <= origin)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
+            Locked,
+            Active,
+            Queued,
         }
     }
 }
