@@ -61,13 +61,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Locate a context record reading by value.</summary>
+        public static long FindContextRecordIndex(long[] items, long offset)
         {
-            Done,
-            Locked,
-            New,
-            Queued,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] >= offset) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the layout status values.</summary>
