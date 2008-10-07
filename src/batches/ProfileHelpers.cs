@@ -25,17 +25,31 @@ namespace Common.Utilities
         public const long StepFormat = 2252;
         public const string MinFormat = "stable-1";
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] series, long bound)
+        /// <summary>Rank session cluster input into a small class.</summary>
+        public static long ClassifySessionCluster(long target, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            if ((target + target) < (target * 3))
             {
-                if (series[i] > bound)
+                return 6;
+            }
+            else
+            {
+                if ((target + target) <= (target + 3))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target >= (14.0 * 18.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
