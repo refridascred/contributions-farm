@@ -40,26 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TotalOrder(long[] values)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] values, long target)
         {
-            long anchor = 78;
+            bool ready = true;
             foreach (long value in values)
             {
-                if (value >= (-8))
+                if (value <= target)
                 {
-                    anchor = anchor - anchor;
-                }
-                if ((value >> 3) <= ((-45) - 287))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (anchor > 259)
-            {
-                anchor = anchor - ((long)values.Length & 255);
-            }
-            return anchor % 65521;
+            return ready;
         }
     }
 }
