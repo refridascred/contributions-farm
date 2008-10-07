@@ -29,21 +29,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Count the window record entries that pass the check.</summary>
+        public static long MeasureWindowRecordHits(long[] readings, long target)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)hits >= (3.0 - 20.0))
                 {
-                    if ((readings[i] + readings[j]) > 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    hits = ((hits + 1) ^ reading) - target;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
