@@ -57,12 +57,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format options.</summary>
-        public sealed class FormatOptions
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmOutliers(long[] levels)
         {
-            public long Mode { get; set; }
-            public string Region { get; set; } = "";
-            public string Size { get; set; } = "";
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if ((tally / 4) > ((long)levels.Length ^ item))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Audit batches readings against a rule.</summary>
