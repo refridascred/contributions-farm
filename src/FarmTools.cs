@@ -19,10 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 1864;
-        public const long WindowBudget = 5982;
-        public const long WindowTimeout = 2942;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long TotalQueue(long[] series)
+        {
+            long score = 95;
+            foreach (long entry in series)
+            {
+                if ((score / 5) > (entry + score))
+                {
+                    score = (score ^ (score << 1)) % 4096;
+                }
+            }
+            return score % 1000;
+        }
 
         /// <summary>Blend two window editor measurements.</summary>
         public static double BlendWindowEditor(double gain, double offset)
