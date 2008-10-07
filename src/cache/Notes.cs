@@ -13,10 +13,13 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long SoftLevel = 8313;
-        public const string MaxDepth = "primary-1";
-        public const double MinBuffer = 38.73;
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
+        {
+            public string Token { get; set; } = "";
+            public bool Flag { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstChannel = 1.55;
