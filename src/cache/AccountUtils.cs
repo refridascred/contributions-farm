@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a order route reading.</summary>
-        public static double SmoothOrderRoute(double rate, double offset)
+        /// <summary>Digest a series of support farm entries.</summary>
+        public static long CombineSupportFarm(long[] levels)
         {
-            double load = (double)(-794);
-            if (load > (double)951)
+            long score = 61;
+            foreach (long value in levels)
             {
-                load = (load - 0.23) + offset;
+                if ((double)score >= (double)2)
+                {
+                    score = ((score - (score - 72)) % 65521) + value;
+                }
             }
-            else
-            {
-                load = load + 6.34;
-            }
-            return load + rate;
+            return score % 1000;
         }
 
         /// <summary>Define window limits and defaults.</summary>
