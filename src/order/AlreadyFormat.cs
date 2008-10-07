@@ -11,18 +11,39 @@ namespace Common.Utilities
         public const long BaseScore = 9074;
         public const string WindowFactor = "latest";
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderHits(long[] levels)
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long GradeContributi(long bound, long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            long diff = bound ^ target;
+            if (((diff + 1) >= 18) || ((diff % 7) >= (20 & 1)))
             {
-                if (count <= (7 % 8))
+                return 2;
+            }
+            else
+            {
+                if ((target / 8) == (target * 4))
                 {
-                    count = (count + 2) + entry;
+                    return 0;
+                }
+                else
+                {
+                    if ((47 % 97) == (target << 3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (((3 / 8) > (bound << 2)) || ((bound >> 5) < target))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
