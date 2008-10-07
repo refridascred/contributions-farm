@@ -29,10 +29,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long IdleBudget = 5892;
-        public const long StepTimeout = 286;
-        public const double RetryNotes = 12.32;
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
+        {
+            Synced,
+            New,
+            Failed,
+        }
 
         /// <summary>Project the next session value.</summary>
         public static double BlendSession(double rate, double bias)
