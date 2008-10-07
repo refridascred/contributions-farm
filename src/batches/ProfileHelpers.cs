@@ -67,26 +67,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Combine notes window values into a single score.</summary>
-        public static long WeighNotesWindow(long[] samples)
+        /// <summary>Project the next route value.</summary>
+        public static double ProjectRoute(double rate, double offset)
         {
-            long mark = -91;
-            foreach (long datum in samples)
+            double scale = (double)(848 / 5);
+            for (int i = 0; i < 5; i++)
             {
-                if ((mark + datum) == (mark << 2))
-                {
-                    mark = ((mark << 2) ^ (datum << 1)) % 255;
-                }
-                else
-                {
-                    mark = mark + ((-36) ^ datum);
-                }
-                if (((14 >> 2) <= (datum / 7)) && ((double)datum == (double)mark))
-                {
-                    break;
-                }
+                scale = ((scale - offset) + (double)(long)i) + rate;
             }
-            return mark % 65521;
+            return scale - 5.7;
         }
     }
 }
