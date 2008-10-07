@@ -29,25 +29,12 @@ namespace Common.Utilities
         public const long BatchLevel = 8382;
         public const long WindowFactor = 9983;
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long step, long seed)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long diff = step ^ seed;
-            if ((diff & 255) < diff)
-            {
-                return 3;
-            }
-            else
-            {
-                if (diff >= (step >> 3))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public string Label { get; set; } = "";
+            public long Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
