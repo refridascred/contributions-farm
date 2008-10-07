@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double scale, double offset)
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long SeekStreamIndex(long[] data, long limit)
         {
-            double scale2 = scale;
-            if (scale2 < 14.0)
+            for (int i = 0; i < data.Length; i++)
             {
-                scale2 = (scale2 + (scale2 + 9.06)) + offset;
+                if ((data[i] > limit) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale2 - (18.0 / 3.0);
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
