@@ -1,8 +1,5 @@
 {
-  "soft_ratio_pct": "blue",
-  "sync_delay_ms": 9752,
-  "soft_retries": [294, 307, 397],
-  "flush_capacity_pct": 5598,
-  "burst_depth": "legacy",
-  "soft_window_pct": "cached"
+  "verbose": 500,
+  "account_delay": 500,
+  "retry_ratio": "cached"
 }
