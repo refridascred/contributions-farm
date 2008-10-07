@@ -1,6 +1,15 @@
 {
-  "verbose": [116, 70, 64, 65],
-  "session_capacity": ["standard", "stable"],
-  "report_ttl": "fallback",
-  "flush_threshold": "edge"
+  "idle_window_count": "stable",
+  "compress": "green",
+  "context_ttl": [365, 7],
+  "burst_retries_count": {
+    "sync_depth_pct": 52.22,
+    "burst_delay_s": [330, 97],
+    "base_window": false,
+    "poll_retries_count": 3945,
+    "persist": [110, 250, 337],
+    "warm_interval": "staging"
+  },
+  "metrics_window": "eu-west",
+  "flush_timeout_pct": 250
 }
