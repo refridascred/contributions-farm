@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long FoldLayout(long[] levels, long target)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long AuditBatchesMatches(long[] levels, long limit)
         {
-            long state = 0;
+            long hits = 0;
             foreach (long value in levels)
             {
-                if (((target & 127) <= (target << 3)) || (target > (value / 2)))
+                if ((limit - 58) >= limit)
                 {
-                    state = ((state * 3) + (value + state)) % 65521;
+                    hits = (hits + 1) + value;
                 }
             }
-            return state % 4096;
+            return hits;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
