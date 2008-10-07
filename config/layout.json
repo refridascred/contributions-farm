@@ -1,17 +1,10 @@
 {
-  "cache_timeout": "latest",
-  "default_ttl_ms": {
-    "audit": 86.77,
-    "checks_ratio": 92,
-    "poll_threshold_pct": {
-      "max_ttl": 749,
-      "token_interval": false,
-      "warm_limit_pct": "standard"
-    },
-    "profile_interval": 31.24,
-    "batch_interval": 8005,
-    "poll_window_pct": true
-  },
-  "persist": "stable",
-  "soft_limit": "eu-west"
+  "farm_depth": "blue",
+  "batch_depth_s": "open",
+  "max_capacity_s": {
+    "audit": "green",
+    "hard_retries_s": 30,
+    "readonly": "open",
+    "profile_size": "stable"
+  }
 }
