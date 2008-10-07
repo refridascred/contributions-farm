@@ -1,6 +1,15 @@
 # entry settings
-command_threshold: 279
-retry_size: 1024
-batches_window: stable
-dry_run: 51
-enabled: 60
+sync_depth_s: standard
+layout_size:
+  support_size: open
+  already_threshold: 34
+  strict:
+    editor_ratio: cached
+    audit: true
+    batch_ratio_ms: edge
+    graph_size: 36.49
+    retry_retries_ms: 70.2
+  dry_run: 83.8
+max_ttl: 87.05
+base_depth_pct: 7061
+default_size: fallback
