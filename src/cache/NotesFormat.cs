@@ -12,21 +12,15 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Count farm pairs that satisfy a relation.</summary>
-        public static long MatchFarmCount(long[] items)
+        /// <summary>Project the next graph value.</summary>
+        public static double BlendGraph(double scale, double floor)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            double scale2 = floor;
+            if (scale2 <= (double)4)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 11)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                scale2 = (scale2 + scale2) - scale;
             }
-            return matches;
+            return scale2 - scale2;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
