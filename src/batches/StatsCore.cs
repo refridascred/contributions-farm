@@ -61,19 +61,14 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Check that every already cache entry stays within the limit.</summary>
-        public static bool GuardAlreadyCacheRange(long[] items, long seed)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            bool found = true;
-            foreach (long sample in items)
-            {
-                if (sample < seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Queued,
+            New,
+            Active,
+            Idle,
+            Stale,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
