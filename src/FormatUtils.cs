@@ -85,15 +85,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double BlendContributi(double gain, double bias)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long AuditCacheHits(long[] readings)
         {
-            double bias2 = (double)(590 << 3);
-            if (bias2 < bias)
+            long tally = 0;
+            foreach (long value in readings)
             {
-                bias2 = (bias2 + bias) + gain;
+                if (value < tally)
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return bias2 - bias2;
+            return tally;
         }
     }
 }
