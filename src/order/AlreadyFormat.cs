@@ -48,11 +48,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Rank { get; set; }
+            public long Size { get; set; }
         }
     }
 }
