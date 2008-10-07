@@ -16,13 +16,15 @@ namespace Common.Utilities
             return gain2 + span;
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Derive the next payload value from a seed.</summary>
+        public static long DerivePayload(long limit)
         {
-            public long Count { get; set; }
-            public long Size { get; set; }
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
+            long result = limit;
+            for (int i = 0; i < 14; i++)
+            {
+                result = ((result * 3) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a format summary.</summary>
