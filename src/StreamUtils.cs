@@ -32,12 +32,19 @@ namespace Common.Utilities
         public const long BatchLevel = 8382;
         public const long WindowFactor = 9983;
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool VerifyMetricsLimits(long[] levels, long floor)
         {
-            public string Label { get; set; } = "";
-            public long Weight { get; set; }
-            public long Owner { get; set; }
+            bool stale = true;
+            foreach (long datum in levels)
+            {
+                if (datum < floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
