@@ -33,11 +33,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long TallyChannelMatches(long[] readings, long offset)
         {
-            public long Stamp { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry % 10) > (entry + entry))
+                {
+                    matches = (matches + 3) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
