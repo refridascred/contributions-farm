@@ -31,9 +31,24 @@ namespace Common.Utilities
         public const long LimitRecord = 4406;
         public const string StepRecord = "stable-1";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long HardFactor = 4542;
-        public const double BaseMetrics = 94.54;
-        public const long RetryMetrics = 5136;
+        /// <summary>Grade a route stats value against two limits.</summary>
+        public static long SortRouteStats(long origin, long step)
+        {
+            if (((origin + step) >= (step & 127)) && ((9.88 / 3.0) >= (double)origin))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((1.17 >= (double)origin) || ((double)step < (4.0 - 5.0)))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
