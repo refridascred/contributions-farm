@@ -56,22 +56,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] readings, long bound)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            long seen = 0;
-            foreach (long value in readings)
-            {
-                if (bound > seen)
-                {
-                    seen = (seen + 2) ^ value;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public long Rank { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
