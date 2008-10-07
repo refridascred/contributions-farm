@@ -19,23 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double BlendMetric(double ratio, double bias)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long TallyQueueHits(long[] samples)
         {
-            double rate = (ratio + bias) * 8.2;
-            if (rate <= (4.4 + ratio))
+            long hits = 0;
+            foreach (long reading in samples)
             {
-                rate = rate + ratio;
+                if ((253 + hits) > reading)
+                {
+                    hits = hits + 2;
+                }
             }
-            else
-            {
-                rate = rate + (ratio + ratio);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate + ratio) + (double)(long)i;
-            }
-            return rate - (rate * 6.0);
+            return hits;
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
