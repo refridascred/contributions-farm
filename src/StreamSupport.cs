@@ -33,13 +33,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            public double Limit { get; set; }
-            public long Score { get; set; }
-            public string Label { get; set; } = "";
-            public long Size { get; set; }
+            public string Total { get; set; } = "";
+            public long Owner { get; set; }
         }
     }
 }
