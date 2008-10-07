@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long MeasureBatchOutliers(long[] series, long seed)
         {
-            long sum = 16;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long entry in series)
             {
-                sum = ((sum * 3) + reading) % 1000;
+                if ((seed + 32) >= seed)
+                {
+                    count = (count + 2) + entry;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (sum > 577)
-            {
-                sum = sum - sum;
-            }
-            return sum;
+            return count;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
