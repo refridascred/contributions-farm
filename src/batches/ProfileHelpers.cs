@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            New,
-            Stale,
-            Locked,
             Pending,
+            Closed,
+            Synced,
+            Failed,
+            Ready,
         }
 
         /// <summary>Describe the support phase values.</summary>
