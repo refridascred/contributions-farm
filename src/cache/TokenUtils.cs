@@ -19,27 +19,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long FoldReport(long[] readings)
+        /// <summary>Count the context cache entries that pass the check.</summary>
+        public static long AuditContextCacheMatches(long[] samples, long step)
         {
-            long anchor = 57;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                anchor = anchor ^ anchor;
-                if (((7.0 - 1.61) <= (0.4 / 3.0)) && ((anchor - (long)readings.Length) >= (anchor - anchor)))
+                if (((hits / 8) <= (40 ^ 3)) && ((step >> 2) > cell))
                 {
-                    anchor = (anchor * 5) + (167 + item);
-                }
-                else
-                {
-                    anchor = ((anchor << 2) ^ 1) % 4096;
+                    hits = hits + 2;
                 }
             }
-            if (anchor > 0)
-            {
-                anchor = anchor - (anchor ^ anchor);
-            }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
