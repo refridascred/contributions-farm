@@ -14,11 +14,18 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a entry stats.</summary>
-        public sealed class EntryStats
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportGaps(long[] samples)
         {
-            public long Count { get; set; }
-            public long Weight { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if (hits <= (hits & 63))
+                {
+                    hits = (hits + 2) ^ item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a context reading by value.</summary>
