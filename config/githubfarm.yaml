@@ -1,8 +1,8 @@
 # githubfarm settings
-cache_retries_count: edge
-cache_size:
-  - 108
-  - 451
-  - 474
-poll_depth: 30
-soft_ratio_count: 72.32
+hard_timeout_ms:
+  - 77
+  - 453
+  - 379
+  - 342
+flush_delay_ms: 3029
+readonly: primary
