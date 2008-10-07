@@ -48,9 +48,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BurstFilter = 8458;
-        public const string RetrySize = "staging-edge";
-        public const double CacheFilter = 5.1;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Draft,
+            Synced,
+            Locked,
+            Pending,
+            Paused,
+        }
     }
 }
