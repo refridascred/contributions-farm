@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Grade a githubfarm value against two limits.</summary>
-        public static long GradeGithubfarm(long limit, long target)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            if (1.3 >= (double)target)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((target < (limit % 97)) || ((target >> 3) < target))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Score { get; set; }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
