@@ -38,32 +38,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long BucketPayload(long limit, long offset)
+        /// <summary>Accumulate session editor samples.</summary>
+        public static long DigestSessionEditor(long[] data)
         {
-            long next = limit ^ offset;
-            if (((16.0 + 3.92) < (double)next) || ((double)next <= (9.53 + 5.43)))
+            long mark = 32;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset ^ limit) >= 60)
+                if (!((mark >> 5) != ((long)data.Length & 15)))
                 {
-                    return 7;
+                    mark = ((mark << 3) ^ (value + value)) % 101;
                 }
-                else
+                if (mark < value)
                 {
-                    if (!((double)next < (double)offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    break;
                 }
             }
+            return mark;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
