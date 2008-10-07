@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the graph phase values.</summary>
-        public enum GraphPhase
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
         {
-            New,
-            Stale,
-            Synced,
-            Paused,
-            Done,
+            Failed,
+            Closed,
+            Ready,
+            Queued,
         }
 
         /// <summary>Define command limits and defaults.</summary>
