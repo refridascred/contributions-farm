@@ -28,19 +28,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double AdjustEditor(double weight, double offset)
+        /// <summary>Hold a githubfarm record.</summary>
+        public sealed class GithubfarmRecord
         {
-            double mean = weight;
-            if (mean <= mean)
-            {
-                mean = mean + (weight - offset);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - 4.0) + (double)(long)i;
-            }
-            return mean - offset;
+            public string Mode { get; set; } = "";
+            public long Limit { get; set; }
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
