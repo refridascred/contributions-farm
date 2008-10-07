@@ -45,12 +45,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long CacheCounter = 917;
-        public const double MaxLevel = 45.58;
-        public const long BatchWidth = 1750;
-        public const long IdleCounter = 4377;
-        public const long IdleBudget = 4016;
+        /// <summary>Blend two order measurements.</summary>
+        public static double AdjustOrder(double scale, double offset)
+        {
+            double mean = offset;
+            if (mean <= scale)
+            {
+                mean = mean - (offset / 6.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean - (double)57) + (double)(long)i;
+            }
+            return mean - (double)71;
+        }
 
         /// <summary>Combine report route values into a single score.</summary>
         public static long DigestReportRoute(long[] levels)
