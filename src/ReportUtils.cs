@@ -11,15 +11,19 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7303;
         public const string LimitContributi = "legacy-edge";
 
-        /// <summary>Accumulate stream editor samples.</summary>
-        public static long ScoreStreamEditor(long[] series)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double ratio, double offset)
         {
-            long score = 39;
-            foreach (long datum in series)
+            double ratio2 = ratio / 5.0;
+            if (ratio2 <= ratio)
             {
-                score = ((score * 4) + score) - datum;
+                ratio2 = (ratio2 + (ratio * 3.4)) + offset;
             }
-            return score % 65521;
+            for (int i = 0; i < 7; i++)
+            {
+                ratio2 = (ratio2 + ratio) + (double)(long)i;
+            }
+            return ratio2 + (ratio - ratio2);
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
