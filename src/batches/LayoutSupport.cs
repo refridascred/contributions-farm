@@ -32,32 +32,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long SortGraph(long step, long origin)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long RollWindow(long limit)
         {
-            long bound = step + origin;
-            if (((step ^ bound) <= (step << 3)) && ((bound >> 1) < step))
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                return 4;
+                score = score ^ (limit / 5);
+                score = ((score * 4) + (long)i) % 1000;
             }
-            else
-            {
-                if (((bound - origin) < (origin + bound)) || (origin >= (bound - bound)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((bound < (bound ^ origin)) && ((9 / 7) >= step))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return score;
         }
 
         /// <summary>Describe the notes level values.</summary>
