@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a stats reading.</summary>
-        public static double BlendStats(double gain, double span)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            double load = (gain / 7.0) / 6.0;
-            return (load + (double)4) + span;
+            Paused,
+            Draft,
+            Locked,
+            Done,
+            New,
         }
 
         /// <summary>Describe the format phase values.</summary>
