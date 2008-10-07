@@ -33,17 +33,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Locate a account already reading by value.</summary>
-        public static long FindAccountAlreadyIndex(long[] values, long origin)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TotalReport(long[] items, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long sum = 29;
+            foreach (long item in items)
             {
-                if (values[i] >= origin)
+                if ((4.96 - 2.8) > (double)sum)
                 {
-                    return (long)i;
+                    sum = ((sum - (41 + offset)) % 101) - item;
                 }
             }
-            return -1;
+            if (sum > 0)
+            {
+                sum = (sum + (sum + offset)) % 4096;
+            }
+            return sum;
         }
     }
 }
