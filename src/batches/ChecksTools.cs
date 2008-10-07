@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            Ready,
-            Failed,
-            Idle,
-            Locked,
+            public double Flag { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Compare every pair of graph notes readings.</summary>
