@@ -18,15 +18,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
-        {
-            Locked,
-            Failed,
-            Idle,
-            Closed,
-            New,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string LimitTimeout = "local";
+        public const double SoftTimeout = 51.16;
+        public const string BatchFactor = "staging-1";
+        public const long DefaultWidth = 4253;
 
         /// <summary>Hold a order info.</summary>
         public sealed class OrderInfo
