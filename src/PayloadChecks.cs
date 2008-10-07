@@ -58,17 +58,11 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long LocateOrderIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == bound) && ((readings[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string LimitWidth = "strict";
+        public const string CacheRatio = "stable-edge";
+        public const long BatchDepth = 9166;
+        public const double BaseSchema = 48.92;
+        public const long MinSize = 8196;
     }
 }
