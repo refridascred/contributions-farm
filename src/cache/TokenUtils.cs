@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a profile channel figure with a bias.</summary>
-        public static double ScaleProfileChannel(double gain, double bias)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] levels)
         {
-            double load = bias * 5.0;
-            if (load >= (gain + bias))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = load + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 13)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return load + load;
+            return seen;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
