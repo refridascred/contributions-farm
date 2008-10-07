@@ -1,9 +1,10 @@
 # support settings
-flush_interval_ms: local
-flush_window: 31
-warm_timeout_pct:
-  - 177
-  - 352
-enabled: 59.48
-max_window_s: green
-strict: eu-west
+audit: cached
+compress: 24.19
+queue_timeout: local
+metrics_capacity:
+  idle_window_s: true
+  default_interval_count: 67.82
+  batch_depth_ms: 75.07
+idle_depth_pct: 67.52
+payload_timeout: true
