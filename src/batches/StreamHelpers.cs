@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Check that every token graph entry stays within the limit.</summary>
-        public static bool VerifyTokenGraphLimits(long[] items, long floor)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricHits(long[] data)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (item >= floor)
+                if ((6 / 6) < (item >> 2))
                 {
-                    valid = false;
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
