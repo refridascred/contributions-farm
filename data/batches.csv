@@ -1,8 +1,6 @@
-id,state,label,weight
-1,501,local,11
-2,833,613,80
-3,edge,52,894
-4,366,91.4,standard
-5,31.1,91.27,edge
-6,legacy,729,629
-7,stable,483,primary
+id,active,region,token
+1,478,37,blue
+2,427,479,683
+3,fallback,83.66,primary
+4,302,40.81,fallback
+5,31.29,290,eu-west
