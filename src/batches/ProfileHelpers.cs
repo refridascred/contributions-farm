@@ -78,14 +78,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Classify a schema layout pair into a bucket.</summary>
+        public static long GradeSchemaLayout(long seed, long target)
         {
-            Failed,
-            Queued,
-            New,
-            Stale,
-            Retry,
+            if ((target * 2) == (seed % 64))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((target % 3) <= (seed / 3))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (seed > (68 + target))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
