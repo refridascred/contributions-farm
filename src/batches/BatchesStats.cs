@@ -30,12 +30,14 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleWidth = 3413;
-        public const long BaseBudget = 2534;
-        public const string RetryBudget = "primary-edge";
-        public const double BatchSpan = 96.81;
-        public const long CacheEntry = 1710;
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
+        {
+            Draft,
+            Retry,
+            Failed,
+            Closed,
+        }
 
         /// <summary>Roll a filter counter forward.</summary>
         public static long IterateFilter(long limit)
