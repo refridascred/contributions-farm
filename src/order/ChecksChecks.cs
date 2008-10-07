@@ -22,11 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two route entry measurements.</summary>
-        public static double SmoothRouteEntry(double rate, double span)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long StepSchema(long target)
         {
-            double load = (span + 9.58) * 2.1;
-            return (load - span) + rate;
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
