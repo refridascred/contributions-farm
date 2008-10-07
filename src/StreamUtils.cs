@@ -92,19 +92,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next githubfarm farm value from a seed.</summary>
-        public static long DeriveGithubfarmFarm(long seed)
+        /// <summary>Compare every pair of record counter readings.</summary>
+        public static long PairRecordCounterCount(long[] samples)
         {
-            long sum = seed;
-            for (int i = 0; i < 16; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)i == (double)326)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    sum = (sum << 3) ^ sum;
+                    if ((samples[i] + samples[j]) == 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                sum = ((sum * 4) + (long)i) % 1000;
             }
-            return sum;
+            return hits;
         }
     }
 }
