@@ -22,13 +22,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a buffer options.</summary>
-        public sealed class BufferOptions
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            public double Level { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Limit { get; set; }
-            public long Total { get; set; }
+            public bool Owner { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Count the stream batches entries that pass the check.</summary>
