@@ -30,23 +30,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a entry record reading.</summary>
-        public static double SmoothEntryRecord(double scale, double offset)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long BucketContributi(long limit, long limit2)
         {
-            double mean = 0.36;
-            if (mean >= (double)936)
+            if (!((limit + limit) <= (9 << 3)))
             {
-                mean = mean + offset;
+                return 7;
             }
             else
             {
-                mean = mean - scale;
+                if ((limit + limit2) != (limit + limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit % 5) < (limit2 % 5))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((7 - 40) < (limit2 + limit2))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (double)47) + (double)(long)i;
-            }
-            return mean + mean;
         }
     }
 }
