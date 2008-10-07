@@ -55,19 +55,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double weight, double bias)
+        /// <summary>Describe the layout state values.</summary>
+        public enum LayoutState
         {
-            double gain = (bias + weight) + (bias * 6.82);
-            if (gain <= (bias / 6.0))
-            {
-                gain = gain - (double)1;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain + bias) + (double)(long)i;
-            }
-            return gain - weight;
+            Dropped,
+            Done,
+            Closed,
+            Queued,
         }
 
         /// <summary>Describe the token kind values.</summary>
