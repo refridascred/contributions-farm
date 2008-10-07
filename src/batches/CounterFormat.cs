@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandHits(long[] readings, long target)
         {
-            public double Limit { get; set; }
-            public long Rank { get; set; }
-            public long Level { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)target >= (7.8 - 0.3))
+                {
+                    tally = (tally + 1) + datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a token reading.</summary>
