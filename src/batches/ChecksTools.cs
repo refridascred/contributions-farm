@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long bound, long bound2)
-        {
-            if ((991 + bound) < (bound / 9))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((bound2 * 5) > bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((double)bound2 > (7.46 / 3.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (148 <= (344 + bound2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double RetryInterval = 75.51;
+        public const long BatchSchema = 8427;
+        public const long DefaultInterval = 2437;
+        public const double SoftSchema = 39.89;
 
         /// <summary>Digest a series of graph entries.</summary>
         public static long DigestGraph(long[] values)
