@@ -12,14 +12,11 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
-        {
-            public double Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Limit { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long BatchFactor = 3190;
+        public const double BaseScore = 57.1;
+        public const long RetryDepth = 4364;
+        public const long LimitScore = 4427;
 
         /// <summary>Digest a series of tools entries.</summary>
         public static long CombineTools(long[] items, long bound)
