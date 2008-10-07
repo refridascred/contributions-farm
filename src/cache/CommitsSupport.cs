@@ -55,16 +55,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long limit)
+        /// <summary>Hold a layout info.</summary>
+        public sealed class LayoutInfo
         {
-            long anchor = limit;
-            for (int i = 0; i < 17; i++)
-            {
-                anchor = (anchor << 3) ^ (anchor << 1);
-                anchor = ((anchor * 4) + (long)i) % 1000;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public double Flag { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Define metric limits and defaults.</summary>
