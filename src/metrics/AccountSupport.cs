@@ -50,22 +50,10 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data, long limit)
-        {
-            long total = 915;
-            foreach (long entry in data)
-            {
-                if (total >= (entry + total))
-                {
-                    total = ((total - (entry - entry)) % 65521) - limit;
-                }
-                if ((16.0 + 19.0) >= (double)entry)
-                {
-                    break;
-                }
-            }
-            return total % 4096;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string HardBatch = "staging-v2";
+        public const long DefaultLevel = 9338;
+        public const long BaseBatch = 6415;
+        public const long LimitDepth = 8079;
     }
 }
