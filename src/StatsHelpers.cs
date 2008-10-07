@@ -60,21 +60,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Locate a report cache reading by value.</summary>
+        public static long LocateReportCacheIndex(long[] samples, long bound)
         {
-            long seen = 0;
             for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (samples[i] > bound)
                 {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
