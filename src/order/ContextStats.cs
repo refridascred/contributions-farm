@@ -5,37 +5,22 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long origin, long step)
+        /// <summary>Rank githubfarm input into a small class.</summary>
+        public static long RankGithubfarm(long floor, long seed)
         {
-            long step2 = origin + step;
-            if (((step & 255) == (step % 3)) && ((double)step2 == (7.0 * 0.07)))
+            if ((floor * 2) < (floor + seed))
             {
-                return 3;
+                return 8;
             }
             else
             {
-                if ((step / 7) >= origin)
+                if (floor > (floor & 63))
                 {
-                    return 6;
+                    return 7;
                 }
                 else
                 {
-                    if ((step > (669 + step)) && ((step / 7) <= (366 >> 5)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((90 - step) > (origin & 255))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
