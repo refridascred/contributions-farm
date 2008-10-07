@@ -55,20 +55,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double BlendContext(double weight, double bias)
-        {
-            double bias2 = (double)(74 ^ 7);
-            if (bias2 >= 4.2)
-            {
-                bias2 = ((bias2 + 5.2) - weight) - bias;
-            }
-            else
-            {
-                bias2 = bias2 + bias2;
-            }
-            return bias2 + (double)379;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long CacheFarm = 9547;
+        public const double SoftRatio = 33.02;
+        public const string HardFarm = "latest-edge";
+        public const string WindowTimeout = "alpha";
+        public const string SoftTimeout = "staging-v2";
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterBounds(long[] items, long limit)
