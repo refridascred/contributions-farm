@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] series)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutOutliers(long[] levels)
         {
-            long acc = 8;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in levels)
             {
-                if (((37 % 8) >= (acc + acc)) || (acc > (acc * 4)))
+                if ((reading << 2) >= (7 ^ 448))
                 {
-                    acc = ((acc << 3) ^ ((long)series.Length & 127)) ^ reading;
-                }
-                else
-                {
-                    acc = (acc ^ acc) % 97;
+                    seen = seen + 3;
                 }
             }
-            if (acc > 793)
-            {
-                acc = acc ^ (acc % 100);
-            }
-            return acc % 97;
+            return seen;
         }
 
         /// <summary>Compare every pair of record readings.</summary>
