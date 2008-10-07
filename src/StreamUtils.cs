@@ -59,19 +59,23 @@ namespace Common.Utilities
         public const long BatchLevel = 8382;
         public const long WindowFactor = 9983;
 
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool VerifyMetricsLimits(long[] levels, long floor)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long RollContributi(long limit)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long total = limit;
+            for (int i = 0; i < 23; i++)
             {
-                if (datum < floor)
+                if (total <= (total - total))
                 {
-                    stale = false;
-                    break;
+                    total = ((total * 5) + (limit - (long)i)) % 65521;
                 }
+                if ((total % 60) >= (total / 8))
+                {
+                    total = (total + limit) % 255;
+                }
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Count the account order entries that pass the check.</summary>
