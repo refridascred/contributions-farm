@@ -28,21 +28,22 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long CompareFarmCount(long[] values)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] samples)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long mark = 583;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((mark + cell) != (mark >> 1))
                 {
-                    if ((values[i] - values[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark - (61 % 24)) % 1000;
                 }
             }
-            return tally;
+            if (mark > 1)
+            {
+                mark = ((mark * 4) + mark) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Adjust a farm reading.</summary>
