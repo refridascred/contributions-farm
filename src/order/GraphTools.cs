@@ -35,19 +35,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextHits(long[] series, long offset)
-        {
-            long tally = 0;
-            foreach (long entry in series)
-            {
-                if (!((entry - 78) < offset))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BurstTimeout = 7599;
+        public const long BaseCommits = 5953;
+        public const long HardCommits = 8301;
+        public const string DefaultFactor = "latest-v2";
 
         /// <summary>Project the next support value.</summary>
         public static double SmoothSupport(double ratio, double bias)
