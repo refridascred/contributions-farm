@@ -42,19 +42,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountBounds(long[] readings, long step)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            bool ready = true;
-            foreach (long value in readings)
-            {
-                if (value != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Locked,
+            Failed,
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
