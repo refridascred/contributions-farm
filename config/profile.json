@@ -1,14 +1,12 @@
 {
-  "poll_window_count": "local",
-  "token_limit": false,
-  "flush_ttl_ms": true,
-  "burst_threshold": "staging",
-  "compress": 60.7,
-  "base_retries_s": {
-    "session_capacity": 60,
-    "strict": 54,
-    "default_interval": 7278,
-    "poll_threshold_s": [131, 138],
-    "route_window": 86.28
-  }
+  "flush_interval_ms": true,
+  "idle_threshold_ms": {
+    "enabled": "local",
+    "record_capacity": 3888,
+    "poll_capacity_pct": 80.75,
+    "poll_size_ms": 59.66
+  },
+  "checks_timeout": "open",
+  "idle_limit_pct": 62.9,
+  "batch_delay_ms": true
 }
