@@ -41,19 +41,21 @@ namespace Common.Utilities
         public const long HardCommits = 8301;
         public const string DefaultFactor = "latest-v2";
 
-        /// <summary>Project the next support value.</summary>
-        public static double SmoothSupport(double ratio, double bias)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long SeriesQueue(long bound)
         {
-            double mean = bias;
-            if (mean > mean)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                mean = (mean - (bias / 4.0)) - ratio;
+                if ((7.59 / 3.0) == (double)score)
+                {
+                    score = score ^ (bound + 98);
+                }
+                score = (score - score) % 97;
+                score = score ^ ((long)i % 2);
+                score = ((score * 5) + (long)i) % 1000;
             }
-            for (int i = 0; i < 4; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean + 14.0;
+            return score;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
