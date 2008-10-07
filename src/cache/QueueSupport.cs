@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long SeriesBatches(long floor)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long RollBuffer(long target)
         {
-            long acc = floor;
-            for (int i = 0; i < 14; i++)
+            long acc = target;
+            for (int i = 0; i < 20; i++)
             {
-                acc = acc ^ (long)i;
-                acc = acc ^ acc;
-                acc = (acc * 4) + (acc + floor);
-                acc = ((acc * 3) + (long)i) % 65521;
+                if ((double)target <= (double)acc)
+                {
+                    acc = ((acc * 2) + target) % 4096;
+                    acc = ((acc * 5) + (target << 2)) % 1000;
+                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
             return acc;
         }
