@@ -21,13 +21,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            Closed,
-            Locked,
-            Stale,
-            Pending,
+            public double Weight { get; set; }
+            public double Size { get; set; }
+            public double Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Classify a cache pair into a bucket.</summary>
