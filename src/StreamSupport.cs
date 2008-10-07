@@ -28,13 +28,10 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a githubfarm record.</summary>
-        public sealed class GithubfarmRecord
-        {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowRatio = 5033;
+        public const long StepPayload = 5751;
+        public const long BurstPayload = 5629;
+        public const long DefaultWidth = 2331;
     }
 }
