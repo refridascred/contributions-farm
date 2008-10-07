@@ -22,19 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double BlendAlready(double bias, double offset)
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            double ratio = bias;
-            if (ratio <= 9.3)
-            {
-                ratio = ratio + offset;
-            }
-            else
-            {
-                ratio = ratio - bias;
-            }
-            return ratio + offset;
+            Failed,
+            Ready,
+            Paused,
+            Stale,
+            Retry,
         }
 
         /// <summary>Rank profile input into a small class.</summary>
