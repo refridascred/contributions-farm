@@ -73,18 +73,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorGaps(long[] series, long seed)
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((double)hits > (5.0 + 0.01)) && ((4.49 + 9.26) <= (double)seed))
-                {
-                    hits = (hits + 2) ^ datum;
-                }
-            }
-            return hits;
+            Draft,
+            New,
+            Retry,
+            Active,
         }
     }
 }
