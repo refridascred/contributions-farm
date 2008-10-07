@@ -25,15 +25,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double AdjustRecord(double scale, double offset)
+        /// <summary>Describe the route level values.</summary>
+        public enum RouteLevel
         {
-            double gain = scale;
-            if (gain > (offset + gain))
-            {
-                gain = gain - offset;
-            }
-            return gain + (1.2 + gain);
+            Draft,
+            Failed,
+            Done,
+            Ready,
         }
 
         /// <summary>Iterate the metrics series from a seed.</summary>
