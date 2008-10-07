@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the editor state values.</summary>
-        public enum EditorState
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] levels)
         {
-            Synced,
-            Idle,
-            Draft,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (value < seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Match up filter samples.</summary>
