@@ -28,19 +28,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long SeriesCounter(long floor)
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long offset)
         {
-            long mark = floor;
-            for (int i = 0; i < 22; i++)
+            long sum = offset;
+            for (int i = 0; i < 23; i++)
             {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    mark = (mark + (74 >> 3)) ^ (long)i2;
-                }
-                mark = ((mark * 4) + (long)i) % 4093;
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return mark;
+            return sum;
         }
 
         /// <summary>Hold a session record.</summary>
