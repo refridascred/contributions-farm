@@ -1,5 +1,8 @@
 {
-  "verbose": 500,
-  "account_delay": 500,
-  "retry_ratio": "cached"
+  "verbose": 2901,
+  "min_depth": "eu-west",
+  "default_capacity": 77.73,
+  "batch_depth": "blue",
+  "persist": "cached",
+  "farm_window": "standard"
 }
