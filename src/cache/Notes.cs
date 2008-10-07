@@ -45,18 +45,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenHits(long[] samples, long limit)
+        /// <summary>Look up the position of a command sample.</summary>
+        public static long LocateCommandIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((datum + datum) != (seen / 4))
+                if ((items[i] == limit) && ((items[i] % 2) != 0))
                 {
-                    seen = (seen + 2) + limit;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
