@@ -55,18 +55,22 @@ namespace Common.Utilities
         public const long IdleCounter = 4377;
         public const long IdleBudget = 4016;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long MeasureQueueHits(long[] levels, long limit)
+        /// <summary>Combine report route values into a single score.</summary>
+        public static long DigestReportRoute(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long total = -243;
+            foreach (long entry in levels)
             {
-                if (hits < ((-527) - cell))
+                if (((total >> 2) == (total * 4)) || ((double)total < (2.7 / 8.0)))
                 {
-                    hits = (hits + 1) + limit;
+                    total = total + (entry - total);
+                }
+                if ((double)total <= (double)(-9))
+                {
+                    break;
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the stats phase values.</summary>
