@@ -1,11 +1,6 @@
 # support settings
-hard_window: 49
-persist: true
-min_ttl: fallback
-audit: latest
-sync_interval_ms:
-  - strict
-  - edge
-  - strict
-  - cached
-max_ttl: 41
+warm_delay_pct: false
+compress: false
+poll_ratio_ms: staging
+default_threshold_s: 34
+retry_depth: false
