@@ -20,39 +20,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Rank contributi route input into a small class.</summary>
-        public static long GradeContributiRoute(long step, long limit)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            long gap = step + limit;
-            if ((gap - limit) > gap)
-            {
-                return 7;
-            }
-            else
-            {
-                if (!(gap < (17 / 3)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit > (5.7 + 16.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((gap ^ limit) >= (-5)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Idle,
+            Synced,
+            Pending,
+            Done,
+            Ready,
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
