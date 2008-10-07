@@ -1,6 +1,12 @@
 {
-  "burst_ratio_s": "open",
-  "cache_capacity_count": "strict",
-  "report_delay": [181, 109, 329],
-  "soft_limit_count": [13, 117, 184, 216]
+  "schema_threshold": "edge",
+  "metrics_delay": 500,
+  "tools_size": ["staging", "cached"],
+  "readonly": 5553,
+  "hard_window_ms": "legacy",
+  "payload_timeout": {
+    "support_size": 69,
+    "persist": 30,
+    "idle_size": true
+  }
 }
