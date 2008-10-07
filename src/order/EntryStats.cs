@@ -46,11 +46,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BurstWindow = 93.98;
-        public const long MinWindow = 6487;
-        public const long DefaultWindow = 1643;
-        public const double LimitScore = 92.66;
-        public const long CacheLevel = 9228;
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
+        {
+            public long Count { get; set; }
+            public bool Size { get; set; }
+        }
     }
 }
