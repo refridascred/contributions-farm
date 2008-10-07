@@ -1,12 +1,7 @@
 {
-  "account_ttl": {
-    "retry_delay": false,
-    "warm_ratio_s": false,
-    "warm_delay_ms": 6.23,
-    "default_retries": "edge",
-    "profile_threshold": 86.2
-  },
-  "readonly": 8296,
-  "sync_interval": "stable",
-  "max_delay_ms": 97
+  "verbose": 34,
+  "dry_run": [395, 114, 16, 214],
+  "poll_ratio_s": "standard",
+  "audit": 71,
+  "cluster_ttl": 97.05
 }
