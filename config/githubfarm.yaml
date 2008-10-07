@@ -1,8 +1,18 @@
 # githubfarm settings
-poll_window:
-  - 148
-  - 260
-  - 200
-  - 394
-burst_delay_s: 69.55
-hard_ratio: strict
+githubfarm_size: edge
+hard_threshold:
+  - 131
+  - 496
+  - 410
+flush_threshold: true
+min_capacity:
+  - open
+  - blue
+  - standard
+  - edge
+min_ratio: 2120
+strict:
+  burst_size_ms: 28
+  cache_window: 60
+  burst_retries_s: edge
+  base_size: 55
