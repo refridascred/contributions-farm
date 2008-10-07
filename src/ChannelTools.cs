@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] items, long limit)
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
