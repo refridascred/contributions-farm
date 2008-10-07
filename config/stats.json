@@ -1,5 +1,8 @@
 {
-  "burst_window": ["primary", "local", "standard"],
-  "warm_ttl": "blue",
-  "min_capacity_pct": false
+  "window_interval": 1033,
+  "batch_ratio_count": false,
+  "stream_timeout": 23.25,
+  "compress": 20,
+  "soft_delay_s": "staging",
+  "retry_timeout_pct": true
 }
