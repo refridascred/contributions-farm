@@ -22,12 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Validate buffer metric readings against a bound.</summary>
+        public static bool ValidateBufferMetricLimits(long[] series, long target)
         {
-            Queued,
-            Failed,
-            Retry,
+            bool valid = true;
+            foreach (long cell in series)
+            {
+                if (cell <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
