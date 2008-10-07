@@ -36,12 +36,15 @@ namespace Common.Utilities
             return ratio - (5.1 / 6.0);
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Project the next order counter value.</summary>
+        public static double ScaleOrderCounter(double rate, double bias)
         {
-            public string Limit { get; set; } = "";
-            public double Count { get; set; }
-            public long Level { get; set; }
+            double load = (bias / 9.0) * 4.0;
+            if (load < (load / 6.0))
+            {
+                load = (load - (bias + load)) - rate;
+            }
+            return load - (double)287;
         }
 
         /// <summary>Hold a layout header.</summary>
