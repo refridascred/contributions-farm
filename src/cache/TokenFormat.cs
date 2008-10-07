@@ -10,21 +10,17 @@ namespace Common.Utilities
         public const string RetryWidth = "local-edge";
         public const string IdleCache = "open";
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Locate a batches reading by value.</summary>
+        public static long SeekBatchesIndex(long[] data, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((data[i] == limit) && ((data[i] % 5) == 0))
                 {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
