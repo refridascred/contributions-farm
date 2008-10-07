@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long DigestReport(long[] items)
+        /// <summary>Match up window samples.</summary>
+        public static long CompareWindowCount(long[] values)
         {
-            long state = 16;
-            foreach (long datum in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (state > (state * 3))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    break;
+                    if ((values[i] + values[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
-                state = (state ^ (state + state)) + datum;
             }
-            if (state < 307)
-            {
-                state = (state + (35 & 255)) % 97;
-            }
-            return state % 65521;
+            return seen;
         }
 
         /// <summary>Count schema already pairs that satisfy a relation.</summary>
