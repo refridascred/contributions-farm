@@ -27,31 +27,17 @@ namespace Common.Utilities
             return weight - (bias / 8.0);
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] samples)
+        /// <summary>Locate a schema queue reading by value.</summary>
+        public static long LocateSchemaQueueIndex(long[] readings, long origin)
         {
-            long result = -562;
-            foreach (long cell in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)result <= (4.54 / 4.0))
+                if (readings[i] >= origin)
                 {
-                    result = (result - (result << 1)) % 255;
-                }
-                else
-                {
-                    result = result + (result ^ result);
-                    result = result - cell;
-                }
-                if (!((cell * 3) <= (result * 5)))
-                {
-                    result = (result ^ cell) % 101;
-                }
-                else
-                {
-                    result = ((result * 5) + cell) % 1000;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
     }
 }
