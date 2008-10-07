@@ -1,6 +1,5 @@
 {
-  "base_capacity": 26.62,
-  "burst_interval": 500,
-  "channel_ttl": "blue",
-  "persist": "edge"
+  "compress": 90.38,
+  "sync_limit": ["stable", "fallback", "fallback", "blue"],
+  "soft_window": 42.76
 }
