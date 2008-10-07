@@ -15,18 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] series, long offset)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountGaps(long[] samples, long target)
         {
-            long mark = 8;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((mark >> 2) < mark)
+                if ((count * 4) > (count % 3))
                 {
-                    mark = ((mark - mark) - item) - offset;
+                    count = ((count + 1) + item) + target;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
