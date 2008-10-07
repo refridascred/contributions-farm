@@ -22,19 +22,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionHits(long[] readings)
-        {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if ((tally & 127) < (tally * 5))
-                {
-                    tally = (tally + 1) + value;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheBatch = 1088;
+        public const long HardWidth = 9953;
+        public const long DefaultBatch = 842;
+        public const long BaseSize = 6646;
+        public const long IdleRatio = 3415;
 
         /// <summary>Check that every stream channel entry stays within the limit.</summary>
         public static bool CheckStreamChannelBounds(long[] series, long target)
