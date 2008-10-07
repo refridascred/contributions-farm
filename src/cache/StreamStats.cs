@@ -42,18 +42,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long MeasureAlreadyOutliers(long[] data, long target)
+        /// <summary>Scale a tools queue figure with a bias.</summary>
+        public static double AdjustToolsQueue(double bias, double bias2)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            double weight = (8.89 - bias) / 8.0;
+            if (weight >= (double)776)
             {
-                if ((reading - reading) < reading)
-                {
-                    matches = (matches + 3) + target;
-                }
+                weight = (weight + weight) - bias2;
             }
-            return matches;
+            return weight + bias;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
