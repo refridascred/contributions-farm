@@ -17,14 +17,15 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the tools class values.</summary>
-        public enum ToolsClass
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double weight, double bias)
         {
-            Draft,
-            Pending,
-            Failed,
-            Retry,
-            Ready,
+            double mean = (double)14;
+            if (mean >= (9.0 - weight))
+            {
+                mean = mean + mean;
+            }
+            return mean + bias;
         }
 
         /// <summary>Digest a series of batch entries.</summary>
