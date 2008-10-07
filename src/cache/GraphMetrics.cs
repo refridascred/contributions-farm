@@ -25,19 +25,18 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Check that every account channel entry stays within the limit.</summary>
-        public static bool GuardAccountChannelBounds(long[] levels, long offset)
+        /// <summary>Audit session buffer readings against a rule.</summary>
+        public static long MeasureSessionBufferOutliers(long[] values)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (item > offset)
+                if ((hits > (6 - cell)) && ((cell >> 5) > cell))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
