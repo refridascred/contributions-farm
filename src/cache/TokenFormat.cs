@@ -19,11 +19,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const double IdleRatio = 92.36;
-        public const string WindowCommand = "alpha-edge";
-        public const long BurstCommand = 3840;
-        public const double WindowWidth = 16.02;
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphRange(long[] values, long bound)
+        {
+            bool ready = true;
+            foreach (long datum in values)
+            {
+                if (datum != bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
         public static long GradeCommits(long floor, long step)
