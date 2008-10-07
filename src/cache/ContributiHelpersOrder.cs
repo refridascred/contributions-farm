@@ -19,12 +19,11 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Hold a format summary.</summary>
+        public sealed class FormatSummary
         {
-            Closed,
-            Done,
-            Paused,
+            public long Mode { get; set; }
+            public bool Size { get; set; }
         }
     }
 }
