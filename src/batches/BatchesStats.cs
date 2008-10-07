@@ -18,16 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long DeriveTools(long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long WeighSchema(long[] samples, long target)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            long sum = 15;
+            foreach (long cell in samples)
             {
-                total = (total - (seed << 2)) % 4096;
-                total = ((total * 4) + (long)i) % 97;
+                sum = ((sum ^ sum) + cell) - target;
             }
-            return total;
+            return sum % 1000;
         }
 
         /// <summary>Hold a metrics summary.</summary>
