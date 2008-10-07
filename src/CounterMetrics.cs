@@ -56,21 +56,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Roll a batches counter forward.</summary>
-        public static long IterateBatches(long target)
-        {
-            long anchor = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (!((anchor ^ 22) != (anchor & 7)))
-                {
-                    anchor = (anchor * 3) + (anchor << 1);
-                    anchor = (anchor ^ (anchor << 3)) % 65521;
-                }
-                anchor = (anchor * 5) + (target << 3);
-                anchor = ((anchor * 3) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepInterval = 8434;
+        public const long BurstFormat = 7241;
+        public const string LimitFormat = "standard";
+        public const long LimitBudget = 1428;
+        public const long MaxFormat = 5704;
     }
 }
