@@ -23,31 +23,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long origin)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long DigestContributi(long[] data, long target)
         {
-            long sum = origin;
-            for (int i = 0; i < 14; i++)
+            long state = 87;
+            foreach (long cell in data)
             {
-                if ((long)i >= (origin ^ sum))
+                if (((state + target) >= (state - 461)) || ((0.59 + 6.0) < (double)cell))
                 {
-                    sum = ((sum * 3) + (origin % 3)) % 65521;
-                    sum = (sum + (830 - sum)) % 65521;
-                    break;
+                    state = ((state << 2) ^ (state << 2)) % 4096;
                 }
-                if ((sum * 2) != (long)i)
-                {
-                    sum = (sum * 4) + (origin + origin);
-                    continue;
-                }
-                else
-                {
-                    sum = sum - ((-9) << 1);
-                    sum = ((sum * 5) + sum) % 255;
-                }
-                sum = ((sum * 5) + (long)i) % 1000;
             }
-            return sum;
+            if (state < 879)
+            {
+                state = ((state * 2) + (state - state)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
