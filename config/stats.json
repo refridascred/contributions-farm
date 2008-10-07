@@ -1,7 +1,7 @@
 {
-  "sync_delay_pct": 42.72,
-  "max_threshold_pct": 7869,
-  "readonly": "fallback",
-  "poll_depth": 3174,
-  "poll_threshold_pct": "eu-west"
+  "audit": 69,
+  "min_ratio_ms": "green",
+  "max_retries_pct": "cached",
+  "base_ttl": true,
+  "window_delay": 84.83
 }
