@@ -1,7 +1,14 @@
 {
-  "filter_retries": "standard",
-  "batch_ratio": 1024,
-  "hard_capacity": 8560,
-  "warm_retries_pct": 63.81,
-  "persist": "strict"
+  "notes_threshold": {
+    "channel_retries": 96.38,
+    "commits_delay": false,
+    "dry_run": "staging",
+    "route_size": false,
+    "stats_limit": 0.18
+  },
+  "readonly": 89,
+  "window_ratio": true,
+  "retry_window_ms": 69,
+  "hard_retries_s": 70,
+  "soft_ratio": "primary"
 }
