@@ -1,19 +1,19 @@
 # githubfarm settings
-burst_capacity_pct:
-  - edge
-  - staging
-  - eu-west
-  - strict
-min_ttl_ms: false
-warm_depth_ms: 30
-min_threshold_pct:
-  - local
-  - edge
-  - strict
-  - stable
-readonly: 4349
-context_limit:
-  - 233
-  - 220
-  - 122
-  - 275
+notes_capacity: 60
+dry_run:
+  max_delay_count:
+    max_size: fallback
+    readonly: 100
+    layout_retries: 46.13
+    farm_delay: false
+    idle_window_ms: latest
+    retry_delay: 56.61
+  hard_depth_count: edge
+  persist: 37
+  poll_interval_pct: 60
+  verbose: stable
+cluster_size: green
+strict:
+  - 87
+  - 237
+already_size: 54
