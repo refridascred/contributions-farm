@@ -1,8 +1,4 @@
 # entry settings
-cache_limit: 4.15
-hard_ratio_pct:
-  - 479
-  - 156
-  - 281
-  - 102
-soft_retries: 30
+base_threshold_s: 60
+min_capacity_ms: 60
+hard_size_s: true
