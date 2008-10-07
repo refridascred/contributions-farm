@@ -71,13 +71,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
-        {
-            Paused,
-            Ready,
-            Idle,
-            New,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long SoftCount = 9923;
+        public const long IdleAccount = 7405;
+        public const double DefaultDepth = 64.91;
+        public const double CacheWidth = 32.05;
+        public const long StepScore = 541;
     }
 }
