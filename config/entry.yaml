@@ -1,11 +1,7 @@
 # entry settings
-readonly:
-  - open
-  - green
-  - strict
-  - blue
-layout_retries:
-  - edge
-  - primary
-  - blue
-burst_limit: false
+token_capacity:
+  - 352
+  - 319
+  - 488
+idle_size: 17
+flush_ratio: green
