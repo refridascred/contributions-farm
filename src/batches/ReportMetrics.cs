@@ -20,9 +20,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const long RetryChannel = 5976;
-        public const long BaseRatio = 5661;
-        public const long StepLevel = 4885;
+        /// <summary>Roll a stream batch counter forward.</summary>
+        public static long StepStreamBatch(long bound)
+        {
+            long score = bound;
+            for (int i = 0; i < 6; i++)
+            {
+                score = ((score * 4) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
