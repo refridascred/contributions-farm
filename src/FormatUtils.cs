@@ -62,19 +62,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a order graph figure with a bias.</summary>
-        public static double AdjustOrderGraph(double ratio, double span)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            double bias = span;
-            if (bias > 8.0)
-            {
-                bias = (bias - bias) + ratio;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + (span - span)) - (double)(long)i;
-            }
-            return bias + 0.5;
+            Draft,
+            Done,
+            Locked,
+            Paused,
+            Dropped,
         }
     }
 }
