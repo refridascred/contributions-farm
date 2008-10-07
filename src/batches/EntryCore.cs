@@ -37,15 +37,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long TotalAccount(long[] readings, long target)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long acc = 1;
-            foreach (long value in readings)
-            {
-                acc = (acc ^ (value << 2)) - target;
-            }
-            return acc;
+            public long Weight { get; set; }
+            public long Rank { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Derive the next token window value from a seed.</summary>
