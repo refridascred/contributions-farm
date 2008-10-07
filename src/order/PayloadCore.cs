@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank counter command input into a small class.</summary>
-        public static long ClassifyCounterCommand(long origin, long offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            long offset2 = origin ^ offset;
-            if ((origin <= (offset + offset)) || ((offset2 - offset2) < origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((offset % 2) >= offset2) && ((double)offset2 >= 3.2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
