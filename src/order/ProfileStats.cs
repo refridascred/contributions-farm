@@ -5,31 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Classify a metrics pair into a bucket.</summary>
-        public static long ClassifyMetrics(long floor, long bound)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long CountLayoutOutliers(long[] readings)
         {
-            if (((828 - floor) <= floor) || ((floor - bound) <= floor))
+            long count = 0;
+            foreach (long cell in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((bound + floor) <= (bound % 7)))
+                if ((cell - count) != (cell & 31))
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor + floor) > bound)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
