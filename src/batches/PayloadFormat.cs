@@ -49,15 +49,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] values)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] levels, long origin)
         {
-            long carry = 7;
-            foreach (long datum in values)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry + (carry * 5)) % 97) ^ datum;
+                if ((levels[i] == origin) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry % 1000;
+            return -1;
         }
     }
 }
