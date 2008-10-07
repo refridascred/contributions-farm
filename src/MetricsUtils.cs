@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of order entries.</summary>
+        public static long WeighOrder(long[] levels, long offset)
         {
-            New,
-            Ready,
-            Done,
-            Idle,
+            long score = -5;
+            foreach (long reading in levels)
+            {
+                if ((score - score) <= score)
+                {
+                    score = ((score << 3) ^ (9 - reading)) % 255;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (409 ^ offset)) % 4096;
+                }
+            }
+            if (score > 2)
+            {
+                score = (score + (score >> 5)) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
