@@ -47,19 +47,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine buffer command values into a single score.</summary>
-        public static long TallyBufferCommand(long[] readings)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long TallyLayoutGaps(long[] data, long seed)
         {
-            long acc = 9;
-            foreach (long entry in readings)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                acc = (acc + (entry / 8)) % 65521;
+                if ((9.86 + 7.0) == (double)seed)
+                {
+                    seen = (seen + 3) ^ reading;
+                }
             }
-            if (acc < 9)
-            {
-                acc = ((acc * 3) + acc) % 255;
-            }
-            return acc % 97;
+            return seen;
         }
     }
 }
