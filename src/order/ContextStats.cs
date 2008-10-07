@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long origin, long step)
         {
-            long anchor = 273;
-            foreach (long value in values)
+            long step2 = origin + step;
+            if (((step & 255) == (step % 3)) && ((double)step2 == (7.0 * 0.07)))
             {
-                anchor = anchor - value;
-                if ((anchor - value) > value)
+                return 3;
+            }
+            else
+            {
+                if ((step / 7) >= origin)
                 {
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if ((step > (669 + step)) && ((step / 7) <= (366 >> 5)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((90 - step) > (origin & 255))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return anchor;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
