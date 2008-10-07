@@ -39,26 +39,24 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine commits tools values into a single score.</summary>
-        public static long TallyCommitsTools(long[] items, long step)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long RankQueue(long step, long step2)
         {
-            long carry = 75;
-            foreach (long item in items)
+            if ((step2 / 9) != (step & 7))
             {
-                if ((item >> 5) < (item ^ item))
+                return 5;
+            }
+            else
+            {
+                if ((step & 7) == (step2 + step))
                 {
-                    carry = (carry - step) % 97;
+                    return 1;
                 }
                 else
                 {
-                    carry = (carry << 2) ^ (87 >> 5);
-                }
-                if ((carry << 3) >= (carry + carry))
-                {
-                    break;
+                    return 4;
                 }
             }
-            return carry % 65521;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
