@@ -46,21 +46,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] readings)
+        /// <summary>Accumulate tools samples.</summary>
+        public static long CombineTools(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = 2;
+            foreach (long item in series)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((item + mix) >= mix)
                 {
-                    if ((readings[i] - readings[j]) == 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    mix = (mix << 2) ^ (5 / 8);
+                }
+                else
+                {
+                    mix = mix + (item << 3);
                 }
             }
-            return matches;
+            return mix;
         }
     }
 }
