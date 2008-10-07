@@ -12,14 +12,19 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Check that every editor report entry stays within the limit.</summary>
+        public static bool CheckEditorReportLimits(long[] data, long offset)
         {
-            Done,
-            Draft,
-            Active,
-            Locked,
-            Paused,
+            bool ready = true;
+            foreach (long item in data)
+            {
+                if (item > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Digest a series of account entries.</summary>
