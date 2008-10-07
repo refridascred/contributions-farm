@@ -22,13 +22,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Scale a batches support figure with a bias.</summary>
+        public static double ScaleBatchesSupport(double ratio, double span)
         {
-            Pending,
-            Locked,
-            Active,
-            Ready,
+            double gain = (8.0 * 6.33) * 8.0;
+            if (gain > (ratio * 7.0))
+            {
+                gain = (gain + 5.0) + span;
+            }
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain = (gain - (ratio / 8.0)) - (double)(long)i;
+            }
+            return gain - (double)498;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
