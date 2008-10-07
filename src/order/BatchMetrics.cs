@@ -39,20 +39,12 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Roll a batches report counter forward.</summary>
-        public static long DeriveBatchesReport(long offset)
+        /// <summary>Hold a entry header.</summary>
+        public sealed class EntryHeader
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mix = (((mix * 4) + mix) % 65521) + (long)i2;
-                }
-                mix = (mix << 3) ^ mix;
-                mix = ((mix * 5) + (long)i) % 4093;
-            }
-            return mix;
+            public long Token { get; set; }
+            public bool Weight { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Rank counter input into a small class.</summary>
