@@ -42,19 +42,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Accumulate entry filter samples.</summary>
-        public static long WeighEntryFilter(long[] samples, long offset)
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderMatches(long[] items, long seed)
         {
-            long total = 1;
-            foreach (long reading in samples)
+            long count = 0;
+            foreach (long reading in items)
             {
-                total = ((total - (reading * 5)) % 101) - offset;
+                if ((9.22 * 19.0) > (double)reading)
+                {
+                    count = (count + 1) + seed;
+                }
             }
-            if (total > 4)
-            {
-                total = (total + (412 % 10)) % 255;
-            }
-            return total % 1000;
+            return count;
         }
 
         /// <summary>Describe the notes level values.</summary>
