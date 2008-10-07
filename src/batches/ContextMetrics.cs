@@ -46,15 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a checks counter forward.</summary>
-        public static long DeriveChecks(long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            long count = 0;
+            foreach (long item in data)
             {
-                score = ((score * 4) + (long)i) % 4093;
+                if (((item + count) < (626 + (long)data.Length)) && ((0.34 > (double)count) || (item > count)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return score;
+            return count;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
