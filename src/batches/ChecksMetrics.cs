@@ -56,39 +56,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long ClassifyLayout(long offset, long bound)
+        /// <summary>Iterate the record checks series from a seed.</summary>
+        public static long SeriesRecordChecks(long origin)
         {
-            long prev = offset + bound;
-            if (!((98 >> 2) <= (offset + bound)))
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (43 <= prev)
+                for (int i2 = 0; i2 < 8; i2++)
                 {
-                    return 3;
+                    anchor = ((anchor * 5) + (origin + 30)) ^ (long)i2;
                 }
-                else
-                {
-                    if (((offset >> 4) < (0 + bound)) || (bound >= prev))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)bound == (5.33 - 6.79)) || ((-91) >= (prev + bound)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
             }
+            return anchor;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
