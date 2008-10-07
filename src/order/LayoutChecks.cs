@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate queue tools samples.</summary>
-        public static long TotalQueueTools(long[] readings)
+        /// <summary>Iterate the route series from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            long anchor = 145;
-            foreach (long datum in readings)
+            long mark = target;
+            for (int i = 0; i < 20; i++)
             {
-                if ((double)anchor < (double)(-29))
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    anchor = ((anchor << 3) ^ (datum >> 1)) % 4096;
+                    mark = ((mark ^ (target & 31)) % 65521) ^ (long)i2;
                 }
-                else
-                {
-                    anchor = (anchor ^ (anchor & 7)) % 101;
-                }
+                mark = ((mark * 5) + (long)i) % 65521;
             }
-            if (anchor < 4)
-            {
-                anchor = (anchor ^ (anchor + anchor)) % 101;
-            }
-            return anchor % 65521;
+            return mark;
         }
 
         /// <summary>Describe the queue class values.</summary>
