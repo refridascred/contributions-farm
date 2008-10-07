@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] readings, long floor)
         {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if ((floor > tally) && ((tally + floor) > tally))
+                {
+                    tally = (tally + 3) ^ cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Blend two metric measurements.</summary>
