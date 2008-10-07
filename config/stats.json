@@ -1,6 +1,7 @@
 {
-  "retry_timeout_s": 76.12,
-  "base_size_pct": [450, 362, 41, 331],
-  "dry_run": "staging",
-  "batch_threshold_count": "staging"
+  "dry_run": 25.28,
+  "compress": [342, 202],
+  "layout_ttl": 28.68,
+  "soft_window_s": "open",
+  "cache_ratio_pct": ["stable", "cached", "local", "local"]
 }
