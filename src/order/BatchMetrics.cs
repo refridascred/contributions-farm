@@ -30,17 +30,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a layout record reading by value.</summary>
-        public static long SeekLayoutRecordIndex(long[] series, long limit)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Ratio { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Roll a batches report counter forward.</summary>
