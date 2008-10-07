@@ -19,17 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first already entry that matches the target.</summary>
-        public static long LocateAlreadyIndex(long[] data, long floor)
+        /// <summary>Combine token window values into a single score.</summary>
+        public static long TotalTokenWindow(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 839;
+            foreach (long datum in data)
             {
-                if ((data[i] == floor) && ((data[i] % 5) != 0))
+                if ((datum - limit) > 914)
                 {
-                    return (long)i;
+                    mark = ((mark << 2) ^ (mark ^ datum)) % 97;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (8 & 127)) % 65521;
                 }
             }
-            return -1;
+            if (mark < 0)
+            {
+                mark = ((mark << 3) ^ (mark - 258)) % 101;
+            }
+            return mark;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
