@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string LimitAccount = "local-1";
-        public const double MaxSize = 9.05;
-        public const double BaseRatio = 39.59;
-        public const long LimitLevel = 3460;
-        public const long BurstFactor = 2573;
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] data, long step)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
