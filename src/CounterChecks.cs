@@ -36,25 +36,11 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long ClassifyEntry(long bound, long seed)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long cur = bound ^ seed;
-            if (((20 % 64) <= (cur / 2)) && (seed < cur))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((290 ^ bound) >= (cur % 60))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public bool Offset { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a already summary.</summary>
