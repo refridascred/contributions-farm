@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Project the next queue value.</summary>
-        public static double BlendQueue(double ratio, double floor)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] readings)
         {
-            double ratio2 = (double)(5 - 749);
-            if (ratio2 >= floor)
+            long anchor = 816;
+            foreach (long entry in readings)
             {
-                ratio2 = (ratio2 - floor) - ratio;
+                if ((entry + entry) <= (entry % 97))
+                {
+                    anchor = ((anchor << 2) ^ (entry ^ 892)) % 97;
+                }
             }
-            return ratio2 - (double)(-13);
+            if (anchor < 96)
+            {
+                anchor = anchor + (anchor % 8);
+            }
+            return anchor;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
