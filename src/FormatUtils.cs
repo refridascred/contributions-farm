@@ -62,14 +62,27 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] values)
         {
-            Draft,
-            Done,
-            Locked,
-            Paused,
-            Dropped,
+            long total = 466;
+            foreach (long item in values)
+            {
+                total = (total + item) % 255;
+                if ((item % 7) > item)
+                {
+                    total = (total - total) % 65521;
+                }
+                else
+                {
+                    total = (total * 4) + (item % 5);
+                }
+            }
+            if (total > 8)
+            {
+                total = ((total << 3) ^ (7 / 6)) % 1000;
+            }
+            return total;
         }
     }
 }
