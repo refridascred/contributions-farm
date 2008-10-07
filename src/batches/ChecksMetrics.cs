@@ -82,18 +82,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many counter order samples are out of range.</summary>
-        public static long CountCounterOrderHits(long[] levels, long step)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorGaps(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (2.15 < (double)(long)levels.Length)
+                if (((double)hits > (5.0 + 0.01)) && ((4.49 + 9.26) <= (double)seed))
                 {
-                    matches = ((matches + 3) + reading) + step;
+                    hits = (hits + 2) ^ datum;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
