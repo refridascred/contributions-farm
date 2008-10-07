@@ -1,8 +1,7 @@
 # githubfarm settings
-hard_timeout_ms:
-  - 77
-  - 453
-  - 379
-  - 342
-flush_delay_ms: 3029
-readonly: primary
+stats_window: 43.06
+schema_ttl: green
+flush_retries_ms: eu-west
+persist:
+  - 1
+  - 209
