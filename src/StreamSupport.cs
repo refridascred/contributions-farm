@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool VerifyPayloadBounds(long[] samples, long limit)
         {
-            public long Total { get; set; }
-            public string Owner { get; set; } = "";
-            public double Weight { get; set; }
+            bool stale = true;
+            foreach (long reading in samples)
+            {
+                if (reading < limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
