@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MaxRatio = "primary";
-        public const string BurstDepth = "cached-edge";
-        public const long IdleInterval = 1039;
-        public const long StepGraph = 9643;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public long Owner { get; set; }
+            public long Mode { get; set; }
+            public long Count { get; set; }
+        }
 
         /// <summary>Combine session values into a single score.</summary>
         public static long ScoreSession(long[] data, long floor)
