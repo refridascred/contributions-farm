@@ -35,25 +35,12 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Rank command input into a small class.</summary>
-        public static long SortCommand(long target, long origin)
-        {
-            if (15.0 > (double)target)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((origin << 1) > 942)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double IdleBudget = 64.87;
+        public const string DefaultGraph = "alpha-v2";
+        public const long MinGraph = 7050;
+        public const double WindowGraph = 50.56;
+        public const long IdleTimeout = 9400;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseFormat = 7578;
