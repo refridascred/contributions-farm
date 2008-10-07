@@ -15,17 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Locate a cluster token reading by value.</summary>
-        public static long FindClusterTokenIndex(long[] levels, long target)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool CheckChecksBounds(long[] levels, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ok = true;
+            foreach (long cell in levels)
             {
-                if ((levels[i] < target) && ((levels[i] % 2) != 0))
+                if (cell < limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
