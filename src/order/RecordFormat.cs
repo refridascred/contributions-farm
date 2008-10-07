@@ -49,18 +49,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Count the commits stream entries that pass the check.</summary>
-        public static long CountCommitsStreamMatches(long[] series, long floor)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((9.1 / 5.0) != (double)hits)
-                {
-                    hits = ((hits + 1) - sample) + floor;
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            Stale,
+            Pending,
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
