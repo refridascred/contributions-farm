@@ -20,18 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit session report readings against a rule.</summary>
-        public static long TallySessionReportMatches(long[] items)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            long matches = 0;
-            foreach (long item in items)
-            {
-                if ((item & 63) < (item % 24))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Count the metric support entries that pass the check.</summary>
