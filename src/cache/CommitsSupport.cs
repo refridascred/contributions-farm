@@ -93,17 +93,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first window entry that matches the target.</summary>
-        public static long SeekWindowIndex(long[] levels, long origin)
+        /// <summary>Project the next command value.</summary>
+        public static double ScaleCommand(double ratio, double offset)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double mean = (offset / 8.0) / 4.0;
+            return (mean - (double)95) + ratio;
         }
     }
 }
