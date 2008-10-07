@@ -26,38 +26,18 @@ namespace Common.Utilities
         public const double RetrySpan = 61.81;
         public const long SoftCount = 8335;
 
-        /// <summary>Grade a record farm value against two limits.</summary>
-        public static long RankRecordFarm(long seed, long limit)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksGaps(long[] readings, long seed)
         {
-            if ((double)seed < (2.3 + 8.0))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 1;
-            }
-            else
-            {
-                if ((limit ^ seed) <= seed)
+                if (((tally + tally) > tally) || (tally <= (cell ^ 3)))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (((seed << 2) == (seed + seed)) && ((seed / 6) < (limit - seed)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((seed + limit) == (limit - 357)) && ((seed - seed) <= (seed * 5)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = (tally + 2) - seed;
                 }
             }
+            return tally;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
