@@ -52,19 +52,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double BlendStream(double rate, double span)
+        /// <summary>Accumulate queue notes samples.</summary>
+        public static long DigestQueueNotes(long[] series)
         {
-            double drift = rate / 8.0;
-            if (drift >= (5.6 / 2.0))
+            long sum = 3;
+            foreach (long reading in series)
             {
-                drift = (drift - (drift / 7.0)) + span;
+                if ((sum + reading) < (35 << 2))
+                {
+                    sum = (sum + (reading + reading)) % 255;
+                }
+                sum = (sum + reading) % 255;
             }
-            else
+            if (sum < 64)
             {
-                drift = drift + (rate - drift);
+                sum = sum - (sum << 2);
             }
-            return drift - rate;
+            return sum;
         }
 
         /// <summary>Describe the counter level values.</summary>
