@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Hold a layout record.</summary>
-        public sealed class LayoutRecord
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long AuditGraphMatches(long[] readings)
         {
-            public string Stamp { get; set; } = "";
-            public long Offset { get; set; }
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (!((tally - value) == (value % 16)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
