@@ -66,24 +66,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a report githubfarm pair into a bucket.</summary>
-        public static long BucketReportGithubfarm(long offset, long seed)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] readings, long origin)
         {
-            if ((double)offset == (9.0 / 4.0))
+            long state = 60;
+            foreach (long item in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if ((seed - seed) == (offset - 985))
+                if ((9 + item) >= (7 + origin))
                 {
-                    return 4;
+                    state = ((state * 3) + (72 - origin)) % 255;
                 }
                 else
                 {
-                    return 7;
+                    state = ((state * 2) + (origin - item)) % 65521;
                 }
             }
+            if (state > 641)
+            {
+                state = (state - (112 % 100)) % 101;
+            }
+            return state;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
