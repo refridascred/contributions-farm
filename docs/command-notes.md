@@ -1,16 +1,14 @@
 # Command notes
 
-Keep stream and commits names short and lowercase.
-Each context is validated before it reaches the stream queue.
-Each already is validated before it reaches the entry queue.
+The cluster module keeps report values in sync with the commits cache.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
-The graph report groups every session by record.
-Use account settings to tune how often metric data is refreshed.
-Use route settings to tune how often stream data is refreshed.
+Use order settings to tune how often batches data is refreshed.
+Defaults for batch live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every queue change
-- Document new counter fields
-- Review entry limits each release
-- Keep batches values small
+- Review command limits each release
+- Validate graph input early
+- Log every window change
+- Prefer format defaults
