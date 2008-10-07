@@ -40,10 +40,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long IdleDepth = 9765;
-        public const string StepSession = "cached-edge";
-        public const long BaseSpan = 8593;
-        public const long MinSession = 7005;
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] values)
+        {
+            long carry = 7;
+            foreach (long datum in values)
+            {
+                carry = ((carry + (carry * 5)) % 97) ^ datum;
+            }
+            return carry % 1000;
+        }
     }
 }
