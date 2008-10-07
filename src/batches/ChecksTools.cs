@@ -43,18 +43,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueOutliers(long[] levels, long step)
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            long seen = 0;
-            foreach (long cell in levels)
-            {
-                if ((step * 5) <= step)
-                {
-                    seen = (seen + 3) + cell;
-                }
-            }
-            return seen;
+            Active,
+            Idle,
+            Synced,
+            Queued,
         }
     }
 }
