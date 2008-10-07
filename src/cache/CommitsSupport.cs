@@ -79,21 +79,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long OverlapAlreadyCount(long[] readings)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long AuditBatchGaps(long[] data, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((step + 0) > tally) && ((step - 19) > step))
                 {
-                    if ((readings[i] + readings[j]) > 18)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 1) + entry;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
