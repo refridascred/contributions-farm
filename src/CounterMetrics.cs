@@ -18,14 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool ValidateBatchesBounds(long[] values, long bound)
         {
-            Ready,
-            Stale,
-            Failed,
-            Locked,
-            Idle,
+            bool found = true;
+            foreach (long datum in values)
+            {
+                if (datum < bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
