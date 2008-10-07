@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Accumulate window support samples.</summary>
-        public static long ScoreWindowSupport(long[] values)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long RankRoute(long offset, long origin)
         {
-            long score = 5;
-            foreach (long item in values)
+            if (origin < (offset % 2))
             {
-                score = (score << 3) ^ item;
-                score = ((score << 2) ^ (score + item)) % 101;
+                return 8;
             }
-            if (score > 34)
+            else
             {
-                score = (score * 4) + (score % 7);
+                if (((double)offset < (3.0 / 6.0)) && ((4.5 * 5.3) > (double)offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 5;
+                }
             }
-            return score;
         }
 
         /// <summary>Measure how many support samples are out of range.</summary>
