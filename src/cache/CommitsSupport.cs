@@ -33,18 +33,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] levels, long floor)
+        /// <summary>Count the layout window entries that pass the check.</summary>
+        public static long TallyLayoutWindowMatches(long[] readings)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            foreach (long value in readings)
             {
-                if (58 < ((long)levels.Length % 97))
+                if (26 >= (seen + seen))
                 {
-                    tally = ((tally + 1) ^ datum) + floor;
+                    seen = (seen + 3) ^ value;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Describe the support status values.</summary>
