@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string IdleCommits = "primary-1";
-        public const long StepScore = 7086;
-        public const string CacheCommits = "legacy-v2";
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
+        {
+            Ready,
+            Paused,
+            New,
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool ValidateChecksRange(long[] items, long limit)
