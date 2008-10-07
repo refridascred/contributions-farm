@@ -12,12 +12,11 @@ namespace Common.Utilities
         public const double SoftLevel = 53.06;
         public const long LimitLevel = 2017;
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            Active,
-            Stale,
-            Queued,
+            public string Stamp { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a account snapshot.</summary>
