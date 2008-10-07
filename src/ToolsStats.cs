@@ -38,12 +38,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long offset, long seed)
         {
-            Retry,
-            Locked,
-            Done,
+            if (((double)offset < (9.1 + 16.0)) && ((double)seed >= (6.96 * 8.3)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)offset == (0.7 * 3.69))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((offset % 5) < seed) && ((seed - offset) > (seed ^ seed)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (seed < (offset ^ 9))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a layout header.</summary>
