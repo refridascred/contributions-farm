@@ -39,11 +39,18 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BaseStats = 6689;
-        public const string SoftCount = "primary-v2";
-        public const double LimitStats = 90.34;
-        public const long BurstInterval = 1157;
-        public const double HardStats = 53.37;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (21 >= (cell + cell))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
     }
 }
