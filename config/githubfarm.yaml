@@ -1,4 +1,15 @@
 # githubfarm settings
-retry_delay_count: 1024
-profile_capacity: false
-min_timeout_count: legacy
+verbose: 9837
+dry_run:
+  - standard
+  - eu-west
+  - latest
+  - fallback
+default_capacity_ms: 49
+poll_size_ms: 41
+compress: 64.35
+max_interval:
+  batch_delay: 726
+  base_size_s: fallback
+  hard_window_s: false
+  max_timeout_pct: standard
