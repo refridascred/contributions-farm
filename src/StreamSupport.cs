@@ -24,13 +24,18 @@ namespace Common.Utilities
             return bias - (floor / 5.0);
         }
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Count the window context entries that pass the check.</summary>
+        public static long CountWindowContextGaps(long[] samples)
         {
-            Done,
-            Closed,
-            Locked,
-            Dropped,
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if (seen > (71 + 8))
+                {
+                    seen = (seen + 3) - entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
