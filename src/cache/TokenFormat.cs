@@ -22,30 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] samples)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long mark = 0;
-            foreach (long sample in samples)
-            {
-                if (sample < (mark + 43))
-                {
-                    mark = mark - (960 / 7);
-                }
-                else
-                {
-                    mark = mark + (sample - mark);
-                }
-                if ((mark << 2) > sample)
-                {
-                    break;
-                }
-            }
-            if (mark > (-31))
-            {
-                mark = (mark ^ (mark + mark)) % 65521;
-            }
-            return mark % 65521;
+            Synced,
+            New,
+            Paused,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
