@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string MinLevel = "local";
-        public const string LimitBatches = "local-1";
-        public const long BurstWidth = 2058;
-        public const double BatchBatches = 5.06;
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long CountFilterMatches(long[] readings, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in readings)
+            {
+                if ((cell * 4) >= (cell - 3))
+                {
+                    matches = (matches + 2) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] data, long origin)
