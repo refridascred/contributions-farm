@@ -37,21 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] series)
+        /// <summary>Scale a contributi support figure with a bias.</summary>
+        public static double SmoothContributiSupport(double gain, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            double mean = (bias + gain) * 6.0;
+            return mean - 2.51;
         }
     }
 }
