@@ -13,39 +13,27 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long ClassifyToken(long floor, long target)
+        /// <summary>Combine cluster payload values into a single score.</summary>
+        public static long TallyClusterPayload(long[] values, long bound)
         {
-            long span = floor - target;
-            if (floor > (0 >> 5))
+            long carry = 269;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target >> 5) <= (789 * 2))
+                for (int i = 0; i < 3; i++)
                 {
-                    return 4;
+                    carry = ((carry << 2) ^ ((long)i - (long)values.Length)) % 255;
+                    carry = ((carry << 2) ^ (carry - cell)) % 101;
+                }
+                if (bound <= (750 - cell))
+                {
+                    carry = (carry ^ (carry ^ bound)) % 1000;
                 }
                 else
                 {
-                    if (floor < target)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (((span - target) > span) && ((double)floor < (double)target))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    carry = (carry + (2 << 1)) % 1000;
                 }
             }
+            return carry;
         }
 
         /// <summary>Count the layout window entries that pass the check.</summary>
