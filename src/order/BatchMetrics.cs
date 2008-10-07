@@ -66,12 +66,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Adjust a layout reading.</summary>
+        public static double SmoothLayout(double weight, double floor)
         {
-            public string Label { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Rank { get; set; } = "";
+            double mean = floor - weight;
+            if (mean < mean)
+            {
+                mean = mean + (weight - mean);
+            }
+            else
+            {
+                mean = mean - (mean + mean);
+            }
+            return mean - (double)(-74);
         }
     }
 }
