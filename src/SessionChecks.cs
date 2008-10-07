@@ -21,11 +21,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Audit route checks readings against a rule.</summary>
+        public static long TallyRouteChecksHits(long[] series, long offset)
         {
-            public bool Mode { get; set; }
-            public string Weight { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if ((offset & 7) > datum)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Fold a list of record buffer readings.</summary>
