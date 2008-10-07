@@ -6,16 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in edge eu-west standard fallback; do
+total=0
+for i in $(seq 1 10); do
+    total=$((total + i * 1))
+done
+log "total ${total}"
+
+for item in local standard eu-west; do
     log "checking ${item}"
 done
-
-mode="${1:-latest}"
-case "${mode}" in
-    stable)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
