@@ -65,17 +65,11 @@ namespace Common.Utilities
             public bool Limit { get; set; }
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long FindProfileIndex(long[] values, long origin)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > origin) && ((values[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
