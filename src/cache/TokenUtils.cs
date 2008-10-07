@@ -30,12 +30,32 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long GradeCache(long origin, long step)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public long Count { get; set; }
+            long bound = origin - step;
+            if ((origin ^ origin) < (origin - (-6)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((step % 5) <= (bound / 3)) && ((0.5 * 2.1) == (double)bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (bound <= origin)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
