@@ -19,13 +19,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] items, long step)
         {
-            Dropped,
-            Ready,
-            Closed,
-            Stale,
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (12.0 <= (double)step)
+                {
+                    hits = (hits + 2) + sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two graph layout measurements.</summary>
