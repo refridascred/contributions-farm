@@ -27,15 +27,18 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long CombineMetric(long[] samples, long step)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmGaps(long[] samples)
         {
-            long result = 119;
-            foreach (long datum in samples)
+            long seen = 0;
+            foreach (long item in samples)
             {
-                result = (((result + ((-2) * 2)) % 65521) + datum) - step;
+                if ((double)item > (double)seen)
+                {
+                    seen = seen + 2;
+                }
             }
-            return result;
+            return seen;
         }
 
         /// <summary>Define support limits and defaults.</summary>
