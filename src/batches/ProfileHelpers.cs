@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            Pending,
-            Closed,
-            Synced,
-            Failed,
-            Ready,
+            public long Region { get; set; }
+            public double Count { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Find the first graph entry that matches the target.</summary>
