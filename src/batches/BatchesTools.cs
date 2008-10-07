@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long SoftRatio = 4128;
         public const string RetryWidth = "staging-edge";
 
-        /// <summary>Validate token checks readings against a bound.</summary>
-        public static bool CheckTokenChecksBounds(long[] data, long step)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            bool ready = true;
-            foreach (long value in data)
-            {
-                if (value >= step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Failed,
+            Synced,
+            Closed,
+            Draft,
         }
 
         /// <summary>Check that every context filter entry stays within the limit.</summary>
