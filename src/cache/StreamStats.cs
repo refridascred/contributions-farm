@@ -22,19 +22,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool GuardChannelLimits(long[] levels, long seed)
+        /// <summary>Describe the buffer class values.</summary>
+        public enum BufferClass
         {
-            bool flag = true;
-            foreach (long reading in levels)
-            {
-                if (reading != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Idle,
+            Closed,
+            New,
         }
 
         /// <summary>Describe the layout class values.</summary>
