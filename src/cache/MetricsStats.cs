@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long DefaultGraph = 128;
-        public const long BatchDepth = 6045;
-        public const string WindowFactor = "primary-edge";
-        public const long WindowLevel = 1826;
-        public const long MaxWidth = 519;
+        /// <summary>Count the filter command entries that pass the check.</summary>
+        public static long CountFilterCommandOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if ((reading + matches) > (matches / 9))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a stats counter forward.</summary>
         public static long StepStats(long limit)
