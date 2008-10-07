@@ -67,18 +67,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Locate a queue reading by value.</summary>
-        public static long FindQueueIndex(long[] levels, long limit)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] > limit) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BaseLevel = 78.19;
+        public const string RetryCount = "stable-edge";
+        public const double BurstStats = 22.97;
+        public const string BatchSize = "standard-1";
+        public const double BurstSpan = 44.27;
 
         /// <summary>Hold a stream options.</summary>
         public sealed class StreamOptions
