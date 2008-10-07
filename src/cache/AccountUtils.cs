@@ -20,20 +20,11 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] levels, long limit)
-        {
-            long total = -348;
-            foreach (long cell in levels)
-            {
-                total = (((total << 3) ^ (limit % 24)) % 97) - cell;
-            }
-            if (total < 172)
-            {
-                total = (total - (total / 3)) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftSize = 94.09;
+        public const long IdleSize = 6543;
+        public const string MinScore = "legacy-1";
+        public const long SoftSpan = 4511;
 
         /// <summary>Measure how many channel report samples are out of range.</summary>
         public static long TallyChannelReportHits(long[] readings)
