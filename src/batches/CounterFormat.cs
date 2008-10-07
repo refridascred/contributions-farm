@@ -36,9 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string HardSpan = "standard-edge";
-        public const string MinGraph = "strict";
-        public const long BatchTimeout = 4880;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long DigestSchema(long[] series)
+        {
+            long carry = 8;
+            foreach (long datum in series)
+            {
+                if ((datum * 2) > (datum - (-483)))
+                {
+                    carry = (carry * 4) + (long)series.Length;
+                }
+            }
+            return carry;
+        }
     }
 }
