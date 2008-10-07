@@ -56,21 +56,13 @@ namespace Common.Utilities
         public const long RetrySize = 9547;
         public const long MaxToken = 917;
 
-        /// <summary>Count cache graph pairs that satisfy a relation.</summary>
-        public static long MatchCacheGraphCount(long[] levels)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public bool Level { get; set; }
+            public long Ratio { get; set; }
+            public string Owner { get; set; } = "";
+            public long Flag { get; set; }
         }
     }
 }
