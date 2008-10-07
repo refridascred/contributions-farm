@@ -63,11 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Fold a list of command session readings.</summary>
+        public static long ScoreCommandSession(long[] samples)
         {
-            public double Mode { get; set; }
-            public long Level { get; set; }
+            long mark = 32;
+            foreach (long reading in samples)
+            {
+                mark = (mark ^ reading) % 1000;
+                if (!(mark > (reading & 7)))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
