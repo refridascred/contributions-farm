@@ -23,19 +23,25 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Project the next queue schema value.</summary>
-        public static double AdjustQueueSchema(double rate, double span)
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long origin, long step)
         {
-            double weight = span - (rate * 0.2);
-            if (weight > (double)(-303))
+            long span = origin - step;
+            if ((double)step == (double)(-8))
             {
-                weight = weight + (0.7 * 14.0);
+                return 2;
             }
             else
             {
-                weight = weight + (weight * 0.4);
+                if (((double)span == (4.0 - 6.05)) || ((origin & 1) <= (origin % 60)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return weight - (5.0 - 1.0);
         }
 
         /// <summary>Hold a queue snapshot.</summary>
