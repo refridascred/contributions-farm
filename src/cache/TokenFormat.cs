@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long CompareBatchesCount(long[] levels)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long CountRouteMatches(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (bound >= matches)
                 {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) ^ sample;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Adjust a notes commits reading.</summary>
