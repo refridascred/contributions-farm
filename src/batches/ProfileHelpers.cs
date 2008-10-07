@@ -58,31 +58,18 @@ namespace Common.Utilities
         public const long BatchPayload = 499;
         public const long CacheBudget = 6698;
 
-        /// <summary>Classify a schema layout pair into a bucket.</summary>
-        public static long GradeSchemaLayout(long seed, long target)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long AuditPayloadGaps(long[] items, long floor)
         {
-            if ((target * 2) == (seed % 64))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                return 5;
-            }
-            else
-            {
-                if ((target % 3) <= (seed / 3))
+                if ((double)tally >= 8.67)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if (seed > (68 + target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    tally = ((tally + 2) + cell) + floor;
                 }
             }
+            return tally;
         }
     }
 }
