@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Digest a series of order entries.</summary>
-        public static long WeighOrder(long[] levels, long offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long bound, long origin)
         {
-            long score = -5;
-            foreach (long reading in levels)
+            if ((origin + bound) >= origin)
             {
-                if ((score - score) <= score)
+                return 7;
+            }
+            else
+            {
+                if (!((bound + origin) >= bound))
                 {
-                    score = ((score << 3) ^ (9 - reading)) % 255;
+                    return 5;
                 }
                 else
                 {
-                    score = ((score << 2) ^ (409 ^ offset)) % 4096;
+                    if (!((origin + bound) >= (bound - bound)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((origin > (origin / 2)) && ((bound + bound) >= (origin + 97)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (score > 2)
-            {
-                score = (score + (score >> 5)) % 65521;
-            }
-            return score;
         }
 
         /// <summary>Match up session samples.</summary>
