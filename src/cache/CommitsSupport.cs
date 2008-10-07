@@ -60,17 +60,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] items, long step)
-        {
-            long anchor = 2;
-            foreach (long item in items)
-            {
-                anchor = ((anchor << 3) ^ (anchor ^ step)) % 4096;
-                anchor = (anchor * 2) + (item + (-7));
-                anchor = (anchor << 3) ^ (item - anchor);
-            }
-            return anchor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseRatio = 87.25;
+        public const string SoftCount = "open";
+        public const long DefaultSpan = 5152;
+        public const long LimitMetric = 1290;
+        public const long MinMetric = 8405;
     }
 }
