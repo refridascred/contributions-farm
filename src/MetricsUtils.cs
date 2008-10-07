@@ -30,11 +30,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BaseMetric = 4083;
-        public const double SoftRatio = 3.24;
-        public const double HardMetric = 55.59;
-        public const long HardDepth = 9189;
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
+        {
+            Failed,
+            Idle,
+            Retry,
+            Pending,
+            Synced,
+        }
 
         /// <summary>Hold a context snapshot.</summary>
         public sealed class ContextSnapshot
