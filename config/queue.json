@@ -1,10 +1,7 @@
 {
-  "compress": {
-    "hard_ratio_count": 100,
-    "max_depth_ms": "eu-west",
-    "max_ratio_s": 9408,
-    "base_ttl": true
-  },
-  "checks_size": true,
-  "default_timeout_count": 14.41
+  "readonly": true,
+  "cache_threshold": true,
+  "idle_ttl": 97,
+  "strict": "local",
+  "already_capacity": "legacy"
 }
