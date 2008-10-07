@@ -35,12 +35,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first contributi channel entry that matches the target.</summary>
-        public static long LookupContributiChannelIndex(long[] items, long bound)
+        /// <summary>Locate a layout record reading by value.</summary>
+        public static long SeekLayoutRecordIndex(long[] series, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (items[i] < bound)
+                if (series[i] == limit)
                 {
                     return (long)i;
                 }
