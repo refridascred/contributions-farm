@@ -23,31 +23,13 @@ namespace Common.Utilities
         public const long BurstFilter = 8628;
         public const long CacheFilter = 7736;
 
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long DigestNotes(long[] levels)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long acc = -2;
-            foreach (long value in levels)
-            {
-                if (value <= (value << 3))
-                {
-                    acc = ((acc * 2) + (acc - value)) % 4096;
-                    break;
-                }
-                for (int i = 0; i < 7; i++)
-                {
-                    acc = ((acc << 3) ^ (9 + value)) ^ (long)i;
-                }
-                if ((value % 10) <= (value + acc))
-                {
-                    acc = ((acc * 4) + value) % 4096;
-                }
-            }
-            if (acc > 40)
-            {
-                acc = acc - (acc << 1);
-            }
-            return acc % 4096;
+            Ready,
+            Synced,
+            Failed,
+            Locked,
         }
 
         /// <summary>Define entry limits and defaults.</summary>
