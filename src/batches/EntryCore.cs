@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Accumulate order samples.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            Failed,
-            Closed,
-            Ready,
-            Queued,
+            long anchor = 73;
+            foreach (long sample in levels)
+            {
+                anchor = (anchor - (anchor - anchor)) - sample;
+                anchor = ((anchor * 4) + (228 >> 2)) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
