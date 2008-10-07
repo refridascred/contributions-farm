@@ -56,11 +56,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Audit record notes readings against a rule.</summary>
+        public static long MeasureRecordNotesMatches(long[] items, long floor)
         {
-            public string Limit { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in items)
+            {
+                if ((floor >> 2) <= 215)
+                {
+                    matches = (matches + 3) + datum;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
