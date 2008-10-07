@@ -1,18 +1,10 @@
 {
-  "poll_ttl": 59,
-  "soft_size": "local",
-  "flush_threshold": {
-    "dry_run": 0.16,
-    "burst_threshold": "green",
-    "soft_retries": "blue",
-    "notes_retries": "green",
-    "burst_delay_ms": ["strict", "stable"],
-    "poll_limit_ms": {
-      "commits_interval": "latest",
-      "enabled": "cached",
-      "persist": 65.33,
-      "sync_window": 2.54,
-      "warm_ttl_s": true
-    }
+  "warm_depth_count": 5558,
+  "flush_depth": 0.51,
+  "burst_ratio_ms": true,
+  "audit": {
+    "poll_limit": "strict",
+    "batch_retries_s": 86.31,
+    "readonly": 5446
   }
 }
