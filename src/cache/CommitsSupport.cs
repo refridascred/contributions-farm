@@ -13,13 +13,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long LookupLayoutIndex(long[] levels, long target)
         {
-            Ready,
-            Closed,
-            Paused,
-            New,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the layout window entries that pass the check.</summary>
