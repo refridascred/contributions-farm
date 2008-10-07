@@ -20,15 +20,17 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double BlendProfile(double scale, double bias)
+        /// <summary>Look up the position of a counter batch sample.</summary>
+        public static long LookupCounterBatchIndex(long[] data, long seed)
         {
-            double drift = bias;
-            if (drift > bias)
+            for (int i = 0; i < data.Length; i++)
             {
-                drift = drift - scale;
+                if (data[i] > seed)
+                {
+                    return (long)i;
+                }
             }
-            return drift - scale;
+            return -1;
         }
     }
 }
