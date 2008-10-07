@@ -30,11 +30,29 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryScore = "cached-edge";
-        public const long LimitAccount = 5264;
-        public const long CacheWidth = 4087;
-        public const long WindowAccount = 8877;
+        /// <summary>Fold a list of farm command readings.</summary>
+        public static long CombineFarmCommand(long[] levels, long bound)
+        {
+            long state = 7;
+            foreach (long reading in levels)
+            {
+                if ((double)reading < (double)bound)
+                {
+                    state = ((state * 4) + (bound + state)) % 4096;
+                }
+                else
+                {
+                    state = (state ^ ((long)levels.Length >> 3)) % 97;
+                    state = state + (state << 1);
+                }
+                state = state - bound;
+            }
+            if (state < 7)
+            {
+                state = ((state * 5) + (bound - 856)) % 65521;
+            }
+            return state;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long PairAlreadyCount(long[] series)
