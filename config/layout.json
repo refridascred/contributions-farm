@@ -1,10 +1,13 @@
 {
-  "cache_limit": {
-    "profile_retries": true,
-    "entry_capacity": 250,
-    "flush_interval": false
+  "warm_interval_count": {
+    "batches_threshold": 19.6,
+    "idle_window_s": true,
+    "default_size_s": 100,
+    "hard_timeout_count": true
   },
-  "soft_ratio_pct": "primary",
-  "warm_ratio_pct": "legacy",
-  "poll_window_pct": 1024
+  "soft_timeout_pct": "edge",
+  "githubfarm_limit": 1349,
+  "default_delay": true,
+  "retry_capacity_pct": 26,
+  "cache_window_count": 43.52
 }
