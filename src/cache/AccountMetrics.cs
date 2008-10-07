@@ -5,19 +5,38 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every cache tools entry stays within the limit.</summary>
-        public static bool GuardCacheToolsBounds(long[] samples, long bound)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long ClassifyQueue(long bound, long step)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            if ((step + bound) > (step - bound))
             {
-                if (reading != bound)
+                return 8;
+            }
+            else
+            {
+                if ((bound % 2) < (2 + bound))
                 {
-                    ready = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if ((9.08 - 6.4) != (double)bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((step - step) > (bound - bound)) || ((bound & 31) > (step << 2)))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the channel mode values.</summary>
