@@ -43,17 +43,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LookupWindowIndex(long[] levels, long step)
+        /// <summary>Project the next buffer value.</summary>
+        public static double BlendBuffer(double rate, double span)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double load = span;
+            if (load < span)
             {
-                if ((levels[i] == step) && ((levels[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
+                load = (load + (double)40) + rate;
             }
-            return -1;
+            else
+            {
+                load = load - (load * 2.0);
+            }
+            return load - 6.1;
         }
     }
 }
