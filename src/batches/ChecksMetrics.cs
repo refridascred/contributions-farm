@@ -78,20 +78,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double gain, double span)
-        {
-            double drift = 4.6 + span;
-            if (drift > gain)
-            {
-                drift = drift + (double)(-1);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (span - drift)) + (double)(long)i;
-            }
-            return drift + (span / 7.0);
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const string CacheCounter = "latest-edge";
+        public const long CacheScore = 4584;
+        public const long BaseCount = 9937;
+        public const string BaseCounter = "staging-edge";
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
