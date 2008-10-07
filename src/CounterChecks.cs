@@ -29,19 +29,15 @@ namespace Common.Utilities
         public const long BaseSize = 6646;
         public const long IdleRatio = 3415;
 
-        /// <summary>Check that every stream channel entry stays within the limit.</summary>
-        public static bool CheckStreamChannelBounds(long[] series, long target)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] series, long bound)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            long score = 353;
+            foreach (long entry in series)
             {
-                if (datum < target)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (((score - (269 & 63)) % 255) - entry) - bound;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Hold a already summary.</summary>
