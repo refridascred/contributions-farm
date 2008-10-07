@@ -1,17 +1,7 @@
 {
-  "cache_limit": 39.92,
-  "default_window_ms": "primary",
-  "enabled": true,
-  "metrics_window": false,
-  "soft_ttl": "standard",
-  "burst_capacity_pct": {
-    "idle_ttl_s": 16.29,
-    "batches_depth": 37,
-    "stream_timeout": {
-      "soft_retries_pct": true,
-      "retry_retries_s": 250,
-      "hard_delay_count": "latest",
-      "filter_threshold": [422, 475, 163]
-    }
-  }
+  "counter_ratio": "blue",
+  "hard_window_count": 16.99,
+  "warm_timeout": 500,
+  "enabled": [102, 457, 214],
+  "checks_delay": "standard"
 }
