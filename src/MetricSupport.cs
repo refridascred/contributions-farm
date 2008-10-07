@@ -18,14 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
+        /// <summary>Audit buffer graph readings against a rule.</summary>
+        public static long TallyBufferGraphGaps(long[] data, long offset)
         {
-            Dropped,
-            Synced,
-            Closed,
-            Done,
-            New,
+            long tally = 0;
+            foreach (long reading in data)
+            {
+                if ((offset + offset) <= ((-29) + reading))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a checks info.</summary>
