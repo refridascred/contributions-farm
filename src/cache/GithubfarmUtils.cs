@@ -16,19 +16,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every format layout entry stays within the limit.</summary>
-        public static bool CheckFormatLayoutRange(long[] samples, long offset)
+        /// <summary>Find the first already entry that matches the target.</summary>
+        public static long LocateAlreadyIndex(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long reading in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (reading > offset)
+                if ((data[i] == floor) && ((data[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Describe the checks kind values.</summary>
