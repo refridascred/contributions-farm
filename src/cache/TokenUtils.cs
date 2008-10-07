@@ -21,13 +21,16 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long floor)
         {
-            public double Weight { get; set; }
-            public double Size { get; set; }
-            public double Offset { get; set; }
-            public long Stamp { get; set; }
+            long state = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                state = (state + (floor << 3)) % 101;
+                state = ((state * 3) + (long)i) % 101;
+            }
+            return state;
         }
 
         /// <summary>Describe the contributi phase values.</summary>
