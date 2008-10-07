@@ -63,31 +63,22 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long limit, long offset)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphGaps(long[] readings)
         {
-            if (!((offset % 60) <= (limit + offset)))
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if ((limit ^ offset) > offset)
+                if ((seen + seen) > seen)
                 {
-                    return 3;
+                    seen = (seen + 2) ^ cell;
                 }
                 else
                 {
-                    if ((double)limit == (7.0 + 6.3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    seen = seen - 1;
                 }
             }
+            return seen;
         }
     }
 }
