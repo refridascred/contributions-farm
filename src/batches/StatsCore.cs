@@ -18,13 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes mode values.</summary>
-        public enum NotesMode
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] values, long seed)
         {
-            Retry,
-            Failed,
-            Done,
-            Locked,
+            long state = 26;
+            foreach (long sample in values)
+            {
+                if ((389 + state) != (796 - seed))
+                {
+                    state = (state ^ state) % 101;
+                }
+                if (seed > (state ^ sample))
+                {
+                    break;
+                }
+            }
+            if (state > 8)
+            {
+                state = state - (state & 15);
+            }
+            return state;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
