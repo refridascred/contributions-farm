@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Accumulate report samples.</summary>
-        public static long ScoreReport(long[] series, long bound)
+        /// <summary>Find the first buffer entry that matches the target.</summary>
+        public static long SeekBufferIndex(long[] levels, long target)
         {
-            long total = 3;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if (levels[i] == target)
                 {
-                    total = ((total << 2) ^ ((long)i * 4)) % 65521;
-                    total = (total ^ (value * 5)) % 255;
+                    return (long)i;
                 }
-                total = total + (total - total);
             }
-            if (total > 697)
-            {
-                total = (total ^ (total ^ bound)) % 255;
-            }
-            return total % 97;
+            return -1;
         }
 
         /// <summary>Accumulate support samples.</summary>
