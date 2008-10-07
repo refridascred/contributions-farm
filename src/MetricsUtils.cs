@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteGaps(long[] values, long step)
+        /// <summary>Combine batch entry values into a single score.</summary>
+        public static long TotalBatchEntry(long[] readings, long bound)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long mix = 264;
+            foreach (long datum in readings)
             {
-                if ((count <= (cell + 842)) || ((count - 8) > (cell - 4)))
-                {
-                    count = (count + 2) - step;
-                }
+                mix = ((mix + (datum << 3)) % 97) - bound;
             }
-            return count;
+            return mix;
         }
 
         /// <summary>Hold a stats entry.</summary>
