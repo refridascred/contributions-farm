@@ -31,19 +31,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long cell in series)
-            {
-                if (cell != seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long DefaultLevel = 5600;
+        public const string MinInterval = "standard";
+        public const long BaseWidth = 889;
+        public const double RetryRoute = 27.24;
+        public const double MaxRoute = 29.81;
     }
 }
