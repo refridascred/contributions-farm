@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long step, long origin)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long ScoreCluster(long[] series, long bound)
         {
-            if (((-362) & 7) >= (origin >> 4))
+            long anchor = -294;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if (step >= (0 & 7))
+                if ((bound - bound) != (196 & 255))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    anchor = (anchor + item) % 4096;
                 }
             }
+            return anchor % 65521;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
