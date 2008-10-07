@@ -29,10 +29,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const double WindowFilter = 33.71;
-        public const long CacheFilter = 3813;
-        public const double MaxDepth = 19.35;
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
+        {
+            public long Owner { get; set; }
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
         public static long IterateCluster(long step)
