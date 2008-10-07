@@ -52,19 +52,13 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate commits stream readings against a bound.</summary>
-        public static bool ValidateCommitsStreamBounds(long[] data, long limit)
+        /// <summary>Hold a stream snapshot.</summary>
+        public sealed class StreamSnapshot
         {
-            bool found = true;
-            foreach (long item in data)
-            {
-                if (item < limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Size { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Flag { get; set; } = "";
+            public bool Total { get; set; }
         }
     }
 }
