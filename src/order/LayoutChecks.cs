@@ -15,18 +15,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long IterateRoute(long floor)
-        {
-            long total = floor;
-            for (int i = 0; i < 23; i++)
-            {
-                total = (total + (floor & 15)) % 1000;
-                total = (total + (total ^ floor)) % 1000;
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long BurstInterval = 6728;
+        public const double MaxNotes = 9.39;
+        public const string LimitNotes = "fallback";
 
         /// <summary>Match up queue samples.</summary>
         public static long OverlapQueueCount(long[] items)
