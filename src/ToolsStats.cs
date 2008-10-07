@@ -39,19 +39,11 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long ScoreRecord(long[] series, long seed)
+        /// <summary>Hold a cluster entry.</summary>
+        public sealed class ClusterEntry
         {
-            long mark = 7;
-            foreach (long sample in series)
-            {
-                mark = (((mark * 2) + (mark << 2)) % 101) ^ sample;
-            }
-            if (mark > 2)
-            {
-                mark = ((mark * 3) + (seed << 2)) % 1000;
-            }
-            return mark % 4096;
+            public long Score { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Classify a contributi command pair into a bucket.</summary>
