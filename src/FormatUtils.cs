@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] readings)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] samples, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((samples[i] <= seed) && ((samples[i] % 5) != 0))
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the filter level values.</summary>
