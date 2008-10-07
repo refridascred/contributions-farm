@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Validate route command readings against a bound.</summary>
+        public static bool VerifyRouteCommandBounds(long[] data, long bound)
         {
-            Closed,
-            Dropped,
-            Draft,
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum != bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Scale a commits figure with a bias.</summary>
