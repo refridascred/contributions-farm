@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long origin, long floor)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long TallyEntryHits(long[] samples)
         {
-            if (floor >= (floor << 2))
+            long tally = 0;
+            foreach (long value in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if (origin > (floor >> 4))
+                if (((tally + 592) >= tally) || ((double)tally == (4.8 / 4.0)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((origin + origin) > (origin * 5)) || ((double)origin < 2.0))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin - (-647)) <= (333 / 2))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    tally = (tally + 3) ^ value;
                 }
             }
+            return tally;
         }
 
         /// <summary>Roll a already counter forward.</summary>
