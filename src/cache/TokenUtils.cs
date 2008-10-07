@@ -19,30 +19,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] samples, long floor)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long IterateBuffer(long floor)
         {
-            long state = 5;
-            foreach (long cell in samples)
+            long carry = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((cell & 1) < (floor - floor))
+                if (((double)floor != (1.9 / 7.0)) && (((long)i / 7) <= (floor >> 2)))
                 {
-                    state = state ^ (cell << 1);
+                    carry = ((carry << 3) ^ ((long)i ^ floor)) % 4096;
+                    continue;
                 }
                 else
                 {
-                    state = ((state * 3) + (floor % 97)) % 255;
+                    carry = carry ^ (carry ^ 202);
                 }
-                if ((double)cell >= (1.0 + 7.0))
+                if (!((floor - 497) <= carry))
                 {
-                    break;
+                    carry = (carry << 3) ^ floor;
                 }
+                carry = ((carry * 4) + (long)i) % 65521;
             }
-            if (state > 674)
-            {
-                state = (state ^ (state & 63)) % 1000;
-            }
-            return state % 4096;
+            return carry;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
