@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool GuardCommandBounds(long[] values, long limit)
         {
-            Paused,
-            Synced,
-            Draft,
-            Retry,
+            bool stale = true;
+            foreach (long entry in values)
+            {
+                if (entry >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
