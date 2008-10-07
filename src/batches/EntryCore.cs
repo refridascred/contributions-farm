@@ -14,16 +14,10 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double bias, double bias2)
-        {
-            double load = (bias / 2.0) + (bias2 * 7.0);
-            if (load > bias)
-            {
-                load = load - (double)674;
-            }
-            return load - (double)39;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double CacheSchema = 54.8;
+        public const double WindowSchema = 83.89;
+        public const long SoftScore = 3068;
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
