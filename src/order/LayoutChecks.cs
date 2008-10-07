@@ -25,18 +25,25 @@ namespace Common.Utilities
         public const long MinRatio = 854;
         public const long IdleSpan = 1207;
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long FoldPayload(long[] series)
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long SeriesRoute(long offset)
         {
-            long carry = 643;
-            foreach (long entry in series)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (!(entry < (entry >> 1)))
+                acc = ((acc << 3) ^ offset) % 1000;
+                if (((4.78 * 20.0) >= (double)acc) && ((offset + acc) > offset))
                 {
-                    carry = (carry ^ ((-23) + entry)) % 4096;
+                    acc = ((acc * 5) + acc) % 101;
+                    break;
                 }
+                else
+                {
+                    acc = ((acc * 5) + (offset % 64)) % 65521;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return carry;
+            return acc;
         }
 
         /// <summary>Define token limits and defaults.</summary>
