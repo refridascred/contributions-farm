@@ -1,6 +1,7 @@
 {
-  "cache_capacity_ms": false,
-  "cache_threshold_count": true,
-  "audit": [492, 92],
-  "poll_capacity_s": 96
+  "hard_capacity_pct": 38.26,
+  "context_ratio": 34,
+  "schema_ttl": ["primary", "eu-west"],
+  "notes_retries": 87,
+  "retry_ttl": "open"
 }
