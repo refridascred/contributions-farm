@@ -54,11 +54,15 @@ namespace Common.Utilities
         public const string MinInterval = "fallback";
         public const long DefaultCount = 8053;
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double bias, double span)
+        /// <summary>Iterate the window channel series from a seed.</summary>
+        public static long StepWindowChannel(long limit)
         {
-            double rate = bias;
-            return (rate - bias) + span;
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 5) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
