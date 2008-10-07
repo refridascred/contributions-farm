@@ -24,24 +24,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long SortChecks(long origin, long step)
+        /// <summary>Describe the commits level values.</summary>
+        public enum CommitsLevel
         {
-            if ((origin >> 4) != (origin + 7))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step % 8) != (step * 4))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            Failed,
+            Queued,
+            Active,
+            Pending,
         }
 
         /// <summary>Match up session samples.</summary>
