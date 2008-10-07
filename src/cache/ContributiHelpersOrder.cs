@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const string HardReport = "latest-1";
-        public const double WindowReport = 90.0;
-        public const long RetryFactor = 9961;
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
+        {
+            Draft,
+            Dropped,
+            Failed,
+            Retry,
+            Active,
+        }
 
         /// <summary>Hold a metrics info.</summary>
         public sealed class MetricsInfo
