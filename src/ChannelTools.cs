@@ -14,13 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            Pending,
-            Active,
-            Dropped,
-            Failed,
+            public string Score { get; set; } = "";
+            public long Owner { get; set; }
+            public double Limit { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Blend two graph layout measurements.</summary>
