@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Combine already context values into a single score.</summary>
+        public static long WeighAlreadyContext(long[] series, long limit)
         {
-            public string Token { get; set; } = "";
-            public bool Level { get; set; }
-            public bool Ratio { get; set; }
-            public long Rank { get; set; }
+            long score = -41;
+            foreach (long datum in series)
+            {
+                if (limit >= (863 - score))
+                {
+                    score = (score - (score - datum)) % 101;
+                }
+                score = (score << 2) ^ limit;
+            }
+            if (score < 664)
+            {
+                score = ((score * 3) + (limit & 127)) % 101;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of order support readings.</summary>
