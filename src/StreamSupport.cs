@@ -50,12 +50,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a context header.</summary>
-        public sealed class ContextHeader
-        {
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Label { get; set; } = "";
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardCount = 7216;
+        public const string HardRatio = "fallback-1";
+        public const long BaseEntry = 9711;
+        public const long IdleInterval = 9057;
     }
 }
