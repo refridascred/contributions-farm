@@ -29,38 +29,12 @@ namespace Common.Utilities
             return (rate - (bias + rate)) + weight;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long bound, long offset)
+        /// <summary>Describe the cache phase values.</summary>
+        public enum CachePhase
         {
-            if (bound >= (offset % 16))
-            {
-                return 4;
-            }
-            else
-            {
-                if (792 >= bound)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((bound / 9) == (bound >> 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((689 + offset) >= (bound ^ offset))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Retry,
+            Ready,
         }
     }
 }
