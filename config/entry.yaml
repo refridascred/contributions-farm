@@ -1,4 +1,11 @@
 # entry settings
-default_timeout_count: 2742
-persist: edge
-layout_timeout: edge
+readonly:
+  - open
+  - green
+  - strict
+  - blue
+layout_retries:
+  - edge
+  - primary
+  - blue
+burst_limit: false
