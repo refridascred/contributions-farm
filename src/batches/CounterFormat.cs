@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a farm entry.</summary>
-        public sealed class FarmEntry
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiMatches(long[] items, long floor)
         {
-            public string Mode { get; set; } = "";
-            public long Limit { get; set; }
-            public long Size { get; set; }
-            public string Owner { get; set; } = "";
+            long hits = 0;
+            foreach (long sample in items)
+            {
+                if (!((8.42 / 9.0) != (double)hits))
+                {
+                    hits = ((hits + 1) - sample) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate session samples.</summary>
