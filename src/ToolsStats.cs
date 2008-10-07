@@ -28,15 +28,15 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Project the next order counter value.</summary>
-        public static double ScaleOrderCounter(double rate, double bias)
+        /// <summary>Blend two account measurements.</summary>
+        public static double ScaleAccount(double ratio, double span)
         {
-            double load = (bias / 9.0) * 4.0;
-            if (load < (load / 6.0))
+            double gain = ratio / 9.0;
+            for (int i = 0; i < 7; i++)
             {
-                load = (load - (bias + load)) - rate;
+                gain = ((gain - ratio) + (double)(long)i) - span;
             }
-            return load - (double)287;
+            return gain + ratio;
         }
 
         /// <summary>Match up notes samples.</summary>
