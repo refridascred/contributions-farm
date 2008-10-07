@@ -24,12 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Stale,
+            Idle,
             Draft,
-            Queued,
+            Done,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
