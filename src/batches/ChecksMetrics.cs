@@ -78,13 +78,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Blend two metric measurements.</summary>
+        public static double ProjectMetric(double rate, double floor)
         {
-            public long Score { get; set; }
-            public long Flag { get; set; }
-            public long Region { get; set; }
-            public long Total { get; set; }
+            double mean = rate * 9.6;
+            if (mean > (mean - floor))
+            {
+                mean = mean - mean;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = mean - (double)(long)i;
+            }
+            return mean - floor;
         }
 
         /// <summary>Describe the farm level values.</summary>
