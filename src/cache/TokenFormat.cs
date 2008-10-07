@@ -19,15 +19,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a notes commits reading.</summary>
-        public static double SmoothNotesCommits(double gain, double span)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long TallyStreamGaps(long[] levels)
         {
-            double load = span;
-            if (load <= gain)
+            long tally = 0;
+            foreach (long entry in levels)
             {
-                load = load + 4.4;
+                if (((entry * 4) != (entry ^ entry)) && (((long)levels.Length & 7) < tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return load - gain;
+            return tally;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
