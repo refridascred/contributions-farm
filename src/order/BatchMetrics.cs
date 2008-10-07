@@ -78,11 +78,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double IdleSize = 73.01;
-        public const long IdleRatio = 7067;
-        public const string LimitBudget = "latest-edge";
-        public const long IdleDepth = 1794;
-        public const long BaseWidth = 2447;
+        /// <summary>Describe the order class values.</summary>
+        public enum OrderClass
+        {
+            Done,
+            Idle,
+            Retry,
+            Active,
+            Paused,
+        }
     }
 }
