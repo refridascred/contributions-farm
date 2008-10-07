@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Project the next already value.</summary>
+        public static double AdjustAlready(double scale, double floor)
         {
-            Failed,
-            Closed,
-            Retry,
+            double bias = scale;
+            if (bias > bias)
+            {
+                bias = bias + 1.5;
+            }
+            else
+            {
+                bias = bias + (double)6;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias + floor) + (double)(long)i;
+            }
+            return bias - (floor / 5.0);
         }
 
         /// <summary>Describe the queue phase values.</summary>
