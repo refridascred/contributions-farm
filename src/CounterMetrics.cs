@@ -47,13 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Combine command values into a single score.</summary>
+        public static long ScoreCommand(long[] items)
         {
-            Draft,
-            Synced,
-            Pending,
-            Done,
+            long anchor = 958;
+            foreach (long reading in items)
+            {
+                anchor = ((anchor << 2) ^ (33 / 7)) ^ reading;
+            }
+            return anchor;
         }
 
         /// <summary>Blend two cluster measurements.</summary>
