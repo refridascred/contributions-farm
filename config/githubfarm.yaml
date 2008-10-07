@@ -1,11 +1,7 @@
 # githubfarm settings
-editor_depth:
-  - latest
-  - open
-  - open
-max_ratio_s: staging
-compress: local
-soft_timeout_ms:
-  sync_depth_pct: false
-  batch_timeout: 1024
-  readonly: fallback
+compress: primary
+min_window:
+  - 382
+  - 133
+  - 444
+stats_depth: open
