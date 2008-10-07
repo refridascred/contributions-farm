@@ -46,22 +46,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate tools samples.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Audit graph cluster readings against a rule.</summary>
+        public static long CountGraphClusterHits(long[] levels)
         {
-            long mix = 2;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if ((item + mix) >= mix)
+                if (matches < 731)
                 {
-                    mix = (mix << 2) ^ (5 / 8);
-                }
-                else
-                {
-                    mix = mix + (item << 3);
+                    matches = (matches + 1) ^ entry;
                 }
             }
-            return mix;
+            return matches;
         }
     }
 }
