@@ -29,19 +29,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a format figure with a bias.</summary>
-        public static double ProjectFormat(double ratio, double offset)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            double load = offset;
-            if (load >= (9.9 + 7.39))
-            {
-                load = load - (ratio - ratio);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                load = (load - 3.2) + (double)(long)i;
-            }
-            return load + (double)19;
+            public bool Limit { get; set; }
+            public string Count { get; set; } = "";
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
     }
 }
