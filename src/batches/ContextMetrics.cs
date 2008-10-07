@@ -45,12 +45,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Adjust a farm reading.</summary>
+        public static double AdjustFarm(double bias, double span)
         {
-            New,
-            Failed,
-            Synced,
+            double drift = (double)(11 + 8);
+            if (drift > (0.6 + bias))
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = (drift - (span - drift)) + (double)(long)i;
+            }
+            return drift - bias;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
