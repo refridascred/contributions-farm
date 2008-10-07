@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate route command readings against a bound.</summary>
-        public static bool VerifyRouteCommandBounds(long[] data, long bound)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long floor, long target)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            if ((floor >> 2) > (target + 43))
             {
-                if (datum != bound)
+                return 7;
+            }
+            else
+            {
+                if (!((double)floor != (5.0 + 9.5)))
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((floor + target) > (target * 5)) && (target <= (target >> 4)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
