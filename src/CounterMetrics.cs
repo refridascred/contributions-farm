@@ -33,12 +33,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double BaseSize = 36.36;
-        public const long BurstRecord = 3045;
-        public const long WindowRecord = 5997;
-        public const string BurstInterval = "primary-1";
-        public const long BaseRecord = 7189;
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
+        {
+            New,
+            Ready,
+            Retry,
+        }
 
         /// <summary>Roll a batches counter forward.</summary>
         public static long IterateBatches(long target)
