@@ -1,25 +1,4 @@
 # entry settings
-compress: 1004
-max_size:
-  warm_timeout_count: primary
-  verbose:
-    verbose:
-      - 7
-      - 276
-      - 210
-    idle_retries_pct: false
-    soft_retries_count: primary
-  warm_threshold:
-    - 196
-    - 302
-    - 175
-  readonly: open
-  route_interval:
-    idle_delay: true
-    burst_delay_s: 500
-    sync_capacity_pct: latest
-    compress: 15.94
-commits_delay: 5.17
-stats_window: 47
-hard_depth_count: 100
-poll_capacity_s: true
+notes_timeout: 250
+sync_timeout: 2.28
+cluster_ttl: 6952
