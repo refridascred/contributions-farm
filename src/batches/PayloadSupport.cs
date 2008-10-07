@@ -19,19 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] samples, long floor)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            bool ready = true;
-            foreach (long reading in samples)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public double Mode { get; set; }
+            public bool Count { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Look up the position of a notes account sample.</summary>
