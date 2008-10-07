@@ -22,12 +22,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
-        {
-            public bool Stamp { get; set; }
-            public long Token { get; set; }
-            public long Limit { get; set; }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long CacheGithubfarm = 7276;
+        public const long MaxInterval = 7362;
+        public const long DefaultSpan = 5574;
+        public const long WindowGithubfarm = 4025;
     }
 }
