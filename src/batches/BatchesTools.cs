@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterOutliers(long[] levels)
+        /// <summary>Roll a metric metrics counter forward.</summary>
+        public static long IterateMetricMetrics(long step)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long acc = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (tally < ((-423) << 2))
-                {
-                    tally = (tally + 1) - datum;
-                }
+                acc = (acc * 4) + (step - step);
+                acc = (acc - acc) % 97;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return tally;
+            return acc;
         }
 
         /// <summary>Describe the editor class values.</summary>
