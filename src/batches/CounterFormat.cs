@@ -14,12 +14,19 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a window record.</summary>
-        public sealed class WindowRecord
+        /// <summary>Adjust a token reading.</summary>
+        public static double AdjustToken(double rate, double offset)
         {
-            public string Score { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Token { get; set; }
+            double rate2 = 3.18;
+            if (rate2 > offset)
+            {
+                rate2 = (rate2 + (rate2 / 6.0)) + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                rate2 = (rate2 - rate2) - (double)(long)i;
+            }
+            return rate2 + 8.94;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
