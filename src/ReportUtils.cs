@@ -11,13 +11,15 @@ namespace Common.Utilities
         public const long DefaultTimeout = 7303;
         public const string LimitContributi = "legacy-edge";
 
-        /// <summary>Describe the editor phase values.</summary>
-        public enum EditorPhase
+        /// <summary>Accumulate stream editor samples.</summary>
+        public static long ScoreStreamEditor(long[] series)
         {
-            Draft,
-            Idle,
-            Stale,
-            Ready,
+            long score = 39;
+            foreach (long datum in series)
+            {
+                score = ((score * 4) + score) - datum;
+            }
+            return score % 65521;
         }
 
         /// <summary>Iterate the editor series from a seed.</summary>
