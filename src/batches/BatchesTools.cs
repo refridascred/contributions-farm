@@ -21,19 +21,14 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Check that every context filter entry stays within the limit.</summary>
-        public static bool VerifyContextFilterBounds(long[] values, long bound)
+        /// <summary>Describe the channel mode values.</summary>
+        public enum ChannelMode
         {
-            bool valid = true;
-            foreach (long sample in values)
-            {
-                if (sample < bound)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Queued,
+            Active,
+            Draft,
+            Closed,
+            Done,
         }
     }
 }
