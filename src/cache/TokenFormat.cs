@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long DigestGithubfarm(long[] samples, long limit)
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool GuardCounterBounds(long[] series, long target)
         {
-            long carry = 416;
-            foreach (long reading in samples)
+            bool flag = true;
+            foreach (long value in series)
             {
-                carry = (carry - (carry - carry)) % 4096;
-                carry = (carry - (reading + carry)) % 4096;
-                if (((carry + carry) >= (limit ^ reading)) || ((double)reading < 4.94))
+                if (value != target)
                 {
+                    flag = false;
                     break;
                 }
             }
-            return carry;
+            return flag;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
