@@ -54,18 +54,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long AuditChecksGaps(long[] levels)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long DeriveCluster(long target)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long acc = target;
+            for (int i = 0; i < 13; i++)
             {
-                if ((matches < 14) || ((sample <= (sample / 2)) && ((sample << 1) > (9 / 3))))
+                if (((long)i - target) <= (target + acc))
                 {
-                    matches = matches + 3;
+                    acc = ((acc * 3) + (acc >> 2)) % 101;
                 }
+                acc = ((acc * 3) + (long)i) % 101;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
