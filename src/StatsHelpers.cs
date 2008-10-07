@@ -78,21 +78,12 @@ namespace Common.Utilities
             return drift + offset;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long carry = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = ((carry + (bound / 2)) % 101) - (long)i2;
-                    carry = ((carry * 2) + bound) % 65521;
-                }
-                carry = (carry + bound) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public double Offset { get; set; }
+            public long Total { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
