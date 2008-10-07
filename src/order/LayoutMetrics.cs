@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] items)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double AdjustCommand(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double mean = 2.3 + (3.06 - weight);
+            if (mean >= (weight / 8.0))
             {
-                if (((double)8 > (double)datum) || ((tally & 63) >= (tally + tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mean = mean - (mean / 5.0);
             }
-            return tally;
+            else
+            {
+                mean = mean - bias;
+            }
+            return mean + (4.0 / 5.0);
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
