@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first graph stats entry that matches the target.</summary>
-        public static long LocateGraphStatsIndex(long[] series, long offset)
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Count { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public long Flag { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Look up the position of a account filter sample.</summary>
