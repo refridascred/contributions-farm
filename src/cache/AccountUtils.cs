@@ -20,14 +20,19 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] levels, long limit)
         {
-            Stale,
-            Ready,
-            Idle,
-            Locked,
-            Done,
+            long total = -348;
+            foreach (long cell in levels)
+            {
+                total = (((total << 3) ^ (limit % 24)) % 97) - cell;
+            }
+            if (total < 172)
+            {
+                total = (total - (total / 3)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Measure how many channel report samples are out of range.</summary>
