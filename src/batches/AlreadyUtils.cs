@@ -16,19 +16,17 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long RollCommand(long limit)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] series, long seed)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((limit % 60) < ((long)i + 53)))
+                if (series[i] == seed)
                 {
-                    mix = mix - (107 ^ limit);
+                    return (long)i;
                 }
-                mix = ((mix * 4) + (long)i) % 101;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
