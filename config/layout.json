@@ -1,8 +1,29 @@
 {
-  "hard_limit": 27,
-  "default_timeout": [364, 416, 101],
-  "warm_timeout_ms": 500,
-  "enabled": "staging",
-  "token_interval": false,
-  "commits_ratio": "green"
+  "enabled": 250,
+  "soft_limit": {
+    "max_capacity": true,
+    "window_limit": 1135,
+    "default_retries_pct": 88
+  },
+  "cache_interval": {
+    "strict": {
+      "verbose": false,
+      "burst_delay_count": true,
+      "sync_ttl_ms": 60
+    },
+    "window_ratio": true,
+    "default_limit": 2.08,
+    "cache_limit": "eu-west",
+    "min_threshold": {
+      "min_size": "primary",
+      "burst_size": 81.09,
+      "verbose": "blue",
+      "route_capacity": 75,
+      "format_ttl": 17.43,
+      "tools_window": 3
+    }
+  },
+  "route_interval": "staging",
+  "idle_ratio_pct": ["strict", "open", "cached", "primary"],
+  "cache_size": "latest"
 }
