@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first channel entry that matches the target.</summary>
-        public static long LookupChannelIndex(long[] readings, long bound)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long TallyTokenGaps(long[] readings, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (readings[i] > bound)
+                if ((step & 127) < (step & 3))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + cell;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
