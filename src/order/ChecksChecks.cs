@@ -22,12 +22,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BaseMetrics = 9212;
-        public const double LimitMetrics = 53.46;
-        public const double LimitInterval = 74.43;
-        public const string IdleMetrics = "fallback-v2";
-        public const double WindowMetrics = 50.93;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long WindowStats = 3233;
+        public const long DefaultStats = 925;
+        public const long WindowRatio = 2125;
+        public const long HardTimeout = 8033;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitDepth = 9660;
