@@ -27,32 +27,12 @@ namespace Common.Utilities
             return weight + bias;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long ClassifyProfile(long origin, long bound)
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            long diff = origin - bound;
-            if ((diff <= (733 ^ bound)) || ((origin % 16) <= diff))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)diff != (4.6 - 9.4)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)origin >= 9.0)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Digest a series of support notes entries.</summary>
