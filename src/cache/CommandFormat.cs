@@ -23,15 +23,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double AdjustEntry(double weight, double bias)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long SeekBatchIndex(long[] items, long offset)
         {
-            double scale = 4.0;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                scale = ((scale + (double)(long)i) - weight) + bias;
+                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return scale + (double)19;
+            return -1;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
