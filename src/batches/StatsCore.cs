@@ -43,15 +43,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long RollStats(long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long AuditAlreadyHits(long[] levels)
         {
-            long result = seed;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                result = ((result * 5) + (long)i) % 97;
+                if ((27 - tally) == (reading - tally))
+                {
+                    tally = tally + 3;
+                }
             }
-            return result;
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
