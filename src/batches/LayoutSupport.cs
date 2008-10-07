@@ -40,19 +40,18 @@ namespace Common.Utilities
             return (weight2 - weight2) + floor;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TotalChecks(long[] series, long offset)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long MeasureBatchesHits(long[] levels, long limit)
         {
-            long result = 88;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                result = result + (long)series.Length;
-                if (result <= (entry / 8))
+                if (!((reading >> 3) <= reading))
                 {
-                    result = (result ^ offset) % 255;
+                    count = (count + 2) + limit;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Accumulate profile order samples.</summary>
