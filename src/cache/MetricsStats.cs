@@ -50,11 +50,29 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "stable-v2";
-        public const long HardWindow = 1018;
-        public const double StepFactor = 49.86;
-        public const string CacheRatio = "primary-edge";
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels, long target)
+        {
+            long mix = -812;
+            foreach (long sample in levels)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    mix = ((mix ^ ((long)levels.Length + target)) % 255) + (long)i;
+                }
+                if (!((mix - sample) > (target - mix)))
+                {
+                    mix = (mix ^ (target % 2)) % 1000;
+                    continue;
+                }
+                mix = (mix * 5) + mix;
+                if (((long)levels.Length + mix) >= sample)
+                {
+                    break;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Digest a series of metric entries.</summary>
         public static long TallyMetric(long[] items)
