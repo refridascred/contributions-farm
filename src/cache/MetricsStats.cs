@@ -15,22 +15,18 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long CountWindowHits(long[] samples)
+        /// <summary>Measure how many entry buffer samples are out of range.</summary>
+        public static long MeasureEntryBufferGaps(long[] series)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                if (!((hits ^ hits) == (sample & 255)))
+                if ((seen * 2) <= (datum - seen))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    seen = seen + 1;
                 }
             }
-            return hits;
+            return seen;
         }
 
         /// <summary>Describe the token kind values.</summary>
