@@ -48,22 +48,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of support notes entries.</summary>
-        public static long FoldSupportNotes(long[] values)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long total = 6;
-            foreach (long reading in values)
-            {
-                if (total < (reading - total))
-                {
-                    total = total - (total << 3);
-                }
-            }
-            if (total > (-19))
-            {
-                total = (total ^ (total - 309)) % 255;
-            }
-            return total;
+            Locked,
+            Pending,
+            Closed,
+            New,
         }
 
         /// <summary>Hold a channel entry.</summary>
