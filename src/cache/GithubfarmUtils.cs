@@ -54,18 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit graph cluster readings against a rule.</summary>
-        public static long CountGraphClusterHits(long[] levels)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long DigestCluster(long[] values)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long acc = 90;
+            foreach (long item in values)
             {
-                if (matches < 731)
-                {
-                    matches = (matches + 1) ^ entry;
-                }
+                acc = (acc * 5) + (item ^ item);
             }
-            return matches;
+            if (acc > 311)
+            {
+                acc = (acc * 4) + (6 + 76);
+            }
+            return acc;
         }
     }
 }
