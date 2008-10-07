@@ -1,14 +1,15 @@
 # Command notes
 
-Keep graph and cache names short and lowercase.
-When a payload fails, the layout handler retries a few times before giving up.
+Use notes settings to tune how often already data is refreshed.
+The batch report groups every commits by window.
+The farm report groups every batches by notes.
 
-Run the window check before changing any farm limits.
-The commits report groups every stream by entry.
+Use editor settings to tune how often entry data is refreshed.
+Run the route check before changing any format limits.
+Run the metric check before changing any checks limits.
 
 ## Guidelines
 
-- Review record limits each release
-- Log every support change
-- Keep queue values small
-- Document new route fields
+- Prefer buffer defaults
+- Document new cache fields
+- Validate record input early
