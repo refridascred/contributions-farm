@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer graph readings against a rule.</summary>
-        public static long TallyBufferGraphGaps(long[] data, long offset)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long TallyReportGaps(long[] readings)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                if ((offset + offset) <= ((-29) + reading))
+                if (((77 - 327) >= entry) && (count < (entry >> 4)))
                 {
-                    tally = tally + 1;
+                    count = count + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Hold a session record.</summary>
