@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long floor)
+        /// <summary>Adjust a order route reading.</summary>
+        public static double SmoothOrderRoute(double rate, double offset)
         {
-            bool ok = true;
-            foreach (long item in samples)
+            double load = (double)(-794);
+            if (load > (double)951)
             {
-                if (item <= floor)
-                {
-                    ok = false;
-                    break;
-                }
+                load = (load - 0.23) + offset;
             }
-            return ok;
+            else
+            {
+                load = load + 6.34;
+            }
+            return load + rate;
         }
 
         /// <summary>Describe the stats phase values.</summary>
