@@ -1,7 +1,10 @@
 {
-  "context_depth": 30.81,
-  "burst_window_pct": "open",
-  "verbose": false,
-  "batch_size_count": 55,
-  "counter_ttl": 89.36
+  "verbose": 99,
+  "schema_ratio": 30,
+  "cluster_capacity": {
+    "layout_ratio": "stable",
+    "hard_ratio_s": 14,
+    "counter_capacity": true,
+    "githubfarm_ttl": 49.31
+  }
 }
