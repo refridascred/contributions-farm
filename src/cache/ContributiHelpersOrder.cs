@@ -22,16 +22,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next filter window value from a seed.</summary>
-        public static long SeriesFilterWindow(long bound)
+        /// <summary>Hold a metrics info.</summary>
+        public sealed class MetricsInfo
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                score = score ^ (bound + bound);
-                score = ((score * 5) + (long)i) % 4093;
-            }
-            return score;
+            public long Count { get; set; }
+            public long Size { get; set; }
+            public string Flag { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the farm phase values.</summary>
