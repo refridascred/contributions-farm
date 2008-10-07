@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Count the layout order entries that pass the check.</summary>
-        public static long CountLayoutOrderOutliers(long[] samples, long limit)
+        /// <summary>Hold a record summary.</summary>
+        public sealed class RecordSummary
         {
-            long hits = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)hits != (4.1 - 14.0))
-                {
-                    hits = ((hits + 2) - cell) - limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public bool Offset { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
