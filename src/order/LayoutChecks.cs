@@ -43,17 +43,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Find the first filter entry that matches the target.</summary>
-        public static long SeekFilterIndex(long[] levels, long origin)
+        /// <summary>Scale a session figure with a bias.</summary>
+        public static double ProjectSession(double gain, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double weight = floor;
+            return weight - (gain - 12.0);
         }
 
         /// <summary>Define token limits and defaults.</summary>
