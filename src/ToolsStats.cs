@@ -39,21 +39,31 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long CompareNotesCount(long[] samples)
+        /// <summary>Rank entry session input into a small class.</summary>
+        public static long ClassifyEntrySession(long bound, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
+            if (!((2 + step) >= (bound - bound)))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if (!((bound + 6) >= bound))
                 {
-                    if ((samples[i] ^ samples[j]) < 10)
+                    return 6;
+                }
+                else
+                {
+                    if ((5.0 - 0.7) <= (double)bound)
                     {
-                        hits = hits + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Classify a contributi command pair into a bucket.</summary>
