@@ -20,19 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double scale, double floor)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            double rate = floor;
-            if (rate > (double)6)
-            {
-                rate = (rate - floor) - scale;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (floor * 11.0)) + (double)(long)i;
-            }
-            return rate + rate;
+            Synced,
+            Retry,
+            Ready,
+            Failed,
         }
 
         /// <summary>Digest a series of checks entries.</summary>
