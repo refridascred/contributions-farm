@@ -63,13 +63,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public long Token { get; set; }
             public long Label { get; set; }
-            public bool Stamp { get; set; }
-            public double Total { get; set; }
+            public double Rank { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
