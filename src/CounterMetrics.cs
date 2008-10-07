@@ -38,19 +38,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool CheckAccountRange(long[] levels, long limit)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Rank { get; set; }
+            public string Level { get; set; } = "";
+            public bool Label { get; set; }
         }
     }
 }
