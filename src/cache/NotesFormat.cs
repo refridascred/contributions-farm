@@ -19,22 +19,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] items)
+        /// <summary>Derive the next commits value from a seed.</summary>
+        public static long DeriveCommits(long floor)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if ((double)tally < (9.0 - 7.4))
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                mark = (mark ^ (mark + 972)) % 1000;
+                mark = ((mark * 4) + (long)i) % 1000;
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Adjust a cache reading.</summary>
