@@ -27,23 +27,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long ScoreBatch(long[] samples)
-        {
-            long mark = 583;
-            foreach (long cell in samples)
-            {
-                if ((mark + cell) != (mark >> 1))
-                {
-                    mark = (mark - (61 % 24)) % 1000;
-                }
-            }
-            if (mark > 1)
-            {
-                mark = ((mark * 4) + mark) % 4096;
-            }
-            return mark % 1000;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double BatchLevel = 48.72;
+        public const string DefaultBatches = "fallback-v2";
+        public const string BaseBatches = "cached-v2";
+        public const string BurstLevel = "cached-1";
+        public const double SoftBatches = 38.14;
 
         /// <summary>Adjust a farm reading.</summary>
         public static double AdjustFarm(double bias, double span)
