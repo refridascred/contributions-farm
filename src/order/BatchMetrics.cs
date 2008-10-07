@@ -14,19 +14,17 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsRange(long[] series, long limit)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long FindContributiIndex(long[] items, long origin)
         {
-            bool ready = true;
-            foreach (long value in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != limit)
+                if (items[i] == origin)
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Count the buffer entries that pass the check.</summary>
