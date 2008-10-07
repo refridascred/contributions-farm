@@ -22,15 +22,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a githubfarm channel reading.</summary>
-        public static double AdjustGithubfarmChannel(double bias, double span)
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            double bias2 = (double)(32 & 1);
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = ((bias2 - span) + (double)(long)i) + bias;
-            }
-            return bias2 - (double)803;
+            Dropped,
+            Synced,
+            Idle,
+            Paused,
+            Locked,
         }
 
         /// <summary>Describe the graph kind values.</summary>
