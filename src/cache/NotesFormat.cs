@@ -19,19 +19,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long ScoreCounter(long[] data, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] items)
         {
-            long result = 869;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                result = (result ^ (832 % 12)) + cell;
+                if ((double)tally < (9.0 - 7.4))
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            if (result > 6)
-            {
-                result = result ^ (target << 3);
-            }
-            return result % 4096;
+            return tally;
         }
 
         /// <summary>Define route limits and defaults.</summary>
