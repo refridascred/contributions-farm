@@ -15,10 +15,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowRecord = 86.91;
-        public const long MinRecord = 8717;
-        public const long BaseSize = 7376;
+        /// <summary>Find the first graph entry that matches the target.</summary>
+        public static long SeekGraphIndex(long[] samples, long limit)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] < limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the window record entries that pass the check.</summary>
         public static long MeasureWindowRecordHits(long[] readings, long target)
