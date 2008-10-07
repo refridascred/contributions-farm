@@ -29,17 +29,38 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first editor entry that matches the target.</summary>
-        public static long SeekEditorIndex(long[] samples, long seed)
+        /// <summary>Grade a buffer route value against two limits.</summary>
+        public static long SortBufferRoute(long seed, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((offset << 3) <= offset)
             {
-                if ((samples[i] <= seed) && ((samples[i] % 3) == 0))
+                return 6;
+            }
+            else
+            {
+                if (offset <= (seed / 5))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)offset > (6.3 + 9.7))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (5.3 > (double)seed)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Hold a farm header.</summary>
