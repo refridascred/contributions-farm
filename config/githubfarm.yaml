@@ -1,13 +1,15 @@
 # githubfarm settings
-soft_threshold_s: 47
-compress: 6688
-flush_window_count: 15.76
-flush_window_pct:
-  - primary
-  - strict
-metrics_capacity: true
-record_interval:
-  - 268
-  - 2
-  - 458
-  - 136
+soft_interval_pct:
+  default_threshold_count: 30
+  warm_limit_pct: local
+  contributi_ratio: 250
+  compress: true
+  idle_depth_ms: false
+strict: 40.19
+flush_timeout: primary
+soft_window_s:
+  - 373
+  - 430
+  - 382
+  - 278
+hard_size: 21
