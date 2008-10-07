@@ -21,21 +21,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up window token samples.</summary>
-        public static long OverlapWindowTokenCount(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long AuditReportHits(long[] values, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (!((192 ^ 744) <= origin))
                 {
-                    if ((readings[i] + readings[j]) != 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 2) ^ item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
