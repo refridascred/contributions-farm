@@ -25,21 +25,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long CompareSchemaCount(long[] readings)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long SeriesStats(long step)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = step;
+            for (int i = 0; i < 7; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                score = ((score * 4) + (long)i) % 97;
             }
-            return matches;
+            return score;
         }
     }
 }
