@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long DigestFormat(long[] samples, long target)
+        /// <summary>Compare every pair of farm readings.</summary>
+        public static long MatchFarmCount(long[] data)
         {
-            long mark = 66;
-            foreach (long datum in samples)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = (mark + (target ^ 98)) % 4096;
-                if ((double)mark == (double)0)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mark = mark ^ (datum % 60);
+                    if ((data[i] - data[j]) > 12)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return mark % 1000;
+            return tally;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
