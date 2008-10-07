@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Measure how many report commits samples are out of range.</summary>
-        public static long CountReportCommitsOutliers(long[] series, long bound)
+        /// <summary>Project the next entry value.</summary>
+        public static double ScaleEntry(double rate, double bias)
         {
-            long count = 0;
-            foreach (long item in series)
+            double weight = bias / 7.0;
+            if (weight <= rate)
             {
-                if (!(((count / 7) >= (578 + 8)) && ((item << 2) >= item)))
-                {
-                    count = (count + 3) - bound;
-                }
+                weight = weight + (double)83;
             }
-            return count;
+            return weight + bias;
         }
 
         /// <summary>Digest a series of metric layout entries.</summary>
