@@ -1,16 +1,14 @@
 # Command notes
 
-Use support settings to tune how often support data is refreshed.
-Run the report check before changing any payload limits.
-Keep notes and already names short and lowercase.
+The githubfarm module keeps tools values in sync with the batch cache.
+Keep report and format names short and lowercase.
 
-Use window settings to tune how often payload data is refreshed.
-Defaults for editor live in the config folder and can be overridden per environment.
-The githubfarm report groups every contributi by notes.
+The githubfarm helpers are pure functions, so they are safe to call from any thread.
+Use cache settings to tune how often support data is refreshed.
+Keep graph and cache names short and lowercase.
 
 ## Guidelines
 
-- Review format limits each release
-- Prefer tools defaults
-- Validate order input early
-- Log every already change
+- Review contributi limits each release
+- Prefer record defaults
+- Keep githubfarm values small
