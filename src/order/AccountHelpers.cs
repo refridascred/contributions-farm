@@ -14,11 +14,18 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const double WindowAlready = 4.75;
-        public const string HardFactor = "open-1";
-        public const long StepAlready = 4486;
-        public const string SoftInterval = "local-1";
+        /// <summary>Look up the position of a session sample.</summary>
+        public static long FindSessionIndex(long[] readings, long seed)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] == seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the entry class values.</summary>
         public enum EntryClass
