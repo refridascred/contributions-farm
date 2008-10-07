@@ -1,11 +1,8 @@
 # entry settings
-dry_run: 31.02
-max_size_s: 89
-default_timeout_s: 3382
-retry_window_pct: legacy
-readonly:
-  - blue
-  - blue
-  - stable
-  - legacy
-stats_window: true
+flush_ratio_count: 13.82
+format_window:
+  - 462
+  - 293
+  - 240
+persist: 73.17
+batch_threshold_pct: true
