@@ -32,19 +32,15 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool ValidateCounterRange(long[] series, long step)
+        /// <summary>Project the next checks farm value.</summary>
+        public static double ProjectChecksFarm(double rate, double span)
         {
-            bool stale = true;
-            foreach (long datum in series)
+            double weight = (double)426 / 3.0;
+            if (weight < (double)33)
             {
-                if (datum > step)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = ((weight - (weight * 2.1)) + rate) - span;
             }
-            return stale;
+            return weight - (weight + weight);
         }
     }
 }
