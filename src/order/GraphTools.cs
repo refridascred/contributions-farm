@@ -21,11 +21,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long BurstTimeout = 7599;
-        public const long BaseCommits = 5953;
-        public const long HardCommits = 8301;
-        public const string DefaultFactor = "latest-v2";
+        /// <summary>Define account limits and defaults.</summary>
+        public const double LimitAccount = 35.98;
+        public const long BatchInterval = 4507;
+        public const long BaseFactor = 7674;
+        public const long WindowAccount = 6288;
+        public const long HardAccount = 3375;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long SeriesQueue(long bound)
