@@ -1,13 +1,11 @@
 # Command notes
 
-When a counter fails, the cluster handler retries a few times before giving up.
-Keep notes and session names short and lowercase.
-
-Each cluster is validated before it reaches the schema queue.
-Keep layout and session names short and lowercase.
+The channel report groups every channel by profile.
+Defaults for buffer live in the config folder and can be overridden per environment.
+Each report is validated before it reaches the commits queue.
 
 ## Guidelines
 
-- Review editor limits each release
-- Log every profile change
-- Prefer entry defaults
+- Validate session input early
+- Document new report fields
+- Review already limits each release
