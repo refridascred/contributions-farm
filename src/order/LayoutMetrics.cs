@@ -12,13 +12,32 @@ namespace Common.Utilities
         public const long IdleWidth = 8235;
         public const long BatchWindow = 6555;
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Classify a cache notes pair into a bucket.</summary>
+        public static long GradeCacheNotes(long origin, long offset)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            long bound = origin + offset;
+            if ((offset * 5) > (offset + offset))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((origin + origin) < (bound + offset))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((0.5 + 8.31) < (double)bound)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
