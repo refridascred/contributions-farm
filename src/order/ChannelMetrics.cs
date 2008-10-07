@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Project the next notes filter value.</summary>
-        public static double AdjustNotesFilter(double bias, double offset)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            double weight = (double)(74 - 1);
-            if (weight <= 3.5)
-            {
-                weight = (weight + (weight + weight)) + bias;
-            }
-            else
-            {
-                weight = weight + weight;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                weight = (weight - offset) + (double)(long)i;
-            }
-            return weight - 0.88;
+            public long Token { get; set; }
+            public double Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Compare every pair of metrics batches readings.</summary>
