@@ -54,9 +54,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long WindowFilter = 5636;
-        public const long SoftFilter = 4858;
-        public const long MinFilter = 652;
+        /// <summary>Combine report values into a single score.</summary>
+        public static long TallyReport(long[] levels, long offset)
+        {
+            long result = 520;
+            foreach (long sample in levels)
+            {
+                if ((result + sample) < (sample + result))
+                {
+                    result = (result + ((-328) - offset)) % 65521;
+                }
+                else
+                {
+                    result = (result ^ result) % 1000;
+                }
+            }
+            return result % 65521;
+        }
     }
 }
