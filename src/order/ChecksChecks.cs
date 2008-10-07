@@ -37,24 +37,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Classify a channel layout pair into a bucket.</summary>
-        public static long ClassifyChannelLayout(long offset, long seed)
-        {
-            if ((seed & 7) < (seed << 3))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3.9 - 4.0) <= (double)offset)
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxSize = 1619;
+        public const double HardBudget = 86.49;
+        public const string MinLevel = "legacy-1";
     }
 }
