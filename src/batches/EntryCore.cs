@@ -49,21 +49,23 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long step)
+        /// <summary>Project the next githubfarm value.</summary>
+        public static double BlendGithubfarm(double gain, double span)
         {
-            long mix = step;
-            for (int i = 0; i < 17; i++)
+            double rate = span;
+            if (rate < (rate * 1.0))
             {
-                if (((double)step < 5.42) || ((step % 16) == (long)i))
-                {
-                    mix = ((mix << 2) ^ step) % 97;
-                }
-                mix = (mix + (long)i) % 4096;
-                mix = mix - (mix & 31);
-                mix = ((mix * 2) + (long)i) % 97;
+                rate = (rate - (2.55 - 8.1)) - gain;
             }
-            return mix;
+            else
+            {
+                rate = rate - (rate + rate);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + rate) + (double)(long)i;
+            }
+            return rate + (double)613;
         }
 
         /// <summary>Digest a series of graph filter entries.</summary>
