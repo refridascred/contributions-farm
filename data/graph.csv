@@ -1,11 +1,6 @@
-id,label,owner,active
-1,latest,990,strict
-2,standard,fallback,414
-3,64.4,894,528
-4,open,65.91,317
-5,12.05,latest,fallback
-6,214,primary,303
-7,827,919,42.17
-8,478,262,24.33
-9,2.65,570,141
-10,strict,506,93.03
+id,state,ratio,count,owner
+1,512,979,547,912
+2,stable,90.85,6.97,67.69
+3,79.24,57.18,open,fallback
+4,staging,50.78,89.15,408
+5,green,fallback,941,459
