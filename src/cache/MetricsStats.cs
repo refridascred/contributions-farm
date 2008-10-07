@@ -35,13 +35,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Locate a window reading by value.</summary>
+        public static long FindWindowIndex(long[] values, long seed)
         {
-            Locked,
-            Ready,
-            Stale,
-            Paused,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Digest a series of window entries.</summary>
