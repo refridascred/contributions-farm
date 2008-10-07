@@ -19,38 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long RankEntry(long target, long limit)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] readings, long bound)
         {
-            if ((target % 100) < (target % 97))
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                return 6;
-            }
-            else
-            {
-                if (limit <= (target % 100))
+                if ((cell / 5) > (cell + 13))
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((0.8 - 9.06) >= (double)target)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((limit << 2) > limit) && ((limit << 3) < (limit >> 1)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    tally = (tally + 2) + bound;
                 }
             }
+            return tally;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
