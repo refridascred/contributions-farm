@@ -54,32 +54,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long origin, long origin2)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long lane = origin + origin2;
-            if (!((7.5 - 14.0) >= (double)origin2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)lane <= 8.56)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((1 << 2) > (lane * 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            public long Level { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
