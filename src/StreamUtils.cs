@@ -69,21 +69,14 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Compare every pair of record counter readings.</summary>
-        public static long PairRecordCounterCount(long[] samples)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 5)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            New,
+            Retry,
+            Closed,
+            Locked,
         }
     }
 }
