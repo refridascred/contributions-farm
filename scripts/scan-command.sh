@@ -6,16 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
+COMMAND_LIMIT=96
+log "limit is ${COMMAND_LIMIT}"
+
 mode="${1:-eu-west}"
 case "${mode}" in
-    staging)
+    green)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in latest green; do
-    log "checking ${item}"
-done
