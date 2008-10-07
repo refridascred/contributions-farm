@@ -30,17 +30,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long FindOrderIndex(long[] values, long step)
+        /// <summary>Measure how many channel report samples are out of range.</summary>
+        public static long TallyChannelReportHits(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if ((values[i] > step) && ((values[i] % 3) == 0))
+                if ((double)matches <= (0.5 - 2.45))
                 {
-                    return (long)i;
+                    matches = (matches + 1) - cell;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
