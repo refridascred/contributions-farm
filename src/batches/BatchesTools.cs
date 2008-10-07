@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Count the checks channel entries that pass the check.</summary>
+        public static long AuditChecksChannelMatches(long[] samples)
         {
-            Stale,
-            Done,
-            Queued,
-            Active,
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((seen > (seen + seen)) && (((long)samples.Length ^ value) > seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the record level values.</summary>
