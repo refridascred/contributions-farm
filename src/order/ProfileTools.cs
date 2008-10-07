@@ -19,38 +19,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a support entry pair into a bucket.</summary>
-        public static long GradeSupportEntry(long origin, long origin2)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] levels, long offset)
         {
-            if ((origin2 - 23) >= (origin2 * 3))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if (!((9.9 + 3.8) >= (double)origin))
+                if (levels[i] < offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((origin % 100) < (origin + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((origin + origin) != (origin2 * 4))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
