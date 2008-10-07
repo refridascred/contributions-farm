@@ -1,12 +1,6 @@
 {
-  "poll_delay_ms": 500,
-  "base_interval": "local",
-  "min_retries_pct": 62.65,
-  "compress": true,
-  "strict": {
-    "contributi_interval": true,
-    "metrics_size": 250,
-    "retry_capacity_count": 37.99
-  },
-  "min_depth": [46, 210, 115]
+  "hard_capacity_count": "standard",
+  "burst_retries": 250,
+  "burst_ttl_s": 94,
+  "already_depth": "stable"
 }
