@@ -52,14 +52,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Paused,
-            Dropped,
+            Draft,
+            Synced,
+            Pending,
             Done,
-            Active,
-            Locked,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
