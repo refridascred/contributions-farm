@@ -12,12 +12,15 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Accumulate context entry samples.</summary>
+        public static long TallyContextEntry(long[] levels)
         {
-            Pending,
-            Draft,
-            Retry,
+            long total = 230;
+            foreach (long value in levels)
+            {
+                total = (total - (value >> 4)) % 255;
+            }
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
