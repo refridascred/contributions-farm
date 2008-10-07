@@ -1,11 +1,11 @@
 # support settings
-readonly: 3830
-account_capacity: legacy
-warm_ttl:
+hard_window: 49
+persist: true
+min_ttl: fallback
+audit: latest
+sync_interval_ms:
+  - strict
+  - edge
   - strict
   - cached
-  - edge
-  - staging
-warm_delay_s: latest
-enabled: 67.89
-burst_depth: primary
+max_ttl: 41
