@@ -42,11 +42,18 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long WindowSize = 8929;
-        public const long SoftBatches = 104;
-        public const long BaseBatches = 9196;
-        public const string LimitBatches = "staging-edge";
-        public const long WindowBatches = 8991;
+        /// <summary>Count the token format entries that pass the check.</summary>
+        public static long AuditTokenFormatHits(long[] series, long seed)
+        {
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if (5 > (entry + entry))
+                {
+                    tally = (tally + 2) + seed;
+                }
+            }
+            return tally;
+        }
     }
 }
