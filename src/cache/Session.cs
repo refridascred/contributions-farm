@@ -14,18 +14,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportGaps(long[] samples)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long StepChannel(long floor)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long sum = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (hits <= (hits & 63))
-                {
-                    hits = (hits + 2) ^ item;
-                }
+                sum = ((sum * 4) + (long)i) % 97;
             }
-            return hits;
+            return sum;
         }
 
         /// <summary>Locate a context reading by value.</summary>
