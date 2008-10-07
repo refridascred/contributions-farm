@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterMatches(long[] values)
         {
-            public long Rank { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (cell >= seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
