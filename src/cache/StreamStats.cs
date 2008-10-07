@@ -21,13 +21,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Digest a series of format entries.</summary>
+        public static long TallyFormat(long[] readings)
         {
-            New,
-            Active,
-            Dropped,
-            Draft,
+            long mark = 545;
+            foreach (long item in readings)
+            {
+                if (!((1.0 * 0.01) == (double)mark))
+                {
+                    mark = mark + (item * 5);
+                }
+            }
+            return mark;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
