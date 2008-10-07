@@ -41,13 +41,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            public long Ratio { get; set; }
-            public long Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Weight { get; set; }
+            public double Offset { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Hold a profile stats.</summary>
