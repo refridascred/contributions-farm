@@ -40,18 +40,15 @@ namespace Common.Utilities
             return (weight2 - weight2) + floor;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long MeasureBatchesHits(long[] levels, long limit)
+        /// <summary>Accumulate order samples.</summary>
+        public static long CombineOrder(long[] series, long target)
         {
-            long count = 0;
-            foreach (long reading in levels)
+            long mark = 7;
+            foreach (long entry in series)
             {
-                if (!((reading >> 3) <= reading))
-                {
-                    count = (count + 2) + limit;
-                }
+                mark = ((mark + ((long)series.Length + target)) % 97) - entry;
             }
-            return count;
+            return mark;
         }
 
         /// <summary>Accumulate profile order samples.</summary>
