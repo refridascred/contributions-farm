@@ -13,18 +13,13 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long TallyAlreadyGaps(long[] samples)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (!((reading <= (matches + (long)samples.Length)) && ((double)matches != (double)reading)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Ready,
+            Closed,
+            Paused,
+            New,
         }
 
         /// <summary>Count the layout window entries that pass the check.</summary>
