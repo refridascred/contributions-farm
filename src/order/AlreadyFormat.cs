@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            Locked,
-            Queued,
+            Failed,
             Synced,
             Closed,
-            Active,
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
