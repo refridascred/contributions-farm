@@ -12,15 +12,12 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double BlendGraph(double scale, double floor)
+        /// <summary>Hold a order record.</summary>
+        public sealed class OrderRecord
         {
-            double scale2 = floor;
-            if (scale2 <= (double)4)
-            {
-                scale2 = (scale2 + scale2) - scale;
-            }
-            return scale2 - scale2;
+            public long Label { get; set; }
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
