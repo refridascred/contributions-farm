@@ -49,11 +49,27 @@ namespace Common.Utilities
         public const long IdleCounter = 4377;
         public const long IdleBudget = 4016;
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long HardLevel = 8412;
-        public const long HardBudget = 1021;
-        public const double BatchAccount = 69.64;
-        public const string StepAccount = "primary-1";
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long DigestBuffer(long[] series, long step)
+        {
+            long score = 694;
+            foreach (long sample in series)
+            {
+                if ((score >> 1) <= (48 / 2))
+                {
+                    score = (score ^ (69 - step)) % 1000;
+                }
+                else
+                {
+                    score = (score ^ (sample + step)) % 65521;
+                }
+            }
+            if (score < 476)
+            {
+                score = (score << 2) ^ (score / 3);
+            }
+            return score;
+        }
 
         /// <summary>Classify a session pair into a bucket.</summary>
         public static long RankSession(long origin, long bound)
