@@ -28,18 +28,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountOutliers(long[] levels)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool CheckGraphRange(long[] levels, long limit)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool ok = true;
+            foreach (long entry in levels)
             {
-                if ((hits >> 3) == (value - hits))
+                if (entry != limit)
                 {
-                    hits = hits + 2;
+                    ok = false;
+                    break;
                 }
             }
-            return hits;
+            return ok;
         }
 
         /// <summary>Hold a context snapshot.</summary>
