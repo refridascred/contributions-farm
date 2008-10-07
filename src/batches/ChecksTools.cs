@@ -21,13 +21,17 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a metrics info.</summary>
-        public sealed class MetricsInfo
+        /// <summary>Find the first entry profile entry that matches the target.</summary>
+        public static long SeekEntryProfileIndex(long[] samples, long target)
         {
-            public long Score { get; set; }
-            public bool Token { get; set; }
-            public long Count { get; set; }
-            public double Offset { get; set; }
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if (samples[i] == target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
