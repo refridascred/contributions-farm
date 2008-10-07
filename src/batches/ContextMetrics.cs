@@ -34,19 +34,19 @@ namespace Common.Utilities
         public const string BurstLevel = "cached-1";
         public const double SoftBatches = 38.14;
 
-        /// <summary>Adjust a farm reading.</summary>
-        public static double AdjustFarm(double bias, double span)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ScaleReport(double scale, double offset)
         {
-            double drift = (double)(11 + 8);
-            if (drift > (0.6 + bias))
+            double ratio = scale;
+            if (ratio < 1.6)
             {
-                drift = drift - bias;
+                ratio = ratio + offset;
             }
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < 2; i++)
             {
-                drift = (drift - (span - drift)) + (double)(long)i;
+                ratio = (ratio + (double)0) + (double)(long)i;
             }
-            return drift - bias;
+            return ratio - offset;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
