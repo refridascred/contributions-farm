@@ -1,14 +1,7 @@
 {
-  "audit": ["standard", "cached", "stable"],
-  "graph_limit": {
-    "default_limit": 2072,
-    "soft_threshold_count": 9.98,
-    "compress": "edge",
-    "cluster_threshold": false,
-    "entry_size": 77
-  },
-  "readonly": 250,
-  "contributi_timeout": 16.97,
-  "idle_ttl_count": 88,
-  "cache_threshold_count": 1024
+  "enabled": false,
+  "buffer_interval": 47.34,
+  "soft_delay_ms": ["open", "primary", "open", "fallback"],
+  "warm_size_ms": "eu-west",
+  "profile_delay": "eu-west"
 }
