@@ -40,25 +40,21 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long origin, long step)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] data)
         {
-            long span = origin - step;
-            if ((double)step == (double)(-8))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)span == (4.0 - 6.05)) || ((origin & 1) <= (origin % 60)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
+                    if ((data[i] + data[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
