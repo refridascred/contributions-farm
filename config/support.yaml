@@ -1,16 +1,9 @@
 # support settings
-queue_interval: false
-max_limit_pct:
-  hard_retries_count: legacy
-  base_limit: 20
-  enabled: false
-  readonly:
-    - latest
-    - cached
-    - cached
-burst_timeout_pct:
+burst_limit_pct: 250
+warm_interval_count:
+  - staging
+  - blue
   - eu-west
-  - legacy
-idle_window_ms: 81
-retry_capacity_s: standard
-order_window: stable
+  - local
+burst_limit_s: 66
+burst_timeout_ms: false
