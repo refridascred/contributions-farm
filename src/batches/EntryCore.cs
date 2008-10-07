@@ -33,11 +33,19 @@ namespace Common.Utilities
         public const long SoftSession = 3434;
         public const long StepSession = 3560;
 
-        /// <summary>Hold a already snapshot.</summary>
-        public sealed class AlreadySnapshot
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool GuardMetricBounds(long[] readings, long offset)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            bool flag = true;
+            foreach (long sample in readings)
+            {
+                if (sample > offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
