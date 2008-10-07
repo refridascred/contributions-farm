@@ -1,33 +1,8 @@
 # support settings
-min_limit_s:
-  audit: primary
-  idle_ratio_count:
-    retry_size:
-      - 67
-      - 152
-    dry_run: false
-    account_limit: primary
-    context_delay: open
-  sync_retries_s: primary
-  poll_threshold: fallback
-  metrics_depth: blue
-  stats_limit: 1391
-audit:
-  - 363
-  - 500
-  - 218
-  - 265
-base_timeout:
-  enabled: 1024
-  batch_ttl: false
-  min_ratio_s: staging
-  commits_threshold:
-    batch_timeout: true
-    max_interval_count: 60
-    retry_limit: true
-    default_threshold_pct: local
-    token_timeout: local
-    burst_limit_s: standard
-  warm_limit_pct: 9457
-warm_threshold_pct: staging
-max_size: 75.89
+dry_run:
+  sync_capacity_count: true
+  window_capacity: open
+  batch_capacity_ms: fallback
+  tools_capacity: 7.5
+readonly: 83.26
+sync_retries: 500
