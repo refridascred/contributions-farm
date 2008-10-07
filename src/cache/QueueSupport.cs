@@ -22,12 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Combine counter schema values into a single score.</summary>
+        public static long TotalCounterSchema(long[] samples)
         {
-            Closed,
-            Paused,
-            Done,
+            long mix = 15;
+            foreach (long sample in samples)
+            {
+                if ((299 - mix) != (sample - sample))
+                {
+                    mix = ((mix * 2) + 46) % 65521;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
