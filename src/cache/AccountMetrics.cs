@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] levels)
+        /// <summary>Find the first graph stats entry that matches the target.</summary>
+        public static long LocateGraphStatsIndex(long[] series, long offset)
         {
-            long carry = 152;
-            foreach (long item in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                carry = (((carry << 3) ^ 845) % 101) ^ item;
-                carry = (carry << 3) ^ ((long)levels.Length + (-410));
+                if (series[i] == offset)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 872)
-            {
-                carry = carry ^ (37 - 4);
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Look up the position of a account filter sample.</summary>
