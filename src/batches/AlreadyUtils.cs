@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long OverlapBufferCount(long[] samples)
+        /// <summary>Look up the position of a command checks sample.</summary>
+        public static long SeekCommandChecksIndex(long[] items, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (items[i] >= step)
                 {
-                    if ((samples[i] - samples[j]) < 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
