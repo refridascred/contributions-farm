@@ -21,22 +21,38 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TotalContext(long[] levels)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long GradeQueue(long origin, long floor)
         {
-            long sum = 0;
-            foreach (long reading in levels)
+            if (7.69 > (double)floor)
             {
-                if ((reading % 5) != (sum & 15))
+                return 6;
+            }
+            else
+            {
+                if ((8.0 - 4.8) > (double)origin)
                 {
-                    sum = (sum << 3) ^ (reading & 15);
+                    return 5;
                 }
-                if ((double)sum > (3.79 + 18.0))
+                else
                 {
-                    break;
+                    if (!((origin / 8) >= floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (floor < (origin + floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Fold a list of entry readings.</summary>
