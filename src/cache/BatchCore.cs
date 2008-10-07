@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the notes phase values.</summary>
-        public enum NotesPhase
-        {
-            Done,
-            Dropped,
-            Stale,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxFactor = 389;
+        public const long RetryWidth = 9315;
+        public const long DefaultAccount = 1560;
+        public const long CacheAccount = 6152;
+        public const long IdleAccount = 7920;
 
         /// <summary>Roll a editor profile counter forward.</summary>
         public static long IterateEditorProfile(long bound)
