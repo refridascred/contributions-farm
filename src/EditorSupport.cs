@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderMatches(long[] readings, long bound)
+        /// <summary>Derive the next buffer value from a seed.</summary>
+        public static long SeriesBuffer(long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long acc = floor;
+            for (int i = 0; i < 5; i++)
             {
-                if (5.97 < (double)hits)
-                {
-                    hits = ((hits + 3) + value) - bound;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                acc = ((acc * 5) + (long)i) % 4093;
             }
-            return hits;
+            return acc;
         }
 
         /// <summary>Scale a batches support figure with a bias.</summary>
