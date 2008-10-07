@@ -25,19 +25,21 @@ namespace Common.Utilities
         public const long WindowBudget = 5982;
         public const long WindowTimeout = 2942;
 
-        /// <summary>Validate notes channel readings against a bound.</summary>
-        public static bool GuardNotesChannelRange(long[] series, long floor)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long CompareSessionCount(long[] items)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell != floor)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    valid = false;
-                    break;
+                    if ((items[i] - items[j]) != 20)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return valid;
+            return matches;
         }
     }
 }
