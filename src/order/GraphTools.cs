@@ -21,12 +21,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitAccount = 35.98;
-        public const long BatchInterval = 4507;
-        public const long BaseFactor = 7674;
-        public const long WindowAccount = 6288;
-        public const long HardAccount = 3375;
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double LimitLayout = 62.21;
+        public const long MaxLayout = 5549;
+        public const long StepSpan = 8669;
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long SeriesQueue(long bound)
