@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Hold a command entry.</summary>
-        public sealed class CommandEntry
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long floor)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
+            bool ok = true;
+            foreach (long item in samples)
+            {
+                if (item <= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Describe the buffer class values.</summary>
