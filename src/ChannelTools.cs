@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardContributi = 5709;
-        public const string MinContributi = "alpha-edge";
-        public const double RetrySize = 53.81;
-        public const double WindowScore = 19.21;
-        public const long MinWidth = 2221;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long DigestFormat(long[] samples, long target)
+        {
+            long mark = 66;
+            foreach (long datum in samples)
+            {
+                mark = (mark + (target ^ 98)) % 4096;
+                if ((double)mark == (double)0)
+                {
+                    mark = mark ^ (datum % 60);
+                }
+            }
+            return mark % 1000;
+        }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferHits(long[] data, long limit)
