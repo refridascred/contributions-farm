@@ -40,25 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank buffer input into a small class.</summary>
-        public static long ClassifyBuffer(long step, long bound)
-        {
-            if ((bound - 75) >= (step - step))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound & 127) < (33 - step))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double BurstChannel = 1.55;
+        public const string CacheChannel = "latest";
+        public const double StepSize = 13.06;
+        public const long IdleWidth = 4600;
 
         /// <summary>Hold a channel stats.</summary>
         public sealed class ChannelStats
