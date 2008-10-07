@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheMatches(long[] samples)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool GuardTokenLimits(long[] data, long seed)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long cell in data)
             {
-                if ((double)entry > (9.3 / 8.0))
+                if (cell <= seed)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Describe the farm level values.</summary>
