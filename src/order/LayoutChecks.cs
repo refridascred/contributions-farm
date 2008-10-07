@@ -20,19 +20,11 @@ namespace Common.Utilities
         public const double MaxNotes = 9.39;
         public const string LimitNotes = "fallback";
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long StepCluster(long offset)
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double bias, double offset)
         {
-            long mark = offset;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    mark = ((mark + 34) % 4096) - (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 1000;
-            }
-            return mark;
+            double load = (double)(607 + 159);
+            return (load - offset) + bias;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
