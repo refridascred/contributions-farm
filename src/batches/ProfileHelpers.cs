@@ -29,25 +29,18 @@ namespace Common.Utilities
         public const long StepFormat = 2252;
         public const string MinFormat = "stable-1";
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long BucketQueue(long target, long floor)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long TallyChecksOutliers(long[] data, long origin)
         {
-            long span = target ^ floor;
-            if ((target + span) > (span + span))
+            long tally = 0;
+            foreach (long reading in data)
             {
-                return 5;
-            }
-            else
-            {
-                if ((floor * 5) < (span / 5))
+                if ((double)reading >= 9.66)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    tally = (tally + 3) - origin;
                 }
             }
+            return tally;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
