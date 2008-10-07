@@ -37,22 +37,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long CountMetricsGaps(long[] levels)
+        /// <summary>Describe the support kind values.</summary>
+        public enum SupportKind
         {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if ((double)tally > (20.0 / 6.0))
-                {
-                    tally = (tally + 2) + item;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Paused,
+            Ready,
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
