@@ -24,23 +24,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double SmoothStream(double bias, double offset)
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            double drift = offset;
-            if (drift <= (bias / 5.0))
-            {
-                drift = drift - bias;
-            }
-            else
-            {
-                drift = drift - bias;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                drift = (drift + (6.0 + bias)) + (double)(long)i;
-            }
-            return drift + bias;
+            Stale,
+            Draft,
+            Queued,
         }
 
         /// <summary>Count the commits entries that pass the check.</summary>
