@@ -52,12 +52,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool GuardEntryLimits(long[] items, long limit)
         {
-            Dropped,
-            Synced,
-            Active,
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item <= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Combine notes window values into a single score.</summary>
