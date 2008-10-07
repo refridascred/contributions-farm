@@ -22,16 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long floor)
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] series, long step)
         {
-            long mark = floor;
-            for (int i = 0; i < 24; i++)
+            long carry = 94;
+            foreach (long datum in series)
             {
-                mark = (mark ^ (mark + 972)) % 1000;
-                mark = ((mark * 4) + (long)i) % 1000;
+                if ((double)datum != (7.0 + 6.07))
+                {
+                    carry = (carry * 4) + (57 * 3);
+                }
             }
-            return mark;
+            if (carry < 0)
+            {
+                carry = (carry << 3) ^ (step << 1);
+            }
+            return carry;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
