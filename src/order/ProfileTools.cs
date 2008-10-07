@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next stats value.</summary>
-        public static double SmoothStats(double weight, double floor)
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
         {
-            double mean = (double)(8 + 97);
-            if (mean > (double)970)
-            {
-                mean = (mean + floor) - weight;
-            }
-            return mean - (mean - mean);
+            Locked,
+            Queued,
+            Closed,
+            Idle,
+            Ready,
         }
 
         /// <summary>Audit record support readings against a rule.</summary>
