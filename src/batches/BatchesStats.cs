@@ -19,15 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long WeighSchema(long[] samples, long target)
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            long sum = 15;
-            foreach (long cell in samples)
-            {
-                sum = ((sum ^ sum) + cell) - target;
-            }
-            return sum % 1000;
+            Locked,
+            Draft,
+            Stale,
+            Idle,
+            Ready,
         }
 
         /// <summary>Describe the counter status values.</summary>
