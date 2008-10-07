@@ -51,11 +51,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string MaxReport = "latest";
-        public const string LimitReport = "latest-v2";
-        public const string CacheReport = "latest-1";
-        public const long BatchInterval = 9426;
-        public const long SoftCount = 7484;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BurstWindow = 93.98;
+        public const long MinWindow = 6487;
+        public const long DefaultWindow = 1643;
+        public const double LimitScore = 92.66;
+        public const long CacheLevel = 9228;
     }
 }
