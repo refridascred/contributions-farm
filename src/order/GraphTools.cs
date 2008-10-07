@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of window entries.</summary>
-        public static long CombineWindow(long[] readings)
+        /// <summary>Project the next queue value.</summary>
+        public static double BlendQueue(double ratio, double floor)
         {
-            long state = 5;
-            foreach (long entry in readings)
+            double ratio2 = (double)(5 - 749);
+            if (ratio2 >= floor)
             {
-                state = (state ^ (entry - state)) % 4096;
-                if ((entry >= 89) && (2.52 >= (double)entry))
-                {
-                    state = ((state << 3) ^ (entry - entry)) % 4096;
-                }
+                ratio2 = (ratio2 - floor) - ratio;
             }
-            return state;
+            return ratio2 - (double)(-13);
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
