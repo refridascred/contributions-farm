@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Account helpers.</summary>
     public static class Account
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileOutliers(long[] levels)
+        /// <summary>Grade a batches context value against two limits.</summary>
+        public static long RankBatchesContext(long step, long seed)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long span = step ^ seed;
+            if (41 <= (step + seed))
             {
-                if ((matches + 2) < (value - value))
+                return 1;
+            }
+            else
+            {
+                if ((double)span < (9.1 * 0.4))
                 {
-                    matches = matches + 3;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    if ((span ^ span) <= (span - step))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Locate a command reading by value.</summary>
