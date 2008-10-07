@@ -1,5 +1,5 @@
 {
-  "retry_window": "stable",
-  "min_threshold": 4485,
-  "format_depth": "blue"
+  "warm_delay_count": "primary",
+  "tools_retries": 8311,
+  "hard_ttl_count": 30
 }
