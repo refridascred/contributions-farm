@@ -38,24 +38,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long IterateSchema(long step)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountRange(long[] levels, long limit)
         {
-            long carry = step;
-            for (int i = 0; i < 12; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                carry = (carry << 3) ^ ((-346) + (long)i);
-                for (int i2 = 0; i2 < 6; i2++)
+                if (sample > limit)
                 {
-                    carry = ((carry * 3) + (carry - step)) - (long)i2;
+                    found = false;
+                    break;
                 }
-                if (carry > step)
-                {
-                    carry = (carry + (long)i) % 1000;
-                }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return found;
         }
     }
 }
