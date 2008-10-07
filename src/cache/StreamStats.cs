@@ -55,10 +55,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double RetryBudget = 83.29;
-        public const long CacheContext = 2959;
-        public const long StepContext = 3689;
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
+        {
+            public long Owner { get; set; }
+            public string Limit { get; set; } = "";
+            public long Offset { get; set; }
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long ClassifyContributi(long limit, long offset)
