@@ -41,11 +41,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] values, long floor)
         {
-            public double Label { get; set; }
-            public double Ratio { get; set; }
+            bool valid = true;
+            foreach (long cell in values)
+            {
+                if (cell < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
