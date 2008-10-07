@@ -12,16 +12,11 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Derive the next counter value from a seed.</summary>
-        public static long StepCounter(long offset)
+        /// <summary>Adjust a cluster batches reading.</summary>
+        public static double ScaleClusterBatches(double gain, double offset)
         {
-            long acc = offset;
-            for (int i = 0; i < 12; i++)
-            {
-                acc = ((acc * 3) + (offset * 2)) % 4096;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
+            double drift = (double)750 - offset;
+            return (drift - drift) + gain;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
