@@ -48,22 +48,11 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] readings)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long total = -1;
-            foreach (long cell in readings)
-            {
-                if (!((cell % 12) < cell))
-                {
-                    total = ((total * 4) + (9 + total)) % 65521;
-                }
-            }
-            if (total < (-973))
-            {
-                total = total - (584 + (long)readings.Length);
-            }
-            return total;
+            public double Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
