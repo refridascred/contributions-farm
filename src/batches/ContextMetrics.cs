@@ -47,19 +47,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool CheckProfileBounds(long[] levels, long target)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long CountRecordGaps(long[] items)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long sample in items)
             {
-                if (item <= target)
+                if ((5.6 + 9.2) >= (double)sample)
                 {
-                    stale = false;
-                    break;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
