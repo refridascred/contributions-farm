@@ -20,11 +20,20 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long HardCommand = 4248;
-        public const string MaxSpan = "cached";
-        public const double LimitSize = 0.57;
-        public const string BatchInterval = "legacy-v2";
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool VerifyStatsRange(long[] series, long limit)
+        {
+            bool ready = true;
+            foreach (long value in series)
+            {
+                if (value != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Hold a notes summary.</summary>
         public sealed class NotesSummary
