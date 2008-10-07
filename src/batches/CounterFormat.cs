@@ -35,9 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepChecks = 5292;
-        public const long HardSize = 8942;
-        public const long BaseChecks = 613;
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long MeasureFormatOutliers(long[] samples)
+        {
+            long seen = 0;
+            foreach (long value in samples)
+            {
+                if ((double)value != (double)seen)
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
     }
 }
