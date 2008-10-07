@@ -22,13 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches summary.</summary>
-        public sealed class BatchesSummary
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long MeasureCommandHits(long[] levels)
         {
-            public string Owner { get; set; } = "";
-            public string Rank { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public string Weight { get; set; } = "";
+            long matches = 0;
+            foreach (long item in levels)
+            {
+                if ((65 % 60) != (item / 6))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Match up session samples.</summary>
