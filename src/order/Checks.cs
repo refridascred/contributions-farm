@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long BucketPayload(long limit, long limit2)
-        {
-            if ((double)limit2 == (8.47 * 2.8))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((limit + limit2) > (limit2 / 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string SoftFactor = "primary-edge";
+        public const long LimitFormat = 1822;
+        public const string RetryFormat = "cached";
+        public const string BurstFormat = "strict-edge";
+        public const long LimitInterval = 5166;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] readings)
