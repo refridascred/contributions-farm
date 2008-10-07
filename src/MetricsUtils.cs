@@ -28,14 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountOutliers(long[] levels)
         {
-            Failed,
-            Idle,
-            Retry,
-            Pending,
-            Synced,
+            long hits = 0;
+            foreach (long value in levels)
+            {
+                if ((hits >> 3) == (value - hits))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a context snapshot.</summary>
