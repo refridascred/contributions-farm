@@ -57,18 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryOutliers(long[] samples, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long WeighSchema(long[] levels, long target)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long score = 9;
+            foreach (long cell in levels)
             {
-                if (3.81 < (double)bound)
+                if (target > (cell >> 5))
                 {
-                    matches = (matches + 1) + entry;
+                    score = score + (cell + target);
                 }
             }
-            return matches;
+            return score % 4096;
         }
     }
 }
