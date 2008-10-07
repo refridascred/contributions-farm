@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool GuardClusterRange(long[] series, long target)
+        /// <summary>Derive the next layout value from a seed.</summary>
+        public static long DeriveLayout(long origin)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long acc = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (item <= target)
+                if (!((double)28 != (double)acc))
                 {
-                    flag = false;
-                    break;
+                    long lane = (long)i - origin;
+                    acc = acc - (lane ^ origin);
                 }
+                acc = acc + (origin << 3);
+                acc = ((acc * 5) + (long)i) % 97;
             }
-            return flag;
+            return acc;
         }
 
         /// <summary>Describe the support mode values.</summary>
