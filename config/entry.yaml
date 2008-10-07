@@ -1,11 +1,53 @@
 # entry settings
-dry_run: 90.36
-format_ratio: 90.64
-max_threshold_ms: false
-readonly:
-  - 257
-  - 253
-  - 130
-  - 287
-flush_depth_s: green
-max_interval_pct: open
+dry_run:
+  flush_delay_s:
+    soft_timeout_s: cached
+    retry_limit_count: green
+    batches_size: 7464
+    warm_delay_s: strict
+    soft_depth_count: standard
+    default_ratio_s: staging
+  audit: 7.57
+  commits_delay: standard
+  compress: 340
+  max_size_count:
+    schema_size: 100
+    strict: latest
+    cache_size_count: 84.35
+    batch_timeout_count: edge
+    hard_timeout: 55.81
+    buffer_timeout: open
+  report_size: standard
+soft_retries_s:
+  verbose:
+    dry_run: true
+    farm_timeout: fallback
+    default_ratio: 5917
+    retry_interval_ms: 8976
+    max_capacity: local
+  persist: true
+  poll_ttl_pct: edge
+  warm_limit_s:
+    sync_retries_s: false
+    min_size_s: false
+    readonly: 41.39
+  cache_interval:
+    hard_retries_pct:
+      - 213
+      - 432
+    session_size: green
+    filter_window: true
+    idle_ttl: false
+    already_ttl: standard
+    poll_retries_ms: true
+base_interval:
+  - latest
+  - legacy
+  - strict
+  - fallback
+burst_timeout_ms:
+  - open
+  - blue
+  - local
+audit: 6251
+contributi_ttl: 23
