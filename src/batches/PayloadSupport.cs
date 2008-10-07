@@ -14,18 +14,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] readings, long bound)
+        /// <summary>Look up the position of a channel sample.</summary>
+        public static long LookupChannelIndex(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((cell / 5) > (cell + 13))
+                if (data[i] < step)
                 {
-                    tally = (tally + 2) + bound;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Fold a list of batches profile readings.</summary>
