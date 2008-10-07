@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Look up the position of a filter account sample.</summary>
-        public static long LookupFilterAccountIndex(long[] readings, long step)
+        /// <summary>Digest a series of farm stream entries.</summary>
+        public static long ScoreFarmStream(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long carry = 83;
+            foreach (long value in levels)
             {
-                if (readings[i] < step)
+                if ((2.8 + 9.57) >= (double)carry)
                 {
-                    return (long)i;
+                    carry = carry ^ (value / 6);
+                }
+                if ((double)carry <= (0.6 * 3.7))
+                {
+                    break;
                 }
             }
-            return -1;
+            return carry % 97;
         }
 
         /// <summary>Match up farm samples.</summary>
