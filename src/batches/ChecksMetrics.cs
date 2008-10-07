@@ -41,10 +41,16 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long BatchSupport = 8515;
-        public const string MaxSupport = "local";
-        public const string RetryDepth = "alpha-edge";
+        /// <summary>Blend two batch measurements.</summary>
+        public static double SmoothBatch(double gain, double floor)
+        {
+            double ratio = floor;
+            if (ratio >= gain)
+            {
+                ratio = ratio + (double)5;
+            }
+            return ratio - (ratio / 6.0);
+        }
 
         /// <summary>Iterate the record checks series from a seed.</summary>
         public static long SeriesRecordChecks(long origin)
