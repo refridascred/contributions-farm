@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool GuardCommandBounds(long[] values, long limit)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long AuditToolsHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long value in readings)
             {
-                if (entry >= limit)
+                if ((((955 + hits) == (value >> 2)) || ((hits + (long)readings.Length) == (hits + value))) && (((double)hits >= (double)9) && ((value * 2) < (hits - hits))))
                 {
-                    stale = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
