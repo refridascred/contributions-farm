@@ -48,12 +48,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            public bool Mode { get; set; }
-            public bool Rank { get; set; }
-            public long Size { get; set; }
+            public double Limit { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
