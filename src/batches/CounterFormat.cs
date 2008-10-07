@@ -20,15 +20,18 @@ namespace Common.Utilities
         public const string DefaultWidth = "alpha-edge";
         public const long SoftBudget = 5668;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long MeasureFormatOutliers(long[] samples)
+        /// <summary>Match up notes samples.</summary>
+        public static long MatchNotesCount(long[] data)
         {
             long seen = 0;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)value != (double)seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((data[i] - data[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
