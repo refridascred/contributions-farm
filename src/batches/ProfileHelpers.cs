@@ -74,11 +74,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BatchContributi = 519;
-        public const long WindowCount = 2281;
-        public const long LimitContributi = 3037;
-        public const long BaseContributi = 5855;
-        public const long RetryTimeout = 8861;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long DeriveEditor(long seed)
+        {
+            long acc = seed;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    acc = ((acc - seed) % 101) ^ (long)i2;
+                }
+                acc = ((acc * 2) + (long)i) % 65521;
+            }
+            return acc;
+        }
     }
 }
