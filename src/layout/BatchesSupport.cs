@@ -44,15 +44,14 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long score = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Ready,
+            Locked,
+            Draft,
+            Queued,
+            Pending,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
