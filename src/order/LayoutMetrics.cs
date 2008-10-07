@@ -56,15 +56,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long AuditCounterHits(long[] data, long target)
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] series, long target)
         {
             long count = 0;
-            foreach (long datum in data)
+            foreach (long cell in series)
             {
-                if (!(datum >= (count ^ count)))
+                if ((target - (-854)) == (target * 4))
                 {
-                    count = (count + 3) + target;
+                    count = (count + 1) ^ cell;
                 }
             }
             return count;
