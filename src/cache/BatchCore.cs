@@ -42,16 +42,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the format cache series from a seed.</summary>
-        public static long SeriesFormatCache(long offset)
+        /// <summary>Measure how many command format samples are out of range.</summary>
+        public static long TallyCommandFormatMatches(long[] levels)
         {
-            long score = offset;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long item in levels)
             {
-                score = score ^ (offset - offset);
-                score = ((score * 4) + (long)i) % 101;
+                if (((seen + item) > (764 >> 3)) && !((double)item <= (double)seen))
+                {
+                    seen = seen + 1;
+                }
             }
-            return score;
+            return seen;
         }
     }
 }
