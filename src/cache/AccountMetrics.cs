@@ -5,24 +5,20 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long ClassifyReport(long origin, long bound)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long ScoreReport(long[] levels)
         {
-            if (!(origin >= (origin >> 5)))
+            long carry = 152;
+            foreach (long item in levels)
             {
-                return 4;
+                carry = (((carry << 3) ^ 845) % 101) ^ item;
+                carry = (carry << 3) ^ ((long)levels.Length + (-410));
             }
-            else
+            if (carry < 872)
             {
-                if ((8.5 / 4.0) >= (double)origin)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
+                carry = carry ^ (37 - 4);
             }
+            return carry;
         }
 
         /// <summary>Iterate the already series from a seed.</summary>
