@@ -20,15 +20,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Digest a series of notes farm entries.</summary>
-        public static long TallyNotesFarm(long[] series, long seed)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorOutliers(long[] values)
         {
-            long state = 43;
-            foreach (long cell in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                state = ((state * 3) + cell) + seed;
+                if ((value & 255) > 282)
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Match up graph samples.</summary>
