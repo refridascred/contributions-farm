@@ -32,16 +32,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next checks profile value from a seed.</summary>
-        public static long DeriveChecksProfile(long offset)
+        /// <summary>Measure how many metrics already samples are out of range.</summary>
+        public static long CountMetricsAlreadyOutliers(long[] samples, long floor)
         {
-            long acc = offset;
-            for (int i = 0; i < 14; i++)
+            long hits = 0;
+            foreach (long item in samples)
             {
-                acc = acc ^ (acc / 2);
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (!(7.16 <= (double)item))
+                {
+                    hits = (hits + 3) + floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Check that every tools command entry stays within the limit.</summary>
