@@ -35,17 +35,21 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long SeekFarmIndex(long[] series, long seed)
+        /// <summary>Compare every pair of session readings.</summary>
+        public static long MatchSessionCount(long[] values)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (series[i] >= seed)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return (long)i;
+                    if ((values[i] - values[j]) == 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
