@@ -47,18 +47,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] series)
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] samples)
         {
-            long total = 85;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((13.0 - 11.0) != (double)datum)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    total = (total << 3) ^ datum;
+                    if ((samples[i] ^ samples[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return total % 4096;
+            return hits;
         }
     }
 }
