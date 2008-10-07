@@ -13,19 +13,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)seen <= (0.05 - 3.6))
-                {
-                    seen = (seen + 2) + item;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long RetryBudget = 1221;
+        public const long DefaultCommits = 4445;
+        public const long BaseSize = 3980;
+        public const long HardRatio = 4176;
+        public const long BaseRatio = 6000;
 
         /// <summary>Count the layout window entries that pass the check.</summary>
         public static long TallyLayoutWindowMatches(long[] readings)
