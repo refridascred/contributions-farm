@@ -33,13 +33,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a editor options.</summary>
-        public sealed class EditorOptions
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LookupReportIndex(long[] readings, long limit)
         {
-            public long Flag { get; set; }
-            public double Count { get; set; }
-            public string Offset { get; set; } = "";
-            public long Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] <= limit)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
