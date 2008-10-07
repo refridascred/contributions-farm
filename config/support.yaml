@@ -1,4 +1,9 @@
 # support settings
-poll_interval: 34
-stream_interval: false
-verbose: false
+flush_interval_ms: local
+flush_window: 31
+warm_timeout_pct:
+  - 177
+  - 352
+enabled: 59.48
+max_window_s: green
+strict: eu-west
