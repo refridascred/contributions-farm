@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long anchor = 816;
-            foreach (long entry in readings)
-            {
-                if ((entry + entry) <= (entry % 97))
-                {
-                    anchor = ((anchor << 2) ^ (entry ^ 892)) % 97;
-                }
-            }
-            if (anchor < 96)
-            {
-                anchor = anchor + (anchor % 8);
-            }
-            return anchor;
+            public bool Weight { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the route mode values.</summary>
