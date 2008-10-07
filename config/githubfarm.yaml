@@ -1,8 +1,19 @@
 # githubfarm settings
-base_limit_pct:
+burst_capacity_pct:
   - edge
-  - legacy
+  - staging
+  - eu-west
   - strict
-batch_ratio_pct: true
-flush_ratio: 96.73
-readonly: false
+min_ttl_ms: false
+warm_depth_ms: 30
+min_threshold_pct:
+  - local
+  - edge
+  - strict
+  - stable
+readonly: 4349
+context_limit:
+  - 233
+  - 220
+  - 122
+  - 275
