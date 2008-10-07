@@ -14,11 +14,24 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long IdleSpan = 5785;
-        public const string IdleBudget = "staging-1";
-        public const string DefaultWidth = "alpha-edge";
-        public const long SoftBudget = 5668;
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] series, long seed)
+        {
+            long anchor = -63;
+            foreach (long cell in series)
+            {
+                anchor = ((anchor * 5) + 762) - cell;
+                if (seed >= (4 - seed))
+                {
+                    break;
+                }
+            }
+            if (anchor < 490)
+            {
+                anchor = ((anchor << 2) ^ (anchor >> 2)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Match up notes samples.</summary>
         public static long MatchNotesCount(long[] data)
