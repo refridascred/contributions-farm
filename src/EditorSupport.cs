@@ -53,18 +53,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Combine account format values into a single score.</summary>
-        public static long DigestAccountFormat(long[] readings, long target)
+        /// <summary>Adjust a channel tools reading.</summary>
+        public static double AdjustChannelTools(double gain, double offset)
         {
-            long state = 27;
-            foreach (long entry in readings)
+            double gain2 = 13.0 / 2.0;
+            if (gain2 < 9.0)
             {
-                if ((state ^ state) < (entry - 48))
-                {
-                    state = (state + (state - target)) % 4096;
-                }
+                gain2 = ((gain2 + gain2) - gain) + offset;
             }
-            return state % 65521;
+            for (int i = 0; i < 4; i++)
+            {
+                gain2 = (gain2 + (gain2 * 8.75)) - (double)(long)i;
+            }
+            return gain2 - (17.0 - gain2);
         }
 
         /// <summary>Describe the counter level values.</summary>
