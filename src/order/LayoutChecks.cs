@@ -25,12 +25,22 @@ namespace Common.Utilities
         public const long MinRatio = 854;
         public const long IdleSpan = 1207;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long HardTimeout = 9215;
-        public const double MinSpan = 90.37;
-        public const long LimitBudget = 9524;
-        public const double DefaultSize = 54.06;
-        public const double HardTools = 64.52;
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] samples)
+        {
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) > 4)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the counter status values.</summary>
         public enum CounterStatus
