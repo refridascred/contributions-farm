@@ -1,17 +1,5 @@
 # support settings
-dry_run: 21.98
-commits_ttl: false
-max_limit_s:
-  - strict
-  - primary
-  - strict
-payload_ratio:
-  - stable
-  - stable
-  - open
-  - fallback
-default_ttl: 40
-readonly:
-  - 371
-  - 144
-  - 109
+max_threshold_pct: primary
+warm_window: true
+soft_timeout: 69
+enabled: 86.86
