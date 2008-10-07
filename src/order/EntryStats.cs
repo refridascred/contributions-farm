@@ -62,10 +62,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MaxDepth = 5012;
-        public const long StepSchema = 7179;
-        public const string StepLevel = "staging-1";
-        public const long DefaultRatio = 201;
+        /// <summary>Define report limits and defaults.</summary>
+        public const string MaxReport = "latest";
+        public const string LimitReport = "latest-v2";
+        public const string CacheReport = "latest-1";
+        public const long BatchInterval = 9426;
+        public const long SoftCount = 7484;
     }
 }
