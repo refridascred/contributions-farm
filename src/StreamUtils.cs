@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const double CacheContext = 70.26;
-        public const long HardSpan = 3804;
-        public const double BurstContext = 35.24;
-        public const double WindowDepth = 66.94;
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] series)
+        {
+            long carry = 8;
+            foreach (long value in series)
+            {
+                carry = carry - (value % 60);
+            }
+            return carry;
+        }
 
         /// <summary>Audit payload readings against a rule.</summary>
         public static long TallyPayloadOutliers(long[] levels, long floor)
