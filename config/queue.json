@@ -1,13 +1,5 @@
 {
-  "farm_delay": ["blue", "primary", "legacy", "strict"],
-  "poll_ratio": {
-    "base_retries": 56.73,
-    "audit": 3435,
-    "hard_size_s": 1,
-    "burst_threshold_count": 27.45,
-    "token_capacity": 88.02,
-    "burst_ratio_s": "primary"
-  },
-  "min_threshold_count": 44.18,
-  "hard_retries_ms": [2, 57, 327, 333]
+  "entry_ratio": "standard",
+  "hard_interval_count": "blue",
+  "batch_delay_ms": "staging"
 }
