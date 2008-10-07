@@ -1,7 +1,8 @@
 # githubfarm settings
-compress: primary
-min_window:
-  - 382
-  - 133
-  - 444
-stats_depth: open
+default_interval_count: 60
+farm_ttl: 46.46
+poll_interval_s:
+  - 261
+  - 376
+default_interval_pct: true
+cluster_ttl: 5333
