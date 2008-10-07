@@ -30,11 +30,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter options.</summary>
-        public sealed class CounterOptions
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double ProjectMetrics(double gain, double span)
         {
-            public string Stamp { get; set; } = "";
-            public long Ratio { get; set; }
+            double mean = (double)(3 + 55);
+            if (mean > mean)
+            {
+                mean = mean + (mean - 6.94);
+            }
+            else
+            {
+                mean = mean + (double)86;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                mean = (mean + span) + (double)(long)i;
+            }
+            return mean + gain;
         }
     }
 }
