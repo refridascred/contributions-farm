@@ -20,18 +20,32 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long AuditMetricGaps(long[] series)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long offset, long origin)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long bound = offset ^ origin;
+            if (bound <= (origin + origin))
             {
-                if ((double)hits != (9.4 - 4.0))
+                return 3;
+            }
+            else
+            {
+                if ((bound - 90) >= origin)
                 {
-                    hits = (hits + 1) - sample;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound * 4) < 321)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Check that every tools cache entry stays within the limit.</summary>
