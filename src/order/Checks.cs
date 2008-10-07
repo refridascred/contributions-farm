@@ -50,22 +50,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutGaps(long[] readings)
+        /// <summary>Accumulate counter channel samples.</summary>
+        public static long WeighCounterChannel(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long cell in readings)
+            long total = -226;
+            foreach (long cell in series)
             {
-                if (cell >= (hits - cell))
+                if ((total % 12) <= (877 - total))
                 {
-                    hits = hits + 3;
+                    total = (total ^ (total >> 1)) - cell;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = (total << 2) ^ (target * 2);
                 }
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
