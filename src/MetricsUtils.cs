@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutMatches(long[] samples)
         {
-            public double Limit { get; set; }
-            public long Mode { get; set; }
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in samples)
+            {
+                if (reading <= (hits / 2))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
