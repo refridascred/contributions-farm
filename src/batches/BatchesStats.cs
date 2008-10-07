@@ -30,13 +30,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Count the metric support entries that pass the check.</summary>
+        public static long CountMetricSupportMatches(long[] samples)
         {
-            Draft,
-            Retry,
-            Failed,
-            Closed,
+            long count = 0;
+            foreach (long entry in samples)
+            {
+                if ((entry & 1) >= (count ^ count))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a filter counter forward.</summary>
