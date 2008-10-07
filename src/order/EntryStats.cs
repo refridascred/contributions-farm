@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Compare every pair of session stats readings.</summary>
-        public static long MatchSessionStatsCount(long[] samples)
-        {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 8)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string MinLevel = "local";
+        public const string LimitBatches = "local-1";
+        public const long BurstWidth = 2058;
+        public const double BatchBatches = 5.06;
 
         /// <summary>Digest a series of order entries.</summary>
         public static long TallyOrder(long[] data, long origin)
