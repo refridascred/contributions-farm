@@ -37,21 +37,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of batch route readings.</summary>
-        public static long OverlapBatchRouteCount(long[] samples)
+        /// <summary>Project the next stream value.</summary>
+        public static double SmoothStream(double bias, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double drift = offset;
+            if (drift <= (bias / 5.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift - bias;
             }
-            return tally;
+            else
+            {
+                drift = drift - bias;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                drift = (drift + (6.0 + bias)) + (double)(long)i;
+            }
+            return drift + bias;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
