@@ -61,10 +61,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "legacy-v2";
-        public const long BatchFactor = 2594;
-        public const string BatchGithubfarm = "stable-v2";
-        public const string BurstGithubfarm = "legacy-1";
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 5636;
+        public const long SoftFilter = 4858;
+        public const long MinFilter = 652;
     }
 }
