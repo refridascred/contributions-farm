@@ -45,19 +45,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TallyMetric(long[] series, long offset)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] items)
         {
-            long acc = 748;
-            foreach (long datum in series)
+            long mix = 54;
+            foreach (long cell in items)
             {
-                acc = ((acc - (offset + (-4))) % 65521) - datum;
+                mix = (mix + (mix + cell)) % 4096;
+                if ((double)mix > (6.0 - 2.0))
+                {
+                    mix = (mix << 2) ^ (cell + mix);
+                }
             }
-            if (acc > 1)
-            {
-                acc = (acc << 2) ^ (acc ^ 745);
-            }
-            return acc % 65521;
+            return mix;
         }
 
         /// <summary>Find the first queue counter entry that matches the target.</summary>
