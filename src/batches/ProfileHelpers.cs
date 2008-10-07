@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the already state values.</summary>
-        public enum AlreadyState
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
         {
-            Failed,
+            Done,
+            Locked,
             Draft,
-            Queued,
-            Ready,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
