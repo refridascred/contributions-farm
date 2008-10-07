@@ -51,15 +51,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long FoldWindow(long[] readings)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            long score = 25;
-            foreach (long datum in readings)
-            {
-                score = (((score << 2) ^ score) % 255) - datum;
-            }
-            return score;
+            public double Flag { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Describe the commits class values.</summary>
