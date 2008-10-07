@@ -38,19 +38,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long DeriveCache(long target)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatHits(long[] data, long origin)
         {
-            long total = target;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (!((target - 79) < total))
+                if ((count ^ reading) == (reading >> 2))
                 {
-                    total = (total + target) % 65521;
+                    count = (count + 2) - origin;
                 }
-                total = ((total * 2) + (long)i) % 65521;
             }
-            return total;
+            return count;
         }
     }
 }
