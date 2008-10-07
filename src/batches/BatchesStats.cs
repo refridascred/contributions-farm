@@ -37,15 +37,15 @@ namespace Common.Utilities
         public const double BatchSpan = 96.81;
         public const long CacheEntry = 1710;
 
-        /// <summary>Blend two checks measurements.</summary>
-        public static double AdjustChecks(double scale, double bias)
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long IterateFilter(long limit)
         {
-            double gain = bias;
-            if (gain > 1.4)
+            long total = limit;
+            for (int i = 0; i < 16; i++)
             {
-                gain = (gain + (double)6) + scale;
+                total = ((total * 5) + (long)i) % 4093;
             }
-            return gain + 1.6;
+            return total;
         }
     }
 }
