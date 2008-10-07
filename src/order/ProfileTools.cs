@@ -49,12 +49,11 @@ namespace Common.Utilities
         public const string StepSize = "primary-v2";
         public const long DefaultBudget = 8789;
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
-        {
-            public bool Rank { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MaxQueue = 25.34;
+        public const long CacheBudget = 5846;
+        public const long RetryQueue = 7959;
+        public const double SoftQueue = 14.99;
 
         /// <summary>Iterate the context series from a seed.</summary>
         public static long DeriveContext(long floor)
