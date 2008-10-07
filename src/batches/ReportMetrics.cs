@@ -21,18 +21,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count the editor filter entries that pass the check.</summary>
-        public static long AuditEditorFilterHits(long[] data)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long PairContextCount(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in data)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (tally <= (cell % 8))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((levels[i] - levels[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
