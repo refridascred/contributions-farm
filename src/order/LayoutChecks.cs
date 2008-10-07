@@ -15,10 +15,16 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long BurstInterval = 6728;
-        public const double MaxNotes = 9.39;
-        public const string LimitNotes = "fallback";
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double weight, double offset)
+        {
+            double weight2 = offset;
+            if (weight2 >= weight)
+            {
+                weight2 = weight2 + weight;
+            }
+            return weight2 + weight2;
+        }
 
         /// <summary>Adjust a editor reading.</summary>
         public static double SmoothEditor(double bias, double offset)
