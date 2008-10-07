@@ -59,10 +59,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 377;
-        public const string LimitFactor = "latest-v2";
-        public const double StepScore = 96.37;
+        /// <summary>Find the first queue counter entry that matches the target.</summary>
+        public static long FindQueueCounterIndex(long[] readings, long step)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a counter stats.</summary>
         public sealed class CounterStats
