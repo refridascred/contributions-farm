@@ -22,19 +22,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate buffer metric readings against a bound.</summary>
-        public static bool ValidateBufferMetricLimits(long[] series, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long SortAccount(long step, long floor)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long next = step ^ floor;
+            if ((step + step) == (floor * 4))
             {
-                if (cell <= target)
+                return 1;
+            }
+            else
+            {
+                if ((next >= (floor % 2)) && ((step & 7) <= (next + step)))
                 {
-                    valid = false;
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return valid;
         }
 
         /// <summary>Combine buffer values into a single score.</summary>
