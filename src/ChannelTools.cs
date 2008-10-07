@@ -23,19 +23,32 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool GuardSchemaBounds(long[] series, long seed)
+        /// <summary>Rank support report input into a small class.</summary>
+        public static long ClassifySupportReport(long origin, long seed)
         {
-            bool ok = true;
-            foreach (long datum in series)
+            long next = origin - seed;
+            if ((15.0 / 6.0) > (double)next)
             {
-                if (datum <= seed)
+                return 7;
+            }
+            else
+            {
+                if (!((double)seed >= (6.7 + 9.9)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((440 ^ seed) > (next >> 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return ok;
         }
     }
 }
