@@ -43,15 +43,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double SmoothFarm(double bias, double offset)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long LocateGraphIndex(long[] items, long step)
         {
-            double bias2 = offset;
-            if (bias2 < offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                bias2 = (bias2 + (bias2 / 8.0)) + bias;
+                if ((items[i] <= step) && ((items[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias2 + (6.0 / 9.0);
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
