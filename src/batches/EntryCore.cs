@@ -29,13 +29,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
-        {
-            public long Weight { get; set; }
-            public long Rank { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 1896;
+        public const double LimitSession = 52.34;
+        public const long SoftSession = 3434;
+        public const long StepSession = 3560;
 
         /// <summary>Derive the next token window value from a seed.</summary>
         public static long RollTokenWindow(long floor)
