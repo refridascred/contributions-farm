@@ -58,19 +58,13 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool CheckEntryBounds(long[] items, long floor)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            bool ok = true;
-            foreach (long value in items)
-            {
-                if (value <= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public long Owner { get; set; }
+            public bool Score { get; set; }
+            public long Size { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
