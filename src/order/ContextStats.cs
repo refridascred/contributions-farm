@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Rank githubfarm input into a small class.</summary>
-        public static long RankGithubfarm(long floor, long seed)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            if ((floor * 2) < (floor + seed))
-            {
-                return 8;
-            }
-            else
-            {
-                if (floor > (floor & 63))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Ready,
+            Dropped,
+            Active,
+            Stale,
+            Pending,
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
