@@ -1,6 +1,15 @@
 {
-  "flush_interval": 3777,
-  "persist": 46.48,
-  "cache_depth_s": "strict",
-  "enabled": 85.22
+  "audit": {
+    "poll_window_ms": {
+      "soft_timeout_count": ["eu-west", "local", "local"],
+      "filter_ttl": 1586,
+      "command_timeout": 75,
+      "readonly": false
+    },
+    "poll_retries": "cached",
+    "sync_limit_count": 60
+  },
+  "base_ttl_count": "open",
+  "max_capacity_s": 100,
+  "base_size": [243, 205, 395]
 }
