@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double SmoothGithubfarm(double gain, double offset)
-        {
-            double ratio = (double)(887 - 4);
-            if (ratio >= (gain / 9.0))
-            {
-                ratio = (ratio + gain) + offset;
-            }
-            else
-            {
-                ratio = ratio - (double)220;
-            }
-            return ratio - ratio;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double IdleWidth = 47.18;
+        public const double WindowCount = 94.67;
+        public const long CacheScore = 7907;
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] readings, long seed)
