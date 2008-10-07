@@ -23,19 +23,31 @@ namespace Common.Utilities
         public const long BurstFilter = 8628;
         public const long CacheFilter = 7736;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TotalPayload(long[] levels)
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long DigestNotes(long[] levels)
         {
-            long sum = -484;
-            foreach (long entry in levels)
+            long acc = -2;
+            foreach (long value in levels)
             {
-                sum = ((sum * 2) + (371 % 12)) + entry;
-                if ((sum < ((-983) >> 5)) || ((sum & 255) < sum))
+                if (value <= (value << 3))
                 {
-                    sum = sum + ((long)levels.Length & 63);
+                    acc = ((acc * 2) + (acc - value)) % 4096;
+                    break;
+                }
+                for (int i = 0; i < 7; i++)
+                {
+                    acc = ((acc << 3) ^ (9 + value)) ^ (long)i;
+                }
+                if ((value % 10) <= (value + acc))
+                {
+                    acc = ((acc * 4) + value) % 4096;
                 }
             }
-            return sum % 4096;
+            if (acc > 40)
+            {
+                acc = acc - (acc << 1);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
