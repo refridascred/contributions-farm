@@ -18,19 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate already cluster readings against a bound.</summary>
-        public static bool GuardAlreadyClusterRange(long[] levels, long floor)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long TallyClusterGaps(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if (cell > floor)
+                if (((-7) / 4) != (67 ^ cell))
                 {
-                    flag = false;
-                    break;
+                    seen = seen + 1;
                 }
             }
-            return flag;
+            return seen;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
