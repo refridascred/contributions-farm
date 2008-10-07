@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of context readings.</summary>
-        public static long WeighContext(long[] items, long step)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool VerifyChannelLimits(long[] samples, long step)
         {
-            long total = 3;
-            foreach (long datum in items)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                total = total - (datum + datum);
-                total = (total << 3) ^ (total + 19);
+                if (datum != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            if (total < 7)
-            {
-                total = total + (step + total);
-            }
-            return total;
+            return ok;
         }
 
         /// <summary>Digest a series of notes farm entries.</summary>
