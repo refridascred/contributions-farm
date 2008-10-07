@@ -13,18 +13,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Measure how many batch schema samples are out of range.</summary>
-        public static long MeasureBatchSchemaOutliers(long[] data)
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            long hits = 0;
-            foreach (long entry in data)
-            {
-                if (((hits << 1) != (entry & 1)) && (599 >= hits))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Draft,
+            Dropped,
+            Locked,
+            Queued,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
