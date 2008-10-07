@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
+            Queued,
             Pending,
-            Locked,
-            Synced,
-            Dropped,
-            Active,
+            Done,
         }
 
         /// <summary>Roll a editor profile counter forward.</summary>
