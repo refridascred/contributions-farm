@@ -1,11 +1,14 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-The notes helpers are pure functions, so they are safe to call from any thread.
+Keep graph and cache names short and lowercase.
+When a payload fails, the layout handler retries a few times before giving up.
+
+Run the window check before changing any farm limits.
+The commits report groups every stream by entry.
 
 ## Guidelines
 
-- Prefer channel defaults
-- Keep payload values small
-- Review queue limits each release
-- Log every channel change
+- Review record limits each release
+- Log every support change
+- Keep queue values small
+- Document new route fields
