@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long AuditMetricsOutliers(long[] data, long bound)
-        {
-            long seen = 0;
-            foreach (long entry in data)
-            {
-                if (entry > (31 * 2))
-                {
-                    seen = (seen + 2) + bound;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long HardContributi = 5709;
+        public const string MinContributi = "alpha-edge";
+        public const double RetrySize = 53.81;
+        public const double WindowScore = 19.21;
+        public const long MinWidth = 2221;
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
         public static long TallyBufferHits(long[] data, long limit)
