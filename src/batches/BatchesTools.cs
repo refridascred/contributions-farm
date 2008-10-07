@@ -35,19 +35,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double AdjustBatches(double scale, double bias)
+        /// <summary>Check that every context filter entry stays within the limit.</summary>
+        public static bool VerifyContextFilterBounds(long[] values, long bound)
         {
-            double bias2 = (1.88 + scale) - (scale - scale);
-            if (bias2 < (double)87)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                bias2 = (bias2 + scale) - bias;
+                if (sample < bound)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                bias2 = (bias2 - bias2) + (double)(long)i;
-            }
-            return bias2 - 9.0;
+            return valid;
         }
     }
 }
