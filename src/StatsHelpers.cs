@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            Retry,
-            Closed,
-            Idle,
-            Dropped,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MaxRatio = "primary";
+        public const string BurstDepth = "cached-edge";
+        public const long IdleInterval = 1039;
+        public const long StepGraph = 9643;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long ScoreSession(long[] data, long floor)
