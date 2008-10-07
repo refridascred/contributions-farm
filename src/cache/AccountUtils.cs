@@ -31,13 +31,11 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
         {
-            Closed,
-            Failed,
-            Ready,
-            Pending,
+            public bool Owner { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
