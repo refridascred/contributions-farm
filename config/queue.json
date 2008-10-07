@@ -1,8 +1,7 @@
 {
-  "batch_threshold": 30,
-  "filter_interval": 100,
-  "default_retries": 4567,
-  "default_ratio": false,
-  "strict": 5.88,
-  "warm_ttl": "local"
+  "min_depth_s": 67,
+  "min_limit_ms": false,
+  "enabled": 500,
+  "soft_depth": 30,
+  "commits_size": 6
 }
