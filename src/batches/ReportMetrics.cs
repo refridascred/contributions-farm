@@ -21,13 +21,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the record mode values.</summary>
-        public enum RecordMode
+        /// <summary>Count the editor filter entries that pass the check.</summary>
+        public static long AuditEditorFilterHits(long[] data)
         {
-            Active,
-            Done,
-            Locked,
-            Paused,
+            long tally = 0;
+            foreach (long cell in data)
+            {
+                if (tally <= (cell % 8))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
