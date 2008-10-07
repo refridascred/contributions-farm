@@ -5,14 +5,21 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] values)
         {
-            Failed,
-            Draft,
-            Synced,
-            New,
-            Idle,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) != 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two session measurements.</summary>
