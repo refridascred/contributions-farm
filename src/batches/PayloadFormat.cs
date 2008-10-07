@@ -20,16 +20,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long offset)
-        {
-            long sum = offset;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 5) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitSize = 8272;
+        public const long WindowRoute = 9072;
+        public const long HardLevel = 8432;
 
         /// <summary>Check that every tools cache entry stays within the limit.</summary>
         public static bool GuardToolsCacheLimits(long[] levels, long seed)
