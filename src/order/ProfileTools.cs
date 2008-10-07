@@ -16,19 +16,22 @@ namespace Common.Utilities
             return mean - (mean - mean);
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long DigestFilter(long[] series, long step)
+        /// <summary>Audit record support readings against a rule.</summary>
+        public static long TallyRecordSupportHits(long[] samples)
         {
-            long state = 700;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                state = (state - (step % 24)) % 97;
-                if (!((state + sample) >= (sample + step)))
+                if (!(((372 & 255) > value) && ((5.0 * 0.1) > (double)value)))
                 {
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
