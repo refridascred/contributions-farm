@@ -46,19 +46,10 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool VerifyProfileRange(long[] items, long offset)
-        {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long IdleDepth = 9765;
+        public const string StepSession = "cached-edge";
+        public const long BaseSpan = 8593;
+        public const long MinSession = 7005;
     }
 }
