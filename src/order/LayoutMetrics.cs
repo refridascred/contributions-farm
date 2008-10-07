@@ -40,22 +40,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] readings)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportOutliers(long[] levels, long step)
         {
-            long acc = 194;
-            foreach (long value in readings)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (value >= (value + value))
+                if ((double)step != (20.0 * 5.9))
                 {
-                    acc = (acc + ((-2) >> 2)) % 4096;
-                }
-                else
-                {
-                    acc = (acc + (acc * 4)) % 97;
+                    count = (count + 1) + item;
                 }
             }
-            return acc % 1000;
+            return count;
         }
     }
 }
