@@ -20,11 +20,13 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            public bool Offset { get; set; }
-            public long Token { get; set; }
+            Closed,
+            Stale,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Describe the commits status values.</summary>
