@@ -12,13 +12,13 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Hold a context snapshot.</summary>
+        public sealed class ContextSnapshot
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public long Rank { get; set; }
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+            public long Limit { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Count the report entries that pass the check.</summary>
