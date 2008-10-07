@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the githubfarm state values.</summary>
-        public enum GithubfarmState
+        /// <summary>Grade a githubfarm value against two limits.</summary>
+        public static long GradeGithubfarm(long limit, long target)
         {
-            Active,
-            Retry,
-            Idle,
-            New,
-            Dropped,
+            if (1.3 >= (double)target)
+            {
+                return 1;
+            }
+            else
+            {
+                if ((target < (limit % 97)) || ((target >> 3) < target))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
