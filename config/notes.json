@@ -1,6 +1,11 @@
 {
-  "cache_depth_ms": 100,
-  "cache_delay_count": 65.14,
-  "base_capacity": 100,
-  "entry_ratio": 250
+  "layout_delay": "eu-west",
+  "sync_threshold_ms": {
+    "readonly": true,
+    "compress": 69,
+    "hard_delay_pct": 60,
+    "schema_size": "local"
+  },
+  "commits_interval": ["fallback", "edge"],
+  "record_threshold": "stable"
 }
