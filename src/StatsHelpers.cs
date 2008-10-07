@@ -55,17 +55,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a report cache reading by value.</summary>
-        public static long LocateReportCacheIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "legacy-v2";
+        public const long BatchFactor = 2594;
+        public const string BatchGithubfarm = "stable-v2";
+        public const string BurstGithubfarm = "legacy-1";
     }
 }
