@@ -34,12 +34,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the checks kind values.</summary>
-        public enum ChecksKind
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long BucketMetric(long seed, long origin)
         {
-            Pending,
-            Retry,
-            Stale,
+            long lane = seed ^ origin;
+            if (!((origin - 6) >= (82 & 15)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed & 15) >= (origin + 903))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((double)seed < (4.2 - 8.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)lane > (2.1 / 4.0)) || ((8.8 / 2.0) == (double)origin))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
