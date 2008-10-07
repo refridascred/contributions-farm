@@ -12,15 +12,13 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Blend two batch measurements.</summary>
-        public static double BlendBatch(double ratio, double bias)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            double mean = bias;
-            if (mean <= (mean / 3.0))
-            {
-                mean = mean - (mean + bias);
-            }
-            return mean + (mean - ratio);
+            public long Rank { get; set; }
+            public long Stamp { get; set; }
+            public double Ratio { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
