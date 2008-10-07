@@ -1,8 +1,9 @@
-id,token,count,state
-1,19.72,100,primary
-2,655,edge,fallback
-3,874,cached,71.78
-4,380,primary,686
-5,70.19,standard,23.69
-6,155,90.35,green
-7,41.53,34.24,634
+id,state,rank,token
+1,376,strict,16.28
+2,32.16,open,368
+3,742,603,strict
+4,32.26,61.29,open
+5,13.06,71.88,fallback
+6,247,4.27,111
+7,638,14.08,eu-west
+8,62.24,76.49,90.93
