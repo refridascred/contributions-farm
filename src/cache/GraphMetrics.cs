@@ -62,13 +62,19 @@ namespace Common.Utilities
         public const string MinSize = "open-v2";
         public const long IdleFactor = 3460;
 
-        /// <summary>Hold a tools stats.</summary>
-        public sealed class ToolsStats
+        /// <summary>Validate graph account readings against a bound.</summary>
+        public static bool GuardGraphAccountLimits(long[] series, long limit)
         {
-            public long Flag { get; set; }
-            public string Label { get; set; } = "";
-            public double Size { get; set; }
-            public long Offset { get; set; }
+            bool ok = true;
+            foreach (long cell in series)
+            {
+                if (cell <= limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
