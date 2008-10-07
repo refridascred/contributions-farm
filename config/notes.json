@@ -1,5 +1,20 @@
 {
-  "enabled": 33,
-  "already_timeout": "standard",
-  "default_threshold": 1024
+  "stats_size": 8053,
+  "channel_retries": ["legacy", "staging"],
+  "default_capacity_count": 59.04,
+  "verbose": 82,
+  "base_limit_count": "legacy",
+  "tools_interval": {
+    "retry_limit": true,
+    "soft_window_count": "latest",
+    "command_capacity": {
+      "cache_ttl": [41, 262],
+      "command_ttl": "primary",
+      "githubfarm_window": 5035,
+      "min_retries": "fallback",
+      "channel_timeout": false,
+      "account_timeout": "primary"
+    },
+    "batch_retries_count": 98
+  }
 }
