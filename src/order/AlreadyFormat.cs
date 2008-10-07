@@ -39,11 +39,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] samples)
         {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            long score = 233;
+            foreach (long datum in samples)
+            {
+                if (score > datum)
+                {
+                    score = ((score << 2) ^ (datum + score)) % 1000;
+                }
+            }
+            return score;
         }
 
         /// <summary>Hold a report entry.</summary>
