@@ -19,17 +19,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a graph sample.</summary>
-        public static long SeekGraphIndex(long[] levels, long seed)
+        /// <summary>Combine graph format values into a single score.</summary>
+        public static long TotalGraphFormat(long[] levels, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 5;
+            foreach (long item in levels)
             {
-                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
+                if ((10.0 * 4.06) > (double)item)
                 {
-                    return (long)i;
+                    state = ((state * 5) + (state & 127)) + floor;
+                }
+                else
+                {
+                    state = state ^ state;
+                }
+                if ((state / 7) >= item)
+                {
+                    state = (state ^ state) % 1000;
                 }
             }
-            return -1;
+            return state % 97;
         }
 
         /// <summary>Count the command entries that pass the check.</summary>
