@@ -1,8 +1,23 @@
 # support settings
-dry_run: standard
-account_retries:
-  - 319
-  - 87
-  - 229
-  - 478
-command_interval: eu-west
+sync_interval_count: staging
+soft_timeout_count:
+  idle_capacity: 71
+  batch_depth: 57
+  support_ratio:
+    - green
+    - blue
+    - fallback
+    - legacy
+  poll_depth:
+    - 139
+    - 350
+    - 482
+    - 368
+dry_run: 1191
+hard_depth_count:
+  - 27
+  - 150
+  - 73
+  - 414
+cache_size_s: 14.91
+enabled: 60.65
