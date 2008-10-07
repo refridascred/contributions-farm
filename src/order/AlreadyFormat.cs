@@ -29,12 +29,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultCount = 6243;
-        public const string LimitFormat = "local-1";
-        public const long RetryFormat = 7303;
-        public const long CacheFormat = 8626;
-        public const string MinInterval = "staging-edge";
+        /// <summary>Iterate the report cluster series from a seed.</summary>
+        public static long IterateReportCluster(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 23; i++)
+            {
+                sum = (sum + (long)i) % 65521;
+                sum = (sum ^ (seed - sum)) % 97;
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
+        }
 
         /// <summary>Fold a list of cache readings.</summary>
         public static long ScoreCache(long[] series)
