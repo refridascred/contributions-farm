@@ -13,13 +13,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a graph stats.</summary>
-        public sealed class GraphStats
-        {
-            public bool Total { get; set; }
-            public long Stamp { get; set; }
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxCount = 5262;
+        public const string MaxFormat = "staging";
+        public const long StepFormat = 2252;
+        public const string MinFormat = "stable-1";
 
         /// <summary>Find the first order entry that matches the target.</summary>
         public static long FindOrderIndex(long[] series, long bound)
