@@ -33,24 +33,11 @@ namespace Common.Utilities
         public const long SoftSession = 3434;
         public const long StepSession = 3560;
 
-        /// <summary>Derive the next token window value from a seed.</summary>
-        public static long RollTokenWindow(long floor)
+        /// <summary>Hold a already snapshot.</summary>
+        public sealed class AlreadySnapshot
         {
-            long anchor = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                anchor = (anchor - (anchor >> 1)) % 4096;
-                if (((long)i ^ (long)i) > (anchor - anchor))
-                {
-                    anchor = ((anchor << 3) ^ ((long)i >> 3)) % 4096;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ floor;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
