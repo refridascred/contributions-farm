@@ -53,15 +53,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long SeriesAccount(long floor)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportHits(long[] values)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if (!(datum <= (datum * 4)))
+                {
+                    matches = matches + 2;
+                }
             }
-            return carry;
+            return matches;
         }
     }
 }
