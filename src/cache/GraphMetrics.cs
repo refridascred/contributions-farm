@@ -36,12 +36,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxSpan = 7542;
-        public const long CacheInterval = 3093;
-        public const long DefaultWidth = 9615;
-        public const long BurstSize = 4518;
-        public const double HardBatches = 3.13;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseEntry = 923;
+        public const long HardEntry = 5803;
+        public const long LimitEntry = 6861;
+        public const string DefaultEntry = "staging";
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long SeekContributiIndex(long[] samples, long seed)
