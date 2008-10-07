@@ -32,12 +32,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor class values.</summary>
-        public enum EditorClass
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            Queued,
-            Pending,
-            Stale,
+            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
