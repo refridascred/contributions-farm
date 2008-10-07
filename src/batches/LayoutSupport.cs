@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long DigestStream(long[] data)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long score = 70;
-            foreach (long sample in data)
-            {
-                score = (score ^ sample) % 65521;
-            }
-            if (score > 803)
-            {
-                score = (score ^ (score - (-302))) % 97;
-            }
-            return score;
+            Synced,
+            Active,
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
