@@ -41,18 +41,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long AuditGithubfarmGaps(long[] data)
+        /// <summary>Describe the metric state values.</summary>
+        public enum MetricState
         {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (27 >= (seen / 5))
-                {
-                    seen = (seen + 1) ^ value;
-                }
-            }
-            return seen;
+            Closed,
+            Dropped,
+            Draft,
         }
     }
 }
