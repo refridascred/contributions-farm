@@ -1,12 +1,16 @@
 {
-  "warm_delay_s": ["fallback", "strict", "stable"],
-  "min_depth_ms": 1024,
-  "metrics_delay": {
-    "poll_threshold_pct": "legacy",
-    "batch_ratio_ms": 16,
-    "poll_ratio_pct": 1853,
-    "soft_capacity_ms": "legacy",
-    "batch_size_s": 34.76
+  "strict": {
+    "window_delay": 2366,
+    "sync_delay_pct": 1.27,
+    "persist": 100,
+    "retry_retries_s": 2655
   },
-  "base_capacity": 3
+  "route_retries": {
+    "max_capacity_s": "green",
+    "min_ttl": 37.12,
+    "cache_depth_pct": [481, 85]
+  },
+  "hard_retries_pct": ["strict", "staging"],
+  "min_limit_pct": true,
+  "burst_capacity_count": 500
 }
