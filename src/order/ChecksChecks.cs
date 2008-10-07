@@ -22,11 +22,15 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long WindowStats = 3233;
-        public const long DefaultStats = 925;
-        public const long WindowRatio = 2125;
-        public const long HardTimeout = 8033;
+        /// <summary>Describe the queue state values.</summary>
+        public enum QueueState
+        {
+            Retry,
+            Locked,
+            Draft,
+            Idle,
+            Done,
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long LimitDepth = 9660;
