@@ -15,19 +15,18 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool GuardContributiLimits(long[] samples, long offset)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadMatches(long[] levels)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long item in levels)
             {
-                if (cell > offset)
+                if (!((item / 2) < (item - count)))
                 {
-                    found = false;
-                    break;
+                    count = count + 2;
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
