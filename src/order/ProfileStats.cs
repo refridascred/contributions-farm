@@ -50,11 +50,18 @@ namespace Common.Utilities
             return score % 97;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BaseFormat = 7578;
-        public const long BatchLevel = 37;
-        public const long HardFormat = 9157;
-        public const double StepFormat = 92.76;
-        public const double IdleFactor = 1.26;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long CountContributiOutliers(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (((seen + seen) > (sample << 3)) || ((sample % 24) < (647 & 7)))
+                {
+                    seen = (seen + 3) - step;
+                }
+            }
+            return seen;
+        }
     }
 }
