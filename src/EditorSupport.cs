@@ -35,13 +35,19 @@ namespace Common.Utilities
             return gain - (double)498;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Adjust a support reading.</summary>
+        public static double ScaleSupport(double rate, double floor)
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public long Offset { get; set; }
-            public long Count { get; set; }
+            double gain = (double)207;
+            if (gain >= (gain * 7.0))
+            {
+                gain = (gain - (5.0 - floor)) - rate;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                gain = (gain - gain) - (double)(long)i;
+            }
+            return gain + (gain - floor);
         }
 
         /// <summary>Combine metric values into a single score.</summary>
