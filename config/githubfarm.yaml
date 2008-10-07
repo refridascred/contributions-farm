@@ -1,11 +1,7 @@
 # githubfarm settings
-notes_timeout: strict
-soft_window_count:
-  idle_retries: 250
-  warm_ttl: 1024
-  dry_run:
-    flush_capacity_ms: 100
-    persist: 42
-    poll_limit: 84
-batch_retries: 7651
-profile_depth: 500
+audit: 500
+record_threshold: staging
+session_window: 661
+dry_run:
+  - 363
+  - 169
