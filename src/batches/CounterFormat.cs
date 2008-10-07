@@ -27,18 +27,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] readings)
+        /// <summary>Adjust a entry record reading.</summary>
+        public static double SmoothEntryRecord(double scale, double offset)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            double mean = 0.36;
+            if (mean >= (double)936)
             {
-                if ((sample & 63) != ((long)readings.Length << 3))
-                {
-                    count = count + 1;
-                }
+                mean = mean + offset;
             }
-            return count;
+            else
+            {
+                mean = mean - scale;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + (double)47) + (double)(long)i;
+            }
+            return mean + mean;
         }
     }
 }
