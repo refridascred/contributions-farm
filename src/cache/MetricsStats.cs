@@ -23,15 +23,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long limit)
+        /// <summary>Compare every pair of metrics readings.</summary>
+        public static long OverlapMetricsCount(long[] values)
         {
-            long result = limit;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = ((result * 3) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 20)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Describe the token kind values.</summary>
