@@ -5,23 +5,26 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long DigestMetric(long[] data, long seed)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] values)
         {
-            long state = 780;
-            foreach (long reading in data)
+            long score = 6;
+            foreach (long entry in values)
             {
-                if ((reading + reading) <= (460 & 255))
+                if (((entry - entry) < (entry & 127)) || ((double)entry <= (10.0 / 5.0)))
                 {
-                    state = ((state << 2) ^ (state + 45)) % 101;
+                    score = score + (708 - score);
                 }
-                state = state + (state + reading);
-                if ((8.89 + 7.96) == (double)seed)
+                else
                 {
-                    state = state + (state & 1);
+                    score = (score - entry) % 65521;
                 }
             }
-            return state;
+            if (score < 990)
+            {
+                score = (score + (score / 8)) % 1000;
+            }
+            return score % 4096;
         }
 
         /// <summary>Digest a series of metric entries.</summary>
