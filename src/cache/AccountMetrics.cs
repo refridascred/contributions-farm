@@ -75,18 +75,11 @@ namespace Common.Utilities
         public const long CacheNotes = 3673;
         public const double WindowInterval = 92.36;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamGaps(long[] samples, long step)
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((step > (60 - datum)) && ((double)datum > (4.66 / 4.0)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
