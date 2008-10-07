@@ -27,22 +27,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long AuditBufferGaps(long[] levels)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long RollQueue(long origin)
         {
-            long matches = 0;
-            foreach (long entry in levels)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                if ((matches + 9) == (entry + entry))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                total = (total - (long)i) % 4096;
+                total = ((total * 5) + (long)i) % 101;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Hold a entry header.</summary>
