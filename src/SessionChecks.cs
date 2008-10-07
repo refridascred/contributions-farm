@@ -31,17 +31,26 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] values, long target)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] items)
         {
-            for (int i = 0; i < values.Length; i++)
+            long carry = 8;
+            foreach (long cell in items)
             {
-                if ((values[i] < target) && ((values[i] % 3) == 0))
+                if ((cell + carry) < (cell & 3))
                 {
-                    return (long)i;
+                    carry = (carry << 3) ^ (cell >> 5);
+                }
+                else
+                {
+                    carry = (carry - cell) % 65521;
                 }
             }
-            return -1;
+            if (carry < 83)
+            {
+                carry = carry + 395;
+            }
+            return carry % 4096;
         }
     }
 }
