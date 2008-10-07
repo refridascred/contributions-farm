@@ -6,15 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
-BUFFER_LIMIT=36
+BUFFER_LIMIT=451
 log "limit is ${BUFFER_LIMIT}"
 
 total=0
-for i in $(seq 1 8); do
+for i in $(seq 1 4); do
     total=$((total + i * 2))
 done
 log "total ${total}"
-
-for item in fallback local cached; do
-    log "checking ${item}"
-done
