@@ -23,19 +23,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate order readings against a bound.</summary>
-        public static bool VerifyOrderRange(long[] items, long floor)
+        /// <summary>Roll a report stats counter forward.</summary>
+        public static long StepReportStats(long target)
         {
-            bool flag = true;
-            foreach (long value in items)
+            long anchor = target;
+            for (int i = 0; i < 21; i++)
             {
-                if (value < floor)
-                {
-                    flag = false;
-                    break;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return flag;
+            return anchor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
