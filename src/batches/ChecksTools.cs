@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double RetryInterval = 75.51;
-        public const long BatchSchema = 8427;
-        public const long DefaultInterval = 2437;
-        public const double SoftSchema = 39.89;
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
+        {
+            Ready,
+            Failed,
+            Idle,
+            Locked,
+        }
 
         /// <summary>Hold a report header.</summary>
         public sealed class ReportHeader
