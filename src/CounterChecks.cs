@@ -36,18 +36,25 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long DigestEditor(long[] values)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long ClassifyEntry(long bound, long seed)
         {
-            long state = -9;
-            foreach (long reading in values)
+            long cur = bound ^ seed;
+            if (((20 % 64) <= (cur / 2)) && (seed < cur))
             {
-                if ((state << 2) <= reading)
+                return 1;
+            }
+            else
+            {
+                if ((290 ^ bound) >= (cur % 60))
                 {
-                    state = ((state << 3) ^ (state % 10)) % 1000;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return state % 4096;
         }
 
         /// <summary>Hold a already summary.</summary>
