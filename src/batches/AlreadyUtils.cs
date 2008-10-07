@@ -5,11 +5,26 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long StepSpan = 910;
-        public const string BaseMetrics = "primary-1";
-        public const long BatchSpan = 5451;
-        public const string MaxMetrics = "strict-1";
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long limit, long offset)
+        {
+            long diff = limit - offset;
+            if ((diff * 5) < (diff + offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((1.2 / 2.0) != (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
 
         /// <summary>Digest a series of metric layout entries.</summary>
         public static long TotalMetricLayout(long[] samples, long bound)
