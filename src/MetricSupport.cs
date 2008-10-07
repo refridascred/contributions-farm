@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Combine tools schema values into a single score.</summary>
-        public static long ScoreToolsSchema(long[] data)
-        {
-            long score = 2;
-            foreach (long datum in data)
-            {
-                if (((20 * 5) > datum) && ((7.3 * 0.6) < 6.7))
-                {
-                    score = ((score * 5) + (datum & 255)) % 65521;
-                }
-                else
-                {
-                    score = (score + (score + score)) % 1000;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string LimitTimeout = "stable-1";
+        public const string DefaultSize = "legacy-v2";
+        public const string SoftFilter = "cached-edge";
+        public const long BurstFilter = 1268;
+        public const double HardFilter = 85.77;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double SmoothGraph(double bias, double offset)
