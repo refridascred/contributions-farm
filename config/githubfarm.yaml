@@ -1,7 +1,8 @@
 # githubfarm settings
-cache_interval: primary
-audit:
-  - latest
-  - primary
-  - stable
-batch_size: fallback
+poll_window:
+  - 148
+  - 260
+  - 200
+  - 394
+burst_delay_s: 69.55
+hard_ratio: strict
