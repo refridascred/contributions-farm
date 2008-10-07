@@ -20,13 +20,25 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a commits stats.</summary>
-        public sealed class CommitsStats
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long GradeTools(long offset, long origin)
         {
-            public bool Total { get; set; }
-            public bool Token { get; set; }
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long diff = offset + origin;
+            if ((diff >> 5) < (offset + origin))
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin >= (offset * 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Describe the report class values.</summary>
