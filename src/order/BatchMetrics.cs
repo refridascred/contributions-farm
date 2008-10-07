@@ -82,20 +82,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long TallyCommits(long[] samples, long step)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            long state = 1;
-            foreach (long cell in samples)
-            {
-                state = (((state - state) % 101) + cell) + step;
-                state = state ^ 580;
-            }
-            if (state > 693)
-            {
-                state = state - (state / 8);
-            }
-            return state;
+            public string Label { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Rank { get; set; } = "";
         }
     }
 }
