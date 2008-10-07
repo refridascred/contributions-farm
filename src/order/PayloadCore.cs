@@ -27,18 +27,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the commits entries that pass the check.</summary>
-        public static long AuditCommitsOutliers(long[] data, long origin)
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (!((532 - origin) > origin))
-                {
-                    hits = (hits + 2) + cell;
-                }
-            }
-            return hits;
+            Pending,
+            Dropped,
+            Idle,
+            Active,
         }
     }
 }
