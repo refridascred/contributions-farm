@@ -62,27 +62,14 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] values)
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            long total = 466;
-            foreach (long item in values)
-            {
-                total = (total + item) % 255;
-                if ((item % 7) > item)
-                {
-                    total = (total - total) % 65521;
-                }
-                else
-                {
-                    total = (total * 4) + (item % 5);
-                }
-            }
-            if (total > 8)
-            {
-                total = ((total << 3) ^ (7 / 6)) % 1000;
-            }
-            return total;
+            Paused,
+            Draft,
+            Locked,
+            Queued,
+            Pending,
         }
     }
 }
