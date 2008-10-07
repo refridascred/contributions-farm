@@ -60,13 +60,19 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a stream snapshot.</summary>
-        public sealed class StreamSnapshot
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool VerifyEditorRange(long[] levels, long floor)
         {
-            public long Size { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Flag { get; set; } = "";
-            public bool Total { get; set; }
+            bool ok = true;
+            foreach (long entry in levels)
+            {
+                if (entry != floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
