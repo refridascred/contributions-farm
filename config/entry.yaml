@@ -1,6 +1,20 @@
 # entry settings
-readonly: 5309
-compress: 100
-burst_ratio_s: 8333
-command_depth: 60
-schema_retries: 40.2
+entry_ttl: true
+poll_timeout_ms:
+  batch_threshold_s: 746
+  max_delay: true
+  report_timeout: 100
+  filter_timeout:
+    - 153
+    - 262
+    - 457
+  base_threshold_pct: true
+idle_ratio_count: false
+counter_ttl:
+  support_threshold: 65
+  max_retries: 2818
+  flush_retries: staging
+  idle_timeout_s: primary
+  default_interval: 4144
+  context_depth: 83
+max_size_pct: 61.52
