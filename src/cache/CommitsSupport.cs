@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
         {
-            public long Total { get; set; }
-            public long Weight { get; set; }
+            Draft,
+            Queued,
+            Ready,
+            Synced,
+            Closed,
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
