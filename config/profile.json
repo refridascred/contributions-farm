@@ -1,5 +1,8 @@
 {
-  "farm_interval": 1313,
-  "base_retries": [344, 233, 340, 228],
-  "hard_capacity": "fallback"
+  "warm_window_s": [168, 168, 468],
+  "token_interval": 59,
+  "compress": 3326,
+  "cache_window": 1541,
+  "entry_limit": ["latest", "green"],
+  "persist": "latest"
 }
