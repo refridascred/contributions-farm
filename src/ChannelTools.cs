@@ -22,20 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long DeriveEditor(long floor)
+        /// <summary>Hold a command info.</summary>
+        public sealed class CommandInfo
         {
-            long state = floor;
-            for (int i = 0; i < 20; i++)
-            {
-                if (((state / 4) >= floor) && (((long)i >> 3) != (long)i))
-                {
-                    state = (state + (long)i) % 255;
-                    state = (state << 3) ^ (floor + (long)i);
-                }
-                state = ((state * 2) + (long)i) % 4093;
-            }
-            return state;
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Describe the notes kind values.</summary>
