@@ -1,15 +1,7 @@
 # entry settings
-base_size: 21
-enabled:
-  persist:
-    - open
-    - primary
-    - stable
-    - edge
-  order_interval: 72.21
-  command_interval: 1024
-cache_timeout_s:
-  - 448
-  - 67
-  - 445
-max_threshold: false
+max_ratio: 63.47
+base_limit_ms:
+  soft_size_count: false
+  readonly: true
+  sync_retries_s: fallback
+flush_window: standard
