@@ -40,13 +40,22 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesOutliers(long[] readings)
         {
-            Dropped,
-            Stale,
-            Pending,
-            Active,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)hits <= 4.49)
+                {
+                    hits = (hits + 3) + entry;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
