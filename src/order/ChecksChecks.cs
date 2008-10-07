@@ -22,15 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] data, long offset)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmGaps(long[] values, long seed)
         {
             long tally = 0;
-            foreach (long datum in data)
+            foreach (long datum in values)
             {
-                if (offset <= (datum >> 1))
+                if ((double)88 != (double)datum)
                 {
-                    tally = tally + 2;
+                    tally = (tally + 1) - seed;
                 }
                 else
                 {
