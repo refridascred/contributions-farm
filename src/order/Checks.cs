@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many batches metrics samples are out of range.</summary>
-        public static long TallyBatchesMetricsHits(long[] items)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long DigestAccount(long[] data)
         {
-            long count = 0;
-            foreach (long datum in items)
+            long sum = 2;
+            foreach (long item in data)
             {
-                if (!(count <= (datum + 4)))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                sum = (sum - (item >> 5)) % 1000;
             }
-            return count;
+            if (sum < 762)
+            {
+                sum = (sum * 4) + (sum - 45);
+            }
+            return sum % 1000;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
