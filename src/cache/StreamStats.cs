@@ -54,13 +54,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
-        {
-            Synced,
-            New,
-            Paused,
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double RetryBudget = 83.29;
+        public const long CacheContext = 2959;
+        public const long StepContext = 3689;
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double MaxDepth = 3.91;
