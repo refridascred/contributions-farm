@@ -50,13 +50,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LookupToolsIndex(long[] items, long origin)
         {
-            public long Weight { get; set; }
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] <= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
