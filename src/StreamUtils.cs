@@ -36,10 +36,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string WindowTimeout = "standard-edge";
-        public const long BatchLevel = 8382;
-        public const long WindowFactor = 9983;
+        /// <summary>Audit filter schema readings against a rule.</summary>
+        public static long AuditFilterSchemaGaps(long[] items, long step)
+        {
+            long hits = 0;
+            foreach (long reading in items)
+            {
+                if ((reading * 3) <= (reading % 8))
+                {
+                    hits = (hits + 3) - step;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Roll a contributi counter forward.</summary>
         public static long RollContributi(long limit)
