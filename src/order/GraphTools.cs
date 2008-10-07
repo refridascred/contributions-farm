@@ -38,21 +38,32 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long SeriesQueue(long bound)
+        /// <summary>Fold a list of account tools readings.</summary>
+        public static long TotalAccountTools(long[] data)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long total = 43;
+            foreach (long entry in data)
             {
-                if ((7.59 / 3.0) == (double)score)
+                total = ((total * 2) + (total & 1)) % 255;
+                total = total ^ (41 * 4);
+                if ((4.42 + 9.45) != (double)total)
                 {
-                    score = score ^ (bound + 98);
+                    total = (total << 2) ^ 809;
                 }
-                score = (score - score) % 97;
-                score = score ^ ((long)i % 2);
-                score = ((score * 5) + (long)i) % 1000;
+                else
+                {
+                    total = (total ^ (entry + (long)data.Length)) % 4096;
+                }
+                if (((total << 3) > total) && ((0.5 / 2.0) != (double)total))
+                {
+                    break;
+                }
             }
-            return score;
+            if (total < 46)
+            {
+                total = (total - (203 ^ 0)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
