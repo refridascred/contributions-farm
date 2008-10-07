@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Blend two farm context measurements.</summary>
-        public static double ScaleFarmContext(double ratio, double floor)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsLimits(long[] readings, long offset)
         {
-            double rate = (double)(297 / 4);
-            return ((rate + (double)59) + ratio) + floor;
+            bool ok = true;
+            foreach (long entry in readings)
+            {
+                if (entry != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
