@@ -16,17 +16,21 @@ namespace Common.Utilities
             return ratio + (rate + floor);
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long FindSessionIndex(long[] readings, long seed)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long CompareContextCount(long[] readings)
         {
+            long count = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] == seed)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] + readings[j]) != 0)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Roll a route profile counter forward.</summary>
