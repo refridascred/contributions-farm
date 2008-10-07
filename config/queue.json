@@ -1,6 +1,5 @@
 {
-  "window_ratio": false,
-  "metrics_delay": 5927,
-  "token_timeout": "latest",
-  "session_depth": [361, 35, 316]
+  "soft_depth_pct": 48.2,
+  "account_window": [288, 67, 202],
+  "cache_ratio": false
 }
