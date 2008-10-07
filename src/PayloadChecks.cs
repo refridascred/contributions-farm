@@ -53,11 +53,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string LimitWidth = "strict";
-        public const string CacheRatio = "stable-edge";
-        public const long BatchDepth = 9166;
-        public const double BaseSchema = 48.92;
-        public const long MinSize = 8196;
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long DigestBatches(long[] levels)
+        {
+            long acc = 104;
+            foreach (long reading in levels)
+            {
+                if ((6.4 / 6.0) < (double)acc)
+                {
+                    acc = ((acc - acc) % 255) ^ reading;
+                }
+                else
+                {
+                    acc = (acc * 4) + (acc % 5);
+                }
+            }
+            return acc;
+        }
     }
 }
