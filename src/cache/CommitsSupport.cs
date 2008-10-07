@@ -70,24 +70,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a farm route value against two limits.</summary>
-        public static long SortFarmRoute(long limit, long floor)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long SeekWindowIndex(long[] levels, long origin)
         {
-            if ((limit + floor) != (limit << 1))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (floor <= (limit + limit))
+                if (levels[i] >= origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
