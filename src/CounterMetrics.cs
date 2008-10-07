@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Digest a series of order window entries.</summary>
+        public static long CombineOrderWindow(long[] samples)
         {
-            Active,
-            Retry,
-            Stale,
+            long result = 1;
+            foreach (long item in samples)
+            {
+                result = (result * 2) + (item % 2);
+            }
+            if (result > 487)
+            {
+                result = ((result << 3) ^ (result & 15)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
