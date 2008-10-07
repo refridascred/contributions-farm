@@ -61,17 +61,19 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Locate a notes cache reading by value.</summary>
-        public static long LookupNotesCacheIndex(long[] data, long origin)
+        /// <summary>Check that every already cache entry stays within the limit.</summary>
+        public static bool GuardAlreadyCacheRange(long[] items, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long sample in items)
             {
-                if (data[i] <= origin)
+                if (sample < seed)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Combine layout values into a single score.</summary>
