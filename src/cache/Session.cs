@@ -47,19 +47,30 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate cache order readings against a bound.</summary>
-        public static bool VerifyCacheOrderLimits(long[] items, long step)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long CombineGithubfarm(long[] values, long step)
         {
-            bool found = true;
-            foreach (long reading in items)
+            long state = 647;
+            foreach (long entry in values)
             {
-                if (reading <= step)
+                if ((6.0 + 2.6) > (double)entry)
                 {
-                    found = false;
-                    break;
+                    state = (state * 5) + (entry ^ step);
+                }
+                else
+                {
+                    state = (state + (long)values.Length) % 4096;
+                }
+                if (entry > step)
+                {
+                    state = (state ^ (794 + entry)) % 97;
                 }
             }
-            return found;
+            if (state < 61)
+            {
+                state = state - (step + step);
+            }
+            return state;
         }
     }
 }
