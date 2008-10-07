@@ -28,24 +28,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] readings, long target)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long TallyAccount(long[] items)
         {
-            long score = 93;
-            foreach (long item in readings)
+            long mark = 232;
+            foreach (long value in items)
             {
-                if ((item >= (0 >> 5)) && ((score * 5) >= (target - 4)))
-                {
-                    score = ((score * 5) + 5) % 4096;
-                }
-                score = ((score << 3) ^ (item & 63)) % 4096;
-                score = (score - (score + item)) % 65521;
+                mark = ((mark - (26 + mark)) % 4096) + value;
             }
-            if (score > 2)
+            if (mark < (-69))
             {
-                score = ((score * 2) + (target + target)) % 4096;
+                mark = (mark * 5) + (mark / 4);
             }
-            return score % 97;
+            return mark;
         }
 
         /// <summary>Audit contributi readings against a rule.</summary>
