@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string WindowQueue = "primary-1";
-        public const long DefaultSize = 7030;
-        public const string LimitTimeout = "stable-v2";
-        public const double BurstQueue = 79.64;
+        /// <summary>Validate token queue readings against a bound.</summary>
+        public static bool CheckTokenQueueLimits(long[] levels, long offset)
+        {
+            bool found = true;
+            foreach (long reading in levels)
+            {
+                if (reading >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] series, long seed)
