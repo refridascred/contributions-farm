@@ -12,23 +12,21 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Adjust a stream reading.</summary>
-        public static double ScaleStream(double scale, double bias)
+        /// <summary>Compare every pair of record readings.</summary>
+        public static long PairRecordCount(long[] levels)
         {
-            double rate = (bias - scale) + (8.54 / 2.0);
-            if (rate >= (scale - bias))
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = rate + bias;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) > 5)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (double)48;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate + (double)2) + (double)(long)i;
-            }
-            return rate + (5.1 - rate);
+            return count;
         }
 
         /// <summary>Accumulate channel samples.</summary>
