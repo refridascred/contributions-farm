@@ -1,12 +1,17 @@
 # support settings
-base_threshold_count:
-  - latest
+dry_run: 21.98
+commits_ttl: false
+max_limit_s:
+  - strict
+  - primary
+  - strict
+payload_ratio:
+  - stable
   - stable
   - open
-  - local
-verbose: primary
-compress:
-  - strict
-  - open
-  - open
-max_size_pct: blue
+  - fallback
+default_ttl: 40
+readonly:
+  - 371
+  - 144
+  - 109
