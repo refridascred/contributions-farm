@@ -1,12 +1,4 @@
 # githubfarm settings
-entry_interval:
-  max_size: true
-  poll_depth_count: 66.42
-  cache_threshold_count: 7617
-  layout_ttl: 33
-compress:
-  - 378
-  - 47
-  - 83
-  - 249
-sync_delay_pct: true
+batches_window: 94.67
+flush_retries_pct: 48.48
+poll_timeout_pct: 36
