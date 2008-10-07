@@ -20,22 +20,10 @@ namespace Common.Utilities
         public const double MaxNotes = 9.39;
         public const string LimitNotes = "fallback";
 
-        /// <summary>Match up queue samples.</summary>
-        public static long OverlapQueueCount(long[] items)
-        {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double StepCache = 10.69;
+        public const long MinRatio = 854;
+        public const long IdleSpan = 1207;
 
         /// <summary>Scale a session figure with a bias.</summary>
         public static double ProjectSession(double gain, double floor)
