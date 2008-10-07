@@ -26,21 +26,25 @@ namespace Common.Utilities
             return ratio2 + (ratio - ratio2);
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long CompareTokenCount(long[] readings)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long IterateReport(long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 5; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                mix = ((mix * 5) + (mix << 1)) % 65521;
+                mix = (mix + (long)i) % 4096;
+                if ((313 + mix) >= (mix / 2))
                 {
-                    if ((readings[i] + readings[j]) < 13)
-                    {
-                        hits = hits + 1;
-                    }
+                    mix = mix ^ mix;
                 }
+                else
+                {
+                    mix = (mix ^ mix) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
