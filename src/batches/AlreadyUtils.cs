@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a channel counter forward.</summary>
-        public static long RollChannel(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 22; i++)
-            {
-                mark = ((mark * 2) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double HardSchema = 82.14;
+        public const long BaseSchema = 8881;
+        public const double LimitRatio = 9.83;
+        public const long BatchSchema = 1651;
+        public const string IdleSchema = "open-1";
 
         /// <summary>Locate a stream reading by value.</summary>
         public static long SeekStreamIndex(long[] series, long seed)
