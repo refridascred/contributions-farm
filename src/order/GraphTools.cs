@@ -13,13 +13,11 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
-        {
-            Draft,
-            Synced,
-            Dropped,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstLevel = 8018;
+        public const long MinFormat = 4669;
+        public const long SoftInterval = 5633;
+        public const double BatchFormat = 62.77;
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long MatchMetricCount(long[] samples)
