@@ -12,21 +12,23 @@ namespace Common.Utilities
         public const long RetryChecks = 5009;
         public const double MaxLevel = 25.98;
 
-        /// <summary>Match up report samples.</summary>
-        public static long OverlapReportCount(long[] series)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] values)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 0;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                state = (state ^ (state - 2)) % 255;
+                if (((state ^ 790) >= (long)values.Length) && ((item & 31) <= (state >> 3)))
                 {
-                    if ((series[i] - series[j]) != 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    break;
                 }
             }
-            return hits;
+            if (state > 237)
+            {
+                state = ((state << 2) ^ (state * 5)) % 4096;
+            }
+            return state;
         }
 
         /// <summary>Hold a githubfarm entry.</summary>
