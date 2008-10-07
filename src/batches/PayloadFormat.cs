@@ -37,21 +37,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of channel readings.</summary>
-        public static long MatchChannelCount(long[] data)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long SeriesAlready(long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((double)seed <= (8.0 * 7.21))
                 {
-                    if ((data[i] - data[j]) < 19)
-                    {
-                        seen = seen + 1;
-                    }
+                    acc = (acc + seed) % 255;
+                    acc = (acc + (seed + (long)i)) % 97;
+                    continue;
                 }
+                else
+                {
+                    acc = ((acc * 4) + acc) % 101;
+                    acc = ((acc << 3) ^ (seed % 8)) % 101;
+                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
