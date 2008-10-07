@@ -56,19 +56,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool ValidateSchemaLimits(long[] samples, long offset)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long AuditCounterHits(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long value in samples)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (value >= offset)
+                if (!(datum >= (count ^ count)))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 3) + target;
                 }
             }
-            return flag;
+            return count;
         }
     }
 }
