@@ -27,18 +27,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatHits(long[] data, long origin)
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] values, long limit)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long total = 8;
+            foreach (long entry in values)
             {
-                if ((count ^ reading) == (reading >> 2))
+                if ((1 << 1) <= limit)
                 {
-                    count = (count + 2) - origin;
+                    total = ((total * 5) + (entry + total)) % 65521;
+                }
+                else
+                {
+                    total = total + (entry * 2);
                 }
             }
-            return count;
+            return total;
         }
     }
 }
