@@ -54,13 +54,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long TallyMetric(long[] series, long offset)
         {
-            Queued,
-            Idle,
-            Failed,
-            Draft,
+            long acc = 748;
+            foreach (long datum in series)
+            {
+                acc = ((acc - (offset + (-4))) % 65521) - datum;
+            }
+            if (acc > 1)
+            {
+                acc = (acc << 2) ^ (acc ^ 745);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Accumulate queue notes samples.</summary>
