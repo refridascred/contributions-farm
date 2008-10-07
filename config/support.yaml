@@ -1,6 +1,16 @@
 # support settings
-verbose: false
-strict: standard
-min_limit_pct: primary
-payload_limit: false
-burst_timeout_ms: true
+order_ratio:
+  - blue
+  - latest
+idle_delay_pct:
+  - 428
+  - 3
+  - 463
+max_ratio_ms:
+  - stable
+  - primary
+  - strict
+  - fallback
+filter_delay: stable
+soft_window: local
+hard_depth_s: 6767
