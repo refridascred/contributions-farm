@@ -90,18 +90,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long SeekFilterIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long CacheSpan = 8055;
+        public const long WindowBatches = 4935;
+        public const double HardBatches = 26.52;
+        public const string MinWidth = "staging-1";
+        public const long DefaultBatches = 9849;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long MeasureStreamGaps(long[] samples, long step)
