@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Rank editor input into a small class.</summary>
+        public static long ClassifyEditor(long offset, long bound)
         {
-            public long Region { get; set; }
-            public double Stamp { get; set; }
+            if ((double)offset <= (7.1 + 9.1))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((double)offset == (0.68 / 8.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Accumulate context entry samples.</summary>
