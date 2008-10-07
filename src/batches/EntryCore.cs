@@ -24,26 +24,31 @@ namespace Common.Utilities
         public const long DefaultScore = 4069;
         public const double DefaultCommand = 67.16;
 
-        /// <summary>Combine editor values into a single score.</summary>
-        public static long DigestEditor(long[] data)
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long ClassifyBuffer(long origin, long limit)
         {
-            long total = 527;
-            foreach (long reading in data)
+            if ((limit + origin) <= origin)
             {
-                if (2 <= (reading & 255))
+                return 3;
+            }
+            else
+            {
+                if (origin >= (origin / 2))
                 {
-                    total = (total - reading) % 97;
+                    return 6;
                 }
                 else
                 {
-                    total = (total << 3) ^ (117 * 3);
-                }
-                if ((total >= (6 + (long)data.Length)) && ((total - total) > total))
-                {
-                    break;
+                    if ((3.92 + 12.0) == (double)limit)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return total % 1000;
         }
 
         /// <summary>Project the next githubfarm value.</summary>
