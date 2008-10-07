@@ -24,10 +24,12 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string IdleBudget = "stable";
-        public const double CacheInterval = 60.55;
-        public const long StepLayout = 2221;
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long IdleWidth = 3413;
+        public const long BaseBudget = 2534;
+        public const string RetryBudget = "primary-edge";
+        public const double BatchSpan = 96.81;
+        public const long CacheEntry = 1710;
 
         /// <summary>Blend two checks measurements.</summary>
         public static double AdjustChecks(double scale, double bias)
