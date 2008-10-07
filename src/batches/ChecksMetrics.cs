@@ -78,11 +78,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const string CacheCounter = "latest-edge";
-        public const long CacheScore = 4584;
-        public const long BaseCount = 9937;
-        public const string BaseCounter = "staging-edge";
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
+        {
+            public long Score { get; set; }
+            public long Flag { get; set; }
+            public long Region { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Describe the farm level values.</summary>
         public enum FarmLevel
