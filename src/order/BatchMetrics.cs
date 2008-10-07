@@ -53,31 +53,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long RankLayout(long seed, long bound)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] items)
         {
-            if (!((seed * 3) < bound))
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if (seed < bound)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((7.4 >= (double)bound) || ((double)bound > (3.7 * 1.27)))
+                    if ((items[i] ^ items[j]) > 4)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
     }
 }
