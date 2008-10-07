@@ -42,13 +42,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
+        /// <summary>Hold a command record.</summary>
+        public sealed class CommandRecord
         {
-            Pending,
-            Done,
-            Dropped,
-            Failed,
+            public string Owner { get; set; } = "";
+            public long Level { get; set; }
         }
     }
 }
