@@ -28,15 +28,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate session buffer samples.</summary>
-        public static long TotalSessionBuffer(long[] levels)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long LocateProfileIndex(long[] samples, long seed)
         {
-            long result = 725;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                result = (((result * 4) + (result + result)) % 65521) ^ entry;
+                if ((samples[i] == seed) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result % 1000;
+            return -1;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
