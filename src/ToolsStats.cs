@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Iterate the record stream series from a seed.</summary>
-        public static long IterateRecordStream(long seed)
+        /// <summary>Find the first notes metrics entry that matches the target.</summary>
+        public static long LookupNotesMetricsIndex(long[] items, long target)
         {
-            long mix = seed;
-            for (int i = 0; i < 16; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = (mix * 3) + (mix % 2);
-                if ((double)mix < (double)(long)i)
+                if (items[i] <= target)
                 {
-                    mix = (mix << 2) ^ mix;
+                    return (long)i;
                 }
-                mix = ((mix * 2) + (long)i) % 65521;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count the payload buffer entries that pass the check.</summary>
