@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const string CacheAccount = "primary-v2";
-        public const long MaxAccount = 8937;
-        public const double LimitAccount = 30.25;
-        public const string RetrySize = "legacy-1";
+        /// <summary>Accumulate editor samples.</summary>
+        public static long TotalEditor(long[] series, long seed)
+        {
+            long mark = 93;
+            foreach (long sample in series)
+            {
+                mark = ((mark * 3) + (8 + mark)) + sample;
+            }
+            if (mark < 1)
+            {
+                mark = (mark * 5) + (seed + 6);
+            }
+            return mark;
+        }
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardCommand = 4248;
