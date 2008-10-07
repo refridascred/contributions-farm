@@ -44,19 +44,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool ValidateFormatBounds(long[] data, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long target, long floor)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            if ((floor % 7) != (target ^ target))
             {
-                if (reading > origin)
+                return 0;
+            }
+            else
+            {
+                if (!((double)floor == (double)target))
                 {
-                    stale = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return stale;
         }
 
         /// <summary>Scale a record figure with a bias.</summary>
