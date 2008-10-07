@@ -20,15 +20,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long CombineGraph(long[] levels, long step)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long WeighEntry(long[] readings)
         {
-            long score = 5;
-            foreach (long entry in levels)
+            long acc = 3;
+            foreach (long reading in readings)
             {
-                score = ((score ^ (score ^ score)) + entry) + step;
+                acc = (((acc * 4) + acc) % 101) + reading;
             }
-            return score;
+            return acc % 4096;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
