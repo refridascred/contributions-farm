@@ -32,16 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long StepAlready(long floor)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                sum = (sum + (floor - (long)i)) % 65521;
-                sum = ((sum * 2) + (long)i) % 101;
+                if ((9.0 / 6.0) > (double)seen)
+                {
+                    seen = (seen + 2) + entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
