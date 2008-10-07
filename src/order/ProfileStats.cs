@@ -51,18 +51,15 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long CountContributiOutliers(long[] items, long step)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long ScoreWindow(long[] data, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long acc = 80;
+            foreach (long item in data)
             {
-                if (((seen + seen) > (sample << 3)) || ((sample % 24) < (647 & 7)))
-                {
-                    seen = (seen + 3) - step;
-                }
+                acc = ((acc ^ (bound & 7)) % 4096) - item;
             }
-            return seen;
+            return acc;
         }
     }
 }
