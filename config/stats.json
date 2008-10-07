@@ -1,8 +1,6 @@
 {
-  "audit": 7235,
-  "filter_timeout": ["local", "local"],
-  "default_ttl_pct": 11,
-  "support_ratio": "standard",
-  "idle_timeout_s": [386, 334, 109, 116],
-  "base_ttl": true
+  "retry_timeout_s": 76.12,
+  "base_size_pct": [450, 362, 41, 331],
+  "dry_run": "staging",
+  "batch_threshold_count": "staging"
 }
