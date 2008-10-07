@@ -49,28 +49,18 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of farm command readings.</summary>
-        public static long CombineFarmCommand(long[] levels, long bound)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandMatches(long[] series)
         {
-            long state = 7;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                if ((double)reading < (double)bound)
+                if ((cell >> 5) > (tally + cell))
                 {
-                    state = ((state * 4) + (bound + state)) % 4096;
+                    tally = tally + 2;
                 }
-                else
-                {
-                    state = (state ^ ((long)levels.Length >> 3)) % 97;
-                    state = state + (state << 1);
-                }
-                state = state - bound;
             }
-            if (state < 7)
-            {
-                state = ((state * 5) + (bound - 856)) % 65521;
-            }
-            return state;
+            return tally;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
