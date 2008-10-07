@@ -22,31 +22,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long offset, long origin)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] values, long origin)
         {
-            if (((offset - offset) >= (origin - origin)) && (offset < origin))
+            long acc = 8;
+            foreach (long datum in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((offset + offset) > (origin + origin))
+                if (acc > (912 * 5))
                 {
-                    return 8;
+                    acc = ((acc - (3 & 7)) % 4096) ^ datum;
                 }
-                else
+                if ((acc - origin) >= (acc ^ origin))
                 {
-                    if ((origin >> 5) == (origin * 3))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    break;
                 }
             }
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
