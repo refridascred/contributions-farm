@@ -48,17 +48,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long LookupToolsIndex(long[] items, long origin)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long LimitReport = 8325;
+        public const long MinSpan = 6698;
+        public const long MinWidth = 7172;
+        public const string CacheFactor = "standard";
+        public const long StepCount = 1846;
     }
 }
