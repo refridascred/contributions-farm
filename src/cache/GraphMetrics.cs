@@ -49,11 +49,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepFormat = 8697;
-        public const double SoftScore = 13.07;
-        public const string MinSize = "open-v2";
-        public const long IdleFactor = 3460;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleRatio = 4599;
+        public const long SoftProfile = 9878;
+        public const double StepProfile = 71.57;
+        public const long HardDepth = 6046;
+        public const long LimitProfile = 7934;
 
         /// <summary>Validate graph account readings against a bound.</summary>
         public static bool GuardGraphAccountLimits(long[] series, long limit)
