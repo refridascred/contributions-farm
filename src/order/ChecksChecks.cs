@@ -40,24 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long BucketBuffer(long seed, long limit)
+        /// <summary>Describe the window mode values.</summary>
+        public enum WindowMode
         {
-            if (((seed & 15) >= (9 / 6)) && ((seed >> 5) < limit))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((double)limit == (double)68)
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Idle,
+            Synced,
+            Retry,
+            New,
         }
     }
 }
