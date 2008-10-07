@@ -14,12 +14,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long CountBufferOutliers(long[] readings, long floor)
         {
-            Retry,
-            Closed,
-            Failed,
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if (!(entry < seen))
+                {
+                    seen = (seen + 1) - floor;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Combine githubfarm profile values into a single score.</summary>
