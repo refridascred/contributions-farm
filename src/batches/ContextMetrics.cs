@@ -34,19 +34,12 @@ namespace Common.Utilities
         public const string BurstLevel = "cached-1";
         public const double SoftBatches = 38.14;
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ScaleReport(double scale, double offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double ratio = scale;
-            if (ratio < 1.6)
-            {
-                ratio = ratio + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                ratio = (ratio + (double)0) + (double)(long)i;
-            }
-            return ratio - offset;
+            Closed,
+            Draft,
+            Ready,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
