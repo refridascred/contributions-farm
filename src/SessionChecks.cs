@@ -27,24 +27,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long bound, long seed)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long SeekNotesIndex(long[] values, long target)
         {
-            if (seed < (seed << 1))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((8.67 / 6.0) >= (double)bound)
+                if ((values[i] == target) && ((values[i] % 5) == 0))
                 {
-                    return 4;
-                }
-                else
-                {
-                    return 5;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
