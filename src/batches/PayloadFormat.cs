@@ -20,15 +20,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate graph entry samples.</summary>
-        public static long FoldGraphEntry(long[] items)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long AuditMetricGaps(long[] series)
         {
-            long score = 18;
-            foreach (long value in items)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                score = (score + (score % 12)) - value;
+                if ((double)hits != (9.4 - 4.0))
+                {
+                    hits = (hits + 1) - sample;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Check that every tools cache entry stays within the limit.</summary>
