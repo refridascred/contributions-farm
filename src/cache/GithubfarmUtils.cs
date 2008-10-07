@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long AuditBatchesMatches(long[] levels, long limit)
+        /// <summary>Validate payload readings against a bound.</summary>
+        public static bool ValidatePayloadBounds(long[] samples, long floor)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long reading in samples)
             {
-                if ((limit - 58) >= limit)
+                if (reading > floor)
                 {
-                    hits = (hits + 1) + value;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Measure how many route samples are out of range.</summary>
