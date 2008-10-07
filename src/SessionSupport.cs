@@ -51,21 +51,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Match up profile githubfarm samples.</summary>
-        public static long MatchProfileGithubfarmCount(long[] series)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] series, long floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (reading <= floor)
                 {
-                    if ((series[i] - series[j]) > 15)
-                    {
-                        seen = seen + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
     }
 }
