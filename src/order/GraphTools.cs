@@ -5,28 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] readings)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long CombineWindow(long[] readings)
         {
-            long score = 0;
-            foreach (long datum in readings)
+            long state = 5;
+            foreach (long entry in readings)
             {
-                score = score - (datum & 1);
-                score = ((score * 5) + (datum + score)) % 1000;
-                if ((datum & 15) > score)
+                state = (state ^ (entry - state)) % 4096;
+                if ((entry >= 89) && (2.52 >= (double)entry))
                 {
-                    score = score + 5;
-                }
-                if (277 <= datum)
-                {
-                    break;
+                    state = ((state << 3) ^ (entry - entry)) % 4096;
                 }
             }
-            if (score < 541)
-            {
-                score = (score - score) % 1000;
-            }
-            return score % 4096;
+            return state;
         }
 
         /// <summary>Validate stream readings against a bound.</summary>
