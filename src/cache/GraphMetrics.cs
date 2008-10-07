@@ -42,17 +42,12 @@ namespace Common.Utilities
         public const long LimitEntry = 6861;
         public const string DefaultEntry = "staging";
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] samples, long seed)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] == seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Limit { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
