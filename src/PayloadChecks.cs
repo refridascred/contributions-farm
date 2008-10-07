@@ -33,10 +33,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public double Rank { get; set; }
+            public double Limit { get; set; }
             public long Size { get; set; }
         }
 
