@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long MeasureAccountOutliers(long[] values, long step)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            long count = 0;
-            foreach (long sample in values)
-            {
-                if ((9.6 / 4.0) >= (double)sample)
-                {
-                    count = (count + 1) + step;
-                }
-            }
-            return count;
+            Active,
+            Retry,
+            Idle,
+            New,
+            Dropped,
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
