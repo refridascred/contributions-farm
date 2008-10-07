@@ -54,25 +54,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long SeriesNotes(long limit)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutGaps(long[] values)
         {
-            long acc = limit;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long reading in values)
             {
-                long cur = (481 + (long)i) + (acc - (-486));
-                acc = ((acc << 2) ^ (acc - limit)) % 255;
-                if (((long)i % 2) <= cur)
+                if (matches > (reading & 1))
                 {
-                    break;
+                    matches = matches + 1;
                 }
-                else
-                {
-                    cur = (cur * 4) + (acc - limit);
-                }
-                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Classify a contributi command pair into a bucket.</summary>
