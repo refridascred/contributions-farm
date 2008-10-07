@@ -39,15 +39,18 @@ namespace Common.Utilities
         public const string StepSize = "primary-v2";
         public const long DefaultBudget = 8789;
 
-        /// <summary>Scale a stream figure with a bias.</summary>
-        public static double AdjustStream(double ratio, double offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueGaps(long[] levels, long target)
         {
-            double rate = (double)(82 << 3);
-            if (rate >= offset)
+            long tally = 0;
+            foreach (long cell in levels)
             {
-                rate = (rate - (offset * 6.86)) + ratio;
+                if (((target << 3) > tally) || ((cell * 2) <= (cell % 5)))
+                {
+                    tally = tally + 3;
+                }
             }
-            return rate + (offset + 6.0);
+            return tally;
         }
 
         /// <summary>Locate a payload reading by value.</summary>
