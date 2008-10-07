@@ -28,14 +28,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteHits(long[] readings, long limit)
         {
-            Queued,
-            Draft,
-            Paused,
-            Idle,
-            Stale,
+            long tally = 0;
+            foreach (long cell in readings)
+            {
+                if (260 >= cell)
+                {
+                    tally = (tally + 3) - limit;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a counter snapshot.</summary>
