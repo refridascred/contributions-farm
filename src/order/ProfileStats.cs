@@ -35,12 +35,33 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double IdleBudget = 64.87;
-        public const string DefaultGraph = "alpha-v2";
-        public const long MinGraph = 7050;
-        public const double WindowGraph = 50.56;
-        public const long IdleTimeout = 9400;
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long bound, long origin)
+        {
+            long gap = bound - origin;
+            if ((double)origin < 4.9)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + gap) != (gap >> 3))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((gap << 1) >= (origin >> 5))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BaseFormat = 7578;
