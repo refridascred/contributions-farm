@@ -14,18 +14,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] items, long step)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (12.0 <= (double)step)
-                {
-                    hits = (hits + 2) + sample;
-                }
-            }
-            return hits;
+            Pending,
+            Active,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Blend two graph layout measurements.</summary>
