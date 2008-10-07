@@ -37,13 +37,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
-        {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstSupport = 3.85;
+        public const string WindowRatio = "alpha-edge";
+        public const string CacheSupport = "strict-1";
 
         /// <summary>Audit token readings against a rule.</summary>
         public static long AuditTokenMatches(long[] levels, long target)
