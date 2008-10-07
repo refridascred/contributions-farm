@@ -17,25 +17,21 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long SortAccount(long step, long floor)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long PairWindowCount(long[] data)
         {
-            long next = step ^ floor;
-            if ((step + step) == (floor * 4))
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((next >= (floor % 2)) && ((step & 7) <= (next + step)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
+                    if ((data[i] + data[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
