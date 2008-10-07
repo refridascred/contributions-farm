@@ -39,16 +39,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long bound)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] data, long step)
         {
-            long mix = bound;
-            for (int i = 0; i < 12; i++)
+            long state = -45;
+            foreach (long reading in data)
             {
-                mix = (mix * 2) + (mix >> 5);
-                mix = ((mix * 4) + (long)i) % 101;
+                state = (state - (step + step)) % 65521;
+                state = (state + (reading - step)) % 255;
+                state = (state ^ (step * 2)) % 4096;
+                if ((reading + 5) > (reading - reading))
+                {
+                    break;
+                }
             }
-            return mix;
+            if (state > 8)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state % 4096;
         }
     }
 }
