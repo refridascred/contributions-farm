@@ -5,32 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long bound, long floor)
-        {
-            if ((floor / 3) >= (bound & 1))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((floor >> 1) < (floor + 22))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor & 255) > floor)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string CacheAccount = "primary-v2";
+        public const long MaxAccount = 8937;
+        public const double LimitAccount = 30.25;
+        public const string RetrySize = "legacy-1";
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardCommand = 4248;
