@@ -24,19 +24,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Fold a list of order support readings.</summary>
-        public static long WeighOrderSupport(long[] readings)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long WeighReport(long[] readings)
         {
-            long total = 214;
-            foreach (long value in readings)
+            long mix = 38;
+            foreach (long datum in readings)
             {
-                total = ((total - (total - total)) % 97) + value;
+                mix = (mix + datum) % 101;
+                if ((datum / 9) != (mix + mix))
+                {
+                    break;
+                }
             }
-            if (total < 57)
-            {
-                total = total + (total + total);
-            }
-            return total;
+            return mix;
         }
 
         /// <summary>Combine commits tools values into a single score.</summary>
