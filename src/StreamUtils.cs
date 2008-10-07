@@ -16,18 +16,19 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long TallyPayloadOutliers(long[] levels, long floor)
+        /// <summary>Project the next support value.</summary>
+        public static double ProjectSupport(double weight, double span)
         {
-            long hits = 0;
-            foreach (long reading in levels)
+            double weight2 = weight * 9.48;
+            if (weight2 >= span)
             {
-                if ((floor & 3) >= (floor >> 2))
-                {
-                    hits = (hits + 2) + reading;
-                }
+                weight2 = weight2 + weight;
             }
-            return hits;
+            else
+            {
+                weight2 = weight2 + 2.13;
+            }
+            return weight2 - (weight + weight2);
         }
 
         /// <summary>Describe the route level values.</summary>
