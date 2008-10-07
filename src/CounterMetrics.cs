@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool ValidateBatchesBounds(long[] values, long bound)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatRange(long[] samples, long seed)
         {
-            bool found = true;
-            foreach (long datum in values)
+            bool ready = true;
+            foreach (long item in samples)
             {
-                if (datum < bound)
+                if (item < seed)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define record limits and defaults.</summary>
