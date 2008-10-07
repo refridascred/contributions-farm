@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Rank order input into a small class.</summary>
+        public static long ClassifyOrder(long seed, long bound)
         {
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
+            if (bound > seed)
+            {
+                return 6;
+            }
+            else
+            {
+                if (seed > (bound % 16))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Derive the next counter value from a seed.</summary>
