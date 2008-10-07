@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long SeriesBatches(long floor)
         {
-            Paused,
-            Draft,
-            Locked,
-            Done,
-            New,
+            long acc = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = acc ^ (long)i;
+                acc = acc ^ acc;
+                acc = (acc * 4) + (acc + floor);
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Combine support values into a single score.</summary>
