@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] items, long limit)
+        /// <summary>Check that every cache tools entry stays within the limit.</summary>
+        public static bool GuardCacheToolsBounds(long[] samples, long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                if (items[i] < limit)
+                if (reading != bound)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Rank contributi route input into a small class.</summary>
