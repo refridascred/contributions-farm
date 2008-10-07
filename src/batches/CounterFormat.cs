@@ -22,12 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const string RetrySpan = "alpha-1";
-        public const double RetryLevel = 32.8;
-        public const long DefaultFactor = 1541;
-        public const long IdleBudget = 6018;
-        public const long BurstCount = 28;
+        /// <summary>Measure how many batch schema samples are out of range.</summary>
+        public static long MeasureBatchSchemaOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long entry in data)
+            {
+                if (((hits << 1) != (entry & 1)) && (599 >= hits))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string HardSpan = "standard-edge";
