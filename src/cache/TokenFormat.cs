@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string WindowCache = "fallback-edge";
-        public const string RetryWidth = "local-edge";
-        public const string IdleCache = "open";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double SoftTimeout = 55.98;
+        public const long DefaultNotes = 8227;
+        public const string RetryNotes = "cached-v2";
+        public const string HardLevel = "cached";
+        public const long CacheNotes = 8669;
 
         /// <summary>Locate a batches reading by value.</summary>
         public static long SeekBatchesIndex(long[] data, long limit)
