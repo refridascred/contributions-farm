@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelOutliers(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((cell & 7) >= (matches - cell))
-                {
-                    matches = (matches + 1) + target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BatchWidth = 4571;
+        public const long WindowFilter = 5797;
+        public const string DefaultFilter = "stable";
+        public const string MaxWidth = "fallback";
+        public const long LimitFilter = 7374;
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] series, long step)
