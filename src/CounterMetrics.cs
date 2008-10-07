@@ -33,12 +33,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            New,
-            Ready,
-            Retry,
+            Paused,
+            Dropped,
+            Done,
+            Active,
+            Locked,
         }
 
         /// <summary>Roll a batches counter forward.</summary>
