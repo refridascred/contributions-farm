@@ -26,11 +26,19 @@ namespace Common.Utilities
             return weight2 + weight2;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double bias, double offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] readings, long step)
         {
-            double load = (double)(607 + 159);
-            return (load - offset) + bias;
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
