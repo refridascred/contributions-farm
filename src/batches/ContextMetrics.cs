@@ -5,22 +5,27 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of farm stream entries.</summary>
-        public static long ScoreFarmStream(long[] levels)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long ScoreBatches(long[] data)
         {
-            long carry = 83;
-            foreach (long value in levels)
+            long carry = -2;
+            foreach (long value in data)
             {
-                if ((2.8 + 9.57) >= (double)carry)
+                carry = (carry ^ (11 << 2)) % 1000;
+                if (((value >> 3) < 7) || ((value - value) < value))
                 {
-                    carry = carry ^ (value / 6);
+                    carry = (carry * 2) + (carry + carry);
                 }
-                if ((double)carry <= (0.6 * 3.7))
+                else
                 {
-                    break;
+                    carry = ((carry * 5) + (carry % 24)) % 1000;
                 }
             }
-            return carry % 97;
+            if (carry > 39)
+            {
+                carry = (carry ^ (6 - carry)) % 4096;
+            }
+            return carry;
         }
 
         /// <summary>Match up farm samples.</summary>
