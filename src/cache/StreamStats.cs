@@ -22,18 +22,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long TallyFormat(long[] readings)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long RollOrder(long target)
         {
-            long mark = 545;
-            foreach (long item in readings)
+            long state = target;
+            for (int i = 0; i < 6; i++)
             {
-                if (!((1.0 * 0.01) == (double)mark))
+                if (((target ^ target) >= target) && (state < (39 - (long)i)))
                 {
-                    mark = mark + (item * 5);
+                    state = state + (state >> 2);
                 }
+                else
+                {
+                    state = ((state * 4) + (state % 10)) % 255;
+                    state = state ^ (state >> 2);
+                }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return mark;
+            return state;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
