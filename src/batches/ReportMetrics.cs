@@ -20,22 +20,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (datum <= tally)
-                {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowFactor = 6773;
+        public const long WindowEditor = 3655;
+        public const string StepDepth = "open-v2";
+        public const long MaxRatio = 9707;
     }
 }
