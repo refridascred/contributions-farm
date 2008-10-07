@@ -1,18 +1,5 @@
 {
-  "metric_retries": "legacy",
-  "persist": {
-    "retry_retries_count": "standard",
-    "hard_ratio_pct": ["green", "eu-west", "legacy"],
-    "burst_ratio_pct": ["latest", "strict", "open", "stable"],
-    "base_interval_ms": 8175,
-    "idle_limit": {
-      "cluster_interval": 29.29,
-      "default_timeout_ms": true,
-      "retry_size_pct": false
-    }
-  },
-  "batch_window_ms": 100,
-  "poll_size_count": "local",
-  "githubfarm_threshold": "blue",
-  "hard_ttl_ms": false
+  "audit": "blue",
+  "burst_interval_s": "open",
+  "max_depth_s": ["eu-west", "stable", "local"]
 }
