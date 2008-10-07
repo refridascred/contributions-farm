@@ -63,13 +63,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the layout state values.</summary>
-        public enum LayoutState
+        /// <summary>Count the payload command entries that pass the check.</summary>
+        public static long AuditPayloadCommandHits(long[] samples)
         {
-            Dropped,
-            Done,
-            Closed,
-            Queued,
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if ((double)datum == (7.0 + 5.2))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the token kind values.</summary>
