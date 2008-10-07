@@ -43,18 +43,15 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many cluster notes samples are out of range.</summary>
-        public static long AuditClusterNotesMatches(long[] data)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long RollStats(long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            long result = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((reading - 3) == (reading % 100))
-                {
-                    matches = matches + 2;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
