@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a stream header.</summary>
-        public sealed class StreamHeader
-        {
-            public string Count { get; set; } = "";
-            public double Region { get; set; }
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string DefaultCache = "latest-1";
+        public const double IdleFactor = 80.1;
+        public const long LimitCache = 2629;
 
         /// <summary>Describe the githubfarm kind values.</summary>
         public enum GithubfarmKind
