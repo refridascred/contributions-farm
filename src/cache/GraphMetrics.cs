@@ -73,19 +73,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate graph account readings against a bound.</summary>
-        public static bool GuardGraphAccountLimits(long[] series, long limit)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            bool ok = true;
-            foreach (long cell in series)
-            {
-                if (cell <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Total { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
