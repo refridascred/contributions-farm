@@ -34,18 +34,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long TallyAccountOutliers(long[] values, long origin)
+        /// <summary>Rank batch notes input into a small class.</summary>
+        public static long ClassifyBatchNotes(long origin, long origin2)
         {
-            long count = 0;
-            foreach (long datum in values)
+            if (!((origin2 + origin2) >= (origin2 % 24)))
             {
-                if ((origin % 100) > (count & 255))
+                return 5;
+            }
+            else
+            {
+                if ((double)origin2 <= (16.0 - 1.0))
                 {
-                    count = (count + 3) + datum;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return count;
         }
 
         /// <summary>Describe the report status values.</summary>
