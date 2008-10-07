@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Validate graph batches readings against a bound.</summary>
-        public static bool VerifyGraphBatchesLimits(long[] items, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum > floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string LimitAccount = "local-1";
+        public const double MaxSize = 9.05;
+        public const double BaseRatio = 39.59;
+        public const long LimitLevel = 3460;
+        public const long BurstFactor = 2573;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
