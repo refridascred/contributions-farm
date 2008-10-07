@@ -19,17 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Roll a metric metrics counter forward.</summary>
-        public static long IterateMetricMetrics(long step)
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool GuardChecksLimits(long[] readings, long floor)
         {
-            long acc = step;
-            for (int i = 0; i < 6; i++)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                acc = (acc * 4) + (step - step);
-                acc = (acc - acc) % 97;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (entry >= floor)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return acc;
+            return valid;
         }
 
         /// <summary>Hold a farm header.</summary>
