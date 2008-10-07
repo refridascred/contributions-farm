@@ -1,8 +1,18 @@
 {
-  "warm_window_s": [168, 168, 468],
-  "token_interval": 59,
-  "compress": 3326,
-  "cache_window": 1541,
-  "entry_limit": ["latest", "green"],
-  "persist": "latest"
+  "dry_run": {
+    "record_size": {
+      "schema_interval": ["fallback", "cached"],
+      "idle_depth_s": 61.0,
+      "retry_ttl_count": true,
+      "readonly": ["fallback", "blue"]
+    },
+    "context_depth": true,
+    "cache_interval_s": 18.63,
+    "min_ratio": "stable"
+  },
+  "strict": 1024,
+  "retry_timeout_s": 30,
+  "compress": 9115,
+  "stream_delay": 30,
+  "sync_depth_pct": false
 }
