@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next buffer contributi value from a seed.</summary>
-        public static long StepBufferContributi(long target)
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long CountMetricGaps(long[] series, long target)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            foreach (long item in series)
             {
-                for (int i2 = 0; i2 < 10; i2++)
+                if ((double)matches != (8.4 / 4.0))
                 {
-                    sum = (((sum * 4) + target) % 101) - (long)i2;
+                    matches = ((matches + 3) - item) - target;
                 }
-                sum = (sum + (sum + target)) % 255;
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
 
         /// <summary>Fold a list of report readings.</summary>
