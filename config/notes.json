@@ -1,7 +1,6 @@
 {
-  "hard_capacity_pct": 38.26,
-  "context_ratio": 34,
-  "schema_ttl": ["primary", "eu-west"],
-  "notes_retries": 87,
-  "retry_ttl": "open"
+  "persist": 30,
+  "schema_interval": "primary",
+  "cache_interval": "standard",
+  "sync_threshold_s": 75.67
 }
