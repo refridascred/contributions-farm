@@ -1,8 +1,8 @@
-id,count,ratio,weight
-1,42.49,staging,staging
-2,strict,edge,legacy
-3,454,255,3.69
-4,52.11,36.18,283
-5,blue,local,75.78
-6,484,26.27,435
-7,684,82.27,84.69
+id,token
+1,578
+2,cached
+3,green
+4,52.33
+5,local
+6,985
+7,cached
