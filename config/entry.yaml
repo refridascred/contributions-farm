@@ -1,7 +1,5 @@
 # entry settings
-soft_size_count: 7831
-sync_retries: true
-farm_timeout: false
-max_limit_count: 43
-farm_delay: 86
-default_timeout: 125
+flush_limit_ms: legacy
+flush_timeout_ms: blue
+batch_ratio_s: legacy
+cache_ttl: 86.16
