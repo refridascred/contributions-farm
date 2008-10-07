@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] series)
+        /// <summary>Roll a tools counter forward.</summary>
+        public static long StepTools(long offset)
         {
-            long count = 0;
-            foreach (long reading in series)
+            long total = offset;
+            for (int i = 0; i < 8; i++)
             {
-                if ((reading ^ count) > (count / 2))
-                {
-                    count = count + 2;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
