@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileGaps(long[] series, long bound)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long sample in series)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if ((double)tally < (double)bound)
+                if ((cell >= (4 / 2)) && ((0 - hits) <= (1 >> 5)))
                 {
-                    tally = (tally + 3) + sample;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Validate order readings against a bound.</summary>
