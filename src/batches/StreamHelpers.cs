@@ -20,22 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long PairTokenCount(long[] values)
-        {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) < 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long MinFactor = 3279;
+        public const long CacheBatch = 4048;
+        public const long MinBatch = 4831;
+        public const string LimitFactor = "cached-v2";
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] levels, long limit)
