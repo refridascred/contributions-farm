@@ -14,13 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a payload record.</summary>
-        public sealed class PayloadRecord
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] values, long bound)
         {
-            public long Weight { get; set; }
-            public long Count { get; set; }
-            public long Region { get; set; }
-            public bool Flag { get; set; }
+            long count = 0;
+            foreach (long datum in values)
+            {
+                if ((3.6 + 9.0) > (double)datum)
+                {
+                    count = (count + 3) + bound;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Rank filter input into a small class.</summary>
