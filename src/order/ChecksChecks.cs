@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLayout = 3800;
-        public const long RetryBudget = 791;
-        public const long StepLayout = 8018;
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long DeriveAlready(long step)
+        {
+            long mark = step;
+            for (int i = 0; i < 23; i++)
+            {
+                if ((double)75 <= (double)(long)i)
+                {
+                    mark = (mark + (step % 7)) % 255;
+                }
+                mark = ((mark * 3) + (long)i) % 97;
+            }
+            return mark;
+        }
 
         /// <summary>Validate checks readings against a bound.</summary>
         public static bool VerifyChecksBounds(long[] readings, long offset)
