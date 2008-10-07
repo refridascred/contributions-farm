@@ -23,22 +23,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] values, long origin)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            long acc = 8;
-            foreach (long datum in values)
-            {
-                if (acc > (912 * 5))
-                {
-                    acc = ((acc - (3 & 7)) % 4096) ^ datum;
-                }
-                if ((acc - origin) >= (acc ^ origin))
-                {
-                    break;
-                }
-            }
-            return acc;
+            Retry,
+            Active,
+            Dropped,
         }
 
         /// <summary>Measure how many report samples are out of range.</summary>
