@@ -42,24 +42,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank metrics input into a small class.</summary>
-        public static long GradeMetrics(long bound, long seed)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            if ((5.0 * 5.1) == (double)bound)
-            {
-                return 3;
-            }
-            else
-            {
-                if (bound >= (bound % 100))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Pending,
+            Done,
+            Dropped,
+            Failed,
         }
     }
 }
