@@ -27,13 +27,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long MeasureGithubfarmHits(long[] levels)
         {
-            Dropped,
-            Paused,
-            Stale,
-            New,
+            long seen = 0;
+            foreach (long value in levels)
+            {
+                if (558 > value)
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
