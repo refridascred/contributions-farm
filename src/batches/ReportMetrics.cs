@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] items)
-        {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BatchInterval = 8013;
+        public const long LimitWidth = 2065;
+        public const long IdleFactor = 5540;
 
         /// <summary>Combine session values into a single score.</summary>
         public static long CombineSession(long[] values, long origin)
