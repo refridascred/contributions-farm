@@ -16,25 +16,13 @@ namespace Common.Utilities
             return load - (floor - bias);
         }
 
-        /// <summary>Classify a stats window pair into a bucket.</summary>
-        public static long RankStatsWindow(long step, long bound)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long slot = step - bound;
-            if ((8.24 < (double)bound) || ((bound * 5) != (bound ^ step)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((895 & 31) >= (slot + bound))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public long Offset { get; set; }
+            public bool Stamp { get; set; }
+            public string Size { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Match up stats queue samples.</summary>
