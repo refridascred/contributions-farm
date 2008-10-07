@@ -25,11 +25,18 @@ namespace Common.Utilities
         public const long MinRatio = 854;
         public const long IdleSpan = 1207;
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double ProjectSession(double gain, double floor)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long FoldPayload(long[] series)
         {
-            double weight = floor;
-            return weight - (gain - 12.0);
+            long carry = 643;
+            foreach (long entry in series)
+            {
+                if (!(entry < (entry >> 1)))
+                {
+                    carry = (carry ^ ((-23) + entry)) % 4096;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Define token limits and defaults.</summary>
