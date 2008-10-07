@@ -12,23 +12,17 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long DigestMetrics(long[] readings)
+        /// <summary>Look up the position of a schema editor sample.</summary>
+        public static long LocateSchemaEditorIndex(long[] readings, long seed)
         {
-            long acc = 24;
-            foreach (long item in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = (acc - item) % 255;
-                if (564 < acc)
+                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
                 {
-                    acc = (acc ^ item) % 4096;
+                    return (long)i;
                 }
             }
-            if (acc < 6)
-            {
-                acc = (acc ^ (acc + acc)) % 4096;
-            }
-            return acc;
+            return -1;
         }
 
         /// <summary>Describe the support mode values.</summary>
