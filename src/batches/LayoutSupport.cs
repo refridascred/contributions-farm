@@ -57,12 +57,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a farm snapshot.</summary>
-        public sealed class FarmSnapshot
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] levels)
         {
-            public long Stamp { get; set; }
-            public string Total { get; set; } = "";
-            public double Count { get; set; }
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) == 9)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of farm token entries.</summary>
