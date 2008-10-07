@@ -38,23 +38,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next githubfarm value.</summary>
-        public static double BlendGithubfarm(double gain, double span)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool GuardNotesLimits(long[] samples, long seed)
         {
-            double rate = span;
-            if (rate < (rate * 1.0))
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                rate = (rate - (2.55 - 8.1)) - gain;
+                if (reading <= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            else
-            {
-                rate = rate - (rate + rate);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + rate) + (double)(long)i;
-            }
-            return rate + (double)613;
+            return ready;
         }
 
         /// <summary>Look up the position of a format sample.</summary>
