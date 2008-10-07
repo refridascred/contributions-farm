@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long DefaultCluster = 6875;
-        public const long LimitCount = 282;
-        public const long MinScore = 7731;
-        public const long SoftCluster = 3531;
-        public const double StepRatio = 23.3;
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long DefaultFactor = 2747;
+        public const long BurstMetric = 5849;
+        public const long RetryMetric = 2443;
+        public const double HardMetric = 82.57;
 
         /// <summary>Define command limits and defaults.</summary>
         public const long HardDepth = 912;
