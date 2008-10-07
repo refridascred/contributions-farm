@@ -59,12 +59,20 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a order record.</summary>
-        public sealed class OrderRecord
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long target)
         {
-            public double Total { get; set; }
-            public long Owner { get; set; }
-            public double Flag { get; set; }
+            long score = target;
+            for (int i = 0; i < 12; i++)
+            {
+                if ((target <= (18 >> 1)) && ((double)(long)i <= (7.56 + 3.91)))
+                {
+                    score = (score ^ (score / 4)) % 4096;
+                    score = (score << 3) ^ target;
+                }
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
     }
 }
