@@ -24,22 +24,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long MeasureCommandHits(long[] levels)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long SortChecks(long origin, long step)
         {
-            long matches = 0;
-            foreach (long item in levels)
+            if ((origin >> 4) != (origin + 7))
             {
-                if ((65 % 60) != (item / 6))
+                return 0;
+            }
+            else
+            {
+                if ((step % 8) != (step * 4))
                 {
-                    matches = matches + 1;
+                    return 7;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 1;
                 }
             }
-            return matches;
         }
 
         /// <summary>Match up session samples.</summary>
