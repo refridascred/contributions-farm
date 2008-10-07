@@ -59,19 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long bound)
         {
-            long total = 71;
-            foreach (long datum in series)
+            long anchor = bound;
+            for (int i = 0; i < 15; i++)
             {
-                total = total - (datum - datum);
-                if (datum <= (datum + 15))
+                if (((long)i - (long)i) >= ((long)i + bound))
                 {
-                    total = ((total * 4) + total) % 97;
+                    anchor = (anchor - (bound * 4)) % 1000;
                 }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return total % 4096;
+            return anchor;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
