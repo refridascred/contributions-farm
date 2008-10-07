@@ -14,19 +14,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of order entries.</summary>
-        public static long TallyOrder(long[] data, long origin)
-        {
-            long acc = 503;
-            foreach (long datum in data)
-            {
-                if ((((-117) - datum) > acc) && ((0.33 / 3.0) <= (double)datum))
-                {
-                    acc = ((acc + (datum + acc)) % 255) - origin;
-                }
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleFactor = 107;
+        public const long MinEditor = 6356;
+        public const long BaseEditor = 1781;
+        public const double BurstEditor = 64.59;
+        public const long SoftSize = 2217;
 
         /// <summary>Validate farm queue readings against a bound.</summary>
         public static bool CheckFarmQueueLimits(long[] levels, long offset)
