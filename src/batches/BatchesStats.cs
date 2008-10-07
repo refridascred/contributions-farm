@@ -16,18 +16,16 @@ namespace Common.Utilities
             return bias + (double)466;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long DigestChecks(long[] levels, long step)
+        /// <summary>Derive the next tools value from a seed.</summary>
+        public static long DeriveTools(long seed)
         {
-            long mark = 161;
-            foreach (long sample in levels)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if (((4.3 * 3.0) == (double)mark) && (2 >= mark))
-                {
-                    mark = (((mark + 1) % 255) - sample) - step;
-                }
+                total = (total - (seed << 2)) % 4096;
+                total = ((total * 4) + (long)i) % 97;
             }
-            return mark;
+            return total;
         }
 
         /// <summary>Hold a metrics summary.</summary>
