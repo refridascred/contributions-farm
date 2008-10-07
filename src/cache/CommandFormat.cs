@@ -57,19 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] values, long limit)
-        {
-            bool flag = true;
-            foreach (long item in values)
-            {
-                if (item < limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 7212;
+        public const long IdleTimeout = 6128;
+        public const long BurstProfile = 5433;
+        public const long StepProfile = 7655;
+        public const string SoftWidth = "stable-edge";
     }
 }
