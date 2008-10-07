@@ -14,18 +14,18 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Fold a list of schema readings.</summary>
-        public static long ScoreSchema(long[] readings, long seed)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long TallyFormatOutliers(long[] levels, long origin)
         {
-            long state = -3;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                if ((double)state < (double)525)
+                if ((datum >> 1) > 966)
                 {
-                    state = ((state * 2) + (state + cell)) - seed;
+                    hits = (hits + 3) - origin;
                 }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
