@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MaxNotes = "strict-v2";
-        public const double HardFactor = 81.57;
-        public const long WindowNotes = 366;
-        public const string SoftInterval = "stable-edge";
-        public const long MaxSpan = 7446;
+        /// <summary>Describe the cache class values.</summary>
+        public enum CacheClass
+        {
+            Ready,
+            Synced,
+            Draft,
+            Pending,
+            Retry,
+        }
 
         /// <summary>Define channel limits and defaults.</summary>
         public const long BaseChannel = 3368;
