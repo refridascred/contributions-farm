@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxFactor = 389;
-        public const long RetryWidth = 9315;
-        public const long DefaultAccount = 1560;
-        public const long CacheAccount = 6152;
-        public const long IdleAccount = 7920;
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
+        {
+            public double Size { get; set; }
+            public bool Total { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Roll a editor profile counter forward.</summary>
         public static long IterateEditorProfile(long bound)
