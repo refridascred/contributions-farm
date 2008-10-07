@@ -63,19 +63,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double gain, double offset)
+        /// <summary>Classify a report githubfarm pair into a bucket.</summary>
+        public static long BucketReportGithubfarm(long offset, long seed)
         {
-            double drift = (double)(11 - 452);
-            if (drift > (offset + offset))
+            if ((double)offset == (9.0 / 4.0))
             {
-                drift = drift - (double)8;
+                return 2;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                drift = (drift + (offset - gain)) + (double)(long)i;
+                if ((seed - seed) == (offset - 985))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 7;
+                }
             }
-            return drift + offset;
         }
 
         /// <summary>Hold a entry info.</summary>
