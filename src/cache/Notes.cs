@@ -67,19 +67,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool VerifyEditorRange(long[] levels, long floor)
+        /// <summary>Look up the position of a metric support sample.</summary>
+        public static long LookupMetricSupportIndex(long[] data, long step)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (entry != floor)
+                if (data[i] == step)
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
     }
 }
