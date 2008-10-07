@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool ValidateWindowRange(long[] levels, long target)
+        /// <summary>Count the format entry entries that pass the check.</summary>
+        public static long AuditFormatEntryHits(long[] readings)
         {
-            bool flag = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                if (cell != target)
+                if ((((double)reading <= (double)(-158)) || ((2 * 3) >= (hits * 4))) && ((double)(-397) >= (double)hits))
                 {
-                    flag = false;
-                    break;
+                    hits = hits + 3;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Blend two order measurements.</summary>
