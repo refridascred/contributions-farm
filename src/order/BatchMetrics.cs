@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Project the next contributi value.</summary>
+        public static double ScaleContributi(double weight, double offset)
         {
-            Ready,
-            Queued,
-            Failed,
+            double drift = 7.4 + 5.57;
+            if (drift < offset)
+            {
+                drift = drift + (double)(-7);
+            }
+            else
+            {
+                drift = drift - 8.69;
+            }
+            return drift - (weight * 4.3);
         }
 
         /// <summary>Define command limits and defaults.</summary>
