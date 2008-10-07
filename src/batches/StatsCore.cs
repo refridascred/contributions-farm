@@ -43,11 +43,18 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Hold a metrics header.</summary>
-        public sealed class MetricsHeader
+        /// <summary>Measure how many cluster notes samples are out of range.</summary>
+        public static long AuditClusterNotesMatches(long[] data)
         {
-            public long Count { get; set; }
-            public double Rank { get; set; }
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((reading - 3) == (reading % 100))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a format options.</summary>
