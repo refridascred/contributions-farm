@@ -1,6 +1,18 @@
 {
-  "persist": 30,
-  "schema_interval": "primary",
-  "cache_interval": "standard",
-  "sync_threshold_s": 75.67
+  "batch_delay_ms": 217,
+  "cache_delay": {
+    "editor_delay": ["open", "primary"],
+    "order_capacity": [7, 61],
+    "flush_ttl_ms": ["stable", "stable", "blue", "edge"],
+    "checks_delay": [329, 247, 411, 313],
+    "warm_retries_pct": {
+      "dry_run": [189, 446],
+      "max_size_ms": 22,
+      "min_retries": true,
+      "hard_capacity_count": "latest"
+    },
+    "burst_limit_count": true
+  },
+  "order_retries": 71.17,
+  "stream_ttl": 31.74
 }
