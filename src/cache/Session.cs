@@ -35,24 +35,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long RankQueue(long step, long step2)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long SeekFarmIndex(long[] series, long seed)
         {
-            if ((step2 / 9) != (step & 7))
+            for (int i = 0; i < series.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((step & 7) == (step2 + step))
+                if (series[i] >= seed)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Accumulate githubfarm samples.</summary>
