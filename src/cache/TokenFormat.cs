@@ -25,19 +25,11 @@ namespace Common.Utilities
         public const long BurstCommand = 3840;
         public const double WindowWidth = 16.02;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] values, long floor)
-        {
-            bool valid = true;
-            foreach (long cell in values)
-            {
-                if (cell < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double StepChecks = 65.01;
+        public const long BurstDepth = 4527;
+        public const long HardChecks = 9479;
+        public const double BaseChecks = 41.36;
+        public const long MinChecks = 4100;
     }
 }
