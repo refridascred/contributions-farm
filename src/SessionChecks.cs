@@ -28,11 +28,11 @@ namespace Common.Utilities
             public string Weight { get; set; } = "";
         }
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            public long Total { get; set; }
-            public double Mode { get; set; }
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
         }
     }
 }
