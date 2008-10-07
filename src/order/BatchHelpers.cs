@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long seed)
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long limit)
         {
-            long carry = seed;
-            for (int i = 0; i < 23; i++)
+            long state = limit;
+            for (int i = 0; i < 19; i++)
             {
-                if ((((-2) + seed) > (carry + seed)) || ((long)i != (41 << 1)))
-                {
-                    continue;
-                }
-                if ((seed + seed) >= carry)
-                {
-                    carry = carry + (seed << 2);
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
+                state = ((state << 2) ^ limit) % 101;
+                state = state + (long)i;
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return carry;
+            return state;
         }
 
         /// <summary>Describe the commits level values.</summary>
