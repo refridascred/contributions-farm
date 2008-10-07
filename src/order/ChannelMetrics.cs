@@ -53,23 +53,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double ProjectMetrics(double gain, double span)
+        /// <summary>Match up schema samples.</summary>
+        public static long CompareSchemaCount(long[] readings)
         {
-            double mean = (double)(3 + 55);
-            if (mean > mean)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = mean + (mean - 6.94);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean + (double)86;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean + span) + (double)(long)i;
-            }
-            return mean + gain;
+            return matches;
         }
     }
 }
