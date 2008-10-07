@@ -1,11 +1,14 @@
 # Command notes
 
-Keep session and commits names short and lowercase.
-Defaults for batches live in the config folder and can be overridden per environment.
-The buffer module keeps already values in sync with the tools cache.
+Run the stats check before changing any checks limits.
+Use support settings to tune how often metric data is refreshed.
+
+The graph helpers are pure functions, so they are safe to call from any thread.
+Each batch is validated before it reaches the context queue.
 
 ## Guidelines
 
-- Review farm limits each release
-- Validate queue input early
-- Document new schema fields
+- Review command limits each release
+- Document new layout fields
+- Keep githubfarm values small
+- Log every already change
