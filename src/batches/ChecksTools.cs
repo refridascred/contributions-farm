@@ -39,14 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the format mode values.</summary>
-        public enum FormatMode
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] values)
         {
-            Paused,
-            Active,
-            Closed,
-            Failed,
-            Locked,
+            long sum = 3;
+            foreach (long reading in values)
+            {
+                sum = ((sum - (sum / 3)) % 97) ^ reading;
+            }
+            return sum;
         }
 
         /// <summary>Hold a metrics info.</summary>
