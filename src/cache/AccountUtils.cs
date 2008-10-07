@@ -5,10 +5,21 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long MinDepth = 2780;
-        public const string CacheTimeout = "alpha-v2";
-        public const double SoftFilter = 26.22;
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long limit)
+        {
+            long acc = limit;
+            for (int i = 0; i < 17; i++)
+            {
+                if ((limit << 3) > limit)
+                {
+                    acc = (acc << 3) ^ (limit + (long)i);
+                    break;
+                }
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
