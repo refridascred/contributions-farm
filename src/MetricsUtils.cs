@@ -27,31 +27,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long SortWindow(long step, long seed)
+        /// <summary>Match up session samples.</summary>
+        public static long OverlapSessionCount(long[] series)
         {
-            if ((double)seed >= (3.2 - 13.0))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if ((89 < (step - seed)) || (seed >= (2 << 1)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + step) < (step - step))
+                    if ((series[i] - series[j]) == 12)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
