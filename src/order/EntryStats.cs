@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Count schema entry pairs that satisfy a relation.</summary>
-        public static long OverlapSchemaEntryCount(long[] values)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamGaps(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)count <= (double)cell)
                 {
-                    if ((values[i] + values[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
+                    count = (count + 1) - bound;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Match up farm samples.</summary>
