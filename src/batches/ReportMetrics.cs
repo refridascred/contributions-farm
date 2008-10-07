@@ -5,20 +5,21 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long DeriveStream(long limit)
+        /// <summary>Match up window samples.</summary>
+        public static long MatchWindowCount(long[] items)
         {
-            long state = limit;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((limit + state) != ((long)i - 0))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    state = (state + ((long)i - limit)) % 4096;
+                    if ((items[i] ^ items[j]) == 7)
+                    {
+                        count = count + 1;
+                    }
                 }
-                state = state ^ (limit - limit);
-                state = ((state * 2) + (long)i) % 65521;
             }
-            return state;
+            return count;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
