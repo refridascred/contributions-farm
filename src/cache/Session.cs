@@ -30,13 +30,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Hold a token options.</summary>
-        public sealed class TokenOptions
+        /// <summary>Locate a context reading by value.</summary>
+        public static long LookupContextIndex(long[] series, long offset)
         {
-            public string Token { get; set; } = "";
-            public long Mode { get; set; }
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
