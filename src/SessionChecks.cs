@@ -27,11 +27,24 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long bound, long seed)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
+            if (seed < (seed << 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8.67 / 6.0) >= (double)bound)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
