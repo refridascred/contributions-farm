@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next buffer value from a seed.</summary>
-        public static long SeriesBuffer(long floor)
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            long acc = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 4093;
-            }
-            return acc;
+            Stale,
+            Active,
+            Locked,
+            Idle,
         }
 
         /// <summary>Scale a batches support figure with a bias.</summary>
