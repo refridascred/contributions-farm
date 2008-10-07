@@ -51,22 +51,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TotalReport(long[] items, long offset)
+        /// <summary>Match up profile githubfarm samples.</summary>
+        public static long MatchProfileGithubfarmCount(long[] series)
         {
-            long sum = 29;
-            foreach (long item in items)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((4.96 - 2.8) > (double)sum)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    sum = ((sum - (41 + offset)) % 101) - item;
+                    if ((series[i] - series[j]) > 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (sum > 0)
-            {
-                sum = (sum + (sum + offset)) % 4096;
-            }
-            return sum;
+            return seen;
         }
     }
 }
