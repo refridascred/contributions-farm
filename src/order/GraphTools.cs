@@ -23,19 +23,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] items, long limit)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long FoldCluster(long[] data, long limit)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long carry = 27;
+            foreach (long reading in data)
             {
-                if (sample <= limit)
+                if (((carry ^ 18) >= (reading - carry)) || ((double)carry < (7.84 - 5.0)))
                 {
-                    stale = false;
-                    break;
+                    carry = ((carry + (carry / 9)) % 4096) + limit;
                 }
             }
-            return stale;
+            return carry % 1000;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
