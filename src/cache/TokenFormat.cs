@@ -25,19 +25,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool ValidateMetricBounds(long[] readings, long offset)
+        /// <summary>Derive the next already value from a seed.</summary>
+        public static long StepAlready(long floor)
         {
-            bool ok = true;
-            foreach (long datum in readings)
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
             {
-                if (datum != offset)
-                {
-                    ok = false;
-                    break;
-                }
+                sum = (sum + (floor - (long)i)) % 65521;
+                sum = ((sum * 2) + (long)i) % 101;
             }
-            return ok;
+            return sum;
         }
     }
 }
