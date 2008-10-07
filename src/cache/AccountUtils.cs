@@ -5,23 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Project the next batches value.</summary>
-        public static double SmoothBatches(double rate, double span)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiGaps(long[] items, long floor)
         {
-            double load = span;
-            if (load > (load / 2.0))
+            long tally = 0;
+            foreach (long cell in items)
             {
-                load = load - 14.0;
+                if ((9.6 - 15.0) == (double)floor)
+                {
+                    tally = (tally + 1) - cell;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                load = load + (span + rate);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + 6.0) + (double)(long)i;
-            }
-            return load + rate;
+            return tally;
         }
 
         /// <summary>Describe the route state values.</summary>
