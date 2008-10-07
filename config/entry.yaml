@@ -1,6 +1,15 @@
 # entry settings
-account_depth:
-  - 8
-  - 489
-max_retries_s: true
-min_threshold_s: 60
+editor_depth: edge
+min_size_s: primary
+default_limit:
+  soft_delay_s: false
+  context_retries: 5625
+  batch_timeout_pct: cached
+  strict:
+    - blue
+    - cached
+    - latest
+  enabled:
+    - 496
+    - 347
+    - 24
