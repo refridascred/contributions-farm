@@ -20,25 +20,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long seed, long target)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferRange(long[] values, long floor)
         {
-            long diff = seed + target;
-            if (((double)(-846) != (double)seed) || (3.75 > (double)target))
+            bool flag = true;
+            foreach (long entry in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)diff >= (7.7 * 7.7))
+                if (entry != floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Find the first support command entry that matches the target.</summary>
