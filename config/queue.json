@@ -1,5 +1,8 @@
 {
-  "flush_retries": "latest",
-  "cache_limit": 59,
-  "hard_capacity": 250
+  "context_size": 37.1,
+  "warm_delay": 0.05,
+  "strict": ["latest", "legacy", "standard"],
+  "batch_limit": "edge",
+  "buffer_size": "cached",
+  "poll_threshold": [374, 435, 243, 412]
 }
