@@ -24,11 +24,11 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            public long Score { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a schema header.</summary>
