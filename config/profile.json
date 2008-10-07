@@ -1,5 +1,17 @@
 {
-  "compress": 90.38,
-  "sync_limit": ["stable", "fallback", "fallback", "blue"],
-  "soft_window": 42.76
+  "filter_depth": false,
+  "burst_timeout": false,
+  "record_size": [303, 13, 206],
+  "flush_limit_ms": 250,
+  "cache_limit_s": {
+    "schema_retries": 3.23,
+    "idle_retries": "latest",
+    "sync_interval_ms": "legacy",
+    "base_retries_pct": {
+      "metric_limit": 60,
+      "audit": "local",
+      "default_ttl_pct": 1512
+    },
+    "strict": 19.78
+  }
 }
