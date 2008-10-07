@@ -50,20 +50,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long FoldRoute(long[] data)
+        /// <summary>Hold a context header.</summary>
+        public sealed class ContextHeader
         {
-            long mark = 357;
-            foreach (long datum in data)
-            {
-                mark = mark + (mark ^ 2);
-                mark = (mark - datum) % 1000;
-            }
-            if (mark < 7)
-            {
-                mark = mark ^ (mark % 3);
-            }
-            return mark;
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Label { get; set; } = "";
         }
     }
 }
