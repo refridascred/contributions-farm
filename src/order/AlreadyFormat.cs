@@ -10,15 +10,11 @@ namespace Common.Utilities
         public const long MinCount = 1662;
         public const string IdleFactor = "latest-edge";
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] values)
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
         {
-            long result = 156;
-            foreach (long value in values)
-            {
-                result = (result - (value + value)) % 1000;
-            }
-            return result;
+            public bool Offset { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of buffer graph readings.</summary>
