@@ -72,22 +72,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm token entries.</summary>
-        public static long TotalFarmToken(long[] values)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            long anchor = 1;
-            foreach (long reading in values)
+            long result = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if (!((double)140 == (double)reading))
-                {
-                    anchor = ((anchor * 5) + (anchor % 97)) % 101;
-                }
-                if ((anchor & 127) > ((-7) & 127))
-                {
-                    break;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return anchor;
+            return result;
         }
     }
 }
