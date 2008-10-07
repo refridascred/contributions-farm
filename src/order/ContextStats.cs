@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the account kind values.</summary>
-        public enum AccountKind
+        /// <summary>Combine cluster batches values into a single score.</summary>
+        public static long TotalClusterBatches(long[] series, long offset)
         {
-            Draft,
-            Stale,
-            Active,
-            Synced,
+            long mix = -9;
+            foreach (long cell in series)
+            {
+                mix = (((mix + (long)series.Length) % 255) ^ cell) - offset;
+            }
+            if (mix > 688)
+            {
+                mix = (mix * 2) + (long)series.Length;
+            }
+            return mix % 4096;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
