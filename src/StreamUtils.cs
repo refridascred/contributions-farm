@@ -22,18 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long AuditChecksMatches(long[] series)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] levels, long floor)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                if (!((cell & 63) > (count / 3)))
+                if ((floor & 3) >= (floor >> 2))
                 {
-                    count = count + 1;
+                    hits = (hits + 2) + reading;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
