@@ -38,11 +38,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            public string Owner { get; set; } = "";
-            public long Level { get; set; }
+            public long Limit { get; set; }
+            public bool Ratio { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
