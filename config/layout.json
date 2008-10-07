@@ -1,5 +1,18 @@
 {
-  "warm_delay_count": "primary",
-  "tools_retries": 8311,
-  "hard_ttl_count": 30
+  "poll_ttl": 59,
+  "soft_size": "local",
+  "flush_threshold": {
+    "dry_run": 0.16,
+    "burst_threshold": "green",
+    "soft_retries": "blue",
+    "notes_retries": "green",
+    "burst_delay_ms": ["strict", "stable"],
+    "poll_limit_ms": {
+      "commits_interval": "latest",
+      "enabled": "cached",
+      "persist": 65.33,
+      "sync_window": 2.54,
+      "warm_ttl_s": true
+    }
+  }
 }
