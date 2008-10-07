@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            Pending,
-            Draft,
-            Done,
-            Active,
+            public long Total { get; set; }
+            public string Owner { get; set; } = "";
+            public double Weight { get; set; }
         }
 
         /// <summary>Grade a payload value against two limits.</summary>
