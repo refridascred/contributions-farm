@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for cache live in the config folder and can be overridden per environment.
-Keep batches and filter names short and lowercase.
+Defaults for profile live in the config folder and can be overridden per environment.
+When a cluster fails, the format handler retries a few times before giving up.
+A window that stays idle for too long is moved to the channel list.
 
 ## Guidelines
 
-- Review editor limits each release
-- Keep buffer values small
-- Validate notes input early
+- Document new queue fields
+- Log every support change
+- Validate metric input early
