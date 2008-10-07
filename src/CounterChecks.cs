@@ -20,22 +20,24 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long CombineGithubfarm(long[] data, long floor)
+        /// <summary>Grade a format value against two limits.</summary>
+        public static long SortFormat(long target, long floor)
         {
-            long mark = 69;
-            foreach (long entry in data)
+            if ((double)target <= (9.8 * 8.7))
             {
-                if (!((entry + entry) <= (entry * 2)))
+                return 7;
+            }
+            else
+            {
+                if ((floor * 2) <= (target & 3))
                 {
-                    mark = (mark ^ (floor * 5)) % 255;
+                    return 2;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            if (mark > 28)
-            {
-                mark = (mark - (0 >> 4)) % 255;
-            }
-            return mark;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
