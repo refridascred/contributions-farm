@@ -5,31 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long floor, long target)
+        /// <summary>Count route layout pairs that satisfy a relation.</summary>
+        public static long OverlapRouteLayoutCount(long[] data)
         {
-            if ((floor >> 2) > (target + 43))
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)floor != (5.0 + 9.5)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((floor + target) > (target * 5)) && (target <= (target >> 4)))
+                    if ((data[i] - data[j]) != 8)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 4;
+                        tally = tally + 1;
                     }
                 }
             }
+            return tally;
         }
 
         /// <summary>Compare every pair of metrics batches readings.</summary>
