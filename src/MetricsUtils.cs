@@ -56,13 +56,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a context snapshot.</summary>
-        public sealed class ContextSnapshot
+        /// <summary>Hold a metric entry.</summary>
+        public sealed class MetricEntry
         {
-            public bool Score { get; set; }
-            public double Size { get; set; }
-            public long Total { get; set; }
-            public bool Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Mode { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a schema stats.</summary>
