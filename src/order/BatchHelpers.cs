@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the farm status values.</summary>
-        public enum FarmStatus
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] data, long offset)
         {
-            Closed,
-            Queued,
-            Locked,
+            bool ok = true;
+            foreach (long cell in data)
+            {
+                if (cell < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a command header.</summary>
