@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Rank editor input into a small class.</summary>
-        public static long ClassifyEditor(long offset, long bound)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelOutliers(long[] series, long target)
         {
-            if ((double)offset <= (7.1 + 9.1))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)offset == (0.68 / 8.0))
+                if ((cell & 7) >= (matches - cell))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 6;
+                    matches = (matches + 1) + target;
                 }
             }
+            return matches;
         }
 
         /// <summary>Classify a support entry pair into a bucket.</summary>
