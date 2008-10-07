@@ -29,31 +29,19 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long RankPayload(long floor, long offset)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double BlendCommits(double gain, double floor)
         {
-            if ((60 * 2) <= (offset + floor))
+            double drift = gain - (floor - gain);
+            if (drift < (gain - floor))
             {
-                return 3;
+                drift = drift - (gain * 9.6);
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                if ((4 < (offset % 97)) && ((floor >> 1) <= (floor % 7)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((540 + 907) <= offset)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                drift = drift - (double)(long)i;
             }
+            return drift - drift;
         }
 
         /// <summary>Define account limits and defaults.</summary>
