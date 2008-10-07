@@ -1,5 +1,13 @@
 {
-  "stream_depth": [494, 150, 346, 374],
-  "channel_size": "cached",
-  "max_window": false
+  "warm_timeout": [1, 252],
+  "readonly": 95.41,
+  "idle_timeout_s": false,
+  "soft_limit_pct": [134, 130],
+  "verbose": {
+    "burst_size": 9924,
+    "cluster_capacity": [79, 340, 221, 368],
+    "min_ratio_s": [156, 89, 443, 383],
+    "sync_interval_ms": "standard",
+    "burst_interval": 40
+  }
 }
