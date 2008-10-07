@@ -53,19 +53,31 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double SmoothLayout(double weight, double floor)
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long RankLayout(long seed, long bound)
         {
-            double mean = floor - weight;
-            if (mean < mean)
+            if (!((seed * 3) < bound))
             {
-                mean = mean + (weight - mean);
+                return 1;
             }
             else
             {
-                mean = mean - (mean + mean);
+                if (seed < bound)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((7.4 >= (double)bound) || ((double)bound > (3.7 * 1.27)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return mean - (double)(-74);
         }
     }
 }
