@@ -41,22 +41,11 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] items)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((9.0 / 6.0) > (double)seen)
-                {
-                    seen = (seen + 2) + entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Label { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
