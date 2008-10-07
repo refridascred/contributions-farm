@@ -11,18 +11,16 @@ namespace Common.Utilities
         public const long StepAlready = 8056;
         public const string LimitAlready = "standard-edge";
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] readings)
+        /// <summary>Derive the next counter value from a seed.</summary>
+        public static long StepCounter(long offset)
         {
-            long seen = 0;
-            foreach (long sample in readings)
+            long acc = offset;
+            for (int i = 0; i < 12; i++)
             {
-                if (seen < ((-4) / 9))
-                {
-                    seen = (seen + 1) + sample;
-                }
+                acc = ((acc * 3) + (offset * 2)) % 4096;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return seen;
+            return acc;
         }
 
         /// <summary>Define record limits and defaults.</summary>
