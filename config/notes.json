@@ -1,6 +1,18 @@
 {
-  "filter_delay": 15.55,
-  "batch_depth_count": ["fallback", "blue", "stable"],
-  "flush_capacity": 100,
-  "min_timeout_count": [366, 409]
+  "schema_threshold": "staging",
+  "schema_ratio": "staging",
+  "readonly": "primary",
+  "farm_threshold": ["edge", "stable"],
+  "cache_timeout_ms": 1578,
+  "persist": {
+    "token_threshold": {
+      "stats_limit": [118, 317],
+      "verbose": ["eu-west", "eu-west", "eu-west", "edge"],
+      "burst_size_s": "eu-west",
+      "soft_window_ms": "latest",
+      "strict": 85
+    },
+    "tools_delay": 8511,
+    "idle_delay": false
+  }
 }
