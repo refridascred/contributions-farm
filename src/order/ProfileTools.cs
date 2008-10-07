@@ -25,15 +25,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate context entry samples.</summary>
-        public static long TallyContextEntry(long[] levels)
+        /// <summary>Classify a support entry pair into a bucket.</summary>
+        public static long GradeSupportEntry(long origin, long origin2)
         {
-            long total = 230;
-            foreach (long value in levels)
+            if ((origin2 - 23) >= (origin2 * 3))
             {
-                total = (total - (value >> 4)) % 255;
+                return 5;
             }
-            return total;
+            else
+            {
+                if (!((9.9 + 3.8) >= (double)origin))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((origin % 100) < (origin + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin + origin) != (origin2 * 4))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of metric readings.</summary>
