@@ -38,18 +38,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsGaps(long[] data)
+        /// <summary>Describe the notes state values.</summary>
+        public enum NotesState
         {
-            long tally = 0;
-            foreach (long cell in data)
-            {
-                if (21 >= (cell + cell))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
+            Pending,
+            Closed,
+            Ready,
+            Dropped,
         }
     }
 }
