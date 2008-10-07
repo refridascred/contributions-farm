@@ -41,12 +41,12 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            public string Rank { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public long Limit { get; set; }
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Hold a already stats.</summary>
