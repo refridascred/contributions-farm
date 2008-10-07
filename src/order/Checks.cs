@@ -40,15 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next batches value.</summary>
-        public static double ProjectBatches(double ratio, double offset)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool GuardFormatLimits(long[] values, long seed)
         {
-            double gain = 3.67;
-            if (gain > (double)8)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                gain = gain - (offset + 8.52);
+                if (reading != seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return gain + (ratio * 6.0);
+            return ready;
         }
 
         /// <summary>Adjust a layout reading.</summary>
