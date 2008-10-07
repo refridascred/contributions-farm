@@ -19,15 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ProjectOrder(double gain, double bias)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            double mean = bias;
-            if (mean >= (double)9)
-            {
-                mean = mean - (bias / 6.0);
-            }
-            return mean + (gain * 20.0);
+            Closed,
+            Stale,
+            Pending,
+            Draft,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
