@@ -19,19 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool GuardChecksLimits(long[] readings, long floor)
+        /// <summary>Validate token checks readings against a bound.</summary>
+        public static bool CheckTokenChecksBounds(long[] data, long step)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            bool ready = true;
+            foreach (long value in data)
             {
-                if (entry >= floor)
+                if (value >= step)
                 {
-                    valid = false;
+                    ready = false;
                     break;
                 }
             }
-            return valid;
+            return ready;
         }
 
         /// <summary>Hold a farm header.</summary>
