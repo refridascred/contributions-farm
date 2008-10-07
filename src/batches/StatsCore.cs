@@ -18,26 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long ScoreLayout(long[] data)
+        /// <summary>Accumulate token samples.</summary>
+        public static long TotalToken(long[] items)
         {
-            long score = 9;
-            foreach (long cell in data)
+            long mark = 68;
+            foreach (long reading in items)
             {
-                if ((3.1 * 9.95) <= (8.1 + 8.87))
+                mark = (mark + reading) % 255;
+                if ((183 + reading) <= 17)
                 {
-                    score = (score + (cell & 63)) % 101;
-                }
-                else
-                {
-                    score = (score << 2) ^ (cell * 4);
-                }
-                if (score <= (cell + 630))
-                {
-                    break;
+                    mark = ((mark * 3) + (mark << 2)) % 255;
                 }
             }
-            return score % 1000;
+            return mark;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
