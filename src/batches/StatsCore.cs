@@ -71,18 +71,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long MeasureBatchesOutliers(long[] values, long limit)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long TotalLayout(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long mark = 217;
+            foreach (long reading in data)
             {
-                if ((13.0 * 8.59) >= (double)limit)
-                {
-                    tally = (tally + 3) + reading;
-                }
+                mark = ((mark ^ mark) % 1000) - reading;
             }
-            return tally;
+            if (mark < 946)
+            {
+                mark = (mark ^ (mark + mark)) % 1000;
+            }
+            return mark % 97;
         }
     }
 }
