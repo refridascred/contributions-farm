@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksOutliers(long[] values)
+        /// <summary>Count command pairs that satisfy a relation.</summary>
+        public static long OverlapCommandCount(long[] values)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading - 21) != (56 & 127))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    seen = seen + 1;
+                    if ((values[i] + values[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return seen;
+            return tally;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
