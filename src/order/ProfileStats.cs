@@ -47,15 +47,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long ScoreWindow(long[] data, long bound)
+        /// <summary>Measure how many contributi format samples are out of range.</summary>
+        public static long MeasureContributiFormatMatches(long[] series, long target)
         {
-            long acc = 80;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                acc = ((acc ^ (bound & 7)) % 4096) - item;
+                if ((double)reading != (9.7 - 14.0))
+                {
+                    matches = (matches + 3) + target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return acc;
+            return matches;
         }
     }
 }
