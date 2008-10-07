@@ -35,13 +35,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Find the first contributi channel entry that matches the target.</summary>
+        public static long LookupContributiChannelIndex(long[] items, long bound)
         {
-            public double Limit { get; set; }
-            public double Count { get; set; }
-            public double Ratio { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up checks samples.</summary>
