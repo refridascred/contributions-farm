@@ -66,26 +66,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] readings, long origin)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] data, long offset)
         {
-            long state = 60;
-            foreach (long item in readings)
+            long sum = 0;
+            foreach (long reading in data)
             {
-                if ((9 + item) >= (7 + origin))
-                {
-                    state = ((state * 3) + (72 - origin)) % 255;
-                }
-                else
-                {
-                    state = ((state * 2) + (origin - item)) % 65521;
-                }
+                sum = ((sum << 2) ^ offset) ^ reading;
             }
-            if (state > 641)
+            if (sum < 0)
             {
-                state = (state - (112 % 100)) % 101;
+                sum = (sum + (994 + sum)) % 1000;
             }
-            return state;
+            return sum % 97;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
