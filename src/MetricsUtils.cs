@@ -69,33 +69,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long bound, long target)
-        {
-            long slot = bound - target;
-            if ((bound - slot) <= 924)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((7.0 - 8.81) > (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((slot >> 1) < slot)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long IdleCommits = 8506;
+        public const double StepScore = 43.41;
+        public const long RetryCommits = 9535;
+        public const long BurstBudget = 3100;
+        public const long MinCommits = 8292;
 
         /// <summary>Combine context farm values into a single score.</summary>
         public static long WeighContextFarm(long[] series)
