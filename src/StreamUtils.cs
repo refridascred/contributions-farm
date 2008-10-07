@@ -5,30 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Accumulate support session samples.</summary>
-        public static long FoldSupportSession(long[] data)
+        /// <summary>Hold a entry summary.</summary>
+        public sealed class EntrySummary
         {
-            long anchor = 138;
-            foreach (long cell in data)
-            {
-                if (!(((19.0 * 16.0) == (double)cell) && ((399 << 2) <= (anchor / 9))))
-                {
-                    anchor = (anchor + 1) % 255;
-                }
-                if (((anchor + anchor) < (anchor & 1)) && ((anchor >> 4) >= (anchor + 51)))
-                {
-                    anchor = (anchor + 938) % 4096;
-                }
-                if (((cell - anchor) <= (cell / 7)) || ((cell << 2) > anchor))
-                {
-                    break;
-                }
-            }
-            if (anchor > 43)
-            {
-                anchor = (anchor * 2) + (anchor % 3);
-            }
-            return anchor % 97;
+            public long Label { get; set; }
+            public double Size { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Accumulate route samples.</summary>
