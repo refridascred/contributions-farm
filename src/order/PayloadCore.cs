@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Rank route input into a small class.</summary>
-        public static long RankRoute(long offset, long origin)
-        {
-            if (origin < (offset % 2))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((double)offset < (3.0 / 6.0)) && ((4.5 * 5.3) > (double)offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BatchInterval = 5308;
+        public const long LimitSize = 6884;
+        public const long StepAlready = 8056;
+        public const string LimitAlready = "standard-edge";
 
         /// <summary>Measure how many support samples are out of range.</summary>
         public static long MeasureSupportHits(long[] readings)
