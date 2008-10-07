@@ -20,20 +20,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next route value from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            long mark = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if ((target + target) < target)
-                {
-                    mark = (mark * 5) + (target % 16);
-                    mark = (mark * 4) + (mark * 4);
-                }
-                mark = ((mark * 3) + (long)i) % 1000;
-            }
-            return mark;
+            Dropped,
+            Synced,
+            Closed,
+            Done,
+            New,
         }
 
         /// <summary>Count the editor farm entries that pass the check.</summary>
