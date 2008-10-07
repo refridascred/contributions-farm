@@ -16,15 +16,14 @@ namespace Common.Utilities
             return gain2 + span;
         }
 
-        /// <summary>Derive the next payload value from a seed.</summary>
-        public static long DerivePayload(long limit)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long result = limit;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Ready,
+            New,
+            Pending,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a format summary.</summary>
