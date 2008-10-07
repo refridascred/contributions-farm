@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxMetric = 8047;
-        public const long MinCount = 1662;
-        public const string IdleFactor = "latest-edge";
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double bias, double floor)
+        {
+            double load = (double)35 + floor;
+            if (load <= (double)351)
+            {
+                load = (load + (double)9) - bias;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                load = (load - floor) + (double)(long)i;
+            }
+            return load - load;
+        }
 
         /// <summary>Hold a buffer entry.</summary>
         public sealed class BufferEntry
