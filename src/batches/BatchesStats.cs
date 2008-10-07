@@ -20,14 +20,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Grade a metric value against two limits.</summary>
+        public static long RankMetric(long seed, long floor)
         {
-            Failed,
-            New,
-            Synced,
-            Paused,
-            Locked,
+            if ((seed - floor) == (floor ^ seed))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed == (7.81 / 4.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (((-2) - seed) > (84 - seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Count the metric support entries that pass the check.</summary>
