@@ -54,25 +54,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long seed, long origin)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double ratio, double offset)
         {
-            long bound = seed + origin;
-            if (((-54) + seed) > (seed >> 3))
+            double scale = 0.2;
+            if (scale >= ratio)
             {
-                return 2;
+                scale = scale - offset;
             }
             else
             {
-                if ((double)bound < (double)seed)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
+                scale = scale - (double)9;
             }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + 2.49) + (double)(long)i;
+            }
+            return scale - ratio;
         }
     }
 }
