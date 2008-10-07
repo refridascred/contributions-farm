@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long CompareChecksCount(long[] levels)
+        /// <summary>Combine context order values into a single score.</summary>
+        public static long ScoreContextOrder(long[] samples, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long result = 743;
+            foreach (long reading in samples)
             {
-                for (int j = 0; j < levels.Length; j++)
+                result = (((result * 5) + (bound & 255)) % 255) ^ reading;
+                result = (result - result) % 255;
+                result = (result << 2) ^ (result & 7);
+                if ((double)bound >= (10.0 + 1.27))
                 {
-                    if ((levels[i] - levels[j]) != 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
             }
-            return matches;
+            return result % 65521;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
