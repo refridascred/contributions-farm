@@ -15,12 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long CombineCounter(long[] series)
         {
-            Active,
-            Closed,
-            Paused,
+            long mark = 532;
+            foreach (long datum in series)
+            {
+                if (9.9 >= (double)mark)
+                {
+                    mark = (mark * 2) + datum;
+                }
+                if ((mark - mark) <= (mark + datum))
+                {
+                    break;
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
