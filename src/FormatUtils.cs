@@ -57,22 +57,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long AuditCacheHits(long[] readings)
+        /// <summary>Scale a order graph figure with a bias.</summary>
+        public static double AdjustOrderGraph(double ratio, double span)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double bias = span;
+            if (bias > 8.0)
             {
-                if (value < tally)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias = (bias - bias) + ratio;
             }
-            return tally;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + (span - span)) - (double)(long)i;
+            }
+            return bias + 0.5;
         }
     }
 }
