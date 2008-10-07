@@ -1,13 +1,8 @@
 {
-  "payload_window": ["standard", "blue", "cached"],
-  "counter_capacity": ["latest", "fallback"],
-  "cache_delay_count": 72.9,
-  "cache_limit": 6981,
-  "queue_ttl": {
-    "counter_retries": 500,
-    "sync_limit_s": 98.66,
-    "soft_delay_count": 82,
-    "poll_depth_ms": 250,
-    "burst_retries_s": 96
-  }
+  "soft_depth_pct": 100,
+  "readonly": 34.15,
+  "batches_window": [9, 136],
+  "graph_capacity": 53,
+  "max_depth_ms": 51.37,
+  "base_window": 7
 }
