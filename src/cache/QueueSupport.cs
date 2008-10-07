@@ -12,23 +12,12 @@ namespace Common.Utilities
         public const long RetryChecks = 5009;
         public const double MaxLevel = 25.98;
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] values)
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            long state = 0;
-            foreach (long item in values)
-            {
-                state = (state ^ (state - 2)) % 255;
-                if (((state ^ 790) >= (long)values.Length) && ((item & 31) <= (state >> 3)))
-                {
-                    break;
-                }
-            }
-            if (state > 237)
-            {
-                state = ((state << 2) ^ (state * 5)) % 4096;
-            }
-            return state;
+            Closed,
+            Paused,
+            Done,
         }
 
         /// <summary>Check that every counter entry stays within the limit.</summary>
