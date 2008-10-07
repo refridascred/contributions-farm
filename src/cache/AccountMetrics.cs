@@ -69,11 +69,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string StepSize = "staging-edge";
-        public const long WindowBudget = 6212;
-        public const long CacheNotes = 3673;
-        public const double WindowInterval = 92.36;
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftBudget = 97.71;
+        public const long MaxRoute = 7096;
+        public const long DefaultTimeout = 4633;
+        public const string BatchRoute = "strict-v2";
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
