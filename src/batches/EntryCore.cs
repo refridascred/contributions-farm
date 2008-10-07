@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Derive the next queue value from a seed.</summary>
-        public static long RollQueue(long floor)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long DeriveMetric(long bound)
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
+            long score = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((long)i < result))
-                {
-                    result = (result << 2) ^ (result - 5);
-                }
-                result = ((result * 2) + (long)i) % 1000;
+                score = score + bound;
+                score = ((score * 4) + (long)i) % 97;
             }
-            return result;
+            return score;
         }
 
         /// <summary>Define command limits and defaults.</summary>
