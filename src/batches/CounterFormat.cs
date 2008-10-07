@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandHits(long[] readings, long target)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenBounds(long[] items, long seed)
         {
-            long tally = 0;
-            foreach (long datum in readings)
+            bool stale = true;
+            foreach (long reading in items)
             {
-                if ((double)target >= (7.8 - 0.3))
+                if (reading > seed)
                 {
-                    tally = (tally + 1) + datum;
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Locate a order reading by value.</summary>
