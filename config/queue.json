@@ -1,7 +1,5 @@
 {
-  "readonly": true,
-  "cache_threshold": true,
-  "idle_ttl": 97,
-  "strict": "local",
-  "already_capacity": "legacy"
+  "stream_depth": [494, 150, 346, 374],
+  "channel_size": "cached",
+  "max_window": false
 }
