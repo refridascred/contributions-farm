@@ -61,22 +61,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long AuditChecksHits(long[] values, long offset)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((reading << 2) >= (303 * 2))
-                {
-                    count = (count + 3) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public long Token { get; set; }
+            public long Label { get; set; }
+            public bool Stamp { get; set; }
+            public double Total { get; set; }
         }
     }
 }
