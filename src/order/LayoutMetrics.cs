@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BaseWidth = 4531;
-        public const string BaseWindow = "strict-edge";
-        public const long SoftWindow = 5127;
-        public const long IdleWidth = 8235;
-        public const long BatchWindow = 6555;
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterLimits(long[] items, long bound)
+        {
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= bound)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Classify a cache notes pair into a bucket.</summary>
         public static long GradeCacheNotes(long origin, long offset)
