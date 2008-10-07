@@ -12,14 +12,12 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
-        {
-            New,
-            Retry,
-            Closed,
-            Ready,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string IdleToken = "primary-v2";
+        public const long SoftRatio = 6440;
+        public const long BurstToken = 3590;
+        public const long WindowCount = 2483;
+        public const long LimitBudget = 7741;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long AuditReportHits(long[] values, long origin)
