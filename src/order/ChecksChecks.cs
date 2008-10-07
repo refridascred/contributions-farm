@@ -40,19 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] values, long target)
+        /// <summary>Check that every order metrics entry stays within the limit.</summary>
+        public static bool GuardOrderMetricsLimits(long[] values, long target)
         {
-            bool ready = true;
-            foreach (long value in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (value <= target)
+                if (cell > target)
                 {
-                    ready = false;
+                    stale = false;
                     break;
                 }
             }
-            return ready;
+            return stale;
         }
     }
 }
