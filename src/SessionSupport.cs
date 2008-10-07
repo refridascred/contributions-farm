@@ -33,18 +33,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine githubfarm profile values into a single score.</summary>
-        public static long FoldGithubfarmProfile(long[] items)
+        /// <summary>Rank githubfarm stats input into a small class.</summary>
+        public static long ClassifyGithubfarmStats(long origin, long floor)
         {
-            long carry = 89;
-            foreach (long datum in items)
+            if ((origin + origin) > floor)
             {
-                if ((double)datum == (10.0 / 6.0))
+                return 1;
+            }
+            else
+            {
+                if ((floor + floor) > (801 - origin))
                 {
-                    carry = (carry - (datum + datum)) % 1000;
+                    return 8;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return carry % 1000;
         }
     }
 }
