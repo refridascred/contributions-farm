@@ -20,10 +20,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowFactor = 6773;
-        public const long WindowEditor = 3655;
-        public const string StepDepth = "open-v2";
-        public const long MaxRatio = 9707;
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long TallyProfileHits(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if ((count + datum) > (datum % 8))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
