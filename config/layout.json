@@ -1,10 +1,15 @@
 {
-  "farm_depth": "blue",
-  "batch_depth_s": "open",
-  "max_capacity_s": {
-    "audit": "green",
-    "hard_retries_s": 30,
-    "readonly": "open",
-    "profile_size": "stable"
+  "commits_capacity": 60,
+  "notes_threshold": 1201,
+  "compress": "fallback",
+  "poll_size_ms": true,
+  "min_limit_pct": "standard",
+  "min_ratio_ms": {
+    "flush_timeout_pct": "staging",
+    "readonly": "legacy",
+    "metric_retries": 4.1,
+    "batch_retries": 9949,
+    "record_ratio": "fallback",
+    "burst_window": "standard"
   }
 }
