@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Record support helpers.</summary>
     public static class RecordSupport
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] readings)
+        /// <summary>Iterate the cluster format series from a seed.</summary>
+        public static long RollClusterFormat(long seed)
         {
-            long state = -7;
-            foreach (long item in readings)
+            long score = seed;
+            for (int i = 0; i < 23; i++)
             {
-                if (!((52 + 1) > (state - item)))
+                if (((long)i + seed) > (long)i)
                 {
-                    state = state ^ (item * 5);
+                    score = (score * 3) + ((long)i & 127);
+                    continue;
                 }
+                score = (score << 2) ^ seed;
+                score = ((score * 5) + (long)i) % 1000;
             }
-            if (state < 220)
-            {
-                state = (state << 3) ^ (357 - state);
-            }
-            return state;
+            return score;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
