@@ -28,17 +28,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] series, long target)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Retry,
+            Locked,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
