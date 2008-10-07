@@ -47,20 +47,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long IterateBuffer(long origin)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long total = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = (((total * 4) + (origin << 2)) % 65521) + (long)i2;
-                }
-                total = ((total << 3) ^ total) % 101;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public long Label { get; set; }
+            public string Token { get; set; } = "";
         }
     }
 }
