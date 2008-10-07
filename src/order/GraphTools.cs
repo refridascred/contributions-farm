@@ -54,17 +54,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] readings, long floor)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long CountCounterOutliers(long[] series, long origin)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if ((readings[i] >= floor) && ((readings[i] % 3) == 0))
+                if ((double)seen == (double)origin)
                 {
-                    return (long)i;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
