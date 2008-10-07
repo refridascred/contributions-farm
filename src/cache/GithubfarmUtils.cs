@@ -31,38 +31,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank batches entry input into a small class.</summary>
-        public static long SortBatchesEntry(long bound, long step)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            if ((step + bound) >= (step + 774))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((bound / 3) >= (183 - bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((bound << 3) < (bound ^ bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((3 + bound) > bound)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Owner { get; set; }
+            public bool Limit { get; set; }
         }
 
         /// <summary>Hold a tools snapshot.</summary>
