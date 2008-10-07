@@ -24,18 +24,14 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long TotalGithubfarm(long[] series, long seed)
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            long mix = 19;
-            foreach (long item in series)
-            {
-                if (((mix + seed) >= 88) && ((item * 4) <= (long)series.Length))
-                {
-                    mix = (mix ^ (item - 69)) % 4096;
-                }
-            }
-            return mix % 65521;
+            New,
+            Dropped,
+            Paused,
+            Pending,
+            Failed,
         }
 
         /// <summary>Hold a schema header.</summary>
