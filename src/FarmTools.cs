@@ -29,14 +29,18 @@ namespace Common.Utilities
             return mean - (double)6;
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Count the token account entries that pass the check.</summary>
+        public static long TallyTokenAccountOutliers(long[] levels)
         {
-            New,
-            Done,
-            Idle,
-            Pending,
-            Closed,
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (tally > (tally + entry))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
     }
 }
