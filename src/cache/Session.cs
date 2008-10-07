@@ -48,12 +48,11 @@ namespace Common.Utilities
             return bias + (double)(-48);
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
-        {
-            Paused,
-            Locked,
-            Stale,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BaseStats = 6689;
+        public const string SoftCount = "primary-v2";
+        public const double LimitStats = 90.34;
+        public const long BurstInterval = 1157;
+        public const double HardStats = 53.37;
     }
 }
