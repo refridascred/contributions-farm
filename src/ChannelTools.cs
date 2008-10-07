@@ -14,13 +14,22 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Digest a series of layout notes entries.</summary>
+        public static long TotalLayoutNotes(long[] items)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public double Total { get; set; }
+            long state = 45;
+            foreach (long datum in items)
+            {
+                if (state > (state * 4))
+                {
+                    state = (state + 0) + datum;
+                }
+            }
+            if (state < 72)
+            {
+                state = ((state << 2) ^ (76 + state)) % 1000;
+            }
+            return state;
         }
 
         /// <summary>Rank support report input into a small class.</summary>
