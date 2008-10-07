@@ -48,18 +48,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long WeighSchema(long[] levels, long target)
-        {
-            long score = 9;
-            foreach (long cell in levels)
-            {
-                if (target > (cell >> 5))
-                {
-                    score = score + (cell + target);
-                }
-            }
-            return score % 4096;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long BurstFilter = 8458;
+        public const string RetrySize = "staging-edge";
+        public const double CacheFilter = 5.1;
     }
 }
