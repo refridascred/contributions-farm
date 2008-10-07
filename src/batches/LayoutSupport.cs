@@ -65,14 +65,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
-            Idle,
-            Ready,
-            Active,
+            Closed,
             Done,
+            Queued,
             New,
+            Dropped,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
