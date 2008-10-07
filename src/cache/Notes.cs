@@ -23,18 +23,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] samples)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long offset)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            long mark = offset;
+            for (int i = 0; i < 22; i++)
             {
-                if (((entry >= (entry + 19)) || (0 < (hits ^ entry))) || ((entry + entry) >= (hits + 67)))
+                if (!(((8 - offset) <= mark) && ((-934) > (offset + offset))))
                 {
-                    hits = hits + 1;
+                    mark = (mark ^ (offset << 1)) % 101;
                 }
+                if (((long)i * 2) >= (mark << 3))
+                {
+                    mark = (mark - (mark + mark)) % 1000;
+                }
+                else
+                {
+                    mark = ((mark * 2) + mark) % 97;
+                }
+                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mark;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
