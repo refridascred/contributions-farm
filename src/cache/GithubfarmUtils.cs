@@ -55,19 +55,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long CombinePayload(long[] samples, long limit)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long CountAlreadyMatches(long[] samples, long step)
         {
-            long acc = 672;
-            foreach (long sample in samples)
+            long tally = 0;
+            foreach (long entry in samples)
             {
-                acc = acc ^ (sample % 64);
+                if ((double)884 != (double)entry)
+                {
+                    tally = (tally + 3) + step;
+                }
             }
-            if (acc < 29)
-            {
-                acc = ((acc * 2) + (limit >> 5)) % 4096;
-            }
-            return acc;
+            return tally;
         }
     }
 }
