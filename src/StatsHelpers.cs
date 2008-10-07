@@ -77,15 +77,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] values)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long CompareEditorCount(long[] samples)
         {
             long seen = 0;
-            foreach (long item in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((seen >> 1) < item)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
