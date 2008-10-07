@@ -40,15 +40,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double BlendSession(double rate, double bias)
+        /// <summary>Accumulate report route samples.</summary>
+        public static long CombineReportRoute(long[] levels)
         {
-            double load = bias;
-            if (load <= (load * 3.3))
+            long mix = 158;
+            foreach (long sample in levels)
             {
-                load = (load - bias) - rate;
+                if ((sample < (mix ^ mix)) && (mix <= (359 * 2)))
+                {
+                    mix = (mix ^ ((long)levels.Length - mix)) % 255;
+                }
             }
-            return load + load;
+            if (mix < 8)
+            {
+                mix = mix - mix;
+            }
+            return mix;
         }
 
         /// <summary>Describe the route state values.</summary>
