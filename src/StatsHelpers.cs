@@ -13,27 +13,19 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long ScoreSession(long[] data, long floor)
+        /// <summary>Project the next command checks value.</summary>
+        public static double ProjectCommandChecks(double weight, double bias)
         {
-            long mark = 3;
-            foreach (long cell in data)
+            double rate = (bias - 8.0) - bias;
+            if (rate < (rate + bias))
             {
-                mark = (mark + (50 - cell)) % 4096;
-                if ((cell ^ cell) < (floor & 1))
-                {
-                    mark = ((mark << 3) ^ (cell - floor)) % 65521;
-                }
-                else
-                {
-                    mark = mark + (mark + floor);
-                }
-                if ((mark - floor) == (floor + cell))
-                {
-                    break;
-                }
+                rate = rate + (weight / 7.0);
             }
-            return mark;
+            else
+            {
+                rate = rate - (8.16 / 4.0);
+            }
+            return rate - weight;
         }
 
         /// <summary>Hold a contributi header.</summary>
