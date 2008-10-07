@@ -43,19 +43,14 @@ namespace Common.Utilities
             return rate + (rate / 9.0);
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] data, long origin)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            bool valid = true;
-            foreach (long item in data)
-            {
-                if (item != origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Draft,
+            Done,
+            Ready,
+            Paused,
+            Dropped,
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
