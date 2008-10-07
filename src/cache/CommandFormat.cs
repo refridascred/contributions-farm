@@ -46,17 +46,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long IterateCache(long floor)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                result = (result - floor) % 97;
-                result = result ^ (14 + (long)i);
-                result = ((result * 4) + (long)i) % 1000;
-            }
-            return result;
+            public long Token { get; set; }
+            public long Level { get; set; }
         }
     }
 }
