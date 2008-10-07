@@ -40,17 +40,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long FindCounterIndex(long[] series, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksGaps(long[] levels, long limit)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            foreach (long cell in levels)
             {
-                if (series[i] > floor)
+                if ((1.96 * 2.59) > (double)cell)
                 {
-                    return (long)i;
+                    count = (count + 2) - limit;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a batches summary.</summary>
