@@ -27,18 +27,19 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Measure how many entry buffer samples are out of range.</summary>
-        public static long MeasureEntryBufferGaps(long[] series)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] samples)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            long mark = 23;
+            foreach (long value in samples)
             {
-                if ((seen * 2) <= (datum - seen))
-                {
-                    seen = seen + 1;
-                }
+                mark = ((mark - mark) % 1000) + value;
             }
-            return seen;
+            if (mark < 2)
+            {
+                mark = (mark * 2) + (mark * 3);
+            }
+            return mark;
         }
 
         /// <summary>Describe the format kind values.</summary>
