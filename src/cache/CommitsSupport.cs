@@ -58,11 +58,18 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseRatio = 87.25;
-        public const string SoftCount = "open";
-        public const long DefaultSpan = 5152;
-        public const long LimitMetric = 1290;
-        public const long MinMetric = 8405;
+        /// <summary>Audit filter tools readings against a rule.</summary>
+        public static long CountFilterToolsHits(long[] items)
+        {
+            long count = 0;
+            foreach (long reading in items)
+            {
+                if (7.7 < (double)count)
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
+        }
     }
 }
