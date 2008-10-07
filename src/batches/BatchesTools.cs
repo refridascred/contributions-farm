@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long CountChannelHits(long[] values, long offset)
+        /// <summary>Count the tools payload entries that pass the check.</summary>
+        public static long CountToolsPayloadMatches(long[] series)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            foreach (long reading in series)
             {
-                if ((hits & 3) <= hits)
+                if ((reading / 5) != (matches + 559))
                 {
-                    hits = ((hits + 3) + reading) - offset;
+                    matches = matches + 3;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a report snapshot.</summary>
