@@ -57,14 +57,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandMatches(long[] values, long step)
         {
-            Done,
-            Stale,
-            Retry,
-            New,
-            Active,
+            long count = 0;
+            foreach (long reading in values)
+            {
+                if (!(((6.3 * 8.6) != (double)step) || ((1.92 * 2.3) > (double)step)))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
         }
     }
 }
