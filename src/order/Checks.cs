@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string IdleBatches = "standard-v2";
-        public const long MaxScore = 9925;
-        public const long MinBatches = 7473;
-        public const long MaxBatches = 9363;
-        public const double HardScore = 65.4;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardContext = 361;
+        public const double SoftContext = 47.57;
+        public const long RetryFactor = 9245;
+        public const string IdleSize = "strict";
 
         /// <summary>Combine githubfarm values into a single score.</summary>
         public static long WeighGithubfarm(long[] samples)
