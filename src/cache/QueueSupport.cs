@@ -20,10 +20,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long CachePayload = 7976;
-        public const long LimitBudget = 5125;
-        public const long HardPayload = 218;
-        public const long MinPayload = 8834;
+        /// <summary>Count token pairs that satisfy a relation.</summary>
+        public static long OverlapTokenCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 4)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
