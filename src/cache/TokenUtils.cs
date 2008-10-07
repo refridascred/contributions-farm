@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const double SoftLevel = 53.06;
         public const long LimitLevel = 2017;
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double AdjustWindow(double bias, double span)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double mean = span;
-            if (mean < (double)40)
-            {
-                mean = (mean - (double)82) + bias;
-            }
-            else
-            {
-                mean = mean + mean;
-            }
-            return mean - (7.55 / 9.0);
+            Active,
+            Stale,
+            Queued,
         }
 
         /// <summary>Hold a account snapshot.</summary>
