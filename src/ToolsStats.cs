@@ -56,18 +56,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph cluster values into a single score.</summary>
-        public static long CombineGraphCluster(long[] series, long seed)
+        /// <summary>Hold a commits stats.</summary>
+        public sealed class CommitsStats
         {
-            long mix = 99;
-            foreach (long sample in series)
-            {
-                if ((3 - sample) != (mix >> 1))
-                {
-                    mix = (mix + (sample << 1)) - seed;
-                }
-            }
-            return mix % 1000;
+            public string Limit { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Rank entry input into a small class.</summary>
