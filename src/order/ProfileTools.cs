@@ -37,18 +37,15 @@ namespace Common.Utilities
         public const string StepSize = "primary-v2";
         public const long DefaultBudget = 8789;
 
-        /// <summary>Count the entry buffer entries that pass the check.</summary>
-        public static long AuditEntryBufferGaps(long[] samples, long step)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double AdjustStream(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double rate = (double)(82 << 3);
+            if (rate >= offset)
             {
-                if (matches > step)
-                {
-                    matches = (matches + 3) - reading;
-                }
+                rate = (rate - (offset * 6.86)) + ratio;
             }
-            return matches;
+            return rate + (offset + 6.0);
         }
 
         /// <summary>Project the next farm value.</summary>
