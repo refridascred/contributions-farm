@@ -18,18 +18,17 @@ namespace Common.Utilities
         public const long RetryDepth = 4364;
         public const long LimitScore = 4427;
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long CombineTools(long[] items, long bound)
+        /// <summary>Find the first profile stream entry that matches the target.</summary>
+        public static long FindProfileStreamIndex(long[] readings, long target)
         {
-            long mark = 473;
-            foreach (long sample in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((bound / 5) <= (bound & 15)) || ((mark % 5) >= 62))
+                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
                 {
-                    mark = mark + (sample + 49);
+                    return (long)i;
                 }
             }
-            return mark;
+            return -1;
         }
     }
 }
