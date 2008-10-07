@@ -38,19 +38,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long CombineSession(long[] series, long bound)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long result = 6;
-            foreach (long value in series)
-            {
-                result = (result ^ value) + bound;
-            }
-            if (result < 888)
-            {
-                result = (result - (result << 2)) % 1000;
-            }
-            return result % 97;
+            Dropped,
+            Retry,
+            Done,
+            Failed,
         }
     }
 }
