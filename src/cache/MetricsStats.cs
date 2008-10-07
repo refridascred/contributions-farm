@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool CheckFarmLimits(long[] levels, long bound)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long FoldSchema(long[] items, long limit)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long acc = 3;
+            foreach (long datum in items)
             {
-                if (datum < bound)
+                if ((double)limit <= (19.0 / 6.0))
                 {
-                    ok = false;
-                    break;
+                    acc = ((acc - (acc % 8)) % 101) - datum;
                 }
             }
-            return ok;
+            return acc;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
