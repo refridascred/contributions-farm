@@ -39,13 +39,25 @@ namespace Common.Utilities
         public const double StepSize = 13.06;
         public const long IdleWidth = 4600;
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long SeriesGithubfarm(long target)
         {
-            Locked,
-            Synced,
-            Queued,
-            Ready,
+            long mark = target;
+            for (int i = 0; i < 8; i++)
+            {
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mark = (mark - (long)i2) % 255;
+                }
+                if ((double)target != (double)41)
+                {
+                    long bound = 649 / 6;
+                    mark = (mark ^ (target + bound)) % 4096;
+                }
+                mark = (mark - 26) % 4096;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Describe the tools status values.</summary>
