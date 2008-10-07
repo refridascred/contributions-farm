@@ -1,8 +1,6 @@
 {
-  "max_size": "primary",
-  "cache_retries_s": 32.65,
-  "strict": 37,
-  "flush_ttl": 78,
-  "min_capacity": 60,
-  "poll_timeout_count": 29.22
+  "metrics_timeout": 77.62,
+  "flush_capacity_ms": [174, 163, 172],
+  "batch_delay": 500,
+  "max_threshold": [50, 184, 143, 433]
 }
