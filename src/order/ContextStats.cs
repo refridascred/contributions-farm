@@ -70,18 +70,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] items, long floor)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double BlendBuffer(double gain, double offset)
         {
-            long seen = 0;
-            foreach (long item in items)
+            double load = (7.0 + offset) * 12.0;
+            if (load <= (gain / 2.0))
             {
-                if (((seen & 63) > (seen % 8)) && ((floor * 2) == (floor * 5)))
-                {
-                    seen = (seen + 2) - item;
-                }
+                load = load + gain;
             }
-            return seen;
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load - load) + (double)(long)i;
+            }
+            return load - load;
         }
     }
 }
