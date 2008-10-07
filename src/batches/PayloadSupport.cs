@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double scale, double offset)
         {
-            Dropped,
-            Active,
-            Stale,
-            New,
-            Paused,
+            double scale2 = scale;
+            if (scale2 < 14.0)
+            {
+                scale2 = (scale2 + (scale2 + 9.06)) + offset;
+            }
+            return scale2 - (18.0 / 3.0);
         }
 
         /// <summary>Define notes limits and defaults.</summary>
