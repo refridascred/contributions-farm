@@ -35,18 +35,24 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsMatches(long[] data, long offset)
+        /// <summary>Rank command input into a small class.</summary>
+        public static long SortCommand(long target, long origin)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            if (15.0 > (double)target)
             {
-                if ((matches >> 2) > (datum % 3))
+                return 4;
+            }
+            else
+            {
+                if ((origin << 1) > 942)
                 {
-                    matches = (matches + 1) + offset;
+                    return 2;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
