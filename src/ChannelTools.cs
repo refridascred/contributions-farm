@@ -38,11 +38,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long WindowInterval = 1588;
-        public const long HardFormat = 3140;
-        public const long DefaultFormat = 8366;
-        public const long CacheWidth = 6974;
-        public const long CacheFormat = 9575;
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
+        {
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+        }
     }
 }
