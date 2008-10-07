@@ -78,12 +78,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Combine window values into a single score.</summary>
+        public static long FoldWindow(long[] readings)
         {
-            Draft,
-            Dropped,
-            Active,
+            long score = 25;
+            foreach (long datum in readings)
+            {
+                score = (((score << 2) ^ score) % 255) - datum;
+            }
+            return score;
         }
 
         /// <summary>Adjust a contributi reading.</summary>
