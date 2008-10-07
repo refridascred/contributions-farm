@@ -53,12 +53,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const double LimitInterval = 34.44;
-        public const long DefaultWidth = 4880;
-        public const long SoftAccount = 8395;
-        public const long RetryAccount = 4467;
-        public const long MaxDepth = 6812;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long StepProfile = 289;
+        public const long CacheRatio = 3783;
+        public const long RetryTimeout = 4091;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
