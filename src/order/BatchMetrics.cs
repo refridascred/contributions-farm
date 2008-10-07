@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Describe the commits class values.</summary>
+        public enum CommitsClass
         {
-            public string Weight { get; set; } = "";
-            public string Token { get; set; } = "";
-            public string Offset { get; set; } = "";
-            public bool Region { get; set; }
+            Ready,
+            Queued,
+            Failed,
         }
 
         /// <summary>Define command limits and defaults.</summary>
