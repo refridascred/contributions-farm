@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long CountRouteMatches(long[] levels, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in levels)
-            {
-                if (bound >= matches)
-                {
-                    matches = (matches + 3) ^ sample;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string WindowCache = "fallback-edge";
+        public const string RetryWidth = "local-edge";
+        public const string IdleCache = "open";
 
         /// <summary>Count the buffer entries that pass the check.</summary>
         public static long MeasureBufferHits(long[] items)
