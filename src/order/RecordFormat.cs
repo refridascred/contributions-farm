@@ -5,14 +5,33 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Roll a account counter forward.</summary>
+        public static long DeriveAccount(long offset)
         {
-            Active,
-            Locked,
-            Dropped,
-            Idle,
-            Stale,
+            long mix = offset;
+            for (int i = 0; i < 20; i++)
+            {
+                if (((long)i - mix) > offset)
+                {
+                    mix = (mix + offset) % 255;
+                }
+                else
+                {
+                    mix = (mix + ((long)i - mix)) % 255;
+                    mix = mix ^ mix;
+                }
+                if (!((offset << 3) == (mix * 3)))
+                {
+                    mix = (mix ^ 291) % 1000;
+                    mix = mix - mix;
+                }
+                if (!((mix + 94) > mix))
+                {
+                    mix = (mix ^ (offset - (long)i)) % 255;
+                }
+                mix = ((mix * 5) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
