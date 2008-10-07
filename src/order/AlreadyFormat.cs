@@ -39,19 +39,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every farm support entry stays within the limit.</summary>
-        public static bool GuardFarmSupportBounds(long[] readings, long step)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public bool Weight { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Hold a report entry.</summary>
