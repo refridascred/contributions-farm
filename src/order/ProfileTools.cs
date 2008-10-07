@@ -43,12 +43,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Iterate the window entry series from a seed.</summary>
+        public static long StepWindowEntry(long limit)
         {
-            Pending,
-            Closed,
-            New,
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
+            {
+                if (!((82 + limit) == (limit << 2)))
+                {
+                    acc = (acc + (long)i) % 4096;
+                    acc = (acc << 2) ^ (long)i;
+                }
+                acc = acc ^ (acc + acc);
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
     }
 }
