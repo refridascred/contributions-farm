@@ -21,17 +21,13 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Find the first profile stream entry that matches the target.</summary>
-        public static long FindProfileStreamIndex(long[] readings, long target)
+        /// <summary>Hold a cache header.</summary>
+        public sealed class CacheHeader
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
+            public double Total { get; set; }
         }
     }
 }
