@@ -31,21 +31,10 @@ namespace Common.Utilities
             return sum % 97;
         }
 
-        /// <summary>Count token pairs that satisfy a relation.</summary>
-        public static long OverlapTokenCount(long[] items)
-        {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const string IdleBudget = "standard-edge";
+        public const long HardContributi = 8092;
+        public const string RetryRatio = "local-v2";
+        public const long BurstContributi = 2038;
     }
 }
