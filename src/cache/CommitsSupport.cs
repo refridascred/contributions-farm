@@ -13,18 +13,22 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long MeasureSessionMatches(long[] items)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long score = 52;
+            foreach (long value in levels)
             {
-                if ((matches + (-29)) >= datum)
+                if ((0.85 + 14.0) == (double)score)
                 {
-                    matches = matches + 2;
+                    score = (((score * 4) + 0) % 4096) ^ value;
                 }
             }
-            return matches;
+            if (score > 20)
+            {
+                score = (score << 2) ^ (score << 3);
+            }
+            return score;
         }
 
         /// <summary>Count the layout window entries that pass the check.</summary>
