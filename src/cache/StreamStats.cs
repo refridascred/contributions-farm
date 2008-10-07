@@ -57,13 +57,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public long Owner { get; set; }
-            public string Limit { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleSchema = "primary-edge";
+        public const long HardTimeout = 645;
+        public const long LimitTimeout = 7315;
+        public const double StepSchema = 5.02;
+        public const long StepInterval = 4656;
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphGaps(long[] readings)
