@@ -1,6 +1,5 @@
 {
-  "command_depth": "green",
-  "record_window": "strict",
-  "audit": "latest",
-  "dry_run": [168, 191, 68, 414]
+  "token_capacity": true,
+  "window_interval": 8760,
+  "soft_limit_s": true
 }
