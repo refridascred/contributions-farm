@@ -80,11 +80,9 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
-        {
-            public bool Level { get; set; }
-            public long Region { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 6035;
+        public const long BatchPayload = 2357;
+        public const long CacheSize = 6933;
     }
 }
