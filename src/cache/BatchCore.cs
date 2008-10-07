@@ -5,11 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Grade a graph value against two limits.</summary>
+        public static long SortGraph(long seed, long target)
         {
-            public long Count { get; set; }
-            public string Ratio { get; set; } = "";
+            if (((6 >> 1) > (target % 3)) || ((2 + target) > (target & 1)))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((target - seed) < (target + seed))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Roll a editor profile counter forward.</summary>
