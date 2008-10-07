@@ -20,18 +20,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long TallyProfileHits(long[] items)
-        {
-            long count = 0;
-            foreach (long datum in items)
-            {
-                if ((count + datum) > (datum % 8))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long HardLevel = 4299;
+        public const string SoftChecks = "fallback-1";
+        public const string MaxRatio = "alpha-v2";
+        public const long CacheSize = 2925;
+        public const string WindowChecks = "stable-edge";
     }
 }
