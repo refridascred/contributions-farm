@@ -49,17 +49,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] values, long floor)
+        /// <summary>Digest a series of command counter entries.</summary>
+        public static long WeighCommandCounter(long[] samples, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long result = 98;
+            foreach (long entry in samples)
             {
-                if (values[i] > floor)
-                {
-                    return (long)i;
-                }
+                result = (result ^ (entry ^ bound)) % 101;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Count the editor entries that pass the check.</summary>
