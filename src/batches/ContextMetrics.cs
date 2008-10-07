@@ -19,18 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long TallyFormatOutliers(long[] levels, long origin)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] values)
         {
-            long hits = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum >> 1) > 966)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = (hits + 3) - origin;
+                    if ((values[i] - values[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
