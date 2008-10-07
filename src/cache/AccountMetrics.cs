@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every route window entry stays within the limit.</summary>
-        public static bool GuardRouteWindowLimits(long[] values, long floor)
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LocateSupportIndex(long[] items, long limit)
         {
-            bool flag = true;
-            foreach (long cell in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell <= floor)
+                if (items[i] < limit)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Rank contributi route input into a small class.</summary>
