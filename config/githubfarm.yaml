@@ -1,6 +1,13 @@
 # githubfarm settings
-poll_delay_ms: standard
-readonly: cached
-tools_window: open
-hard_ratio: primary
-audit: primary
+soft_threshold_s: 47
+compress: 6688
+flush_window_count: 15.76
+flush_window_pct:
+  - primary
+  - strict
+metrics_capacity: true
+record_interval:
+  - 268
+  - 2
+  - 458
+  - 136
