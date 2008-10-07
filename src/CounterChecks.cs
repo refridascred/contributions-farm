@@ -20,16 +20,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the channel editor series from a seed.</summary>
-        public static long StepChannelEditor(long floor)
-        {
-            long anchor = floor;
-            for (int i = 0; i < 16; i++)
-            {
-                anchor = ((anchor * 4) + (long)i) % 101;
-            }
-            return anchor;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long BatchBudget = 2976;
+        public const long StepCommits = 8115;
+        public const double RetrySpan = 61.81;
+        public const long SoftCount = 8335;
 
         /// <summary>Grade a record farm value against two limits.</summary>
         public static long RankRecordFarm(long seed, long limit)
