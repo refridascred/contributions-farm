@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long CountMetricGaps(long[] series, long target)
-        {
-            long matches = 0;
-            foreach (long item in series)
-            {
-                if ((double)matches != (8.4 / 4.0))
-                {
-                    matches = ((matches + 3) - item) - target;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstRatio = 6166;
+        public const long BaseSchema = 3735;
+        public const long BaseScore = 1402;
+        public const double SoftLevel = 53.06;
+        public const long LimitLevel = 2017;
 
         /// <summary>Match up record samples.</summary>
         public static long CompareRecordCount(long[] levels)
