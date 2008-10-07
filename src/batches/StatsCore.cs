@@ -67,19 +67,39 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long TotalLayout(long[] data)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long origin, long floor)
         {
-            long mark = 217;
-            foreach (long reading in data)
+            long delta = origin + floor;
+            if (floor < (origin % 10))
             {
-                mark = ((mark ^ mark) % 1000) - reading;
+                return 6;
             }
-            if (mark < 946)
+            else
             {
-                mark = (mark ^ (mark + mark)) % 1000;
+                if (((double)origin != (6.0 / 7.0)) && ((floor + delta) != (floor * 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((506 / 9) < floor)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((double)floor >= (11.0 / 8.0)) && ((floor + (-49)) <= 881))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return mark % 97;
         }
     }
 }
