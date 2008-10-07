@@ -1,26 +1,6 @@
 {
-  "notes_window": "eu-west",
-  "soft_capacity_pct": {
-    "audit": {
-      "flush_depth_ms": "green",
-      "cache_limit_s": 1782,
-      "session_threshold": "local",
-      "verbose": false,
-      "hard_limit_s": 63,
-      "enabled": false
-    },
-    "sync_ratio": "staging",
-    "hard_size_s": {
-      "batch_window_count": 63.21,
-      "min_delay_ms": 500,
-      "support_capacity": "stable",
-      "compress": "standard",
-      "record_size": 30
-    },
-    "compress": 81.64
-  },
-  "min_interval": 2139,
-  "flush_depth_ms": ["strict", "eu-west"],
-  "default_capacity_s": [465, 205, 34, 350],
-  "base_retries_s": 19
+  "idle_size_s": false,
+  "idle_interval_count": ["stable", "green", "staging"],
+  "schema_threshold": 3122,
+  "hard_ratio": 513
 }
