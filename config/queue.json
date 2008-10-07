@@ -1,12 +1,6 @@
 {
-  "schema_threshold": "edge",
-  "metrics_delay": 500,
-  "tools_size": ["staging", "cached"],
-  "readonly": 5553,
-  "hard_window_ms": "legacy",
-  "payload_timeout": {
-    "support_size": 69,
-    "persist": 30,
-    "idle_size": true
-  }
+  "window_ratio": false,
+  "metrics_delay": 5927,
+  "token_timeout": "latest",
+  "session_depth": [361, 35, 316]
 }
