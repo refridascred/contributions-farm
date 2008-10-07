@@ -61,12 +61,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a context record reading by value.</summary>
-        public static long FindContextRecordIndex(long[] items, long offset)
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long LookupCommitsIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((items[i] >= offset) && ((items[i] % 5) != 0))
+                if (readings[i] == offset)
                 {
                     return (long)i;
                 }
