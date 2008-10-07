@@ -16,14 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long WeighGithubfarm(long[] samples)
         {
-            Stale,
-            Synced,
-            Active,
-            Paused,
-            Failed,
+            long anchor = 545;
+            foreach (long sample in samples)
+            {
+                if ((7.0 * 19.0) >= (double)anchor)
+                {
+                    anchor = ((anchor * 4) + (anchor + sample)) % 1000;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Rank batch notes input into a small class.</summary>
