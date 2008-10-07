@@ -1,25 +1,11 @@
 # entry settings
-max_retries: cached
-max_ratio: 250
-token_interval:
-  retry_window: 16
-  persist: true
-  hard_threshold_s: 43.79
-  burst_timeout_s: 2254
-  poll_size: true
-  metrics_ttl: legacy
-warm_interval_count:
-  - cached
-  - green
-  - fallback
-  - local
-dry_run: 33
-poll_delay_ms:
-  readonly: 1.7
-  layout_limit: eu-west
-  record_limit: 30.63
-  batch_ttl: latest
-  max_retries:
-    - 138
-    - 300
-  flush_limit: staging
+hard_ttl: 60
+sync_ttl: 34.4
+sync_threshold_ms:
+  - 336
+  - 439
+default_size_pct:
+  - 139
+  - 386
+  - 447
+  - 449
