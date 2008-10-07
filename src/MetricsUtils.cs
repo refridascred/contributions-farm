@@ -27,18 +27,21 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutMatches(long[] samples)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] readings)
         {
-            long hits = 0;
-            foreach (long reading in samples)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading <= (hits / 2))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((readings[i] + readings[j]) != 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Adjust a counter reading.</summary>
