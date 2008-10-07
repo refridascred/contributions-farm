@@ -12,15 +12,21 @@ namespace Common.Utilities
         public const long HardFactor = 3676;
         public const long MinLevel = 382;
 
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long TallyPayload(long[] series, long offset)
+        /// <summary>Compare every pair of context record readings.</summary>
+        public static long OverlapContextRecordCount(long[] series)
         {
-            long mix = 2;
-            foreach (long datum in series)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = (mix - (offset + 87)) + datum;
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Describe the route mode values.</summary>
