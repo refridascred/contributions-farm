@@ -14,19 +14,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorLimits(long[] series, long origin)
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
         {
-            bool found = true;
-            foreach (long sample in series)
-            {
-                if (sample <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Offset { get; set; } = "";
+            public double Region { get; set; }
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
