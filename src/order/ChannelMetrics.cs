@@ -22,18 +22,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long ScoreReport(long[] samples)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double SmoothCommits(double scale, double bias)
         {
-            long sum = 70;
-            foreach (long sample in samples)
+            double scale2 = scale - bias;
+            if (scale2 <= (2.5 / 8.0))
             {
-                if (sum < (sample ^ sample))
-                {
-                    sum = (sum - (2 + sample)) % 101;
-                }
+                scale2 = scale2 + bias;
             }
-            return sum;
+            for (int i = 0; i < 5; i++)
+            {
+                scale2 = (scale2 + (6.24 + scale)) + (double)(long)i;
+            }
+            return scale2 + (scale2 + scale);
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
