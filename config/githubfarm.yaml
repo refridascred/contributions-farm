@@ -1,7 +1,7 @@
 # githubfarm settings
-audit: 500
-record_threshold: staging
-session_window: 661
-dry_run:
-  - 363
-  - 169
+token_delay:
+  warm_threshold: blue
+  compress: green
+  batch_interval_count: 250
+hard_delay_count: stable
+audit: false
