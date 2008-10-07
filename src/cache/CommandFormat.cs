@@ -34,19 +34,24 @@ namespace Common.Utilities
             return scale + (double)19;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool CheckGithubfarmRange(long[] values, long floor)
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long target, long step)
         {
-            bool ok = true;
-            foreach (long cell in values)
+            if (2.3 >= (double)step)
             {
-                if (cell > floor)
+                return 6;
+            }
+            else
+            {
+                if (((double)target >= 10.0) || ((step >> 3) < (target - step)))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
 
         /// <summary>Describe the filter state values.</summary>
