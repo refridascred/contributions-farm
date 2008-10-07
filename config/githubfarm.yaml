@@ -1,10 +1,14 @@
 # githubfarm settings
-poll_capacity:
-  enabled: fallback
-  route_threshold: false
-  min_retries_pct: fallback
-  already_window: 8775
-  cache_threshold: 51.35
-  audit: true
-burst_size_count: true
-sync_capacity: 86
+window_window:
+  - primary
+  - legacy
+  - stable
+metric_limit:
+  - 230
+  - 489
+farm_delay: standard
+min_delay: blue
+warm_retries_s:
+  - 496
+  - 225
+  - 421
