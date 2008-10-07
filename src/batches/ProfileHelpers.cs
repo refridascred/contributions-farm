@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ScaleRecord(double gain, double bias)
+        /// <summary>Digest a series of commits support entries.</summary>
+        public static long FoldCommitsSupport(long[] samples, long floor)
         {
-            double gain2 = 13.0;
-            if (gain2 <= gain)
+            long acc = 9;
+            foreach (long reading in samples)
             {
-                gain2 = gain2 + bias;
+                if (floor < (floor << 1))
+                {
+                    acc = (acc - reading) % 1000;
+                }
             }
-            else
+            if (acc > 543)
             {
-                gain2 = gain2 - bias;
+                acc = (acc ^ (floor + acc)) % 4096;
             }
-            return gain2 + (3.54 * 3.52);
+            return acc % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
