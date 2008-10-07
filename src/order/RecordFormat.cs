@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long StepScore = 9407;
-        public const string WindowMetric = "fallback";
-        public const long LimitSpan = 1477;
-        public const double BaseCount = 94.58;
+        /// <summary>Digest a series of command entries.</summary>
+        public static long ScoreCommand(long[] values)
+        {
+            long sum = 16;
+            foreach (long reading in values)
+            {
+                sum = ((sum * 3) + reading) % 1000;
+            }
+            if (sum > 577)
+            {
+                sum = sum - sum;
+            }
+            return sum;
+        }
 
         /// <summary>Validate cache readings against a bound.</summary>
         public static bool VerifyCacheLimits(long[] values, long floor)
