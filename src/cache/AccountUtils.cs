@@ -24,11 +24,17 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long StepBatch(long step)
         {
-            public bool Rank { get; set; }
-            public long Ratio { get; set; }
+            long mark = step;
+            for (int i = 0; i < 23; i++)
+            {
+                mark = mark ^ ((long)i % 8);
+                mark = ((mark << 3) ^ (312 % 10)) % 1000;
+                mark = ((mark * 5) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Hold a schema header.</summary>
