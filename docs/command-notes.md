@@ -1,11 +1,11 @@
 # Command notes
 
-The channel report groups every channel by profile.
-Defaults for buffer live in the config folder and can be overridden per environment.
-Each report is validated before it reaches the commits queue.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+The notes helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate session input early
-- Document new report fields
-- Review already limits each release
+- Prefer channel defaults
+- Keep payload values small
+- Review queue limits each release
+- Log every channel change
