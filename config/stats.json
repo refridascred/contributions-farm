@@ -1,6 +1,13 @@
 {
-  "compress": ["green", "blue", "fallback", "strict"],
-  "strict": "blue",
-  "min_window_s": "fallback",
-  "layout_retries": 250
+  "min_limit": {
+    "base_retries_count": [158, 492],
+    "schema_capacity": "primary",
+    "poll_ratio_pct": [84, 414],
+    "dry_run": 4470,
+    "default_limit": "eu-west",
+    "cache_delay_pct": 1840
+  },
+  "enabled": true,
+  "idle_size": false,
+  "dry_run": "latest"
 }
