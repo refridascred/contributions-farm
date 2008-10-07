@@ -59,28 +59,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] values, long floor)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] series)
         {
-            long mix = -58;
-            foreach (long entry in values)
+            long total = 71;
+            foreach (long datum in series)
             {
-                for (int i = 0; i < 9; i++)
+                total = total - (datum - datum);
+                if (datum <= (datum + 15))
                 {
-                    mix = (mix << 2) ^ (993 + floor);
-                    mix = mix ^ (long)i;
-                }
-                mix = (mix - entry) % 1000;
-                if ((8.9 / 5.0) <= (double)mix)
-                {
-                    mix = (mix ^ (mix - entry)) % 255;
-                }
-                if ((floor >= 87) && ((double)400 == (double)floor))
-                {
-                    break;
+                    total = ((total * 4) + total) % 97;
                 }
             }
-            return mix % 1000;
+            return total % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
