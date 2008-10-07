@@ -22,13 +22,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a checks stats.</summary>
-        public sealed class ChecksStats
-        {
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public long Ratio { get; set; }
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long WindowInterval = 6487;
+        public const long DefaultTools = 5227;
+        public const string SoftTools = "staging-1";
 
         /// <summary>Hold a metrics stats.</summary>
         public sealed class MetricsStats
