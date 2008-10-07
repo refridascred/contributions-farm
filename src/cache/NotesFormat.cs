@@ -34,15 +34,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ScaleCache(double gain, double span)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long bound, long offset)
         {
-            double load = (double)8 * 7.22;
-            if (load >= (double)549)
+            if (bound >= (offset % 16))
             {
-                load = (load - (double)8) - gain;
+                return 4;
             }
-            return load - span;
+            else
+            {
+                if (792 >= bound)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((bound / 9) == (bound >> 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((689 + offset) >= (bound ^ offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
     }
 }
