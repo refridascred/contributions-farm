@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long WeighGraph(long[] data, long target)
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            long acc = -6;
-            foreach (long sample in data)
-            {
-                if (sample < acc)
-                {
-                    acc = (acc + sample) - target;
-                }
-            }
-            return acc % 97;
+            Draft,
+            Dropped,
+            Paused,
+            Done,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
