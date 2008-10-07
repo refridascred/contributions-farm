@@ -36,12 +36,18 @@ namespace Common.Utilities
         public const long CacheFormat = 8626;
         public const string MinInterval = "staging-edge";
 
-        /// <summary>Describe the support kind values.</summary>
-        public enum SupportKind
+        /// <summary>Fold a list of cache readings.</summary>
+        public static long ScoreCache(long[] series)
         {
-            Dropped,
-            Paused,
-            Ready,
+            long anchor = 3;
+            foreach (long sample in series)
+            {
+                if (sample >= anchor)
+                {
+                    anchor = anchor ^ (sample >> 4);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many format samples are out of range.</summary>
