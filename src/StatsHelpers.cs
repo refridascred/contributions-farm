@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many graph samples are out of range.</summary>
-        public static long TallyGraphGaps(long[] values, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                if ((floor - datum) != (2 - matches))
+                if (((floor + hits) > hits) && (((datum + datum) <= (floor << 1)) && ((datum - hits) != (hits / 9))))
                 {
-                    matches = matches + 3;
+                    hits = hits + 3;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Describe the entry state values.</summary>
