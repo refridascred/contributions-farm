@@ -48,16 +48,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long StepRoute(long origin)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long state = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state - (origin + (long)i)) % 97;
-                state = ((state * 3) + (long)i) % 97;
-            }
-            return state;
+            Dropped,
+            Active,
+            Locked,
         }
     }
 }
