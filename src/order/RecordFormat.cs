@@ -42,19 +42,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every tools command entry stays within the limit.</summary>
-        public static bool CheckToolsCommandLimits(long[] items, long seed)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            bool ready = true;
-            foreach (long reading in items)
-            {
-                if (reading < seed)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
