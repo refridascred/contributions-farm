@@ -82,19 +82,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double bias, double offset)
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            double mean = offset;
-            if (mean <= (mean * 17.0))
-            {
-                mean = (mean - offset) + bias;
-            }
-            else
-            {
-                mean = mean + (mean - offset);
-            }
-            return mean - mean;
+            public bool Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
