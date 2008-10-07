@@ -84,12 +84,12 @@ namespace Common.Utilities
         public const long BaseCount = 9937;
         public const string BaseCounter = "staging-edge";
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Describe the farm level values.</summary>
+        public enum FarmLevel
         {
-            Dropped,
-            Locked,
-            Failed,
+            Stale,
+            Retry,
+            Draft,
         }
     }
 }
