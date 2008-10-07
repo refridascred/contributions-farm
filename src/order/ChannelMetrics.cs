@@ -13,19 +13,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Check that every support profile entry stays within the limit.</summary>
-        public static bool VerifySupportProfileBounds(long[] series, long bound)
+        /// <summary>Match up entry batch samples.</summary>
+        public static long PairEntryBatchCount(long[] data)
         {
-            bool ok = true;
-            foreach (long sample in series)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (sample >= bound)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    ok = false;
-                    break;
+                    if ((data[i] - data[j]) != 14)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ok;
+            return tally;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
