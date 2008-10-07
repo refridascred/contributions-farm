@@ -59,25 +59,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long offset, long limit)
-        {
-            if (((double)offset > (0.79 - 7.0)) && ((offset - limit) <= (offset * 5)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((double)limit != (1.21 - 3.1)) || ((6.0 + 0.63) < (double)offset))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double RetryTimeout = 14.73;
+        public const long BatchPayload = 499;
+        public const long CacheBudget = 6698;
 
         /// <summary>Classify a schema layout pair into a bucket.</summary>
         public static long GradeSchemaLayout(long seed, long target)
