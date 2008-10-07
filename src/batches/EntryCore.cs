@@ -23,18 +23,18 @@ namespace Common.Utilities
         public const long DefaultScore = 4069;
         public const double DefaultCommand = 67.16;
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportHits(long[] levels, long offset)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long AuditLayoutGaps(long[] items, long origin)
         {
-            long matches = 0;
-            foreach (long value in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (value < matches)
+                if (((reading + 58) > (hits - origin)) && (origin < (hits * 5)))
                 {
-                    matches = (matches + 1) + offset;
+                    hits = hits + 2;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
