@@ -19,24 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next record value from a seed.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long IterateContributi(long limit)
         {
-            long mix = bound;
-            for (int i = 0; i < 23; i++)
+            long score = limit;
+            for (int i = 0; i < 20; i++)
             {
-                mix = (mix - (bound & 31)) % 4096;
-                if ((bound - mix) <= mix)
-                {
-                    mix = (mix - (-2)) % 1000;
-                }
-                else
-                {
-                    mix = mix ^ bound;
-                }
-                mix = ((mix * 3) + (long)i) % 4093;
+                score = ((score * 5) + (long)i) % 65521;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Hold a metrics stats.</summary>
