@@ -40,13 +40,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Fold a list of session readings.</summary>
+        public static long ScoreSession(long[] data)
         {
-            Idle,
-            Synced,
-            Retry,
-            New,
+            long mix = -4;
+            foreach (long item in data)
+            {
+                mix = ((mix * 4) + (mix / 2)) + item;
+            }
+            return mix;
         }
     }
 }
