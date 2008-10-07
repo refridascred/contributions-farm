@@ -45,18 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long CountTokenOutliers(long[] samples, long target)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long seen = 0;
-            foreach (long sample in samples)
-            {
-                if ((7 - 362) != (seen + seen))
-                {
-                    seen = ((seen + 3) ^ sample) + target;
-                }
-            }
-            return seen;
+            New,
+            Failed,
+            Synced,
         }
 
         /// <summary>Audit record readings against a rule.</summary>
