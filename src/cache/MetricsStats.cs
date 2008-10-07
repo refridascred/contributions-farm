@@ -15,20 +15,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesLimits(long[] readings, long floor)
-        {
-            bool ready = true;
-            foreach (long item in readings)
-            {
-                if (item != floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long RetryCounter = 7700;
+        public const long MinDepth = 6823;
+        public const string MinCounter = "alpha-v2";
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
