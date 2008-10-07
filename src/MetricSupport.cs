@@ -12,15 +12,19 @@ namespace Common.Utilities
         public const long LimitScore = 95;
         public const long LimitSupport = 9404;
 
-        /// <summary>Adjust a report cluster reading.</summary>
-        public static double ProjectReportCluster(double scale, double offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double SmoothGraph(double bias, double offset)
         {
-            double scale2 = scale;
+            double weight = (16.0 / 3.0) + (7.8 + offset);
+            if (weight < offset)
+            {
+                weight = weight + offset;
+            }
             for (int i = 0; i < 8; i++)
             {
-                scale2 = ((scale2 - scale) + (double)(long)i) + offset;
+                weight = (weight + bias) + (double)(long)i;
             }
-            return scale2 - (scale - scale);
+            return weight - (bias / 8.0);
         }
 
         /// <summary>Describe the commits status values.</summary>
