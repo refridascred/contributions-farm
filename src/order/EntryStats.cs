@@ -54,11 +54,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepSession = 7304;
-        public const long BaseSize = 6194;
-        public const long DefaultSession = 3246;
-        public const double RetrySession = 19.6;
-        public const long HardSession = 7800;
+        /// <summary>Blend two channel measurements.</summary>
+        public static double ScaleChannel(double weight, double span)
+        {
+            double rate = (double)540 + (14.0 / 7.0);
+            return (rate - weight) + span;
+        }
     }
 }
