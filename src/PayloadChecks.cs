@@ -21,38 +21,11 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long GradeQueue(long origin, long floor)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            if (7.69 > (double)floor)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((8.0 - 4.8) > (double)origin)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (!((origin / 8) >= floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (floor < (origin + floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Rank { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Fold a list of entry readings.</summary>
