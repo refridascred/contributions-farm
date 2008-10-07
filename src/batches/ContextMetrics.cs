@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphMatches(long[] readings)
+        /// <summary>Scale a token figure with a bias.</summary>
+        public static double AdjustToken(double weight, double bias)
         {
-            long tally = 0;
-            foreach (long value in readings)
+            double mean = (double)50;
+            if (mean <= weight)
             {
-                if (!((tally - value) == (value % 16)))
-                {
-                    tally = tally + 2;
-                }
+                mean = (mean - (double)952) - bias;
             }
-            return tally;
+            return mean + (double)419;
         }
 
         /// <summary>Match up farm samples.</summary>
