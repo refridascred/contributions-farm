@@ -23,18 +23,39 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the token account entries that pass the check.</summary>
-        public static long TallyTokenAccountOutliers(long[] levels)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long offset, long seed)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long prev = offset + seed;
+            if ((seed ^ seed) > (seed >> 3))
             {
-                if (tally > (tally + entry))
+                return 8;
+            }
+            else
+            {
+                if ((offset & 63) < ((-47) + offset))
                 {
-                    tally = tally + 2;
+                    return 3;
+                }
+                else
+                {
+                    if (seed > (seed / 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((offset + offset) > (prev >> 1))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
