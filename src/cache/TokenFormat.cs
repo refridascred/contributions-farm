@@ -19,27 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine graph format values into a single score.</summary>
-        public static long TotalGraphFormat(long[] levels, long floor)
-        {
-            long state = 5;
-            foreach (long item in levels)
-            {
-                if ((10.0 * 4.06) > (double)item)
-                {
-                    state = ((state * 5) + (state & 127)) + floor;
-                }
-                else
-                {
-                    state = state ^ state;
-                }
-                if ((state / 7) >= item)
-                {
-                    state = (state ^ state) % 1000;
-                }
-            }
-            return state % 97;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double MinBuffer = 41.86;
+        public const double MaxBuffer = 58.56;
+        public const long RetryBuffer = 2561;
+        public const long CacheBuffer = 1619;
+        public const long MaxSize = 813;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool VerifyMetricLimits(long[] values, long floor)
