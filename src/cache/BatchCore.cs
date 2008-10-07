@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public bool Weight { get; set; }
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
+            Pending,
+            Locked,
+            Synced,
+            Dropped,
+            Active,
         }
 
         /// <summary>Roll a editor profile counter forward.</summary>
