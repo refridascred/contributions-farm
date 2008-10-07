@@ -42,11 +42,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double SoftProfile = 80.36;
-        public const long MaxRatio = 2023;
-        public const long MaxWidth = 8708;
-        public const long StepProfile = 5648;
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordHits(long[] levels, long offset)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if ((double)cell <= (double)matches)
+                {
+                    matches = (matches + 1) - offset;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a window sample.</summary>
         public static long LookupWindowIndex(long[] levels, long step)
