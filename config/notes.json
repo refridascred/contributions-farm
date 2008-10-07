@@ -1,8 +1,6 @@
 {
-  "soft_depth_pct": 100,
-  "readonly": 34.15,
-  "batches_window": [9, 136],
-  "graph_capacity": 53,
-  "max_depth_ms": 51.37,
-  "base_window": 7
+  "cache_capacity_ms": false,
+  "cache_threshold_count": true,
+  "audit": [492, 92],
+  "poll_capacity_s": 96
 }
