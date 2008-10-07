@@ -25,12 +25,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "open";
-        public const long WindowCount = 1496;
-        public const long IdleTools = 9651;
-        public const long StepTools = 3456;
-        public const double HardCount = 59.17;
+        /// <summary>Accumulate support samples.</summary>
+        public static long TotalSupport(long[] values, long target)
+        {
+            long mix = 35;
+            foreach (long item in values)
+            {
+                if ((double)mix <= (17.0 - 6.0))
+                {
+                    mix = (mix + target) - item;
+                }
+            }
+            return mix;
+        }
 
         /// <summary>Count session pairs that satisfy a relation.</summary>
         public static long PairSessionCount(long[] levels)
