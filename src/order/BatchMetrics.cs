@@ -53,17 +53,18 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long LocateReportIndex(long[] items, long target)
+        /// <summary>Audit tools readings against a rule.</summary>
+        public static long CountToolsGaps(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if (items[i] > target)
+                if (((double)seen <= 5.2) && ((5.9 - 3.16) > (double)entry))
                 {
-                    return (long)i;
+                    seen = seen + 2;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Adjust a layout reading.</summary>
