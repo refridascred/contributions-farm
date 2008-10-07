@@ -39,31 +39,15 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Rank entry session input into a small class.</summary>
-        public static long ClassifyEntrySession(long bound, long step)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long StepTools(long floor)
         {
-            if (!((2 + step) >= (bound - bound)))
+            long sum = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 2;
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            else
-            {
-                if (!((bound + 6) >= bound))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((5.0 - 0.7) <= (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Classify a contributi command pair into a bucket.</summary>
