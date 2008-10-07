@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Derive the next cache profile value from a seed.</summary>
-        public static long RollCacheProfile(long offset)
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            long anchor = offset;
-            for (int i = 0; i < 20; i++)
-            {
-                if ((double)(long)i >= (3.12 + 4.0))
-                {
-                    anchor = (anchor << 3) ^ (offset - anchor);
-                    anchor = (anchor ^ offset) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 97;
-            }
-            return anchor;
+            public long Level { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
