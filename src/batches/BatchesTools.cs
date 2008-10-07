@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the tools payload entries that pass the check.</summary>
-        public static long CountToolsPayloadMatches(long[] series)
+        /// <summary>Hold a tools info.</summary>
+        public sealed class ToolsInfo
         {
-            long matches = 0;
-            foreach (long reading in series)
-            {
-                if ((reading / 5) != (matches + 559))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public double Stamp { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Hold a report snapshot.</summary>
