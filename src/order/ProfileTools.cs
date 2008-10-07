@@ -43,19 +43,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double AdjustBuffer(double scale, double floor)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            double mean = floor;
-            if (mean < (double)233)
-            {
-                mean = (mean + (0.6 * 4.0)) + scale;
-            }
-            else
-            {
-                mean = mean + (double)709;
-            }
-            return mean - (mean * 10.0);
+            Pending,
+            Closed,
+            New,
         }
     }
 }
