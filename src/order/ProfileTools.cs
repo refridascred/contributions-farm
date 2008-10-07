@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Locked,
-            Queued,
-            Closed,
-            Idle,
-            Ready,
+            public long Score { get; set; }
+            public long Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Audit record support readings against a rule.</summary>
