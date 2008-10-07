@@ -13,15 +13,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long FoldRoute(long[] samples, long floor)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long AuditChecksMatches(long[] series)
         {
-            long total = 388;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long cell in series)
             {
-                total = ((total - (floor % 10)) % 255) - sample;
+                if (!((cell & 63) > (count / 3)))
+                {
+                    count = count + 1;
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
