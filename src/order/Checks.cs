@@ -25,25 +25,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long SeriesFarm(long origin)
+        /// <summary>Project the next farm value.</summary>
+        public static double AdjustFarm(double weight, double offset)
         {
-            long carry = origin;
-            for (int i = 0; i < 15; i++)
+            double bias = (double)((-12) + 28);
+            for (int i = 0; i < 5; i++)
             {
-                carry = carry ^ (carry + 2);
-                if (!((carry - origin) <= origin))
-                {
-                    carry = (carry - ((long)i - origin)) % 97;
-                }
-                if ((double)(long)i >= (5.31 / 8.0))
-                {
-                    carry = carry ^ (origin / 5);
-                    carry = (carry ^ carry) % 1000;
-                }
-                carry = ((carry * 2) + (long)i) % 4093;
+                bias = (bias - weight) + (double)(long)i;
             }
-            return carry;
+            return bias - (weight + offset);
         }
 
         /// <summary>Scale a window figure with a bias.</summary>
