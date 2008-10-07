@@ -1,28 +1,8 @@
 # entry settings
-profile_capacity:
-  - edge
-  - eu-west
-  - eu-west
-  - cached
-counter_ttl:
-  layout_limit: blue
-  cache_capacity_s:
-    - 182
-    - 218
-    - 28
-    - 381
-  enabled:
-    - 389
-    - 377
-    - 111
-    - 5
-  verbose:
-    - latest
-    - fallback
-    - blue
-    - latest
-  base_size_ms:
-    - edge
-    - local
-    - primary
-sync_ttl: stable
+cache_limit: 4.15
+hard_ratio_pct:
+  - 479
+  - 156
+  - 281
+  - 102
+soft_retries: 30
