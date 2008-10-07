@@ -1,5 +1,4 @@
 # entry settings
-flush_limit_ms: legacy
-flush_timeout_ms: blue
-batch_ratio_s: legacy
-cache_ttl: 86.16
+default_timeout_count: 2742
+persist: edge
+layout_timeout: edge
