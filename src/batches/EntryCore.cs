@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a session reading by value.</summary>
-        public static long LocateSessionIndex(long[] readings, long limit)
+        /// <summary>Derive the next queue value from a seed.</summary>
+        public static long RollQueue(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long result = floor;
+            for (int i = 0; i < 10; i++)
             {
-                if ((readings[i] > limit) && ((readings[i] % 2) == 0))
+                if (!((long)i < result))
                 {
-                    return (long)i;
+                    result = (result << 2) ^ (result - 5);
                 }
+                result = ((result * 2) + (long)i) % 1000;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Define command limits and defaults.</summary>
