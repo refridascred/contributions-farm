@@ -21,19 +21,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double ProjectNotes(double bias, double bias2)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            double ratio = bias + bias2;
-            if (ratio <= ratio)
-            {
-                ratio = ratio + (double)73;
-            }
-            else
-            {
-                ratio = ratio + 1.7;
-            }
-            return ratio - (5.1 / 6.0);
+            public double Label { get; set; }
+            public long Weight { get; set; }
+            public string Level { get; set; } = "";
+            public bool Owner { get; set; }
         }
 
         /// <summary>Project the next order counter value.</summary>
