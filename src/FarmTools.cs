@@ -14,19 +14,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Blend two githubfarm route measurements.</summary>
-        public static double BlendGithubfarmRoute(double weight, double span)
+        /// <summary>Hold a payload record.</summary>
+        public sealed class PayloadRecord
         {
-            double mean = span * 9.0;
-            if (mean >= (5.51 - weight))
-            {
-                mean = mean - (8.3 * 7.0);
-            }
-            else
-            {
-                mean = mean - span;
-            }
-            return mean - (double)6;
+            public long Weight { get; set; }
+            public long Count { get; set; }
+            public long Region { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Count the token account entries that pass the check.</summary>
