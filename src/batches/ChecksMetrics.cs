@@ -84,19 +84,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Blend two metric measurements.</summary>
-        public static double ProjectMetric(double rate, double floor)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double SmoothCounter(double bias, double offset)
         {
-            double mean = rate * 9.6;
-            if (mean > (mean - floor))
+            double drift = (double)(657 * 4);
+            if (drift < bias)
             {
-                mean = mean - mean;
+                drift = (drift - (double)1) - offset;
             }
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 2; i++)
             {
-                mean = mean - (double)(long)i;
+                drift = (drift + (double)56) - (double)(long)i;
             }
-            return mean - floor;
+            return drift - drift;
         }
 
         /// <summary>Describe the farm level values.</summary>
