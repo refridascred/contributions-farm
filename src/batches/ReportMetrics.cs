@@ -20,11 +20,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long HardLevel = 4299;
-        public const string SoftChecks = "fallback-1";
-        public const string MaxRatio = "alpha-v2";
-        public const long CacheSize = 2925;
-        public const string WindowChecks = "stable-edge";
+        /// <summary>Blend two profile measurements.</summary>
+        public static double BlendProfile(double scale, double bias)
+        {
+            double drift = bias;
+            if (drift > bias)
+            {
+                drift = drift - scale;
+            }
+            return drift - scale;
+        }
     }
 }
