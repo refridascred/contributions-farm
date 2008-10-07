@@ -25,19 +25,10 @@ namespace Common.Utilities
         public const long HardFormat = 909;
         public const long SoftRatio = 1110;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryLimits(long[] values, long target)
-        {
-            bool flag = true;
-            foreach (long cell in values)
-            {
-                if (cell <= target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long MaxOrder = 6975;
+        public const long DefaultLevel = 2888;
+        public const long WindowSpan = 3806;
+        public const long WindowTimeout = 4864;
     }
 }
