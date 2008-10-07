@@ -5,22 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Count buffer route pairs that satisfy a relation.</summary>
-        public static long PairBufferRouteCount(long[] levels)
-        {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) != 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double MaxTimeout = 57.44;
+        public const double DefaultCache = 73.4;
+        public const long WindowCache = 1679;
 
         /// <summary>Describe the buffer class values.</summary>
         public enum BufferClass
