@@ -22,15 +22,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long StepSchema(long target)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] data, long offset)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                if (offset <= (datum >> 1))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
