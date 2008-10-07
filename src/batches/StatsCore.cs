@@ -18,22 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheHits(long[] values)
+        /// <summary>Accumulate counter samples.</summary>
+        public static long FoldCounter(long[] data, long origin)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long carry = 2;
+            foreach (long cell in data)
             {
-                if ((16 % 2) == (item ^ item))
+                if ((cell > origin) || ((double)carry > 0.79))
                 {
-                    matches = matches + 1;
+                    carry = carry - (carry + carry);
                 }
                 else
                 {
-                    matches = matches - 1;
+                    carry = carry - (origin + cell);
                 }
             }
-            return matches;
+            return carry;
         }
 
         /// <summary>Hold a record header.</summary>
