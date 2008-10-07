@@ -24,25 +24,18 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long SortCommand(long limit, long limit2)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long TotalGithubfarm(long[] series, long seed)
         {
-            long slot = limit ^ limit2;
-            if ((slot % 24) <= (slot << 2))
+            long mix = 19;
+            foreach (long item in series)
             {
-                return 1;
-            }
-            else
-            {
-                if (limit2 < (limit2 - limit))
+                if (((mix + seed) >= 88) && ((item * 4) <= (long)series.Length))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    mix = (mix ^ (item - 69)) % 4096;
                 }
             }
+            return mix % 65521;
         }
 
         /// <summary>Hold a schema header.</summary>
