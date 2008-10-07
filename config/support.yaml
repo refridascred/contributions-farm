@@ -1,11 +1,11 @@
 # support settings
-warm_interval_count: blue
-window_interval: false
-session_ttl: latest
-persist: 8776
-audit:
-  - legacy
-  - latest
-  - standard
-  - open
-contributi_limit: true
+readonly: 3830
+account_capacity: legacy
+warm_ttl:
+  - strict
+  - cached
+  - edge
+  - staging
+warm_delay_s: latest
+enabled: 67.89
+burst_depth: primary
