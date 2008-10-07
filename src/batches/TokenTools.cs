@@ -28,10 +28,19 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BatchBudget = 3386;
-        public const double StepQueue = 88.96;
-        public const double WindowBudget = 29.7;
-        public const long RetryDepth = 2944;
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    carry = ((carry * 5) + bound) - (long)i2;
+                }
+                carry = ((carry * 3) + (long)i) % 101;
+            }
+            return carry;
+        }
     }
 }
