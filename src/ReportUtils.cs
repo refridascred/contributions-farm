@@ -58,11 +58,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long SoftCount = 9923;
-        public const long IdleAccount = 7405;
-        public const double DefaultDepth = 64.91;
-        public const double CacheWidth = 32.05;
-        public const long StepScore = 541;
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
+        {
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public double Token { get; set; }
+            public long Label { get; set; }
+        }
     }
 }
