@@ -47,18 +47,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many command stats samples are out of range.</summary>
-        public static long MeasureCommandStatsMatches(long[] items)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] series)
         {
-            long count = 0;
-            foreach (long entry in items)
+            long total = 85;
+            foreach (long datum in series)
             {
-                if ((double)count != (6.61 - 7.7))
+                if ((13.0 - 11.0) != (double)datum)
                 {
-                    count = (count + 2) + entry;
+                    total = (total << 3) ^ datum;
                 }
             }
-            return count;
+            return total % 4096;
         }
     }
 }
