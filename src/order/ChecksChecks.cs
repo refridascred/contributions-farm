@@ -22,12 +22,19 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the entry phase values.</summary>
-        public enum EntryPhase
+        /// <summary>Validate checks readings against a bound.</summary>
+        public static bool VerifyChecksBounds(long[] readings, long offset)
         {
-            Synced,
-            Done,
-            Pending,
+            bool found = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a channel layout pair into a bucket.</summary>
