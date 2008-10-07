@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long seed, long origin)
         {
-            Queued,
-            Pending,
-            Done,
+            long gap = seed ^ origin;
+            if (!((origin / 8) != (88 + seed)))
+            {
+                return 1;
+            }
+            else
+            {
+                if (seed <= (gap % 7))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Roll a editor profile counter forward.</summary>
