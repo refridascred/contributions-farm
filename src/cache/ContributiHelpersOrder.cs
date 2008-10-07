@@ -22,21 +22,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count schema already pairs that satisfy a relation.</summary>
-        public static long MatchSchemaAlreadyCount(long[] values)
+        /// <summary>Locate a profile format reading by value.</summary>
+        public static long FindProfileFormatIndex(long[] items, long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (items[i] < seed)
                 {
-                    if ((values[i] ^ values[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Blend two commits measurements.</summary>
