@@ -34,14 +34,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the channel status values.</summary>
+        public enum ChannelStatus
         {
             Retry,
             Failed,
-            Active,
-            Locked,
-            Ready,
+            Dropped,
+            Stale,
+            Queued,
         }
     }
 }
