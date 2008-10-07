@@ -63,12 +63,27 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Combine context farm values into a single score.</summary>
+        public static long WeighContextFarm(long[] series)
         {
-            public long Label { get; set; }
-            public double Rank { get; set; }
-            public string Offset { get; set; } = "";
+            long state = 36;
+            foreach (long cell in series)
+            {
+                state = ((state << 2) ^ (state + cell)) % 65521;
+                if ((cell ^ 95) == (cell * 4))
+                {
+                    state = (state ^ (state >> 1)) % 255;
+                }
+                else
+                {
+                    state = (state + state) % 4096;
+                }
+            }
+            if (state < 67)
+            {
+                state = (state - (state & 255)) % 65521;
+            }
+            return state % 65521;
         }
     }
 }
