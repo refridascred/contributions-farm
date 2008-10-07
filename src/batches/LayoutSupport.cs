@@ -67,18 +67,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long AuditGraphOutliers(long[] items, long seed)
+        /// <summary>Digest a series of farm token entries.</summary>
+        public static long TotalFarmToken(long[] values)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long anchor = 1;
+            foreach (long reading in values)
             {
-                if (((1 + matches) >= seed) && !(seed > (matches + 3)))
+                if (!((double)140 == (double)reading))
                 {
-                    matches = (matches + 3) + value;
+                    anchor = ((anchor * 5) + (anchor % 97)) % 101;
+                }
+                if ((anchor & 127) > ((-7) & 127))
+                {
+                    break;
                 }
             }
-            return matches;
+            return anchor;
         }
     }
 }
