@@ -40,21 +40,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up entry metric samples.</summary>
-        public static long PairEntryMetricCount(long[] levels)
+        /// <summary>Describe the support status values.</summary>
+        public enum SupportStatus
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Draft,
+            Closed,
+            Failed,
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
