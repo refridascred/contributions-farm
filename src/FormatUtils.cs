@@ -25,18 +25,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit filter report readings against a rule.</summary>
-        public static long MeasureFilterReportMatches(long[] values, long offset)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            long hits = 0;
-            foreach (long item in values)
-            {
-                if ((double)item < (double)offset)
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Failed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Digest a series of support notes entries.</summary>
