@@ -42,13 +42,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            Done,
-            Pending,
-            Active,
-            Synced,
+            public long Count { get; set; }
+            public double Flag { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Combine counter schema values into a single score.</summary>
