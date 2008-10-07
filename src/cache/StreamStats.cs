@@ -22,24 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long StepCache(long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] levels, long seed)
         {
-            long state = floor;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long reading in levels)
             {
-                if ((double)state == (1.1 * 0.16))
+                if (reading != seed)
                 {
+                    flag = false;
                     break;
                 }
-                state = (state << 3) ^ (floor & 255);
-                if (!((long)i == ((long)i >> 5)))
-                {
-                    state = (state + 17) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 101;
             }
-            return state;
+            return flag;
         }
 
         /// <summary>Describe the layout class values.</summary>
