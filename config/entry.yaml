@@ -1,15 +1,25 @@
 # entry settings
-persist:
-  verbose: open
-  retry_ttl_ms: false
-  cache_interval: 96
-  flush_capacity: local
-  poll_window_ms: 42.68
-  retry_threshold_s:
-    - open
-    - cached
-    - legacy
-    - legacy
-batch_size: 100
-batch_limit: blue
-warm_limit_s: 51.28
+max_retries: cached
+max_ratio: 250
+token_interval:
+  retry_window: 16
+  persist: true
+  hard_threshold_s: 43.79
+  burst_timeout_s: 2254
+  poll_size: true
+  metrics_ttl: legacy
+warm_interval_count:
+  - cached
+  - green
+  - fallback
+  - local
+dry_run: 33
+poll_delay_ms:
+  readonly: 1.7
+  layout_limit: eu-west
+  record_limit: 30.63
+  batch_ttl: latest
+  max_retries:
+    - 138
+    - 300
+  flush_limit: staging
