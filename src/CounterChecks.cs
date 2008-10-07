@@ -43,19 +43,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool VerifySupportLimits(long[] values, long floor)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            bool stale = true;
-            foreach (long datum in values)
-            {
-                if (datum >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Idle,
+            New,
+            Synced,
         }
 
         /// <summary>Project the next stream value.</summary>
