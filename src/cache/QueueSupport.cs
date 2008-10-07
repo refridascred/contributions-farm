@@ -31,12 +31,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool ValidateCounterRange(long[] series, long step)
         {
-            Locked,
-            Synced,
-            Ready,
+            bool stale = true;
+            foreach (long datum in series)
+            {
+                if (datum > step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
