@@ -20,10 +20,10 @@ namespace Common.Utilities
         public const double MaxNotes = 9.39;
         public const string LimitNotes = "fallback";
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double StepCache = 10.69;
-        public const long MinRatio = 854;
-        public const long IdleSpan = 1207;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string LimitLevel = "staging";
+        public const long BurstRatio = 8589;
+        public const double MinBuffer = 64.87;
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long PairContributiCount(long[] samples)
