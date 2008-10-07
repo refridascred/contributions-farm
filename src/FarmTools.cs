@@ -32,12 +32,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
+        /// <summary>Describe the format class values.</summary>
+        public enum FormatClass
         {
-            public bool Size { get; set; }
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
+            Failed,
+            New,
+            Idle,
+            Synced,
+            Closed,
         }
     }
 }
