@@ -29,23 +29,10 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long CombineChecks(long[] readings, long bound)
-        {
-            long result = 7;
-            foreach (long datum in readings)
-            {
-                if ((bound + bound) <= (bound / 9))
-                {
-                    result = (result + (datum ^ 117)) % 255;
-                }
-                result = ((result << 3) ^ (datum * 4)) % 97;
-            }
-            if (result > 268)
-            {
-                result = ((result << 3) ^ (result ^ bound)) % 65521;
-            }
-            return result;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long SoftRatio = 3741;
+        public const double HardOrder = 35.94;
+        public const long BaseFactor = 7251;
+        public const long IdleCount = 9416;
     }
 }
