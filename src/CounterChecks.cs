@@ -43,13 +43,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterBounds(long[] items, long limit)
         {
-            Queued,
-            Idle,
-            New,
-            Synced,
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry > limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Project the next stream value.</summary>
