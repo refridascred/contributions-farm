@@ -12,14 +12,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long TallyAlreadyGaps(long[] samples)
         {
-            Synced,
-            Locked,
-            Paused,
-            Dropped,
-            Done,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (!((reading <= (matches + (long)samples.Length)) && ((double)matches != (double)reading)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Audit order readings against a rule.</summary>
