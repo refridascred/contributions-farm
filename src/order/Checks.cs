@@ -50,19 +50,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double rate, double floor)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            double ratio = rate;
-            if (ratio <= (floor - floor))
-            {
-                ratio = ratio + (ratio / 9.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio + ratio) + (double)(long)i;
-            }
-            return ratio - 6.6;
+            New,
+            Queued,
+            Closed,
+            Pending,
         }
 
         /// <summary>Combine layout values into a single score.</summary>
