@@ -13,21 +13,13 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of command readings.</summary>
-        public static long PairCommandCount(long[] samples)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 11)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public bool Label { get; set; }
+            public bool Flag { get; set; }
+            public double Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Grade a stats contributi value against two limits.</summary>
