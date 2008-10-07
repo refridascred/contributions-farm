@@ -5,23 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine already context values into a single score.</summary>
-        public static long WeighAlreadyContext(long[] series, long limit)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long step)
         {
-            long score = -41;
-            foreach (long datum in series)
+            long sum = step;
+            for (int i = 0; i < 15; i++)
             {
-                if (limit >= (863 - score))
-                {
-                    score = (score - (score - datum)) % 101;
-                }
-                score = (score << 2) ^ limit;
+                sum = ((sum * 5) + (long)i) % 4093;
             }
-            if (score < 664)
-            {
-                score = ((score * 3) + (limit & 127)) % 101;
-            }
-            return score;
+            return sum;
         }
 
         /// <summary>Fold a list of report readings.</summary>
