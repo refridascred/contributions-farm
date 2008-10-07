@@ -27,21 +27,13 @@ namespace Common.Utilities
             return mean - (7.55 / 9.0);
         }
 
-        /// <summary>Derive the next commits value from a seed.</summary>
-        public static long DeriveCommits(long target)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long mix = target;
-            for (int i = 0; i < 7; i++)
-            {
-                mix = (mix - target) % 1000;
-                long bound = mix;
-                if (mix < (target - (long)i))
-                {
-                    mix = ((mix << 2) ^ (bound ^ target)) % 1000;
-                }
-                mix = ((mix * 4) + (long)i) % 101;
-            }
-            return mix;
+            public long Size { get; set; }
+            public long Limit { get; set; }
+            public bool Stamp { get; set; }
+            public bool Score { get; set; }
         }
     }
 }
