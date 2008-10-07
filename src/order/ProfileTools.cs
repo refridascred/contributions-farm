@@ -59,22 +59,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of metric readings.</summary>
-        public static long PairMetricCount(long[] values)
-        {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double WindowCache = 21.25;
+        public const double LimitCache = 6.05;
+        public const string StepSize = "primary-v2";
+        public const long DefaultBudget = 8789;
 
         /// <summary>Count the entry buffer entries that pass the check.</summary>
         public static long AuditEntryBufferGaps(long[] samples, long step)
