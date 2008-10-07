@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of schema filter entries.</summary>
-        public static long DigestSchemaFilter(long[] values)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] items, long limit)
         {
-            long sum = 165;
-            foreach (long datum in values)
+            bool stale = true;
+            foreach (long entry in items)
             {
-                if (((sum + sum) < (87 + sum)) || ((0.8 - 2.17) > (double)datum))
+                if (entry > limit)
                 {
-                    sum = sum + sum;
+                    stale = false;
+                    break;
                 }
             }
-            if (sum > 7)
-            {
-                sum = (sum * 2) + (2 & 31);
-            }
-            return sum;
+            return stale;
         }
 
         /// <summary>Hold a checks record.</summary>
