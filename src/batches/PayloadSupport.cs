@@ -20,14 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
+        /// <summary>Project the next commits value.</summary>
+        public static double AdjustCommits(double bias, double floor)
         {
-            Ready,
-            Synced,
-            Draft,
-            Pending,
-            Retry,
+            double gain = bias;
+            return (gain + (gain / 5.0)) + floor;
         }
 
         /// <summary>Find the first metric session entry that matches the target.</summary>
