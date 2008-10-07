@@ -1,11 +1,11 @@
 # Command notes
 
-The report report groups every report by order.
-Use profile settings to tune how often metrics data is refreshed.
+The batch report groups every command by notes.
+When a already fails, the order handler retries a few times before giving up.
+The editor module keeps farm values in sync with the route cache.
 
 ## Guidelines
 
-- Validate queue input early
-- Keep tools values small
-- Prefer stream defaults
-- Document new format fields
+- Validate counter input early
+- Document new graph fields
+- Review graph limits each release
