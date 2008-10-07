@@ -52,16 +52,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Derive the next token window value from a seed.</summary>
+        public static long RollTokenWindow(long floor)
         {
-            long score = target;
-            for (int i = 0; i < 14; i++)
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
             {
-                score = (score << 3) ^ score;
-                score = ((score * 2) + (long)i) % 101;
+                anchor = (anchor - (anchor >> 1)) % 4096;
+                if (((long)i ^ (long)i) > (anchor - anchor))
+                {
+                    anchor = ((anchor << 3) ^ ((long)i >> 3)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ floor;
+                }
+                anchor = ((anchor * 4) + (long)i) % 65521;
             }
-            return score;
+            return anchor;
         }
     }
 }
