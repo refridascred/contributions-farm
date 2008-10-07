@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the format phase values.</summary>
-        public enum FormatPhase
+        /// <summary>Describe the token kind values.</summary>
+        public enum TokenKind
         {
-            Done,
+            New,
+            Stale,
             Locked,
-            Draft,
+            Pending,
         }
 
         /// <summary>Validate profile readings against a bound.</summary>
