@@ -42,12 +42,11 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
-        {
-            Locked,
-            Active,
-            Queued,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long WindowSize = 8929;
+        public const long SoftBatches = 104;
+        public const long BaseBatches = 9196;
+        public const string LimitBatches = "staging-edge";
+        public const long WindowBatches = 8991;
     }
 }
