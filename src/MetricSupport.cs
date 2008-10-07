@@ -36,15 +36,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two account measurements.</summary>
-        public static double BlendAccount(double gain, double span)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            double scale = gain;
-            for (int i = 0; i < 4; i++)
-            {
-                scale = ((scale - gain) + (double)(long)i) - span;
-            }
-            return scale - scale;
+            public long Offset { get; set; }
+            public double Stamp { get; set; }
+            public long Score { get; set; }
         }
     }
 }
