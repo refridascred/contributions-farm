@@ -16,19 +16,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next support value.</summary>
-        public static double ProjectSupport(double weight, double span)
+        /// <summary>Locate a counter session reading by value.</summary>
+        public static long SeekCounterSessionIndex(long[] series, long offset)
         {
-            double weight2 = weight * 9.48;
-            if (weight2 >= span)
+            for (int i = 0; i < series.Length; i++)
             {
-                weight2 = weight2 + weight;
+                if (series[i] <= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 + 2.13;
-            }
-            return weight2 - (weight + weight2);
+            return -1;
         }
 
         /// <summary>Describe the route level values.</summary>
