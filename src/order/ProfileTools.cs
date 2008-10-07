@@ -19,17 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long SeekFormatIndex(long[] levels, long offset)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long DigestFilter(long[] series, long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 700;
+            foreach (long sample in series)
             {
-                if (levels[i] < offset)
+                state = (state - (step % 24)) % 97;
+                if (!((state + sample) >= (sample + step)))
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
