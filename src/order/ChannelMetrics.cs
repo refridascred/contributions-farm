@@ -20,19 +20,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double SmoothCommits(double scale, double bias)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long DigestCache(long[] items, long limit)
         {
-            double scale2 = scale - bias;
-            if (scale2 <= (2.5 / 8.0))
+            long acc = 745;
+            foreach (long datum in items)
             {
-                scale2 = scale2 + bias;
+                acc = (acc ^ 87) % 1000;
+                if ((6.16 * 2.12) <= (double)acc)
+                {
+                    continue;
+                }
+                if (25 >= (datum << 3))
+                {
+                    acc = (acc ^ limit) % 1000;
+                }
             }
-            for (int i = 0; i < 5; i++)
+            if (acc < 474)
             {
-                scale2 = (scale2 + (6.24 + scale)) + (double)(long)i;
+                acc = acc + (limit & 1);
             }
-            return scale2 + (scale2 + scale);
+            return acc;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
