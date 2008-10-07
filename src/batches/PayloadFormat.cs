@@ -29,18 +29,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] data)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long OverlapSessionCount(long[] data)
         {
-            long count = 0;
-            foreach (long value in data)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (618 > (value / 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = count + 3;
+                    if ((data[i] - data[j]) != 19)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
