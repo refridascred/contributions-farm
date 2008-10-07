@@ -69,12 +69,32 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a metric entry.</summary>
-        public sealed class MetricEntry
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long SortPayload(long bound, long target)
         {
-            public bool Flag { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long slot = bound - target;
+            if ((bound - slot) <= 924)
+            {
+                return 4;
+            }
+            else
+            {
+                if ((7.0 - 8.81) > (double)target)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((slot >> 1) < slot)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Combine context farm values into a single score.</summary>
