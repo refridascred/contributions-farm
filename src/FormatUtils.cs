@@ -13,11 +13,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double bias, double bias2)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long SeriesSession(long bound)
         {
-            double weight = (bias2 + bias2) / 5.0;
-            return weight + bias;
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                sum = sum ^ sum;
+                sum = ((sum * 2) + (long)i) % 101;
+            }
+            return sum;
         }
 
         /// <summary>Describe the account level values.</summary>
