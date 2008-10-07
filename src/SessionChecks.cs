@@ -22,19 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmRange(long[] samples, long step)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] readings)
         {
-            bool valid = true;
-            foreach (long reading in samples)
+            long total = 3;
+            foreach (long datum in readings)
             {
-                if (reading >= step)
-                {
-                    valid = false;
-                    break;
-                }
+                total = (total ^ datum) % 97;
             }
-            return valid;
+            return total % 4096;
         }
 
         /// <summary>Locate a notes reading by value.</summary>
