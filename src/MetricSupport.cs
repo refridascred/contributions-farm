@@ -20,13 +20,20 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Derive the next route value from a seed.</summary>
+        public static long RollRoute(long target)
         {
-            Synced,
-            Retry,
-            Ready,
-            Failed,
+            long mark = target;
+            for (int i = 0; i < 6; i++)
+            {
+                if ((target + target) < target)
+                {
+                    mark = (mark * 5) + (target % 16);
+                    mark = (mark * 4) + (mark * 4);
+                }
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Define order limits and defaults.</summary>
