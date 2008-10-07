@@ -1,7 +1,10 @@
 {
-  "max_timeout_count": "blue",
-  "notes_delay": "staging",
-  "soft_ttl_s": ["green", "latest", "strict", "primary"],
-  "command_ttl": "edge",
-  "strict": "eu-west"
+  "cache_limit": {
+    "profile_retries": true,
+    "entry_capacity": 250,
+    "flush_interval": false
+  },
+  "soft_ratio_pct": "primary",
+  "warm_ratio_pct": "legacy",
+  "poll_window_pct": 1024
 }
