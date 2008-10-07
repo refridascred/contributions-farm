@@ -43,9 +43,15 @@ namespace Common.Utilities
         public const double StepFactor = 49.86;
         public const string CacheRatio = "primary-edge";
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long SoftInterval = 5273;
-        public const long MinScore = 3710;
-        public const string StepNotes = "cached";
+        /// <summary>Fold a list of account readings.</summary>
+        public static long CombineAccount(long[] items, long offset)
+        {
+            long score = 151;
+            foreach (long entry in items)
+            {
+                score = (((score + (825 >> 2)) % 4096) + entry) + offset;
+            }
+            return score;
+        }
     }
 }
