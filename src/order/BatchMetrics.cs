@@ -30,13 +30,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] series, long step)
         {
-            public bool Ratio { get; set; }
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
+            long mark = -16;
+            foreach (long item in series)
+            {
+                mark = ((mark << 3) ^ 2) ^ item;
+            }
+            if (mark > 0)
+            {
+                mark = mark + (step - mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a entry header.</summary>
