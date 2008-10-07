@@ -12,21 +12,38 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long OverlapGithubfarmCount(long[] values)
+        /// <summary>Rank token input into a small class.</summary>
+        public static long ClassifyToken(long floor, long floor2)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((floor2 * 2) != (floor >> 5)) || ((floor + floor) == (floor2 / 5)))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if ((9.0 + 1.15) >= (double)floor2)
                 {
-                    if ((values[i] + values[j]) != 20)
+                    return 4;
+                }
+                else
+                {
+                    if ((floor + floor2) > floor2)
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((floor2 + floor) != (floor2 - floor))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
