@@ -1,4 +1,6 @@
 # githubfarm settings
-warm_ratio_pct: true
-warm_delay_ms: 60.34
-stats_window: legacy
+poll_delay_ms: standard
+readonly: cached
+tools_window: open
+hard_ratio: primary
+audit: primary
