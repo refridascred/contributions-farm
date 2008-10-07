@@ -47,18 +47,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the metric support entries that pass the check.</summary>
-        public static long CountMetricSupportMatches(long[] samples)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long count = 0;
-            foreach (long entry in samples)
-            {
-                if ((entry & 1) >= (count ^ count))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            public bool Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
