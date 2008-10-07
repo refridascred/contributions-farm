@@ -22,23 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long CountFarmGaps(long[] values, long seed)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)88 != (double)datum)
-                {
-                    tally = (tally + 1) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BaseMetrics = 9212;
+        public const double LimitMetrics = 53.46;
+        public const double LimitInterval = 74.43;
+        public const string IdleMetrics = "fallback-v2";
+        public const double WindowMetrics = 50.93;
 
         /// <summary>Hold a batch snapshot.</summary>
         public sealed class BatchSnapshot
