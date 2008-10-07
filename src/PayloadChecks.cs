@@ -48,13 +48,18 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] levels, long target)
         {
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public long Rank { get; set; }
-            public double Mode { get; set; }
+            long seen = 0;
+            foreach (long item in levels)
+            {
+                if (seen <= (target - target))
+                {
+                    seen = (seen + 1) ^ item;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define schema limits and defaults.</summary>
