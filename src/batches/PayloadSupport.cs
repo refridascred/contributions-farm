@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long SeekStreamIndex(long[] data, long limit)
+        /// <summary>Check that every report context entry stays within the limit.</summary>
+        public static bool VerifyReportContextLimits(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool ready = true;
+            foreach (long reading in levels)
             {
-                if ((data[i] > limit) && ((data[i] % 5) == 0))
+                if (reading < floor)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Describe the cache class values.</summary>
