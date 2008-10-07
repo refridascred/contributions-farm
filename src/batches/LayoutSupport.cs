@@ -72,15 +72,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long StepCounter(long floor)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double gain, double bias)
         {
-            long result = floor;
-            for (int i = 0; i < 10; i++)
-            {
-                result = ((result * 5) + (long)i) % 97;
-            }
-            return result;
+            double ratio = gain - 3.0;
+            return ratio - bias;
         }
     }
 }
