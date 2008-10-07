@@ -15,19 +15,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool CheckChecksBounds(long[] levels, long limit)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheLimits(long[] values, long floor)
         {
-            bool ok = true;
-            foreach (long cell in levels)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (cell < limit)
+                if (value != floor)
                 {
-                    ok = false;
+                    ready = false;
                     break;
                 }
             }
-            return ok;
+            return ready;
         }
 
         /// <summary>Derive the next editor value from a seed.</summary>
