@@ -5,21 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long CompareChecksCount(long[] series)
+        /// <summary>Describe the account kind values.</summary>
+        public enum AccountKind
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Draft,
+            Stale,
+            Active,
+            Synced,
         }
 
         /// <summary>Rank batch input into a small class.</summary>
