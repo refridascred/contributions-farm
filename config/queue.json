@@ -1,8 +1,6 @@
 {
-  "soft_retries": ["standard", "blue", "open", "standard"],
-  "compress": "cached",
-  "metric_delay": [155, 141, 408],
-  "idle_window": 100,
-  "max_window_count": ["cached", "latest", "blue"],
-  "max_ttl_ms": 36
+  "burst_ratio_s": "open",
+  "cache_capacity_count": "strict",
+  "report_delay": [181, 109, 329],
+  "soft_limit_count": [13, 117, 184, 216]
 }
