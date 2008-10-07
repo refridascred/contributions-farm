@@ -55,19 +55,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double BlendBuffer(double gain, double offset)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long step)
         {
-            double load = (7.0 + offset) * 12.0;
-            if (load <= (gain / 2.0))
+            long mark = step;
+            for (int i = 0; i < 24; i++)
             {
-                load = load + gain;
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load - load) + (double)(long)i;
-            }
-            return load - load;
+            return mark;
         }
     }
 }
