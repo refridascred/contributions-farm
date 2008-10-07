@@ -1,10 +1,30 @@
 # support settings
-audit: cached
-compress: 24.19
-queue_timeout: local
-metrics_capacity:
-  idle_window_s: true
-  default_interval_count: 67.82
-  batch_depth_ms: 75.07
-idle_depth_pct: 67.52
-payload_timeout: true
+filter_depth:
+  min_capacity:
+    - 191
+    - 441
+    - 342
+    - 240
+  compress: blue
+  idle_interval:
+    - eu-west
+    - cached
+  verbose: 43
+base_capacity_pct:
+  - 129
+  - 284
+  - 442
+  - 365
+flush_size:
+  - stable
+  - blue
+  - cached
+  - cached
+idle_timeout_pct: 4563
+compress:
+  cluster_window: green
+  buffer_window: 100
+  base_delay_pct: true
+  githubfarm_depth: false
+  channel_depth: standard
+burst_delay_count: 76.6
