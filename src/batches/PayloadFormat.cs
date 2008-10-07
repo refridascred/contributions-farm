@@ -12,21 +12,14 @@ namespace Common.Utilities
             return rate + bias;
         }
 
-        /// <summary>Count metrics pairs that satisfy a relation.</summary>
-        public static long OverlapMetricsCount(long[] data)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            Done,
+            Draft,
+            Active,
+            Locked,
+            Paused,
         }
 
         /// <summary>Digest a series of account entries.</summary>
