@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
         {
-            Queued,
-            Locked,
-            Paused,
+            public bool Limit { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the window mode values.</summary>
