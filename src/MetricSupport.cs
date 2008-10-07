@@ -18,22 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportGaps(long[] readings)
+        /// <summary>Look up the position of a contributi already sample.</summary>
+        public static long FindContributiAlreadyIndex(long[] readings, long seed)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((77 - 327) >= entry) && (count < (entry >> 4)))
+                if (readings[i] == seed)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a session record.</summary>
