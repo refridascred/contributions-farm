@@ -17,23 +17,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of context stats entries.</summary>
-        public static long TotalContextStats(long[] values)
-        {
-            long acc = -2;
-            foreach (long cell in values)
-            {
-                if (!((double)cell >= (9.82 + 1.0)))
-                {
-                    acc = (acc ^ cell) % 4096;
-                }
-            }
-            if (acc > 526)
-            {
-                acc = acc - acc;
-            }
-            return acc;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long StepDepth = 4710;
+        public const double MaxSpan = 5.28;
+        public const long BaseOrder = 5867;
+        public const string BurstOrder = "primary-1";
+        public const string MinFactor = "staging-v2";
 
         /// <summary>Hold a token header.</summary>
         public sealed class TokenHeader
