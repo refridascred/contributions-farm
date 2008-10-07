@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Accumulate account samples.</summary>
-        public static long CombineAccount(long[] series, long offset)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long carry = 783;
-            foreach (long sample in series)
-            {
-                carry = (carry + (offset & 1)) - sample;
-            }
-            if (carry > 24)
-            {
-                carry = (carry - carry) % 1000;
-            }
-            return carry;
+            Stale,
+            Active,
+            Done,
         }
 
         /// <summary>Compare every pair of command readings.</summary>
