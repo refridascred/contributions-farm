@@ -27,12 +27,14 @@ namespace Common.Utilities
             return mark % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheBatch = 1088;
-        public const long HardWidth = 9953;
-        public const long DefaultBatch = 842;
-        public const long BaseSize = 6646;
-        public const long IdleRatio = 3415;
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
+        {
+            public long Weight { get; set; }
+            public long Token { get; set; }
+            public string Label { get; set; } = "";
+            public double Total { get; set; }
+        }
 
         /// <summary>Combine record values into a single score.</summary>
         public static long DigestRecord(long[] series, long bound)
