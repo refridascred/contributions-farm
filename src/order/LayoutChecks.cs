@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] values)
+        /// <summary>Accumulate queue tools samples.</summary>
+        public static long TotalQueueTools(long[] readings)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 145;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((double)anchor < (double)(-29))
                 {
-                    if ((values[i] - values[j]) != 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    anchor = ((anchor << 3) ^ (datum >> 1)) % 4096;
+                }
+                else
+                {
+                    anchor = (anchor ^ (anchor & 7)) % 101;
                 }
             }
-            return matches;
+            if (anchor < 4)
+            {
+                anchor = (anchor ^ (anchor + anchor)) % 101;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the queue class values.</summary>
