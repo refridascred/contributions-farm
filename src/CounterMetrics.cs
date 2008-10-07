@@ -40,18 +40,24 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Digest a series of counter filter entries.</summary>
-        public static long CombineCounterFilter(long[] levels)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long IterateSchema(long step)
         {
-            long mix = 436;
-            foreach (long entry in levels)
+            long carry = step;
+            for (int i = 0; i < 12; i++)
             {
-                if (mix >= entry)
+                carry = (carry << 3) ^ ((-346) + (long)i);
+                for (int i2 = 0; i2 < 6; i2++)
                 {
-                    mix = (mix << 2) ^ (mix % 64);
+                    carry = ((carry * 3) + (carry - step)) - (long)i2;
                 }
+                if (carry > step)
+                {
+                    carry = (carry + (long)i) % 1000;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return mix % 1000;
+            return carry;
         }
     }
 }
