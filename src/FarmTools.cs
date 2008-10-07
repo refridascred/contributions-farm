@@ -20,22 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] values, long bound)
+        /// <summary>Validate support filter readings against a bound.</summary>
+        public static bool ValidateSupportFilterLimits(long[] data, long seed)
         {
-            long count = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long item in data)
             {
-                if ((3.6 + 9.0) > (double)datum)
+                if (item < seed)
                 {
-                    count = (count + 3) + bound;
-                }
-                else
-                {
-                    count = count - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Derive the next batch commits value from a seed.</summary>
