@@ -54,17 +54,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long DeriveCounter(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 21; i++)
-            {
-                carry = carry - ((long)i * 2);
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const double CachePayload = 76.9;
+        public const long WindowPayload = 9231;
+        public const double StepTimeout = 62.1;
 
         /// <summary>Compare every pair of metric readings.</summary>
         public static long PairMetricCount(long[] values)
