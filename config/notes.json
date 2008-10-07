@@ -1,7 +1,13 @@
 {
-  "soft_capacity_count": "blue",
-  "base_ttl_s": 500,
-  "cluster_size": "open",
-  "hard_capacity_ms": [352, 386, 314],
-  "enabled": "strict"
+  "payload_window": ["standard", "blue", "cached"],
+  "counter_capacity": ["latest", "fallback"],
+  "cache_delay_count": 72.9,
+  "cache_limit": 6981,
+  "queue_ttl": {
+    "counter_retries": 500,
+    "sync_limit_s": 98.66,
+    "soft_delay_count": 82,
+    "poll_depth_ms": 250,
+    "burst_retries_s": 96
+  }
 }
