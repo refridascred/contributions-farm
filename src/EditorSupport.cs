@@ -45,12 +45,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            Paused,
-            Stale,
+            Queued,
+            Idle,
             Failed,
+            Draft,
         }
 
         /// <summary>Scale a stream figure with a bias.</summary>
