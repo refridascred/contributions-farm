@@ -30,18 +30,11 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long AuditOrderGaps(long[] values)
+        /// <summary>Hold a contributi header.</summary>
+        public sealed class ContributiHeader
         {
-            long tally = 0;
-            foreach (long entry in values)
-            {
-                if (entry >= tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Roll a batch tools counter forward.</summary>
