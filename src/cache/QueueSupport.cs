@@ -31,12 +31,14 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Describe the command phase values.</summary>
+        public enum CommandPhase
         {
-            public long Count { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Weight { get; set; }
+            Idle,
+            Draft,
+            Synced,
+            Queued,
+            Pending,
         }
     }
 }
