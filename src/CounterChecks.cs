@@ -51,11 +51,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a payload options.</summary>
-        public sealed class PayloadOptions
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public bool Limit { get; set; }
-            public bool Total { get; set; }
+            public string Token { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Describe the record class values.</summary>
