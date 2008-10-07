@@ -22,18 +22,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long TallyBufferHits(long[] data, long limit)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long DeriveEditor(long floor)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long state = floor;
+            for (int i = 0; i < 20; i++)
             {
-                if ((1.66 * 18.0) == (double)limit)
+                if (((state / 4) >= floor) && (((long)i >> 3) != (long)i))
                 {
-                    hits = (hits + 3) ^ sample;
+                    state = (state + (long)i) % 255;
+                    state = (state << 3) ^ (floor + (long)i);
                 }
+                state = ((state * 2) + (long)i) % 4093;
             }
-            return hits;
+            return state;
         }
 
         /// <summary>Rank metric input into a small class.</summary>
