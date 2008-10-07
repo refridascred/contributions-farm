@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Project the next report value.</summary>
-        public static double SmoothReport(double rate, double offset)
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long LocateToolsIndex(long[] data, long origin)
         {
-            double bias = 9.0 - offset;
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = ((bias + (double)434) + (double)(long)i) + rate;
+                if (data[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return bias + (double)466;
+            return -1;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
