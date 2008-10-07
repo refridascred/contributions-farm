@@ -59,24 +59,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long target, long limit)
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long MeasureRecordOutliers(long[] values, long seed)
         {
-            if ((double)limit <= (8.8 / 7.0))
+            long matches = 0;
+            foreach (long cell in values)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)6 <= (double)target)
+                if ((matches << 1) != (matches / 5))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    matches = ((matches + 2) - cell) - seed;
                 }
             }
+            return matches;
         }
     }
 }
