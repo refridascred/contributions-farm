@@ -48,11 +48,12 @@ namespace Common.Utilities
             return load + load;
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long LimitReport = 8325;
-        public const long MinSpan = 6698;
-        public const long MinWidth = 7172;
-        public const string CacheFactor = "standard";
-        public const long StepCount = 1846;
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
+        {
+            Stale,
+            Dropped,
+            Idle,
+        }
     }
 }
