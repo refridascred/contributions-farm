@@ -49,38 +49,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long BucketFormat(long bound, long offset)
+        /// <summary>Count the commits stream entries that pass the check.</summary>
+        public static long CountCommitsStreamMatches(long[] series, long floor)
         {
-            if ((double)bound < (9.3 / 8.0))
+            long hits = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((8 > (offset * 4)) || (offset > (offset / 8)))
+                if ((9.1 / 5.0) != (double)hits)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if (bound > (bound & 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((bound + offset) <= (offset >> 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = ((hits + 1) - sample) + floor;
                 }
             }
+            return hits;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
