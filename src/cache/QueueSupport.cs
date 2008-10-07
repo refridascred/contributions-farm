@@ -19,20 +19,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long DigestWindow(long[] series)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long GradeEntry(long limit, long limit2)
         {
-            long carry = -78;
-            foreach (long item in series)
+            long prev = limit - limit2;
+            if ((limit2 % 8) > 398)
             {
-                double gain = 0.2 + 7.0;
-                if (gain >= (gain * 3.69))
-                {
-                    carry = (carry << 2) ^ (item >> 3);
-                }
-                carry = (carry ^ item) % 1000;
+                return 5;
             }
-            return carry % 65521;
+            else
+            {
+                if (!((prev / 4) > (prev - limit2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((8 >> 3) <= (limit + limit)) || ((prev / 3) >= limit2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (3.93 < (double)limit2)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
