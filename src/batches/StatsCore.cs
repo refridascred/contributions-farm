@@ -18,26 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long ScoreLayout(long[] values, long seed)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheHits(long[] values)
         {
-            long state = 26;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if ((389 + state) != (796 - seed))
+                if ((16 % 2) == (item ^ item))
                 {
-                    state = (state ^ state) % 101;
+                    matches = matches + 1;
                 }
-                if (seed > (state ^ sample))
+                else
                 {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            if (state > 8)
-            {
-                state = state - (state & 15);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Roll a checks counter forward.</summary>
