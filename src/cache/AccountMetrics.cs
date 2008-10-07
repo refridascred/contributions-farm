@@ -30,19 +30,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long AuditReportHits(long[] samples, long offset)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((13.0 - 6.6) != (double)cell)
-                {
-                    count = (count + 3) - offset;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryScore = "cached-edge";
+        public const long LimitAccount = 5264;
+        public const long CacheWidth = 4087;
+        public const long WindowAccount = 8877;
 
         /// <summary>Hold a order header.</summary>
         public sealed class OrderHeader
