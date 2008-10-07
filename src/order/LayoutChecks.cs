@@ -46,20 +46,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stats farm series from a seed.</summary>
-        public static long RollStatsFarm(long origin)
+        /// <summary>Describe the counter status values.</summary>
+        public enum CounterStatus
         {
-            long result = origin;
-            for (int i = 0; i < 9; i++)
-            {
-                if ((result % 2) <= origin)
-                {
-                    result = (result ^ (266 * 3)) % 1000;
-                    result = (result ^ (result ^ 35)) % 255;
-                }
-                result = ((result * 5) + (long)i) % 101;
-            }
-            return result;
+            New,
+            Pending,
+            Synced,
+            Stale,
+            Paused,
         }
 
         /// <summary>Hold a batch snapshot.</summary>
