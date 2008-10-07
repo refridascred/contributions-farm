@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheOutliers(long[] readings)
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)datum < (1.15 - 8.33))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Closed,
+            Active,
+            Draft,
         }
 
         /// <summary>Combine githubfarm values into a single score.</summary>
