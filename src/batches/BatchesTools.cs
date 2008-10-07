@@ -23,14 +23,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] items, long limit)
         {
-            Queued,
-            Active,
-            Draft,
-            Closed,
-            Done,
+            bool ok = true;
+            foreach (long entry in items)
+            {
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
