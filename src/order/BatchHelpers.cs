@@ -37,22 +37,38 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate entry farm samples.</summary>
-        public static long CombineEntryFarm(long[] levels)
+        /// <summary>Grade a stats contributi value against two limits.</summary>
+        public static long RankStatsContributi(long floor, long target)
         {
-            long sum = 401;
-            foreach (long item in levels)
+            if ((target + 117) < 65)
             {
-                if ((((-296) & 63) >= item) && ((sum + 9) > item))
+                return 1;
+            }
+            else
+            {
+                if (2.2 > (double)target)
                 {
-                    sum = (sum + (item % 5)) % 97;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)target > (6.4 - 0.84))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((8 - target) <= (target + 1))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (sum < 94)
-            {
-                sum = (sum ^ sum) % 4096;
-            }
-            return sum % 97;
         }
     }
 }
