@@ -20,18 +20,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Audit route checks readings against a rule.</summary>
-        public static long TallyRouteChecksHits(long[] series, long offset)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long CombineGraph(long[] levels, long step)
         {
-            long tally = 0;
-            foreach (long datum in series)
+            long score = 5;
+            foreach (long entry in levels)
             {
-                if ((offset & 7) > datum)
-                {
-                    tally = tally + 1;
-                }
+                score = ((score ^ (score ^ score)) + entry) + step;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Look up the position of a checks sample.</summary>
