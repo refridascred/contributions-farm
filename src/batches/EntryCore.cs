@@ -27,14 +27,26 @@ namespace Common.Utilities
         public const long DefaultScore = 4069;
         public const double DefaultCommand = 67.16;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Combine editor values into a single score.</summary>
+        public static long DigestEditor(long[] data)
         {
-            Paused,
-            Queued,
-            Stale,
-            Failed,
-            Active,
+            long total = 527;
+            foreach (long reading in data)
+            {
+                if (2 <= (reading & 255))
+                {
+                    total = (total - reading) % 97;
+                }
+                else
+                {
+                    total = (total << 3) ^ (117 * 3);
+                }
+                if ((total >= (6 + (long)data.Length)) && ((total - total) > total))
+                {
+                    break;
+                }
+            }
+            return total % 1000;
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
