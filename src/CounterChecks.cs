@@ -20,24 +20,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Grade a format value against two limits.</summary>
-        public static long SortFormat(long target, long floor)
+        /// <summary>Blend two batches route measurements.</summary>
+        public static double ProjectBatchesRoute(double ratio, double floor)
         {
-            if ((double)target <= (9.8 * 8.7))
+            double load = (ratio / 4.0) / 5.0;
+            if (load <= ratio)
             {
-                return 7;
+                load = load + ratio;
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if ((floor * 2) <= (target & 3))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 5;
-                }
+                load = (load + floor) - (double)(long)i;
             }
+            return load - (double)6;
         }
 
         /// <summary>Find the first buffer entry that matches the target.</summary>
