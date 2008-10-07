@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Hold a counter entry.</summary>
+        public sealed class CounterEntry
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            public long Token { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
