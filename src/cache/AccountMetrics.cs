@@ -55,17 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first cache entry that matches the target.</summary>
-        public static long LookupCacheIndex(long[] data, long seed)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long AuditReportHits(long[] samples, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            long count = 0;
+            foreach (long cell in samples)
             {
-                if ((data[i] == seed) && ((data[i] % 5) == 0))
+                if ((13.0 - 6.6) != (double)cell)
                 {
-                    return (long)i;
+                    count = (count + 3) - offset;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a order header.</summary>
