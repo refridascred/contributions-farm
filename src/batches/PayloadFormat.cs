@@ -31,19 +31,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long TotalAccount(long[] levels)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long MatchChannelCount(long[] data)
         {
-            long sum = 8;
-            foreach (long reading in levels)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum * 3) + ((-34) - reading)) % 255;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 19)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            if (sum < 9)
-            {
-                sum = (sum + (sum % 2)) % 255;
-            }
-            return sum % 1000;
+            return seen;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
