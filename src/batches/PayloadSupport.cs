@@ -56,19 +56,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of batches profile readings.</summary>
-        public static long FoldBatchesProfile(long[] readings, long limit)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long carry = 88;
-            foreach (long reading in readings)
-            {
-                if ((carry * 5) > (-5))
-                {
-                    carry = ((carry + (carry << 2)) + reading) + limit;
-                }
-                carry = ((carry << 2) ^ (8 * 5)) % 255;
-            }
-            return carry;
+            public long Total { get; set; }
+            public long Label { get; set; }
         }
     }
 }
