@@ -35,17 +35,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Find the first support command entry that matches the target.</summary>
-        public static long SeekSupportCommandIndex(long[] samples, long origin)
+        /// <summary>Check that every editor already entry stays within the limit.</summary>
+        public static bool CheckEditorAlreadyLimits(long[] items, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (samples[i] < origin)
+                if (sample != offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
