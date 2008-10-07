@@ -49,19 +49,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long SeriesGraph(long bound)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] series, long floor)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                for (int i2 = 0; i2 < 11; i2++)
+                if (series[i] <= floor)
                 {
-                    acc = (((acc * 5) + (acc + 744)) % 255) - (long)i2;
+                    return (long)i;
                 }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Hold a session record.</summary>
