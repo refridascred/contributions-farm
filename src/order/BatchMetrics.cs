@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Project the next contributi value.</summary>
-        public static double ScaleContributi(double weight, double offset)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long bound, long floor)
         {
-            double drift = 7.4 + 5.57;
-            if (drift < offset)
+            if ((floor / 3) >= (bound & 1))
             {
-                drift = drift + (double)(-7);
+                return 5;
             }
             else
             {
-                drift = drift - 8.69;
+                if ((floor >> 1) < (floor + 22))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor & 255) > floor)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
             }
-            return drift - (weight * 4.3);
         }
 
         /// <summary>Define command limits and defaults.</summary>
