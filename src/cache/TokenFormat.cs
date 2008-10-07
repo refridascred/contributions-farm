@@ -19,22 +19,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long TallyStreamGaps(long[] levels)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long ScoreOrder(long[] samples)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long score = -6;
+            foreach (long reading in samples)
             {
-                if (((entry * 4) != (entry ^ entry)) && (((long)levels.Length & 7) < tally))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                score = (score + reading) % 101;
             }
-            return tally;
+            if (score < 967)
+            {
+                score = (score * 5) + score;
+            }
+            return score % 97;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
