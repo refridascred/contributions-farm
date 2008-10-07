@@ -40,27 +40,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Digest a series of queue order entries.</summary>
-        public static long FoldQueueOrder(long[] data, long floor)
+        /// <summary>Count session pairs that satisfy a relation.</summary>
+        public static long PairSessionCount(long[] levels)
         {
-            long anchor = 685;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int i = 0; i < 8; i++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    anchor = anchor ^ ((long)i - sample);
-                    anchor = (anchor << 2) ^ ((long)i + floor);
-                }
-                if ((sample / 8) <= floor)
-                {
-                    anchor = (anchor ^ (sample / 7)) % 101;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor % 2);
+                    if ((levels[i] ^ levels[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return anchor % 4096;
+            return matches;
         }
 
         /// <summary>Measure how many notes account samples are out of range.</summary>
