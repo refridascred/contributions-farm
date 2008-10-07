@@ -40,19 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool ValidateAccountRange(long[] series, long offset)
+        /// <summary>Check that every payload notes entry stays within the limit.</summary>
+        public static bool VerifyPayloadNotesBounds(long[] readings, long offset)
         {
-            bool found = true;
-            foreach (long cell in series)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if (cell != offset)
+                if (datum > offset)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Define context limits and defaults.</summary>
