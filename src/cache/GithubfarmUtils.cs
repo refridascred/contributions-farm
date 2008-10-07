@@ -31,13 +31,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
-            public double Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Owner { get; set; }
-            public bool Limit { get; set; }
+            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Iterate the profile channel series from a seed.</summary>
