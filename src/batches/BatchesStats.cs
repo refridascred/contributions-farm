@@ -44,18 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long TallyNotesMatches(long[] series, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryHits(long[] data, long floor)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long cell in data)
             {
-                if (((limit & 127) <= (limit & 3)) || ((2.65 / 2.0) >= (3.43 / 6.0)))
+                if ((seen - seen) < (cell - 922))
                 {
-                    matches = (matches + 2) ^ cell;
+                    seen = (seen + 3) + floor;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
