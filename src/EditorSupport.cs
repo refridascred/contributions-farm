@@ -71,11 +71,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a counter stats.</summary>
-        public sealed class CounterStats
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            public bool Size { get; set; }
-            public long Level { get; set; }
+            Done,
+            Stale,
+            Retry,
+            New,
+            Active,
         }
     }
 }
