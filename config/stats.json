@@ -1,5 +1,5 @@
 {
-  "enabled": 9874,
-  "dry_run": 88,
-  "retry_threshold": 100
+  "hard_delay_s": 10,
+  "compress": "eu-west",
+  "max_ttl": 31.72
 }
