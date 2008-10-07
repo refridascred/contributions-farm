@@ -20,12 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            New,
+            Stale,
+            Ready,
+            Idle,
             Locked,
-            Active,
+            Done,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
