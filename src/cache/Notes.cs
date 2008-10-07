@@ -18,15 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a session reading.</summary>
-        public static double BlendSession(double rate, double span)
+        /// <summary>Validate already cluster readings against a bound.</summary>
+        public static bool GuardAlreadyClusterRange(long[] levels, long floor)
         {
-            double mean = span * 8.0;
-            if (mean > (double)9)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                mean = (mean + 1.77) - rate;
+                if (cell > floor)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mean - (5.07 * 8.0);
+            return flag;
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
