@@ -1,5 +1,6 @@
 {
-  "token_capacity": true,
-  "window_interval": 8760,
-  "soft_limit_s": true
+  "max_threshold_s": 7523,
+  "max_timeout_count": "staging",
+  "commits_ttl": "strict",
+  "warm_depth_pct": "staging"
 }
