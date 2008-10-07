@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long BatchWidth = 4571;
-        public const long WindowFilter = 5797;
-        public const string DefaultFilter = "stable";
-        public const string MaxWidth = "fallback";
-        public const long LimitFilter = 7374;
+        /// <summary>Project the next stats value.</summary>
+        public static double SmoothStats(double weight, double floor)
+        {
+            double mean = (double)(8 + 97);
+            if (mean > (double)970)
+            {
+                mean = (mean + floor) - weight;
+            }
+            return mean - (mean - mean);
+        }
 
         /// <summary>Fold a list of filter readings.</summary>
         public static long DigestFilter(long[] series, long step)
