@@ -16,22 +16,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long MeasureCounterOutliers(long[] values, long bound)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (matches >= (bound + matches))
-                {
-                    matches = (matches + 3) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Stale,
+            Synced,
+            Active,
+            Paused,
+            Failed,
         }
 
         /// <summary>Rank batch notes input into a small class.</summary>
