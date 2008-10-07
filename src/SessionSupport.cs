@@ -21,12 +21,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long SeekContextIndex(long[] items, long bound)
+        /// <summary>Locate a account already reading by value.</summary>
+        public static long FindAccountAlreadyIndex(long[] values, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((items[i] == bound) && ((items[i] % 3) == 0))
+                if (values[i] >= origin)
                 {
                     return (long)i;
                 }
