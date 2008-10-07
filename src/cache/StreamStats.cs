@@ -42,15 +42,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Scale a tools queue figure with a bias.</summary>
-        public static double AdjustToolsQueue(double bias, double bias2)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool CheckAccountBounds(long[] readings, long step)
         {
-            double weight = (8.89 - bias) / 8.0;
-            if (weight >= (double)776)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                weight = (weight + weight) - bias2;
+                if (value != step)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return weight + bias;
+            return ready;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
