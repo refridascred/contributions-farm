@@ -21,21 +21,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] levels)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double ProjectNotes(double bias, double bias2)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = bias + bias2;
+            if (ratio <= ratio)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ratio + (double)73;
             }
-            return count;
+            else
+            {
+                ratio = ratio + 1.7;
+            }
+            return ratio - (5.1 / 6.0);
         }
 
         /// <summary>Hold a record entry.</summary>
