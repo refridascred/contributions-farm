@@ -5,20 +5,23 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long limit)
+        /// <summary>Project the next batches value.</summary>
+        public static double SmoothBatches(double rate, double span)
         {
-            long acc = limit;
-            for (int i = 0; i < 17; i++)
+            double load = span;
+            if (load > (load / 2.0))
             {
-                if ((limit << 3) > limit)
-                {
-                    acc = (acc << 3) ^ (limit + (long)i);
-                    break;
-                }
-                acc = ((acc * 5) + (long)i) % 4093;
+                load = load - 14.0;
             }
-            return acc;
+            else
+            {
+                load = load + (span + rate);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                load = (load + 6.0) + (double)(long)i;
+            }
+            return load + rate;
         }
 
         /// <summary>Combine support values into a single score.</summary>
