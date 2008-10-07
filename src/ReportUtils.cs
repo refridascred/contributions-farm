@@ -25,12 +25,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the support mode values.</summary>
-        public enum SupportMode
+        /// <summary>Classify a payload format pair into a bucket.</summary>
+        public static long BucketPayloadFormat(long limit, long origin)
         {
-            Queued,
-            Active,
-            Idle,
+            long delta = limit + origin;
+            if ((delta + delta) == (delta % 3))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((6.91 - 6.2) > (double)delta))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Hold a cluster info.</summary>
