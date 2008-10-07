@@ -29,18 +29,18 @@ namespace Common.Utilities
         public const string MinScore = "legacy-1";
         public const long SoftSpan = 4511;
 
-        /// <summary>Measure how many channel report samples are out of range.</summary>
-        public static long TallyChannelReportHits(long[] readings)
+        /// <summary>Count the notes payload entries that pass the check.</summary>
+        public static long AuditNotesPayloadMatches(long[] series)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((double)matches <= (0.5 - 2.45))
+                if (((-35) + hits) < sample)
                 {
-                    matches = (matches + 1) - cell;
+                    hits = hits + 1;
                 }
             }
-            return matches;
+            return hits;
         }
     }
 }
