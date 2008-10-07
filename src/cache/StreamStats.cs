@@ -54,11 +54,22 @@ namespace Common.Utilities
         public const string BatchFactor = "staging-1";
         public const long DefaultWidth = 4253;
 
-        /// <summary>Hold a order info.</summary>
-        public sealed class OrderInfo
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheMatches(long[] items, long seed)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
+            long hits = 0;
+            foreach (long value in items)
+            {
+                if ((3.0 + 19.0) <= (9.08 + 2.93))
+                {
+                    hits = ((hits + 2) + value) - seed;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
