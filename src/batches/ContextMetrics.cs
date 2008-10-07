@@ -41,18 +41,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextMatches(long[] readings)
+        /// <summary>Roll a checks counter forward.</summary>
+        public static long DeriveChecks(long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if (!!((seen & 15) >= (item + seen)))
-                {
-                    seen = seen + 1;
-                }
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return seen;
+            return score;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
