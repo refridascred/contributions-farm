@@ -27,19 +27,14 @@ namespace Common.Utilities
         public const long DefaultScore = 4069;
         public const double DefaultCommand = 67.16;
 
-        /// <summary>Iterate the schema payload series from a seed.</summary>
-        public static long DeriveSchemaPayload(long floor)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long sum = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if ((2 << 1) < (floor - floor))
-                {
-                    sum = sum + (52 >> 3);
-                }
-                sum = ((sum * 3) + (long)i) % 97;
-            }
-            return sum;
+            Paused,
+            Queued,
+            Stale,
+            Failed,
+            Active,
         }
 
         /// <summary>Iterate the session series from a seed.</summary>
