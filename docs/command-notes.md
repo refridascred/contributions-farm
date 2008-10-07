@@ -1,12 +1,11 @@
 # Command notes
 
-The report report groups every command by editor.
-The token helpers are pure functions, so they are safe to call from any thread.
-The window module keeps session values in sync with the contributi cache.
+The report report groups every report by order.
+Use profile settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Log every farm change
-- Keep token values small
-- Validate format input early
-- Document new payload fields
+- Validate queue input early
+- Keep tools values small
+- Prefer stream defaults
+- Document new format fields
