@@ -13,24 +13,13 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long GradePayload(long bound, long seed)
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
-            if ((5.96 - 0.16) >= (6.0 + 1.82))
-            {
-                return 8;
-            }
-            else
-            {
-                if (seed >= (bound >> 5))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Done,
+            Closed,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Hold a notes info.</summary>
