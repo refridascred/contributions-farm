@@ -34,26 +34,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of record buffer readings.</summary>
-        public static long TotalRecordBuffer(long[] values)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] values, long target)
         {
-            long score = 88;
-            foreach (long sample in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((sample >> 1) != (score & 127)))
+                if ((values[i] < target) && ((values[i] % 3) == 0))
                 {
-                    score = (score << 2) ^ (808 << 3);
-                }
-                else
-                {
-                    score = (score ^ (score - sample)) % 4096;
+                    return (long)i;
                 }
             }
-            if (score < 0)
-            {
-                score = (score << 2) ^ (score + score);
-            }
-            return score;
+            return -1;
         }
     }
 }
