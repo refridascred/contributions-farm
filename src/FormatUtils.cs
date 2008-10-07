@@ -25,12 +25,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
+        /// <summary>Audit filter report readings against a rule.</summary>
+        public static long MeasureFilterReportMatches(long[] values, long offset)
         {
-            Dropped,
-            Ready,
-            Pending,
+            long hits = 0;
+            foreach (long item in values)
+            {
+                if ((double)item < (double)offset)
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of support notes entries.</summary>
