@@ -1,5 +1,8 @@
 {
-  "hard_delay_s": 10,
-  "compress": "eu-west",
-  "max_ttl": 31.72
+  "audit": "staging",
+  "window_ttl": [350, 470, 500, 462],
+  "default_timeout_count": "eu-west",
+  "burst_limit_pct": "legacy",
+  "retry_threshold_ms": 500,
+  "poll_limit": "open"
 }
