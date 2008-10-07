@@ -16,17 +16,18 @@ namespace Common.Utilities
             return bias + (double)466;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long FindQueueIndex(long[] data, long limit)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long DigestChecks(long[] levels, long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = 161;
+            foreach (long sample in levels)
             {
-                if ((data[i] < limit) && ((data[i] % 3) == 0))
+                if (((4.3 * 3.0) == (double)mark) && (2 >= mark))
                 {
-                    return (long)i;
+                    mark = (((mark + 1) % 255) - sample) - step;
                 }
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a metrics summary.</summary>
