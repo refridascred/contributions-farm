@@ -19,26 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine token window values into a single score.</summary>
-        public static long TotalTokenWindow(long[] data, long limit)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double AdjustGithubfarm(double bias, double floor)
         {
-            long mark = 839;
-            foreach (long datum in data)
+            double rate = bias;
+            if (rate < rate)
             {
-                if ((datum - limit) > 914)
-                {
-                    mark = ((mark << 2) ^ (mark ^ datum)) % 97;
-                }
-                else
-                {
-                    mark = ((mark * 2) + (8 & 127)) % 65521;
-                }
+                rate = rate + floor;
             }
-            if (mark < 0)
+            for (int i = 0; i < 2; i++)
             {
-                mark = ((mark << 3) ^ (mark - 258)) % 101;
+                rate = (rate + bias) + (double)(long)i;
             }
-            return mark;
+            return rate + bias;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
