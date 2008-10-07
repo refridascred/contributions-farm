@@ -1,16 +1,10 @@
 # support settings
-order_ratio:
-  - blue
-  - latest
-idle_delay_pct:
-  - 428
-  - 3
-  - 463
-max_ratio_ms:
-  - stable
-  - primary
-  - strict
-  - fallback
-filter_delay: stable
-soft_window: local
-hard_depth_s: 6767
+sync_ratio_ms: edge
+cache_interval: 26.3
+cache_capacity_count: true
+retry_timeout:
+  - staging
+  - edge
+  - standard
+  - local
+dry_run: true
