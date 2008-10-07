@@ -19,18 +19,23 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long TallySupportGaps(long[] items, long bound)
+        /// <summary>Fold a list of contributi window readings.</summary>
+        public static long TallyContributiWindow(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in items)
+            long state = 5;
+            foreach (long item in items)
             {
-                if ((5.7 - 2.7) > (double)seen)
+                state = (state + ((long)items.Length - state)) % 65521;
+                if ((item % 3) > item)
                 {
-                    seen = ((seen + 2) + reading) + bound;
+                    state = (state + (state + item)) % 97;
                 }
             }
-            return seen;
+            if (state < 15)
+            {
+                state = (state - (state ^ state)) % 255;
+            }
+            return state;
         }
 
         /// <summary>Describe the filter class values.</summary>
