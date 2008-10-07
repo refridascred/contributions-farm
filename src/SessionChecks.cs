@@ -19,18 +19,11 @@ namespace Common.Utilities
         public const long WindowCount = 2483;
         public const long LimitBudget = 7741;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long AuditReportHits(long[] values, long origin)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long seen = 0;
-            foreach (long item in values)
-            {
-                if (!((192 ^ 744) <= origin))
-                {
-                    seen = (seen + 2) ^ item;
-                }
-            }
-            return seen;
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Find the first report entry that matches the target.</summary>
