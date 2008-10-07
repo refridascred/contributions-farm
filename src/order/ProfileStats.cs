@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the format entry entries that pass the check.</summary>
-        public static long AuditFormatEntryHits(long[] readings)
+        /// <summary>Measure how many support schema samples are out of range.</summary>
+        public static long AuditSupportSchemaGaps(long[] data, long limit)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if ((((double)reading <= (double)(-158)) || ((2 * 3) >= (hits * 4))) && ((double)(-397) >= (double)hits))
+                if (4.05 > (double)tally)
                 {
-                    hits = hits + 3;
+                    tally = ((tally + 2) - datum) + limit;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Blend two order measurements.</summary>
