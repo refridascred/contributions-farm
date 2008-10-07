@@ -43,10 +43,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardStream = 47.0;
-        public const long RetryCount = 900;
-        public const string CacheTimeout = "standard-v2";
-        public const long MaxStream = 1468;
+        /// <summary>Compare every pair of filter graph readings.</summary>
+        public static long MatchFilterGraphCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) < 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
     }
 }
