@@ -60,13 +60,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session status values.</summary>
-        public enum SessionStatus
-        {
-            Active,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultTimeout = 7524;
+        public const string RetryCount = "standard-edge";
+        public const long LimitDepth = 2540;
+        public const long MinCount = 4128;
+        public const long BatchGithubfarm = 2435;
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterBounds(long[] items, long limit)
