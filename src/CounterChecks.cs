@@ -55,12 +55,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long CacheFarm = 9547;
-        public const double SoftRatio = 33.02;
-        public const string HardFarm = "latest-edge";
-        public const string WindowTimeout = "alpha";
-        public const string SoftTimeout = "staging-v2";
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatOutliers(long[] values)
+        {
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if (!((303 >> 2) > (entry / 6)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
         public static bool GuardFilterBounds(long[] items, long limit)
