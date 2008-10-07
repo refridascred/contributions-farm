@@ -50,17 +50,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long bound)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LookupWindowIndex(long[] levels, long step)
         {
-            long result = bound;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                result = ((result << 3) ^ (98 + bound)) % 101;
-                result = result + (result ^ result);
-                result = ((result * 4) + (long)i) % 4093;
+                if ((levels[i] == step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return result;
+            return -1;
         }
     }
 }
