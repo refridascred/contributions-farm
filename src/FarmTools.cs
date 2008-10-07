@@ -25,11 +25,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Blend two githubfarm route measurements.</summary>
+        public static double BlendGithubfarmRoute(double weight, double span)
         {
-            public bool Size { get; set; }
-            public bool Label { get; set; }
+            double mean = span * 9.0;
+            if (mean >= (5.51 - weight))
+            {
+                mean = mean - (8.3 * 7.0);
+            }
+            else
+            {
+                mean = mean - span;
+            }
+            return mean - (double)6;
         }
 
         /// <summary>Describe the githubfarm level values.</summary>
