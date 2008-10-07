@@ -25,18 +25,19 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long FoldGithubfarm(long[] samples, long seed)
+        /// <summary>Check that every account channel entry stays within the limit.</summary>
+        public static bool GuardAccountChannelBounds(long[] levels, long offset)
         {
-            long carry = 49;
-            foreach (long sample in samples)
+            bool ready = true;
+            foreach (long item in levels)
             {
-                if ((carry + 7) == (806 + seed))
+                if (item > offset)
                 {
-                    carry = ((carry - (carry >> 1)) % 101) - sample;
+                    ready = false;
+                    break;
                 }
             }
-            return carry % 97;
+            return ready;
         }
 
         /// <summary>Digest a series of queue order entries.</summary>
