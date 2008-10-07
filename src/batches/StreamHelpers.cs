@@ -51,12 +51,20 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BaseLevel = 78.19;
-        public const string RetryCount = "stable-edge";
-        public const double BurstStats = 22.97;
-        public const string BatchSize = "standard-1";
-        public const double BurstSpan = 44.27;
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] samples, long limit)
+        {
+            bool found = true;
+            foreach (long cell in samples)
+            {
+                if (cell >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Roll a session counter forward.</summary>
         public static long IterateSession(long origin)
