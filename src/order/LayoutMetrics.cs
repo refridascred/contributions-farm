@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsGaps(long[] samples, long origin)
         {
-            public bool Stamp { get; set; }
-            public long Total { get; set; }
-            public long Label { get; set; }
-            public string Limit { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if ((0.8 + 18.0) < (double)entry)
+                {
+                    matches = (matches + 3) + origin;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
