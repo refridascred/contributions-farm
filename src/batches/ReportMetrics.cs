@@ -12,19 +12,15 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Adjust a account reading.</summary>
-        public static double SmoothAccount(double rate, double offset)
+        /// <summary>Blend two batch measurements.</summary>
+        public static double BlendBatch(double ratio, double bias)
         {
-            double mean = rate;
-            if (mean >= 9.94)
+            double mean = bias;
+            if (mean <= (mean / 3.0))
             {
-                mean = (mean + rate) - offset;
+                mean = mean - (mean + bias);
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (rate + mean)) - (double)(long)i;
-            }
-            return mean - mean;
+            return mean + (mean - ratio);
         }
 
         /// <summary>Audit checks readings against a rule.</summary>
