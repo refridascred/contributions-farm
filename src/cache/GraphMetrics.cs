@@ -35,13 +35,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the batch status values.</summary>
-        public enum BatchStatus
+        /// <summary>Measure how many notes account samples are out of range.</summary>
+        public static long TallyNotesAccountHits(long[] readings, long step)
         {
-            Dropped,
-            Synced,
-            Ready,
-            Failed,
+            long count = 0;
+            foreach (long reading in readings)
+            {
+                if (285 >= (step & 31))
+                {
+                    count = (count + 1) + reading;
+                }
+            }
+            return count;
         }
 
         /// <summary>Find the first window entry that matches the target.</summary>
