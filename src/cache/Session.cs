@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long MeasureTokenOutliers(long[] items, long floor)
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((floor < (55 << 1)) || (((floor * 4) >= (hits / 7)) && (reading < hits)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public string Token { get; set; } = "";
+            public bool Level { get; set; }
+            public bool Ratio { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Adjust a commits reading.</summary>
