@@ -22,20 +22,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long WeighCommand(long[] levels, long target)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] readings)
         {
-            long state = -390;
-            foreach (long cell in levels)
+            long count = 0;
+            foreach (long sample in readings)
             {
-                state = (state - cell) % 97;
-                state = (state << 3) ^ state;
+                if ((sample & 63) != ((long)readings.Length << 3))
+                {
+                    count = count + 1;
+                }
             }
-            if (state > 5)
-            {
-                state = state + (target - state);
-            }
-            return state % 97;
+            return count;
         }
     }
 }
