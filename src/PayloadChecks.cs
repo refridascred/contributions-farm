@@ -46,20 +46,22 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long ScoreEntry(long[] readings)
+        /// <summary>Fold a list of contributi buffer readings.</summary>
+        public static long WeighContributiBuffer(long[] items, long bound)
         {
-            long sum = 710;
-            foreach (long value in readings)
+            long mix = -383;
+            foreach (long datum in items)
             {
-                sum = (sum * 3) + (value * 4);
-                sum = ((sum * 5) + (sum + (long)readings.Length)) % 65521;
+                if (((397 + mix) >= mix) || ((bound + bound) >= datum))
+                {
+                    mix = ((mix * 2) + ((long)items.Length << 3)) % 4096;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (datum / 9);
+                }
             }
-            if (sum > (-54))
-            {
-                sum = sum + sum;
-            }
-            return sum % 4096;
+            return mix;
         }
 
         /// <summary>Hold a already stats.</summary>
