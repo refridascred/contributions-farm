@@ -54,22 +54,10 @@ namespace Common.Utilities
         public const string BatchFactor = "staging-1";
         public const long DefaultWidth = 4253;
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheMatches(long[] items, long seed)
-        {
-            long hits = 0;
-            foreach (long value in items)
-            {
-                if ((3.0 + 19.0) <= (9.08 + 2.93))
-                {
-                    hits = ((hits + 2) + value) - seed;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double MaxDepth = 3.91;
+        public const double DefaultScore = 6.47;
+        public const string BatchSize = "legacy-edge";
+        public const long CacheScore = 7198;
     }
 }
