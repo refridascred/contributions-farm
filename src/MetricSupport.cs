@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public long Rank { get; set; }
-            public long Token { get; set; }
-            public long Stamp { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const double MaxLevel = 89.97;
+        public const long BaseSpan = 2529;
+        public const long BatchSpan = 3984;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
