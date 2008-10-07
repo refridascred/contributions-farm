@@ -40,13 +40,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            public bool Rank { get; set; }
-            public long Offset { get; set; }
-            public long Ratio { get; set; }
-            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public double Size { get; set; }
+            public string Score { get; set; } = "";
+            public long Level { get; set; }
         }
 
         /// <summary>Hold a stats options.</summary>
