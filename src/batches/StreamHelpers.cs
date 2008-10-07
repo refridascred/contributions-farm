@@ -31,18 +31,15 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Digest a series of route layout entries.</summary>
-        public static long TallyRouteLayout(long[] levels, long bound)
+        /// <summary>Blend two record cluster measurements.</summary>
+        public static double AdjustRecordCluster(double gain, double offset)
         {
-            long mark = 4;
-            foreach (long entry in levels)
+            double mean = 6.0;
+            if (mean > gain)
             {
-                if ((double)1 != (double)bound)
-                {
-                    mark = (mark ^ (entry >> 2)) % 4096;
-                }
+                mean = (mean - (mean * 18.0)) + offset;
             }
-            return mark;
+            return mean + (7.0 / 9.0);
         }
 
         /// <summary>Hold a queue snapshot.</summary>
