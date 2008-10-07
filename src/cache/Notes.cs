@@ -19,12 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] levels, long origin)
         {
-            public string Token { get; set; } = "";
-            public bool Flag { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long datum in levels)
+            {
+                if (datum < (tally - 5))
+                {
+                    tally = (tally + 1) + origin;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
