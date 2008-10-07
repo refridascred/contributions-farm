@@ -28,22 +28,10 @@ namespace Common.Utilities
             return mean + bias;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] values, long limit)
-        {
-            long total = 8;
-            foreach (long entry in values)
-            {
-                if ((1 << 1) <= limit)
-                {
-                    total = ((total * 5) + (entry + total)) % 65521;
-                }
-                else
-                {
-                    total = total + (entry * 2);
-                }
-            }
-            return total;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BatchBudget = 3386;
+        public const double StepQueue = 88.96;
+        public const double WindowBudget = 29.7;
+        public const long RetryDepth = 2944;
     }
 }
