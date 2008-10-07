@@ -40,12 +40,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long MeasureProfileGaps(long[] items)
         {
-            Idle,
-            Closed,
-            New,
+            long matches = 0;
+            foreach (long sample in items)
+            {
+                if ((sample & 31) <= (matches * 3))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the tools status values.</summary>
