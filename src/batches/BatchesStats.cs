@@ -29,11 +29,13 @@ namespace Common.Utilities
             return sum % 1000;
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Describe the entry kind values.</summary>
+        public enum EntryKind
         {
-            public long Weight { get; set; }
-            public long Region { get; set; }
+            Draft,
+            Failed,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a command record.</summary>
