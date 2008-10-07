@@ -68,24 +68,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a contributi command pair into a bucket.</summary>
-        public static long GradeContributiCommand(long floor, long target)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            if ((8.6 * 3.2) > (double)floor)
-            {
-                return 1;
-            }
-            else
-            {
-                if (!((floor + floor) > (0 + floor)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Closed,
+            Ready,
+            Paused,
+            Active,
+            Stale,
         }
 
         /// <summary>Define context limits and defaults.</summary>
