@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Blend two schema measurements.</summary>
-        public static double ProjectSchema(double ratio, double bias)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] series, long bound)
         {
-            double gain = ratio;
-            if (gain >= (ratio / 8.0))
+            bool flag = true;
+            foreach (long value in series)
             {
-                gain = (gain + ratio) + bias;
+                if (value < bound)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            else
-            {
-                gain = gain - gain;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                gain = (gain - (double)346) + (double)(long)i;
-            }
-            return gain - ratio;
+            return flag;
         }
 
         /// <summary>Match up buffer samples.</summary>
