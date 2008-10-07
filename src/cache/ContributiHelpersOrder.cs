@@ -5,10 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardSupport = 9219;
-        public const string BatchInterval = "staging-edge";
-        public const string BatchFactor = "alpha";
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] items)
+        {
+            long state = 16;
+            foreach (long datum in items)
+            {
+                if (state > (state * 3))
+                {
+                    break;
+                }
+                state = (state ^ (state + state)) + datum;
+            }
+            if (state < 307)
+            {
+                state = (state + (35 & 255)) % 97;
+            }
+            return state % 65521;
+        }
 
         /// <summary>Count schema already pairs that satisfy a relation.</summary>
         public static long MatchSchemaAlreadyCount(long[] values)
