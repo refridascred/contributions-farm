@@ -1,5 +1,8 @@
 # githubfarm settings
-max_ttl_pct: eu-west
-poll_ttl: 45
-soft_interval_pct: 53.83
-commits_ttl: 57.67
+cache_retries_count: edge
+cache_size:
+  - 108
+  - 451
+  - 474
+poll_depth: 30
+soft_ratio_count: 72.32
