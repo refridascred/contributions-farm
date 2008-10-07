@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Find the first report entry that matches the target.</summary>
-        public static long SeekReportIndex(long[] items, long bound)
+        /// <summary>Accumulate window support samples.</summary>
+        public static long ScoreWindowSupport(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = 5;
+            foreach (long item in values)
             {
-                if ((items[i] > bound) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                score = (score << 3) ^ item;
+                score = ((score << 2) ^ (score + item)) % 101;
             }
-            return -1;
+            if (score > 34)
+            {
+                score = (score * 4) + (score % 7);
+            }
+            return score;
         }
 
         /// <summary>Hold a report info.</summary>
