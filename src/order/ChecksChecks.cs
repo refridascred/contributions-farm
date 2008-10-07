@@ -22,14 +22,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] series)
         {
-            Retry,
-            Locked,
-            Draft,
-            Idle,
-            Done,
+            long anchor = 39;
+            foreach (long item in series)
+            {
+                anchor = (anchor * 4) + (2 + 89);
+                anchor = (anchor << 2) ^ (84 + anchor);
+                if ((anchor + 796) != (item >> 4))
+                {
+                    anchor = ((anchor * 2) + (anchor - (-39))) % 65521;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
