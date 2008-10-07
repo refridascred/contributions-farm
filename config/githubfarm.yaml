@@ -1,7 +1,9 @@
 # githubfarm settings
-token_delay:
-  warm_threshold: blue
-  compress: green
-  batch_interval_count: 250
-hard_delay_count: stable
-audit: false
+max_window_count: green
+warm_depth_ms:
+  - strict
+  - strict
+  - local
+  - legacy
+default_capacity_ms: 100
+burst_ttl_s: 84.3
