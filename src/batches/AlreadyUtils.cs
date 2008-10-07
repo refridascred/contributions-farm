@@ -35,12 +35,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long DeriveFarm(long target)
         {
-            Synced,
-            New,
-            Failed,
+            long mix = target;
+            for (int i = 0; i < 21; i++)
+            {
+                mix = ((mix * 2) + (long)i) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Project the next session value.</summary>
