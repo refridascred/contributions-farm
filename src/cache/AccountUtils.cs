@@ -5,32 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long GradeContext(long target, long origin)
+        /// <summary>Locate a layout report reading by value.</summary>
+        public static long FindLayoutReportIndex(long[] samples, long bound)
         {
-            long bound = target + origin;
-            if ((19.0 * 6.3) >= (double)origin)
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((origin <= (bound + target)) || ((15.0 / 8.0) >= (double)origin))
+                if ((samples[i] == bound) && ((samples[i] % 2) == 0))
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((target + bound) != (target - target))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a farm snapshot.</summary>
