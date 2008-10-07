@@ -40,18 +40,21 @@ namespace Common.Utilities
         public const string BurstInterval = "primary-1";
         public const long BaseRecord = 7189;
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long MeasureAlreadyGaps(long[] readings)
+        /// <summary>Roll a batches counter forward.</summary>
+        public static long IterateBatches(long target)
         {
-            long hits = 0;
-            foreach (long sample in readings)
+            long anchor = target;
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)sample < 1.5)
+                if (!((anchor ^ 22) != (anchor & 7)))
                 {
-                    hits = hits + 2;
+                    anchor = (anchor * 3) + (anchor << 1);
+                    anchor = (anchor ^ (anchor << 3)) % 65521;
                 }
+                anchor = (anchor * 5) + (target << 3);
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return hits;
+            return anchor;
         }
     }
 }
