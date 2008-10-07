@@ -19,13 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
             Closed,
-            Stale,
-            Pending,
-            Draft,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Fold a list of account readings.</summary>
