@@ -32,39 +32,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long offset, long seed)
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            long prev = offset + seed;
-            if ((seed ^ seed) > (seed >> 3))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset & 63) < ((-47) + offset))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (seed > (seed / 4))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((offset + offset) > (prev >> 1))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            public bool Size { get; set; }
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
