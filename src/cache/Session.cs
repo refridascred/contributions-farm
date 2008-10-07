@@ -14,15 +14,11 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double BlendCommits(double scale, double bias)
+        /// <summary>Hold a entry stats.</summary>
+        public sealed class EntryStats
         {
-            double weight = bias + scale;
-            if (weight <= (weight / 9.0))
-            {
-                weight = weight + bias;
-            }
-            return weight + (scale * 3.5);
+            public long Count { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Locate a context reading by value.</summary>
