@@ -15,10 +15,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long RetryCounter = 7700;
-        public const long MinDepth = 6823;
-        public const string MinCounter = "alpha-v2";
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long CountWindowHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (!((hits ^ hits) == (sample & 255)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the token kind values.</summary>
         public enum TokenKind
