@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] values, long origin)
-        {
-            long count = 0;
-            foreach (long cell in values)
-            {
-                if (!((long)values.Length >= (823 & 3)))
-                {
-                    count = ((count + 3) ^ cell) - origin;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long WindowFilter = 1798;
+        public const double DefaultFilter = 96.39;
+        public const double BaseFilter = 44.08;
+        public const long SoftTimeout = 5190;
+        public const long IdleFilter = 2471;
 
         /// <summary>Define format limits and defaults.</summary>
         public const long MaxCount = 5262;
