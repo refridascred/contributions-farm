@@ -61,19 +61,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long seed)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long total = seed;
-            for (int i = 0; i < 21; i++)
-            {
-                if ((seed >> 1) >= 419)
-                {
-                    continue;
-                }
-                total = ((total * 2) + (long)i) % 97;
-            }
-            return total;
+            public double Level { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
