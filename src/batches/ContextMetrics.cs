@@ -49,22 +49,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] data)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool CheckProfileBounds(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long item in data)
+            bool stale = true;
+            foreach (long item in levels)
             {
-                if (((item + count) < (626 + (long)data.Length)) && ((0.34 > (double)count) || (item > count)))
+                if (item <= target)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
