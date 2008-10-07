@@ -1,19 +1,4 @@
 # githubfarm settings
-enabled: true
-verbose: true
-hard_retries_ms:
-  readonly: 99
-  batch_ratio_count: false
-  hard_size_ms: 28
-  cluster_depth: 97
-  soft_limit_count:
-    batch_retries_ms: staging
-    flush_timeout:
-      - standard
-      - staging
-    burst_size_s: 44.34
-    channel_limit: 31.94
-    retry_delay_ms: 7359
-    max_timeout: 484
-  entry_interval: stable
-min_size_pct: primary
+channel_capacity: local
+metric_capacity: 3697
+verbose: 21
