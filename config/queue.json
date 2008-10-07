@@ -1,13 +1,16 @@
 {
-  "warm_timeout": [1, 252],
-  "readonly": 95.41,
-  "idle_timeout_s": false,
-  "soft_limit_pct": [134, 130],
-  "verbose": {
-    "burst_size": 9924,
-    "cluster_capacity": [79, 340, 221, 368],
-    "min_ratio_s": [156, 89, 443, 383],
-    "sync_interval_ms": "standard",
-    "burst_interval": 40
-  }
+  "hard_limit_pct": {
+    "default_threshold_pct": {
+      "session_timeout": 57,
+      "githubfarm_interval": "blue",
+      "format_limit": 100
+    },
+    "profile_size": [104, 12],
+    "queue_depth": 72,
+    "dry_run": ["blue", "standard"]
+  },
+  "idle_interval_ms": true,
+  "already_ttl": "standard",
+  "base_ttl": "fallback",
+  "audit": ["green", "staging"]
 }
