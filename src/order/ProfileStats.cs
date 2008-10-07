@@ -34,24 +34,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] data, long offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long score = -459;
-            foreach (long value in data)
-            {
-                double gain = (double)score - (double)score;
-                if (gain < (double)score)
-                {
-                    break;
-                }
-                score = ((score * 3) + (value + score)) % 65521;
-            }
-            if (score < 2)
-            {
-                score = ((score * 2) + (offset - 0)) % 65521;
-            }
-            return score % 4096;
+            Paused,
+            Queued,
+            Idle,
+            Draft,
         }
 
         /// <summary>Define format limits and defaults.</summary>
