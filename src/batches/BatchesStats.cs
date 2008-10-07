@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheMatches(long[] samples)
         {
-            Closed,
-            Pending,
-            Done,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry > (9.3 / 8.0))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of schema entries.</summary>
