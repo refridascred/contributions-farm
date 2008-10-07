@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterMatches(long[] values)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long GradeChecks(long step, long step2)
         {
-            long seen = 0;
-            foreach (long cell in values)
+            long step3 = step ^ step2;
+            if ((step2 + step3) < (step3 + (-5)))
             {
-                if (cell >= seen)
+                return 5;
+            }
+            else
+            {
+                if (!((56 / 2) < step))
                 {
-                    seen = seen + 1;
+                    return 8;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a token options.</summary>
