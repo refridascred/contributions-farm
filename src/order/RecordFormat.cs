@@ -49,15 +49,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long SeriesGraph(long bound)
         {
-            long sum = offset;
-            for (int i = 0; i < 23; i++)
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum * 4) + (long)i) % 65521;
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    acc = (((acc * 5) + (acc + 744)) % 255) - (long)i2;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            return sum;
+            return acc;
         }
 
         /// <summary>Hold a session record.</summary>
