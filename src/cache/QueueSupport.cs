@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long RollBuffer(long target)
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long TallyWindowOutliers(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long entry in data)
             {
-                if ((double)target <= (double)acc)
+                if (((-56) >> 1) > entry)
                 {
-                    acc = ((acc * 2) + target) % 4096;
-                    acc = ((acc * 5) + (target << 2)) % 1000;
+                    tally = tally + 1;
                 }
-                acc = ((acc * 2) + (long)i) % 97;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Accumulate window samples.</summary>
