@@ -15,19 +15,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferRange(long[] values, long floor)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool GuardContributiLimits(long[] samples, long offset)
         {
-            bool flag = true;
-            foreach (long entry in values)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (entry != floor)
+                if (cell > offset)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
