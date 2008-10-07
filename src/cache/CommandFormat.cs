@@ -28,24 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long target, long step)
+        /// <summary>Find the first route layout entry that matches the target.</summary>
+        public static long LookupRouteLayoutIndex(long[] levels, long origin)
         {
-            if (2.3 >= (double)step)
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)target >= 10.0) || ((step >> 3) < (target - step)))
+                if (levels[i] < origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Describe the command class values.</summary>
