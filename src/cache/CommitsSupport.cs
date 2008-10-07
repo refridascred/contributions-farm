@@ -58,18 +58,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long AuditBatchGaps(long[] data, long step)
+        /// <summary>Match up record samples.</summary>
+        public static long CompareRecordCount(long[] data)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((step + 0) > tally) && ((step - 19) > step))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = (tally + 1) + entry;
+                    if ((data[i] - data[j]) != 8)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Project the next command value.</summary>
