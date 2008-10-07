@@ -1,6 +1,10 @@
-id,active,region,token
-1,478,37,blue
-2,427,479,683
-3,fallback,83.66,primary
-4,302,40.81,fallback
-5,31.29,290,eu-west
+id,owner,region,active,label
+1,12.86,569,68.98,legacy
+2,latest,green,312,861
+3,692,stable,256,887
+4,local,63.63,50.13,955
+5,693,18.21,primary,open
+6,575,5.46,331,eu-west
+7,870,stable,31.11,315
+8,96.27,6.1,open,767
+9,271,edge,472,947
