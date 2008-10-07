@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long SeriesStream(long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 15; i++)
+            long score = limit;
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum * 5) + (long)i) % 4093;
+                for (int i2 = 0; i2 < 10; i2++)
+                {
+                    score = ((score - (score << 1)) % 255) - (long)i2;
+                }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Fold a list of report readings.</summary>
