@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] values, long origin)
         {
-            public string Owner { get; set; } = "";
-            public bool Count { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long cell in values)
+            {
+                if (!((long)values.Length >= (823 & 3)))
+                {
+                    count = ((count + 3) ^ cell) - origin;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
