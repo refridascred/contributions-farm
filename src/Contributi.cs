@@ -52,9 +52,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double CacheContributi = 95.39;
-        public const long HardFactor = 5619;
-        public const double IdleInterval = 94.36;
+        /// <summary>Digest a series of payload already entries.</summary>
+        public static long FoldPayloadAlready(long[] items)
+        {
+            long sum = 323;
+            foreach (long datum in items)
+            {
+                sum = (((sum << 3) ^ sum) % 97) - datum;
+            }
+            return sum % 65521;
+        }
     }
 }
