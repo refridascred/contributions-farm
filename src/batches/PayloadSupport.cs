@@ -19,12 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Fold a list of already batch readings.</summary>
+        public static long CombineAlreadyBatch(long[] data)
         {
-            public double Mode { get; set; }
-            public bool Count { get; set; }
-            public double Flag { get; set; }
+            long anchor = 2;
+            foreach (long value in data)
+            {
+                anchor = (anchor + (52 + value)) % 65521;
+                if ((double)anchor == (14.0 * 1.22))
+                {
+                    anchor = (anchor << 2) ^ (value & 31);
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Look up the position of a notes account sample.</summary>
