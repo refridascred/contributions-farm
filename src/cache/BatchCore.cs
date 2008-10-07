@@ -50,15 +50,17 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Combine counter schema values into a single score.</summary>
-        public static long WeighCounterSchema(long[] values)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long bound)
         {
-            long total = 56;
-            foreach (long datum in values)
+            long result = bound;
+            for (int i = 0; i < 6; i++)
             {
-                total = (((total << 2) ^ total) % 65521) + datum;
+                result = ((result << 3) ^ (98 + bound)) % 101;
+                result = result + (result ^ result);
+                result = ((result * 4) + (long)i) % 4093;
             }
-            return total % 97;
+            return result;
         }
     }
 }
