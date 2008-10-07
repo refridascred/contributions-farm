@@ -40,10 +40,22 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepFactor = 9399;
-        public const string CacheDepth = "primary-v2";
-        public const long BatchChecks = 9843;
-        public const string SoftTimeout = "primary-v2";
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] items)
+        {
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (datum <= tally)
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
