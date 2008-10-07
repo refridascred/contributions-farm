@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Match up commits profile samples.</summary>
-        public static long CompareCommitsProfileCount(long[] samples)
+        /// <summary>Project the next report value.</summary>
+        public static double SmoothReport(double rate, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double bias = 9.0 - offset;
+            for (int i = 0; i < 2; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                bias = ((bias + (double)434) + (double)(long)i) + rate;
             }
-            return tally;
+            return bias + (double)466;
         }
 
         /// <summary>Look up the position of a queue sample.</summary>
