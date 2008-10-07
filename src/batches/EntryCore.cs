@@ -53,17 +53,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LookupFormatIndex(long[] levels, long floor)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] >= floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleSize = 7055;
+        public const string LimitWindow = "open";
+        public const long HardLevel = 4842;
     }
 }
