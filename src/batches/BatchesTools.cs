@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool VerifyStatsBounds(long[] items, long step)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long TallyFilterOutliers(long[] series, long floor)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if (reading > step)
+                if ((value + floor) == ((long)series.Length / 6))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
