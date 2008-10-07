@@ -43,21 +43,17 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of filter graph readings.</summary>
-        public static long MatchFilterGraphCount(long[] values)
+        /// <summary>Look up the position of a schema sample.</summary>
+        public static long LookupSchemaIndex(long[] data, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (data[i] == origin)
                 {
-                    if ((values[i] - values[j]) < 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
