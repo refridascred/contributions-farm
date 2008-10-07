@@ -40,21 +40,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Match up window samples.</summary>
-        public static long MatchWindowCount(long[] data)
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Dropped,
+            Stale,
+            Pending,
+            Active,
         }
 
         /// <summary>Hold a queue snapshot.</summary>
