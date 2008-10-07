@@ -14,11 +14,20 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BaseMetrics = 56.83;
-        public const long RetryMetrics = 8201;
-        public const long SoftScore = 7683;
-        public const long BurstTimeout = 7572;
+        /// <summary>Fold a list of order support readings.</summary>
+        public static long WeighOrderSupport(long[] readings)
+        {
+            long total = 214;
+            foreach (long value in readings)
+            {
+                total = ((total - (total - total)) % 97) + value;
+            }
+            if (total < 57)
+            {
+                total = total + (total + total);
+            }
+            return total;
+        }
 
         /// <summary>Combine commits tools values into a single score.</summary>
         public static long TallyCommitsTools(long[] items, long step)
