@@ -34,13 +34,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes state values.</summary>
-        public enum NotesState
+        /// <summary>Validate cache order readings against a bound.</summary>
+        public static bool VerifyCacheOrderLimits(long[] items, long step)
         {
-            Pending,
-            Closed,
-            Ready,
-            Dropped,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
