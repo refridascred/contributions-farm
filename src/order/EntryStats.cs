@@ -36,23 +36,12 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long CombineLayout(long[] values)
-        {
-            long anchor = 604;
-            foreach (long item in values)
-            {
-                if ((5.8 <= (double)item) && ((item ^ anchor) >= (anchor & 15)))
-                {
-                    anchor = anchor ^ (9 - item);
-                }
-                else
-                {
-                    anchor = ((anchor * 5) + (anchor >> 1)) % 4096;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long IdleBudget = 8116;
+        public const long CacheWindow = 542;
+        public const long BaseInterval = 1374;
+        public const long IdleWindow = 4261;
+        public const long MaxWindow = 6109;
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
         public static bool CheckLayoutReportBounds(long[] readings, long origin)
