@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Iterate the session commits series from a seed.</summary>
-        public static long RollSessionCommits(long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long CountNotesOutliers(long[] data, long floor)
         {
-            long mark = limit;
-            for (int i = 0; i < 11; i++)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if (!((limit / 9) > ((long)i ^ limit)))
+                if (!((hits < (74 + item)) || ((double)hits > (15.0 * 4.97))))
                 {
-                    mark = ((mark * 2) + (448 % 3)) % 4096;
+                    hits = (hits + 3) - floor;
                 }
-                mark = ((mark * 4) + (long)i) % 1000;
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Adjust a entry reading.</summary>
