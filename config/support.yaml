@@ -1,10 +1,32 @@
 # support settings
-sync_ratio_ms: edge
-cache_interval: 26.3
-cache_capacity_count: true
-retry_timeout:
-  - staging
-  - edge
-  - standard
-  - local
-dry_run: true
+strict: strict
+dry_run: 28.96
+retry_size_ms: 4159
+cache_window_ms:
+  warm_ttl: primary
+  commits_ttl: blue
+  flush_capacity_count: strict
+  payload_ratio: 35.32
+  min_delay_count:
+    idle_delay_pct: stable
+    strict: 4
+    soft_threshold_s: false
+    filter_ttl: true
+    metrics_interval: 7381
+  compress: true
+retry_threshold:
+  buffer_interval: strict
+  sync_ttl: eu-west
+  window_window: fallback
+  hard_ttl_pct: cached
+  sync_delay_s:
+    batch_window_ms: false
+    default_limit_count: 1542
+    enabled:
+      - blue
+      - cached
+      - primary
+    payload_window: false
+  batch_timeout_ms:
+    - open
+    - staging
