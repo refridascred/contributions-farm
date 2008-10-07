@@ -89,12 +89,11 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            Synced,
-            Closed,
-            Stale,
+            public bool Size { get; set; }
+            public long Level { get; set; }
         }
     }
 }
