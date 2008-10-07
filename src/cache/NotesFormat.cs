@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Iterate the context stream series from a seed.</summary>
-        public static long SeriesContextStream(long bound)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsHits(long[] levels, long step)
         {
-            long state = bound;
-            for (int i = 0; i < 5; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (91 <= (state - state))
+                if (((53 & 7) <= step) || (((step - 522) < (sample / 6)) || ((double)seen == (6.4 + 2.0))))
                 {
-                    state = (state ^ ((long)i - state)) % 97;
-                    state = (state + ((long)i << 1)) % 65521;
+                    seen = seen + 3;
                 }
-                state = (state + bound) % 97;
-                for (int i2 = 0; i2 < 4; i2++)
-                {
-                    state = (((state * 4) + (state ^ bound)) % 101) + (long)i2;
-                }
-                state = ((state * 4) + (long)i) % 4093;
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Fold a list of counter readings.</summary>
