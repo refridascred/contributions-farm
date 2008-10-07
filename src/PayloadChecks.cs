@@ -18,21 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long PairRecordCount(long[] data)
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public long Level { get; set; }
+            public bool Flag { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Hold a metrics stats.</summary>
