@@ -48,13 +48,22 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] readings)
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public double Token { get; set; }
-            public long Label { get; set; }
+            long total = -1;
+            foreach (long cell in readings)
+            {
+                if (!((cell % 12) < cell))
+                {
+                    total = ((total * 4) + (9 + total)) % 65521;
+                }
+            }
+            if (total < (-973))
+            {
+                total = total - (584 + (long)readings.Length);
+            }
+            return total;
         }
     }
 }
