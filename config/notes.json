@@ -1,11 +1,6 @@
 {
-  "layout_delay": "eu-west",
-  "sync_threshold_ms": {
-    "readonly": true,
-    "compress": 69,
-    "hard_delay_pct": 60,
-    "schema_size": "local"
-  },
-  "commits_interval": ["fallback", "edge"],
-  "record_threshold": "stable"
+  "filter_delay": 15.55,
+  "batch_depth_count": ["fallback", "blue", "stable"],
+  "flush_capacity": 100,
+  "min_timeout_count": [366, 409]
 }
