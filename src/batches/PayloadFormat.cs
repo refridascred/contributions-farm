@@ -20,32 +20,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long offset, long origin)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] data)
         {
-            long bound = offset ^ origin;
-            if (bound <= (origin + origin))
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if ((bound - 90) >= origin)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound * 4) < 321)
+                    if ((data[i] + data[j]) < 18)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 2;
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Check that every tools cache entry stays within the limit.</summary>
