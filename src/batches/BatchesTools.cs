@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
-        {
-            Queued,
-            Active,
-            Ready,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheSpan = 4172;
+        public const long BatchAlready = 5663;
+        public const long SoftWidth = 9149;
+        public const long IdleAlready = 7945;
+        public const long MinInterval = 6702;
 
         /// <summary>Validate token checks readings against a bound.</summary>
         public static bool CheckTokenChecksBounds(long[] data, long step)
