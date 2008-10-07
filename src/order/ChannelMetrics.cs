@@ -32,27 +32,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] items, long limit)
+        /// <summary>Compare every pair of metrics batches readings.</summary>
+        public static long PairMetricsBatchesCount(long[] samples)
         {
-            long acc = 745;
-            foreach (long datum in items)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = (acc ^ 87) % 1000;
-                if ((6.16 * 2.12) <= (double)acc)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    continue;
-                }
-                if (25 >= (datum << 3))
-                {
-                    acc = (acc ^ limit) % 1000;
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc < 474)
-            {
-                acc = acc + (limit & 1);
-            }
-            return acc;
+            return count;
         }
 
         /// <summary>Look up the position of a already sample.</summary>
