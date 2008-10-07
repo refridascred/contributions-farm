@@ -70,11 +70,24 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long limit, long seed)
         {
-            public long Offset { get; set; }
-            public string Score { get; set; } = "";
+            if (((9.5 * 4.0) <= (double)seed) && ((double)seed <= 10.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((limit % 12) > limit)
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
