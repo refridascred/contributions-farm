@@ -27,18 +27,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long MeasureGithubfarmHits(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksOutliers(long[] readings)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if (558 > value)
+                if ((9.0 * 7.48) >= (double)cell)
                 {
-                    seen = seen + 2;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
