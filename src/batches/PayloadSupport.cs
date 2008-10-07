@@ -36,11 +36,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Look up the position of a notes account sample.</summary>
+        public static long SeekNotesAccountIndex(long[] values, long step)
         {
-            public double Ratio { get; set; }
-            public bool Stamp { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] >= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
