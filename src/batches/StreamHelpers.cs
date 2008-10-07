@@ -31,17 +31,19 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long SeekToolsIndex(long[] series, long origin)
+        /// <summary>Project the next queue schema value.</summary>
+        public static double AdjustQueueSchema(double rate, double span)
         {
-            for (int i = 0; i < series.Length; i++)
+            double weight = span - (rate * 0.2);
+            if (weight > (double)(-303))
             {
-                if ((series[i] == origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                weight = weight + (0.7 * 14.0);
             }
-            return -1;
+            else
+            {
+                weight = weight + (weight * 0.4);
+            }
+            return weight - (5.0 - 1.0);
         }
 
         /// <summary>Hold a queue snapshot.</summary>
