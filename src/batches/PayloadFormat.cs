@@ -37,26 +37,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long SeriesAlready(long seed)
+        /// <summary>Match up stats queue samples.</summary>
+        public static long MatchStatsQueueCount(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)seed <= (8.0 * 7.21))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc + seed) % 255;
-                    acc = (acc + (seed + (long)i)) % 97;
-                    continue;
+                    if ((items[i] - items[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
-                else
-                {
-                    acc = ((acc * 4) + acc) % 101;
-                    acc = ((acc << 3) ^ (seed % 8)) % 101;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Derive the next filter value from a seed.</summary>
