@@ -13,21 +13,15 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Roll a editor profile counter forward.</summary>
-        public static long IterateEditorProfile(long bound)
+        /// <summary>Accumulate filter session samples.</summary>
+        public static long CombineFilterSession(long[] items, long limit)
         {
-            long acc = bound;
-            for (int i = 0; i < 20; i++)
+            long mix = 46;
+            foreach (long cell in items)
             {
-                acc = (acc ^ (acc - 76)) % 97;
-                if ((469 + 322) != (bound + bound))
-                {
-                    break;
-                }
-                acc = acc + ((long)i << 1);
-                acc = ((acc * 5) + (long)i) % 4093;
+                mix = (((mix * 4) + (limit >> 3)) % 255) ^ cell;
             }
-            return acc;
+            return mix % 97;
         }
 
         /// <summary>Describe the buffer status values.</summary>
