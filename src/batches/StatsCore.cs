@@ -33,18 +33,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long TallyChannelMatches(long[] readings, long offset)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long TotalPayload(long[] levels)
         {
-            long matches = 0;
-            foreach (long entry in readings)
+            long sum = -484;
+            foreach (long entry in levels)
             {
-                if ((entry % 10) > (entry + entry))
+                sum = ((sum * 2) + (371 % 12)) + entry;
+                if ((sum < ((-983) >> 5)) || ((sum & 255) < sum))
                 {
-                    matches = (matches + 3) + offset;
+                    sum = sum + ((long)levels.Length & 63);
                 }
             }
-            return matches;
+            return sum % 4096;
         }
 
         /// <summary>Hold a window snapshot.</summary>
