@@ -15,15 +15,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the support phase values.</summary>
-        public enum SupportPhase
-        {
-            Stale,
-            Locked,
-            Ready,
-            Done,
-            Failed,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowRecord = 86.91;
+        public const long MinRecord = 8717;
+        public const long BaseSize = 7376;
 
         /// <summary>Count the window record entries that pass the check.</summary>
         public static long MeasureWindowRecordHits(long[] readings, long target)
