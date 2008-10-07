@@ -12,13 +12,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Hold a queue snapshot.</summary>
-        public sealed class QueueSnapshot
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] items, long offset)
         {
-            public long Score { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
-            public bool Flag { get; set; }
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Locate a context queue reading by value.</summary>
