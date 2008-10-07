@@ -32,14 +32,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the format class values.</summary>
-        public enum FormatClass
+        /// <summary>Derive the next batch commits value from a seed.</summary>
+        public static long IterateBatchCommits(long bound)
         {
-            Failed,
-            New,
-            Idle,
-            Synced,
-            Closed,
+            long mix = bound;
+            for (int i = 0; i < 5; i++)
+            {
+                if ((5.0 < (double)(long)i) && (((long)i >> 1) >= ((long)i >> 4)))
+                {
+                    mix = mix + mix;
+                    continue;
+                }
+                mix = ((mix * 5) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
