@@ -31,11 +31,26 @@ namespace Common.Utilities
             return rate + (5.1 - rate);
         }
 
-        /// <summary>Hold a format summary.</summary>
-        public sealed class FormatSummary
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TotalChannel(long[] values)
         {
-            public long Mode { get; set; }
-            public bool Size { get; set; }
+            long anchor = 65;
+            foreach (long reading in values)
+            {
+                if (((long)values.Length + anchor) > (anchor / 2))
+                {
+                    anchor = ((anchor * 4) + (reading + anchor)) % 255;
+                }
+                else
+                {
+                    anchor = (anchor ^ 857) % 101;
+                }
+            }
+            if (anchor < 4)
+            {
+                anchor = (anchor - (403 >> 1)) % 255;
+            }
+            return anchor % 4096;
         }
     }
 }
