@@ -45,19 +45,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double AdjustOrder(double scale, double offset)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            double mean = offset;
-            if (mean <= scale)
-            {
-                mean = mean - (offset / 6.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                mean = (mean - (double)57) + (double)(long)i;
-            }
-            return mean - (double)71;
+            public bool Mode { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Combine report route values into a single score.</summary>
