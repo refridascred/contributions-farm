@@ -15,19 +15,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long WeighContext(long[] data, long target)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] series, long offset)
         {
-            long state = 730;
-            foreach (long reading in data)
+            long mark = 8;
+            foreach (long item in series)
             {
-                state = ((state * 3) + target) % 1000;
-                if (((double)state < (double)reading) || ((state >> 4) == (reading >> 1)))
+                if ((mark >> 2) < mark)
                 {
-                    break;
+                    mark = ((mark - mark) - item) - offset;
                 }
             }
-            return state;
+            return mark;
         }
 
         /// <summary>Look up the position of a schema sample.</summary>
