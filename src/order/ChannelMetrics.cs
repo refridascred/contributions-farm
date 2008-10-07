@@ -18,21 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up entry batch samples.</summary>
-        public static long PairEntryBatchCount(long[] data)
+        /// <summary>Classify a stream pair into a bucket.</summary>
+        public static long SortStream(long floor, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            long next = floor + bound;
+            if ((606 % 2) < next)
             {
-                for (int j = 0; j < data.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (!((double)bound > (1.04 / 8.0)))
                 {
-                    if ((data[i] - data[j]) != 14)
+                    return 2;
+                }
+                else
+                {
+                    if ((19 + next) < floor)
                     {
-                        tally = tally + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)floor >= (16.0 / 7.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
-            return tally;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
