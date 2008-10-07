@@ -14,17 +14,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Find the first order checks entry that matches the target.</summary>
-        public static long LocateOrderChecksIndex(long[] samples, long origin)
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Stale,
+            Locked,
+            Ready,
+            Done,
+            Failed,
         }
 
         /// <summary>Count the window record entries that pass the check.</summary>
