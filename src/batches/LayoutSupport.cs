@@ -5,24 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank githubfarm account input into a small class.</summary>
-        public static long GradeGithubfarmAccount(long origin, long floor)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            if ((floor * 4) != (floor + 124))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor & 7) >= origin)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            Pending,
+            Done,
+            Retry,
+            Locked,
+            Idle,
         }
 
         /// <summary>Hold a githubfarm info.</summary>
