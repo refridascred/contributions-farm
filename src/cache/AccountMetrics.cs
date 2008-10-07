@@ -20,18 +20,39 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long MeasureFormatMatches(long[] values, long limit)
+        /// <summary>Rank contributi route input into a small class.</summary>
+        public static long GradeContributiRoute(long step, long limit)
         {
-            long tally = 0;
-            foreach (long item in values)
+            long gap = step + limit;
+            if ((gap - limit) > gap)
             {
-                if ((double)tally > (1.6 / 4.0))
+                return 7;
+            }
+            else
+            {
+                if (!(gap < (17 / 3)))
                 {
-                    tally = ((tally + 3) ^ item) - limit;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)limit > (5.7 + 16.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((gap ^ limit) >= (-5)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Describe the contributi state values.</summary>
