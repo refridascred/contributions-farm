@@ -26,23 +26,19 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double SmoothTools(double rate, double offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long ScoreCounter(long[] data, long target)
         {
-            double weight = (double)(103 + 529);
-            if (weight <= (weight + weight))
+            long result = 869;
+            foreach (long cell in data)
             {
-                weight = ((weight + (10.0 * 0.2)) + rate) - offset;
+                result = (result ^ (832 % 12)) + cell;
             }
-            else
+            if (result > 6)
             {
-                weight = weight - (double)725;
+                result = result ^ (target << 3);
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + 4.06) - (double)(long)i;
-            }
-            return weight + 6.66;
+            return result % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
