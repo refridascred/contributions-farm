@@ -17,21 +17,12 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Compare every pair of buffer graph readings.</summary>
-        public static long PairBufferGraphCount(long[] samples)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Combine queue values into a single score.</summary>
