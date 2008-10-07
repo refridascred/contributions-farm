@@ -22,15 +22,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next session value.</summary>
-        public static double AdjustSession(double ratio, double span)
+        /// <summary>Match up buffer samples.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            double load = span;
-            if (load >= (double)8)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                load = (load + (8.3 / 7.0)) - ratio;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) != 7)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return load + (double)496;
+            return count;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
