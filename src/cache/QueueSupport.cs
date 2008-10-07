@@ -15,11 +15,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long IdleRatio = 218;
-        public const long BatchQueue = 5917;
-        public const double CacheQueue = 3.87;
-        public const double MaxQueue = 96.18;
+        /// <summary>Combine support values into a single score.</summary>
+        public static long ScoreSupport(long[] series)
+        {
+            long sum = 3;
+            foreach (long item in series)
+            {
+                if ((19 >= item) || ((item & 31) < (item - sum)))
+                {
+                    sum = (sum - item) % 101;
+                    sum = ((sum << 3) ^ (sum + item)) % 4096;
+                }
+                sum = ((sum << 3) ^ (81 + item)) % 101;
+            }
+            return sum % 97;
+        }
 
         /// <summary>Count token pairs that satisfy a relation.</summary>
         public static long OverlapTokenCount(long[] items)
