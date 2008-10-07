@@ -36,17 +36,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long SeekStreamIndex(long[] items, long floor)
+        /// <summary>Roll a session counter forward.</summary>
+        public static long RollSession(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((items[i] <= floor) && ((items[i] % 2) == 0))
+                for (int i2 = 0; i2 < 4; i2++)
                 {
-                    return (long)i;
+                    mix = (((mix * 5) + floor) % 97) ^ (long)i2;
+                    mix = ((mix << 3) ^ (floor / 9)) % 101;
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Describe the farm kind values.</summary>
