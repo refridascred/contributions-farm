@@ -1,16 +1,8 @@
 {
-  "strict": {
-    "window_delay": 2366,
-    "sync_delay_pct": 1.27,
-    "persist": 100,
-    "retry_retries_s": 2655
-  },
-  "route_retries": {
-    "max_capacity_s": "green",
-    "min_ttl": 37.12,
-    "cache_depth_pct": [481, 85]
-  },
-  "hard_retries_pct": ["strict", "staging"],
-  "min_limit_pct": true,
-  "burst_capacity_count": 500
+  "max_size": "primary",
+  "cache_retries_s": 32.65,
+  "strict": 37,
+  "flush_ttl": 78,
+  "min_capacity": 60,
+  "poll_timeout_count": 29.22
 }
