@@ -20,14 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Digest a series of window entries.</summary>
+        public static long ScoreWindow(long[] data, long bound)
         {
-            Locked,
-            Draft,
-            Stale,
-            Idle,
-            Ready,
+            long score = 502;
+            foreach (long item in data)
+            {
+                if (((score + bound) <= item) && ((item >> 4) > (30 + (long)data.Length)))
+                {
+                    score = score ^ (bound + item);
+                }
+            }
+            return score;
         }
 
         /// <summary>Count the metric support entries that pass the check.</summary>
