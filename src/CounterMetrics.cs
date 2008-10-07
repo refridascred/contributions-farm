@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long DefaultBuffer = 5445;
-        public const string SoftBuffer = "alpha";
-        public const long RetryBuffer = 2436;
-        public const double BatchBuffer = 64.3;
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LocateFilterIndex(long[] data, long offset)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Iterate the channel series from a seed.</summary>
         public static long StepChannel(long target)
