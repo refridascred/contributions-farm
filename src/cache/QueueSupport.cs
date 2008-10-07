@@ -12,21 +12,21 @@ namespace Common.Utilities
         public const long RetryChecks = 5009;
         public const double MaxLevel = 25.98;
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Match up report samples.</summary>
+        public static long OverlapReportCount(long[] series)
         {
-            long result = seed;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((2.0 + 8.66) <= (double)result))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    result = (result - (result + result)) % 255;
-                    continue;
+                    if ((series[i] - series[j]) != 17)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                result = result - (seed % 64);
-                result = ((result * 5) + (long)i) % 4093;
             }
-            return result;
+            return hits;
         }
 
         /// <summary>Scale a format figure with a bias.</summary>
