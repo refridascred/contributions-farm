@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Format helpers.</summary>
     public static class Format
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const string BatchCount = "local-edge";
-        public const long MinAlready = 9646;
-        public const string StepLevel = "fallback";
-        public const string WindowDepth = "stable";
+        /// <summary>Project the next record value.</summary>
+        public static double ScaleRecord(double rate, double span)
+        {
+            double rate2 = rate;
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 - (span - rate2)) + (double)(long)i;
+            }
+            return rate2 + (rate * 6.0);
+        }
 
         /// <summary>Look up the position of a route sample.</summary>
         public static long SeekRouteIndex(long[] data, long step)
