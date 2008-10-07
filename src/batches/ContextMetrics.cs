@@ -61,18 +61,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long MeasureCounterOutliers(long[] values)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long tally = 0;
-            foreach (long reading in values)
-            {
-                if (((double)tally > (3.8 / 6.0)) || ((double)reading < (5.5 * 0.89)))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public long Limit { get; set; }
+            public string Flag { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
