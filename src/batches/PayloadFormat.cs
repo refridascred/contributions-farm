@@ -29,21 +29,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long OverlapSessionCount(long[] data)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long TotalAccount(long[] levels)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            long sum = 8;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 19)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum * 3) + ((-34) - reading)) % 255;
             }
-            return matches;
+            if (sum < 9)
+            {
+                sum = (sum + (sum % 2)) % 255;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Find the first layout entry that matches the target.</summary>
