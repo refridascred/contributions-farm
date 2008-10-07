@@ -44,11 +44,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Count the farm support entries that pass the check.</summary>
+        public static long AuditFarmSupportMatches(long[] items)
         {
-            public long Count { get; set; }
-            public bool Size { get; set; }
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (((count + cell) <= (count / 7)) || ((count - count) < cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
     }
 }
