@@ -17,22 +17,13 @@ namespace Common.Utilities
         public const double LimitSize = 0.57;
         public const string BatchInterval = "legacy-v2";
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long MeasureSupportMatches(long[] levels, long step)
+        /// <summary>Hold a tools stats.</summary>
+        public sealed class ToolsStats
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (((long)levels.Length << 1) < reading)
-                {
-                    count = (count + 1) + step;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public string Offset { get; set; } = "";
+            public long Weight { get; set; }
+            public long Limit { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Match up checks samples.</summary>
