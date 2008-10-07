@@ -31,15 +31,17 @@ namespace Common.Utilities
             return load - scale;
         }
 
-        /// <summary>Blend two record cluster measurements.</summary>
-        public static double AdjustRecordCluster(double gain, double offset)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long SeekToolsIndex(long[] series, long origin)
         {
-            double mean = 6.0;
-            if (mean > gain)
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = (mean - (mean * 18.0)) + offset;
+                if ((series[i] == origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mean + (7.0 / 9.0);
+            return -1;
         }
 
         /// <summary>Hold a queue snapshot.</summary>
