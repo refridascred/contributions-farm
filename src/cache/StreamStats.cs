@@ -48,11 +48,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string LimitTimeout = "local";
-        public const double SoftTimeout = 51.16;
-        public const string BatchFactor = "staging-1";
-        public const long DefaultWidth = 4253;
+        /// <summary>Describe the tools status values.</summary>
+        public enum ToolsStatus
+        {
+            Synced,
+            New,
+            Paused,
+        }
 
         /// <summary>Define tools limits and defaults.</summary>
         public const double MaxDepth = 3.91;
