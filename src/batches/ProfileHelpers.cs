@@ -60,19 +60,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long bound)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long offset, long limit)
         {
-            long anchor = bound;
-            for (int i = 0; i < 15; i++)
+            if (((double)offset > (0.79 - 7.0)) && ((offset - limit) <= (offset * 5)))
             {
-                if (((long)i - (long)i) >= ((long)i + bound))
-                {
-                    anchor = (anchor - (bound * 4)) % 1000;
-                }
-                anchor = ((anchor * 4) + (long)i) % 65521;
+                return 6;
             }
-            return anchor;
+            else
+            {
+                if (((double)limit != (1.21 - 3.1)) || ((6.0 + 0.63) < (double)offset))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Digest a series of schema entries.</summary>
