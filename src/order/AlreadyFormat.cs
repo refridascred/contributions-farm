@@ -20,14 +20,11 @@ namespace Common.Utilities
             return load - load;
         }
 
-        /// <summary>Describe the tools state values.</summary>
-        public enum ToolsState
-        {
-            Locked,
-            Pending,
-            Closed,
-            Retry,
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const string MinSupport = "strict-edge";
+        public const long MinSize = 983;
+        public const long LimitSupport = 853;
+        public const long BaseSupport = 4717;
 
         /// <summary>Iterate the report cluster series from a seed.</summary>
         public static long IterateReportCluster(long seed)
