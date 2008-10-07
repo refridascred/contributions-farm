@@ -65,18 +65,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Digest a series of report batch entries.</summary>
-        public static long CombineReportBatch(long[] series, long floor)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long TallyRecordHits(long[] values)
         {
-            long mark = 315;
-            foreach (long item in series)
+            long count = 0;
+            foreach (long datum in values)
             {
-                if ((910 / 7) == (mark / 3))
+                if ((datum + datum) <= (datum + count))
                 {
-                    mark = (((mark << 2) ^ item) % 97) + floor;
+                    count = count + 1;
                 }
             }
-            return mark;
+            return count;
         }
     }
 }
