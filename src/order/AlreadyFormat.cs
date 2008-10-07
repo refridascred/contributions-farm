@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long CacheSpan = 5679;
-        public const double IdleDepth = 12.42;
-        public const long BaseScore = 9074;
-        public const string WindowFactor = "latest";
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] items, long origin)
+        {
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((0.69 + 18.0) >= (double)tally)
+                {
+                    tally = ((tally + 3) + reading) + origin;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Classify a contributi pair into a bucket.</summary>
         public static long GradeContributi(long bound, long target)
