@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Adjust a githubfarm reading.</summary>
-        public static double SmoothGithubfarm(double scale, double floor)
+        /// <summary>Describe the already state values.</summary>
+        public enum AlreadyState
         {
-            double rate = scale;
-            return (rate + (scale * 6.3)) + floor;
+            New,
+            Locked,
+            Idle,
+            Retry,
         }
 
         /// <summary>Digest a series of order entries.</summary>
