@@ -21,19 +21,17 @@ namespace Common.Utilities
         public const double BurstEditor = 64.59;
         public const long SoftSize = 2217;
 
-        /// <summary>Validate farm queue readings against a bound.</summary>
-        public static bool CheckFarmQueueLimits(long[] levels, long offset)
+        /// <summary>Look up the position of a stream sample.</summary>
+        public static long SeekStreamIndex(long[] items, long floor)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value != offset)
+                if ((items[i] <= floor) && ((items[i] % 2) == 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Describe the farm kind values.</summary>
