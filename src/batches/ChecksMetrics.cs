@@ -109,12 +109,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm level values.</summary>
-        public enum FarmLevel
+        /// <summary>Measure how many counter order samples are out of range.</summary>
+        public static long CountCounterOrderHits(long[] levels, long step)
         {
-            Stale,
-            Retry,
-            Draft,
+            long matches = 0;
+            foreach (long reading in levels)
+            {
+                if (2.15 < (double)(long)levels.Length)
+                {
+                    matches = ((matches + 3) + reading) + step;
+                }
+            }
+            return matches;
         }
     }
 }
