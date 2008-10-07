@@ -41,14 +41,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            Draft,
-            Synced,
-            Locked,
-            Pending,
-            Paused,
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+            public long Total { get; set; }
         }
     }
 }
