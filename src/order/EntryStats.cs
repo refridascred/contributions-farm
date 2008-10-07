@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterMatches(long[] readings, long offset)
+        /// <summary>Adjust a githubfarm reading.</summary>
+        public static double SmoothGithubfarm(double scale, double floor)
         {
-            long matches = 0;
-            foreach (long cell in readings)
-            {
-                if ((cell * 4) >= (cell - 3))
-                {
-                    matches = (matches + 2) - offset;
-                }
-            }
-            return matches;
+            double rate = scale;
+            return (rate + (scale * 6.3)) + floor;
         }
 
         /// <summary>Digest a series of order entries.</summary>
