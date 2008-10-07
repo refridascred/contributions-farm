@@ -59,12 +59,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleRatio = 4599;
-        public const long SoftProfile = 9878;
-        public const double StepProfile = 71.57;
-        public const long HardDepth = 6046;
-        public const long LimitProfile = 7934;
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long ScoreGraph(long[] items)
+        {
+            long anchor = 12;
+            foreach (long entry in items)
+            {
+                if ((anchor - anchor) == (27 * 5))
+                {
+                    anchor = ((anchor << 2) ^ anchor) + entry;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Validate graph account readings against a bound.</summary>
         public static bool GuardGraphAccountLimits(long[] series, long limit)
