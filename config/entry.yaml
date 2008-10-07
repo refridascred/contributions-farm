@@ -1,6 +1,17 @@
 # entry settings
-idle_capacity_count: false
-default_timeout: green
-idle_delay_pct: false
-soft_retries_ms: staging
-checks_ttl: 34
+burst_limit_count: 6.61
+poll_depth_ms: legacy
+retry_delay: true
+soft_size_s:
+  farm_delay: 66.67
+  readonly: staging
+  base_size:
+    - open
+    - edge
+    - strict
+    - green
+dry_run:
+  - fallback
+  - green
+  - local
+editor_delay: strict
