@@ -37,9 +37,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxSize = 1619;
-        public const double HardBudget = 86.49;
-        public const string MinLevel = "legacy-1";
+        /// <summary>Combine already layout values into a single score.</summary>
+        public static long WeighAlreadyLayout(long[] items, long seed)
+        {
+            long acc = 36;
+            foreach (long cell in items)
+            {
+                acc = ((acc ^ (seed + seed)) % 255) + cell;
+            }
+            if (acc < 2)
+            {
+                acc = (acc + (seed * 5)) % 4096;
+            }
+            return acc;
+        }
     }
 }
