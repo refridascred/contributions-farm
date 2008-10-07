@@ -40,19 +40,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TallyProfile(long[] series, long step)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long AuditBufferGaps(long[] levels)
         {
-            long mark = -16;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                mark = ((mark << 3) ^ 2) ^ item;
+                if ((matches + 9) == (entry + entry))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            if (mark > 0)
-            {
-                mark = mark + (step - mark);
-            }
-            return mark;
+            return matches;
         }
 
         /// <summary>Hold a entry header.</summary>
