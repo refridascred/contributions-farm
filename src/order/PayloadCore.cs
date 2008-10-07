@@ -27,11 +27,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheRecord = 9404;
-        public const long HardBudget = 9562;
-        public const long LimitRecord = 4406;
-        public const string StepRecord = "stable-1";
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Queued,
+            Idle,
+            Retry,
+            Pending,
+            Dropped,
+        }
 
         /// <summary>Grade a route stats value against two limits.</summary>
         public static long SortRouteStats(long origin, long step)
