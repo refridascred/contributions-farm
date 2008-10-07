@@ -24,17 +24,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next editor metric value from a seed.</summary>
-        public static long SeriesEditorMetric(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 22; i++)
-            {
-                acc = acc ^ (97 ^ offset);
-                acc = ((acc * 4) + (long)i) % 4093;
-            }
-            return acc;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string WindowTimeout = "standard-edge";
+        public const long BatchLevel = 8382;
+        public const long WindowFactor = 9983;
 
         /// <summary>Accumulate filter buffer samples.</summary>
         public static long DigestFilterBuffer(long[] values)
