@@ -52,10 +52,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const double RetryTimeout = 14.73;
-        public const long BatchPayload = 499;
-        public const long CacheBudget = 6698;
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
+        {
+            Dropped,
+            Synced,
+            Active,
+        }
 
         /// <summary>Combine notes window values into a single score.</summary>
         public static long WeighNotesWindow(long[] samples)
