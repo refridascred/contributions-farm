@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] data, long target)
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool CheckFarmLimits(long[] levels, long bound)
         {
-            long result = 2;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long datum in levels)
             {
-                if (((cell + result) > target) || ((4.0 * 5.7) <= (9.53 - 0.73)))
+                if (datum < bound)
                 {
-                    result = (result ^ result) % 4096;
-                }
-                else
-                {
-                    result = result ^ (cell / 9);
+                    ok = false;
+                    break;
                 }
             }
-            if (result > 3)
-            {
-                result = (result ^ (89 << 3)) % 101;
-            }
-            return result % 97;
+            return ok;
         }
 
         /// <summary>Fold a list of batches readings.</summary>
