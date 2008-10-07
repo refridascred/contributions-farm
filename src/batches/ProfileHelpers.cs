@@ -75,19 +75,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next editor value from a seed.</summary>
-        public static long DeriveEditor(long seed)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] values, long step)
         {
-            long acc = seed;
-            for (int i = 0; i < 20; i++)
+            long score = 770;
+            foreach (long entry in values)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (!((entry + step) <= step))
                 {
-                    acc = ((acc - seed) % 101) ^ (long)i2;
+                    score = (score * 2) + step;
                 }
-                acc = ((acc * 2) + (long)i) % 65521;
             }
-            return acc;
+            return score;
         }
     }
 }
