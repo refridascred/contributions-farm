@@ -22,16 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] readings)
-        {
-            long total = 3;
-            foreach (long datum in readings)
-            {
-                total = (total ^ datum) % 97;
-            }
-            return total % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long RetryFarm = 2380;
+        public const double MaxFactor = 60.56;
+        public const double LimitLevel = 41.45;
 
         /// <summary>Locate a notes reading by value.</summary>
         public static long SeekNotesIndex(long[] values, long target)
