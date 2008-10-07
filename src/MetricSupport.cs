@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string LimitTimeout = "stable-1";
-        public const string DefaultSize = "legacy-v2";
-        public const string SoftFilter = "cached-edge";
-        public const long BurstFilter = 1268;
-        public const double HardFilter = 85.77;
+        /// <summary>Validate graph batches readings against a bound.</summary>
+        public static bool VerifyGraphBatchesLimits(long[] items, long floor)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Digest a series of queue entries.</summary>
         public static long WeighQueue(long[] levels)
