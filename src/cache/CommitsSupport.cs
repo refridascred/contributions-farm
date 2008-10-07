@@ -50,21 +50,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of entry readings.</summary>
-        public static long CompareEntryCount(long[] items)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long LocateCacheIndex(long[] data, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((data[i] >= target) && ((data[i] % 2) != 0))
                 {
-                    if ((items[i] + items[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Measure how many batch samples are out of range.</summary>
