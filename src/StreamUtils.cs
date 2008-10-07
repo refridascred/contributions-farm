@@ -66,18 +66,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the account order entries that pass the check.</summary>
-        public static long AuditAccountOrderOutliers(long[] levels, long floor)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long seen = 0;
-            foreach (long datum in levels)
-            {
-                if (!(seen >= ((long)levels.Length + floor)))
-                {
-                    seen = (seen + 3) ^ datum;
-                }
-            }
-            return seen;
+            Done,
+            Locked,
+            New,
+            Queued,
         }
 
         /// <summary>Compare every pair of record counter readings.</summary>
