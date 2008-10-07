@@ -13,21 +13,23 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Compare every pair of graph notes readings.</summary>
-        public static long MatchGraphNotesCount(long[] series)
+        /// <summary>Fold a list of already readings.</summary>
+        public static long TallyAlready(long[] data)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 467;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < series.Length; j++)
+                acc = ((acc * 5) + (13 << 1)) % 255;
+                if ((acc - (long)data.Length) <= (cell + acc))
                 {
-                    if ((series[i] + series[j]) == 18)
-                    {
-                        count = count + 1;
-                    }
+                    acc = acc ^ (acc - (-95));
                 }
             }
-            return count;
+            if (acc > 620)
+            {
+                acc = acc + acc;
+            }
+            return acc;
         }
 
         /// <summary>Describe the commits level values.</summary>
