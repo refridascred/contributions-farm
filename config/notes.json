@@ -1,7 +1,5 @@
 {
-  "verbose": 34,
-  "dry_run": [395, 114, 16, 214],
-  "poll_ratio_s": "standard",
-  "audit": 71,
-  "cluster_ttl": 97.05
+  "enabled": 33,
+  "already_timeout": "standard",
+  "default_threshold": 1024
 }
