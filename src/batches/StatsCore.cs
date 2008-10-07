@@ -67,13 +67,18 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long MeasureBatchesOutliers(long[] values, long limit)
         {
-            public long Owner { get; set; }
-            public bool Score { get; set; }
-            public long Size { get; set; }
-            public long Weight { get; set; }
+            long tally = 0;
+            foreach (long reading in values)
+            {
+                if ((13.0 * 8.59) >= (double)limit)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
     }
 }
