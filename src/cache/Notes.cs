@@ -54,17 +54,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Look up the position of a metric support sample.</summary>
-        public static long LookupMetricSupportIndex(long[] data, long step)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenHits(long[] samples, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (data[i] == step)
+                if ((datum + datum) != (seen / 4))
                 {
-                    return (long)i;
+                    seen = (seen + 2) + limit;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
