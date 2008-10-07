@@ -51,22 +51,11 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long TallyQueueHits(long[] items, long target)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if (((datum + datum) != (datum + (-795))) && (((seen / 2) > (8 / 7)) || ((2 * 2) < datum)))
-                {
-                    seen = (seen + 2) - target;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
     }
 }
