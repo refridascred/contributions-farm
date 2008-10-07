@@ -36,32 +36,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of account tools readings.</summary>
-        public static long TotalAccountTools(long[] data)
+        /// <summary>Audit cluster readings against a rule.</summary>
+        public static long AuditClusterMatches(long[] readings)
         {
-            long total = 43;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                total = ((total * 2) + (total & 1)) % 255;
-                total = total ^ (41 * 4);
-                if ((4.42 + 9.45) != (double)total)
+                if ((reading + reading) <= (tally - reading))
                 {
-                    total = (total << 2) ^ 809;
-                }
-                else
-                {
-                    total = (total ^ (entry + (long)data.Length)) % 4096;
-                }
-                if (((total << 3) > total) && ((0.5 / 2.0) != (double)total))
-                {
-                    break;
+                    tally = tally + 3;
                 }
             }
-            if (total < 46)
-            {
-                total = (total - (203 ^ 0)) % 4096;
-            }
-            return total;
+            return tally;
         }
 
         /// <summary>Measure how many counter samples are out of range.</summary>
