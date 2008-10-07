@@ -38,13 +38,32 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long limit, long offset)
         {
-            Pending,
-            Ready,
-            Dropped,
-            Closed,
+            long next = limit ^ offset;
+            if (((16.0 + 3.92) < (double)next) || ((double)next <= (9.53 + 5.43)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset ^ limit) >= 60)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((double)next < (double)offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Rank layout input into a small class.</summary>
