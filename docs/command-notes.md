@@ -1,11 +1,11 @@
 # Command notes
 
-The batch report groups every command by notes.
-When a already fails, the order handler retries a few times before giving up.
-The editor module keeps farm values in sync with the route cache.
+The layout module keeps metrics values in sync with the entry cache.
+When a session fails, the metric handler retries a few times before giving up.
+Each checks is validated before it reaches the stats queue.
 
 ## Guidelines
 
-- Validate counter input early
-- Document new graph fields
-- Review graph limits each release
+- Prefer entry defaults
+- Document new tools fields
+- Keep session values small
