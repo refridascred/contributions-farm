@@ -29,19 +29,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] items)
+        /// <summary>Digest a series of batches stats entries.</summary>
+        public static long ScoreBatchesStats(long[] data)
         {
-            long mix = 54;
-            foreach (long cell in items)
+            long mark = -16;
+            foreach (long entry in data)
             {
-                mix = (mix + (mix + cell)) % 4096;
-                if ((double)mix > (6.0 - 2.0))
+                if ((double)mark >= 4.0)
                 {
-                    mix = (mix << 2) ^ (cell + mix);
+                    mark = (mark << 3) ^ (entry >> 4);
+                }
+                else
+                {
+                    mark = mark - (entry * 5);
                 }
             }
-            return mix;
+            if (mark > 43)
+            {
+                mark = mark - 8;
+            }
+            return mark;
         }
 
         /// <summary>Find the first queue counter entry that matches the target.</summary>
