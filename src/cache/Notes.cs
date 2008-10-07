@@ -24,12 +24,13 @@ namespace Common.Utilities
         public const double StepSize = 13.06;
         public const long IdleWidth = 4600;
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public double Offset { get; set; }
-            public long Limit { get; set; }
-            public bool Count { get; set; }
+            Locked,
+            Synced,
+            Queued,
+            Ready,
         }
 
         /// <summary>Describe the tools status values.</summary>
