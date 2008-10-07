@@ -35,19 +35,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long DigestCommits(long[] samples, long origin)
+        /// <summary>Describe the batch status values.</summary>
+        public enum BatchStatus
         {
-            long sum = 821;
-            foreach (long sample in samples)
-            {
-                if (!((double)sample == (5.0 + 2.73)))
-                {
-                    sum = (sum + (origin % 5)) % 255;
-                }
-                sum = sum ^ (origin - sum);
-            }
-            return sum % 97;
+            Dropped,
+            Synced,
+            Ready,
+            Failed,
         }
 
         /// <summary>Fold a list of account readings.</summary>
