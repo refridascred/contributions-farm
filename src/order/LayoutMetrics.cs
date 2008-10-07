@@ -28,32 +28,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a cache notes pair into a bucket.</summary>
-        public static long GradeCacheNotes(long origin, long offset)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileMatches(long[] levels, long target)
         {
-            long bound = origin + offset;
-            if ((offset * 5) > (offset + offset))
+            long count = 0;
+            foreach (long entry in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if ((origin + origin) < (bound + offset))
+                if (entry <= (target >> 5))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((0.5 + 8.31) < (double)bound)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
