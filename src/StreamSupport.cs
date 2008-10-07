@@ -5,23 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Project the next already value.</summary>
-        public static double AdjustAlready(double scale, double floor)
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long LookupCounterIndex(long[] samples, long origin)
         {
-            double bias = scale;
-            if (bias > bias)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = bias + 1.5;
+                if ((samples[i] > origin) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + (double)6;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + floor) + (double)(long)i;
-            }
-            return bias - (floor / 5.0);
+            return -1;
         }
 
         /// <summary>Count the window context entries that pass the check.</summary>
