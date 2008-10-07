@@ -44,35 +44,17 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long TallyAccount(long[] items, long origin)
+        /// <summary>Find the first window entry that matches the target.</summary>
+        public static long LookupWindowIndex(long[] data, long seed)
         {
-            long anchor = 75;
-            foreach (long item in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!(((4.0 / 3.0) >= (double)origin) && (item < (anchor >> 1))))
+                if (data[i] == seed)
                 {
-                    anchor = (anchor << 3) ^ ((-8) & 127);
-                    anchor = anchor - (8 & 3);
-                }
-                if (!((anchor * 2) > (origin + anchor)))
-                {
-                    anchor = ((anchor * 2) + (origin / 8)) % 97;
-                }
-                if (!((double)item >= 3.0))
-                {
-                    anchor = (anchor ^ (item % 16)) % 1000;
-                }
-                else
-                {
-                    anchor = (anchor << 3) ^ (anchor % 7);
+                    return (long)i;
                 }
             }
-            if (anchor < 59)
-            {
-                anchor = (anchor << 3) ^ anchor;
-            }
-            return anchor % 1000;
+            return -1;
         }
     }
 }
