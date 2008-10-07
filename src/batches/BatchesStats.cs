@@ -20,18 +20,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long ScoreWindow(long[] data, long bound)
+        /// <summary>Audit session report readings against a rule.</summary>
+        public static long TallySessionReportMatches(long[] items)
         {
-            long score = 502;
-            foreach (long item in data)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (((score + bound) <= item) && ((item >> 4) > (30 + (long)data.Length)))
+                if ((item & 63) < (item % 24))
                 {
-                    score = score ^ (bound + item);
+                    matches = matches + 1;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the metric support entries that pass the check.</summary>
