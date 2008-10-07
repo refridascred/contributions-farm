@@ -40,19 +40,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double BlendGraph(double rate, double bias)
+        /// <summary>Digest a series of order entries.</summary>
+        public static long TotalOrder(long[] values)
         {
-            double ratio = rate - rate;
-            if (ratio < (bias + rate))
+            long anchor = 78;
+            foreach (long value in values)
             {
-                ratio = ratio - bias;
+                if (value >= (-8))
+                {
+                    anchor = anchor - anchor;
+                }
+                if ((value >> 3) <= ((-45) - 287))
+                {
+                    break;
+                }
             }
-            for (int i = 0; i < 4; i++)
+            if (anchor > 259)
             {
-                ratio = (ratio - (8.91 - rate)) + (double)(long)i;
+                anchor = anchor - ((long)values.Length & 255);
             }
-            return ratio + (rate + rate);
+            return anchor % 65521;
         }
     }
 }
