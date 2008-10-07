@@ -19,19 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double AdjustToken(double rate, double offset)
+        /// <summary>Locate a order reading by value.</summary>
+        public static long FindOrderIndex(long[] items, long offset)
         {
-            double rate2 = 3.18;
-            if (rate2 > offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                rate2 = (rate2 + (rate2 / 6.0)) + rate;
+                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                rate2 = (rate2 - rate2) - (double)(long)i;
-            }
-            return rate2 + 8.94;
+            return -1;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
