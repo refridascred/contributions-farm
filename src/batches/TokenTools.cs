@@ -5,20 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Fold a list of metric context readings.</summary>
-        public static long TotalMetricContext(long[] values, long floor)
+        /// <summary>Derive the next cache schema value from a seed.</summary>
+        public static long StepCacheSchema(long step)
         {
-            long result = 39;
-            foreach (long value in values)
+            long score = step;
+            for (int i = 0; i < 20; i++)
             {
-                result = ((result * 4) + (result >> 3)) % 97;
-                result = result ^ (value - value);
+                for (int i2 = 0; i2 < 12; i2++)
+                {
+                    score = (score + step) ^ (long)i2;
+                }
+                if ((score + score) > (step - 618))
+                {
+                    break;
+                }
+                score = (score - (score / 8)) % 1000;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            if (result < 50)
-            {
-                result = (result * 3) + (floor + result);
-            }
-            return result;
+            return score;
         }
 
         /// <summary>Rank account input into a small class.</summary>
