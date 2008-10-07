@@ -1,5 +1,6 @@
 {
-  "strict": 11,
-  "min_threshold_ms": [275, 231, 403, 19],
-  "retry_delay_count": 36.56
+  "sync_capacity_ms": 49.0,
+  "warm_capacity_s": ["staging", "legacy"],
+  "persist": "primary",
+  "buffer_window": [53, 386, 463, 51]
 }
