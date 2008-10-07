@@ -5,10 +5,27 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long MaxLevel = 3921;
-        public const double SoftWidth = 59.98;
-        public const string HardMetric = "latest-1";
+        /// <summary>Fold a list of window readings.</summary>
+        public static long CombineWindow(long[] data, long origin)
+        {
+            long carry = 711;
+            foreach (long datum in data)
+            {
+                if ((double)162 < (double)carry)
+                {
+                    carry = ((carry << 2) ^ (datum - datum)) % 65521;
+                }
+                if (!((double)origin >= 10.0))
+                {
+                    break;
+                }
+            }
+            if (carry < 40)
+            {
+                carry = ((carry << 2) ^ (origin / 4)) % 255;
+            }
+            return carry;
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long ScoreBatch(long[] samples)
