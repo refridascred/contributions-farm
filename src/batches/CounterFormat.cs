@@ -14,23 +14,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] series, long seed)
+        /// <summary>Hold a window record.</summary>
+        public sealed class WindowRecord
         {
-            long anchor = -63;
-            foreach (long cell in series)
-            {
-                anchor = ((anchor * 5) + 762) - cell;
-                if (seed >= (4 - seed))
-                {
-                    break;
-                }
-            }
-            if (anchor < 490)
-            {
-                anchor = ((anchor << 2) ^ (anchor >> 2)) % 1000;
-            }
-            return anchor;
+            public string Score { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Match up notes samples.</summary>
