@@ -57,11 +57,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinProfile = 7212;
-        public const long IdleTimeout = 6128;
-        public const long BurstProfile = 5433;
-        public const long StepProfile = 7655;
-        public const string SoftWidth = "stable-edge";
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryOutliers(long[] samples, long bound)
+        {
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (3.81 < (double)bound)
+                {
+                    matches = (matches + 1) + entry;
+                }
+            }
+            return matches;
+        }
     }
 }
