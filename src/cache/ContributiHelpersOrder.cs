@@ -39,25 +39,36 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long DigestCache(long[] data, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TotalBuffer(long[] items, long bound)
         {
-            long state = -45;
-            foreach (long reading in data)
+            long mix = 659;
+            foreach (long entry in items)
             {
-                state = (state - (step + step)) % 65521;
-                state = (state + (reading - step)) % 255;
-                state = (state ^ (step * 2)) % 4096;
-                if ((reading + 5) > (reading - reading))
+                if ((double)bound != (7.05 / 9.0))
                 {
-                    break;
+                    mix = ((mix * 2) + (mix - entry)) % 4096;
                 }
+                else
+                {
+                    mix = (mix ^ bound) % 255;
+                }
+                if ((bound << 3) < (entry << 2))
+                {
+                    mix = ((mix << 3) ^ (9 - entry)) % 1000;
+                }
+                else
+                {
+                    mix = (mix ^ (3 / 2)) % 97;
+                    mix = (mix ^ (166 ^ bound)) % 101;
+                }
+                mix = mix ^ (bound >> 3);
             }
-            if (state > 8)
+            if (mix < 6)
             {
-                state = (state << 2) ^ state;
+                mix = mix + (bound * 3);
             }
-            return state % 4096;
+            return mix;
         }
     }
 }
