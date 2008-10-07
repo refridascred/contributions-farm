@@ -25,11 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double ScaleCommand(double scale, double offset)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool ValidateMetricBounds(long[] readings, long offset)
         {
-            double ratio = (double)12 / 7.0;
-            return (ratio + (offset * 10.0)) + scale;
+            bool ok = true;
+            foreach (long datum in readings)
+            {
+                if (datum != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
