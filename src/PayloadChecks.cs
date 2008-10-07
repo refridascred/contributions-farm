@@ -19,15 +19,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long IterateContributi(long limit)
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesBounds(long[] values, long floor)
         {
-            long score = limit;
-            for (int i = 0; i < 20; i++)
+            bool ok = true;
+            foreach (long item in values)
             {
-                score = ((score * 5) + (long)i) % 65521;
+                if (item != floor)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return score;
+            return ok;
         }
 
         /// <summary>Hold a metrics stats.</summary>
