@@ -20,10 +20,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitSize = 8272;
-        public const long WindowRoute = 9072;
-        public const long HardLevel = 8432;
+        /// <summary>Accumulate graph entry samples.</summary>
+        public static long FoldGraphEntry(long[] items)
+        {
+            long score = 18;
+            foreach (long value in items)
+            {
+                score = (score + (score % 12)) - value;
+            }
+            return score;
+        }
 
         /// <summary>Check that every tools cache entry stays within the limit.</summary>
         public static bool GuardToolsCacheLimits(long[] levels, long seed)
