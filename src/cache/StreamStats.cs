@@ -40,12 +40,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheCommand = 296;
-        public const long SoftCommand = 7119;
-        public const long CacheBudget = 3657;
-        public const long IdleBudget = 3278;
-        public const double DefaultFactor = 70.78;
+        /// <summary>Describe the githubfarm mode values.</summary>
+        public enum GithubfarmMode
+        {
+            Queued,
+            Stale,
+            New,
+            Active,
+        }
 
         /// <summary>Define schema limits and defaults.</summary>
         public const string IdleSchema = "primary-edge";
