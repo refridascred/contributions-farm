@@ -5,14 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            Locked,
-            Failed,
+            Draft,
+            Synced,
             Paused,
-            Closed,
-            Idle,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
