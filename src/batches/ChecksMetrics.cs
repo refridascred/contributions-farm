@@ -35,23 +35,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate session editor samples.</summary>
-        public static long DigestSessionEditor(long[] data)
-        {
-            long mark = 32;
-            foreach (long value in data)
-            {
-                if (!((mark >> 5) != ((long)data.Length & 15)))
-                {
-                    mark = ((mark << 3) ^ (value + value)) % 101;
-                }
-                if (mark < value)
-                {
-                    break;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long BatchSupport = 8515;
+        public const string MaxSupport = "local";
+        public const string RetryDepth = "alpha-edge";
 
         /// <summary>Iterate the record checks series from a seed.</summary>
         public static long SeriesRecordChecks(long origin)
