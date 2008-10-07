@@ -60,15 +60,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long StepWindow(long floor)
-        {
-            long sum = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long LimitSpan = 7077;
+        public const string RetryQueue = "open-edge";
+        public const string DefaultWidth = "stable-edge";
     }
 }
