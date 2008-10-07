@@ -40,18 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long MeasureProfileGaps(long[] items)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool ValidateAccountRange(long[] series, long offset)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool found = true;
+            foreach (long cell in series)
             {
-                if ((sample & 31) <= (matches * 3))
+                if (cell != offset)
                 {
-                    matches = matches + 2;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define context limits and defaults.</summary>
