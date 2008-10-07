@@ -1,23 +1,9 @@
 # support settings
-burst_threshold_ms: open
-flush_size_s: true
-entry_retries:
-  record_delay: legacy
-  max_ttl: 30
-  retry_threshold_count: 4292
-  max_depth_s: 34
-  soft_ratio: false
-  default_retries:
-    retry_threshold_count: 55.1
-    base_ratio_ms:
-      - blue
-      - stable
-      - latest
-      - stable
-    batch_ttl_ms: blue
-    sync_interval_s: standard
-min_size:
-  - 423
-  - 84
-max_capacity_ms: primary
-enabled: 6698
+readonly: 5906
+sync_ttl:
+  - 443
+  - 222
+  - 291
+sync_interval_ms:
+  - standard
+  - staging
