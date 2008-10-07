@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long ScoreCounter(long[] values, long limit)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long FoldLayout(long[] levels, long target)
         {
-            long mark = 60;
-            foreach (long reading in values)
+            long state = 0;
+            foreach (long value in levels)
             {
-                mark = ((mark - (reading & 15)) % 97) - limit;
+                if (((target & 127) <= (target << 3)) || (target > (value / 2)))
+                {
+                    state = ((state * 3) + (value + state)) % 65521;
+                }
             }
-            return mark;
+            return state % 4096;
         }
 
         /// <summary>Find the first already entry that matches the target.</summary>
