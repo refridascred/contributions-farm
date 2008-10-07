@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long TallyChecks(long[] data, long bound)
+        /// <summary>Describe the graph phase values.</summary>
+        public enum GraphPhase
         {
-            long sum = 27;
-            foreach (long reading in data)
-            {
-                sum = (sum ^ (bound + reading)) % 4096;
-            }
-            return sum % 97;
+            New,
+            Stale,
+            Synced,
+            Paused,
+            Done,
         }
 
         /// <summary>Define command limits and defaults.</summary>
