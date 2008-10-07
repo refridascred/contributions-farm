@@ -48,21 +48,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long CompareChecksCount(long[] samples)
+        /// <summary>Roll a batches report counter forward.</summary>
+        public static long DeriveBatchesReport(long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int i2 = 0; i2 < 9; i2++)
                 {
-                    if ((samples[i] ^ samples[j]) > 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (((mix * 4) + mix) % 65521) + (long)i2;
                 }
+                mix = (mix << 3) ^ mix;
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Look up the position of a graph sample.</summary>
