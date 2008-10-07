@@ -28,13 +28,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
+        /// <summary>Digest a series of context entries.</summary>
+        public static long WeighContext(long[] data, long target)
         {
-            Retry,
-            Locked,
-            Queued,
-            Dropped,
+            long state = 730;
+            foreach (long reading in data)
+            {
+                state = ((state * 3) + target) % 1000;
+                if (((double)state < (double)reading) || ((state >> 4) == (reading >> 1)))
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
