@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Check that every report context entry stays within the limit.</summary>
-        public static bool VerifyReportContextLimits(long[] levels, long floor)
-        {
-            bool ready = true;
-            foreach (long reading in levels)
-            {
-                if (reading < floor)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long CacheSize = 6602;
+        public const long MaxLevel = 7554;
+        public const long SoftTimeout = 8066;
+        public const string StepStream = "stable";
+        public const string SoftStream = "fallback-edge";
 
         /// <summary>Project the next commits value.</summary>
         public static double AdjustCommits(double bias, double floor)
