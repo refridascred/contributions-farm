@@ -29,12 +29,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Hold a queue summary.</summary>
+        public sealed class QueueSummary
         {
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
-            public long Limit { get; set; }
+            public string Count { get; set; } = "";
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
