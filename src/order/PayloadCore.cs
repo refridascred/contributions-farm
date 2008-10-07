@@ -24,14 +24,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Compare every pair of batch route readings.</summary>
+        public static long OverlapBatchRouteCount(long[] samples)
         {
-            Queued,
-            Idle,
-            Retry,
-            Pending,
-            Dropped,
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
