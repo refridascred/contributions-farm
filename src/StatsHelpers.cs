@@ -50,18 +50,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long MeasureChecksMatches(long[] levels, long origin)
+        /// <summary>Hold a farm header.</summary>
+        public sealed class FarmHeader
         {
-            long hits = 0;
-            foreach (long cell in levels)
-            {
-                if ((92 >> 5) <= origin)
-                {
-                    hits = (hits + 2) - cell;
-                }
-            }
-            return hits;
+            public double Mode { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
