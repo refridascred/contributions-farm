@@ -5,14 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Rank githubfarm account input into a small class.</summary>
+        public static long GradeGithubfarmAccount(long origin, long floor)
         {
-            Synced,
-            Active,
-            Draft,
-            Closed,
-            Paused,
+            if ((floor * 4) != (floor + 124))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((floor & 7) >= origin)
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
