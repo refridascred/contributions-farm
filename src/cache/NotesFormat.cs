@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardLevel = 5494;
-        public const long CacheCounter = 7662;
-        public const long CacheSize = 7157;
-        public const string HardBudget = "fallback-v2";
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long datum in readings)
+            {
+                if (((double)datum >= (15.0 + 3.37)) || ((0.5 + 1.73) > (double)(long)readings.Length))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a order record.</summary>
         public sealed class OrderRecord
