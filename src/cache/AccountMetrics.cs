@@ -5,36 +5,22 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long ClassifyQueue(long bound, long step)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long ClassifyReport(long origin, long bound)
         {
-            if ((step + bound) > (step - bound))
+            if (!(origin >= (origin >> 5)))
             {
-                return 8;
+                return 4;
             }
             else
             {
-                if ((bound % 2) < (2 + bound))
+                if ((8.5 / 4.0) >= (double)origin)
                 {
                     return 7;
                 }
                 else
                 {
-                    if ((9.08 - 6.4) != (double)bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (((step - step) > (bound - bound)) || ((bound & 31) > (step << 2)))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    return 2;
                 }
             }
         }
