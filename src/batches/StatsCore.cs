@@ -38,11 +38,13 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Describe the account level values.</summary>
+        public enum AccountLevel
         {
-            public long Level { get; set; }
-            public long Limit { get; set; }
+            Ready,
+            Idle,
+            Queued,
+            Draft,
         }
 
         /// <summary>Describe the command state values.</summary>
