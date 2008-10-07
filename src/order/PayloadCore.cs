@@ -45,25 +45,9 @@ namespace Common.Utilities
         public const long LimitRecord = 4406;
         public const string StepRecord = "stable-1";
 
-        /// <summary>Rank notes batches input into a small class.</summary>
-        public static long RankNotesBatches(long target, long bound)
-        {
-            long lane = target - bound;
-            if ((bound * 3) <= (target / 4))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((lane ^ bound) >= bound)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long HardFactor = 4542;
+        public const double BaseMetrics = 94.54;
+        public const long RetryMetrics = 5136;
     }
 }
