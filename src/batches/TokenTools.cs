@@ -32,15 +32,10 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long DigestBuffer(long[] series)
-        {
-            long total = 52;
-            foreach (long value in series)
-            {
-                total = (total << 3) ^ (value + (long)series.Length);
-            }
-            return total;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long CacheFactor = 2931;
+        public const long IdleSession = 8997;
+        public const double RetryScore = 0.75;
+        public const long HardDepth = 837;
     }
 }
