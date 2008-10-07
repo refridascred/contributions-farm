@@ -74,10 +74,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string DefaultInterval = "standard-edge";
-        public const long MaxDepth = 784;
-        public const double MinBudget = 64.81;
-        public const long DefaultLevel = 3932;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BatchContributi = 519;
+        public const long WindowCount = 2281;
+        public const long LimitContributi = 3037;
+        public const long BaseContributi = 5855;
+        public const long RetryTimeout = 8861;
     }
 }
