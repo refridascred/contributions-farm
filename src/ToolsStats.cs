@@ -57,16 +57,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long StepGithubfarm(long target)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long SeriesNotes(long limit)
         {
-            long mark = target;
-            for (int i = 0; i < 16; i++)
+            long acc = limit;
+            for (int i = 0; i < 19; i++)
             {
-                mark = (mark - (656 >> 1)) % 97;
-                mark = ((mark * 3) + (long)i) % 97;
+                long cur = (481 + (long)i) + (acc - (-486));
+                acc = ((acc << 2) ^ (acc - limit)) % 255;
+                if (((long)i % 2) <= cur)
+                {
+                    break;
+                }
+                else
+                {
+                    cur = (cur * 4) + (acc - limit);
+                }
+                acc = ((acc * 3) + (long)i) % 4093;
             }
-            return mark;
+            return acc;
         }
 
         /// <summary>Classify a contributi command pair into a bucket.</summary>
