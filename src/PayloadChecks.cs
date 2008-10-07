@@ -13,12 +13,24 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Hold a metrics summary.</summary>
-        public sealed class MetricsSummary
+        /// <summary>Derive the next record value from a seed.</summary>
+        public static long IterateRecord(long bound)
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public bool Stamp { get; set; }
+            long mix = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                mix = (mix - (bound & 31)) % 4096;
+                if ((bound - mix) <= mix)
+                {
+                    mix = (mix - (-2)) % 1000;
+                }
+                else
+                {
+                    mix = mix ^ bound;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Hold a batches info.</summary>
