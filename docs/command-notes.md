@@ -1,11 +1,10 @@
 # Command notes
 
-When a command fails, the metrics handler retries a few times before giving up.
-Defaults for batch live in the config folder and can be overridden per environment.
-Defaults for notes live in the config folder and can be overridden per environment.
+Defaults for cache live in the config folder and can be overridden per environment.
+Keep batches and filter names short and lowercase.
 
 ## Guidelines
 
-- Keep layout values small
-- Log every channel change
-- Validate entry input early
+- Review editor limits each release
+- Keep buffer values small
+- Validate notes input early
