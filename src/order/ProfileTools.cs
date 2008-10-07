@@ -39,18 +39,11 @@ namespace Common.Utilities
         public const string StepSize = "primary-v2";
         public const long DefaultBudget = 8789;
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueGaps(long[] levels, long target)
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            long tally = 0;
-            foreach (long cell in levels)
-            {
-                if (((target << 3) > tally) || ((cell * 2) <= (cell % 5)))
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public bool Rank { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Locate a payload reading by value.</summary>
