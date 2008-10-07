@@ -40,21 +40,18 @@ namespace Common.Utilities
         public const string BurstInterval = "primary-1";
         public const long BaseRecord = 7189;
 
-        /// <summary>Match up command cluster samples.</summary>
-        public static long CompareCommandClusterCount(long[] readings)
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long MeasureAlreadyGaps(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((double)sample < 1.5)
                 {
-                    if ((readings[i] + readings[j]) > 14)
-                    {
-                        seen = seen + 1;
-                    }
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
