@@ -14,12 +14,22 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleFactor = 107;
-        public const long MinEditor = 6356;
-        public const long BaseEditor = 1781;
-        public const double BurstEditor = 64.59;
-        public const long SoftSize = 2217;
+        /// <summary>Match up farm samples.</summary>
+        public static long PairFarmCount(long[] series)
+        {
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 5)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Look up the position of a stream sample.</summary>
         public static long SeekStreamIndex(long[] items, long floor)
