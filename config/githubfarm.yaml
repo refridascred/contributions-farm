@@ -1,12 +1,12 @@
 # githubfarm settings
-strict: 84
-sync_depth_s: stable
-compress: 560
-enabled:
-  - fallback
-  - eu-west
-persist: 60
-min_capacity:
-  readonly: open
-  flush_capacity_pct: true
-  notes_ttl: stable
+entry_interval:
+  max_size: true
+  poll_depth_count: 66.42
+  cache_threshold_count: 7617
+  layout_ttl: 33
+compress:
+  - 378
+  - 47
+  - 83
+  - 249
+sync_delay_pct: true
