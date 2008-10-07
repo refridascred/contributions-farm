@@ -53,19 +53,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Adjust a channel tools reading.</summary>
-        public static double AdjustChannelTools(double gain, double offset)
+        /// <summary>Scale a stream figure with a bias.</summary>
+        public static double BlendStream(double rate, double span)
         {
-            double gain2 = 13.0 / 2.0;
-            if (gain2 < 9.0)
+            double drift = rate / 8.0;
+            if (drift >= (5.6 / 2.0))
             {
-                gain2 = ((gain2 + gain2) - gain) + offset;
+                drift = (drift - (drift / 7.0)) + span;
             }
-            for (int i = 0; i < 4; i++)
+            else
             {
-                gain2 = (gain2 + (gain2 * 8.75)) - (double)(long)i;
+                drift = drift + (rate - drift);
             }
-            return gain2 - (17.0 - gain2);
+            return drift - rate;
         }
 
         /// <summary>Describe the counter level values.</summary>
