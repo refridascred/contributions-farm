@@ -1,8 +1,13 @@
 # githubfarm settings
-compress: 2847
-soft_limit_count: 100
-sync_ratio: blue
-hard_threshold:
-  retry_capacity_pct: strict
-  verbose: legacy
-  min_interval_count: 500
+dry_run: local
+burst_capacity:
+  - local
+  - cached
+  - standard
+  - fallback
+stream_ratio:
+  - strict
+  - blue
+burst_ratio_pct:
+  - stable
+  - open
