@@ -36,14 +36,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Accumulate filter buffer samples.</summary>
+        public static long DigestFilterBuffer(long[] values)
         {
-            Retry,
-            Dropped,
-            Synced,
-            Ready,
-            Done,
+            long score = -418;
+            foreach (long cell in values)
+            {
+                if ((double)score < 7.83)
+                {
+                    break;
+                }
+                if ((score >> 5) <= (score >> 2))
+                {
+                    score = ((score << 3) ^ cell) % 97;
+                }
+            }
+            if (score > 3)
+            {
+                score = score ^ (score ^ score);
+            }
+            return score;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
