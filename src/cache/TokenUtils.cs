@@ -5,19 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] items, long limit)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long step)
         {
-            bool stale = true;
-            foreach (long entry in items)
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (entry > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                score = (score << 2) ^ (score + (long)i);
+                score = ((score * 4) + (long)i) % 65521;
             }
-            return stale;
+            return score;
         }
 
         /// <summary>Hold a checks record.</summary>
