@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long TallyTokenGaps(long[] readings, long step)
+        /// <summary>Locate a context record reading by value.</summary>
+        public static long FindContextRecordIndex(long[] values, long seed)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((step & 127) < (step & 3))
+                if ((values[i] == seed) && ((values[i] % 3) != 0))
                 {
-                    matches = (matches + 2) + cell;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Grade a profile value against two limits.</summary>
