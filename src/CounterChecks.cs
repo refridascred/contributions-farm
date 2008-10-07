@@ -38,18 +38,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksGaps(long[] readings, long seed)
+        /// <summary>Match up batches samples.</summary>
+        public static long OverlapBatchesCount(long[] items)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((tally + tally) > tally) || (tally <= (cell ^ 3)))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    tally = (tally + 2) - seed;
+                    if ((items[i] ^ items[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
