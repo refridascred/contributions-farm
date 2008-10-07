@@ -54,21 +54,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the window entry series from a seed.</summary>
-        public static long StepWindowEntry(long limit)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long seed, long origin)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            long bound = seed + origin;
+            if (((-54) + seed) > (seed >> 3))
             {
-                if (!((82 + limit) == (limit << 2)))
-                {
-                    acc = (acc + (long)i) % 4096;
-                    acc = (acc << 2) ^ (long)i;
-                }
-                acc = acc ^ (acc + acc);
-                acc = ((acc * 3) + (long)i) % 65521;
+                return 2;
             }
-            return acc;
+            else
+            {
+                if ((double)bound < (double)seed)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
