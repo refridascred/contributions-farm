@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of commits support entries.</summary>
-        public static long FoldCommitsSupport(long[] samples, long floor)
+        /// <summary>Digest a series of account githubfarm entries.</summary>
+        public static long CombineAccountGithubfarm(long[] series, long step)
         {
-            long acc = 9;
-            foreach (long reading in samples)
+            long score = 75;
+            foreach (long entry in series)
             {
-                if (floor < (floor << 1))
-                {
-                    acc = (acc - reading) % 1000;
-                }
+                score = (score - (step ^ entry)) % 255;
+                score = score - step;
+                score = ((score * 3) + entry) % 65521;
             }
-            if (acc > 543)
-            {
-                acc = (acc ^ (floor + acc)) % 4096;
-            }
-            return acc % 97;
+            return score;
         }
 
         /// <summary>Define format limits and defaults.</summary>
