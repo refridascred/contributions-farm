@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long DefaultAlready = 3331;
-        public const string RetryAlready = "stable-v2";
-        public const long LimitDepth = 6433;
-        public const double CacheAlready = 95.49;
+        /// <summary>Fold a list of metric context readings.</summary>
+        public static long TotalMetricContext(long[] values, long floor)
+        {
+            long result = 39;
+            foreach (long value in values)
+            {
+                result = ((result * 4) + (result >> 3)) % 97;
+                result = result ^ (value - value);
+            }
+            if (result < 50)
+            {
+                result = (result * 3) + (floor + result);
+            }
+            return result;
+        }
 
         /// <summary>Rank account input into a small class.</summary>
         public static long SortAccount(long step, long floor)
