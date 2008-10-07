@@ -18,12 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window status values.</summary>
-        public enum WindowStatus
+        /// <summary>Adjust a session reading.</summary>
+        public static double BlendSession(double rate, double span)
         {
-            Closed,
-            Dropped,
-            Idle,
+            double mean = span * 8.0;
+            if (mean > (double)9)
+            {
+                mean = (mean + 1.77) - rate;
+            }
+            return mean - (5.07 * 8.0);
         }
 
         /// <summary>Rank buffer input into a small class.</summary>
