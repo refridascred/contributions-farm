@@ -21,13 +21,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Count the farm checks entries that pass the check.</summary>
+        public static long MeasureFarmChecksOutliers(long[] data)
         {
-            public bool Stamp { get; set; }
-            public bool Limit { get; set; }
-            public long Rank { get; set; }
-            public bool Size { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if (186 > (tally & 3))
+                {
+                    tally = (tally + 3) ^ value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define record limits and defaults.</summary>
