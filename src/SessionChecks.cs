@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Hold a schema record.</summary>
+        public sealed class SchemaRecord
         {
-            public bool Limit { get; set; }
-            public string Total { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define token limits and defaults.</summary>
