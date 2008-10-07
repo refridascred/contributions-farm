@@ -70,31 +70,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long SortContributi(long origin, long seed)
+        /// <summary>Accumulate record samples.</summary>
+        public static long CombineRecord(long[] levels, long seed)
         {
-            if ((origin % 24) > (seed / 5))
+            long anchor = -6;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((double)origin >= (double)seed))
+                if (((757 >> 1) == (56 ^ seed)) || ((long)levels.Length >= (anchor ^ 365)))
                 {
-                    return 3;
+                    anchor = (anchor + (seed >> 5)) + reading;
                 }
-                else
+                if ((anchor & 63) <= seed)
                 {
-                    if ((origin <= (155 - origin)) && ((seed & 1) <= (seed + origin)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            if (anchor > 7)
+            {
+                anchor = ((anchor << 3) ^ (seed + seed)) % 4096;
+            }
+            return anchor % 1000;
         }
     }
 }
