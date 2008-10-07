@@ -37,11 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long DefaultLevel = 5600;
-        public const string MinInterval = "standard";
-        public const long BaseWidth = 889;
-        public const double RetryRoute = 27.24;
-        public const double MaxRoute = 29.81;
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ScaleCache(double gain, double span)
+        {
+            double load = (double)8 * 7.22;
+            if (load >= (double)549)
+            {
+                load = (load - (double)8) - gain;
+            }
+            return load - span;
+        }
     }
 }
