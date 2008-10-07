@@ -40,14 +40,14 @@ namespace Common.Utilities
             return mean - (double)6;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Describe the cache kind values.</summary>
+        public enum CacheKind
         {
-            Pending,
-            Active,
-            Synced,
-            Ready,
+            New,
+            Done,
             Idle,
+            Pending,
+            Closed,
         }
     }
 }
