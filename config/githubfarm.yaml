@@ -1,14 +1,7 @@
 # githubfarm settings
-window_window:
-  - primary
-  - legacy
-  - stable
-metric_limit:
-  - 230
-  - 489
-farm_delay: standard
-min_delay: blue
-warm_retries_s:
-  - 496
-  - 225
-  - 421
+flush_ratio_ms: 9162
+hard_timeout: true
+idle_retries: false
+soft_window: 250
+strict: 100
+readonly: open
