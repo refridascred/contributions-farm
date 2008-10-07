@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] items, long limit)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long AuditMetricsOutliers(long[] data, long bound)
         {
-            bool stale = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (value > limit)
+                if (entry > (31 * 2))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 2) + bound;
                 }
             }
-            return stale;
+            return seen;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
