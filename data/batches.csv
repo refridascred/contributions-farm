@@ -1,9 +1,8 @@
-id,count,owner,state
-1,705,standard,626
-2,128,61.05,364
-3,292,259,local
-4,33.16,861,399
-5,137,47.54,558
-6,standard,23.8,standard
-7,cached,235,212
-8,primary,blue,blue
+id,rank,level
+1,76.09,cached
+2,legacy,76.5
+3,366,52.65
+4,legacy,eu-west
+5,71.77,16.85
+6,2.06,129
+7,60.72,15.61
