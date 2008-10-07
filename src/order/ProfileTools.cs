@@ -23,15 +23,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long DigestCluster(long[] data, long floor)
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] values)
         {
-            long mark = 2;
-            foreach (long reading in data)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                mark = (((mark * 2) + (reading * 3)) % 255) - floor;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return mark % 1000;
+            return count;
         }
 
         /// <summary>Validate record readings against a bound.</summary>
