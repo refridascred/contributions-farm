@@ -44,18 +44,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the farm support entries that pass the check.</summary>
-        public static long AuditFarmSupportMatches(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (((count + cell) <= (count / 7)) || ((count - count) < cell))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepSession = 7304;
+        public const long BaseSize = 6194;
+        public const long DefaultSession = 3246;
+        public const double RetrySession = 19.6;
+        public const long HardSession = 7800;
     }
 }
