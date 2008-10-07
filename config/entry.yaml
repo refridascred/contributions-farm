@@ -1,23 +1,6 @@
 # entry settings
-enabled: true
-metrics_depth: 24
-default_retries_s:
-  max_interval:
-    counter_ttl: 51
-    command_capacity: cached
-    strict: 14.38
-    soft_delay:
-      - 248
-      - 500
-      - 327
-    min_threshold_s: true
-  batch_size: staging
-  persist:
-    strict: 71.04
-    command_threshold: 23
-    batch_ttl_s: cached
-    sync_interval_count: 7
-  hard_capacity_count:
-    - 302
-    - 124
-    - 42
+readonly: 5309
+compress: 100
+burst_ratio_s: 8333
+command_depth: 60
+schema_retries: 40.2
