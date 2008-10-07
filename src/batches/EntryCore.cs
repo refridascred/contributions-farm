@@ -21,18 +21,12 @@ namespace Common.Utilities
         public const long DefaultScore = 4069;
         public const double DefaultCommand = 67.16;
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long AuditLayoutGaps(long[] items, long origin)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if (((reading + 58) > (hits - origin)) && (origin < (hits * 5)))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Mode { get; set; }
+            public double Owner { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Hold a contributi record.</summary>
