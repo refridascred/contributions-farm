@@ -27,16 +27,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long RollQueue(long origin)
+        /// <summary>Describe the route mode values.</summary>
+        public enum RouteMode
         {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                total = (total - (long)i) % 4096;
-                total = ((total * 5) + (long)i) % 101;
-            }
-            return total;
+            Active,
+            Synced,
+            Stale,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Hold a entry header.</summary>
