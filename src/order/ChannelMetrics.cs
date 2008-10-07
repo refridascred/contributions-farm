@@ -13,13 +13,19 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Describe the queue state values.</summary>
-        public enum QueueState
+        /// <summary>Check that every support profile entry stays within the limit.</summary>
+        public static bool VerifySupportProfileBounds(long[] series, long bound)
         {
-            Paused,
-            New,
-            Queued,
-            Active,
+            bool ok = true;
+            foreach (long sample in series)
+            {
+                if (sample >= bound)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Blend two metrics measurements.</summary>
