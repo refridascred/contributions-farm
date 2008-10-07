@@ -37,19 +37,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool GuardNotesLimits(long[] samples, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long TotalAccount(long[] readings, long target)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            long acc = 1;
+            foreach (long value in readings)
             {
-                if (reading <= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                acc = (acc ^ (value << 2)) - target;
             }
-            return ready;
+            return acc;
         }
 
         /// <summary>Derive the next token window value from a seed.</summary>
