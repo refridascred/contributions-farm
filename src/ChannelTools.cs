@@ -34,14 +34,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the channel status values.</summary>
-        public enum ChannelStatus
+        /// <summary>Describe the checks kind values.</summary>
+        public enum ChecksKind
         {
+            Pending,
             Retry,
-            Failed,
-            Dropped,
             Stale,
-            Queued,
         }
     }
 }
