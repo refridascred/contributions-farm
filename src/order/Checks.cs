@@ -46,22 +46,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Accumulate counter channel samples.</summary>
-        public static long WeighCounterChannel(long[] series, long target)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double ProjectWindow(double bias, double floor)
         {
-            long total = -226;
-            foreach (long cell in series)
+            double weight = (double)(555 / 3);
+            for (int i = 0; i < 3; i++)
             {
-                if ((total % 12) <= (877 - total))
-                {
-                    total = (total ^ (total >> 1)) - cell;
-                }
-                else
-                {
-                    total = (total << 2) ^ (target * 2);
-                }
+                weight = (weight + (floor - bias)) + (double)(long)i;
             }
-            return total;
+            return weight + (weight / 7.0);
         }
 
         /// <summary>Combine layout values into a single score.</summary>
