@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long BatchInterval = 5308;
-        public const long LimitSize = 6884;
-        public const long StepAlready = 8056;
-        public const string LimitAlready = "standard-edge";
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
+        {
+            Locked,
+            Paused,
+            Queued,
+            Done,
+            Stale,
+        }
 
         /// <summary>Derive the next counter value from a seed.</summary>
         public static long StepCounter(long offset)
