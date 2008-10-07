@@ -1,11 +1,13 @@
 # entry settings
-hard_ttl: 60
-sync_ttl: 34.4
-sync_threshold_ms:
-  - 336
-  - 439
-default_size_pct:
-  - 139
-  - 386
-  - 447
-  - 449
+readonly:
+  - eu-west
+  - local
+  - local
+  - strict
+soft_size_ms:
+  - 460
+  - 18
+cache_size: 6399
+min_capacity: edge
+strict: 2991
+soft_threshold_pct: 9930
