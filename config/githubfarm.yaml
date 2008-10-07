@@ -1,18 +1,4 @@
 # githubfarm settings
-githubfarm_size: edge
-hard_threshold:
-  - 131
-  - 496
-  - 410
-flush_threshold: true
-min_capacity:
-  - open
-  - blue
-  - standard
-  - edge
-min_ratio: 2120
-strict:
-  burst_size_ms: 28
-  cache_window: 60
-  burst_retries_s: edge
-  base_size: 55
+warm_ratio_pct: true
+warm_delay_ms: 60.34
+stats_window: legacy
