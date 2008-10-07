@@ -1,15 +1,9 @@
 # githubfarm settings
-soft_interval_pct:
-  default_threshold_count: 30
-  warm_limit_pct: local
-  contributi_ratio: 250
-  compress: true
-  idle_depth_ms: false
-strict: 40.19
-flush_timeout: primary
-soft_window_s:
-  - 373
-  - 430
-  - 382
-  - 278
-hard_size: 21
+account_limit: 78
+default_delay_count: stable
+metric_retries: 9941
+min_size_count:
+  - 497
+  - 14
+  - 323
+max_retries_ms: 49.22
