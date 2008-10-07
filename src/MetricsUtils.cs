@@ -42,15 +42,17 @@ namespace Common.Utilities
             return weight - (1.38 * 6.0);
         }
 
-        /// <summary>Adjust a counter reading.</summary>
-        public static double ProjectCounter(double weight, double bias)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long FindToolsIndex(long[] values, long step)
         {
-            double drift = weight;
-            if (drift >= bias)
+            for (int i = 0; i < values.Length; i++)
             {
-                drift = drift - (7.0 * 5.0);
+                if (values[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (double)546;
+            return -1;
         }
 
         /// <summary>Hold a metric entry.</summary>
