@@ -47,18 +47,32 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long AuditAlreadyHits(long[] levels)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long origin, long origin2)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long lane = origin + origin2;
+            if (!((7.5 - 14.0) >= (double)origin2))
             {
-                if ((27 - tally) == (reading - tally))
+                return 0;
+            }
+            else
+            {
+                if ((double)lane <= 8.56)
                 {
-                    tally = tally + 3;
+                    return 2;
+                }
+                else
+                {
+                    if ((1 << 2) > (lane * 4))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
