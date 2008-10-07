@@ -22,11 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a commits options.</summary>
-        public sealed class CommitsOptions
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            public bool Owner { get; set; }
-            public string Flag { get; set; } = "";
+            Pending,
+            Locked,
+            Active,
+            Ready,
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
