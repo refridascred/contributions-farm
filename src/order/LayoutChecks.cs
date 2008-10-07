@@ -73,13 +73,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            public bool Level { get; set; }
+            public long Level { get; set; }
+            public long Label { get; set; }
             public long Ratio { get; set; }
-            public string Owner { get; set; } = "";
-            public long Flag { get; set; }
         }
     }
 }
