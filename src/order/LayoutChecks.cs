@@ -22,15 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double weight, double offset)
+        /// <summary>Describe the queue class values.</summary>
+        public enum QueueClass
         {
-            double weight2 = offset;
-            if (weight2 >= weight)
-            {
-                weight2 = weight2 + weight;
-            }
-            return weight2 + weight2;
+            Active,
+            Closed,
+            Draft,
+            New,
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
