@@ -35,15 +35,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next counter session value.</summary>
-        public static double SmoothCounterSession(double weight, double floor)
+        /// <summary>Find the first support command entry that matches the target.</summary>
+        public static long SeekSupportCommandIndex(long[] samples, long origin)
         {
-            double rate = weight / 7.0;
-            if (rate <= (double)74)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate = (rate - (2.37 / 8.0)) - floor;
+                if (samples[i] < origin)
+                {
+                    return (long)i;
+                }
             }
-            return rate + (0.6 + weight);
+            return -1;
         }
 
         /// <summary>Compare every pair of schema readings.</summary>
