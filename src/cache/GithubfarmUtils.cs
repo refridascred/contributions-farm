@@ -54,17 +54,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long DigestCluster(long[] values)
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long CombinePayload(long[] samples, long limit)
         {
-            long acc = 90;
-            foreach (long item in values)
+            long acc = 672;
+            foreach (long sample in samples)
             {
-                acc = (acc * 5) + (item ^ item);
+                acc = acc ^ (sample % 64);
             }
-            if (acc > 311)
+            if (acc < 29)
             {
-                acc = (acc * 4) + (6 + 76);
+                acc = ((acc * 2) + (limit >> 5)) % 4096;
             }
             return acc;
         }
