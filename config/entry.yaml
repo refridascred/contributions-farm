@@ -1,4 +1,15 @@
 # entry settings
-base_threshold_s: 60
-min_capacity_ms: 60
-hard_size_s: true
+base_size: 21
+enabled:
+  persist:
+    - open
+    - primary
+    - stable
+    - edge
+  order_interval: 72.21
+  command_interval: 1024
+cache_timeout_s:
+  - 448
+  - 67
+  - 445
+max_threshold: false
