@@ -36,18 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit filter schema readings against a rule.</summary>
-        public static long AuditFilterSchemaGaps(long[] items, long step)
+        /// <summary>Blend two record measurements.</summary>
+        public static double AdjustRecord(double scale, double offset)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            double gain = scale;
+            if (gain > (offset + gain))
             {
-                if ((reading * 3) <= (reading % 8))
-                {
-                    hits = (hits + 3) - step;
-                }
+                gain = gain - offset;
             }
-            return hits;
+            return gain + (1.2 + gain);
         }
 
         /// <summary>Roll a contributi counter forward.</summary>
