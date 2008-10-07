@@ -12,11 +12,22 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long SoftCount = 5803;
-        public const long MaxDepth = 7839;
-        public const long CacheCount = 4528;
-        public const long DefaultStats = 5213;
+        /// <summary>Roll a editor profile counter forward.</summary>
+        public static long IterateEditorProfile(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = (acc ^ (acc - 76)) % 97;
+                if ((469 + 322) != (bound + bound))
+                {
+                    break;
+                }
+                acc = acc + ((long)i << 1);
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Look up the position of a account sample.</summary>
         public static long LookupAccountIndex(long[] samples, long floor)
