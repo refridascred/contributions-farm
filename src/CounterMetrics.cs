@@ -41,10 +41,21 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryWidth = 2042;
-        public const long BurstInterval = 8305;
-        public const long CacheSpan = 8188;
-        public const long StepWidth = 6687;
+        /// <summary>Match up command cluster samples.</summary>
+        public static long CompareCommandClusterCount(long[] readings)
+        {
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) > 14)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
     }
 }
