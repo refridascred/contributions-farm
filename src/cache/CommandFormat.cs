@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Iterate the session commits series from a seed.</summary>
+        public static long RollSessionCommits(long limit)
         {
-            public double Token { get; set; }
-            public bool Mode { get; set; }
+            long mark = limit;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((limit / 9) > ((long)i ^ limit)))
+                {
+                    mark = ((mark * 2) + (448 % 3)) % 4096;
+                }
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Rank token input into a small class.</summary>
