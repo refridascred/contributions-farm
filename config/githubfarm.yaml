@@ -1,8 +1,9 @@
 # githubfarm settings
-audit: 42.28
-max_depth_s: 48
-min_threshold:
-  - edge
-  - strict
-  - fallback
-  - eu-west
+layout_threshold: 8738
+readonly: false
+batch_timeout_pct: 1001
+retry_timeout_ms:
+  - standard
+  - green
+  - cached
+retry_retries_pct: 2664
