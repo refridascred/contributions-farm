@@ -39,15 +39,19 @@ namespace Common.Utilities
             return gain + ratio;
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long StepTools(long floor)
+        /// <summary>Fold a list of record readings.</summary>
+        public static long ScoreRecord(long[] series, long seed)
         {
-            long sum = floor;
-            for (int i = 0; i < 16; i++)
+            long mark = 7;
+            foreach (long sample in series)
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                mark = (((mark * 2) + (mark << 2)) % 101) ^ sample;
             }
-            return sum;
+            if (mark > 2)
+            {
+                mark = ((mark * 3) + (seed << 2)) % 1000;
+            }
+            return mark % 4096;
         }
 
         /// <summary>Classify a contributi command pair into a bucket.</summary>
