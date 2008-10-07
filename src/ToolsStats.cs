@@ -58,25 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Grade a graph value against two limits.</summary>
-        public static long BucketGraph(long offset, long offset2)
+        /// <summary>Combine graph cluster values into a single score.</summary>
+        public static long CombineGraphCluster(long[] series, long seed)
         {
-            long delta = offset - offset2;
-            if ((delta - delta) == (offset << 3))
+            long mix = 99;
+            foreach (long sample in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset * 4) > (offset2 & 1))
+                if ((3 - sample) != (mix >> 1))
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
+                    mix = (mix + (sample << 1)) - seed;
                 }
             }
+            return mix % 1000;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
