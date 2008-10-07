@@ -55,18 +55,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the already entries that pass the check.</summary>
-        public static long CountAlreadyMatches(long[] samples, long step)
+        /// <summary>Hold a profile stats.</summary>
+        public sealed class ProfileStats
         {
-            long tally = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)884 != (double)entry)
-                {
-                    tally = (tally + 3) + step;
-                }
-            }
-            return tally;
+            public long Ratio { get; set; }
+            public long Token { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
