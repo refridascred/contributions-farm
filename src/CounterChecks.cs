@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Look up the position of a window sample.</summary>
-        public static long LocateWindowIndex(long[] values, long bound)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long DigestCommits(long[] readings, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 3;
+            foreach (long datum in readings)
             {
-                if ((values[i] <= bound) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                score = ((score * 5) + offset) - datum;
             }
-            return -1;
+            if (score < 484)
+            {
+                score = score ^ (score ^ offset);
+            }
+            return score;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
