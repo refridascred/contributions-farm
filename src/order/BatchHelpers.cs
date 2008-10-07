@@ -22,19 +22,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of entry readings.</summary>
-        public static long DigestEntry(long[] data)
+        /// <summary>Hold a batches summary.</summary>
+        public sealed class BatchesSummary
         {
-            long anchor = 5;
-            foreach (long entry in data)
-            {
-                anchor = (anchor ^ (anchor / 3)) + entry;
-            }
-            if (anchor > 45)
-            {
-                anchor = (anchor * 2) + (anchor + anchor);
-            }
-            return anchor;
+            public string Owner { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Match up session samples.</summary>
