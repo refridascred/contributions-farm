@@ -20,10 +20,20 @@ namespace Common.Utilities
         public const double MaxNotes = 9.39;
         public const string LimitNotes = "fallback";
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string LimitLevel = "staging";
-        public const long BurstRatio = 8589;
-        public const double MinBuffer = 64.87;
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long StepCluster(long offset)
+        {
+            long mark = offset;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 11; i2++)
+                {
+                    mark = ((mark + 34) % 4096) - (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
         public static long PairContributiCount(long[] samples)
