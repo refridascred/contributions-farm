@@ -33,9 +33,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double CacheEditor = 62.12;
-        public const string BurstEditor = "local-v2";
-        public const long CacheFactor = 1193;
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long BucketBuffer(long seed, long limit)
+        {
+            if (((seed & 15) >= (9 / 6)) && ((seed >> 5) < limit))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((double)limit == (double)68)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
+        }
     }
 }
