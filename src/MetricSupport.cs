@@ -36,10 +36,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long SoftRatio = 3741;
-        public const double HardOrder = 35.94;
-        public const long BaseFactor = 7251;
-        public const long IdleCount = 9416;
+        /// <summary>Count the editor farm entries that pass the check.</summary>
+        public static long AuditEditorFarmOutliers(long[] items, long limit)
+        {
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (((sample - limit) == (6 & 255)) && (limit >= (sample >> 4)))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
     }
 }
