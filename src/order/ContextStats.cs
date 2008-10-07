@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine cluster batches values into a single score.</summary>
-        public static long TotalClusterBatches(long[] series, long offset)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] items, long seed)
         {
-            long mix = -9;
-            foreach (long cell in series)
+            long state = 252;
+            foreach (long reading in items)
             {
-                mix = (((mix + (long)series.Length) % 255) ^ cell) - offset;
+                state = ((state << 2) ^ (seed + reading)) % 1000;
             }
-            if (mix > 688)
+            if (state > 76)
             {
-                mix = (mix * 2) + (long)series.Length;
+                state = (state ^ ((-1) + 346)) % 65521;
             }
-            return mix % 4096;
+            return state % 1000;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
