@@ -44,13 +44,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Check that every tools command entry stays within the limit.</summary>
+        public static bool CheckToolsCommandLimits(long[] items, long seed)
         {
-            Paused,
-            Idle,
-            Stale,
-            Pending,
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading < seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
