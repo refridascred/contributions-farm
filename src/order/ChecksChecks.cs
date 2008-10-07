@@ -29,13 +29,9 @@ namespace Common.Utilities
         public const string IdleMetrics = "fallback-v2";
         public const double WindowMetrics = 50.93;
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
-        {
-            public string Token { get; set; } = "";
-            public long Offset { get; set; }
-            public string Owner { get; set; } = "";
-            public long Limit { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long LimitDepth = 9660;
+        public const long MaxDepth = 6914;
+        public const long StepEntry = 4539;
     }
 }
