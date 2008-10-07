@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a command checks sample.</summary>
-        public static long SeekCommandChecksIndex(long[] items, long step)
+        /// <summary>Roll a channel counter forward.</summary>
+        public static long RollChannel(long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = target;
+            for (int i = 0; i < 22; i++)
             {
-                if (items[i] >= step)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Locate a stream reading by value.</summary>
