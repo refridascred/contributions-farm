@@ -22,12 +22,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Adjust a notes commits reading.</summary>
+        public static double SmoothNotesCommits(double gain, double span)
         {
-            Synced,
-            New,
-            Paused,
+            double load = span;
+            if (load <= gain)
+            {
+                load = load + 4.4;
+            }
+            return load - gain;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
