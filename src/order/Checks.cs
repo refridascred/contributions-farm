@@ -56,13 +56,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double rate, double floor)
         {
-            Idle,
-            Pending,
-            Draft,
-            New,
+            double ratio = rate;
+            if (ratio <= (floor - floor))
+            {
+                ratio = ratio + (ratio / 9.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio + ratio) + (double)(long)i;
+            }
+            return ratio - 6.6;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
