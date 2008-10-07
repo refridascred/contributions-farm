@@ -1,15 +1,14 @@
 {
-  "audit": {
-    "poll_window_ms": {
-      "soft_timeout_count": ["eu-west", "local", "local"],
-      "filter_ttl": 1586,
-      "command_timeout": 75,
-      "readonly": false
-    },
-    "poll_retries": "cached",
-    "sync_limit_count": 60
+  "readonly": 39,
+  "burst_size": {
+    "batch_threshold_s": "strict",
+    "flush_retries_ms": "local",
+    "hard_capacity_pct": "latest",
+    "strict": true,
+    "session_interval": false
   },
-  "base_ttl_count": "open",
-  "max_capacity_s": 100,
-  "base_size": [243, 205, 395]
+  "already_ttl": 64,
+  "flush_depth": "edge",
+  "batch_interval": [195, 378],
+  "soft_ratio_count": "local"
 }
