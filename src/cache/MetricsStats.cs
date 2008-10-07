@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Count the filter command entries that pass the check.</summary>
-        public static long CountFilterCommandOutliers(long[] levels)
+        /// <summary>Describe the report class values.</summary>
+        public enum ReportClass
         {
-            long matches = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading + matches) > (matches / 9))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Idle,
+            Draft,
+            Synced,
+            Stale,
+            Closed,
         }
 
         /// <summary>Validate batches readings against a bound.</summary>
