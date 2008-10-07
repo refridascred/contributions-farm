@@ -1,10 +1,6 @@
-id,rank,active,score
-1,blue,173,763
-2,21.64,991,primary
-3,599,126,305
-4,71.42,853,789
-5,161,37.87,137
-6,95.72,fallback,36
-7,19.68,16.9,green
-8,511,71.66,680
-9,local,668,green
+id,level,count,score
+1,63,local,69.97
+2,staging,green,eu-west
+3,615,eu-west,edge
+4,731,159,2.65
+5,88.76,latest,86.26
