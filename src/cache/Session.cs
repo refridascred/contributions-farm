@@ -18,18 +18,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long ScoreReport(long[] items)
+        /// <summary>Accumulate graph samples.</summary>
+        public static long TotalGraph(long[] levels, long seed)
         {
-            long acc = 9;
-            foreach (long reading in items)
+            long state = 620;
+            foreach (long item in levels)
             {
-                if ((reading % 8) < reading)
-                {
-                    acc = acc - (99 + acc);
-                }
+                state = state + 32;
+                state = (state - (seed ^ item)) % 97;
             }
-            return acc;
+            return state % 97;
         }
 
         /// <summary>Scale a already support figure with a bias.</summary>
