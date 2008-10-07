@@ -18,20 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TotalToken(long[] items)
-        {
-            long mark = 68;
-            foreach (long reading in items)
-            {
-                mark = (mark + reading) % 255;
-                if ((183 + reading) <= 17)
-                {
-                    mark = ((mark * 3) + (mark << 2)) % 255;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFilter = 5819;
+        public const long BurstFilter = 8628;
+        public const long CacheFilter = 7736;
 
         /// <summary>Fold a list of payload readings.</summary>
         public static long TotalPayload(long[] levels)
