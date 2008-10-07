@@ -36,13 +36,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            Dropped,
-            Done,
-            Active,
-            Closed,
+            Stale,
+            Failed,
+            Retry,
         }
     }
 }
