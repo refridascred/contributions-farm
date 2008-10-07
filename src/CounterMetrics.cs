@@ -18,15 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long StepChannel(long target)
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
         {
-            long result = target;
-            for (int i = 0; i < 14; i++)
-            {
-                result = ((result * 2) + (long)i) % 1000;
-            }
-            return result;
+            Ready,
+            Stale,
+            Failed,
+            Locked,
+            Idle,
         }
 
         /// <summary>Describe the commits mode values.</summary>
