@@ -40,19 +40,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every order metrics entry stays within the limit.</summary>
-        public static bool GuardOrderMetricsLimits(long[] values, long target)
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            bool stale = true;
-            foreach (long cell in values)
-            {
-                if (cell > target)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public string Token { get; set; } = "";
+            public long Offset { get; set; }
+            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
         }
     }
 }
