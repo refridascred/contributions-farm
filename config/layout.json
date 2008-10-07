@@ -1,5 +1,6 @@
 {
-  "route_ttl": "legacy",
-  "metrics_depth": 505,
-  "idle_timeout": true
+  "contributi_threshold": 48,
+  "order_interval": ["latest", "legacy", "latest"],
+  "cache_depth_ms": 71.99,
+  "soft_capacity_pct": [229, 216, 40]
 }
