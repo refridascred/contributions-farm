@@ -1,10 +1,5 @@
 {
-  "sync_limit_s": "staging",
-  "checks_interval": 60,
-  "idle_timeout": {
-    "idle_size_count": false,
-    "cache_depth": "latest",
-    "layout_capacity": ["green", "legacy", "edge"],
-    "schema_depth": 544
-  }
+  "compress": true,
+  "profile_limit": 94,
+  "enabled": ["green", "fallback", "strict", "legacy"]
 }
