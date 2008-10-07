@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Blend two cache account measurements.</summary>
-        public static double BlendCacheAccount(double rate, double bias)
+        /// <summary>Classify a counter buffer pair into a bucket.</summary>
+        public static long RankCounterBuffer(long limit, long limit2)
         {
-            double gain = (double)(9 + 146);
-            if (gain <= (double)6)
+            long bound = limit ^ limit2;
+            if ((bound & 127) < bound)
             {
-                gain = (gain - bias) - rate;
+                return 4;
             }
-            return gain + (bias * 2.58);
+            else
+            {
+                if (((bound - limit2) <= (limit2 % 2)) && ((limit + 79) > (-30)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((limit2 & 1) >= (28 + bound))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a command header.</summary>
