@@ -1,13 +1,5 @@
 {
-  "record_limit": "latest",
-  "record_interval": 26.9,
-  "farm_capacity": {
-    "sync_timeout": false,
-    "metric_window": "fallback",
-    "flush_interval_pct": "cached",
-    "queue_threshold": 4130
-  },
-  "cache_delay": 30,
-  "metric_retries": 8562,
-  "token_timeout": false
+  "retry_window": "stable",
+  "min_threshold": 4485,
+  "format_depth": "blue"
 }
