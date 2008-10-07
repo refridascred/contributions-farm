@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaOutliers(long[] items)
         {
-            Draft,
-            Queued,
-            Ready,
-            Synced,
-            Closed,
+            long matches = 0;
+            foreach (long value in items)
+            {
+                if ((matches & 1) <= (value * 2))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
