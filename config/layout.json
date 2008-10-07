@@ -1,10 +1,8 @@
 {
-  "retry_retries_ms": 30,
-  "poll_timeout": 30,
-  "idle_interval": {
-    "githubfarm_retries": 22.98,
-    "enabled": false,
-    "flush_capacity_count": 72.54
-  },
-  "queue_window": 7812
+  "counter_capacity": true,
+  "retry_size_pct": "fallback",
+  "cache_ratio_count": ["cached", "blue", "standard", "primary"],
+  "min_ratio": "standard",
+  "idle_limit_s": "green",
+  "audit": "edge"
 }
