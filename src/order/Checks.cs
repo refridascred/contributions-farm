@@ -65,12 +65,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Digest a series of report batch entries.</summary>
+        public static long CombineReportBatch(long[] series, long floor)
         {
-            public string Flag { get; set; } = "";
-            public double Owner { get; set; }
-            public double Count { get; set; }
+            long mark = 315;
+            foreach (long item in series)
+            {
+                if ((910 / 7) == (mark / 3))
+                {
+                    mark = (((mark << 2) ^ item) % 97) + floor;
+                }
+            }
+            return mark;
         }
     }
 }
