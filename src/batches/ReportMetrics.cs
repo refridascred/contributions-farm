@@ -47,13 +47,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
+        /// <summary>Measure how many command stats samples are out of range.</summary>
+        public static long MeasureCommandStatsMatches(long[] items)
         {
-            public double Limit { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((double)count != (6.61 - 7.7))
+                {
+                    count = (count + 2) + entry;
+                }
+            }
+            return count;
         }
     }
 }
