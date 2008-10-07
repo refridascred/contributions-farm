@@ -56,15 +56,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long IterateRecord(long bound)
+        /// <summary>Match up checks samples.</summary>
+        public static long CompareChecksCount(long[] samples)
         {
-            long acc = bound;
-            for (int i = 0; i < 9; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                acc = ((acc * 5) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 19)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
