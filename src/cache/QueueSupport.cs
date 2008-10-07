@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool ValidateRouteRange(long[] items, long bound)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (item > bound)
+                if ((values[i] > seed) && ((values[i] % 5) == 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Combine counter schema values into a single score.</summary>
