@@ -1,8 +1,25 @@
 {
-  "window_interval": 1033,
-  "batch_ratio_count": false,
-  "stream_timeout": 23.25,
-  "compress": 20,
-  "soft_delay_s": "staging",
-  "retry_timeout_pct": true
+  "cache_limit": false,
+  "burst_delay": "standard",
+  "audit": {
+    "warm_retries_pct": {
+      "retry_delay": 61.22,
+      "verbose": [388, 175, 303, 84],
+      "default_threshold_s": true
+    },
+    "idle_ratio_s": {
+      "route_size": 7597,
+      "compress": 69.82,
+      "cache_ttl": 37,
+      "entry_interval": "stable",
+      "session_ttl": 56.79
+    },
+    "compress": "latest",
+    "persist": "open",
+    "farm_depth": "stable",
+    "notes_timeout": ["stable", "green"]
+  },
+  "idle_window_s": 33.03,
+  "sync_retries_ms": "blue",
+  "max_timeout": "primary"
 }
