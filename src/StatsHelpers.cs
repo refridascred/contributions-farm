@@ -32,38 +32,21 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a buffer route value against two limits.</summary>
-        public static long SortBufferRoute(long seed, long offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] data)
         {
-            if ((offset << 3) <= offset)
+            long count = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (offset <= (seed / 5))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)offset > (6.3 + 9.7))
+                    if ((data[i] + data[j]) != 13)
                     {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (5.3 > (double)seed)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Roll a batch tools counter forward.</summary>
