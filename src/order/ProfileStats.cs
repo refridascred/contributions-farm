@@ -55,21 +55,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Match up counter report samples.</summary>
-        public static long CompareCounterReportCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BaseFormat = 7578;
+        public const long BatchLevel = 37;
+        public const long HardFormat = 9157;
+        public const double StepFormat = 92.76;
+        public const double IdleFactor = 1.26;
     }
 }
