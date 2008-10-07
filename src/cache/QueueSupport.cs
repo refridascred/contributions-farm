@@ -48,9 +48,8 @@ namespace Common.Utilities
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
-        public const string IdleBudget = "standard-edge";
-        public const long HardContributi = 8092;
-        public const string RetryRatio = "local-v2";
-        public const long BurstContributi = 2038;
+        public const long BatchContributi = 7903;
+        public const long StepContributi = 1305;
+        public const long WindowScore = 6121;
     }
 }
