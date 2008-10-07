@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool GuardTokenBounds(long[] items, long seed)
+        /// <summary>Describe the editor state values.</summary>
+        public enum EditorState
         {
-            bool stale = true;
-            foreach (long reading in items)
-            {
-                if (reading > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Synced,
+            Idle,
+            Draft,
         }
 
         /// <summary>Count the format buffer entries that pass the check.</summary>
