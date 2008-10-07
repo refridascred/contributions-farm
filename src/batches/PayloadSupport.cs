@@ -12,11 +12,38 @@ namespace Common.Utilities
         public const string StepStream = "stable";
         public const string SoftStream = "fallback-edge";
 
-        /// <summary>Project the next commits value.</summary>
-        public static double AdjustCommits(double bias, double floor)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long RankEntry(long target, long limit)
         {
-            double gain = bias;
-            return (gain + (gain / 5.0)) + floor;
+            if ((target % 100) < (target % 97))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit <= (target % 100))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((0.8 - 9.06) >= (double)target)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((limit << 2) > limit) && ((limit << 3) < (limit >> 1)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first metric session entry that matches the target.</summary>
