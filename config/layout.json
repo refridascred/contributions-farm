@@ -1,15 +1,7 @@
 {
-  "max_retries_s": ["latest", "legacy"],
-  "compress": 100,
-  "warm_ratio_pct": 97.99,
-  "burst_interval_pct": "fallback",
-  "idle_delay_ms": {
-    "metric_limit": {
-      "warm_threshold_s": false,
-      "sync_limit_s": false,
-      "strict": "edge"
-    },
-    "batch_ttl_pct": true,
-    "compress": "green"
-  }
+  "retry_capacity_ms": 13.56,
+  "order_ttl": 6252,
+  "support_depth": false,
+  "burst_delay_count": "staging",
+  "persist": 9179
 }
