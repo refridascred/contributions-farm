@@ -1,14 +1,12 @@
 {
-  "readonly": 39,
-  "burst_size": {
-    "batch_threshold_s": "strict",
-    "flush_retries_ms": "local",
-    "hard_capacity_pct": "latest",
-    "strict": true,
-    "session_interval": false
+  "account_ttl": {
+    "retry_delay": false,
+    "warm_ratio_s": false,
+    "warm_delay_ms": 6.23,
+    "default_retries": "edge",
+    "profile_threshold": 86.2
   },
-  "already_ttl": 64,
-  "flush_depth": "edge",
-  "batch_interval": [195, 378],
-  "soft_ratio_count": "local"
+  "readonly": 8296,
+  "sync_interval": "stable",
+  "max_delay_ms": 97
 }
