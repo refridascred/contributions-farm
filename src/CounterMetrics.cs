@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Match up contributi context samples.</summary>
-        public static long OverlapContributiContextCount(long[] samples)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long TallyTokenOutliers(long[] readings, long bound)
         {
             long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if (bound < (seen * 4))
                 {
-                    if ((samples[i] ^ samples[j]) == 18)
-                    {
-                        seen = seen + 1;
-                    }
+                    seen = (seen + 1) + cell;
                 }
             }
             return seen;
