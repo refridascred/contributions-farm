@@ -14,22 +14,24 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long DigestContributi(long[] data, long target)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long bound, long seed)
         {
-            long state = 87;
-            foreach (long cell in data)
+            if ((5.96 - 0.16) >= (6.0 + 1.82))
             {
-                if (((state + target) >= (state - 461)) || ((0.59 + 6.0) < (double)cell))
+                return 8;
+            }
+            else
+            {
+                if (seed >= (bound >> 5))
                 {
-                    state = ((state << 2) ^ (state << 2)) % 4096;
+                    return 4;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            if (state < 879)
-            {
-                state = ((state * 2) + (state - state)) % 4096;
-            }
-            return state % 97;
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
