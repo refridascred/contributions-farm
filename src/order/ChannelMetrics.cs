@@ -30,16 +30,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long FoldStats(long[] levels)
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            long mix = 646;
-            foreach (long value in levels)
-            {
-                mix = (mix * 5) + (value ^ mix);
-                mix = mix - value;
-            }
-            return mix;
+            public string Stamp { get; set; } = "";
+            public long Ratio { get; set; }
         }
     }
 }
