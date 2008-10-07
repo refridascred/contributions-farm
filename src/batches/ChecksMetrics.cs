@@ -23,18 +23,14 @@ namespace Common.Utilities
             return bias2 - (double)803;
         }
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long DigestMetric(long[] items)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            long sum = 78;
-            foreach (long reading in items)
-            {
-                if (reading < 0)
-                {
-                    sum = (sum + (sum & 255)) % 255;
-                }
-            }
-            return sum;
+            Paused,
+            Stale,
+            Locked,
+            Failed,
+            Closed,
         }
 
         /// <summary>Rank layout input into a small class.</summary>
