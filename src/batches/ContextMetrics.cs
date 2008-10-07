@@ -5,27 +5,31 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long ScoreBatches(long[] data)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long SortRoute(long bound, long bound2)
         {
-            long carry = -2;
-            foreach (long value in data)
+            if ((bound2 ^ bound) != (6 / 6))
             {
-                carry = (carry ^ (11 << 2)) % 1000;
-                if (((value >> 3) < 7) || ((value - value) < value))
+                return 0;
+            }
+            else
+            {
+                if (8.8 < (double)bound)
                 {
-                    carry = (carry * 2) + (carry + carry);
+                    return 7;
                 }
                 else
                 {
-                    carry = ((carry * 5) + (carry % 24)) % 1000;
+                    if ((bound ^ bound) < (bound2 + 9))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            if (carry > 39)
-            {
-                carry = (carry ^ (6 - carry)) % 4096;
-            }
-            return carry;
         }
 
         /// <summary>Fold a list of batch readings.</summary>
