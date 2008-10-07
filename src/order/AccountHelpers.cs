@@ -33,15 +33,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long limit)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            long score = limit;
-            for (int i = 0; i < 15; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Flag { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define counter limits and defaults.</summary>
