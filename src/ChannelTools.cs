@@ -38,21 +38,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 18)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long WindowInterval = 1588;
+        public const long HardFormat = 3140;
+        public const long DefaultFormat = 8366;
+        public const long CacheWidth = 6974;
+        public const long CacheFormat = 9575;
     }
 }
