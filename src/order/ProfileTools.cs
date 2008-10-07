@@ -43,11 +43,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double WindowCache = 21.25;
-        public const double LimitCache = 6.05;
-        public const string StepSize = "primary-v2";
-        public const long DefaultBudget = 8789;
+        /// <summary>Accumulate batches samples.</summary>
+        public static long DigestBatches(long[] values, long target)
+        {
+            long sum = 9;
+            foreach (long item in values)
+            {
+                sum = (sum ^ item) % 101;
+            }
+            if (sum > 78)
+            {
+                sum = (sum ^ (target + sum)) % 4096;
+            }
+            return sum;
+        }
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double MaxQueue = 25.34;
