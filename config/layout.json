@@ -1,14 +1,8 @@
 {
-  "flush_depth_pct": "staging",
-  "flush_threshold_pct": 4891,
-  "persist": {
-    "batch_retries": false,
-    "cache_ratio": 6107,
-    "audit": "blue",
-    "enabled": "edge",
-    "batch_threshold_s": "strict"
-  },
-  "batch_interval_pct": ["fallback", "stable"],
-  "base_ttl_pct": 9616,
-  "default_limit_count": 7558
+  "hard_limit": 27,
+  "default_timeout": [364, 416, 101],
+  "warm_timeout_ms": 500,
+  "enabled": "staging",
+  "token_interval": false,
+  "commits_ratio": "green"
 }
