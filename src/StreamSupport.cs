@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Grade a contributi value against two limits.</summary>
-        public static long GradeContributi(long bound, long origin)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            if ((double)origin <= (6.05 / 8.0))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)bound <= (6.56 + 0.2))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((97 << 1) <= (origin - bound)) || ((origin ^ bound) != (bound >> 5)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((double)origin == (8.58 + 4.6))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Pending,
+            Draft,
+            Done,
+            Active,
         }
 
         /// <summary>Digest a series of contributi entries.</summary>
