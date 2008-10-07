@@ -46,32 +46,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Classify a report session pair into a bucket.</summary>
-        public static long GradeReportSession(long bound, long limit)
+        /// <summary>Hold a layout header.</summary>
+        public sealed class LayoutHeader
         {
-            long gap = bound ^ limit;
-            if ((limit / 2) <= (bound % 10))
-            {
-                return 3;
-            }
-            else
-            {
-                if (6.8 < (double)gap)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((856 * 2) != (bound - limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            public long Limit { get; set; }
+            public bool Count { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Grade a graph value against two limits.</summary>
