@@ -72,18 +72,17 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Audit cluster schema readings against a rule.</summary>
-        public static long CountClusterSchemaHits(long[] values, long limit)
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long SeekFilterIndex(long[] items, long floor)
         {
-            long hits = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((hits + reading) == (limit + (-323)))
+                if (items[i] < floor)
                 {
-                    hits = hits + 3;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit payload account readings against a rule.</summary>
