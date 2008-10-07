@@ -1,8 +1,6 @@
 {
-  "verbose": "local",
-  "warm_limit_s": [380, 305],
-  "notes_window": ["legacy", "standard", "local", "local"],
-  "sync_limit": "edge",
-  "retry_capacity": "stable",
-  "compress": false
+  "flush_interval": 3777,
+  "persist": 46.48,
+  "cache_depth_s": "strict",
+  "enabled": 85.22
 }
