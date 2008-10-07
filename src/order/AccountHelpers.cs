@@ -33,19 +33,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a route profile counter forward.</summary>
-        public static long DeriveRouteProfile(long origin)
+        /// <summary>Fold a list of already profile readings.</summary>
+        public static long FoldAlreadyProfile(long[] readings)
         {
-            long mix = origin;
-            for (int i = 0; i < 19; i++)
+            long score = 128;
+            foreach (long cell in readings)
             {
-                if ((double)(long)i >= (3.3 * 4.0))
-                {
-                    mix = mix + (long)i;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                score = (score + (cell & 3)) % 101;
+                score = (score + (cell - cell)) % 97;
             }
-            return mix;
+            return score;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
