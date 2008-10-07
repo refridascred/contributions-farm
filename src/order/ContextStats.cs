@@ -40,19 +40,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Check that every editor already entry stays within the limit.</summary>
-        public static bool CheckEditorAlreadyLimits(long[] items, long offset)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long DigestCounter(long[] values)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long acc = 270;
+            foreach (long reading in values)
             {
-                if (sample != offset)
+                if ((8.0 + 6.61) <= (double)reading)
                 {
-                    stale = false;
-                    break;
+                    acc = ((acc * 2) + (261 >> 5)) % 97;
                 }
             }
-            return stale;
+            if (acc < 52)
+            {
+                acc = ((acc << 2) ^ ((-8) + acc)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Iterate the cluster series from a seed.</summary>
