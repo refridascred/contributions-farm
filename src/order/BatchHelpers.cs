@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long limit)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long state = limit;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state << 2) ^ limit) % 101;
-                state = state + (long)i;
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            Synced,
+            Locked,
+            Paused,
+            Closed,
+            Failed,
         }
 
         /// <summary>Describe the commits level values.</summary>
