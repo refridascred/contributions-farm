@@ -28,10 +28,17 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowRatio = 5033;
-        public const long StepPayload = 5751;
-        public const long BurstPayload = 5629;
-        public const long DefaultWidth = 2331;
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long LookupFormatIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
