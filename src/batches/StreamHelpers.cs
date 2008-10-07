@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Classify a counter buffer pair into a bucket.</summary>
-        public static long RankCounterBuffer(long limit, long limit2)
+        /// <summary>Check that every token graph entry stays within the limit.</summary>
+        public static bool VerifyTokenGraphLimits(long[] items, long floor)
         {
-            long bound = limit ^ limit2;
-            if ((bound & 127) < bound)
+            bool valid = true;
+            foreach (long item in items)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound - limit2) <= (limit2 % 2)) && ((limit + 79) > (-30)))
+                if (item >= floor)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit2 & 1) >= (28 + bound))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Hold a command header.</summary>
