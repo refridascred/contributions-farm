@@ -35,20 +35,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next batch commits value from a seed.</summary>
-        public static long IterateBatchCommits(long bound)
+        /// <summary>Hold a format snapshot.</summary>
+        public sealed class FormatSnapshot
         {
-            long mix = bound;
-            for (int i = 0; i < 5; i++)
-            {
-                if ((5.0 < (double)(long)i) && (((long)i >> 1) >= ((long)i >> 4)))
-                {
-                    mix = mix + mix;
-                    continue;
-                }
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public long Offset { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
