@@ -28,11 +28,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            public string Limit { get; set; } = "";
-            public long Mode { get; set; }
+            public long Weight { get; set; }
+            public double Owner { get; set; }
         }
     }
 }
