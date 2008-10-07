@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double SmoothPayload(double rate, double offset)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] series, long bound)
         {
-            double drift = rate * 5.16;
-            if (drift < (4.3 + offset))
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift + (4.9 / 9.0);
+                if (series[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            return drift - (offset * 1.41);
+            return -1;
         }
 
         /// <summary>Match up record samples.</summary>
