@@ -36,26 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TotalChannel(long[] values)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double scale, double offset)
         {
-            long anchor = 65;
-            foreach (long reading in values)
-            {
-                if (((long)values.Length + anchor) > (anchor / 2))
-                {
-                    anchor = ((anchor * 4) + (reading + anchor)) % 255;
-                }
-                else
-                {
-                    anchor = (anchor ^ 857) % 101;
-                }
-            }
-            if (anchor < 4)
-            {
-                anchor = (anchor - (403 >> 1)) % 255;
-            }
-            return anchor % 4096;
+            double rate = 9.0;
+            return ((rate - (double)41) + scale) + offset;
         }
     }
 }
