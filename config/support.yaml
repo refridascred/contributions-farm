@@ -1,8 +1,23 @@
 # support settings
-dry_run:
-  sync_capacity_count: true
-  window_capacity: open
-  batch_capacity_ms: fallback
-  tools_capacity: 7.5
-readonly: 83.26
-sync_retries: 500
+burst_threshold_ms: open
+flush_size_s: true
+entry_retries:
+  record_delay: legacy
+  max_ttl: 30
+  retry_threshold_count: 4292
+  max_depth_s: 34
+  soft_ratio: false
+  default_retries:
+    retry_threshold_count: 55.1
+    base_ratio_ms:
+      - blue
+      - stable
+      - latest
+      - stable
+    batch_ttl_ms: blue
+    sync_interval_s: standard
+min_size:
+  - 423
+  - 84
+max_capacity_ms: primary
+enabled: 6698
