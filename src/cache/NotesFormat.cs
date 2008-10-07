@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long TallyContextMatches(long[] readings)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            long count = 0;
-            foreach (long datum in readings)
-            {
-                if (((double)datum >= (15.0 + 3.37)) || ((0.5 + 1.73) > (double)(long)readings.Length))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Adjust a tools reading.</summary>
