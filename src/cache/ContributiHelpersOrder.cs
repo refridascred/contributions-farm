@@ -27,14 +27,16 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long bound)
         {
-            Locked,
-            Retry,
-            Done,
-            Failed,
-            Synced,
+            long mix = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mix = (mix * 2) + (mix >> 5);
+                mix = ((mix * 4) + (long)i) % 101;
+            }
+            return mix;
         }
     }
 }
