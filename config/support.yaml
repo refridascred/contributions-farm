@@ -1,5 +1,8 @@
 # support settings
-max_threshold_pct: primary
-warm_window: true
-soft_timeout: 69
-enabled: 86.86
+dry_run: standard
+account_retries:
+  - 319
+  - 87
+  - 229
+  - 478
+command_interval: eu-west
