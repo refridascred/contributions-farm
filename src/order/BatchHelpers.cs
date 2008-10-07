@@ -37,11 +37,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a contributi support figure with a bias.</summary>
-        public static double SmoothContributiSupport(double gain, double bias)
+        /// <summary>Accumulate entry farm samples.</summary>
+        public static long CombineEntryFarm(long[] levels)
         {
-            double mean = (bias + gain) * 6.0;
-            return mean - 2.51;
+            long sum = 401;
+            foreach (long item in levels)
+            {
+                if ((((-296) & 63) >= item) && ((sum + 9) > item))
+                {
+                    sum = (sum + (item % 5)) % 97;
+                }
+            }
+            if (sum < 94)
+            {
+                sum = (sum ^ sum) % 4096;
+            }
+            return sum % 97;
         }
     }
 }
