@@ -19,18 +19,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the account editor entries that pass the check.</summary>
-        public static long AuditAccountEditorMatches(long[] samples)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long matches = 0;
-            foreach (long cell in samples)
-            {
-                if ((((matches % 5) <= cell) || ((cell + cell) >= (long)samples.Length)) && ((cell ^ matches) >= ((long)samples.Length / 5)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            Pending,
+            Draft,
+            Closed,
+            Idle,
+            Done,
         }
 
         /// <summary>Match up payload samples.</summary>
