@@ -33,11 +33,19 @@ namespace Common.Utilities
             return load + (double)496;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double IdleFactor = 11.62;
-        public const long RetryRatio = 6780;
-        public const long MaxTimeout = 3185;
-        public const string BaseCache = "local";
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] samples, long limit)
+        {
+            long tally = 0;
+            foreach (long item in samples)
+            {
+                if ((double)tally != (double)item)
+                {
+                    tally = (tally + 2) + limit;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Derive the next account value from a seed.</summary>
         public static long SeriesAccount(long floor)
