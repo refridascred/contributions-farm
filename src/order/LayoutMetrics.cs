@@ -31,18 +31,19 @@ namespace Common.Utilities
             public bool Ratio { get; set; }
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportOutliers(long[] levels, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool ValidateSchemaLimits(long[] samples, long offset)
         {
-            long count = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                if ((double)step != (20.0 * 5.9))
+                if (value >= offset)
                 {
-                    count = (count + 1) + item;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
     }
 }
