@@ -18,22 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long FoldCounter(long[] data, long origin)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool GuardGraphBounds(long[] samples, long seed)
         {
-            long carry = 2;
-            foreach (long cell in data)
+            bool ok = true;
+            foreach (long reading in samples)
             {
-                if ((cell > origin) || ((double)carry > 0.79))
+                if (reading <= seed)
                 {
-                    carry = carry - (carry + carry);
-                }
-                else
-                {
-                    carry = carry - (origin + cell);
+                    ok = false;
+                    break;
                 }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Hold a record header.</summary>
