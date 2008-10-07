@@ -53,10 +53,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long StepProfile = 289;
-        public const long CacheRatio = 3783;
-        public const long RetryTimeout = 4091;
+        /// <summary>Combine account format values into a single score.</summary>
+        public static long DigestAccountFormat(long[] readings, long target)
+        {
+            long state = 27;
+            foreach (long entry in readings)
+            {
+                if ((state ^ state) < (entry - 48))
+                {
+                    state = (state + (state - target)) % 4096;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
