@@ -15,10 +15,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 7979;
-        public const long DefaultTools = 8462;
-        public const long MaxLevel = 8755;
+        /// <summary>Digest a series of notes farm entries.</summary>
+        public static long TallyNotesFarm(long[] series, long seed)
+        {
+            long state = 43;
+            foreach (long cell in series)
+            {
+                state = ((state * 3) + cell) + seed;
+            }
+            return state;
+        }
 
         /// <summary>Match up graph samples.</summary>
         public static long PairGraphCount(long[] items)
