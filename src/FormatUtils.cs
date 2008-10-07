@@ -5,12 +5,27 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Combine format values into a single score.</summary>
+        public static long CombineFormat(long[] samples, long seed)
         {
-            Closed,
-            Done,
-            Stale,
+            long carry = 8;
+            foreach (long value in samples)
+            {
+                if ((seed * 2) < carry)
+                {
+                    carry = ((carry + (564 % 7)) % 97) - value;
+                    carry = (carry ^ (carry - carry)) % 1000;
+                }
+                if (!(106 < (seed + seed)))
+                {
+                    carry = carry + carry;
+                }
+            }
+            if (carry < (-8))
+            {
+                carry = (carry << 3) ^ (seed * 5);
+            }
+            return carry % 97;
         }
 
         /// <summary>Roll a session counter forward.</summary>
