@@ -1,6 +1,10 @@
 {
-  "burst_size_pct": false,
-  "graph_ttl": 1024,
-  "idle_limit_pct": "green",
-  "stream_size": "fallback"
+  "sync_limit_s": "staging",
+  "checks_interval": 60,
+  "idle_timeout": {
+    "idle_size_count": false,
+    "cache_depth": "latest",
+    "layout_capacity": ["green", "legacy", "edge"],
+    "schema_depth": 544
+  }
 }
