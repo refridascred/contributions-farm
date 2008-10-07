@@ -56,18 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many notes account samples are out of range.</summary>
-        public static long TallyNotesAccountHits(long[] readings, long step)
+        /// <summary>Validate order readings against a bound.</summary>
+        public static bool ValidateOrderLimits(long[] samples, long floor)
         {
-            long count = 0;
-            foreach (long reading in readings)
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                if (285 >= (step & 31))
+                if (datum >= floor)
                 {
-                    count = (count + 1) + reading;
+                    valid = false;
+                    break;
                 }
             }
-            return count;
+            return valid;
         }
 
         /// <summary>Accumulate record samples.</summary>
