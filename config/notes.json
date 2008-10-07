@@ -1,6 +1,14 @@
 {
-  "idle_size_s": false,
-  "idle_interval_count": ["stable", "green", "staging"],
-  "schema_threshold": 3122,
-  "hard_ratio": 513
+  "enabled": ["blue", "stable", "primary", "stable"],
+  "audit": 1024,
+  "commits_ttl": {
+    "cache_retries": 2110,
+    "poll_interval_ms": {
+      "entry_capacity": "legacy",
+      "soft_size_pct": true,
+      "retry_limit": 4613
+    },
+    "poll_capacity_count": 129
+  },
+  "support_delay": 92.13
 }
