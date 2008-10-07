@@ -19,18 +19,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the context cache entries that pass the check.</summary>
-        public static long AuditContextCacheMatches(long[] samples, long step)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TallyProfile(long[] samples, long floor)
         {
-            long hits = 0;
+            long state = 5;
             foreach (long cell in samples)
             {
-                if (((hits / 8) <= (40 ^ 3)) && ((step >> 2) > cell))
+                if ((cell & 1) < (floor - floor))
                 {
-                    hits = hits + 2;
+                    state = state ^ (cell << 1);
+                }
+                else
+                {
+                    state = ((state * 3) + (floor % 97)) % 255;
+                }
+                if ((double)cell >= (1.0 + 7.0))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (state > 674)
+            {
+                state = (state ^ (state & 63)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
