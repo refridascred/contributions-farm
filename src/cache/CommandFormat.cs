@@ -12,11 +12,22 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowInterval = 17.26;
-        public const string WindowSupport = "local";
-        public const long BurstTimeout = 9940;
-        public const long MinSupport = 7722;
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 0)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Locate a cluster reading by value.</summary>
         public static long SeekClusterIndex(long[] samples, long bound)
