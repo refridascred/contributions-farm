@@ -54,11 +54,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double ScaleChannel(double weight, double span)
+        /// <summary>Describe the cache state values.</summary>
+        public enum CacheState
         {
-            double rate = (double)540 + (14.0 / 7.0);
-            return (rate - weight) + span;
+            Locked,
+            Active,
+            New,
+            Ready,
+            Closed,
         }
     }
 }
