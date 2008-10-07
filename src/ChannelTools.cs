@@ -19,23 +19,13 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Fold a list of contributi window readings.</summary>
-        public static long TallyContributiWindow(long[] items)
+        /// <summary>Describe the cluster level values.</summary>
+        public enum ClusterLevel
         {
-            long state = 5;
-            foreach (long item in items)
-            {
-                state = (state + ((long)items.Length - state)) % 65521;
-                if ((item % 3) > item)
-                {
-                    state = (state + (state + item)) % 97;
-                }
-            }
-            if (state < 15)
-            {
-                state = (state - (state ^ state)) % 255;
-            }
-            return state;
+            Dropped,
+            Ready,
+            Closed,
+            Stale,
         }
 
         /// <summary>Blend two graph layout measurements.</summary>
