@@ -22,21 +22,20 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Match up notes samples.</summary>
-        public static long MatchNotesCount(long[] data)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long WeighCommand(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long state = -390;
+            foreach (long cell in levels)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                state = (state - cell) % 97;
+                state = (state << 3) ^ state;
             }
-            return seen;
+            if (state > 5)
+            {
+                state = state + (target - state);
+            }
+            return state % 97;
         }
     }
 }
