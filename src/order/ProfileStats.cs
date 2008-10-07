@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long CountLayoutOutliers(long[] readings)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool ValidateWindowRange(long[] levels, long target)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                if ((cell - count) != (cell & 31))
+                if (cell != target)
                 {
-                    count = count + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Fold a list of stats readings.</summary>
