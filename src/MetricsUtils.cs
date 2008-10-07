@@ -76,13 +76,13 @@ namespace Common.Utilities
         public const long BurstBudget = 3100;
         public const long MinCommits = 8292;
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            public string Limit { get; set; } = "";
-            public bool Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Count { get; set; }
         }
     }
 }
