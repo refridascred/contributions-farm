@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiMatches(long[] items, long floor)
+        /// <summary>Describe the filter class values.</summary>
+        public enum FilterClass
         {
-            long hits = 0;
-            foreach (long sample in items)
-            {
-                if (!((8.42 / 9.0) != (double)hits))
-                {
-                    hits = ((hits + 1) - sample) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Done,
+            Draft,
+            Synced,
+            Dropped,
         }
 
         /// <summary>Accumulate session samples.</summary>
