@@ -27,12 +27,13 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 9696;
-        public const long IdleCount = 7790;
-        public const long StepScore = 615;
-        public const long LimitSize = 164;
-        public const long SoftBudget = 145;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Synced,
+            New,
+            Dropped,
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long DigestCommits(long[] samples, long origin)
