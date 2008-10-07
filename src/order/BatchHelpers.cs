@@ -20,13 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] items, long target)
         {
-            public bool Label { get; set; }
-            public bool Flag { get; set; }
-            public double Region { get; set; }
-            public string Mode { get; set; } = "";
+            bool stale = true;
+            foreach (long value in items)
+            {
+                if (value != target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a stats contributi value against two limits.</summary>
