@@ -13,22 +13,18 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] levels)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long CountCacheOutliers(long[] items)
         {
-            long score = 52;
-            foreach (long value in levels)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((0.85 + 14.0) == (double)score)
+                if ((double)seen <= (0.05 - 3.6))
                 {
-                    score = (((score * 4) + 0) % 4096) ^ value;
+                    seen = (seen + 2) + item;
                 }
             }
-            if (score > 20)
-            {
-                score = (score << 2) ^ (score << 3);
-            }
-            return score;
+            return seen;
         }
 
         /// <summary>Count the layout window entries that pass the check.</summary>
