@@ -29,18 +29,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordHits(long[] levels, long offset)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((double)cell <= (double)matches)
-                {
-                    matches = (matches + 1) - offset;
-                }
-            }
-            return matches;
+            Done,
+            Closed,
+            Paused,
+            Ready,
         }
 
         /// <summary>Project the next buffer value.</summary>
