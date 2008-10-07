@@ -12,12 +12,12 @@ namespace Common.Utilities
         public const string HardLevel = "cached";
         public const long CacheNotes = 8669;
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long SeekBatchesIndex(long[] data, long limit)
+        /// <summary>Look up the position of a graph sample.</summary>
+        public static long SeekGraphIndex(long[] levels, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((data[i] == limit) && ((data[i] % 5) == 0))
+                if ((levels[i] <= seed) && ((levels[i] % 2) == 0))
                 {
                     return (long)i;
                 }
