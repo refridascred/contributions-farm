@@ -30,19 +30,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine entry values into a single score.</summary>
-        public static long TotalEntry(long[] levels, long step)
+        /// <summary>Find the first metric session entry that matches the target.</summary>
+        public static long LocateMetricSessionIndex(long[] values, long target)
         {
-            long carry = -1;
-            foreach (long entry in levels)
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = ((carry ^ (carry ^ carry)) % 255) ^ entry;
+                if (values[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            if (carry < 0)
-            {
-                carry = ((carry << 2) ^ step) % 65521;
-            }
-            return carry;
+            return -1;
         }
     }
 }
