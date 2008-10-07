@@ -12,21 +12,19 @@ namespace Common.Utilities
         public const double SoftLevel = 53.06;
         public const long LimitLevel = 2017;
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] levels)
+        /// <summary>Adjust a window reading.</summary>
+        public static double AdjustWindow(double bias, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = span;
+            if (mean < (double)40)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - (double)82) + bias;
             }
-            return seen;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean - (7.55 / 9.0);
         }
 
         /// <summary>Derive the next commits value from a seed.</summary>
