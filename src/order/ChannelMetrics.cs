@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Look up the position of a cache window sample.</summary>
-        public static long FindCacheWindowIndex(long[] series, long limit)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string IdleCommits = "primary-1";
+        public const long StepScore = 7086;
+        public const string CacheCommits = "legacy-v2";
 
         /// <summary>Classify a stream pair into a bucket.</summary>
         public static long SortStream(long floor, long bound)
