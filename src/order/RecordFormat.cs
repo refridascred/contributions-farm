@@ -28,17 +28,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a farm contributi sample.</summary>
-        public static long LocateFarmContributiIndex(long[] readings, long origin)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long SeriesCounter(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((readings[i] > origin) && ((readings[i] % 5) != 0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    return (long)i;
+                    mark = (mark + (74 >> 3)) ^ (long)i2;
                 }
+                mark = ((mark * 4) + (long)i) % 4093;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Hold a session record.</summary>
