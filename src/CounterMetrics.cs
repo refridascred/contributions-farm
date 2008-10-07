@@ -29,22 +29,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the stream series from a seed.</summary>
-        public static long RollStream(long seed)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    carry = (carry ^ (carry / 3)) % 101;
-                    carry = ((carry << 3) ^ ((long)i2 + carry)) % 65521;
-                }
-                carry = (carry ^ (carry >> 5)) % 65521;
-                carry = carry - (carry / 4);
-                carry = ((carry * 2) + (long)i) % 101;
-            }
-            return carry;
+            Ready,
+            Dropped,
+            Stale,
+            Idle,
+            Failed,
         }
 
         /// <summary>Iterate the schema series from a seed.</summary>
