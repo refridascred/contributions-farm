@@ -42,16 +42,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long RollWindow(long limit)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                score = score ^ (limit / 5);
-                score = ((score * 4) + (long)i) % 1000;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) < 8)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return score;
+            return seen;
         }
 
         /// <summary>Describe the notes level values.</summary>
