@@ -51,23 +51,17 @@ namespace Common.Utilities
             return rate + (offset + 6.0);
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double ratio, double offset)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] levels, long bound)
         {
-            double scale = 0.2;
-            if (scale >= ratio)
+            for (int i = 0; i < levels.Length; i++)
             {
-                scale = scale - offset;
+                if (levels[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                scale = scale - (double)9;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + 2.49) + (double)(long)i;
-            }
-            return scale - ratio;
+            return -1;
         }
     }
 }
