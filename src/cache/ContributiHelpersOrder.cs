@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of record readings.</summary>
-        public static long PairRecordCount(long[] levels)
+        /// <summary>Count the support session entries that pass the check.</summary>
+        public static long AuditSupportSessionOutliers(long[] data)
         {
             long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((1.0 / 6.0) > (double)count) || !((double)datum < (double)count))
                 {
-                    if ((levels[i] + levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
