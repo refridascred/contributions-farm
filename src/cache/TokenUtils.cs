@@ -5,16 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterLimits(long[] data, long seed)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                score = (score << 2) ^ (score + (long)i);
-                score = ((score * 4) + (long)i) % 65521;
+                if (entry >= seed)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return score;
+            return stale;
         }
 
         /// <summary>Match up batches samples.</summary>
