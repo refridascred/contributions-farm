@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long AuditToolsHits(long[] readings)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long seed, long floor)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            if (3 > (seed + floor))
             {
-                if ((((955 + hits) == (value >> 2)) || ((hits + (long)readings.Length) == (hits + value))) && (((double)hits >= (double)9) && ((value * 2) < (hits - hits))))
+                return 2;
+            }
+            else
+            {
+                if ((seed - 8) <= (floor >> 2))
                 {
-                    hits = hits + 3;
+                    return 5;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
