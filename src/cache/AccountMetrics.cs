@@ -21,17 +21,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long DeriveAlready(long limit)
+        /// <summary>Look up the position of a account filter sample.</summary>
+        public static long SeekAccountFilterIndex(long[] series, long step)
         {
-            long total = limit;
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = ((total << 3) ^ (total >> 1)) % 1000;
-                total = (total ^ (limit ^ total)) % 4096;
-                total = ((total * 3) + (long)i) % 4093;
+                if (series[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Match up already samples.</summary>
