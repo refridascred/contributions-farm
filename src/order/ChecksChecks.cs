@@ -40,15 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long ScoreSession(long[] data)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double BlendGraph(double rate, double bias)
         {
-            long mix = -4;
-            foreach (long item in data)
+            double ratio = rate - rate;
+            if (ratio < (bias + rate))
             {
-                mix = ((mix * 4) + (mix / 2)) + item;
+                ratio = ratio - bias;
             }
-            return mix;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - (8.91 - rate)) + (double)(long)i;
+            }
+            return ratio + (rate + rate);
         }
     }
 }
