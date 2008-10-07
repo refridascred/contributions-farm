@@ -18,15 +18,17 @@ namespace Common.Utilities
         public const long CacheCount = 4528;
         public const long DefaultStats = 5213;
 
-        /// <summary>Combine layout account values into a single score.</summary>
-        public static long FoldLayoutAccount(long[] data)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LookupAccountIndex(long[] samples, long floor)
         {
-            long mark = 63;
-            foreach (long cell in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                mark = ((mark << 2) ^ (mark << 1)) + cell;
+                if ((samples[i] <= floor) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Iterate the format cache series from a seed.</summary>
