@@ -18,19 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool GuardGraphBounds(long[] samples, long seed)
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long ScoreLayout(long[] data)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long score = 9;
+            foreach (long cell in data)
             {
-                if (reading <= seed)
+                if ((3.1 * 9.95) <= (8.1 + 8.87))
                 {
-                    ok = false;
+                    score = (score + (cell & 63)) % 101;
+                }
+                else
+                {
+                    score = (score << 2) ^ (cell * 4);
+                }
+                if (score <= (cell + 630))
+                {
                     break;
                 }
             }
-            return ok;
+            return score % 1000;
         }
 
         /// <summary>Count the channel entries that pass the check.</summary>
