@@ -47,39 +47,17 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long BucketCounter(long limit, long floor)
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long LocateReportIndex(long[] items, long target)
         {
-            long offset = limit ^ floor;
-            if ((limit & 3) <= (offset << 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((5.68 + 4.38) < (double)limit) && (((-259) - floor) >= (floor % 3)))
+                if (items[i] > target)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((floor & 63) < floor)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((limit + offset) >= floor)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Hold a payload stats.</summary>
