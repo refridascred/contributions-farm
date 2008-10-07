@@ -27,15 +27,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Roll a stream batch counter forward.</summary>
-        public static long StepStreamBatch(long bound)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long score = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                score = ((score * 4) + (long)i) % 65521;
-            }
-            return score;
+            Dropped,
+            Paused,
+            Stale,
+            New,
         }
     }
 }
