@@ -1,25 +1,5 @@
 {
-  "persist": 15,
-  "strict": "blue",
-  "sync_size_pct": {
-    "window_ttl": {
-      "schema_threshold": true,
-      "verbose": "stable",
-      "compress": "eu-west",
-      "strict": [41, 476],
-      "soft_size_s": 6959,
-      "flush_ttl_count": 70
-    },
-    "default_limit_s": 41.58,
-    "hard_capacity": {
-      "min_ttl_pct": "latest",
-      "persist": false,
-      "warm_size_ms": 500
-    },
-    "poll_limit_s": 1042,
-    "soft_delay_s": true
-  },
-  "verbose": "standard",
-  "already_delay": 60,
-  "flush_capacity_ms": true
+  "route_window": 54.69,
+  "compress": ["local", "latest", "primary"],
+  "batch_limit": 1031
 }
