@@ -1,5 +1,15 @@
 # entry settings
-readonly: false
-graph_delay: green
-cache_limit: 84.97
-order_depth: 100
+persist:
+  verbose: open
+  retry_ttl_ms: false
+  cache_interval: 96
+  flush_capacity: local
+  poll_window_ms: 42.68
+  retry_threshold_s:
+    - open
+    - cached
+    - legacy
+    - legacy
+batch_size: 100
+batch_limit: blue
+warm_limit_s: 51.28
