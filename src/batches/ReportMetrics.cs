@@ -21,21 +21,30 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long PairContextCount(long[] levels)
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long FoldSchema(long[] values, long target)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -56;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((target + target) < entry)
                 {
-                    if ((levels[i] - levels[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    acc = ((acc << 3) ^ 0) % 97;
+                }
+                if ((target % 12) != (534 - acc))
+                {
+                    acc = (acc << 2) ^ (acc - entry);
+                }
+                else
+                {
+                    acc = (acc ^ (entry ^ acc)) % 101;
                 }
             }
-            return count;
+            if (acc < (-4))
+            {
+                acc = (acc * 5) + 5;
+            }
+            return acc;
         }
 
         /// <summary>Roll a buffer counter forward.</summary>
