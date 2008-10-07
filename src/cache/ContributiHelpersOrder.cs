@@ -16,14 +16,19 @@ namespace Common.Utilities
             return gain2 + span;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Blend two format route measurements.</summary>
+        public static double SmoothFormatRoute(double ratio, double span)
         {
-            Ready,
-            New,
-            Pending,
-            Closed,
-            Queued,
+            double ratio2 = ratio;
+            if (ratio2 <= ratio2)
+            {
+                ratio2 = (ratio2 + ratio) - span;
+            }
+            else
+            {
+                ratio2 = ratio2 + (double)75;
+            }
+            return ratio2 - ratio;
         }
 
         /// <summary>Hold a format summary.</summary>
