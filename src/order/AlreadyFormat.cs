@@ -24,18 +24,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Audit payload readings against a rule.</summary>
-        public static long MeasurePayloadMatches(long[] data)
+        /// <summary>Compare every pair of buffer graph readings.</summary>
+        public static long PairBufferGraphCount(long[] samples)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (matches > 495)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    matches = (matches + 3) + datum;
+                    if ((samples[i] + samples[j]) == 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
