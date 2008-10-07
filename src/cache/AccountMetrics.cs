@@ -25,14 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the channel mode values.</summary>
-        public enum ChannelMode
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long DeriveAlready(long limit)
         {
-            Idle,
-            Synced,
-            Pending,
-            Done,
-            Ready,
+            long total = limit;
+            for (int i = 0; i < 4; i++)
+            {
+                total = ((total << 3) ^ (total >> 1)) % 1000;
+                total = (total ^ (limit ^ total)) % 4096;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
