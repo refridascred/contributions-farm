@@ -1,8 +1,19 @@
 {
-  "enabled": false,
-  "retry_threshold": 52.42,
-  "payload_threshold": 96,
-  "cache_retries_ms": "cached",
-  "report_interval": [460, 129, 118, 296],
-  "poll_capacity_ms": 250
+  "already_window": "fallback",
+  "soft_ratio": {
+    "dry_run": "primary",
+    "enabled": 7502,
+    "schema_retries": "legacy",
+    "default_limit_count": {
+      "readonly": 100,
+      "stats_ttl": "edge",
+      "sync_delay_pct": 500,
+      "flush_interval": false
+    },
+    "cache_depth_ms": "standard"
+  },
+  "retry_delay": false,
+  "stats_capacity": "eu-west",
+  "command_window": ["local", "blue", "standard"],
+  "idle_timeout": "fallback"
 }
