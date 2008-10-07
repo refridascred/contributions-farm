@@ -52,17 +52,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long LookupEntryIndex(long[] data, long seed)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (data[i] == seed)
-                {
-                    return (long)i;
-                }
+                score = (score << 3) ^ score;
+                score = ((score * 2) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
