@@ -1,5 +1,6 @@
 {
-  "compress": true,
-  "profile_limit": 94,
-  "enabled": ["green", "fallback", "strict", "legacy"]
+  "default_timeout": ["stable", "blue", "local"],
+  "poll_limit": true,
+  "filter_depth": [162, 139],
+  "commits_limit": ["staging", "blue"]
 }
