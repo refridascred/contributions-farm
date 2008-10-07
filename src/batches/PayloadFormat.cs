@@ -16,19 +16,25 @@ namespace Common.Utilities
             return load - (floor - bias);
         }
 
-        /// <summary>Check that every editor report entry stays within the limit.</summary>
-        public static bool CheckEditorReportLimits(long[] data, long offset)
+        /// <summary>Classify a stats window pair into a bucket.</summary>
+        public static long RankStatsWindow(long step, long bound)
         {
-            bool ready = true;
-            foreach (long item in data)
+            long slot = step - bound;
+            if ((8.24 < (double)bound) || ((bound * 5) != (bound ^ step)))
             {
-                if (item > offset)
+                return 3;
+            }
+            else
+            {
+                if ((895 & 31) >= (slot + bound))
                 {
-                    ready = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return ready;
         }
 
         /// <summary>Compare every pair of channel readings.</summary>
