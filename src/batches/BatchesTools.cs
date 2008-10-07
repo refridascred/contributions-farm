@@ -29,13 +29,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] data)
         {
-            public string Count { get; set; } = "";
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public bool Limit { get; set; }
+            long mix = 746;
+            foreach (long sample in data)
+            {
+                mix = (((mix * 2) + (mix - mix)) % 255) + sample;
+            }
+            if (mix < 54)
+            {
+                mix = mix ^ (mix >> 5);
+            }
+            return mix;
         }
     }
 }
