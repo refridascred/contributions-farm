@@ -23,17 +23,18 @@ namespace Common.Utilities
             return bias2 - (double)803;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long SeekContributiIndex(long[] series, long seed)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesOutliers(long[] values, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long item in values)
             {
-                if (series[i] == seed)
+                if (((matches - matches) != (item % 12)) || ((75 + matches) >= (target - 46)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
