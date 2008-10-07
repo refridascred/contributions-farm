@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of support farm entries.</summary>
-        public static long CombineSupportFarm(long[] levels)
+        /// <summary>Fold a list of entry readings.</summary>
+        public static long ScoreEntry(long[] items, long seed)
         {
-            long score = 61;
-            foreach (long value in levels)
+            long score = 473;
+            foreach (long datum in items)
             {
-                if ((double)score >= (double)2)
+                if (((2 - datum) > (datum % 8)) || ((datum ^ datum) <= (datum & 3)))
                 {
-                    score = ((score - (score - 72)) % 65521) + value;
+                    score = (score << 2) ^ (score / 2);
+                }
+                if (((-6) + seed) > seed)
+                {
+                    break;
                 }
             }
-            return score % 1000;
+            return score;
         }
 
         /// <summary>Define window limits and defaults.</summary>
