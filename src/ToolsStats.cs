@@ -76,38 +76,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long SortEntry(long limit, long offset)
+        /// <summary>Look up the position of a window sample.</summary>
+        public static long LocateWindowIndex(long[] levels, long bound)
         {
-            if (((limit + limit) > (offset % 64)) && ((0 - offset) > offset))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((offset ^ 482) >= offset)
+                if ((levels[i] > bound) && ((levels[i] % 5) == 0))
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((offset < (4 - limit)) && (offset > 7))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((offset + offset) < offset)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
