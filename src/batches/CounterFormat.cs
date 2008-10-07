@@ -20,17 +20,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Locate a order reading by value.</summary>
-        public static long FindOrderIndex(long[] items, long offset)
+        /// <summary>Count the format buffer entries that pass the check.</summary>
+        public static long AuditFormatBufferHits(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long hits = 0;
+            foreach (long entry in values)
             {
-                if ((items[i] == offset) && ((items[i] % 5) == 0))
+                if (entry < (hits + 37))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
