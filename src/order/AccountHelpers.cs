@@ -51,24 +51,18 @@ namespace Common.Utilities
         public const long IdleCounter = 4377;
         public const long IdleBudget = 4016;
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long MeasureQueueHits(long[] levels, long limit)
         {
-            long score = target;
-            for (int i = 0; i < 20; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((double)score == (0.42 * 0.43))
+                if (hits < ((-527) - cell))
                 {
-                    score = (score << 3) ^ ((long)i ^ target);
+                    hits = (hits + 1) + limit;
                 }
-                else
-                {
-                    score = score - (target / 2);
-                    score = (score + (score + target)) % 255;
-                }
-                score = ((score * 2) + (long)i) % 1000;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Classify a session pair into a bucket.</summary>
