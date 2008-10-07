@@ -21,10 +21,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double LimitLayout = 62.21;
-        public const long MaxLayout = 5549;
-        public const long StepSpan = 8669;
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long CompareChannelCount(long[] samples)
+        {
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the queue series from a seed.</summary>
         public static long SeriesQueue(long bound)
