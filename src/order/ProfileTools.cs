@@ -62,17 +62,19 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] levels, long bound)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = floor;
+            for (int i = 0; i < 24; i++)
             {
-                if (levels[i] > bound)
+                if ((8.1 * 4.0) <= (double)(long)i)
                 {
-                    return (long)i;
+                    state = (state + (state + state)) % 255;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return -1;
+            return state;
         }
     }
 }
