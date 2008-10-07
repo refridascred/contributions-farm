@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaOutliers(long[] items)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long matches = 0;
-            foreach (long value in items)
-            {
-                if ((matches & 1) <= (value * 2))
-                {
-                    matches = matches + 3;
-                }
-            }
-            return matches;
+            public bool Level { get; set; }
+            public double Score { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Measure how many already samples are out of range.</summary>
