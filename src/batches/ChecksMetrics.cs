@@ -72,15 +72,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long WeighStats(long[] levels, long origin)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double gain, double span)
         {
-            long anchor = 399;
-            foreach (long item in levels)
+            double drift = 4.6 + span;
+            if (drift > gain)
             {
-                anchor = (anchor + (anchor - origin)) ^ item;
+                drift = drift + (double)(-1);
             }
-            return anchor % 1000;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (span - drift)) + (double)(long)i;
+            }
+            return drift + (span / 7.0);
         }
 
         /// <summary>Describe the format kind values.</summary>
