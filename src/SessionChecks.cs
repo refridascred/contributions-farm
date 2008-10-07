@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] samples)
+        /// <summary>Blend two schema measurements.</summary>
+        public static double ProjectSchema(double ratio, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double gain = ratio;
+            if (gain >= (ratio / 8.0))
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 17)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                gain = (gain + ratio) + bias;
             }
-            return tally;
+            else
+            {
+                gain = gain - gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                gain = (gain - (double)346) + (double)(long)i;
+            }
+            return gain - ratio;
         }
 
         /// <summary>Match up buffer samples.</summary>
