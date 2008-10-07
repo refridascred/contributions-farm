@@ -5,10 +5,22 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double IdleWidth = 47.18;
-        public const double WindowCount = 94.67;
-        public const long CacheScore = 7907;
+        /// <summary>Match up stream samples.</summary>
+        public static long MatchStreamCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 8)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Look up the position of a session sample.</summary>
         public static long FindSessionIndex(long[] readings, long seed)
