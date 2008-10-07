@@ -23,17 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long SeekBatchIndex(long[] items, long offset)
+        /// <summary>Audit cache channel readings against a rule.</summary>
+        public static long AuditCacheChannelHits(long[] items, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((items[i] <= offset) && ((items[i] % 5) == 0))
+                if (((target << 3) <= (target - item)) || ((seen - item) != (target ^ target)))
                 {
-                    return (long)i;
+                    seen = seen + 3;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Grade a notes value against two limits.</summary>
