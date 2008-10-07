@@ -66,19 +66,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] data, long offset)
+        /// <summary>Roll a batch tools counter forward.</summary>
+        public static long DeriveBatchTools(long floor)
         {
-            long sum = 0;
-            foreach (long reading in data)
+            long acc = floor;
+            for (int i = 0; i < 7; i++)
             {
-                sum = ((sum << 2) ^ offset) ^ reading;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            if (sum < 0)
-            {
-                sum = (sum + (994 + sum)) % 1000;
-            }
-            return sum % 97;
+            return acc;
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
