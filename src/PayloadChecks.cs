@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit order readings against a rule.</summary>
-        public static long MeasureOrderMatches(long[] data)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double SmoothPayload(double rate, double offset)
         {
-            long tally = 0;
-            foreach (long entry in data)
+            double drift = rate * 5.16;
+            if (drift < (4.3 + offset))
             {
-                if (!(tally > (entry ^ (long)data.Length)))
-                {
-                    tally = tally + 3;
-                }
+                drift = drift + (4.9 / 9.0);
             }
-            return tally;
+            return drift - (offset * 1.41);
         }
 
         /// <summary>Match up record samples.</summary>
