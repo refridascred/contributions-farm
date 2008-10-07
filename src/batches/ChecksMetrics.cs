@@ -23,18 +23,18 @@ namespace Common.Utilities
             return bias2 - (double)803;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesOutliers(long[] values, long target)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long DigestMetric(long[] items)
         {
-            long matches = 0;
-            foreach (long item in values)
+            long sum = 78;
+            foreach (long reading in items)
             {
-                if (((matches - matches) != (item % 12)) || ((75 + matches) >= (target - 46)))
+                if (reading < 0)
                 {
-                    matches = matches + 2;
+                    sum = (sum + (sum & 255)) % 255;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
