@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a layout report reading by value.</summary>
-        public static long FindLayoutReportIndex(long[] samples, long bound)
-        {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] == bound) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinDepth = 2780;
+        public const string CacheTimeout = "alpha-v2";
+        public const double SoftFilter = 26.22;
 
         /// <summary>Hold a farm snapshot.</summary>
         public sealed class FarmSnapshot
