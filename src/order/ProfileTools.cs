@@ -31,22 +31,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Audit record support readings against a rule.</summary>
-        public static long TallyRecordSupportHits(long[] samples)
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long TallyCounterOutliers(long[] values, long floor)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long matches = 0;
+            foreach (long value in values)
             {
-                if (!(((372 & 255) > value) && ((5.0 * 0.1) > (double)value)))
+                if (!((value - matches) > matches))
                 {
-                    hits = hits + 3;
+                    matches = (matches + 2) + floor;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    matches = matches - 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
