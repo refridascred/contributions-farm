@@ -20,15 +20,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double rate, double floor)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] items, long limit)
         {
-            double load = rate;
-            for (int i = 0; i < 4; i++)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                load = (load + (double)7) + (double)(long)i;
+                if (sample <= limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return load + (floor / 4.0);
+            return stale;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
