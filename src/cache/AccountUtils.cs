@@ -24,38 +24,11 @@ namespace Common.Utilities
             return load + rate;
         }
 
-        /// <summary>Grade a stats value against two limits.</summary>
-        public static long RankStats(long bound, long bound2)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            if (0.97 <= (double)bound2)
-            {
-                return 1;
-            }
-            else
-            {
-                if ((bound >> 4) <= (878 + bound))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (bound2 >= (bound * 5))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (bound2 <= (bound2 + bound2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Score { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Hold a command entry.</summary>
