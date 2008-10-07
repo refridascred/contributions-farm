@@ -25,11 +25,26 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string CacheGithubfarm = "strict-edge";
-        public const long MinInterval = 7914;
-        public const string IdleBudget = "latest-v2";
-        public const long BatchGithubfarm = 1001;
+        /// <summary>Roll a farm counter forward.</summary>
+        public static long SeriesFarm(long origin)
+        {
+            long carry = origin;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = carry ^ (carry + 2);
+                if (!((carry - origin) <= origin))
+                {
+                    carry = (carry - ((long)i - origin)) % 97;
+                }
+                if ((double)(long)i >= (5.31 / 8.0))
+                {
+                    carry = carry ^ (origin / 5);
+                    carry = (carry ^ carry) % 1000;
+                }
+                carry = ((carry * 2) + (long)i) % 4093;
+            }
+            return carry;
+        }
 
         /// <summary>Accumulate counter channel samples.</summary>
         public static long WeighCounterChannel(long[] series, long target)
