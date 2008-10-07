@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Compare every pair of editor command readings.</summary>
-        public static long OverlapEditorCommandCount(long[] data)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool ValidateRouteRange(long[] items, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in items)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (item > bound)
                 {
-                    if ((data[i] + data[j]) > 9)
-                    {
-                        hits = hits + 1;
-                    }
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Combine counter schema values into a single score.</summary>
