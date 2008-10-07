@@ -47,11 +47,28 @@ namespace Common.Utilities
             return gain + (1.2 + gain);
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double AdjustFormat(double rate, double span)
+        /// <summary>Iterate the metrics series from a seed.</summary>
+        public static long RollMetrics(long floor)
         {
-            double bias = rate + (span - span);
-            return bias - (20.0 / 2.0);
+            long acc = floor;
+            for (int i = 0; i < 21; i++)
+            {
+                acc = acc - (acc - floor);
+                if ((7.48 - 19.0) != (double)acc)
+                {
+                    acc = acc ^ floor;
+                }
+                else
+                {
+                    acc = acc + (acc ^ 953);
+                }
+                if (acc <= floor)
+                {
+                    acc = (acc + (floor + acc)) % 4096;
+                }
+                acc = ((acc * 3) + (long)i) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Describe the profile mode values.</summary>
