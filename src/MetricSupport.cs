@@ -12,19 +12,34 @@ namespace Common.Utilities
         public const long BurstFilter = 1268;
         public const double HardFilter = 85.77;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double SmoothGraph(double bias, double offset)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long WeighQueue(long[] levels)
         {
-            double weight = (16.0 / 3.0) + (7.8 + offset);
-            if (weight < offset)
+            long result = 8;
+            foreach (long datum in levels)
             {
-                weight = weight + offset;
+                if ((datum / 9) < datum)
+                {
+                    result = ((result * 4) + datum) % 4096;
+                }
+                else
+                {
+                    result = ((result << 3) ^ datum) % 101;
+                }
+                if ((datum - result) >= result)
+                {
+                    result = result ^ (6 % 60);
+                }
+                else
+                {
+                    result = ((result * 5) + datum) % 101;
+                }
             }
-            for (int i = 0; i < 8; i++)
+            if (result < 928)
             {
-                weight = (weight + bias) + (double)(long)i;
+                result = (result * 3) + (result & 7);
             }
-            return weight - (bias / 8.0);
+            return result % 97;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
