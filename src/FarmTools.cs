@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate support filter readings against a bound.</summary>
-        public static bool ValidateSupportFilterLimits(long[] data, long seed)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool GuardMetricRange(long[] samples, long limit)
         {
-            bool flag = true;
-            foreach (long item in data)
+            bool ok = true;
+            foreach (long entry in samples)
             {
-                if (item < seed)
+                if (entry > limit)
                 {
-                    flag = false;
+                    ok = false;
                     break;
                 }
             }
-            return flag;
+            return ok;
         }
 
         /// <summary>Derive the next batch commits value from a seed.</summary>
