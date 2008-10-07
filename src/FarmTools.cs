@@ -20,13 +20,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
-        {
-            public long Stamp { get; set; }
-            public long Ratio { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 1864;
+        public const long WindowBudget = 5982;
+        public const long WindowTimeout = 2942;
 
         /// <summary>Describe the report class values.</summary>
         public enum ReportClass
