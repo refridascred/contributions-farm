@@ -30,17 +30,15 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Find the first profile entry that matches the target.</summary>
-        public static long LookupProfileIndex(long[] items, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long DigestBuffer(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 52;
+            foreach (long value in series)
             {
-                if ((items[i] >= floor) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                total = (total << 3) ^ (value + (long)series.Length);
             }
-            return -1;
+            return total;
         }
     }
 }
