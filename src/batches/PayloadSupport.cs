@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Describe the metrics kind values.</summary>
-        public enum MetricsKind
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long origin, long floor)
         {
-            Locked,
-            Stale,
-            Pending,
-            New,
+            if (floor >= (floor << 2))
+            {
+                return 8;
+            }
+            else
+            {
+                if (origin > (floor >> 4))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (((origin + origin) > (origin * 5)) || ((double)origin < 2.0))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((origin - (-647)) <= (333 / 2))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Roll a already counter forward.</summary>
