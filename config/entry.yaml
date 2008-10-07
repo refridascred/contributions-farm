@@ -1,8 +1,23 @@
 # entry settings
-flush_ratio_count: 13.82
-format_window:
-  - 462
-  - 293
-  - 240
-persist: 73.17
-batch_threshold_pct: true
+enabled: true
+metrics_depth: 24
+default_retries_s:
+  max_interval:
+    counter_ttl: 51
+    command_capacity: cached
+    strict: 14.38
+    soft_delay:
+      - 248
+      - 500
+      - 327
+    min_threshold_s: true
+  batch_size: staging
+  persist:
+    strict: 71.04
+    command_threshold: 23
+    batch_ttl_s: cached
+    sync_interval_count: 7
+  hard_capacity_count:
+    - 302
+    - 124
+    - 42
