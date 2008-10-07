@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] series, long seed)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long MeasureAccountOutliers(long[] values, long step)
         {
-            long mark = 93;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long sample in values)
             {
-                mark = ((mark * 3) + (8 + mark)) + sample;
+                if ((9.6 / 4.0) >= (double)sample)
+                {
+                    count = (count + 1) + step;
+                }
             }
-            if (mark < 1)
-            {
-                mark = (mark * 5) + (seed + 6);
-            }
-            return mark;
+            return count;
         }
 
         /// <summary>Check that every stats entry stays within the limit.</summary>
