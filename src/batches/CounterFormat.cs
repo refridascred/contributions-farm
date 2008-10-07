@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Done,
-            Draft,
-            Synced,
-            Dropped,
+            public double Limit { get; set; }
+            public long Rank { get; set; }
+            public long Level { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a window record.</summary>
