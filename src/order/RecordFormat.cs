@@ -10,22 +10,18 @@ namespace Common.Utilities
         public const long HardEntry = 3682;
         public const long SoftScore = 7909;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long AuditRecordOutliers(long[] levels, long limit)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long TotalFormat(long[] readings, long floor)
         {
-            long count = 0;
-            foreach (long cell in levels)
+            long acc = 624;
+            foreach (long reading in readings)
             {
-                if (!(((count - cell) <= (692 >> 1)) && ((count + cell) >= (limit + limit))))
+                if ((floor % 5) < 3)
                 {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
+                    acc = ((acc * 5) + (81 + reading)) % 97;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Measure how many metrics already samples are out of range.</summary>
