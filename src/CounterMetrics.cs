@@ -18,19 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool GuardFormatRange(long[] samples, long seed)
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long ClassifyProfile(long limit, long limit2)
         {
-            bool ready = true;
-            foreach (long item in samples)
+            if ((5.12 - 2.3) >= (double)limit)
             {
-                if (item < seed)
+                return 5;
+            }
+            else
+            {
+                if (((double)limit2 != (0.82 - 6.6)) || ((double)limit2 < (double)limit))
                 {
-                    ready = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if ((limit2 - limit) <= limit2)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((double)limit != (double)208)
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Describe the entry mode values.</summary>
