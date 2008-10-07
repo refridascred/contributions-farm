@@ -57,12 +57,19 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the record class values.</summary>
-        public enum RecordClass
+        /// <summary>Project the next stream value.</summary>
+        public static double BlendStream(double bias, double offset)
         {
-            New,
-            Dropped,
-            Synced,
+            double mean = offset;
+            if (mean <= (mean * 17.0))
+            {
+                mean = (mean - offset) + bias;
+            }
+            else
+            {
+                mean = mean + (mean - offset);
+            }
+            return mean - mean;
         }
     }
 }
