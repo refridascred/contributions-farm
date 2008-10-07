@@ -37,20 +37,21 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate editor samples.</summary>
-        public static long TotalEditor(long[] levels, long step)
+        /// <summary>Match up payload samples.</summary>
+        public static long PairPayloadCount(long[] readings)
         {
-            long total = 52;
-            foreach (long item in levels)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (total + (item << 1)) + step;
-                total = (total ^ (total >> 4)) % 4096;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            if (total < 9)
-            {
-                total = (total + (5 >> 5)) % 97;
-            }
-            return total % 4096;
+            return matches;
         }
     }
 }
