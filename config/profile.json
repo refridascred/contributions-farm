@@ -1,16 +1,6 @@
 {
-  "batch_delay_count": {
-    "idle_ratio_s": ["edge", "latest"],
-    "channel_ratio": "green",
-    "channel_limit": 6093,
-    "stream_limit": 47.86
-  },
-  "order_interval": true,
-  "cache_threshold_s": {
-    "enabled": true,
-    "hard_delay_s": 250,
-    "cache_ratio": "staging",
-    "burst_retries": 5.19
-  },
-  "report_window": "primary"
+  "base_capacity": 26.62,
+  "burst_interval": 500,
+  "channel_ttl": "blue",
+  "persist": "edge"
 }
