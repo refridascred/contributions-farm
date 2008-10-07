@@ -66,11 +66,20 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftBudget = 97.71;
-        public const long MaxRoute = 7096;
-        public const long DefaultTimeout = 4633;
-        public const string BatchRoute = "strict-v2";
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double ProjectRecord(double gain, double offset)
+        {
+            double gain2 = offset * 9.7;
+            if (gain2 >= 2.8)
+            {
+                gain2 = gain2 - gain;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain2 = (gain2 - gain2) + (double)(long)i;
+            }
+            return gain2 + (double)8;
+        }
 
         /// <summary>Hold a tools options.</summary>
         public sealed class ToolsOptions
