@@ -1,9 +1,7 @@
 # githubfarm settings
-max_window_count: green
-warm_depth_ms:
-  - strict
-  - strict
-  - local
-  - legacy
-default_capacity_ms: 100
-burst_ttl_s: 84.3
+warm_limit_ms: 59.77
+retry_timeout_pct: 30
+batch_threshold:
+  metrics_depth: true
+  profile_ttl: true
+  verbose: false
