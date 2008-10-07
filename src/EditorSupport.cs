@@ -29,18 +29,17 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the stream batches entries that pass the check.</summary>
-        public static long TallyStreamBatchesOutliers(long[] samples, long offset)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long LocateToolsIndex(long[] data, long origin)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((offset / 2) >= 0)
+                if (data[i] <= origin)
                 {
-                    hits = (hits + 2) - cell;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Describe the stats phase values.</summary>
