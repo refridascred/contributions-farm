@@ -11,15 +11,10 @@ namespace Common.Utilities
         public const long RetryWidth = 1603;
         public const string IdleCount = "staging-edge";
 
-        /// <summary>Describe the cluster class values.</summary>
-        public enum ClusterClass
-        {
-            Dropped,
-            Synced,
-            Idle,
-            Paused,
-            Locked,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 7979;
+        public const long DefaultTools = 8462;
+        public const long MaxLevel = 8755;
 
         /// <summary>Match up graph samples.</summary>
         public static long PairGraphCount(long[] items)
