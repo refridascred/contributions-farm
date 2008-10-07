@@ -38,14 +38,12 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Describe the account level values.</summary>
-        public enum AccountLevel
-        {
-            Ready,
-            Idle,
-            Queued,
-            Draft,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BatchEntry = 4.77;
+        public const long DefaultCount = 7005;
+        public const long RetryEntry = 3315;
+        public const long CacheEntry = 3371;
+        public const long MaxDepth = 3408;
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
