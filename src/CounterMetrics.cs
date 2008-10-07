@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Adjust a batch queue reading.</summary>
-        public static double ProjectBatchQueue(double gain, double span)
+        /// <summary>Compare every pair of payload readings.</summary>
+        public static long OverlapPayloadCount(long[] values)
         {
-            double gain2 = span;
-            if (gain2 > (gain2 * 9.13))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                gain2 = (gain2 + (double)312) + gain;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return gain2 - span;
+            return seen;
         }
 
         /// <summary>Hold a contributi info.</summary>
