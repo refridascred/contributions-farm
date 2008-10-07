@@ -14,11 +14,13 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long HardRatio = 7925;
-        public const long LimitContributi = 9940;
-        public const string HardTimeout = "alpha-v2";
-        public const long BaseContributi = 2417;
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
+        {
+            Retry,
+            Closed,
+            Failed,
+        }
 
         /// <summary>Combine githubfarm profile values into a single score.</summary>
         public static long FoldGithubfarmProfile(long[] items)
