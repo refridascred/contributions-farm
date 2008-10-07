@@ -5,10 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 2462;
-        public const double LimitCommand = 29.52;
-        public const double WindowSpan = 10.39;
+        /// <summary>Define already limits and defaults.</summary>
+        public const long DefaultAlready = 3331;
+        public const string RetryAlready = "stable-v2";
+        public const long LimitDepth = 6433;
+        public const double CacheAlready = 95.49;
 
         /// <summary>Rank account input into a small class.</summary>
         public static long SortAccount(long step, long floor)
