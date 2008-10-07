@@ -21,12 +21,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Locate a context reading by value.</summary>
+        public static long SeekContextIndex(long[] items, long bound)
         {
-            Retry,
-            Dropped,
-            Closed,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] == bound) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
