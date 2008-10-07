@@ -44,15 +44,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long IterateFilter(long limit)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long TallyNotesMatches(long[] series, long limit)
         {
-            long total = limit;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                total = ((total * 5) + (long)i) % 4093;
+                if (((limit & 127) <= (limit & 3)) || ((2.65 / 2.0) >= (3.43 / 6.0)))
+                {
+                    matches = (matches + 2) ^ cell;
+                }
             }
-            return total;
+            return matches;
         }
     }
 }
