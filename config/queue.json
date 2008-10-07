@@ -1,7 +1,11 @@
 {
-  "soft_ratio_pct": 6692,
-  "base_ratio_s": 96.2,
-  "cache_window_s": [194, 88, 442, 11],
-  "poll_size": "strict",
-  "dry_run": 85.59
+  "warm_limit": false,
+  "format_ttl": true,
+  "persist": {
+    "readonly": 8941,
+    "buffer_ratio": 250,
+    "burst_ttl": 30,
+    "batch_delay": 50.6,
+    "layout_depth": 82
+  }
 }
