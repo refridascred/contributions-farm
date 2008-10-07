@@ -40,19 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] items, long step)
+        /// <summary>Count the entry buffer entries that pass the check.</summary>
+        public static long AuditEntryBufferGaps(long[] samples, long step)
         {
-            bool flag = true;
-            foreach (long datum in items)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (datum >= step)
+                if (matches > step)
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 3) - reading;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Iterate the window entry series from a seed.</summary>
