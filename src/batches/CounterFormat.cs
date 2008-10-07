@@ -14,26 +14,11 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long GradeLayout(long target, long target2)
-        {
-            long bound = target - target2;
-            if (!((target2 * 3) >= (bound + target2)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((3.31 <= (double)target) || ((57 - target) < (30 % 7)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long IdleSpan = 5785;
+        public const string IdleBudget = "staging-1";
+        public const string DefaultWidth = "alpha-edge";
+        public const long SoftBudget = 5668;
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long MeasureFormatOutliers(long[] samples)
