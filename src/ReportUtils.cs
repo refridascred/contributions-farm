@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Hold a contributi snapshot.</summary>
+        public sealed class ContributiSnapshot
         {
-            public double Mode { get; set; }
-            public double Level { get; set; }
-            public long Token { get; set; }
+            public long Score { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Accumulate metrics samples.</summary>
