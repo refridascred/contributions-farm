@@ -38,21 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 19)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Pending,
+            Ready,
+            Dropped,
+            Closed,
         }
 
         /// <summary>Rank layout input into a small class.</summary>
