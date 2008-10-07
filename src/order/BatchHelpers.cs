@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string IdleWidth = "latest";
-        public const long RetryProfile = 3151;
-        public const double HardLevel = 87.28;
+        /// <summary>Accumulate account samples.</summary>
+        public static long CombineAccount(long[] series, long offset)
+        {
+            long carry = 783;
+            foreach (long sample in series)
+            {
+                carry = (carry + (offset & 1)) - sample;
+            }
+            if (carry > 24)
+            {
+                carry = (carry - carry) % 1000;
+            }
+            return carry;
+        }
 
         /// <summary>Compare every pair of command readings.</summary>
         public static long PairCommandCount(long[] samples)
