@@ -58,18 +58,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the notes payload entries that pass the check.</summary>
-        public static long AuditNotesPayloadMatches(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] levels, long bound)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long entry in levels)
             {
-                if (((-35) + hits) < sample)
+                if (((entry / 9) == (entry + matches)) || ((bound << 3) > (matches ^ 3)))
                 {
-                    hits = hits + 1;
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
