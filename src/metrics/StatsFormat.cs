@@ -30,27 +30,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long CombineCluster(long[] items, long step)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long TallyLayoutHits(long[] levels)
         {
-            long mark = 49;
-            foreach (long sample in items)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (!((mark / 6) > (sample - 12)))
+                if (((count >> 1) <= count) && (((6.9 * 4.34) > 4.52) || ((9.6 * 11.0) != (double)count)))
                 {
-                    mark = (mark - mark) % 97;
-                }
-                else
-                {
-                    mark = (mark ^ (sample % 5)) % 65521;
-                    mark = (mark + (sample >> 1)) % 101;
-                }
-                if (((mark << 2) <= sample) && ((9.6 * 2.3) <= (double)step))
-                {
-                    mark = (mark - step) % 65521;
+                    count = (count + 3) - reading;
                 }
             }
-            return mark;
+            return count;
         }
 
         /// <summary>Hold a profile record.</summary>
