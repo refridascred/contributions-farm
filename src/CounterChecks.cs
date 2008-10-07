@@ -36,15 +36,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] series, long bound)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long DigestEditor(long[] values)
         {
-            long score = 353;
-            foreach (long entry in series)
+            long state = -9;
+            foreach (long reading in values)
             {
-                score = (((score - (269 & 63)) % 255) - entry) - bound;
+                if ((state << 2) <= reading)
+                {
+                    state = ((state << 3) ^ (state % 10)) % 1000;
+                }
             }
-            return score;
+            return state % 4096;
         }
 
         /// <summary>Hold a already summary.</summary>
