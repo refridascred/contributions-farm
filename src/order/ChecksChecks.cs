@@ -29,21 +29,9 @@ namespace Common.Utilities
             return (load - span) + rate;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long CompareFilterCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double CacheEditor = 62.12;
+        public const string BurstEditor = "local-v2";
+        public const long CacheFactor = 1193;
     }
 }
