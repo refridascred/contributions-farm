@@ -13,12 +13,26 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BaseSize = 1055;
-        public const long DefaultSpan = 4575;
-        public const long MinStream = 4910;
-        public const string SoftScore = "strict";
-        public const long BaseRatio = 9626;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long GradeLayout(long target, long target2)
+        {
+            long bound = target - target2;
+            if (!((target2 * 3) >= (bound + target2)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((3.31 <= (double)target) || ((57 - target) < (30 % 7)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Define checks limits and defaults.</summary>
         public const long StepChecks = 5292;
