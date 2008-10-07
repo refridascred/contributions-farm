@@ -19,15 +19,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Match up entry samples.</summary>
+        public static long OverlapEntryCount(long[] items)
         {
-            long total = origin;
-            for (int i = 0; i < 17; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                total = ((total * 4) + (long)i) % 101;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] - items[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return total;
+            return count;
         }
 
         /// <summary>Match up cluster samples.</summary>
