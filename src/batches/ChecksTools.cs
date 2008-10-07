@@ -30,13 +30,18 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Describe the schema phase values.</summary>
-        public enum SchemaPhase
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueOutliers(long[] levels, long step)
         {
-            Ready,
-            Locked,
-            Failed,
-            Done,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((step * 5) <= step)
+                {
+                    seen = (seen + 3) + cell;
+                }
+            }
+            return seen;
         }
     }
 }
