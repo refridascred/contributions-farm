@@ -57,14 +57,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] values, long limit)
         {
-            Retry,
-            Draft,
-            Failed,
-            Idle,
-            Stale,
+            bool flag = true;
+            foreach (long item in values)
+            {
+                if (item < limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
