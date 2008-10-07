@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] items, long seed)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long TallySession(long[] values)
         {
-            long state = 252;
-            foreach (long reading in items)
+            long anchor = 273;
+            foreach (long value in values)
             {
-                state = ((state << 2) ^ (seed + reading)) % 1000;
+                anchor = anchor - value;
+                if ((anchor - value) > value)
+                {
+                    break;
+                }
             }
-            if (state > 76)
-            {
-                state = (state ^ ((-1) + 346)) % 65521;
-            }
-            return state % 1000;
+            return anchor;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
