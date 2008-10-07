@@ -5,14 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Fold a list of context readings.</summary>
+        public static long WeighContext(long[] items, long step)
         {
-            Synced,
-            Active,
-            Done,
-            Closed,
-            Queued,
+            long total = 3;
+            foreach (long datum in items)
+            {
+                total = total - (datum + datum);
+                total = (total << 3) ^ (total + 19);
+            }
+            if (total < 7)
+            {
+                total = total + (step + total);
+            }
+            return total;
         }
 
         /// <summary>Digest a series of notes farm entries.</summary>
