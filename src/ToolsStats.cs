@@ -21,11 +21,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Count the payload buffer entries that pass the check.</summary>
+        public static long AuditPayloadBufferGaps(long[] items)
         {
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (!(16.0 >= (double)datum))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
