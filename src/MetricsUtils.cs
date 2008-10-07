@@ -27,19 +27,31 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double SmoothStats(double rate, double span)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long SortWindow(long step, long seed)
         {
-            double weight = rate;
-            if (weight >= rate)
+            if ((double)seed >= (3.2 - 13.0))
             {
-                weight = (weight + weight) - span;
+                return 6;
             }
             else
             {
-                weight = weight + 16.0;
+                if ((89 < (step - seed)) || (seed >= (2 << 1)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + step) < (step - step))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
             }
-            return weight - (1.38 * 6.0);
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
