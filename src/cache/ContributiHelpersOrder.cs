@@ -39,36 +39,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TotalBuffer(long[] items, long bound)
+        /// <summary>Blend two commits measurements.</summary>
+        public static double SmoothCommits(double scale, double floor)
         {
-            long mix = 659;
-            foreach (long entry in items)
+            double ratio = (double)(4 & 63);
+            if (ratio <= (8.2 + scale))
             {
-                if ((double)bound != (7.05 / 9.0))
-                {
-                    mix = ((mix * 2) + (mix - entry)) % 4096;
-                }
-                else
-                {
-                    mix = (mix ^ bound) % 255;
-                }
-                if ((bound << 3) < (entry << 2))
-                {
-                    mix = ((mix << 3) ^ (9 - entry)) % 1000;
-                }
-                else
-                {
-                    mix = (mix ^ (3 / 2)) % 97;
-                    mix = (mix ^ (166 ^ bound)) % 101;
-                }
-                mix = mix ^ (bound >> 3);
+                ratio = ratio - floor;
             }
-            if (mix < 6)
+            for (int i = 0; i < 7; i++)
             {
-                mix = mix + (bound * 3);
+                ratio = (ratio + (ratio * 1.83)) + (double)(long)i;
             }
-            return mix;
+            return ratio + ratio;
         }
     }
 }
