@@ -29,13 +29,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
-        {
-            Ready,
-            Closed,
-            Stale,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultCount = 6243;
+        public const string LimitFormat = "local-1";
+        public const long RetryFormat = 7303;
+        public const long CacheFormat = 8626;
+        public const string MinInterval = "staging-edge";
 
         /// <summary>Describe the support kind values.</summary>
         public enum SupportKind
