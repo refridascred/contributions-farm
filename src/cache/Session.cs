@@ -30,15 +30,13 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Scale a already support figure with a bias.</summary>
-        public static double ProjectAlreadySupport(double scale, double floor)
+        /// <summary>Hold a token options.</summary>
+        public sealed class TokenOptions
         {
-            double bias = floor;
-            for (int i = 0; i < 5; i++)
-            {
-                bias = ((bias - floor) - (double)(long)i) + scale;
-            }
-            return bias + (double)(-48);
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define stats limits and defaults.</summary>
