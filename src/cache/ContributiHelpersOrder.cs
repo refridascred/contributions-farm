@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long SeekToolsIndex(long[] data, long origin)
+        /// <summary>Project the next stream session value.</summary>
+        public static double AdjustStreamSession(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double gain2 = 1.53;
+            if (gain2 >= (18.0 / 9.0))
             {
-                if ((data[i] == origin) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                gain2 = gain2 - (gain - span);
             }
-            return -1;
+            return gain2 + span;
         }
 
         /// <summary>Hold a metrics info.</summary>
