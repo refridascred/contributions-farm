@@ -20,14 +20,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Combine session values into a single score.</summary>
+        public static long ScoreSession(long[] data, long floor)
         {
-            Pending,
-            Draft,
-            Closed,
-            Idle,
-            Done,
+            long mark = 3;
+            foreach (long cell in data)
+            {
+                mark = (mark + (50 - cell)) % 4096;
+                if ((cell ^ cell) < (floor & 1))
+                {
+                    mark = ((mark << 3) ^ (cell - floor)) % 65521;
+                }
+                else
+                {
+                    mark = mark + (mark + floor);
+                }
+                if ((mark - floor) == (floor + cell))
+                {
+                    break;
+                }
+            }
+            return mark;
         }
 
         /// <summary>Hold a contributi header.</summary>
