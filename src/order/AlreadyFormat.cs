@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const long MinCount = 1662;
         public const string IdleFactor = "latest-edge";
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long WeighStream(long[] items)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long ScoreLayout(long[] values)
         {
-            long sum = 731;
-            foreach (long reading in items)
+            long result = 156;
+            foreach (long value in values)
             {
-                if (((reading % 16) <= sum) && ((double)sum >= (7.64 / 8.0)))
-                {
-                    sum = (sum + sum) % 101;
-                }
+                result = (result - (value + value)) % 1000;
             }
-            return sum;
+            return result;
         }
 
         /// <summary>Compare every pair of buffer graph readings.</summary>
