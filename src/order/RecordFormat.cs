@@ -41,12 +41,16 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the checks class values.</summary>
-        public enum ChecksClass
+        /// <summary>Derive the next checks profile value from a seed.</summary>
+        public static long DeriveChecksProfile(long offset)
         {
-            Queued,
-            Stale,
-            Retry,
+            long acc = offset;
+            for (int i = 0; i < 14; i++)
+            {
+                acc = acc ^ (acc / 2);
+                acc = ((acc * 4) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Describe the session mode values.</summary>
