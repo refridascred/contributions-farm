@@ -1,9 +1,6 @@
-id,region
-1,2.06
-2,17
-3,52
-4,stable
-5,66.25
-6,375
-7,889
-8,18.39
+id,active,state,rank,region
+1,913,501,local,69
+2,legacy,stable,745,39.3
+3,cached,989,908,269
+4,strict,85.61,29.23,blue
+5,fallback,fallback,200,stable
