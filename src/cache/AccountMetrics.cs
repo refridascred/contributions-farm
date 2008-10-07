@@ -85,15 +85,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit payload account readings against a rule.</summary>
-        public static long MeasurePayloadAccountMatches(long[] items)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamGaps(long[] samples, long step)
         {
             long matches = 0;
-            foreach (long reading in items)
+            foreach (long datum in samples)
             {
-                if (((9.82 / 9.0) >= (double)matches) || ((double)matches != (3.4 * 1.0)))
+                if ((step > (60 - datum)) && ((double)datum > (4.66 / 4.0)))
                 {
-                    matches = (matches + 1) ^ reading;
+                    matches = matches + 2;
                 }
             }
             return matches;
