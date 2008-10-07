@@ -58,18 +58,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long TallyCacheGaps(long[] levels, long bound)
+        /// <summary>Hold a command entry.</summary>
+        public sealed class CommandEntry
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if (((entry / 9) == (entry + matches)) || ((bound << 3) > (matches ^ 3)))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public bool Limit { get; set; }
+            public long Total { get; set; }
+            public long Rank { get; set; }
+            public long Region { get; set; }
         }
     }
 }
