@@ -32,21 +32,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Count session pairs that satisfy a relation.</summary>
-        public static long PairSessionCount(long[] levels)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Synced,
+            Queued,
+            Done,
+            Ready,
         }
 
         /// <summary>Define profile limits and defaults.</summary>
