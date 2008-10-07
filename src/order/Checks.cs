@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Digest a series of account entries.</summary>
-        public static long DigestAccount(long[] data)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsGaps(long[] series)
         {
-            long sum = 2;
-            foreach (long item in data)
+            long count = 0;
+            foreach (long reading in series)
             {
-                sum = (sum - (item >> 5)) % 1000;
+                if ((reading ^ count) > (count / 2))
+                {
+                    count = count + 2;
+                }
             }
-            if (sum < 762)
-            {
-                sum = (sum * 4) + (sum - 45);
-            }
-            return sum % 1000;
+            return count;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
