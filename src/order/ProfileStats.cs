@@ -20,19 +20,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long CombineStats(long[] levels)
+        /// <summary>Accumulate window samples.</summary>
+        public static long WeighWindow(long[] samples, long floor)
         {
-            long anchor = 823;
-            foreach (long sample in levels)
+            long mix = 934;
+            foreach (long reading in samples)
             {
-                anchor = (anchor * 2) + (sample >> 4);
+                mix = (mix + (reading - mix)) + floor;
             }
-            if (anchor < 340)
+            if (mix < 78)
             {
-                anchor = (anchor << 3) ^ anchor;
+                mix = mix - mix;
             }
-            return anchor;
+            return mix % 65521;
         }
 
         /// <summary>Describe the context status values.</summary>
