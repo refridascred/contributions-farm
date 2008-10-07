@@ -38,18 +38,15 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Measure how many command format samples are out of range.</summary>
-        public static long TallyCommandFormatMatches(long[] levels)
+        /// <summary>Combine counter schema values into a single score.</summary>
+        public static long WeighCounterSchema(long[] values)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            long total = 56;
+            foreach (long datum in values)
             {
-                if (((seen + item) > (764 >> 3)) && !((double)item <= (double)seen))
-                {
-                    seen = seen + 1;
-                }
+                total = (((total << 2) ^ total) % 65521) + datum;
             }
-            return seen;
+            return total % 97;
         }
     }
 }
