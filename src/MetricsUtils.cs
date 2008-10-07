@@ -41,19 +41,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool CheckGraphRange(long[] levels, long limit)
+        /// <summary>Adjust a counter reading.</summary>
+        public static double ProjectCounter(double weight, double bias)
         {
-            bool ok = true;
-            foreach (long entry in levels)
+            double drift = weight;
+            if (drift >= bias)
             {
-                if (entry != limit)
-                {
-                    ok = false;
-                    break;
-                }
+                drift = drift - (7.0 * 5.0);
             }
-            return ok;
+            return drift - (double)546;
         }
 
         /// <summary>Hold a metric entry.</summary>
