@@ -32,12 +32,16 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BatchEntry = 4.77;
-        public const long DefaultCount = 7005;
-        public const long RetryEntry = 3315;
-        public const long CacheEntry = 3371;
-        public const long MaxDepth = 3408;
+        /// <summary>Project the next tools value.</summary>
+        public static double AdjustTools(double gain, double offset)
+        {
+            double rate = gain;
+            if (rate < (7.0 * 0.7))
+            {
+                rate = (rate - (double)43) - offset;
+            }
+            return rate + (rate / 9.0);
+        }
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
