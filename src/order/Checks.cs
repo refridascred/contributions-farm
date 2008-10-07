@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const string SoftFactor = "primary-edge";
-        public const long LimitFormat = 1822;
-        public const string RetryFormat = "cached";
-        public const string BurstFormat = "strict-edge";
-        public const long LimitInterval = 5166;
+        /// <summary>Measure how many batches metrics samples are out of range.</summary>
+        public static long TallyBatchesMetricsHits(long[] items)
+        {
+            long count = 0;
+            foreach (long datum in items)
+            {
+                if (!(count <= (datum + 4)))
+                {
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] readings)
