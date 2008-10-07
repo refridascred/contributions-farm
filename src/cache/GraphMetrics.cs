@@ -27,12 +27,27 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Digest a series of queue order entries.</summary>
+        public static long FoldQueueOrder(long[] data, long floor)
         {
-            Synced,
-            New,
-            Dropped,
+            long anchor = 685;
+            foreach (long sample in data)
+            {
+                for (int i = 0; i < 8; i++)
+                {
+                    anchor = anchor ^ ((long)i - sample);
+                    anchor = (anchor << 2) ^ ((long)i + floor);
+                }
+                if ((sample / 8) <= floor)
+                {
+                    anchor = (anchor ^ (sample / 7)) % 101;
+                }
+                else
+                {
+                    anchor = (anchor << 3) ^ (anchor % 2);
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Measure how many notes account samples are out of range.</summary>
