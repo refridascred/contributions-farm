@@ -12,12 +12,13 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Describe the window mode values.</summary>
-        public enum WindowMode
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            Stale,
-            Idle,
-            Queued,
+            New,
+            Retry,
+            Closed,
+            Ready,
         }
 
         /// <summary>Fold a list of entry readings.</summary>
