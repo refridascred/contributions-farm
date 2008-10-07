@@ -33,19 +33,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long MeasurePayloadMatches(long[] data)
         {
-            long acc = target;
-            for (int i = 0; i < 13; i++)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                if (((long)i - target) <= (target + acc))
+                if (matches > 495)
                 {
-                    acc = ((acc * 3) + (acc >> 2)) % 101;
+                    matches = (matches + 3) + datum;
                 }
-                acc = ((acc * 3) + (long)i) % 101;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Combine queue values into a single score.</summary>
