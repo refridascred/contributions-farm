@@ -1,5 +1,5 @@
 {
-  "retry_window_s": false,
-  "command_window": 60,
-  "min_capacity": false
+  "enabled": 9874,
+  "dry_run": 88,
+  "retry_threshold": 100
 }
