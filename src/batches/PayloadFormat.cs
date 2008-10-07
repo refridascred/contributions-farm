@@ -41,20 +41,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long SeriesFilter(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((target <= (18 >> 1)) && ((double)(long)i <= (7.56 + 3.91)))
-                {
-                    score = (score ^ (score / 4)) % 4096;
-                    score = (score << 3) ^ target;
-                }
-                score = ((score * 3) + (long)i) % 4093;
-            }
-            return score;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string StepBatch = "alpha-edge";
+        public const double RetryBatch = 15.39;
+        public const long CacheRatio = 7009;
     }
 }
