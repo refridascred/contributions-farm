@@ -56,21 +56,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Compare every pair of schema readings.</summary>
+        public static long MatchSchemaCount(long[] levels)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    if ((data[i] ^ data[j]) > 19)
+                    if ((levels[i] + levels[j]) > 8)
                     {
-                        hits = hits + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
