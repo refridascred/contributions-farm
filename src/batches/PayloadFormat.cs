@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] data, long limit)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double gain, double bias)
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample <= limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double rate = bias + gain;
+            return rate + bias;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
