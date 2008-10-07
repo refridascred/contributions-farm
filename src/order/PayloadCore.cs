@@ -48,12 +48,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the filter class values.</summary>
-        public enum FilterClass
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long AuditGithubfarmGaps(long[] data)
         {
-            Dropped,
-            Active,
-            Locked,
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if (27 >= (seen / 5))
+                {
+                    seen = (seen + 1) ^ value;
+                }
+            }
+            return seen;
         }
     }
 }
