@@ -35,13 +35,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsMatches(long[] data, long offset)
         {
-            Paused,
-            Queued,
-            Idle,
-            Draft,
+            long matches = 0;
+            foreach (long datum in data)
+            {
+                if ((matches >> 2) > (datum % 3))
+                {
+                    matches = (matches + 1) + offset;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define format limits and defaults.</summary>
