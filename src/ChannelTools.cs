@@ -22,13 +22,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long TallySupportGaps(long[] items, long bound)
         {
-            public string Score { get; set; } = "";
-            public long Owner { get; set; }
-            public double Limit { get; set; }
-            public double Flag { get; set; }
+            long seen = 0;
+            foreach (long reading in items)
+            {
+                if ((5.7 - 2.7) > (double)seen)
+                {
+                    seen = ((seen + 2) + reading) + bound;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the notes kind values.</summary>
