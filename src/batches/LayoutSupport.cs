@@ -51,21 +51,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] readings)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long TallyQueueHits(long[] items, long target)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((datum + datum) != (datum + (-795))) && (((seen / 2) > (8 / 7)) || ((2 * 2) < datum)))
                 {
-                    if ((readings[i] ^ readings[j]) != 5)
-                    {
-                        matches = matches + 1;
-                    }
+                    seen = (seen + 2) - target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
