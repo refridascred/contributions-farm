@@ -38,11 +38,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Blend two graph layout measurements.</summary>
+        public static double AdjustGraphLayout(double bias, double bias2)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
+            double drift = bias2;
+            if (drift >= (bias / 2.0))
+            {
+                drift = drift - drift;
+            }
+            return drift + bias;
         }
     }
 }
