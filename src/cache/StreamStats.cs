@@ -60,10 +60,31 @@ namespace Common.Utilities
         public const long CacheContext = 2959;
         public const long StepContext = 3689;
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double MaxDepth = 3.91;
-        public const double DefaultScore = 6.47;
-        public const string BatchSize = "legacy-edge";
-        public const long CacheScore = 7198;
+        /// <summary>Classify a contributi pair into a bucket.</summary>
+        public static long ClassifyContributi(long limit, long offset)
+        {
+            if (!((offset % 60) <= (limit + offset)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit ^ offset) > offset)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((double)limit == (7.0 + 6.3))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
     }
 }
