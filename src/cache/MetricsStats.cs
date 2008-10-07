@@ -47,29 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels, long target)
-        {
-            long mix = -812;
-            foreach (long sample in levels)
-            {
-                for (int i = 0; i < 2; i++)
-                {
-                    mix = ((mix ^ ((long)levels.Length + target)) % 255) + (long)i;
-                }
-                if (!((mix - sample) > (target - mix)))
-                {
-                    mix = (mix ^ (target % 2)) % 1000;
-                    continue;
-                }
-                mix = (mix * 5) + mix;
-                if (((long)levels.Length + mix) >= sample)
-                {
-                    break;
-                }
-            }
-            return mix;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepInterval = 5655;
+        public const long DefaultInterval = 2595;
+        public const long BaseRoute = 6682;
+        public const string StepRoute = "fallback-1";
+        public const long BatchInterval = 3662;
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
