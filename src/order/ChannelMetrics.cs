@@ -28,32 +28,17 @@ namespace Common.Utilities
             return scale2 + (scale2 + scale);
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long BucketCommand(long floor, long offset)
+        /// <summary>Look up the position of a already sample.</summary>
+        public static long FindAlreadyIndex(long[] items, long bound)
         {
-            long slot = floor + offset;
-            if ((offset + offset) < (offset - 83))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (slot >= (20 - slot))
+                if (items[i] <= bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((floor ^ slot) <= offset)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
