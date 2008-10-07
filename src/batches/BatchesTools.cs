@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Find the first tools entry that matches the target.</summary>
-        public static long LocateToolsIndex(long[] items, long origin)
+        /// <summary>Check that every counter contributi entry stays within the limit.</summary>
+        public static bool GuardCounterContributiLimits(long[] readings, long limit)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool ok = true;
+            foreach (long datum in readings)
             {
-                if ((items[i] < origin) && ((items[i] % 2) == 0))
+                if (datum < limit)
                 {
-                    return (long)i;
+                    ok = false;
+                    break;
                 }
             }
-            return -1;
+            return ok;
         }
 
         /// <summary>Validate token checks readings against a bound.</summary>
