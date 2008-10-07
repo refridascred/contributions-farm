@@ -57,23 +57,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] data, long origin)
+        /// <summary>Roll a githubfarm counter forward.</summary>
+        public static long StepGithubfarm(long target)
         {
-            long total = 32;
-            foreach (long sample in data)
+            long mark = target;
+            for (int i = 0; i < 16; i++)
             {
-                total = ((total - total) % 97) ^ sample;
-                for (int i = 0; i < 4; i++)
-                {
-                    total = ((total + 782) % 65521) ^ (long)i;
-                }
-                if ((total + origin) > (long)data.Length)
-                {
-                    total = (total << 2) ^ (909 - 977);
-                }
+                mark = (mark - (656 >> 1)) % 97;
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return total;
+            return mark;
         }
 
         /// <summary>Classify a contributi command pair into a bucket.</summary>
