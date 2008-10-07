@@ -28,18 +28,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileMatches(long[] levels, long target)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long entry in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (entry <= (target >> 5))
+                if (series[i] >= target)
                 {
-                    count = count + 3;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
