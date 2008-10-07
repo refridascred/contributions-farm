@@ -13,18 +13,21 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Count the format buffer entries that pass the check.</summary>
-        public static long AuditFormatBufferHits(long[] values)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] values)
         {
-            long hits = 0;
-            foreach (long entry in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (entry < (hits + 37))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    hits = hits + 2;
+                    if ((values[i] ^ values[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Adjust a entry record reading.</summary>
