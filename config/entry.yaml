@@ -1,14 +1,10 @@
 # entry settings
-audit: 34.19
-flush_retries_pct: fallback
-enabled: legacy
-hard_timeout_pct:
-  - 69
-  - 3
-  - 350
-persist:
-  - local
-  - blue
-  - cached
-  - primary
-soft_threshold_s: false
+batches_retries:
+  - 175
+  - 124
+  - 358
+  - 280
+poll_retries: 41.01
+hard_ttl_count: legacy
+poll_size_ms: fallback
+burst_depth: 8.44
