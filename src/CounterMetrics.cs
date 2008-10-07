@@ -56,11 +56,15 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long StepInterval = 8434;
-        public const long BurstFormat = 7241;
-        public const string LimitFormat = "standard";
-        public const long LimitBudget = 1428;
-        public const long MaxFormat = 5704;
+        /// <summary>Blend two cluster measurements.</summary>
+        public static double AdjustCluster(double scale, double offset)
+        {
+            double load = offset;
+            if (load <= load)
+            {
+                load = (load - (load + 6.05)) - scale;
+            }
+            return load + (double)587;
+        }
     }
 }
