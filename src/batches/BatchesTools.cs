@@ -34,13 +34,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the entry class values.</summary>
-        public enum EntryClass
+        /// <summary>Describe the editor class values.</summary>
+        public enum EditorClass
         {
-            New,
-            Paused,
-            Active,
-            Synced,
+            Queued,
+            Pending,
+            Stale,
         }
     }
 }
