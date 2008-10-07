@@ -1,7 +1,11 @@
 # entry settings
-token_capacity:
-  - 352
-  - 319
-  - 488
-idle_size: 17
-flush_ratio: green
+dry_run: 31.02
+max_size_s: 89
+default_timeout_s: 3382
+retry_window_pct: legacy
+readonly:
+  - blue
+  - blue
+  - stable
+  - legacy
+stats_window: true
