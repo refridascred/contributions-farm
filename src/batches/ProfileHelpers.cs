@@ -26,22 +26,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window record entries that pass the check.</summary>
-        public static long MeasureWindowRecordHits(long[] readings, long target)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)hits >= (3.0 - 20.0))
+                if (series[i] > bound)
                 {
-                    hits = ((hits + 1) ^ reading) - target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
