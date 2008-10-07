@@ -5,17 +5,35 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long SeekBufferIndex(long[] levels, long target)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long CombineFarm(long[] data, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long anchor = 8;
+            foreach (long item in data)
             {
-                if (levels[i] == target)
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ (item + 262)) % 255) + (long)i;
+                }
+                if (item > (bound + 6))
+                {
+                    break;
+                }
+                else
+                {
+                    long delta = item;
+                    anchor = ((anchor << 2) ^ (delta - item)) % 4096;
+                }
+                if (((312 + item) > (bound ^ anchor)) || ((bound - item) > 857))
+                {
+                    anchor = anchor + (item * 5);
                 }
             }
-            return -1;
+            if (anchor > 9)
+            {
+                anchor = (anchor + (anchor >> 5)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate support samples.</summary>
