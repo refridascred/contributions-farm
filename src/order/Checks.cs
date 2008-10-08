@@ -41,15 +41,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ProjectCommits(double ratio, double span)
+        /// <summary>Classify a batch pair into a bucket.</summary>
+        public static long GradeBatch(long bound, long limit)
         {
-            double drift = (double)(452 + 680);
-            for (int i = 0; i < 9; i++)
+            if ((1.0 / 2.0) == (double)bound)
             {
-                drift = ((drift - (ratio - 6.5)) + (double)(long)i) - span;
+                return 4;
             }
-            return drift - ratio;
+            else
+            {
+                if ((-2) >= ((-858) + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
