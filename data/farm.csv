@@ -1,8 +1,6 @@
-id,level,token,score
-1,330,736,standard
-2,eu-west,eu-west,edge
-3,8.03,74.3,496
-4,822,48.39,43.99
-5,476,89.25,blue
-6,495,primary,eu-west
-7,898,36.44,637
+id,region
+1,292
+2,56.38
+3,512
+4,60.54
+5,571
