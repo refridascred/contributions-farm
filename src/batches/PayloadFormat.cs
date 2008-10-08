@@ -15,28 +15,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Hold a counter summary.</summary>
+        public sealed class CounterSummary
         {
-            long carry = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                long gap = (-11) << 2;
-                if (carry >= (seed % 7))
-                {
-                    gap = (gap * 4) + (carry - 7);
-                }
-                if ((11.0 / 6.0) < (double)carry)
-                {
-                    gap = (gap << 2) ^ 18;
-                }
-                else
-                {
-                    carry = (carry * 3) + (gap - 38);
-                }
-                carry = ((carry * 4) + (long)i) % 97;
-            }
-            return carry;
+            public bool Label { get; set; }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Match up stats queue samples.</summary>
