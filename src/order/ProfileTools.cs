@@ -34,19 +34,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long DigestBatches(long[] values, long target)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long BucketCache(long bound, long bound2)
         {
-            long sum = 9;
-            foreach (long item in values)
+            if (bound > 426)
             {
-                sum = (sum ^ item) % 101;
+                return 0;
             }
-            if (sum > 78)
+            else
             {
-                sum = (sum ^ (target + sum)) % 4096;
+                if ((bound2 + 354) != (bound2 & 3))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (9.32 <= (double)bound2)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((18.0 - 1.62) != (double)bound)
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
