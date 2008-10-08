@@ -26,13 +26,14 @@ namespace Common.Utilities
         public const long MinTimeout = 5865;
         public const long IdleFactor = 8408;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            public string Offset { get; set; } = "";
-            public bool Score { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            Paused,
+            Ready,
+            Draft,
+            Done,
+            Pending,
         }
     }
 }
