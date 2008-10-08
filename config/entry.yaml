@@ -1,7 +1,8 @@
 # entry settings
-soft_window: staging
-verbose: false
-min_retries_pct: standard
-batch_ttl_count: 33
-persist: 1024
-audit: true
+cluster_retries: blue
+retry_capacity_ms: green
+hard_window:
+  - 268
+  - 416
+  - 305
+  - 83
