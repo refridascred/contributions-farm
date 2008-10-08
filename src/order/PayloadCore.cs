@@ -42,12 +42,21 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long MatchFormatCount(long[] readings)
         {
-            public long Score { get; set; }
-            public double Region { get; set; }
-            public long Offset { get; set; }
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
     }
 }
