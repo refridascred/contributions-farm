@@ -39,19 +39,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Fold a list of cache readings.</summary>
-        public static long ScoreCache(long[] series)
-        {
-            long anchor = 3;
-            foreach (long sample in series)
-            {
-                if (sample >= anchor)
-                {
-                    anchor = anchor ^ (sample >> 4);
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 6769;
+        public const long DefaultContributi = 9152;
+        public const string WindowRatio = "stable-1";
+        public const long WindowWidth = 8542;
+        public const string BurstContributi = "standard-1";
 
         /// <summary>Measure how many format samples are out of range.</summary>
         public static long TallyFormatOutliers(long[] items, long target)
