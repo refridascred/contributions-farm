@@ -1,5 +1,18 @@
 {
-  "batch_timeout_ms": 74,
-  "min_ratio_s": ["stable", "standard", "edge", "green"],
-  "min_delay_ms": "stable"
+  "persist": 100,
+  "counter_size": {
+    "burst_ratio": {
+      "min_depth": 100,
+      "profile_threshold": 67,
+      "report_ratio": 48,
+      "max_delay_count": "fallback",
+      "persist": "eu-west"
+    },
+    "persist": 54.79,
+    "entry_ratio": "cached",
+    "sync_threshold_ms": 500,
+    "compress": 54
+  },
+  "idle_ratio_pct": "fallback",
+  "flush_capacity_pct": ["standard", "open"]
 }
