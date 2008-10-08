@@ -65,12 +65,15 @@ namespace Common.Utilities
         public const double DefaultSize = 29.2;
         public const string WindowDepth = "alpha";
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Project the next context counter value.</summary>
+        public static double ProjectContextCounter(double rate, double bias)
         {
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public long Level { get; set; }
+            double ratio = (rate * 7.5) * 1.0;
+            if (ratio < ratio)
+            {
+                ratio = (ratio - (double)394) - bias;
+            }
+            return ratio + 1.3;
         }
     }
 }
