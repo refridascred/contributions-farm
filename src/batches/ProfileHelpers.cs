@@ -24,13 +24,13 @@ namespace Common.Utilities
         public const long StepFormat = 2252;
         public const string MinFormat = "stable-1";
 
-        /// <summary>Describe the schema kind values.</summary>
-        public enum SchemaKind
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            Closed,
-            Ready,
             Retry,
+            Failed,
             Draft,
+            Ready,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
