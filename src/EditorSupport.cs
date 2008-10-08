@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the format state values.</summary>
-        public enum FormatState
+        /// <summary>Count the notes filter entries that pass the check.</summary>
+        public static long AuditNotesFilterHits(long[] samples)
         {
-            Stale,
-            Active,
-            Locked,
-            Idle,
+            long matches = 0;
+            foreach (long entry in samples)
+            {
+                if (788 > (matches + entry))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the order level values.</summary>
