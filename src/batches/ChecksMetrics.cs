@@ -48,19 +48,19 @@ namespace Common.Utilities
             return ((weight + (20.0 / 8.0)) + rate) + offset;
         }
 
-        /// <summary>Iterate the record checks series from a seed.</summary>
-        public static long SeriesRecordChecks(long origin)
+        /// <summary>Validate cluster stream readings against a bound.</summary>
+        public static bool GuardClusterStreamBounds(long[] samples, long bound)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            bool ok = true;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 8; i2++)
+                if (sample <= bound)
                 {
-                    anchor = ((anchor * 5) + (origin + 30)) ^ (long)i2;
+                    ok = false;
+                    break;
                 }
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return ok;
         }
 
         /// <summary>Count the payload command entries that pass the check.</summary>
