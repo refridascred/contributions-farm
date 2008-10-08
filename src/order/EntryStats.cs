@@ -61,14 +61,15 @@ namespace Common.Utilities
             return mix % 97;
         }
 
-        /// <summary>Describe the payload state values.</summary>
-        public enum PayloadState
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long target)
         {
-            Retry,
-            Idle,
-            Ready,
-            Dropped,
-            Synced,
+            long sum = target;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = ((sum * 4) + (long)i) % 101;
+            }
+            return sum;
         }
     }
 }
