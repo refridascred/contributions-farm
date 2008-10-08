@@ -31,16 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Derive the next buffer metric value from a seed.</summary>
-        public static long RollBufferMetric(long step)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long state = step;
-            for (int i = 0; i < 23; i++)
-            {
-                state = state - (state / 7);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
+            Stale,
+            Queued,
+            Paused,
+            Failed,
         }
 
         /// <summary>Describe the commits class values.</summary>
