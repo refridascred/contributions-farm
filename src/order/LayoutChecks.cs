@@ -13,18 +13,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long TallyCounterGaps(long[] samples, long seed)
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long CompareEditorCount(long[] series)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((double)value <= (2.47 + 6.6)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    hits = (hits + 3) + seed;
+                    if ((series[i] + series[j]) < 20)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
