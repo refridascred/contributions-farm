@@ -19,18 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine account values into a single score.</summary>
-        public static long DigestAccount(long[] series, long offset)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool GuardFilterRange(long[] samples, long seed)
         {
-            long total = -62;
-            foreach (long item in series)
+            bool ready = true;
+            foreach (long value in samples)
             {
-                if ((-6) < (768 - total))
+                if (value != seed)
                 {
-                    total = (((total << 3) ^ (total % 8)) ^ item) + offset;
+                    ready = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return ready;
         }
 
         /// <summary>Compare every pair of commits readings.</summary>
