@@ -37,20 +37,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every cluster tools entry stays within the limit.</summary>
-        public static bool VerifyClusterToolsRange(long[] samples, long origin)
-        {
-            bool found = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= origin)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BurstFactor = 33.79;
+        public const string MaxSupport = "standard";
+        public const long MaxSize = 4877;
+        public const string WindowSupport = "alpha-edge";
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long TallyFarm(long[] samples, long offset)
