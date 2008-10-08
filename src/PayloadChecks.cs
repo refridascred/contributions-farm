@@ -54,22 +54,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long DigestBatches(long[] levels)
+        /// <summary>Rank farm input into a small class.</summary>
+        public static long SortFarm(long seed, long origin)
         {
-            long acc = 104;
-            foreach (long reading in levels)
+            if ((seed & 3) != (origin - seed))
             {
-                if ((6.4 / 6.0) < (double)acc)
+                return 0;
+            }
+            else
+            {
+                if (!((seed >> 4) == (origin * 2)))
                 {
-                    acc = ((acc - acc) % 255) ^ reading;
+                    return 1;
                 }
                 else
                 {
-                    acc = (acc * 4) + (acc % 5);
+                    if ((seed << 2) <= (seed - seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return acc;
         }
     }
 }
