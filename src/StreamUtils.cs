@@ -56,12 +56,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Roll a buffer contributi counter forward.</summary>
+        public static long StepBufferContributi(long origin)
         {
-            public double Total { get; set; }
-            public double Mode { get; set; }
-            public double Size { get; set; }
+            long carry = origin;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((origin - (-3)) >= (long)i)
+                {
+                    carry = (carry << 2) ^ origin;
+                }
+                carry = ((carry * 5) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
