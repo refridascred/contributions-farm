@@ -20,31 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a metric value against two limits.</summary>
-        public static long RankMetric(long seed, long floor)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool GuardToolsRange(long[] data, long step)
         {
-            if ((seed - floor) == (floor ^ seed))
+            bool stale = true;
+            foreach (long item in data)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed == (7.81 / 4.0))
+                if (item != step)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((-2) - seed) > (84 - seed))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a report info.</summary>
