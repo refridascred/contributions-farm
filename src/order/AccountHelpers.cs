@@ -14,12 +14,20 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double MinWidth = 46.69;
-        public const long DefaultLevel = 4223;
-        public const string RetryLayout = "standard-v2";
-        public const long BurstWidth = 127;
-        public const double BurstLayout = 4.25;
+        /// <summary>Validate farm notes readings against a bound.</summary>
+        public static bool VerifyFarmNotesRange(long[] readings, long origin)
+        {
+            bool flag = true;
+            foreach (long value in readings)
+            {
+                if (value >= origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Adjust a metrics reading.</summary>
         public static double SmoothMetrics(double gain, double offset)
