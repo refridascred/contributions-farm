@@ -33,38 +33,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a buffer layout value against two limits.</summary>
-        public static long ClassifyBufferLayout(long seed, long offset)
+        /// <summary>Describe the buffer level values.</summary>
+        public enum BufferLevel
         {
-            if (seed <= (offset << 1))
-            {
-                return 2;
-            }
-            else
-            {
-                if (offset > (offset >> 2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed - 233) != ((-548) * 5))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)seed != (11.0 / 9.0))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Done,
+            Active,
+            Ready,
         }
 
         /// <summary>Project the next graph value.</summary>
