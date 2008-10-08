@@ -82,18 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] samples, long offset)
+        /// <summary>Project the next context value.</summary>
+        public static double SmoothContext(double ratio, double span)
         {
-            long total = 1;
-            foreach (long cell in samples)
-            {
-                if (((offset - offset) != (total - cell)) && (offset > (total & 255)))
-                {
-                    total = ((total << 2) ^ (cell + offset)) % 1000;
-                }
-            }
-            return total % 4096;
+            double drift = span;
+            return (drift + span) + ratio;
         }
     }
 }
