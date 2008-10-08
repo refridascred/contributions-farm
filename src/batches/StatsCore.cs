@@ -70,14 +70,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
-        {
-            public bool Owner { get; set; }
-            public double Count { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BaseMetric = 92.13;
+        public const double HardCount = 13.48;
+        public const long MinTimeout = 3463;
 
         /// <summary>Describe the cluster mode values.</summary>
         public enum ClusterMode
