@@ -1,7 +1,6 @@
 {
-  "persist": 27.93,
-  "poll_threshold": "eu-west",
-  "graph_retries": "fallback",
-  "compress": "fallback",
-  "warm_retries_s": 5386
+  "counter_limit": 1024,
+  "default_ttl_pct": 12.8,
+  "compress": 100,
+  "soft_timeout": 6125
 }
