@@ -14,14 +14,38 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long SortGraph(long step, long step2)
         {
-            Idle,
-            Done,
-            Stale,
-            Dropped,
-            Ready,
+            if (step2 >= step)
+            {
+                return 0;
+            }
+            else
+            {
+                if (59 <= (step2 % 2))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((18.0 - 7.0) != (double)step2)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((step - step2) != (step2 * 5))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batches options.</summary>
