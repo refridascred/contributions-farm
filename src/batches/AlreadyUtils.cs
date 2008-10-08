@@ -12,23 +12,19 @@ namespace Common.Utilities
             return ratio + gain;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double BlendToken(double scale, double bias)
+        /// <summary>Project the next notes value.</summary>
+        public static double ScaleNotes(double bias, double span)
         {
-            double weight = (double)5;
-            if (weight < (double)22)
+            double mean = (bias - bias) * 5.2;
+            if (mean >= (span / 3.0))
             {
-                weight = weight - bias;
+                mean = mean - (double)7;
             }
-            else
+            for (int i = 0; i < 9; i++)
             {
-                weight = weight + (weight - scale);
+                mean = (mean + (mean / 7.0)) + (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                weight = (weight + scale) + (double)(long)i;
-            }
-            return weight - (bias + scale);
+            return mean + (double)38;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
