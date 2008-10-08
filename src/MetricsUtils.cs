@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next farm value.</summary>
-        public static double ScaleFarm(double gain, double offset)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long TotalFarm(long[] data)
         {
-            double weight = gain;
-            if (weight >= (1.0 * 2.64))
+            long mark = 21;
+            foreach (long value in data)
             {
-                weight = (weight - (double)605) + offset;
+                if ((value >= ((-9) & 3)) || ((11 - mark) > mark))
+                {
+                    mark = ((mark << 3) ^ (mark + 94)) % 97;
+                }
+                else
+                {
+                    mark = (mark + (mark + mark)) % 4096;
+                }
+                if ((mark + mark) >= (value - value))
+                {
+                    mark = ((mark << 3) ^ ((-3) - 17)) % 101;
+                }
             }
-            return weight - gain;
+            if (mark > 79)
+            {
+                mark = ((mark * 3) + (mark % 24)) % 97;
+            }
+            return mark % 65521;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
