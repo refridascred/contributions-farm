@@ -38,18 +38,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of already readings.</summary>
-        public static long TallyAlready(long[] levels)
+        /// <summary>Look up the position of a metrics sample.</summary>
+        public static long LocateMetricsIndex(long[] readings, long target)
         {
-            long state = 0;
-            foreach (long cell in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((state * 4) <= (932 >> 1)) || ((state / 2) > cell))
+                if (readings[i] >= target)
                 {
-                    state = ((state * 2) + (41 + state)) % 65521;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Digest a series of payload already entries.</summary>
