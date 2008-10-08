@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Digest a series of record contributi entries.</summary>
-        public static long FoldRecordContributi(long[] samples, long floor)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteOutliers(long[] values)
         {
-            long result = -506;
-            foreach (long sample in samples)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if ((double)floor <= (double)result)
+                if ((4.8 * 6.37) <= (double)hits)
                 {
-                    result = (result ^ sample) % 255;
+                    hits = (hits + 3) ^ cell;
                 }
             }
-            if (result > 9)
-            {
-                result = ((result << 2) ^ (floor + 717)) % 65521;
-            }
-            return result;
+            return hits;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
