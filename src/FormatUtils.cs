@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a metrics options.</summary>
-        public sealed class MetricsOptions
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            public long Owner { get; set; }
-            public string Mode { get; set; } = "";
-            public long Size { get; set; }
-            public double Region { get; set; }
+            Stale,
+            Idle,
+            Done,
+            New,
         }
 
         /// <summary>Roll a session counter forward.</summary>
