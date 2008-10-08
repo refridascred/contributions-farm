@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long IdleFactor = 611;
-        public const long MinRatio = 8422;
-        public const double BurstChecks = 53.6;
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long AuditPayloadMatches(long[] readings)
+        {
+            long count = 0;
+            foreach (long cell in readings)
+            {
+                if ((53 << 2) >= (810 - cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Find the first cache filter entry that matches the target.</summary>
         public static long LocateCacheFilterIndex(long[] levels, long offset)
