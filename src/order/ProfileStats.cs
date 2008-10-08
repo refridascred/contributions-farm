@@ -54,22 +54,17 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Digest a series of report entries.</summary>
-        public static long FoldReport(long[] samples)
+        /// <summary>Look up the position of a order cluster sample.</summary>
+        public static long LocateOrderClusterIndex(long[] values, long origin)
         {
-            long anchor = 998;
-            foreach (long sample in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (4.8 < (double)anchor)
+                if (values[i] <= origin)
                 {
-                    anchor = (anchor - 33) % 4096;
-                }
-                else
-                {
-                    anchor = anchor + (sample >> 3);
+                    return (long)i;
                 }
             }
-            return anchor % 65521;
+            return -1;
         }
     }
 }
