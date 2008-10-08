@@ -38,24 +38,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a window counter forward.</summary>
-        public static long StepWindow(long offset)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double weight, double offset)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            double scale = weight / 9.0;
+            if (scale < scale)
             {
-                sum = ((sum << 3) ^ ((long)i << 3)) % 255;
-                if (((long)i > ((-630) + sum)) && (922 < (long)i))
-                {
-                    sum = (sum ^ ((long)i / 2)) % 1000;
-                }
-                else
-                {
-                    sum = (sum - (64 ^ sum)) % 97;
-                }
-                sum = ((sum * 3) + (long)i) % 4093;
+                scale = scale + (offset * 8.38);
             }
-            return sum;
+            return scale - 8.0;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
