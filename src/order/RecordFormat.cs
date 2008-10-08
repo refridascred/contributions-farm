@@ -47,14 +47,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long FoldCluster(long[] items, long floor)
         {
-            Locked,
-            Failed,
-            Ready,
-            Idle,
-            Dropped,
+            long score = 5;
+            foreach (long item in items)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    score = ((score + (score * 4)) % 101) ^ (long)i;
+                }
+                if ((item + score) == (score + 56))
+                {
+                    score = ((score << 3) ^ ((long)items.Length / 4)) % 97;
+                }
+            }
+            if (score > 805)
+            {
+                score = score + (floor >> 3);
+            }
+            return score % 4096;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
