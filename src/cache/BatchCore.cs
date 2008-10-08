@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Classify a counter pair into a bucket.</summary>
-        public static long ClassifyCounter(long seed, long bound)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long LocateContributiIndex(long[] readings, long target)
         {
-            long diff = seed - bound;
-            if (!((double)diff >= 2.2))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((bound + bound) > (54 << 3))
+                if (readings[i] >= target)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (20.0 <= (double)bound)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((1 + diff) != (diff / 2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit command githubfarm readings against a rule.</summary>
