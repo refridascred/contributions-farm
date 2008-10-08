@@ -39,14 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Accumulate notes samples.</summary>
+        public static long CombineNotes(long[] samples)
         {
-            Stale,
-            Closed,
-            Locked,
-            Queued,
-            Synced,
+            long state = 75;
+            foreach (long datum in samples)
+            {
+                state = ((state - 0) % 1000) - datum;
+            }
+            return state;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
