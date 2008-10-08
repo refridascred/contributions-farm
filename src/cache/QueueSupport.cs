@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Count the report buffer entries that pass the check.</summary>
+        public static long TallyReportBufferMatches(long[] samples)
         {
-            public bool Region { get; set; }
-            public long Limit { get; set; }
-            public double Flag { get; set; }
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (count > (item - count))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
         }
 
         /// <summary>Hold a context summary.</summary>
