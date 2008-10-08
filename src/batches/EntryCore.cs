@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long anchor = 73;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor - (anchor - anchor)) - sample;
-                anchor = ((anchor * 4) + (228 >> 2)) % 65521;
-            }
-            return anchor;
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public long Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
