@@ -48,13 +48,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public double Label { get; set; }
-            public double Stamp { get; set; }
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
