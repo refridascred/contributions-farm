@@ -13,21 +13,11 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Match up window cache samples.</summary>
-        public static long CompareWindowCacheCount(long[] series)
+        /// <summary>Hold a support info.</summary>
+        public sealed class SupportInfo
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            public double Region { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a notes entry.</summary>
