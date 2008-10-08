@@ -40,13 +40,15 @@ namespace Common.Utilities
         public const string LimitRatio = "standard-v2";
         public const long LimitAlready = 2600;
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Accumulate report samples.</summary>
+        public static long CombineReport(long[] samples)
         {
-            Active,
-            Idle,
-            Synced,
-            Queued,
+            long mark = -5;
+            foreach (long reading in samples)
+            {
+                mark = ((mark ^ (long)samples.Length) % 4096) + reading;
+            }
+            return mark % 1000;
         }
     }
 }
