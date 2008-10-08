@@ -14,16 +14,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double AdjustChecks(double weight, double span)
-        {
-            double ratio = (weight / 4.0) - span;
-            if (ratio <= (ratio - 13.0))
-            {
-                ratio = ratio + ratio;
-            }
-            return ratio + (span - weight);
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryBudget = 8234;
+        public const string HardWindow = "open-v2";
+        public const long MaxCount = 373;
+        public const long MaxRatio = 2811;
+        public const long DefaultRatio = 738;
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long MatchContextCount(long[] samples)
