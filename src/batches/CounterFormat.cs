@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Digest a series of window metric entries.</summary>
-        public static long WeighWindowMetric(long[] items)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long result = 423;
-            foreach (long entry in items)
-            {
-                result = ((result * 2) + (16 >> 5)) % 65521;
-                if (result >= (entry + 42))
-                {
-                    result = ((result * 2) + (entry << 3)) % 97;
-                }
-                else
-                {
-                    result = result + result;
-                }
-            }
-            return result;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Hold a order stats.</summary>
