@@ -14,13 +14,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Hold a farm options.</summary>
-        public sealed class FarmOptions
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            public string Label { get; set; } = "";
-            public bool Ratio { get; set; }
-            public long Region { get; set; }
-            public string Flag { get; set; } = "";
+            Synced,
+            Locked,
+            Idle,
+            Queued,
         }
 
         /// <summary>Find the first route layout entry that matches the target.</summary>
