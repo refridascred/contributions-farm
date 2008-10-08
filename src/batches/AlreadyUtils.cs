@@ -28,38 +28,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long BucketStats(long step, long seed)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            if ((1.4 <= (double)seed) || (step > (11 + seed)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (!(step >= ((-6) % 2)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (6 >= (seed - seed))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (seed <= (seed - step))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public bool Owner { get; set; }
+            public double Size { get; set; }
+            public double Count { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Validate record readings against a bound.</summary>
