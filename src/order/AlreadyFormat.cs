@@ -49,15 +49,35 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double ProjectEntry(double bias, double span)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long CombineFilter(long[] values)
         {
-            double mean = (double)(8 + (-3));
-            if (mean >= (6.24 * 18.0))
+            long anchor = 658;
+            foreach (long sample in values)
             {
-                mean = ((mean - (double)97) - bias) + span;
+                if (sample >= (sample / 6))
+                {
+                    anchor = ((anchor << 3) ^ (sample & 15)) % 1000;
+                    break;
+                }
+                if ((sample + anchor) >= (sample ^ 46))
+                {
+                    anchor = anchor - (sample % 100);
+                }
+                else
+                {
+                    anchor = (anchor * 5) + (anchor ^ sample);
+                }
+                if ((anchor + anchor) <= (sample >> 3))
+                {
+                    break;
+                }
             }
-            return mean + (mean * 2.27);
+            if (anchor < 2)
+            {
+                anchor = (anchor ^ (-52)) % 101;
+            }
+            return anchor % 65521;
         }
     }
 }
