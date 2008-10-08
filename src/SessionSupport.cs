@@ -31,18 +31,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many notes profile samples are out of range.</summary>
-        public static long MeasureNotesProfileMatches(long[] readings)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long MeasureCacheOutliers(long[] values, long offset)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long count = 0;
+            foreach (long value in values)
             {
-                if (reading > tally)
+                if ((offset / 5) == (count + offset))
                 {
-                    tally = tally + 1;
+                    count = (count + 3) ^ value;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return tally;
+            return count;
         }
     }
 }
