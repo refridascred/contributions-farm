@@ -1,5 +1,12 @@
 # githubfarm settings
-flush_ttl: 1024
-burst_interval_s: false
-context_retries: latest
-base_retries: 7720
+batch_size_count: 35
+compress: 60
+soft_window_s: 71
+warm_limit_count:
+  audit: 25.44
+  batch_ttl_count: 6273
+  poll_window: fallback
+  compress:
+    - primary
+    - strict
+  strict: false
