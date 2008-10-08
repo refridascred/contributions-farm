@@ -41,20 +41,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Validate metrics readings against a bound.</summary>
-        public static bool CheckMetricsLimits(long[] samples, long step)
-        {
-            bool ok = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= step)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long MinRatio = 52;
+        public const long MinCount = 1463;
+        public const string MaxWindow = "strict-1";
+        public const long HardWindow = 4709;
+        public const long IdleInterval = 6015;
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
