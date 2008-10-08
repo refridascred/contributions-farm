@@ -51,21 +51,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count metric pairs that satisfy a relation.</summary>
-        public static long CompareMetricCount(long[] levels)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long CombineReport(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = 587;
+            foreach (long datum in data)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] + levels[j]) < 15)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                total = (((total * 2) + (total + total)) % 65521) ^ datum;
             }
-            return seen;
+            if (total < 0)
+            {
+                total = total + 551;
+            }
+            return total;
         }
     }
 }
