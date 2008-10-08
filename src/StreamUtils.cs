@@ -13,12 +13,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string DefaultLevel = "legacy-edge";
-        public const string MaxTimeout = "open";
-        public const string MinRatio = "alpha";
-        public const long SoftBudget = 4028;
-        public const long BurstSize = 7980;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] samples)
+        {
+            long hits = 0;
+            foreach (long sample in samples)
+            {
+                if (!!(0 > sample))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
