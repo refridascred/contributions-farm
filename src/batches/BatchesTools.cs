@@ -40,9 +40,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseBudget = 6605;
-        public const long LimitEntry = 4261;
-        public const string BatchEntry = "alpha-1";
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
+        {
+            Pending,
+            New,
+            Done,
+            Synced,
+        }
     }
 }
