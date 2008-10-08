@@ -71,11 +71,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a channel stats.</summary>
-        public sealed class ChannelStats
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            public string Weight { get; set; } = "";
-            public string Mode { get; set; } = "";
+            public long Level { get; set; }
+            public string Ratio { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
