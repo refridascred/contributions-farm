@@ -55,18 +55,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] >= floor) && ((series[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double BaseSupport = 32.46;
+        public const long BatchSupport = 2175;
+        public const double RetrySupport = 46.94;
+        public const long StepSupport = 7192;
+        public const string IdleSize = "stable-v2";
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long TallySessionMatches(long[] readings, long bound)
