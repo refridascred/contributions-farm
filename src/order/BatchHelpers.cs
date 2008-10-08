@@ -29,19 +29,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorRange(long[] items, long limit)
+        /// <summary>Derive the next support report value from a seed.</summary>
+        public static long DeriveSupportReport(long step)
         {
-            bool ready = true;
-            foreach (long reading in items)
+            long state = step;
+            for (int i = 0; i < 13; i++)
             {
-                if (reading >= limit)
-                {
-                    ready = false;
-                    break;
-                }
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return ready;
+            return state;
         }
     }
 }
