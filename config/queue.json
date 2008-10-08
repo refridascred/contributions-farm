@@ -1,7 +1,27 @@
 {
-  "cache_limit_s": 44,
-  "cache_ttl_pct": [199, 421, 410, 273],
-  "persist": "stable",
-  "cache_ratio": 69.3,
-  "batch_ttl": 96
+  "flush_size_ms": {
+    "burst_window": 17.0,
+    "max_ratio_pct": "stable",
+    "soft_capacity_s": 100,
+    "compress": [221, 313, 443, 108]
+  },
+  "enabled": ["legacy", "strict"],
+  "commits_interval": true,
+  "readonly": false,
+  "base_retries": {
+    "tools_window": 75.69,
+    "default_interval_s": "staging",
+    "batch_ratio_count": ["primary", "primary", "blue", "stable"],
+    "compress": 100,
+    "cache_ratio_s": "fallback",
+    "checks_ttl": {
+      "default_ratio_ms": "stable",
+      "strict": 78.45,
+      "burst_retries": 30,
+      "hard_depth_ms": 1024,
+      "counter_retries": "primary",
+      "dry_run": 96.81
+    }
+  },
+  "command_capacity": 32.14
 }
