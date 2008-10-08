@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long MeasureGraphHits(long[] series, long floor)
         {
-            public double Score { get; set; }
-            public bool Weight { get; set; }
-            public long Owner { get; set; }
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((6.0 * 9.61) < (double)tally)
+                {
+                    tally = ((tally + 3) + item) - floor;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the report kind values.</summary>
