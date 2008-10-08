@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Accumulate cache samples.</summary>
-        public static long TallyCache(long[] samples, long target)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] items, long bound)
         {
-            long score = 90;
-            foreach (long cell in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell - target) > (606 & 63))
+                if ((items[i] < bound) && ((items[i] % 2) == 0))
                 {
-                    score = ((score << 2) ^ (cell - score)) % 255;
+                    return (long)i;
                 }
             }
-            if (score > 800)
-            {
-                score = (score - (target ^ score)) % 255;
-            }
-            return score % 65521;
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
