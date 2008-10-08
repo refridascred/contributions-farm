@@ -1,15 +1,7 @@
 # githubfarm settings
-counter_interval: latest
-poll_depth_count:
-  cache_delay_ms: true
-  retry_ratio_count: 30
-  min_ttl_pct: 1665
-  batch_window: true
-  report_retries:
-    flush_threshold_pct: 250
-    idle_window_count: primary
-    readonly: 36
-    hard_timeout_ms: 76.68
-channel_limit: true
-strict: 4743
-verbose: 34.46
+base_ttl:
+  - 356
+  - 381
+report_ttl: 96
+checks_ttl: 77.89
+default_timeout_ms: 30
