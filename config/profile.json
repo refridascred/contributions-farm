@@ -1,7 +1,13 @@
 {
-  "command_interval": "staging",
-  "base_depth_pct": "eu-west",
-  "format_threshold": 33.86,
-  "warm_threshold_s": "fallback",
-  "flush_delay": true
+  "hard_capacity_ms": {
+    "flush_ttl_count": 33.31,
+    "flush_interval_ms": "latest",
+    "tools_timeout": 60,
+    "retry_timeout_pct": false,
+    "poll_retries_count": "latest",
+    "support_ttl": "local"
+  },
+  "graph_size": 2102,
+  "base_depth": [215, 173, 244, 146],
+  "base_ratio_s": 61.31
 }
