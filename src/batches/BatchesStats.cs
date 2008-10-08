@@ -22,19 +22,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next cluster checks value.</summary>
-        public static double ScaleClusterChecks(double bias, double bias2)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long DeriveContext(long seed)
         {
-            double rate = bias2 - bias;
-            if (rate >= 8.4)
+            long carry = seed;
+            for (int i = 0; i < 5; i++)
             {
-                rate = rate + bias2;
+                carry = ((carry * 3) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate + (rate / 9.0);
-            }
-            return rate + 5.9;
+            return carry;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
