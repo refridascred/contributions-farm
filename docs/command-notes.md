@@ -1,15 +1,14 @@
 # Command notes
 
-Each editor is validated before it reaches the graph queue.
-Each farm is validated before it reaches the already queue.
-Use cluster settings to tune how often support data is refreshed.
+The notes report groups every cluster by batches.
+Run the token check before changing any metric limits.
+When a schema fails, the record handler retries a few times before giving up.
 
-Run the cache check before changing any command limits.
-Use channel settings to tune how often token data is refreshed.
-Each farm is validated before it reaches the metric queue.
+The editor helpers are pure functions, so they are safe to call from any thread.
+A layout that stays idle for too long is moved to the batches list.
 
 ## Guidelines
 
-- Review entry limits each release
-- Prefer buffer defaults
-- Log every cluster change
+- Log every cache change
+- Document new session fields
+- Keep tools values small
