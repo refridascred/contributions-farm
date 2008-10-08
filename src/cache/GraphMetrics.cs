@@ -31,13 +31,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
-        {
-            public bool Mode { get; set; }
-            public bool Score { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const double BaseEntry = 54.5;
+        public const string HardFactor = "legacy-edge";
+        public const long WindowEntry = 2937;
+        public const double LimitBudget = 59.15;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] items)
