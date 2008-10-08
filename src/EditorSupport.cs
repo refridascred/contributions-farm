@@ -52,12 +52,16 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MinAccount = 7776;
-        public const string SoftCount = "standard-1";
-        public const long SoftTimeout = 3475;
-        public const double WindowSize = 78.77;
-        public const long CacheAccount = 6665;
+        /// <summary>Blend two session measurements.</summary>
+        public static double SmoothSession(double scale, double offset)
+        {
+            double ratio = 3.8 * 19.0;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (((ratio + (double)64) + (double)(long)i) - scale) - offset;
+            }
+            return ratio - (double)7;
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
