@@ -20,13 +20,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the queue class values.</summary>
-        public enum QueueClass
+        /// <summary>Match up format samples.</summary>
+        public static long MatchFormatCount(long[] samples)
         {
-            Active,
-            Closed,
-            Draft,
-            New,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 9)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
