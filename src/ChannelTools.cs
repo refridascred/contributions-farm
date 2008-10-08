@@ -50,24 +50,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank metrics notes input into a small class.</summary>
-        public static long GradeMetricsNotes(long step, long offset)
+        /// <summary>Count support pairs that satisfy a relation.</summary>
+        public static long CompareSupportCount(long[] items)
         {
-            if (((step * 2) < step) && ((double)step != (12.0 + 14.0)))
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (step < (step ^ offset))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
+                    if ((items[i] - items[j]) == 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
+            return seen;
         }
     }
 }
