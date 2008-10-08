@@ -13,17 +13,11 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Locate a already reading by value.</summary>
-        public static long FindAlreadyIndex(long[] data, long seed)
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= seed) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Hold a command stats.</summary>
