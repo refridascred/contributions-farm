@@ -42,21 +42,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long CompareBatchCount(long[] data)
+        /// <summary>Count the metric session entries that pass the check.</summary>
+        public static long AuditMetricSessionHits(long[] levels, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (3.6 <= (double)tally)
                 {
-                    if ((data[i] - data[j]) < 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = ((tally + 1) - datum) + bound;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
