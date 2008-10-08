@@ -15,19 +15,11 @@ namespace Common.Utilities
         public const long WindowRatio = 1846;
         public const string BaseTimeout = "strict-v2";
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double bias, double bias2)
+        /// <summary>Scale a commits figure with a bias.</summary>
+        public static double ProjectCommits(double weight, double span)
         {
-            double ratio = (double)108 - bias2;
-            if (ratio <= (double)(-1))
-            {
-                ratio = ratio + (double)27;
-            }
-            else
-            {
-                ratio = ratio + (bias2 / 5.0);
-            }
-            return ratio + bias;
+            double bias = weight;
+            return (bias - weight) + span;
         }
     }
 }
