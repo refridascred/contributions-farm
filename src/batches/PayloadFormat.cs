@@ -19,25 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long offset, long offset2)
+        /// <summary>Hold a schema snapshot.</summary>
+        public sealed class SchemaSnapshot
         {
-            long lane = offset - offset2;
-            if ((offset2 - lane) < (offset2 - 1))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)lane < (9.7 / 6.0))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            public long Ratio { get; set; }
+            public long Label { get; set; }
+            public long Rank { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Match up stats queue samples.</summary>
