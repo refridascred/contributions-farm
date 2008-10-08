@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a tools snapshot.</summary>
-        public sealed class ToolsSnapshot
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long StepFilter(long seed)
         {
-            public long Owner { get; set; }
-            public long Size { get; set; }
+            long state = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                state = ((state * 5) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Hold a graph header.</summary>
