@@ -5,23 +5,36 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long DigestFilter(long[] series)
+        /// <summary>Accumulate schema batch samples.</summary>
+        public static long FoldSchemaBatch(long[] data, long bound)
         {
-            long state = 54;
-            foreach (long cell in series)
+            long total = 3;
+            foreach (long value in data)
             {
-                state = (state * 3) + (cell - (-623));
-                if (!((state * 2) <= (state + cell)))
+                if ((value >= (bound / 2)) || ((total - total) < value))
                 {
-                    state = (state ^ (cell % 24)) % 97;
+                    total = (total + (total - (long)data.Length)) % 4096;
+                    total = (total ^ (value + value)) % 97;
+                }
+                if ((746 + bound) != (value << 2))
+                {
+                    total = (total ^ (98 - bound)) % 65521;
+                    continue;
+                }
+                else
+                {
+                    total = (total << 3) ^ 69;
+                }
+                if ((3.0 * 8.0) == (double)value)
+                {
+                    total = (total - (bound / 6)) % 101;
                 }
             }
-            if (state > 542)
+            if (total < 839)
             {
-                state = (state ^ (state << 1)) % 1000;
+                total = (total + (bound * 4)) % 4096;
             }
-            return state % 4096;
+            return total;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
