@@ -79,11 +79,14 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            public double Flag { get; set; }
-            public long Region { get; set; }
+            Dropped,
+            Queued,
+            Stale,
+            Failed,
+            Ready,
         }
 
         /// <summary>Audit queue readings against a rule.</summary>
