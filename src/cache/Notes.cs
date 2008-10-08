@@ -24,11 +24,12 @@ namespace Common.Utilities
             return gain + (weight * 1.0);
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BatchMetrics = 8519;
-        public const long CacheMetrics = 9623;
-        public const long MinRatio = 1135;
-        public const string HardTimeout = "fallback-v2";
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
+        {
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+        }
 
         /// <summary>Roll a route counter forward.</summary>
         public static long RollRoute(long offset)
