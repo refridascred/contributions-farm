@@ -41,22 +41,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TotalBatch(long[] data)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long acc = 55;
-            foreach (long sample in data)
-            {
-                if (((sample * 2) <= (acc & 127)) && ((double)sample <= (6.92 + 8.0)))
-                {
-                    acc = ((acc << 2) ^ (acc - sample)) % 4096;
-                }
-                else
-                {
-                    acc = (acc * 2) + acc;
-                }
-            }
-            return acc % 1000;
+            Dropped,
+            Failed,
+            Draft,
+            Locked,
         }
 
         /// <summary>Digest a series of report entries.</summary>
