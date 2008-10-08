@@ -42,14 +42,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Project the next commits value.</summary>
+        public static double ProjectCommits(double ratio, double span)
         {
-            Retry,
-            Queued,
-            Paused,
-            Done,
-            Closed,
+            double drift = (double)(452 + 680);
+            for (int i = 0; i < 9; i++)
+            {
+                drift = ((drift - (ratio - 6.5)) + (double)(long)i) - span;
+            }
+            return drift - ratio;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
