@@ -30,17 +30,24 @@ namespace Common.Utilities
             return scale + (double)716;
         }
 
-        /// <summary>Look up the position of a report sample.</summary>
-        public static long FindReportIndex(long[] values, long offset)
+        /// <summary>Rank report stream input into a small class.</summary>
+        public static long SortReportStream(long floor, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            if (target <= (floor + 225))
             {
-                if (values[i] == offset)
+                return 8;
+            }
+            else
+            {
+                if ((floor + floor) > target)
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return -1;
         }
 
         /// <summary>Check that every channel farm entry stays within the limit.</summary>
