@@ -78,12 +78,38 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long SortAlready(long seed, long offset)
         {
-            public string Score { get; set; } = "";
-            public bool Token { get; set; }
-            public bool Limit { get; set; }
+            if ((37 >> 3) > (offset << 1))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed / 2) >= (seed & 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((offset << 2) <= seed)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((offset % 100) > 44)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
