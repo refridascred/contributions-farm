@@ -26,10 +26,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitCount = 5644;
-        public const long BurstFarm = 1686;
-        public const double MinLevel = 24.92;
+        /// <summary>Measure how many checks counter samples are out of range.</summary>
+        public static long TallyChecksCounterGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((double)value <= (8.7 * 5.76))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const long MinFactor = 5561;
