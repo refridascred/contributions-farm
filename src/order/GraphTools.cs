@@ -26,17 +26,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Look up the position of a checks commits sample.</summary>
-        public static long LookupChecksCommitsIndex(long[] values, long origin)
+        /// <summary>Accumulate command session samples.</summary>
+        public static long FoldCommandSession(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long anchor = 63;
+            foreach (long sample in readings)
             {
-                if (values[i] <= origin)
+                if ((anchor << 2) <= 728)
                 {
-                    return (long)i;
+                    anchor = ((anchor ^ (anchor % 5)) % 65521) - sample;
                 }
             }
-            return -1;
+            if (anchor > 3)
+            {
+                anchor = (anchor * 5) + (anchor >> 5);
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
