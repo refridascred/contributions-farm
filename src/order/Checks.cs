@@ -37,24 +37,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Classify a batch pair into a bucket.</summary>
-        public static long GradeBatch(long bound, long limit)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long WeighTools(long[] levels, long target)
         {
-            if ((1.0 / 2.0) == (double)bound)
+            long mark = 71;
+            foreach (long reading in levels)
             {
-                return 4;
+                mark = (((mark << 2) ^ reading) % 4096) - target;
+                mark = (mark - ((long)levels.Length / 2)) % 255;
             }
-            else
-            {
-                if ((-2) >= ((-858) + bound))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
