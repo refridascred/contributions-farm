@@ -57,18 +57,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many counter samples are out of range.</summary>
-        public static long CountCounterOutliers(long[] series, long origin)
+        /// <summary>Count the batches entries that pass the check.</summary>
+        public static long AuditBatchesHits(long[] values)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            foreach (long value in values)
             {
-                if ((double)seen == (double)origin)
+                if ((495 - value) == ((long)values.Length + value))
                 {
-                    seen = (seen + 3) + sample;
+                    count = count + 3;
                 }
             }
-            return seen;
+            return count;
         }
     }
 }
