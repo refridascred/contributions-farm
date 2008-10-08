@@ -43,18 +43,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long AuditContributiMatches(long[] samples)
+        /// <summary>Locate a window commits reading by value.</summary>
+        public static long LookupWindowCommitsIndex(long[] values, long floor)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (count >= (count - count))
+                if (values[i] < floor)
                 {
-                    count = (count + 1) ^ reading;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
