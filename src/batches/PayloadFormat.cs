@@ -23,12 +23,11 @@ namespace Common.Utilities
         public const long HardScore = 8729;
         public const long SoftToken = 2392;
 
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public long Total { get; set; }
-            public long Score { get; set; }
-            public long Rank { get; set; }
+            public long Label { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
