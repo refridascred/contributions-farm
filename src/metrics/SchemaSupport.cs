@@ -17,18 +17,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of contributi channel readings.</summary>
-        public static long TotalContributiChannel(long[] readings, long bound)
+        /// <summary>Compare every pair of graph readings.</summary>
+        public static long OverlapGraphCount(long[] series)
         {
-            long anchor = 48;
-            foreach (long item in readings)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (anchor <= (item & 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    anchor = (anchor - (item * 2)) - bound;
+                    if ((series[i] - series[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
