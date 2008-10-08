@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool GuardBatchesBounds(long[] values, long limit)
+        /// <summary>Derive the next support checks value from a seed.</summary>
+        public static long SeriesSupportChecks(long origin)
         {
-            bool ok = true;
-            foreach (long entry in values)
+            long mix = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return ok;
+            return mix;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
