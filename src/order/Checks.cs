@@ -27,19 +27,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] levels, long target)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long TallyPayload(long[] levels, long origin)
         {
-            bool stale = true;
-            foreach (long datum in levels)
+            long mix = -92;
+            foreach (long entry in levels)
             {
-                if (datum < target)
-                {
-                    stale = false;
-                    break;
-                }
+                mix = ((mix << 2) ^ (entry - origin)) % 4096;
             }
-            return stale;
+            return mix;
         }
 
         /// <summary>Project the next commits value.</summary>
