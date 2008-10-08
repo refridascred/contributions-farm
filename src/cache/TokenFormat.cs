@@ -19,13 +19,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] items)
         {
-            Dropped,
-            Pending,
-            Synced,
-            Failed,
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
     }
 }
