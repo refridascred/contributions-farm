@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Roll a batch session counter forward.</summary>
-        public static long SeriesBatchSession(long bound)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long state = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                if ((bound - state) < (bound ^ bound))
-                {
-                    state = state + (bound + bound);
-                }
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public long Total { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Define format limits and defaults.</summary>
