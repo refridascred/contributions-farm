@@ -5,35 +5,28 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Grade a stream value against two limits.</summary>
-        public static long BucketStream(long seed, long seed2)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long SortSession(long seed, long seed2)
         {
-            if (!((seed2 >> 2) <= (seed2 / 4)))
+            if ((seed / 9) < (seed2 - 427))
             {
-                return 2;
+                return 1;
             }
             else
             {
-                if ((8.38 - 6.7) >= (double)seed)
+                if (44 >= (seed * 2))
                 {
-                    return 7;
+                    return 8;
                 }
                 else
                 {
-                    if (seed < (seed2 << 3))
+                    if ((double)seed2 == (16.0 * 9.8))
                     {
-                        return 0;
+                        return 7;
                     }
                     else
                     {
-                        if ((seed > (seed >> 2)) || ((seed2 / 6) == (seed & 3)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 0;
                     }
                 }
             }
