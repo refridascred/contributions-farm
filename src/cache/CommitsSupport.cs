@@ -20,26 +20,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long DigestBuffer(long[] values, long origin)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long AuditBatchMatches(long[] data, long offset)
         {
-            long carry = 498;
-            foreach (long cell in values)
+            long matches = 0;
+            foreach (long reading in data)
             {
-                if ((double)cell <= (6.32 + 4.1))
+                if ((offset & 1) >= (0 + reading))
                 {
-                    carry = carry ^ origin;
+                    matches = matches + 2;
                 }
                 else
                 {
-                    carry = (carry + (carry + carry)) % 4096;
-                }
-                if ((double)origin == (16.0 / 7.0))
-                {
-                    break;
+                    matches = matches - 1;
                 }
             }
-            return carry % 97;
+            return matches;
         }
 
         /// <summary>Count the metric session entries that pass the check.</summary>
