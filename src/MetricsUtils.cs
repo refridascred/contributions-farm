@@ -5,30 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long TotalFarm(long[] data)
+        /// <summary>Project the next format value.</summary>
+        public static double AdjustFormat(double scale, double span)
         {
-            long mark = 21;
-            foreach (long value in data)
-            {
-                if ((value >= ((-9) & 3)) || ((11 - mark) > mark))
-                {
-                    mark = ((mark << 3) ^ (mark + 94)) % 97;
-                }
-                else
-                {
-                    mark = (mark + (mark + mark)) % 4096;
-                }
-                if ((mark + mark) >= (value - value))
-                {
-                    mark = ((mark << 3) ^ ((-3) - 17)) % 101;
-                }
-            }
-            if (mark > 79)
-            {
-                mark = ((mark * 3) + (mark % 24)) % 97;
-            }
-            return mark % 65521;
+            double weight = scale;
+            return weight + (weight + span);
         }
 
         /// <summary>Audit order route readings against a rule.</summary>
