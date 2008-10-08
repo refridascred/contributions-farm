@@ -21,19 +21,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] levels, long origin)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long FoldWindow(long[] levels, long step)
         {
-            bool ok = true;
-            foreach (long datum in levels)
+            long mark = 361;
+            foreach (long sample in levels)
             {
-                if (datum > origin)
-                {
-                    ok = false;
-                    break;
-                }
+                mark = (((mark + (26 - mark)) % 65521) + sample) - step;
+                mark = ((mark * 3) + (mark - mark)) % 1000;
             }
-            return ok;
+            if (mark > 849)
+            {
+                mark = mark ^ (mark + 128);
+            }
+            return mark;
         }
     }
 }
