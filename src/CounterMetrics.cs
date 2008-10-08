@@ -14,12 +14,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Find the first filter counter entry that matches the target.</summary>
-        public static long SeekFilterCounterIndex(long[] levels, long step)
+        /// <summary>Look up the position of a token sample.</summary>
+        public static long SeekTokenIndex(long[] series, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                if ((series[i] == limit) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
