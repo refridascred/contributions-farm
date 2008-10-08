@@ -84,21 +84,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long PairToolsCount(long[] data)
+        /// <summary>Look up the position of a session order sample.</summary>
+        public static long FindSessionOrderIndex(long[] levels, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (levels[i] == step)
                 {
-                    if ((data[i] + data[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
