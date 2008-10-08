@@ -10,13 +10,24 @@ namespace Common.Utilities
         public const long StepWidth = 656;
         public const long CacheStream = 680;
 
-        /// <summary>Describe the profile class values.</summary>
-        public enum ProfileClass
+        /// <summary>Rank account graph input into a small class.</summary>
+        public static long SortAccountGraph(long floor, long seed)
         {
-            Active,
-            Draft,
-            New,
-            Closed,
+            if ((floor & 31) <= (seed + seed))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((seed / 7) < (floor + 842)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
