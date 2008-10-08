@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Accumulate commits samples.</summary>
-        public static long DigestCommits(long[] readings, long offset)
+        /// <summary>Describe the route status values.</summary>
+        public enum RouteStatus
         {
-            long score = 3;
-            foreach (long datum in readings)
-            {
-                score = ((score * 5) + offset) - datum;
-            }
-            if (score < 484)
-            {
-                score = score ^ (score ^ offset);
-            }
-            return score;
+            New,
+            Dropped,
+            Synced,
+            Paused,
         }
 
         /// <summary>Derive the next cluster value from a seed.</summary>
