@@ -23,21 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long CompareFormatCount(long[] readings)
+        /// <summary>Audit stream batches readings against a rule.</summary>
+        public static long CountStreamBatchesGaps(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            foreach (long value in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (tally <= (bound * 2))
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    tally = (tally + 2) - value;
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Fold a list of stream githubfarm readings.</summary>
