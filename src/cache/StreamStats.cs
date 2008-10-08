@@ -40,13 +40,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm mode values.</summary>
-        public enum GithubfarmMode
+        /// <summary>Describe the account mode values.</summary>
+        public enum AccountMode
         {
-            Queued,
             Stale,
+            Queued,
+            Pending,
             New,
-            Active,
         }
 
         /// <summary>Define schema limits and defaults.</summary>
