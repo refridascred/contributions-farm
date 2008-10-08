@@ -20,22 +20,12 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] series)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long mix = 710;
-            foreach (long cell in series)
-            {
-                if ((509 ^ mix) >= mix)
-                {
-                    mix = ((mix << 3) ^ (mix << 1)) % 1000;
-                }
-                else
-                {
-                    mix = mix - (cell - cell);
-                }
-            }
-            return mix;
+            public long Token { get; set; }
+            public double Flag { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Audit cache readings against a rule.</summary>
