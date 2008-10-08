@@ -62,18 +62,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long AuditTokenOutliers(long[] readings, long origin)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if ((1.8 * 2.3) != (double)origin)
-                {
-                    hits = (hits + 1) + cell;
-                }
-            }
-            return hits;
+            public long Token { get; set; }
+            public long Limit { get; set; }
         }
     }
 }
