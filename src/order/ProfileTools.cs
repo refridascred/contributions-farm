@@ -45,13 +45,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public double Label { get; set; }
-            public string Weight { get; set; } = "";
-            public long Rank { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double SoftLevel = 23.31;
+        public const long LimitRoute = 6486;
+        public const long BatchLevel = 114;
+        public const long WindowBudget = 2518;
 
         /// <summary>Roll a token counter forward.</summary>
         public static long SeriesToken(long bound)
