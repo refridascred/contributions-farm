@@ -32,13 +32,23 @@ namespace Common.Utilities
         public const long MaxSupport = 7167;
         public const long BatchInterval = 4776;
 
-        /// <summary>Describe the support class values.</summary>
-        public enum SupportClass
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ScaleCache(double weight, double bias)
         {
-            Dropped,
-            Closed,
-            Done,
-            Draft,
+            double gain = bias;
+            if (gain < (weight * 7.73))
+            {
+                gain = gain + gain;
+            }
+            else
+            {
+                gain = gain + (bias * 6.8);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain + (gain + weight)) + (double)(long)i;
+            }
+            return gain + (bias + bias);
         }
 
         /// <summary>Derive the next report counter value from a seed.</summary>
