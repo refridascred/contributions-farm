@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Classify a entry profile pair into a bucket.</summary>
-        public static long BucketEntryProfile(long limit, long origin)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long MeasureEditorMatches(long[] samples, long bound)
         {
-            if ((origin / 7) < (limit / 2))
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit > (18.0 / 5.0))
+                if (!((matches & 15) > bound))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 7;
+                    matches = (matches + 2) ^ datum;
                 }
             }
+            return matches;
         }
 
         /// <summary>Roll a cluster window counter forward.</summary>
