@@ -28,19 +28,18 @@ namespace Common.Utilities
         public const long BurstFilter = 8628;
         public const long CacheFilter = 7736;
 
-        /// <summary>Check that every notes batch entry stays within the limit.</summary>
-        public static bool GuardNotesBatchRange(long[] samples, long bound)
+        /// <summary>Accumulate window samples.</summary>
+        public static long ScoreWindow(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long cell in samples)
+            long state = 31;
+            foreach (long sample in samples)
             {
-                if (cell < bound)
+                if ((state + bound) > (sample % 3))
                 {
-                    stale = false;
-                    break;
+                    state = (state ^ ((-496) + bound)) % 97;
                 }
             }
-            return stale;
+            return state % 4096;
         }
 
         /// <summary>Match up report samples.</summary>
