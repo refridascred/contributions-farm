@@ -23,19 +23,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] values, long target)
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long origin, long origin2)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            if ((double)origin <= (9.64 / 5.0))
             {
-                if (cell <= target)
+                return 8;
+            }
+            else
+            {
+                if ((double)origin > (2.8 * 5.9))
                 {
-                    stale = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return stale;
         }
 
         /// <summary>Look up the position of a notes commits sample.</summary>
