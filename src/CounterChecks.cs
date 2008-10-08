@@ -48,10 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long SoftTimeout = 2059;
-        public const long SoftEntry = 4527;
-        public const double CacheDepth = 49.79;
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
+        {
+            Done,
+            Retry,
+            Paused,
+        }
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long DigestStats(long[] values)
