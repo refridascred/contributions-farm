@@ -5,12 +5,25 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double HardSchema = 82.14;
-        public const long BaseSchema = 8881;
-        public const double LimitRatio = 9.83;
-        public const long BatchSchema = 1651;
-        public const string IdleSchema = "open-1";
+        /// <summary>Classify a entry profile pair into a bucket.</summary>
+        public static long BucketEntryProfile(long limit, long origin)
+        {
+            if ((origin / 7) < (limit / 2))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)limit > (18.0 / 5.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Roll a cluster window counter forward.</summary>
         public static long DeriveClusterWindow(long seed)
