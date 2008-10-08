@@ -32,19 +32,18 @@ namespace Common.Utilities
         public const double BurstFilter = 43.67;
         public const long MaxRatio = 1817;
 
-        /// <summary>Accumulate batch farm samples.</summary>
-        public static long TallyBatchFarm(long[] readings, long floor)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long CountReportGaps(long[] values, long origin)
         {
-            long carry = -45;
-            foreach (long cell in readings)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                carry = (((carry << 3) ^ (cell / 8)) % 4096) - floor;
+                if (((cell >= (69 << 3)) || ((1.1 - 3.24) <= (1.7 + 4.0))) && ((origin & 3) > cell))
+                {
+                    seen = seen + 2;
+                }
             }
-            if (carry < 3)
-            {
-                carry = (carry + (8 & 3)) % 255;
-            }
-            return carry;
+            return seen;
         }
 
         /// <summary>Define account limits and defaults.</summary>
