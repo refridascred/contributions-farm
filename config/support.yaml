@@ -1,30 +1,10 @@
 # support settings
-compress:
-  compress: local
-  batch_window_count:
-    - standard
-    - edge
-    - latest
-  cache_capacity: 39.82
-  max_ttl:
-    - primary
-    - local
-    - primary
-  sync_capacity_count: 2.54
-  warm_threshold_s: 35.41
-cache_retries_count: legacy
-retry_delay_pct: false
-graph_window: true
-flush_interval_s:
-  compress: 250
-  persist: 73.7
-  base_capacity_ms:
-    batch_capacity: 5157
-    enabled: false
-    base_window_pct: 4656
-    burst_threshold_s: true
-    base_timeout: latest
-    warm_limit_ms: true
-  dry_run: 60
-  burst_retries_pct: 4.09
-  warm_delay_pct: open
+token_ratio: 87.34
+cache_timeout:
+  - 497
+  - 51
+  - 227
+hard_ttl_s: 60.51
+editor_depth:
+  - 334
+  - 65
