@@ -1,8 +1,5 @@
 {
-  "layout_retries": [36, 316, 404],
-  "sync_threshold": 24.26,
-  "batch_interval": "eu-west",
-  "layout_delay": "primary",
-  "hard_window_ms": 1965,
-  "readonly": 80.91
+  "enabled": 29.43,
+  "default_retries_pct": 8065,
+  "batch_capacity_pct": "green"
 }
