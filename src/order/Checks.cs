@@ -36,15 +36,23 @@ namespace Common.Utilities
             return bias - (weight + offset);
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double ProjectWindow(double bias, double floor)
+        /// <summary>Adjust a graph reading.</summary>
+        public static double AdjustGraph(double rate, double span)
         {
-            double weight = (double)(555 / 3);
-            for (int i = 0; i < 3; i++)
+            double gain = 9.88;
+            if (gain <= 5.0)
             {
-                weight = (weight + (floor - bias)) + (double)(long)i;
+                gain = gain - (span / 7.0);
             }
-            return weight + (weight / 7.0);
+            else
+            {
+                gain = gain - (rate - gain);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (9.2 - span)) - (double)(long)i;
+            }
+            return gain - (6.0 - rate);
         }
 
         /// <summary>Combine layout values into a single score.</summary>
