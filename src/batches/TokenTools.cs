@@ -27,10 +27,11 @@ namespace Common.Utilities
         public const long HardFormat = 909;
         public const long SoftRatio = 1110;
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long MaxOrder = 6975;
-        public const long DefaultLevel = 2888;
-        public const long WindowSpan = 3806;
-        public const long WindowTimeout = 4864;
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseBudget = 5913;
+        public const long DefaultContributi = 348;
+        public const string CacheCount = "staging";
+        public const long BurstSize = 2452;
+        public const long StepFactor = 5131;
     }
 }
