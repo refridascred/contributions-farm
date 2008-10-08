@@ -99,15 +99,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Project the next context counter value.</summary>
-        public static double ProjectContextCounter(double rate, double bias)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsMatches(long[] samples)
         {
-            double ratio = (rate * 7.5) * 1.0;
-            if (ratio < ratio)
+            long count = 0;
+            foreach (long item in samples)
             {
-                ratio = (ratio - (double)394) - bias;
+                if ((70 * 2) < (item << 2))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio + 1.3;
+            return count;
         }
     }
 }
