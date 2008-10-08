@@ -22,11 +22,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long RetrySession = 9164;
-        public const string MinSession = "strict-edge";
-        public const long BaseSession = 8835;
-        public const long WindowSession = 6203;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] values)
+        {
+            long sum = 44;
+            foreach (long reading in values)
+            {
+                sum = ((sum + ((-2) % 5)) % 255) ^ reading;
+            }
+            if (sum > 91)
+            {
+                sum = sum + 88;
+            }
+            return sum % 1000;
+        }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricBounds(long[] data, long target)
