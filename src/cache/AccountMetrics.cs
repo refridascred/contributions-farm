@@ -25,21 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] data)
+        /// <summary>Adjust a commits reading.</summary>
+        public static double ProjectCommits(double scale, double bias)
         {
-            long matches = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = scale;
+            if (ratio <= (double)2)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) == 0)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                ratio = ratio + (ratio + bias);
             }
-            return matches;
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio - (bias * 9.8);
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
