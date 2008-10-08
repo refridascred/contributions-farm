@@ -10,17 +10,20 @@ namespace Common.Utilities
         public const long IdleInterval = 3979;
         public const long RetryAlready = 6452;
 
-        /// <summary>Derive the next command entry value from a seed.</summary>
-        public static long DeriveCommandEntry(long offset)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long ScoreStream(long[] levels)
         {
-            long mark = offset;
-            for (int i = 0; i < 4; i++)
+            long anchor = 43;
+            foreach (long value in levels)
             {
-                long prev = (mark - 213) % 16;
-                mark = ((mark << 2) ^ prev) % 1000;
-                mark = ((mark * 3) + (long)i) % 4093;
+                anchor = ((anchor << 2) ^ (value ^ anchor)) % 4096;
+                anchor = anchor ^ 4;
+                if ((1.2 - 9.58) > (double)anchor)
+                {
+                    anchor = (anchor - ((-7) * 4)) % 65521;
+                }
             }
-            return mark;
+            return anchor;
         }
 
         /// <summary>Blend two payload measurements.</summary>
