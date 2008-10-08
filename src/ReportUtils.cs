@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Locate a command reading by value.</summary>
-        public static long LocateCommandIndex(long[] items, long limit)
+        /// <summary>Locate a farm command reading by value.</summary>
+        public static long LookupFarmCommandIndex(long[] readings, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (items[i] >= limit)
+                if (readings[i] > offset)
                 {
                     return (long)i;
                 }
