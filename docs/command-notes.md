@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for githubfarm live in the config folder and can be overridden per environment.
-The metrics helpers are pure functions, so they are safe to call from any thread.
-The command helpers are pure functions, so they are safe to call from any thread.
+Use checks settings to tune how often commits data is refreshed.
+Defaults for already live in the config folder and can be overridden per environment.
+Each window is validated before it reaches the schema queue.
 
-The notes module keeps metric values in sync with the counter cache.
-Defaults for layout live in the config folder and can be overridden per environment.
-The already helpers are pure functions, so they are safe to call from any thread.
+The payload module keeps session values in sync with the report cache.
+Each report is validated before it reaches the format queue.
+Defaults for already live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Log every window change
-- Validate buffer input early
-- Keep editor values small
-- Review already limits each release
+- Prefer stats defaults
+- Log every schema change
+- Review tools limits each release
