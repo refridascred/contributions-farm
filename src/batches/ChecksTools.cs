@@ -24,19 +24,22 @@ namespace Common.Utilities
             return drift + gain;
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double SmoothCommand(double gain, double floor)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowMatches(long[] values)
         {
-            double bias = (double)(4 - 4);
-            if (bias > (floor * 1.6))
+            long seen = 0;
+            foreach (long sample in values)
             {
-                bias = (bias - (floor + 2.2)) - gain;
+                if ((seen - sample) == (3 - sample))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            else
-            {
-                bias = bias - (double)(-34);
-            }
-            return bias - 0.6;
+            return seen;
         }
 
         /// <summary>Digest a series of channel commits entries.</summary>
