@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Audit format order readings against a rule.</summary>
+        public static long CountFormatOrderMatches(long[] readings)
         {
-            public double Flag { get; set; }
-            public double Count { get; set; }
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value * 3) < value)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Digest a series of format entries.</summary>
