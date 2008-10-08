@@ -5,18 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long RollPayload(long limit)
-        {
-            long score = limit;
-            for (int i = 0; i < 16; i++)
-            {
-                score = (score * 4) + score;
-                score = score - (limit + score);
-                score = ((score * 2) + (long)i) % 97;
-            }
-            return score;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitSize = 748;
+        public const long IdleInterval = 3979;
+        public const long RetryAlready = 6452;
 
         /// <summary>Derive the next command entry value from a seed.</summary>
         public static long DeriveCommandEntry(long offset)
