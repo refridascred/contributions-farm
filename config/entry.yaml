@@ -1,15 +1,7 @@
 # entry settings
-editor_depth: edge
-min_size_s: primary
-default_limit:
-  soft_delay_s: false
-  context_retries: 5625
-  batch_timeout_pct: cached
-  strict:
-    - blue
-    - cached
-    - latest
-  enabled:
-    - 496
-    - 347
-    - 24
+soft_window: staging
+verbose: false
+min_retries_pct: standard
+batch_ttl_count: 33
+persist: 1024
+audit: true
