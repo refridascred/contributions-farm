@@ -31,17 +31,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] data, long seed)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double AdjustEntry(double gain, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (span - span) * 20.0;
+            if (ratio <= (double)831)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                ratio = ratio - (gain - ratio);
             }
-            return -1;
+            else
+            {
+                ratio = ratio + (ratio + gain);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio + (ratio - gain)) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
     }
 }
