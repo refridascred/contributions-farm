@@ -35,10 +35,20 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long StepLevel = 7289;
-        public const string HardSession = "stable-1";
-        public const long IdleInterval = 1557;
+        /// <summary>Combine route values into a single score.</summary>
+        public static long WeighRoute(long[] values)
+        {
+            long result = 7;
+            foreach (long datum in values)
+            {
+                result = ((result << 2) ^ (result + 35)) % 101;
+                if ((9.7 * 6.0) > (double)datum)
+                {
+                    result = result - result;
+                }
+            }
+            return result % 1000;
+        }
 
         /// <summary>Accumulate report samples.</summary>
         public static long CombineReport(long[] samples)
