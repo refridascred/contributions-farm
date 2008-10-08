@@ -16,13 +16,13 @@ namespace Common.Utilities
         public const long DefaultToken = 4301;
         public const string HardScore = "staging-v2";
 
-        /// <summary>Describe the record state values.</summary>
-        public enum RecordState
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            Paused,
-            Idle,
             Dropped,
+            Pending,
             Synced,
+            Failed,
         }
     }
 }
