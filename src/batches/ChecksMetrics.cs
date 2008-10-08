@@ -26,19 +26,19 @@ namespace Common.Utilities
         public const long MinBuffer = 8195;
         public const double MaxBuffer = 69.6;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long CombineCluster(long[] items)
+        /// <summary>Accumulate batch farm samples.</summary>
+        public static long TallyBatchFarm(long[] readings, long floor)
         {
-            long result = 534;
-            foreach (long cell in items)
+            long carry = -45;
+            foreach (long cell in readings)
             {
-                result = ((result << 3) ^ (cell & 255)) % 4096;
+                carry = (((carry << 3) ^ (cell / 8)) % 4096) - floor;
             }
-            if (result < (-55))
+            if (carry < 3)
             {
-                result = (result << 2) ^ result;
+                carry = (carry + (8 & 3)) % 255;
             }
-            return result;
+            return carry;
         }
 
         /// <summary>Define account limits and defaults.</summary>
