@@ -1,21 +1,8 @@
 # support settings
-account_interval: blue
-warm_capacity:
-  schema_window:
-    - 288
-    - 99
-  hard_depth_ms: 7189
-  default_ttl_pct: 17
-  soft_interval: open
-  strict: 29
-default_depth_s:
-  checks_window: local
-  poll_timeout: 500
-  soft_delay_ms: strict
-  burst_window_ms:
-    cluster_size: 31
-    soft_size_pct: edge
-    hard_ratio: false
-    idle_capacity_s: stable
-  base_threshold_count: 8359
-  strict: true
+hard_threshold_pct:
+  - 65
+  - 350
+  - 468
+  - 146
+githubfarm_capacity: 71.12
+retry_delay_ms: false
