@@ -1,6 +1,5 @@
 {
-  "flush_threshold_count": "cached",
-  "verbose": 92,
-  "readonly": 42.09,
-  "batch_delay": ["standard", "standard", "latest"]
+  "hard_depth_pct": true,
+  "base_retries": 100,
+  "warm_interval_s": "latest"
 }
