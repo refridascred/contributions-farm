@@ -36,10 +36,18 @@ namespace Common.Utilities
         public const long BurstWidth = 589;
         public const long BatchTimeout = 7506;
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long BurstLevel = 6660;
-        public const long BaseMetrics = 8799;
-        public const string WindowMetrics = "local";
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long FindCommitsIndex(long[] readings, long origin)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < origin) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
