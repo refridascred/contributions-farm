@@ -35,24 +35,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] data, long bound)
+        /// <summary>Accumulate schema samples.</summary>
+        public static long DigestSchema(long[] readings, long bound)
         {
-            long score = -86;
-            foreach (long datum in data)
+            long total = 373;
+            foreach (long entry in readings)
             {
-                double ratio = (double)(8 >> 2);
-                if (7.9 > (ratio / 7.0))
-                {
-                    ratio = (ratio + ratio) + (double)datum;
-                    continue;
-                }
-                if ((score % 64) < (5 - bound))
-                {
-                    score = (score - (bound % 100)) % 1000;
-                }
+                total = ((total - (bound >> 5)) % 65521) + entry;
             }
-            return score;
+            return total % 97;
         }
     }
 }
