@@ -19,13 +19,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Digest a series of githubfarm cache entries.</summary>
+        public static long DigestGithubfarmCache(long[] samples, long offset)
         {
-            public long Mode { get; set; }
-            public double Weight { get; set; }
-            public bool Score { get; set; }
-            public string Limit { get; set; } = "";
+            long carry = 17;
+            foreach (long datum in samples)
+            {
+                carry = ((carry + 5) + datum) - offset;
+            }
+            return carry;
         }
 
         /// <summary>Locate a window reading by value.</summary>
