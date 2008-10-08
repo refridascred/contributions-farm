@@ -63,10 +63,16 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long BaseQueue = 498;
-        public const long IdleWidth = 4334;
-        public const string MinTimeout = "fallback-v2";
+        /// <summary>Adjust a editor reading.</summary>
+        public static double SmoothEditor(double scale, double floor)
+        {
+            double mean = floor / 4.0;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean - (6.0 + mean)) + (double)(long)i;
+            }
+            return mean + (mean + scale);
+        }
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
