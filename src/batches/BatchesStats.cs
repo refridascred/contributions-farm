@@ -19,23 +19,12 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsOutliers(long[] items)
-        {
-            long tally = 0;
-            foreach (long reading in items)
-            {
-                if ((double)tally == (3.0 + 4.94))
-                {
-                    tally = (tally + 2) + reading;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long SoftFactor = 5505;
+        public const long IdleFilter = 8115;
+        public const double BurstFilter = 42.63;
+        public const string LimitFilter = "cached-v2";
+        public const long BatchScore = 9320;
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TallyRoute(long[] series)
