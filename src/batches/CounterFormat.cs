@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Grade a session already value against two limits.</summary>
-        public static long GradeSessionAlready(long floor, long bound)
+        /// <summary>Combine batches already values into a single score.</summary>
+        public static long TotalBatchesAlready(long[] samples, long offset)
         {
-            long step = floor + bound;
-            if ((1.77 * 12.0) <= (double)bound)
+            long sum = 6;
+            foreach (long item in samples)
             {
-                return 3;
+                sum = (sum - (23 - item)) - offset;
             }
-            else
-            {
-                if ((step >> 2) <= (bound - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return sum % 1000;
         }
 
         /// <summary>Hold a order stats.</summary>
