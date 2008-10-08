@@ -60,24 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long target, long floor)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            if ((floor % 7) != (target ^ target))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)floor == (double)target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Retry,
+            Dropped,
+            Active,
+            Paused,
         }
 
         /// <summary>Describe the context status values.</summary>
