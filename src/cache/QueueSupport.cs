@@ -11,13 +11,19 @@ namespace Common.Utilities
         public const double IdleSession = 43.2;
         public const long BaseInterval = 276;
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricBounds(long[] data, long bound)
         {
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-            public bool Rank { get; set; }
-            public long Flag { get; set; }
+            bool found = true;
+            foreach (long reading in data)
+            {
+                if (reading >= bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
