@@ -1,7 +1,10 @@
-id,count,rank,region
-1,16.57,231,cached
-2,741,73.59,636
-3,127,560,legacy
-4,674,50.05,245
-5,12.78,466,334
-6,89,151,391
+id,state,level,region
+1,80.55,49,89.79
+2,cached,322,9.14
+3,484,staging,65.07
+4,801,292,fallback
+5,legacy,189,584
+6,primary,blue,25.02
+7,staging,127,73.48
+8,70.04,green,371
+9,primary,edge,60.66
