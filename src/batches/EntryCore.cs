@@ -18,18 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics context readings against a rule.</summary>
-        public static long CountMetricsContextHits(long[] readings)
+        /// <summary>Project the next filter value.</summary>
+        public static double ScaleFilter(double gain, double span)
         {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if (((long)readings.Length - hits) >= entry)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double ratio = (6.1 / 7.0) + (double)2;
+            return ((ratio - (double)0) + gain) + span;
         }
 
         /// <summary>Describe the metric status values.</summary>
