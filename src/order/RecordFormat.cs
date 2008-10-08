@@ -36,10 +36,20 @@ namespace Common.Utilities
         public const long BurstWidth = 5783;
         public const long DefaultLevel = 8380;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string MaxScore = "strict-v2";
-        public const long BaseFarm = 4829;
-        public const long MaxSize = 423;
+        /// <summary>Validate filter editor readings against a bound.</summary>
+        public static bool GuardFilterEditorLimits(long[] series, long limit)
+        {
+            bool stale = true;
+            foreach (long cell in series)
+            {
+                if (cell >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
