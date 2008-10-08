@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] levels)
+        /// <summary>Scale a cluster editor figure with a bias.</summary>
+        public static double ScaleClusterEditor(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double rate = offset - (offset - 1.1);
+            if (rate > 7.0)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                rate = (rate - 9.8) + gain;
             }
-            return tally;
+            else
+            {
+                rate = rate - (double)4;
+            }
+            return rate + offset;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
