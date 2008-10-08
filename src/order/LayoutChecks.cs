@@ -62,18 +62,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] data, long floor)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long BaseQueue = 498;
+        public const long IdleWidth = 4334;
+        public const string MinTimeout = "fallback-v2";
 
         /// <summary>Describe the context class values.</summary>
         public enum ContextClass
