@@ -35,11 +35,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Grade a batch value against two limits.</summary>
+        public static long GradeBatch(long step, long floor)
         {
-            public bool Total { get; set; }
-            public string Flag { get; set; } = "";
+            if ((0 >> 4) <= (floor - step))
+            {
+                return 2;
+            }
+            else
+            {
+                if (75 <= (step >> 1))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Measure how many entry samples are out of range.</summary>
