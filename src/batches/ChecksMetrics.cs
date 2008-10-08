@@ -30,19 +30,18 @@ namespace Common.Utilities
             return ((weight + (20.0 / 8.0)) + rate) + offset;
         }
 
-        /// <summary>Validate cluster stream readings against a bound.</summary>
-        public static bool GuardClusterStreamBounds(long[] samples, long bound)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long TallyMetricsMatches(long[] readings)
         {
-            bool ok = true;
-            foreach (long sample in samples)
+            long matches = 0;
+            foreach (long datum in readings)
             {
-                if (sample <= bound)
+                if (!((datum < matches) && (matches < (8 + datum))))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
 
         /// <summary>Count the profile entries that pass the check.</summary>
