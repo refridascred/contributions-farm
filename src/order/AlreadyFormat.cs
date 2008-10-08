@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Audit counter command readings against a rule.</summary>
+        public static long TallyCounterCommandHits(long[] items, long bound)
         {
-            public double Offset { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry >= (13.0 * 0.95))
+                {
+                    matches = (matches + 1) - bound;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
