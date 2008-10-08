@@ -11,18 +11,22 @@ namespace Common.Utilities
         public const double MinTools = 68.81;
         public const double StepTools = 23.24;
 
-        /// <summary>Fold a list of payload entry readings.</summary>
-        public static long TotalPayloadEntry(long[] samples, long target)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long CountFormatGaps(long[] values)
         {
-            long anchor = 98;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long entry in values)
             {
-                if (((404 << 3) > (sample << 3)) && ((anchor - 533) != (target - anchor)))
+                if ((entry < (entry << 2)) && (entry >= ((long)values.Length + entry)))
                 {
-                    anchor = (anchor ^ (sample * 4)) % 97;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Digest a series of commits payload entries.</summary>
