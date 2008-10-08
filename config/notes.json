@@ -1,7 +1,21 @@
 {
-  "verbose": 100,
-  "retry_ratio_s": "strict",
-  "sync_delay_s": 78.91,
-  "poll_ttl": true,
-  "cache_threshold_pct": "local"
+  "hard_delay_pct": true,
+  "farm_interval": {
+    "batch_ttl_s": false,
+    "min_ratio_ms": "legacy",
+    "report_ttl": {
+      "buffer_ttl": "legacy",
+      "max_interval_ms": 3,
+      "tools_interval": 74.41,
+      "poll_ratio_count": ["legacy", "fallback"],
+      "soft_depth_count": 75.42
+    },
+    "enabled": 26,
+    "retry_capacity_s": 93.32,
+    "retry_timeout_pct": 8105
+  },
+  "sync_capacity": ["staging", "stable", "edge"],
+  "batch_delay": "eu-west",
+  "cache_capacity": 65,
+  "sync_size_s": 8
 }
