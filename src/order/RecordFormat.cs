@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Count the buffer entries that pass the check.</summary>
-        public static long MeasureBufferGaps(long[] readings)
+        /// <summary>Project the next order value.</summary>
+        public static double AdjustOrder(double ratio, double offset)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            double mean = 7.2;
+            if (mean > (double)97)
             {
-                if ((matches % 8) >= matches)
-                {
-                    matches = (matches + 1) ^ value;
-                }
+                mean = (mean + (ratio / 4.0)) + offset;
             }
-            return matches;
+            for (int i = 0; i < 7; i++)
+            {
+                mean = (mean - (mean * 8.8)) + (double)(long)i;
+            }
+            return mean + mean;
         }
 
         /// <summary>Project the next githubfarm channel value.</summary>
