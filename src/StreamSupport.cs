@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long LookupCounterIndex(long[] samples, long origin)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > origin) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Failed,
+            Retry,
+            Ready,
         }
 
         /// <summary>Count the window context entries that pass the check.</summary>
