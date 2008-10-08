@@ -5,17 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Find the first commits command entry that matches the target.</summary>
-        public static long LocateCommitsCommandIndex(long[] series, long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long SeriesWindow(long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            long anchor = seed;
+            for (int i = 0; i < 20; i++)
             {
-                if ((series[i] < seed) && ((series[i] % 2) != 0))
+                anchor = ((anchor * 2) + (798 << 1)) % 255;
+                if (!(((anchor >> 5) < anchor) && ((seed - (long)i) <= anchor)))
                 {
-                    return (long)i;
+                    anchor = (anchor + (anchor & 7)) % 65521;
                 }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a editor stats.</summary>
