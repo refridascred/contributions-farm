@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BurstRatio = 8165;
-        public const long RetrySession = 8085;
-        public const double IdleSession = 43.2;
-        public const long BaseInterval = 276;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long MeasureStatsOutliers(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if (!((floor % 60) <= sample))
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the window class values.</summary>
         public enum WindowClass
