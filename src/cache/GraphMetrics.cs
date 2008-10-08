@@ -62,16 +62,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric already series from a seed.</summary>
-        public static long RollMetricAlready(long origin)
+        /// <summary>Count batch counter pairs that satisfy a relation.</summary>
+        public static long CompareBatchCounterCount(long[] levels)
         {
-            long mark = origin;
-            for (int i = 0; i < 6; i++)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                mark = (mark + (mark >> 4)) % 65521;
-                mark = ((mark * 4) + (long)i) % 1000;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 17)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Describe the editor kind values.</summary>
