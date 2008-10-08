@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
-        {
-            public double Rank { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
-            public bool Owner { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 6539;
+        public const long HardQueue = 7054;
+        public const string CacheWidth = "latest-v2";
 
         /// <summary>Blend two record measurements.</summary>
         public static double ScaleRecord(double weight, double bias)
