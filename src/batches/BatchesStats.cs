@@ -20,20 +20,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool GuardToolsRange(long[] data, long step)
-        {
-            bool stale = true;
-            foreach (long item in data)
-            {
-                if (item != step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long LimitContext = 786;
+        public const long CacheFactor = 4066;
+        public const long CacheSpan = 9435;
+        public const long StepWidth = 8210;
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long GradeBatch(long step, long floor)
