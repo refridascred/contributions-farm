@@ -19,23 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double ScaleChannel(double ratio, double offset)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long SeekProfileIndex(long[] items, long target)
         {
-            double gain = ratio * 4.62;
-            if (gain > (4.0 + offset))
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = gain + gain;
+                if (items[i] > target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                gain = gain - 0.92;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (9.01 * 9.74)) - (double)(long)i;
-            }
-            return gain - (ratio / 6.0);
+            return -1;
         }
 
         /// <summary>Locate a context reading by value.</summary>
