@@ -30,19 +30,18 @@ namespace Common.Utilities
         public const long BaseSession = 8835;
         public const long WindowSession = 6203;
 
-        /// <summary>Validate editor buffer readings against a bound.</summary>
-        public static bool GuardEditorBufferRange(long[] samples, long origin)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueHits(long[] readings)
         {
-            bool stale = true;
-            foreach (long datum in samples)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (datum <= origin)
+                if ((6 >> 1) < (cell + cell))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
