@@ -12,18 +12,19 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandMatches(long[] series, long floor)
+        /// <summary>Validate route record readings against a bound.</summary>
+        public static bool ValidateRouteRecordLimits(long[] items, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if (((double)sample == (6.8 + 4.5)) || ((1 << 1) < (floor << 1)))
+                if (sample > target)
                 {
-                    hits = hits + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Measure how many checks counter samples are out of range.</summary>
