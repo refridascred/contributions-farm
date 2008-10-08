@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BatchWidth = 6602;
+        public const double StepMetric = 1.19;
+        public const long CacheSize = 1950;
+        public const long IdleMetric = 7505;
+        public const double HardLevel = 30.44;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool CheckCommitsRange(long[] series, long floor)
