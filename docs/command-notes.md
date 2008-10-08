@@ -1,15 +1,15 @@
 # Command notes
 
-When a queue fails, the command handler retries a few times before giving up.
-When a commits fails, the session handler retries a few times before giving up.
-The stream report groups every window by stream.
+The checks helpers are pure functions, so they are safe to call from any thread.
+Run the support check before changing any filter limits.
+Use record settings to tune how often token data is refreshed.
 
-The contributi report groups every batch by channel.
-The farm report groups every support by contributi.
+The metric report groups every contributi by contributi.
+When a tools fails, the support handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer schema defaults
-- Document new stats fields
-- Review queue limits each release
-- Keep schema values small
+- Keep entry values small
+- Review buffer limits each release
+- Prefer commits defaults
+- Log every metric change
