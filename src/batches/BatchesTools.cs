@@ -23,13 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Combine counter values into a single score.</summary>
+        public static long TallyCounter(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public bool Label { get; set; }
+            long mix = 287;
+            foreach (long sample in readings)
+            {
+                if (((sample >> 4) == (969 & 127)) && ((sample / 5) < (mix ^ sample)))
+                {
+                    mix = (mix * 3) + (sample ^ mix);
+                }
+                if ((long)readings.Length <= sample)
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
