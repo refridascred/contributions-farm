@@ -58,17 +58,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] items, long floor)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 49;
+            foreach (long item in values)
             {
-                if ((items[i] >= floor) && ((items[i] % 5) == 0))
+                anchor = ((anchor * 3) + (anchor << 1)) % 4096;
+                if (((anchor & 3) < (963 + item)) || ((707 + item) == (anchor + anchor)))
                 {
-                    return (long)i;
+                    anchor = ((anchor * 5) + anchor) % 4096;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (anchor << 3)) % 255;
                 }
             }
-            return -1;
+            if (anchor > (-382))
+            {
+                anchor = ((anchor * 2) + 640) % 255;
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
