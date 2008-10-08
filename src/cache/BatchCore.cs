@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long LocateContributiIndex(long[] readings, long target)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] >= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const string HardTimeout = "local";
+        public const long RetryTimeout = 2607;
+        public const double BaseSpan = 20.66;
+        public const long SoftTimeout = 7002;
 
         /// <summary>Look up the position of a contributi record sample.</summary>
         public static long LocateContributiRecordIndex(long[] items, long origin)
