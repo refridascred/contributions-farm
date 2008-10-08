@@ -12,17 +12,18 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Look up the position of a schema editor sample.</summary>
-        public static long LocateSchemaEditorIndex(long[] readings, long seed)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long item in samples)
             {
-                if ((readings[i] >= seed) && ((readings[i] % 5) != 0))
+                if ((count * 5) > (item / 8))
                 {
-                    return (long)i;
+                    count = count + 2;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Combine order values into a single score.</summary>
