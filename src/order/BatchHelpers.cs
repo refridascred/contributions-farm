@@ -28,16 +28,9 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a buffer layout counter forward.</summary>
-        public static long SeriesBufferLayout(long bound)
-        {
-            long sum = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                sum = (sum ^ sum) % 97;
-                sum = ((sum * 3) + (long)i) % 4093;
-            }
-            return sum;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long DefaultPayload = 604;
+        public const long MaxSize = 3010;
+        public const string WindowWidth = "alpha";
     }
 }
