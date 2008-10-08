@@ -41,24 +41,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long DeriveCluster(long seed)
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            long anchor = seed;
-            for (int i = 0; i < 11; i++)
-            {
-                if (anchor >= ((long)i / 8))
-                {
-                    anchor = (anchor ^ anchor) % 65521;
-                }
-                if (((double)seed <= (6.35 * 11.0)) || ((anchor << 1) >= (anchor & 7)))
-                {
-                    anchor = ((anchor * 3) + ((long)i - (-14))) % 4096;
-                }
-                anchor = ((anchor * 3) + (7 - seed)) % 1000;
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
+            Idle,
+            Failed,
+            Dropped,
+            Locked,
         }
     }
 }
