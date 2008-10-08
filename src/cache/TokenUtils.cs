@@ -28,14 +28,19 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] series, long target)
         {
-            Stale,
-            Dropped,
-            Pending,
-            Active,
-            Idle,
+            bool found = true;
+            foreach (long entry in series)
+            {
+                if (entry < target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
