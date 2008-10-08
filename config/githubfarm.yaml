@@ -1,5 +1,6 @@
 # githubfarm settings
-readonly: strict
-min_depth: false
-queue_depth: true
-max_size_ms: false
+enabled: 3
+dry_run: 305
+queue_ratio: green
+burst_capacity: true
+burst_depth_ms: 5703
