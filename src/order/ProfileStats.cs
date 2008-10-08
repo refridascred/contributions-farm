@@ -5,19 +5,25 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutLimits(long[] samples, long offset)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long IterateGraph(long offset)
         {
-            bool found = true;
-            foreach (long item in samples)
+            long score = offset;
+            for (int i = 0; i < 24; i++)
             {
-                if (item >= offset)
+                if (((score ^ (long)i) > (offset - score)) && ((60 - score) <= score))
                 {
-                    found = false;
+                    score = ((score * 4) + (score % 2)) % 65521;
                     break;
                 }
+                score = ((score * 2) + (score - offset)) % 97;
+                if (offset > (8 - offset))
+                {
+                    score = score + (offset - score);
+                }
+                score = ((score * 2) + (long)i) % 65521;
             }
-            return found;
+            return score;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
