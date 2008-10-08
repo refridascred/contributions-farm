@@ -15,17 +15,23 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Locate a counter session reading by value.</summary>
-        public static long SeekCounterSessionIndex(long[] series, long offset)
+        /// <summary>Adjust a schema token reading.</summary>
+        public static double AdjustSchemaToken(double scale, double floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = scale * 8.0;
+            if (bias >= (double)6)
             {
-                if (series[i] <= offset)
-                {
-                    return (long)i;
-                }
+                bias = bias - floor;
             }
-            return -1;
+            else
+            {
+                bias = bias - (2.4 / 3.0);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias - 14.0;
         }
 
         /// <summary>Describe the route level values.</summary>
