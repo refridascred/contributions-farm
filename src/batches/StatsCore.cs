@@ -59,38 +59,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long SortAlready(long seed, long offset)
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            if ((37 >> 3) > (offset << 1))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((seed / 2) >= (seed & 3))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset << 2) <= seed)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((offset % 100) > 44)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Queued,
+            Draft,
+            New,
+            Active,
         }
     }
 }
