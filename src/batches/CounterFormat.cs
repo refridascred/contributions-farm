@@ -5,25 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Classify a record pair into a bucket.</summary>
-        public static long ClassifyRecord(long floor, long seed)
+        /// <summary>Validate schema metric readings against a bound.</summary>
+        public static bool GuardSchemaMetricBounds(long[] data, long origin)
         {
-            long next = floor ^ seed;
-            if ((11.0 / 6.0) > (double)seed)
+            bool found = true;
+            foreach (long item in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((next - next) > (55 * 5))
+                if (item != origin)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Describe the filter status values.</summary>
