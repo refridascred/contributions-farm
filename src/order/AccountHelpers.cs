@@ -72,19 +72,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double SmoothReport(double scale, double bias)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            double scale2 = bias;
-            if (scale2 > (double)0)
-            {
-                scale2 = scale2 + (scale * 3.6);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                scale2 = (scale2 + (bias + scale2)) + (double)(long)i;
-            }
-            return scale2 + (bias - scale2);
+            Paused,
+            Failed,
+            Locked,
+            Active,
+            Retry,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
