@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long SeekWindowIndex(long[] levels, long offset)
-        {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long LimitWindow = 4438;
+        public const double BatchLevel = 80.32;
+        public const long CacheScore = 5490;
+        public const string DefaultWindow = "fallback-v2";
 
         /// <summary>Describe the support level values.</summary>
         public enum SupportLevel
