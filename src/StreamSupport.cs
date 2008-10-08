@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Audit buffer farm readings against a rule.</summary>
+        public static long TallyBufferFarmOutliers(long[] values, long origin)
         {
-            public double Count { get; set; }
-            public string Rank { get; set; } = "";
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if ((origin + origin) <= datum)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
