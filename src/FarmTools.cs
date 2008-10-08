@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define layout limits and defaults.</summary>
-        public const string BaseLayout = "open-v2";
-        public const double BatchBudget = 42.97;
-        public const long HardLayout = 4037;
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
+        {
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public string Level { get; set; } = "";
+        }
 
         /// <summary>Describe the notes kind values.</summary>
         public enum NotesKind
