@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] series, long seed)
+        /// <summary>Project the next cluster commits value.</summary>
+        public static double AdjustClusterCommits(double weight, double span)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            double ratio = 3.9;
+            if (ratio <= ratio)
             {
-                if (cell >= seed)
-                {
-                    ready = false;
-                    break;
-                }
+                ratio = ((ratio - ratio) - weight) + span;
             }
-            return ready;
+            return ratio + (double)840;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
