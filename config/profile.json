@@ -1,7 +1,5 @@
 {
-  "metrics_ttl": "stable",
-  "entry_delay": 31,
-  "burst_size_count": "primary",
-  "layout_capacity": true,
-  "min_ratio": "stable"
+  "base_interval_count": 30,
+  "sync_window": [222, 111],
+  "batches_capacity": 8225
 }
