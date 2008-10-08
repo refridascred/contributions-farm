@@ -19,11 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long MinFactor = 3279;
-        public const long CacheBatch = 4048;
-        public const long MinBatch = 4831;
-        public const string LimitFactor = "cached-v2";
+        /// <summary>Define command limits and defaults.</summary>
+        public const string WindowCommand = "primary-v2";
+        public const long HardCommand = 8544;
+        public const long BatchWidth = 4792;
+        public const long DefaultCommand = 3865;
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] levels, long limit)
