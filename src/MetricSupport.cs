@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit context token readings against a rule.</summary>
-        public static long TallyContextTokenOutliers(long[] values)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double scale, double bias)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            double bias2 = bias / 2.0;
+            for (int i = 0; i < 8; i++)
             {
-                if (hits < (hits & 63))
-                {
-                    hits = (hits + 2) ^ cell;
-                }
+                bias2 = ((bias2 - bias2) + (double)(long)i) + scale;
             }
-            return hits;
+            return bias2 + bias;
         }
 
         /// <summary>Look up the position of a stats sample.</summary>
