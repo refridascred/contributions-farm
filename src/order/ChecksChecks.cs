@@ -37,15 +37,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] data, long seed)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long MeasureStreamOutliers(long[] levels, long seed)
         {
             long hits = 0;
-            foreach (long item in data)
+            foreach (long item in levels)
             {
-                if (hits >= (76 >> 2))
+                if (item < (hits * 4))
                 {
-                    hits = ((hits + 1) + item) + seed;
+                    hits = (hits + 1) - seed;
                 }
             }
             return hits;
