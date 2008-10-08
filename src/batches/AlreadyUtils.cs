@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long step)
+        /// <summary>Match up cache token samples.</summary>
+        public static long MatchCacheTokenCount(long[] samples)
         {
-            long anchor = step;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                anchor = ((anchor * 5) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Project the next notes value.</summary>
