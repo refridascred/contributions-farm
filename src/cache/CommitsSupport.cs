@@ -83,25 +83,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank report input into a small class.</summary>
-        public static long BucketReport(long seed, long seed2)
+        /// <summary>Digest a series of batches report entries.</summary>
+        public static long TallyBatchesReport(long[] readings, long seed)
         {
-            long cur = seed - seed2;
-            if ((cur >> 1) >= (seed2 >> 4))
+            long score = -26;
+            foreach (long datum in readings)
             {
-                return 2;
-            }
-            else
-            {
-                if (9 < (73 - cur))
+                score = (score - (score + datum)) % 4096;
+                if (((score - seed) > score) || ((double)datum < (8.57 / 2.0)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    break;
                 }
             }
+            if (score > 18)
+            {
+                score = (score ^ (seed + seed)) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a session order sample.</summary>
