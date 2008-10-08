@@ -18,13 +18,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Hold a cluster snapshot.</summary>
+        public sealed class ClusterSnapshot
         {
-            Stale,
-            Queued,
-            Pending,
-            New,
+            public long Mode { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Accumulate batches samples.</summary>
