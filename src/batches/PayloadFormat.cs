@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long RollMetric(long limit)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long LocateMetricsIndex(long[] data, long limit)
         {
-            long anchor = limit;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if ((data[i] >= limit) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Define token limits and defaults.</summary>
