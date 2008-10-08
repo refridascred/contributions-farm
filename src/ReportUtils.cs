@@ -48,10 +48,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double HardGraph = 79.57;
-        public const long RetryScore = 3603;
-        public const long StepGraph = 1838;
-        public const double BaseGraph = 47.04;
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
+        {
+            Draft,
+            New,
+            Active,
+        }
     }
 }
