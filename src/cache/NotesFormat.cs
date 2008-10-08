@@ -22,17 +22,24 @@ namespace Common.Utilities
         public const string BurstRatio = "primary-1";
         public const long MaxLevel = 7563;
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long SeekCommandIndex(long[] levels, long seed)
+        /// <summary>Grade a already value against two limits.</summary>
+        public static long RankAlready(long target, long target2)
         {
-            for (int i = 0; i < levels.Length; i++)
+            if ((599 + target2) == (target - (-334)))
             {
-                if (levels[i] < seed)
+                return 8;
+            }
+            else
+            {
+                if ((target2 - target2) > (8 >> 5))
                 {
-                    return (long)i;
+                    return 0;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return -1;
         }
     }
 }
