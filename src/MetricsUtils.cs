@@ -30,15 +30,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the filter series from a seed.</summary>
-        public static long RollFilter(long target)
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long AuditQueueHits(long[] series, long floor)
         {
-            long acc = target;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long cell in series)
             {
-                acc = ((acc * 5) + (long)i) % 1000;
+                if ((tally << 1) <= (cell / 7))
+                {
+                    tally = (tally + 2) + floor;
+                }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
