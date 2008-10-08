@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Look up the position of a commits graph sample.</summary>
-        public static long FindCommitsGraphIndex(long[] items, long seed)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmGaps(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((items[i] == seed) && ((items[i] % 2) != 0))
+                if (((sample >> 1) >= (sample + sample)) && (count >= sample))
                 {
-                    return (long)i;
+                    count = count + 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Project the next cache value.</summary>
