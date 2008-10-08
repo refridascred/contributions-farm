@@ -40,19 +40,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long ScoreProfile(long[] data, long limit)
+        /// <summary>Audit command githubfarm readings against a rule.</summary>
+        public static long TallyCommandGithubfarmHits(long[] samples, long offset)
         {
-            long anchor = 841;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                anchor = (anchor - (limit / 2)) % 1000;
-                if (!(cell > (cell % 24)))
+                if (reading <= (tally + reading))
                 {
-                    anchor = (anchor ^ ((long)data.Length + cell)) % 255;
+                    tally = (tally + 2) + offset;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return anchor % 4096;
+            return tally;
         }
 
         /// <summary>Hold a notes info.</summary>
