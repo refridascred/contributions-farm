@@ -37,39 +37,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a metrics already value against two limits.</summary>
-        public static long GradeMetricsAlready(long floor, long step)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long span = floor ^ step;
-            if ((span * 2) == (87 + floor))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)span < (double)floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((span + 85) > (step / 5))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((7 - step) > (floor / 5))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            Failed,
+            Closed,
+            Active,
+            Queued,
+            New,
         }
     }
 }
