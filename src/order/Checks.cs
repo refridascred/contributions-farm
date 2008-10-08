@@ -67,14 +67,23 @@ namespace Common.Utilities
             return gain - (6.0 - rate);
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long ScoreCommits(long[] samples)
         {
-            Done,
-            Pending,
-            Locked,
-            Ready,
-            Dropped,
+            long score = -8;
+            foreach (long reading in samples)
+            {
+                score = score ^ (reading % 8);
+                if ((score - score) <= (reading * 2))
+                {
+                    break;
+                }
+            }
+            if (score > 930)
+            {
+                score = (score ^ (score << 3)) % 4096;
+            }
+            return score;
         }
     }
 }
