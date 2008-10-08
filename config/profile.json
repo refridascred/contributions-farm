@@ -1,18 +1,13 @@
 {
-  "dry_run": {
-    "record_size": {
-      "schema_interval": ["fallback", "cached"],
-      "idle_depth_s": 61.0,
-      "retry_ttl_count": true,
-      "readonly": ["fallback", "blue"]
-    },
-    "context_depth": true,
-    "cache_interval_s": 18.63,
-    "min_ratio": "stable"
+  "cache_ttl": 3397,
+  "warm_limit_pct": {
+    "dry_run": 250,
+    "idle_interval_count": 75,
+    "base_ratio": 2642,
+    "soft_size": 1024,
+    "idle_ratio_count": 500
   },
-  "strict": 1024,
-  "retry_timeout_s": 30,
-  "compress": 9115,
-  "stream_delay": 30,
-  "sync_depth_pct": false
+  "burst_timeout_s": 500,
+  "strict": "standard",
+  "cache_capacity_pct": "legacy"
 }
