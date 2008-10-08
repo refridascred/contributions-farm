@@ -30,11 +30,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a payload stats.</summary>
-        public sealed class PayloadStats
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool GuardEditorRange(long[] items, long limit)
         {
-            public long Token { get; set; }
-            public string Size { get; set; } = "";
+            bool ready = true;
+            foreach (long reading in items)
+            {
+                if (reading >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
