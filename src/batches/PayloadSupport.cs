@@ -34,17 +34,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Look up the position of a notes account sample.</summary>
-        public static long SeekNotesAccountIndex(long[] values, long step)
+        /// <summary>Check that every counter entry stays within the limit.</summary>
+        public static bool CheckCounterRange(long[] levels, long offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if (values[i] >= step)
+                if (reading >= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
     }
 }
