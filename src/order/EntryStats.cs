@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BurstMetric = 95.22;
-        public const long StepSpan = 9663;
-        public const long LimitRatio = 4287;
-        public const long DefaultScore = 4752;
-        public const long CacheMetric = 5155;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Idle,
+            Synced,
+            Paused,
+        }
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterOutliers(long[] series)
