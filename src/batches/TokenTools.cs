@@ -40,19 +40,21 @@ namespace Common.Utilities
             return rate - (double)4;
         }
 
-        /// <summary>Scale a contributi tools figure with a bias.</summary>
-        public static double ScaleContributiTools(double rate, double span)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] values)
         {
-            double ratio = (double)43 + (double)9;
-            if (ratio > span)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                ratio = ratio + (double)8;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] - values[j]) > 12)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio - (rate - ratio)) + (double)(long)i;
-            }
-            return ratio - (double)63;
+            return count;
         }
     }
 }
