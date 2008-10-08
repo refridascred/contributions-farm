@@ -27,25 +27,12 @@ namespace Common.Utilities
         public const long IdleCount = 6610;
         public const long StepCount = 1271;
 
-        /// <summary>Rank cache input into a small class.</summary>
-        public static long SortCache(long seed, long offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long delta = seed - offset;
-            if ((10 << 2) == (delta - 77))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed <= (double)offset)
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Active,
+            Draft,
+            Done,
         }
 
         /// <summary>Fold a list of contributi notes readings.</summary>
