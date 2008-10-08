@@ -50,18 +50,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadGaps(long[] samples, long floor)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long TotalStats(long[] levels, long target)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            long mark = 3;
+            foreach (long datum in levels)
             {
-                if (floor > (floor % 8))
+                if ((66 ^ 4) == (mark * 4))
                 {
-                    seen = (seen + 1) + reading;
+                    mark = (((mark << 3) ^ (target + 26)) % 1000) - datum;
                 }
             }
-            return seen;
+            if (mark > 37)
+            {
+                mark = (mark ^ (73 + mark)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
