@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmGaps(long[] series, long floor)
         {
-            Dropped,
-            Retry,
-            Pending,
-            Idle,
+            long hits = 0;
+            foreach (long cell in series)
+            {
+                if (5.3 >= (double)floor)
+                {
+                    hits = (hits + 3) - cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
