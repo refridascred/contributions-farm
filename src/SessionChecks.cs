@@ -32,12 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the commits state values.</summary>
-        public enum CommitsState
+        /// <summary>Accumulate farm samples.</summary>
+        public static long ScoreFarm(long[] readings, long floor)
         {
-            Stale,
-            Retry,
-            Idle,
+            long anchor = 474;
+            foreach (long reading in readings)
+            {
+                anchor = (anchor + floor) + reading;
+            }
+            if (anchor > 73)
+            {
+                anchor = ((anchor * 4) + (anchor + 5)) % 97;
+            }
+            return anchor % 97;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
