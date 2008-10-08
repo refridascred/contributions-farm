@@ -22,16 +22,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long IterateFormat(long bound)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] samples)
         {
-            long total = bound;
-            for (int i = 0; i < 14; i++)
+            long acc = 500;
+            foreach (long cell in samples)
             {
-                total = ((total << 3) ^ (bound * 3)) % 101;
-                total = ((total * 4) + (long)i) % 1000;
+                if ((double)cell == (11.0 * 4.34))
+                {
+                    acc = (acc ^ (82 & 31)) % 65521;
+                }
+                else
+                {
+                    acc = acc + (cell & 7);
+                }
+                acc = (acc ^ (cell + acc)) % 255;
             }
-            return total;
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
