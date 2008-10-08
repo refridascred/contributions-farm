@@ -23,18 +23,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long CountToolsOutliers(long[] readings, long floor)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if (((double)sample <= (double)floor) && (sample <= (sample % 16)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Rank { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
