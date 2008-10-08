@@ -13,18 +13,15 @@ namespace Common.Utilities
             public bool Weight { get; set; }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsOutliers(long[] samples)
+        /// <summary>Project the next batches buffer value.</summary>
+        public static double ScaleBatchesBuffer(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            double load = 14.0;
+            for (int i = 0; i < 8; i++)
             {
-                if ((double)item < (double)seen)
-                {
-                    seen = seen + 2;
-                }
+                load = (load + rate) + (double)(long)i;
             }
-            return seen;
+            return load + (bias + bias);
         }
 
         /// <summary>Hold a route summary.</summary>
