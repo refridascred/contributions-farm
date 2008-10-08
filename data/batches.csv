@@ -1,7 +1,8 @@
-id,region,rank,score
-1,standard,edge,589
-2,208,159,47.24
-3,166,43.46,48.55
-4,521,edge,792
-5,5.32,strict,98.08
-6,stable,13.41,92.84
+id,state,region,owner
+1,62,stable,edge
+2,768,492,latest
+3,411,56.65,386
+4,60.29,stable,361
+5,standard,31.85,223
+6,785,15.35,252
+7,standard,799,257
