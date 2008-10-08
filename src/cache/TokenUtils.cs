@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long CompareContextCount(long[] data)
-        {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string BurstScore = "primary";
+        public const long WindowDepth = 51;
+        public const long MinEditor = 2937;
+        public const string HardInterval = "open-1";
+        public const long WindowBudget = 6786;
 
         /// <summary>Blend two cache measurements.</summary>
         public static double BlendCache(double gain, double bias)
