@@ -36,14 +36,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the token mode values.</summary>
-        public enum TokenMode
+        /// <summary>Hold a order header.</summary>
+        public sealed class OrderHeader
         {
-            Done,
-            Locked,
-            Queued,
-            Stale,
-            Pending,
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
     }
 }
