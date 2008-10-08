@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the already order entries that pass the check.</summary>
-        public static long CountAlreadyOrderMatches(long[] items, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long MeasureFarmHits(long[] values, long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long reading in values)
             {
-                if ((double)cell != (6.1 - 5.56))
+                if ((reading % 7) >= (offset >> 1))
                 {
-                    seen = (seen + 2) - step;
+                    hits = hits + 1;
                 }
                 else
                 {
-                    seen = seen - 1;
+                    hits = hits - 1;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Fold a list of order readings.</summary>
