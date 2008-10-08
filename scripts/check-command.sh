@@ -6,9 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in staging open green; do
+COMMAND_LIMIT=40
+log "limit is ${COMMAND_LIMIT}"
+
+for item in primary latest blue legacy; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=27
-log "limit is ${COMMAND_LIMIT}"
