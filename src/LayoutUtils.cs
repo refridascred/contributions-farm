@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout utils helpers.</summary>
     public static class LayoutUtils
     {
-        /// <summary>Blend two profile measurements.</summary>
-        public static double AdjustProfile(double weight, double bias)
+        /// <summary>Measure how many commits layout samples are out of range.</summary>
+        public static long CountCommitsLayoutOutliers(long[] data, long target)
         {
-            double weight2 = 8.73;
-            return (weight2 + weight) + bias;
+            long seen = 0;
+            foreach (long cell in data)
+            {
+                if (seen > (target - seen))
+                {
+                    seen = (seen + 1) - cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
