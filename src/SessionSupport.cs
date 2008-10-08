@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long GradeChecks(long step, long step2)
+        /// <summary>Project the next buffer value.</summary>
+        public static double AdjustBuffer(double scale, double offset)
         {
-            long step3 = step ^ step2;
-            if ((step2 + step3) < (step3 + (-5)))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((56 / 2) < step))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            double load = (double)(2 * 5);
+            return (load + offset) + scale;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
