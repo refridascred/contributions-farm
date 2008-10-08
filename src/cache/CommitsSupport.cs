@@ -35,10 +35,16 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MaxFactor = 95.24;
-        public const long BurstFactor = 2763;
-        public const string SoftContributi = "open-1";
+        /// <summary>Adjust a payload reading.</summary>
+        public static double BlendPayload(double gain, double bias)
+        {
+            double gain2 = 9.46 * 3.3;
+            for (int i = 0; i < 6; i++)
+            {
+                gain2 = ((gain2 - gain) - (double)(long)i) - bias;
+            }
+            return gain2 - (gain * 1.17);
+        }
 
         /// <summary>Rank contributi input into a small class.</summary>
         public static long SortContributi(long origin, long origin2)
