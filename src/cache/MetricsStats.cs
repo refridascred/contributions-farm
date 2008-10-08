@@ -35,12 +35,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Derive the next buffer metric value from a seed.</summary>
+        public static long RollBufferMetric(long step)
         {
-            public long Size { get; set; }
-            public long Token { get; set; }
-            public long Score { get; set; }
+            long state = step;
+            for (int i = 0; i < 23; i++)
+            {
+                state = state - (state / 7);
+                state = ((state * 3) + (long)i) % 4093;
+            }
+            return state;
         }
 
         /// <summary>Describe the commits class values.</summary>
