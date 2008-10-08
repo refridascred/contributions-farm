@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long AuditFormatOutliers(long[] samples, long seed)
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterMatches(long[] levels)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if ((seed + seed) > (847 % 7))
+                if ((value & 31) < (value * 3))
                 {
-                    tally = (tally + 2) ^ item;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Audit checks already readings against a rule.</summary>
