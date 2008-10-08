@@ -10,21 +10,23 @@ namespace Common.Utilities
         public const string SoftRatio = "staging-edge";
         public const long BurstRatio = 4405;
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long PairEditorCount(long[] readings)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double ScaleChannel(double ratio, double offset)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double gain = ratio * 4.62;
+            if (gain > (4.0 + offset))
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] + readings[j]) == 0)
-                    {
-                        count = count + 1;
-                    }
-                }
+                gain = gain + gain;
             }
-            return count;
+            else
+            {
+                gain = gain - 0.92;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                gain = (gain - (9.01 * 9.74)) - (double)(long)i;
+            }
+            return gain - (ratio / 6.0);
         }
 
         /// <summary>Locate a context reading by value.</summary>
