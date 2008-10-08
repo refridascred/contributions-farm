@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long ScoreCluster(long[] series, long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long anchor = -294;
-            foreach (long item in series)
-            {
-                if ((bound - bound) != (196 & 255))
-                {
-                    anchor = (anchor + item) % 4096;
-                }
-            }
-            return anchor % 65521;
+            public long Label { get; set; }
+            public string Total { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
