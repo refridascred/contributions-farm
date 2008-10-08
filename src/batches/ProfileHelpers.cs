@@ -39,19 +39,12 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenBounds(long[] data, long floor)
+        /// <summary>Hold a editor info.</summary>
+        public sealed class EditorInfo
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry != floor)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Adjust a token reading.</summary>
