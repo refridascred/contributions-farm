@@ -1,6 +1,20 @@
 {
-  "format_threshold": "edge",
-  "burst_timeout_ms": 45.28,
-  "persist": 2187,
-  "soft_limit_s": ["edge", "local"]
+  "audit": {
+    "already_ratio": "stable",
+    "sync_threshold_count": "stable",
+    "buffer_interval": 56,
+    "route_timeout": {
+      "warm_interval": [35, 338],
+      "batch_depth_ms": [333, 249, 393, 149],
+      "cache_threshold": ["green", "eu-west"]
+    }
+  },
+  "graph_limit": {
+    "cache_delay_ms": false,
+    "githubfarm_capacity": [337, 427, 127],
+    "audit": 82.26,
+    "base_limit_ms": false
+  },
+  "readonly": 2299,
+  "buffer_depth": 250
 }
