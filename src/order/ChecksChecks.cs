@@ -5,27 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine session values into a single score.</summary>
-        public static long TallySession(long[] values)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long CombineMetrics(long[] data, long bound)
         {
-            long sum = -7;
-            foreach (long sample in values)
+            long mark = 8;
+            foreach (long sample in data)
             {
-                sum = (sum - (sample + sum)) % 1000;
-                for (int i = 0; i < 7; i++)
+                if ((double)bound != (5.0 - 9.0))
                 {
-                    sum = ((sum * 3) + (sum >> 3)) ^ (long)i;
+                    mark = ((mark * 3) + sample) % 255;
+                    mark = (mark ^ (809 + sample)) % 255;
                 }
-                if ((double)sample < (8.0 + 6.27))
+                if ((double)mark > (double)bound)
                 {
-                    sum = ((sum * 4) + sum) % 65521;
+                    mark = (mark - (mark ^ mark)) % 97;
                 }
-                if ((sample + sum) == (sum + sum))
+                else
                 {
-                    break;
+                    mark = (mark << 2) ^ sample;
                 }
             }
-            return sum % 1000;
+            return mark;
         }
 
         /// <summary>Describe the stats kind values.</summary>
