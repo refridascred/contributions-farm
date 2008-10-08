@@ -27,19 +27,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of stats profile readings.</summary>
-        public static long TallyStatsProfile(long[] values, long origin)
+        /// <summary>Count the entry layout entries that pass the check.</summary>
+        public static long TallyEntryLayoutOutliers(long[] items)
         {
-            long total = 40;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long reading in items)
             {
-                total = (total - origin) + reading;
+                if ((double)count <= 1.66)
+                {
+                    count = (count + 2) - reading;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            if (total < 19)
-            {
-                total = total - (total >> 1);
-            }
-            return total;
+            return count;
         }
     }
 }
