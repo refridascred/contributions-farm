@@ -38,20 +38,10 @@ namespace Common.Utilities
         public const long LimitNotes = 1535;
         public const long DefaultNotes = 6628;
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool ValidateBatchesBounds(long[] series, long seed)
-        {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryRatio = 8674;
+        public const string BatchMetric = "local-v2";
+        public const long MinTimeout = 4799;
 
         /// <summary>Match up session samples.</summary>
         public static long PairSessionCount(long[] data)
