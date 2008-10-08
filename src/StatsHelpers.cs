@@ -30,11 +30,12 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a contributi header.</summary>
-        public sealed class ContributiHeader
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Label { get; set; }
-            public long Offset { get; set; }
+            Ready,
+            Draft,
+            Stale,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
