@@ -15,21 +15,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Match up already samples.</summary>
+        public static long CompareAlreadyCount(long[] items)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    if ((samples[i] + samples[j]) > 20)
+                    if ((items[i] - items[j]) > 5)
                     {
-                        seen = seen + 1;
+                        matches = matches + 1;
                     }
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
