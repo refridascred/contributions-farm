@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long MeasureContextGaps(long[] items, long origin)
         {
-            Done,
-            Closed,
-            Idle,
-            Queued,
-            Ready,
+            long count = 0;
+            foreach (long sample in items)
+            {
+                if (!((sample & 15) < (921 << 3)) && ((sample << 1) >= ((long)items.Length + origin)))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Digest a series of profile githubfarm entries.</summary>
