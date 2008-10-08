@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first session contributi entry that matches the target.</summary>
-        public static long FindSessionContributiIndex(long[] data, long floor)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsOutliers(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long seen = 0;
+            foreach (long reading in data)
             {
-                if ((data[i] < floor) && ((data[i] % 5) != 0))
+                if (seen > target)
                 {
-                    return (long)i;
+                    seen = (seen + 1) + reading;
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Fold a list of window readings.</summary>
