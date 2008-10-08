@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool CheckBufferBounds(long[] readings, long limit)
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            bool ready = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            New,
+            Synced,
+            Done,
+            Active,
         }
 
         /// <summary>Define commits limits and defaults.</summary>
