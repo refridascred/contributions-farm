@@ -20,17 +20,16 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long FindEditorIndex(long[] readings, long step)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long DigestCommand(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 594;
+            foreach (long value in levels)
             {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
+                state = ((state << 2) ^ state) % 4096;
+                state = (state - (limit ^ value)) % 4096;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Hold a graph options.</summary>
