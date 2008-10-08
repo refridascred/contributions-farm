@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Rank { get; set; }
-            public long Limit { get; set; }
+            public double Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define stats limits and defaults.</summary>
