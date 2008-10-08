@@ -13,10 +13,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double HardCluster = 49.04;
-        public const long MaxInterval = 2982;
-        public const long CacheCluster = 1629;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long MeasureProfileGaps(long[] samples)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (!(((count << 3) <= (datum + count)) && ((double)(long)samples.Length >= (3.26 - 8.31))))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenOutliers(long[] series)
