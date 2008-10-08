@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Hold a queue summary.</summary>
-        public sealed class QueueSummary
-        {
-            public string Count { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public long Flag { get; set; }
-            public long Token { get; set; }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const string StepWidth = "local-1";
+        public const long BaseMetric = 7810;
+        public const long IdleMetric = 1133;
+        public const long RetryBudget = 6928;
+        public const long HardLevel = 9395;
 
         /// <summary>Look up the position of a account filter sample.</summary>
         public static long SeekAccountFilterIndex(long[] series, long step)
