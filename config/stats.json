@@ -1,12 +1,5 @@
 {
-  "default_size_pct": true,
-  "readonly": {
-    "metric_limit": 500,
-    "idle_size_s": ["standard", "primary"],
-    "warm_threshold": 4650,
-    "retry_retries": "edge",
-    "default_depth": ["legacy", "stable", "local", "local"],
-    "warm_timeout_count": "staging"
-  },
-  "enabled": 1024
+  "persist": "standard",
+  "notes_interval": false,
+  "min_depth_pct": ["local", "latest"]
 }
