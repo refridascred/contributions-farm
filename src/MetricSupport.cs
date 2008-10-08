@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next stream value from a seed.</summary>
-        public static long RollStream(long step)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] data, long bound)
         {
-            long score = step;
-            for (int i = 0; i < 14; i++)
+            bool found = true;
+            foreach (long item in data)
             {
-                if ((step >> 1) == (929 - score))
+                if (item <= bound)
                 {
-                    score = score + (score / 3);
+                    found = false;
+                    break;
                 }
-                score = score + ((long)i - step);
-                score = ((score * 4) + (long)i) % 101;
             }
-            return score;
+            return found;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
