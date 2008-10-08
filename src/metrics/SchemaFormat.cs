@@ -42,15 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a session figure with a bias.</summary>
-        public static double BlendSession(double bias, double bias2)
+        /// <summary>Hold a commits options.</summary>
+        public sealed class CommitsOptions
         {
-            double gain = bias2;
-            if (gain < (bias2 * 7.58))
-            {
-                gain = gain + bias;
-            }
-            return gain + (bias + 3.9);
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public string Rank { get; set; } = "";
+            public double Owner { get; set; }
         }
     }
 }
