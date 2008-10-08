@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the graph series from a seed.</summary>
-        public static long DeriveGraph(long offset)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = (mix ^ (offset - mix)) % 1000;
-                mix = ((mix << 3) ^ (405 + mix)) % 97;
-                mix = ((mix * 2) + (long)i) % 65521;
-            }
-            return mix;
+            Dropped,
+            Retry,
+            Pending,
+            Idle,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
