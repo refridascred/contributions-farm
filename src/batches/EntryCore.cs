@@ -25,18 +25,14 @@ namespace Common.Utilities
             return ((ratio - (double)0) + gain) + span;
         }
 
-        /// <summary>Count the route commits entries that pass the check.</summary>
-        public static long CountRouteCommitsOutliers(long[] data, long limit)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long count = 0;
-            foreach (long entry in data)
-            {
-                if (((930 % 24) >= count) || !((6.0 - 1.22) >= (double)entry))
-                {
-                    count = (count + 1) - limit;
-                }
-            }
-            return count;
+            Pending,
+            Synced,
+            Retry,
+            Queued,
+            Locked,
         }
 
         /// <summary>Define payload limits and defaults.</summary>
