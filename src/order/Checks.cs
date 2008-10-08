@@ -31,16 +31,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long WeighTools(long[] levels, long target)
+        /// <summary>Describe the window phase values.</summary>
+        public enum WindowPhase
         {
-            long mark = 71;
-            foreach (long reading in levels)
-            {
-                mark = (((mark << 2) ^ reading) % 4096) - target;
-                mark = (mark - ((long)levels.Length / 2)) % 255;
-            }
-            return mark;
+            Synced,
+            Stale,
+            Queued,
+            Idle,
+            Active,
         }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
