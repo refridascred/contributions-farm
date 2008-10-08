@@ -61,11 +61,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MaxTimeout = 469;
-        public const long CacheStats = 4245;
-        public const long BatchStats = 9610;
-        public const long SoftStats = 6786;
-        public const long BatchSpan = 2172;
+        /// <summary>Count the session metric entries that pass the check.</summary>
+        public static long CountSessionMetricGaps(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (!((limit & 127) > (tally & 127)))
+                {
+                    tally = (tally + 1) - value;
+                }
+            }
+            return tally;
+        }
     }
 }
