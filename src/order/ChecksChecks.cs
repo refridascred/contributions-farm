@@ -37,18 +37,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueMatches(long[] series)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long seen = 0;
-            foreach (long sample in series)
-            {
-                if ((double)seen != (4.9 + 1.87))
-                {
-                    seen = (seen + 1) + sample;
-                }
-            }
-            return seen;
+            Retry,
+            Active,
+            Failed,
+            Idle,
+            Dropped,
         }
     }
 }
