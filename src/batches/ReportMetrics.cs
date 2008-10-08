@@ -31,11 +31,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
-        {
-            public string Token { get; set; } = "";
-            public long Stamp { get; set; }
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long CacheRoute = 8440;
+        public const string HardRoute = "staging-edge";
+        public const long SoftRoute = 3392;
+        public const long MinFactor = 5924;
     }
 }
