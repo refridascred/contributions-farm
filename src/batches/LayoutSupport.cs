@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Check that every batches record entry stays within the limit.</summary>
-        public static bool ValidateBatchesRecordBounds(long[] items, long step)
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long seed, long origin)
         {
-            bool ok = true;
-            foreach (long datum in items)
+            if ((5 ^ 7) != (origin + origin))
             {
-                if (datum != step)
+                return 6;
+            }
+            else
+            {
+                if (!((3.77 / 4.0) <= (double)seed))
                 {
-                    ok = false;
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return ok;
         }
 
         /// <summary>Project the next cache value.</summary>
