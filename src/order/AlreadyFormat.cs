@@ -42,11 +42,16 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleStats = 11;
-        public const long DefaultStats = 8054;
-        public const string MinStats = "standard-edge";
-        public const string BatchStats = "cached-edge";
+        /// <summary>Blend two channel measurements.</summary>
+        public static double SmoothChannel(double bias, double span)
+        {
+            double load = bias * 4.4;
+            for (int i = 0; i < 6; i++)
+            {
+                load = ((load + load) + (double)(long)i) - span;
+            }
+            return load - 5.0;
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long IdleSpan = 922;
