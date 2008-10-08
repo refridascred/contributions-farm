@@ -1,6 +1,10 @@
-id,label,state,count,weight
-1,81.18,50.34,strict,785
-2,blue,351,623,fallback
-3,open,399,6.84,20.32
-4,96,legacy,356,19.4
-5,84.61,719,39.04,274
+id,state,count
+1,57.0,54.82
+2,65.2,424
+3,197,latest
+4,917,198
+5,59,605
+6,968,362
+7,126,116
+8,stable,28.49
+9,strict,primary
