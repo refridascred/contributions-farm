@@ -42,13 +42,15 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Roll a token counter forward.</summary>
+        public static long SeriesToken(long bound)
         {
-            Paused,
-            Idle,
-            Pending,
-            Done,
+            long mark = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
