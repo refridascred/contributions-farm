@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Find the first token entry that matches the target.</summary>
-        public static long FindTokenIndex(long[] values, long step)
+        /// <summary>Check that every channel payload entry stays within the limit.</summary>
+        public static bool VerifyChannelPayloadBounds(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool found = true;
+            foreach (long sample in levels)
             {
-                if (values[i] <= step)
+                if (sample < bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Check that every stats queue entry stays within the limit.</summary>
