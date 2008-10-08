@@ -21,11 +21,24 @@ namespace Common.Utilities
             return (rate - (bias + rate)) + weight;
         }
 
-        /// <summary>Adjust a window reading.</summary>
-        public static double ProjectWindow(double bias, double span)
+        /// <summary>Rank cache layout input into a small class.</summary>
+        public static long RankCacheLayout(long floor, long offset)
         {
-            double drift = (double)(61 % 64);
-            return (drift - span) + bias;
+            if (((-389) * 3) <= floor)
+            {
+                return 2;
+            }
+            else
+            {
+                if (!((offset * 5) < (offset - offset)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
