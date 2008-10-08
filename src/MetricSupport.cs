@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Count buffer channel pairs that satisfy a relation.</summary>
-        public static long CompareBufferChannelCount(long[] series)
+        /// <summary>Audit context token readings against a rule.</summary>
+        public static long TallyContextTokenOutliers(long[] values)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (hits < (hits & 63))
                 {
-                    if ((series[i] + series[j]) == 1)
-                    {
-                        matches = matches + 1;
-                    }
+                    hits = (hits + 2) ^ cell;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Match up context samples.</summary>
