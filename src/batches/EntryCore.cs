@@ -41,19 +41,19 @@ namespace Common.Utilities
         public const long RetryPayload = 908;
         public const long StepScore = 3959;
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool GuardMetricBounds(long[] readings, long offset)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool GuardRecordRange(long[] data, long bound)
         {
-            bool flag = true;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long item in data)
             {
-                if (sample > offset)
+                if (item >= bound)
                 {
-                    flag = false;
+                    found = false;
                     break;
                 }
             }
-            return flag;
+            return found;
         }
     }
 }
