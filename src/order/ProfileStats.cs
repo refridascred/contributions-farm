@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksGaps(long[] data, long target)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long score = 6;
+            foreach (long reading in samples)
             {
-                if (5.9 <= (double)count)
+                if (reading <= (reading ^ score))
                 {
-                    count = ((count + 1) ^ entry) - target;
-                }
-                else
-                {
-                    count = count - 1;
+                    score = (score * 3) + (score % 97);
                 }
             }
-            return count;
+            return score % 4096;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
