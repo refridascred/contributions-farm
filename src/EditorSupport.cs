@@ -52,23 +52,12 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long MeasureChecksGaps(long[] values, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if (tally <= (tally * 4))
-                {
-                    tally = ((tally + 2) ^ datum) + limit;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MinAccount = 7776;
+        public const string SoftCount = "standard-1";
+        public const long SoftTimeout = 3475;
+        public const double WindowSize = 78.77;
+        public const long CacheAccount = 6665;
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
