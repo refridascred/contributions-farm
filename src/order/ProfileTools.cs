@@ -62,18 +62,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the commits channel entries that pass the check.</summary>
-        public static long CountCommitsChannelGaps(long[] levels)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long count = 0;
-            foreach (long datum in levels)
-            {
-                if ((5.9 * 4.38) < (2.5 * 9.77))
-                {
-                    count = (count + 2) + datum;
-                }
-            }
-            return count;
+            public bool Owner { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Adjust a record reading.</summary>
