@@ -36,22 +36,13 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordGaps(long[] series, long seed)
+        /// <summary>Describe the support class values.</summary>
+        public enum SupportClass
         {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((item - 79) > (tally + item))
-                {
-                    tally = (tally + 3) - seed;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Dropped,
+            Closed,
+            Done,
+            Draft,
         }
 
         /// <summary>Derive the next report counter value from a seed.</summary>
