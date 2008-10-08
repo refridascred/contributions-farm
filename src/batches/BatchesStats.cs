@@ -18,12 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Find the first report entry that matches the target.</summary>
+        public static long FindReportIndex(long[] items, long floor)
         {
-            public long Offset { get; set; }
-            public long Mode { get; set; }
-            public bool Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the filter entries that pass the check.</summary>
