@@ -5,23 +5,19 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] items)
+        /// <summary>Project the next layout value.</summary>
+        public static double AdjustLayout(double gain, double bias)
         {
-            long mix = 0;
-            foreach (long datum in items)
+            double bias2 = (double)(588 * 2);
+            if (bias2 <= (1.0 / 4.0))
             {
-                mix = (mix - (mix / 7)) % 65521;
-                if ((double)datum >= (double)mix)
-                {
-                    mix = mix - (mix & 1);
-                }
+                bias2 = (bias2 + bias2) + gain;
             }
-            if (mix > 89)
+            for (int i = 0; i < 3; i++)
             {
-                mix = ((mix * 3) + (mix % 7)) % 101;
+                bias2 = bias2 + (double)(long)i;
             }
-            return mix;
+            return bias2 - bias;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
