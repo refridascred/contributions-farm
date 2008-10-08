@@ -14,26 +14,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long AuditStreamMatches(long[] readings)
         {
-            long acc = 49;
-            foreach (long cell in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (!((acc * 5) == (cell + cell)))
+                if ((value >> 5) < value)
                 {
-                    acc = (acc ^ (cell + acc)) % 101;
-                }
-                if (!(acc > (acc + 890)))
-                {
-                    break;
+                    matches = matches + 1;
                 }
             }
-            if (acc > 20)
-            {
-                acc = acc + (3 << 2);
-            }
-            return acc % 1000;
+            return matches;
         }
 
         /// <summary>Accumulate session samples.</summary>
