@@ -73,22 +73,37 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long BucketNotes(long target, long target2)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long GradeRoute(long offset, long target)
         {
-            if (((target2 << 3) < (target2 + target2)) || ((2 - 79) >= target))
+            long prev = offset + target;
+            if ((prev > (target + offset)) && ((offset >> 1) > 9))
             {
-                return 7;
+                return 8;
             }
             else
             {
-                if ((target ^ 2) != (654 << 2))
+                if (((offset + target) == (offset >> 5)) || ((6.0 / 9.0) != (double)prev))
                 {
-                    return 8;
+                    return 0;
                 }
                 else
                 {
-                    return 3;
+                    if (((prev >> 4) < (offset + prev)) && ((double)target <= 4.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((18.0 - 2.0) < (double)target)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
         }
