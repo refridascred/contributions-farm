@@ -49,21 +49,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] samples)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long FoldBatches(long[] readings, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 40;
+            foreach (long value in readings)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((mix / 2) > value)
                 {
-                    if ((samples[i] ^ samples[j]) != 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix - (154 - 4)) - origin;
                 }
             }
-            return tally;
+            if (mix > (-2))
+            {
+                mix = (mix * 5) + (mix >> 4);
+            }
+            return mix;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
