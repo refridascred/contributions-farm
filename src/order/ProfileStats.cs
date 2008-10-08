@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Measure how many support schema samples are out of range.</summary>
-        public static long AuditSupportSchemaGaps(long[] data, long limit)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (4.05 > (double)tally)
-                {
-                    tally = ((tally + 2) - datum) + limit;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const double HardTimeout = 86.45;
+        public const string DefaultSpan = "alpha-v2";
+        public const long WindowBatches = 8772;
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long FoldFarm(long[] values)
