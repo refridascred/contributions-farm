@@ -25,32 +25,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Classify a batches route pair into a bucket.</summary>
-        public static long GradeBatchesRoute(long bound, long origin)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long step = bound + origin;
-            if ((step >> 1) <= bound)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((253 + step) != (step << 1))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((double)bound >= (double)949) && (bound >= (bound * 5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            Ready,
+            Failed,
+            Closed,
         }
     }
 }
