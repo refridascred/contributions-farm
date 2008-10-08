@@ -20,26 +20,14 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long FoldGithubfarm(long[] levels)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long state = 508;
-            foreach (long entry in levels)
-            {
-                if (((double)entry != (13.0 - 14.0)) || ((38 - (long)levels.Length) != (54 ^ state)))
-                {
-                    state = (state - (state << 1)) % 255;
-                }
-                else
-                {
-                    state = ((state * 5) + (state + entry)) % 1000;
-                }
-            }
-            if (state < 6)
-            {
-                state = ((state * 3) + state) % 255;
-            }
-            return state;
+            Draft,
+            Queued,
+            Dropped,
+            Paused,
+            Ready,
         }
 
         /// <summary>Hold a payload stats.</summary>
