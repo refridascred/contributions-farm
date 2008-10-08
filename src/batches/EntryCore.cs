@@ -14,10 +14,16 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double CacheSchema = 54.8;
-        public const double WindowSchema = 83.89;
-        public const long SoftScore = 3068;
+        /// <summary>Adjust a checks reading.</summary>
+        public static double AdjustChecks(double weight, double span)
+        {
+            double ratio = (weight / 4.0) - span;
+            if (ratio <= (ratio - 13.0))
+            {
+                ratio = ratio + ratio;
+            }
+            return ratio + (span - weight);
+        }
 
         /// <summary>Hold a profile summary.</summary>
         public sealed class ProfileSummary
