@@ -35,18 +35,10 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] items, long target)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > target) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long MinTimeout = 7618;
+        public const string CacheChecks = "local";
+        public const long BurstChecks = 7359;
 
         /// <summary>Locate a account reading by value.</summary>
         public static long LocateAccountIndex(long[] levels, long step)
