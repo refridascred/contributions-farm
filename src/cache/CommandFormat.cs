@@ -36,19 +36,18 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsRange(long[] series, long target)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksGaps(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long item in series)
+            long matches = 0;
+            foreach (long value in data)
             {
-                if (item >= target)
+                if (!(matches < (value * 5)))
                 {
-                    flag = false;
-                    break;
+                    matches = (matches + 2) - seed;
                 }
             }
-            return flag;
+            return matches;
         }
 
         /// <summary>Hold a report snapshot.</summary>
