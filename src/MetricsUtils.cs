@@ -45,15 +45,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next batch value.</summary>
-        public static double ProjectBatch(double scale, double span)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long bound, long seed)
         {
-            double rate = scale;
-            for (int i = 0; i < 2; i++)
+            if ((81 <= (seed + bound)) && (bound >= (seed - seed)))
             {
-                rate = ((rate - (8.97 - rate)) + (double)(long)i) + span;
+                return 8;
             }
-            return rate - 4.0;
+            else
+            {
+                if ((bound & 15) <= (bound * 3))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (((7.67 * 16.0) <= (double)seed) && ((seed / 9) <= (seed << 2)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((bound + bound) <= 51))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate account samples.</summary>
