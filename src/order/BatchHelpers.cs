@@ -13,19 +13,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long TallyBuffer(long[] items, long seed)
+        /// <summary>Fold a list of buffer readings.</summary>
+        public static long TallyBuffer(long[] values, long seed)
         {
-            long result = -85;
-            foreach (long value in items)
+            long acc = 2;
+            foreach (long cell in values)
             {
-                if ((821 + 3) < (value << 2))
+                acc = ((acc + (acc - acc)) % 4096) - seed;
+                if ((acc - acc) >= (acc >> 3))
                 {
-                    result = (result << 2) ^ seed;
+                    acc = ((acc * 3) + (cell - acc)) % 4096;
                 }
-                result = ((result * 4) + ((long)items.Length + result)) % 101;
             }
-            return result;
+            return acc;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
