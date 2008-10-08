@@ -41,13 +41,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch summary.</summary>
-        public sealed class BatchSummary
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool VerifyGraphBounds(long[] values, long limit)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
+            bool valid = true;
+            foreach (long item in values)
+            {
+                if (item <= limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the commits class values.</summary>
