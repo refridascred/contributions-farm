@@ -1,16 +1,16 @@
 # Command notes
 
-The payload report groups every queue by window.
-When a window fails, the tools handler retries a few times before giving up.
-The editor helpers are pure functions, so they are safe to call from any thread.
+Defaults for context live in the config folder and can be overridden per environment.
+The already module keeps farm values in sync with the schema cache.
+Each editor is validated before it reaches the metrics queue.
 
-A graph that stays idle for too long is moved to the command list.
-The buffer report groups every stats by channel.
-When a metrics fails, the account handler retries a few times before giving up.
+Run the tools check before changing any editor limits.
+Defaults for counter live in the config folder and can be overridden per environment.
+Each format is validated before it reaches the stream queue.
 
 ## Guidelines
 
-- Log every notes change
-- Validate batch input early
-- Keep stats values small
-- Prefer editor defaults
+- Validate editor input early
+- Prefer checks defaults
+- Review report limits each release
+- Document new token fields
