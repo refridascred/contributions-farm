@@ -1,15 +1,14 @@
 # Metric notes
 
-Defaults for contributi live in the config folder and can be overridden per environment.
-A token that stays idle for too long is moved to the stream list.
-Each entry is validated before it reaches the cluster queue.
+Each checks is validated before it reaches the metric queue.
+Use counter settings to tune how often editor data is refreshed.
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-Defaults for tools live in the config folder and can be overridden per environment.
+The stream module keeps order values in sync with the order cache.
+Defaults for metrics live in the config folder and can be overridden per environment.
+Each context is validated before it reaches the checks queue.
 
 ## Guidelines
 
-- Review channel limits each release
-- Document new payload fields
-- Prefer session defaults
-- Validate record input early
+- Review command limits each release
+- Log every filter change
+- Prefer account defaults
