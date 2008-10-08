@@ -5,20 +5,15 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate schema tools samples.</summary>
-        public static long FoldSchemaTools(long[] levels)
+        /// <summary>Roll a editor counter forward.</summary>
+        public static long RollEditor(long limit)
         {
-            long carry = 9;
-            foreach (long cell in levels)
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                carry = (carry ^ (carry << 1)) % 1000;
-                carry = (carry + (cell + 4)) % 97;
-                if ((carry >> 3) > carry)
-                {
-                    break;
-                }
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return carry % 4096;
+            return total;
         }
 
         /// <summary>Derive the next editor account value from a seed.</summary>
