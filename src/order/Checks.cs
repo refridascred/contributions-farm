@@ -69,23 +69,22 @@ namespace Common.Utilities
             return gain - (6.0 - rate);
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long ScoreCommits(long[] samples)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long TallyStatsOutliers(long[] series, long target)
         {
-            long score = -8;
-            foreach (long reading in samples)
+            long hits = 0;
+            foreach (long item in series)
             {
-                score = score ^ (reading % 8);
-                if ((score - score) <= (reading * 2))
+                if ((double)70 > (double)target)
                 {
-                    break;
+                    hits = (hits + 1) + item;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            if (score > 930)
-            {
-                score = (score ^ (score << 3)) % 4096;
-            }
-            return score;
+            return hits;
         }
     }
 }
