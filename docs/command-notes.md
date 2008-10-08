@@ -1,10 +1,14 @@
 # Command notes
 
-A entry that stays idle for too long is moved to the queue list.
-Use schema settings to tune how often support data is refreshed.
+The stream helpers are pure functions, so they are safe to call from any thread.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Run the notes check before changing any metrics limits.
+
+Use farm settings to tune how often channel data is refreshed.
+Keep payload and token names short and lowercase.
 
 ## Guidelines
 
-- Validate commits input early
-- Log every batches change
-- Keep metric values small
+- Document new report fields
+- Prefer queue defaults
+- Keep filter values small
