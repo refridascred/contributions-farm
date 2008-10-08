@@ -1,11 +1,21 @@
 # support settings
-checks_size:
-  enabled: true
-  counter_timeout: 5475
-  flush_interval_ms: 7463
-  batch_limit_count: 9423
-base_delay_count: 17.8
-max_window_ms: 4.34
-persist: cached
-poll_retries_ms: 39
-hard_ratio_ms: primary
+account_interval: blue
+warm_capacity:
+  schema_window:
+    - 288
+    - 99
+  hard_depth_ms: 7189
+  default_ttl_pct: 17
+  soft_interval: open
+  strict: 29
+default_depth_s:
+  checks_window: local
+  poll_timeout: 500
+  soft_delay_ms: strict
+  burst_window_ms:
+    cluster_size: 31
+    soft_size_pct: edge
+    hard_ratio: false
+    idle_capacity_s: stable
+  base_threshold_count: 8359
+  strict: true
