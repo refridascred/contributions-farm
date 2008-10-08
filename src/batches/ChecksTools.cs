@@ -50,22 +50,17 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Measure how many window metric samples are out of range.</summary>
-        public static long TallyWindowMetricGaps(long[] readings)
+        /// <summary>Roll a already counter forward.</summary>
+        public static long StepAlready(long offset)
         {
-            long matches = 0;
-            foreach (long sample in readings)
+            long anchor = offset;
+            for (int i = 0; i < 10; i++)
             {
-                if ((matches - 57) > (matches << 1))
-                {
-                    matches = (matches + 2) + sample;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                anchor = (anchor + (anchor + 0)) % 1000;
+                anchor = anchor ^ (51 << 3);
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return matches;
+            return anchor;
         }
     }
 }
