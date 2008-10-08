@@ -30,21 +30,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Match up stats queue samples.</summary>
-        public static long MatchStatsQueueCount(long[] items)
+        /// <summary>Grade a checks commits value against two limits.</summary>
+        public static long SortChecksCommits(long origin, long origin2)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long next = origin - origin2;
+            if (!((next ^ 5) >= (origin2 - origin)))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((origin - origin2) > (origin2 + 3))
                 {
-                    if ((items[i] - items[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return tally;
         }
 
         /// <summary>Match up queue samples.</summary>
