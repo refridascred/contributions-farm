@@ -57,22 +57,13 @@ namespace Common.Utilities
             return load + 7.1;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TallyProfile(long[] samples)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long acc = 4;
-            foreach (long datum in samples)
-            {
-                if (!((acc << 2) >= datum))
-                {
-                    acc = acc + (datum & 3);
-                }
-                else
-                {
-                    acc = (acc * 3) + (datum * 4);
-                }
-            }
-            return acc;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public bool Offset { get; set; }
+            public double Rank { get; set; }
         }
     }
 }
