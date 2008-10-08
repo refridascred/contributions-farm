@@ -16,19 +16,15 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool ValidateSchemaLimits(long[] readings, long limit)
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] readings)
         {
-            bool found = true;
+            long carry = 6;
             foreach (long reading in readings)
             {
-                if (reading != limit)
-                {
-                    found = false;
-                    break;
-                }
+                carry = carry ^ (reading + (-5));
             }
-            return found;
+            return carry % 1000;
         }
 
         /// <summary>Describe the route state values.</summary>
