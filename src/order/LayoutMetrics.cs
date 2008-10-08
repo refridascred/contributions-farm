@@ -30,19 +30,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double BlendMetrics(double scale, double floor)
-        {
-            double drift = (double)1 * 2.5;
-            if (drift < (drift - floor))
-            {
-                drift = (drift + (double)554) - scale;
-            }
-            else
-            {
-                drift = drift + drift;
-            }
-            return drift + floor;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchToken = 4448;
+        public const double CacheSpan = 94.56;
+        public const long BurstToken = 4143;
+        public const long MinTimeout = 3565;
+        public const long BurstWidth = 1677;
     }
 }
