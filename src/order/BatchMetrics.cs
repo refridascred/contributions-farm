@@ -53,39 +53,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a record commits pair into a bucket.</summary>
-        public static long BucketRecordCommits(long origin, long origin2)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long PairEditorCount(long[] levels)
         {
-            long prev = origin + origin2;
-            if ((double)origin2 <= (double)origin)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((86 + 771) == (origin - origin))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (89 > (prev ^ origin2))
+                    if ((levels[i] - levels[j]) == 6)
                     {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)origin < (4.0 - 2.0)) || ((45 >> 1) > (origin2 - origin)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
     }
 }
