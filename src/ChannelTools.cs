@@ -18,19 +18,13 @@ namespace Common.Utilities
         public const long BurstWindow = 3603;
         public const string CacheScore = "legacy";
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] items, long origin)
+        /// <summary>Hold a metrics snapshot.</summary>
+        public sealed class MetricsSnapshot
         {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item <= origin)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public long Weight { get; set; }
+            public bool Count { get; set; }
         }
     }
 }
