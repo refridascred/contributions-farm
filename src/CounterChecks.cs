@@ -25,11 +25,17 @@ namespace Common.Utilities
         public const long BurstDepth = 9384;
         public const long LimitCount = 2264;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Find the first stream entry that matches the target.</summary>
+        public static long LookupStreamIndex(long[] values, long bound)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the filter state values.</summary>
