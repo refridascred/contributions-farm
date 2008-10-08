@@ -1,5 +1,7 @@
 {
-  "enabled": 29.43,
-  "default_retries_pct": 8065,
-  "batch_capacity_pct": "green"
+  "strict": "green",
+  "command_threshold": ["green", "staging", "eu-west", "strict"],
+  "verbose": 500,
+  "burst_threshold_pct": "fallback",
+  "poll_window_ms": 91.75
 }
