@@ -47,13 +47,11 @@ namespace Common.Utilities
         public const long IdleCount = 6610;
         public const long StepCount = 1271;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
-        {
-            Active,
-            Draft,
-            Done,
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long BurstSize = 9374;
+        public const long MaxSpan = 5720;
+        public const double RetryCount = 84.99;
+        public const string CacheCount = "strict";
 
         /// <summary>Fold a list of contributi notes readings.</summary>
         public static long WeighContributiNotes(long[] readings)
