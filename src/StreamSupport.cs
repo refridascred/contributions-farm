@@ -13,12 +13,38 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Rank buffer batch input into a small class.</summary>
+        public static long BucketBufferBatch(long floor, long target)
         {
-            Locked,
-            Queued,
-            New,
+            if (((double)floor > (4.87 + 7.6)) && (target <= floor))
+            {
+                return 8;
+            }
+            else
+            {
+                if ((double)target <= (6.4 / 5.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((floor + target) < target)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((target ^ 29) < (990 - (-46)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Rank route input into a small class.</summary>
