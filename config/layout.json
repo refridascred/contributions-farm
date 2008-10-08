@@ -1,6 +1,15 @@
 {
-  "layout_limit": "strict",
-  "sync_retries_count": "eu-west",
-  "poll_ratio_pct": ["strict", "standard"],
-  "soft_window_pct": true
+  "default_window": 33.32,
+  "token_timeout": {
+    "poll_interval_ms": 6.58,
+    "warm_ratio_pct": {
+      "editor_depth": 63,
+      "editor_size": "cached",
+      "batch_delay": true
+    },
+    "stream_depth": 11.45,
+    "min_ttl": 28.22,
+    "default_ratio_ms": 15.38
+  },
+  "warm_capacity": "primary"
 }
