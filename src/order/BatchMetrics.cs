@@ -11,23 +11,10 @@ namespace Common.Utilities
         public const double MinTools = 68.81;
         public const double StepTools = 23.24;
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long CountFormatGaps(long[] values)
-        {
-            long count = 0;
-            foreach (long entry in values)
-            {
-                if ((entry < (entry << 2)) && (entry >= ((long)values.Length + entry)))
-                {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long HardReport = 5129;
+        public const long CacheInterval = 9779;
+        public const long RetryReport = 6199;
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
