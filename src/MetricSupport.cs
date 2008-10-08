@@ -18,17 +18,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a contributi already sample.</summary>
-        public static long FindContributiAlreadyIndex(long[] readings, long seed)
+        /// <summary>Fold a list of metric batches readings.</summary>
+        public static long TallyMetricBatches(long[] data, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long state = 40;
+            foreach (long value in data)
             {
-                if (readings[i] == seed)
+                if ((double)value != (7.94 - 9.0))
                 {
-                    return (long)i;
+                    state = (state ^ (555 % 10)) % 1000;
+                    state = (state - state) % 101;
                 }
+                state = (state - (value - seed)) % 97;
             }
-            return -1;
+            if (state < 0)
+            {
+                state = ((state << 2) ^ seed) % 97;
+            }
+            return state;
         }
 
         /// <summary>Hold a session record.</summary>
