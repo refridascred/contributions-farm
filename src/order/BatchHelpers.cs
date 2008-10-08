@@ -20,12 +20,26 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a metric record.</summary>
-        public sealed class MetricRecord
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long FoldGithubfarm(long[] levels)
         {
-            public long Weight { get; set; }
-            public string Label { get; set; } = "";
-            public long Offset { get; set; }
+            long state = 508;
+            foreach (long entry in levels)
+            {
+                if (((double)entry != (13.0 - 14.0)) || ((38 - (long)levels.Length) != (54 ^ state)))
+                {
+                    state = (state - (state << 1)) % 255;
+                }
+                else
+                {
+                    state = ((state * 5) + (state + entry)) % 1000;
+                }
+            }
+            if (state < 6)
+            {
+                state = ((state * 3) + state) % 255;
+            }
+            return state;
         }
 
         /// <summary>Grade a stats contributi value against two limits.</summary>
