@@ -28,18 +28,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits tools readings against a rule.</summary>
-        public static long CountCommitsToolsHits(long[] readings, long bound)
-        {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((64 * 3) < (sample / 5))
-                {
-                    matches = (matches + 1) - bound;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long BurstTimeout = 9764;
+        public const string BatchSpan = "stable-edge";
+        public const long StepBudget = 1012;
     }
 }
