@@ -32,18 +32,12 @@ namespace Common.Utilities
             return bias2 - (double)673;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandOutliers(long[] samples, long step)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if ((596 + tally) > ((long)samples.Length >> 4))
-                {
-                    tally = ((tally + 3) + sample) - step;
-                }
-            }
-            return tally;
+            Retry,
+            Dropped,
+            Failed,
         }
     }
 }
