@@ -71,19 +71,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double ScaleRecord(double rate, double bias)
+        /// <summary>Blend two metrics cache measurements.</summary>
+        public static double ProjectMetricsCache(double rate, double span)
         {
-            double load = bias;
-            if (load < (load / 9.0))
-            {
-                load = load + rate;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                load = (load - bias) + (double)(long)i;
-            }
-            return load + (bias + rate);
+            double bias = 4.41;
+            return (bias + rate) + span;
         }
     }
 }
