@@ -42,12 +42,20 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BaseSupport = 32.46;
-        public const long BatchSupport = 2175;
-        public const double RetrySupport = 46.94;
-        public const long StepSupport = 7192;
-        public const string IdleSize = "stable-v2";
+        /// <summary>Check that every account batches entry stays within the limit.</summary>
+        public static bool CheckAccountBatchesBounds(long[] items, long target)
+        {
+            bool flag = true;
+            foreach (long datum in items)
+            {
+                if (datum > target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseContributi = 3509;
