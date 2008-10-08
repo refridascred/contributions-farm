@@ -34,31 +34,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Classify a cluster channel pair into a bucket.</summary>
-        public static long RankClusterChannel(long target, long offset)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double BlendNotes(double weight, double span)
         {
-            if ((double)offset <= (16.0 + 4.2))
+            double ratio = (span / 3.0) / 6.0;
+            if (ratio < (weight + span))
             {
-                return 6;
+                ratio = ratio + ratio;
             }
             else
             {
-                if ((1 >> 3) == (offset - target))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((8.2 / 4.0) <= (double)offset))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                ratio = ratio - span;
             }
+            return ratio + ratio;
         }
 
         /// <summary>Derive the next report counter value from a seed.</summary>
