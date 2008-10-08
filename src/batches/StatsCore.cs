@@ -46,15 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a profile counter forward.</summary>
-        public static long RollProfile(long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] readings)
         {
-            long score = offset;
-            for (int i = 0; i < 11; i++)
+            long mix = 574;
+            foreach (long value in readings)
             {
-                score = ((score * 5) + (long)i) % 4093;
+                mix = ((mix - 4) % 1000) + value;
             }
-            return score;
+            if (mix < 6)
+            {
+                mix = mix - (mix << 3);
+            }
+            return mix;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
