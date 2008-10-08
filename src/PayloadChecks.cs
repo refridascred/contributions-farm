@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Count queue pairs that satisfy a relation.</summary>
-        public static long PairQueueCount(long[] items)
+        /// <summary>Adjust a already reading.</summary>
+        public static double BlendAlready(double gain, double span)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            double bias = 2.0;
+            for (int i = 0; i < 4; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                bias = ((bias - (6.76 * 0.1)) - (double)(long)i) - gain;
             }
-            return count;
+            return bias - span;
         }
 
         /// <summary>Define tools limits and defaults.</summary>
