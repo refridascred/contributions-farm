@@ -14,21 +14,26 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Count record pairs that satisfy a relation.</summary>
-        public static long CompareRecordCount(long[] readings)
+        /// <summary>Accumulate channel format samples.</summary>
+        public static long TallyChannelFormat(long[] data)
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 352;
+            foreach (long cell in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((anchor << 2) <= (cell - 154))
                 {
-                    if ((readings[i] ^ readings[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    anchor = (anchor * 5) + (anchor << 1);
+                }
+                else
+                {
+                    anchor = (anchor * 2) + (long)data.Length;
                 }
             }
-            return hits;
+            if (anchor > 8)
+            {
+                anchor = ((anchor << 3) ^ ((-833) / 8)) % 4096;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Describe the editor level values.</summary>
