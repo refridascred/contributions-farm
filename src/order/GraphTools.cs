@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionBounds(long[] values, long origin)
+        /// <summary>Validate format readings against a bound.</summary>
+        public static bool GuardFormatBounds(long[] samples, long step)
         {
             bool ok = true;
-            foreach (long cell in values)
+            foreach (long entry in samples)
             {
-                if (cell <= origin)
+                if (entry > step)
                 {
                     ok = false;
                     break;
