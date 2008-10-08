@@ -37,22 +37,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] values, long step)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (!(0 <= value) || (((value << 3) >= hits) && (hits > (value - step))))
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            public long Ratio { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
