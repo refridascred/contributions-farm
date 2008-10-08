@@ -61,17 +61,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Locate a payload reading by value.</summary>
-        public static long SeekPayloadIndex(long[] readings, long origin)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] levels, long offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long sample in levels)
             {
-                if (readings[i] == origin)
+                if (sample >= offset)
                 {
-                    return (long)i;
+                    stale = false;
+                    break;
                 }
             }
-            return -1;
+            return stale;
         }
     }
 }
