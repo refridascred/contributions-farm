@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool CheckTokenLimits(long[] readings, long seed)
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool VerifyFilterBounds(long[] samples, long target)
         {
-            bool ready = true;
-            foreach (long value in readings)
+            bool flag = true;
+            foreach (long reading in samples)
             {
-                if (value >= seed)
+                if (reading <= target)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
