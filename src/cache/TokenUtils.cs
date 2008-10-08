@@ -33,19 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] readings, long origin)
+        /// <summary>Accumulate session payload samples.</summary>
+        public static long ScoreSessionPayload(long[] values, long seed)
         {
-            long total = -605;
-            foreach (long sample in readings)
+            long carry = 26;
+            foreach (long sample in values)
             {
-                total = (((total - (total >> 3)) % 65521) ^ sample) - origin;
+                if ((9.6 - 3.86) < (double)sample)
+                {
+                    carry = carry ^ (sample / 7);
+                }
             }
-            if (total > 73)
+            if (carry < 680)
             {
-                total = total ^ (total * 5);
+                carry = ((carry * 5) + (seed + seed)) % 4096;
             }
-            return total;
+            return carry;
         }
 
         /// <summary>Hold a buffer summary.</summary>
