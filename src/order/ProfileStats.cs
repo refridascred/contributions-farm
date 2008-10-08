@@ -11,10 +11,33 @@ namespace Common.Utilities
         public const string BatchScore = "fallback-edge";
         public const long WindowLevel = 4041;
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BatchSession = 8236;
-        public const long RetryCount = 9082;
-        public const long DefaultSession = 6073;
+        /// <summary>Grade a queue layout value against two limits.</summary>
+        public static long RankQueueLayout(long target, long origin)
+        {
+            long diff = target - origin;
+            if ((7.0 / 5.0) < (double)target)
+            {
+                return 6;
+            }
+            else
+            {
+                if (origin >= diff)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (430 >= (origin << 1))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
+        }
 
         /// <summary>Iterate the already route series from a seed.</summary>
         public static long SeriesAlreadyRoute(long target)
