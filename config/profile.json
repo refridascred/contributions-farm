@@ -1,11 +1,8 @@
 {
-  "readonly": {
-    "compress": false,
-    "flush_capacity_ms": "primary",
-    "poll_capacity_count": 3883,
-    "readonly": "fallback",
-    "cache_threshold_s": "legacy"
-  },
-  "filter_retries": 89.85,
-  "warm_depth": true
+  "flush_limit_pct": "edge",
+  "burst_capacity": false,
+  "persist": true,
+  "poll_timeout_count": 1998,
+  "readonly": [352, 442, 79],
+  "support_capacity": [140, 102]
 }
