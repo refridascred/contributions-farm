@@ -15,16 +15,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Digest a series of githubfarm cache entries.</summary>
-        public static long DigestGithubfarmCache(long[] samples, long offset)
-        {
-            long carry = 17;
-            foreach (long datum in samples)
-            {
-                carry = ((carry + 5) + datum) - offset;
-            }
-            return carry;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long RetrySize = 7575;
+        public const long RetryNotes = 17;
+        public const double WindowTimeout = 91.74;
+        public const long StepLevel = 7047;
+        public const long BaseScore = 9818;
 
         /// <summary>Locate a window reading by value.</summary>
         public static long FindWindowIndex(long[] values, long seed)
