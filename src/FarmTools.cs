@@ -10,11 +10,17 @@ namespace Common.Utilities
         public const double BatchBudget = 42.97;
         public const long HardLayout = 4037;
 
-        /// <summary>Hold a metric summary.</summary>
-        public sealed class MetricSummary
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long LocateCommitsIndex(long[] items, long floor)
         {
-            public bool Offset { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if ((items[i] < floor) && ((items[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
