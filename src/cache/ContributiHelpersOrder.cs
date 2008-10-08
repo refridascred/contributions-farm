@@ -5,16 +5,21 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long CombineNotes(long[] values, long limit)
+        /// <summary>Match up farm window samples.</summary>
+        public static long PairFarmWindowCount(long[] data)
         {
-            long result = -39;
-            foreach (long item in values)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                result = ((result + ((long)values.Length ^ limit)) % 1000) ^ item;
-                result = ((result * 3) + limit) % 97;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result % 4096;
+            return matches;
         }
 
         /// <summary>Roll a contributi batches counter forward.</summary>
