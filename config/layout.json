@@ -1,6 +1,7 @@
 {
-  "default_limit_ms": 6266,
-  "default_retries": [289, 16],
-  "min_capacity": [298, 16, 457],
-  "format_delay": 100
+  "soft_depth_s": 33.72,
+  "graph_ttl": "legacy",
+  "default_depth_s": "local",
+  "readonly": 82.03,
+  "flush_threshold_pct": 100
 }
