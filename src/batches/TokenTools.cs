@@ -40,21 +40,31 @@ namespace Common.Utilities
             return rate - (double)4;
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] values)
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long RankBuffer(long limit, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((double)seed != (19.0 - 11.0))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 6;
+            }
+            else
+            {
+                if ((seed - seed) <= (limit + limit))
                 {
-                    if ((values[i] - values[j]) > 12)
+                    return 5;
+                }
+                else
+                {
+                    if ((limit - 61) <= limit)
                     {
-                        count = count + 1;
+                        return 4;
+                    }
+                    else
+                    {
+                        return 1;
                     }
                 }
             }
-            return count;
         }
     }
 }
