@@ -20,12 +20,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long FindEditorIndex(long[] readings, long step)
         {
-            New,
-            Closed,
-            Ready,
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Accumulate route samples.</summary>
