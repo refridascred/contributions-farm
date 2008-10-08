@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Grade a route value against two limits.</summary>
-        public static long BucketRoute(long floor, long bound)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutBounds(long[] levels, long origin)
         {
-            long edge = floor + bound;
-            if ((double)bound < (20.0 * 8.0))
+            bool found = true;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)364 < (double)bound)
+                if (sample > origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (880 > (edge ^ bound))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
