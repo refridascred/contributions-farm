@@ -19,20 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphRange(long[] values, long bound)
-        {
-            bool ready = true;
-            foreach (long datum in values)
-            {
-                if (datum != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstCount = 4730;
+        public const string StepToken = "local-edge";
+        public const long DefaultToken = 4301;
+        public const string HardScore = "staging-v2";
 
         /// <summary>Describe the record state values.</summary>
         public enum RecordState
