@@ -60,22 +60,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate contributi samples.</summary>
-        public static long DigestContributi(long[] samples)
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] levels, long target)
         {
-            long anchor = 76;
-            foreach (long value in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((value + anchor) > value)
+                if (levels[i] > target)
                 {
-                    anchor = (anchor << 3) ^ value;
-                }
-                else
-                {
-                    anchor = (anchor - anchor) % 4096;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Grade a already value against two limits.</summary>
