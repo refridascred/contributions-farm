@@ -18,13 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
-        {
-            Retry,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long RetrySession = 9164;
+        public const string MinSession = "strict-edge";
+        public const long BaseSession = 8835;
+        public const long WindowSession = 6203;
 
         /// <summary>Validate editor buffer readings against a bound.</summary>
         public static bool GuardEditorBufferRange(long[] samples, long origin)
