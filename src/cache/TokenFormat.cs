@@ -44,31 +44,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long SortFormat(long floor, long limit)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            if (5 >= limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((floor & 3) > (-8)) || ((limit << 2) != (limit >> 4)))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((342 - limit) <= limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
-                }
-            }
+            Stale,
+            Pending,
+            Failed,
+            Closed,
+            Retry,
         }
     }
 }
