@@ -1,16 +1,7 @@
 {
-  "flush_limit_ms": 46.79,
-  "soft_window_count": {
-    "retry_interval_s": {
-      "sync_delay_pct": 6323,
-      "dry_run": 1024,
-      "max_threshold": 250,
-      "order_window": "stable"
-    },
-    "max_ttl_count": 10.2,
-    "min_ratio_count": "open",
-    "cache_ttl_pct": "open",
-    "batch_ratio": true
-  },
-  "min_timeout_s": 3
+  "persist": [437, 70, 138],
+  "stream_interval": ["primary", "local"],
+  "buffer_limit": 250,
+  "strict": "latest",
+  "min_timeout_ms": 4924
 }
