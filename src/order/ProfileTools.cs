@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Fold a list of metrics payload readings.</summary>
-        public static long ScoreMetricsPayload(long[] values)
+        /// <summary>Roll a order counter forward.</summary>
+        public static long IterateOrder(long seed)
         {
-            long carry = 2;
-            foreach (long item in values)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                carry = (carry + (carry & 63)) + item;
+                total = ((total * 5) + (long)i) % 65521;
             }
-            return carry;
+            return total;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
