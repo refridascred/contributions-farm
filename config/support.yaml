@@ -1,20 +1,26 @@
 # support settings
-base_depth_pct: 250
-dry_run: true
-persist: 25
-hard_size_count: 62.39
-hard_retries_count:
-  verbose: 4810
-  audit: 42.49
-  contributi_interval: legacy
-  idle_capacity_s:
-    verbose: staging
-    graph_interval: fallback
-    notes_size:
-      - staging
-      - cached
-      - legacy
-      - legacy
-    cache_ttl_pct: 81.13
-    format_retries: 78
-  enabled: false
+batch_size:
+  layout_capacity: 500
+  readonly:
+    - staging
+    - cached
+  batch_delay_count: 4375
+  persist:
+    retry_size_count: 40
+    enabled:
+      - blue
+      - standard
+      - strict
+    retry_ratio_ms: 4.48
+    poll_threshold_count: 46.91
+    burst_depth_count:
+      - 86
+      - 229
+    readonly: stable
+  soft_interval_ms: true
+commits_ttl: 95
+compress:
+  - latest
+  - primary
+  - blue
+dry_run: 795
