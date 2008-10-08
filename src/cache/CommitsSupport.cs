@@ -32,13 +32,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a payload entry.</summary>
-        public sealed class PayloadEntry
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long GradeCommits(long origin, long seed)
         {
-            public string Count { get; set; } = "";
-            public bool Flag { get; set; }
-            public long Score { get; set; }
-            public double Stamp { get; set; }
+            if ((seed % 64) < (origin << 3))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)origin > 0.49)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((seed << 2) == (seed >> 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (!((double)seed > (6.65 * 5.5)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
