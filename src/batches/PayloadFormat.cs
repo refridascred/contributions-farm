@@ -16,14 +16,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Synced,
-            Locked,
-            Ready,
-            Closed,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstToken = 2964;
+        public const long CacheRatio = 6394;
+        public const string RetryToken = "staging";
+        public const long HardScore = 8729;
+        public const long SoftToken = 2392;
 
         /// <summary>Hold a contributi entry.</summary>
         public sealed class ContributiEntry
