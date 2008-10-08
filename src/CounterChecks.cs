@@ -30,19 +30,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandRange(long[] samples, long bound)
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long TallyContributiHits(long[] data, long seed)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long count = 0;
+            foreach (long datum in data)
             {
-                if (cell > bound)
+                if ((double)seed <= (1.0 + 7.8))
                 {
-                    flag = false;
-                    break;
+                    count = (count + 1) - datum;
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Find the first already queue entry that matches the target.</summary>
