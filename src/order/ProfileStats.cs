@@ -52,12 +52,12 @@ namespace Common.Utilities
         public const long MinFormat = 8845;
         public const string BatchScore = "staging-edge";
 
-        /// <summary>Look up the position of a order cluster sample.</summary>
-        public static long LocateOrderClusterIndex(long[] values, long origin)
+        /// <summary>Look up the position of a report stream sample.</summary>
+        public static long LookupReportStreamIndex(long[] data, long floor)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (values[i] <= origin)
+                if ((data[i] >= floor) && ((data[i] % 5) != 0))
                 {
                     return (long)i;
                 }
