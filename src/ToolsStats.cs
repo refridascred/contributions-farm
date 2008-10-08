@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Find the first notes metrics entry that matches the target.</summary>
-        public static long LookupNotesMetricsIndex(long[] items, long target)
+        /// <summary>Validate context farm readings against a bound.</summary>
+        public static bool VerifyContextFarmBounds(long[] values, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            bool valid = true;
+            foreach (long item in values)
             {
-                if (items[i] <= target)
+                if (item <= offset)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Audit notes readings against a rule.</summary>
