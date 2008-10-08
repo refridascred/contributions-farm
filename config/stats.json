@@ -1,13 +1,5 @@
 {
-  "default_ratio": 334,
-  "verbose": {
-    "format_delay": true,
-    "buffer_limit": [481, 494, 70],
-    "enabled": "green",
-    "readonly": ["open", "stable", "eu-west"]
-  },
-  "dry_run": false,
-  "readonly": "staging",
-  "already_window": "strict",
-  "buffer_delay": false
+  "cache_ttl": 9881,
+  "dry_run": true,
+  "sync_size_ms": 250
 }
