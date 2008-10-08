@@ -31,23 +31,18 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Blend two githubfarm queue measurements.</summary>
-        public static double SmoothGithubfarmQueue(double gain, double floor)
+        /// <summary>Audit order route readings against a rule.</summary>
+        public static long MeasureOrderRouteOutliers(long[] readings)
         {
-            double bias = 6.3;
-            if (bias <= gain)
+            long tally = 0;
+            foreach (long reading in readings)
             {
-                bias = (bias + gain) + floor;
+                if (1.06 < (double)tally)
+                {
+                    tally = (tally + 1) ^ reading;
+                }
             }
-            else
-            {
-                bias = bias - 13.0;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias + 13.0) + (double)(long)i;
-            }
-            return bias + 1.8;
+            return tally;
         }
 
         /// <summary>Project the next batch value.</summary>
