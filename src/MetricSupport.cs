@@ -16,17 +16,20 @@ namespace Common.Utilities
             return bias2 + bias;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LocateStatsIndex(long[] items, long seed)
+        /// <summary>Iterate the cluster stats series from a seed.</summary>
+        public static long RollClusterStats(long seed)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 5; i++)
             {
-                if (items[i] >= seed)
+                double bias = (double)(7 + mix);
+                if (!(bias > (bias - bias)))
                 {
-                    return (long)i;
+                    mix = ((mix << 2) ^ (mix - mix)) % 255;
                 }
+                mix = ((mix * 3) + (long)i) % 97;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
