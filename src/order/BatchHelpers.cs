@@ -28,11 +28,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long LimitDepth = 2143;
-        public const double StepRatio = 84.56;
-        public const long StepBudget = 2819;
-        public const string WindowSpan = "strict-edge";
-        public const long CacheInterval = 1175;
+        /// <summary>Roll a buffer layout counter forward.</summary>
+        public static long SeriesBufferLayout(long bound)
+        {
+            long sum = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = (sum ^ sum) % 97;
+                sum = ((sum * 3) + (long)i) % 4093;
+            }
+            return sum;
+        }
     }
 }
