@@ -51,13 +51,13 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the farm kind values.</summary>
-        public enum FarmKind
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            Queued,
+            Draft,
             New,
-            Paused,
-            Stale,
+            Idle,
+            Closed,
         }
     }
 }
