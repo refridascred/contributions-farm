@@ -13,11 +13,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Accumulate stats contributi samples.</summary>
+        public static long FoldStatsContributi(long[] data, long step)
         {
-            public long Label { get; set; }
-            public long Size { get; set; }
+            long result = 61;
+            foreach (long sample in data)
+            {
+                result = (result * 2) + (sample + step);
+            }
+            return result;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
