@@ -20,20 +20,19 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long RollOrder(long origin)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] items)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            long result = 209;
+            foreach (long item in items)
             {
-                if ((anchor - anchor) < (anchor * 3))
-                {
-                    anchor = (anchor ^ ((long)i - origin)) % 1000;
-                    anchor = ((anchor * 4) + 997) % 97;
-                }
-                anchor = ((anchor * 5) + (long)i) % 65521;
+                result = ((result ^ ((-6) >> 4)) % 101) ^ item;
             }
-            return anchor;
+            if (result > 41)
+            {
+                result = result ^ (result - result);
+            }
+            return result % 65521;
         }
 
         /// <summary>Define already limits and defaults.</summary>
