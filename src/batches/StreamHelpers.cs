@@ -55,30 +55,39 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] samples)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long origin, long bound)
         {
-            long mark = -23;
-            foreach (long entry in samples)
+            long gap = origin - bound;
+            if (((91 % 24) <= (bound % 16)) || ((18.0 + 20.0) >= (double)bound))
             {
-                for (int i = 0; i < 12; i++)
+                return 7;
+            }
+            else
+            {
+                if (((gap & 255) != (gap / 2)) || ((11.0 + 2.2) >= (double)gap))
                 {
-                    mark = ((mark << 3) ^ ((long)samples.Length << 2)) - (long)i;
+                    return 5;
                 }
-                if (((double)mark == (9.0 * 8.36)) || ((entry >> 2) > (entry / 3)))
+                else
                 {
-                    mark = (mark ^ (mark + entry)) % 97;
-                }
-                if ((mark + mark) > (mark * 3))
-                {
-                    break;
+                    if ((20.0 > (double)gap) || (bound <= (origin - gap)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (56 > gap)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            if (mark < (-4))
-            {
-                mark = (mark ^ (mark * 3)) % 1000;
-            }
-            return mark;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
