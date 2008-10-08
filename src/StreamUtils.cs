@@ -45,17 +45,12 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LocateFormatIndex(long[] levels, long target)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public double Mode { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Hold a counter header.</summary>
