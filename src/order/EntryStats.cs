@@ -23,22 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long FoldCommits(long[] readings, long origin)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long TallyChannel(long[] values)
         {
-            long result = 25;
-            foreach (long reading in readings)
+            long mix = 2;
+            foreach (long item in values)
             {
-                if ((2 - origin) <= (result << 2))
+                if ((item + mix) >= (mix + mix))
                 {
-                    result = (result - (reading * 2)) % 101;
+                    mix = (mix ^ item) % 65521;
                 }
             }
-            if (result > 99)
+            if (mix < 65)
             {
-                result = result + (23 % 60);
+                mix = mix ^ mix;
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
