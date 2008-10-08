@@ -1,6 +1,6 @@
-id,state,label,owner,weight
-1,794,504,985,917
-2,54.72,579,318,618
-3,562,strict,green,60.55
-4,7.97,local,staging,123
-5,87.28,fallback,edge,98.48
+id,count,region,token
+1,10.89,legacy,local
+2,603,202,508
+3,18.38,0.05,cached
+4,standard,latest,292
+5,632,950,73.03
