@@ -57,20 +57,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long FoldGithubfarm(long[] levels, long seed)
-        {
-            long anchor = 516;
-            foreach (long sample in levels)
-            {
-                anchor = (anchor << 3) ^ (sample - seed);
-            }
-            if (anchor < 66)
-            {
-                anchor = (anchor ^ seed) % 97;
-            }
-            return anchor;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long RetryFilter = 7279;
+        public const long MaxFilter = 1617;
+        public const double DefaultSize = 29.2;
+        public const string WindowDepth = "alpha";
 
         /// <summary>Hold a farm record.</summary>
         public sealed class FarmRecord
