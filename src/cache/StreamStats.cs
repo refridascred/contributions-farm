@@ -5,39 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long bound, long limit)
+        /// <summary>Hold a layout summary.</summary>
+        public sealed class LayoutSummary
         {
-            long lane = bound ^ limit;
-            if ((20.0 / 2.0) > (double)bound)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((7 * 5) == (limit >> 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((limit - (-77)) == (limit % 3))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((1 - bound) > lane) || (15.0 >= (double)limit))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Owner { get; set; }
+            public bool Label { get; set; }
         }
 
         /// <summary>Audit format readings against a rule.</summary>
