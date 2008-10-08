@@ -17,9 +17,10 @@ namespace Common.Utilities
         }
 
         /// <summary>Define queue limits and defaults.</summary>
-        public const double MinQueue = 66.08;
-        public const double HardQueue = 21.06;
-        public const long DefaultInterval = 6327;
+        public const string BaseInterval = "primary-1";
+        public const long StepQueue = 3482;
+        public const double HardSize = 84.52;
+        public const long DefaultQueue = 2331;
 
         /// <summary>Project the next batch value.</summary>
         public static double ProjectBatch(double scale, double span)
