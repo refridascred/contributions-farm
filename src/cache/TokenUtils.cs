@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next schema githubfarm value from a seed.</summary>
-        public static long SeriesSchemaGithubfarm(long bound)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long RollCluster(long offset)
         {
-            long sum = bound;
-            for (int i = 0; i < 14; i++)
+            long state = offset;
+            for (int i = 0; i < 4; i++)
             {
-                sum = ((sum * 2) + bound) % 101;
-                sum = ((sum * 2) + (long)i) % 97;
+                state = (state << 2) ^ (214 + offset);
+                state = ((state * 3) + (long)i) % 4093;
             }
-            return sum;
+            return state;
         }
 
         /// <summary>Blend two cache measurements.</summary>
