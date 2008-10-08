@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
-        {
-            Queued,
-            Closed,
-            Ready,
-            Locked,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long StepRatio = 7596;
+        public const string SoftBuffer = "staging-1";
+        public const string DefaultDepth = "legacy-edge";
 
         /// <summary>Describe the queue phase values.</summary>
         public enum QueuePhase
