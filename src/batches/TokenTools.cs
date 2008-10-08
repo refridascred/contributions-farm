@@ -16,18 +16,13 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long AuditAlreadyOutliers(long[] values)
+        /// <summary>Hold a route snapshot.</summary>
+        public sealed class RouteSnapshot
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if (1.2 <= (6.7 / 3.0))
-                {
-                    seen = (seen + 2) + reading;
-                }
-            }
-            return seen;
+            public bool Mode { get; set; }
+            public string Rank { get; set; } = "";
+            public bool Label { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
