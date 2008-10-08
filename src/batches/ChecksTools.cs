@@ -34,39 +34,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a window githubfarm value against two limits.</summary>
-        public static long GradeWindowGithubfarm(long origin, long seed)
+        /// <summary>Find the first command counter entry that matches the target.</summary>
+        public static long SeekCommandCounterIndex(long[] items, long step)
         {
-            long offset = origin ^ seed;
-            if (!((seed & 1) >= origin))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed - 4) >= (seed >> 3))
+                if ((items[i] == step) && ((items[i] % 3) == 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (origin >= offset)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (seed <= (seed * 4))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Measure how many window metric samples are out of range.</summary>
