@@ -21,12 +21,20 @@ namespace Common.Utilities
         public const double RetryEntry = 30.94;
         public const string CacheScore = "local";
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Digest a series of already entries.</summary>
+        public static long DigestAlready(long[] data)
         {
-            Locked,
-            Ready,
-            Dropped,
+            long score = -12;
+            foreach (long sample in data)
+            {
+                score = score ^ (score + sample);
+                score = (score ^ (score + sample)) % 4096;
+                if (score <= (score / 5))
+                {
+                    score = ((score << 3) ^ (score >> 2)) % 1000;
+                }
+            }
+            return score;
         }
     }
 }
