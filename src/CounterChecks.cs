@@ -37,12 +37,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            Locked,
-            Paused,
-            Ready,
+            public long Rank { get; set; }
+            public string Weight { get; set; } = "";
+            public double Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of stats readings.</summary>
