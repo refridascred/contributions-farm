@@ -13,15 +13,22 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate stats contributi samples.</summary>
-        public static long FoldStatsContributi(long[] data, long step)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] series)
         {
-            long result = 61;
-            foreach (long sample in data)
+            long mix = 710;
+            foreach (long cell in series)
             {
-                result = (result * 2) + (sample + step);
+                if ((509 ^ mix) >= mix)
+                {
+                    mix = ((mix << 3) ^ (mix << 1)) % 1000;
+                }
+                else
+                {
+                    mix = mix - (cell - cell);
+                }
             }
-            return result;
+            return mix;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
