@@ -54,24 +54,14 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long GradeCluster(long seed, long seed2)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            if ((double)seed <= (8.03 - 4.8))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((4.2 - 5.93) == (double)seed)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            Ready,
+            Dropped,
+            Pending,
+            Draft,
+            Failed,
         }
     }
 }
