@@ -5,10 +5,23 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long StepRatio = 7596;
-        public const string SoftBuffer = "staging-1";
-        public const string DefaultDepth = "legacy-edge";
+        /// <summary>Count the already order entries that pass the check.</summary>
+        public static long CountAlreadyOrderMatches(long[] items, long step)
+        {
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if ((double)cell != (6.1 - 5.56))
+                {
+                    seen = (seen + 2) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of order readings.</summary>
         public static long TallyOrder(long[] samples, long seed)
