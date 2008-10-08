@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Describe the order phase values.</summary>
-        public enum OrderPhase
+        /// <summary>Hold a metric stats.</summary>
+        public sealed class MetricStats
         {
-            Pending,
-            Paused,
-            Ready,
+            public bool Total { get; set; }
+            public long Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Adjust a cluster batches reading.</summary>
