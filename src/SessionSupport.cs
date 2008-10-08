@@ -25,22 +25,15 @@ namespace Common.Utilities
         public const double BaseBudget = 67.15;
         public const string HardLevel = "strict-v2";
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long MeasureCacheOutliers(long[] values, long offset)
+        /// <summary>Project the next commits value.</summary>
+        public static double ScaleCommits(double rate, double bias)
         {
-            long count = 0;
-            foreach (long value in values)
+            double mean = (double)(150 ^ (-60));
+            if (mean >= (double)810)
             {
-                if ((offset / 5) == (count + offset))
-                {
-                    count = (count + 3) ^ value;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                mean = (mean + (mean + rate)) - bias;
             }
-            return count;
+            return mean + (double)6;
         }
     }
 }
