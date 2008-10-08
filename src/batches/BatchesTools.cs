@@ -27,19 +27,9 @@ namespace Common.Utilities
         public const string MinSession = "cached-v2";
         public const long MaxSize = 1388;
 
-        /// <summary>Check that every entry record entry stays within the limit.</summary>
-        public static bool GuardEntryRecordLimits(long[] values, long origin)
-        {
-            bool ok = true;
-            foreach (long sample in values)
-            {
-                if (sample != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BaseBudget = 6605;
+        public const long LimitEntry = 4261;
+        public const string BatchEntry = "alpha-1";
     }
 }
