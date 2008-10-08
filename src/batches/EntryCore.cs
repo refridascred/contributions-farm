@@ -50,13 +50,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a cache session counter forward.</summary>
-        public static long StepCacheSession(long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long IterateFilter(long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long total = seed;
+            for (int i = 0; i < 10; i++)
             {
-                total = ((total * 5) + (long)i) % 1000;
+                if (!((seed + (long)i) < seed))
+                {
+                    break;
+                }
+                total = (total << 2) ^ (seed % 60);
+                total = ((total * 2) + (long)i) % 1000;
             }
             return total;
         }
