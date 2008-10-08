@@ -1,7 +1,9 @@
-id,ratio,active,state
-1,37.1,67.84,29
-2,90.41,1,740
-3,open,cached,67.4
-4,primary,77.03,92.17
-5,892,strict,884
-6,8.21,62.92,stable
+id,rank
+1,95.32
+2,staging
+3,edge
+4,36
+5,604
+6,22.95
+7,75.99
+8,local
