@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const long StepFormat = 2252;
         public const string MinFormat = "stable-1";
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] readings)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphHits(long[] items)
         {
-            long state = 52;
-            foreach (long sample in readings)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                state = ((state * 3) + sample) % 101;
+                if ((double)cell == (3.0 / 5.0))
+                {
+                    seen = seen + 3;
+                }
             }
-            if (state < 0)
-            {
-                state = (state ^ (state >> 1)) % 1000;
-            }
-            return state % 4096;
+            return seen;
         }
 
         /// <summary>Hold a editor info.</summary>
