@@ -14,13 +14,14 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Roll a record counter forward.</summary>
-        public static long SeriesRecord(long seed)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long SeriesBatch(long limit)
         {
-            long total = seed;
-            for (int i = 0; i < 4; i++)
+            long total = limit;
+            for (int i = 0; i < 11; i++)
             {
-                total = ((total * 4) + (long)i) % 97;
+                total = total + (total + total);
+                total = ((total * 2) + (long)i) % 101;
             }
             return total;
         }
