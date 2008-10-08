@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] values, long floor)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool CheckTokenLimits(long[] readings, long seed)
         {
-            long score = 40;
-            foreach (long value in values)
+            bool ready = true;
+            foreach (long value in readings)
             {
-                score = ((score ^ 31) - value) - floor;
+                if (value >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return score;
+            return ready;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
