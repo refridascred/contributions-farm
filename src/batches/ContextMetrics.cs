@@ -44,11 +44,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long CacheSpan = 1085;
-        public const long LimitEntry = 2666;
-        public const long BatchEntry = 4443;
-        public const long StepRatio = 8189;
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long TallyGithubfarmGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (((datum - datum) != (datum + tally)) || ((datum ^ 619) > ((long)data.Length * 5)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
