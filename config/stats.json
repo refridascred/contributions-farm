@@ -1,16 +1,5 @@
 {
-  "poll_size": {
-    "hard_timeout_ms": 46.92,
-    "enabled": "local",
-    "burst_timeout_s": {
-      "min_threshold_pct": "open",
-      "cluster_ratio": 8967,
-      "cache_depth_pct": 7692,
-      "order_size": "blue",
-      "soft_ttl": "primary"
-    }
-  },
-  "hard_threshold_ms": false,
-  "min_size_s": "local",
-  "strict": 1024
+  "idle_limit_ms": 9677,
+  "default_retries": 79,
+  "cache_retries": 67
 }
