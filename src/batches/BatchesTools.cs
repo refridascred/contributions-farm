@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Count the checks channel entries that pass the check.</summary>
-        public static long AuditChecksChannelMatches(long[] samples)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            long seen = 0;
-            foreach (long value in samples)
-            {
-                if ((seen > (seen + seen)) && (((long)samples.Length ^ value) > seen))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            public long Label { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Describe the record level values.</summary>
