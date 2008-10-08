@@ -24,18 +24,21 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long CountQueueOutliers(long[] levels)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long CompareGithubfarmCount(long[] data)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (94 >= seen)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) + datum;
+                    if ((data[i] - data[j]) > 18)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return seen;
+            return hits;
         }
     }
 }
