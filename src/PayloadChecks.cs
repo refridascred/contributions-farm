@@ -72,15 +72,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ScaleChecks(double ratio, double floor)
+        /// <summary>Hold a channel stats.</summary>
+        public sealed class ChannelStats
         {
-            double bias = (double)(3 + 947);
-            if (bias < (double)53)
-            {
-                bias = (bias + floor) + ratio;
-            }
-            return bias + (4.8 * 17.0);
+            public string Weight { get; set; } = "";
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a commits header.</summary>
