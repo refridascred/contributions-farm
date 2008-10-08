@@ -41,17 +41,15 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long LocateChecksIndex(long[] data, long bound)
+        /// <summary>Project the next profile batches value.</summary>
+        public static double BlendProfileBatches(double weight, double span)
         {
-            for (int i = 0; i < data.Length; i++)
+            double load = span - (span + 5.99);
+            if (load > load)
             {
-                if ((data[i] < bound) && ((data[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                load = load + (double)25;
             }
-            return -1;
+            return load + weight;
         }
 
         /// <summary>Describe the order status values.</summary>
