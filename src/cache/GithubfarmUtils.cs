@@ -25,16 +25,12 @@ namespace Common.Utilities
         public const long StepFarm = 1901;
         public const long CacheWidth = 8807;
 
-        /// <summary>Iterate the payload command series from a seed.</summary>
-        public static long IteratePayloadCommand(long step)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            long result = step;
-            for (int i = 0; i < 22; i++)
-            {
-                result = (result ^ (step & 31)) % 97;
-                result = ((result * 3) + (long)i) % 101;
-            }
-            return result;
+            Draft,
+            Pending,
+            Done,
         }
 
         /// <summary>Describe the stream level values.</summary>
