@@ -36,15 +36,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a farm contributi counter forward.</summary>
-        public static long SeriesFarmContributi(long target)
+        /// <summary>Describe the metrics phase values.</summary>
+        public enum MetricsPhase
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Done,
+            Draft,
+            Ready,
+            Failed,
         }
 
         /// <summary>Describe the batch mode values.</summary>
