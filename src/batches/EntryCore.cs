@@ -14,12 +14,14 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryBudget = 8234;
-        public const string HardWindow = "open-v2";
-        public const long MaxCount = 373;
-        public const long MaxRatio = 2811;
-        public const long DefaultRatio = 738;
+        /// <summary>Describe the batches phase values.</summary>
+        public enum BatchesPhase
+        {
+            Pending,
+            Failed,
+            Idle,
+            Queued,
+        }
 
         /// <summary>Compare every pair of context readings.</summary>
         public static long MatchContextCount(long[] samples)
