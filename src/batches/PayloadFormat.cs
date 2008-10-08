@@ -5,33 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Rank route cluster input into a small class.</summary>
-        public static long BucketRouteCluster(long target, long limit)
-        {
-            long span = target - limit;
-            if ((double)limit > 1.6)
-            {
-                return 6;
-            }
-            else
-            {
-                if (((span - span) > (span + target)) || ((limit + target) == (span + limit)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((target * 3) <= target)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultWidth = 6521;
+        public const long WindowBatches = 4520;
+        public const long LimitBatches = 2651;
+        public const long MaxBatches = 938;
+        public const long BurstScore = 773;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BurstToken = 2964;
