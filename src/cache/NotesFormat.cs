@@ -17,31 +17,17 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long ClassifyChannel(long offset, long target)
+        /// <summary>Look up the position of a filter sample.</summary>
+        public static long FindFilterIndex(long[] items, long origin)
         {
-            if ((1.43 + 3.2) >= (double)offset)
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((target >> 2) <= 273)
+                if (items[i] >= origin)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((target + target) < (target << 3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
