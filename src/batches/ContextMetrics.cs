@@ -22,23 +22,10 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] data)
-        {
-            long mix = 27;
-            foreach (long item in data)
-            {
-                if ((double)item != (3.41 + 16.0))
-                {
-                    mix = mix - item;
-                }
-                else
-                {
-                    mix = ((mix * 3) + (item + 32)) % 101;
-                }
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 2423;
+        public const double BaseAccount = 79.94;
+        public const long BurstLevel = 9013;
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
         public static bool VerifyMetricBounds(long[] data, long target)
