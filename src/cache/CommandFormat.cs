@@ -44,23 +44,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double SmoothContext(double rate, double floor)
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            double scale = floor;
-            if (scale >= (floor + rate))
-            {
-                scale = scale + (floor + rate);
-            }
-            else
-            {
-                scale = scale - floor;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - scale) + (double)(long)i;
-            }
-            return scale + floor;
+            public string Size { get; set; } = "";
+            public double Stamp { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
