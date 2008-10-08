@@ -30,23 +30,12 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a format reading.</summary>
-        public static double ScaleFormat(double weight, double bias)
+        /// <summary>Hold a queue stats.</summary>
+        public sealed class QueueStats
         {
-            double rate = (double)(352 << 3);
-            if (rate < (weight - weight))
-            {
-                rate = rate + (rate + bias);
-            }
-            else
-            {
-                rate = rate - bias;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate + (bias / 7.0)) + (double)(long)i;
-            }
-            return rate - (4.0 - bias);
+            public string Flag { get; set; } = "";
+            public long Size { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Audit filter graph readings against a rule.</summary>
