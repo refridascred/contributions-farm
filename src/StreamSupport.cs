@@ -12,11 +12,10 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheTimeout = 9928;
-        public const double LimitTimeout = 72.57;
-        public const long BurstBudget = 4947;
-        public const string BatchTimeout = "legacy-1";
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MinFactor = 1338;
+        public const long RetryTimeout = 4721;
+        public const double StepStats = 91.28;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] values, long offset)
