@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] levels)
         {
-            Stale,
-            Paused,
-            Pending,
-            Failed,
+            long seen = 0;
+            foreach (long cell in levels)
+            {
+                if ((cell & 15) != (seen + cell))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
