@@ -16,11 +16,14 @@ namespace Common.Utilities
         public const long HardTimeout = 5561;
         public const long BaseWidth = 4718;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double CacheDepth = 93.78;
-        public const long DefaultBatch = 6090;
-        public const long MinBatch = 1248;
-        public const double HardBatch = 66.37;
-        public const long MaxBatch = 6021;
+        /// <summary>Describe the format phase values.</summary>
+        public enum FormatPhase
+        {
+            Idle,
+            Locked,
+            New,
+            Dropped,
+            Pending,
+        }
     }
 }
