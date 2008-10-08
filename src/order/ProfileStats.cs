@@ -41,21 +41,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long OverlapClusterCount(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TotalBatch(long[] data)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = 55;
+            foreach (long sample in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (((sample * 2) <= (acc & 127)) && ((double)sample <= (6.92 + 8.0)))
                 {
-                    if ((levels[i] + levels[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    acc = ((acc << 2) ^ (acc - sample)) % 4096;
+                }
+                else
+                {
+                    acc = (acc * 2) + acc;
                 }
             }
-            return tally;
+            return acc % 1000;
         }
 
         /// <summary>Digest a series of report entries.</summary>
