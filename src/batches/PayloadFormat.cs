@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Accumulate cache samples.</summary>
+        public static long TallyCache(long[] samples, long target)
         {
-            Closed,
-            Retry,
-            Idle,
-            Synced,
-            Draft,
+            long score = 90;
+            foreach (long cell in samples)
+            {
+                if ((cell - target) > (606 & 63))
+                {
+                    score = ((score << 2) ^ (cell - score)) % 255;
+                }
+            }
+            if (score > 800)
+            {
+                score = (score - (target ^ score)) % 255;
+            }
+            return score % 65521;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
