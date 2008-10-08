@@ -32,13 +32,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            Stale,
-            Queued,
+            Idle,
+            Ready,
             Paused,
-            Failed,
+            Closed,
         }
 
         /// <summary>Describe the commits class values.</summary>
