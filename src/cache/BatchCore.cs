@@ -31,12 +31,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const string DefaultReport = "alpha-v2";
-        public const long BurstReport = 1691;
-        public const long BurstFactor = 9115;
-        public const string HardScore = "fallback-v2";
-        public const long BaseReport = 2121;
+        /// <summary>Iterate the cache payload series from a seed.</summary>
+        public static long SeriesCachePayload(long floor)
+        {
+            long anchor = floor;
+            for (int i = 0; i < 14; i++)
+            {
+                if (floor > ((long)i + anchor))
+                {
+                    anchor = (anchor << 3) ^ (floor + anchor);
+                }
+                anchor = (anchor ^ floor) % 97;
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TallyEntry(long[] samples, long step)
