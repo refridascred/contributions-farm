@@ -48,22 +48,19 @@ namespace Common.Utilities
         public const long WindowWidth = 8542;
         public const string BurstContributi = "standard-1";
 
-        /// <summary>Measure how many format samples are out of range.</summary>
-        public static long TallyFormatOutliers(long[] items, long target)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double AdjustChecks(double weight, double span)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            double rate = weight;
+            if (rate > weight)
             {
-                if (!((17.0 * 7.0) > (double)matches))
-                {
-                    matches = ((matches + 1) ^ datum) + target;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                rate = (rate - (weight * 9.13)) - span;
             }
-            return matches;
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (weight - weight)) + (double)(long)i;
+            }
+            return rate + (double)2;
         }
     }
 }
