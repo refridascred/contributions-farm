@@ -1,4 +1,20 @@
 # support settings
-burst_limit_ms: fallback
-idle_limit: blue
-context_retries: 26.28
+base_depth_pct: 250
+dry_run: true
+persist: 25
+hard_size_count: 62.39
+hard_retries_count:
+  verbose: 4810
+  audit: 42.49
+  contributi_interval: legacy
+  idle_capacity_s:
+    verbose: staging
+    graph_interval: fallback
+    notes_size:
+      - staging
+      - cached
+      - legacy
+      - legacy
+    cache_ttl_pct: 81.13
+    format_retries: 78
+  enabled: false
