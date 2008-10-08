@@ -67,10 +67,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long WindowRecord = 92;
-        public const long DefaultRecord = 1059;
-        public const long DefaultLevel = 5065;
-        public const double LimitRecord = 12.58;
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LocateBufferIndex(long[] levels, long floor)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
