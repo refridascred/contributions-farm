@@ -52,15 +52,21 @@ namespace Common.Utilities
             return gain - (gain - 8.2);
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long DigestFarm(long[] samples, long offset)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            long total = -610;
-            foreach (long entry in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                total = (((total * 4) + 946) + entry) + offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 18)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return total;
+            return tally;
         }
     }
 }
