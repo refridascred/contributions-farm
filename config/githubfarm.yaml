@@ -1,6 +1,7 @@
 # githubfarm settings
-retry_timeout: 1571
-verbose: eu-west
-retry_delay_pct:
-  - staging
+sync_interval_pct: cached
+hard_capacity_ms: 500
+readonly:
+  - green
+  - primary
   - primary
