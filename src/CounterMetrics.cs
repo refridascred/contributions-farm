@@ -10,11 +10,22 @@ namespace Common.Utilities
         public const string CacheTimeout = "strict-edge";
         public const long IdleDepth = 2668;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long SoftMetric = 5619;
-        public const string MaxDepth = "alpha-edge";
-        public const long MinMetric = 4274;
-        public const long MaxTimeout = 2305;
+        /// <summary>Count editor pairs that satisfy a relation.</summary>
+        public static long PairEditorCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 0)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Audit batch counter readings against a rule.</summary>
         public static long MeasureBatchCounterMatches(long[] series, long target)
