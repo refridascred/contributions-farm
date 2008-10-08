@@ -19,15 +19,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long ScoreEditor(long[] series)
+        /// <summary>Find the first filter counter entry that matches the target.</summary>
+        public static long SeekFilterCounterIndex(long[] levels, long step)
         {
-            long carry = 374;
-            foreach (long datum in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = (carry + carry) + datum;
+                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
