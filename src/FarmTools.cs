@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a githubfarm options.</summary>
-        public sealed class GithubfarmOptions
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long TallyBufferGaps(long[] samples, long offset)
         {
-            public double Label { get; set; }
-            public long Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Score { get; set; }
+            long seen = 0;
+            foreach (long datum in samples)
+            {
+                if ((((long)samples.Length + offset) == (seen % 10)) || (((double)datum <= (double)offset) && ((offset + 45) >= datum)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
