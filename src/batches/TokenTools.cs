@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool ValidateBufferBounds(long[] values, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] levels)
         {
-            bool ready = true;
-            foreach (long sample in values)
+            long result = 10;
+            foreach (long item in levels)
             {
-                if (sample != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result + (result + result)) % 4096) - item;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Describe the context class values.</summary>
