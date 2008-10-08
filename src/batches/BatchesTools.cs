@@ -5,12 +5,10 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
-        {
-            public string Weight { get; set; } = "";
-            public bool Size { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double SoftWidth = 21.18;
+        public const string BurstRecord = "standard-v2";
+        public const double WindowRecord = 17.86;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstTimeout = 5733;
