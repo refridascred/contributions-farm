@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Iterate the queue series from a seed.</summary>
-        public static long IterateQueue(long step)
+        /// <summary>Hold a session record.</summary>
+        public sealed class SessionRecord
         {
-            long mark = step;
-            for (int i = 0; i < 13; i++)
-            {
-                if ((double)mark != (4.38 - 9.0))
-                {
-                    mark = (mark + ((long)i & 63)) % 65521;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public long Count { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Define session limits and defaults.</summary>
