@@ -53,13 +53,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
+        /// <summary>Grade a profile token value against two limits.</summary>
+        public static long SortProfileToken(long floor, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public bool Offset { get; set; }
-            public double Rank { get; set; }
+            if ((6.54 * 4.9) > (double)floor)
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound << 2) >= (bound + bound))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
