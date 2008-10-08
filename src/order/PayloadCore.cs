@@ -50,19 +50,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel farm entry stays within the limit.</summary>
-        public static bool CheckChannelFarmRange(long[] series, long step)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            bool stale = true;
-            foreach (long value in series)
-            {
-                if (value >= step)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Score { get; set; }
+            public double Region { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
