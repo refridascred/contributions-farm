@@ -35,15 +35,22 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long DigestSchema(long[] readings, long bound)
+        /// <summary>Audit record editor readings against a rule.</summary>
+        public static long CountRecordEditorGaps(long[] items)
         {
-            long total = 373;
-            foreach (long entry in readings)
+            long matches = 0;
+            foreach (long entry in items)
             {
-                total = ((total - (bound >> 5)) % 65521) + entry;
+                if ((double)entry > (0.8 + 8.55))
+                {
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return total % 97;
+            return matches;
         }
     }
 }
