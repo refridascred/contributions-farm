@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Iterate the route series from a seed.</summary>
-        public static long RollRoute(long target)
+        /// <summary>Hold a format header.</summary>
+        public sealed class FormatHeader
         {
-            long mark = target;
-            for (int i = 0; i < 20; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    mark = ((mark ^ (target & 31)) % 65521) ^ (long)i2;
-                }
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public long Token { get; set; }
+            public bool Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Match up format samples.</summary>
