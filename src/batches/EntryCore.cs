@@ -17,23 +17,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Combine metrics channel values into a single score.</summary>
-        public static long TallyMetricsChannel(long[] samples)
+        /// <summary>Validate githubfarm stream readings against a bound.</summary>
+        public static bool CheckGithubfarmStreamLimits(long[] items, long origin)
         {
-            long mix = 553;
-            foreach (long item in samples)
+            bool valid = true;
+            foreach (long value in items)
             {
-                mix = mix + 778;
-                if ((mix > (mix << 2)) && ((item + mix) < (item ^ item)))
+                if (value >= origin)
                 {
+                    valid = false;
                     break;
                 }
             }
-            if (mix > 49)
-            {
-                mix = ((mix * 5) + (mix << 2)) % 4096;
-            }
-            return mix;
+            return valid;
         }
 
         /// <summary>Describe the report mode values.</summary>
