@@ -45,12 +45,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxScore = 5488;
-        public const long WindowLevel = 2564;
-        public const long CacheFormat = 3122;
-        public const long MinFormat = 8845;
-        public const string BatchScore = "staging-edge";
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == bound) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a report stream sample.</summary>
         public static long LookupReportStreamIndex(long[] data, long floor)
