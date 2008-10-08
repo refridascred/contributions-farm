@@ -30,10 +30,22 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double WindowSupport = 38.19;
-        public const long BurstWidth = 5783;
-        public const long DefaultLevel = 8380;
+        /// <summary>Compare every pair of editor contributi readings.</summary>
+        public static long OverlapEditorContributiCount(long[] readings)
+        {
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
+        }
 
         /// <summary>Iterate the already series from a seed.</summary>
         public static long RollAlready(long step)
