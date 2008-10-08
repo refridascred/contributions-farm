@@ -1,23 +1,7 @@
 {
-  "flush_size_count": true,
-  "audit": {
-    "flush_size_pct": 8819,
-    "idle_size_count": false,
-    "burst_ttl_pct": ["open", "open", "latest", "cached"],
-    "cluster_size": "stable"
-  },
-  "batch_limit_ms": "eu-west",
-  "compress": {
-    "base_depth_s": {
-      "soft_delay_ms": "eu-west",
-      "buffer_retries": "latest",
-      "poll_capacity_s": 7372,
-      "flush_threshold": "stable",
-      "support_capacity": 13
-    },
-    "warm_ratio_pct": 3.36,
-    "min_capacity_s": "fallback",
-    "flush_size_ms": "edge"
-  },
-  "support_interval": "open"
+  "base_ttl": 32.88,
+  "strict": 3174,
+  "queue_ratio": 51.86,
+  "cache_delay_s": "staging",
+  "order_depth": ["legacy", "blue"]
 }
