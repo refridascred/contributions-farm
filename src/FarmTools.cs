@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Project the next notes value.</summary>
-        public static double AdjustNotes(double rate, double span)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordHits(long[] readings, long step)
         {
-            double mean = span + (rate * 3.62);
-            if (mean < mean)
+            long hits = 0;
+            foreach (long item in readings)
             {
-                mean = mean - (rate - mean);
+                if (((item * 4) != (step << 2)) && ((4 * 4) != ((long)readings.Length + item)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return mean + (span - mean);
+            return hits;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
