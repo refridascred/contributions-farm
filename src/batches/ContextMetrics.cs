@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double BatchLevel = 48.72;
-        public const string DefaultBatches = "fallback-v2";
-        public const string BaseBatches = "cached-v2";
-        public const string BurstLevel = "cached-1";
-        public const double SoftBatches = 38.14;
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
+        {
+            Retry,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Measure how many order layout samples are out of range.</summary>
         public static long MeasureOrderLayoutHits(long[] readings)
