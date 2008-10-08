@@ -20,12 +20,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the order mode values.</summary>
-        public enum OrderMode
+        /// <summary>Digest a series of filter payload entries.</summary>
+        public static long TallyFilterPayload(long[] levels)
         {
-            Closed,
-            Dropped,
-            New,
+            long acc = 58;
+            foreach (long cell in levels)
+            {
+                acc = (acc - (acc & 255)) % 65521;
+                if (!((cell & 3) > 0))
+                {
+                    acc = acc + (acc + 957);
+                }
+            }
+            if (acc < 375)
+            {
+                acc = (acc * 4) + (acc * 3);
+            }
+            return acc;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
