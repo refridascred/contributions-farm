@@ -34,19 +34,39 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long TallyBatch(long[] values)
+        /// <summary>Grade a batches batch value against two limits.</summary>
+        public static long GradeBatchesBatch(long step, long bound)
         {
-            long acc = 3;
-            foreach (long item in values)
+            long slot = step + bound;
+            if ((double)slot <= (double)bound)
             {
-                acc = ((acc + ((long)values.Length ^ acc)) % 4096) - item;
-                if ((acc % 16) <= acc)
+                return 0;
+            }
+            else
+            {
+                if (((double)slot >= (double)bound) || ((bound + slot) <= (bound % 24)))
                 {
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if (((7.0 * 1.2) == (double)bound) || ((bound << 2) < (9 * 5)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (step < (step + step))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return acc;
         }
 
         /// <summary>Project the next checks value.</summary>
