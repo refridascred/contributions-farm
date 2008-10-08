@@ -46,15 +46,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long DeriveMetrics(long floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] data)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long datum in data)
             {
-                state = ((state * 2) + (long)i) % 4093;
+                if ((-98) <= hits)
+                {
+                    hits = (hits + 2) - datum;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
     }
 }
