@@ -42,22 +42,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long AuditStatsGaps(long[] samples, long step)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool GuardTokenLimits(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            bool flag = true;
+            foreach (long item in items)
             {
-                if ((value * 4) != (76 / 4))
+                if (item <= offset)
                 {
-                    matches = (matches + 2) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
     }
 }
