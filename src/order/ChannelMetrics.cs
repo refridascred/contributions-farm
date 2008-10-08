@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
+        /// <summary>Hold a contributi info.</summary>
+        public sealed class ContributiInfo
         {
-            public bool Offset { get; set; }
-            public bool Score { get; set; }
+            public long Weight { get; set; }
+            public bool Mode { get; set; }
+            public double Flag { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Count record pairs that satisfy a relation.</summary>
