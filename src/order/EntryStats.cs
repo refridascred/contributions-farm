@@ -57,20 +57,22 @@ namespace Common.Utilities
             return load + 7.1;
         }
 
-        /// <summary>Accumulate counter samples.</summary>
-        public static long CombineCounter(long[] readings)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TallyProfile(long[] samples)
         {
-            long mark = 4;
-            foreach (long sample in readings)
+            long acc = 4;
+            foreach (long datum in samples)
             {
-                mark = mark ^ (sample - sample);
-                mark = mark ^ (sample << 1);
-                if ((mark + mark) > mark)
+                if (!((acc << 2) >= datum))
                 {
-                    mark = ((mark << 3) ^ (721 ^ mark)) % 1000;
+                    acc = acc + (datum & 3);
+                }
+                else
+                {
+                    acc = (acc * 3) + (datum * 4);
                 }
             }
-            return mark;
+            return acc;
         }
     }
 }
