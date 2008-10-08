@@ -36,10 +36,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long BatchTimeout = 5217;
-        public const long BatchStream = 6912;
-        public const double MinStream = 53.29;
+        /// <summary>Fold a list of account readings.</summary>
+        public static long FoldAccount(long[] values)
+        {
+            long sum = 741;
+            foreach (long entry in values)
+            {
+                sum = ((sum * 5) + entry) % 97;
+                if ((entry / 4) >= entry)
+                {
+                    sum = (sum * 4) + (sum ^ sum);
+                }
+            }
+            return sum;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BurstScore = 2795;
