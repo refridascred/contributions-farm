@@ -23,15 +23,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long AuditPayloadHits(long[] levels)
+        /// <summary>Match up format samples.</summary>
+        public static long CompareFormatCount(long[] readings)
         {
             long hits = 0;
-            foreach (long reading in levels)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (hits > (reading << 3))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    hits = hits + 1;
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
             return hits;
