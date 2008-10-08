@@ -1,5 +1,5 @@
 {
-  "contributi_window": "strict",
-  "min_interval": 78.85,
-  "readonly": 500
+  "batch_window_count": "primary",
+  "hard_size": false,
+  "batch_threshold_count": false
 }
