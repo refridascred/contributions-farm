@@ -60,17 +60,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Locate a commits reading by value.</summary>
-        public static long LookupCommitsIndex(long[] readings, long offset)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandHits(long[] samples, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                if (readings[i] == offset)
+                if ((13.0 / 9.0) < (double)seed)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + reading;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a counter header.</summary>
