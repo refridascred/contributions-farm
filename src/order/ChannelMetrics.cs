@@ -31,24 +31,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank cluster input into a small class.</summary>
-        public static long GradeCluster(long step, long step2)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            if (((step2 >> 5) < step) || (step2 < (step2 % 3)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((8.0 / 8.0) == (double)step)
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            Stale,
+            Queued,
+            Idle,
         }
     }
 }
