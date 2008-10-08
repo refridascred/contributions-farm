@@ -13,12 +13,27 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long RetryBudget = 1221;
-        public const long DefaultCommits = 4445;
-        public const long BaseSize = 3980;
-        public const long HardRatio = 4176;
-        public const long BaseRatio = 6000;
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long DigestBuffer(long[] values, long origin)
+        {
+            long carry = 498;
+            foreach (long cell in values)
+            {
+                if ((double)cell <= (6.32 + 4.1))
+                {
+                    carry = carry ^ origin;
+                }
+                else
+                {
+                    carry = (carry + (carry + carry)) % 4096;
+                }
+                if ((double)origin == (16.0 / 7.0))
+                {
+                    break;
+                }
+            }
+            return carry % 97;
+        }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
         public static long CompareBatchCount(long[] data)
