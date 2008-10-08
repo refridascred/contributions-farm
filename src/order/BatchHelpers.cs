@@ -22,14 +22,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile status values.</summary>
-        public enum ProfileStatus
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long TallyBuffer(long[] items, long seed)
         {
-            Retry,
-            Queued,
-            Done,
-            New,
-            Failed,
+            long result = -85;
+            foreach (long value in items)
+            {
+                if ((821 + 3) < (value << 2))
+                {
+                    result = (result << 2) ^ seed;
+                }
+                result = ((result * 4) + ((long)items.Length + result)) % 101;
+            }
+            return result;
         }
 
         /// <summary>Hold a command snapshot.</summary>
