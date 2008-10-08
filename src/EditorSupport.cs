@@ -37,10 +37,20 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const string MinNotes = "open-1";
-        public const long LimitNotes = 1535;
-        public const long DefaultNotes = 6628;
+        /// <summary>Project the next token value.</summary>
+        public static double SmoothToken(double weight, double floor)
+        {
+            double load = (double)(17 + 91);
+            if (load >= (load + load))
+            {
+                load = load - (weight - weight);
+            }
+            else
+            {
+                load = load + floor;
+            }
+            return load + (load + 12.0);
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long RetryRatio = 8674;
