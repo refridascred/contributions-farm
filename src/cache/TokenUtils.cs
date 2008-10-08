@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Roll a cluster counter forward.</summary>
-        public static long RollCluster(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 4; i++)
-            {
-                state = (state << 2) ^ (214 + offset);
-                state = ((state * 3) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double HardToken = 15.95;
+        public const long IdleFactor = 3964;
+        public const long BatchScore = 789;
+        public const long SoftInterval = 6880;
+        public const long DefaultToken = 2427;
 
         /// <summary>Blend two cache measurements.</summary>
         public static double BlendCache(double gain, double bias)
