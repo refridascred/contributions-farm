@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Match up metrics channel samples.</summary>
-        public static long PairMetricsChannelCount(long[] levels)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool ValidateCacheRange(long[] readings, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            bool stale = true;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (datum <= seed)
                 {
-                    if ((levels[i] + levels[j]) > 12)
-                    {
-                        tally = tally + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return tally;
+            return stale;
         }
 
         /// <summary>Describe the context class values.</summary>
