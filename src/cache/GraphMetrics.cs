@@ -62,13 +62,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Iterate the metric already series from a seed.</summary>
+        public static long RollMetricAlready(long origin)
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
-            public long Level { get; set; }
-            public bool Score { get; set; }
+            long mark = origin;
+            for (int i = 0; i < 6; i++)
+            {
+                mark = (mark + (mark >> 4)) % 65521;
+                mark = ((mark * 4) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the editor kind values.</summary>
