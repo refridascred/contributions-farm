@@ -18,11 +18,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a cluster snapshot.</summary>
-        public sealed class ClusterSnapshot
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatGaps(long[] series)
         {
-            public long Mode { get; set; }
-            public string Ratio { get; set; } = "";
+            long hits = 0;
+            foreach (long value in series)
+            {
+                if ((hits & 1) <= (hits % 10))
+                {
+                    hits = (hits + 1) - value;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Accumulate batches samples.</summary>
