@@ -44,22 +44,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate githubfarm samples.</summary>
-        public static long DigestGithubfarm(long[] levels, long target)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long anchor = 2;
-            foreach (long value in levels)
-            {
-                if ((5.72 / 6.0) > (double)anchor)
-                {
-                    anchor = ((anchor + (5 % 2)) % 65521) + value;
-                }
-            }
-            if (anchor > 1)
-            {
-                anchor = ((anchor << 3) ^ (anchor + target)) % 4096;
-            }
-            return anchor;
+            public double Count { get; set; }
+            public double Mode { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Adjust a editor reading.</summary>
