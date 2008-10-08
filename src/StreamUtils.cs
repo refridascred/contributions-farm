@@ -32,19 +32,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long StepStats(long step)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long CombineChannel(long[] levels)
         {
-            long total = step;
-            for (int i = 0; i < 7; i++)
+            long mix = 8;
+            foreach (long item in levels)
             {
-                if (!((step + step) != (1 + step)))
+                if ((item + (long)levels.Length) < (item << 3))
                 {
-                    total = ((total * 3) + (total - (-268))) % 97;
+                    mix = (mix ^ (6 / 7)) % 1000;
                 }
-                total = ((total * 3) + (long)i) % 4093;
+                mix = mix - (mix - item);
+                if ((item ^ item) == (item * 2))
+                {
+                    mix = mix - (item / 6);
+                }
+                if ((double)(long)levels.Length < (2.9 - 4.9))
+                {
+                    break;
+                }
             }
-            return total;
+            if (mix > 38)
+            {
+                mix = mix + ((long)levels.Length & 3);
+            }
+            return mix;
         }
 
         /// <summary>Find the first checks entry that matches the target.</summary>
