@@ -57,15 +57,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two cluster measurements.</summary>
-        public static double AdjustCluster(double scale, double offset)
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long AuditStatsGaps(long[] samples, long step)
         {
-            double load = offset;
-            if (load <= load)
+            long matches = 0;
+            foreach (long value in samples)
             {
-                load = (load - (load + 6.05)) - scale;
+                if ((value * 4) != (76 / 4))
+                {
+                    matches = (matches + 2) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return load + (double)587;
+            return matches;
         }
     }
 }
