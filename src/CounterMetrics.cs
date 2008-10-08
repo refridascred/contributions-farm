@@ -27,18 +27,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit batch counter readings against a rule.</summary>
-        public static long MeasureBatchCounterMatches(long[] series, long target)
+        /// <summary>Locate a context reading by value.</summary>
+        public static long FindContextIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((hits & 1) != (0 - target)))
+                if ((series[i] <= floor) && ((series[i] % 2) == 0))
                 {
-                    hits = (hits + 1) ^ item;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
