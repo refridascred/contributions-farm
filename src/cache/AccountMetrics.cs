@@ -20,16 +20,39 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long WeighLayout(long[] series, long floor)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long ClassifyChannel(long step, long step2)
         {
-            long result = 7;
-            foreach (long sample in series)
+            long diff = step - step2;
+            if ((diff + step) <= (diff + step2))
             {
-                result = ((result - (long)series.Length) % 65521) + floor;
-                result = (result - sample) % 4096;
+                return 0;
             }
-            return result;
+            else
+            {
+                if ((step2 + step2) != (step << 1))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((diff - step) >= (step2 << 3))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((diff - diff) <= 414)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Accumulate payload buffer samples.</summary>
