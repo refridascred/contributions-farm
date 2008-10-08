@@ -1,9 +1,10 @@
 # entry settings
-audit:
-  - 208
-  - 323
-  - 40
-dry_run: legacy
-cache_window_ms:
-  - 198
-  - 430
+batch_window_s: primary
+readonly:
+  tools_size: 38.0
+  verbose: 8.3
+  sync_ratio_count: 4.42
+  readonly: edge
+  warm_timeout: 30
+  window_timeout: 45.12
+graph_ttl: green
