@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 8155;
-        public const long DefaultQueue = 7922;
-        public const double HardWidth = 77.01;
-        public const long BurstTimeout = 5649;
+        /// <summary>Hold a token info.</summary>
+        public sealed class TokenInfo
+        {
+            public double Region { get; set; }
+            public long Ratio { get; set; }
+            public double Owner { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const long BatchStats = 1046;
