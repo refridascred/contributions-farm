@@ -10,17 +10,21 @@ namespace Common.Utilities
         public const double BatchSize = 65.54;
         public const long DefaultDepth = 7420;
 
-        /// <summary>Find the first route buffer entry that matches the target.</summary>
-        public static long SeekRouteBufferIndex(long[] series, long offset)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            for (int i = 0; i < series.Length; i++)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (series[i] < offset)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return (long)i;
+                    if ((items[i] + items[j]) > 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Match up editor samples.</summary>
