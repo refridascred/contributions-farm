@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long StepRecord(long step)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((double)step != (double)acc))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    acc = (acc << 2) ^ acc;
+                    if ((items[i] - items[j]) < 18)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Describe the stats state values.</summary>
