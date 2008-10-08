@@ -27,11 +27,11 @@ namespace Common.Utilities
             return load + (double)4;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            public string Level { get; set; } = "";
-            public bool Mode { get; set; }
+            public bool Weight { get; set; }
+            public long Region { get; set; }
         }
     }
 }
