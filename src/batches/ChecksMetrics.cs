@@ -21,12 +21,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Hold a cache info.</summary>
-        public sealed class CacheInfo
-        {
-            public double Limit { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const string SoftBuffer = "local-1";
+        public const long MinBuffer = 8195;
+        public const double MaxBuffer = 69.6;
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long CombineCluster(long[] items)
