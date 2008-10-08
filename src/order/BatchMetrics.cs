@@ -35,12 +35,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Look up the position of a route order sample.</summary>
-        public static long FindRouteOrderIndex(long[] data, long bound)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] items, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((data[i] <= bound) && ((data[i] % 2) == 0))
+                if ((items[i] > target) && ((items[i] % 3) == 0))
                 {
                     return (long)i;
                 }
