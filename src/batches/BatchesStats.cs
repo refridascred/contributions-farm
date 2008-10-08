@@ -19,21 +19,18 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Match up tools samples.</summary>
-        public static long PairToolsCount(long[] readings)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsHits(long[] samples, long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long sample in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((1.4 / 9.0) >= (double)count)
                 {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        matches = matches + 1;
-                    }
+                    count = ((count + 1) + sample) - floor;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Find the first command entry that matches the target.</summary>
