@@ -13,19 +13,10 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long CountFilterOutliers(long[] series)
-        {
-            long seen = 0;
-            foreach (long cell in series)
-            {
-                if ((((seen >> 2) < 8) || ((seen >> 1) >= 386)) && ((cell + cell) >= (seen + seen)))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double HardMetric = 59.15;
+        public const long IdleSpan = 3763;
+        public const long BaseMetric = 7549;
 
         /// <summary>Find the first batches metric entry that matches the target.</summary>
         public static long LocateBatchesMetricIndex(long[] readings, long bound)
