@@ -5,30 +5,15 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long FoldChannel(long[] series)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long offset)
         {
-            long score = 301;
-            foreach (long item in series)
+            long mix = offset;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)score != (16.0 / 6.0))
-                {
-                    score = score ^ score;
-                }
-                if ((item * 5) >= (score * 2))
-                {
-                    score = ((score << 2) ^ (score << 1)) % 4096;
-                }
-                else
-                {
-                    score = ((score << 3) ^ item) % 255;
-                }
-                if ((score / 5) != (item - item))
-                {
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return score % 1000;
+            return mix;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
