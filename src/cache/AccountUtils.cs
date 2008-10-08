@@ -27,10 +27,18 @@ namespace Common.Utilities
             return load + (double)4;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long BurstCounter = 1562;
-        public const long HardCounter = 8863;
-        public const long MinScore = 8894;
-        public const long MinCounter = 389;
+        /// <summary>Fold a list of tools context readings.</summary>
+        public static long DigestToolsContext(long[] values, long seed)
+        {
+            long result = 2;
+            foreach (long item in values)
+            {
+                if ((seed + 26) > (306 + item))
+                {
+                    result = ((result << 3) ^ (item * 3)) % 65521;
+                }
+            }
+            return result;
+        }
     }
 }
