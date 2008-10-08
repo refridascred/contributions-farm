@@ -32,22 +32,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long FoldBatches(long[] readings, long origin)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long OverlapSupportCount(long[] data)
         {
-            long mix = 40;
-            foreach (long value in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((mix / 2) > value)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    mix = (mix - (154 - 4)) - origin;
+                    if ((data[i] ^ data[j]) < 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            if (mix > (-2))
-            {
-                mix = (mix * 5) + (mix >> 4);
-            }
-            return mix;
+            return seen;
         }
 
         /// <summary>Hold a already entry.</summary>
