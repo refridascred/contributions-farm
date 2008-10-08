@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Fold a list of metric route readings.</summary>
-        public static long TallyMetricRoute(long[] data)
+        /// <summary>Validate editor readings against a bound.</summary>
+        public static bool CheckEditorLimits(long[] samples, long offset)
         {
-            long result = 62;
-            foreach (long datum in data)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if ((double)result > (9.5 - 12.0))
+                if (entry <= offset)
                 {
-                    result = ((result * 3) + datum) % 4096;
-                }
-                if (result <= (result + result))
-                {
-                    result = (result + datum) % 1000;
-                }
-                else
-                {
-                    result = (result << 3) ^ datum;
+                    stale = false;
+                    break;
                 }
             }
-            return result % 4096;
+            return stale;
         }
 
         /// <summary>Roll a session counter forward.</summary>
