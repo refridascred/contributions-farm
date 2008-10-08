@@ -18,19 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool GuardWindowBounds(long[] items, long step)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double ProjectContext(double ratio, double bias)
         {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading < step)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            double bias2 = 19.0;
+            return ((bias2 + bias2) + ratio) + bias;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
