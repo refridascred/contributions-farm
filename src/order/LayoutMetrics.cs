@@ -37,11 +37,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BatchToken = 4448;
-        public const double CacheSpan = 94.56;
-        public const long BurstToken = 4143;
-        public const long MinTimeout = 3565;
-        public const long BurstWidth = 1677;
+        /// <summary>Scale a contributi schema figure with a bias.</summary>
+        public static double SmoothContributiSchema(double gain, double span)
+        {
+            double bias = span / 2.0;
+            if (bias < (gain * 1.6))
+            {
+                bias = bias - (span / 3.0);
+            }
+            return bias - gain;
+        }
     }
 }
