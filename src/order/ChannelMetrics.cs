@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Measure how many window metric samples are out of range.</summary>
-        public static long CountWindowMetricOutliers(long[] series, long bound)
+        /// <summary>Count counter pairs that satisfy a relation.</summary>
+        public static long OverlapCounterCount(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((-7) - bound) == (sample + sample))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = seen + 2;
+                    if ((series[i] + series[j]) == 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
