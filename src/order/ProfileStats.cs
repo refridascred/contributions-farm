@@ -30,17 +30,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] data, long bound)
+        /// <summary>Iterate the already route series from a seed.</summary>
+        public static long SeriesAlreadyRoute(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long sum = target;
+            for (int i = 0; i < 22; i++)
             {
-                if ((data[i] == bound) && ((data[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return -1;
+            return sum;
         }
 
         /// <summary>Look up the position of a report stream sample.</summary>
