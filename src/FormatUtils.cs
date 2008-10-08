@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool CheckEditorLimits(long[] samples, long offset)
+        /// <summary>Hold a metrics options.</summary>
+        public sealed class MetricsOptions
         {
-            bool stale = true;
-            foreach (long entry in samples)
-            {
-                if (entry <= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public long Owner { get; set; }
+            public string Mode { get; set; } = "";
+            public long Size { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Roll a session counter forward.</summary>
