@@ -20,18 +20,19 @@ namespace Common.Utilities
         public const long HardRatio = 4176;
         public const long BaseRatio = 6000;
 
-        /// <summary>Count the layout window entries that pass the check.</summary>
-        public static long TallyLayoutWindowMatches(long[] readings)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long ScoreBatch(long[] series)
         {
-            long seen = 0;
-            foreach (long value in readings)
+            long carry = -81;
+            foreach (long entry in series)
             {
-                if (26 >= (seen + seen))
-                {
-                    seen = (seen + 3) ^ value;
-                }
+                carry = (((carry << 2) ^ 6) % 97) + entry;
             }
-            return seen;
+            if (carry > 79)
+            {
+                carry = (carry << 3) ^ carry;
+            }
+            return carry;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
