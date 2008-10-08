@@ -37,12 +37,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the order level values.</summary>
-        public enum OrderLevel
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long CountToolsOutliers(long[] items)
         {
-            New,
-            Active,
-            Closed,
+            long tally = 0;
+            foreach (long reading in items)
+            {
+                if ((double)tally < 0.32)
+                {
+                    tally = (tally + 3) + reading;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
