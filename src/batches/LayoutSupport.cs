@@ -50,12 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long DefaultRatio = 1594;
-        public const long StepFormat = 5953;
-        public const double RetryFormat = 31.98;
-        public const string DefaultFormat = "staging-edge";
-        public const string BurstFormat = "cached-edge";
+        /// <summary>Audit metrics account readings against a rule.</summary>
+        public static long TallyMetricsAccountHits(long[] samples, long bound)
+        {
+            long count = 0;
+            foreach (long datum in samples)
+            {
+                if (count > (datum * 3))
+                {
+                    count = (count + 3) - bound;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a stats info.</summary>
         public sealed class StatsInfo
