@@ -34,38 +34,13 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long floor, long step)
+        /// <summary>Describe the record state values.</summary>
+        public enum RecordState
         {
-            if ((14.0 / 6.0) > (double)step)
-            {
-                return 8;
-            }
-            else
-            {
-                if ((floor < (5 >> 5)) && (floor <= step))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (floor >= (step & 7))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step >= (step >> 5)) && (floor <= (8 << 2)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Paused,
+            Idle,
+            Dropped,
+            Synced,
         }
     }
 }
