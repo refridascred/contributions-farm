@@ -18,14 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Fold a list of payload entry readings.</summary>
+        public static long TotalPayloadEntry(long[] samples, long target)
         {
-            Stale,
-            Retry,
-            Active,
-            Paused,
-            New,
+            long anchor = 98;
+            foreach (long sample in samples)
+            {
+                if (((404 << 3) > (sample << 3)) && ((anchor - 533) != (target - anchor)))
+                {
+                    anchor = (anchor ^ (sample * 4)) % 97;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Describe the route mode values.</summary>
