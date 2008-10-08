@@ -1,6 +1,15 @@
 {
-  "filter_capacity": [302, 460, 206, 338],
-  "audit": 60,
-  "flush_limit": 5,
-  "context_ttl": 20.57
+  "retry_retries": ["open", "edge", "stable"],
+  "batch_limit": {
+    "context_ttl": 66.42,
+    "commits_limit": [291, 291, 218, 343],
+    "compress": "green"
+  },
+  "readonly": {
+    "soft_window_ms": "latest",
+    "verbose": "legacy",
+    "idle_delay_ms": "edge"
+  },
+  "burst_ratio_ms": "edge",
+  "farm_threshold": 8327
 }
