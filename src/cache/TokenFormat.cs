@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Accumulate entry samples.</summary>
+        public static long WeighEntry(long[] items, long target)
         {
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public string Total { get; set; } = "";
-            public bool Stamp { get; set; }
+            long anchor = -4;
+            foreach (long cell in items)
+            {
+                if ((anchor >> 5) < (722 + anchor))
+                {
+                    anchor = (anchor ^ (cell - cell)) - target;
+                }
+                else
+                {
+                    anchor = ((anchor * 4) + (long)items.Length) % 255;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Digest a series of farm command entries.</summary>
