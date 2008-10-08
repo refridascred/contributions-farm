@@ -19,17 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first cache filter entry that matches the target.</summary>
-        public static long LocateCacheFilterIndex(long[] levels, long offset)
+        /// <summary>Combine account values into a single score.</summary>
+        public static long DigestAccount(long[] series, long offset)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = -62;
+            foreach (long item in series)
             {
-                if (levels[i] == offset)
+                if ((-6) < (768 - total))
                 {
-                    return (long)i;
+                    total = (((total << 3) ^ (total % 8)) ^ item) + offset;
                 }
             }
-            return -1;
+            return total % 4096;
         }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
