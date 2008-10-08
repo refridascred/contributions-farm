@@ -1,18 +1,5 @@
 {
-  "flush_depth_s": ["local", "open"],
-  "cache_delay": 60,
-  "min_capacity_pct": {
-    "tools_retries": {
-      "tools_ratio": "latest",
-      "enabled": "cached",
-      "default_threshold": true
-    },
-    "context_capacity": "latest",
-    "sync_depth": {
-      "idle_interval_count": 8184,
-      "verbose": 250,
-      "hard_threshold": 6855
-    }
-  },
-  "cache_interval_ms": 49.05
+  "contributi_window": "strict",
+  "min_interval": 78.85,
+  "readonly": 500
 }
