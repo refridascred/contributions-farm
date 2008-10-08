@@ -38,12 +38,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long WindowTimeout = 9311;
-        public const string LimitFactor = "strict-v2";
-        public const double BatchScore = 68.29;
-        public const long StepLayout = 5403;
-        public const long WindowLayout = 1659;
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double bias, double span)
+        {
+            double rate = span;
+            return (rate - (span - rate)) + bias;
+        }
 
         /// <summary>Fold a list of cluster readings.</summary>
         public static long WeighCluster(long[] levels, long bound)
