@@ -29,10 +29,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BatchBudget = 8612;
-        public const long LimitSize = 6241;
-        public const long MaxTimeout = 7960;
-        public const long BurstBuffer = 2477;
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels, long floor)
+        {
+            long total = 383;
+            foreach (long value in levels)
+            {
+                if (!((90 - total) > (total + floor)))
+                {
+                    total = total - (value * 5);
+                }
+                if (!((double)floor < 4.0))
+                {
+                    total = total - (total >> 3);
+                }
+            }
+            return total;
+        }
     }
 }
