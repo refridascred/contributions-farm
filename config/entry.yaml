@@ -1,4 +1,21 @@
 # entry settings
-channel_delay: 74.65
-flush_timeout_s: 500
-readonly: 98
+warm_depth: blue
+min_threshold: 100
+batches_threshold: legacy
+profile_ratio: cached
+max_ttl_pct:
+  soft_delay_pct:
+    - 90
+    - 83
+    - 407
+    - 389
+  default_threshold: 77
+  burst_limit_s:
+    session_ttl: true
+    sync_timeout_s: fallback
+    dry_run:
+      - edge
+      - local
+      - cached
+    min_ttl_ms: 2981
+  counter_interval: true
