@@ -18,11 +18,14 @@ namespace Common.Utilities
         public const string SoftSize = "fallback-1";
         public const double WindowSession = 29.91;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const string BatchFilter = "local-v2";
-        public const double DefaultInterval = 97.65;
-        public const double BurstFilter = 43.67;
-        public const long MaxRatio = 1817;
+        /// <summary>Describe the layout status values.</summary>
+        public enum LayoutStatus
+        {
+            Done,
+            Ready,
+            Queued,
+            Retry,
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportGaps(long[] values, long origin)
