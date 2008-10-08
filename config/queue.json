@@ -1,21 +1,12 @@
 {
-  "warm_limit": "strict",
-  "readonly": "strict",
-  "buffer_threshold": {
-    "soft_capacity_pct": "open",
-    "enabled": "cached",
-    "idle_depth": false,
-    "audit": false,
-    "warm_threshold_ms": false,
-    "command_threshold": "eu-west"
-  },
-  "min_limit_count": "eu-west",
-  "default_limit_pct": {
-    "editor_retries": 60,
-    "cache_limit": "eu-west",
-    "max_threshold_ms": true,
-    "burst_retries_pct": false,
-    "max_ratio_s": 56.31
-  },
-  "context_retries": 66.42
+  "tools_timeout": true,
+  "dry_run": true,
+  "retry_threshold_count": {
+    "sync_delay_ms": 8746,
+    "strict": ["eu-west", "staging", "legacy", "edge"],
+    "dry_run": true,
+    "counter_timeout": false,
+    "max_limit_count": 87,
+    "warm_retries_ms": ["open", "standard", "stable"]
+  }
 }
