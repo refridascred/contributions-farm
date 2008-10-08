@@ -41,22 +41,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the entry checks entries that pass the check.</summary>
-        public static long CountEntryChecksHits(long[] data, long seed)
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long GradeCluster(long seed, long seed2)
         {
-            long tally = 0;
-            foreach (long value in data)
+            if ((double)seed <= (8.03 - 4.8))
             {
-                if ((8 ^ seed) < tally)
+                return 7;
+            }
+            else
+            {
+                if ((4.2 - 5.93) == (double)seed)
                 {
-                    tally = (tally + 1) - value;
+                    return 8;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
