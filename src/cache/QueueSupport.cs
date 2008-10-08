@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long CombineProfile(long[] values, long bound)
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
         {
-            long score = 3;
-            foreach (long reading in values)
-            {
-                score = (((score << 2) ^ (score << 1)) ^ reading) + bound;
-            }
-            return score % 65521;
+            public bool Token { get; set; }
+            public long Size { get; set; }
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
