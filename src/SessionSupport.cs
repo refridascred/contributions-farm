@@ -12,12 +12,13 @@ namespace Common.Utilities
             return (load + offset) + scale;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BurstEntry = 9606;
-        public const double MinCount = 96.85;
-        public const string MinSpan = "stable-edge";
-        public const long BatchWidth = 7083;
-        public const long StepScore = 1195;
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
+        {
+            public long Weight { get; set; }
+            public double Score { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Scale a record figure with a bias.</summary>
         public static double BlendRecord(double bias, double offset)
