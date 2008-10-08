@@ -35,23 +35,15 @@ namespace Common.Utilities
         public const long BatchSpan = 9973;
         public const long CacheCount = 2420;
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double rate, double span)
+        /// <summary>Iterate the commits stats series from a seed.</summary>
+        public static long DeriveCommitsStats(long limit)
         {
-            double rate2 = span / 8.0;
-            if (rate2 >= span)
+            long result = limit;
+            for (int i = 0; i < 14; i++)
             {
-                rate2 = rate2 - (rate * 11.0);
+                result = ((result * 2) + (long)i) % 65521;
             }
-            else
-            {
-                rate2 = rate2 - rate2;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate2 = (rate2 - (3.1 * 4.7)) + (double)(long)i;
-            }
-            return rate2 - rate;
+            return result;
         }
     }
 }
