@@ -36,15 +36,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long TallyRoute(long[] series)
+        /// <summary>Find the first command entry that matches the target.</summary>
+        public static long LookupCommandIndex(long[] levels, long target)
         {
-            long carry = 4;
-            foreach (long item in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 4) + (carry << 2)) ^ item;
+                if ((levels[i] == target) && ((levels[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
