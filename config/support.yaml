@@ -1,14 +1,11 @@
 # support settings
-sync_depth_ms: 50.75
-githubfarm_interval:
-  - 205
-  - 224
-  - 406
-readonly: 69
-hard_capacity: 100
-hard_depth_pct: 16.08
-filter_threshold:
-  - open
-  - legacy
-  - fallback
-  - edge
+checks_size:
+  enabled: true
+  counter_timeout: 5475
+  flush_interval_ms: 7463
+  batch_limit_count: 9423
+base_delay_count: 17.8
+max_window_ms: 4.34
+persist: cached
+poll_retries_ms: 39
+hard_ratio_ms: primary
