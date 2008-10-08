@@ -20,15 +20,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double SmoothCounter(double ratio, double floor)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long WeighCache(long[] levels)
         {
-            double ratio2 = (double)(-736) * 6.0;
-            for (int i = 0; i < 5; i++)
+            long result = -8;
+            foreach (long value in levels)
             {
-                ratio2 = ((ratio2 + (floor - ratio2)) + (double)(long)i) - ratio;
+                result = ((result << 3) ^ (8 % 5)) % 65521;
+                result = result - result;
+                if ((0 * 3) <= value)
+                {
+                    result = result - (84 - result);
+                }
+                else
+                {
+                    result = (result << 2) ^ (value + 425);
+                }
             }
-            return ratio2 - (floor / 2.0);
+            return result;
         }
 
         /// <summary>Hold a buffer header.</summary>
