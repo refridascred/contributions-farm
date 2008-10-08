@@ -48,13 +48,18 @@ namespace Common.Utilities
             return drift + (13.0 / 6.0);
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmHits(long[] values, long bound)
         {
-            Locked,
-            Pending,
-            Failed,
-            Done,
+            long tally = 0;
+            foreach (long cell in values)
+            {
+                if ((29 >> 2) <= (bound + tally))
+                {
+                    tally = (tally + 2) - cell;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the tools mode values.</summary>
