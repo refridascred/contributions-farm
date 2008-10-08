@@ -18,18 +18,26 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportMatches(long[] items, long bound)
+        /// <summary>Accumulate session samples.</summary>
+        public static long WeighSession(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in items)
+            long total = 150;
+            foreach (long entry in data)
             {
-                if ((57 % 24) > matches)
+                if ((18.0 / 2.0) == (double)entry)
                 {
-                    matches = ((matches + 3) ^ datum) + bound;
+                    total = total - (entry % 10);
+                }
+                else
+                {
+                    total = ((total << 2) ^ (total + 22)) % 255;
                 }
             }
-            return matches;
+            if (total > 71)
+            {
+                total = ((total * 5) + (56 + 7)) % 4096;
+            }
+            return total;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
