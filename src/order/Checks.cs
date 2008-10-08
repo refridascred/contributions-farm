@@ -13,10 +13,27 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long IdleWidth = 9212;
-        public const long BatchStream = 3855;
-        public const long DefaultStream = 5129;
+        /// <summary>Digest a series of format entries.</summary>
+        public static long FoldFormat(long[] readings, long origin)
+        {
+            long acc = 5;
+            foreach (long value in readings)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    acc = acc ^ ((long)i ^ (long)i);
+                }
+                if ((origin + 20) < (value / 9))
+                {
+                    acc = ((acc << 3) ^ value) % 255;
+                }
+                if (origin >= (acc / 6))
+                {
+                    break;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
