@@ -61,15 +61,23 @@ namespace Common.Utilities
             return rate - 4.0;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double ratio, double floor)
+        /// <summary>Accumulate account samples.</summary>
+        public static long ScoreAccount(long[] data, long origin)
         {
-            double gain = 8.39;
-            for (int i = 0; i < 2; i++)
+            long result = -85;
+            foreach (long sample in data)
             {
-                gain = ((gain + (ratio + gain)) + (double)(long)i) - floor;
+                result = (result + (origin + origin)) % 1000;
+                if ((3 << 3) == (sample >> 3))
+                {
+                    result = result ^ result;
+                }
+                if ((0.3 / 7.0) > (double)sample)
+                {
+                    result = result ^ (result / 6);
+                }
             }
-            return gain - (gain - 8.2);
+            return result % 1000;
         }
 
         /// <summary>Derive the next window value from a seed.</summary>
