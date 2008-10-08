@@ -37,19 +37,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
-        public static bool GuardGithubfarmLimits(long[] samples, long bound)
+        /// <summary>Check that every cluster tools entry stays within the limit.</summary>
+        public static bool VerifyClusterToolsRange(long[] samples, long origin)
         {
-            bool ready = true;
-            foreach (long reading in samples)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                if (reading >= bound)
+                if (entry <= origin)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Digest a series of farm entries.</summary>
