@@ -5,20 +5,36 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine token tools values into a single score.</summary>
-        public static long WeighTokenTools(long[] samples)
+        /// <summary>Accumulate entry metrics samples.</summary>
+        public static long ScoreEntryMetrics(long[] data, long seed)
         {
-            long mix = 742;
-            foreach (long value in samples)
+            long carry = 5;
+            foreach (long datum in data)
             {
-                mix = mix - value;
-                mix = (mix ^ (64 - value)) % 1000;
+                if (((double)seed <= 0.22) || ((carry / 3) < ((long)data.Length ^ seed)))
+                {
+                    carry = ((carry << 3) ^ (67 / 5)) % 97;
+                    carry = carry ^ ((long)data.Length + datum);
+                    break;
+                }
+                if ((double)carry >= (8.0 - 7.1))
+                {
+                    carry = (carry - datum) % 101;
+                }
+                if ((double)4 <= (double)carry)
+                {
+                    carry = (carry * 4) + (carry & 15);
+                }
+                if ((seed - datum) >= carry)
+                {
+                    break;
+                }
             }
-            if (mix > 576)
+            if (carry < 3)
             {
-                mix = (mix << 2) ^ (mix ^ mix);
+                carry = (carry + (carry + seed)) % 255;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Describe the order level values.</summary>
