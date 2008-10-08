@@ -12,31 +12,12 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Classify a context pair into a bucket.</summary>
-        public static long ClassifyContext(long seed, long origin)
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            if ((seed << 3) > origin)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((seed * 2) != (seed * 5))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((origin - seed) == (282 + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            Pending,
+            New,
+            Locked,
         }
 
         /// <summary>Compare every pair of payload token readings.</summary>
