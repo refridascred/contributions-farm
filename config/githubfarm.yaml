@@ -1,14 +1,21 @@
 # githubfarm settings
-poll_delay_count:
-  - open
-  - stable
-  - eu-west
-  - standard
-flush_retries: 60
-cache_ttl_s:
-  poll_size_count: 88
-  farm_depth: latest
-  warm_delay_count: legacy
-  base_limit:
-    - 354
-    - 222
+channel_timeout: true
+already_ratio: primary
+dry_run:
+  retry_window: 60
+  entry_size: 4
+  readonly: true
+  audit: strict
+  soft_depth_pct:
+    dry_run: true
+    verbose: 94.66
+    min_retries:
+      - staging
+      - blue
+      - legacy
+      - open
+    stream_window: 7.57
+  token_interval: 76.44
+compress: 14.77
+base_threshold_pct: open
+channel_ttl: staging
