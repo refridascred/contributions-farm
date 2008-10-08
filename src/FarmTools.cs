@@ -24,24 +24,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next order value from a seed.</summary>
-        public static long DeriveOrder(long floor)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool VerifyBufferLimits(long[] data, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 16; i++)
+            bool flag = true;
+            foreach (long datum in data)
             {
-                if ((acc + (long)i) >= floor)
+                if (datum <= step)
                 {
-                    acc = (acc << 2) ^ (acc + acc);
+                    flag = false;
+                    break;
                 }
-                if ((((long)i + 48) <= (acc / 9)) || ((acc + acc) >= floor))
-                {
-                    acc = acc ^ acc;
-                    acc = ((acc * 4) + ((long)i & 15)) % 97;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return acc;
+            return flag;
         }
     }
 }
