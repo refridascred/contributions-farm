@@ -33,19 +33,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every farm payload entry stays within the limit.</summary>
-        public static bool VerifyFarmPayloadRange(long[] items, long offset)
+        /// <summary>Count route commits pairs that satisfy a relation.</summary>
+        public static long CompareRouteCommitsCount(long[] levels)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry > offset)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return found;
+            return count;
         }
 
         /// <summary>Match up schema samples.</summary>
