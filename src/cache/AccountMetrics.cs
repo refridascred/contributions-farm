@@ -46,17 +46,14 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Look up the position of a stream sample.</summary>
-        public static long LookupStreamIndex(long[] data, long floor)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Queued,
+            Ready,
+            New,
+            Dropped,
+            Locked,
         }
 
         /// <summary>Define filter limits and defaults.</summary>
