@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long MinContext = 8480;
-        public const double LimitSize = 90.01;
-        public const double RetryContext = 7.53;
-        public const long WindowTimeout = 9794;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long WindowPayload = 4902;
+        public const long HardPayload = 1475;
+        public const string BatchScore = "fallback-edge";
+        public const long WindowLevel = 4041;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long ScoreFormat(long[] series, long step)
