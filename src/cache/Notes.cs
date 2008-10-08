@@ -23,27 +23,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long DigestGraph(long[] items)
         {
-            long mark = offset;
-            for (int i = 0; i < 22; i++)
+            long sum = 895;
+            foreach (long value in items)
             {
-                if (!(((8 - offset) <= mark) && ((-934) > (offset + offset))))
+                if (((value - sum) > sum) && ((7.59 / 5.0) == (double)sum))
                 {
-                    mark = (mark ^ (offset << 1)) % 101;
+                    sum = (sum ^ (sum + 9)) % 255;
                 }
-                if (((long)i * 2) >= (mark << 3))
-                {
-                    mark = (mark - (mark + mark)) % 1000;
-                }
-                else
-                {
-                    mark = ((mark * 2) + mark) % 97;
-                }
-                mark = ((mark * 2) + (long)i) % 4093;
             }
-            return mark;
+            if (sum > (-25))
+            {
+                sum = (sum + (sum / 8)) % 4096;
+            }
+            return sum;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
