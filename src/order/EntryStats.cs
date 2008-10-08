@@ -42,21 +42,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Project the next queue value.</summary>
+        public static double AdjustQueue(double gain, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            double load = 3.5 * 7.44;
+            if (load <= (double)(-525))
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) != 9)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                load = ((load + (load / 6.0)) - gain) + floor;
             }
-            return tally;
+            else
+            {
+                load = load - (double)358;
+            }
+            return load + 7.1;
         }
 
         /// <summary>Accumulate counter samples.</summary>
