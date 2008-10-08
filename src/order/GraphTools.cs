@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepGraph = 9393;
-        public const long LimitGraph = 2389;
-        public const string RetrySize = "open";
-        public const long MaxGraph = 7490;
-        public const long IdleFactor = 5132;
+        /// <summary>Describe the order mode values.</summary>
+        public enum OrderMode
+        {
+            Closed,
+            Dropped,
+            New,
+        }
 
         /// <summary>Look up the position of a checks commits sample.</summary>
         public static long LookupChecksCommitsIndex(long[] values, long origin)
