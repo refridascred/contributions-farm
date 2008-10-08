@@ -45,12 +45,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long MinFactor = 5561;
-        public const long DefaultRoute = 266;
-        public const long MinTimeout = 3074;
-        public const long DefaultInterval = 8390;
-        public const long BurstFactor = 7066;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string RetryCount = "latest-edge";
+        public const long MaxScore = 5689;
+        public const long BatchBudget = 818;
+        public const long RetryGithubfarm = 6524;
+        public const long LimitFactor = 6665;
 
         /// <summary>Match up layout samples.</summary>
         public static long PairLayoutCount(long[] data)
