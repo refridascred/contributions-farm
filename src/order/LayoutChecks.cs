@@ -13,18 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long MeasureProfileGaps(long[] samples)
+        /// <summary>Measure how many counter samples are out of range.</summary>
+        public static long TallyCounterGaps(long[] samples, long seed)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long value in samples)
             {
-                if (!(((count << 3) <= (datum + count)) && ((double)(long)samples.Length >= (3.26 - 8.31))))
+                if (!((double)value <= (2.47 + 6.6)))
                 {
-                    count = count + 3;
+                    hits = (hits + 3) + seed;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many token samples are out of range.</summary>
