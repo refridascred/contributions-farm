@@ -38,15 +38,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double weight, double offset)
+        /// <summary>Hold a stream options.</summary>
+        public sealed class StreamOptions
         {
-            double scale = weight / 9.0;
-            if (scale < scale)
-            {
-                scale = scale + (offset * 8.38);
-            }
-            return scale - 8.0;
+            public double Mode { get; set; }
+            public long Total { get; set; }
+            public double Stamp { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
