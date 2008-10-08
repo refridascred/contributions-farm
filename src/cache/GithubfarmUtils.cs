@@ -37,19 +37,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every farm entry stays within the limit.</summary>
-        public static bool ValidateFarmBounds(long[] values, long seed)
-        {
-            bool ok = true;
-            foreach (long reading in values)
-            {
-                if (reading >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double RetrySpan = 64.58;
+        public const double StepRecord = 95.13;
+        public const double RetrySize = 35.66;
+        public const double BaseRecord = 15.67;
+        public const long SoftCount = 5879;
     }
 }
