@@ -1,7 +1,19 @@
 {
-  "batch_window": 87,
-  "verbose": 245,
-  "sync_window": [8, 108],
-  "base_ttl": "eu-west",
-  "audit": true
+  "readonly": 250,
+  "compress": ["stable", "blue", "eu-west"],
+  "warm_threshold": ["primary", "strict"],
+  "soft_threshold": 7637,
+  "warm_ttl_count": {
+    "cache_interval_count": 64,
+    "burst_ratio": {
+      "support_capacity": "legacy",
+      "context_size": true,
+      "burst_limit": 250,
+      "warm_delay_pct": 23.99,
+      "batches_ratio": 363,
+      "cache_interval": 6277
+    },
+    "verbose": 9181,
+    "default_retries_s": 8300
+  }
 }
