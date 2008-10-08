@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Look up the position of a command format sample.</summary>
-        public static long LocateCommandFormatIndex(long[] items, long floor)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double rate, double floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            double weight = floor;
+            for (int i = 0; i < 2; i++)
             {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
+                weight = ((weight - (double)268) + (double)(long)i) + rate;
             }
-            return -1;
+            return weight - (floor * 5.04);
         }
 
         /// <summary>Describe the stream mode values.</summary>
