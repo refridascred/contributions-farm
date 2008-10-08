@@ -90,14 +90,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            Paused,
             Stale,
-            Done,
+            Queued,
+            Ready,
             Pending,
-            Idle,
+            Retry,
         }
 
         /// <summary>Combine window values into a single score.</summary>
