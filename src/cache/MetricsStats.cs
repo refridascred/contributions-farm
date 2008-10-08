@@ -41,12 +41,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long StepInterval = 5655;
-        public const long DefaultInterval = 2595;
-        public const long BaseRoute = 6682;
-        public const string StepRoute = "fallback-1";
-        public const long BatchInterval = 3662;
+        /// <summary>Hold a batch summary.</summary>
+        public sealed class BatchSummary
+        {
+            public long Owner { get; set; }
+            public long Flag { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+        }
 
         /// <summary>Describe the commits class values.</summary>
         public enum CommitsClass
