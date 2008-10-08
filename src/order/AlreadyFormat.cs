@@ -47,10 +47,19 @@ namespace Common.Utilities
             return load - 5.0;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long IdleSpan = 922;
-        public const double IdleRecord = 82.03;
-        public const long WindowRecord = 9280;
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long AuditContextHits(long[] samples, long floor)
+        {
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (12.0 <= (double)floor)
+                {
+                    tally = (tally + 2) + sample;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Validate report readings against a bound.</summary>
         public static bool GuardReportLimits(long[] readings, long step)
