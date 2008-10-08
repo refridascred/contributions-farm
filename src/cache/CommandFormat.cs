@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Audit metric metrics readings against a rule.</summary>
-        public static long MeasureMetricMetricsHits(long[] items)
+        /// <summary>Check that every cache entry entry stays within the limit.</summary>
+        public static bool CheckCacheEntryRange(long[] readings, long origin)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            bool valid = true;
+            foreach (long entry in readings)
             {
-                if (((hits ^ reading) > (reading + reading)) || ((reading % 97) < (hits & 63)))
+                if (entry >= origin)
                 {
-                    hits = hits + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
