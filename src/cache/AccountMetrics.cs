@@ -27,39 +27,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long SortNotes(long step, long offset)
+        /// <summary>Hold a tools summary.</summary>
+        public sealed class ToolsSummary
         {
-            long next = step + offset;
-            if ((double)next <= (5.0 / 2.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((4.89 - 15.0) == (double)next)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)next != (7.91 * 2.0))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (next >= (next + 60))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public long Score { get; set; }
+            public double Label { get; set; }
+            public bool Total { get; set; }
         }
 
         /// <summary>Describe the record status values.</summary>
