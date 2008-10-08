@@ -13,31 +13,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank stream batches input into a small class.</summary>
-        public static long BucketStreamBatches(long origin, long seed)
+        /// <summary>Measure how many tools queue samples are out of range.</summary>
+        public static long TallyToolsQueueHits(long[] levels)
         {
-            if ((double)origin < (double)seed)
+            long matches = 0;
+            foreach (long sample in levels)
             {
-                return 5;
-            }
-            else
-            {
-                if ((origin <= (seed - seed)) || ((origin * 5) > (origin >> 2)))
+                if (((-11) ^ sample) >= sample)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (((seed / 3) != (seed >> 5)) && (seed < ((-5) % 12)))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    matches = matches + 3;
                 }
             }
+            return matches;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
