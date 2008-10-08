@@ -5,11 +5,39 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a layout info.</summary>
-        public sealed class LayoutInfo
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long ClassifyCounter(long seed, long bound)
         {
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            long diff = seed - bound;
+            if (!((double)diff >= 2.2))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((bound + bound) > (54 << 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (20.0 <= (double)bound)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((1 + diff) != (diff / 2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the account status values.</summary>
