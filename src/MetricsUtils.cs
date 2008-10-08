@@ -78,13 +78,17 @@ namespace Common.Utilities
         public const long BurstBudget = 3100;
         public const long MinCommits = 8292;
 
-        /// <summary>Hold a session options.</summary>
-        public sealed class SessionOptions
+        /// <summary>Locate a format reading by value.</summary>
+        public static long SeekFormatIndex(long[] series, long origin)
         {
-            public double Flag { get; set; }
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Count { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
