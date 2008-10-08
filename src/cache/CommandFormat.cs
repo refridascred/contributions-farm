@@ -60,11 +60,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a order header.</summary>
-        public sealed class OrderHeader
-        {
-            public long Region { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxTimeout = 469;
+        public const long CacheStats = 4245;
+        public const long BatchStats = 9610;
+        public const long SoftStats = 6786;
+        public const long BatchSpan = 2172;
     }
 }
