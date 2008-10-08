@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Audit cache editor readings against a rule.</summary>
-        public static long TallyCacheEditorOutliers(long[] data, long limit)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long FindChecksIndex(long[] series, long origin)
         {
-            long count = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (((4.0 - 1.3) >= (7.76 * 5.5)) || (((1 & 127) >= reading) || (7.75 >= (double)count)))
+                if ((series[i] < origin) && ((series[i] % 3) != 0))
                 {
-                    count = (count + 1) + limit;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Accumulate profile samples.</summary>
