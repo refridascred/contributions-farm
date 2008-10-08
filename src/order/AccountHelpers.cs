@@ -14,12 +14,23 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowOrder = 1168;
-        public const long IdleOrder = 6366;
-        public const string HardOrder = "strict-1";
-        public const double StepFactor = 8.44;
-        public const long WindowScore = 9103;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long CountAccountGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long value in data)
+            {
+                if ((double)seen != (8.8 / 2.0))
+                {
+                    seen = (seen + 1) + value;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Audit stream readings against a rule.</summary>
         public static long TallyStreamMatches(long[] readings, long floor)
