@@ -54,14 +54,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Audit buffer profile readings against a rule.</summary>
+        public static long AuditBufferProfileHits(long[] values)
         {
-            Ready,
-            Dropped,
-            Pending,
-            Draft,
-            Failed,
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (tally < (tally >> 4))
+                {
+                    tally = (tally + 1) - value;
+                }
+            }
+            return tally;
         }
     }
 }
