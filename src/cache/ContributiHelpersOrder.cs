@@ -27,18 +27,9 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long CombineLayout(long[] values, long limit)
-        {
-            long acc = -5;
-            foreach (long value in values)
-            {
-                if ((double)limit == (6.43 + 18.0))
-                {
-                    acc = (acc + value) % 4096;
-                }
-            }
-            return acc % 97;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BurstSpan = 3676;
+        public const long BurstCount = 1299;
+        public const long BurstToken = 175;
     }
 }
