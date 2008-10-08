@@ -34,31 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long step, long bound)
+        /// <summary>Check that every farm payload entry stays within the limit.</summary>
+        public static bool VerifyFarmPayloadRange(long[] items, long offset)
         {
-            if (((step + bound) < (34 + step)) || ((step + step) < (bound % 7)))
+            bool found = true;
+            foreach (long entry in items)
             {
-                return 1;
-            }
-            else
-            {
-                if ((bound >> 2) <= (step - 3))
+                if (entry > offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if (((9.0 - 4.0) < (double)step) && ((step ^ step) > (step + bound)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Hold a buffer stats.</summary>
