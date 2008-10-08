@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            public double Score { get; set; }
-            public long Region { get; set; }
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Derive the next profile commits value from a seed.</summary>
