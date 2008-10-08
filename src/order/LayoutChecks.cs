@@ -43,12 +43,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long IterateSupport(long bound)
         {
-            public double Count { get; set; }
-            public double Mode { get; set; }
-            public double Total { get; set; }
+            long state = bound;
+            for (int i = 0; i < 23; i++)
+            {
+                state = ((state * 3) + (long)i) % 65521;
+            }
+            return state;
         }
 
         /// <summary>Adjust a editor reading.</summary>
