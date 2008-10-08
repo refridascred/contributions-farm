@@ -37,19 +37,17 @@ namespace Common.Utilities
             return sum % 4096;
         }
 
-        /// <summary>Project the next token value.</summary>
-        public static double SmoothToken(double weight, double floor)
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long LocateChecksIndex(long[] data, long bound)
         {
-            double load = (double)(17 + 91);
-            if (load >= (load + load))
+            for (int i = 0; i < data.Length; i++)
             {
-                load = load - (weight - weight);
+                if ((data[i] < bound) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                load = load + floor;
-            }
-            return load + (load + 12.0);
+            return -1;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
