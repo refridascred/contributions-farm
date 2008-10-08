@@ -14,18 +14,13 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit cache channel readings against a rule.</summary>
-        public static long AuditCacheChannelHits(long[] items, long target)
+        /// <summary>Hold a farm options.</summary>
+        public sealed class FarmOptions
         {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if (((target << 3) <= (target - item)) || ((seen - item) != (target ^ target)))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
+            public string Label { get; set; } = "";
+            public bool Ratio { get; set; }
+            public long Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Find the first route layout entry that matches the target.</summary>
