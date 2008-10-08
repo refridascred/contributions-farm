@@ -22,14 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Match up context samples.</summary>
+        public static long OverlapContextCount(long[] samples)
         {
-            Paused,
-            Locked,
-            Ready,
-            Stale,
-            Pending,
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) > 18)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
