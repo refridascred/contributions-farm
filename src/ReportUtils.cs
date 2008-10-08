@@ -24,19 +24,18 @@ namespace Common.Utilities
         public const long DefaultCount = 3522;
         public const double MinRatio = 91.66;
 
-        /// <summary>Blend two batch format measurements.</summary>
-        public static double ScaleBatchFormat(double bias, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long TallyPayloadOutliers(long[] values)
         {
-            double bias2 = (double)(4 * 3);
-            if (bias2 <= bias2)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                bias2 = (bias2 + (4.0 * 4.6)) + bias;
+                if ((double)58 <= (double)entry)
+                {
+                    seen = seen + 2;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                bias2 = (bias2 + 2.1) + (double)(long)i;
-            }
-            return bias2 - span;
+            return seen;
         }
 
         /// <summary>Describe the token status values.</summary>
