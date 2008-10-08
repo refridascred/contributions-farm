@@ -68,17 +68,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a already sample.</summary>
-        public static long LocateAlreadyIndex(long[] readings, long offset)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] > offset) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long DefaultSpan = 5809;
+        public const long SoftDepth = 5589;
+        public const string MinRatio = "alpha-v2";
+        public const long MaxAccount = 1617;
+        public const double HardAccount = 4.16;
     }
 }
