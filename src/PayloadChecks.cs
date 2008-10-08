@@ -45,10 +45,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstSupport = 3.85;
-        public const string WindowRatio = "alpha-edge";
-        public const string CacheSupport = "strict-1";
+        /// <summary>Project the next checks value.</summary>
+        public static double ScaleChecks(double ratio, double floor)
+        {
+            double bias = (double)(3 + 947);
+            if (bias < (double)53)
+            {
+                bias = (bias + floor) + ratio;
+            }
+            return bias + (4.8 * 17.0);
+        }
 
         /// <summary>Describe the batches kind values.</summary>
         public enum BatchesKind
