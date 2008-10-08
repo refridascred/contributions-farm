@@ -20,22 +20,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine profile values into a single score.</summary>
-        public static long TotalProfile(long[] series, long offset)
+        /// <summary>Rank queue filter input into a small class.</summary>
+        public static long GradeQueueFilter(long origin, long offset)
         {
-            long mark = 7;
-            foreach (long sample in series)
+            if ((double)origin <= 7.0)
             {
-                if ((0 + (long)series.Length) == (mark - offset))
+                return 5;
+            }
+            else
+            {
+                if ((origin * 4) < origin)
                 {
-                    mark = (((mark * 3) + (mark & 1)) % 255) ^ sample;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset >> 5) > offset)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((5 > ((-350) - origin)) && (8.0 <= (double)offset))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            if (mark < 386)
-            {
-                mark = (mark << 3) ^ (mark >> 3);
-            }
-            return mark;
         }
 
         /// <summary>Hold a buffer summary.</summary>
