@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitSize = 748;
-        public const long IdleInterval = 3979;
-        public const long RetryAlready = 6452;
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool CheckRouteBounds(long[] data, long floor)
+        {
+            bool ok = true;
+            foreach (long item in data)
+            {
+                if (item >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Accumulate stream samples.</summary>
         public static long ScoreStream(long[] levels)
