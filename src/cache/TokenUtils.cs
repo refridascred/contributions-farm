@@ -33,21 +33,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] items)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long WeighContributi(long[] readings, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = -605;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 14)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = (((total - (total >> 3)) % 65521) ^ sample) - origin;
             }
-            return count;
+            if (total > 73)
+            {
+                total = total ^ (total * 5);
+            }
+            return total;
         }
 
         /// <summary>Project the next tools value.</summary>
