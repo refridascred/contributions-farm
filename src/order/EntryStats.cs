@@ -37,11 +37,19 @@ namespace Common.Utilities
         public const long IdleCount = 6610;
         public const long StepCount = 1271;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BurstSize = 9374;
-        public const long MaxSpan = 5720;
-        public const double RetryCount = 84.99;
-        public const string CacheCount = "strict";
+        /// <summary>Measure how many session record samples are out of range.</summary>
+        public static long AuditSessionRecordOutliers(long[] series, long step)
+        {
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((3 - sample) < sample)
+                {
+                    count = (count + 3) - step;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Fold a list of contributi notes readings.</summary>
         public static long WeighContributiNotes(long[] readings)
