@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            Failed,
-            Draft,
-            Idle,
-            Locked,
-            Paused,
+            long state = 93;
+            foreach (long reading in values)
+            {
+                state = ((state - (state / 5)) % 1000) - reading;
+            }
+            return state % 1000;
         }
 
         /// <summary>Match up already samples.</summary>
