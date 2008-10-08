@@ -34,11 +34,19 @@ namespace Common.Utilities
         public const string CacheChecks = "local";
         public const long BurstChecks = 7359;
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long IdlePayload = 5727;
-        public const long BurstTimeout = 3351;
-        public const double HardPayload = 84.94;
-        public const double LimitRatio = 17.55;
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphMatches(long[] series, long seed)
+        {
+            long seen = 0;
+            foreach (long datum in series)
+            {
+                if ((seen % 64) > ((long)series.Length + datum))
+                {
+                    seen = (seen + 3) - seed;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long PairEditorCount(long[] levels)
