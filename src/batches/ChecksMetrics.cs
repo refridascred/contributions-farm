@@ -12,11 +12,13 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultScore = 878;
-        public const string RetrySession = "alpha-edge";
-        public const string SoftSize = "fallback-1";
-        public const double WindowSession = 29.91;
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
+        {
+            public string Mode { get; set; } = "";
+            public double Total { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Describe the layout status values.</summary>
         public enum LayoutStatus
