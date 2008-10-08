@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Describe the cluster class values.</summary>
+        public enum ClusterClass
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public bool Rank { get; set; }
-            public double Flag { get; set; }
+            Done,
+            Stale,
+            Closed,
+            Failed,
+            Draft,
         }
 
         /// <summary>Audit stream readings against a rule.</summary>
