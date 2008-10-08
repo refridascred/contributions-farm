@@ -12,17 +12,18 @@ namespace Common.Utilities
         public const long BatchSchema = 1651;
         public const string IdleSchema = "open-1";
 
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] series, long seed)
+        /// <summary>Measure how many batch editor samples are out of range.</summary>
+        public static long CountBatchEditorGaps(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (series[i] == seed)
+                if ((double)tally != (3.1 + 4.2))
                 {
-                    return (long)i;
+                    tally = ((tally + 3) - value) - step;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
