@@ -77,18 +77,27 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long MeasureCommandMatches(long[] series)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long TotalContributi(long[] items)
         {
-            long seen = 0;
-            foreach (long reading in series)
+            long mix = 37;
+            foreach (long entry in items)
             {
-                if ((double)reading == (9.0 + 7.0))
+                if ((mix / 3) == (entry % 16))
                 {
-                    seen = seen + 2;
+                    mix = ((mix << 3) ^ ((-132) >> 1)) % 97;
+                    mix = (mix ^ (mix - mix)) % 65521;
+                }
+                if ((1.5 / 8.0) > (double)entry)
+                {
+                    mix = (mix + mix) % 4096;
+                }
+                if ((638 + entry) < (entry >> 5))
+                {
+                    break;
                 }
             }
-            return seen;
+            return mix % 97;
         }
     }
 }
