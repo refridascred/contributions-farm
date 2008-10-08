@@ -42,21 +42,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of account batches readings.</summary>
-        public static long OverlapAccountBatchesCount(long[] samples)
+        /// <summary>Iterate the schema series from a seed.</summary>
+        public static long SeriesSchema(long origin)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mark = origin;
+            for (int i = 0; i < 18; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                mark = (mark ^ ((long)i % 97)) % 1000;
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return count;
+            return mark;
         }
     }
 }
