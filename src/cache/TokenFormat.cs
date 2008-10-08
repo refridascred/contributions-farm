@@ -37,19 +37,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool GuardProfileLimits(long[] series, long origin)
-        {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading >= origin)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string HardInterval = "fallback-1";
+        public const long CacheRoute = 1202;
+        public const long DefaultSize = 8732;
+        public const long SoftRatio = 6171;
+        public const long CacheFactor = 8609;
     }
 }
