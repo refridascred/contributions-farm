@@ -36,17 +36,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Locate a command filter reading by value.</summary>
-        public static long FindCommandFilterIndex(long[] levels, long origin)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Paused,
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
