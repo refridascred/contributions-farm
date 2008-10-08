@@ -34,24 +34,21 @@ namespace Common.Utilities
         public const double StepSize = 13.06;
         public const long IdleWidth = 4600;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long step)
         {
-            long state = 931;
-            foreach (long sample in values)
+            long acc = step;
+            for (int i = 0; i < 11; i++)
             {
-                if (!((7 + sample) != (sample - state)))
+                acc = ((acc * 5) + (acc + (long)i)) % 97;
+                if (acc <= (step << 1))
                 {
-                    state = (state + (sample + sample)) % 255;
-                    continue;
+                    acc = acc - (acc - 623);
                 }
-                state = (state - sample) % 1000;
-                if ((double)sample != (9.0 - 2.0))
-                {
-                    break;
-                }
+                acc = ((acc * 4) + 649) % 255;
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return state % 1000;
+            return acc;
         }
 
         /// <summary>Accumulate order samples.</summary>
