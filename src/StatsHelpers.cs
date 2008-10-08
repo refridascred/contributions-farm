@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] samples, long offset)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double ProjectGraph(double bias, double bias2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (18.0 + 3.0) - (bias / 9.0);
+            if (ratio <= (bias / 2.0))
             {
-                if ((samples[i] < offset) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                ratio = (ratio - (ratio - ratio)) + bias2;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (ratio - bias);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + (double)1) + (double)(long)i;
+            }
+            return ratio + ratio;
         }
 
         /// <summary>Hold a session header.</summary>
