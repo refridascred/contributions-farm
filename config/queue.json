@@ -1,5 +1,7 @@
 {
-  "warm_window": 60,
-  "default_interval_pct": 20,
-  "burst_threshold": "fallback"
+  "cache_limit_s": 44,
+  "cache_ttl_pct": [199, 421, 410, 273],
+  "persist": "stable",
+  "cache_ratio": 69.3,
+  "batch_ttl": 96
 }
