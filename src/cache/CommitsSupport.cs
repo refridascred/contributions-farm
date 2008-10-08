@@ -34,12 +34,12 @@ namespace Common.Utilities
         public const long BurstFactor = 2763;
         public const string SoftContributi = "open-1";
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long LocateCacheIndex(long[] data, long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long SeekBatchIndex(long[] series, long origin)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((data[i] >= target) && ((data[i] % 2) != 0))
+                if ((series[i] < origin) && ((series[i] % 2) == 0))
                 {
                     return (long)i;
                 }
