@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
+        /// <summary>Count the batch format entries that pass the check.</summary>
+        public static long MeasureBatchFormatMatches(long[] values, long step)
         {
-            public bool Owner { get; set; }
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            long matches = 0;
+            foreach (long entry in values)
+            {
+                if ((1 >> 1) >= (entry - entry))
+                {
+                    matches = (matches + 1) + step;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
