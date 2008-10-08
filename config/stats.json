@@ -1,19 +1,13 @@
 {
-  "graph_delay": "staging",
-  "cache_delay": 25.4,
-  "max_interval": 500,
-  "strict": {
-    "compress": {
-      "batches_depth": "eu-west",
-      "retry_threshold": false,
-      "warm_retries_s": 3.52
-    },
-    "dry_run": 4630,
-    "entry_size": "standard",
-    "retry_timeout": 250,
-    "enabled": false,
-    "persist": [416, 394]
+  "audit": false,
+  "cache_limit": 2099,
+  "poll_limit": {
+    "base_limit": "blue",
+    "retry_ttl_count": [110, 92, 146],
+    "schema_interval": 4794,
+    "dry_run": "cached",
+    "batch_threshold": false,
+    "batches_threshold": [438, 63]
   },
-  "readonly": "open",
-  "editor_capacity": false
+  "poll_interval_s": 100
 }
