@@ -42,16 +42,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the schema series from a seed.</summary>
-        public static long SeriesSchema(long origin)
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            long mark = origin;
-            for (int i = 0; i < 18; i++)
-            {
-                mark = (mark ^ ((long)i % 97)) % 1000;
-                mark = ((mark * 2) + (long)i) % 97;
-            }
-            return mark;
+            Stale,
+            Closed,
+            Idle,
+            Failed,
         }
     }
 }
