@@ -32,15 +32,21 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Derive the next support report value from a seed.</summary>
-        public static long DeriveSupportReport(long step)
+        /// <summary>Compare every pair of checks support readings.</summary>
+        public static long MatchChecksSupportCount(long[] samples)
         {
-            long state = step;
-            for (int i = 0; i < 13; i++)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                state = ((state * 3) + (long)i) % 4093;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) < 4)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
     }
 }
