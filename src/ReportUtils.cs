@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const string BurstCount = "strict";
-        public const double CacheBudget = 59.96;
-        public const long DefaultCount = 3522;
-        public const double MinRatio = 91.66;
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool GuardBatchBounds(long[] levels, long limit)
+        {
+            bool ready = true;
+            foreach (long item in levels)
+            {
+                if (item != limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Count the payload entries that pass the check.</summary>
         public static long TallyPayloadOutliers(long[] values)
