@@ -41,23 +41,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next graph value.</summary>
-        public static double ScaleGraph(double ratio, double bias)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportHits(long[] data, long offset)
         {
-            double weight = (double)((-4) + 14);
-            if (weight < 6.8)
+            long hits = 0;
+            foreach (long item in data)
             {
-                weight = (weight + (1.7 / 9.0)) + ratio;
+                if ((34 >= (offset * 2)) && ((offset * 2) == (item << 1)))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + weight;
+            return hits;
         }
     }
 }
