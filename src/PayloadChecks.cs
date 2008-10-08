@@ -22,18 +22,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit batches notes readings against a rule.</summary>
-        public static long CountBatchesNotesHits(long[] samples, long seed)
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            long seen = 0;
-            foreach (long item in samples)
-            {
-                if (item < (seed / 3))
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Ratio { get; set; }
+            public string Total { get; set; } = "";
+            public long Mode { get; set; }
         }
 
         /// <summary>Grade a batches batch value against two limits.</summary>
