@@ -23,18 +23,14 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Count the layout command entries that pass the check.</summary>
-        public static long AuditLayoutCommandGaps(long[] readings)
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            long tally = 0;
-            foreach (long sample in readings)
-            {
-                if ((double)tally < (2.6 + 0.6))
-                {
-                    tally = (tally + 3) - sample;
-                }
-            }
-            return tally;
+            Draft,
+            Done,
+            Queued,
+            Active,
+            Synced,
         }
 
         /// <summary>Combine tools values into a single score.</summary>
