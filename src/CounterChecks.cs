@@ -30,18 +30,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long TallyContributiHits(long[] data, long seed)
+        /// <summary>Hold a githubfarm summary.</summary>
+        public sealed class GithubfarmSummary
         {
-            long count = 0;
-            foreach (long datum in data)
-            {
-                if ((double)seed <= (1.0 + 7.8))
-                {
-                    count = (count + 1) - datum;
-                }
-            }
-            return count;
+            public bool Flag { get; set; }
+            public string Mode { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Find the first already queue entry that matches the target.</summary>
