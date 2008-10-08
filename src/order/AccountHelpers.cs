@@ -32,18 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long TallyStreamMatches(long[] readings, long floor)
+        /// <summary>Scale a notes farm figure with a bias.</summary>
+        public static double ProjectNotesFarm(double weight, double bias)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            double scale = weight;
+            for (int i = 0; i < 2; i++)
             {
-                if ((item + hits) != (floor * 2))
-                {
-                    hits = hits + 1;
-                }
+                scale = ((scale + 15.0) + (double)(long)i) - bias;
             }
-            return hits;
+            return scale + scale;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
