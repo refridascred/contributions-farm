@@ -39,18 +39,19 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsMatches(long[] items)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] data, long floor)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((cell * 2) < (hits * 5))
+                if (entry != floor)
                 {
-                    hits = hits + 3;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
