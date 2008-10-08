@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double ratio, double span)
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            double ratio2 = (double)(20 & 127);
-            return ((ratio2 + (3.0 / 8.0)) + ratio) + span;
+            public bool Owner { get; set; }
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
