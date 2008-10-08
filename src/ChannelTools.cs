@@ -46,22 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] data)
+        /// <summary>Check that every token entry stays within the limit.</summary>
+        public static bool ValidateTokenRange(long[] readings, long seed)
         {
-            long hits = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long datum in readings)
             {
-                if ((-98) <= hits)
+                if (datum > seed)
                 {
-                    hits = (hits + 2) - datum;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
     }
 }
