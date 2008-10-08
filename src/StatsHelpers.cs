@@ -19,12 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public string Total { get; set; } = "";
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            Synced,
+            Stale,
+            Done,
+            Closed,
+            Queued,
         }
 
         /// <summary>Hold a contributi header.</summary>
