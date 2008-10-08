@@ -43,26 +43,32 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Accumulate profile order samples.</summary>
-        public static long WeighProfileOrder(long[] readings, long step)
+        /// <summary>Classify a cluster pair into a bucket.</summary>
+        public static long GradeCluster(long seed, long floor)
         {
-            long mix = 23;
-            foreach (long datum in readings)
+            long delta = seed - floor;
+            if (floor <= (seed - delta))
             {
-                if (((2.83 / 9.0) > (double)step) && ((step / 3) >= step))
+                return 4;
+            }
+            else
+            {
+                if ((floor - 123) < seed)
                 {
-                    mix = mix ^ datum;
+                    return 0;
                 }
                 else
                 {
-                    mix = (mix ^ (datum / 3)) % 97;
+                    if (((8.35 * 13.0) != (double)floor) && ((double)delta > (1.9 / 4.0)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            if (mix > 508)
-            {
-                mix = (mix + mix) % 4096;
-            }
-            return mix;
         }
 
         /// <summary>Derive the next report counter value from a seed.</summary>
