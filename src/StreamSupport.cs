@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool CheckBufferBounds(long[] readings, long limit)
         {
-            Done,
-            Failed,
-            Retry,
-            Ready,
+            bool ready = true;
+            foreach (long cell in readings)
+            {
+                if (cell >= limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
