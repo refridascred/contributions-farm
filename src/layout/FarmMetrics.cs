@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Farm metrics helpers.</summary>
     public static class FarmMetrics
     {
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenMatches(long[] values, long seed)
-        {
-            long hits = 0;
-            foreach (long value in values)
-            {
-                if (((long)values.Length << 1) <= 2)
-                {
-                    hits = ((hits + 2) + value) - seed;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long SoftAlready = 4762;
+        public const long BurstAlready = 3680;
+        public const double DefaultAlready = 4.1;
+        public const long WindowLevel = 2919;
+        public const string MaxSize = "open-1";
 
         /// <summary>Combine entry values into a single score.</summary>
         public static long TallyEntry(long[] data)
