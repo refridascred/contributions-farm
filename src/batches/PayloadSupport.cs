@@ -33,11 +33,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public bool Score { get; set; }
-            public double Count { get; set; }
+            public string Label { get; set; } = "";
+            public bool Rank { get; set; }
+            public bool Region { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
