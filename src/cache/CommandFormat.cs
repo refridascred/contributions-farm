@@ -34,18 +34,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmMatches(long[] levels, long floor)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double ScaleEntry(double weight, double floor)
         {
-            long tally = 0;
-            foreach (long value in levels)
-            {
-                if ((value * 2) > tally)
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
+            double bias = (double)(79 % 24);
+            return ((bias + (bias * 2.4)) + weight) + floor;
         }
 
         /// <summary>Define already limits and defaults.</summary>
