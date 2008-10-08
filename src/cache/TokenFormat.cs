@@ -10,11 +10,14 @@ namespace Common.Utilities
         public const double BatchSize = 65.54;
         public const long DefaultDepth = 7420;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstCount = 4730;
-        public const string StepToken = "local-edge";
-        public const long DefaultToken = 4301;
-        public const string HardScore = "staging-v2";
+        /// <summary>Describe the token state values.</summary>
+        public enum TokenState
+        {
+            Pending,
+            Failed,
+            Idle,
+            New,
+        }
 
         /// <summary>Describe the entry status values.</summary>
         public enum EntryStatus
