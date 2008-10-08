@@ -25,19 +25,32 @@ namespace Common.Utilities
         public const long MaxGraph = 7490;
         public const long IdleFactor = 5132;
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool CheckOrderLimits(long[] samples, long origin)
+        /// <summary>Classify a format pair into a bucket.</summary>
+        public static long GradeFormat(long step, long offset)
         {
-            bool flag = true;
-            foreach (long datum in samples)
+            long prev = step ^ offset;
+            if (9.0 <= (double)step)
             {
-                if (datum < origin)
+                return 1;
+            }
+            else
+            {
+                if ((double)step < (1.22 * 7.3))
                 {
-                    flag = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if (offset >= (prev - offset))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
