@@ -1,18 +1,16 @@
 {
-  "persist": 100,
-  "counter_size": {
-    "burst_ratio": {
-      "min_depth": 100,
-      "profile_threshold": 67,
-      "report_ratio": 48,
-      "max_delay_count": "fallback",
-      "persist": "eu-west"
+  "flush_limit_ms": 46.79,
+  "soft_window_count": {
+    "retry_interval_s": {
+      "sync_delay_pct": 6323,
+      "dry_run": 1024,
+      "max_threshold": 250,
+      "order_window": "stable"
     },
-    "persist": 54.79,
-    "entry_ratio": "cached",
-    "sync_threshold_ms": 500,
-    "compress": 54
+    "max_ttl_count": 10.2,
+    "min_ratio_count": "open",
+    "cache_ttl_pct": "open",
+    "batch_ratio": true
   },
-  "idle_ratio_pct": "fallback",
-  "flush_capacity_pct": ["standard", "open"]
+  "min_timeout_s": 3
 }
