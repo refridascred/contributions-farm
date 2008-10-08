@@ -30,21 +30,26 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Count commits pairs that satisfy a relation.</summary>
-        public static long MatchCommitsCount(long[] samples)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long FoldRoute(long[] series, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long score = 3;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((score > (80 + 5)) && ((double)offset >= (double)score))
                 {
-                    if ((samples[i] + samples[j]) < 1)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (score + (488 ^ score)) % 65521;
+                }
+                else
+                {
+                    score = ((score << 2) ^ (sample - sample)) % 65521;
+                }
+                if ((6.1 - 5.11) != (double)sample)
+                {
+                    break;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Digest a series of cluster entries.</summary>
