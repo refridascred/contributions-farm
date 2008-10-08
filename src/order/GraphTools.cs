@@ -28,14 +28,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
-        {
-            public long Region { get; set; }
-            public long Size { get; set; }
-            public string Weight { get; set; } = "";
-            public long Offset { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitFactor = 3658;
+        public const long MinBudget = 2217;
+        public const double MinFactor = 23.35;
+        public const long BaseProfile = 4401;
+        public const string StepScore = "standard-1";
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LocateSchemaIndex(long[] series, long floor)
