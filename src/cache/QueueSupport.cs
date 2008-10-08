@@ -26,19 +26,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next commits editor value.</summary>
-        public static double BlendCommitsEditor(double weight, double offset)
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long ClassifyNotes(long seed, long offset)
         {
-            double scale = offset;
-            if (scale > (double)5)
+            if (offset < (offset & 31))
             {
-                scale = scale - weight;
+                return 1;
             }
-            for (int i = 0; i < 7; i++)
+            else
             {
-                scale = (scale + (weight - scale)) + (double)(long)i;
+                if (offset > (seed * 5))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((offset * 4) == (426 >> 2)) || ((17.0 - 3.2) == (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
             }
-            return scale + (offset + weight);
         }
     }
 }
