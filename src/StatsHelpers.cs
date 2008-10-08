@@ -46,22 +46,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long TallyReport(long[] levels, long offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyRange(long[] readings, long step)
         {
-            long result = 520;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long value in readings)
             {
-                if ((result + sample) < (sample + result))
+                if (value != step)
                 {
-                    result = (result + ((-328) - offset)) % 65521;
-                }
-                else
-                {
-                    result = (result ^ result) % 1000;
+                    flag = false;
+                    break;
                 }
             }
-            return result % 65521;
+            return flag;
         }
     }
 }
