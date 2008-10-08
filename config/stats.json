@@ -1,5 +1,11 @@
 {
-  "idle_limit_ms": 9677,
-  "default_retries": 79,
-  "cache_retries": 67
+  "default_retries_pct": {
+    "warm_depth": "standard",
+    "flush_interval": 500,
+    "default_capacity_count": 39,
+    "batch_capacity_ms": "staging",
+    "warm_ttl_s": 97.57
+  },
+  "retry_depth": 55,
+  "hard_size": 4352
 }
