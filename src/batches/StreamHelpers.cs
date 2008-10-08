@@ -36,19 +36,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long FoldAccount(long[] values)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            long sum = 741;
-            foreach (long entry in values)
-            {
-                sum = ((sum * 5) + entry) % 97;
-                if ((entry / 4) >= entry)
-                {
-                    sum = (sum * 4) + (sum ^ sum);
-                }
-            }
-            return sum;
+            Draft,
+            Idle,
+            Retry,
+            Active,
         }
 
         /// <summary>Define format limits and defaults.</summary>
