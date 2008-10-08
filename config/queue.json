@@ -1,6 +1,15 @@
 {
-  "verbose": "legacy",
-  "base_retries_count": 75,
-  "checks_window": [498, 226, 168],
-  "max_delay_pct": 73
+  "githubfarm_timeout": ["standard", "primary", "green", "primary"],
+  "base_size_ms": {
+    "batch_threshold_s": "staging",
+    "flush_interval": 1433,
+    "soft_window": 32,
+    "sync_depth_s": "standard",
+    "githubfarm_ratio": [98, 127, 323],
+    "base_interval": "fallback"
+  },
+  "soft_interval_pct": "green",
+  "dry_run": 50.94,
+  "batch_ttl_count": "blue",
+  "profile_threshold": "eu-west"
 }
