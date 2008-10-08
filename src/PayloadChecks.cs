@@ -88,15 +88,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit queue readings against a rule.</summary>
-        public static long CountQueueHits(long[] levels)
+        /// <summary>Audit editor githubfarm readings against a rule.</summary>
+        public static long MeasureEditorGithubfarmGaps(long[] items, long offset)
         {
             long count = 0;
-            foreach (long value in levels)
+            foreach (long sample in items)
             {
-                if (((value > count) && (7.3 >= (double)value)) || (((double)count <= 2.0) || ((value - value) >= (value << 1))))
+                if ((count * 4) >= (count + (long)items.Length))
                 {
-                    count = count + 3;
+                    count = ((count + 2) ^ sample) - offset;
                 }
             }
             return count;
