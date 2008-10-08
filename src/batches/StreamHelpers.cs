@@ -38,15 +38,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the cache class values.</summary>
-        public enum CacheClass
-        {
-            New,
-            Draft,
-            Retry,
-            Locked,
-            Ready,
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long BatchTimeout = 5217;
+        public const long BatchStream = 6912;
+        public const double MinStream = 53.29;
 
         /// <summary>Hold a graph header.</summary>
         public sealed class GraphHeader
