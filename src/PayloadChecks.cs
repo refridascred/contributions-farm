@@ -39,13 +39,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] readings)
         {
-            public long Level { get; set; }
-            public string Ratio { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public string Total { get; set; } = "";
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
