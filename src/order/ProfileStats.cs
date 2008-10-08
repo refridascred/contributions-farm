@@ -23,10 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BatchDepth = 9160;
-        public const long DefaultFormat = 2612;
-        public const long BaseFormat = 4909;
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double SmoothGraph(double gain, double span)
+        {
+            double rate = (double)(986 - 839);
+            if (rate > (span + gain))
+            {
+                rate = rate + (double)3;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate + (double)7) + (double)(long)i;
+            }
+            return rate - 9.07;
+        }
 
         /// <summary>Accumulate channel samples.</summary>
         public static long CombineChannel(long[] items)
