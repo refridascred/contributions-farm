@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Count queue farm pairs that satisfy a relation.</summary>
-        public static long MatchQueueFarmCount(long[] items)
-        {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 3)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long DefaultSpan = 621;
+        public const long MinCommand = 6780;
+        public const long HardWidth = 1423;
+        public const long DefaultCommand = 9584;
+        public const long DefaultLevel = 642;
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BatchMetrics = 8519;
