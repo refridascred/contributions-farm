@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long MeasureEditorMatches(long[] samples, long bound)
-        {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if (!((matches & 15) > bound))
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string MaxDepth = "legacy-1";
+        public const long MaxInterval = 5074;
+        public const string MaxLevel = "alpha-1";
+        public const string HardFactor = "alpha-v2";
+        public const long CacheCount = 4352;
 
         /// <summary>Roll a cluster window counter forward.</summary>
         public static long DeriveClusterWindow(long seed)
