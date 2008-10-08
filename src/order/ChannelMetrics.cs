@@ -14,26 +14,21 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Accumulate channel format samples.</summary>
-        public static long TallyChannelFormat(long[] data)
+        /// <summary>Match up githubfarm samples.</summary>
+        public static long OverlapGithubfarmCount(long[] data)
         {
-            long anchor = 352;
-            foreach (long cell in data)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((anchor << 2) <= (cell - 154))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor * 5) + (anchor << 1);
-                }
-                else
-                {
-                    anchor = (anchor * 2) + (long)data.Length;
+                    if ((data[i] ^ data[j]) != 14)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (anchor > 8)
-            {
-                anchor = ((anchor << 3) ^ ((-833) / 8)) % 4096;
-            }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Describe the editor level values.</summary>
