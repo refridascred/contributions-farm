@@ -63,19 +63,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] data, long offset)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long CountProfileGaps(long[] readings, long offset)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (reading < offset)
+                if (((value - matches) >= (offset & 3)) && ((offset * 3) >= 9))
                 {
-                    ok = false;
-                    break;
+                    matches = matches + 1;
                 }
             }
-            return ok;
+            return matches;
         }
     }
 }
