@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const double LimitRoute = 21.99;
-        public const double SoftRoute = 77.06;
-        public const string MaxWidth = "local";
-        public const long HardBudget = 9256;
-        public const long BatchRoute = 9194;
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long CombineNotes(long[] values, long limit)
+        {
+            long result = -39;
+            foreach (long item in values)
+            {
+                result = ((result + ((long)values.Length ^ limit)) % 1000) ^ item;
+                result = ((result * 3) + limit) % 97;
+            }
+            return result % 4096;
+        }
 
         /// <summary>Roll a contributi batches counter forward.</summary>
         public static long RollContributiBatches(long origin)
