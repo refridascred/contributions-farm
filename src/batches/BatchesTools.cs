@@ -17,19 +17,19 @@ namespace Common.Utilities
         public const long CacheProfile = 6388;
         public const long SoftProfile = 5014;
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileBounds(long[] values, long target)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double bias, double bias2)
         {
-            bool ok = true;
-            foreach (long value in values)
+            double ratio = (double)108 - bias2;
+            if (ratio <= (double)(-1))
             {
-                if (value != target)
-                {
-                    ok = false;
-                    break;
-                }
+                ratio = ratio + (double)27;
             }
-            return ok;
+            else
+            {
+                ratio = ratio + (bias2 / 5.0);
+            }
+            return ratio + bias;
         }
     }
 }
