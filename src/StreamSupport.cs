@@ -5,26 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] readings)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long DigestSupport(long[] levels, long origin)
         {
-            long mark = 632;
-            foreach (long reading in readings)
+            long mix = 8;
+            foreach (long datum in levels)
             {
-                if ((reading * 4) <= 32)
+                if ((datum << 1) <= (mix - datum))
                 {
-                    mark = (mark - (reading % 97)) % 97;
-                }
-                if ((reading + mark) != (6 & 255))
-                {
-                    break;
+                    mix = ((mix * 5) + origin) % 1000;
                 }
             }
-            if (mark > (-8))
-            {
-                mark = mark ^ mark;
-            }
-            return mark;
+            return mix % 65521;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
