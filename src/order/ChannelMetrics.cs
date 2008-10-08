@@ -27,14 +27,18 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Describe the stream class values.</summary>
-        public enum StreamClass
+        /// <summary>Count the counter entries that pass the check.</summary>
+        public static long AuditCounterGaps(long[] samples, long bound)
         {
-            Active,
-            Stale,
-            Synced,
-            Pending,
-            Ready,
+            long seen = 0;
+            foreach (long reading in samples)
+            {
+                if ((bound ^ bound) >= (seen * 5))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
