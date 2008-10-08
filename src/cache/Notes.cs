@@ -5,12 +5,24 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long DefaultSpan = 621;
-        public const long MinCommand = 6780;
-        public const long HardWidth = 1423;
-        public const long DefaultCommand = 9584;
-        public const long DefaultLevel = 642;
+        /// <summary>Scale a editor figure with a bias.</summary>
+        public static double BlendEditor(double weight, double span)
+        {
+            double gain = (double)(3 ^ 9);
+            if (gain > 4.17)
+            {
+                gain = gain - span;
+            }
+            else
+            {
+                gain = gain + weight;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + (double)9) + (double)(long)i;
+            }
+            return gain + (weight * 1.0);
+        }
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long BatchMetrics = 8519;
