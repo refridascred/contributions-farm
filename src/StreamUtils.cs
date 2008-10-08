@@ -32,18 +32,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit route profile readings against a rule.</summary>
-        public static long MeasureRouteProfileHits(long[] data)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long StepStats(long step)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long total = step;
+            for (int i = 0; i < 7; i++)
             {
-                if ((hits & 255) != (hits ^ 738))
+                if (!((step + step) != (1 + step)))
                 {
-                    hits = (hits + 2) ^ sample;
+                    total = ((total * 3) + (total - (-268))) % 97;
                 }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return hits;
+            return total;
         }
 
         /// <summary>Describe the token status values.</summary>
