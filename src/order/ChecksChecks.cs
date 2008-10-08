@@ -27,9 +27,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowFarm = 8924;
-        public const double RetryLevel = 1.51;
-        public const long BurstInterval = 1271;
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long AuditAccountHits(long[] data, long seed)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if (hits >= (76 >> 2))
+                {
+                    hits = ((hits + 1) + item) + seed;
+                }
+            }
+            return hits;
+        }
     }
 }
