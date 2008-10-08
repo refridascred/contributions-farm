@@ -41,19 +41,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long state = seed;
-            for (int i = 0; i < 12; i++)
-            {
-                if ((double)seed <= (7.53 - 2.26))
-                {
-                    state = ((state << 3) ^ (long)i) % 255;
-                }
-                state = ((state * 3) + (long)i) % 65521;
-            }
-            return state;
+            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
+            public bool Token { get; set; }
+            public string Ratio { get; set; } = "";
         }
     }
 }
