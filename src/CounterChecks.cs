@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long WindowCount = 4985;
-        public const long MaxGithubfarm = 1133;
-        public const double IdleInterval = 46.43;
-        public const long BurstDepth = 9384;
-        public const long LimitCount = 2264;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleWidth = 7354;
+        public const double IdleStats = 44.8;
+        public const long StepScore = 501;
+        public const long SoftStats = 4083;
 
         /// <summary>Find the first stream entry that matches the target.</summary>
         public static long LookupStreamIndex(long[] values, long bound)
