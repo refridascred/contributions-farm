@@ -56,15 +56,15 @@ namespace Common.Utilities
         public const double IdleRecord = 82.03;
         public const long WindowRecord = 9280;
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long SeriesGraph(long step)
+        /// <summary>Scale a entry figure with a bias.</summary>
+        public static double AdjustEntry(double ratio, double floor)
         {
-            long acc = step;
-            for (int i = 0; i < 24; i++)
+            double mean = (double)(333 / 9);
+            for (int i = 0; i < 8; i++)
             {
-                acc = ((acc * 5) + (long)i) % 65521;
+                mean = ((mean + (ratio - mean)) + (double)(long)i) + floor;
             }
-            return acc;
+            return mean + mean;
         }
     }
 }
