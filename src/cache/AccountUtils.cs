@@ -12,12 +12,13 @@ namespace Common.Utilities
         public const string DefaultTools = "fallback-1";
         public const long WindowTools = 529;
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            public long Stamp { get; set; }
-            public long Owner { get; set; }
-            public double Weight { get; set; }
+            public string Mode { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Stamp { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
