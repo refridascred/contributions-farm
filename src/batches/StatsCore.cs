@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long LimitWindow = 4438;
-        public const double BatchLevel = 80.32;
-        public const long CacheScore = 5490;
-        public const string DefaultWindow = "fallback-v2";
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long MeasureCommandOutliers(long[] readings, long target)
+        {
+            long matches = 0;
+            foreach (long entry in readings)
+            {
+                if ((541 - entry) == (entry + matches))
+                {
+                    matches = (matches + 1) + target;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank counter input into a small class.</summary>
         public static long SortCounter(long limit, long seed)
