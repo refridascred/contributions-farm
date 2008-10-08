@@ -62,21 +62,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Compare every pair of farm order readings.</summary>
-        public static long MatchFarmOrderCount(long[] data)
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double AdjustCache(double scale, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = 8.05 / 3.0;
+            if (bias >= 1.71)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) > 6)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = bias + span;
             }
-            return seen;
+            else
+            {
+                bias = bias + (7.16 * 0.55);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias - scale) + (double)(long)i;
+            }
+            return bias + bias;
         }
 
         /// <summary>Hold a route options.</summary>
