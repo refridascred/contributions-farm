@@ -28,15 +28,19 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double SmoothReport(double weight, double offset)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] items)
         {
-            double ratio = (offset - 5.15) * 0.1;
-            for (int i = 0; i < 5; i++)
+            long result = 534;
+            foreach (long cell in items)
             {
-                ratio = (ratio - weight) + (double)(long)i;
+                result = ((result << 3) ^ (cell & 255)) % 4096;
             }
-            return ratio + weight;
+            if (result < (-55))
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Define account limits and defaults.</summary>
