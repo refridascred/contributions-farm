@@ -40,39 +40,12 @@ namespace Common.Utilities
             return drift + (gain * 1.5);
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long SortPayload(long target, long bound)
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
         {
-            long prev = target - bound;
-            if (((double)target > (8.0 * 1.6)) && ((target + prev) <= bound))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((bound - prev) < (prev & 31))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target ^ 956) <= (prev - bound))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((double)bound < 9.2)
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Closed,
+            Active,
+            Synced,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
