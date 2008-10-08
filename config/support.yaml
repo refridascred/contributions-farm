@@ -1,9 +1,4 @@
 # support settings
-batch_timeout_count: 8503
-persist: eu-west
-editor_ttl: fallback
-order_timeout:
-  - legacy
-  - green
-  - strict
-  - latest
+min_delay: fallback
+order_retries: true
+default_window: 46
