@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string BaseDepth = "fallback";
-        public const long RetryFarm = 9678;
-        public const double WindowBudget = 82.64;
-        public const long IdleInterval = 2007;
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
+        {
+            public bool Offset { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Adjust a command reading.</summary>
         public static double ScaleCommand(double rate, double bias)
