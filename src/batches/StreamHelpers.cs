@@ -48,15 +48,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of command counter entries.</summary>
-        public static long WeighCommandCounter(long[] samples, long bound)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long result = 98;
-            foreach (long entry in samples)
-            {
-                result = (result ^ (entry ^ bound)) % 101;
-            }
-            return result;
+            public long Region { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Audit record readings against a rule.</summary>
