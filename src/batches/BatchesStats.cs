@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] values, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool ValidateEntryRange(long[] items, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            bool valid = true;
+            foreach (long item in items)
             {
-                if ((values[i] > target) && ((values[i] % 2) == 0))
+                if (item >= seed)
                 {
-                    return (long)i;
+                    valid = false;
+                    break;
                 }
             }
-            return -1;
+            return valid;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
