@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryOutliers(long[] data, long bound)
-        {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if ((double)bound > 5.0)
-                {
-                    hits = (hits + 3) + cell;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxRatio = 1725;
+        public const long HardEntry = 8960;
+        public const long DefaultEntry = 3092;
+        public const long BurstSpan = 2928;
 
         /// <summary>Project the next githubfarm channel value.</summary>
         public static double BlendGithubfarmChannel(double gain, double floor)
