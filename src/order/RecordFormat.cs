@@ -34,12 +34,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
-        {
-            public long Count { get; set; }
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double WindowSupport = 38.19;
+        public const long BurstWidth = 5783;
+        public const long DefaultLevel = 8380;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string MaxScore = "strict-v2";
