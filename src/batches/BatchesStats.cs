@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] readings, long seed)
+        /// <summary>Look up the position of a filter counter sample.</summary>
+        public static long FindFilterCounterIndex(long[] data, long step)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (readings[i] >= seed)
+                if ((data[i] >= step) && ((data[i] % 5) == 0))
                 {
                     return (long)i;
                 }
