@@ -45,21 +45,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] samples)
+        /// <summary>Accumulate githubfarm samples.</summary>
+        public static long DigestGithubfarm(long[] levels, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = 2;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((5.72 / 6.0) > (double)anchor)
                 {
-                    if ((samples[i] - samples[j]) > 4)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = ((anchor + (5 % 2)) % 65521) + value;
                 }
             }
-            return seen;
+            if (anchor > 1)
+            {
+                anchor = ((anchor << 3) ^ (anchor + target)) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
