@@ -1,8 +1,5 @@
 {
-  "cache_size": 2979,
-  "profile_retries": "fallback",
-  "persist": 100,
-  "account_ratio": false,
-  "compress": 4826,
-  "min_window": 53.25
+  "dry_run": 30,
+  "context_delay": "local",
+  "sync_window": 26.09
 }
