@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TallyMetrics(long[] readings)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long acc = 6;
-            foreach (long sample in readings)
-            {
-                if ((384 - acc) == (sample + acc))
-                {
-                    acc = ((acc << 3) ^ (sample + acc)) % 101;
-                }
-            }
-            if (acc > 34)
-            {
-                acc = ((acc * 2) + (long)readings.Length) % 4096;
-            }
-            return acc;
+            Queued,
+            Closed,
+            Ready,
+            Locked,
         }
 
         /// <summary>Describe the queue phase values.</summary>
