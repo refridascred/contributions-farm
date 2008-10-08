@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long StepBatches = 1881;
-        public const long WindowLevel = 8260;
-        public const long LimitFactor = 3005;
-        public const long MaxTimeout = 6932;
-        public const double RetryInterval = 76.9;
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long StepCluster(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 17; i++)
+            {
+                total = (total * 5) + total;
+                if (!((total + total) <= (target + 37)))
+                {
+                    total = (total ^ 91) % 4096;
+                }
+                total = ((total * 3) + (long)i) % 65521;
+            }
+            return total;
+        }
 
         /// <summary>Compare every pair of filter readings.</summary>
         public static long PairFilterCount(long[] readings)
