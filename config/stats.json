@@ -1,13 +1,7 @@
 {
-  "audit": false,
-  "cache_limit": 2099,
-  "poll_limit": {
-    "base_limit": "blue",
-    "retry_ttl_count": [110, 92, 146],
-    "schema_interval": 4794,
-    "dry_run": "cached",
-    "batch_threshold": false,
-    "batches_threshold": [438, 63]
-  },
-  "poll_interval_s": 100
+  "persist": 27.93,
+  "poll_threshold": "eu-west",
+  "graph_retries": "fallback",
+  "compress": "fallback",
+  "warm_retries_s": 5386
 }
