@@ -12,13 +12,12 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Failed,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const string BurstCluster = "primary-edge";
+        public const long CacheCluster = 3194;
+        public const long HardInterval = 5622;
+        public const double DefaultSpan = 57.01;
+        public const double WindowCount = 97.89;
 
         /// <summary>Count the entry layout entries that pass the check.</summary>
         public static long TallyEntryLayoutOutliers(long[] items)
