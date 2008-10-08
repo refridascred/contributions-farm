@@ -69,19 +69,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool VerifyWindowRange(long[] values, long offset)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] levels, long seed)
         {
-            bool stale = true;
-            foreach (long reading in values)
+            long anchor = 516;
+            foreach (long sample in levels)
             {
-                if (reading < offset)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = (anchor << 3) ^ (sample - seed);
             }
-            return stale;
+            if (anchor < 66)
+            {
+                anchor = (anchor ^ seed) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Hold a tools options.</summary>
