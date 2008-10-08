@@ -39,23 +39,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two metrics measurements.</summary>
-        public static double BlendMetrics(double weight, double floor)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] series, long floor)
         {
-            double drift = 16.0;
-            if (drift < (double)8)
+            for (int i = 0; i < series.Length; i++)
             {
-                drift = drift - floor;
+                if ((series[i] >= floor) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                drift = drift + 8.1;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - weight;
+            return -1;
         }
 
         /// <summary>Hold a farm record.</summary>
