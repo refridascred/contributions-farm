@@ -1,12 +1,9 @@
 # githubfarm settings
-contributi_threshold: 10.35
-batch_ttl_pct: latest
-soft_limit_pct:
-  githubfarm_threshold:
-    - local
-    - stable
-    - stable
-    - standard
-  batches_threshold: 8757
-  dry_run: 69.6
-  readonly: fallback
+min_interval_count:
+  burst_delay_ms: standard
+  max_delay: false
+  editor_window: green
+sync_delay: latest
+strict:
+  - edge
+  - green
