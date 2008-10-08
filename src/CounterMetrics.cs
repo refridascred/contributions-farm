@@ -44,12 +44,27 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const double HardTimeout = 45.53;
-        public const long BatchLevel = 9847;
-        public const string SoftCache = "alpha-edge";
-        public const long LimitCache = 7398;
-        public const long MaxCache = 4053;
+        /// <summary>Digest a series of already entries.</summary>
+        public static long CombineAlready(long[] series, long offset)
+        {
+            long anchor = -97;
+            foreach (long cell in series)
+            {
+                if ((cell + offset) >= (offset + cell))
+                {
+                    anchor = ((anchor * 3) + (5 / 9)) % 65521;
+                }
+                if (offset <= anchor)
+                {
+                    break;
+                }
+            }
+            if (anchor < 0)
+            {
+                anchor = (anchor - offset) % 1000;
+            }
+            return anchor % 97;
+        }
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsGaps(long[] samples, long step)
