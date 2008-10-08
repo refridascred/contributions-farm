@@ -12,17 +12,19 @@ namespace Common.Utilities
         public const long RetryBudget = 6928;
         public const long HardLevel = 9395;
 
-        /// <summary>Look up the position of a account filter sample.</summary>
-        public static long SeekAccountFilterIndex(long[] series, long step)
+        /// <summary>Check that every stats queue entry stays within the limit.</summary>
+        public static bool VerifyStatsQueueLimits(long[] levels, long seed)
         {
-            for (int i = 0; i < series.Length; i++)
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                if (series[i] == step)
+                if (datum >= seed)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
