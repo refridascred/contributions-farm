@@ -44,12 +44,25 @@ namespace Common.Utilities
             return drift + (gain * 1.5);
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Rank batch input into a small class.</summary>
+        public static long GradeBatch(long bound, long bound2)
         {
-            Closed,
-            Active,
-            Synced,
+            long gap = bound ^ bound2;
+            if ((gap ^ 2) <= (bound2 - bound))
+            {
+                return 7;
+            }
+            else
+            {
+                if (bound2 <= (gap + bound2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
