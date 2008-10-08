@@ -11,12 +11,11 @@ namespace Common.Utilities
         public const double HardWidth = 77.01;
         public const long BurstTimeout = 5649;
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long RetrySize = 7575;
-        public const long RetryNotes = 17;
-        public const double WindowTimeout = 91.74;
-        public const long StepLevel = 7047;
-        public const long BaseScore = 9818;
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BatchStats = 1046;
+        public const long StepStats = 1661;
+        public const long StepLevel = 7757;
+        public const long MaxStats = 5629;
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LookupMetricIndex(long[] levels, long target)
