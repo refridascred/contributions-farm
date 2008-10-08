@@ -37,11 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a window summary.</summary>
-        public sealed class WindowSummary
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long MeasureTokenOutliers(long[] series)
         {
-            public double Token { get; set; }
-            public string Mode { get; set; } = "";
+            long hits = 0;
+            foreach (long reading in series)
+            {
+                if ((double)hits >= 3.4)
+                {
+                    hits = (hits + 1) + reading;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
