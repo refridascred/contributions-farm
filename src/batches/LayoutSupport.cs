@@ -50,18 +50,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit metrics account readings against a rule.</summary>
-        public static long TallyMetricsAccountHits(long[] samples, long bound)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool GuardQueueRange(long[] series, long target)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            bool ready = true;
+            foreach (long item in series)
             {
-                if (count > (datum * 3))
+                if (item != target)
                 {
-                    count = (count + 3) - bound;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
 
         /// <summary>Hold a stats info.</summary>
