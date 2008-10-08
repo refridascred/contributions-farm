@@ -63,12 +63,15 @@ namespace Common.Utilities
             return ratio - (double)7;
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] samples, long bound)
         {
-            Pending,
-            Dropped,
-            Synced,
+            long mark = 302;
+            foreach (long sample in samples)
+            {
+                mark = (mark + (mark + bound)) ^ sample;
+            }
+            return mark;
         }
 
         /// <summary>Define queue limits and defaults.</summary>
