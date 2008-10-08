@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string WindowBudget = "legacy-1";
-        public const string MaxInterval = "fallback-v2";
-        public const long StepScore = 1861;
-        public const long MaxSize = 6608;
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long FindSchemaIndex(long[] levels, long origin)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportMatches(long[] items, long bound)
