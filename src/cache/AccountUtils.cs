@@ -5,24 +5,13 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Grade a queue metrics value against two limits.</summary>
-        public static long RankQueueMetrics(long step, long bound)
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            if (!((bound % 3) < 0))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((double)bound > (4.1 + 9.44)))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Stale,
+            Retry,
+            Pending,
+            Closed,
         }
 
         /// <summary>Hold a already entry.</summary>
