@@ -36,18 +36,12 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Look up the position of a order contributi sample.</summary>
-        public static long LocateOrderContributiIndex(long[] data, long step)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long WindowTimeout = 9311;
+        public const string LimitFactor = "strict-v2";
+        public const double BatchScore = 68.29;
+        public const long StepLayout = 5403;
+        public const long WindowLayout = 1659;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool VerifyAlreadyRange(long[] readings, long step)
