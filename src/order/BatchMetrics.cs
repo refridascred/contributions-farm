@@ -61,11 +61,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long DefaultSpan = 5809;
-        public const long SoftDepth = 5589;
-        public const string MinRatio = "alpha-v2";
-        public const long MaxAccount = 1617;
-        public const double HardAccount = 4.16;
+        /// <summary>Classify a record commits pair into a bucket.</summary>
+        public static long BucketRecordCommits(long origin, long origin2)
+        {
+            long prev = origin + origin2;
+            if ((double)origin2 <= (double)origin)
+            {
+                return 8;
+            }
+            else
+            {
+                if ((86 + 771) == (origin - origin))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (89 > (prev ^ origin2))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)origin < (4.0 - 2.0)) || ((45 >> 1) > (origin2 - origin)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
