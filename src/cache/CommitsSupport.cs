@@ -48,29 +48,36 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long SortContributi(long origin, long origin2)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long ClassifyCache(long seed, long origin)
         {
-            long diff = origin ^ origin2;
-            if ((diff * 2) > (669 + origin))
+            long offset = seed + origin;
+            if ((double)seed > (15.0 / 5.0))
             {
-                return 2;
+                return 3;
             }
             else
             {
-                if ((double)origin <= (6.5 / 5.0))
+                if ((origin % 2) >= origin)
                 {
-                    return 0;
+                    return 4;
                 }
                 else
                 {
-                    if ((diff % 10) < (diff + diff))
+                    if ((offset - seed) >= (offset - offset))
                     {
-                        return 1;
+                        return 0;
                     }
                     else
                     {
-                        return 3;
+                        if (((offset & 1) != (offset * 4)) || ((seed * 3) >= seed))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
