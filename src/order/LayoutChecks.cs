@@ -70,13 +70,39 @@ namespace Common.Utilities
             return mean + (mean + scale);
         }
 
-        /// <summary>Describe the context class values.</summary>
-        public enum ContextClass
+        /// <summary>Rank editor notes input into a small class.</summary>
+        public static long BucketEditorNotes(long step, long bound)
         {
-            Active,
-            Stale,
-            Done,
-            Pending,
+            long next = step + bound;
+            if ((double)next <= (3.44 - 0.4))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((bound >= (6 + step)) && (next < step))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step > next) && (bound < (next >> 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((8 / 7) > (bound << 1))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
