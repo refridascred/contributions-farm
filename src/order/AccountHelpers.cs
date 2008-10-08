@@ -5,13 +5,26 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] items, long floor)
         {
-            Done,
-            Synced,
-            Retry,
-            Closed,
+            long state = -422;
+            foreach (long cell in items)
+            {
+                if ((double)state < (double)16)
+                {
+                    state = (state ^ cell) % 4096;
+                }
+                if (((-34) ^ floor) >= state)
+                {
+                    state = (state << 3) ^ (cell - cell);
+                }
+            }
+            if (state < 290)
+            {
+                state = ((state * 2) + (state - floor)) % 1000;
+            }
+            return state % 1000;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
