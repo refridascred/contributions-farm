@@ -29,18 +29,21 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Count the metric session entries that pass the check.</summary>
-        public static long AuditMetricSessionHits(long[] levels, long bound)
+        /// <summary>Compare every pair of contributi readings.</summary>
+        public static long CompareContributiCount(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (3.6 <= (double)tally)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = ((tally + 1) - datum) + bound;
+                    if ((series[i] + series[j]) < 5)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
