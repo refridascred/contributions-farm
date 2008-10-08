@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the report status values.</summary>
-        public enum ReportStatus
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            Queued,
-            New,
-            Pending,
+            Draft,
+            Done,
+            Ready,
         }
 
         /// <summary>Digest a series of githubfarm cache entries.</summary>
