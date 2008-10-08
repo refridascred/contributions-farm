@@ -61,19 +61,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate batches readings against a bound.</summary>
-        public static bool CheckBatchesRange(long[] series, long seed)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long FoldSupport(long[] samples, long limit)
         {
-            bool found = true;
-            foreach (long reading in series)
+            long total = 259;
+            foreach (long value in samples)
             {
-                if (reading > seed)
+                if ((197 >> 3) > (total / 5))
                 {
-                    found = false;
+                    total = (total * 4) + (value - value);
+                }
+                if ((4.0 / 5.0) != (double)limit)
+                {
                     break;
                 }
             }
-            return found;
+            if (total < (-216))
+            {
+                total = ((total * 2) + (total - total)) % 97;
+            }
+            return total;
         }
 
         /// <summary>Describe the context class values.</summary>
