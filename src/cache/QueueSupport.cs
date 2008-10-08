@@ -16,11 +16,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
         {
-            public long Stamp { get; set; }
-            public long Label { get; set; }
+            Retry,
+            Pending,
+            Active,
         }
 
         /// <summary>Classify a batches route pair into a bucket.</summary>
