@@ -1,21 +1,5 @@
 # entry settings
-cache_size_ms:
-  - 212
-  - 130
-cache_capacity_pct:
-  cache_retries: false
-  session_interval:
-    - 81
-    - 347
-    - 154
-  hard_window: green
-  channel_limit: false
-  sync_window: false
-cache_threshold_ms:
-  notes_limit: 42
-  idle_size_ms: 250
-  sync_window: legacy
-  hard_limit_count: 30
-  base_limit_pct: 250
-  account_depth: 70.5
-account_timeout: 250
+poll_limit_count: 30
+already_depth: 7032
+burst_timeout_pct: false
+strict: stable
