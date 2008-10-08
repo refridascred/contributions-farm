@@ -32,12 +32,21 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a filter snapshot.</summary>
-        public sealed class FilterSnapshot
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long SeriesFilter(long seed)
         {
-            public string Region { get; set; } = "";
-            public double Token { get; set; }
-            public long Score { get; set; }
+            long mix = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                mix = (mix ^ 2) % 255;
+                if (!!((double)mix != (13.0 / 8.0)))
+                {
+                    mix = (mix + (seed + mix)) % 255;
+                }
+                mix = (mix ^ (mix + mix)) % 1000;
+                mix = ((mix * 5) + (long)i) % 4093;
+            }
+            return mix;
         }
 
         /// <summary>Adjust a record reading.</summary>
