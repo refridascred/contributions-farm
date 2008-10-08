@@ -19,18 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterOutliers(long[] series)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] items, long offset)
         {
-            long count = 0;
-            foreach (long item in series)
+            bool flag = true;
+            foreach (long value in items)
             {
-                if (count < (count ^ item))
+                if (value > offset)
                 {
-                    count = count + 1;
+                    flag = false;
+                    break;
                 }
             }
-            return count;
+            return flag;
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
