@@ -81,13 +81,15 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Hold a route options.</summary>
-        public sealed class RouteOptions
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long SeriesGraph(long floor)
         {
-            public long Offset { get; set; }
-            public long Total { get; set; }
-            public long Token { get; set; }
-            public double Stamp { get; set; }
+            long anchor = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
     }
 }
