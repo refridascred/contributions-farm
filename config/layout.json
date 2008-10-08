@@ -1,13 +1,5 @@
 {
-  "cache_timeout_ms": 5047,
-  "batch_depth_ms": "local",
-  "min_retries": "staging",
-  "batches_timeout": 2688,
-  "session_depth": {
-    "idle_retries_count": "eu-west",
-    "route_ttl": [146, 312, 213, 443],
-    "warm_window_s": "standard",
-    "compress": 7
-  },
-  "retry_interval_s": 396
+  "enabled": "latest",
+  "base_retries_ms": 100,
+  "channel_ratio": true
 }
