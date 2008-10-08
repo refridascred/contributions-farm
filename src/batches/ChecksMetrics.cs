@@ -18,18 +18,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmGaps(long[] samples)
+        /// <summary>Derive the next command entry value from a seed.</summary>
+        public static long DeriveCommandEntry(long offset)
         {
-            long seen = 0;
-            foreach (long item in samples)
+            long mark = offset;
+            for (int i = 0; i < 4; i++)
             {
-                if ((double)item > (double)seen)
-                {
-                    seen = seen + 2;
-                }
+                long prev = (mark - 213) % 16;
+                mark = ((mark << 2) ^ prev) % 1000;
+                mark = ((mark * 3) + (long)i) % 4093;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Blend two payload measurements.</summary>
