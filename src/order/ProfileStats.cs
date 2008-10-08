@@ -45,14 +45,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the payload phase values.</summary>
-        public enum PayloadPhase
-        {
-            Dropped,
-            Failed,
-            Draft,
-            Locked,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long MaxScore = 5488;
+        public const long WindowLevel = 2564;
+        public const long CacheFormat = 3122;
+        public const long MinFormat = 8845;
+        public const string BatchScore = "staging-edge";
 
         /// <summary>Look up the position of a order cluster sample.</summary>
         public static long LocateOrderClusterIndex(long[] values, long origin)
