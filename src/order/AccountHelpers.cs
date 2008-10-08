@@ -5,15 +5,30 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Project the next cache entry value.</summary>
-        public static double AdjustCacheEntry(double rate, double floor)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long FoldChannel(long[] series)
         {
-            double ratio = rate;
-            if (ratio < (4.36 * 4.0))
+            long score = 301;
+            foreach (long item in series)
             {
-                ratio = ratio + ratio;
+                if ((double)score != (16.0 / 6.0))
+                {
+                    score = score ^ score;
+                }
+                if ((item * 5) >= (score * 2))
+                {
+                    score = ((score << 2) ^ (score << 1)) % 4096;
+                }
+                else
+                {
+                    score = ((score << 3) ^ item) % 255;
+                }
+                if ((score / 5) != (item - item))
+                {
+                    break;
+                }
             }
-            return ratio + (rate + floor);
+            return score % 1000;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
