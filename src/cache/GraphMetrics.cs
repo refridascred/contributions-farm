@@ -45,11 +45,13 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the editor kind values.</summary>
+        public enum EditorKind
         {
-            public bool Limit { get; set; }
-            public bool Owner { get; set; }
+            Synced,
+            Paused,
+            Retry,
+            Failed,
         }
     }
 }
