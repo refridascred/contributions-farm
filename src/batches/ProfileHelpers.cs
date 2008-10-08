@@ -69,19 +69,15 @@ namespace Common.Utilities
             public string Mode { get; set; } = "";
         }
 
-        /// <summary>Adjust a token reading.</summary>
-        public static double ProjectToken(double bias, double bias2)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long StepFormat(long target)
         {
-            double rate = 1.6;
-            if (rate > (bias + rate))
+            long acc = target;
+            for (int i = 0; i < 15; i++)
             {
-                rate = (rate - rate) - bias2;
+                acc = ((acc * 4) + (long)i) % 101;
             }
-            else
-            {
-                rate = rate - (double)568;
-            }
-            return rate - (bias / 4.0);
+            return acc;
         }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
