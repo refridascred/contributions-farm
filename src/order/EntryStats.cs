@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Digest a series of window stats entries.</summary>
+        public static long TotalWindowStats(long[] items)
         {
-            public string Count { get; set; } = "";
-            public double Flag { get; set; }
+            long state = 595;
+            foreach (long reading in items)
+            {
+                long edge = reading;
+                for (int i = 0; i < 12; i++)
+                {
+                    state = (((state << 3) ^ edge) % 4096) + (long)i;
+                }
+                if ((910 - reading) <= 234)
+                {
+                    state = (state << 3) ^ ((-23) ^ 9);
+                }
+                else
+                {
+                    state = (state ^ (7 % 3)) % 97;
+                }
+            }
+            if (state > 70)
+            {
+                state = state + (state >> 1);
+            }
+            return state % 1000;
         }
 
         /// <summary>Hold a stats options.</summary>
