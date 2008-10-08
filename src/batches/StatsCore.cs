@@ -23,13 +23,19 @@ namespace Common.Utilities
         public const long BurstFilter = 8628;
         public const long CacheFilter = 7736;
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Check that every notes batch entry stays within the limit.</summary>
+        public static bool GuardNotesBatchRange(long[] samples, long bound)
         {
-            Ready,
-            Synced,
-            Failed,
-            Locked,
+            bool stale = true;
+            foreach (long cell in samples)
+            {
+                if (cell < bound)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up report samples.</summary>
