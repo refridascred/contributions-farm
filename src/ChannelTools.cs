@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long TallyGithubfarmMatches(long[] data, long step)
-        {
-            long hits = 0;
-            foreach (long reading in data)
-            {
-                if ((hits - reading) <= reading)
-                {
-                    hits = (hits + 2) - step;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string LimitEntry = "local-1";
+        public const long BurstInterval = 7783;
+        public const double MinEntry = 94.47;
+        public const double BatchEntry = 90.53;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long BucketRoute(long step, long target)
