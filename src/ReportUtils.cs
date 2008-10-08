@@ -36,15 +36,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadOutliers(long[] values)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountOutliers(long[] items)
         {
             long seen = 0;
-            foreach (long entry in values)
+            foreach (long sample in items)
             {
-                if ((double)58 <= (double)entry)
+                if ((sample ^ (long)items.Length) < (4 - 471))
                 {
-                    seen = seen + 2;
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
