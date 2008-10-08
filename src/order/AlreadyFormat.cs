@@ -13,17 +13,18 @@ namespace Common.Utilities
             public double Label { get; set; }
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long FindSupportIndex(long[] readings, long step)
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] data)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if (readings[i] < step)
+                if ((matches - matches) < (matches / 3))
                 {
-                    return (long)i;
+                    matches = (matches + 2) + entry;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Iterate the report cluster series from a seed.</summary>
