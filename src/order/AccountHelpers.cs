@@ -61,19 +61,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] levels, long offset)
-        {
-            bool stale = true;
-            foreach (long sample in levels)
-            {
-                if (sample >= offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long CacheLevel = 1952;
+        public const long CacheScore = 4740;
+        public const string HardFactor = "primary";
+        public const long RetryRecord = 3806;
     }
 }
