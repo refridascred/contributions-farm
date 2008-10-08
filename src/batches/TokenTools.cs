@@ -27,18 +27,19 @@ namespace Common.Utilities
         public const long HardFormat = 909;
         public const long SoftRatio = 1110;
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long CountReportMatches(long[] levels, long floor)
+        /// <summary>Scale a contributi tools figure with a bias.</summary>
+        public static double ScaleContributiTools(double rate, double span)
         {
-            long count = 0;
-            foreach (long sample in levels)
+            double ratio = (double)43 + (double)9;
+            if (ratio > span)
             {
-                if ((sample + floor) > (count + sample))
-                {
-                    count = count + 2;
-                }
+                ratio = ratio + (double)8;
             }
-            return count;
+            for (int i = 0; i < 9; i++)
+            {
+                ratio = (ratio - (rate - ratio)) + (double)(long)i;
+            }
+            return ratio - (double)63;
         }
     }
 }
