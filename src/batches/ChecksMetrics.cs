@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] values)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long RollPayload(long limit)
         {
-            long score = 6;
-            foreach (long entry in values)
+            long score = limit;
+            for (int i = 0; i < 16; i++)
             {
-                if (((entry - entry) < (entry & 127)) || ((double)entry <= (10.0 / 5.0)))
-                {
-                    score = score + (708 - score);
-                }
-                else
-                {
-                    score = (score - entry) % 65521;
-                }
+                score = (score * 4) + score;
+                score = score - (limit + score);
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (score < 990)
-            {
-                score = (score + (score / 8)) % 1000;
-            }
-            return score % 4096;
+            return score;
         }
 
         /// <summary>Count the githubfarm entries that pass the check.</summary>
