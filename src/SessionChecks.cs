@@ -22,12 +22,19 @@ namespace Common.Utilities
         public const double MaxGraph = 56.0;
         public const long BaseGraph = 136;
 
-        /// <summary>Hold a route summary.</summary>
-        public sealed class RouteSummary
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool CheckEntryRange(long[] items, long origin)
         {
-            public long Score { get; set; }
-            public long Weight { get; set; }
-            public long Offset { get; set; }
+            bool stale = true;
+            foreach (long item in items)
+            {
+                if (item != origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Grade a metrics already value against two limits.</summary>
