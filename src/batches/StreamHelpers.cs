@@ -46,13 +46,30 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] samples)
         {
-            Draft,
-            Idle,
-            Retry,
-            Active,
+            long mark = -23;
+            foreach (long entry in samples)
+            {
+                for (int i = 0; i < 12; i++)
+                {
+                    mark = ((mark << 3) ^ ((long)samples.Length << 2)) - (long)i;
+                }
+                if (((double)mark == (9.0 * 8.36)) || ((entry >> 2) > (entry / 3)))
+                {
+                    mark = (mark ^ (mark + entry)) % 97;
+                }
+                if ((mark + mark) > (mark * 3))
+                {
+                    break;
+                }
+            }
+            if (mark < (-4))
+            {
+                mark = (mark ^ (mark * 3)) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Describe the githubfarm phase values.</summary>
