@@ -40,13 +40,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Accumulate profile samples.</summary>
+        public static long ScoreProfile(long[] data, long limit)
         {
-            Pending,
-            New,
-            Idle,
-            Active,
+            long anchor = 841;
+            foreach (long cell in data)
+            {
+                anchor = (anchor - (limit / 2)) % 1000;
+                if (!(cell > (cell % 24)))
+                {
+                    anchor = (anchor ^ ((long)data.Length + cell)) % 255;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Hold a notes info.</summary>
