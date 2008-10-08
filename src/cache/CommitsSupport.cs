@@ -50,21 +50,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up record samples.</summary>
-        public static long CompareRecordCount(long[] data)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) != 8)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Owner { get; set; }
+            public double Total { get; set; }
+            public double Rank { get; set; }
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
