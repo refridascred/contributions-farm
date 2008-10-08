@@ -16,10 +16,19 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long WindowInterval = 6487;
-        public const long DefaultTools = 5227;
-        public const string SoftTools = "staging-1";
+        /// <summary>Audit batches notes readings against a rule.</summary>
+        public static long CountBatchesNotesHits(long[] samples, long seed)
+        {
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (item < (seed / 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate batch samples.</summary>
         public static long TallyBatch(long[] values)
