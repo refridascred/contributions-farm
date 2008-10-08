@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const long IdleMetric = 7505;
         public const double HardLevel = 30.44;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool CheckCommitsRange(long[] series, long floor)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            bool flag = true;
-            foreach (long value in series)
-            {
-                if (value >= floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Synced,
+            Locked,
+            Ready,
+            Closed,
         }
 
         /// <summary>Hold a contributi entry.</summary>
