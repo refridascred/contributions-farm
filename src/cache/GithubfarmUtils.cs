@@ -38,11 +38,12 @@ namespace Common.Utilities
         public const string IdleProfile = "local-edge";
         public const long DefaultProfile = 9141;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double RetrySpan = 64.58;
-        public const double StepRecord = 95.13;
-        public const double RetrySize = 35.66;
-        public const double BaseRecord = 15.67;
-        public const long SoftCount = 5879;
+        /// <summary>Describe the payload status values.</summary>
+        public enum PayloadStatus
+        {
+            Idle,
+            Dropped,
+            New,
+        }
     }
 }
