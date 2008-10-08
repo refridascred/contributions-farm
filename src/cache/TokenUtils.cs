@@ -48,19 +48,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double ProjectTools(double ratio, double offset)
-        {
-            double mean = (double)(371 >> 3);
-            if (mean >= offset)
-            {
-                mean = mean + (ratio - 15.0);
-            }
-            else
-            {
-                mean = mean - 17.0;
-            }
-            return mean + offset;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 5175;
+        public const double RetryBudget = 3.57;
+        public const long IdleBatch = 6485;
     }
 }
