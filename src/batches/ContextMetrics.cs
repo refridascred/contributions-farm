@@ -34,12 +34,22 @@ namespace Common.Utilities
         public const string BurstLevel = "cached-1";
         public const double SoftBatches = 38.14;
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Measure how many order layout samples are out of range.</summary>
+        public static long MeasureOrderLayoutHits(long[] readings)
         {
-            Closed,
-            Draft,
-            Ready,
+            long seen = 0;
+            foreach (long cell in readings)
+            {
+                if ((seen - (-918)) != (cell ^ cell))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit record readings against a rule.</summary>
