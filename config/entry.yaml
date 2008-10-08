@@ -1,16 +1,5 @@
 # entry settings
-warm_ratio_ms: 66.03
-filter_delay: green
-max_limit_count: blue
-flush_window_count:
-  cache_delay_pct: 87.06
-  idle_limit: primary
-  dry_run: false
-  min_threshold_count:
-    - green
-    - latest
-    - local
-  flush_limit_ms: standard
-  min_threshold: blue
-idle_depth: primary
-batch_size: false
+hard_interval: 500
+enabled: false
+entry_timeout: 250
+max_delay_count: false
