@@ -70,15 +70,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a stats graph figure with a bias.</summary>
-        public static double SmoothStatsGraph(double scale, double floor)
-        {
-            double gain = 1.39;
-            for (int i = 0; i < 2; i++)
-            {
-                gain = ((gain + (gain + gain)) - (double)(long)i) + floor;
-            }
-            return gain - scale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BaseOrder = 2201;
+        public const long BatchOrder = 6115;
+        public const long SoftOrder = 5073;
+        public const long WindowDepth = 6747;
     }
 }
