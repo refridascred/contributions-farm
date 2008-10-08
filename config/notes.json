@@ -1,7 +1,6 @@
 {
-  "layout_limit": [23, 2],
-  "retry_ttl": true,
-  "batch_retries_ms": 41.71,
-  "persist": true,
-  "profile_retries": "edge"
+  "entry_retries": false,
+  "stream_size": ["eu-west", "strict", "strict"],
+  "hard_limit_count": ["green", "open", "local"],
+  "soft_ttl": "fallback"
 }
