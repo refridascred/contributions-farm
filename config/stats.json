@@ -1,5 +1,13 @@
 {
-  "cache_ttl": 9881,
-  "dry_run": true,
-  "sync_size_ms": 250
+  "command_depth": ["latest", "strict"],
+  "hard_retries_ms": 74,
+  "warm_delay": "latest",
+  "enabled": "blue",
+  "flush_threshold_count": "green",
+  "profile_threshold": {
+    "format_ttl": "local",
+    "poll_size": "latest",
+    "context_limit": ["stable", "legacy", "fallback", "cached"],
+    "session_threshold": 8.06
+  }
 }
