@@ -22,9 +22,14 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const double WindowSpan = 14.17;
-        public const string IdleRecord = "staging-edge";
-        public const long LimitRecord = 6831;
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
+        {
+            Closed,
+            Retry,
+            Active,
+            Synced,
+            Locked,
+        }
     }
 }
