@@ -42,12 +42,19 @@ namespace Common.Utilities
         public const string MinStats = "standard-edge";
         public const string BatchStats = "cached-edge";
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 6769;
-        public const long DefaultContributi = 9152;
-        public const string WindowRatio = "stable-1";
-        public const long WindowWidth = 8542;
-        public const string BurstContributi = "standard-1";
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long AuditPayloadGaps(long[] series)
+        {
+            long count = 0;
+            foreach (long reading in series)
+            {
+                if ((double)count != (1.0 * 4.9))
+                {
+                    count = (count + 2) + reading;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Count metric pairs that satisfy a relation.</summary>
         public static long CompareMetricCount(long[] levels)
