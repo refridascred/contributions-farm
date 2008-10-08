@@ -19,23 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long DigestGraph(long[] items)
-        {
-            long sum = 895;
-            foreach (long value in items)
-            {
-                if (((value - sum) > sum) && ((7.59 / 5.0) == (double)sum))
-                {
-                    sum = (sum ^ (sum + 9)) % 255;
-                }
-            }
-            if (sum > (-25))
-            {
-                sum = (sum + (sum / 8)) % 4096;
-            }
-            return sum;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BatchMetrics = 8519;
+        public const long CacheMetrics = 9623;
+        public const long MinRatio = 1135;
+        public const string HardTimeout = "fallback-v2";
 
         /// <summary>Define channel limits and defaults.</summary>
         public const double BurstChannel = 1.55;
