@@ -37,12 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
+        /// <summary>Validate record stats readings against a bound.</summary>
+        public static bool GuardRecordStatsLimits(long[] readings, long bound)
         {
-            Closed,
-            Retry,
-            Active,
+            bool flag = true;
+            foreach (long reading in readings)
+            {
+                if (reading < bound)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
