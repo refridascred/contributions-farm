@@ -1,7 +1,12 @@
 {
-  "strict": "green",
-  "command_threshold": ["green", "staging", "eu-west", "strict"],
-  "verbose": 500,
-  "burst_threshold_pct": "fallback",
-  "poll_window_ms": 91.75
+  "flush_window_ms": 500,
+  "compress": {
+    "poll_ratio": 6129,
+    "flush_delay_s": 250,
+    "payload_window": 52.17
+  },
+  "strict": 67.89,
+  "idle_retries_s": [466, 61, 18, 160],
+  "burst_depth": "primary",
+  "counter_limit": 250
 }
