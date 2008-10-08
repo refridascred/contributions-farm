@@ -1,8 +1,10 @@
 # support settings
-hard_threshold_pct:
-  - 65
-  - 350
-  - 468
-  - 146
-githubfarm_capacity: 71.12
-retry_delay_ms: false
+format_ttl: local
+max_window_ms: false
+audit:
+  idle_delay_count: 100
+  stats_interval: 57.94
+  poll_size_ms: open
+  strict: 1024
+cache_ttl_ms: latest
+retry_interval_s: 64.83
