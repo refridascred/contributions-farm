@@ -15,13 +15,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            Queued,
-            Ready,
-            Closed,
-            Retry,
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Hold a payload snapshot.</summary>
