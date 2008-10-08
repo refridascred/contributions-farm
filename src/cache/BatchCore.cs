@@ -47,13 +47,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Describe the cluster level values.</summary>
-        public enum ClusterLevel
-        {
-            Dropped,
-            Retry,
-            Done,
-            Failed,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long SoftGraph = 7580;
+        public const string RetryTimeout = "fallback-1";
+        public const string BaseInterval = "primary-edge";
+        public const long IdleGraph = 5315;
     }
 }
