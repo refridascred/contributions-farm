@@ -31,13 +31,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes info.</summary>
-        public sealed class NotesInfo
+        /// <summary>Find the first route entry that matches the target.</summary>
+        public static long FindRouteIndex(long[] levels, long step)
         {
-            public double Offset { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public string Score { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] <= step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
