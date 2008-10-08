@@ -1,5 +1,6 @@
 {
-  "dry_run": 30,
-  "context_delay": "local",
-  "sync_window": 26.09
+  "warm_size_ms": 3825,
+  "filter_capacity": "green",
+  "base_delay": ["eu-west", "green"],
+  "sync_size_pct": 100
 }
