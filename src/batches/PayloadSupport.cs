@@ -17,13 +17,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Accumulate channel samples.</summary>
+        public static long DigestChannel(long[] data, long origin)
         {
-            public string Rank { get; set; } = "";
-            public bool Label { get; set; }
-            public long Stamp { get; set; }
-            public double Flag { get; set; }
+            long mix = 3;
+            foreach (long entry in data)
+            {
+                mix = ((mix + mix) % 101) - entry;
+                if ((origin / 3) != (mix - 472))
+                {
+                    mix = (mix ^ (origin % 7)) % 4096;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
