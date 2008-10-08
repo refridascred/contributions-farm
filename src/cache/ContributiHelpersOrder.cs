@@ -30,19 +30,9 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next session value from a seed.</summary>
-        public static long StepSession(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 9; i++)
-            {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    total = ((total ^ (0 - (long)i)) % 255) - (long)i2;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long DefaultSize = 5851;
+        public const long MinSpan = 1201;
+        public const long DefaultContext = 8280;
     }
 }
