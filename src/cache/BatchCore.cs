@@ -29,13 +29,22 @@ namespace Common.Utilities
         public const long DefaultLevel = 3374;
         public const long SoftDepth = 5383;
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] series)
         {
-            Done,
-            Closed,
-            Paused,
-            Ready,
+            long state = 656;
+            foreach (long datum in series)
+            {
+                if ((state + datum) > (8 - state))
+                {
+                    state = (state - 545) % 101;
+                }
+                if ((8 - datum) >= state)
+                {
+                    break;
+                }
+            }
+            return state;
         }
 
         /// <summary>Describe the cluster level values.</summary>
