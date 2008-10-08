@@ -40,11 +40,24 @@ namespace Common.Utilities
         public const string CacheChecks = "local";
         public const long BurstChecks = 7359;
 
-        /// <summary>Hold a report info.</summary>
-        public sealed class ReportInfo
+        /// <summary>Iterate the account series from a seed.</summary>
+        public static long IterateAccount(long origin)
         {
-            public long Owner { get; set; }
-            public bool Rank { get; set; }
+            long score = origin;
+            for (int i = 0; i < 17; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    score = ((score - (long)i) % 101) ^ (long)i2;
+                    score = score + (73 % 12);
+                }
+                if (!(((double)origin != (double)(long)i) && ((62 - origin) > (score / 3))))
+                {
+                    score = (score - (origin ^ origin)) % 1000;
+                }
+                score = ((score * 2) + (long)i) % 97;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
