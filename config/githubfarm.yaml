@@ -1,9 +1,15 @@
 # githubfarm settings
-flush_delay: 26.16
-warm_ttl_s: 250
-profile_depth: 250
-readonly: true
-burst_ratio_count:
-  - eu-west
-  - green
-metrics_timeout: cached
+counter_interval: latest
+poll_depth_count:
+  cache_delay_ms: true
+  retry_ratio_count: 30
+  min_ttl_pct: 1665
+  batch_window: true
+  report_retries:
+    flush_threshold_pct: 250
+    idle_window_count: primary
+    readonly: 36
+    hard_timeout_ms: 76.68
+channel_limit: true
+strict: 4743
+verbose: 34.46
