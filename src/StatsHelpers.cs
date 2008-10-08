@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every stats entry stays within the limit.</summary>
-        public static bool CheckStatsRange(long[] data, long floor)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long TallyBatchOutliers(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (entry > floor)
+                if ((double)tally <= (5.44 + 5.1))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 1) + reading;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
