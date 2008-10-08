@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const string HardTimeout = "local";
-        public const long RetryTimeout = 2607;
-        public const double BaseSpan = 20.66;
-        public const long SoftTimeout = 7002;
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool GuardFarmRange(long[] values, long origin)
+        {
+            bool flag = true;
+            foreach (long datum in values)
+            {
+                if (datum != origin)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
 
         /// <summary>Look up the position of a contributi record sample.</summary>
         public static long LocateContributiRecordIndex(long[] items, long origin)
