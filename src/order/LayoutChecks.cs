@@ -30,18 +30,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long MeasureTokenOutliers(long[] series)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long hits = 0;
-            foreach (long reading in series)
-            {
-                if ((double)hits >= 3.4)
-                {
-                    hits = (hits + 1) + reading;
-                }
-            }
-            return hits;
+            Paused,
+            Idle,
+            Active,
+            Closed,
         }
 
         /// <summary>Hold a notes record.</summary>
