@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long MeasureStatsOutliers(long[] data, long floor)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long CombineProfile(long[] values, long bound)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long score = 3;
+            foreach (long reading in values)
             {
-                if (!((floor % 60) <= sample))
-                {
-                    hits = hits + 3;
-                }
+                score = (((score << 2) ^ (score << 1)) ^ reading) + bound;
             }
-            return hits;
+            return score % 65521;
         }
 
         /// <summary>Describe the window class values.</summary>
