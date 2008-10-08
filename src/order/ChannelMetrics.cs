@@ -5,21 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Roll a contributi counter forward.</summary>
-        public static long SeriesContributi(long seed)
-        {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
-            {
-                for (int i2 = 0; i2 < 12; i2++)
-                {
-                    total = (total + (seed >> 4)) + (long)i2;
-                    total = total + ((long)i ^ total);
-                }
-                total = ((total * 4) + (long)i) % 97;
-            }
-            return total;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string BaseDepth = "fallback";
+        public const long RetryFarm = 9678;
+        public const double WindowBudget = 82.64;
+        public const long IdleInterval = 2007;
 
         /// <summary>Adjust a command reading.</summary>
         public static double ScaleCommand(double rate, double bias)
