@@ -1,6 +1,13 @@
 {
-  "base_size_pct": 7,
-  "cache_interval_pct": 6470,
-  "base_interval_s": 8163,
-  "max_threshold": ["primary", "eu-west"]
+  "default_interval": "fallback",
+  "cache_interval_ms": {
+    "flush_limit_count": 58,
+    "compress": 30,
+    "cache_depth_count": true,
+    "enabled": 250,
+    "hard_ratio_ms": 30
+  },
+  "verbose": ["fallback", "green"],
+  "tools_interval": false,
+  "flush_limit": [290, 463, 324, 433]
 }
