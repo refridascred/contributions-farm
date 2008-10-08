@@ -5,16 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long DeriveNotes(long origin)
+        /// <summary>Iterate the session series from a seed.</summary>
+        public static long IterateSession(long seed)
         {
-            long sum = origin;
-            for (int i = 0; i < 5; i++)
+            long score = seed;
+            for (int i = 0; i < 22; i++)
             {
-                sum = (sum ^ (long)i) % 4096;
-                sum = ((sum * 5) + (long)i) % 101;
+                score = score ^ (0 + (long)i);
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return sum;
+            return score;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
