@@ -33,19 +33,15 @@ namespace Common.Utilities
         public const long BatchWidth = 7083;
         public const long StepScore = 1195;
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] series, long target)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double BlendRecord(double bias, double offset)
         {
-            long mark = 6;
-            foreach (long entry in series)
+            double gain = offset;
+            if (gain > (gain / 6.0))
             {
-                mark = ((mark ^ mark) + entry) - target;
+                gain = (gain - (offset / 2.0)) + bias;
             }
-            if (mark < 1)
-            {
-                mark = ((mark * 4) + 523) % 4096;
-            }
-            return mark % 1000;
+            return gain - (double)3;
         }
     }
 }
