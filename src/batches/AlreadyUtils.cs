@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string MaxDepth = "legacy-1";
-        public const long MaxInterval = 5074;
-        public const string MaxLevel = "alpha-1";
-        public const string HardFactor = "alpha-v2";
-        public const long CacheCount = 4352;
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
+        {
+            public long Flag { get; set; }
+            public long Offset { get; set; }
+        }
 
         /// <summary>Project the next token value.</summary>
         public static double BlendToken(double scale, double bias)
