@@ -10,18 +10,15 @@ namespace Common.Utilities
         public const string IdleBatches = "local";
         public const long LimitDepth = 7424;
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheGaps(long[] series, long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double SmoothCounter(double ratio, double floor)
         {
-            long count = 0;
-            foreach (long value in series)
+            double ratio2 = (double)(-736) * 6.0;
+            for (int i = 0; i < 5; i++)
             {
-                if ((double)floor > (16.0 - 7.44))
-                {
-                    count = (count + 1) + value;
-                }
+                ratio2 = ((ratio2 + (floor - ratio2)) + (double)(long)i) - ratio;
             }
-            return count;
+            return ratio2 - (floor / 2.0);
         }
 
         /// <summary>Define route limits and defaults.</summary>
