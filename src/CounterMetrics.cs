@@ -10,39 +10,11 @@ namespace Common.Utilities
         public const string CacheTimeout = "strict-edge";
         public const long IdleDepth = 2668;
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long ClassifyProfile(long limit, long limit2)
-        {
-            if ((5.12 - 2.3) >= (double)limit)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((double)limit2 != (0.82 - 6.6)) || ((double)limit2 < (double)limit))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((limit2 - limit) <= limit2)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((double)limit != (double)208)
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long SoftMetric = 5619;
+        public const string MaxDepth = "alpha-edge";
+        public const long MinMetric = 4274;
+        public const long MaxTimeout = 2305;
 
         /// <summary>Audit batch counter readings against a rule.</summary>
         public static long MeasureBatchCounterMatches(long[] series, long target)
