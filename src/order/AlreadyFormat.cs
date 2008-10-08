@@ -36,13 +36,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the commits phase values.</summary>
-        public enum CommitsPhase
-        {
-            Stale,
-            Failed,
-            Synced,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long IdleStats = 11;
+        public const long DefaultStats = 8054;
+        public const string MinStats = "standard-edge";
+        public const string BatchStats = "cached-edge";
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BaseContributi = 6769;
