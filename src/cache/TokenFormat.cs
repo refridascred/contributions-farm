@@ -10,13 +10,17 @@ namespace Common.Utilities
         public const double BatchSize = 65.54;
         public const long DefaultDepth = 7420;
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Find the first route buffer entry that matches the target.</summary>
+        public static long SeekRouteBufferIndex(long[] series, long offset)
         {
-            Pending,
-            Failed,
-            Idle,
-            New,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Match up editor samples.</summary>
