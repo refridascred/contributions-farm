@@ -1,5 +1,17 @@
 {
-  "enabled": "latest",
-  "layout_ttl": "standard",
-  "sync_size_s": 65.23
+  "min_timeout_s": 500,
+  "verbose": 80,
+  "default_capacity": [250, 72],
+  "burst_delay": 81.31,
+  "idle_timeout": {
+    "hard_retries_s": "fallback",
+    "payload_delay": "fallback",
+    "channel_limit": {
+      "retry_ratio": 38.01,
+      "soft_size_ms": ["fallback", "legacy", "blue"],
+      "idle_size_s": "open",
+      "poll_size_ms": 74.46
+    },
+    "sync_ttl_count": [414, 320]
+  }
 }
