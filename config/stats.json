@@ -1,12 +1,7 @@
 {
-  "warm_depth": 100,
-  "audit": {
-    "poll_ratio_s": ["legacy", "stable", "stable", "blue"],
-    "base_threshold_pct": 4302,
-    "cache_ratio_ms": true,
-    "base_ratio_pct": 3280,
-    "channel_threshold": 93
-  },
-  "account_capacity": 250,
-  "retry_threshold": 5966
+  "flush_capacity_count": 4,
+  "checks_capacity": 45.08,
+  "session_interval": false,
+  "channel_retries": [472, 229, 180, 224],
+  "cache_delay_count": 1089
 }
