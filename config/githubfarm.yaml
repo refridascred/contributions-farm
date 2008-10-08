@@ -1,26 +1,5 @@
 # githubfarm settings
-retry_threshold: 91
-idle_ttl_s:
-  hard_ratio:
-    soft_ttl: 60
-    readonly: local
-    stream_window:
-      - staging
-      - open
-      - strict
-    warm_ratio_count: true
-    enabled: 77
-    sync_interval_ms: blue
-  idle_interval_pct: 4.22
-  max_ratio_s:
-    cache_limit_ms: true
-    flush_ratio_pct: 18.89
-    burst_ratio: 74
-    enabled: local
-    filter_ratio: edge
-    flush_ratio: standard
-  sync_limit_count: true
-  session_retries: 15.27
-  soft_capacity_ms: false
-persist: true
-sync_depth: green
+max_threshold_s: 82.51
+stats_capacity: latest
+min_interval: fallback
+compress: false
