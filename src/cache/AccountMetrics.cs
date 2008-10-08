@@ -69,14 +69,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the context status values.</summary>
-        public enum ContextStatus
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool VerifyWindowRange(long[] values, long offset)
         {
-            Idle,
-            Failed,
-            Active,
-            Pending,
-            Synced,
+            bool stale = true;
+            foreach (long reading in values)
+            {
+                if (reading < offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Hold a tools options.</summary>
