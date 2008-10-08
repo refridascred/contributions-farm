@@ -5,15 +5,26 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Project the next cluster commits value.</summary>
-        public static double AdjustClusterCommits(double weight, double span)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TallyPayload(long[] series)
         {
-            double ratio = 3.9;
-            if (ratio <= ratio)
+            long anchor = 9;
+            foreach (long cell in series)
             {
-                ratio = ((ratio - ratio) - weight) + span;
+                if ((double)cell < 0.67)
+                {
+                    anchor = anchor - (461 ^ 43);
+                }
+                else
+                {
+                    anchor = anchor ^ (cell + cell);
+                }
             }
-            return ratio + (double)840;
+            if (anchor > 908)
+            {
+                anchor = (anchor - 2) % 4096;
+            }
+            return anchor;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
