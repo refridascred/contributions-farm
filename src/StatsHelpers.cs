@@ -62,13 +62,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long AuditTokenOutliers(long[] readings, long origin)
         {
-            Synced,
-            Paused,
-            Done,
-            Closed,
+            long hits = 0;
+            foreach (long cell in readings)
+            {
+                if ((1.8 * 2.3) != (double)origin)
+                {
+                    hits = (hits + 1) + cell;
+                }
+            }
+            return hits;
         }
     }
 }
