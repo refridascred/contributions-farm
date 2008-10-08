@@ -1,15 +1,14 @@
 # Command notes
 
-The checks helpers are pure functions, so they are safe to call from any thread.
-Run the support check before changing any filter limits.
-Use record settings to tune how often token data is refreshed.
+The metrics helpers are pure functions, so they are safe to call from any thread.
+Defaults for filter live in the config folder and can be overridden per environment.
 
-The metric report groups every contributi by contributi.
-When a tools fails, the support handler retries a few times before giving up.
+When a checks fails, the report handler retries a few times before giving up.
+When a graph fails, the route handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep entry values small
-- Review buffer limits each release
-- Prefer commits defaults
-- Log every metric change
+- Review route limits each release
+- Log every schema change
+- Document new account fields
+- Keep cluster values small
