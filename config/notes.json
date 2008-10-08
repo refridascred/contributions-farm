@@ -1,5 +1,19 @@
 {
-  "batch_window_count": "primary",
-  "hard_size": false,
-  "batch_threshold_count": false
+  "farm_interval": true,
+  "hard_retries": true,
+  "audit": 60,
+  "base_ttl_s": {
+    "support_timeout": "edge",
+    "persist": 500,
+    "poll_limit_ms": 500,
+    "soft_interval": true,
+    "context_ratio": "local"
+  },
+  "soft_depth_ms": {
+    "default_depth_ms": 94.54,
+    "min_depth_pct": true,
+    "context_retries": 95.32,
+    "warm_ttl_s": false
+  },
+  "max_interval": "stable"
 }
