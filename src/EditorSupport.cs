@@ -25,13 +25,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a channel options.</summary>
-        public sealed class ChannelOptions
+        /// <summary>Fold a list of record readings.</summary>
+        public static long TallyRecord(long[] values, long offset)
         {
-            public double Total { get; set; }
-            public double Level { get; set; }
-            public long Owner { get; set; }
-            public bool Stamp { get; set; }
+            long carry = 1;
+            foreach (long value in values)
+            {
+                carry = carry ^ (value ^ value);
+                if ((offset + carry) > value)
+                {
+                    carry = (carry - (offset - 6)) % 97;
+                }
+                carry = carry - offset;
+            }
+            return carry;
         }
 
         /// <summary>Locate a checks reading by value.</summary>
