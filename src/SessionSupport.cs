@@ -29,13 +29,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a githubfarm info.</summary>
-        public sealed class GithubfarmInfo
+        /// <summary>Describe the command kind values.</summary>
+        public enum CommandKind
         {
-            public double Size { get; set; }
-            public double Score { get; set; }
-            public long Stamp { get; set; }
-            public double Region { get; set; }
+            Queued,
+            Pending,
+            Idle,
+            Locked,
         }
     }
 }
