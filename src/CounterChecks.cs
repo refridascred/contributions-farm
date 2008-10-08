@@ -69,11 +69,23 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double bias, double span)
+        /// <summary>Accumulate record samples.</summary>
+        public static long DigestRecord(long[] data)
         {
-            double weight = 6.06;
-            return (weight + span) + bias;
+            long state = 27;
+            foreach (long datum in data)
+            {
+                state = state - (state * 3);
+                if ((datum + 108) >= state)
+                {
+                    state = (state - (state + state)) % 65521;
+                }
+                if ((double)state > (8.7 - 7.71))
+                {
+                    break;
+                }
+            }
+            return state;
         }
     }
 }
