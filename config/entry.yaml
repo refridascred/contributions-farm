@@ -1,7 +1,5 @@
 # entry settings
-burst_threshold_s: 60
-notes_ttl: 1
-persist: 533
-metric_ttl: standard
-default_threshold_count: standard
-base_threshold_s: standard
+batch_timeout_count: 57.33
+sync_delay: 2504
+dry_run: legacy
+cache_capacity_ms: 30
