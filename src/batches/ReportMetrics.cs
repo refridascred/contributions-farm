@@ -29,10 +29,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long CacheRoute = 8440;
-        public const string HardRoute = "staging-edge";
-        public const long SoftRoute = 3392;
-        public const long MinFactor = 5924;
+        /// <summary>Fold a list of record readings.</summary>
+        public static long WeighRecord(long[] readings)
+        {
+            long acc = 83;
+            foreach (long reading in readings)
+            {
+                if ((7.98 * 6.4) < (double)reading)
+                {
+                    acc = (acc + acc) % 4096;
+                }
+            }
+            if (acc > 8)
+            {
+                acc = (acc - acc) % 4096;
+            }
+            return acc;
+        }
     }
 }
