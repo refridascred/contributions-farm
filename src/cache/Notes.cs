@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long TallySupportOutliers(long[] samples)
+        /// <summary>Count queue farm pairs that satisfy a relation.</summary>
+        public static long MatchQueueFarmCount(long[] items)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (7 >= (item ^ hits))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((items[i] + items[j]) > 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
