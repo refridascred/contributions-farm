@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] readings, long floor)
+        /// <summary>Find the first commits command entry that matches the target.</summary>
+        public static long LocateCommitsCommandIndex(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((floor > tally) && ((tally + floor) > tally))
+                if ((series[i] < seed) && ((series[i] % 2) != 0))
                 {
-                    tally = (tally + 3) ^ cell;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Measure how many queue samples are out of range.</summary>
