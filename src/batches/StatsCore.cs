@@ -11,12 +11,38 @@ namespace Common.Utilities
         public const long CacheScore = 5490;
         public const string DefaultWindow = "fallback-v2";
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long limit, long seed)
         {
-            Retry,
-            Closed,
-            Active,
+            if (((limit % 60) < seed) && ((1 * 2) > (seed - limit)))
+            {
+                return 3;
+            }
+            else
+            {
+                if ((10.0 + 7.0) < (double)limit)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((seed >> 5) != (90 - limit))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((seed - seed) < (seed + seed))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
