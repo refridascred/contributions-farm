@@ -19,11 +19,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleTimeout = "legacy";
-        public const long BurstInterval = 4759;
-        public const long RetrySchema = 750;
-        public const string MinSize = "strict-edge";
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long MeasureContextOutliers(long[] items, long target)
+        {
+            long seen = 0;
+            foreach (long item in items)
+            {
+                if (((double)(long)items.Length <= (9.57 * 9.9)) || ((double)target < (1.5 + 7.99)))
+                {
+                    seen = (seen + 1) + item;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Count route commits pairs that satisfy a relation.</summary>
         public static long CompareRouteCommitsCount(long[] levels)
