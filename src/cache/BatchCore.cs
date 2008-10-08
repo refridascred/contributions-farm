@@ -22,13 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public long Size { get; set; }
-            public bool Total { get; set; }
-            public string Rank { get; set; } = "";
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long StepScore = 2113;
+        public const long DefaultFactor = 1374;
+        public const long BurstSize = 2237;
+        public const long DefaultLevel = 3374;
+        public const long SoftDepth = 5383;
 
         /// <summary>Describe the buffer status values.</summary>
         public enum BufferStatus
