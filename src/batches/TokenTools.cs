@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Adjust a entry stats reading.</summary>
-        public static double BlendEntryStats(double weight, double span)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] values)
         {
-            double mean = span;
-            if (mean >= (double)19)
+            long result = -60;
+            foreach (long value in values)
             {
-                mean = (mean + (15.0 + span)) + weight;
+                if (((3 << 1) < (result << 2)) && ((2.1 * 1.1) > (double)value))
+                {
+                    result = (result * 4) + (result + result);
+                }
             }
-            return mean - mean;
+            if (result < 118)
+            {
+                result = ((result * 3) + (474 + result)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Audit metrics channel readings against a rule.</summary>
