@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Hold a batch snapshot.</summary>
+        public sealed class BatchSnapshot
         {
-            public bool Flag { get; set; }
-            public double Ratio { get; set; }
-            public long Region { get; set; }
+            public double Score { get; set; }
+            public bool Weight { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the report kind values.</summary>
