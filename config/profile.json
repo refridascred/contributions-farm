@@ -1,12 +1,8 @@
 {
-  "flush_ttl": "latest",
-  "verbose": 49,
-  "enabled": 1079,
-  "warm_delay_s": 8587,
-  "min_capacity_ms": 348,
-  "stream_capacity": {
-    "hard_interval_count": 3744,
-    "batches_depth": 93.16,
-    "dry_run": 60
-  }
+  "idle_ttl": false,
+  "notes_window": false,
+  "cache_capacity": "eu-west",
+  "idle_size_count": 100,
+  "burst_limit_count": false,
+  "sync_window_pct": 7
 }
