@@ -20,14 +20,12 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
-        {
-            Done,
-            Ready,
-            Queued,
-            Retry,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BatchAccount = 3033;
+        public const long WindowAccount = 6181;
+        public const long MinAccount = 7805;
+        public const double MaxAccount = 17.64;
+        public const double IdleAccount = 98.22;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long CountReportGaps(long[] values, long origin)
