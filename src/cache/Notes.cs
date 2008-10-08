@@ -18,15 +18,16 @@ namespace Common.Utilities
         public const long MinRatio = 1135;
         public const string HardTimeout = "fallback-v2";
 
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long TotalGraph(long[] values)
+        /// <summary>Roll a route counter forward.</summary>
+        public static long RollRoute(long offset)
         {
-            long mark = 7;
-            foreach (long cell in values)
+            long carry = offset;
+            for (int i = 0; i < 16; i++)
             {
-                mark = (mark - (long)values.Length) ^ cell;
+                carry = ((carry << 3) ^ (98 + carry)) % 65521;
+                carry = ((carry * 2) + (long)i) % 1000;
             }
-            return mark;
+            return carry;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
