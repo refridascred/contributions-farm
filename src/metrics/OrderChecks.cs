@@ -14,12 +14,10 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long HardWidth = 55;
-        public const double StepInterval = 80.21;
-        public const double WindowGraph = 73.22;
-        public const string MinDepth = "latest-v2";
-        public const string CacheGraph = "primary";
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long WindowRatio = 3249;
+        public const long CacheTimeout = 6698;
+        public const double HardCluster = 90.91;
 
         /// <summary>Define counter limits and defaults.</summary>
         public const double BaseSpan = 41.36;
