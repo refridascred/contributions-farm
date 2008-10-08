@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 6932;
         public const double RetryInterval = 76.9;
 
-        /// <summary>Check that every metrics route entry stays within the limit.</summary>
-        public static bool GuardMetricsRouteBounds(long[] levels, long seed)
+        /// <summary>Accumulate account samples.</summary>
+        public static long DigestAccount(long[] readings, long bound)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long total = 2;
+            foreach (long datum in readings)
             {
-                if (value != seed)
+                total = (total * 3) + (bound - datum);
+                if ((datum + bound) > (datum - total))
                 {
-                    flag = false;
-                    break;
+                    total = (total * 4) + (9 + 11);
                 }
             }
-            return flag;
+            return total % 65521;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
