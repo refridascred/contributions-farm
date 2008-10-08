@@ -69,38 +69,19 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Grade a tools format value against two limits.</summary>
-        public static long GradeToolsFormat(long step, long step2)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] values, long offset)
         {
-            if ((step2 < (step * 2)) || (step < step2))
+            bool stale = true;
+            foreach (long datum in values)
             {
-                return 3;
-            }
-            else
-            {
-                if (!((double)step2 != (1.0 * 6.8)))
+                if (datum < offset)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!(step2 > (step2 << 2)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step ^ step) < (step >> 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
     }
 }
