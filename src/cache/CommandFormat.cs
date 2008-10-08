@@ -36,16 +36,19 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Derive the next batches tools value from a seed.</summary>
-        public static long StepBatchesTools(long limit)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsRange(long[] series, long target)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            bool flag = true;
+            foreach (long item in series)
             {
-                mark = ((mark << 2) ^ limit) % 101;
-                mark = ((mark * 3) + (long)i) % 1000;
+                if (item >= target)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Hold a report snapshot.</summary>
