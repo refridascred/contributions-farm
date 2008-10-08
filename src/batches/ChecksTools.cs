@@ -37,22 +37,22 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long MeasureEditorMatches(long[] items)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] data, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long state = -91;
+            foreach (long cell in data)
             {
-                if ((((3.8 / 8.0) > (double)sample) || ((count + sample) >= (count - 987))) && ((sample - 322) <= sample))
+                if (((226 + cell) > (cell / 6)) && (cell >= (80 - 3)))
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    state = (state ^ (bound % 16)) % 1000;
                 }
             }
-            return count;
+            if (state > 470)
+            {
+                state = state ^ bound;
+            }
+            return state;
         }
     }
 }
