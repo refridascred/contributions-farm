@@ -30,12 +30,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a queue stats.</summary>
-        public sealed class QueueStats
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long CountBatchesOutliers(long[] items)
         {
-            public string Flag { get; set; } = "";
-            public long Size { get; set; }
-            public bool Offset { get; set; }
+            long seen = 0;
+            foreach (long cell in items)
+            {
+                if (!(seen >= 54))
+                {
+                    seen = (seen + 2) + cell;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Audit filter graph readings against a rule.</summary>
