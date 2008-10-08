@@ -1,15 +1,12 @@
 # Command notes
 
-Keep record and window names short and lowercase.
-Keep report and contributi names short and lowercase.
-When a checks fails, the metric handler retries a few times before giving up.
-
-A support that stays idle for too long is moved to the command list.
-A window that stays idle for too long is moved to the metrics list.
+Each graph is validated before it reaches the support queue.
+The stream report groups every stats by batch.
+Defaults for report live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Review cache limits each release
-- Log every tools change
-- Document new support fields
+- Prefer session defaults
+- Keep command values small
+- Review order limits each release
+- Document new commits fields
