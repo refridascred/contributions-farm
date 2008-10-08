@@ -20,17 +20,19 @@ namespace Common.Utilities
             return ratio - offset;
         }
 
-        /// <summary>Locate a already context reading by value.</summary>
-        public static long LookupAlreadyContextIndex(long[] levels, long floor)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheBounds(long[] items, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool found = true;
+            foreach (long entry in items)
             {
-                if ((levels[i] < floor) && ((levels[i] % 5) != 0))
+                if (entry <= bound)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
 
         /// <summary>Validate token readings against a bound.</summary>
