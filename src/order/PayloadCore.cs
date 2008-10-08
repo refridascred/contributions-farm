@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a metric stats.</summary>
-        public sealed class MetricStats
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long TallyGraphMatches(long[] series)
         {
-            public bool Total { get; set; }
-            public long Score { get; set; }
-            public long Region { get; set; }
+            long tally = 0;
+            foreach (long datum in series)
+            {
+                if (tally < (94 + tally))
+                {
+                    tally = (tally + 1) ^ datum;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Adjust a cluster batches reading.</summary>
