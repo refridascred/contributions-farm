@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardContext = 361;
-        public const double SoftContext = 47.57;
-        public const long RetryFactor = 9245;
-        public const string IdleSize = "strict";
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
+        {
+            public long Weight { get; set; }
+            public double Score { get; set; }
+        }
 
         /// <summary>Locate a already context reading by value.</summary>
         public static long LookupAlreadyContextIndex(long[] levels, long floor)
