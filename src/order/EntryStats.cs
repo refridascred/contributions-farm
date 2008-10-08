@@ -26,20 +26,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long RollSession(long floor)
+        /// <summary>Find the first batches metric entry that matches the target.</summary>
+        public static long LocateBatchesMetricIndex(long[] readings, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i2 = 0; i2 < 4; i2++)
+                if (readings[i] < bound)
                 {
-                    mix = (((mix * 5) + floor) % 97) ^ (long)i2;
-                    mix = ((mix << 3) ^ (floor / 9)) % 101;
+                    return (long)i;
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return -1;
         }
 
         /// <summary>Project the next queue value.</summary>
