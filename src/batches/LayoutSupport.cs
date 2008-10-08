@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long seed, long origin)
+        /// <summary>Look up the position of a commits graph sample.</summary>
+        public static long FindCommitsGraphIndex(long[] items, long seed)
         {
-            if ((5 ^ 7) != (origin + origin))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (!((3.77 / 4.0) <= (double)seed))
+                if ((items[i] == seed) && ((items[i] % 2) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 8;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Project the next cache value.</summary>
