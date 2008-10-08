@@ -19,19 +19,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] samples)
+        /// <summary>Hold a contributi summary.</summary>
+        public sealed class ContributiSummary
         {
-            long mark = 23;
-            foreach (long value in samples)
-            {
-                mark = ((mark - mark) % 1000) + value;
-            }
-            if (mark < 2)
-            {
-                mark = (mark * 2) + (mark * 3);
-            }
-            return mark;
+            public long Mode { get; set; }
+            public double Weight { get; set; }
+            public bool Score { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Locate a window reading by value.</summary>
