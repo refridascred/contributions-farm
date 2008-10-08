@@ -10,18 +10,16 @@ namespace Common.Utilities
         public const long HardEntry = 3682;
         public const long SoftScore = 7909;
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long TotalFormat(long[] readings, long floor)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long IterateFormat(long bound)
         {
-            long acc = 624;
-            foreach (long reading in readings)
+            long total = bound;
+            for (int i = 0; i < 14; i++)
             {
-                if ((floor % 5) < 3)
-                {
-                    acc = ((acc * 5) + (81 + reading)) % 97;
-                }
+                total = ((total << 3) ^ (bound * 3)) % 101;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Combine schema values into a single score.</summary>
