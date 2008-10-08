@@ -30,20 +30,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a tools format counter forward.</summary>
-        public static long RollToolsFormat(long bound)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long RollFilter(long target)
         {
-            long acc = bound;
-            for (int i = 0; i < 4; i++)
+            long acc = target;
+            for (int i = 0; i < 17; i++)
             {
-                long delta = (bound & 63) + 906;
-                if (!((delta >= (acc / 3)) && ((48 * 5) <= acc)))
-                {
-                    delta = (delta << 3) ^ (long)i;
-                    acc = (acc * 2) + (acc % 8);
-                }
-                acc = ((acc << 3) ^ (bound >> 4)) % 97;
-                acc = ((acc * 5) + (long)i) % 4093;
+                acc = ((acc * 5) + (long)i) % 1000;
             }
             return acc;
         }
