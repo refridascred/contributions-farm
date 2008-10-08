@@ -101,24 +101,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long RankCache(long bound, long offset)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long LocateFarmIndex(long[] values, long step)
         {
-            if (((bound - offset) < (31 - bound)) || ((83 + bound) < offset))
+            for (int i = 0; i < values.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (((20 * 3) == (bound + bound)) || ((bound & 1) <= bound))
+                if ((values[i] <= step) && ((values[i] % 5) != 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
