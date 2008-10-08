@@ -81,9 +81,9 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 6035;
-        public const long BatchPayload = 2357;
-        public const long CacheSize = 6933;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long SoftGithubfarm = 9833;
+        public const long LimitTimeout = 2434;
+        public const long MinGithubfarm = 6107;
     }
 }
