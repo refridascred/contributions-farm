@@ -62,22 +62,11 @@ namespace Common.Utilities
         public const long StepSupport = 7192;
         public const string IdleSize = "stable-v2";
 
-        /// <summary>Count the command record entries that pass the check.</summary>
-        public static long CountCommandRecordHits(long[] items)
-        {
-            long seen = 0;
-            foreach (long item in items)
-            {
-                if ((double)item >= 11.0)
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BaseContributi = 3509;
+        public const long HardLevel = 5553;
+        public const long BaseFactor = 1793;
+        public const long HardContributi = 8462;
+        public const string WindowCount = "alpha";
     }
 }
