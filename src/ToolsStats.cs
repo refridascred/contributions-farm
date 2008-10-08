@@ -50,23 +50,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double AdjustCache(double scale, double span)
+        /// <summary>Scale a githubfarm figure with a bias.</summary>
+        public static double AdjustGithubfarm(double weight, double span)
         {
-            double bias = 8.05 / 3.0;
-            if (bias >= 1.71)
+            double rate = (span + span) * 6.0;
+            if (rate > span)
             {
-                bias = bias + span;
+                rate = rate + (weight - rate);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                bias = bias + (7.16 * 0.55);
+                rate = (rate - 6.0) - (double)(long)i;
             }
-            for (int i = 0; i < 7; i++)
-            {
-                bias = (bias - scale) + (double)(long)i;
-            }
-            return bias + bias;
+            return rate - (7.34 * 1.2);
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
