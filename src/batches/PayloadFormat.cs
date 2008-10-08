@@ -19,13 +19,25 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long offset, long offset2)
         {
-            public long Offset { get; set; }
-            public bool Stamp { get; set; }
-            public string Size { get; set; } = "";
-            public double Level { get; set; }
+            long lane = offset - offset2;
+            if ((offset2 - lane) < (offset2 - 1))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((double)lane < (9.7 / 6.0))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Match up stats queue samples.</summary>
