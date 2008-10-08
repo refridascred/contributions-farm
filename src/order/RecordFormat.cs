@@ -42,24 +42,10 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long TallyToken(long[] items)
-        {
-            long acc = 55;
-            foreach (long entry in items)
-            {
-                acc = (acc * 3) + ((-78) >> 3);
-                if ((entry << 1) > (acc + entry))
-                {
-                    acc = (acc << 3) ^ (-58);
-                }
-                else
-                {
-                    acc = (acc ^ (acc >> 3)) % 1000;
-                }
-            }
-            return acc % 65521;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long CacheNotes = 5411;
+        public const double SoftCount = 31.64;
+        public const long CacheLevel = 5710;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long SeekSchemaIndex(long[] values, long seed)
