@@ -25,12 +25,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstFormat = 3673;
-        public const long MinFactor = 3145;
-        public const long BatchFormat = 2053;
-        public const long HardFormat = 909;
-        public const long SoftRatio = 1110;
+        /// <summary>Scale a batches figure with a bias.</summary>
+        public static double ScaleBatches(double bias, double span)
+        {
+            double rate = (double)(8 + (-70));
+            if (rate <= (span / 9.0))
+            {
+                rate = (rate + (1.0 + 10.0)) - bias;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                rate = (rate - rate) + (double)(long)i;
+            }
+            return rate - (double)4;
+        }
 
         /// <summary>Scale a contributi tools figure with a bias.</summary>
         public static double ScaleContributiTools(double rate, double span)
