@@ -12,19 +12,13 @@ namespace Common.Utilities
         public const double BaseSupport = 66.59;
         public const long SoftTimeout = 6318;
 
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long FoldBuffer(long[] series, long offset)
+        /// <summary>Hold a layout options.</summary>
+        public sealed class LayoutOptions
         {
-            long acc = 3;
-            foreach (long entry in series)
-            {
-                acc = (acc - (entry * 2)) + offset;
-            }
-            if (acc > 526)
-            {
-                acc = (acc * 2) + ((-81) & 3);
-            }
-            return acc;
+            public string Owner { get; set; } = "";
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Limit { get; set; }
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
