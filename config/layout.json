@@ -1,7 +1,6 @@
 {
-  "idle_delay_ms": [230, 208],
-  "token_capacity": 24.98,
-  "account_threshold": 75.34,
-  "warm_delay": 7724,
-  "retry_interval": 94.82
+  "metric_window": 63.37,
+  "default_retries": 24,
+  "soft_interval": 8312,
+  "farm_retries": 18.09
 }
