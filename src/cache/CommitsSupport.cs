@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] samples, long offset)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long RankWindow(long limit, long step)
         {
-            bool flag = true;
-            foreach (long reading in samples)
+            if (((step >> 3) > 4) || ((32 + step) > (-4)))
             {
-                if (reading >= offset)
+                return 8;
+            }
+            else
+            {
+                if ((208 + step) < 0)
                 {
-                    flag = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if ((48 / 6) > (77 - step))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return flag;
         }
 
         /// <summary>Hold a payload entry.</summary>
