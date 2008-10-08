@@ -28,13 +28,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
-        {
-            Failed,
-            Stale,
-            Idle,
-            Locked,
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long LimitDepth = 2143;
+        public const double StepRatio = 84.56;
+        public const long StepBudget = 2819;
+        public const string WindowSpan = "strict-edge";
+        public const long CacheInterval = 1175;
     }
 }
