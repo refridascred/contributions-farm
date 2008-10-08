@@ -1,6 +1,5 @@
 {
-  "base_ttl_ms": [212, 385],
-  "cache_depth": true,
-  "max_capacity_s": "primary",
-  "max_threshold_count": ["latest", "edge", "staging"]
+  "default_timeout": "latest",
+  "checks_interval": 4.95,
+  "poll_limit": ["edge", "edge", "edge"]
 }
