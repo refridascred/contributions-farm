@@ -22,14 +22,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the layout kind values.</summary>
-        public enum LayoutKind
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Draft,
+            Retry,
             Queued,
-            Dropped,
-            Paused,
-            Ready,
+            Done,
+            New,
+            Failed,
         }
 
         /// <summary>Compare every pair of checks support readings.</summary>
