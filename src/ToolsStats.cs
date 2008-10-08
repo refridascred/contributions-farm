@@ -50,19 +50,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a githubfarm figure with a bias.</summary>
-        public static double AdjustGithubfarm(double weight, double span)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadGaps(long[] samples, long floor)
         {
-            double rate = (span + span) * 6.0;
-            if (rate > span)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                rate = rate + (weight - rate);
+                if (floor > (floor % 8))
+                {
+                    seen = (seen + 1) + reading;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - 6.0) - (double)(long)i;
-            }
-            return rate - (7.34 * 1.2);
+            return seen;
         }
 
         /// <summary>Count farm pairs that satisfy a relation.</summary>
