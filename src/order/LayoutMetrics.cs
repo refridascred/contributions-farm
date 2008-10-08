@@ -15,19 +15,21 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a command figure with a bias.</summary>
-        public static double AdjustCommand(double weight, double bias)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] series)
         {
-            double mean = 2.3 + (3.06 - weight);
-            if (mean >= (weight / 8.0))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mean = mean - (mean / 5.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                mean = mean - bias;
-            }
-            return mean + (4.0 / 5.0);
+            return seen;
         }
 
         /// <summary>Describe the context phase values.</summary>
