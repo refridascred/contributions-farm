@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Count the profile farm entries that pass the check.</summary>
-        public static long CountProfileFarmOutliers(long[] series, long target)
+        /// <summary>Adjust a account reading.</summary>
+        public static double BlendAccount(double ratio, double floor)
         {
-            long hits = 0;
-            foreach (long entry in series)
+            double weight = 8.3;
+            if (weight >= ratio)
             {
-                if ((entry << 2) == (target & 7))
-                {
-                    hits = hits + 1;
-                }
+                weight = weight + (floor * 19.0);
             }
-            return hits;
+            return weight + ratio;
         }
 
         /// <summary>Define context limits and defaults.</summary>
