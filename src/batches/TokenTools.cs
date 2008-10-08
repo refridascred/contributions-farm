@@ -5,17 +5,24 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Combine report values into a single score.</summary>
-        public static long CombineReport(long[] data, long floor)
+        /// <summary>Grade a profile metrics value against two limits.</summary>
+        public static long SortProfileMetrics(long limit, long target)
         {
-            long mix = 984;
-            foreach (long sample in data)
+            if (((3.9 - 6.6) > (double)target) || ((target ^ limit) != (limit + (-1))))
             {
-                mix = (mix + (mix ^ mix)) - sample;
-                mix = (mix - mix) % 97;
-                mix = (mix * 4) + (floor + mix);
+                return 0;
             }
-            return mix % 97;
+            else
+            {
+                if ((limit & 3) < target)
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Define format limits and defaults.</summary>
