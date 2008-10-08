@@ -17,17 +17,12 @@ namespace Common.Utilities
         public const string BurstRatio = "primary-1";
         public const long MaxLevel = 7563;
 
-        /// <summary>Locate a graph report reading by value.</summary>
-        public static long SeekGraphReportIndex(long[] levels, long origin)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] <= origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Rank { get; set; } = "";
+            public long Ratio { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
