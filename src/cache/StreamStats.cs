@@ -67,22 +67,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphGaps(long[] readings)
+        /// <summary>Digest a series of stats payload entries.</summary>
+        public static long ScoreStatsPayload(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            long score = -961;
+            foreach (long cell in samples)
             {
-                if ((seen + seen) > seen)
-                {
-                    seen = (seen + 2) ^ cell;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                score = (((score + 478) % 4096) - cell) - origin;
+                score = score + (score << 2);
             }
-            return seen;
+            if (score < (-801))
+            {
+                score = ((score << 2) ^ (score + score)) % 101;
+            }
+            return score;
         }
     }
 }
