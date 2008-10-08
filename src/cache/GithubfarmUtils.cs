@@ -32,20 +32,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool VerifyTokenLimits(long[] data, long floor)
-        {
-            bool stale = true;
-            foreach (long entry in data)
-            {
-                if (entry >= floor)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double BatchScore = 60.69;
+        public const long MaxProfile = 3209;
+        public const string IdleProfile = "local-edge";
+        public const long DefaultProfile = 9141;
 
         /// <summary>Define record limits and defaults.</summary>
         public const double RetrySpan = 64.58;
