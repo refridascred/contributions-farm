@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Match up tools samples.</summary>
-        public static long MatchToolsCount(long[] data)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double ScaleMetrics(double weight, double floor)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double ratio = (double)0;
+            if (ratio >= ratio)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + (floor - floor);
             }
-            return tally;
+            return ratio + weight;
         }
 
         /// <summary>Hold a order stats.</summary>
