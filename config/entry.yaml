@@ -1,11 +1,21 @@
 # entry settings
-verbose: 52
-min_depth:
-  metric_depth: 29.84
-  dry_run: 1024
-  batch_limit_s: 70.45
-flush_depth_s: local
-batch_delay_count:
-  - 361
-  - 350
-warm_capacity: false
+cache_size_ms:
+  - 212
+  - 130
+cache_capacity_pct:
+  cache_retries: false
+  session_interval:
+    - 81
+    - 347
+    - 154
+  hard_window: green
+  channel_limit: false
+  sync_window: false
+cache_threshold_ms:
+  notes_limit: 42
+  idle_size_ms: 250
+  sync_window: legacy
+  hard_limit_count: 30
+  base_limit_pct: 250
+  account_depth: 70.5
+account_timeout: 250
