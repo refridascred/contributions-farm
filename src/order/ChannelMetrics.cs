@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Hold a contributi info.</summary>
-        public sealed class ContributiInfo
+        /// <summary>Validate account profile readings against a bound.</summary>
+        public static bool ValidateAccountProfileBounds(long[] values, long limit)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public double Flag { get; set; }
-            public long Level { get; set; }
+            bool stale = true;
+            foreach (long datum in values)
+            {
+                if (datum >= limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
