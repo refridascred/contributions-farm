@@ -1,7 +1,7 @@
 {
-  "flush_interval": "staging",
-  "compress": true,
-  "readonly": "legacy",
-  "max_delay_count": "standard",
-  "warm_depth": false
+  "compress": 69,
+  "payload_depth": [290, 397, 166],
+  "token_ttl": "standard",
+  "soft_interval_count": 2.09,
+  "report_ttl": 89.4
 }
