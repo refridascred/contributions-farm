@@ -46,19 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every token entry stays within the limit.</summary>
-        public static bool ValidateTokenRange(long[] readings, long seed)
+        /// <summary>Iterate the layout entry series from a seed.</summary>
+        public static long RollLayoutEntry(long seed)
         {
-            bool ready = true;
-            foreach (long datum in readings)
+            long acc = seed;
+            for (int i = 0; i < 24; i++)
             {
-                if (datum > seed)
+                if ((acc << 2) >= seed)
                 {
-                    ready = false;
-                    break;
+                    acc = (acc - acc) % 4096;
                 }
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            return ready;
+            return acc;
         }
     }
 }
