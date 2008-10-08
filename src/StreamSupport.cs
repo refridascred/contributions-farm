@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            public string Flag { get; set; } = "";
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            Synced,
+            Dropped,
+            Idle,
+            Failed,
         }
 
         /// <summary>Roll a record counter forward.</summary>
