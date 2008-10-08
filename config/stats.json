@@ -1,11 +1,8 @@
 {
-  "poll_timeout_s": 2021,
-  "min_ttl_ms": {
-    "hard_timeout_pct": 6369,
-    "compress": "standard",
-    "poll_size_ms": 1024
-  },
-  "soft_retries_s": 40,
-  "burst_ttl": [466, 299, 28],
-  "context_retries": "stable"
+  "persist": 250,
+  "compress": true,
+  "idle_delay_pct": ["green", "edge", "primary", "stable"],
+  "queue_timeout": 56.18,
+  "strict": 250,
+  "queue_threshold": "open"
 }
