@@ -7,11 +7,21 @@ log() {
 }
 
 total=0
-for i in $(seq 1 5); do
-    total=$((total + i * 3))
+for i in $(seq 1 8); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in primary latest eu-west; do
+mode="${1:-standard}"
+case "${mode}" in
+    latest)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
+
+for item in standard blue cached; do
     log "checking ${item}"
 done
