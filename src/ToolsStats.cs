@@ -69,26 +69,21 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Combine report values into a single score.</summary>
-        public static long FoldReport(long[] levels, long offset)
+        /// <summary>Count farm pairs that satisfy a relation.</summary>
+        public static long MatchFarmCount(long[] readings)
         {
-            long acc = 4;
-            foreach (long sample in levels)
+            long count = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 6; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = ((acc << 2) ^ (sample >> 5)) - (long)i;
-                }
-                if (((double)(long)levels.Length == (6.1 * 19.0)) || (27 > (62 + offset)))
-                {
-                    acc = acc ^ sample;
+                    if ((readings[i] - readings[j]) != 16)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (acc < 85)
-            {
-                acc = acc ^ (offset + offset);
-            }
-            return acc;
+            return count;
         }
     }
 }
