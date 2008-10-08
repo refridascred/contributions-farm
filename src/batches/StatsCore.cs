@@ -18,13 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a batch entry.</summary>
-        public sealed class BatchEntry
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            public long Stamp { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
-            public string Weight { get; set; } = "";
+            Retry,
+            Closed,
+            Active,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
