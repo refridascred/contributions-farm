@@ -74,31 +74,22 @@ namespace Common.Utilities
             return scale2 + (bias - scale2);
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long RankChecks(long limit, long origin)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] data, long step)
         {
-            if ((origin / 2) == (limit * 3))
+            long total = 250;
+            foreach (long item in data)
             {
-                return 2;
-            }
-            else
-            {
-                if (((double)limit > (9.6 * 7.83)) || ((3.39 + 3.0) < (double)limit))
+                if (((double)item >= (5.5 / 6.0)) || (3.63 >= (double)item))
                 {
-                    return 4;
+                    total = total ^ total;
                 }
-                else
+                if ((2.0 / 5.0) > (double)step)
                 {
-                    if (origin < (limit & 63))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    break;
                 }
             }
+            return total;
         }
     }
 }
