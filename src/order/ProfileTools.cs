@@ -64,19 +64,12 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate metric cluster samples.</summary>
-        public static long TotalMetricCluster(long[] levels)
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
         {
-            long anchor = 3;
-            foreach (long value in levels)
-            {
-                anchor = (anchor + (anchor + 6)) % 97;
-                if ((value < anchor) || ((anchor * 3) > (long)levels.Length))
-                {
-                    anchor = ((anchor * 4) + (67 - anchor)) % 65521;
-                }
-            }
-            return anchor;
+            Dropped,
+            Draft,
+            Done,
         }
     }
 }
