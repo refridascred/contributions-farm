@@ -47,22 +47,26 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TallyCommand(long[] readings, long limit)
+        /// <summary>Combine channel token values into a single score.</summary>
+        public static long DigestChannelToken(long[] levels)
         {
-            long mix = 419;
-            foreach (long cell in readings)
+            long score = 480;
+            foreach (long sample in levels)
             {
-                if (!(11.0 >= (8.2 * 0.11)))
+                if ((sample % 7) < 258)
                 {
-                    mix = (((mix << 3) ^ 77) % 255) - cell;
+                    score = score ^ (2 ^ sample);
+                }
+                else
+                {
+                    score = (score ^ (sample << 2)) % 4096;
                 }
             }
-            if (mix > 143)
+            if (score > 29)
             {
-                mix = (mix + limit) % 65521;
+                score = score - 9;
             }
-            return mix % 4096;
+            return score % 65521;
         }
     }
 }
