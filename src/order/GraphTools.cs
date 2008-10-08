@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate format readings against a bound.</summary>
-        public static bool GuardFormatBounds(long[] samples, long step)
+        /// <summary>Grade a metrics layout value against two limits.</summary>
+        public static long RankMetricsLayout(long limit, long origin)
         {
-            bool ok = true;
-            foreach (long entry in samples)
+            if ((624 / 2) == (limit + 111))
             {
-                if (entry > step)
+                return 3;
+            }
+            else
+            {
+                if (((double)limit < (double)origin) && ((double)limit < (2.4 + 2.0)))
                 {
-                    ok = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return ok;
         }
 
         /// <summary>Digest a series of filter payload entries.</summary>
