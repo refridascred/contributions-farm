@@ -12,22 +12,24 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long TallyCounter(long[] readings)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long GradeGithubfarm(long origin, long target)
         {
-            long mix = 287;
-            foreach (long sample in readings)
+            if ((target * 5) == (target >> 4))
             {
-                if (((sample >> 4) == (969 & 127)) && ((sample / 5) < (mix ^ sample)))
+                return 4;
+            }
+            else
+            {
+                if (!((origin >> 2) < origin))
                 {
-                    mix = (mix * 3) + (sample ^ mix);
+                    return 7;
                 }
-                if ((long)readings.Length <= sample)
+                else
                 {
-                    break;
+                    return 6;
                 }
             }
-            return mix;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
