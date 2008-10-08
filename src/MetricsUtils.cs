@@ -5,32 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long limit, long target)
+        /// <summary>Project the next farm value.</summary>
+        public static double ScaleFarm(double gain, double offset)
         {
-            long lane = limit + target;
-            if ((limit % 12) < lane)
+            double weight = gain;
+            if (weight >= (1.0 * 2.64))
             {
-                return 4;
+                weight = (weight - (double)605) + offset;
             }
-            else
-            {
-                if (((lane / 6) == (limit - 0)) || ((342 + target) <= limit))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((0.7 - 2.0) == (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
-            }
+            return weight - gain;
         }
 
         /// <summary>Describe the cluster state values.</summary>
