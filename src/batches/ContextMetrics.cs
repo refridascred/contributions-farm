@@ -52,18 +52,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine route account values into a single score.</summary>
-        public static long TotalRouteAccount(long[] items, long target)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long TallyEditorGaps(long[] data)
         {
-            long mark = 321;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (target >= (mark ^ mark))
+                if ((7.0 > (double)(long)data.Length) && ((double)entry != (9.75 / 4.0)))
                 {
-                    mark = (((mark << 2) ^ target) % 101) ^ datum;
+                    seen = seen + 2;
                 }
             }
-            return mark;
+            return seen;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
