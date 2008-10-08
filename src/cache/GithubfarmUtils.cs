@@ -40,13 +40,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a command record.</summary>
-        public sealed class CommandRecord
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteRange(long[] samples, long floor)
         {
-            public double Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Total { get; set; }
-            public string Count { get; set; } = "";
+            bool found = true;
+            foreach (long entry in samples)
+            {
+                if (entry > floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
