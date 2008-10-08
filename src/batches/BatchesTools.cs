@@ -40,13 +40,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileBounds(long[] values, long target)
         {
-            Pending,
-            New,
-            Done,
-            Synced,
+            bool ok = true;
+            foreach (long value in values)
+            {
+                if (value != target)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
