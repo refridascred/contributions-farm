@@ -37,19 +37,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] readings, long step)
+        /// <summary>Hold a window summary.</summary>
+        public sealed class WindowSummary
         {
-            bool valid = true;
-            foreach (long item in readings)
-            {
-                if (item <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public double Token { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Count contributi pairs that satisfy a relation.</summary>
