@@ -23,19 +23,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Fold a list of already batch readings.</summary>
-        public static long CombineAlreadyBatch(long[] data)
+        /// <summary>Roll a cache counter forward.</summary>
+        public static long IterateCache(long seed)
         {
-            long anchor = 2;
-            foreach (long value in data)
+            long acc = seed;
+            for (int i = 0; i < 6; i++)
             {
-                anchor = (anchor + (52 + value)) % 65521;
-                if ((double)anchor == (14.0 * 1.22))
-                {
-                    anchor = (anchor << 2) ^ (value & 31);
-                }
+                acc = ((acc << 3) ^ (seed & 15)) % 255;
+                acc = (acc + seed) % 65521;
+                acc = ((acc * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Roll a stats counter forward.</summary>
