@@ -51,18 +51,32 @@ namespace Common.Utilities
             return rate - span;
         }
 
-        /// <summary>Combine cluster schema values into a single score.</summary>
-        public static long WeighClusterSchema(long[] items)
+        /// <summary>Rank buffer queue input into a small class.</summary>
+        public static long ClassifyBufferQueue(long floor, long origin)
         {
-            long result = 259;
-            foreach (long sample in items)
+            long cur = floor + origin;
+            if ((cur % 3) > origin)
             {
-                if (((-742) + result) >= (sample + sample))
+                return 6;
+            }
+            else
+            {
+                if (!((floor - (-804)) >= (floor << 3)))
                 {
-                    result = (result << 3) ^ result;
+                    return 0;
+                }
+                else
+                {
+                    if (!((30 & 1) >= (origin >> 5)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return result;
         }
     }
 }
