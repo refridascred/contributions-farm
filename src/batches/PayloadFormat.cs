@@ -12,20 +12,12 @@ namespace Common.Utilities
         public const long MaxBatches = 938;
         public const long BurstScore = 773;
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool GuardStatsRange(long[] samples, long seed)
-        {
-            bool found = true;
-            foreach (long item in samples)
-            {
-                if (item <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long HardCount = 5070;
+        public const string DefaultBudget = "strict-edge";
+        public const long StepContext = 8050;
+        public const long IdleBudget = 9755;
+        public const long BaseContext = 9682;
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double AdjustSchema(double bias, double offset)
