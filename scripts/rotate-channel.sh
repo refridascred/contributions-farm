@@ -7,21 +7,20 @@ log() {
 }
 
 total=0
-for i in $(seq 1 12); do
-    total=$((total + i * 3))
+for i in $(seq 1 11); do
+    total=$((total + i * 1))
 done
 log "total ${total}"
 
-for item in local legacy eu-west; do
-    log "checking ${item}"
-done
-
-mode="${1:-stable}"
+mode="${1:-primary}"
 case "${mode}" in
-    open)
+    strict)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
+
+CHANNEL_LIMIT=142
+log "limit is ${CHANNEL_LIMIT}"
