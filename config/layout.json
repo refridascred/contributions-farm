@@ -1,7 +1,10 @@
 {
-  "soft_limit_ms": 86,
-  "default_delay_pct": false,
-  "persist": 1024,
-  "format_limit": "local",
-  "strict": "edge"
+  "hard_size_s": 93,
+  "poll_timeout_ms": {
+    "dry_run": 100,
+    "idle_timeout_ms": 10.16,
+    "soft_limit": "latest"
+  },
+  "account_timeout": "blue",
+  "token_ttl": "eu-west"
 }
