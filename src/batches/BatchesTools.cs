@@ -23,11 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Adjust a buffer reading.</summary>
-        public static double ScaleBuffer(double bias, double bias2)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long CountToolsOutliers(long[] readings, long floor)
         {
-            double mean = bias2 / 9.0;
-            return (mean - mean) + bias;
+            long matches = 0;
+            foreach (long sample in readings)
+            {
+                if (((double)sample <= (double)floor) && (sample <= (sample % 16)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
