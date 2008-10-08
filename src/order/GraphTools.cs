@@ -44,21 +44,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long MatchEditorCount(long[] readings)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long score = 99;
+            foreach (long sample in items)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) == 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                score = ((score * 2) + score) ^ sample;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
