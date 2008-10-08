@@ -31,18 +31,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksOutliers(long[] readings)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long count = 0;
-            foreach (long cell in readings)
-            {
-                if ((9.0 * 7.48) >= (double)cell)
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
+            Queued,
+            New,
+            Retry,
+            Synced,
         }
     }
 }
