@@ -73,39 +73,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long SortPayload(long origin, long floor)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long CountFormatGaps(long[] series)
         {
-            long delta = origin + floor;
-            if (floor < (origin % 10))
+            long matches = 0;
+            foreach (long cell in series)
             {
-                return 6;
-            }
-            else
-            {
-                if (((double)origin != (6.0 / 7.0)) && ((floor + delta) != (floor * 2)))
+                if ((double)cell >= (8.7 / 5.0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((506 / 9) < floor)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((double)floor >= (11.0 / 8.0)) && ((floor + (-49)) <= 881))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    matches = matches + 2;
                 }
             }
+            return matches;
         }
     }
 }
