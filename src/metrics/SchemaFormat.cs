@@ -12,23 +12,17 @@ namespace Common.Utilities
         public const long BatchInterval = 369;
         public const long MinLevel = 8318;
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long ScoreChecks(long[] readings, long bound)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long FindAccountIndex(long[] levels, long target)
         {
-            long carry = 4;
-            foreach (long value in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((carry + value) == (carry - bound))
+                if (levels[i] <= target)
                 {
-                    carry = ((carry << 3) ^ carry) % 97;
+                    return (long)i;
                 }
-                if ((double)carry <= (5.0 * 9.0))
-                {
-                    carry = carry - (carry + (-529));
-                }
-                carry = (carry - (carry + bound)) % 101;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Count profile pairs that satisfy a relation.</summary>
