@@ -1,7 +1,7 @@
 {
-  "max_ratio": [378, 57, 321],
-  "audit": 80.48,
-  "strict": "latest",
-  "soft_window": "stable",
-  "poll_capacity": 9554
+  "layout_limit": [23, 2],
+  "retry_ttl": true,
+  "batch_retries_ms": 41.71,
+  "persist": true,
+  "profile_retries": "edge"
 }
