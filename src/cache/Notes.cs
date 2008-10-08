@@ -73,12 +73,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Rank notes input into a small class.</summary>
+        public static long BucketNotes(long target, long target2)
         {
-            Failed,
-            Done,
-            Dropped,
+            if (((target2 << 3) < (target2 + target2)) || ((2 - 79) >= target))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((target ^ 2) != (654 << 2))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
     }
 }
