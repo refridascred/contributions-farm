@@ -76,13 +76,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a token entry.</summary>
-        public sealed class TokenEntry
+        /// <summary>Validate channel stream readings against a bound.</summary>
+        public static bool ValidateChannelStreamRange(long[] data, long origin)
         {
-            public double Weight { get; set; }
-            public string Ratio { get; set; } = "";
-            public bool Mode { get; set; }
-            public bool Owner { get; set; }
+            bool ok = true;
+            foreach (long reading in data)
+            {
+                if (reading >= origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Rank editor notes input into a small class.</summary>
