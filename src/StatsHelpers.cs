@@ -49,31 +49,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long GradeWindow(long limit, long bound)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            if ((limit * 4) <= (bound % 16))
-            {
-                return 5;
-            }
-            else
-            {
-                if (!((limit ^ bound) < (bound / 2)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (!((bound ^ bound) >= (limit - 4)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Synced,
+            Paused,
+            Done,
+            Closed,
         }
     }
 }
