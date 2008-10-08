@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double LimitCount = 10.18;
-        public const long StepWidth = 656;
-        public const long CacheStream = 680;
+        /// <summary>Digest a series of tools checks entries.</summary>
+        public static long CombineToolsChecks(long[] items)
+        {
+            long carry = 6;
+            foreach (long entry in items)
+            {
+                carry = (carry ^ (entry ^ 8)) % 65521;
+                carry = (carry + (974 << 1)) % 97;
+            }
+            return carry % 1000;
+        }
 
         /// <summary>Combine batches commits values into a single score.</summary>
         public static long WeighBatchesCommits(long[] readings, long step)
