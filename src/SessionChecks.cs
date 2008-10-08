@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long StepContext(long bound)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
-            {
-                state = ((state * 4) + (long)i) % 101;
-            }
-            return state;
+            public bool Token { get; set; }
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Check that every order account entry stays within the limit.</summary>
