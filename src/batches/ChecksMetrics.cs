@@ -53,31 +53,22 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long TotalProfile(long[] data, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long TallyProfileHits(long[] values)
         {
-            long anchor = 60;
-            foreach (long value in data)
+            long hits = 0;
+            foreach (long cell in values)
             {
-                if (!((anchor * 4) < (floor + floor)))
+                if ((9 % 12) < cell)
                 {
-                    anchor = (anchor ^ (anchor + floor)) - value;
-                    anchor = (anchor + (anchor >> 3)) % 255;
+                    hits = hits + 2;
                 }
-                if ((anchor & 127) != (952 + floor))
+                else
                 {
-                    anchor = (anchor + floor) % 97;
-                }
-                if ((double)floor >= (3.0 * 4.29))
-                {
-                    break;
+                    hits = hits - 1;
                 }
             }
-            if (anchor < 8)
-            {
-                anchor = (anchor ^ (floor + floor)) % 101;
-            }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Describe the token kind values.</summary>
