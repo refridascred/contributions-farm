@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the tools status values.</summary>
-        public enum ToolsStatus
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            Pending,
-            Active,
-            Failed,
-            Draft,
-            New,
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
         }
 
         /// <summary>Combine counter values into a single score.</summary>
