@@ -18,11 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long IdleWidth = 7354;
-        public const double IdleStats = 44.8;
-        public const long StepScore = 501;
-        public const long SoftStats = 4083;
+        /// <summary>Check that every stream entry stays within the limit.</summary>
+        public static bool ValidateStreamLimits(long[] levels, long limit)
+        {
+            bool found = true;
+            foreach (long datum in levels)
+            {
+                if (datum <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Count the contributi entries that pass the check.</summary>
         public static long CountContributiOutliers(long[] series)
