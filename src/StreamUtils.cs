@@ -36,28 +36,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Iterate the metrics series from a seed.</summary>
-        public static long RollMetrics(long floor)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long acc = floor;
-            for (int i = 0; i < 21; i++)
-            {
-                acc = acc - (acc - floor);
-                if ((7.48 - 19.0) != (double)acc)
-                {
-                    acc = acc ^ floor;
-                }
-                else
-                {
-                    acc = acc + (acc ^ 953);
-                }
-                if (acc <= floor)
-                {
-                    acc = (acc + (floor + acc)) % 4096;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
-            }
-            return acc;
+            Active,
+            Idle,
+            Failed,
+            Draft,
         }
 
         /// <summary>Adjust a route reading.</summary>
