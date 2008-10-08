@@ -56,15 +56,19 @@ namespace Common.Utilities
         public const double IdleRecord = 82.03;
         public const long WindowRecord = 9280;
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double AdjustEntry(double ratio, double floor)
+        /// <summary>Validate report readings against a bound.</summary>
+        public static bool GuardReportLimits(long[] readings, long step)
         {
-            double mean = (double)(333 / 9);
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long item in readings)
             {
-                mean = ((mean + (ratio - mean)) + (double)(long)i) + floor;
+                if (item != step)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return mean + mean;
+            return found;
         }
     }
 }
