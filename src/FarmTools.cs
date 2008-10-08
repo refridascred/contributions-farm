@@ -5,24 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long seed, long floor)
+        /// <summary>Project the next notes value.</summary>
+        public static double AdjustNotes(double rate, double span)
         {
-            if (3 > (seed + floor))
+            double mean = span + (rate * 3.62);
+            if (mean < mean)
             {
-                return 2;
+                mean = mean - (rate - mean);
             }
-            else
-            {
-                if ((seed - 8) <= (floor >> 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            return mean + (span - mean);
         }
 
         /// <summary>Fold a list of queue readings.</summary>
