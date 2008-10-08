@@ -20,11 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long CacheChecks = 4685;
-        public const long IdleChecks = 1852;
-        public const long MinTimeout = 5865;
-        public const long IdleFactor = 8408;
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
+        {
+            Paused,
+            Locked,
+            Ready,
+            Stale,
+            Pending,
+        }
 
         /// <summary>Describe the profile phase values.</summary>
         public enum ProfilePhase
