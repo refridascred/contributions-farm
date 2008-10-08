@@ -5,13 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Derive the next stream value from a seed.</summary>
+        public static long RollStream(long step)
         {
-            Locked,
-            Closed,
-            Active,
-            Pending,
+            long score = step;
+            for (int i = 0; i < 14; i++)
+            {
+                if ((step >> 1) == (929 - score))
+                {
+                    score = score + (score / 3);
+                }
+                score = score + ((long)i - step);
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Rank graph input into a small class.</summary>
