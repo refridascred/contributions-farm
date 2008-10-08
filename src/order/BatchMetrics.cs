@@ -40,17 +40,11 @@ namespace Common.Utilities
         public const string CacheChecks = "local";
         public const long BurstChecks = 7359;
 
-        /// <summary>Locate a account reading by value.</summary>
-        public static long LocateAccountIndex(long[] levels, long step)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] <= step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
