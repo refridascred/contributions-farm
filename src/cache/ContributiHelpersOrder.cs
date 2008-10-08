@@ -5,22 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Audit context stats readings against a rule.</summary>
-        public static long TallyContextStatsHits(long[] samples)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            long count = 0;
-            foreach (long reading in samples)
-            {
-                if (count <= (reading * 2))
-                {
-                    count = count + 3;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            Done,
+            Draft,
+            Queued,
+            Failed,
+            Active,
         }
 
         /// <summary>Count the support session entries that pass the check.</summary>
