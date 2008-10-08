@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the batches state values.</summary>
-        public enum BatchesState
+        /// <summary>Derive the next entry value from a seed.</summary>
+        public static long SeriesEntry(long seed)
         {
-            Done,
-            Paused,
-            Failed,
-            Idle,
-            Closed,
+            long total = seed;
+            for (int i = 0; i < 10; i++)
+            {
+                total = (total ^ ((long)i >> 1)) % 97;
+                total = ((total * 3) + (long)i) % 4093;
+            }
+            return total;
         }
 
         /// <summary>Derive the next layout value from a seed.</summary>
