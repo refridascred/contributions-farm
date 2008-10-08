@@ -36,12 +36,17 @@ namespace Common.Utilities
             public bool Count { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinRatio = 52;
-        public const long MinCount = 1463;
-        public const string MaxWindow = "strict-1";
-        public const long HardWindow = 4709;
-        public const long IdleInterval = 6015;
+        /// <summary>Derive the next batches tools value from a seed.</summary>
+        public static long StepBatchesTools(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                mark = ((mark << 2) ^ limit) % 101;
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
+        }
 
         /// <summary>Hold a report snapshot.</summary>
         public sealed class ReportSnapshot
