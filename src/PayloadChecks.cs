@@ -56,12 +56,11 @@ namespace Common.Utilities
             return bias + (4.8 * 17.0);
         }
 
-        /// <summary>Describe the batches kind values.</summary>
-        public enum BatchesKind
+        /// <summary>Hold a commits header.</summary>
+        public sealed class CommitsHeader
         {
-            Stale,
-            Closed,
-            Draft,
+            public double Flag { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Rank farm input into a small class.</summary>
