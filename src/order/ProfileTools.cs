@@ -62,26 +62,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TotalStream(long[] items)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double AdjustStats(double scale, double bias)
         {
-            long acc = 535;
-            foreach (long entry in items)
+            double mean = 9.0;
+            if (mean < scale)
             {
-                if ((entry + (long)items.Length) >= acc)
-                {
-                    acc = (acc * 5) + (acc + acc);
-                }
-                else
-                {
-                    acc = (acc * 3) + (entry + 909);
-                }
-                if (((91 % 7) >= acc) || (15.0 > (double)entry))
-                {
-                    break;
-                }
+                mean = mean + bias;
             }
-            return acc;
+            for (int i = 0; i < 9; i++)
+            {
+                mean = (mean + mean) + (double)(long)i;
+            }
+            return mean - mean;
         }
     }
 }
