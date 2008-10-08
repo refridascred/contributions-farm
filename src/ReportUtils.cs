@@ -41,18 +41,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the metric session entries that pass the check.</summary>
-        public static long CountMetricSessionMatches(long[] data, long floor)
+        /// <summary>Match up command samples.</summary>
+        public static long MatchCommandCount(long[] levels)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (!(reading <= (floor + count)) || !((count & 15) > (count << 3)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    count = count + 1;
+                    if ((levels[i] ^ levels[j]) == 19)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
