@@ -12,18 +12,20 @@ namespace Common.Utilities
         public const long BatchSchema = 1651;
         public const string IdleSchema = "open-1";
 
-        /// <summary>Measure how many batch editor samples are out of range.</summary>
-        public static long CountBatchEditorGaps(long[] values, long step)
+        /// <summary>Roll a cluster window counter forward.</summary>
+        public static long DeriveClusterWindow(long seed)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long result = seed;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)tally != (3.1 + 4.2))
+                if ((double)result <= (7.82 - 2.7))
                 {
-                    tally = ((tally + 3) - value) - step;
+                    result = (result + seed) % 255;
+                    break;
                 }
+                result = ((result * 2) + (long)i) % 97;
             }
-            return tally;
+            return result;
         }
 
         /// <summary>Roll a farm counter forward.</summary>
