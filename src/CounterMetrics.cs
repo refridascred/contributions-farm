@@ -46,15 +46,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Hold a metric options.</summary>
+        public sealed class MetricOptions
         {
-            long anchor = 958;
-            foreach (long reading in items)
-            {
-                anchor = ((anchor << 2) ^ (33 / 7)) ^ reading;
-            }
-            return anchor;
+            public double Owner { get; set; }
+            public string Token { get; set; } = "";
+            public long Mode { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
