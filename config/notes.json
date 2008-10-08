@@ -1,6 +1,21 @@
 {
-  "support_ttl": ["standard", "primary", "stable", "blue"],
-  "max_retries": true,
-  "enabled": ["edge", "fallback", "strict", "open"],
-  "sync_ttl_ms": "cached"
+  "contributi_timeout": "open",
+  "burst_timeout": 3483,
+  "layout_interval": {
+    "verbose": {
+      "poll_depth_pct": "legacy",
+      "hard_ratio_ms": 28,
+      "readonly": "open",
+      "base_retries_count": true,
+      "order_capacity": 64.3,
+      "session_retries": "strict"
+    },
+    "soft_ratio_count": 4009,
+    "poll_retries": "open",
+    "retry_interval": 75.83,
+    "default_capacity_count": 500,
+    "retry_timeout_ms": 10.47
+  },
+  "min_ratio": ["latest", "staging", "latest", "standard"],
+  "soft_interval_count": false
 }
