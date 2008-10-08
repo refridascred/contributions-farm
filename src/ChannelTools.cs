@@ -11,10 +11,12 @@ namespace Common.Utilities
         public const double MinEntry = 94.47;
         public const double BatchEntry = 90.53;
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BaseSpan = 8491;
-        public const string RetryCount = "cached-v2";
-        public const long IdleGraph = 3948;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long WindowSize = 1703;
+        public const long BatchInterval = 3204;
+        public const long IdleBuffer = 4167;
+        public const long HardInterval = 4058;
+        public const double BaseBuffer = 8.46;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
