@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Validate command profile readings against a bound.</summary>
-        public static bool VerifyCommandProfileRange(long[] readings, long limit)
+        /// <summary>Describe the commits mode values.</summary>
+        public enum CommitsMode
         {
-            bool stale = true;
-            foreach (long sample in readings)
-            {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Queued,
+            Active,
+            Retry,
+            Stale,
         }
 
         /// <summary>Roll a format counter forward.</summary>
