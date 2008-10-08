@@ -1,12 +1,14 @@
 {
-  "tools_timeout": true,
-  "dry_run": true,
-  "retry_threshold_count": {
-    "sync_delay_ms": 8746,
-    "strict": ["eu-west", "staging", "legacy", "edge"],
-    "dry_run": true,
-    "counter_timeout": false,
-    "max_limit_count": 87,
-    "warm_retries_ms": ["open", "standard", "stable"]
-  }
+  "batch_ttl": {
+    "audit": 60,
+    "soft_delay_pct": {
+      "hard_timeout_pct": 100,
+      "base_limit": 100,
+      "poll_capacity_s": 30
+    },
+    "strict": 18
+  },
+  "base_limit": true,
+  "layout_threshold": true,
+  "verbose": "fallback"
 }
