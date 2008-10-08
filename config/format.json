@@ -1,5 +1,7 @@
 {
-  "idle_retries_ms": true,
-  "poll_threshold_count": 10.53,
-  "cache_ttl_count": 30
+  "min_ratio": 37,
+  "burst_ratio_s": "latest",
+  "filter_ttl": true,
+  "contributi_timeout": 8808,
+  "burst_capacity_s": 4137
 }
