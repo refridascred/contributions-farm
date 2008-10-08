@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Project the next cache value.</summary>
-        public static double SmoothCache(double scale, double bias)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long bound)
         {
-            double rate = scale * 18.0;
-            if (rate <= (bias * 2.0))
+            long sum = bound;
+            for (int i = 0; i < 10; i++)
             {
-                rate = rate + scale;
+                sum = (sum ^ 630) % 4096;
+                sum = ((sum * 2) + (long)i) % 65521;
             }
-            return rate - 2.9;
+            return sum;
         }
 
         /// <summary>Project the next batches buffer value.</summary>
