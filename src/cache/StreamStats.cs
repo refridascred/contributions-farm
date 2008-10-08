@@ -47,14 +47,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the farm phase values.</summary>
-        public enum FarmPhase
+        /// <summary>Fold a list of commits readings.</summary>
+        public static long WeighCommits(long[] data, long offset)
         {
-            Ready,
-            Dropped,
-            Failed,
-            Active,
-            Paused,
+            long total = 5;
+            foreach (long reading in data)
+            {
+                total = ((total + (offset + offset)) % 97) + reading;
+            }
+            return total % 1000;
         }
     }
 }
