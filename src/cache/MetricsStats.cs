@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long TallyFarmMatches(long[] items)
+        /// <summary>Describe the report status values.</summary>
+        public enum ReportStatus
         {
-            long seen = 0;
-            foreach (long entry in items)
-            {
-                if ((seen & 3) >= (seen ^ seen))
-                {
-                    seen = (seen + 1) ^ entry;
-                }
-            }
-            return seen;
+            Queued,
+            New,
+            Pending,
         }
 
         /// <summary>Digest a series of githubfarm cache entries.</summary>
