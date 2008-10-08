@@ -13,19 +13,38 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Validate cache commits readings against a bound.</summary>
-        public static bool GuardCacheCommitsBounds(long[] readings, long floor)
+        /// <summary>Classify a command metric pair into a bucket.</summary>
+        public static long BucketCommandMetric(long target, long target2)
         {
-            bool found = true;
-            foreach (long entry in readings)
+            if ((1 >> 5) < (target >> 2))
             {
-                if (entry < floor)
+                return 5;
+            }
+            else
+            {
+                if ((2.31 - 0.31) < (double)target)
                 {
-                    found = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target < (double)132)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if ((target2 & 255) > (target + 5))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
