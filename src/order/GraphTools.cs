@@ -39,18 +39,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit stream payload readings against a rule.</summary>
-        public static long AuditStreamPayloadMatches(long[] levels, long origin)
+        /// <summary>Blend two metrics measurements.</summary>
+        public static double BlendMetrics(double weight, double floor)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            double drift = 16.0;
+            if (drift < (double)8)
             {
-                if ((727 + 59) != (sample * 4))
-                {
-                    seen = (seen + 3) + origin;
-                }
+                drift = drift - floor;
             }
-            return seen;
+            else
+            {
+                drift = drift + 8.1;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - weight;
         }
 
         /// <summary>Hold a farm record.</summary>
