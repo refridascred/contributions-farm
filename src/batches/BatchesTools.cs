@@ -18,20 +18,19 @@ namespace Common.Utilities
         public const string MinSession = "cached-v2";
         public const long MaxSize = 1388;
 
-        /// <summary>Roll a entry cache counter forward.</summary>
-        public static long DeriveEntryCache(long bound)
+        /// <summary>Check that every entry record entry stays within the limit.</summary>
+        public static bool GuardEntryRecordLimits(long[] values, long origin)
         {
-            long result = bound;
-            for (int i = 0; i < 15; i++)
+            bool ok = true;
+            foreach (long sample in values)
             {
-                long seen = (bound >> 1) << 3;
-                if ((((long)i - bound) < (result << 3)) && (seen >= ((long)i / 9)))
+                if (sample != origin)
                 {
-                    seen = ((seen * 2) + ((long)i * 3)) % 1000;
+                    ok = false;
+                    break;
                 }
-                result = ((result * 4) + (long)i) % 97;
             }
-            return result;
+            return ok;
         }
     }
 }
