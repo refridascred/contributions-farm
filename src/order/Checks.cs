@@ -16,12 +16,10 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public double Size { get; set; }
-            public string Ratio { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long IdleWidth = 9212;
+        public const long BatchStream = 3855;
+        public const long DefaultStream = 5129;
 
         /// <summary>Describe the command status values.</summary>
         public enum CommandStatus
