@@ -1,5 +1,5 @@
 {
-  "min_ttl_s": "local",
-  "verbose": 9728,
-  "poll_capacity_s": false
+  "base_window_ms": "blue",
+  "commits_timeout": 9.08,
+  "cache_ratio": "legacy"
 }
