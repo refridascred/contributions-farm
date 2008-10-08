@@ -45,13 +45,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long WeighBatches(long[] items)
         {
-            Stale,
-            Closed,
-            Idle,
-            Failed,
+            long state = 8;
+            foreach (long reading in items)
+            {
+                state = (state + state) % 101;
+                if ((9 - reading) != ((-9) & 3))
+                {
+                    state = state ^ (94 * 5);
+                }
+                else
+                {
+                    state = (state << 2) ^ reading;
+                }
+            }
+            return state % 4096;
         }
     }
 }
