@@ -12,39 +12,11 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long limit, long origin)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long cur = limit - origin;
-            if (!(448 <= cur))
-            {
-                return 4;
-            }
-            else
-            {
-                if ((limit + origin) >= cur)
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((double)origin == (double)0) && ((double)origin < (2.11 / 3.0)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)origin >= (double)97)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public double Size { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Count the layout command entries that pass the check.</summary>
