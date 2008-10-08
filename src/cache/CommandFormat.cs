@@ -47,17 +47,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first route layout entry that matches the target.</summary>
-        public static long LookupRouteLayoutIndex(long[] levels, long origin)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmGaps(long[] items)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if (levels[i] < origin)
+                if ((item & 7) <= (matches - matches))
                 {
-                    return (long)i;
+                    matches = matches + 3;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
