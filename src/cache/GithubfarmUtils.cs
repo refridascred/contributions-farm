@@ -25,19 +25,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteRange(long[] samples, long floor)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenLimits(long[] data, long floor)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                if (entry > floor)
+                if (entry >= floor)
                 {
-                    found = false;
+                    stale = false;
                     break;
                 }
             }
-            return found;
+            return stale;
         }
 
         /// <summary>Define record limits and defaults.</summary>
