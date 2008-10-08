@@ -1,19 +1,8 @@
 {
-  "readonly": 250,
-  "compress": ["stable", "blue", "eu-west"],
-  "warm_threshold": ["primary", "strict"],
-  "soft_threshold": 7637,
-  "warm_ttl_count": {
-    "cache_interval_count": 64,
-    "burst_ratio": {
-      "support_capacity": "legacy",
-      "context_size": true,
-      "burst_limit": 250,
-      "warm_delay_pct": 23.99,
-      "batches_ratio": 363,
-      "cache_interval": 6277
-    },
-    "verbose": 9181,
-    "default_retries_s": 8300
-  }
+  "cache_size": 2979,
+  "profile_retries": "fallback",
+  "persist": 100,
+  "account_ratio": false,
+  "compress": 4826,
+  "min_window": 53.25
 }
