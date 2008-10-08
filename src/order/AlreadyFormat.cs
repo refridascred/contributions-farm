@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Hold a channel summary.</summary>
+        public sealed class ChannelSummary
         {
-            Failed,
-            Synced,
-            Closed,
+            public double Offset { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Label { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
