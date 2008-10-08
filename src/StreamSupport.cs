@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
-        {
-            New,
-            Synced,
-            Done,
-            Active,
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long IdleFactor = 611;
+        public const long MinRatio = 8422;
+        public const double BurstChecks = 53.6;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string CacheCommits = "alpha-edge";
