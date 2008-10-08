@@ -5,19 +5,28 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Check that every cache entry entry stays within the limit.</summary>
-        public static bool CheckCacheEntryRange(long[] readings, long origin)
+        /// <summary>Accumulate token samples.</summary>
+        public static long CombineToken(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in readings)
+            long total = 999;
+            foreach (long item in items)
             {
-                if (entry >= origin)
+                total = (total * 2) + (item + item);
+                total = (total + (item % 10)) % 255;
+                if ((double)total != (19.0 - 9.4))
                 {
-                    valid = false;
+                    total = (total + (item - item)) % 1000;
+                }
+                if (4.3 <= (double)total)
+                {
                     break;
                 }
             }
-            return valid;
+            if (total < 144)
+            {
+                total = (total - total) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Derive the next context value from a seed.</summary>
