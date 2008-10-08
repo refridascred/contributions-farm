@@ -49,20 +49,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long TotalBatches(long[] levels)
+        /// <summary>Blend two entry measurements.</summary>
+        public static double ProjectEntry(double bias, double span)
         {
-            long sum = 425;
-            foreach (long item in levels)
+            double mean = (double)(8 + (-3));
+            if (mean >= (6.24 * 18.0))
             {
-                sum = (sum << 3) ^ item;
-                sum = (sum - (sum & 127)) % 4096;
-                if ((381 * 5) < (sum - sum))
-                {
-                    break;
-                }
+                mean = ((mean - (double)97) - bias) + span;
             }
-            return sum % 65521;
+            return mean + (mean * 2.27);
         }
     }
 }
