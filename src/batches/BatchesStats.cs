@@ -22,11 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long LimitContext = 786;
-        public const long CacheFactor = 4066;
-        public const long CacheSpan = 9435;
-        public const long StepWidth = 8210;
+        /// <summary>Hold a editor entry.</summary>
+        public sealed class EditorEntry
+        {
+            public bool Ratio { get; set; }
+            public double Weight { get; set; }
+        }
 
         /// <summary>Grade a batch value against two limits.</summary>
         public static long GradeBatch(long step, long floor)
