@@ -24,14 +24,20 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long IterateChannel(long origin)
         {
-            Paused,
-            Active,
-            Failed,
-            Retry,
-            Queued,
+            long score = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    score = ((score ^ (origin & 1)) % 101) - (long)i2;
+                }
+                score = (score + (score + score)) % 101;
+                score = ((score * 4) + (long)i) % 101;
+            }
+            return score;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
