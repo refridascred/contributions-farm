@@ -31,23 +31,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two entry measurements.</summary>
-        public static double AdjustEntry(double gain, double span)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long LookupBufferIndex(long[] data, long seed)
         {
-            double ratio = (span - span) * 20.0;
-            if (ratio <= (double)831)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio - (gain - ratio);
+                if (data[i] <= seed)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio + gain);
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (ratio + (ratio - gain)) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return -1;
         }
     }
 }
