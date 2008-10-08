@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Look up the position of a batch sample.</summary>
+        public static long FindBatchIndex(long[] data, long offset)
         {
-            long state = 47;
-            foreach (long reading in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((reading / 7) < 254)
+                if (data[i] <= offset)
                 {
-                    state = ((state << 3) ^ (reading & 255)) % 65521;
+                    return (long)i;
                 }
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
