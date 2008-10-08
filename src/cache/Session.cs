@@ -23,20 +23,18 @@ namespace Common.Utilities
             return sum % 65521;
         }
 
-        /// <summary>Roll a metric stream counter forward.</summary>
-        public static long IterateMetricStream(long bound)
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long CountStatsGaps(long[] values)
         {
-            long anchor = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if (!((double)bound != (4.62 * 11.0)))
+                if ((tally * 4) >= reading)
                 {
-                    anchor = (anchor ^ (bound & 255)) % 101;
+                    tally = tally + 1;
                 }
-                anchor = (anchor * 3) + (19 & 255);
-                anchor = ((anchor * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
