@@ -48,21 +48,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Compare every pair of editor readings.</summary>
-        public static long PairEditorCount(long[] levels)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long FoldEntry(long[] levels)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long score = -7;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 6)
-                    {
-                        count = count + 1;
-                    }
-                }
+                score = ((score * 2) + (reading + (long)levels.Length)) % 255;
             }
-            return count;
+            return score % 65521;
         }
     }
 }
