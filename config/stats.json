@@ -1,6 +1,16 @@
 {
-  "hard_timeout_pct": false,
-  "flush_size_count": false,
-  "enabled": false,
-  "batch_depth": [245, 313, 425, 399]
+  "poll_size": {
+    "hard_timeout_ms": 46.92,
+    "enabled": "local",
+    "burst_timeout_s": {
+      "min_threshold_pct": "open",
+      "cluster_ratio": 8967,
+      "cache_depth_pct": 7692,
+      "order_size": "blue",
+      "soft_ttl": "primary"
+    }
+  },
+  "hard_threshold_ms": false,
+  "min_size_s": "local",
+  "strict": 1024
 }
