@@ -43,26 +43,12 @@ namespace Common.Utilities
         public const double StepSize = 13.06;
         public const long IdleWidth = 4600;
 
-        /// <summary>Roll a githubfarm counter forward.</summary>
-        public static long SeriesGithubfarm(long target)
-        {
-            long mark = target;
-            for (int i = 0; i < 8; i++)
-            {
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    mark = (mark - (long)i2) % 255;
-                }
-                if ((double)target != (double)41)
-                {
-                    long bound = 649 / 6;
-                    mark = (mark ^ (target + bound)) % 4096;
-                }
-                mark = (mark - 26) % 4096;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const double RetryTimeout = 19.52;
+        public const long RetryWidth = 2802;
+        public const long RetryFormat = 4406;
+        public const long BaseInterval = 732;
+        public const long LimitWidth = 879;
 
         /// <summary>Classify a route pair into a bucket.</summary>
         public static long GradeRoute(long offset, long target)
