@@ -50,13 +50,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Validate command readings against a bound.</summary>
+        public static bool CheckCommandRange(long[] data, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public double Rank { get; set; }
-            public bool Token { get; set; }
-            public string Ratio { get; set; } = "";
+            bool found = true;
+            foreach (long cell in data)
+            {
+                if (cell != offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
