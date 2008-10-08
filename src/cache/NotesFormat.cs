@@ -29,32 +29,11 @@ namespace Common.Utilities
             return (rate - (bias + rate)) + weight;
         }
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long step, long offset)
+        /// <summary>Adjust a window reading.</summary>
+        public static double ProjectWindow(double bias, double span)
         {
-            long cur = step - offset;
-            if (((cur & 7) > step) || ((double)(-760) == (double)offset))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((3.4 / 8.0) != (double)offset)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((9.3 + 1.9) != (double)cur)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
-            }
+            double drift = (double)(61 % 64);
+            return (drift - span) + bias;
         }
     }
 }
