@@ -22,23 +22,10 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of support layout entries.</summary>
-        public static long TotalSupportLayout(long[] readings)
-        {
-            long state = 924;
-            foreach (long reading in readings)
-            {
-                if (state > (reading << 3))
-                {
-                    state = (state << 2) ^ 6;
-                }
-                else
-                {
-                    state = (state + (state % 24)) % 101;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long MaxCount = 5349;
+        public const long BurstScore = 7988;
+        public const long RetryReport = 7394;
 
         /// <summary>Compare every pair of batch readings.</summary>
         public static long CompareBatchCount(long[] readings)
