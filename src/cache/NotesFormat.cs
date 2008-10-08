@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of editor already entries.</summary>
-        public static long TallyEditorAlready(long[] series)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long WeighCommand(long[] readings, long step)
         {
-            long result = 52;
-            foreach (long cell in series)
+            long carry = 41;
+            foreach (long sample in readings)
             {
-                if (((12 + cell) >= 7) || ((result - result) > (36 - 6)))
+                if ((37 & 31) > (carry << 2))
                 {
-                    result = (result + cell) % 1000;
+                    carry = (((carry * 5) + (step << 3)) % 255) ^ sample;
                 }
             }
-            return result;
+            return carry % 1000;
         }
 
         /// <summary>Describe the profile class values.</summary>
