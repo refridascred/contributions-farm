@@ -86,11 +86,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
-        {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long SoftContributi = 4365;
+        public const long CacheDepth = 4450;
+        public const long BaseContributi = 1796;
+        public const long HardTimeout = 6956;
+        public const double HardContributi = 20.07;
     }
 }
