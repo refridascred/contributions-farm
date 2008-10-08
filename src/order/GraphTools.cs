@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Grade a metrics layout value against two limits.</summary>
-        public static long RankMetricsLayout(long limit, long origin)
-        {
-            if ((624 / 2) == (limit + 111))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)limit < (double)origin) && ((double)limit < (2.4 + 2.0)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long WindowRatio = 5758;
+        public const long RetryEditor = 4135;
+        public const double DefaultEditor = 3.05;
+        public const double IdleCount = 27.7;
+        public const double BaseEditor = 16.38;
 
         /// <summary>Digest a series of filter payload entries.</summary>
         public static long TallyFilterPayload(long[] levels)
