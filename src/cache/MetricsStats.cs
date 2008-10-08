@@ -35,14 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
-            Synced,
-            Retry,
-            Pending,
-            Idle,
-            Locked,
+            public long Size { get; set; }
+            public long Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Describe the commits class values.</summary>
