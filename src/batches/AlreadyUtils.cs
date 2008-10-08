@@ -62,19 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next schema window value.</summary>
-        public static double SmoothSchemaWindow(double gain, double span)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool CheckRecordRange(long[] readings, long offset)
         {
-            double gain2 = (gain * 8.0) * 6.4;
-            if (gain2 <= gain)
+            bool valid = true;
+            foreach (long value in readings)
             {
-                gain2 = (gain2 - gain2) - span;
+                if (value >= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                gain2 = (gain2 - (12.0 / 9.0)) - (double)(long)i;
-            }
-            return gain2 - gain2;
+            return valid;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
