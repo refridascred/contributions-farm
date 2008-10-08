@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Look up the position of a route sample.</summary>
+        public static long FindRouteIndex(long[] data, long target)
         {
-            public string Token { get; set; } = "";
-            public double Total { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] == target) && ((data[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
