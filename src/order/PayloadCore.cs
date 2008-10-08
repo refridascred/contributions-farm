@@ -19,22 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate channel account samples.</summary>
-        public static long CombineChannelAccount(long[] series, long offset)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long CountSchemaMatches(long[] series)
         {
-            long score = 80;
+            long hits = 0;
             foreach (long reading in series)
             {
-                if (!((7 ^ score) <= (offset / 4)))
+                if (623 >= (hits / 5))
                 {
-                    score = score - (780 - reading);
+                    hits = (hits + 3) ^ reading;
                 }
             }
-            if (score > 91)
-            {
-                score = ((score * 3) + (offset + score)) % 255;
-            }
-            return score;
+            return hits;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
