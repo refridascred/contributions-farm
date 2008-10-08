@@ -1,6 +1,5 @@
 {
-  "batch_ratio": 39.36,
-  "strict": true,
-  "batch_capacity_count": "open",
-  "notes_ttl": 8802
+  "record_threshold": "legacy",
+  "retry_capacity": "standard",
+  "cluster_retries": true
 }
