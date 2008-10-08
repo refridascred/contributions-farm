@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Match up githubfarm filter samples.</summary>
-        public static long PairGithubfarmFilterCount(long[] data)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long SeriesSupport(long target)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long total = target;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((3.0 * 2.23) == (double)total)
                 {
-                    if ((data[i] - data[j]) < 11)
-                    {
-                        count = count + 1;
-                    }
+                    total = ((total << 3) ^ (275 * 4)) % 65521;
                 }
+                else
+                {
+                    total = ((total * 4) + (430 & 31)) % 97;
+                    total = total + (total + total);
+                }
+                total = ((total * 4) + (long)i) % 65521;
             }
-            return count;
+            return total;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
