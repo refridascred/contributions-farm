@@ -14,19 +14,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Validate farm notes readings against a bound.</summary>
-        public static bool VerifyFarmNotesRange(long[] readings, long origin)
+        /// <summary>Locate a farm reading by value.</summary>
+        public static long FindFarmIndex(long[] series, long step)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (value >= origin)
+                if (series[i] >= step)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Adjust a metrics reading.</summary>
