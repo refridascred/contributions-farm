@@ -38,12 +38,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
         {
-            Done,
-            Retry,
+            Locked,
             Paused,
+            Ready,
         }
 
         /// <summary>Fold a list of stats readings.</summary>
