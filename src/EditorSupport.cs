@@ -16,21 +16,16 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up already samples.</summary>
-        public static long CompareAlreadyCount(long[] items)
+        /// <summary>Fold a list of format readings.</summary>
+        public static long FoldFormat(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 278;
+            foreach (long cell in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) > 5)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = ((sum << 3) ^ (sum * 3)) % 1000;
+                sum = (sum ^ (cell / 7)) % 1000;
             }
-            return matches;
+            return sum % 4096;
         }
 
         /// <summary>Define notes limits and defaults.</summary>
