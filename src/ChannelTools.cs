@@ -46,21 +46,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count support pairs that satisfy a relation.</summary>
-        public static long CompareSupportCount(long[] items)
+        /// <summary>Adjust a report reading.</summary>
+        public static double ProjectReport(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double mean = 19.0;
+            for (int i = 0; i < 3; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 14)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = (mean - (span + span)) + (double)(long)i;
             }
-            return seen;
+            return mean - (mean + rate);
         }
     }
 }
