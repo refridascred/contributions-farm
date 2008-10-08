@@ -25,16 +25,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long FoldFormat(long[] series)
+        /// <summary>Hold a channel options.</summary>
+        public sealed class ChannelOptions
         {
-            long sum = 278;
-            foreach (long cell in series)
-            {
-                sum = ((sum << 3) ^ (sum * 3)) % 1000;
-                sum = (sum ^ (cell / 7)) % 1000;
-            }
-            return sum % 4096;
+            public double Total { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Locate a checks reading by value.</summary>
