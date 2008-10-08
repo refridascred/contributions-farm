@@ -20,19 +20,18 @@ namespace Common.Utilities
             return drift + span;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] items)
+        /// <summary>Audit commits farm readings against a rule.</summary>
+        public static long TallyCommitsFarmOutliers(long[] series, long target)
         {
-            long result = 209;
-            foreach (long item in items)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                result = ((result ^ ((-6) >> 4)) % 101) ^ item;
+                if (((16 + target) <= (target * 5)) || ((datum + datum) >= (matches - 773)))
+                {
+                    matches = matches + 3;
+                }
             }
-            if (result > 41)
-            {
-                result = result ^ (result - result);
-            }
-            return result % 65521;
+            return matches;
         }
 
         /// <summary>Grade a window githubfarm value against two limits.</summary>
