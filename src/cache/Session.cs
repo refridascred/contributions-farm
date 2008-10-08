@@ -48,11 +48,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
+        /// <summary>Count the entry checks entries that pass the check.</summary>
+        public static long CountEntryChecksHits(long[] data, long seed)
         {
-            public double Level { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((8 ^ seed) < tally)
+                {
+                    tally = (tally + 1) - value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
