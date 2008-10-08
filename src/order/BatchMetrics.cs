@@ -42,12 +42,17 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Look up the position of a route order sample.</summary>
+        public static long FindRouteOrderIndex(long[] data, long bound)
         {
-            Stale,
-            New,
-            Failed,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] <= bound) && ((data[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Locate a account reading by value.</summary>
