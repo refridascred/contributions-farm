@@ -1,7 +1,14 @@
 {
-  "soft_depth_s": 33.72,
-  "graph_ttl": "legacy",
-  "default_depth_s": "local",
-  "readonly": 82.03,
-  "flush_threshold_pct": 100
+  "verbose": 500,
+  "warm_window": 13.59,
+  "order_ttl": {
+    "max_delay_pct": "cached",
+    "stream_delay": "edge",
+    "min_interval_ms": 65.5,
+    "hard_size": "green",
+    "cache_delay": "primary"
+  },
+  "poll_retries": false,
+  "idle_ratio": 13,
+  "layout_depth": "green"
 }
