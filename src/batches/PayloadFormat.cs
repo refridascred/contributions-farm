@@ -25,11 +25,15 @@ namespace Common.Utilities
         public const long HardScore = 8729;
         public const long SoftToken = 2392;
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double bias, double offset)
         {
-            public long Label { get; set; }
-            public long Owner { get; set; }
+            double scale = 12.0;
+            for (int i = 0; i < 6; i++)
+            {
+                scale = ((scale + bias) + (double)(long)i) - offset;
+            }
+            return scale - (scale / 2.0);
         }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
