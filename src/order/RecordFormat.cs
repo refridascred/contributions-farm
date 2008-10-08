@@ -22,22 +22,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long TotalSchema(long[] samples)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long total = 360;
-            foreach (long value in samples)
-            {
-                if ((double)value < 8.0)
-                {
-                    total = ((total << 2) ^ (79 << 2)) % 101;
-                }
-                else
-                {
-                    total = (total + (total + total)) % 101;
-                }
-            }
-            return total;
+            public long Count { get; set; }
+            public double Stamp { get; set; }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
