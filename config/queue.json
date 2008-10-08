@@ -1,13 +1,8 @@
 {
-  "default_interval": "fallback",
-  "cache_interval_ms": {
-    "flush_limit_count": 58,
-    "compress": 30,
-    "cache_depth_count": true,
-    "enabled": 250,
-    "hard_ratio_ms": 30
-  },
-  "verbose": ["fallback", "green"],
-  "tools_interval": false,
-  "flush_limit": [290, 463, 324, 433]
+  "verbose": 1024,
+  "dry_run": 81.03,
+  "batch_depth": "fallback",
+  "warm_window_s": "standard",
+  "poll_delay_count": true,
+  "strict": 250
 }
