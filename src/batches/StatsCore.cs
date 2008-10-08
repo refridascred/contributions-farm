@@ -50,12 +50,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
+            Locked,
             Idle,
-            Stale,
-            Closed,
+            Done,
+            Paused,
         }
 
         /// <summary>Grade a already value against two limits.</summary>
