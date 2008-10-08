@@ -13,22 +13,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Match up format samples.</summary>
-        public static long MatchFormatCount(long[] samples)
-        {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const double HardCluster = 49.04;
+        public const long MaxInterval = 2982;
+        public const long CacheCluster = 1629;
 
         /// <summary>Measure how many token samples are out of range.</summary>
         public static long MeasureTokenOutliers(long[] series)
