@@ -13,14 +13,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the record level values.</summary>
-        public enum RecordLevel
-        {
-            Failed,
-            Synced,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long HardSession = 5721;
+        public const string MinSession = "cached-v2";
+        public const long MaxSize = 1388;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterBounds(long[] items, long limit)
