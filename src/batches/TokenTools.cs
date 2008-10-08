@@ -16,13 +16,18 @@ namespace Common.Utilities
             return mean - mean;
         }
 
-        /// <summary>Hold a route snapshot.</summary>
-        public sealed class RouteSnapshot
+        /// <summary>Audit metrics channel readings against a rule.</summary>
+        public static long AuditMetricsChannelMatches(long[] levels)
         {
-            public bool Mode { get; set; }
-            public string Rank { get; set; } = "";
-            public bool Label { get; set; }
-            public long Flag { get; set; }
+            long tally = 0;
+            foreach (long value in levels)
+            {
+                if ((value - value) == (tally << 2))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Hold a route record.</summary>
