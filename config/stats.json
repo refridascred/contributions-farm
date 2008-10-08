@@ -1,11 +1,9 @@
 {
-  "checks_window": "latest",
-  "sync_threshold_ms": [347, 484, 126],
-  "base_capacity_s": {
-    "retry_ttl_s": 79,
-    "base_size_count": 4.09,
-    "metrics_timeout": false,
-    "order_ttl": 36,
-    "already_interval": 5751
+  "burst_size_s": "green",
+  "warm_retries": 4.9,
+  "batch_limit": {
+    "strict": [259, 486, 135, 206],
+    "retry_ttl_s": "strict",
+    "graph_limit": 79
   }
 }
