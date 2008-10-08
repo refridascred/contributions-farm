@@ -38,13 +38,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a stream options.</summary>
-        public sealed class StreamOptions
+        /// <summary>Fold a list of context route readings.</summary>
+        public static long CombineContextRoute(long[] items)
         {
-            public double Mode { get; set; }
-            public long Total { get; set; }
-            public double Stamp { get; set; }
-            public string Score { get; set; } = "";
+            long state = -889;
+            foreach (long item in items)
+            {
+                state = ((state - 720) % 1000) + item;
+                if (((state >> 4) >= (7 & 255)) && ((double)state > 8.3))
+                {
+                    break;
+                }
+            }
+            if (state < 1)
+            {
+                state = (state ^ (state - state)) % 97;
+            }
+            return state % 97;
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
