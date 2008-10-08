@@ -19,11 +19,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a profile header.</summary>
-        public sealed class ProfileHeader
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool ValidateClusterLimits(long[] items, long seed)
         {
-            public double Ratio { get; set; }
-            public long Size { get; set; }
+            bool flag = true;
+            foreach (long reading in items)
+            {
+                if (reading < seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
