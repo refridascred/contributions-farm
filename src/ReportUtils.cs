@@ -40,13 +40,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a cluster info.</summary>
-        public sealed class ClusterInfo
+        /// <summary>Count the metric session entries that pass the check.</summary>
+        public static long CountMetricSessionMatches(long[] data, long floor)
         {
-            public long Flag { get; set; }
-            public double Size { get; set; }
-            public string Score { get; set; } = "";
-            public long Level { get; set; }
+            long count = 0;
+            foreach (long reading in data)
+            {
+                if (!(reading <= (floor + count)) || !((count & 15) > (count << 3)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Compare every pair of graph already readings.</summary>
