@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Fold a list of cache stream readings.</summary>
-        public static long ScoreCacheStream(long[] readings, long floor)
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long FoldGraph(long[] values)
         {
-            long mix = 9;
-            foreach (long cell in readings)
+            long score = 42;
+            foreach (long entry in values)
             {
-                if ((floor ^ cell) > (cell & 15))
+                if ((double)(long)values.Length > (6.12 * 14.0))
                 {
-                    mix = ((mix * 2) + (31 << 2)) % 101;
+                    score = score - (score * 3);
                 }
                 else
                 {
-                    mix = (mix ^ mix) % 255;
+                    score = (score + entry) % 101;
                 }
             }
-            return mix % 97;
+            return score;
         }
 
         /// <summary>Project the next tools value.</summary>
