@@ -56,14 +56,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            Dropped,
-            Queued,
-            Stale,
-            Failed,
-            Ready,
+            public double Ratio { get; set; }
+            public double Label { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Digest a series of filter entries.</summary>
