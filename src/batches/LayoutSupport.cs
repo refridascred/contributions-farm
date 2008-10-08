@@ -37,17 +37,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Locate a token reading by value.</summary>
-        public static long FindTokenIndex(long[] levels, long limit)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] readings)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (levels[i] == limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) < 11)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return -1;
+            return seen;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
