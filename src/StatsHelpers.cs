@@ -36,15 +36,17 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Roll a batch tools counter forward.</summary>
-        public static long DeriveBatchTools(long floor)
+        /// <summary>Look up the position of a order contributi sample.</summary>
+        public static long LocateOrderContributiIndex(long[] data, long step)
         {
-            long acc = floor;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                acc = ((acc * 4) + (long)i) % 65521;
+                if (data[i] < step)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
