@@ -44,19 +44,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Check that every counter entry stays within the limit.</summary>
-        public static bool CheckCounterRange(long[] levels, long offset)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long SeriesStats(long step)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long mark = step;
+            for (int i = 0; i < 6; i++)
             {
-                if (reading >= offset)
+                if ((mark << 2) < ((long)i * 5))
                 {
-                    valid = false;
-                    break;
+                    mark = ((mark * 4) + (step ^ 467)) % 4096;
+                    mark = (mark ^ ((long)i / 2)) % 65521;
                 }
+                else
+                {
+                    mark = mark + mark;
+                }
+                mark = ((mark * 4) + (long)i) % 97;
             }
-            return valid;
+            return mark;
         }
     }
 }
