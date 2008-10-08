@@ -1,19 +1,9 @@
 # support settings
-queue_capacity:
-  base_timeout_ms: 41.25
-  warm_interval_pct:
-    - standard
-    - primary
-  hard_window_count:
-    - 362
-    - 470
-  compress:
-    strict: fallback
-    max_delay_pct: true
-    max_window: 4.54
-    batch_limit_count: edge
-  base_window: 24.96
-support_delay:
-  - 195
-  - 452
-soft_retries: 26.56
+batch_timeout_count: 8503
+persist: eu-west
+editor_ttl: fallback
+order_timeout:
+  - legacy
+  - green
+  - strict
+  - latest
