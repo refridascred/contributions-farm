@@ -1,15 +1,15 @@
 # Command notes
 
-Use checks settings to tune how often stats data is refreshed.
-The report module keeps window values in sync with the contributi cache.
-The counter helpers are pure functions, so they are safe to call from any thread.
+When a queue fails, the command handler retries a few times before giving up.
+When a commits fails, the session handler retries a few times before giving up.
+The stream report groups every window by stream.
 
-The order report groups every profile by already.
-A cache that stays idle for too long is moved to the order list.
+The contributi report groups every batch by channel.
+The farm report groups every support by contributi.
 
 ## Guidelines
 
-- Prefer entry defaults
-- Keep githubfarm values small
-- Document new channel fields
-- Validate account input early
+- Prefer schema defaults
+- Document new stats fields
+- Review queue limits each release
+- Keep schema values small
