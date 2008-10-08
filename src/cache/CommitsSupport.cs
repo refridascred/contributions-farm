@@ -83,23 +83,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches report entries.</summary>
-        public static long TallyBatchesReport(long[] readings, long seed)
+        /// <summary>Hold a batches info.</summary>
+        public sealed class BatchesInfo
         {
-            long score = -26;
-            foreach (long datum in readings)
-            {
-                score = (score - (score + datum)) % 4096;
-                if (((score - seed) > score) || ((double)datum < (8.57 / 2.0)))
-                {
-                    break;
-                }
-            }
-            if (score > 18)
-            {
-                score = (score ^ (seed + seed)) % 4096;
-            }
-            return score;
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Look up the position of a session order sample.</summary>
