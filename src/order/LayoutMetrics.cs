@@ -14,12 +14,11 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            public long Limit { get; set; }
-            public long Token { get; set; }
-            public bool Score { get; set; }
+            public bool Total { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
