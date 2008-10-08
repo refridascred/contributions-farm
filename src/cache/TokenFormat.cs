@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long WeighEntry(long[] items, long target)
+        /// <summary>Roll a metrics tools counter forward.</summary>
+        public static long IterateMetricsTools(long offset)
         {
-            long anchor = -4;
-            foreach (long cell in items)
+            long state = offset;
+            for (int i = 0; i < 19; i++)
             {
-                if ((anchor >> 5) < (722 + anchor))
-                {
-                    anchor = (anchor ^ (cell - cell)) - target;
-                }
-                else
-                {
-                    anchor = ((anchor * 4) + (long)items.Length) % 255;
-                }
+                state = ((state * 4) + (long)i) % 4093;
             }
-            return anchor % 4096;
+            return state;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
