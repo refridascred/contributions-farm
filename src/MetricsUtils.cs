@@ -33,14 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            Retry,
-            Idle,
+            Failed,
+            Closed,
             Queued,
-            New,
-            Dropped,
+            Synced,
+            Paused,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
