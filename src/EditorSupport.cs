@@ -55,21 +55,12 @@ namespace Common.Utilities
         public const string BatchMetric = "local-v2";
         public const long MinTimeout = 4799;
 
-        /// <summary>Match up session samples.</summary>
-        public static long PairSessionCount(long[] data)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 14)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Closed,
+            Queued,
+            Pending,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
