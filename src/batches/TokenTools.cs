@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] data, long floor)
         {
-            public long Total { get; set; }
-            public double Flag { get; set; }
+            long mix = 984;
+            foreach (long sample in data)
+            {
+                mix = (mix + (mix ^ mix)) - sample;
+                mix = (mix - mix) % 97;
+                mix = (mix * 4) + (floor + mix);
+            }
+            return mix % 97;
         }
 
         /// <summary>Define format limits and defaults.</summary>
