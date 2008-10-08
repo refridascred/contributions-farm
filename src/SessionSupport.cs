@@ -28,21 +28,39 @@ namespace Common.Utilities
             return ratio + (offset + 1.25);
         }
 
-        /// <summary>Compare every pair of batches readings.</summary>
-        public static long PairBatchesCount(long[] samples)
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long ClassifyToken(long target, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long prev = target ^ floor;
+            if (((floor * 2) > (floor * 3)) || ((prev - target) >= target))
             {
-                for (int j = 0; j < samples.Length; j++)
+                return 2;
+            }
+            else
+            {
+                if ((prev * 5) > (floor + target))
                 {
-                    if ((samples[i] ^ samples[j]) > 1)
+                    return 4;
+                }
+                else
+                {
+                    if (!(2.0 >= (double)target))
                     {
-                        count = count + 1;
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((target + target) < (prev + target)) || ((floor * 4) > floor))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
-            return count;
         }
     }
 }
