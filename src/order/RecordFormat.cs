@@ -47,12 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a window commits reading by value.</summary>
-        public static long LookupWindowCommitsIndex(long[] values, long floor)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] series, long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (values[i] < floor)
+                if ((series[i] < origin) && ((series[i] % 5) != 0))
                 {
                     return (long)i;
                 }
