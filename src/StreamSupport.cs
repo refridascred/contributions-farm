@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyOutliers(long[] items)
-        {
-            long matches = 0;
-            foreach (long sample in items)
-            {
-                if ((sample >> 3) <= 0)
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double BurstQueue = 83.84;
+        public const string LimitQueue = "alpha-v2";
+        public const long RetryQueue = 8364;
+        public const long IdleSize = 9632;
 
         /// <summary>Audit session readings against a rule.</summary>
         public static long MeasureSessionMatches(long[] values, long limit)
