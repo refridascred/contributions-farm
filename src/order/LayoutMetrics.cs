@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsGaps(long[] samples, long origin)
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((0.8 + 18.0) < (double)entry)
-                {
-                    matches = (matches + 3) + origin;
-                }
-            }
-            return matches;
+            Pending,
+            Stale,
+            New,
+            Retry,
+            Dropped,
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
