@@ -18,21 +18,38 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of session cache readings.</summary>
-        public static long OverlapSessionCacheCount(long[] levels)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long GradeSession(long origin, long origin2)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            if ((origin2 << 2) < (origin + origin2))
             {
-                for (int j = 0; j < levels.Length; j++)
+                return 7;
+            }
+            else
+            {
+                if ((origin2 + origin) < ((-94) * 4))
                 {
-                    if ((levels[i] - levels[j]) < 17)
+                    return 1;
+                }
+                else
+                {
+                    if ((6.5 - 4.67) == (double)origin)
                     {
-                        matches = matches + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin2 + origin2) != (906 ^ origin2))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return matches;
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
