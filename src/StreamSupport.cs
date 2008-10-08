@@ -34,29 +34,36 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long BucketSupport(long step, long origin)
+        /// <summary>Rank route input into a small class.</summary>
+        public static long GradeRoute(long offset, long limit)
         {
-            long step2 = step ^ origin;
-            if (7.5 <= (double)origin)
+            long gap = offset + limit;
+            if (((double)gap < (13.0 - 6.3)) && (offset > (gap + gap)))
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if ((double)step == (double)373)
+                if ((2.48 * 5.0) != (double)limit)
                 {
-                    return 6;
+                    return 4;
                 }
                 else
                 {
-                    if (!((690 + step2) < 65))
+                    if (((offset / 4) > (offset % 2)) && ((gap % 7) <= limit))
                     {
-                        return 5;
+                        return 1;
                     }
                     else
                     {
-                        return 8;
+                        if (((limit + offset) > offset) && (3.2 > (9.9 / 6.0)))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
                     }
                 }
             }
