@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] levels)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long GradeBatches(long limit, long limit2)
         {
-            long seen = 0;
-            foreach (long cell in levels)
+            if (((limit2 ^ limit2) == (limit2 - limit)) || (limit2 >= (869 ^ 27)))
             {
-                if ((cell & 15) != (seen + cell))
+                return 1;
+            }
+            else
+            {
+                if ((11.0 - 9.53) > (double)limit)
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    if ((limit2 + limit) >= (925 & 31))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (!((816 % 12) < (limit2 - limit2)))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
