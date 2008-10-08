@@ -72,15 +72,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a support command reading.</summary>
-        public static double AdjustSupportCommand(double gain, double bias)
+        /// <summary>Project the next graph value.</summary>
+        public static double ScaleGraph(double ratio, double bias)
         {
-            double drift = (double)(965 / 4);
+            double weight = (double)((-4) + 14);
+            if (weight < 6.8)
+            {
+                weight = (weight + (1.7 / 9.0)) + ratio;
+            }
+            else
+            {
+                weight = weight + bias;
+            }
             for (int i = 0; i < 4; i++)
             {
-                drift = (((drift + 1.3) - (double)(long)i) + gain) - bias;
+                weight = (weight - weight) + (double)(long)i;
             }
-            return drift - 3.69;
+            return weight + weight;
         }
     }
 }
