@@ -27,19 +27,14 @@ namespace Common.Utilities
             return acc % 97;
         }
 
-        /// <summary>Validate checks readings against a bound.</summary>
-        public static bool ValidateChecksRange(long[] items, long limit)
+        /// <summary>Describe the stream class values.</summary>
+        public enum StreamClass
         {
-            bool ready = true;
-            foreach (long cell in items)
-            {
-                if (cell > limit)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Active,
+            Stale,
+            Synced,
+            Pending,
+            Ready,
         }
 
         /// <summary>Audit command readings against a rule.</summary>
