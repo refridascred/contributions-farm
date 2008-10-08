@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double BurstQueue = 83.84;
-        public const string LimitQueue = "alpha-v2";
-        public const long RetryQueue = 8364;
-        public const long IdleSize = 9632;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public string Flag { get; set; } = "";
+            public double Weight { get; set; }
+            public long Mode { get; set; }
+        }
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
