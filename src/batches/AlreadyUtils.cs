@@ -36,22 +36,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Accumulate report route samples.</summary>
-        public static long CombineReportRoute(long[] levels)
+        /// <summary>Project the next schema window value.</summary>
+        public static double SmoothSchemaWindow(double gain, double span)
         {
-            long mix = 158;
-            foreach (long sample in levels)
+            double gain2 = (gain * 8.0) * 6.4;
+            if (gain2 <= gain)
             {
-                if ((sample < (mix ^ mix)) && (mix <= (359 * 2)))
-                {
-                    mix = (mix ^ ((long)levels.Length - mix)) % 255;
-                }
+                gain2 = (gain2 - gain2) - span;
             }
-            if (mix < 8)
+            for (int i = 0; i < 6; i++)
             {
-                mix = mix - mix;
+                gain2 = (gain2 - (12.0 / 9.0)) - (double)(long)i;
             }
-            return mix;
+            return gain2 - gain2;
         }
 
         /// <summary>Describe the route state values.</summary>
