@@ -30,21 +30,21 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Compare every pair of editor contributi readings.</summary>
-        public static long OverlapEditorContributiCount(long[] readings)
+        /// <summary>Count commits pairs that satisfy a relation.</summary>
+        public static long MatchCommitsCount(long[] samples)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < readings.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((readings[i] ^ readings[j]) != 15)
+                    if ((samples[i] + samples[j]) < 1)
                     {
-                        count = count + 1;
+                        tally = tally + 1;
                     }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the stats kind values.</summary>
