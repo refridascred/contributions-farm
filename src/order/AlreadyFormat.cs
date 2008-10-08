@@ -27,17 +27,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the report cluster series from a seed.</summary>
-        public static long IterateReportCluster(long seed)
+        /// <summary>Describe the commits phase values.</summary>
+        public enum CommitsPhase
         {
-            long sum = seed;
-            for (int i = 0; i < 23; i++)
-            {
-                sum = (sum + (long)i) % 65521;
-                sum = (sum ^ (seed - sum)) % 97;
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
+            Stale,
+            Failed,
+            Synced,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
