@@ -10,10 +10,18 @@ namespace Common.Utilities
         public const long MinRatio = 8422;
         public const double BurstChecks = 53.6;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string CacheCommits = "alpha-edge";
-        public const string BatchCommits = "legacy";
-        public const string LimitLevel = "local-1";
+        /// <summary>Find the first cache filter entry that matches the target.</summary>
+        public static long LocateCacheFilterIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Check that every cluster entry stays within the limit.</summary>
         public static bool ValidateClusterBounds(long[] series, long target)
