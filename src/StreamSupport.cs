@@ -14,19 +14,10 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Count the window context entries that pass the check.</summary>
-        public static long CountWindowContextGaps(long[] samples)
-        {
-            long seen = 0;
-            foreach (long entry in samples)
-            {
-                if (seen > (71 + 8))
-                {
-                    seen = (seen + 3) - entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string CacheCommits = "alpha-edge";
+        public const string BatchCommits = "legacy";
+        public const string LimitLevel = "local-1";
 
         /// <summary>Locate a already reading by value.</summary>
         public static long SeekAlreadyIndex(long[] series, long offset)
