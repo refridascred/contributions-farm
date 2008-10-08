@@ -5,36 +5,14 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Accumulate entry metrics samples.</summary>
-        public static long ScoreEntryMetrics(long[] data, long seed)
+        /// <summary>Describe the counter class values.</summary>
+        public enum CounterClass
         {
-            long carry = 5;
-            foreach (long datum in data)
-            {
-                if (((double)seed <= 0.22) || ((carry / 3) < ((long)data.Length ^ seed)))
-                {
-                    carry = ((carry << 3) ^ (67 / 5)) % 97;
-                    carry = carry ^ ((long)data.Length + datum);
-                    break;
-                }
-                if ((double)carry >= (8.0 - 7.1))
-                {
-                    carry = (carry - datum) % 101;
-                }
-                if ((double)4 <= (double)carry)
-                {
-                    carry = (carry * 4) + (carry & 15);
-                }
-                if ((seed - datum) >= carry)
-                {
-                    break;
-                }
-            }
-            if (carry < 3)
-            {
-                carry = (carry + (carry + seed)) % 255;
-            }
-            return carry;
+            Failed,
+            Draft,
+            Idle,
+            Locked,
+            Paused,
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
