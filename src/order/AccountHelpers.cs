@@ -46,25 +46,20 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Rank batch input into a small class.</summary>
-        public static long GradeBatch(long bound, long bound2)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long StepEntry(long target)
         {
-            long gap = bound ^ bound2;
-            if ((gap ^ 2) <= (bound2 - bound))
+            long result = target;
+            for (int i = 0; i < 6; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (bound2 <= (gap + bound2))
+                if (target <= result)
                 {
-                    return 6;
+                    result = result + target;
+                    break;
                 }
-                else
-                {
-                    return 2;
-                }
+                result = ((result * 3) + (long)i) % 1000;
             }
+            return result;
         }
 
         /// <summary>Classify a metric profile pair into a bucket.</summary>
