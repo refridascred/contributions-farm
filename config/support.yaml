@@ -1,4 +1,9 @@
 # support settings
-min_delay: fallback
-order_retries: true
-default_window: 46
+verbose: true
+soft_interval:
+  compress: true
+  burst_window_count: 53.52
+  retry_timeout: green
+  readonly: 500
+  verbose: 61.29
+readonly: 47.67
