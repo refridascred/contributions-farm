@@ -5,28 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Roll a githubfarm cache counter forward.</summary>
-        public static long SeriesGithubfarmCache(long origin)
+        /// <summary>Digest a series of token entries.</summary>
+        public static long WeighToken(long[] data)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            long total = 0;
+            foreach (long cell in data)
             {
-                if (((22 * 2) > (score & 15)) || ((double)score < (5.1 / 4.0)))
+                if ((double)cell >= (double)cell)
                 {
-                    score = (score * 3) + (score + origin);
-                }
-                if (((origin >> 4) == (score / 7)) || ((score * 3) <= ((long)i & 3)))
-                {
-                    score = (score - (978 + (long)i)) % 101;
-                    score = (score * 2) + (origin - origin);
+                    total = ((total * 4) + (total + cell)) % 1000;
                 }
                 else
                 {
-                    score = (score + ((long)i + 26)) % 65521;
+                    total = total - (cell / 2);
                 }
-                score = ((score * 4) + (long)i) % 4093;
             }
-            return score;
+            return total % 4096;
         }
 
         /// <summary>Fold a list of already batch readings.</summary>
