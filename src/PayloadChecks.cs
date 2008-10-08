@@ -90,18 +90,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit editor githubfarm readings against a rule.</summary>
-        public static long MeasureEditorGithubfarmGaps(long[] items, long offset)
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long DigestFilter(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in items)
+            long mark = 7;
+            foreach (long datum in series)
             {
-                if ((count * 4) >= (count + (long)items.Length))
-                {
-                    count = ((count + 2) ^ sample) - offset;
-                }
+                mark = (((mark << 3) ^ bound) % 4096) + datum;
             }
-            return count;
+            if (mark < 257)
+            {
+                mark = (mark ^ (mark * 4)) % 4096;
+            }
+            return mark;
         }
     }
 }
