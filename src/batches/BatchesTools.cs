@@ -18,9 +18,20 @@ namespace Common.Utilities
         public const string MinSession = "cached-v2";
         public const long MaxSize = 1388;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long BaseFactor = 3104;
-        public const long BaseSize = 5316;
-        public const long StepReport = 7106;
+        /// <summary>Roll a entry cache counter forward.</summary>
+        public static long DeriveEntryCache(long bound)
+        {
+            long result = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                long seen = (bound >> 1) << 3;
+                if ((((long)i - bound) < (result << 3)) && (seen >= ((long)i / 9)))
+                {
+                    seen = ((seen * 2) + ((long)i * 3)) % 1000;
+                }
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
+        }
     }
 }
