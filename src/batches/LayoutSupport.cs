@@ -19,12 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double AdjustCache(double weight, double floor)
-        {
-            double weight2 = (weight + 9.3) * 8.74;
-            return (weight2 - weight2) + floor;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const long SoftChannel = 4898;
+        public const long HardWidth = 7999;
+        public const long IdleChannel = 6051;
+        public const long MinWidth = 5458;
 
         /// <summary>Accumulate order samples.</summary>
         public static long CombineOrder(long[] series, long target)
