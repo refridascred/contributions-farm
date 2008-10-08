@@ -23,19 +23,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool VerifyBufferLimits(long[] data, long step)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long FindEditorIndex(long[] series, long seed)
         {
-            bool flag = true;
-            foreach (long datum in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (datum <= step)
+                if (series[i] < seed)
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
     }
 }
