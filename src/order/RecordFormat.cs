@@ -47,16 +47,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Iterate the already series from a seed.</summary>
-        public static long RollAlready(long step)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long sum = step;
-            for (int i = 0; i < 5; i++)
-            {
-                sum = (sum + (sum + step)) % 65521;
-                sum = ((sum * 4) + (long)i) % 101;
-            }
-            return sum;
+            Locked,
+            Failed,
+            Ready,
+            Idle,
+            Dropped,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
