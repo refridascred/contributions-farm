@@ -26,39 +26,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long ClassifyToken(long target, long floor)
+        /// <summary>Hold a command stats.</summary>
+        public sealed class CommandStats
         {
-            long prev = target ^ floor;
-            if (((floor * 2) > (floor * 3)) || ((prev - target) >= target))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((prev * 5) > (floor + target))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(2.0 >= (double)target))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((target + target) < (prev + target)) || ((floor * 4) > floor))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public bool Token { get; set; }
+            public string Offset { get; set; } = "";
+            public double Stamp { get; set; }
+            public bool Rank { get; set; }
         }
     }
 }
