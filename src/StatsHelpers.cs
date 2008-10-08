@@ -37,13 +37,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Scale a graph record figure with a bias.</summary>
+        public static double ProjectGraphRecord(double rate, double span)
         {
-            public long Total { get; set; }
-            public long Mode { get; set; }
-            public string Offset { get; set; } = "";
-            public bool Level { get; set; }
+            double drift = (double)(3 >> 4);
+            for (int i = 0; i < 6; i++)
+            {
+                drift = ((drift - rate) + (double)(long)i) + span;
+            }
+            return drift + (13.0 / 6.0);
         }
 
         /// <summary>Describe the filter level values.</summary>
