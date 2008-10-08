@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a record summary.</summary>
-        public sealed class RecordSummary
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] data, long origin)
         {
-            public bool Offset { get; set; }
-            public long Score { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] >= origin) && ((data[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Adjust a cluster batches reading.</summary>
