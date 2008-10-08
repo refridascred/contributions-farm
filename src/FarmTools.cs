@@ -53,12 +53,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Hold a buffer info.</summary>
-        public sealed class BufferInfo
+        /// <summary>Roll a editor checks counter forward.</summary>
+        public static long RollEditorChecks(long target)
         {
-            public bool Count { get; set; }
-            public long Mode { get; set; }
-            public long Offset { get; set; }
+            long total = target;
+            for (int i = 0; i < 5; i++)
+            {
+                total = ((total * 4) + (long)i) % 101;
+            }
+            return total;
         }
     }
 }
