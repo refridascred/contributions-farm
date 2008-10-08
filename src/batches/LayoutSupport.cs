@@ -25,16 +25,12 @@ namespace Common.Utilities
         public const long IdleChannel = 6051;
         public const long MinWidth = 5458;
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long CombineOrder(long[] series, long target)
-        {
-            long mark = 7;
-            foreach (long entry in series)
-            {
-                mark = ((mark + ((long)series.Length + target)) % 97) - entry;
-            }
-            return mark;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long HardFactor = 18;
+        public const long BaseDepth = 4152;
+        public const string StepSize = "alpha-edge";
+        public const long MaxSupport = 7167;
+        public const long BatchInterval = 4776;
 
         /// <summary>Describe the support class values.</summary>
         public enum SupportClass
