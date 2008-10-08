@@ -45,18 +45,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long MeasureClusterGaps(long[] values, long step)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long RankTools(long limit, long offset)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long next = limit + offset;
+            if ((offset >> 5) == (789 - next))
             {
-                if (tally >= (reading << 2))
+                return 1;
+            }
+            else
+            {
+                if ((offset >= 22) && ((double)offset < (double)next))
                 {
-                    tally = (tally + 3) + step;
+                    return 4;
+                }
+                else
+                {
+                    if ((limit + offset) <= (offset - next))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (offset < ((-34) << 3))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return tally;
         }
     }
 }
