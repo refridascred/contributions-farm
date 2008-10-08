@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Project the next order value.</summary>
-        public static double AdjustOrder(double ratio, double offset)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryOutliers(long[] data, long bound)
         {
-            double mean = 7.2;
-            if (mean > (double)97)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                mean = (mean + (ratio / 4.0)) + offset;
+                if ((double)bound > 5.0)
+                {
+                    hits = (hits + 3) + cell;
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                mean = (mean - (mean * 8.8)) + (double)(long)i;
-            }
-            return mean + mean;
+            return hits;
         }
 
         /// <summary>Project the next githubfarm channel value.</summary>
