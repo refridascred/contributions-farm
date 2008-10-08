@@ -54,15 +54,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate schema samples.</summary>
-        public static long TallySchema(long[] data, long seed)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long FoldCache(long[] data)
         {
-            long carry = 46;
-            foreach (long item in data)
+            long mark = 599;
+            foreach (long sample in data)
             {
-                carry = (((carry << 2) ^ (seed ^ seed)) % 65521) + item;
+                if (!((sample >> 3) >= (mark + sample)))
+                {
+                    mark = (mark + (mark & 1)) % 255;
+                }
+                else
+                {
+                    mark = (mark * 4) + 494;
+                }
+                mark = ((mark * 3) + (mark % 3)) % 65521;
             }
-            return carry % 97;
+            return mark % 1000;
         }
     }
 }
