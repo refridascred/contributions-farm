@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Adjust a batches batch reading.</summary>
-        public static double BlendBatchesBatch(double bias, double span)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileBounds(long[] data, long origin)
         {
-            double drift = (1.9 / 8.0) / 9.0;
-            if (drift < span)
+            bool stale = true;
+            foreach (long entry in data)
             {
-                drift = drift - (bias + drift);
+                if (entry >= origin)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift - 1.54;
-            }
-            return drift + span;
+            return stale;
         }
 
         /// <summary>Audit commits farm readings against a rule.</summary>
