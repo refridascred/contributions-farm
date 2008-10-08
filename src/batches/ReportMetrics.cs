@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a editor record.</summary>
-        public sealed class EditorRecord
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            public bool Label { get; set; }
-            public double Token { get; set; }
+            Failed,
+            Dropped,
+            Ready,
+            Pending,
         }
 
         /// <summary>Describe the filter kind values.</summary>
