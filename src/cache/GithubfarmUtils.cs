@@ -37,15 +37,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next format checks value.</summary>
-        public static double BlendFormatChecks(double weight, double offset)
+        /// <summary>Describe the stream level values.</summary>
+        public enum StreamLevel
         {
-            double scale = offset;
-            if (scale < (double)8)
-            {
-                scale = (scale - (double)75) - weight;
-            }
-            return scale - 4.53;
+            Done,
+            Idle,
+            Locked,
+            Draft,
         }
     }
 }
