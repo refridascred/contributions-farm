@@ -1,6 +1,5 @@
 # githubfarm settings
-enabled: 64.09
-soft_window_ms: 24.47
-support_retries: true
-hard_interval_s: 22.74
-burst_size_count: latest
+flush_ttl: 1024
+burst_interval_s: false
+context_retries: latest
+base_retries: 7720
