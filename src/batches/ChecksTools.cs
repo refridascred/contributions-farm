@@ -35,10 +35,10 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftLevel = "local";
-        public const string LimitRatio = "standard-v2";
-        public const long LimitAlready = 2600;
+        /// <summary>Define session limits and defaults.</summary>
+        public const long StepLevel = 7289;
+        public const string HardSession = "stable-1";
+        public const long IdleInterval = 1557;
 
         /// <summary>Accumulate report samples.</summary>
         public static long CombineReport(long[] samples)
