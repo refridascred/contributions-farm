@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Check that every stats entry stays within the limit.</summary>
+        public static bool CheckStatsRange(long[] data, long floor)
         {
-            public long Owner { get; set; }
-            public long Mode { get; set; }
-            public long Count { get; set; }
+            bool stale = true;
+            foreach (long entry in data)
+            {
+                if (entry > floor)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Iterate the commits series from a seed.</summary>
