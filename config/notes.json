@@ -1,19 +1,6 @@
 {
-  "persist": 22.0,
-  "default_ratio_count": 28.67,
-  "soft_ratio_s": {
-    "min_timeout_s": 23.89,
-    "cache_depth_s": "stable",
-    "soft_limit_ms": "latest",
-    "payload_timeout": {
-      "filter_delay": 44,
-      "readonly": 2342,
-      "max_retries_ms": false,
-      "farm_ratio": 55.91
-    },
-    "idle_ratio_count": ["latest", "blue"]
-  },
-  "dry_run": [228, 83],
-  "counter_delay": [124, 78],
-  "batch_interval": "fallback"
+  "support_ttl": ["standard", "primary", "stable", "blue"],
+  "max_retries": true,
+  "enabled": ["edge", "fallback", "strict", "open"],
+  "sync_ttl_ms": "cached"
 }
