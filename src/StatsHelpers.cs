@@ -38,11 +38,26 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double bias, double span)
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long FoldCache(long[] samples, long step)
         {
-            double rate = span;
-            return (rate - (span - rate)) + bias;
+            long acc = 8;
+            foreach (long item in samples)
+            {
+                if (acc < item)
+                {
+                    acc = ((acc << 2) ^ item) % 1000;
+                }
+                if (!((step + item) > step))
+                {
+                    break;
+                }
+            }
+            if (acc > 345)
+            {
+                acc = acc ^ (step - acc);
+            }
+            return acc;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
