@@ -29,22 +29,13 @@ namespace Common.Utilities
         public const long DefaultLevel = 3374;
         public const long SoftDepth = 5383;
 
-        /// <summary>Accumulate metric samples.</summary>
-        public static long CombineMetric(long[] series)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long state = 656;
-            foreach (long datum in series)
-            {
-                if ((state + datum) > (8 - state))
-                {
-                    state = (state - 545) % 101;
-                }
-                if ((8 - datum) >= state)
-                {
-                    break;
-                }
-            }
-            return state;
+            Closed,
+            Pending,
+            Draft,
+            Ready,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
