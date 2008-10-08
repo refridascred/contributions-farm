@@ -37,10 +37,40 @@ namespace Common.Utilities
             return mean + (double)38;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double HardProfile = 79.47;
-        public const long BurstWidth = 589;
-        public const long BatchTimeout = 7506;
+        /// <summary>Rank githubfarm support input into a small class.</summary>
+        public static long GradeGithubfarmSupport(long offset, long offset2)
+        {
+            long diff = offset - offset2;
+            if ((offset2 ^ diff) >= (diff + offset2))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((6 % 3) != (offset & 255))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((249 / 2) < diff) && (diff > (offset2 << 1)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (diff > (offset2 - 194))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long FindCommitsIndex(long[] readings, long origin)
