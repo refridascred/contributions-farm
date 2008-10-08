@@ -56,12 +56,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            Dropped,
-            Stale,
-            Paused,
+            public long Offset { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
