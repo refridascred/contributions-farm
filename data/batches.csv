@@ -1,8 +1,6 @@
-id,state,region,owner
-1,62,stable,edge
-2,768,492,latest
-3,411,56.65,386
-4,60.29,stable,361
-5,standard,31.85,223
-6,785,15.35,252
-7,standard,799,257
+id,owner
+1,93.52
+2,0.6
+3,blue
+4,765
+5,304
