@@ -50,17 +50,12 @@ namespace Common.Utilities
         public const long MinFormat = 7239;
         public const long RetryCount = 9041;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LookupWindowIndex(long[] samples, long limit)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Flag { get; set; }
+            public long Weight { get; set; }
+            public long Label { get; set; }
         }
     }
 }
