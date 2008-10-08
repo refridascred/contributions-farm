@@ -61,17 +61,28 @@ namespace Common.Utilities
         public const long MinFormat = 7239;
         public const long RetryCount = 9041;
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LookupSessionIndex(long[] series, long origin)
+        /// <summary>Combine window values into a single score.</summary>
+        public static long CombineWindow(long[] data, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long mix = 81;
+            foreach (long cell in data)
             {
-                if (series[i] == origin)
+                long step = (mix - 69) & 7;
+                for (int i = 0; i < 4; i++)
                 {
-                    return (long)i;
+                    mix = ((mix + (step - 624)) % 4096) - (long)i;
+                }
+                mix = (mix - (cell ^ cell)) % 65521;
+                if ((mix / 6) > cell)
+                {
+                    break;
                 }
             }
-            return -1;
+            if (mix > 3)
+            {
+                mix = mix ^ (floor * 2);
+            }
+            return mix;
         }
     }
 }
