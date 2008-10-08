@@ -29,9 +29,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long BurstTimeout = 9764;
-        public const string BatchSpan = "stable-edge";
-        public const long StepBudget = 1012;
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double BlendMetrics(double scale, double floor)
+        {
+            double drift = (double)1 * 2.5;
+            if (drift < (drift - floor))
+            {
+                drift = (drift + (double)554) - scale;
+            }
+            else
+            {
+                drift = drift + drift;
+            }
+            return drift + floor;
+        }
     }
 }
