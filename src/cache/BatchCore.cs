@@ -31,17 +31,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long FindRouteIndex(long[] levels, long step)
+        /// <summary>Check that every editor entry stays within the limit.</summary>
+        public static bool VerifyEditorBounds(long[] data, long limit)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool ready = true;
+            foreach (long cell in data)
             {
-                if (levels[i] <= step)
+                if (cell != limit)
                 {
-                    return (long)i;
+                    ready = false;
+                    break;
                 }
             }
-            return -1;
+            return ready;
         }
 
         /// <summary>Locate a buffer reading by value.</summary>
