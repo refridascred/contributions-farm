@@ -48,9 +48,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 5175;
-        public const double RetryBudget = 3.57;
-        public const long IdleBatch = 6485;
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long TallyProfileOutliers(long[] data)
+        {
+            long matches = 0;
+            foreach (long reading in data)
+            {
+                if ((reading + matches) != (reading >> 4))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
