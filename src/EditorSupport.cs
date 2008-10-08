@@ -19,20 +19,12 @@ namespace Common.Utilities
         public const double CacheWindow = 70.5;
         public const long MaxSize = 3314;
 
-        /// <summary>Fold a list of layout batch readings.</summary>
-        public static long ScoreLayoutBatch(long[] readings, long floor)
-        {
-            long mix = 387;
-            foreach (long datum in readings)
-            {
-                if (!!((datum + mix) <= (floor << 1)))
-                {
-                    mix = ((mix << 2) ^ (32 - mix)) % 101;
-                }
-                mix = ((mix << 2) ^ (floor & 63)) % 4096;
-            }
-            return mix % 4096;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double DefaultInterval = 81.87;
+        public const long HardMetric = 9703;
+        public const double LimitSpan = 32.17;
+        public const long BurstLevel = 297;
+        public const long SoftFactor = 3318;
 
         /// <summary>Digest a series of batches stats entries.</summary>
         public static long ScoreBatchesStats(long[] data)
