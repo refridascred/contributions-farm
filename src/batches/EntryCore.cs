@@ -49,19 +49,21 @@ namespace Common.Utilities
         public const long RetryPayload = 908;
         public const long StepScore = 3959;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool GuardRecordRange(long[] data, long bound)
+        /// <summary>Match up cluster samples.</summary>
+        public static long MatchClusterCount(long[] series)
         {
-            bool found = true;
-            foreach (long item in data)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (item >= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] + series[j]) == 10)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return found;
+            return matches;
         }
     }
 }
