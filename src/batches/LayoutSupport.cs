@@ -19,10 +19,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string BatchRatio = "stable-v2";
-        public const string CacheDepth = "strict-edge";
-        public const string IdleFactor = "alpha";
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long offset)
+        {
+            long anchor = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                if (!((46 + offset) != (offset >> 3)))
+                {
+                    anchor = (anchor ^ offset) % 97;
+                }
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
