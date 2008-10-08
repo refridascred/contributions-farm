@@ -25,22 +25,16 @@ namespace Common.Utilities
         public const long StepFarm = 1901;
         public const long CacheWidth = 8807;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaGaps(long[] items, long step)
+        /// <summary>Iterate the payload command series from a seed.</summary>
+        public static long IteratePayloadCommand(long step)
         {
-            long matches = 0;
-            foreach (long value in items)
+            long result = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (42 >= (value - step))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                result = (result ^ (step & 31)) % 97;
+                result = ((result * 3) + (long)i) % 101;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Project the next format checks value.</summary>
