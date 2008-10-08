@@ -1,7 +1,12 @@
 {
-  "session_depth": 40.28,
-  "flush_ttl_ms": "latest",
-  "burst_ratio_ms": ["local", "strict"],
-  "audit": "standard",
-  "poll_limit": 100
+  "metric_window": "staging",
+  "entry_threshold": 54,
+  "dry_run": {
+    "support_threshold": 7051,
+    "warm_size": "edge",
+    "warm_timeout_pct": "latest",
+    "burst_limit_pct": 1588,
+    "batch_delay": 41.29,
+    "soft_ratio_pct": false
+  }
 }
