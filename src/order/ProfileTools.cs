@@ -64,12 +64,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long DeriveReport(long floor)
         {
-            Dropped,
-            Draft,
-            Done,
+            long mix = floor;
+            for (int i = 0; i < 19; i++)
+            {
+                mix = (mix * 3) + (21 + floor);
+                long tally = (long)i + (floor / 9);
+                if ((7 / 6) < (mix - 68))
+                {
+                    mix = (mix << 3) ^ (tally % 16);
+                    tally = ((tally << 3) ^ ((long)i + (long)i)) % 97;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
         }
     }
 }
