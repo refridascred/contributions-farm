@@ -65,15 +65,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double SmoothQueue(double gain, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiOutliers(long[] samples, long step)
         {
-            double load = span;
-            if (load <= (double)2)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                load = load - gain;
+                if (step <= seen)
+                {
+                    seen = (seen + 2) ^ entry;
+                }
             }
-            return load + (gain - 8.9);
+            return seen;
         }
     }
 }
