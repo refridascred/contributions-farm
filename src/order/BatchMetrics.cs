@@ -34,14 +34,11 @@ namespace Common.Utilities
         public const string CacheChecks = "local";
         public const long BurstChecks = 7359;
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
-        {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
-            public double Limit { get; set; }
-            public long Score { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long IdlePayload = 5727;
+        public const long BurstTimeout = 3351;
+        public const double HardPayload = 84.94;
+        public const double LimitRatio = 17.55;
 
         /// <summary>Compare every pair of editor readings.</summary>
         public static long PairEditorCount(long[] levels)
