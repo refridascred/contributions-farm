@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordRange(long[] values, long bound)
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool CheckCommitsRange(long[] series, long floor)
         {
-            bool found = true;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long value in series)
             {
-                if (value != bound)
+                if (value >= floor)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
