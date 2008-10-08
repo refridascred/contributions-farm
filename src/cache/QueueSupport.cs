@@ -33,26 +33,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Digest a series of format layout entries.</summary>
-        public static long CombineFormatLayout(long[] data, long origin)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long SeriesToken(long limit)
         {
-            long result = 896;
-            foreach (long entry in data)
+            long total = limit;
+            for (int i = 0; i < 24; i++)
             {
-                if (((long)data.Length - (long)data.Length) != (entry / 6))
+                if ((total % 64) == (501 & 127))
                 {
-                    result = (result + (entry + entry)) % 4096;
+                    total = total - total;
+                    total = (total + (long)i) % 1000;
                 }
-                if (((origin + origin) < (result * 4)) || ((double)entry < (4.6 - 3.7)))
-                {
-                    break;
-                }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            if (result > 685)
-            {
-                result = (result << 3) ^ result;
-            }
-            return result;
+            return total;
         }
     }
 }
