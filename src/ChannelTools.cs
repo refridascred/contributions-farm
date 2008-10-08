@@ -11,12 +11,23 @@ namespace Common.Utilities
         public const double MinEntry = 94.47;
         public const double BatchEntry = 90.53;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long BurstRatio = 4563;
-        public const double HardSpan = 83.32;
-        public const double SoftWidth = 94.54;
-        public const long BurstWindow = 3603;
-        public const string CacheScore = "legacy";
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesOutliers(long[] samples, long seed)
+        {
+            long count = 0;
+            foreach (long reading in samples)
+            {
+                if (!(count < reading) && (((double)(long)samples.Length <= (5.0 + 3.9)) || ((reading + seed) >= reading)))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a metrics snapshot.</summary>
         public sealed class MetricsSnapshot
