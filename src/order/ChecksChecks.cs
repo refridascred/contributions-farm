@@ -20,11 +20,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxSpan = 5505;
-        public const string DefaultScore = "cached";
-        public const string StepTimeout = "fallback";
-        public const long MinRecord = 7304;
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long MeasureTokenOutliers(long[] series, long limit)
+        {
+            long count = 0;
+            foreach (long cell in series)
+            {
+                if (!((limit <= (limit >> 1)) || ((double)cell != (double)47)))
+                {
+                    count = count + 1;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a cluster summary.</summary>
         public sealed class ClusterSummary
