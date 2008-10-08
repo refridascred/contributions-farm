@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesGaps(long[] readings, long bound)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool GuardWindowBounds(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long reading in items)
             {
-                if ((5.4 * 12.0) < (double)bound)
+                if (reading < step)
                 {
-                    tally = (tally + 2) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return tally;
+            return found;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
