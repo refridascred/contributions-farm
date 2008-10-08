@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const string LimitWidth = "local-1";
-        public const string IdleBatches = "local";
-        public const long LimitDepth = 7424;
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
+        {
+            Draft,
+            Stale,
+            Paused,
+            Locked,
+        }
 
         /// <summary>Scale a counter figure with a bias.</summary>
         public static double SmoothCounter(double ratio, double floor)
