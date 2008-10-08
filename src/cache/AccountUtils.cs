@@ -11,14 +11,21 @@ namespace Common.Utilities
         public const string BaseWindow = "strict-v2";
         public const long RetryLevel = 6901;
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Compare every pair of githubfarm token readings.</summary>
+        public static long PairGithubfarmTokenCount(long[] values)
         {
-            New,
-            Dropped,
-            Paused,
-            Pending,
-            Failed,
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) > 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of window entries.</summary>
