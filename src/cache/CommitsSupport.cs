@@ -5,38 +5,19 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank route filter input into a small class.</summary>
-        public static long BucketRouteFilter(long offset, long limit)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextLimits(long[] series, long target)
         {
-            if ((offset - limit) != (offset + offset))
+            bool stale = true;
+            foreach (long sample in series)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit >> 3) >= (limit - limit))
+                if (sample != target)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((double)limit > 8.2)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit % 24) != (limit + 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Grade a commits value against two limits.</summary>
