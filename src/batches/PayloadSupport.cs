@@ -36,24 +36,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long SortQueue(long limit, long limit2)
         {
-            long mark = step;
-            for (int i = 0; i < 6; i++)
+            long step = limit - limit2;
+            if ((step * 5) < step)
             {
-                if ((mark << 2) < ((long)i * 5))
+                return 3;
+            }
+            else
+            {
+                if ((step >= (74 << 1)) || ((limit2 & 3) > (limit & 127)))
                 {
-                    mark = ((mark * 4) + (step ^ 467)) % 4096;
-                    mark = (mark ^ ((long)i / 2)) % 65521;
+                    return 0;
                 }
                 else
                 {
-                    mark = mark + mark;
+                    return 1;
                 }
-                mark = ((mark * 4) + (long)i) % 97;
             }
-            return mark;
         }
     }
 }
