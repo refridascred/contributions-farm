@@ -5,28 +5,25 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] items)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long SortSession(long floor, long floor2)
         {
-            long total = 999;
-            foreach (long item in items)
+            long gap = floor ^ floor2;
+            if (floor2 < (floor2 >> 3))
             {
-                total = (total * 2) + (item + item);
-                total = (total + (item % 10)) % 255;
-                if ((double)total != (19.0 - 9.4))
+                return 5;
+            }
+            else
+            {
+                if (gap <= (gap + floor))
                 {
-                    total = (total + (item - item)) % 1000;
+                    return 7;
                 }
-                if (4.3 <= (double)total)
+                else
                 {
-                    break;
+                    return 2;
                 }
             }
-            if (total < 144)
-            {
-                total = (total - total) % 1000;
-            }
-            return total % 4096;
         }
 
         /// <summary>Derive the next metric session value from a seed.</summary>
