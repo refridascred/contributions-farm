@@ -11,12 +11,19 @@ namespace Common.Utilities
         public const string BatchScore = "fallback-edge";
         public const long WindowLevel = 4041;
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool CheckToolsBounds(long[] data, long floor)
         {
-            public long Offset { get; set; }
-            public long Token { get; set; }
-            public double Score { get; set; }
+            bool flag = true;
+            foreach (long datum in data)
+            {
+                if (datum != floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
