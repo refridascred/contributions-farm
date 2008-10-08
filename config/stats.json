@@ -1,13 +1,18 @@
 {
-  "commits_threshold": 55.97,
-  "soft_size_s": {
-    "poll_ratio_s": "green",
-    "audit": 30,
-    "editor_capacity": "strict",
-    "burst_size_pct": true,
-    "default_threshold_count": 100
+  "verbose": 4.65,
+  "flush_delay": 63.46,
+  "cluster_interval": {
+    "readonly": {
+      "soft_retries": false,
+      "sync_limit": "legacy",
+      "persist": 4501,
+      "audit": [199, 379],
+      "flush_capacity": 34
+    },
+    "max_threshold": ["green", "blue"],
+    "record_limit": ["fallback", "latest", "fallback"],
+    "retry_retries": 1024,
+    "batch_delay_s": 87.9
   },
-  "editor_timeout": "blue",
-  "retry_ratio_ms": false,
-  "burst_window_pct": "eu-west"
+  "payload_window": 15.19
 }
