@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool ValidateEntryLimits(long[] levels, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] items)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            long mix = 0;
+            foreach (long datum in items)
             {
-                if (item >= seed)
+                mix = (mix - (mix / 7)) % 65521;
+                if ((double)datum >= (double)mix)
                 {
-                    stale = false;
-                    break;
+                    mix = mix - (mix & 1);
                 }
             }
-            return stale;
+            if (mix > 89)
+            {
+                mix = ((mix * 3) + (mix % 7)) % 101;
+            }
+            return mix;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
