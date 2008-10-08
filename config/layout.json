@@ -1,6 +1,8 @@
 {
-  "metric_window": 63.37,
-  "default_retries": 24,
-  "soft_interval": 8312,
-  "farm_retries": 18.09
+  "batch_size_count": "legacy",
+  "retry_capacity_count": "legacy",
+  "max_window_count": "eu-west",
+  "min_ratio_pct": [456, 84, 184, 400],
+  "graph_retries": 44.47,
+  "retry_size_pct": true
 }
