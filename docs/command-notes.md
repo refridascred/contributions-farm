@@ -1,16 +1,15 @@
 # Command notes
 
-Defaults for farm live in the config folder and can be overridden per environment.
-The schema module keeps metric values in sync with the batch cache.
-The entry module keeps profile values in sync with the record cache.
+The notes report groups every buffer by session.
+The stats helpers are pure functions, so they are safe to call from any thread.
 
-Each counter is validated before it reaches the entry queue.
-When a support fails, the order handler retries a few times before giving up.
-The farm helpers are pure functions, so they are safe to call from any thread.
+Keep already and metric names short and lowercase.
+The context module keeps channel values in sync with the route cache.
+Run the layout check before changing any githubfarm limits.
 
 ## Guidelines
 
-- Log every tools change
-- Document new farm fields
-- Keep format values small
-- Prefer account defaults
+- Log every counter change
+- Validate token input early
+- Keep cluster values small
+- Prefer cluster defaults
