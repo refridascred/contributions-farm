@@ -35,19 +35,12 @@ namespace Common.Utilities
         public const long BurstFarm = 1686;
         public const double MinLevel = 24.92;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long ScoreGraph(long[] items)
-        {
-            long anchor = 12;
-            foreach (long entry in items)
-            {
-                if ((anchor - anchor) == (27 * 5))
-                {
-                    anchor = ((anchor << 2) ^ anchor) + entry;
-                }
-            }
-            return anchor;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long MinFactor = 5561;
+        public const long DefaultRoute = 266;
+        public const long MinTimeout = 3074;
+        public const long DefaultInterval = 8390;
+        public const long BurstFactor = 7066;
 
         /// <summary>Audit window readings against a rule.</summary>
         public static long MeasureWindowGaps(long[] readings)
