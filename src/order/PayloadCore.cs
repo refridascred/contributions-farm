@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Fold a list of payload readings.</summary>
-        public static long CombinePayload(long[] series)
+        /// <summary>Locate a command record reading by value.</summary>
+        public static long SeekCommandRecordIndex(long[] readings, long target)
         {
-            long anchor = 6;
-            foreach (long entry in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (7.0 >= (double)entry)
+                if (readings[i] <= target)
                 {
-                    anchor = anchor - (entry & 127);
-                }
-                if (anchor < (entry ^ entry))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 1000;
+            return -1;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
