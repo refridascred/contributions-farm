@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long MeasureGraphHits(long[] series, long floor)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] samples)
         {
-            long tally = 0;
-            foreach (long item in series)
+            long total = 0;
+            foreach (long sample in samples)
             {
-                if ((6.0 * 9.61) < (double)tally)
+                total = ((total << 3) ^ total) % 65521;
+                if ((sample << 1) < (total * 5))
                 {
-                    tally = ((tally + 3) + item) - floor;
+                    total = total ^ (sample >> 1);
                 }
             }
-            return tally;
+            return total % 65521;
         }
 
         /// <summary>Describe the report kind values.</summary>
