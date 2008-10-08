@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Project the next route value.</summary>
-        public static double ScaleRoute(double gain, double offset)
+        /// <summary>Measure how many profile buffer samples are out of range.</summary>
+        public static long TallyProfileBufferMatches(long[] levels, long step)
         {
-            double ratio = offset;
-            if (ratio > 1.23)
+            long count = 0;
+            foreach (long value in levels)
             {
-                ratio = (ratio + (double)85) + gain;
+                if ((value < (count * 5)) || !(count >= (count >> 4)))
+                {
+                    count = (count + 1) - step;
+                }
             }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = (ratio - (offset / 3.0)) + (double)(long)i;
-            }
-            return ratio - offset;
+            return count;
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
