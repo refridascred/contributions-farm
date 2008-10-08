@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatOutliers(long[] series)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long TallySupportOutliers(long[] samples)
         {
             long hits = 0;
-            foreach (long cell in series)
+            foreach (long item in samples)
             {
-                if ((cell >= (4 / 2)) && ((0 - hits) <= (1 >> 5)))
+                if (7 >= (item ^ hits))
                 {
-                    hits = hits + 2;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    hits = hits + 3;
                 }
             }
             return hits;
