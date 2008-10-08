@@ -27,16 +27,25 @@ namespace Common.Utilities
         public const long IdleCount = 6610;
         public const long StepCount = 1271;
 
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long limit)
+        /// <summary>Rank cache input into a small class.</summary>
+        public static long SortCache(long seed, long offset)
         {
-            long score = limit;
-            for (int i = 0; i < 7; i++)
+            long delta = seed - offset;
+            if ((10 << 2) == (delta - 77))
             {
-                score = (score ^ ((long)i + limit)) % 4096;
-                score = ((score * 3) + (long)i) % 1000;
+                return 3;
             }
-            return score;
+            else
+            {
+                if ((double)seed <= (double)offset)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
+            }
         }
 
         /// <summary>Fold a list of contributi notes readings.</summary>
