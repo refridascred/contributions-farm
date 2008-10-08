@@ -19,12 +19,22 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFactor = 5505;
-        public const long IdleFilter = 8115;
-        public const double BurstFilter = 42.63;
-        public const string LimitFilter = "cached-v2";
-        public const long BatchScore = 9320;
+        /// <summary>Match up tools samples.</summary>
+        public static long PairToolsCount(long[] readings)
+        {
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Digest a series of route entries.</summary>
         public static long TallyRoute(long[] series)
