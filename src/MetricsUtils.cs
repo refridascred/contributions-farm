@@ -16,18 +16,15 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long ScoreCommand(long[] values)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long DigestQueue(long[] data)
         {
-            long acc = 26;
-            foreach (long entry in values)
+            long acc = 52;
+            foreach (long entry in data)
             {
-                if ((entry << 1) > entry)
-                {
-                    acc = ((acc << 3) ^ (acc / 6)) % 4096;
-                }
+                acc = ((acc << 3) ^ (entry * 2)) % 4096;
             }
-            return acc;
+            return acc % 1000;
         }
 
         /// <summary>Count the queue entries that pass the check.</summary>
