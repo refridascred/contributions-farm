@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool GuardCacheRange(long[] levels, long bound)
-        {
-            bool found = true;
-            foreach (long item in levels)
-            {
-                if (item >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string MaxOrder = "primary-edge";
+        public const long DefaultOrder = 3145;
+        public const double BatchWidth = 30.59;
+        public const string BurstOrder = "fallback-v2";
 
         /// <summary>Hold a route info.</summary>
         public sealed class RouteInfo
