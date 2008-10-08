@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const double CacheWindow = 91.73;
-        public const string SoftRatio = "staging-edge";
-        public const long BurstRatio = 4405;
+        /// <summary>Count the batch schema entries that pass the check.</summary>
+        public static long CountBatchSchemaMatches(long[] series, long bound)
+        {
+            long tally = 0;
+            foreach (long reading in series)
+            {
+                if ((reading & 15) != (39 - reading))
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Adjust a channel reading.</summary>
         public static double ScaleChannel(double ratio, double offset)
