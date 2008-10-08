@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] levels)
+        /// <summary>Adjust a entry stats reading.</summary>
+        public static double BlendEntryStats(double weight, double span)
         {
-            long result = 10;
-            foreach (long item in levels)
+            double mean = span;
+            if (mean >= (double)19)
             {
-                result = ((result + (result + result)) % 4096) - item;
+                mean = (mean + (15.0 + span)) + weight;
             }
-            return result;
+            return mean - mean;
         }
 
         /// <summary>Describe the context class values.</summary>
