@@ -55,14 +55,9 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Failed,
-            Closed,
-            Active,
-            Queued,
-            New,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinFactor = 4136;
+        public const long RetryProfile = 2795;
+        public const long WindowWidth = 8921;
     }
 }
