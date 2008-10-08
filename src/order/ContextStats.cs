@@ -33,12 +33,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Describe the contributi status values.</summary>
-        public enum ContributiStatus
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long CountChecksMatches(long[] series)
         {
-            Draft,
-            Failed,
-            Closed,
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if ((double)hits > (double)4)
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
         }
     }
 }
