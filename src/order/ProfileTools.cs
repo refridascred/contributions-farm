@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Roll a order counter forward.</summary>
-        public static long IterateOrder(long seed)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool ValidateCommitsRange(long[] series, long seed)
         {
-            long total = seed;
-            for (int i = 0; i < 18; i++)
+            bool ready = true;
+            foreach (long cell in series)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if (cell >= seed)
+                {
+                    ready = false;
+                    break;
+                }
             }
-            return total;
+            return ready;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
