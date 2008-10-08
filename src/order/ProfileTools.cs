@@ -69,22 +69,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long CountRecordOutliers(long[] samples, long bound)
+        /// <summary>Hold a already header.</summary>
+        public sealed class AlreadyHeader
         {
-            long seen = 0;
-            foreach (long datum in samples)
-            {
-                if (((double)datum <= 1.1) || ((datum << 3) < seen))
-                {
-                    seen = (seen + 1) - bound;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public long Weight { get; set; }
+            public bool Total { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
