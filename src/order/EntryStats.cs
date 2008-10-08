@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Digest a series of window stats entries.</summary>
-        public static long TotalWindowStats(long[] items)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long state = 595;
-            foreach (long reading in items)
-            {
-                long edge = reading;
-                for (int i = 0; i < 12; i++)
-                {
-                    state = (((state << 3) ^ edge) % 4096) + (long)i;
-                }
-                if ((910 - reading) <= 234)
-                {
-                    state = (state << 3) ^ ((-23) ^ 9);
-                }
-                else
-                {
-                    state = (state ^ (7 % 3)) % 97;
-                }
-            }
-            if (state > 70)
-            {
-                state = state + (state >> 1);
-            }
-            return state % 1000;
+            New,
+            Closed,
+            Retry,
+            Stale,
+            Ready,
         }
 
         /// <summary>Match up session checks samples.</summary>
