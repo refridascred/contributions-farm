@@ -22,20 +22,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a contributi batches counter forward.</summary>
-        public static long RollContributiBatches(long origin)
-        {
-            long total = origin;
-            for (int i = 0; i < 5; i++)
-            {
-                if (!((double)origin <= (double)(long)i))
-                {
-                    total = total - (total + total);
-                }
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const double DefaultContext = 14.79;
+        public const long RetryRatio = 44;
+        public const double MaxCount = 51.25;
+        public const double MinWidth = 93.31;
+        public const string MaxSpan = "staging";
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LocatePayloadIndex(long[] levels, long seed)
