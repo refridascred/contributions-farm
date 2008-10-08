@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            public bool Rank { get; set; }
-            public string Region { get; set; } = "";
-            public double Total { get; set; }
+            Active,
+            Failed,
+            Locked,
         }
 
         /// <summary>Define report limits and defaults.</summary>
