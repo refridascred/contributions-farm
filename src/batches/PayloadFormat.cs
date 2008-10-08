@@ -15,13 +15,28 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a schema snapshot.</summary>
-        public sealed class SchemaSnapshot
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            public long Ratio { get; set; }
-            public long Label { get; set; }
-            public long Rank { get; set; }
-            public string Region { get; set; } = "";
+            long carry = seed;
+            for (int i = 0; i < 4; i++)
+            {
+                long gap = (-11) << 2;
+                if (carry >= (seed % 7))
+                {
+                    gap = (gap * 4) + (carry - 7);
+                }
+                if ((11.0 / 6.0) < (double)carry)
+                {
+                    gap = (gap << 2) ^ 18;
+                }
+                else
+                {
+                    carry = (carry * 3) + (gap - 38);
+                }
+                carry = ((carry * 4) + (long)i) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Match up stats queue samples.</summary>
