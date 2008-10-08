@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] data)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            long matches = 0;
-            foreach (long entry in data)
-            {
-                if ((matches - matches) < (matches / 3))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            public string Offset { get; set; } = "";
+            public string Token { get; set; } = "";
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the commits phase values.</summary>
