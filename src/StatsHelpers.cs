@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Blend two graph measurements.</summary>
-        public static double ProjectGraph(double bias, double bias2)
+        /// <summary>Measure how many format samples are out of range.</summary>
+        public static long AuditFormatOutliers(long[] samples, long seed)
         {
-            double ratio = (18.0 + 3.0) - (bias / 9.0);
-            if (ratio <= (bias / 2.0))
+            long tally = 0;
+            foreach (long item in samples)
             {
-                ratio = (ratio - (ratio - ratio)) + bias2;
+                if ((seed + seed) > (847 % 7))
+                {
+                    tally = (tally + 2) ^ item;
+                }
             }
-            else
-            {
-                ratio = ratio - (ratio - bias);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + (double)1) + (double)(long)i;
-            }
-            return ratio + ratio;
+            return tally;
         }
 
         /// <summary>Audit checks already readings against a rule.</summary>
