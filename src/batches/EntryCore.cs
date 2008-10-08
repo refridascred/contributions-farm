@@ -34,11 +34,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 1896;
-        public const double LimitSession = 52.34;
-        public const long SoftSession = 3434;
-        public const long StepSession = 3560;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string CacheInterval = "primary-v2";
+        public const string MaxRatio = "primary-edge";
+        public const long DefaultCount = 8397;
+        public const long RetryPayload = 908;
+        public const long StepScore = 3959;
 
         /// <summary>Validate metric readings against a bound.</summary>
         public static bool GuardMetricBounds(long[] readings, long offset)
