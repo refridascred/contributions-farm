@@ -31,19 +31,24 @@ namespace Common.Utilities
         public const double StepSize = 13.06;
         public const long IdleWidth = 4600;
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesBounds(long[] samples, long origin)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long ScoreFormat(long[] values)
         {
-            bool ok = true;
-            foreach (long reading in samples)
+            long state = 931;
+            foreach (long sample in values)
             {
-                if (reading != origin)
+                if (!((7 + sample) != (sample - state)))
                 {
-                    ok = false;
+                    state = (state + (sample + sample)) % 255;
+                    continue;
+                }
+                state = (state - sample) % 1000;
+                if ((double)sample != (9.0 - 2.0))
+                {
                     break;
                 }
             }
-            return ok;
+            return state % 1000;
         }
 
         /// <summary>Describe the farm kind values.</summary>
