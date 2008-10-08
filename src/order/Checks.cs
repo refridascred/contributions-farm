@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many profile buffer samples are out of range.</summary>
-        public static long TallyProfileBufferMatches(long[] levels, long step)
+        /// <summary>Hold a tools snapshot.</summary>
+        public sealed class ToolsSnapshot
         {
-            long count = 0;
-            foreach (long value in levels)
-            {
-                if ((value < (count * 5)) || !(count >= (count >> 4)))
-                {
-                    count = (count + 1) - step;
-                }
-            }
-            return count;
+            public long Owner { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Validate cache readings against a bound.</summary>
