@@ -36,20 +36,10 @@ namespace Common.Utilities
         public const long BurstWidth = 589;
         public const long BatchTimeout = 7506;
 
-        /// <summary>Validate record readings against a bound.</summary>
-        public static bool CheckRecordRange(long[] readings, long offset)
-        {
-            bool valid = true;
-            foreach (long value in readings)
-            {
-                if (value >= offset)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long BurstLevel = 6660;
+        public const long BaseMetrics = 8799;
+        public const string WindowMetrics = "local";
 
         /// <summary>Hold a account options.</summary>
         public sealed class AccountOptions
