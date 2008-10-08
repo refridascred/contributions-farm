@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Compare every pair of token readings.</summary>
-        public static long MatchTokenCount(long[] levels)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TotalLayout(long[] readings, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -8;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 13)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                acc = (acc - (seed + seed)) % 97;
+                acc = (acc - (acc - item)) % 101;
             }
-            return seen;
+            if (acc > 67)
+            {
+                acc = (acc << 2) ^ (seed * 5);
+            }
+            return acc % 4096;
         }
 
         /// <summary>Validate order cache readings against a bound.</summary>
