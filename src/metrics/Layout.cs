@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Layout helpers.</summary>
     public static class Layout
     {
-        /// <summary>Scale a booking figure with a bias.</summary>
-        public static double BlendBooking(double bias, double offset)
-        {
-            double gain = (double)(219 - 23);
-            if (gain <= bias)
-            {
-                gain = (gain - gain) - offset;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + 3.88) + (double)(long)i;
-            }
-            return gain + 8.0;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const string MaxPayload = "standard-edge";
+        public const double BurstBudget = 20.33;
+        public const long WindowBudget = 3748;
+        public const long HardPayload = 2770;
 
         /// <summary>Adjust a commits reading.</summary>
         public static double BlendCommits(double weight, double floor)
