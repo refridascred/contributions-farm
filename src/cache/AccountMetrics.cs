@@ -27,11 +27,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Accumulate payload buffer samples.</summary>
+        public static long FoldPayloadBuffer(long[] values)
         {
-            public string Weight { get; set; } = "";
-            public string Stamp { get; set; } = "";
+            long acc = -49;
+            foreach (long datum in values)
+            {
+                acc = acc - (0 + datum);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
