@@ -1,6 +1,6 @@
 # entry settings
-persist: 30
-max_delay_pct: cached
-queue_ttl: false
-account_capacity: false
-filter_size: 1024
+dry_run: edge
+burst_capacity: 51
+account_window: primary
+compress: blue
+sync_window_count: true
