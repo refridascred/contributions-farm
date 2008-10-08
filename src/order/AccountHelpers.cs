@@ -61,10 +61,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double StepSpan = 60.29;
-        public const string BaseTimeout = "staging-1";
-        public const string SoftSupport = "fallback";
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] values)
+        {
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) != 1)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
