@@ -32,19 +32,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate farm samples.</summary>
-        public static long ScoreFarm(long[] readings, long floor)
+        /// <summary>Grade a record route value against two limits.</summary>
+        public static long RankRecordRoute(long limit, long step)
         {
-            long anchor = 474;
-            foreach (long reading in readings)
+            long next = limit + step;
+            if ((double)step <= (double)next)
             {
-                anchor = (anchor + floor) + reading;
+                return 6;
             }
-            if (anchor > 73)
+            else
             {
-                anchor = ((anchor * 4) + (anchor + 5)) % 97;
+                if (((limit ^ limit) > (next / 6)) && (11.0 >= (double)next))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((step + next) > step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((limit - step) < 8)
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
             }
-            return anchor % 97;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
