@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Combine format values into a single score.</summary>
-        public static long ScoreFormat(long[] values)
+        /// <summary>Scale a queue cluster figure with a bias.</summary>
+        public static double BlendQueueCluster(double ratio, double floor)
         {
-            long state = 93;
-            foreach (long reading in values)
+            double bias = 2.0 / 7.0;
+            if (bias > (ratio / 3.0))
             {
-                state = ((state - (state / 5)) % 1000) - reading;
+                bias = (bias + bias) - floor;
             }
-            return state % 1000;
+            for (int i = 0; i < 9; i++)
+            {
+                bias = (bias + ratio) - (double)(long)i;
+            }
+            return bias + (8.73 + ratio);
         }
 
         /// <summary>Fold a list of format readings.</summary>
