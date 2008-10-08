@@ -1,11 +1,6 @@
 {
-  "support_threshold": 60,
-  "cache_interval_count": {
-    "window_delay": 31.36,
-    "burst_size_s": ["eu-west", "staging"],
-    "commits_window": "latest",
-    "checks_retries": "latest"
-  },
-  "command_capacity": "standard",
-  "githubfarm_window": false
+  "hard_timeout_pct": false,
+  "flush_size_count": false,
+  "enabled": false,
+  "batch_depth": [245, 313, 425, 399]
 }
