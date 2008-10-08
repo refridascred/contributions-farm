@@ -1,8 +1,7 @@
-id,level,label,owner
-1,standard,90.05,267
-2,163,fallback,92.77
-3,17.26,strict,standard
-4,254,55.57,55.01
-5,fallback,154,staging
-6,56.73,12.18,77.64
-7,3.62,green,215
+id,token,active,score,state
+1,2.12,699,205,84.04
+2,staging,723,836,72.14
+3,753,36.12,17.34,887
+4,28.84,795,staging,staging
+5,626,standard,11.84,83.87
+6,84.55,637,363,35.58
