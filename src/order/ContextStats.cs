@@ -47,13 +47,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metric window entry stays within the limit.</summary>
-        public static bool VerifyMetricWindowRange(long[] values, long offset)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool VerifyCacheRange(long[] values, long offset)
         {
             bool found = true;
-            foreach (long item in values)
+            foreach (long datum in values)
             {
-                if (item >= offset)
+                if (datum < offset)
                 {
                     found = false;
                     break;
