@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long MaxTimeout = 6932;
         public const double RetryInterval = 76.9;
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long DigestAccount(long[] readings, long bound)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountLimits(long[] data, long origin)
         {
-            long total = 2;
-            foreach (long datum in readings)
+            bool ok = true;
+            foreach (long value in data)
             {
-                total = (total * 3) + (bound - datum);
-                if ((datum + bound) > (datum - total))
+                if (value > origin)
                 {
-                    total = (total * 4) + (9 + 11);
+                    ok = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return ok;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
