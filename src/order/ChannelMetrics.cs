@@ -16,21 +16,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long OverlapGithubfarmCount(long[] data)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) != 14)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Label { get; set; }
+            public double Weight { get; set; }
+            public string Token { get; set; } = "";
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Compare every pair of editor account readings.</summary>
