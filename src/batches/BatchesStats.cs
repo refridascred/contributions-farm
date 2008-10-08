@@ -42,18 +42,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the profile route entries that pass the check.</summary>
-        public static long TallyProfileRouteHits(long[] data)
+        /// <summary>Combine batches values into a single score.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in data)
+            long mix = -158;
+            foreach (long datum in readings)
             {
-                if (!((hits - 7) < (603 << 3)) || (hits <= (item % 12)))
+                if (!((mix << 1) > (datum * 4)))
                 {
-                    hits = hits + 3;
+                    mix = ((mix << 3) ^ ((-22) << 3)) % 1000;
+                }
+                if (mix <= 7)
+                {
+                    break;
                 }
             }
-            return hits;
+            return mix;
         }
     }
 }
