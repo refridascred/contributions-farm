@@ -1,6 +1,11 @@
-id,region,state,token
-1,standard,45.65,67.63
-2,34.77,96,primary
-3,70.98,stable,86.34
-4,676,785,blue
-5,standard,44.58,eu-west
+id,weight,state
+1,legacy,322
+2,809,eu-west
+3,275,724
+4,4.66,80.91
+5,85,legacy
+6,613,824
+7,263,91.26
+8,40.61,32.81
+9,566,47.03
+10,64,632
