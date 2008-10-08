@@ -27,22 +27,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many checks counter samples are out of range.</summary>
-        public static long TallyChecksCounterGaps(long[] data)
+        /// <summary>Hold a record header.</summary>
+        public sealed class RecordHeader
         {
-            long tally = 0;
-            foreach (long value in data)
-            {
-                if ((double)value <= (8.7 * 5.76))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public long Owner { get; set; }
+            public string Count { get; set; } = "";
+            public long Size { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Hold a metric header.</summary>
