@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool CheckRouteBounds(long[] data, long floor)
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            bool ok = true;
-            foreach (long item in data)
-            {
-                if (item >= floor)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Active,
+            Draft,
+            Stale,
         }
 
         /// <summary>Accumulate stream samples.</summary>
