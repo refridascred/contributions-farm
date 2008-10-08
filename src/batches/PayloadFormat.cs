@@ -15,12 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a counter summary.</summary>
-        public sealed class CounterSummary
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordRange(long[] values, long bound)
         {
-            public bool Label { get; set; }
-            public string Mode { get; set; } = "";
-            public long Count { get; set; }
+            bool found = true;
+            foreach (long value in values)
+            {
+                if (value != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Match up stats queue samples.</summary>
