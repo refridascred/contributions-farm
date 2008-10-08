@@ -1,16 +1,7 @@
 {
-  "base_ratio_ms": 250,
-  "farm_interval": {
-    "flush_ratio_s": {
-      "readonly": false,
-      "sync_timeout": 4.6,
-      "graph_retries": false,
-      "token_limit": true
-    },
-    "verbose": [123, 438],
-    "compress": [395, 157, 300, 27],
-    "farm_depth": [285, 243, 32, 142]
-  },
-  "idle_timeout_ms": 4,
-  "hard_depth_count": false
+  "flush_capacity_ms": "legacy",
+  "batch_ttl_pct": ["blue", "green", "cached"],
+  "poll_limit": [438, 141, 272],
+  "account_limit": ["staging", "fallback", "strict", "standard"],
+  "poll_ratio_s": 41.72
 }
