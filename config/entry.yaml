@@ -1,11 +1,8 @@
 # entry settings
-max_threshold_count:
-  - 95
-  - 398
-compress: 38.96
-persist:
-  default_timeout: strict
-  min_window_s: latest
-  token_limit: 5031
-  batch_size: blue
-sync_ttl: 5015
+max_depth:
+  - 173
+  - 21
+  - 191
+  - 23
+command_size: 2467
+min_capacity_pct: open
