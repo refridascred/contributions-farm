@@ -1,8 +1,8 @@
 {
-  "cache_ttl": "local",
-  "soft_interval_s": true,
-  "strict": "stable",
-  "audit": 0.04,
-  "retry_ratio_ms": "local",
-  "base_ratio_count": 66
+  "retry_capacity_pct": true,
+  "dry_run": "staging",
+  "hard_ratio_ms": false,
+  "window_delay": "open",
+  "entry_threshold": "green",
+  "channel_ttl": 95
 }
