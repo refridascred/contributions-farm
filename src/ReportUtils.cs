@@ -18,18 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] samples)
+        /// <summary>Validate commits readings against a bound.</summary>
+        public static bool CheckCommitsRange(long[] levels, long seed)
         {
-            long count = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long value in levels)
             {
-                if ((count * 5) > (item / 8))
+                if (value >= seed)
                 {
-                    count = count + 2;
+                    stale = false;
+                    break;
                 }
             }
-            return count;
+            return stale;
         }
 
         /// <summary>Check that every filter cache entry stays within the limit.</summary>
