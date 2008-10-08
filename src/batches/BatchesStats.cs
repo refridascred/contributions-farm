@@ -42,39 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long RankTools(long limit, long offset)
+        /// <summary>Count the profile route entries that pass the check.</summary>
+        public static long TallyProfileRouteHits(long[] data)
         {
-            long next = limit + offset;
-            if ((offset >> 5) == (789 - next))
+            long hits = 0;
+            foreach (long item in data)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset >= 22) && ((double)offset < (double)next))
+                if (!((hits - 7) < (603 << 3)) || (hits <= (item % 12)))
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((limit + offset) <= (offset - next))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (offset < ((-34) << 3))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
     }
 }
