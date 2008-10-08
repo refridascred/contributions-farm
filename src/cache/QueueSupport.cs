@@ -18,13 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] values, long limit)
         {
-            Queued,
-            Stale,
-            Active,
-            Paused,
+            long result = 6;
+            foreach (long item in values)
+            {
+                if ((result ^ item) == (limit + result))
+                {
+                    result = ((result * 3) + (limit - 77)) % 4096;
+                    continue;
+                }
+                result = ((result << 2) ^ (item + item)) % 97;
+                result = (result ^ (10 + limit)) % 65521;
+                if ((double)limit != (3.0 / 6.0))
+                {
+                    break;
+                }
+            }
+            return result;
         }
 
         /// <summary>Project the next checks farm value.</summary>
