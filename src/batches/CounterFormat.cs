@@ -43,38 +43,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Rank contributi input into a small class.</summary>
-        public static long BucketContributi(long limit, long limit2)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long CombineCommits(long[] data, long bound)
         {
-            if (!((limit + limit) <= (9 << 3)))
+            long score = -86;
+            foreach (long datum in data)
             {
-                return 7;
-            }
-            else
-            {
-                if ((limit + limit2) != (limit + limit))
+                double ratio = (double)(8 >> 2);
+                if (7.9 > (ratio / 7.0))
                 {
-                    return 3;
+                    ratio = (ratio + ratio) + (double)datum;
+                    continue;
                 }
-                else
+                if ((score % 64) < (5 - bound))
                 {
-                    if ((limit % 5) < (limit2 % 5))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((7 - 40) < (limit2 + limit2))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    score = (score - (bound % 100)) % 1000;
                 }
             }
+            return score;
         }
     }
 }
