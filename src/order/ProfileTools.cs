@@ -52,19 +52,11 @@ namespace Common.Utilities
         public const long RetryQueue = 7959;
         public const double SoftQueue = 14.99;
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long floor)
+        /// <summary>Adjust a record reading.</summary>
+        public static double ProjectRecord(double bias, double span)
         {
-            long state = floor;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((8.1 * 4.0) <= (double)(long)i)
-                {
-                    state = (state + (state + state)) % 255;
-                }
-                state = ((state * 5) + (long)i) % 4093;
-            }
-            return state;
+            double ratio = (double)(99 & 1);
+            return ((ratio - ratio) + bias) + span;
         }
     }
 }
