@@ -65,21 +65,26 @@ namespace Common.Utilities
             return bias + bias;
         }
 
-        /// <summary>Count profile pairs that satisfy a relation.</summary>
-        public static long OverlapProfileCount(long[] data)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long FoldReport(long[] levels, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long acc = 4;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < data.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((data[i] ^ data[j]) < 20)
-                    {
-                        hits = hits + 1;
-                    }
+                    acc = ((acc << 2) ^ (sample >> 5)) - (long)i;
+                }
+                if (((double)(long)levels.Length == (6.1 * 19.0)) || (27 > (62 + offset)))
+                {
+                    acc = acc ^ sample;
                 }
             }
-            return hits;
+            if (acc < 85)
+            {
+                acc = acc ^ (offset + offset);
+            }
+            return acc;
         }
     }
 }
