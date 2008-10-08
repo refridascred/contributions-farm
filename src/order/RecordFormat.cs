@@ -24,40 +24,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank session input into a small class.</summary>
-        public static long ClassifySession(long origin, long offset)
-        {
-            long delta = origin - offset;
-            if ((double)delta != (0.48 / 2.0))
-            {
-                return 6;
-            }
-            else
-            {
-                if ((double)offset <= (double)255)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((offset << 1) < offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if ((2.6 > (double)delta) || ((offset + origin) <= (offset - offset)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string StepSpan = "staging-edge";
+        public const long RetryAlready = 9295;
+        public const long BatchSize = 4962;
 
         /// <summary>Accumulate token samples.</summary>
         public static long TallyToken(long[] items)
