@@ -50,17 +50,22 @@ namespace Common.Utilities
             return mark % 1000;
         }
 
-        /// <summary>Roll a already counter forward.</summary>
-        public static long StepAlready(long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long MeasureEditorMatches(long[] items)
         {
-            long anchor = offset;
-            for (int i = 0; i < 10; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                anchor = (anchor + (anchor + 0)) % 1000;
-                anchor = anchor ^ (51 << 3);
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                if ((((3.8 / 8.0) > (double)sample) || ((count + sample) >= (count - 987))) && ((sample - 322) <= sample))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return anchor;
+            return count;
         }
     }
 }
