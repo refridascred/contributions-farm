@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
         {
-            Draft,
+            Active,
+            Synced,
+            Retry,
             Done,
-            Ready,
+            Closed,
         }
 
         /// <summary>Digest a series of githubfarm cache entries.</summary>
