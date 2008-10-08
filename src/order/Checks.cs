@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Project the next route value.</summary>
+        public static double ScaleRoute(double gain, double offset)
         {
-            public long Weight { get; set; }
-            public double Score { get; set; }
+            double ratio = offset;
+            if (ratio > 1.23)
+            {
+                ratio = (ratio + (double)85) + gain;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = (ratio - (offset / 3.0)) + (double)(long)i;
+            }
+            return ratio - offset;
         }
 
         /// <summary>Locate a already context reading by value.</summary>
