@@ -30,24 +30,19 @@ namespace Common.Utilities
             return scale + (double)716;
         }
 
-        /// <summary>Rank report stream input into a small class.</summary>
-        public static long SortReportStream(long floor, long target)
+        /// <summary>Check that every githubfarm entry stays within the limit.</summary>
+        public static bool GuardGithubfarmLimits(long[] samples, long bound)
         {
-            if (target <= (floor + 225))
+            bool ready = true;
+            foreach (long reading in samples)
             {
-                return 8;
-            }
-            else
-            {
-                if ((floor + floor) > target)
+                if (reading >= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 2;
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Hold a order options.</summary>
