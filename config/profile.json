@@ -1,8 +1,5 @@
 {
-  "format_threshold": 7158,
-  "entry_delay": ["eu-west", "edge", "staging"],
-  "route_ratio": "strict",
-  "audit": 42,
-  "poll_timeout_pct": "eu-west",
-  "counter_ttl": false
+  "min_ttl_s": "local",
+  "verbose": 9728,
+  "poll_capacity_s": false
 }
