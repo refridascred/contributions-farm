@@ -1,31 +1,17 @@
 {
-  "cache_size": {
-    "default_ttl_count": ["local", "primary"],
-    "queue_ttl": {
-      "retry_ttl_s": [293, 356, 75],
-      "compress": 60,
-      "audit": "legacy",
-      "persist": true,
-      "cache_capacity": false
+  "report_timeout": {
+    "entry_window": {
+      "readonly": "green",
+      "batch_timeout": "standard",
+      "warm_size_count": 42,
+      "audit": true
     },
-    "warm_delay": false,
-    "strict": 29.7,
-    "route_ratio": false,
-    "cache_ttl_ms": 729
+    "burst_timeout_count": "strict",
+    "token_window": 80,
+    "soft_ratio_pct": 3,
+    "metrics_depth": 88,
+    "default_capacity_s": true
   },
-  "idle_interval_count": "open",
-  "retry_timeout_pct": 4902,
-  "flush_limit_s": [205, 150, 113],
-  "retry_retries": ["blue", "local"],
-  "verbose": {
-    "cluster_limit": 30,
-    "retry_interval": {
-      "persist": 500,
-      "hard_delay": 5414,
-      "base_interval_count": ["staging", "fallback", "cached", "strict"],
-      "route_interval": false
-    },
-    "warm_window": 60,
-    "default_retries_s": true
-  }
+  "idle_ttl": true,
+  "cache_capacity": 8982
 }
