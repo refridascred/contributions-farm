@@ -1,7 +1,8 @@
-id,score,level,owner
-1,741,37.18,strict
-2,890,331,768
-3,latest,edge,31.86
-4,180,378,472
-5,66,local,primary
-6,15.63,2.93,1.28
+id,weight,ratio,region
+1,fallback,157,88.22
+2,stable,fallback,136
+3,695,25.18,strict
+4,staging,blue,blue
+5,772,993,primary
+6,791,944,864
+7,latest,307,185
