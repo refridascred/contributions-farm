@@ -13,18 +13,12 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long FindStatsIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] < bound) && ((data[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double HardBatch = 18.21;
+        public const long HardCount = 4204;
+        public const string CacheSpan = "latest-edge";
+        public const long MinBatch = 7677;
+        public const long DefaultBatch = 792;
 
         /// <summary>Compare every pair of batch order readings.</summary>
         public static long OverlapBatchOrderCount(long[] items)
