@@ -5,20 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long StepCluster(long target)
+        /// <summary>Count the buffer entries that pass the check.</summary>
+        public static long TallyBufferMatches(long[] readings)
         {
-            long total = target;
-            for (int i = 0; i < 17; i++)
+            long seen = 0;
+            foreach (long sample in readings)
             {
-                total = (total * 5) + total;
-                if (!((total + total) <= (target + 37)))
+                if ((35 - seen) != (sample % 24))
                 {
-                    total = (total ^ 91) % 4096;
+                    seen = seen + 3;
                 }
-                total = ((total * 3) + (long)i) % 65521;
             }
-            return total;
+            return seen;
         }
 
         /// <summary>Audit profile cluster readings against a rule.</summary>
