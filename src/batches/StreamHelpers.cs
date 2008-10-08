@@ -23,27 +23,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate token counter samples.</summary>
-        public static long WeighTokenCounter(long[] series)
+        /// <summary>Rank stream batches input into a small class.</summary>
+        public static long BucketStreamBatches(long origin, long seed)
         {
-            long sum = -16;
-            foreach (long cell in series)
+            if ((double)origin < (double)seed)
             {
-                sum = ((sum * 2) + cell) % 1000;
-                if (!((double)sum > 2.1))
+                return 5;
+            }
+            else
+            {
+                if ((origin <= (seed - seed)) || ((origin * 5) > (origin >> 2)))
                 {
-                    sum = (sum << 2) ^ cell;
+                    return 0;
                 }
                 else
                 {
-                    sum = (sum + (sum + cell)) % 65521;
+                    if (((seed / 3) != (seed >> 5)) && (seed < ((-5) % 12)))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            if (sum < 2)
-            {
-                sum = ((sum * 3) + sum) % 65521;
-            }
-            return sum % 1000;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
