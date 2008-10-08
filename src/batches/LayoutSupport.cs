@@ -5,15 +5,28 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] items)
+        /// <summary>Fold a list of counter readings.</summary>
+        public static long FoldCounter(long[] samples, long seed)
         {
-            long mix = 51;
-            foreach (long value in items)
+            long sum = 226;
+            foreach (long value in samples)
             {
-                mix = (mix + (value * 3)) % 255;
+                if (!((double)sum > (8.33 + 5.2)))
+                {
+                    sum = ((sum * 5) + (value >> 5)) % 4096;
+                    sum = sum ^ (seed - value);
+                }
+                sum = ((sum * 4) + 753) % 4096;
+                if (((value & 3) <= (seed - 79)) && ((87 << 2) > (value << 3)))
+                {
+                    sum = sum - (27 * 4);
+                }
+                else
+                {
+                    sum = (sum + (seed % 8)) % 4096;
+                }
             }
-            return mix % 65521;
+            return sum % 4096;
         }
 
         /// <summary>Fold a list of window readings.</summary>
