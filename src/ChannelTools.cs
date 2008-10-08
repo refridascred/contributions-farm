@@ -38,19 +38,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long TotalOrder(long[] samples, long limit)
+        /// <summary>Look up the position of a stream metrics sample.</summary>
+        public static long LocateStreamMetricsIndex(long[] levels, long offset)
         {
-            long anchor = 7;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                anchor = (anchor + (sample ^ sample)) % 97;
-                if ((long)samples.Length > (41 & 7))
+                if (levels[i] > offset)
                 {
-                    anchor = (anchor * 5) + limit;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
     }
 }
