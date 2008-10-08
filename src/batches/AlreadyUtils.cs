@@ -59,10 +59,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const double BurstChecks = 31.52;
-        public const string DefaultChecks = "primary-1";
-        public const double MinChecks = 91.58;
-        public const string BaseChecks = "alpha-1";
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
+        {
+            public double Limit { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
