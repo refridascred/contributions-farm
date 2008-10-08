@@ -11,32 +11,10 @@ namespace Common.Utilities
         public const double MinEntry = 94.47;
         public const double BatchEntry = 90.53;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long BucketRoute(long step, long target)
-        {
-            if ((target >= step) || (target <= (step ^ step)))
-            {
-                return 1;
-            }
-            else
-            {
-                if (((step * 4) >= target) && ((step - step) <= (step & 31)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)step != (double)target)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BaseSpan = 8491;
+        public const string RetryCount = "cached-v2";
+        public const long IdleGraph = 3948;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
