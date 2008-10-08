@@ -28,19 +28,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a tools reading.</summary>
-        public static double AdjustTools(double ratio, double span)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long TotalCluster(long[] values)
         {
-            double load = (ratio / 9.0) * 7.6;
-            if (load > (double)9)
+            long total = -41;
+            foreach (long sample in values)
             {
-                load = (load - ratio) - span;
+                if ((total << 1) >= 11)
+                {
+                    total = ((total << 3) ^ (6 >> 4)) ^ sample;
+                }
             }
-            else
+            if (total > 3)
             {
-                load = load + ratio;
+                total = total ^ (7 + total);
             }
-            return load + (double)4;
+            return total;
         }
 
         /// <summary>Hold a graph header.</summary>
