@@ -12,21 +12,19 @@ namespace Common.Utilities
             return (load + offset) + scale;
         }
 
-        /// <summary>Count batch pairs that satisfy a relation.</summary>
-        public static long OverlapBatchCount(long[] levels)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double gain, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double ratio = 14.0;
+            if (ratio < (offset * 16.0))
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) > 4)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                ratio = ratio + gain;
             }
-            return tally;
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio - ratio) + (double)(long)i;
+            }
+            return ratio + (offset + 1.25);
         }
 
         /// <summary>Describe the command kind values.</summary>
