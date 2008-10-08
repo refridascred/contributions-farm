@@ -18,13 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the batches phase values.</summary>
-        public enum BatchesPhase
+        /// <summary>Audit metrics context readings against a rule.</summary>
+        public static long CountMetricsContextHits(long[] readings)
         {
-            Pending,
-            Failed,
-            Idle,
-            Queued,
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if (((long)readings.Length - hits) >= entry)
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the metric status values.</summary>
