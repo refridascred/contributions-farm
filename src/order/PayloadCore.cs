@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long TallyGraphMatches(long[] series)
+        /// <summary>Hold a command header.</summary>
+        public sealed class CommandHeader
         {
-            long tally = 0;
-            foreach (long datum in series)
-            {
-                if (tally < (94 + tally))
-                {
-                    tally = (tally + 1) ^ datum;
-                }
-            }
-            return tally;
+            public bool Region { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Find the first order entry that matches the target.</summary>
