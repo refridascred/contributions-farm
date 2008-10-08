@@ -28,13 +28,21 @@ namespace Common.Utilities
             return ratio + (offset + 1.25);
         }
 
-        /// <summary>Describe the command kind values.</summary>
-        public enum CommandKind
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long PairBatchesCount(long[] samples)
         {
-            Queued,
-            Pending,
-            Idle,
-            Locked,
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) > 1)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
     }
 }
