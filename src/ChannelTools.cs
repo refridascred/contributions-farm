@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Count the layout entry entries that pass the check.</summary>
-        public static long TallyLayoutEntryMatches(long[] data)
+        /// <summary>Compare every pair of cache notes readings.</summary>
+        public static long CompareCacheNotesCount(long[] series)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((96 << 1) < (value & 255))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    matches = matches + 1;
+                    if ((series[i] - series[j]) > 16)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
