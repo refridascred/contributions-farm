@@ -44,23 +44,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long MeasureFormatGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long sample in items)
-            {
-                if ((925 + 47) == (count + count))
-                {
-                    count = (count + 2) - sample;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const double HardTimeout = 45.53;
+        public const long BatchLevel = 9847;
+        public const string SoftCache = "alpha-edge";
+        public const long LimitCache = 7398;
+        public const long MaxCache = 4053;
 
         /// <summary>Count the stats entries that pass the check.</summary>
         public static long AuditStatsGaps(long[] samples, long step)
