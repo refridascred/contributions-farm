@@ -1,8 +1,11 @@
 {
-  "batch_depth_ms": "green",
-  "strict": "stable",
-  "max_delay": ["legacy", "local", "primary", "latest"],
-  "verbose": 83,
-  "poll_interval": 48.09,
-  "schema_interval": false
+  "contributi_interval": 48,
+  "dry_run": "fallback",
+  "idle_timeout": {
+    "cache_ttl_count": true,
+    "sync_depth": true,
+    "contributi_limit": true,
+    "metrics_capacity": 9.19
+  },
+  "hard_interval_count": 76.84
 }
