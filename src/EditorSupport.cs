@@ -52,14 +52,22 @@ namespace Common.Utilities
             return load + weight;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long MeasureChecksGaps(long[] values, long limit)
         {
-            New,
-            Ready,
-            Retry,
-            Pending,
-            Active,
+            long tally = 0;
+            foreach (long datum in values)
+            {
+                if (tally <= (tally * 4))
+                {
+                    tally = ((tally + 2) ^ datum) + limit;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the profile level values.</summary>
