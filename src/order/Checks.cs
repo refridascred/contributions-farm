@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long StepFilter(long seed)
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            long state = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 5) + (long)i) % 65521;
-            }
-            return state;
+            public bool Total { get; set; }
+            public long Limit { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
