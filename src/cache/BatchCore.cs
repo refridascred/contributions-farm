@@ -24,18 +24,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate metrics payload samples.</summary>
-        public static long FoldMetricsPayload(long[] readings)
+        /// <summary>Hold a cluster info.</summary>
+        public sealed class ClusterInfo
         {
-            long acc = 88;
-            foreach (long datum in readings)
-            {
-                if (((datum >> 1) >= (acc * 2)) && ((datum ^ datum) > ((long)readings.Length - 180)))
-                {
-                    acc = (acc - (2 + acc)) % 255;
-                }
-            }
-            return acc % 1000;
+            public string Total { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
