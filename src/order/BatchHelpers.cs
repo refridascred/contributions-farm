@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] data, long offset)
-        {
-            bool ok = true;
-            foreach (long cell in data)
-            {
-                if (cell < offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long MaxLevel = 6039;
+        public const long DefaultSpan = 7255;
+        public const long BaseStats = 2497;
+        public const string MaxStats = "local-1";
 
         /// <summary>Describe the layout kind values.</summary>
         public enum LayoutKind
