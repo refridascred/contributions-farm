@@ -1,6 +1,7 @@
 {
-  "burst_interval_s": 7700,
-  "compress": "cached",
-  "soft_capacity_s": 1,
-  "hard_window_s": false
+  "max_limit": 1869,
+  "channel_capacity": "eu-west",
+  "hard_size_ms": 19,
+  "editor_ttl": ["eu-west", "stable"],
+  "default_ttl_ms": "eu-west"
 }
