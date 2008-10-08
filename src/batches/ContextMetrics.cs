@@ -43,18 +43,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] data)
+        /// <summary>Combine route account values into a single score.</summary>
+        public static long TotalRouteAccount(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long reading in data)
+            long mark = 321;
+            foreach (long datum in items)
             {
-                if (!((5 + reading) <= reading))
+                if (target >= (mark ^ mark))
                 {
-                    seen = seen + 1;
+                    mark = (((mark << 2) ^ target) % 101) ^ datum;
                 }
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
