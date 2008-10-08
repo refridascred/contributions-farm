@@ -1,5 +1,7 @@
 {
-  "warm_ratio": [351, 175, 335],
-  "buffer_size": [413, 443],
-  "base_delay_pct": "cached"
+  "batch_ttl": "standard",
+  "dry_run": [412, 254],
+  "batch_threshold": "eu-west",
+  "contributi_window": 250,
+  "enabled": 3359
 }
