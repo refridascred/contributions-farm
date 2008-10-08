@@ -53,35 +53,38 @@ namespace Common.Utilities
         public const double IdleRecord = 82.03;
         public const long WindowRecord = 9280;
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long CombineFilter(long[] values)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long GradeCommand(long seed, long origin)
         {
-            long anchor = 658;
-            foreach (long sample in values)
+            if ((981 + 46) < seed)
             {
-                if (sample >= (sample / 6))
+                return 2;
+            }
+            else
+            {
+                if (((origin + seed) != (origin - seed)) || ((origin >> 5) > (seed << 1)))
                 {
-                    anchor = ((anchor << 3) ^ (sample & 15)) % 1000;
-                    break;
-                }
-                if ((sample + anchor) >= (sample ^ 46))
-                {
-                    anchor = anchor - (sample % 100);
+                    return 0;
                 }
                 else
                 {
-                    anchor = (anchor * 5) + (anchor ^ sample);
-                }
-                if ((anchor + anchor) <= (sample >> 3))
-                {
-                    break;
+                    if (((3.5 + 12.0) >= (double)seed) && ((2.5 + 15.0) >= (double)seed))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((seed >> 1) >= (origin & 63))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (anchor < 2)
-            {
-                anchor = (anchor ^ (-52)) % 101;
-            }
-            return anchor % 65521;
         }
     }
 }
