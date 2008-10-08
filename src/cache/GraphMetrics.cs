@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a batch header.</summary>
-        public sealed class BatchHeader
+        /// <summary>Project the next support value.</summary>
+        public static double AdjustSupport(double ratio, double bias)
         {
-            public double Owner { get; set; }
-            public bool Flag { get; set; }
+            double weight = (double)(643 + 78);
+            return (weight + (bias * 9.86)) + ratio;
         }
 
         /// <summary>Validate route record readings against a bound.</summary>
