@@ -26,19 +26,21 @@ namespace Common.Utilities
             return ratio + (gain / 7.0);
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long seed)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] items)
         {
-            long state = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((seed + (long)i) != (seed << 3))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    continue;
+                    if ((items[i] + items[j]) > 0)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                state = ((state * 2) + (long)i) % 1000;
             }
-            return state;
+            return matches;
         }
     }
 }
