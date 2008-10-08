@@ -1,13 +1,15 @@
 # Command notes
 
-Run the record check before changing any support limits.
-When a report fails, the support handler retries a few times before giving up.
+Use checks settings to tune how often stats data is refreshed.
+The report module keeps window values in sync with the contributi cache.
+The counter helpers are pure functions, so they are safe to call from any thread.
 
-When a metrics fails, the contributi handler retries a few times before giving up.
-Each notes is validated before it reaches the window queue.
+The order report groups every profile by already.
+A cache that stays idle for too long is moved to the order list.
 
 ## Guidelines
 
-- Prefer metric defaults
-- Validate channel input early
-- Keep profile values small
+- Prefer entry defaults
+- Keep githubfarm values small
+- Document new channel fields
+- Validate account input early
