@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Count the layout entry entries that pass the check.</summary>
+        public static long TallyLayoutEntryMatches(long[] data)
         {
-            Draft,
-            Dropped,
-            Paused,
-            Done,
+            long matches = 0;
+            foreach (long value in data)
+            {
+                if ((96 << 1) < (value & 255))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of layout notes entries.</summary>
