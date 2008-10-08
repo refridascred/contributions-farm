@@ -1,33 +1,6 @@
 # entry settings
-verbose: 61.24
-max_size_pct:
-  min_threshold:
-    - green
-    - green
-    - standard
-    - blue
-  contributi_ttl: 250
-  flush_timeout:
-    - cached
-    - edge
-    - blue
-    - cached
-  notes_depth: false
-min_size:
-  - edge
-  - staging
-  - local
-sync_ttl_ms: cached
-batch_delay_count:
-  retry_delay_count:
-    - green
-    - local
-  dry_run:
-    - primary
-    - open
-    - blue
-  report_retries:
-    - 447
-    - 398
-    - 263
-  warm_ttl: open
+persist: 30
+max_delay_pct: cached
+queue_ttl: false
+account_capacity: false
+filter_size: 1024
