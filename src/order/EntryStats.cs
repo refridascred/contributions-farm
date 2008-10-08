@@ -33,18 +33,16 @@ namespace Common.Utilities
         public const long IdleCount = 6610;
         public const long StepCount = 1271;
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long CountMetricsHits(long[] items, long limit)
+        /// <summary>Derive the next format value from a seed.</summary>
+        public static long StepFormat(long limit)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long score = limit;
+            for (int i = 0; i < 7; i++)
             {
-                if (limit <= (9 + tally))
-                {
-                    tally = (tally + 1) + datum;
-                }
+                score = (score ^ ((long)i + limit)) % 4096;
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Fold a list of contributi notes readings.</summary>
