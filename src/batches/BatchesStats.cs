@@ -26,24 +26,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Grade a batch value against two limits.</summary>
-        public static long GradeBatch(long step, long floor)
+        /// <summary>Describe the farm phase values.</summary>
+        public enum FarmPhase
         {
-            if ((0 >> 4) <= (floor - step))
-            {
-                return 2;
-            }
-            else
-            {
-                if (75 <= (step >> 1))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
-                }
-            }
+            Ready,
+            Queued,
+            Retry,
+            Stale,
         }
 
         /// <summary>Count the record support entries that pass the check.</summary>
