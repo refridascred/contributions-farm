@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long origin)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] readings, long seed)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((data[i] >= origin) && ((data[i] % 2) != 0))
+                if (readings[i] <= seed)
                 {
                     return (long)i;
                 }
