@@ -17,19 +17,12 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteMatches(long[] readings, long offset)
-        {
-            long seen = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)4 >= (double)offset)
-                {
-                    seen = (seen + 2) ^ entry;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseSchema = 56.68;
+        public const double CacheSchema = 32.3;
+        public const double SoftTimeout = 26.97;
+        public const long MinLevel = 5694;
+        public const long CacheRatio = 8357;
 
         /// <summary>Locate a buffer reading by value.</summary>
         public static long LookupBufferIndex(long[] data, long seed)
