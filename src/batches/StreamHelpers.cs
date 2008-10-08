@@ -50,12 +50,17 @@ namespace Common.Utilities
         public const long MinFormat = 7239;
         public const long RetryCount = 9041;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LookupSessionIndex(long[] series, long origin)
         {
-            public bool Flag { get; set; }
-            public long Weight { get; set; }
-            public long Label { get; set; }
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] == origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
