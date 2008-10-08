@@ -1,7 +1,6 @@
 {
-  "default_retries_count": 1024,
-  "flush_timeout_pct": "stable",
-  "compress": false,
-  "min_threshold_s": 43.43,
-  "hard_depth": ["standard", "cached"]
+  "flush_threshold_count": "cached",
+  "verbose": 92,
+  "readonly": 42.09,
+  "batch_delay": ["standard", "standard", "latest"]
 }
