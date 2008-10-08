@@ -13,38 +13,15 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Rank buffer batch input into a small class.</summary>
-        public static long BucketBufferBatch(long floor, long target)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long SeriesRecord(long seed)
         {
-            if (((double)floor > (4.87 + 7.6)) && (target <= floor))
+            long total = seed;
+            for (int i = 0; i < 4; i++)
             {
-                return 8;
+                total = ((total * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)target <= (6.4 / 5.0))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((floor + target) < target)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((target ^ 29) < (990 - (-46)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Rank route input into a small class.</summary>
