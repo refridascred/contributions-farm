@@ -101,14 +101,31 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record status values.</summary>
-        public enum RecordStatus
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long RankChecks(long limit, long origin)
         {
-            Retry,
-            Draft,
-            Stale,
-            Done,
-            Paused,
+            if ((origin / 2) == (limit * 3))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)limit > (9.6 * 7.83)) || ((3.39 + 3.0) < (double)limit))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (origin < (limit & 63))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
     }
 }
