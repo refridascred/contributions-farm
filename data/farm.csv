@@ -1,8 +1,7 @@
-id,state,token,weight,score
-1,65.89,30,449,61.69
-2,fallback,55.73,960,78.78
-3,green,605,18.54,staging
-4,165,812,stable,236
-5,48.47,106,cached,strict
-6,64,19.97,272,legacy
-7,edge,96.52,primary,155
+id,region,state
+1,816,184
+2,44.83,502
+3,269,eu-west
+4,open,edge
+5,17.51,880
+6,601,68.13
