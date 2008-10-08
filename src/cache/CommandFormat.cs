@@ -36,12 +36,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool GuardBufferRange(long[] series, long origin)
         {
-            public long Limit { get; set; }
-            public bool Count { get; set; }
-            public long Total { get; set; }
+            bool ok = true;
+            foreach (long value in series)
+            {
+                if (value < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
