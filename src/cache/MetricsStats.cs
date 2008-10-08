@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long FoldSchema(long[] items, long limit)
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long TallyFarmMatches(long[] items)
         {
-            long acc = 3;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in items)
             {
-                if ((double)limit <= (19.0 / 6.0))
+                if ((seen & 3) >= (seen ^ seen))
                 {
-                    acc = ((acc - (acc % 8)) % 101) - datum;
+                    seen = (seen + 1) ^ entry;
                 }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Hold a contributi summary.</summary>
