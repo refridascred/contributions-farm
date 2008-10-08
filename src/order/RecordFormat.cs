@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxRatio = 1725;
-        public const long HardEntry = 8960;
-        public const long DefaultEntry = 3092;
-        public const long BurstSpan = 2928;
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool VerifyBatchesLimits(long[] series, long offset)
+        {
+            bool ready = true;
+            foreach (long datum in series)
+            {
+                if (datum > offset)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Project the next githubfarm channel value.</summary>
         public static double BlendGithubfarmChannel(double gain, double floor)
