@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of metric readings.</summary>
-        public static long FoldMetric(long[] series, long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] data)
         {
-            long total = 5;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long value in data)
             {
-                if (bound > (bound << 3))
+                if ((tally ^ (-39)) > (value * 5))
                 {
-                    break;
+                    tally = tally + 1;
                 }
-                total = ((total + (total - 1)) % 1000) ^ sample;
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            return total;
+            return tally;
         }
 
         /// <summary>Fold a list of token readings.</summary>
