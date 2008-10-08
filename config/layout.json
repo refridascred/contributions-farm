@@ -1,5 +1,8 @@
 {
-  "notes_limit": 19,
-  "persist": "legacy",
-  "readonly": true
+  "strict": [224, 433, 106],
+  "payload_threshold": ["stable", "latest", "green"],
+  "enabled": "cached",
+  "hard_capacity_count": "staging",
+  "flush_size_s": false,
+  "max_delay": 100
 }
