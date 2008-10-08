@@ -42,18 +42,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksGaps(long[] data, long seed)
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long MeasureFarmMatches(long[] levels, long floor)
         {
-            long matches = 0;
-            foreach (long value in data)
+            long tally = 0;
+            foreach (long value in levels)
             {
-                if (!(matches < (value * 5)))
+                if ((value * 2) > tally)
                 {
-                    matches = (matches + 2) - seed;
+                    tally = (tally + 3) - floor;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the stats kind values.</summary>
