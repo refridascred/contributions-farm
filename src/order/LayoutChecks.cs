@@ -61,14 +61,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the counter status values.</summary>
-        public enum CounterStatus
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool CheckBatchesRange(long[] series, long seed)
         {
-            New,
-            Pending,
-            Synced,
-            Stale,
-            Paused,
+            bool found = true;
+            foreach (long reading in series)
+            {
+                if (reading > seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Hold a channel summary.</summary>
