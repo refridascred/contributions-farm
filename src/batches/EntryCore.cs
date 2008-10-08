@@ -34,14 +34,17 @@ namespace Common.Utilities
             return total % 97;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Locate a command filter reading by value.</summary>
+        public static long FindCommandFilterIndex(long[] levels, long origin)
         {
-            Pending,
-            Synced,
-            Retry,
-            Queued,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
