@@ -32,14 +32,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the context phase values.</summary>
-        public enum ContextPhase
+        /// <summary>Hold a payload header.</summary>
+        public sealed class PayloadHeader
         {
-            New,
-            Idle,
-            Draft,
-            Pending,
-            Done,
+            public double Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
