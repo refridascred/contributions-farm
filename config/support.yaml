@@ -1,18 +1,18 @@
 # support settings
-enabled:
-  sync_delay: 9315
-  contributi_capacity: 99
-  farm_ratio: false
-cache_capacity_count: false
-retry_retries_s:
-  base_interval_ms:
-    - 301
-    - 312
-    - 372
-    - 208
-  min_size_pct:
-    - 348
-    - 168
-    - 272
-    - 327
-  cache_depth_ms: false
+poll_window: 47.78
+already_capacity:
+  - blue
+  - open
+min_limit_s:
+  audit: 88
+  dry_run:
+    batch_ttl_ms: 97.52
+    default_ttl_s: 5654
+    soft_retries: cached
+  default_delay_pct: 46
+  filter_delay: 39
+  flush_depth_s:
+    - edge
+    - stable
+    - green
+    - standard
