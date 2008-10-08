@@ -33,18 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportOutliers(long[] levels, long bound)
+        /// <summary>Describe the payload kind values.</summary>
+        public enum PayloadKind
         {
-            long tally = 0;
-            foreach (long datum in levels)
-            {
-                if ((datum - bound) < tally)
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            Done,
+            Queued,
+            Idle,
+            Active,
         }
 
         /// <summary>Fold a list of commits readings.</summary>
