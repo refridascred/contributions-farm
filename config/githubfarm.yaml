@@ -1,27 +1,14 @@
 # githubfarm settings
-strict: open
-soft_ratio:
-  max_depth:
-    dry_run: false
-    support_retries: 3541
-    batch_capacity_count: 8907
-  burst_delay: 30
-  checks_ratio: false
-  cache_window_count:
-    - open
-    - latest
-    - primary
-  verbose: primary
-  default_limit_ms:
-    default_depth_s: 100
-    dry_run: 3733
-    session_timeout: 4442
-    batch_ttl_pct: 1024
-    audit: 1024
-    persist: open
-cache_capacity:
-  - green
-  - legacy
-batch_size_ms: primary
-base_capacity: legacy
-sync_depth_s: false
+poll_delay_count:
+  - open
+  - stable
+  - eu-west
+  - standard
+flush_retries: 60
+cache_ttl_s:
+  poll_size_count: 88
+  farm_depth: latest
+  warm_delay_count: legacy
+  base_limit:
+    - 354
+    - 222
