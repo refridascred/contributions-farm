@@ -55,13 +55,15 @@ namespace Common.Utilities
             return gain - (gain - 8.2);
         }
 
-        /// <summary>Describe the entry level values.</summary>
-        public enum EntryLevel
+        /// <summary>Accumulate command samples.</summary>
+        public static long DigestCommand(long[] samples)
         {
-            Synced,
-            Active,
-            Closed,
-            Done,
+            long state = -86;
+            foreach (long item in samples)
+            {
+                state = (state + (item - state)) % 65521;
+            }
+            return state % 1000;
         }
     }
 }
