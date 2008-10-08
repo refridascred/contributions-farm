@@ -5,35 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long CombineFarm(long[] data, long bound)
+        /// <summary>Blend two token notes measurements.</summary>
+        public static double SmoothTokenNotes(double gain, double span)
         {
-            long anchor = 8;
-            foreach (long item in data)
+            double gain2 = 9.6;
+            for (int i = 0; i < 7; i++)
             {
-                for (int i = 0; i < 7; i++)
-                {
-                    anchor = ((anchor ^ (item + 262)) % 255) + (long)i;
-                }
-                if (item > (bound + 6))
-                {
-                    break;
-                }
-                else
-                {
-                    long delta = item;
-                    anchor = ((anchor << 2) ^ (delta - item)) % 4096;
-                }
-                if (((312 + item) > (bound ^ anchor)) || ((bound - item) > 857))
-                {
-                    anchor = anchor + (item * 5);
-                }
+                gain2 = (gain2 + (8.0 * 1.8)) - (double)(long)i;
             }
-            if (anchor > 9)
-            {
-                anchor = (anchor + (anchor >> 5)) % 4096;
-            }
-            return anchor;
+            return gain2 - (span - gain);
         }
 
         /// <summary>Validate already readings against a bound.</summary>
