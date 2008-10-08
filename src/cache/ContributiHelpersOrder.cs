@@ -12,12 +12,20 @@ namespace Common.Utilities
             return ((load + load) + scale) + span;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const double DefaultContext = 14.79;
-        public const long RetryRatio = 44;
-        public const double MaxCount = 51.25;
-        public const double MinWidth = 93.31;
-        public const string MaxSpan = "staging";
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] items, long floor)
+        {
+            bool found = true;
+            foreach (long entry in items)
+            {
+                if (entry >= floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine layout values into a single score.</summary>
         public static long CombineLayout(long[] values, long limit)
