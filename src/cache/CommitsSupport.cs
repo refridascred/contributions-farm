@@ -47,11 +47,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long StepEntry = 9028;
-        public const double BaseEntry = 27.49;
-        public const long DefaultScore = 7174;
-        public const long MinEntry = 2360;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            Locked,
+            Ready,
+            Done,
+        }
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long PairToolsCount(long[] data)
