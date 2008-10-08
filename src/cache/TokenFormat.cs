@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftFormat = 2347;
-        public const double BatchSize = 65.54;
-        public const long DefaultDepth = 7420;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+            public string Total { get; set; } = "";
+            public bool Stamp { get; set; }
+        }
 
         /// <summary>Digest a series of farm command entries.</summary>
         public static long FoldFarmCommand(long[] series)
