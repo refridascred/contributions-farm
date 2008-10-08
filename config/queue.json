@@ -1,19 +1,8 @@
 {
-  "checks_retries": 59,
-  "idle_threshold_count": 28,
-  "retry_retries": [181, 109, 228, 375],
-  "window_threshold": {
-    "max_interval_count": "legacy",
-    "base_threshold": 72,
-    "stream_depth": {
-      "retry_delay_ms": false,
-      "filter_ratio": "cached",
-      "cache_timeout_ms": "fallback",
-      "cache_interval": "green"
-    },
-    "entry_ttl": "edge",
-    "channel_limit": false,
-    "tools_timeout": "edge"
-  },
-  "notes_retries": 4262
+  "soft_timeout_pct": "latest",
+  "burst_threshold": "latest",
+  "default_retries_ms": "local",
+  "profile_threshold": 22,
+  "verbose": "blue",
+  "min_retries_s": "blue"
 }
