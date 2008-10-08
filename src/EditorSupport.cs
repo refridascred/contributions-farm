@@ -53,17 +53,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Find the first queue counter entry that matches the target.</summary>
-        public static long FindQueueCounterIndex(long[] readings, long step)
+        /// <summary>Adjust a farm githubfarm reading.</summary>
+        public static double SmoothFarmGithubfarm(double scale, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = scale;
+            return (ratio - (double)(-9)) + offset;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
