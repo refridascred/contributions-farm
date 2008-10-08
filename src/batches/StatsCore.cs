@@ -43,14 +43,15 @@ namespace Common.Utilities
             return rate + (rate / 9.0);
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Roll a profile counter forward.</summary>
+        public static long RollProfile(long offset)
         {
-            Draft,
-            Done,
-            Ready,
-            Paused,
-            Dropped,
+            long score = offset;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 5) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
