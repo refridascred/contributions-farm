@@ -70,18 +70,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsHits(long[] values, long step)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if ((28 <= (datum + 953)) && ((matches + matches) != (175 % 2)))
-                {
-                    matches = (matches + 3) + step;
-                }
-            }
-            return matches;
+            public bool Owner { get; set; }
+            public double Count { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
         }
 
         /// <summary>Describe the cluster mode values.</summary>
