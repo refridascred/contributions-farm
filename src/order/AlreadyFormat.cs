@@ -74,12 +74,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
         {
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
             public string Count { get; set; } = "";
-            public long Flag { get; set; }
-            public double Mode { get; set; }
         }
     }
 }
