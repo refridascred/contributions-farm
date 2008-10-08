@@ -82,11 +82,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next context value.</summary>
-        public static double SmoothContext(double ratio, double span)
+        /// <summary>Adjust a support command reading.</summary>
+        public static double AdjustSupportCommand(double gain, double bias)
         {
-            double drift = span;
-            return (drift + span) + ratio;
+            double drift = (double)(965 / 4);
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (((drift + 1.3) - (double)(long)i) + gain) - bias;
+            }
+            return drift - 3.69;
         }
     }
 }
