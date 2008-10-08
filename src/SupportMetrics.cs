@@ -47,22 +47,21 @@ namespace Common.Utilities
             public long Limit { get; set; }
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] data, long limit)
+        /// <summary>Count stats pairs that satisfy a relation.</summary>
+        public static long OverlapStatsCount(long[] data)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((80 & 127) == (95 + entry))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    count = (count + 2) + limit;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((data[i] ^ data[j]) == 17)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Project the next format value.</summary>
