@@ -21,15 +21,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ScaleReport(double rate, double floor)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            double mean = (floor - rate) - (double)722;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean * 3.6)) + (double)(long)i;
-            }
-            return mean + (mean - rate);
+            Active,
+            Paused,
+            Failed,
+            Stale,
+            Done,
         }
 
         /// <summary>Grade a command value against two limits.</summary>
