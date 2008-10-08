@@ -5,35 +5,29 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long bound, long origin)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long GradeSchema(long limit, long target)
         {
-            if ((origin + bound) >= origin)
+            long lane = limit + target;
+            if ((limit % 12) < lane)
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (!((bound + origin) >= bound))
+                if (((lane / 6) == (limit - 0)) || ((342 + target) <= limit))
                 {
-                    return 5;
+                    return 7;
                 }
                 else
                 {
-                    if (!((origin + bound) >= (bound - bound)))
+                    if ((0.7 - 2.0) == (double)target)
                     {
-                        return 1;
+                        return 3;
                     }
                     else
                     {
-                        if ((origin > (origin / 2)) && ((bound + bound) >= (origin + 97)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        return 8;
                     }
                 }
             }
