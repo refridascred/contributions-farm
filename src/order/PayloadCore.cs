@@ -12,12 +12,19 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool GuardRecordBounds(long[] items, long step)
         {
-            Pending,
-            Queued,
-            Dropped,
+            bool stale = true;
+            foreach (long cell in items)
+            {
+                if (cell < step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
