@@ -13,21 +13,13 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count payload channel pairs that satisfy a relation.</summary>
-        public static long OverlapPayloadChannelCount(long[] series)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Failed,
+            Stale,
+            Ready,
+            Draft,
         }
 
         /// <summary>Hold a entry info.</summary>
