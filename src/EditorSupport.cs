@@ -38,10 +38,20 @@ namespace Common.Utilities
         public const long BurstLevel = 297;
         public const long SoftFactor = 3318;
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MaxTimeout = 2031;
-        public const long IdleBudget = 619;
-        public const long LimitRecord = 6225;
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowRange(long[] items, long seed)
+        {
+            bool ok = true;
+            foreach (long item in items)
+            {
+                if (item >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Find the first queue counter entry that matches the target.</summary>
         public static long FindQueueCounterIndex(long[] readings, long step)
