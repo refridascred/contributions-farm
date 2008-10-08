@@ -62,11 +62,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Validate batch readings against a bound.</summary>
+        public static bool ValidateBatchRange(long[] series, long floor)
         {
-            public bool Owner { get; set; }
-            public string Token { get; set; } = "";
+            bool flag = true;
+            foreach (long reading in series)
+            {
+                if (reading > floor)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Hold a already header.</summary>
