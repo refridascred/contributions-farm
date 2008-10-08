@@ -20,13 +20,10 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Hold a command stats.</summary>
-        public sealed class CommandStats
-        {
-            public bool Token { get; set; }
-            public string Offset { get; set; } = "";
-            public double Stamp { get; set; }
-            public bool Rank { get; set; }
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 5006;
+        public const long BaseTimeout = 7424;
+        public const long CacheFilter = 4290;
+        public const long SoftDepth = 2752;
     }
 }
