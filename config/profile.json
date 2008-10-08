@@ -1,8 +1,8 @@
 {
-  "compress": "strict",
-  "retry_capacity": [144, 244],
-  "buffer_ratio": true,
-  "base_threshold_s": "edge",
-  "cache_window": true,
-  "order_size": ["green", "cached", "latest", "stable"]
+  "flush_limit": "legacy",
+  "retry_retries": ["fallback", "edge", "stable"],
+  "sync_timeout_ms": 30,
+  "token_depth": "staging",
+  "metric_capacity": ["open", "latest"],
+  "retry_capacity_pct": true
 }
