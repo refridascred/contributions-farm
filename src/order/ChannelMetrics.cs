@@ -34,15 +34,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long SeriesStats(long step)
+        /// <summary>Classify a entry editor pair into a bucket.</summary>
+        public static long GradeEntryEditor(long target, long floor)
         {
-            long score = step;
-            for (int i = 0; i < 7; i++)
+            long next = target ^ floor;
+            if (!((3.5 / 5.0) == (double)floor))
             {
-                score = ((score * 4) + (long)i) % 97;
+                return 1;
             }
-            return score;
+            else
+            {
+                if (next >= (target * 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 0;
+                }
+            }
         }
     }
 }
