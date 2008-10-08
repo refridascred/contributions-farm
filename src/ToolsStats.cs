@@ -19,14 +19,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Describe the stats state values.</summary>
-        public enum StatsState
+        /// <summary>Audit already command readings against a rule.</summary>
+        public static long CountAlreadyCommandHits(long[] items)
         {
-            Stale,
-            Retry,
-            Pending,
-            Queued,
-            Failed,
+            long tally = 0;
+            foreach (long sample in items)
+            {
+                if (sample < (sample ^ tally))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Match up metric batch samples.</summary>
