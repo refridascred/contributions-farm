@@ -1,13 +1,27 @@
 # support settings
-batch_ttl_ms: false
-session_timeout: 1024
-retry_capacity_ms:
-  - 150
-  - 33
-  - 138
-batch_interval_count: false
-metrics_limit:
-  - standard
-  - primary
-  - cached
-  - standard
+enabled:
+  idle_ratio_s: true
+  sync_threshold_pct:
+    batch_interval: false
+    sync_threshold: 463
+    retry_size:
+      - 413
+      - 204
+      - 165
+    soft_window_ms: 77.01
+    verbose: blue
+    sync_capacity_count:
+      - 124
+      - 83
+      - 180
+      - 133
+  flush_ratio: 6
+  retry_interval: false
+  base_threshold:
+    layout_threshold: blue
+    batch_interval_ms: strict
+    hard_timeout:
+      - staging
+      - legacy
+base_retries_ms: legacy
+idle_depth: eu-west
