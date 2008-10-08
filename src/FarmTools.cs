@@ -24,32 +24,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long BucketCommand(long limit, long limit2)
+        /// <summary>Derive the next order value from a seed.</summary>
+        public static long DeriveOrder(long floor)
         {
-            long span = limit ^ limit2;
-            if ((span + limit) >= (span - span))
+            long acc = floor;
+            for (int i = 0; i < 16; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if (((limit2 + limit) == (limit - limit)) && ((92 + limit2) >= span))
+                if ((acc + (long)i) >= floor)
                 {
-                    return 1;
+                    acc = (acc << 2) ^ (acc + acc);
                 }
-                else
+                if ((((long)i + 48) <= (acc / 9)) || ((acc + acc) >= floor))
                 {
-                    if (!((limit2 % 2) <= limit2))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    acc = acc ^ acc;
+                    acc = ((acc * 4) + ((long)i & 15)) % 97;
                 }
+                acc = ((acc * 3) + (long)i) % 65521;
             }
+            return acc;
         }
     }
 }
