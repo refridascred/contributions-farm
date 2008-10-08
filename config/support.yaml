@@ -1,27 +1,19 @@
 # support settings
-enabled:
-  idle_ratio_s: true
-  sync_threshold_pct:
-    batch_interval: false
-    sync_threshold: 463
-    retry_size:
-      - 413
-      - 204
-      - 165
-    soft_window_ms: 77.01
-    verbose: blue
-    sync_capacity_count:
-      - 124
-      - 83
-      - 180
-      - 133
-  flush_ratio: 6
-  retry_interval: false
-  base_threshold:
-    layout_threshold: blue
-    batch_interval_ms: strict
-    hard_timeout:
-      - staging
-      - legacy
-base_retries_ms: legacy
-idle_depth: eu-west
+queue_capacity:
+  base_timeout_ms: 41.25
+  warm_interval_pct:
+    - standard
+    - primary
+  hard_window_count:
+    - 362
+    - 470
+  compress:
+    strict: fallback
+    max_delay_pct: true
+    max_window: 4.54
+    batch_limit_count: edge
+  base_window: 24.96
+support_delay:
+  - 195
+  - 452
+soft_retries: 26.56
