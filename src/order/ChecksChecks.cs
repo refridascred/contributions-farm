@@ -28,13 +28,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
+        /// <summary>Check that every metrics route entry stays within the limit.</summary>
+        public static bool GuardMetricsRouteBounds(long[] levels, long seed)
         {
-            Synced,
-            Paused,
-            Closed,
-            Stale,
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value != seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Roll a stream counter forward.</summary>
