@@ -15,21 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Match up session checks samples.</summary>
-        public static long PairSessionChecksCount(long[] series)
+        /// <summary>Project the next tools value.</summary>
+        public static double SmoothTools(double ratio, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            double mean = ratio + floor;
+            if (mean < 1.9)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) > 8)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                mean = mean + 16.0;
             }
-            return seen;
+            else
+            {
+                mean = mean + mean;
+            }
+            return mean + floor;
         }
 
         /// <summary>Define context limits and defaults.</summary>
