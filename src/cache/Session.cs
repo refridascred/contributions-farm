@@ -19,19 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordOutliers(long[] readings, long target)
-        {
-            long hits = 0;
-            foreach (long entry in readings)
-            {
-                if ((double)target >= (1.1 - 12.0))
-                {
-                    hits = (hits + 3) ^ entry;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const string IdleTimeout = "legacy";
+        public const long BurstInterval = 4759;
+        public const long RetrySchema = 750;
+        public const string MinSize = "strict-edge";
 
         /// <summary>Count route commits pairs that satisfy a relation.</summary>
         public static long CompareRouteCommitsCount(long[] levels)
