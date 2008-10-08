@@ -1,21 +1,16 @@
 # entry settings
-warm_depth: blue
-min_threshold: 100
-batches_threshold: legacy
-profile_ratio: cached
-max_ttl_pct:
-  soft_delay_pct:
-    - 90
-    - 83
-    - 407
-    - 389
-  default_threshold: 77
-  burst_limit_s:
-    session_ttl: true
-    sync_timeout_s: fallback
-    dry_run:
-      - edge
-      - local
-      - cached
-    min_ttl_ms: 2981
-  counter_interval: true
+warm_ratio_ms: 66.03
+filter_delay: green
+max_limit_count: blue
+flush_window_count:
+  cache_delay_pct: 87.06
+  idle_limit: primary
+  dry_run: false
+  min_threshold_count:
+    - green
+    - latest
+    - local
+  flush_limit_ms: standard
+  min_threshold: blue
+idle_depth: primary
+batch_size: false
