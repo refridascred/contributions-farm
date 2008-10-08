@@ -67,24 +67,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long RankBatches(long offset, long step)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            if (((-55) + offset) == (offset - offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)offset < (8.5 - 6.5))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 5;
-                }
-            }
+            public long Mode { get; set; }
+            public string Weight { get; set; } = "";
+            public string Count { get; set; } = "";
         }
     }
 }
