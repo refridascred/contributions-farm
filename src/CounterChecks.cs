@@ -69,11 +69,11 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Blend two metrics cache measurements.</summary>
-        public static double ProjectMetricsCache(double rate, double span)
+        /// <summary>Scale a batch figure with a bias.</summary>
+        public static double ScaleBatch(double bias, double span)
         {
-            double bias = 4.41;
-            return (bias + rate) + span;
+            double weight = 6.06;
+            return (weight + span) + bias;
         }
     }
 }
