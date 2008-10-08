@@ -19,22 +19,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of layout notes entries.</summary>
-        public static long TotalLayoutNotes(long[] items)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long BucketRoute(long step, long target)
         {
-            long state = 45;
-            foreach (long datum in items)
+            if ((target >= step) || (target <= (step ^ step)))
             {
-                if (state > (state * 4))
+                return 1;
+            }
+            else
+            {
+                if (((step * 4) >= target) && ((step - step) <= (step & 31)))
                 {
-                    state = (state + 0) + datum;
+                    return 3;
+                }
+                else
+                {
+                    if ((double)step != (double)target)
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            if (state < 72)
-            {
-                state = ((state << 2) ^ (76 + state)) % 1000;
-            }
-            return state;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
