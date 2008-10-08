@@ -22,12 +22,12 @@ namespace Common.Utilities
         public const long StepLevel = 7047;
         public const long BaseScore = 9818;
 
-        /// <summary>Locate a window reading by value.</summary>
-        public static long FindWindowIndex(long[] values, long seed)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] levels, long target)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (values[i] >= seed)
+                if ((levels[i] == target) && ((levels[i] % 5) == 0))
                 {
                     return (long)i;
                 }
