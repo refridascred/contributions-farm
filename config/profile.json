@@ -1,7 +1,8 @@
 {
-  "base_ttl": 32.88,
-  "strict": 3174,
-  "queue_ratio": 51.86,
-  "cache_delay_s": "staging",
-  "order_depth": ["legacy", "blue"]
+  "compress": "strict",
+  "retry_capacity": [144, 244],
+  "buffer_ratio": true,
+  "base_threshold_s": "edge",
+  "cache_window": true,
+  "order_size": ["green", "cached", "latest", "stable"]
 }
