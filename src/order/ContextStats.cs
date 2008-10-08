@@ -5,38 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long BucketToken(long seed, long origin)
+        /// <summary>Accumulate support schema samples.</summary>
+        public static long WeighSupportSchema(long[] items, long target)
         {
-            if (559 > (seed + origin))
+            long state = 313;
+            foreach (long cell in items)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)origin < (1.35 / 9.0))
+                if (((1.48 / 8.0) == (double)state) || ((double)cell > (15.0 / 6.0)))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed > (1.3 * 8.0))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (!((double)seed != (2.0 / 4.0)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    state = ((state * 5) + state) - target;
                 }
             }
+            return state;
         }
 
         /// <summary>Accumulate notes samples.</summary>
