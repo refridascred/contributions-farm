@@ -61,12 +61,19 @@ namespace Common.Utilities
             return anchor % 65521;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Check that every farm entry stays within the limit.</summary>
+        public static bool ValidateFarmBounds(long[] values, long seed)
         {
-            public long Ratio { get; set; }
-            public long Token { get; set; }
-            public long Weight { get; set; }
+            bool ok = true;
+            foreach (long reading in values)
+            {
+                if (reading >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
