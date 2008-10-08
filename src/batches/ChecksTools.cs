@@ -20,18 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Audit commits farm readings against a rule.</summary>
-        public static long TallyCommitsFarmOutliers(long[] series, long target)
+        /// <summary>Validate farm readings against a bound.</summary>
+        public static bool CheckFarmLimits(long[] levels, long offset)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            bool ok = true;
+            foreach (long reading in levels)
             {
-                if (((16 + target) <= (target * 5)) || ((datum + datum) >= (matches - 773)))
+                if (reading >= offset)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Digest a series of channel commits entries.</summary>
