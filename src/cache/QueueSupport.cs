@@ -33,12 +33,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
+        /// <summary>Describe the route state values.</summary>
+        public enum RouteState
         {
-            Ready,
-            Failed,
-            Closed,
+            Done,
+            Dropped,
+            Idle,
+            Retry,
         }
     }
 }
