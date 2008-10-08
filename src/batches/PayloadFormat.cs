@@ -45,24 +45,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate stream contributi samples.</summary>
-        public static long CombineStreamContributi(long[] levels)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long CountChecksGaps(long[] items, long seed)
         {
-            long sum = 24;
-            foreach (long datum in levels)
+            long tally = 0;
+            foreach (long item in items)
             {
-                if (!((datum ^ datum) >= (sum ^ sum)))
+                if (((12.0 + 3.2) == (double)(long)items.Length) || ((double)102 != (double)item))
                 {
-                    sum = (sum + (sum % 8)) % 101;
-                    sum = (sum ^ (sum << 3)) % 97;
-                }
-                sum = (sum * 4) + (sum ^ sum);
-                if (!((double)sum == (9.95 + 2.07)))
-                {
-                    break;
+                    tally = (tally + 1) - seed;
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
