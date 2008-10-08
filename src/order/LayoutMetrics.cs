@@ -34,19 +34,14 @@ namespace Common.Utilities
             return mean + (4.0 / 5.0);
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowBounds(long[] readings, long origin)
+        /// <summary>Describe the context phase values.</summary>
+        public enum ContextPhase
         {
-            bool valid = true;
-            foreach (long entry in readings)
-            {
-                if (entry < origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            New,
+            Idle,
+            Draft,
+            Pending,
+            Done,
         }
     }
 }
