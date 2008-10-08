@@ -14,17 +14,11 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long limit)
-        {
-            long total = limit;
-            for (int i = 0; i < 11; i++)
-            {
-                total = total + (total + total);
-                total = ((total * 2) + (long)i) % 101;
-            }
-            return total;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheTimeout = 9928;
+        public const double LimitTimeout = 72.57;
+        public const long BurstBudget = 4947;
+        public const string BatchTimeout = "legacy-1";
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long ScoreCluster(long[] values, long offset)
