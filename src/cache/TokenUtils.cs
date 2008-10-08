@@ -20,38 +20,15 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank queue filter input into a small class.</summary>
-        public static long GradeQueueFilter(long origin, long offset)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double BlendCache(double gain, double bias)
         {
-            if ((double)origin <= 7.0)
+            double scale = (gain + 6.46) - (double)3;
+            if (scale < gain)
             {
-                return 5;
+                scale = (scale - (double)900) - bias;
             }
-            else
-            {
-                if ((origin * 4) < origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset >> 5) > offset)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((5 > ((-350) - origin)) && (8.0 <= (double)offset))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return scale + (double)5;
         }
 
         /// <summary>Hold a buffer summary.</summary>
