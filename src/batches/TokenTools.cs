@@ -27,11 +27,18 @@ namespace Common.Utilities
         public const long HardFormat = 909;
         public const long SoftRatio = 1110;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseBudget = 5913;
-        public const long DefaultContributi = 348;
-        public const string CacheCount = "staging";
-        public const long BurstSize = 2452;
-        public const long StepFactor = 5131;
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long CountReportMatches(long[] levels, long floor)
+        {
+            long count = 0;
+            foreach (long sample in levels)
+            {
+                if ((sample + floor) > (count + sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
     }
 }
