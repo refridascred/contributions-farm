@@ -32,19 +32,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long DeriveEntry(long floor)
+        /// <summary>Blend two window measurements.</summary>
+        public static double SmoothWindow(double gain, double bias)
         {
-            long score = floor;
-            for (int i = 0; i < 4; i++)
+            double load = 6.9;
+            if (load >= (double)943)
             {
-                if (floor <= (score / 7))
-                {
-                    break;
-                }
-                score = ((score * 3) + (long)i) % 101;
+                load = (load + (double)92) + bias;
             }
-            return score;
+            return load + (gain - load);
         }
     }
 }
