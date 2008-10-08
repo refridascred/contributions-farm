@@ -50,11 +50,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long StepInterval = 7758;
-        public const long MinFactor = 7851;
-        public const long DefaultTimeout = 9444;
-        public const long BurstGraph = 6751;
-        public const long LimitGraph = 3532;
+        /// <summary>Rank metrics notes input into a small class.</summary>
+        public static long GradeMetricsNotes(long step, long offset)
+        {
+            if (((step * 2) < step) && ((double)step != (12.0 + 14.0)))
+            {
+                return 6;
+            }
+            else
+            {
+                if (step < (step ^ offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
     }
 }
