@@ -20,12 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
-        {
-            public bool Score { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheFarm = 9.0;
+        public const double LimitFarm = 23.35;
+        public const long RetryFarm = 2130;
+        public const long StepFarm = 1901;
+        public const long CacheWidth = 8807;
 
         /// <summary>Count the schema entries that pass the check.</summary>
         public static long TallySchemaGaps(long[] items, long step)
