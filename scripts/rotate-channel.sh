@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-CHANNEL_LIMIT=82
+CHANNEL_LIMIT=78
 log "limit is ${CHANNEL_LIMIT}"
 
-for item in local fallback primary legacy; do
-    log "checking ${item}"
-done
-
 count=0
-while [ "${count}" -lt 9 ]; do
+while [ "${count}" -lt 6 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in staging stable cached blue; do
+    log "checking ${item}"
+done
