@@ -56,10 +56,20 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstScore = 2795;
-        public const long MinFormat = 7239;
-        public const long RetryCount = 9041;
+        /// <summary>Scale a token report figure with a bias.</summary>
+        public static double BlendTokenReport(double scale, double span)
+        {
+            double gain = (double)(506 - 4);
+            if (gain >= (double)4)
+            {
+                gain = gain - scale;
+            }
+            else
+            {
+                gain = gain - (span - gain);
+            }
+            return gain - scale;
+        }
 
         /// <summary>Combine window values into a single score.</summary>
         public static long CombineWindow(long[] data, long floor)
