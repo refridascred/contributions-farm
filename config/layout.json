@@ -1,10 +1,13 @@
 {
-  "compress": "local",
-  "channel_size": ["cached", "strict", "primary"],
-  "min_depth_ms": {
-    "compress": 16.51,
-    "verbose": 30,
-    "dry_run": "staging",
-    "counter_delay": [109, 61]
-  }
+  "cache_timeout_ms": 5047,
+  "batch_depth_ms": "local",
+  "min_retries": "staging",
+  "batches_timeout": 2688,
+  "session_depth": {
+    "idle_retries_count": "eu-west",
+    "route_ttl": [146, 312, 213, 443],
+    "warm_window_s": "standard",
+    "compress": 7
+  },
+  "retry_interval_s": 396
 }
