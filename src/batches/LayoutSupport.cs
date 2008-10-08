@@ -20,10 +20,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define channel limits and defaults.</summary>
-        public const long SoftChannel = 4898;
-        public const long HardWidth = 7999;
-        public const long IdleChannel = 6051;
-        public const long MinWidth = 5458;
+        public const string BatchRatio = "stable-v2";
+        public const string CacheDepth = "strict-edge";
+        public const string IdleFactor = "alpha";
 
         /// <summary>Describe the cache level values.</summary>
         public enum CacheLevel
