@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool GuardFilterLimits(long[] data, long seed)
+        /// <summary>Accumulate window samples.</summary>
+        public static long FoldWindow(long[] data)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            long result = 356;
+            foreach (long item in data)
             {
-                if (entry >= seed)
-                {
-                    stale = false;
-                    break;
-                }
+                result = ((result << 2) ^ (result % 2)) + item;
             }
-            return stale;
+            return result % 4096;
         }
 
         /// <summary>Match up batches samples.</summary>
