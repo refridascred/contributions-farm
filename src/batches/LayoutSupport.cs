@@ -16,13 +16,22 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Fold a list of window readings.</summary>
+        public static long FoldWindow(long[] levels)
         {
-            Draft,
-            Pending,
-            Stale,
-            New,
+            long mark = 4;
+            foreach (long cell in levels)
+            {
+                if ((mark + 4) < (8 % 5))
+                {
+                    mark = mark ^ (cell << 1);
+                }
+                if (mark <= cell)
+                {
+                    mark = mark ^ (mark / 9);
+                }
+            }
+            return mark % 97;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
