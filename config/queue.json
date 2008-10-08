@@ -1,20 +1,7 @@
 {
-  "retry_limit": {
-    "soft_retries_count": "eu-west",
-    "counter_delay": false,
-    "enabled": "local",
-    "metrics_delay": "eu-west",
-    "cache_limit": false
-  },
-  "buffer_interval": 41.65,
-  "burst_threshold_pct": {
-    "retry_interval_count": 4.18,
-    "max_retries": 22,
-    "soft_threshold": 30,
-    "burst_ratio_count": ["edge", "local", "fallback"],
-    "warm_depth": "open",
-    "flush_interval": false
-  },
-  "sync_ttl_count": 84,
-  "strict": true
+  "min_delay_count": 66,
+  "base_timeout_count": "open",
+  "strict": 34.74,
+  "burst_size_count": "blue",
+  "warm_ratio_ms": 6858
 }
