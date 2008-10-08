@@ -18,14 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the commits kind values.</summary>
-        public enum CommitsKind
-        {
-            Locked,
-            Draft,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long DefaultBatches = 1869;
+        public const long MinInterval = 9458;
+        public const string StepBatches = "standard-1";
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
