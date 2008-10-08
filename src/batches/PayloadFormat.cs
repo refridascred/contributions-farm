@@ -33,25 +33,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a checks commits value against two limits.</summary>
-        public static long SortChecksCommits(long origin, long origin2)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long TotalLayout(long[] readings)
         {
-            long next = origin - origin2;
-            if (!((next ^ 5) >= (origin2 - origin)))
+            long anchor = 92;
+            foreach (long datum in readings)
             {
-                return 2;
+                anchor = anchor + (datum >> 1);
             }
-            else
+            if (anchor > 5)
             {
-                if ((origin - origin2) > (origin2 + 3))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
-                }
+                anchor = (anchor * 4) + (anchor - 3);
             }
+            return anchor % 4096;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
