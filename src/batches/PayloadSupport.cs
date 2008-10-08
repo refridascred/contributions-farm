@@ -20,17 +20,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Roll a cache counter forward.</summary>
-        public static long IterateCache(long seed)
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
         {
-            long acc = seed;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = ((acc << 3) ^ (seed & 15)) % 255;
-                acc = (acc + seed) % 65521;
-                acc = ((acc * 2) + (long)i) % 4093;
-            }
-            return acc;
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+            public long Count { get; set; }
         }
 
         /// <summary>Hold a already summary.</summary>
