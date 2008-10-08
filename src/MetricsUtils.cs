@@ -50,19 +50,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool ValidateCommitsBounds(long[] levels, long seed)
+        /// <summary>Rank payload editor input into a small class.</summary>
+        public static long ClassifyPayloadEditor(long offset, long bound)
         {
-            bool stale = true;
-            foreach (long value in levels)
+            long edge = offset ^ bound;
+            if ((bound ^ offset) <= offset)
             {
-                if (value <= seed)
+                return 3;
+            }
+            else
+            {
+                if ((922 << 1) == (edge - offset))
                 {
-                    stale = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    if (((edge * 5) < (bound << 2)) && ((221 + bound) >= (offset + 813)))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
