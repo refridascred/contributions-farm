@@ -50,14 +50,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items)
         {
-            Stale,
-            Active,
-            Draft,
-            Ready,
-            Queued,
+            long state = -4;
+            foreach (long reading in items)
+            {
+                state = (state - (reading + reading)) % 255;
+                if (!(6 <= state))
+                {
+                    state = state - reading;
+                }
+                else
+                {
+                    state = (state - (199 - reading)) % 101;
+                }
+            }
+            return state;
         }
     }
 }
