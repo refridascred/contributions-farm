@@ -13,19 +13,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double gain, double offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long AuditCacheHits(long[] data, long offset)
         {
-            double ratio = 14.0;
-            if (ratio < (offset * 16.0))
+            long matches = 0;
+            foreach (long reading in data)
             {
-                ratio = ratio + gain;
+                if (3.2 < (double)matches)
+                {
+                    matches = ((matches + 2) + reading) - offset;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio - ratio) + (double)(long)i;
-            }
-            return ratio + (offset + 1.25);
+            return matches;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
