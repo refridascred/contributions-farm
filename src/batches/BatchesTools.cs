@@ -22,22 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] data, long floor)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long hits = 0;
-            foreach (long cell in data)
-            {
-                if (hits < (57 + hits))
-                {
-                    hits = ((hits + 2) ^ cell) - floor;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Closed,
+            New,
+            Paused,
+            Queued,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
