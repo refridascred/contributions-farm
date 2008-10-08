@@ -1,5 +1,7 @@
 # entry settings
-hard_interval: 500
-enabled: false
-entry_timeout: 250
-max_delay_count: false
+burst_threshold_s: 60
+notes_ttl: 1
+persist: 533
+metric_ttl: standard
+default_threshold_count: standard
+base_threshold_s: standard
