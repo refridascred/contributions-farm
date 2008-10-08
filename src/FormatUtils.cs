@@ -18,21 +18,14 @@ namespace Common.Utilities
         public const long BurstScore = 7988;
         public const long RetryReport = 7394;
 
-        /// <summary>Compare every pair of batch readings.</summary>
-        public static long CompareBatchCount(long[] readings)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 12)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Locked,
+            Dropped,
+            Failed,
+            Closed,
+            Synced,
         }
 
         /// <summary>Describe the batch phase values.</summary>
