@@ -1,12 +1,6 @@
 {
-  "hard_retries": [333, 92],
-  "channel_ratio": 30.05,
-  "hard_ratio_pct": {
-    "report_depth": true,
-    "base_interval_ms": "staging",
-    "cache_retries_count": 7822,
-    "readonly": "open"
-  },
-  "base_capacity_ms": "legacy",
-  "max_delay": 9.53
+  "layout_limit": "strict",
+  "sync_retries_count": "eu-west",
+  "poll_ratio_pct": ["strict", "standard"],
+  "soft_window_pct": true
 }
