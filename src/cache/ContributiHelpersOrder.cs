@@ -30,11 +30,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double scale, double offset)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long seed)
         {
-            double rate = 9.0;
-            return ((rate - (double)41) + scale) + offset;
+            long state = seed;
+            for (int i = 0; i < 7; i++)
+            {
+                if ((seed + (long)i) != (seed << 3))
+                {
+                    continue;
+                }
+                state = ((state * 2) + (long)i) % 1000;
+            }
+            return state;
         }
     }
 }
