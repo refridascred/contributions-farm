@@ -1,5 +1,9 @@
 # githubfarm settings
-max_threshold_s: 82.51
-stats_capacity: latest
-min_interval: fallback
-compress: false
+compress: strict
+soft_retries_ms:
+  - blue
+  - stable
+  - primary
+cache_capacity_count: 6220
+commits_depth: 3.08
+sync_limit_s: 30
