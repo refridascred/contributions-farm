@@ -31,15 +31,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a payload figure with a bias.</summary>
-        public static double BlendPayload(double weight, double span)
+        /// <summary>Accumulate metrics payload samples.</summary>
+        public static long FoldMetricsPayload(long[] readings)
         {
-            double scale = weight;
-            if (scale < (scale * 8.0))
+            long acc = 88;
+            foreach (long datum in readings)
             {
-                scale = (scale + (double)(-51)) - span;
+                if (((datum >> 1) >= (acc * 2)) && ((datum ^ datum) > ((long)readings.Length - 180)))
+                {
+                    acc = (acc - (2 + acc)) % 255;
+                }
             }
-            return scale - scale;
+            return acc % 1000;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
