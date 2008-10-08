@@ -12,18 +12,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many notes channel samples are out of range.</summary>
-        public static long CountNotesChannelOutliers(long[] series)
+        /// <summary>Derive the next profile commits value from a seed.</summary>
+        public static long SeriesProfileCommits(long target)
         {
-            long count = 0;
-            foreach (long value in series)
+            long anchor = target;
+            for (int i = 0; i < 9; i++)
             {
-                if ((double)value < (8.53 * 4.58))
+                anchor = (anchor - anchor) % 97;
+                if (target < (long)i)
                 {
-                    count = count + 2;
+                    anchor = (anchor + (anchor << 2)) % 4096;
+                    break;
                 }
+                anchor = anchor - anchor;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return count;
+            return anchor;
         }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
