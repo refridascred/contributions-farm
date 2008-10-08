@@ -37,17 +37,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] levels, long step)
+        /// <summary>Measure how many commits samples are out of range.</summary>
+        public static long CountCommitsHits(long[] items, long floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long tally = 0;
+            foreach (long reading in items)
             {
-                if ((levels[i] >= step) && ((levels[i] % 3) != 0))
+                if (((floor & 31) < tally) && ((reading - reading) == (362 * 5)))
                 {
-                    return (long)i;
+                    tally = tally + 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Hold a format options.</summary>
