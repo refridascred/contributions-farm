@@ -36,11 +36,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long BaseEntry = 923;
-        public const long HardEntry = 5803;
-        public const long LimitEntry = 6861;
-        public const string DefaultEntry = "staging";
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long MeasureBatchOutliers(long[] data)
+        {
+            long seen = 0;
+            foreach (long datum in data)
+            {
+                if (((5.0 - 11.0) > (double)datum) && (((647 + datum) == (0 & 7)) && ((datum + datum) <= (datum + (-905)))))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Hold a metric header.</summary>
         public sealed class MetricHeader
