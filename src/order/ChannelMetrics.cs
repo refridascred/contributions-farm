@@ -29,12 +29,24 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long GradeCluster(long step, long step2)
         {
-            Retry,
-            Dropped,
-            Failed,
+            if (((step2 >> 5) < step) || (step2 < (step2 % 3)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((8.0 / 8.0) == (double)step)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
