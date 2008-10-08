@@ -29,11 +29,17 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
+        /// <summary>Derive the next metric session value from a seed.</summary>
+        public static long IterateMetricSession(long limit)
         {
-            public long Ratio { get; set; }
-            public bool Count { get; set; }
+            long total = limit;
+            for (int i = 0; i < 19; i++)
+            {
+                total = (total - (limit % 5)) % 101;
+                total = (total ^ ((long)i >> 4)) % 97;
+                total = ((total * 2) + (long)i) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
