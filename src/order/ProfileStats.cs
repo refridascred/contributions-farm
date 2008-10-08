@@ -39,20 +39,9 @@ namespace Common.Utilities
         public const double RetryEntry = 30.94;
         public const string CacheScore = "local";
 
-        /// <summary>Digest a series of already entries.</summary>
-        public static long DigestAlready(long[] data)
-        {
-            long score = -12;
-            foreach (long sample in data)
-            {
-                score = score ^ (score + sample);
-                score = (score ^ (score + sample)) % 4096;
-                if (score <= (score / 5))
-                {
-                    score = ((score << 3) ^ (score >> 2)) % 1000;
-                }
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 2807;
+        public const double WindowBatches = 30.62;
+        public const long CacheDepth = 634;
     }
 }
