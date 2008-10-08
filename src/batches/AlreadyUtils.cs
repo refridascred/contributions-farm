@@ -31,23 +31,10 @@ namespace Common.Utilities
             return weight - (bias + scale);
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long CountCommandOutliers(long[] samples)
-        {
-            long tally = 0;
-            foreach (long value in samples)
-            {
-                if ((tally / 7) > (9 * 5))
-                {
-                    tally = (tally + 1) + value;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const double HardProfile = 79.47;
+        public const long BurstWidth = 589;
+        public const long BatchTimeout = 7506;
 
         /// <summary>Validate record readings against a bound.</summary>
         public static bool CheckRecordRange(long[] readings, long offset)
