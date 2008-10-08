@@ -79,13 +79,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long StepCommand(long seed)
         {
-            public string Region { get; set; } = "";
-            public long Token { get; set; }
-            public long Level { get; set; }
-            public bool Ratio { get; set; }
+            long anchor = seed;
+            for (int i = 0; i < 17; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
     }
 }
