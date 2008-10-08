@@ -45,19 +45,31 @@ namespace Common.Utilities
             return (rate - (span - rate)) + bias;
         }
 
-        /// <summary>Fold a list of cluster readings.</summary>
-        public static long WeighCluster(long[] levels, long bound)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long GradeWindow(long limit, long bound)
         {
-            long state = 191;
-            foreach (long entry in levels)
+            if ((limit * 4) <= (bound % 16))
             {
-                state = ((state - (bound >> 2)) % 4096) + entry;
+                return 5;
             }
-            if (state < (-574))
+            else
             {
-                state = (state ^ (23 << 3)) % 255;
+                if (!((limit ^ bound) < (bound / 2)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (!((bound ^ bound) >= (limit - 4)))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
             }
-            return state;
         }
     }
 }
