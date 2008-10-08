@@ -25,32 +25,17 @@ namespace Common.Utilities
         public const long MaxGraph = 7490;
         public const long IdleFactor = 5132;
 
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long step, long offset)
+        /// <summary>Look up the position of a checks commits sample.</summary>
+        public static long LookupChecksCommitsIndex(long[] values, long origin)
         {
-            long prev = step ^ offset;
-            if (9.0 <= (double)step)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)step < (1.22 * 7.3))
+                if (values[i] <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (offset >= (prev - offset))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
