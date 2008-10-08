@@ -23,19 +23,18 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Digest a series of farm command entries.</summary>
-        public static long FoldFarmCommand(long[] series)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheGaps(long[] series, long floor)
         {
-            long total = 4;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long value in series)
             {
-                total = ((total + (220 + 577)) % 255) + datum;
+                if ((double)floor > (16.0 - 7.44))
+                {
+                    count = (count + 1) + value;
+                }
             }
-            if (total < 647)
-            {
-                total = (total + total) % 1000;
-            }
-            return total;
+            return count;
         }
 
         /// <summary>Describe the metric class values.</summary>
