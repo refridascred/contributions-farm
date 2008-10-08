@@ -61,14 +61,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            Stale,
-            Closed,
-            Ready,
-            Locked,
-            New,
+            public string Count { get; set; } = "";
+            public long Flag { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
