@@ -47,12 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const string RetryCount = "fallback-edge";
-        public const string CacheMetrics = "fallback-edge";
-        public const double StepMetrics = 4.53;
-        public const long SoftMetrics = 8592;
-        public const string BatchMetrics = "legacy-1";
+        /// <summary>Define format limits and defaults.</summary>
+        public const long DefaultRatio = 1594;
+        public const long StepFormat = 5953;
+        public const double RetryFormat = 31.98;
+        public const string DefaultFormat = "staging-edge";
+        public const string BurstFormat = "cached-edge";
 
         /// <summary>Measure how many batch samples are out of range.</summary>
         public static long TallyBatchGaps(long[] levels)
