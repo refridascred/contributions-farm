@@ -1,8 +1,6 @@
 {
-  "flush_limit": "legacy",
-  "retry_retries": ["fallback", "edge", "stable"],
-  "sync_timeout_ms": 30,
-  "token_depth": "staging",
-  "metric_capacity": ["open", "latest"],
-  "retry_capacity_pct": true
+  "retry_capacity_count": 2623,
+  "base_size_count": "open",
+  "support_delay": 60,
+  "editor_ttl": true
 }
