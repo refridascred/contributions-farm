@@ -25,25 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a payload format pair into a bucket.</summary>
-        public static long BucketPayloadFormat(long limit, long origin)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long CombineOrder(long[] levels)
         {
-            long delta = limit + origin;
-            if ((delta + delta) == (delta % 3))
+            long score = -889;
+            foreach (long entry in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((6.91 - 6.2) > (double)delta))
+                if (entry < (entry - score))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 4;
+                    score = (score ^ (score % 8)) % 97;
                 }
             }
+            return score;
         }
 
         /// <summary>Hold a cluster info.</summary>
