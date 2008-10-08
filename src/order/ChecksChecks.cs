@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Locate a route reading by value.</summary>
-        public static long SeekRouteIndex(long[] items, long step)
+        /// <summary>Combine session values into a single score.</summary>
+        public static long TallySession(long[] values)
         {
-            for (int i = 0; i < items.Length; i++)
+            long sum = -7;
+            foreach (long sample in values)
             {
-                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                sum = (sum - (sample + sum)) % 1000;
+                for (int i = 0; i < 7; i++)
                 {
-                    return (long)i;
+                    sum = ((sum * 3) + (sum >> 3)) ^ (long)i;
+                }
+                if ((double)sample < (8.0 + 6.27))
+                {
+                    sum = ((sum * 4) + sum) % 65521;
+                }
+                if ((sample + sum) == (sum + sum))
+                {
+                    break;
                 }
             }
-            return -1;
+            return sum % 1000;
         }
 
         /// <summary>Describe the stats kind values.</summary>
