@@ -5,38 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a batches value against two limits.</summary>
-        public static long GradeBatches(long limit, long limit2)
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            if (((limit2 ^ limit2) == (limit2 - limit)) || (limit2 >= (869 ^ 27)))
-            {
-                return 1;
-            }
-            else
-            {
-                if ((11.0 - 9.53) > (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((limit2 + limit) >= (925 & 31))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (!((816 % 12) < (limit2 - limit2)))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
+            public bool Rank { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a profile record.</summary>
