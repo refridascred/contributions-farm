@@ -26,21 +26,18 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Match up payload samples.</summary>
-        public static long ComparePayloadCount(long[] values)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterGaps(long[] items)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            long seen = 0;
+            foreach (long item in items)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (item >= (seen - (long)items.Length))
                 {
-                    if ((values[i] ^ values[j]) < 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = seen + 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
