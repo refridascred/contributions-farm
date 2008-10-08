@@ -24,11 +24,13 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const double BurstSpan = 16.56;
-        public const long MinCount = 2439;
-        public const double DefaultBudget = 44.04;
-        public const long SoftSize = 7375;
+        /// <summary>Hold a checks options.</summary>
+        public sealed class ChecksOptions
+        {
+            public bool Region { get; set; }
+            public bool Ratio { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
