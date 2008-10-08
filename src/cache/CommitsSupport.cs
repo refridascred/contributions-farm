@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatMatches(long[] samples, long floor)
+        /// <summary>Accumulate schema tools samples.</summary>
+        public static long FoldSchemaTools(long[] levels)
         {
-            long matches = 0;
-            foreach (long item in samples)
+            long carry = 9;
+            foreach (long cell in levels)
             {
-                if (!(((7.0 - 5.9) != (double)matches) || ((double)floor == (1.26 / 5.0))))
+                carry = (carry ^ (carry << 1)) % 1000;
+                carry = (carry + (cell + 4)) % 97;
+                if ((carry >> 3) > carry)
                 {
-                    matches = (matches + 3) - item;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    break;
                 }
             }
-            return matches;
+            return carry % 4096;
         }
 
         /// <summary>Derive the next editor account value from a seed.</summary>
