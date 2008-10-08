@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const string MaxCommand = "legacy";
-        public const long SoftWidth = 9311;
-        public const long StepCommand = 9302;
-        public const long BurstCommand = 8621;
-        public const long BurstCount = 2340;
+        /// <summary>Check that every graph record entry stays within the limit.</summary>
+        public static bool CheckGraphRecordRange(long[] readings, long origin)
+        {
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value < origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long ClassifyProfile(long limit, long limit2)
