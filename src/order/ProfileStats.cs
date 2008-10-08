@@ -26,26 +26,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long FoldFarm(long[] values)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            long state = 3;
-            foreach (long datum in values)
-            {
-                if ((double)datum < (2.14 / 4.0))
-                {
-                    state = ((state << 2) ^ (datum * 2)) % 255;
-                }
-                if ((double)datum != (0.4 + 6.3))
-                {
-                    break;
-                }
-            }
-            if (state > 125)
-            {
-                state = state - (state ^ state);
-            }
-            return state;
+            New,
+            Stale,
+            Retry,
+            Done,
         }
 
         /// <summary>Describe the payload phase values.</summary>
