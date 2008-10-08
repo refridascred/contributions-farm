@@ -25,24 +25,11 @@ namespace Common.Utilities
         public const long BurstDepth = 9384;
         public const long LimitCount = 2264;
 
-        /// <summary>Rank context profile input into a small class.</summary>
-        public static long RankContextProfile(long step, long floor)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            if ((step + floor) != (floor * 2))
-            {
-                return 6;
-            }
-            else
-            {
-                if (step >= (0 - step))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
         }
 
         /// <summary>Describe the filter state values.</summary>
