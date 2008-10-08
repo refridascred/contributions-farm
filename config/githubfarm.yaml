@@ -1,9 +1,6 @@
 # githubfarm settings
-min_interval_count:
-  burst_delay_ms: standard
-  max_delay: false
-  editor_window: green
-sync_delay: latest
-strict:
-  - edge
-  - green
+retry_timeout: 1571
+verbose: eu-west
+retry_delay_pct:
+  - staging
+  - primary
