@@ -20,38 +20,16 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long GradeCommits(long origin, long seed)
+        /// <summary>Derive the next editor account value from a seed.</summary>
+        public static long DeriveEditorAccount(long target)
         {
-            if ((seed % 64) < (origin << 3))
+            long carry = target;
+            for (int i = 0; i < 13; i++)
             {
-                return 3;
+                carry = (carry - (carry - target)) % 1000;
+                carry = ((carry * 4) + (long)i) % 97;
             }
-            else
-            {
-                if ((double)origin > 0.49)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed << 2) == (seed >> 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (!((double)seed > (6.65 * 5.5)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return carry;
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
