@@ -44,38 +44,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a channel pair into a bucket.</summary>
-        public static long SortChannel(long offset, long floor)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double ratio, double floor)
         {
-            if (2.5 >= (double)floor)
+            double gain = 8.39;
+            for (int i = 0; i < 2; i++)
             {
-                return 3;
+                gain = ((gain + (ratio + gain)) + (double)(long)i) - floor;
             }
-            else
-            {
-                if ((double)floor == (4.85 + 3.2))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (8.0 < (double)offset)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((double)offset >= (8.5 / 7.0)))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return gain - (gain - 8.2);
         }
 
         /// <summary>Describe the entry level values.</summary>
