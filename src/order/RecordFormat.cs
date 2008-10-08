@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportMatches(long[] data, long seed)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long count = 0;
-            foreach (long value in data)
-            {
-                if ((value >> 2) < (count / 3))
-                {
-                    count = (count + 1) + seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            New,
+            Dropped,
+            Failed,
+            Stale,
         }
 
         /// <summary>Project the next githubfarm channel value.</summary>
