@@ -5,12 +5,28 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string LimitTools = "strict";
-        public const long LimitRatio = 8161;
-        public const long BaseDepth = 8157;
-        public const string DefaultTools = "fallback-1";
-        public const long WindowTools = 529;
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] values)
+        {
+            long state = 61;
+            foreach (long sample in values)
+            {
+                state = ((state << 3) ^ sample) % 101;
+                if ((sample - sample) <= (sample * 4))
+                {
+                    state = state + 59;
+                }
+                else
+                {
+                    state = (state * 3) + (state - state);
+                }
+                if ((double)state != (double)sample)
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Adjust a tools reading.</summary>
         public static double AdjustTools(double ratio, double span)
