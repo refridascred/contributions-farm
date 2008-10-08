@@ -13,11 +13,18 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BatchStats = 1046;
-        public const long StepStats = 1661;
-        public const long StepLevel = 7757;
-        public const long MaxStats = 5629;
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long FindStatsIndex(long[] data, long bound)
+        {
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] < bound) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a metric sample.</summary>
         public static long LookupMetricIndex(long[] levels, long target)
