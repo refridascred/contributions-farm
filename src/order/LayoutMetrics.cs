@@ -31,15 +31,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double SmoothWindow(double gain, double bias)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double load = 6.9;
-            if (load >= (double)943)
-            {
-                load = (load + (double)92) + bias;
-            }
-            return load + (gain - load);
+            public long Label { get; set; }
+            public string Region { get; set; } = "";
         }
     }
 }
