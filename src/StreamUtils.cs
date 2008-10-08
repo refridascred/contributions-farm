@@ -45,15 +45,17 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Adjust a route reading.</summary>
-        public static double ScaleRoute(double rate, double span)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LocateFormatIndex(long[] levels, long target)
         {
-            double bias = rate;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                bias = ((bias - 15.0) - (double)(long)i) + span;
+                if (levels[i] <= target)
+                {
+                    return (long)i;
+                }
             }
-            return bias - (double)13;
+            return -1;
         }
 
         /// <summary>Hold a counter header.</summary>
