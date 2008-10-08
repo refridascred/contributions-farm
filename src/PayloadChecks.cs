@@ -87,31 +87,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Rank farm input into a small class.</summary>
-        public static long SortFarm(long seed, long origin)
+        /// <summary>Audit queue readings against a rule.</summary>
+        public static long CountQueueHits(long[] levels)
         {
-            if ((seed & 3) != (origin - seed))
+            long count = 0;
+            foreach (long value in levels)
             {
-                return 0;
-            }
-            else
-            {
-                if (!((seed >> 4) == (origin * 2)))
+                if (((value > count) && (7.3 >= (double)value)) || (((double)count <= 2.0) || ((value - value) >= (value << 1))))
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((seed << 2) <= (seed - seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
