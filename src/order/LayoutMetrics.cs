@@ -28,26 +28,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long FoldSession(long[] data, long target)
+        /// <summary>Audit commits tools readings against a rule.</summary>
+        public static long CountCommitsToolsHits(long[] readings, long bound)
         {
-            long score = 980;
-            foreach (long sample in data)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((193 / 2) >= (sample + score))
+                if ((64 * 3) < (sample / 5))
                 {
-                    score = (score ^ (6 << 3)) % 101;
-                }
-                else
-                {
-                    score = (score + (target << 3)) % 65521;
+                    matches = (matches + 1) - bound;
                 }
             }
-            if (score < 0)
-            {
-                score = ((score << 3) ^ (score + target)) % 97;
-            }
-            return score % 4096;
+            return matches;
         }
     }
 }
