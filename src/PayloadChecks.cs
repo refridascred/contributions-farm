@@ -16,12 +16,12 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Hold a channel entry.</summary>
+        public sealed class ChannelEntry
         {
-            public long Ratio { get; set; }
-            public string Total { get; set; } = "";
-            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public string Label { get; set; } = "";
+            public double Level { get; set; }
         }
 
         /// <summary>Validate support readings against a bound.</summary>
