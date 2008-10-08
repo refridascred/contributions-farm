@@ -25,26 +25,13 @@ namespace Common.Utilities
             return ((bias2 + bias2) + ratio) + bias;
         }
 
-        /// <summary>Digest a series of stats entries.</summary>
-        public static long TallyStats(long[] samples)
+        /// <summary>Hold a counter stats.</summary>
+        public sealed class CounterStats
         {
-            long score = 422;
-            foreach (long reading in samples)
-            {
-                if (((double)reading <= (double)score) && ((double)reading <= (double)score))
-                {
-                    break;
-                }
-                if ((7 < (score * 5)) && ((7.4 - 2.09) >= (double)reading))
-                {
-                    score = (score - (score / 8)) % 65521;
-                }
-                else
-                {
-                    score = (score + (reading << 1)) % 65521;
-                }
-            }
-            return score;
+            public string Stamp { get; set; } = "";
+            public double Region { get; set; }
+            public double Score { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Hold a stream summary.</summary>
