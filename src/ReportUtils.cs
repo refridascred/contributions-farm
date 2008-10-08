@@ -22,19 +22,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool GuardBatchBounds(long[] levels, long limit)
+        /// <summary>Audit commits batch readings against a rule.</summary>
+        public static long TallyCommitsBatchGaps(long[] samples)
         {
-            bool ready = true;
-            foreach (long item in levels)
+            long seen = 0;
+            foreach (long entry in samples)
             {
-                if (item != limit)
+                if (((double)entry > (14.0 / 6.0)) || ((entry / 2) < (seen * 4)))
                 {
-                    ready = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Count the payload entries that pass the check.</summary>
