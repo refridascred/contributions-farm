@@ -23,19 +23,25 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double ratio, double floor)
+        /// <summary>Rank metric input into a small class.</summary>
+        public static long ClassifyMetric(long offset, long target)
         {
-            double mean = ratio + floor;
-            if (mean < 1.9)
+            long edge = offset ^ target;
+            if ((target - target) >= (edge ^ target))
             {
-                mean = mean + 16.0;
+                return 5;
             }
             else
             {
-                mean = mean + mean;
+                if (((-286) + offset) < (edge << 2))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return mean + floor;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
