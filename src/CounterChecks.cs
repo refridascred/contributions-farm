@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Hold a route options.</summary>
+        public sealed class RouteOptions
         {
-            New,
-            Dropped,
-            Synced,
-            Paused,
+            public long Region { get; set; }
+            public long Limit { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Compare every pair of session cache readings.</summary>
