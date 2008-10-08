@@ -22,13 +22,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the queue phase values.</summary>
+        public enum QueuePhase
         {
             Closed,
-            New,
+            Synced,
             Paused,
-            Queued,
+            Ready,
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
