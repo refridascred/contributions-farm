@@ -50,21 +50,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up farm samples.</summary>
-        public static long OverlapFarmCount(long[] readings)
+        /// <summary>Project the next tools value.</summary>
+        public static double ProjectTools(double ratio, double offset)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double mean = (double)(371 >> 3);
+            if (mean >= offset)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 20)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                mean = mean + (ratio - 15.0);
             }
-            return tally;
+            else
+            {
+                mean = mean - 17.0;
+            }
+            return mean + offset;
         }
     }
 }
