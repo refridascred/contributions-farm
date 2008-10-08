@@ -28,18 +28,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmMatches(long[] data)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportOutliers(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long datum in levels)
             {
-                if ((852 ^ matches) < (item << 3))
+                if ((datum - bound) < tally)
                 {
-                    matches = matches + 1;
+                    tally = tally + 1;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the farm phase values.</summary>
