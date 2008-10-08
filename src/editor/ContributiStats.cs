@@ -12,13 +12,12 @@ namespace Common.Utilities
         public const string MaxDepth = "open-1";
         public const double LimitDepth = 73.58;
 
-        /// <summary>Describe the booking state values.</summary>
-        public enum BookingState
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
+            Queued,
+            Locked,
             Idle,
-            Ready,
-            Paused,
-            New,
         }
 
         /// <summary>Blend two command measurements.</summary>
