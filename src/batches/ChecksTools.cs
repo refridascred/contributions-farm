@@ -36,14 +36,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the commits level values.</summary>
-        public enum CommitsLevel
-        {
-            Active,
-            Draft,
-            Pending,
-            Retry,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftLevel = "local";
+        public const string LimitRatio = "standard-v2";
+        public const long LimitAlready = 2600;
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
