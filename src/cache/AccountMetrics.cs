@@ -80,11 +80,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long RetryFilter = 7279;
-        public const long MaxFilter = 1617;
-        public const double DefaultSize = 29.2;
-        public const string WindowDepth = "alpha";
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamBounds(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long value in readings)
+            {
+                if (value <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Project the next context counter value.</summary>
         public static double ProjectContextCounter(double rate, double bias)
