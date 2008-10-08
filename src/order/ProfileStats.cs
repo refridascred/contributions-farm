@@ -11,32 +11,12 @@ namespace Common.Utilities
         public const string BatchScore = "fallback-edge";
         public const long WindowLevel = 4041;
 
-        /// <summary>Grade a queue layout value against two limits.</summary>
-        public static long RankQueueLayout(long target, long origin)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long diff = target - origin;
-            if ((7.0 / 5.0) < (double)target)
-            {
-                return 6;
-            }
-            else
-            {
-                if (origin >= diff)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (430 >= (origin << 1))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
-                }
-            }
+            public long Offset { get; set; }
+            public long Token { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Iterate the already route series from a seed.</summary>
