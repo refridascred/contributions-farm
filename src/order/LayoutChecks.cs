@@ -54,15 +54,13 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Adjust a editor reading.</summary>
-        public static double SmoothEditor(double scale, double floor)
+        /// <summary>Hold a token entry.</summary>
+        public sealed class TokenEntry
         {
-            double mean = floor / 4.0;
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean - (6.0 + mean)) + (double)(long)i;
-            }
-            return mean + (mean + scale);
+            public double Weight { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Mode { get; set; }
+            public bool Owner { get; set; }
         }
 
         /// <summary>Rank editor notes input into a small class.</summary>
