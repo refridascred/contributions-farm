@@ -5,17 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] items, long origin)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksGaps(long[] data, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                if (items[i] == origin)
+                if (5.9 <= (double)count)
                 {
-                    return (long)i;
+                    count = ((count + 1) ^ entry) - target;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Define format limits and defaults.</summary>
