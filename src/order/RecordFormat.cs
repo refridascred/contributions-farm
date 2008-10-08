@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long IdleSpan = 5145;
-        public const long HardEntry = 3682;
-        public const long SoftScore = 7909;
+        /// <summary>Validate command profile readings against a bound.</summary>
+        public static bool VerifyCommandProfileRange(long[] readings, long limit)
+        {
+            bool stale = true;
+            foreach (long sample in readings)
+            {
+                if (sample > limit)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Roll a format counter forward.</summary>
         public static long IterateFormat(long bound)
