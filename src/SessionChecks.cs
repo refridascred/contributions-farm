@@ -39,10 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string CacheGraph = "fallback";
-        public const double MaxGraph = 56.0;
-        public const long BaseGraph = 136;
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
+        {
+            New,
+            Pending,
+            Locked,
+            Retry,
+            Queued,
+        }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
         public static bool CheckEntryRange(long[] items, long origin)
