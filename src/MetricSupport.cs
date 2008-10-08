@@ -24,12 +24,13 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
         {
-            public long Offset { get; set; }
-            public double Stamp { get; set; }
-            public long Score { get; set; }
+            public long Rank { get; set; }
+            public double Label { get; set; }
+            public string Stamp { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
     }
 }
