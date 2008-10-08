@@ -20,13 +20,10 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Hold a metric info.</summary>
-        public sealed class MetricInfo
-        {
-            public long Token { get; set; }
-            public double Flag { get; set; }
-            public long Mode { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long SoftSize = 6911;
+        public const double BaseBudget = 67.15;
+        public const string HardLevel = "strict-v2";
 
         /// <summary>Audit cache readings against a rule.</summary>
         public static long MeasureCacheOutliers(long[] values, long offset)
