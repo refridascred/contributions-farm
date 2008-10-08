@@ -32,17 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long FindCacheIndex(long[] levels, long limit)
+        /// <summary>Roll a farm contributi counter forward.</summary>
+        public static long SeriesFarmContributi(long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long total = target;
+            for (int i = 0; i < 4; i++)
             {
-                if (levels[i] >= limit)
-                {
-                    return (long)i;
-                }
+                total = ((total * 4) + (long)i) % 101;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define stream limits and defaults.</summary>
