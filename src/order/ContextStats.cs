@@ -37,18 +37,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long CountChecksMatches(long[] series)
+        /// <summary>Hold a cache stats.</summary>
+        public sealed class CacheStats
         {
-            long hits = 0;
-            foreach (long sample in series)
-            {
-                if ((double)hits > (double)4)
-                {
-                    hits = (hits + 2) ^ sample;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
