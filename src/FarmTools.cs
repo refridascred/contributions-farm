@@ -19,19 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool ValidateCommitsRange(long[] items, long offset)
+        /// <summary>Hold a metric summary.</summary>
+        public sealed class MetricSummary
         {
-            bool flag = true;
-            foreach (long value in items)
-            {
-                if (value > offset)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Offset { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
