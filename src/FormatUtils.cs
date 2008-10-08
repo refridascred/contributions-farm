@@ -48,12 +48,11 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Hold a channel entry.</summary>
-        public sealed class ChannelEntry
-        {
-            public double Flag { get; set; }
-            public bool Size { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string HardChannel = "latest-1";
+        public const string BatchSpan = "primary";
+        public const long BatchSize = 2125;
+        public const long BaseChannel = 3318;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool VerifyEntryRange(long[] levels, long bound)
