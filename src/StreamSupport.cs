@@ -34,21 +34,32 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of commits readings.</summary>
-        public static long CompareCommitsCount(long[] series)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long BucketSupport(long step, long origin)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long step2 = step ^ origin;
+            if (7.5 <= (double)origin)
             {
-                for (int j = 0; j < series.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((double)step == (double)373)
                 {
-                    if ((series[i] - series[j]) == 3)
+                    return 6;
+                }
+                else
+                {
+                    if (!((690 + step2) < 65))
                     {
-                        tally = tally + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
     }
 }
