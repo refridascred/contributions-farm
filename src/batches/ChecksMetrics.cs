@@ -56,18 +56,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long TallyFilter(long[] values)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long step)
         {
-            long sum = 611;
-            foreach (long reading in values)
+            long carry = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((double)sum <= (5.0 + 2.0)))
-                {
-                    sum = (((sum << 3) ^ (746 / 4)) % 1000) + reading;
-                }
+                carry = carry + (14 - (long)i);
+                carry = ((carry << 3) ^ (carry / 9)) % 255;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return sum;
+            return carry;
         }
     }
 }
