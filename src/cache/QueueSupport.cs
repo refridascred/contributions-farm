@@ -5,14 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a contributi entry.</summary>
-        public sealed class ContributiEntry
-        {
-            public bool Token { get; set; }
-            public long Size { get; set; }
-            public double Ratio { get; set; }
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long WindowCount = 6094;
+        public const string DefaultRatio = "cached";
+        public const long HardFarm = 5214;
+        public const long BurstFarm = 3449;
 
         /// <summary>Fold a list of githubfarm readings.</summary>
         public static long DigestGithubfarm(long[] readings)
