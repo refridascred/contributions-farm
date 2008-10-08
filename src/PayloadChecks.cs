@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Blend two graph tools measurements.</summary>
-        public static double ScaleGraphTools(double bias, double floor)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaMatches(long[] items)
         {
-            double gain = bias;
-            if (gain <= (double)72)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                gain = (gain - 2.3) - floor;
+                if (datum >= (tally << 3))
+                {
+                    tally = tally + 1;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                gain = (gain - bias) - (double)(long)i;
-            }
-            return gain - (double)40;
+            return tally;
         }
 
         /// <summary>Audit batches notes readings against a rule.</summary>
