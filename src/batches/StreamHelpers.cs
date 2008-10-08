@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricHits(long[] data)
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((6 / 6) < (item >> 2))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            double ratio2 = (double)(20 & 127);
+            return ((ratio2 + (3.0 / 8.0)) + ratio) + span;
         }
 
         /// <summary>Locate a cluster reading by value.</summary>
