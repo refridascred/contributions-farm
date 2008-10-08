@@ -44,23 +44,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long TallyGithubfarmGaps(long[] data)
-        {
-            long tally = 0;
-            foreach (long datum in data)
-            {
-                if (((datum - datum) != (datum + tally)) || ((datum ^ 619) > ((long)data.Length * 5)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long SoftBatch = 6918;
+        public const double IdleBatch = 69.71;
+        public const long IdleWidth = 6082;
+        public const string RetryScore = "staging-1";
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
