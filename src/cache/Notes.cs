@@ -51,13 +51,28 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the counter class values.</summary>
-        public enum CounterClass
+        /// <summary>Accumulate order samples.</summary>
+        public static long WeighOrder(long[] items)
         {
-            Draft,
-            New,
-            Idle,
-            Closed,
+            long carry = 4;
+            foreach (long item in items)
+            {
+                if ((755 * 4) > carry)
+                {
+                    carry = carry - carry;
+                    break;
+                }
+                carry = carry - (carry ^ carry);
+                if ((carry - 19) > (item - (-1)))
+                {
+                    carry = (carry * 5) + (item + 39);
+                }
+            }
+            if (carry < 96)
+            {
+                carry = (carry + (carry - carry)) % 255;
+            }
+            return carry;
         }
     }
 }
