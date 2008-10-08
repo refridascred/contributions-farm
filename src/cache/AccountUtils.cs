@@ -11,12 +11,12 @@ namespace Common.Utilities
         public const string BaseWindow = "strict-v2";
         public const long RetryLevel = 6901;
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            Queued,
-            Paused,
-            Done,
+            public long Stamp { get; set; }
+            public long Owner { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Describe the format phase values.</summary>
