@@ -18,10 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long SoftFilter = 5819;
-        public const long BurstFilter = 8628;
-        public const long CacheFilter = 7736;
+        /// <summary>Hold a batch entry.</summary>
+        public sealed class BatchEntry
+        {
+            public long Stamp { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
+            public string Weight { get; set; } = "";
+        }
 
         /// <summary>Compare every pair of batches readings.</summary>
         public static long MatchBatchesCount(long[] data)
