@@ -72,17 +72,17 @@ namespace Common.Utilities
         public const long StepGithubfarm = 640;
         public const long SoftLevel = 3059;
 
-        /// <summary>Locate a session metric reading by value.</summary>
-        public static long LookupSessionMetricIndex(long[] levels, long target)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long CombineCluster(long[] samples)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 74;
+            foreach (long datum in samples)
             {
-                if ((levels[i] > target) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = (sum + (datum ^ datum)) % 65521;
+                sum = (sum ^ (sum + sum)) % 101;
+                sum = sum ^ (sum ^ datum);
             }
-            return -1;
+            return sum;
         }
     }
 }
