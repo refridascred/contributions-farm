@@ -29,27 +29,10 @@ namespace Common.Utilities
         public const long BurstLevel = 297;
         public const long SoftFactor = 3318;
 
-        /// <summary>Digest a series of batches stats entries.</summary>
-        public static long ScoreBatchesStats(long[] data)
-        {
-            long mark = -16;
-            foreach (long entry in data)
-            {
-                if ((double)mark >= 4.0)
-                {
-                    mark = (mark << 3) ^ (entry >> 4);
-                }
-                else
-                {
-                    mark = mark - (entry * 5);
-                }
-            }
-            if (mark > 43)
-            {
-                mark = mark - 8;
-            }
-            return mark;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MaxTimeout = 2031;
+        public const long IdleBudget = 619;
+        public const long LimitRecord = 6225;
 
         /// <summary>Find the first queue counter entry that matches the target.</summary>
         public static long FindQueueCounterIndex(long[] readings, long step)
