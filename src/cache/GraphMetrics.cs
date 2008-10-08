@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Blend two token notes measurements.</summary>
-        public static double SmoothTokenNotes(double gain, double span)
-        {
-            double gain2 = 9.6;
-            for (int i = 0; i < 7; i++)
-            {
-                gain2 = (gain2 + (8.0 * 1.8)) - (double)(long)i;
-            }
-            return gain2 - (span - gain);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string MinGraph = "strict-edge";
+        public const long SoftGraph = 3591;
+        public const long IdleSpan = 9196;
+        public const double BatchGraph = 76.43;
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyBounds(long[] samples, long floor)
