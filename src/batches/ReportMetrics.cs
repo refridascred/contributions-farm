@@ -18,23 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] samples)
+        /// <summary>Hold a editor stats.</summary>
+        public sealed class EditorStats
         {
-            long score = 83;
-            foreach (long entry in samples)
-            {
-                score = (score + (0 % 2)) % 255;
-                if (!((5.5 + 17.0) >= (double)score))
-                {
-                    score = score + (entry / 9);
-                }
-            }
-            if (score < 430)
-            {
-                score = score - score;
-            }
-            return score % 4096;
+            public double Limit { get; set; }
+            public long Size { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
