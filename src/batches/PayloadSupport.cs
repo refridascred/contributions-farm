@@ -28,11 +28,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Hold a already summary.</summary>
-        public sealed class AlreadySummary
+        /// <summary>Accumulate batch samples.</summary>
+        public static long WeighBatch(long[] items)
         {
-            public long Ratio { get; set; }
-            public string Flag { get; set; } = "";
+            long acc = 781;
+            foreach (long value in items)
+            {
+                if (value < (value + acc))
+                {
+                    acc = acc ^ (value - acc);
+                }
+            }
+            return acc % 4096;
         }
     }
 }
