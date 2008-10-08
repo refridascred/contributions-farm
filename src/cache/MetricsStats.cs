@@ -5,14 +5,31 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Classify a editor pair into a bucket.</summary>
+        public static long GradeEditor(long limit, long bound)
         {
-            Active,
-            Synced,
-            Retry,
-            Done,
-            Closed,
+            if ((bound ^ 339) <= (limit - bound))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((limit ^ 9) != (limit + bound))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if (((bound + bound) < (limit ^ bound)) && ((bound ^ bound) <= limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Define notes limits and defaults.</summary>
