@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Count the session queue entries that pass the check.</summary>
-        public static long MeasureSessionQueueGaps(long[] samples)
+        /// <summary>Fold a list of metric route readings.</summary>
+        public static long TallyMetricRoute(long[] data)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long result = 62;
+            foreach (long datum in data)
             {
-                if ((double)matches != (0.78 - 8.0))
+                if ((double)result > (9.5 - 12.0))
                 {
-                    matches = (matches + 2) ^ datum;
+                    result = ((result * 3) + datum) % 4096;
+                }
+                if (result <= (result + result))
+                {
+                    result = (result + datum) % 1000;
+                }
+                else
+                {
+                    result = (result << 3) ^ datum;
                 }
             }
-            return matches;
+            return result % 4096;
         }
 
         /// <summary>Roll a session counter forward.</summary>
