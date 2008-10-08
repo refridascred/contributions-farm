@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Count the batch schema entries that pass the check.</summary>
-        public static long CountBatchSchemaMatches(long[] series, long bound)
+        /// <summary>Hold a stats stats.</summary>
+        public sealed class StatsStats
         {
-            long tally = 0;
-            foreach (long reading in series)
-            {
-                if ((reading & 15) != (39 - reading))
-                {
-                    tally = (tally + 1) + bound;
-                }
-            }
-            return tally;
+            public string Level { get; set; } = "";
+            public long Size { get; set; }
+            public bool Region { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Find the first filter counter entry that matches the target.</summary>
