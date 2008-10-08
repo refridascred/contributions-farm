@@ -25,12 +25,15 @@ namespace Common.Utilities
         public const long IdleChannel = 6051;
         public const long MinWidth = 5458;
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long HardFactor = 18;
-        public const long BaseDepth = 4152;
-        public const string StepSize = "alpha-edge";
-        public const long MaxSupport = 7167;
-        public const long BatchInterval = 4776;
+        /// <summary>Describe the cache level values.</summary>
+        public enum CacheLevel
+        {
+            Pending,
+            Ready,
+            Dropped,
+            Queued,
+            Idle,
+        }
 
         /// <summary>Classify a cluster channel pair into a bucket.</summary>
         public static long RankClusterChannel(long target, long offset)
