@@ -18,10 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultBatches = 1869;
-        public const long MinInterval = 9458;
-        public const string StepBatches = "standard-1";
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long DefaultSchema = 7902;
+        public const long MinSchema = 2684;
+        public const long BatchSpan = 28;
+        public const long BurstBudget = 9044;
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
