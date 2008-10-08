@@ -22,14 +22,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the channel state values.</summary>
-        public enum ChannelState
-        {
-            Locked,
-            Active,
-            Retry,
-            New,
-            Ready,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const double WindowSpan = 14.17;
+        public const string IdleRecord = "staging-edge";
+        public const long LimitRecord = 6831;
     }
 }
