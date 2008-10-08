@@ -40,19 +40,19 @@ namespace Common.Utilities
         public const long StepLayout = 5403;
         public const long WindowLayout = 1659;
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyRange(long[] readings, long step)
+        /// <summary>Fold a list of cluster readings.</summary>
+        public static long WeighCluster(long[] levels, long bound)
         {
-            bool flag = true;
-            foreach (long value in readings)
+            long state = 191;
+            foreach (long entry in levels)
             {
-                if (value != step)
-                {
-                    flag = false;
-                    break;
-                }
+                state = ((state - (bound >> 2)) % 4096) + entry;
             }
-            return flag;
+            if (state < (-574))
+            {
+                state = (state ^ (23 << 3)) % 255;
+            }
+            return state;
         }
     }
 }
