@@ -26,18 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long CombineOrder(long[] levels)
+        /// <summary>Check that every filter cache entry stays within the limit.</summary>
+        public static bool GuardFilterCacheBounds(long[] levels, long origin)
         {
-            long score = -889;
+            bool flag = true;
             foreach (long entry in levels)
             {
-                if (entry < (entry - score))
+                if (entry != origin)
                 {
-                    score = (score ^ (score % 8)) % 97;
+                    flag = false;
+                    break;
                 }
             }
-            return score;
+            return flag;
         }
 
         /// <summary>Count the metric session entries that pass the check.</summary>
