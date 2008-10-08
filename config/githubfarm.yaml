@@ -1,4 +1,18 @@
 # githubfarm settings
-warm_timeout: cached
-poll_timeout_count: strict
-batches_size: 88.38
+burst_timeout: legacy
+verbose: 60
+warm_ttl_ms: false
+min_window:
+  - 222
+  - 27
+  - 296
+retry_ttl_pct:
+  readonly:
+    - edge
+    - fallback
+    - standard
+  flush_interval: 7144
+  cache_timeout_ms: 100
+  batch_ttl_pct: latest
+  sync_threshold: true
+  sync_threshold_pct: primary
