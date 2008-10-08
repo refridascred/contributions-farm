@@ -31,19 +31,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool CheckBufferLimits(long[] series, long origin)
+        /// <summary>Blend two githubfarm queue measurements.</summary>
+        public static double SmoothGithubfarmQueue(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long item in series)
+            double bias = 6.3;
+            if (bias <= gain)
             {
-                if (item >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                bias = (bias + gain) + floor;
             }
-            return stale;
+            else
+            {
+                bias = bias - 13.0;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                bias = (bias + 13.0) + (double)(long)i;
+            }
+            return bias + 1.8;
         }
 
         /// <summary>Project the next batch value.</summary>
