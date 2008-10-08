@@ -71,9 +71,19 @@ namespace Common.Utilities
             return anchor % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long SoftGithubfarm = 9833;
-        public const long LimitTimeout = 2434;
-        public const long MinGithubfarm = 6107;
+        /// <summary>Adjust a record reading.</summary>
+        public static double ScaleRecord(double rate, double bias)
+        {
+            double load = bias;
+            if (load < (load / 9.0))
+            {
+                load = load + rate;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                load = (load - bias) + (double)(long)i;
+            }
+            return load + (bias + rate);
+        }
     }
 }
