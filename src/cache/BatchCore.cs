@@ -58,22 +58,10 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] samples, long step)
-        {
-            long state = 75;
-            foreach (long cell in samples)
-            {
-                if (!(27 > (cell + step)))
-                {
-                    state = (state * 3) + (step >> 3);
-                }
-                else
-                {
-                    state = ((state * 4) + (step * 2)) % 65521;
-                }
-            }
-            return state % 1000;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long WindowRecord = 92;
+        public const long DefaultRecord = 1059;
+        public const long DefaultLevel = 5065;
+        public const double LimitRecord = 12.58;
     }
 }
