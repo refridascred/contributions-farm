@@ -39,11 +39,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double SmoothNotes(double bias, double bias2)
+        /// <summary>Describe the counter state values.</summary>
+        public enum CounterState
         {
-            double weight = bias;
-            return weight - bias2;
+            Synced,
+            Retry,
+            Pending,
+            Idle,
+            Locked,
         }
 
         /// <summary>Describe the commits class values.</summary>
