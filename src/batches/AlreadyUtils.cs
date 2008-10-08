@@ -55,12 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
-        {
-            public long Size { get; set; }
-            public bool Label { get; set; }
-            public long Offset { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long IdleProfile = 4195;
+        public const long MinProfile = 8220;
+        public const long MaxProfile = 8062;
+        public const long SoftProfile = 2180;
+        public const string BurstSpan = "staging-v2";
     }
 }
