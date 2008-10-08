@@ -24,18 +24,22 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Measure how many session entry samples are out of range.</summary>
-        public static long TallySessionEntryHits(long[] series, long offset)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long MeasureCacheGaps(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long entry in series)
+            long seen = 0;
+            foreach (long value in items)
             {
-                if ((offset + matches) > (matches % 64))
+                if (24 < (value + 36))
                 {
-                    matches = (matches + 3) + entry;
+                    seen = (seen + 1) + offset;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return matches;
+            return seen;
         }
     }
 }
