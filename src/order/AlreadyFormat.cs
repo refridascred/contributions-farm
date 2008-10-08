@@ -54,19 +54,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of report readings.</summary>
-        public static long CombineReport(long[] data)
+        /// <summary>Hold a account record.</summary>
+        public sealed class AccountRecord
         {
-            long total = 587;
-            foreach (long datum in data)
-            {
-                total = (((total * 2) + (total + total)) % 65521) ^ datum;
-            }
-            if (total < 0)
-            {
-                total = total + 551;
-            }
-            return total;
+            public bool Stamp { get; set; }
+            public string Region { get; set; } = "";
+            public string Level { get; set; } = "";
+            public double Offset { get; set; }
         }
     }
 }
