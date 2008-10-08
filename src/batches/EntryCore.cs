@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a checks reading by value.</summary>
-        public static long SeekChecksIndex(long[] data, long target)
+        /// <summary>Fold a list of metric readings.</summary>
+        public static long FoldMetric(long[] series, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long total = 5;
+            foreach (long sample in series)
             {
-                if (data[i] < target)
+                if (bound > (bound << 3))
                 {
-                    return (long)i;
+                    break;
                 }
+                total = ((total + (total - 1)) % 1000) ^ sample;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Fold a list of token readings.</summary>
