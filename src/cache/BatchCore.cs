@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] samples, long offset)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long LocateGithubfarmIndex(long[] samples, long offset)
         {
             for (int i = 0; i < samples.Length; i++)
             {
-                if ((samples[i] > offset) && ((samples[i] % 2) != 0))
+                if (samples[i] == offset)
                 {
                     return (long)i;
                 }
