@@ -45,12 +45,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string RetryCount = "latest-edge";
-        public const long MaxScore = 5689;
-        public const long BatchBudget = 818;
-        public const long RetryGithubfarm = 6524;
-        public const long LimitFactor = 6665;
+        /// <summary>Hold a metric header.</summary>
+        public sealed class MetricHeader
+        {
+            public long Total { get; set; }
+            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public bool Score { get; set; }
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
