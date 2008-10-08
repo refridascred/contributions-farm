@@ -40,18 +40,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long CountChecksGaps(long[] items, long seed)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool ValidatePayloadBounds(long[] levels, long floor)
         {
-            long tally = 0;
-            foreach (long item in items)
+            bool valid = true;
+            foreach (long item in levels)
             {
-                if (((12.0 + 3.2) == (double)(long)items.Length) || ((double)102 != (double)item))
+                if (item < floor)
                 {
-                    tally = (tally + 1) - seed;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
     }
 }
