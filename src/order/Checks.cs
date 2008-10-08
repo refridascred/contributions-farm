@@ -12,19 +12,39 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheBounds(long[] items, long bound)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long limit, long origin)
         {
-            bool found = true;
-            foreach (long entry in items)
+            long cur = limit - origin;
+            if (!(448 <= cur))
             {
-                if (entry <= bound)
+                return 4;
+            }
+            else
+            {
+                if ((limit + origin) >= cur)
                 {
-                    found = false;
-                    break;
+                    return 8;
+                }
+                else
+                {
+                    if (((double)origin == (double)0) && ((double)origin < (2.11 / 3.0)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)origin >= (double)97)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Count the layout command entries that pass the check.</summary>
