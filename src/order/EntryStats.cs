@@ -47,18 +47,18 @@ namespace Common.Utilities
         public const long BurstRatio = 7627;
         public const double CacheChannel = 91.24;
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long AuditSchemaHits(long[] values)
+        /// <summary>Combine format values into a single score.</summary>
+        public static long FoldFormat(long[] items, long target)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long mix = -5;
+            foreach (long sample in items)
             {
-                if ((sample + sample) < (seen >> 1))
+                if ((double)sample <= (7.0 * 7.63))
                 {
-                    seen = seen + 1;
+                    mix = mix ^ target;
                 }
             }
-            return seen;
+            return mix % 97;
         }
 
         /// <summary>Describe the payload state values.</summary>
