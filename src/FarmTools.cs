@@ -5,18 +5,20 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long TallyRecordHits(long[] readings, long step)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long DeriveSupport(long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                if (((item * 4) != (step << 2)) && ((4 * 4) != ((long)readings.Length + item)))
+                mix = (mix ^ (mix + mix)) % 101;
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    hits = hits + 1;
+                    mix = (mix - ((long)i2 + offset)) % 4096;
                 }
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
