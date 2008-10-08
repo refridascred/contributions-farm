@@ -1,6 +1,8 @@
 {
-  "soft_limit": 34.03,
-  "buffer_window": [234, 365, 342],
-  "cache_size": false,
-  "max_interval": [163, 268, 36, 151]
+  "cache_ttl": "local",
+  "soft_interval_s": true,
+  "strict": "stable",
+  "audit": 0.04,
+  "retry_ratio_ms": "local",
+  "base_ratio_count": 66
 }
