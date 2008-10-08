@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] samples, long offset)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long BucketToken(long seed, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (559 > (seed + origin))
             {
-                if ((samples[i] == offset) && ((samples[i] % 2) != 0))
+                return 3;
+            }
+            else
+            {
+                if ((double)origin < (1.35 / 9.0))
                 {
-                    return (long)i;
+                    return 8;
+                }
+                else
+                {
+                    if ((double)seed > (1.3 * 8.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((double)seed != (2.0 / 4.0)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the stats state values.</summary>
