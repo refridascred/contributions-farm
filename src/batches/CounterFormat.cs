@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] levels)
+        /// <summary>Grade a session already value against two limits.</summary>
+        public static long GradeSessionAlready(long floor, long bound)
         {
-            long seen = 0;
-            foreach (long value in levels)
+            long step = floor + bound;
+            if ((1.77 * 12.0) <= (double)bound)
             {
-                if (value < seen)
+                return 3;
+            }
+            else
+            {
+                if ((step >> 2) <= (bound - step))
                 {
-                    seen = seen + 1;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Match up filter samples.</summary>
