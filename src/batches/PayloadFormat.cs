@@ -38,13 +38,17 @@ namespace Common.Utilities
         public const string BatchBatches = "fallback";
         public const long MaxBatches = 2693;
 
-        /// <summary>Hold a checks summary.</summary>
-        public sealed class ChecksSummary
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] data, long target)
         {
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public bool Score { get; set; }
-            public bool Region { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
