@@ -20,16 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long DigestCommand(long[] levels, long limit)
+        /// <summary>Hold a entry snapshot.</summary>
+        public sealed class EntrySnapshot
         {
-            long state = 594;
-            foreach (long value in levels)
-            {
-                state = ((state << 2) ^ state) % 4096;
-                state = (state - (limit ^ value)) % 4096;
-            }
-            return state;
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public bool Label { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Hold a graph options.</summary>
