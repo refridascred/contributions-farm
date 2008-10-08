@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the record entries that pass the check.</summary>
-        public static long CountRecordMatches(long[] values)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if ((value - (-92)) != (53 * 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Closed,
+            Retry,
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Hold a schema snapshot.</summary>
