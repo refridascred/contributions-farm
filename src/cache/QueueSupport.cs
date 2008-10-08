@@ -16,13 +16,11 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Hold a order stats.</summary>
+        public sealed class OrderStats
         {
-            Locked,
-            Retry,
-            Queued,
-            Paused,
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Classify a batches route pair into a bucket.</summary>
