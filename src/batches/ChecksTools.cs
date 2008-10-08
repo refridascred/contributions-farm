@@ -5,19 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileBounds(long[] data, long origin)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double AdjustFarm(double gain, double floor)
         {
-            bool stale = true;
-            foreach (long entry in data)
+            double drift = (17.0 / 4.0) / 4.0;
+            if (drift > gain)
             {
-                if (entry >= origin)
-                {
-                    stale = false;
-                    break;
-                }
+                drift = drift + floor;
             }
-            return stale;
+            else
+            {
+                drift = drift + floor;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift + (floor + drift)) + (double)(long)i;
+            }
+            return drift + gain;
         }
 
         /// <summary>Scale a command figure with a bias.</summary>
