@@ -39,38 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long limit, long limit2)
+        /// <summary>Describe the commits state values.</summary>
+        public enum CommitsState
         {
-            if (!((limit2 ^ limit2) > (limit2 - limit2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (limit > (limit % 10))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)limit2 >= (double)limit)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (!((limit + limit) > (limit2 % 3)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Retry,
+            Idle,
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
