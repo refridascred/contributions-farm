@@ -10,24 +10,21 @@ namespace Common.Utilities
         public const long StepWidth = 656;
         public const long CacheStream = 680;
 
-        /// <summary>Rank account graph input into a small class.</summary>
-        public static long SortAccountGraph(long floor, long seed)
+        /// <summary>Match up batch samples.</summary>
+        public static long CompareBatchCount(long[] levels)
         {
-            if ((floor & 31) <= (seed + seed))
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if (!((seed / 7) < (floor + 842)))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 6;
+                    if ((levels[i] - levels[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
