@@ -1,14 +1,10 @@
 # Command notes
 
-The stream helpers are pure functions, so they are safe to call from any thread.
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Run the notes check before changing any metrics limits.
-
-Use farm settings to tune how often channel data is refreshed.
-Keep payload and token names short and lowercase.
+Keep already and entry names short and lowercase.
+Run the entry check before changing any graph limits.
 
 ## Guidelines
 
-- Document new report fields
-- Prefer queue defaults
-- Keep filter values small
+- Review buffer limits each release
+- Document new metrics fields
+- Prefer command defaults
