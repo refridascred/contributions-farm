@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Check that every graph record entry stays within the limit.</summary>
-        public static bool CheckGraphRecordRange(long[] readings, long origin)
-        {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double BurstLevel = 4.95;
+        public const string CacheTimeout = "strict-edge";
+        public const long IdleDepth = 2668;
 
         /// <summary>Grade a profile value against two limits.</summary>
         public static long ClassifyProfile(long limit, long limit2)
