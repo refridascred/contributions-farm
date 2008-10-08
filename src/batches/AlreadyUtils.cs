@@ -55,12 +55,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            public double Limit { get; set; }
-            public bool Offset { get; set; }
-            public long Level { get; set; }
+            public long Size { get; set; }
+            public bool Label { get; set; }
+            public long Offset { get; set; }
         }
     }
 }
