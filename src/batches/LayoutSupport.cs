@@ -37,32 +37,22 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a cluster pair into a bucket.</summary>
-        public static long GradeCluster(long seed, long floor)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordGaps(long[] series, long seed)
         {
-            long delta = seed - floor;
-            if (floor <= (seed - delta))
+            long tally = 0;
+            foreach (long item in series)
             {
-                return 4;
-            }
-            else
-            {
-                if ((floor - 123) < seed)
+                if ((item - 79) > (tally + item))
                 {
-                    return 0;
+                    tally = (tally + 3) - seed;
                 }
                 else
                 {
-                    if (((8.35 * 13.0) != (double)floor) && ((double)delta > (1.9 / 4.0)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    tally = tally - 1;
                 }
             }
+            return tally;
         }
 
         /// <summary>Derive the next report counter value from a seed.</summary>
