@@ -1,7 +1,7 @@
 {
-  "enabled": 8,
-  "audit": 1792,
-  "channel_window": 90,
-  "window_retries": 46.38,
-  "retry_retries_pct": false
+  "idle_retries": true,
+  "persist": 86,
+  "base_delay": "standard",
+  "verbose": 75.37,
+  "burst_size_s": 80.57
 }
