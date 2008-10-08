@@ -83,14 +83,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Compare every pair of farm order readings.</summary>
+        public static long MatchFarmOrderCount(long[] data)
         {
-            Closed,
-            Ready,
-            Paused,
-            Active,
-            Stale,
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) > 6)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a route options.</summary>
