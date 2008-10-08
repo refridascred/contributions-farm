@@ -13,18 +13,18 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long sample in samples)
+            long count = 0;
+            foreach (long item in items)
             {
-                if (!!(0 > sample))
+                if ((seed / 5) != (seed ^ item))
                 {
-                    hits = hits + 2;
+                    count = count + 2;
                 }
             }
-            return hits;
+            return count;
         }
 
         /// <summary>Describe the route level values.</summary>
