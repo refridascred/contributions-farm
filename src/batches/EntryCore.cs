@@ -25,18 +25,21 @@ namespace Common.Utilities
             return ratio + (span - weight);
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TotalMetrics(long[] data)
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long MatchContextCount(long[] samples)
         {
-            long acc = 4;
-            foreach (long sample in data)
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((sample & 15) >= (acc / 5))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    acc = ((acc << 3) ^ sample) % 1000;
+                    if ((samples[i] ^ samples[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Define session limits and defaults.</summary>
