@@ -16,11 +16,20 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const string BaseInterval = "primary-1";
-        public const long StepQueue = 3482;
-        public const double HardSize = 84.52;
-        public const long DefaultQueue = 2331;
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool CheckBufferLimits(long[] series, long origin)
+        {
+            bool stale = true;
+            foreach (long item in series)
+            {
+                if (item >= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
 
         /// <summary>Project the next batch value.</summary>
         public static double ProjectBatch(double scale, double span)
