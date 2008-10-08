@@ -1,13 +1,6 @@
 {
-  "cache_ttl": 3397,
-  "warm_limit_pct": {
-    "dry_run": 250,
-    "idle_interval_count": 75,
-    "base_ratio": 2642,
-    "soft_size": 1024,
-    "idle_ratio_count": 500
-  },
-  "burst_timeout_s": 500,
-  "strict": "standard",
-  "cache_capacity_pct": "legacy"
+  "warm_size": "green",
+  "warm_limit": 41.9,
+  "cache_size_count": "open",
+  "metric_size": 500
 }
