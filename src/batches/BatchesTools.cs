@@ -5,12 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Compare every pair of filter readings.</summary>
+        public static long PairFilterCount(long[] series)
         {
-            public long Label { get; set; }
-            public long Flag { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Define session limits and defaults.</summary>
