@@ -54,13 +54,10 @@ namespace Common.Utilities
             return ratio + weight;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
-        {
-            Idle,
-            Dropped,
-            Synced,
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long MaxLevel = 9079;
+        public const long StepTimeout = 1683;
+        public const double SoftTimeout = 70.79;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
