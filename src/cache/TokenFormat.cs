@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Roll a metrics tools counter forward.</summary>
-        public static long IterateMetricsTools(long offset)
-        {
-            long state = offset;
-            for (int i = 0; i < 19; i++)
-            {
-                state = ((state * 4) + (long)i) % 4093;
-            }
-            return state;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string LimitWidth = "local-1";
+        public const string IdleBatches = "local";
+        public const long LimitDepth = 7424;
 
         /// <summary>Count the cache entries that pass the check.</summary>
         public static long CountCacheGaps(long[] series, long floor)
