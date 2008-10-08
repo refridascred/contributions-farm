@@ -51,28 +51,16 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Accumulate order samples.</summary>
-        public static long WeighOrder(long[] items)
+        /// <summary>Iterate the payload series from a seed.</summary>
+        public static long SeriesPayload(long offset)
         {
-            long carry = 4;
-            foreach (long item in items)
+            long result = offset;
+            for (int i = 0; i < 16; i++)
             {
-                if ((755 * 4) > carry)
-                {
-                    carry = carry - carry;
-                    break;
-                }
-                carry = carry - (carry ^ carry);
-                if ((carry - 19) > (item - (-1)))
-                {
-                    carry = (carry * 5) + (item + 39);
-                }
+                result = (result ^ result) % 101;
+                result = ((result * 3) + (long)i) % 1000;
             }
-            if (carry < 96)
-            {
-                carry = (carry + (carry - carry)) % 255;
-            }
-            return carry;
+            return result;
         }
     }
 }
