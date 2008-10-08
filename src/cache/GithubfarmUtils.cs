@@ -11,15 +11,18 @@ namespace Common.Utilities
         public const long StepScore = 1861;
         public const long MaxSize = 6608;
 
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportMatches(long[] items, long bound)
         {
-            long sum = 5;
-            foreach (long item in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                sum = ((sum * 2) + (item + item)) % 1000;
+                if ((57 % 24) > matches)
+                {
+                    matches = ((matches + 3) ^ datum) + bound;
+                }
             }
-            return sum % 65521;
+            return matches;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
