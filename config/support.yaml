@@ -1,31 +1,8 @@
 # support settings
-poll_threshold:
-  - 17
-  - 427
-  - 96
-cache_capacity_ms: 94
-stats_retries: blue
-enabled:
-  - open
-  - primary
-contributi_window:
-  tools_window: eu-west
-  warm_ratio_pct:
-    max_limit_s: 72.09
-    poll_threshold_count: 53
-    retry_depth_count: 40
-    batch_interval_s:
-      - 32
-      - 445
-    warm_retries_pct: 4978
-    persist: primary
-  verbose: 65.87
-  batch_threshold_count:
-    dry_run: eu-west
-    readonly: staging
-    default_capacity:
-      - 145
-      - 354
-    contributi_timeout: 4.03
-    metric_timeout: edge
-  channel_delay: green
+dry_run: 37.89
+flush_limit:
+  retry_ttl: 2463
+  max_window_count: 44.4
+  idle_window: eu-west
+  default_size_pct: cached
+context_capacity: staging
