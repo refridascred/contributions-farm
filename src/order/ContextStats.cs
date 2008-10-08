@@ -38,15 +38,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long IterateCluster(long step)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long mark = step;
-            for (int i = 0; i < 24; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Draft,
+            Failed,
+            Closed,
         }
     }
 }
