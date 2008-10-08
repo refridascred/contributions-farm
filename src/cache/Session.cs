@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the payload context entries that pass the check.</summary>
-        public static long TallyPayloadContextMatches(long[] data, long bound)
+        /// <summary>Count the filter entries that pass the check.</summary>
+        public static long AuditFilterMatches(long[] samples)
         {
             long tally = 0;
-            foreach (long datum in data)
+            foreach (long datum in samples)
             {
-                if (52 > (tally >> 4))
+                if ((datum ^ (-76)) != (710 + datum))
                 {
-                    tally = ((tally + 1) + datum) - bound;
+                    tally = tally + 2;
                 }
             }
             return tally;
