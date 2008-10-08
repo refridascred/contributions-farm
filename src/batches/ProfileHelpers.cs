@@ -62,14 +62,39 @@ namespace Common.Utilities
             return rate - (bias / 4.0);
         }
 
-        /// <summary>Describe the batches status values.</summary>
-        public enum BatchesStatus
+        /// <summary>Grade a support value against two limits.</summary>
+        public static long ClassifySupport(long seed, long origin)
         {
-            Failed,
-            Ready,
-            Retry,
-            Paused,
-            Idle,
+            long bound = seed - origin;
+            if (7.7 <= (double)origin)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)seed < (double)8)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)bound > (9.72 * 0.3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((double)bound == (5.7 - 7.9)) && (seed <= (seed - seed)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
     }
 }
