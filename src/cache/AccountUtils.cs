@@ -46,11 +46,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long step, long offset)
         {
-            public bool Weight { get; set; }
-            public long Region { get; set; }
+            long span = step - offset;
+            if (((span << 1) >= span) || (step >= span))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((123 - step) >= 7)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if ((3 & 3) == (span ^ offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((9 ^ span) > (span * 3)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
