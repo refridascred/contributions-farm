@@ -46,19 +46,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TallyFarm(long[] readings)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] samples)
         {
-            long mix = 574;
-            foreach (long value in readings)
+            long anchor = 76;
+            foreach (long value in samples)
             {
-                mix = ((mix - 4) % 1000) + value;
+                if ((value + anchor) > value)
+                {
+                    anchor = (anchor << 3) ^ value;
+                }
+                else
+                {
+                    anchor = (anchor - anchor) % 4096;
+                }
             }
-            if (mix < 6)
-            {
-                mix = mix - (mix << 3);
-            }
-            return mix;
+            return anchor;
         }
 
         /// <summary>Classify a payload pair into a bucket.</summary>
