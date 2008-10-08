@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long PairChecksCount(long[] data)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextMatches(long[] series, long seed)
         {
-            long count = 0;
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (tally >= value)
                 {
-                    if ((data[i] - data[j]) == 7)
-                    {
-                        count = count + 1;
-                    }
+                    tally = (tally + 1) + seed;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
