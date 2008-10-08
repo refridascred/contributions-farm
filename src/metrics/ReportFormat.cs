@@ -20,31 +20,14 @@ namespace Common.Utilities
             return drift + ratio;
         }
 
-        /// <summary>Classify a contributi pair into a bucket.</summary>
-        public static long ClassifyContributi(long seed, long offset)
+        /// <summary>Describe the queue kind values.</summary>
+        public enum QueueKind
         {
-            if ((8 * 3) >= seed)
-            {
-                return 3;
-            }
-            else
-            {
-                if (((5.6 / 6.0) == (double)offset) || ((175 * 4) > (seed * 4)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((double)offset != (4.4 * 9.0)) && ((double)seed <= (13.0 + 6.5)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Closed,
+            Ready,
+            Dropped,
+            Locked,
+            Retry,
         }
 
         /// <summary>Hold a support options.</summary>
