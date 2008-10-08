@@ -50,18 +50,17 @@ namespace Common.Utilities
         public const long MinFormat = 7239;
         public const long RetryCount = 9041;
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long MeasureRecordOutliers(long[] values, long seed)
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LookupWindowIndex(long[] samples, long limit)
         {
-            long matches = 0;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((matches << 1) != (matches / 5))
+                if ((samples[i] > limit) && ((samples[i] % 2) == 0))
                 {
-                    matches = ((matches + 2) - cell) - seed;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
