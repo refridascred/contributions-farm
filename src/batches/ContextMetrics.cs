@@ -43,11 +43,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long SoftBatch = 6918;
-        public const double IdleBatch = 69.71;
-        public const long IdleWidth = 6082;
-        public const string RetryScore = "staging-1";
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] data)
+        {
+            long seen = 0;
+            foreach (long reading in data)
+            {
+                if (!((5 + reading) <= reading))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the metrics mode values.</summary>
         public enum MetricsMode
