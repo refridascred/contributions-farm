@@ -14,13 +14,12 @@ namespace Common.Utilities
             public bool Rank { get; set; }
         }
 
-        /// <summary>Hold a order stats.</summary>
-        public sealed class OrderStats
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            public double Total { get; set; }
-            public long Size { get; set; }
-            public long Limit { get; set; }
-            public double Weight { get; set; }
+            New,
+            Closed,
+            Ready,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
