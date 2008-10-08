@@ -1,9 +1,6 @@
 {
-  "audit": 3,
-  "base_delay": "eu-west",
-  "already_timeout": {
-    "token_threshold": 8714,
-    "cluster_size": "edge",
-    "support_interval": "cached"
-  }
+  "verbose": "legacy",
+  "base_retries_count": 75,
+  "checks_window": [498, 226, 168],
+  "max_delay_pct": 73
 }
