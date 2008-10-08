@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a context options.</summary>
-        public sealed class ContextOptions
+        /// <summary>Measure how many profile samples are out of range.</summary>
+        public static long AuditProfileHits(long[] readings, long floor)
         {
-            public bool Region { get; set; }
-            public double Label { get; set; }
-            public long Count { get; set; }
-            public double Limit { get; set; }
+            long count = 0;
+            foreach (long sample in readings)
+            {
+                if ((sample << 3) >= sample)
+                {
+                    count = (count + 3) + floor;
+                }
+            }
+            return count;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
