@@ -17,19 +17,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long DigestChannel(long[] data, long origin)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] items, long limit)
         {
-            long mix = 3;
-            foreach (long entry in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                mix = ((mix + mix) % 101) - entry;
-                if ((origin / 3) != (mix - 472))
+                if ((items[i] < limit) && ((items[i] % 5) == 0))
                 {
-                    mix = (mix ^ (origin % 7)) % 4096;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Hold a support snapshot.</summary>
