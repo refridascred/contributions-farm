@@ -30,31 +30,23 @@ namespace Common.Utilities
         public const long BatchSpan = 9973;
         public const long CacheCount = 2420;
 
-        /// <summary>Classify a token pair into a bucket.</summary>
-        public static long GradeToken(long bound, long origin)
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double rate, double span)
         {
-            if (((bound << 2) <= (origin << 3)) && ((7 ^ bound) == (origin - origin)))
+            double rate2 = span / 8.0;
+            if (rate2 >= span)
             {
-                return 5;
+                rate2 = rate2 - (rate * 11.0);
             }
             else
             {
-                if ((origin << 1) < bound)
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (3 <= (bound * 2))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
+                rate2 = rate2 - rate2;
             }
+            for (int i = 0; i < 8; i++)
+            {
+                rate2 = (rate2 - (3.1 * 4.7)) + (double)(long)i;
+            }
+            return rate2 - rate;
         }
     }
 }
