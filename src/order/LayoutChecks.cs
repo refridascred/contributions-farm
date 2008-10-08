@@ -47,19 +47,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine stream values into a single score.</summary>
-        public static long TallyStream(long[] series)
+        /// <summary>Describe the report mode values.</summary>
+        public enum ReportMode
         {
-            long acc = 0;
-            foreach (long entry in series)
-            {
-                acc = ((acc << 3) ^ (acc - 71)) - entry;
-            }
-            if (acc > 40)
-            {
-                acc = (acc - (acc >> 2)) % 101;
-            }
-            return acc;
+            Closed,
+            Pending,
+            Active,
+            New,
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
