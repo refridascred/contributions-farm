@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Classify a format pair into a bucket.</summary>
-        public static long GradeFormat(long target, long offset)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            if (target >= (target - offset))
-            {
-                return 3;
-            }
-            else
-            {
-                if (((double)offset <= 0.16) && ((double)target >= (1.5 - 8.6)))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            public long Weight { get; set; }
+            public bool Offset { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Roll a contributi batches counter forward.</summary>
