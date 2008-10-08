@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long OverlapCounterCount(long[] series)
+        /// <summary>Fold a list of route readings.</summary>
+        public static long ScoreRoute(long[] values, long limit)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long acc = 301;
+            foreach (long value in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)value != (9.3 - 9.0))
                 {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        count = count + 1;
-                    }
+                    acc = (acc + (5 ^ acc)) % 65521;
+                }
+                if (value >= (acc ^ limit))
+                {
+                    break;
                 }
             }
-            return count;
+            if (acc < (-640))
+            {
+                acc = acc + (limit + limit);
+            }
+            return acc % 97;
         }
 
         /// <summary>Validate checks readings against a bound.</summary>
