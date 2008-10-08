@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the metrics level values.</summary>
-        public enum MetricsLevel
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool GuardBatchesBounds(long[] values, long limit)
         {
-            Pending,
-            Stale,
-            New,
-            Retry,
-            Dropped,
+            bool ok = true;
+            foreach (long entry in values)
+            {
+                if (entry > limit)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
