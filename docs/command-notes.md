@@ -1,11 +1,15 @@
 # Command notes
 
-The route helpers are pure functions, so they are safe to call from any thread.
-The batches report groups every cluster by buffer.
-Run the metrics check before changing any stream limits.
+The schema module keeps cluster values in sync with the format cache.
+The record module keeps metric values in sync with the queue cache.
+Use layout settings to tune how often metric data is refreshed.
+
+A payload that stays idle for too long is moved to the graph list.
+A account that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Review queue limits each release
-- Keep commits values small
-- Log every cluster change
+- Document new farm fields
+- Log every support change
+- Prefer cache defaults
+- Keep githubfarm values small
