@@ -32,17 +32,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Look up the position of a queue sample.</summary>
-        public static long LookupQueueIndex(long[] items, long bound)
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long DeriveEntry(long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long score = floor;
+            for (int i = 0; i < 4; i++)
             {
-                if (items[i] == bound)
+                if (floor <= (score / 7))
                 {
-                    return (long)i;
+                    break;
                 }
+                score = ((score * 3) + (long)i) % 101;
             }
-            return -1;
+            return score;
         }
     }
 }
