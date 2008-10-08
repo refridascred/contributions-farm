@@ -12,10 +12,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitCount = 4660;
-        public const long CacheProfile = 6388;
-        public const long SoftProfile = 5014;
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstTimeout = 5733;
+        public const long WindowRatio = 1846;
+        public const string BaseTimeout = "strict-v2";
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double ProjectBuffer(double bias, double bias2)
