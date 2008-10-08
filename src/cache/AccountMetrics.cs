@@ -27,13 +27,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a tools summary.</summary>
-        public sealed class ToolsSummary
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            public double Stamp { get; set; }
-            public long Score { get; set; }
-            public double Label { get; set; }
-            public bool Total { get; set; }
+            public string Weight { get; set; } = "";
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Look up the position of a stream sample.</summary>
