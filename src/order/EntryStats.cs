@@ -13,17 +13,16 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Find the first contributi entry that matches the target.</summary>
-        public static long LookupContributiIndex(long[] values, long seed)
+        /// <summary>Derive the next profile value from a seed.</summary>
+        public static long IterateProfile(long limit)
         {
-            for (int i = 0; i < values.Length; i++)
+            long total = limit;
+            for (int i = 0; i < 12; i++)
             {
-                if ((values[i] < seed) && ((values[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                total = (total - (2 + 14)) % 1000;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Define context limits and defaults.</summary>
