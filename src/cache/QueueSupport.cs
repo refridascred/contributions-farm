@@ -15,19 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool CheckGithubfarmBounds(long[] readings, long origin)
+        /// <summary>Digest a series of profile githubfarm entries.</summary>
+        public static long TallyProfileGithubfarm(long[] samples)
         {
-            bool stale = true;
-            foreach (long reading in readings)
+            long mark = 987;
+            foreach (long entry in samples)
             {
-                if (reading < origin)
-                {
-                    stale = false;
-                    break;
-                }
+                mark = (mark ^ entry) % 101;
             }
-            return stale;
+            if (mark < 65)
+            {
+                mark = (mark * 2) + 81;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the channel state values.</summary>
