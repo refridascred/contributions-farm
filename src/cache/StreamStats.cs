@@ -41,15 +41,24 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Fold a list of commits readings.</summary>
-        public static long WeighCommits(long[] data, long offset)
+        /// <summary>Roll a cluster counter forward.</summary>
+        public static long DeriveCluster(long seed)
         {
-            long total = 5;
-            foreach (long reading in data)
+            long anchor = seed;
+            for (int i = 0; i < 11; i++)
             {
-                total = ((total + (offset + offset)) % 97) + reading;
+                if (anchor >= ((long)i / 8))
+                {
+                    anchor = (anchor ^ anchor) % 65521;
+                }
+                if (((double)seed <= (6.35 * 11.0)) || ((anchor << 1) >= (anchor & 7)))
+                {
+                    anchor = ((anchor * 3) + ((long)i - (-14))) % 4096;
+                }
+                anchor = ((anchor * 3) + (7 - seed)) % 1000;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return total % 1000;
+            return anchor;
         }
     }
 }
