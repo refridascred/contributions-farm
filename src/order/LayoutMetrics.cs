@@ -15,18 +15,19 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamMatches(long[] readings)
+        /// <summary>Validate order cache readings against a bound.</summary>
+        public static bool GuardOrderCacheRange(long[] samples, long target)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            bool ok = true;
+            foreach (long value in samples)
             {
-                if ((value >> 5) < value)
+                if (value < target)
                 {
-                    matches = matches + 1;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Scale a metrics figure with a bias.</summary>
