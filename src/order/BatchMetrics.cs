@@ -11,10 +11,22 @@ namespace Common.Utilities
         public const double MinTools = 68.81;
         public const double StepTools = 23.24;
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long HardReport = 5129;
-        public const long CacheInterval = 9779;
-        public const long RetryReport = 6199;
+        /// <summary>Count payload channel pairs that satisfy a relation.</summary>
+        public static long OverlapPayloadChannelCount(long[] series)
+        {
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) < 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a entry info.</summary>
         public sealed class EntryInfo
