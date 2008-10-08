@@ -1,21 +1,5 @@
 # githubfarm settings
-channel_timeout: true
-already_ratio: primary
-dry_run:
-  retry_window: 60
-  entry_size: 4
-  readonly: true
-  audit: strict
-  soft_depth_pct:
-    dry_run: true
-    verbose: 94.66
-    min_retries:
-      - staging
-      - blue
-      - legacy
-      - open
-    stream_window: 7.57
-  token_interval: 76.44
-compress: 14.77
-base_threshold_pct: open
-channel_ttl: staging
+readonly: strict
+min_depth: false
+queue_depth: true
+max_size_ms: false
