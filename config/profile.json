@@ -1,7 +1,7 @@
 {
-  "persist": ["strict", "staging", "standard"],
-  "batch_interval_ms": ["standard", "edge", "latest", "open"],
-  "window_timeout": "local",
-  "max_window": "strict",
-  "base_retries_ms": 33.76
+  "command_interval": "staging",
+  "base_depth_pct": "eu-west",
+  "format_threshold": 33.86,
+  "warm_threshold_s": "fallback",
+  "flush_delay": true
 }
