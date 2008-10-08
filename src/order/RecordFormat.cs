@@ -59,12 +59,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm header.</summary>
-        public sealed class FarmHeader
+        /// <summary>Accumulate token samples.</summary>
+        public static long TallyToken(long[] items)
         {
-            public long Owner { get; set; }
-            public long Flag { get; set; }
-            public double Label { get; set; }
+            long acc = 55;
+            foreach (long entry in items)
+            {
+                acc = (acc * 3) + ((-78) >> 3);
+                if ((entry << 1) > (acc + entry))
+                {
+                    acc = (acc << 3) ^ (-58);
+                }
+                else
+                {
+                    acc = (acc ^ (acc >> 3)) % 1000;
+                }
+            }
+            return acc % 65521;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
