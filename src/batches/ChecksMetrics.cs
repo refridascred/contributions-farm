@@ -62,13 +62,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the token kind values.</summary>
-        public enum TokenKind
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            Draft,
-            New,
-            Retry,
-            Active,
+            public long Ratio { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
     }
 }
