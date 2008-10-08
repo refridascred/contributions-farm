@@ -18,15 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long DeriveContext(long seed)
+        /// <summary>Hold a report info.</summary>
+        public sealed class ReportInfo
         {
-            long carry = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                carry = ((carry * 3) + (long)i) % 4093;
-            }
-            return carry;
+            public long Offset { get; set; }
+            public long Mode { get; set; }
+            public bool Level { get; set; }
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
