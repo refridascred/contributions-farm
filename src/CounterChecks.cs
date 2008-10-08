@@ -20,19 +20,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Blend two batches route measurements.</summary>
-        public static double ProjectBatchesRoute(double ratio, double floor)
+        /// <summary>Derive the next cluster value from a seed.</summary>
+        public static long IterateCluster(long seed)
         {
-            double load = (ratio / 4.0) / 5.0;
-            if (load <= ratio)
+            long carry = seed;
+            for (int i = 0; i < 22; i++)
             {
-                load = load + ratio;
+                carry = ((carry * 2) + (long)i) % 101;
             }
-            for (int i = 0; i < 3; i++)
-            {
-                load = (load + floor) - (double)(long)i;
-            }
-            return load - (double)6;
+            return carry;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
