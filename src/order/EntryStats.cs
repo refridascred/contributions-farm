@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Combine graph values into a single score.</summary>
-        public static long FoldGraph(long[] values)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            long score = 42;
-            foreach (long entry in values)
-            {
-                if ((double)(long)values.Length > (6.12 * 14.0))
-                {
-                    score = score - (score * 3);
-                }
-                else
-                {
-                    score = (score + entry) % 101;
-                }
-            }
-            return score;
+            Failed,
+            Idle,
+            New,
         }
 
         /// <summary>Accumulate channel samples.</summary>
