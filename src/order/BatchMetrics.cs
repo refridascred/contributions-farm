@@ -29,22 +29,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of commits payload entries.</summary>
-        public static long TotalCommitsPayload(long[] readings, long origin)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long carry = 183;
-            foreach (long sample in readings)
-            {
-                if ((3 >= (sample % 10)) && (527 >= sample))
-                {
-                    carry = carry + origin;
-                }
-            }
-            if (carry > 24)
-            {
-                carry = (carry ^ origin) % 97;
-            }
-            return carry;
+            public string Token { get; set; } = "";
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Define checks limits and defaults.</summary>
