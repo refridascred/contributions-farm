@@ -60,10 +60,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long MinContributi = 6860;
-        public const string DefaultTimeout = "standard-edge";
-        public const long BatchFactor = 4729;
-        public const long BaseLevel = 8225;
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
+        {
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public long Level { get; set; }
+        }
     }
 }
