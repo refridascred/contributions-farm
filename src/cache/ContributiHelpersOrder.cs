@@ -37,9 +37,17 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long DefaultSize = 5851;
-        public const long MinSpan = 1201;
-        public const long DefaultContext = 8280;
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long LocatePayloadIndex(long[] levels, long seed)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
