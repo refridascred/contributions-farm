@@ -1,13 +1,6 @@
 {
-  "batch_threshold": "blue",
-  "burst_threshold_count": {
-    "window_capacity": "local",
-    "enabled": 500,
-    "readonly": "local",
-    "cache_capacity_pct": ["cached", "fallback"],
-    "batch_timeout": true
-  },
-  "retry_timeout_pct": [351, 136, 442, 470],
-  "max_ttl_pct": 80.39,
-  "audit": 500
+  "base_ttl_ms": [212, 385],
+  "cache_depth": true,
+  "max_capacity_s": "primary",
+  "max_threshold_count": ["latest", "edge", "staging"]
 }
