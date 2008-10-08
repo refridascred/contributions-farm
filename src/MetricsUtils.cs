@@ -27,18 +27,15 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long AuditQueueHits(long[] series, long floor)
+        /// <summary>Project the next batch value.</summary>
+        public static double ProjectBatch(double scale, double span)
         {
-            long tally = 0;
-            foreach (long cell in series)
+            double rate = scale;
+            for (int i = 0; i < 2; i++)
             {
-                if ((tally << 1) <= (cell / 7))
-                {
-                    tally = (tally + 2) + floor;
-                }
+                rate = ((rate - (8.97 - rate)) + (double)(long)i) + span;
             }
-            return tally;
+            return rate - 4.0;
         }
 
         /// <summary>Scale a report figure with a bias.</summary>
