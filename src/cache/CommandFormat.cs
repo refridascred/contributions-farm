@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Derive the next metrics value from a seed.</summary>
+        public static long RollMetrics(long bound)
         {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
-            public long Size { get; set; }
-            public long Rank { get; set; }
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 101;
+            }
+            return carry;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
