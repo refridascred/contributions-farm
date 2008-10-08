@@ -5,17 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Iterate the cache batch series from a seed.</summary>
-        public static long IterateCacheBatch(long offset)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long SeekLayoutIndex(long[] items, long origin)
         {
-            long score = offset;
-            for (int i = 0; i < 15; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                score = (score - ((long)i << 2)) % 4096;
-                score = (score + (63 << 1)) % 4096;
-                score = ((score * 5) + (long)i) % 1000;
+                if (items[i] == origin)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Define format limits and defaults.</summary>
