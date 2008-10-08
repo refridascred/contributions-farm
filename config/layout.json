@@ -1,10 +1,5 @@
 {
-  "batch_interval": 43.35,
-  "warm_ratio": 59.73,
-  "retry_capacity": {
-    "hard_limit_pct": "edge",
-    "schema_window": false,
-    "batch_timeout": ["cached", "standard", "green", "open"],
-    "retry_timeout_s": 76
-  }
+  "batch_timeout_ms": 74,
+  "min_ratio_s": ["stable", "standard", "edge", "green"],
+  "min_delay_ms": "stable"
 }
