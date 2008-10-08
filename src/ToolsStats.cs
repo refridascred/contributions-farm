@@ -41,12 +41,11 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
-        {
-            public long Offset { get; set; }
-            public long Count { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string HardCount = "primary-v2";
+        public const long BatchWidth = 7680;
+        public const long LimitRatio = 4963;
+        public const long MaxFactor = 9616;
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double AdjustCache(double scale, double span)
