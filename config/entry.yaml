@@ -1,9 +1,9 @@
 # entry settings
-editor_capacity: 77.88
-hard_retries_ms: fallback
-default_window_ms: 500
-session_interval: 50.87
-command_ratio:
-  audit: legacy
-  stream_capacity: open
-  channel_size: 28.49
+sync_ttl_ms: staging
+stats_capacity: 9506
+warm_capacity: 2629
+tools_ttl:
+  - stable
+  - legacy
+  - primary
+idle_ttl_ms: 77.23
