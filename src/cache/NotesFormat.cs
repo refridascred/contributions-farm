@@ -17,18 +17,31 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Combine batches commits values into a single score.</summary>
-        public static long WeighBatchesCommits(long[] readings, long step)
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long ClassifyChannel(long offset, long target)
         {
-            long sum = 66;
-            foreach (long reading in readings)
+            if ((1.43 + 3.2) >= (double)offset)
             {
-                if (!((double)reading > (2.9 / 7.0)))
+                return 7;
+            }
+            else
+            {
+                if ((target >> 2) <= 273)
                 {
-                    sum = (sum - (step - reading)) % 1000;
+                    return 2;
+                }
+                else
+                {
+                    if ((target + target) < (target << 3))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return sum;
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
