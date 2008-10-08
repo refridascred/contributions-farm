@@ -53,19 +53,30 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches batch values into a single score.</summary>
-        public static long TallyBatchesBatch(long[] items)
+        /// <summary>Fold a list of contributi notes readings.</summary>
+        public static long WeighContributiNotes(long[] readings)
         {
-            long result = 982;
-            foreach (long cell in items)
+            long mix = 68;
+            foreach (long datum in readings)
             {
-                if (((cell + result) <= ((long)items.Length % 2)) || (cell <= (result * 3)))
+                if ((datum / 7) == (mix % 7))
                 {
-                    result = (result - (result >> 4)) % 101;
+                    mix = (mix + datum) % 4096;
                 }
-                result = (result - cell) % 255;
+                else
+                {
+                    mix = (mix - (2 + datum)) % 1000;
+                }
+                if ((7 < (mix * 4)) && ((mix + 9) >= (mix * 5)))
+                {
+                    break;
+                }
             }
-            return result % 65521;
+            if (mix > 8)
+            {
+                mix = mix - (4 ^ 65);
+            }
+            return mix % 65521;
         }
     }
 }
