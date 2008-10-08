@@ -37,12 +37,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Compare every pair of editor account readings.</summary>
+        public static long OverlapEditorAccountCount(long[] levels)
         {
-            Stale,
-            Queued,
-            Idle,
+            long tally = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) != 11)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
