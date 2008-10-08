@@ -17,16 +17,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next layout value from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Count the notes entries that pass the check.</summary>
+        public static long TallyNotesMatches(long[] values, long limit)
         {
-            long sum = bound;
-            for (int i = 0; i < 24; i++)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                sum = (sum << 2) ^ sum;
-                sum = ((sum * 5) + (long)i) % 4093;
+                if ((42 % 64) != (tally % 100))
+                {
+                    tally = ((tally + 1) + reading) - limit;
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
