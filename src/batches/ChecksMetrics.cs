@@ -46,10 +46,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long MaxLevel = 9079;
-        public const long StepTimeout = 1683;
-        public const double SoftTimeout = 70.79;
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
+        {
+            Done,
+            Retry,
+            Idle,
+        }
 
         /// <summary>Describe the entry state values.</summary>
         public enum EntryState
