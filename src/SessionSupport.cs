@@ -34,24 +34,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank githubfarm stats input into a small class.</summary>
-        public static long ClassifyGithubfarmStats(long origin, long floor)
+        /// <summary>Digest a series of checks entries.</summary>
+        public static long DigestChecks(long[] series, long target)
         {
-            if ((origin + origin) > floor)
+            long mark = 6;
+            foreach (long entry in series)
             {
-                return 1;
+                mark = ((mark ^ mark) + entry) - target;
             }
-            else
+            if (mark < 1)
             {
-                if ((floor + floor) > (801 - origin))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 0;
-                }
+                mark = ((mark * 4) + 523) % 4096;
             }
+            return mark % 1000;
         }
     }
 }
