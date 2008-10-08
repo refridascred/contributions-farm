@@ -1,31 +1,15 @@
 # support settings
-cache_retries:
-  githubfarm_window: primary
-  poll_interval:
-    - 84
-    - 200
-    - 298
-  enabled: 98.78
-  min_depth_count:
-    warm_ratio_s: 250
-    strict: edge
-    soft_ttl: 7504
-    default_interval: primary
-    poll_threshold:
-      - cached
-      - primary
-      - edge
-  verbose: 8959
-  poll_window_count: latest
-burst_ratio_count:
-  - strict
-  - blue
-  - local
-  - fallback
-base_depth_ms: 7781
-cache_threshold: primary
-checks_delay:
-  - 147
-  - 166
-  - 114
-base_interval_pct: 8.18
+batches_interval:
+  warm_capacity_count: true
+  soft_retries_s:
+    warm_depth_count: 57
+    idle_threshold: green
+    idle_window_ms: 7
+  context_depth: 19
+  poll_timeout_pct: true
+  default_limit: 250
+  poll_delay_ms: blue
+max_timeout_ms: 86
+sync_interval_s: false
+persist: 30
+enabled: 43.89
