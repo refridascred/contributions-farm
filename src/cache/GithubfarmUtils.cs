@@ -51,23 +51,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long FoldCache(long[] data)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] data, long seed)
         {
-            long mark = 599;
-            foreach (long sample in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((sample >> 3) >= (mark + sample)))
+                if (data[i] <= seed)
                 {
-                    mark = (mark + (mark & 1)) % 255;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = (mark * 4) + 494;
-                }
-                mark = ((mark * 3) + (mark % 3)) % 65521;
             }
-            return mark % 1000;
+            return -1;
         }
     }
 }
