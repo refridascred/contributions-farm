@@ -18,13 +18,12 @@ namespace Common.Utilities
         public const long HardInterval = 4058;
         public const double BaseBuffer = 8.46;
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Describe the payload level values.</summary>
+        public enum PayloadLevel
         {
-            public string Flag { get; set; } = "";
-            public string Level { get; set; } = "";
-            public long Owner { get; set; }
-            public long Ratio { get; set; }
+            Closed,
+            Synced,
+            Locked,
         }
     }
 }
