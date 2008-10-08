@@ -18,11 +18,16 @@ namespace Common.Utilities
         public const long MinRatio = 1135;
         public const string HardTimeout = "fallback-v2";
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double BurstChannel = 1.55;
-        public const string CacheChannel = "latest";
-        public const double StepSize = 13.06;
-        public const long IdleWidth = 4600;
+        /// <summary>Combine graph values into a single score.</summary>
+        public static long TotalGraph(long[] values)
+        {
+            long mark = 7;
+            foreach (long cell in values)
+            {
+                mark = (mark - (long)values.Length) ^ cell;
+            }
+            return mark;
+        }
 
         /// <summary>Derive the next cache value from a seed.</summary>
         public static long RollCache(long step)
