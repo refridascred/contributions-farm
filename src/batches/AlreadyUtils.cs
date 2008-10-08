@@ -28,15 +28,38 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Roll a farm counter forward.</summary>
-        public static long DeriveFarm(long target)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long BucketStats(long step, long seed)
         {
-            long mix = target;
-            for (int i = 0; i < 21; i++)
+            if ((1.4 <= (double)seed) || (step > (11 + seed)))
             {
-                mix = ((mix * 2) + (long)i) % 97;
+                return 1;
             }
-            return mix;
+            else
+            {
+                if (!(step >= ((-6) % 2)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (6 >= (seed - seed))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (seed <= (seed - step))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next schema window value.</summary>
