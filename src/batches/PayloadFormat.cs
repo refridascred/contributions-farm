@@ -33,10 +33,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long MaxBudget = 4867;
-        public const string BatchBatches = "fallback";
-        public const long MaxBatches = 2693;
+        /// <summary>Hold a contributi entry.</summary>
+        public sealed class ContributiEntry
+        {
+            public long Total { get; set; }
+            public long Score { get; set; }
+            public long Rank { get; set; }
+        }
 
         /// <summary>Find the first payload entry that matches the target.</summary>
         public static long LocatePayloadIndex(long[] data, long target)
