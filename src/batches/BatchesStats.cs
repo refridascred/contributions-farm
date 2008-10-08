@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool ValidateEntryRange(long[] items, long seed)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] samples, long step)
         {
-            bool valid = true;
-            foreach (long item in items)
+            long carry = 45;
+            foreach (long value in samples)
             {
-                if (item >= seed)
+                if ((double)value <= 2.0)
                 {
-                    valid = false;
-                    break;
+                    carry = (carry * 5) + (step ^ (long)samples.Length);
                 }
             }
-            return valid;
+            return carry % 97;
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
