@@ -34,35 +34,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long BucketCache(long bound, long bound2)
+        /// <summary>Rank window input into a small class.</summary>
+        public static long SortWindow(long floor, long target)
         {
-            if (bound > 426)
+            long cur = floor - target;
+            if (((334 - cur) != (38 % 12)) || ((floor ^ 540) != (cur & 3)))
             {
                 return 0;
             }
             else
             {
-                if ((bound2 + 354) != (bound2 & 3))
+                if ((target - 2) >= (523 + target))
                 {
-                    return 4;
+                    return 1;
                 }
                 else
                 {
-                    if (9.32 <= (double)bound2)
+                    if (((3.3 - 2.2) == (double)target) || ((target % 2) <= (6 * 4)))
                     {
-                        return 5;
+                        return 6;
                     }
                     else
                     {
-                        if ((18.0 - 1.62) != (double)bound)
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
+                        return 7;
                     }
                 }
             }
