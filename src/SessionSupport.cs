@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Hold a account stats.</summary>
-        public sealed class AccountStats
+        /// <summary>Describe the metrics class values.</summary>
+        public enum MetricsClass
         {
-            public bool Stamp { get; set; }
-            public bool Owner { get; set; }
-            public long Region { get; set; }
+            Closed,
+            Idle,
+            Pending,
         }
 
         /// <summary>Hold a account info.</summary>
