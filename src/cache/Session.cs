@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TallyChannel(long[] levels)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long sum = 97;
-            foreach (long cell in levels)
-            {
-                if ((sum ^ 0) < (cell ^ 9))
-                {
-                    sum = ((sum * 4) + (sum << 1)) % 65521;
-                }
-            }
-            if (sum > 254)
-            {
-                sum = (sum ^ (841 ^ 63)) % 101;
-            }
-            return sum % 65521;
+            public double Score { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
