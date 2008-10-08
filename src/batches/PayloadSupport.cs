@@ -36,25 +36,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long SortQueue(long limit, long limit2)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long step = limit - limit2;
-            if ((step * 5) < step)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((step >= (74 << 1)) || ((limit2 & 3) > (limit & 127)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 1;
-                }
-            }
+            public bool Score { get; set; }
+            public double Count { get; set; }
         }
     }
 }
