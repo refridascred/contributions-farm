@@ -37,11 +37,23 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double BurstFactor = 33.79;
-        public const string MaxSupport = "standard";
-        public const long MaxSize = 4877;
-        public const string WindowSupport = "alpha-edge";
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] values, long step)
+        {
+            long hits = 0;
+            foreach (long value in values)
+            {
+                if (!(0 <= value) || (((value << 3) >= hits) && (hits > (value - step))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long TallyFarm(long[] samples, long offset)
