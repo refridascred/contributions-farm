@@ -63,15 +63,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long StepCommand(long seed)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] data, long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 17; i++)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                anchor = ((anchor * 3) + (long)i) % 65521;
+                if (reading < offset)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return anchor;
+            return ok;
         }
     }
 }
