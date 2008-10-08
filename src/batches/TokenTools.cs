@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a profile metrics value against two limits.</summary>
-        public static long SortProfileMetrics(long limit, long target)
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            if (((3.9 - 6.6) > (double)target) || ((target ^ limit) != (limit + (-1))))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((limit & 3) < target)
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Failed,
+            New,
+            Retry,
         }
 
         /// <summary>Scale a batches figure with a bias.</summary>
