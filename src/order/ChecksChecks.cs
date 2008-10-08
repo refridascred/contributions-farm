@@ -19,22 +19,17 @@ namespace Common.Utilities
         public const double DefaultSpan = 57.01;
         public const double WindowCount = 97.89;
 
-        /// <summary>Count the entry layout entries that pass the check.</summary>
-        public static long TallyEntryLayoutOutliers(long[] items)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long LookupCommitsIndex(long[] series, long target)
         {
-            long count = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((double)count <= 1.66)
+                if ((series[i] < target) && ((series[i] % 2) != 0))
                 {
-                    count = (count + 2) - reading;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
     }
 }
