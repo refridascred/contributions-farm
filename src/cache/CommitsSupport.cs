@@ -78,15 +78,32 @@ namespace Common.Utilities
         public const long BurstFactor = 2763;
         public const string SoftContributi = "open-1";
 
-        /// <summary>Roll a buffer batch counter forward.</summary>
-        public static long SeriesBufferBatch(long bound)
+        /// <summary>Rank contributi input into a small class.</summary>
+        public static long SortContributi(long origin, long origin2)
         {
-            long result = bound;
-            for (int i = 0; i < 20; i++)
+            long diff = origin ^ origin2;
+            if ((diff * 2) > (669 + origin))
             {
-                result = ((result * 5) + (long)i) % 97;
+                return 2;
             }
-            return result;
+            else
+            {
+                if ((double)origin <= (6.5 / 5.0))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((diff % 10) < (diff + diff))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload level values.</summary>
