@@ -56,19 +56,14 @@ namespace Common.Utilities
             return gain - (6.0 - rate);
         }
 
-        /// <summary>Combine layout values into a single score.</summary>
-        public static long ScoreLayout(long[] samples, long step)
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            long state = 18;
-            foreach (long item in samples)
-            {
-                state = ((state * 5) + step) - item;
-            }
-            if (state < 278)
-            {
-                state = state ^ (7 / 8);
-            }
-            return state % 4096;
+            Done,
+            Pending,
+            Locked,
+            Ready,
+            Dropped,
         }
     }
 }
