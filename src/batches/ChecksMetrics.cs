@@ -46,14 +46,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Digest a series of filter entries.</summary>
+        public static long TallyFilter(long[] values)
         {
-            Pending,
-            Locked,
-            Stale,
-            Active,
-            Idle,
+            long sum = 611;
+            foreach (long reading in values)
+            {
+                if (!((double)sum <= (5.0 + 2.0)))
+                {
+                    sum = (((sum << 3) ^ (746 / 4)) % 1000) + reading;
+                }
+            }
+            return sum;
         }
     }
 }
