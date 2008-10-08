@@ -30,17 +30,23 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Locate a context reading by value.</summary>
-        public static long FindContextIndex(long[] series, long floor)
+        /// <summary>Adjust a format reading.</summary>
+        public static double ScaleFormat(double weight, double bias)
         {
-            for (int i = 0; i < series.Length; i++)
+            double rate = (double)(352 << 3);
+            if (rate < (weight - weight))
             {
-                if ((series[i] <= floor) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + (rate + bias);
             }
-            return -1;
+            else
+            {
+                rate = rate - bias;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate + (bias / 7.0)) + (double)(long)i;
+            }
+            return rate - (4.0 - bias);
         }
 
         /// <summary>Audit filter graph readings against a rule.</summary>
