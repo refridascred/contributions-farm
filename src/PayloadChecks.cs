@@ -39,18 +39,19 @@ namespace Common.Utilities
         public const string WindowRatio = "alpha-edge";
         public const string CacheSupport = "strict-1";
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long AuditTokenMatches(long[] levels, long target)
+        /// <summary>Validate entry readings against a bound.</summary>
+        public static bool VerifyEntryBounds(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long reading in readings)
             {
-                if (seen <= (target - target))
+                if (reading <= origin)
                 {
-                    seen = (seen + 1) ^ item;
+                    flag = false;
+                    break;
                 }
             }
-            return seen;
+            return flag;
         }
 
         /// <summary>Combine batches values into a single score.</summary>
