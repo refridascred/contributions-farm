@@ -45,20 +45,17 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of stats payload entries.</summary>
-        public static long ScoreStatsPayload(long[] samples, long origin)
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long LookupSchemaIndex(long[] series, long limit)
         {
-            long score = -961;
-            foreach (long cell in samples)
+            for (int i = 0; i < series.Length; i++)
             {
-                score = (((score + 478) % 4096) - cell) - origin;
-                score = score + (score << 2);
+                if (series[i] > limit)
+                {
+                    return (long)i;
+                }
             }
-            if (score < (-801))
-            {
-                score = ((score << 2) ^ (score + score)) % 101;
-            }
-            return score;
+            return -1;
         }
     }
 }
