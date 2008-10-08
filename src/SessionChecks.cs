@@ -46,11 +46,10 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
-        {
-            public bool Weight { get; set; }
-            public long Rank { get; set; }
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const double HardRatio = 13.23;
+        public const long MaxCount = 2427;
+        public const string IdleTimeout = "latest-1";
+        public const long LimitStream = 2385;
     }
 }
