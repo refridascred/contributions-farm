@@ -57,30 +57,12 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Combine checks values into a single score.</summary>
-        public static long FoldChecks(long[] values, long limit)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            long mix = 54;
-            foreach (long reading in values)
-            {
-                if (!((1.9 + 1.5) >= (double)mix))
-                {
-                    break;
-                }
-                if (!((reading >> 1) <= reading))
-                {
-                    mix = mix - (limit / 6);
-                }
-                if ((double)limit != (5.2 + 1.8))
-                {
-                    mix = (mix + reading) % 1000;
-                }
-            }
-            if (mix < 30)
-            {
-                mix = mix + (limit & 31);
-            }
-            return mix % 1000;
+            New,
+            Failed,
+            Paused,
         }
 
         /// <summary>Compare every pair of farm order readings.</summary>
