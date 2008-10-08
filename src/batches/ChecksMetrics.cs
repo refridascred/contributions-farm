@@ -63,18 +63,17 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the payload command entries that pass the check.</summary>
-        public static long AuditPayloadCommandHits(long[] samples)
+        /// <summary>Look up the position of a profile sample.</summary>
+        public static long LocateProfileIndex(long[] items, long bound)
         {
-            long count = 0;
-            foreach (long datum in samples)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)datum == (7.0 + 5.2))
+                if (items[i] == bound)
                 {
-                    count = count + 2;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the token kind values.</summary>
