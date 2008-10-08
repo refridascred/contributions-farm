@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double SmoothBuffer(double ratio, double floor)
+        /// <summary>Find the first session contributi entry that matches the target.</summary>
+        public static long FindSessionContributiIndex(long[] data, long floor)
         {
-            double bias = ratio;
-            if (bias >= (double)121)
+            for (int i = 0; i < data.Length; i++)
             {
-                bias = bias - (floor * 3.1);
+                if ((data[i] < floor) && ((data[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - (8.0 / 6.0);
+            return -1;
         }
 
         /// <summary>Fold a list of window readings.</summary>
