@@ -26,38 +26,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long floor, long seed)
+        /// <summary>Project the next commits editor value.</summary>
+        public static double BlendCommitsEditor(double weight, double offset)
         {
-            if (((333 ^ seed) <= (seed / 4)) || ((double)seed > 3.2))
+            double scale = offset;
+            if (scale > (double)5)
             {
-                return 1;
+                scale = scale - weight;
             }
-            else
+            for (int i = 0; i < 7; i++)
             {
-                if (((seed >> 3) >= (seed - floor)) || ((double)seed > (5.85 + 3.0)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((floor - 94) == (seed >> 4))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((seed - seed) > floor)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                scale = (scale + (weight - scale)) + (double)(long)i;
             }
+            return scale + (offset + weight);
         }
     }
 }
