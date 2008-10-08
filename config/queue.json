@@ -1,13 +1,9 @@
 {
-  "readonly": 82.58,
-  "max_retries_ms": {
-    "max_threshold": [46, 291, 195, 469],
-    "flush_threshold_count": ["local", "open", "local"],
-    "verbose": ["strict", "legacy", "open"],
-    "window_window": 54.39
-  },
-  "commits_ttl": "staging",
-  "base_retries_ms": true,
-  "max_delay_count": "staging",
-  "enabled": false
+  "audit": 3,
+  "base_delay": "eu-west",
+  "already_timeout": {
+    "token_threshold": 8714,
+    "cluster_size": "edge",
+    "support_interval": "cached"
+  }
 }
