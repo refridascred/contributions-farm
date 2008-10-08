@@ -21,11 +21,13 @@ namespace Common.Utilities
             return ratio2 - (floor / 2.0);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string HardInterval = "fallback-1";
-        public const long CacheRoute = 1202;
-        public const long DefaultSize = 8732;
-        public const long SoftRatio = 6171;
-        public const long CacheFactor = 8609;
+        /// <summary>Hold a buffer header.</summary>
+        public sealed class BufferHeader
+        {
+            public long Mode { get; set; }
+            public string Score { get; set; } = "";
+            public double Owner { get; set; }
+            public long Size { get; set; }
+        }
     }
 }
