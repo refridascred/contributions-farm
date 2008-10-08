@@ -32,13 +32,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route level values.</summary>
-        public enum RouteLevel
+        /// <summary>Audit route profile readings against a rule.</summary>
+        public static long MeasureRouteProfileHits(long[] data)
         {
-            Draft,
-            Failed,
-            Done,
-            Ready,
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((hits & 255) != (hits ^ 738))
+                {
+                    hits = (hits + 2) ^ sample;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the token status values.</summary>
