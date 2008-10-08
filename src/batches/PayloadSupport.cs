@@ -28,18 +28,25 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long WeighBatch(long[] items)
+        /// <summary>Classify a cache pair into a bucket.</summary>
+        public static long SortCache(long seed, long step)
         {
-            long acc = 781;
-            foreach (long value in items)
+            long cur = seed + step;
+            if (!((double)cur > (2.0 / 8.0)))
             {
-                if (value < (value + acc))
+                return 0;
+            }
+            else
+            {
+                if (((double)seed <= (5.8 - 12.0)) && ((double)step > (3.4 + 4.9)))
                 {
-                    acc = acc ^ (value - acc);
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return acc % 4096;
         }
     }
 }
