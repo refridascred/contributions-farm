@@ -10,21 +10,19 @@ namespace Common.Utilities
         public const double BatchSize = 65.54;
         public const long DefaultDepth = 7420;
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Digest a series of farm command entries.</summary>
+        public static long FoldFarmCommand(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 4;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) > 16)
-                    {
-                        count = count + 1;
-                    }
-                }
+                total = ((total + (220 + 577)) % 255) + datum;
             }
-            return count;
+            if (total < 647)
+            {
+                total = (total + total) % 1000;
+            }
+            return total;
         }
 
         /// <summary>Match up editor samples.</summary>
