@@ -23,17 +23,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long SeekClusterIndex(long[] samples, long floor)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long MeasureFilterMatches(long[] series)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long datum in series)
             {
-                if ((samples[i] <= floor) && ((samples[i] % 5) == 0))
+                if ((903 - count) > (count - 62))
                 {
-                    return (long)i;
+                    count = (count + 1) ^ datum;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
