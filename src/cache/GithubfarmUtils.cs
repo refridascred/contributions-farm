@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Describe the cache kind values.</summary>
-        public enum CacheKind
-        {
-            Idle,
-            Failed,
-            Dropped,
-            Pending,
-            Ready,
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long RetryFactor = 1898;
+        public const long StepCount = 9239;
+        public const long CacheInterval = 1720;
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
