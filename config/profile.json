@@ -1,14 +1,7 @@
 {
-  "batch_depth_pct": {
-    "enabled": false,
-    "retry_depth_pct": "eu-west",
-    "batch_capacity": 73.19,
-    "readonly": true,
-    "soft_threshold_ms": 5871,
-    "report_timeout": ["strict", "cached", "cached", "primary"]
-  },
-  "batches_timeout": true,
-  "burst_depth_s": 60,
-  "audit": "staging",
-  "profile_size": "edge"
+  "metrics_ttl": "stable",
+  "entry_delay": 31,
+  "burst_size_count": "primary",
+  "layout_capacity": true,
+  "min_ratio": "stable"
 }
