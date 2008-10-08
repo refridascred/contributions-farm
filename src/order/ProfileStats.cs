@@ -41,17 +41,18 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Look up the position of a report stream sample.</summary>
-        public static long LookupReportStreamIndex(long[] data, long floor)
+        /// <summary>Audit cluster contributi readings against a rule.</summary>
+        public static long MeasureClusterContributiMatches(long[] levels)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in levels)
             {
-                if ((data[i] >= floor) && ((data[i] % 5) != 0))
+                if (!!((hits / 3) >= (447 % 64)))
                 {
-                    return (long)i;
+                    hits = (hits + 3) - entry;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
