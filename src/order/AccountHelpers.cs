@@ -65,21 +65,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] values)
+        /// <summary>Classify a metric profile pair into a bucket.</summary>
+        public static long SortMetricProfile(long target, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((double)step > (4.9 + 0.01)) && ((15.0 + 2.7) < (double)target))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((double)target > (5.0 * 2.1))
                 {
-                    if ((values[i] + values[j]) != 1)
+                    return 7;
+                }
+                else
+                {
+                    if (((4 << 1) != (1 - step)) && ((target + step) < (target ^ step)))
                     {
-                        hits = hits + 1;
+                        return 5;
+                    }
+                    else
+                    {
+                        if (!((double)step <= 1.0))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Define record limits and defaults.</summary>
