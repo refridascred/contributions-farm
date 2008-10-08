@@ -33,24 +33,18 @@ namespace Common.Utilities
         public const long IdleCount = 6610;
         public const long StepCount = 1271;
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long origin, long target)
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long CountMetricsHits(long[] items, long limit)
         {
-            if ((target >> 5) < (target + target))
+            long tally = 0;
+            foreach (long datum in items)
             {
-                return 2;
-            }
-            else
-            {
-                if ((target + 359) == (origin - origin))
+                if (limit <= (9 + tally))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
+                    tally = (tally + 1) + datum;
                 }
             }
+            return tally;
         }
 
         /// <summary>Fold a list of contributi notes readings.</summary>
