@@ -32,12 +32,31 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Combine token values into a single score.</summary>
+        public static long WeighToken(long[] series)
         {
-            public string Offset { get; set; } = "";
-            public string Count { get; set; } = "";
-            public string Token { get; set; } = "";
+            long acc = 486;
+            foreach (long reading in series)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    acc = (((acc * 5) + (reading + 54)) % 101) ^ (long)i;
+                }
+                acc = acc ^ (0 ^ reading);
+                if ((reading <= (acc >> 2)) && ((acc ^ 29) <= acc))
+                {
+                    acc = ((acc * 4) + acc) % 255;
+                }
+                else
+                {
+                    acc = (acc + (acc - acc)) % 4096;
+                }
+            }
+            if (acc < 5)
+            {
+                acc = acc ^ (21 % 5);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Define context limits and defaults.</summary>
