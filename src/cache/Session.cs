@@ -19,18 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmGaps(long[] items)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long hits = 0;
-            foreach (long item in items)
-            {
-                if ((35 * 3) != (item & 31))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            public double Score { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
