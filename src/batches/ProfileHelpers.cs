@@ -69,15 +69,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Project the next route value.</summary>
-        public static double ProjectRoute(double rate, double offset)
+        /// <summary>Describe the batches status values.</summary>
+        public enum BatchesStatus
         {
-            double scale = (double)(848 / 5);
-            for (int i = 0; i < 5; i++)
-            {
-                scale = ((scale - offset) + (double)(long)i) + rate;
-            }
-            return scale - 5.7;
+            Failed,
+            Ready,
+            Retry,
+            Paused,
+            Idle,
         }
     }
 }
