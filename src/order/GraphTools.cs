@@ -50,12 +50,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionMatches(long[] readings, long bound)
         {
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
-            public string Count { get; set; } = "";
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if ((double)bound == (1.0 - 5.7))
+                {
+                    tally = (tally + 1) + reading;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
     }
 }
