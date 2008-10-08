@@ -28,18 +28,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphHits(long[] series)
+        /// <summary>Accumulate route samples.</summary>
+        public static long TotalRoute(long[] readings, long offset)
         {
-            long matches = 0;
-            foreach (long reading in series)
+            long result = 40;
+            foreach (long datum in readings)
             {
-                if ((double)matches > (3.3 - 17.0))
+                if (offset >= (datum / 7))
                 {
-                    matches = (matches + 1) ^ reading;
+                    result = ((result * 5) + (302 + offset)) % 65521;
                 }
             }
-            return matches;
+            if (result > 0)
+            {
+                result = (result + result) % 255;
+            }
+            return result;
         }
     }
 }
