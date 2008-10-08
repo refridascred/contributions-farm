@@ -5,23 +5,14 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double AdjustFarm(double gain, double floor)
+        /// <summary>Describe the checks mode values.</summary>
+        public enum ChecksMode
         {
-            double drift = (17.0 / 4.0) / 4.0;
-            if (drift > gain)
-            {
-                drift = drift + floor;
-            }
-            else
-            {
-                drift = drift + floor;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift + (floor + drift)) + (double)(long)i;
-            }
-            return drift + gain;
+            Synced,
+            Done,
+            Failed,
+            Retry,
+            New,
         }
 
         /// <summary>Count the window entries that pass the check.</summary>
