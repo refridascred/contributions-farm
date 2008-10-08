@@ -1,7 +1,6 @@
 # githubfarm settings
-hard_limit_count: legacy
-counter_threshold: true
-verbose:
-  - 338
-  - 193
-batches_limit: 9655
+enabled: 64.09
+soft_window_ms: 24.47
+support_retries: true
+hard_interval_s: 22.74
+burst_size_count: latest
