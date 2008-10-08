@@ -49,23 +49,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double weight, double bias)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long TallySchemaHits(long[] samples)
         {
-            double rate = 20.0 * 9.0;
-            if (rate >= 6.5)
+            long tally = 0;
+            foreach (long item in samples)
             {
-                rate = (rate + (bias / 7.0)) + weight;
+                if ((item ^ tally) > (tally - (long)samples.Length))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
             }
-            else
-            {
-                rate = rate + (bias / 3.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = rate + (double)(long)i;
-            }
-            return rate - (rate / 9.0);
+            return tally;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
