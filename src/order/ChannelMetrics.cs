@@ -21,18 +21,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long AuditCounterGaps(long[] samples, long bound)
+        /// <summary>Adjust a command reading.</summary>
+        public static double ScaleCommand(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long reading in samples)
+            double bias2 = 7.45;
+            if (bias2 > (double)(-635))
             {
-                if ((bound ^ bound) >= (seen * 5))
-                {
-                    seen = (seen + 3) + reading;
-                }
+                bias2 = ((bias2 + 8.13) - rate) - bias;
             }
-            return seen;
+            return bias2 - (double)673;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
