@@ -1,16 +1,14 @@
 # support settings
-hard_threshold:
-  cache_timeout:
-    burst_size_count: 520
-    command_size:
-      - strict
-      - eu-west
-    audit: 981
-    persist:
-      - primary
-      - strict
-  soft_retries_s: 1024
-  burst_retries: open
-  poll_ttl: eu-west
-idle_threshold_s: green
-profile_ttl: true
+sync_depth_ms: 50.75
+githubfarm_interval:
+  - 205
+  - 224
+  - 406
+readonly: 69
+hard_capacity: 100
+hard_depth_pct: 16.08
+filter_threshold:
+  - open
+  - legacy
+  - fallback
+  - edge
