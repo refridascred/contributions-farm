@@ -42,38 +42,21 @@ namespace Common.Utilities
         public const string CacheChecks = "local";
         public const long BurstChecks = 7359;
 
-        /// <summary>Grade a checks value against two limits.</summary>
-        public static long ClassifyChecks(long floor, long offset)
+        /// <summary>Match up filter context samples.</summary>
+        public static long PairFilterContextCount(long[] samples)
         {
-            if ((offset - offset) != ((-3) * 4))
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((floor ^ floor) > floor)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((floor % 64) <= (floor + 92))
+                    if ((samples[i] + samples[j]) < 18)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((83 - 678) >= floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
+                        count = count + 1;
                     }
                 }
             }
+            return count;
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
