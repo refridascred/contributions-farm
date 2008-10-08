@@ -33,13 +33,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a already summary.</summary>
+        public sealed class AlreadySummary
         {
-            public string Label { get; set; } = "";
-            public bool Rank { get; set; }
-            public bool Region { get; set; }
-            public long Owner { get; set; }
+            public long Ratio { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
