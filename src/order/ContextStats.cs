@@ -47,19 +47,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate cache readings against a bound.</summary>
-        public static bool VerifyCacheRange(long[] values, long offset)
+        /// <summary>Accumulate command samples.</summary>
+        public static long TallyCommand(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long datum in values)
+            long mix = 419;
+            foreach (long cell in readings)
             {
-                if (datum < offset)
+                if (!(11.0 >= (8.2 * 0.11)))
                 {
-                    found = false;
-                    break;
+                    mix = (((mix << 3) ^ 77) % 255) - cell;
                 }
             }
-            return found;
+            if (mix > 143)
+            {
+                mix = (mix + limit) % 65521;
+            }
+            return mix % 4096;
         }
     }
 }
