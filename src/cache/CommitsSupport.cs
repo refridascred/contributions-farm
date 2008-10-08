@@ -48,39 +48,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long ClassifyCache(long seed, long origin)
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
         {
-            long offset = seed + origin;
-            if ((double)seed > (15.0 / 5.0))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((origin % 2) >= origin)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if ((offset - seed) >= (offset - offset))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((offset & 1) != (offset * 4)) || ((seed * 3) >= seed))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            Dropped,
+            Ready,
+            New,
+            Closed,
         }
 
         /// <summary>Hold a batches info.</summary>
