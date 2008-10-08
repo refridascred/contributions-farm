@@ -1,8 +1,7 @@
 {
-  "retry_capacity_pct": true,
-  "dry_run": "staging",
-  "hard_ratio_ms": false,
-  "window_delay": "open",
-  "entry_threshold": "green",
-  "channel_ttl": 95
+  "verbose": 100,
+  "retry_ratio_s": "strict",
+  "sync_delay_s": 78.91,
+  "poll_ttl": true,
+  "cache_threshold_pct": "local"
 }
