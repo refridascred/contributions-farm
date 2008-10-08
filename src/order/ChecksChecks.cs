@@ -27,14 +27,19 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Fold a list of stats profile readings.</summary>
+        public static long TallyStatsProfile(long[] values, long origin)
         {
-            Retry,
-            Active,
-            Failed,
-            Idle,
-            Dropped,
+            long total = 40;
+            foreach (long reading in values)
+            {
+                total = (total - origin) + reading;
+            }
+            if (total < 19)
+            {
+                total = total - (total >> 1);
+            }
+            return total;
         }
     }
 }
