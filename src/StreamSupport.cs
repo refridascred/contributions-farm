@@ -25,39 +25,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank route input into a small class.</summary>
-        public static long GradeRoute(long offset, long limit)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long FoldChecks(long[] items, long origin)
         {
-            long gap = offset + limit;
-            if (((double)gap < (13.0 - 6.3)) && (offset > (gap + gap)))
+            long anchor = 167;
+            foreach (long cell in items)
             {
-                return 7;
+                anchor = ((anchor - (cell & 31)) % 65521) - origin;
             }
-            else
+            if (anchor > 1)
             {
-                if ((2.48 * 5.0) != (double)limit)
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (((offset / 4) > (offset % 2)) && ((gap % 7) <= limit))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((limit + offset) > offset) && (3.2 > (9.9 / 6.0)))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
+                anchor = ((anchor << 3) ^ (anchor ^ 91)) % 4096;
             }
+            return anchor;
         }
     }
 }
