@@ -28,32 +28,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long ScoreBuffer(long[] readings, long floor)
-        {
-            long mark = 52;
-            foreach (long datum in readings)
-            {
-                if ((mark + datum) != (mark + mark))
-                {
-                    mark = mark - datum;
-                    mark = (mark + 508) % 1000;
-                }
-                else
-                {
-                    mark = (mark - (mark + floor)) % 101;
-                }
-                if (floor >= (floor % 3))
-                {
-                    mark = (mark - (datum + datum)) % 1000;
-                }
-                else
-                {
-                    mark = mark ^ (datum - mark);
-                }
-                mark = (mark << 2) ^ mark;
-            }
-            return mark;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double CacheDepth = 93.78;
+        public const long DefaultBatch = 6090;
+        public const long MinBatch = 1248;
+        public const double HardBatch = 66.37;
+        public const long MaxBatch = 6021;
     }
 }
