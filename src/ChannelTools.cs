@@ -38,17 +38,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a stream metrics sample.</summary>
-        public static long LocateStreamMetricsIndex(long[] levels, long offset)
+        /// <summary>Hold a session options.</summary>
+        public sealed class SessionOptions
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Level { get; set; } = "";
+            public long Score { get; set; }
+            public bool Label { get; set; }
+            public double Limit { get; set; }
         }
     }
 }
