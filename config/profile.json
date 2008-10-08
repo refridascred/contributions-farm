@@ -1,6 +1,11 @@
 {
-  "idle_timeout_ms": 60,
-  "min_limit_s": 9.83,
-  "report_window": "primary",
-  "filter_threshold": "staging"
+  "readonly": {
+    "compress": false,
+    "flush_capacity_ms": "primary",
+    "poll_capacity_count": 3883,
+    "readonly": "fallback",
+    "cache_threshold_s": "legacy"
+  },
+  "filter_retries": 89.85,
+  "warm_depth": true
 }
