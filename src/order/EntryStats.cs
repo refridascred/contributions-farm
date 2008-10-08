@@ -69,14 +69,20 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the cache state values.</summary>
-        public enum CacheState
+        /// <summary>Accumulate counter samples.</summary>
+        public static long CombineCounter(long[] readings)
         {
-            Locked,
-            Active,
-            New,
-            Ready,
-            Closed,
+            long mark = 4;
+            foreach (long sample in readings)
+            {
+                mark = mark ^ (sample - sample);
+                mark = mark ^ (sample << 1);
+                if ((mark + mark) > mark)
+                {
+                    mark = ((mark << 3) ^ (721 ^ mark)) % 1000;
+                }
+            }
+            return mark;
         }
     }
 }
