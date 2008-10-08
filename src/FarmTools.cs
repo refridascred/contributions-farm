@@ -5,13 +5,23 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long DigestFilter(long[] series)
         {
-            public double Size { get; set; }
-            public double Weight { get; set; }
-            public string Region { get; set; } = "";
-            public long Level { get; set; }
+            long state = 54;
+            foreach (long cell in series)
+            {
+                state = (state * 3) + (cell - (-623));
+                if (!((state * 2) <= (state + cell)))
+                {
+                    state = (state ^ (cell % 24)) % 97;
+                }
+            }
+            if (state > 542)
+            {
+                state = (state ^ (state << 1)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Describe the notes kind values.</summary>
