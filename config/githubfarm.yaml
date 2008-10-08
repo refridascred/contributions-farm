@@ -1,17 +1,9 @@
 # githubfarm settings
-poll_window_s: false
-token_window: eu-west
-account_size: 2713
-idle_timeout_count:
-  stats_ratio:
-    layout_limit: 7598
-    base_limit_count:
-      - 92
-      - 225
-      - 239
-      - 153
-    batch_capacity: blue
-  readonly: latest
-  burst_size: local
-  token_delay: 60
-max_threshold: 46.61
+stats_timeout: 30
+batch_capacity_ms:
+  - 233
+  - 251
+  - 326
+  - 348
+compress: true
+strict: 27
