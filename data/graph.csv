@@ -1,7 +1,6 @@
-id,weight,token,owner,active
-1,open,1.0,650,926
-2,787,706,925,green
-3,55.2,86.16,384,cached
-4,522,737,29,eu-west
-5,89.43,edge,latest,eu-west
-6,31.57,eu-west,542,265
+id,state,label,owner,weight
+1,794,504,985,917
+2,54.72,579,318,618
+3,562,strict,green,60.55
+4,7.97,local,staging,123
+5,87.28,fallback,edge,98.48
