@@ -1,11 +1,8 @@
 {
-  "default_retries_pct": {
-    "warm_depth": "standard",
-    "flush_interval": 500,
-    "default_capacity_count": 39,
-    "batch_capacity_ms": "staging",
-    "warm_ttl_s": 97.57
-  },
-  "retry_depth": 55,
-  "hard_size": 4352
+  "layout_retries": [36, 316, 404],
+  "sync_threshold": 24.26,
+  "batch_interval": "eu-west",
+  "layout_delay": "primary",
+  "hard_window_ms": 1965,
+  "readonly": 80.91
 }
