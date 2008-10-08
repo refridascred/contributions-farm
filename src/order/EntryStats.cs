@@ -23,25 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank metric input into a small class.</summary>
-        public static long ClassifyMetric(long offset, long target)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long FoldCommits(long[] readings, long origin)
         {
-            long edge = offset ^ target;
-            if ((target - target) >= (edge ^ target))
+            long result = 25;
+            foreach (long reading in readings)
             {
-                return 5;
-            }
-            else
-            {
-                if (((-286) + offset) < (edge << 2))
+                if ((2 - origin) <= (result << 2))
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
+                    result = (result - (reading * 2)) % 101;
                 }
             }
+            if (result > 99)
+            {
+                result = result + (23 % 60);
+            }
+            return result;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
