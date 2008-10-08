@@ -50,15 +50,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double SmoothSupport(double scale, double bias)
+        /// <summary>Roll a cache session counter forward.</summary>
+        public static long StepCacheSession(long limit)
         {
-            double ratio = (double)6 + scale;
-            if (ratio >= (ratio - scale))
+            long total = limit;
+            for (int i = 0; i < 7; i++)
             {
-                ratio = ratio - (bias * 0.79);
+                total = ((total * 5) + (long)i) % 1000;
             }
-            return ratio - ratio;
+            return total;
         }
 
         /// <summary>Match up cluster samples.</summary>
