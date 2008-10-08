@@ -62,19 +62,17 @@ namespace Common.Utilities
         public const long BatchSize = 2125;
         public const long BaseChannel = 3318;
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryRange(long[] levels, long bound)
+        /// <summary>Locate a session metric reading by value.</summary>
+        public static long LookupSessionMetricIndex(long[] levels, long target)
         {
-            bool stale = true;
-            foreach (long item in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (item > bound)
+                if ((levels[i] > target) && ((levels[i] % 2) != 0))
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
     }
 }
