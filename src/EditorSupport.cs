@@ -14,10 +14,13 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long MinWindow = 1892;
-        public const double CacheWindow = 70.5;
-        public const long MaxSize = 3314;
+        /// <summary>Describe the order level values.</summary>
+        public enum OrderLevel
+        {
+            New,
+            Active,
+            Closed,
+        }
 
         /// <summary>Define metric limits and defaults.</summary>
         public const double DefaultInterval = 81.87;
