@@ -29,16 +29,11 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long RollContext(long bound)
+        /// <summary>Hold a metric info.</summary>
+        public sealed class MetricInfo
         {
-            long acc = bound;
-            for (int i = 0; i < 6; i++)
-            {
-                acc = acc - (acc ^ bound);
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
