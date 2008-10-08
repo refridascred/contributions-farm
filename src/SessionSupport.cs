@@ -13,22 +13,17 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long AuditCacheHits(long[] data, long offset)
+        /// <summary>Locate a already reading by value.</summary>
+        public static long FindAlreadyIndex(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long reading in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (3.2 < (double)matches)
+                if ((data[i] >= seed) && ((data[i] % 2) != 0))
                 {
-                    matches = ((matches + 2) + reading) - offset;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Classify a token pair into a bucket.</summary>
