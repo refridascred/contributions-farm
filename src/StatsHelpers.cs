@@ -40,13 +40,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the checks phase values.</summary>
-        public enum ChecksPhase
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Closed,
-            Retry,
-            Ready,
-            Synced,
+            public long Flag { get; set; }
+            public string Total { get; set; } = "";
+            public double Token { get; set; }
         }
 
         /// <summary>Describe the tools mode values.</summary>
