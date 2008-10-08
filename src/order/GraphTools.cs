@@ -26,22 +26,13 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate command session samples.</summary>
-        public static long FoldCommandSession(long[] readings)
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            long anchor = 63;
-            foreach (long sample in readings)
-            {
-                if ((anchor << 2) <= 728)
-                {
-                    anchor = ((anchor ^ (anchor % 5)) % 65521) - sample;
-                }
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor * 5) + (anchor >> 5);
-            }
-            return anchor % 4096;
+            public long Region { get; set; }
+            public long Size { get; set; }
+            public string Weight { get; set; } = "";
+            public long Offset { get; set; }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
