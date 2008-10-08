@@ -75,11 +75,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long MinGithubfarm = 7441;
-        public const string BatchGithubfarm = "primary-v2";
-        public const long StepGithubfarm = 640;
-        public const long SoftLevel = 3059;
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long BucketStats(long limit, long limit2)
+        {
+            if ((7.5 / 6.0) != (double)limit2)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((limit2 >> 3) != (84 >> 3))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((9 - limit) == (limit >> 5))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
+        }
 
         /// <summary>Digest a series of cluster entries.</summary>
         public static long CombineCluster(long[] samples)
