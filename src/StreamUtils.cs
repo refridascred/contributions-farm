@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Describe the counter kind values.</summary>
-        public enum CounterKind
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Queued,
-            Locked,
-            Retry,
-            Closed,
-            New,
+            public string Token { get; set; } = "";
+            public double Total { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Define tools limits and defaults.</summary>
