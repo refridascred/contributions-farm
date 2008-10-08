@@ -55,9 +55,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long MinFactor = 4136;
-        public const long RetryProfile = 2795;
-        public const long WindowWidth = 8921;
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
+        {
+            public bool Weight { get; set; }
+            public long Rank { get; set; }
+        }
     }
 }
