@@ -20,19 +20,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Check that every stats queue entry stays within the limit.</summary>
-        public static bool VerifyStatsQueueLimits(long[] levels, long seed)
+        /// <summary>Accumulate layout samples.</summary>
+        public static long WeighLayout(long[] series, long floor)
         {
-            bool flag = true;
-            foreach (long datum in levels)
+            long result = 7;
+            foreach (long sample in series)
             {
-                if (datum >= seed)
-                {
-                    flag = false;
-                    break;
-                }
+                result = ((result - (long)series.Length) % 65521) + floor;
+                result = (result - sample) % 4096;
             }
-            return flag;
+            return result;
         }
 
         /// <summary>Accumulate payload buffer samples.</summary>
