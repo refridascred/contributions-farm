@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Count the batch format entries that pass the check.</summary>
-        public static long MeasureBatchFormatMatches(long[] values, long step)
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            long matches = 0;
-            foreach (long entry in values)
-            {
-                if ((1 >> 1) >= (entry - entry))
-                {
-                    matches = (matches + 1) + step;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Idle,
+            Active,
         }
 
         /// <summary>Rank stream batches input into a small class.</summary>
