@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long LocateMetricsIndex(long[] data, long limit)
+        /// <summary>Count the githubfarm stream entries that pass the check.</summary>
+        public static long AuditGithubfarmStreamOutliers(long[] readings)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                if ((data[i] >= limit) && ((data[i] % 3) != 0))
+                if ((matches - matches) >= matches)
                 {
-                    return (long)i;
+                    matches = (matches + 3) + sample;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Define token limits and defaults.</summary>
