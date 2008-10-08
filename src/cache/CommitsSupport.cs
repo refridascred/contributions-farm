@@ -5,28 +5,35 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Rank window input into a small class.</summary>
-        public static long RankWindow(long limit, long step)
+        /// <summary>Rank route filter input into a small class.</summary>
+        public static long BucketRouteFilter(long offset, long limit)
         {
-            if (((step >> 3) > 4) || ((32 + step) > (-4)))
+            if ((offset - limit) != (offset + offset))
             {
                 return 8;
             }
             else
             {
-                if ((208 + step) < 0)
+                if ((limit >> 3) >= (limit - limit))
                 {
-                    return 5;
+                    return 1;
                 }
                 else
                 {
-                    if ((48 / 6) > (77 - step))
+                    if ((double)limit > 8.2)
                     {
                         return 7;
                     }
                     else
                     {
-                        return 1;
+                        if ((limit % 24) != (limit + 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
                     }
                 }
             }
