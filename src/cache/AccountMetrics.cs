@@ -25,19 +25,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a commits reading.</summary>
-        public static double ProjectCommits(double scale, double bias)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long SortNotes(long step, long offset)
         {
-            double ratio = scale;
-            if (ratio <= (double)2)
+            long next = step + offset;
+            if ((double)next <= (5.0 / 2.0))
             {
-                ratio = ratio + (ratio + bias);
+                return 6;
             }
-            for (int i = 0; i < 8; i++)
+            else
             {
-                ratio = ratio - (double)(long)i;
+                if ((4.89 - 15.0) == (double)next)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((double)next != (7.91 * 2.0))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (next >= (next + 60))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
             }
-            return ratio - (bias * 9.8);
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
