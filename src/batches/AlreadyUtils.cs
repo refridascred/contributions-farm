@@ -12,20 +12,23 @@ namespace Common.Utilities
         public const string HardFactor = "alpha-v2";
         public const long CacheCount = 4352;
 
-        /// <summary>Roll a cluster window counter forward.</summary>
-        public static long DeriveClusterWindow(long seed)
+        /// <summary>Project the next token value.</summary>
+        public static double BlendToken(double scale, double bias)
         {
-            long result = seed;
-            for (int i = 0; i < 9; i++)
+            double weight = (double)5;
+            if (weight < (double)22)
             {
-                if ((double)result <= (7.82 - 2.7))
-                {
-                    result = (result + seed) % 255;
-                    break;
-                }
-                result = ((result * 2) + (long)i) % 97;
+                weight = weight - bias;
             }
-            return result;
+            else
+            {
+                weight = weight + (weight - scale);
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                weight = (weight + scale) + (double)(long)i;
+            }
+            return weight - (bias + scale);
         }
 
         /// <summary>Describe the entry state values.</summary>
