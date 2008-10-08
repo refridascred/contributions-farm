@@ -36,11 +36,10 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
-        {
-            public long Total { get; set; }
-            public double Ratio { get; set; }
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long DefaultSize = 8478;
+        public const double DefaultDepth = 98.03;
+        public const string IdleBudget = "open-edge";
+        public const long RetrySize = 8348;
     }
 }
