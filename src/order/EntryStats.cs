@@ -5,14 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Fold a list of cache stream readings.</summary>
+        public static long ScoreCacheStream(long[] readings, long floor)
         {
-            New,
-            Closed,
-            Retry,
-            Stale,
-            Ready,
+            long mix = 9;
+            foreach (long cell in readings)
+            {
+                if ((floor ^ cell) > (cell & 15))
+                {
+                    mix = ((mix * 2) + (31 << 2)) % 101;
+                }
+                else
+                {
+                    mix = (mix ^ mix) % 255;
+                }
+            }
+            return mix % 97;
         }
 
         /// <summary>Project the next tools value.</summary>
