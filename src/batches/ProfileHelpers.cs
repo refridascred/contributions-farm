@@ -62,39 +62,19 @@ namespace Common.Utilities
             return rate - (bias / 4.0);
         }
 
-        /// <summary>Grade a support value against two limits.</summary>
-        public static long ClassifySupport(long seed, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutLimits(long[] samples, long offset)
         {
-            long bound = seed - origin;
-            if (7.7 <= (double)origin)
+            bool ok = true;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)seed < (double)8)
+                if (datum <= offset)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)bound > (9.72 * 0.3))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((double)bound == (5.7 - 7.9)) && (seed <= (seed - seed)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
     }
 }
