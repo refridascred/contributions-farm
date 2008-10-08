@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string MinGraph = "strict-edge";
-        public const long SoftGraph = 3591;
-        public const long IdleSpan = 9196;
-        public const double BatchGraph = 76.43;
+        /// <summary>Hold a batch header.</summary>
+        public sealed class BatchHeader
+        {
+            public double Owner { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Validate already readings against a bound.</summary>
         public static bool ValidateAlreadyBounds(long[] samples, long floor)
