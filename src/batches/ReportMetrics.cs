@@ -29,22 +29,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels, long floor)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long MeasureProfileHits(long[] data)
         {
-            long total = 383;
-            foreach (long value in levels)
+            long tally = 0;
+            foreach (long reading in data)
             {
-                if (!((90 - total) > (total + floor)))
+                if ((reading + reading) > reading)
                 {
-                    total = total - (value * 5);
-                }
-                if (!((double)floor < 4.0))
-                {
-                    total = total - (total >> 3);
+                    tally = tally + 1;
                 }
             }
-            return total;
+            return tally;
         }
     }
 }
