@@ -5,14 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Roll a record counter forward.</summary>
+        public static long StepRecord(long step)
         {
-            Ready,
-            Dropped,
-            Active,
-            Stale,
-            Pending,
+            long acc = step;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((double)step != (double)acc))
+                {
+                    acc = (acc << 2) ^ acc;
+                }
+                acc = ((acc * 2) + (long)i) % 4093;
+            }
+            return acc;
         }
 
         /// <summary>Hold a already record.</summary>
