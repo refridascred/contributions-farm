@@ -44,22 +44,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long TallySchemaHits(long[] samples)
+        /// <summary>Describe the batch phase values.</summary>
+        public enum BatchPhase
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((item ^ tally) > (tally - (long)samples.Length))
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            Retry,
+            Active,
+            Ready,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
