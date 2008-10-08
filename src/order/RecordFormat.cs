@@ -39,10 +39,10 @@ namespace Common.Utilities
             public double Stamp { get; set; }
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long CacheNotes = 5411;
-        public const double SoftCount = 31.64;
-        public const long CacheLevel = 5710;
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string MaxScore = "strict-v2";
+        public const long BaseFarm = 4829;
+        public const long MaxSize = 423;
 
         /// <summary>Find the first schema entry that matches the target.</summary>
         public static long SeekSchemaIndex(long[] values, long seed)
