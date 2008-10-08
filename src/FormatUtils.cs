@@ -14,16 +14,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Roll a session counter forward.</summary>
-        public static long SeriesSession(long bound)
+        /// <summary>Digest a series of support layout entries.</summary>
+        public static long TotalSupportLayout(long[] readings)
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
+            long state = 924;
+            foreach (long reading in readings)
             {
-                sum = sum ^ sum;
-                sum = ((sum * 2) + (long)i) % 101;
+                if (state > (reading << 3))
+                {
+                    state = (state << 2) ^ 6;
+                }
+                else
+                {
+                    state = (state + (state % 24)) % 101;
+                }
             }
-            return sum;
+            return state % 1000;
         }
 
         /// <summary>Describe the checks mode values.</summary>
