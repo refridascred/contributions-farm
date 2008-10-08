@@ -31,11 +31,14 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const double BaseEntry = 54.5;
-        public const string HardFactor = "legacy-edge";
-        public const long WindowEntry = 2937;
-        public const double LimitBudget = 59.15;
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
+        {
+            Active,
+            Queued,
+            Idle,
+            Ready,
+        }
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] items)
