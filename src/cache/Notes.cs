@@ -31,12 +31,20 @@ namespace Common.Utilities
         public const double StepSize = 13.06;
         public const long IdleWidth = 4600;
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const double RetryTimeout = 19.52;
-        public const long RetryWidth = 2802;
-        public const long RetryFormat = 4406;
-        public const long BaseInterval = 732;
-        public const long LimitWidth = 879;
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool GuardBatchesBounds(long[] samples, long origin)
+        {
+            bool ok = true;
+            foreach (long reading in samples)
+            {
+                if (reading != origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Describe the farm kind values.</summary>
         public enum FarmKind
