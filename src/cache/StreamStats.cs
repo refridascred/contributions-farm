@@ -42,11 +42,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Check that every already entry stays within the limit.</summary>
+        public static bool ValidateAlreadyLimits(long[] levels, long limit)
         {
-            public long Size { get; set; }
-            public double Mode { get; set; }
+            bool valid = true;
+            foreach (long entry in levels)
+            {
+                if (entry != limit)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
