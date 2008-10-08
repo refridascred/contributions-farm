@@ -19,13 +19,19 @@ namespace Common.Utilities
         public const string BatchCommits = "legacy";
         public const string LimitLevel = "local-1";
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool ValidateClusterBounds(long[] series, long target)
         {
-            Retry,
-            Stale,
-            Active,
-            Locked,
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell >= target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
