@@ -25,13 +25,18 @@ namespace Common.Utilities
             return ((ratio - (double)0) + gain) + span;
         }
 
-        /// <summary>Describe the metric status values.</summary>
-        public enum MetricStatus
+        /// <summary>Count the route commits entries that pass the check.</summary>
+        public static long CountRouteCommitsOutliers(long[] data, long limit)
         {
-            Paused,
-            Queued,
-            Done,
-            Idle,
+            long count = 0;
+            foreach (long entry in data)
+            {
+                if (((930 % 24) >= count) || !((6.0 - 1.22) >= (double)entry))
+                {
+                    count = (count + 1) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
