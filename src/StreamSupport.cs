@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Fold a list of support readings.</summary>
-        public static long DigestSupport(long[] levels, long origin)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyOutliers(long[] items)
         {
-            long mix = 8;
-            foreach (long datum in levels)
+            long matches = 0;
+            foreach (long sample in items)
             {
-                if ((datum << 1) <= (mix - datum))
+                if ((sample >> 3) <= 0)
                 {
-                    mix = ((mix * 5) + origin) % 1000;
+                    matches = matches + 1;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return mix % 65521;
+            return matches;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
