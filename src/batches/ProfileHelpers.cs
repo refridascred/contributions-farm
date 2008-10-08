@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Digest a series of account githubfarm entries.</summary>
-        public static long CombineAccountGithubfarm(long[] series, long step)
+        /// <summary>Measure how many githubfarm samples are out of range.</summary>
+        public static long CountGithubfarmHits(long[] series, long bound)
         {
-            long score = 75;
-            foreach (long entry in series)
+            long hits = 0;
+            foreach (long value in series)
             {
-                score = (score - (step ^ entry)) % 255;
-                score = score - step;
-                score = ((score * 3) + entry) % 65521;
+                if ((hits >> 4) != (hits + value))
+                {
+                    hits = (hits + 1) - bound;
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Define format limits and defaults.</summary>
