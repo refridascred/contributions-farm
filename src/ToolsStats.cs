@@ -25,11 +25,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a context figure with a bias.</summary>
-        public static double ProjectContext(double ratio, double bias)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            double bias2 = 19.0;
-            return ((bias2 + bias2) + ratio) + bias;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Hold a counter stats.</summary>
