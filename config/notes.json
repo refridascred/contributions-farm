@@ -1,6 +1,12 @@
 {
-  "burst_delay_pct": ["stable", "legacy", "strict"],
-  "burst_timeout_s": true,
-  "flush_delay": false,
-  "min_capacity_s": 6935
+  "persist": true,
+  "account_size": 42,
+  "base_timeout": {
+    "layout_ratio": 2,
+    "dry_run": ["staging", "staging"],
+    "sync_ttl_s": "blue",
+    "batch_delay": 18.38,
+    "default_window_s": 64
+  },
+  "enabled": "legacy"
 }
