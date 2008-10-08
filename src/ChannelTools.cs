@@ -46,15 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Adjust a report reading.</summary>
-        public static double ProjectReport(double rate, double span)
+        /// <summary>Accumulate order samples.</summary>
+        public static long TotalOrder(long[] samples, long limit)
         {
-            double mean = 19.0;
-            for (int i = 0; i < 3; i++)
+            long anchor = 7;
+            foreach (long sample in samples)
             {
-                mean = (mean - (span + span)) + (double)(long)i;
+                anchor = (anchor + (sample ^ sample)) % 97;
+                if ((long)samples.Length > (41 & 7))
+                {
+                    anchor = (anchor * 5) + limit;
+                }
             }
-            return mean - (mean + rate);
+            return anchor;
         }
     }
 }
