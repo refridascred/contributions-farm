@@ -42,22 +42,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long ScoreBatches(long[] readings)
+        /// <summary>Count the record support entries that pass the check.</summary>
+        public static long TallyRecordSupportGaps(long[] items)
         {
-            long mix = -158;
-            foreach (long datum in readings)
+            long count = 0;
+            foreach (long cell in items)
             {
-                if (!((mix << 1) > (datum * 4)))
+                if (cell > (cell - cell))
                 {
-                    mix = ((mix << 3) ^ ((-22) << 3)) % 1000;
-                }
-                if (mix <= 7)
-                {
-                    break;
+                    count = count + 2;
                 }
             }
-            return mix;
+            return count;
         }
     }
 }
