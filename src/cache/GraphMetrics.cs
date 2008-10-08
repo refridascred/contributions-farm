@@ -50,11 +50,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a metrics record.</summary>
-        public sealed class MetricsRecord
+        /// <summary>Audit window readings against a rule.</summary>
+        public static long MeasureWindowGaps(long[] readings)
         {
-            public long Size { get; set; }
-            public double Weight { get; set; }
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (((tally + tally) < (reading - reading)) && ((2.21 > (double)tally) && ((0.37 + 0.45) < (double)reading)))
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
         }
     }
 }
