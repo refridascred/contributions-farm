@@ -22,10 +22,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long HardSession = 5721;
-        public const string MinSession = "cached-v2";
-        public const long MaxSize = 1388;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] data, long floor)
+        {
+            long hits = 0;
+            foreach (long cell in data)
+            {
+                if (hits < (57 + hits))
+                {
+                    hits = ((hits + 2) ^ cell) - floor;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define entry limits and defaults.</summary>
         public const long BaseBudget = 6605;
