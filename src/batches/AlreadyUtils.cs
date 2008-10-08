@@ -35,12 +35,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
+            Failed,
+            Dropped,
             Draft,
-            Ready,
-            Retry,
+            New,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
