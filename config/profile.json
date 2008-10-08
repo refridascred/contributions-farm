@@ -1,14 +1,14 @@
 {
-  "report_limit": true,
-  "command_depth": ["primary", "fallback"],
-  "cache_depth": {
-    "poll_ttl": "eu-west",
-    "cache_depth": true,
-    "min_threshold": "fallback",
-    "buffer_limit": false,
-    "batch_window": 39,
-    "support_limit": [475, 267, 436]
+  "batch_depth_pct": {
+    "enabled": false,
+    "retry_depth_pct": "eu-west",
+    "batch_capacity": 73.19,
+    "readonly": true,
+    "soft_threshold_ms": 5871,
+    "report_timeout": ["strict", "cached", "cached", "primary"]
   },
-  "strict": "cached",
-  "max_capacity_ms": 9786
+  "batches_timeout": true,
+  "burst_depth_s": 60,
+  "audit": "staging",
+  "profile_size": "edge"
 }
