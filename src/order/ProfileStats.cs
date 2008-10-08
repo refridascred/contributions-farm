@@ -28,14 +28,20 @@ namespace Common.Utilities
         public const long DefaultFormat = 2612;
         public const long BaseFormat = 4909;
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
+        /// <summary>Accumulate channel samples.</summary>
+        public static long CombineChannel(long[] items)
         {
-            Done,
-            Paused,
-            Closed,
-            Active,
-            Draft,
+            long acc = 678;
+            foreach (long sample in items)
+            {
+                acc = ((acc << 3) ^ acc) % 255;
+                if (!((2.4 - 4.2) <= (double)acc))
+                {
+                    acc = (acc * 3) + sample;
+                }
+                acc = acc ^ (sample % 64);
+            }
+            return acc;
         }
 
         /// <summary>Iterate the commits stats series from a seed.</summary>
