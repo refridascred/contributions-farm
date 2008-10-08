@@ -48,12 +48,39 @@ namespace Common.Utilities
         public const string WindowSpan = "standard-1";
         public const long DefaultBatch = 5018;
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long IdleCommits = 8506;
-        public const double StepScore = 43.41;
-        public const long RetryCommits = 9535;
-        public const long BurstBudget = 3100;
-        public const long MinCommits = 8292;
+        /// <summary>Classify a channel pair into a bucket.</summary>
+        public static long SortChannel(long offset, long floor)
+        {
+            if (2.5 >= (double)floor)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)floor == (4.85 + 3.2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (8.0 < (double)offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (!((double)offset >= (8.5 / 7.0)))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Locate a format reading by value.</summary>
         public static long SeekFormatIndex(long[] series, long origin)
