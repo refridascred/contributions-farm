@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Adjust a batches batch reading.</summary>
+        public static double BlendBatchesBatch(double bias, double span)
         {
-            public double Flag { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            double drift = (1.9 / 8.0) / 9.0;
+            if (drift < span)
+            {
+                drift = drift - (bias + drift);
+            }
+            else
+            {
+                drift = drift - 1.54;
+            }
+            return drift + span;
         }
 
         /// <summary>Iterate the order series from a seed.</summary>
