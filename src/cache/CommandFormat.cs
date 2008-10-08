@@ -19,32 +19,16 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long ClassifyCommand(long step, long origin)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long RollContext(long bound)
         {
-            long offset = step - origin;
-            if (origin < (origin >> 3))
+            long acc = bound;
+            for (int i = 0; i < 6; i++)
             {
-                return 5;
+                acc = acc - (acc ^ bound);
+                acc = ((acc * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (!((offset + offset) < (origin - 171)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step ^ step) != (offset / 2))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            return acc;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
