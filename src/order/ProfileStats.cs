@@ -5,25 +5,22 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long IterateGraph(long offset)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long AuditFarmHits(long[] items, long limit)
         {
-            long score = offset;
-            for (int i = 0; i < 24; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (((score ^ (long)i) > (offset - score)) && ((60 - score) <= score))
+                if ((hits - hits) > (reading - 2))
                 {
-                    score = ((score * 4) + (score % 2)) % 65521;
-                    break;
+                    hits = (hits + 2) + limit;
                 }
-                score = ((score * 2) + (score - offset)) % 97;
-                if (offset > (8 - offset))
+                else
                 {
-                    score = score + (offset - score);
+                    hits = hits - 1;
                 }
-                score = ((score * 2) + (long)i) % 65521;
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Digest a series of format entries.</summary>
