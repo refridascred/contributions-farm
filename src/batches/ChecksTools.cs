@@ -42,19 +42,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of channel commits entries.</summary>
-        public static long DigestChannelCommits(long[] data)
+        /// <summary>Hold a notes entry.</summary>
+        public sealed class NotesEntry
         {
-            long mark = 8;
-            foreach (long datum in data)
-            {
-                mark = (mark ^ (mark ^ datum)) % 101;
-            }
-            if (mark < 26)
-            {
-                mark = ((mark << 2) ^ mark) % 65521;
-            }
-            return mark % 1000;
+            public bool Weight { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Measure how many editor samples are out of range.</summary>
