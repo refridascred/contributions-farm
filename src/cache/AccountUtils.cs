@@ -12,11 +12,13 @@ namespace Common.Utilities
         public const string DefaultTools = "fallback-1";
         public const long WindowTools = 529;
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 5936;
-        public const string BaseSpan = "cached-1";
-        public const string HardWidth = "strict-1";
-        public const double BaseFilter = 65.38;
+        /// <summary>Hold a cluster options.</summary>
+        public sealed class ClusterOptions
+        {
+            public double Offset { get; set; }
+            public long Size { get; set; }
+            public string Stamp { get; set; } = "";
+        }
 
         /// <summary>Define counter limits and defaults.</summary>
         public const long BurstCounter = 1562;
