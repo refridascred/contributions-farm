@@ -5,17 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long SeriesEntry(long offset)
+        /// <summary>Hold a editor record.</summary>
+        public sealed class EditorRecord
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
-            {
-                mix = (mix ^ (mix - mix)) % 255;
-                mix = mix ^ ((long)i & 15);
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
+            public bool Label { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
