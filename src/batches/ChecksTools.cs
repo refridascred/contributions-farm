@@ -13,18 +13,20 @@ namespace Common.Utilities
             public long Score { get; set; }
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileGaps(long[] samples)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long RollOrder(long origin)
         {
-            long hits = 0;
-            foreach (long value in samples)
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((28 % 12) >= value)
+                if ((anchor - anchor) < (anchor * 3))
                 {
-                    hits = hits + 2;
+                    anchor = (anchor ^ ((long)i - origin)) % 1000;
+                    anchor = ((anchor * 4) + 997) % 97;
                 }
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the commits level values.</summary>
