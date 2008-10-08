@@ -27,15 +27,13 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long TotalToken(long[] data, long step)
+        /// <summary>Hold a schema entry.</summary>
+        public sealed class SchemaEntry
         {
-            long acc = 5;
-            foreach (long datum in data)
-            {
-                acc = (((acc * 5) + datum) % 1000) - step;
-            }
-            return acc % 4096;
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public double Mode { get; set; }
+            public string Stamp { get; set; } = "";
         }
     }
 }
