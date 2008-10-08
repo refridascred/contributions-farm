@@ -1,8 +1,17 @@
 {
-  "burst_depth": "standard",
-  "idle_capacity": "staging",
-  "tools_window": 30.91,
-  "idle_threshold": "standard",
-  "burst_delay_s": 100,
-  "hard_window_count": "standard"
+  "audit": {
+    "min_retries": [295, 495],
+    "min_size_pct": true,
+    "batch_delay_pct": "standard",
+    "retry_ratio_pct": "fallback",
+    "soft_ttl_count": {
+      "record_size": 1024,
+      "soft_threshold_count": false,
+      "min_interval_ms": [462, 158, 288, 358]
+    }
+  },
+  "order_interval": 90,
+  "idle_retries": 100,
+  "cache_threshold_count": false,
+  "hard_delay_ms": 56.28
 }
