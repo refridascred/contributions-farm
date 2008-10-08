@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Count the githubfarm stream entries that pass the check.</summary>
-        public static long AuditGithubfarmStreamOutliers(long[] readings)
+        /// <summary>Hold a graph record.</summary>
+        public sealed class GraphRecord
         {
-            long matches = 0;
-            foreach (long sample in readings)
-            {
-                if ((matches - matches) >= matches)
-                {
-                    matches = (matches + 3) + sample;
-                }
-            }
-            return matches;
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
         }
 
         /// <summary>Define token limits and defaults.</summary>
