@@ -15,38 +15,15 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Grade a account value against two limits.</summary>
-        public static long RankAccount(long origin, long bound)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double BlendCluster(double gain, double offset)
         {
-            if (((double)bound < (4.16 * 7.0)) || ((origin + origin) <= (bound + (-4))))
+            double ratio = 18.0 * 1.0;
+            for (int i = 0; i < 3; i++)
             {
-                return 2;
+                ratio = ((ratio - (gain * 1.42)) - (double)(long)i) - offset;
             }
-            else
-            {
-                if (((892 % 97) > origin) && ((4 + bound) > origin))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((bound < 3) && ((3 % 100) < (bound << 1)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (origin < (bound - origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            return ratio + (gain / 7.0);
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
