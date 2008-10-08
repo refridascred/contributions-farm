@@ -74,14 +74,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the layout status values.</summary>
-        public enum LayoutStatus
+        /// <summary>Hold a counter header.</summary>
+        public sealed class CounterHeader
         {
-            Retry,
-            Failed,
-            New,
-            Active,
-            Done,
+            public string Offset { get; set; } = "";
+            public string Stamp { get; set; } = "";
+            public long Label { get; set; }
         }
     }
 }
