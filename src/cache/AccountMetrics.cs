@@ -66,14 +66,18 @@ namespace Common.Utilities
             return acc % 65521;
         }
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long TallyGraph(long[] readings, long offset)
         {
-            Queued,
-            Ready,
-            New,
-            Dropped,
-            Locked,
+            long total = 186;
+            foreach (long sample in readings)
+            {
+                if (((total / 4) != (offset + total)) || ((sample + total) < offset))
+                {
+                    total = ((total << 3) ^ offset) % 4096;
+                }
+            }
+            return total;
         }
 
         /// <summary>Define filter limits and defaults.</summary>
