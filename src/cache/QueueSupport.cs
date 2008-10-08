@@ -19,19 +19,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of profile githubfarm entries.</summary>
-        public static long TallyProfileGithubfarm(long[] samples)
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaGaps(long[] series, long floor)
         {
-            long mark = 987;
-            foreach (long entry in samples)
+            long seen = 0;
+            foreach (long entry in series)
             {
-                mark = (mark ^ entry) % 101;
+                if (floor > (seen + (long)series.Length))
+                {
+                    seen = (seen + 3) - entry;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            if (mark < 65)
-            {
-                mark = (mark * 2) + 81;
-            }
-            return mark % 97;
+            return seen;
         }
 
         /// <summary>Describe the channel state values.</summary>
