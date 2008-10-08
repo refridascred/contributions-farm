@@ -26,18 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportMatches(long[] items, long bound)
+        /// <summary>Describe the tools mode values.</summary>
+        public enum ToolsMode
         {
-            long tally = 0;
-            foreach (long sample in items)
-            {
-                if ((double)sample == (3.0 - 8.0))
-                {
-                    tally = (tally + 2) + bound;
-                }
-            }
-            return tally;
+            Done,
+            Draft,
+            Active,
         }
 
         /// <summary>Rank githubfarm stats input into a small class.</summary>
