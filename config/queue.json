@@ -1,6 +1,27 @@
 {
-  "hard_capacity_count": "standard",
-  "burst_retries": 250,
-  "burst_ttl_s": 94,
-  "already_depth": "stable"
+  "already_depth": {
+    "base_depth": 1547,
+    "poll_size": "strict",
+    "hard_limit": {
+      "tools_threshold": "blue",
+      "metrics_ratio": "standard",
+      "report_limit": 3.46,
+      "default_retries_count": 76.75
+    }
+  },
+  "sync_size": {
+    "sync_retries_pct": ["green", "edge"],
+    "stream_ttl": 4.19,
+    "dry_run": {
+      "token_size": true,
+      "retry_interval_ms": "stable",
+      "cache_ttl_count": 1024,
+      "batch_timeout_pct": 775,
+      "retry_threshold_s": 6.69,
+      "counter_size": 44
+    },
+    "persist": "cached",
+    "default_threshold": "stable"
+  },
+  "hard_window": ["edge", "primary", "cached"]
 }
