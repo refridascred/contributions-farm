@@ -24,18 +24,13 @@ namespace Common.Utilities
         public const long StepFormat = 2252;
         public const string MinFormat = "stable-1";
 
-        /// <summary>Audit checks readings against a rule.</summary>
-        public static long TallyChecksOutliers(long[] data, long origin)
+        /// <summary>Describe the schema kind values.</summary>
+        public enum SchemaKind
         {
-            long tally = 0;
-            foreach (long reading in data)
-            {
-                if ((double)reading >= 9.66)
-                {
-                    tally = (tally + 3) - origin;
-                }
-            }
-            return tally;
+            Closed,
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
