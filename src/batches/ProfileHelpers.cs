@@ -19,11 +19,33 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long MaxCount = 5262;
-        public const string MaxFormat = "staging";
-        public const long StepFormat = 2252;
-        public const string MinFormat = "stable-1";
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long ClassifyRoute(long bound, long limit)
+        {
+            long bound2 = bound - limit;
+            if ((limit < (limit << 3)) && ((bound + bound2) == (bound - limit)))
+            {
+                return 7;
+            }
+            else
+            {
+                if (((bound ^ 9) > (limit + bound)) || (bound2 < (limit + 10)))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((limit + limit) == (690 * 4)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
+        }
 
         /// <summary>Count the graph entries that pass the check.</summary>
         public static long TallyGraphHits(long[] items)
