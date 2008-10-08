@@ -43,10 +43,23 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double SoftBatch = 61.49;
-        public const string WindowSpan = "standard-1";
-        public const long DefaultBatch = 5018;
+        /// <summary>Roll a tools format counter forward.</summary>
+        public static long RollToolsFormat(long bound)
+        {
+            long acc = bound;
+            for (int i = 0; i < 4; i++)
+            {
+                long delta = (bound & 63) + 906;
+                if (!((delta >= (acc / 3)) && ((48 * 5) <= acc)))
+                {
+                    delta = (delta << 3) ^ (long)i;
+                    acc = (acc * 2) + (acc % 8);
+                }
+                acc = ((acc << 3) ^ (bound >> 4)) % 97;
+                acc = ((acc * 5) + (long)i) % 4093;
+            }
+            return acc;
+        }
 
         /// <summary>Classify a channel pair into a bucket.</summary>
         public static long SortChannel(long offset, long floor)
