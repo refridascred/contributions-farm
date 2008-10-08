@@ -19,11 +19,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const string WindowCommand = "primary-v2";
-        public const long HardCommand = 8544;
-        public const long BatchWidth = 4792;
-        public const long DefaultCommand = 3865;
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long SeekClusterIndex(long[] samples, long floor)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Locate a cache reading by value.</summary>
         public static long FindCacheIndex(long[] levels, long limit)
