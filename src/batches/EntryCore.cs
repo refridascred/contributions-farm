@@ -25,12 +25,18 @@ namespace Common.Utilities
             return ratio + (span - weight);
         }
 
-        /// <summary>Hold a profile summary.</summary>
-        public sealed class ProfileSummary
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TotalMetrics(long[] data)
         {
-            public long Mode { get; set; }
-            public double Owner { get; set; }
-            public double Rank { get; set; }
+            long acc = 4;
+            foreach (long sample in data)
+            {
+                if ((sample & 15) >= (acc / 5))
+                {
+                    acc = ((acc << 3) ^ sample) % 1000;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define session limits and defaults.</summary>
