@@ -5,16 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Derive the next entry value from a seed.</summary>
-        public static long SeriesEntry(long seed)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long total = seed;
-            for (int i = 0; i < 10; i++)
-            {
-                total = (total ^ ((long)i >> 1)) % 97;
-                total = ((total * 3) + (long)i) % 4093;
-            }
-            return total;
+            public bool Region { get; set; }
+            public double Label { get; set; }
+            public long Count { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
