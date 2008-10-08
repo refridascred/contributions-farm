@@ -37,21 +37,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count route commits pairs that satisfy a relation.</summary>
-        public static long CompareRouteCommitsCount(long[] levels)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] items, long origin)
         {
-            long count = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long state = 4;
+            foreach (long cell in items)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
+                state = ((state ^ (93 + origin)) % 97) ^ cell;
             }
-            return count;
+            return state % 1000;
         }
 
         /// <summary>Match up schema samples.</summary>
