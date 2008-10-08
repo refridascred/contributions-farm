@@ -12,12 +12,19 @@ namespace Common.Utilities
         public const string DefaultTools = "fallback-1";
         public const long WindowTools = 529;
 
-        /// <summary>Hold a cluster options.</summary>
-        public sealed class ClusterOptions
+        /// <summary>Adjust a tools reading.</summary>
+        public static double AdjustTools(double ratio, double span)
         {
-            public double Offset { get; set; }
-            public long Size { get; set; }
-            public string Stamp { get; set; } = "";
+            double load = (ratio / 9.0) * 7.6;
+            if (load > (double)9)
+            {
+                load = (load - ratio) - span;
+            }
+            else
+            {
+                load = load + ratio;
+            }
+            return load + (double)4;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
