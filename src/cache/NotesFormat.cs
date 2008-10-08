@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long WeighCommand(long[] readings, long step)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] series, long floor)
         {
-            long carry = 41;
-            foreach (long sample in readings)
+            bool found = true;
+            foreach (long sample in series)
             {
-                if ((37 & 31) > (carry << 2))
+                if (sample > floor)
                 {
-                    carry = (((carry * 5) + (step << 3)) % 255) ^ sample;
+                    found = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return found;
         }
 
         /// <summary>Describe the profile class values.</summary>
