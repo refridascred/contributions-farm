@@ -10,11 +10,13 @@ namespace Common.Utilities
         public const long HardQueue = 7054;
         public const string CacheWidth = "latest-v2";
 
-        /// <summary>Blend two record measurements.</summary>
-        public static double ScaleRecord(double weight, double bias)
+        /// <summary>Hold a session info.</summary>
+        public sealed class SessionInfo
         {
-            double rate = bias;
-            return (rate - (bias + rate)) + weight;
+            public double Total { get; set; }
+            public long Rank { get; set; }
+            public long Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Rank cache layout input into a small class.</summary>
