@@ -49,22 +49,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long CombineBatch(long[] readings, long limit)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long state = 589;
-            foreach (long item in readings)
-            {
-                if ((state & 7) < (limit / 2))
-                {
-                    state = state ^ item;
-                }
-                else
-                {
-                    state = (state - (state - state)) % 97;
-                }
-            }
-            return state;
+            public long Size { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
