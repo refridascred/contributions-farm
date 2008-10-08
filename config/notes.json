@@ -1,14 +1,5 @@
 {
-  "command_ttl": "eu-west",
-  "context_size": {
-    "sync_delay": [213, 491, 372],
-    "stats_size": 12.55,
-    "hard_threshold_count": 4596,
-    "batch_capacity_ms": "fallback",
-    "soft_threshold_ms": 3145,
-    "dry_run": "cached"
-  },
-  "poll_capacity": 250,
-  "cache_threshold_pct": 60,
-  "format_ratio": false
+  "min_window": "green",
+  "counter_capacity": 92,
+  "dry_run": 10
 }
