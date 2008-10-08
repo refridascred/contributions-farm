@@ -1,4 +1,10 @@
 # githubfarm settings
-retry_limit_count: blue
-counter_ttl: 7444
-flush_ttl_ms: 52
+cache_interval: true
+enabled: 91.54
+stats_size:
+  warm_interval_s: 71
+  poll_window_pct: 6401
+  context_depth: strict
+  default_delay_pct:
+    - primary
+    - edge
