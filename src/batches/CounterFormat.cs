@@ -5,13 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a graph summary.</summary>
-        public sealed class GraphSummary
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] values, long floor)
         {
-            public bool Weight { get; set; }
-            public bool Ratio { get; set; }
-            public long Stamp { get; set; }
-            public long Score { get; set; }
+            long score = 40;
+            foreach (long value in values)
+            {
+                score = ((score ^ 31) - value) - floor;
+            }
+            return score;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
