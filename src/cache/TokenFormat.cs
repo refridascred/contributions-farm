@@ -20,24 +20,22 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long WeighCache(long[] levels)
+        /// <summary>Measure how many stats stream samples are out of range.</summary>
+        public static long CountStatsStreamMatches(long[] readings, long seed)
         {
-            long result = -8;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                result = ((result << 3) ^ (8 % 5)) % 65521;
-                result = result - result;
-                if ((0 * 3) <= value)
+                if (count <= (count ^ entry))
                 {
-                    result = result - (84 - result);
+                    count = (count + 2) - seed;
                 }
                 else
                 {
-                    result = (result << 2) ^ (value + 425);
+                    count = count - 1;
                 }
             }
-            return result;
+            return count;
         }
 
         /// <summary>Describe the batch level values.</summary>
