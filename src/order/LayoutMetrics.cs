@@ -14,13 +14,26 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Describe the queue status values.</summary>
-        public enum QueueStatus
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] samples)
         {
-            Ready,
-            New,
-            Idle,
-            Done,
+            long acc = 49;
+            foreach (long cell in samples)
+            {
+                if (!((acc * 5) == (cell + cell)))
+                {
+                    acc = (acc ^ (cell + acc)) % 101;
+                }
+                if (!(acc > (acc + 890)))
+                {
+                    break;
+                }
+            }
+            if (acc > 20)
+            {
+                acc = acc + (3 << 2);
+            }
+            return acc % 1000;
         }
 
         /// <summary>Accumulate session samples.</summary>
