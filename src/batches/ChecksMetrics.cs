@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Iterate the queue series from a seed.</summary>
+        public static long IterateQueue(long step)
         {
-            Active,
-            Draft,
-            Stale,
+            long mark = step;
+            for (int i = 0; i < 13; i++)
+            {
+                if ((double)mark != (4.38 - 9.0))
+                {
+                    mark = (mark + ((long)i & 63)) % 65521;
+                }
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a buffer stats.</summary>
