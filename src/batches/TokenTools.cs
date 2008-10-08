@@ -40,15 +40,15 @@ namespace Common.Utilities
             return rate - (double)4;
         }
 
-        /// <summary>Count githubfarm pairs that satisfy a relation.</summary>
-        public static long MatchGithubfarmCount(long[] levels)
+        /// <summary>Count report pairs that satisfy a relation.</summary>
+        public static long PairReportCount(long[] samples)
         {
             long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    if ((levels[i] - levels[j]) != 1)
+                    if ((samples[i] - samples[j]) < 19)
                     {
                         seen = seen + 1;
                     }
