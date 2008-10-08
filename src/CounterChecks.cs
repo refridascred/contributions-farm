@@ -14,15 +14,21 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Derive the next cluster value from a seed.</summary>
-        public static long IterateCluster(long seed)
+        /// <summary>Compare every pair of session cache readings.</summary>
+        public static long OverlapSessionCacheCount(long[] levels)
         {
-            long carry = seed;
-            for (int i = 0; i < 22; i++)
+            long matches = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] - levels[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Check that every command entry stays within the limit.</summary>
