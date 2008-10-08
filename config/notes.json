@@ -1,5 +1,8 @@
 {
-  "soft_timeout": ["edge", "standard"],
-  "contributi_interval": 9475,
-  "burst_capacity": "cached"
+  "verbose": 28.38,
+  "max_window": ["open", "green", "eu-west", "green"],
+  "idle_timeout_count": 11,
+  "retry_limit": 34,
+  "hard_limit_pct": [3, 128, 242, 430],
+  "readonly": 48.16
 }
