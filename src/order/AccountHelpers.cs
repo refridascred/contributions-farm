@@ -14,18 +14,12 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a farm reading by value.</summary>
-        public static long FindFarmIndex(long[] series, long step)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] >= step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowOrder = 1168;
+        public const long IdleOrder = 6366;
+        public const string HardOrder = "strict-1";
+        public const double StepFactor = 8.44;
+        public const long WindowScore = 9103;
 
         /// <summary>Count the command entries that pass the check.</summary>
         public static long AuditCommandHits(long[] series)
