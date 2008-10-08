@@ -31,18 +31,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] items)
+        /// <summary>Find the first contributi entry that matches the target.</summary>
+        public static long SeekContributiIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((item & 7) <= (matches - matches))
+                if ((series[i] < origin) && ((series[i] % 2) == 0))
                 {
-                    matches = matches + 3;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
