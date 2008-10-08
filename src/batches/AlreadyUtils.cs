@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Scale a queue figure with a bias.</summary>
+        public static double ProjectQueue(double gain, double bias)
         {
-            public long Flag { get; set; }
-            public long Offset { get; set; }
+            double ratio = bias;
+            return ratio + gain;
         }
 
         /// <summary>Project the next token value.</summary>
