@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const string StepWidth = "local-1";
-        public const long BaseMetric = 7810;
-        public const long IdleMetric = 1133;
-        public const long RetryBudget = 6928;
-        public const long HardLevel = 9395;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public long Limit { get; set; }
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
+            public double Size { get; set; }
+        }
 
         /// <summary>Check that every stats queue entry stays within the limit.</summary>
         public static bool VerifyStatsQueueLimits(long[] levels, long seed)
