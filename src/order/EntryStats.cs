@@ -39,19 +39,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next queue value.</summary>
-        public static double AdjustQueue(double gain, double floor)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long origin, long target)
         {
-            double load = 3.5 * 7.44;
-            if (load <= (double)(-525))
+            if ((target >> 5) < (target + target))
             {
-                load = ((load + (load / 6.0)) - gain) + floor;
+                return 2;
             }
             else
             {
-                load = load - (double)358;
+                if ((target + 359) == (origin - origin))
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 8;
+                }
             }
-            return load + 7.1;
         }
 
         /// <summary>Hold a buffer snapshot.</summary>
