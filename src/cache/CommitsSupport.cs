@@ -76,12 +76,25 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Rank report input into a small class.</summary>
+        public static long BucketReport(long seed, long seed2)
         {
-            Locked,
-            Ready,
-            Done,
+            long cur = seed - seed2;
+            if ((cur >> 1) >= (seed2 >> 4))
+            {
+                return 2;
+            }
+            else
+            {
+                if (9 < (73 - cur))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Look up the position of a session order sample.</summary>
