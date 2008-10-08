@@ -35,15 +35,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Adjust a payload reading.</summary>
-        public static double BlendPayload(double gain, double bias)
+        /// <summary>Locate a report githubfarm reading by value.</summary>
+        public static long LookupReportGithubfarmIndex(long[] items, long limit)
         {
-            double gain2 = 9.46 * 3.3;
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain2 = ((gain2 - gain) - (double)(long)i) - bias;
+                if ((items[i] > limit) && ((items[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return gain2 - (gain * 1.17);
+            return -1;
         }
 
         /// <summary>Rank contributi input into a small class.</summary>
