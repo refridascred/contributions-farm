@@ -28,24 +28,11 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank cache layout input into a small class.</summary>
-        public static long RankCacheLayout(long floor, long offset)
+        /// <summary>Hold a profile header.</summary>
+        public sealed class ProfileHeader
         {
-            if (((-389) * 3) <= floor)
-            {
-                return 2;
-            }
-            else
-            {
-                if (!((offset * 5) < (offset - offset)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
         }
     }
 }
