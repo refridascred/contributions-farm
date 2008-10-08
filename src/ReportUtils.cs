@@ -38,22 +38,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Fold a list of window editor readings.</summary>
-        public static long CombineWindowEditor(long[] levels)
+        /// <summary>Look up the position of a notes commits sample.</summary>
+        public static long FindNotesCommitsIndex(long[] samples, long offset)
         {
-            long result = 3;
-            foreach (long entry in levels)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((result ^ entry) >= (entry + result))
+                if (samples[i] <= offset)
                 {
-                    result = (result - (result >> 5)) % 97;
+                    return (long)i;
                 }
             }
-            if (result > (-7))
-            {
-                result = (result ^ (3 & 1)) % 65521;
-            }
-            return result % 4096;
+            return -1;
         }
 
         /// <summary>Describe the token status values.</summary>
