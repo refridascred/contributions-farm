@@ -28,10 +28,11 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftBuffer = "local-1";
-        public const long MinBuffer = 8195;
-        public const double MaxBuffer = 69.6;
+        /// <summary>Define filter limits and defaults.</summary>
+        public const string BatchFilter = "local-v2";
+        public const double DefaultInterval = 97.65;
+        public const double BurstFilter = 43.67;
+        public const long MaxRatio = 1817;
 
         /// <summary>Accumulate batch farm samples.</summary>
         public static long TallyBatchFarm(long[] readings, long floor)
