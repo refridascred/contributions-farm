@@ -19,23 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] samples)
+        /// <summary>Project the next githubfarm channel value.</summary>
+        public static double BlendGithubfarmChannel(double gain, double floor)
         {
-            long acc = 500;
-            foreach (long cell in samples)
+            double bias = 1.17;
+            if (bias < (double)140)
             {
-                if ((double)cell == (11.0 * 4.34))
-                {
-                    acc = (acc ^ (82 & 31)) % 65521;
-                }
-                else
-                {
-                    acc = acc + (cell & 7);
-                }
-                acc = (acc ^ (cell + acc)) % 255;
+                bias = (bias - (double)(-333)) + gain;
             }
-            return acc;
+            return bias + floor;
         }
 
         /// <summary>Define support limits and defaults.</summary>
