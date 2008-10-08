@@ -5,39 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Rank batches input into a small class.</summary>
-        public static long BucketBatches(long seed, long limit)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long TallyGithubfarmMatches(long[] data, long step)
         {
-            long slot = seed + limit;
-            if ((slot >> 4) != (seed % 3))
+            long hits = 0;
+            foreach (long reading in data)
             {
-                return 0;
-            }
-            else
-            {
-                if ((slot > limit) || ((8.94 / 2.0) >= (double)slot))
+                if ((hits - reading) <= reading)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((seed + seed) >= (7 + limit))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((7 * 5) >= (514 + slot))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    hits = (hits + 2) - step;
                 }
             }
+            return hits;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
