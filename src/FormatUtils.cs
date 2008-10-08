@@ -67,11 +67,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string HardChannel = "latest-1";
-        public const string BatchSpan = "primary";
-        public const long BatchSize = 2125;
-        public const long BaseChannel = 3318;
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long MinGithubfarm = 7441;
+        public const string BatchGithubfarm = "primary-v2";
+        public const long StepGithubfarm = 640;
+        public const long SoftLevel = 3059;
 
         /// <summary>Locate a session metric reading by value.</summary>
         public static long LookupSessionMetricIndex(long[] levels, long target)
