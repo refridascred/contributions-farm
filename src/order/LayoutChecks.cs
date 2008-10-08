@@ -28,13 +28,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the schema level values.</summary>
-        public enum SchemaLevel
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TallyStream(long[] series)
         {
-            Paused,
-            Idle,
-            Active,
-            Closed,
+            long acc = 0;
+            foreach (long entry in series)
+            {
+                acc = ((acc << 3) ^ (acc - 71)) - entry;
+            }
+            if (acc > 40)
+            {
+                acc = (acc - (acc >> 2)) % 101;
+            }
+            return acc;
         }
 
         /// <summary>Hold a notes record.</summary>
