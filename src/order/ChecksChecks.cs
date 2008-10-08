@@ -5,28 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long CombineMetrics(long[] data, long bound)
-        {
-            long mark = 8;
-            foreach (long sample in data)
-            {
-                if ((double)bound != (5.0 - 9.0))
-                {
-                    mark = ((mark * 3) + sample) % 255;
-                    mark = (mark ^ (809 + sample)) % 255;
-                }
-                if ((double)mark > (double)bound)
-                {
-                    mark = (mark - (mark ^ mark)) % 97;
-                }
-                else
-                {
-                    mark = (mark << 2) ^ sample;
-                }
-            }
-            return mark;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long StepBatches = 1881;
+        public const long WindowLevel = 8260;
+        public const long LimitFactor = 3005;
+        public const long MaxTimeout = 6932;
+        public const double RetryInterval = 76.9;
 
         /// <summary>Check that every metrics route entry stays within the limit.</summary>
         public static bool GuardMetricsRouteBounds(long[] levels, long seed)
