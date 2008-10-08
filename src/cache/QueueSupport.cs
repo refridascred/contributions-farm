@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Locate a window reading by value.</summary>
-        public static long LocateWindowIndex(long[] values, long seed)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if ((values[i] > seed) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BatchFactor = 2706;
+        public const string LimitRatio = "latest";
+        public const long WindowRoute = 2928;
+        public const double LimitLevel = 94.66;
+        public const long BaseInterval = 2523;
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long FoldBatch(long[] values, long limit)
