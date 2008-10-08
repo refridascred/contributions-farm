@@ -1,5 +1,5 @@
 {
-  "base_interval_count": 30,
-  "sync_window": [222, 111],
-  "batches_capacity": 8225
+  "audit": 6,
+  "warm_delay_s": 60,
+  "warm_retries_ms": 33.46
 }
