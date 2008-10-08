@@ -51,12 +51,13 @@ namespace Common.Utilities
             public bool Level { get; set; }
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Describe the filter level values.</summary>
+        public enum FilterLevel
         {
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public double Token { get; set; }
+            Locked,
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Describe the tools mode values.</summary>
