@@ -32,39 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a record route value against two limits.</summary>
-        public static long RankRecordRoute(long limit, long step)
+        /// <summary>Check that every order account entry stays within the limit.</summary>
+        public static bool VerifyOrderAccountRange(long[] data, long target)
         {
-            long next = limit + step;
-            if ((double)step <= (double)next)
+            bool ready = true;
+            foreach (long reading in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((limit ^ limit) > (next / 6)) && (11.0 >= (double)next))
+                if (reading < target)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step + next) > step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((limit - step) < 8)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
