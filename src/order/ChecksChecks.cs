@@ -34,11 +34,31 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a cluster summary.</summary>
-        public sealed class ClusterSummary
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long RankChannel(long target, long origin)
         {
-            public long Stamp { get; set; }
-            public double Ratio { get; set; }
+            if ((double)target > (8.0 / 5.0))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((64 <= origin) && (origin < (origin - target)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (origin < (3 * 4))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
