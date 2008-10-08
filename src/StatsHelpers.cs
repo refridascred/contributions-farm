@@ -19,20 +19,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long SeriesCommits(long limit)
+        /// <summary>Hold a stats entry.</summary>
+        public sealed class StatsEntry
         {
-            long total = limit;
-            for (int i = 0; i < 13; i++)
-            {
-                long tally = (total << 3) & 15;
-                if ((limit + 48) > (total - tally))
-                {
-                    total = (total ^ (998 >> 1)) % 4096;
-                }
-                total = ((total * 5) + (long)i) % 4093;
-            }
-            return total;
+            public string Total { get; set; } = "";
+            public long Flag { get; set; }
+            public double Label { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
