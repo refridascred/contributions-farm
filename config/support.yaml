@@ -1,26 +1,4 @@
 # support settings
-batch_size:
-  layout_capacity: 500
-  readonly:
-    - staging
-    - cached
-  batch_delay_count: 4375
-  persist:
-    retry_size_count: 40
-    enabled:
-      - blue
-      - standard
-      - strict
-    retry_ratio_ms: 4.48
-    poll_threshold_count: 46.91
-    burst_depth_count:
-      - 86
-      - 229
-    readonly: stable
-  soft_interval_ms: true
-commits_ttl: 95
-compress:
-  - latest
-  - primary
-  - blue
-dry_run: 795
+cache_retries_pct: 91
+counter_delay: 5221
+sync_size_s: 8630
