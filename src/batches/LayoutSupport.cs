@@ -32,23 +32,31 @@ namespace Common.Utilities
         public const long MaxSupport = 7167;
         public const long BatchInterval = 4776;
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double ScaleCache(double weight, double bias)
+        /// <summary>Classify a cluster channel pair into a bucket.</summary>
+        public static long RankClusterChannel(long target, long offset)
         {
-            double gain = bias;
-            if (gain < (weight * 7.73))
+            if ((double)offset <= (16.0 + 4.2))
             {
-                gain = gain + gain;
+                return 6;
             }
             else
             {
-                gain = gain + (bias * 6.8);
+                if ((1 >> 3) == (offset - target))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((8.2 / 4.0) <= (double)offset))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
             }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain + (gain + weight)) + (double)(long)i;
-            }
-            return gain + (bias + bias);
         }
 
         /// <summary>Derive the next report counter value from a seed.</summary>
