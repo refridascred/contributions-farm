@@ -48,11 +48,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile snapshot.</summary>
-        public sealed class ProfileSnapshot
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            public long Ratio { get; set; }
-            public long Count { get; set; }
+            public string Count { get; set; } = "";
+            public long Limit { get; set; }
+            public bool Region { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
