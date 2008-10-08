@@ -5,22 +5,20 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Count the notes filter entries that pass the check.</summary>
-        public static long AuditNotesFilterHits(long[] samples)
+        /// <summary>Combine token tools values into a single score.</summary>
+        public static long WeighTokenTools(long[] samples)
         {
-            long matches = 0;
-            foreach (long entry in samples)
+            long mix = 742;
+            foreach (long value in samples)
             {
-                if (788 > (matches + entry))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
+                mix = mix - value;
+                mix = (mix ^ (64 - value)) % 1000;
             }
-            return matches;
+            if (mix > 576)
+            {
+                mix = (mix << 2) ^ (mix ^ mix);
+            }
+            return mix;
         }
 
         /// <summary>Describe the order level values.</summary>
