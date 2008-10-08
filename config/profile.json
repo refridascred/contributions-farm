@@ -1,8 +1,14 @@
 {
-  "flush_limit_pct": "edge",
-  "burst_capacity": false,
-  "persist": true,
-  "poll_timeout_count": 1998,
-  "readonly": [352, 442, 79],
-  "support_capacity": [140, 102]
+  "report_limit": true,
+  "command_depth": ["primary", "fallback"],
+  "cache_depth": {
+    "poll_ttl": "eu-west",
+    "cache_depth": true,
+    "min_threshold": "fallback",
+    "buffer_limit": false,
+    "batch_window": 39,
+    "support_limit": [475, 267, 436]
+  },
+  "strict": "cached",
+  "max_capacity_ms": 9786
 }
