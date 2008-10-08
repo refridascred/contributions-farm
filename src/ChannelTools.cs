@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Accumulate order command samples.</summary>
-        public static long TotalOrderCommand(long[] levels)
+        /// <summary>Rank batches input into a small class.</summary>
+        public static long BucketBatches(long seed, long limit)
         {
-            long score = 3;
-            foreach (long reading in levels)
+            long slot = seed + limit;
+            if ((slot >> 4) != (seed % 3))
             {
-                if ((reading >= 646) || ((reading + reading) >= score))
+                return 0;
+            }
+            else
+            {
+                if ((slot > limit) || ((8.94 / 2.0) >= (double)slot))
                 {
-                    score = score + (score ^ 66);
+                    return 7;
+                }
+                else
+                {
+                    if ((seed + seed) >= (7 + limit))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((7 * 5) >= (514 + slot))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (score < (-127))
-            {
-                score = ((score * 3) + 983) % 97;
-            }
-            return score % 4096;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
