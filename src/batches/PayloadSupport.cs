@@ -17,13 +17,15 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long RollFarm(long floor)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public bool Flag { get; set; }
-            public bool Token { get; set; }
+            long mark = floor;
+            for (int i = 0; i < 24; i++)
+            {
+                mark = ((mark * 3) + (long)i) % 1000;
+            }
+            return mark;
         }
 
         /// <summary>Locate a format payload reading by value.</summary>
