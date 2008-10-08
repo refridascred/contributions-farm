@@ -37,22 +37,28 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine channel values into a single score.</summary>
-        public static long TotalChannel(long[] samples, long bound)
+        /// <summary>Fold a list of stream githubfarm readings.</summary>
+        public static long TotalStreamGithubfarm(long[] series)
         {
-            long anchor = 629;
-            foreach (long value in samples)
+            long anchor = -87;
+            foreach (long entry in series)
             {
-                if ((double)anchor <= (double)7)
+                if ((anchor >= (entry & 127)) && (((long)series.Length - entry) <= anchor))
                 {
-                    anchor = ((anchor - (6 % 64)) ^ value) + bound;
-                }
-                if ((double)anchor > 17.0)
-                {
+                    anchor = (anchor + 37) % 97;
+                    anchor = anchor + ((-672) + entry);
                     break;
                 }
+                if ((entry % 3) <= anchor)
+                {
+                    anchor = (anchor << 3) ^ (anchor & 127);
+                }
             }
-            return anchor;
+            if (anchor > (-891))
+            {
+                anchor = (anchor << 3) ^ anchor;
+            }
+            return anchor % 65521;
         }
 
         /// <summary>Hold a profile stats.</summary>
