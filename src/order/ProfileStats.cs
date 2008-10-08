@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit format order readings against a rule.</summary>
-        public static long CountFormatOrderMatches(long[] readings)
-        {
-            long hits = 0;
-            foreach (long value in readings)
-            {
-                if ((value * 3) < value)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long MinContext = 8480;
+        public const double LimitSize = 90.01;
+        public const double RetryContext = 7.53;
+        public const long WindowTimeout = 9794;
 
         /// <summary>Digest a series of format entries.</summary>
         public static long ScoreFormat(long[] series, long step)
