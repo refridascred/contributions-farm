@@ -42,18 +42,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the editor entries that pass the check.</summary>
-        public static long TallyEditorGaps(long[] data)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long ScoreChannel(long[] levels)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long state = 17;
+            foreach (long item in levels)
             {
-                if ((7.0 > (double)(long)data.Length) && ((double)entry != (9.75 / 4.0)))
-                {
-                    seen = seen + 2;
-                }
+                state = state ^ (state & 63);
+                state = (state ^ (item & 31)) % 65521;
+                state = (state + (item << 2)) % 65521;
             }
-            return seen;
+            if (state > (-59))
+            {
+                state = state ^ state;
+            }
+            return state % 4096;
         }
 
         /// <summary>Hold a already info.</summary>
