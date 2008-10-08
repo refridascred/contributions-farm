@@ -54,17 +54,31 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a profile sample.</summary>
-        public static long LocateProfileIndex(long[] items, long bound)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] data, long floor)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 60;
+            foreach (long value in data)
             {
-                if (items[i] == bound)
+                if (!((anchor * 4) < (floor + floor)))
                 {
-                    return (long)i;
+                    anchor = (anchor ^ (anchor + floor)) - value;
+                    anchor = (anchor + (anchor >> 3)) % 255;
+                }
+                if ((anchor & 127) != (952 + floor))
+                {
+                    anchor = (anchor + floor) % 97;
+                }
+                if ((double)floor >= (3.0 * 4.29))
+                {
+                    break;
                 }
             }
-            return -1;
+            if (anchor < 8)
+            {
+                anchor = (anchor ^ (floor + floor)) % 101;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the token kind values.</summary>
