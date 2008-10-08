@@ -18,12 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long LocateGithubfarmIndex(long[] samples, long offset)
+        /// <summary>Look up the position of a contributi record sample.</summary>
+        public static long LocateContributiRecordIndex(long[] items, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (samples[i] == offset)
+                if (items[i] > origin)
                 {
                     return (long)i;
                 }
