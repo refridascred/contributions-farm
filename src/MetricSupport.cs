@@ -21,39 +21,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long SortGraph(long step, long step2)
-        {
-            if (step2 >= step)
-            {
-                return 0;
-            }
-            else
-            {
-                if (59 <= (step2 % 2))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((18.0 - 7.0) != (double)step2)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step - step2) != (step2 * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long CacheChecks = 4685;
+        public const long IdleChecks = 1852;
+        public const long MinTimeout = 5865;
+        public const long IdleFactor = 8408;
 
         /// <summary>Hold a batches options.</summary>
         public sealed class BatchesOptions
