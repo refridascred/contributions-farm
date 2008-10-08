@@ -29,12 +29,10 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double DefaultInterval = 81.87;
-        public const long HardMetric = 9703;
-        public const double LimitSpan = 32.17;
-        public const long BurstLevel = 297;
-        public const long SoftFactor = 3318;
+        /// <summary>Define notes limits and defaults.</summary>
+        public const string MinNotes = "open-1";
+        public const long LimitNotes = 1535;
+        public const long DefaultNotes = 6628;
 
         /// <summary>Fold a list of order readings.</summary>
         public static long CombineOrder(long[] items)
