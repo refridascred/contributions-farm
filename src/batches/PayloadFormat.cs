@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long BatchWidth = 6602;
-        public const double StepMetric = 1.19;
-        public const long CacheSize = 1950;
-        public const long IdleMetric = 7505;
-        public const double HardLevel = 30.44;
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long RollMetric(long limit)
+        {
+            long anchor = limit;
+            for (int i = 0; i < 24; i++)
+            {
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
+        }
 
         /// <summary>Describe the stats kind values.</summary>
         public enum StatsKind
