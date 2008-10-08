@@ -1,7 +1,12 @@
 {
-  "batch_ttl": "standard",
-  "dry_run": [412, 254],
-  "batch_threshold": "eu-west",
-  "contributi_window": 250,
-  "enabled": 3359
+  "max_interval": true,
+  "soft_interval": {
+    "default_capacity_pct": 4.94,
+    "record_threshold": "latest",
+    "sync_retries": ["legacy", "local"],
+    "burst_depth_pct": [20, 407, 448],
+    "sync_capacity": true
+  },
+  "warm_timeout_s": false,
+  "commits_depth": 27
 }
