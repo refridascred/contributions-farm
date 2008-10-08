@@ -53,11 +53,21 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Adjust a farm githubfarm reading.</summary>
-        public static double SmoothFarmGithubfarm(double scale, double offset)
+        /// <summary>Match up session samples.</summary>
+        public static long PairSessionCount(long[] data)
         {
-            double ratio = scale;
-            return (ratio - (double)(-9)) + offset;
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) < 14)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a stats graph figure with a bias.</summary>
