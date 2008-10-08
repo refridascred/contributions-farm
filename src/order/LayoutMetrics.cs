@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Derive the next support checks value from a seed.</summary>
-        public static long SeriesSupportChecks(long origin)
+        /// <summary>Describe the record status values.</summary>
+        public enum RecordStatus
         {
-            long mix = origin;
-            for (int i = 0; i < 11; i++)
-            {
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Stale,
+            Paused,
+            Pending,
+            Failed,
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
