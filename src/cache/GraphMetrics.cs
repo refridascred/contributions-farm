@@ -54,11 +54,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a account snapshot.</summary>
-        public sealed class AccountSnapshot
+        /// <summary>Hold a metrics record.</summary>
+        public sealed class MetricsRecord
         {
-            public bool Total { get; set; }
-            public string Region { get; set; } = "";
+            public long Size { get; set; }
+            public double Weight { get; set; }
         }
     }
 }
