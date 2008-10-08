@@ -1,16 +1,14 @@
 # Command notes
 
-Defaults for context live in the config folder and can be overridden per environment.
-The already module keeps farm values in sync with the schema cache.
-Each editor is validated before it reaches the metrics queue.
-
-Run the tools check before changing any editor limits.
 Defaults for counter live in the config folder and can be overridden per environment.
-Each format is validated before it reaches the stream queue.
+The route report groups every command by counter.
+When a format fails, the context handler retries a few times before giving up.
+
+Use batches settings to tune how often route data is refreshed.
+The queue module keeps queue values in sync with the commits cache.
 
 ## Guidelines
 
-- Validate editor input early
-- Prefer checks defaults
-- Review report limits each release
-- Document new token fields
+- Validate account input early
+- Keep githubfarm values small
+- Document new buffer fields
