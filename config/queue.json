@@ -1,12 +1,13 @@
 {
-  "metric_window": "staging",
-  "entry_threshold": 54,
-  "dry_run": {
-    "support_threshold": 7051,
-    "warm_size": "edge",
-    "warm_timeout_pct": "latest",
-    "burst_limit_pct": 1588,
-    "batch_delay": 41.29,
-    "soft_ratio_pct": false
-  }
+  "burst_threshold_ms": "cached",
+  "hard_timeout_count": [479, 469],
+  "min_window_pct": 1024,
+  "max_timeout_s": 73.49,
+  "githubfarm_capacity": {
+    "default_timeout": false,
+    "min_timeout_pct": "fallback",
+    "cluster_window": "local",
+    "min_threshold_pct": 3646
+  },
+  "cache_timeout": "eu-west"
 }
