@@ -50,12 +50,10 @@ namespace Common.Utilities
         public const long BatchStream = 6912;
         public const double MinStream = 53.29;
 
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
-        {
-            public long Region { get; set; }
-            public double Label { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BurstScore = 2795;
+        public const long MinFormat = 7239;
+        public const long RetryCount = 9041;
 
         /// <summary>Audit record readings against a rule.</summary>
         public static long MeasureRecordOutliers(long[] values, long seed)
