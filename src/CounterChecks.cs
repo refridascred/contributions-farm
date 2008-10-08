@@ -33,23 +33,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long CountContributiOutliers(long[] series)
-        {
-            long hits = 0;
-            foreach (long datum in series)
-            {
-                if (((datum & 3) <= (hits * 5)) && ((hits - 674) <= ((-64) + 30)))
-                {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepRoute = 96.48;
+        public const string DefaultRoute = "open-v2";
+        public const long BatchRoute = 2220;
+        public const long HardRoute = 3526;
 
         /// <summary>Hold a graph options.</summary>
         public sealed class GraphOptions
