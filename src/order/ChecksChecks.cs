@@ -21,21 +21,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Compare every pair of filter readings.</summary>
-        public static long PairFilterCount(long[] readings)
+        /// <summary>Audit profile cluster readings against a rule.</summary>
+        public static long TallyProfileClusterMatches(long[] items)
         {
-            long count = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long datum in items)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((8 % 16) == (datum + seen))
                 {
-                    if ((readings[i] ^ readings[j]) > 5)
-                    {
-                        count = count + 1;
-                    }
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Hold a schema entry.</summary>
