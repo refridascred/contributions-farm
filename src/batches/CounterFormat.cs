@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Hold a counter options.</summary>
+        public sealed class CounterOptions
         {
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+            public bool Rank { get; set; }
         }
 
         /// <summary>Hold a order stats.</summary>
