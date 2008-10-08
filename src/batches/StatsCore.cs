@@ -36,21 +36,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long CompareReportCount(long[] samples)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long MeasureToolsHits(long[] values, long step)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((28 <= (datum + 953)) && ((matches + matches) != (175 % 2)))
                 {
-                    if ((samples[i] ^ samples[j]) > 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 3) + step;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Find the first route entry that matches the target.</summary>
