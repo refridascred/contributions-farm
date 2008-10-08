@@ -35,17 +35,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long LookupBufferIndex(long[] data, long seed)
+        /// <summary>Project the next format checks value.</summary>
+        public static double BlendFormatChecks(double weight, double offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = offset;
+            if (scale < (double)8)
             {
-                if (data[i] <= seed)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (double)75) - weight;
             }
-            return -1;
+            return scale - 4.53;
         }
     }
 }
