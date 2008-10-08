@@ -30,23 +30,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double ScaleContributi(double gain, double offset)
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long DeriveWindow(long seed)
         {
-            double mean = (gain + offset) + (gain - offset);
-            if (mean >= gain)
+            long anchor = seed;
+            for (int i = 0; i < 13; i++)
             {
-                mean = mean - 3.2;
+                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            else
-            {
-                mean = mean - 9.18;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                mean = (mean - (offset * 0.26)) + (double)(long)i;
-            }
-            return mean - (gain * 3.0);
+            return anchor;
         }
     }
 }
