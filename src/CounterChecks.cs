@@ -38,18 +38,10 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Find the first already queue entry that matches the target.</summary>
-        public static long LookupAlreadyQueueIndex(long[] series, long floor)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] > floor) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long SoftTimeout = 2059;
+        public const long SoftEntry = 4527;
+        public const double CacheDepth = 49.79;
 
         /// <summary>Fold a list of stats readings.</summary>
         public static long DigestStats(long[] values)
