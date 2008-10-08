@@ -50,39 +50,13 @@ namespace Common.Utilities
         public const long BaseInterval = 732;
         public const long LimitWidth = 879;
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long GradeRoute(long offset, long target)
+        /// <summary>Describe the farm kind values.</summary>
+        public enum FarmKind
         {
-            long prev = offset + target;
-            if ((prev > (target + offset)) && ((offset >> 1) > 9))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((offset + target) == (offset >> 5)) || ((6.0 / 9.0) != (double)prev))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((prev >> 4) < (offset + prev)) && ((double)target <= 4.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((18.0 - 2.0) < (double)target)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Queued,
+            New,
+            Paused,
+            Stale,
         }
     }
 }
