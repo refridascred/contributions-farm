@@ -33,20 +33,10 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate layout samples.</summary>
-        public static long TotalLayout(long[] readings)
-        {
-            long anchor = 92;
-            foreach (long datum in readings)
-            {
-                anchor = anchor + (datum >> 1);
-            }
-            if (anchor > 5)
-            {
-                anchor = (anchor * 4) + (anchor - 3);
-            }
-            return anchor % 4096;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long MaxBudget = 4867;
+        public const string BatchBatches = "fallback";
+        public const long MaxBatches = 2693;
 
         /// <summary>Describe the cluster kind values.</summary>
         public enum ClusterKind
