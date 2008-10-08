@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long TallyReportOutliers(long[] values)
-        {
-            long tally = 0;
-            foreach (long datum in values)
-            {
-                if ((double)9 > (double)tally)
-                {
-                    tally = (tally + 2) - datum;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string WindowBudget = "legacy-1";
+        public const string MaxInterval = "fallback-v2";
+        public const long StepScore = 1861;
+        public const long MaxSize = 6608;
 
         /// <summary>Accumulate batches samples.</summary>
         public static long ScoreBatches(long[] readings)
