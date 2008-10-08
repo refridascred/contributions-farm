@@ -79,38 +79,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank record input into a small class.</summary>
-        public static long RankRecord(long step, long origin)
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
         {
-            if ((step + 11) < (step ^ origin))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin + step) >= (step & 63))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((double)origin == (5.16 - 18.0)) && ((8.22 / 2.0) < (double)origin))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((origin - 497) < origin) && ((15.0 * 6.0) == (double)origin))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public string Region { get; set; } = "";
+            public long Token { get; set; }
+            public long Level { get; set; }
+            public bool Ratio { get; set; }
         }
     }
 }
