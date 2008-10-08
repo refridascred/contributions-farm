@@ -12,12 +12,9 @@ while [ "${count}" -lt 2 ]; do
 done
 log "ran ${count} rounds"
 
-mode="${1:-latest}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+for item in legacy standard cached blue; do
+    log "checking ${item}"
+done
+
+COMMAND_LIMIT=299
+log "limit is ${COMMAND_LIMIT}"
