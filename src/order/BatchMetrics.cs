@@ -5,21 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Match up record stream samples.</summary>
-        public static long OverlapRecordStreamCount(long[] series)
+        /// <summary>Locate a layout reading by value.</summary>
+        public static long SeekLayoutIndex(long[] samples, long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (samples[i] < bound)
                 {
-                    if ((series[i] ^ series[j]) != 3)
-                    {
-                        hits = hits + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Count batch pairs that satisfy a relation.</summary>
