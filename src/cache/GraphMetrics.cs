@@ -12,22 +12,18 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Count the order entries that pass the check.</summary>
-        public static long MeasureOrderOutliers(long[] samples)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long TallyCommandMatches(long[] series, long floor)
         {
-            long tally = 0;
-            foreach (long datum in samples)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                if ((datum <= (datum - datum)) && ((20.0 * 15.0) < (double)tally))
+                if (((double)sample == (6.8 + 4.5)) || ((1 << 1) < (floor << 1)))
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
