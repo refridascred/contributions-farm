@@ -20,22 +20,11 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Measure how many stats stream samples are out of range.</summary>
-        public static long CountStatsStreamMatches(long[] readings, long seed)
+        /// <summary>Adjust a queue reading.</summary>
+        public static double ScaleQueue(double gain, double offset)
         {
-            long count = 0;
-            foreach (long entry in readings)
-            {
-                if (count <= (count ^ entry))
-                {
-                    count = (count + 2) - seed;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            double mean = offset / 4.0;
+            return (mean + mean) + gain;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
