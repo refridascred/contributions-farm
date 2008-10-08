@@ -49,12 +49,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const string IdleSchema = "primary-edge";
-        public const long HardTimeout = 645;
-        public const long LimitTimeout = 7315;
-        public const double StepSchema = 5.02;
-        public const long StepInterval = 4656;
+        /// <summary>Match up editor samples.</summary>
+        public static long CompareEditorCount(long[] samples)
+        {
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 10)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Audit graph readings against a rule.</summary>
         public static long TallyGraphGaps(long[] readings)
