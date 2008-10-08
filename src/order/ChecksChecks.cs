@@ -19,22 +19,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit profile cluster readings against a rule.</summary>
-        public static long TallyProfileClusterMatches(long[] items)
+        /// <summary>Describe the payload phase values.</summary>
+        public enum PayloadPhase
         {
-            long seen = 0;
-            foreach (long datum in items)
-            {
-                if ((8 % 16) == (datum + seen))
-                {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            Failed,
+            Retry,
+            Stale,
         }
 
         /// <summary>Describe the report state values.</summary>
