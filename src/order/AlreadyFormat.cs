@@ -56,38 +56,15 @@ namespace Common.Utilities
         public const double IdleRecord = 82.03;
         public const long WindowRecord = 9280;
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long GradeCommand(long seed, long origin)
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long SeriesGraph(long step)
         {
-            if ((981 + 46) < seed)
+            long acc = step;
+            for (int i = 0; i < 24; i++)
             {
-                return 2;
+                acc = ((acc * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if (((origin + seed) != (origin - seed)) || ((origin >> 5) > (seed << 1)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if (((3.5 + 12.0) >= (double)seed) && ((2.5 + 15.0) >= (double)seed))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((seed >> 1) >= (origin & 63))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            return acc;
         }
     }
 }
