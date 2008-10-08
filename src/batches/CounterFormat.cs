@@ -23,19 +23,15 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Audit record editor readings against a rule.</summary>
-        public static long CountRecordEditorGaps(long[] items)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphHits(long[] series)
         {
             long matches = 0;
-            foreach (long entry in items)
+            foreach (long reading in series)
             {
-                if ((double)entry > (0.8 + 8.55))
+                if ((double)matches > (3.3 - 17.0))
                 {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    matches = (matches + 1) ^ reading;
                 }
             }
             return matches;
