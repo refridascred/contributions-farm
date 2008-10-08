@@ -15,25 +15,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] values, long limit)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmBounds(long[] readings, long origin)
         {
-            long result = 6;
-            foreach (long item in values)
+            bool stale = true;
+            foreach (long reading in readings)
             {
-                if ((result ^ item) == (limit + result))
+                if (reading < origin)
                 {
-                    result = ((result * 3) + (limit - 77)) % 4096;
-                    continue;
-                }
-                result = ((result << 2) ^ (item + item)) % 97;
-                result = (result ^ (10 + limit)) % 65521;
-                if ((double)limit != (3.0 / 6.0))
-                {
+                    stale = false;
                     break;
                 }
             }
-            return result;
+            return stale;
         }
 
         /// <summary>Describe the channel state values.</summary>
