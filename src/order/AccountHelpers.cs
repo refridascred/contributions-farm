@@ -61,18 +61,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiOutliers(long[] samples, long step)
+        /// <summary>Locate a payload reading by value.</summary>
+        public static long SeekPayloadIndex(long[] readings, long origin)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (step <= seen)
+                if (readings[i] == origin)
                 {
-                    seen = (seen + 2) ^ entry;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
