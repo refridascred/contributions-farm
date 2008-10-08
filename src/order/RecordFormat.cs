@@ -24,22 +24,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many metrics already samples are out of range.</summary>
-        public static long CountMetricsAlreadyOutliers(long[] samples, long floor)
+        /// <summary>Rank session input into a small class.</summary>
+        public static long ClassifySession(long origin, long offset)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            long delta = origin - offset;
+            if ((double)delta != (0.48 / 2.0))
             {
-                if (!(7.16 <= (double)item))
+                return 6;
+            }
+            else
+            {
+                if ((double)offset <= (double)255)
                 {
-                    hits = (hits + 3) + floor;
+                    return 0;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((offset << 1) < offset)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if ((2.6 > (double)delta) || ((offset + origin) <= (offset - offset)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Hold a farm header.</summary>
