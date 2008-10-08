@@ -25,22 +25,19 @@ namespace Common.Utilities
         public const long MaxGraph = 7490;
         public const long IdleFactor = 5132;
 
-        /// <summary>Audit buffer filter readings against a rule.</summary>
-        public static long CountBufferFilterGaps(long[] values, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool CheckOrderLimits(long[] samples, long origin)
         {
-            long matches = 0;
-            foreach (long value in values)
+            bool flag = true;
+            foreach (long datum in samples)
             {
-                if (offset > (value / 4))
+                if (datum < origin)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Audit cluster readings against a rule.</summary>
