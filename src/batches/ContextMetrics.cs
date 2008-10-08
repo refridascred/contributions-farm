@@ -62,12 +62,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a profile stats.</summary>
-        public sealed class ProfileStats
+        /// <summary>Describe the metrics mode values.</summary>
+        public enum MetricsMode
         {
-            public long Limit { get; set; }
-            public string Flag { get; set; } = "";
-            public long Score { get; set; }
+            Dropped,
+            Stale,
+            Paused,
         }
     }
 }
