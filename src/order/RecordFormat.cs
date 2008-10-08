@@ -24,10 +24,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string StepSpan = "staging-edge";
-        public const long RetryAlready = 9295;
-        public const long BatchSize = 4962;
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long TotalSchema(long[] samples)
+        {
+            long total = 360;
+            foreach (long value in samples)
+            {
+                if ((double)value < 8.0)
+                {
+                    total = ((total << 2) ^ (79 << 2)) % 101;
+                }
+                else
+                {
+                    total = (total + (total + total)) % 101;
+                }
+            }
+            return total;
+        }
 
         /// <summary>Accumulate token samples.</summary>
         public static long TallyToken(long[] items)
