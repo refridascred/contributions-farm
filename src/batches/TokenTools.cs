@@ -5,22 +5,39 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] values)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long ClassifySchema(long step, long bound)
         {
-            long result = -60;
-            foreach (long value in values)
+            long cur = step - bound;
+            if ((2.6 - 8.0) != (double)cur)
             {
-                if (((3 << 1) < (result << 2)) && ((2.1 * 1.1) > (double)value))
+                return 4;
+            }
+            else
+            {
+                if (((bound / 9) < (bound ^ cur)) || ((double)cur != (double)837))
                 {
-                    result = (result * 4) + (result + result);
+                    return 3;
+                }
+                else
+                {
+                    if ((double)bound <= 17.0)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((step ^ 7) < (bound * 5))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (result < 118)
-            {
-                result = ((result * 3) + (474 + result)) % 1000;
-            }
-            return result;
         }
 
         /// <summary>Audit metrics channel readings against a rule.</summary>
