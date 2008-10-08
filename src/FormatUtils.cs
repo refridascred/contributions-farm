@@ -32,12 +32,12 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a filter snapshot.</summary>
+        public sealed class FilterSnapshot
         {
-            Failed,
-            Locked,
-            Dropped,
+            public string Region { get; set; } = "";
+            public double Token { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Adjust a record reading.</summary>
