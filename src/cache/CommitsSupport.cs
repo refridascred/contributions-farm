@@ -20,18 +20,21 @@ namespace Common.Utilities
         public const long HardRatio = 4176;
         public const long BaseRatio = 6000;
 
-        /// <summary>Combine profile metric values into a single score.</summary>
-        public static long CombineProfileMetric(long[] items, long limit)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long anchor = 586;
-            foreach (long sample in items)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (limit < (sample - sample))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    anchor = (anchor + (anchor ^ 7)) % 101;
+                    if ((data[i] - data[j]) < 10)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return anchor % 65521;
+            return hits;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
