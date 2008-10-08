@@ -28,14 +28,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            Synced,
-            Stale,
-            Queued,
-            Idle,
-            Active,
+            public double Level { get; set; }
+            public double Size { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
