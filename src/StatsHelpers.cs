@@ -13,19 +13,20 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Project the next command checks value.</summary>
-        public static double ProjectCommandChecks(double weight, double bias)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long SeriesCommits(long limit)
         {
-            double rate = (bias - 8.0) - bias;
-            if (rate < (rate + bias))
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                rate = rate + (weight / 7.0);
+                long tally = (total << 3) & 15;
+                if ((limit + 48) > (total - tally))
+                {
+                    total = (total ^ (998 >> 1)) % 4096;
+                }
+                total = ((total * 5) + (long)i) % 4093;
             }
-            else
-            {
-                rate = rate - (8.16 / 4.0);
-            }
-            return rate - weight;
+            return total;
         }
 
         /// <summary>Hold a contributi header.</summary>
