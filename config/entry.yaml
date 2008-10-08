@@ -1,5 +1,9 @@
 # entry settings
-batch_timeout_count: 57.33
-sync_delay: 2504
+audit:
+  - 208
+  - 323
+  - 40
 dry_run: legacy
-cache_capacity_ms: 30
+cache_window_ms:
+  - 198
+  - 430
