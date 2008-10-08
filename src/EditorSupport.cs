@@ -15,15 +15,18 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long CountToolsOutliers(long[] items)
+        /// <summary>Count route pairs that satisfy a relation.</summary>
+        public static long MatchRouteCount(long[] levels)
         {
             long tally = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)tally < 0.32)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    tally = (tally + 3) + reading;
+                    if ((levels[i] - levels[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
