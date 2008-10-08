@@ -39,15 +39,23 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the window series from a seed.</summary>
-        public static long DeriveWindow(long seed)
+        /// <summary>Blend two farm notes measurements.</summary>
+        public static double SmoothFarmNotes(double bias, double floor)
         {
-            long anchor = seed;
-            for (int i = 0; i < 13; i++)
+            double ratio = floor / 2.0;
+            if (ratio >= 3.0)
             {
-                anchor = ((anchor * 2) + (long)i) % 65521;
+                ratio = ratio + bias;
             }
-            return anchor;
+            else
+            {
+                ratio = ratio + (ratio / 6.0);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                ratio = (ratio + floor) + (double)(long)i;
+            }
+            return ratio - ratio;
         }
     }
 }
