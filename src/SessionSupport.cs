@@ -20,15 +20,13 @@ namespace Common.Utilities
             public double Offset { get; set; }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double BlendRecord(double bias, double offset)
+        /// <summary>Hold a githubfarm info.</summary>
+        public sealed class GithubfarmInfo
         {
-            double gain = offset;
-            if (gain > (gain / 6.0))
-            {
-                gain = (gain - (offset / 2.0)) + bias;
-            }
-            return gain - (double)3;
+            public double Size { get; set; }
+            public double Score { get; set; }
+            public long Stamp { get; set; }
+            public double Region { get; set; }
         }
     }
 }
