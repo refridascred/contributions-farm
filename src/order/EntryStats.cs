@@ -32,31 +32,22 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Combine token values into a single score.</summary>
-        public static long WeighToken(long[] series)
+        /// <summary>Audit token schema readings against a rule.</summary>
+        public static long TallyTokenSchemaMatches(long[] readings, long offset)
         {
-            long acc = 486;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long reading in readings)
             {
-                for (int i = 0; i < 2; i++)
+                if ((reading ^ seen) < (seen - reading))
                 {
-                    acc = (((acc * 5) + (reading + 54)) % 101) ^ (long)i;
-                }
-                acc = acc ^ (0 ^ reading);
-                if ((reading <= (acc >> 2)) && ((acc ^ 29) <= acc))
-                {
-                    acc = ((acc * 4) + acc) % 255;
+                    seen = (seen + 2) + offset;
                 }
                 else
                 {
-                    acc = (acc + (acc - acc)) % 4096;
+                    seen = seen - 1;
                 }
             }
-            if (acc < 5)
-            {
-                acc = acc ^ (21 % 5);
-            }
-            return acc % 65521;
+            return seen;
         }
 
         /// <summary>Define context limits and defaults.</summary>
