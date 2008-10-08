@@ -35,19 +35,16 @@ namespace Common.Utilities
         public const long BurstWidth = 5783;
         public const long DefaultLevel = 8380;
 
-        /// <summary>Validate filter editor readings against a bound.</summary>
-        public static bool GuardFilterEditorLimits(long[] series, long limit)
+        /// <summary>Iterate the already series from a seed.</summary>
+        public static long RollAlready(long step)
         {
-            bool stale = true;
-            foreach (long cell in series)
+            long sum = step;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                sum = (sum + (sum + step)) % 65521;
+                sum = ((sum * 4) + (long)i) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
