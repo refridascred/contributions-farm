@@ -26,9 +26,38 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const long BurstLevel = 7800;
-        public const long MaxWidth = 9315;
-        public const double HardSpan = 36.99;
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long floor, long seed)
+        {
+            if (((333 ^ seed) <= (seed / 4)) || ((double)seed > 3.2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (((seed >> 3) >= (seed - floor)) || ((double)seed > (5.85 + 3.0)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((floor - 94) == (seed >> 4))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((seed - seed) > floor)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
+        }
     }
 }
