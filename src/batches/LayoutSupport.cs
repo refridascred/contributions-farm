@@ -56,18 +56,13 @@ namespace Common.Utilities
         public const string DefaultFormat = "staging-edge";
         public const string BurstFormat = "cached-edge";
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long TallyBatchGaps(long[] levels)
+        /// <summary>Hold a stats info.</summary>
+        public sealed class StatsInfo
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if ((matches > (92 % 7)) && ((double)matches <= (9.0 * 8.0)))
-                {
-                    matches = (matches + 2) + datum;
-                }
-            }
-            return matches;
+            public long Weight { get; set; }
+            public double Level { get; set; }
+            public bool Total { get; set; }
+            public bool Mode { get; set; }
         }
     }
 }
