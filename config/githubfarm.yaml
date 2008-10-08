@@ -1,5 +1,15 @@
 # githubfarm settings
-max_ttl_s: green
-strict: true
-base_capacity: legacy
-audit: 1024
+report_depth:
+  hard_threshold_pct: latest
+  cache_window_count: green
+  burst_capacity_s:
+    - open
+    - green
+  readonly: 3251
+  idle_threshold_ms: 1024
+  audit: 2659
+readonly: 77.19
+default_threshold: true
+stats_window: local
+flush_ratio_count: fallback
+retry_delay_pct: eu-west
