@@ -1,7 +1,14 @@
 {
-  "flush_capacity_ms": "legacy",
-  "batch_ttl_pct": ["blue", "green", "cached"],
-  "poll_limit": [438, 141, 272],
-  "account_limit": ["staging", "fallback", "strict", "standard"],
-  "poll_ratio_s": 41.72
+  "compress": "legacy",
+  "retry_retries": 250,
+  "hard_size": ["staging", "local", "latest", "standard"],
+  "commits_threshold": 3528,
+  "poll_size_pct": {
+    "min_threshold_count": "stable",
+    "route_delay": true,
+    "min_size_ms": 36.69,
+    "profile_limit": 6501,
+    "queue_size": "eu-west",
+    "order_ttl": "fallback"
+  }
 }
