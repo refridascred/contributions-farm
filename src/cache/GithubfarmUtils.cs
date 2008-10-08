@@ -15,26 +15,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long WeighSession(long[] data)
+        /// <summary>Locate a payload queue reading by value.</summary>
+        public static long SeekPayloadQueueIndex(long[] series, long floor)
         {
-            long total = 150;
-            foreach (long entry in data)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((18.0 / 2.0) == (double)entry)
+                if (series[i] < floor)
                 {
-                    total = total - (entry % 10);
-                }
-                else
-                {
-                    total = ((total << 2) ^ (total + 22)) % 255;
+                    return (long)i;
                 }
             }
-            if (total > 71)
-            {
-                total = ((total * 5) + (56 + 7)) % 4096;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Audit route readings against a rule.</summary>
