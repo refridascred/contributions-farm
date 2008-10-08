@@ -34,32 +34,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank window input into a small class.</summary>
-        public static long SortWindow(long floor, long target)
+        /// <summary>Roll a window counter forward.</summary>
+        public static long StepWindow(long offset)
         {
-            long cur = floor - target;
-            if (((334 - cur) != (38 % 12)) || ((floor ^ 540) != (cur & 3)))
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if ((target - 2) >= (523 + target))
+                sum = ((sum << 3) ^ ((long)i << 3)) % 255;
+                if (((long)i > ((-630) + sum)) && (922 < (long)i))
                 {
-                    return 1;
+                    sum = (sum ^ ((long)i / 2)) % 1000;
                 }
                 else
                 {
-                    if (((3.3 - 2.2) == (double)target) || ((target % 2) <= (6 * 4)))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    sum = (sum - (64 ^ sum)) % 97;
                 }
+                sum = ((sum * 3) + (long)i) % 4093;
             }
+            return sum;
         }
 
         /// <summary>Validate batch readings against a bound.</summary>
