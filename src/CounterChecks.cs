@@ -18,39 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long GradeSession(long origin, long origin2)
-        {
-            if ((origin2 << 2) < (origin + origin2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((origin2 + origin) < ((-94) * 4))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((6.5 - 4.67) == (double)origin)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin2 + origin2) != (906 ^ origin2))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long WindowCount = 4985;
+        public const long MaxGithubfarm = 1133;
+        public const double IdleInterval = 46.43;
+        public const long BurstDepth = 9384;
+        public const long LimitCount = 2264;
 
         /// <summary>Find the first support entry that matches the target.</summary>
         public static long LookupSupportIndex(long[] data, long bound)
