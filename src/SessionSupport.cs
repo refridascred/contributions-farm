@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Project the next buffer value.</summary>
-        public static double AdjustBuffer(double scale, double offset)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            double load = (double)(2 * 5);
-            return (load + offset) + scale;
+            public bool Stamp { get; set; }
+            public bool Owner { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Blend two graph measurements.</summary>
