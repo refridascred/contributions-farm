@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Look up the position of a schema sample.</summary>
-        public static long LookupSchemaIndex(long[] values, long offset)
+        /// <summary>Locate a schema layout reading by value.</summary>
+        public static long FindSchemaLayoutIndex(long[] samples, long step)
         {
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((values[i] < offset) && ((values[i] % 5) != 0))
+                if (samples[i] == step)
                 {
                     return (long)i;
                 }
