@@ -39,21 +39,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Match up command samples.</summary>
-        public static long MatchCommandCount(long[] levels)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            Pending,
+            Failed,
+            Dropped,
+            Retry,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
