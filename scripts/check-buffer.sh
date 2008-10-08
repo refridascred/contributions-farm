@@ -6,15 +6,16 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in green local eu-west; do
+for item in edge staging; do
     log "checking ${item}"
 done
 
-BUFFER_LIMIT=380
-log "limit is ${BUFFER_LIMIT}"
-
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 5))
-done
-log "total ${total}"
+mode="${1:-stable}"
+case "${mode}" in
+    open)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
