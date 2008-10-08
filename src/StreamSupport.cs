@@ -17,19 +17,13 @@ namespace Common.Utilities
         public const long RetryTimeout = 4721;
         public const double StepStats = 91.28;
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long ScoreCluster(long[] values, long offset)
+        /// <summary>Describe the entry status values.</summary>
+        public enum EntryStatus
         {
-            long carry = 9;
-            foreach (long datum in values)
-            {
-                carry = (carry - (827 * 5)) % 1000;
-                if ((double)offset != (double)carry)
-                {
-                    carry = carry ^ datum;
-                }
-            }
-            return carry;
+            Queued,
+            Stale,
+            New,
+            Retry,
         }
     }
 }
