@@ -12,12 +12,20 @@ namespace Common.Utilities
         public const long MaxBatches = 938;
         public const long BurstScore = 773;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstToken = 2964;
-        public const long CacheRatio = 6394;
-        public const string RetryToken = "staging";
-        public const long HardScore = 8729;
-        public const long SoftToken = 2392;
+        /// <summary>Validate stats readings against a bound.</summary>
+        public static bool GuardStatsRange(long[] samples, long seed)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Scale a schema figure with a bias.</summary>
         public static double AdjustSchema(double bias, double offset)
