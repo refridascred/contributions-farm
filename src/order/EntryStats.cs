@@ -32,19 +32,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Audit token schema readings against a rule.</summary>
-        public static long TallyTokenSchemaMatches(long[] readings, long offset)
+        /// <summary>Match up session checks samples.</summary>
+        public static long PairSessionChecksCount(long[] series)
         {
             long seen = 0;
-            foreach (long reading in readings)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((reading ^ seen) < (seen - reading))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    seen = (seen + 2) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((series[i] + series[j]) > 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
