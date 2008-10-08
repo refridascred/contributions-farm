@@ -12,11 +12,17 @@ namespace Common.Utilities
         public const long BaseMetrics = 6407;
         public const double MaxInterval = 67.64;
 
-        /// <summary>Hold a account header.</summary>
-        public sealed class AccountHeader
+        /// <summary>Locate a stats reading by value.</summary>
+        public static long LookupStatsIndex(long[] levels, long origin)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit already command readings against a rule.</summary>
