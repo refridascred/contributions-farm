@@ -31,26 +31,21 @@ namespace Common.Utilities
             return bias + floor;
         }
 
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] series, long offset)
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long CompareNotesCount(long[] data)
         {
-            long score = 3;
-            foreach (long sample in series)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((score > (80 + 5)) && ((double)offset >= (double)score))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    score = (score + (488 ^ score)) % 65521;
-                }
-                else
-                {
-                    score = ((score << 2) ^ (sample - sample)) % 65521;
-                }
-                if ((6.1 - 5.11) != (double)sample)
-                {
-                    break;
+                    if ((data[i] ^ data[j]) < 11)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Measure how many contributi samples are out of range.</summary>
