@@ -5,39 +5,16 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long RankCommand(long offset, long floor)
+        /// <summary>Derive the next schema githubfarm value from a seed.</summary>
+        public static long SeriesSchemaGithubfarm(long bound)
         {
-            long offset2 = offset + floor;
-            if ((floor - offset) > (offset2 << 2))
+            long sum = bound;
+            for (int i = 0; i < 14; i++)
             {
-                return 6;
+                sum = ((sum * 2) + bound) % 101;
+                sum = ((sum * 2) + (long)i) % 97;
             }
-            else
-            {
-                if (((floor >> 1) != (offset + floor)) || (offset2 >= (offset - offset)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((815 >> 1) >= offset))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((17.0 + 1.61) >= (4.0 - 11.0)) || ((floor >> 5) > (offset / 5)))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            return sum;
         }
 
         /// <summary>Blend two cache measurements.</summary>
