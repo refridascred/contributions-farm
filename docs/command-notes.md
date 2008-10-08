@@ -1,14 +1,16 @@
 # Command notes
 
-The notes report groups every cluster by batches.
-Run the token check before changing any metric limits.
-When a schema fails, the record handler retries a few times before giving up.
+Defaults for farm live in the config folder and can be overridden per environment.
+The schema module keeps metric values in sync with the batch cache.
+The entry module keeps profile values in sync with the record cache.
 
-The editor helpers are pure functions, so they are safe to call from any thread.
-A layout that stays idle for too long is moved to the batches list.
+Each counter is validated before it reaches the entry queue.
+When a support fails, the order handler retries a few times before giving up.
+The farm helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Log every cache change
-- Document new session fields
-- Keep tools values small
+- Log every tools change
+- Document new farm fields
+- Keep format values small
+- Prefer account defaults
