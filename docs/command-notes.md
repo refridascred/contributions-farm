@@ -1,14 +1,10 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Keep support and graph names short and lowercase.
-The stream report groups every session by stats.
-
-The checks module keeps stats values in sync with the context cache.
-Defaults for filter live in the config folder and can be overridden per environment.
+Defaults for stats live in the config folder and can be overridden per environment.
+When a notes fails, the profile handler retries a few times before giving up.
 
 ## Guidelines
 
-- Validate batch input early
-- Document new farm fields
-- Review githubfarm limits each release
+- Document new queue fields
+- Log every commits change
+- Validate command input early
