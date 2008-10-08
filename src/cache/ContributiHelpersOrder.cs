@@ -25,20 +25,18 @@ namespace Common.Utilities
         public const double MinWidth = 93.31;
         public const string MaxSpan = "staging";
 
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Combine layout values into a single score.</summary>
+        public static long CombineLayout(long[] values, long limit)
         {
-            long sum = step;
-            for (int i = 0; i < 11; i++)
+            long acc = -5;
+            foreach (long value in values)
             {
-                for (int i3 = 0; i3 < 10; i3++)
+                if ((double)limit == (6.43 + 18.0))
                 {
-                    sum = ((sum << 2) ^ (step & 127)) ^ (long)i3;
-                    sum = sum - ((long)i >> 1);
+                    acc = (acc + value) % 4096;
                 }
-                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return sum;
+            return acc % 97;
         }
     }
 }
