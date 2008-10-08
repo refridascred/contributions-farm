@@ -1,14 +1,5 @@
 {
-  "verbose": 500,
-  "warm_window": 13.59,
-  "order_ttl": {
-    "max_delay_pct": "cached",
-    "stream_delay": "edge",
-    "min_interval_ms": 65.5,
-    "hard_size": "green",
-    "cache_delay": "primary"
-  },
-  "poll_retries": false,
-  "idle_ratio": 13,
-  "layout_depth": "green"
+  "notes_limit": 19,
+  "persist": "legacy",
+  "readonly": true
 }
