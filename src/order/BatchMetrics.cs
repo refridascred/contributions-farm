@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long WeighCluster(long[] items)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long sum = 57;
-            foreach (long reading in items)
-            {
-                sum = ((sum + (4 >> 3)) % 1000) ^ reading;
-                sum = (sum << 2) ^ (sum >> 1);
-            }
-            return sum;
+            public bool Flag { get; set; }
+            public double Ratio { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Count payload channel pairs that satisfy a relation.</summary>
