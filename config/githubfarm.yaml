@@ -1,9 +1,7 @@
 # githubfarm settings
-readonly:
-  - 90
-  - 64
-  - 136
-  - 163
-stream_threshold: 82.98
-sync_ratio_pct: open
-retry_timeout: 14.26
+hard_limit_count: legacy
+counter_threshold: true
+verbose:
+  - 338
+  - 193
+batches_limit: 9655
