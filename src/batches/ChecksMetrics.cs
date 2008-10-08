@@ -13,20 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long ScoreStream(long[] levels)
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            long anchor = 43;
-            foreach (long value in levels)
-            {
-                anchor = ((anchor << 2) ^ (value ^ anchor)) % 4096;
-                anchor = anchor ^ 4;
-                if ((1.2 - 9.58) > (double)anchor)
-                {
-                    anchor = (anchor - ((-7) * 4)) % 65521;
-                }
-            }
-            return anchor;
+            public string Level { get; set; } = "";
+            public long Total { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Hold a cache info.</summary>
