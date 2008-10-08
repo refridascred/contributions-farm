@@ -23,18 +23,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long CombineToken(long[] series)
+        /// <summary>Combine metrics channel values into a single score.</summary>
+        public static long TallyMetricsChannel(long[] samples)
         {
-            long total = 586;
-            foreach (long entry in series)
+            long mix = 553;
+            foreach (long item in samples)
             {
-                if ((double)entry > (double)total)
+                mix = mix + 778;
+                if ((mix > (mix << 2)) && ((item + mix) < (item ^ item)))
                 {
-                    total = (total ^ entry) % 1000;
+                    break;
                 }
             }
-            return total % 97;
+            if (mix > 49)
+            {
+                mix = ((mix * 5) + (mix << 2)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Locate a command filter reading by value.</summary>
