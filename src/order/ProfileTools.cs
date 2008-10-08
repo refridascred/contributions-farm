@@ -77,12 +77,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a already header.</summary>
-        public sealed class AlreadyHeader
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long MeasureCommandMatches(long[] series)
         {
-            public long Weight { get; set; }
-            public bool Total { get; set; }
-            public long Offset { get; set; }
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if ((double)reading == (9.0 + 7.0))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
     }
 }
