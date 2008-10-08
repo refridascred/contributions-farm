@@ -21,12 +21,31 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a editor stats.</summary>
-        public sealed class EditorStats
+        /// <summary>Classify a context pair into a bucket.</summary>
+        public static long ClassifyContext(long seed, long origin)
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
-            public long Region { get; set; }
+            if ((seed << 3) > origin)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((seed * 2) != (seed * 5))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((origin - seed) == (282 + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of payload token readings.</summary>
