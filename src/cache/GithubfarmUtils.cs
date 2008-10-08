@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define format limits and defaults.</summary>
-        public const long RetryFactor = 1898;
-        public const long StepCount = 9239;
-        public const long CacheInterval = 1720;
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsLimits(long[] samples, long target)
+        {
+            bool valid = true;
+            foreach (long sample in samples)
+            {
+                if (sample <= target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Hold a checks info.</summary>
         public sealed class ChecksInfo
