@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Look up the position of a filter counter sample.</summary>
-        public static long FindFilterCounterIndex(long[] data, long step)
+        /// <summary>Count the profile farm entries that pass the check.</summary>
+        public static long CountProfileFarmOutliers(long[] series, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long hits = 0;
+            foreach (long entry in series)
             {
-                if ((data[i] >= step) && ((data[i] % 5) == 0))
+                if ((entry << 2) == (target & 7))
                 {
-                    return (long)i;
+                    hits = hits + 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Define context limits and defaults.</summary>
