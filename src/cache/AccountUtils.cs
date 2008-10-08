@@ -21,11 +21,19 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] levels, long origin)
         {
-            public bool Owner { get; set; }
-            public double Limit { get; set; }
+            bool ok = true;
+            foreach (long datum in levels)
+            {
+                if (datum > origin)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
