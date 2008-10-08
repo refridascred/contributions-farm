@@ -28,9 +28,17 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BatchBudget = 3965;
-        public const string DefaultTimeout = "standard-v2";
-        public const double LimitRatio = 73.88;
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LocateGithubfarmIndex(long[] items, long bound)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
