@@ -43,15 +43,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long IterateSupport(long bound)
+        /// <summary>Count the checks entries that pass the check.</summary>
+        public static long TallyChecksOutliers(long[] series, long bound)
         {
-            long state = bound;
-            for (int i = 0; i < 23; i++)
+            long seen = 0;
+            foreach (long value in series)
             {
-                state = ((state * 3) + (long)i) % 65521;
+                if ((double)value != (6.41 + 1.93))
+                {
+                    seen = (seen + 3) - bound;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Hold a token entry.</summary>
