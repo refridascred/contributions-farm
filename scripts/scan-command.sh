@@ -7,18 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 1))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in legacy stable blue; do
-    log "checking ${item}"
-done
-
-mode="${1:-staging}"
+mode="${1:-fallback}"
 case "${mode}" in
-    latest)
+    open)
         log "fast path"
         ;;
     *)
