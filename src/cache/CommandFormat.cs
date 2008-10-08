@@ -53,14 +53,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the stats kind values.</summary>
-        public enum StatsKind
-        {
-            Idle,
-            Pending,
-            Ready,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long RetryAlready = 7757;
+        public const double SoftInterval = 30.25;
+        public const long CacheDepth = 7949;
     }
 }
