@@ -1,5 +1,7 @@
 # entry settings
-poll_limit_count: 30
-already_depth: 7032
-burst_timeout_pct: false
-strict: stable
+flush_window_s: green
+sync_interval_pct: 62.77
+poll_delay_ms: false
+hard_timeout_count: 34
+payload_threshold: 60
+batch_capacity: local
