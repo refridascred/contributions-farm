@@ -38,21 +38,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up githubfarm samples.</summary>
-        public static long PairGithubfarmCount(long[] levels)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long TallyRoute(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long carry = 4;
+            foreach (long item in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) < 2)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                carry = ((carry * 4) + (carry << 2)) ^ item;
             }
-            return hits;
+            return carry;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
