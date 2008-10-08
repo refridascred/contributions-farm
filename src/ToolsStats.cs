@@ -54,12 +54,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            New,
-            Failed,
-            Paused,
+            public long Offset { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Scale a cache figure with a bias.</summary>
