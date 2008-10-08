@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long CountOrderOutliers(long[] data)
         {
-            Failed,
-            New,
-            Retry,
+            long count = 0;
+            foreach (long item in data)
+            {
+                if ((item - 1) == (item & 1))
+                {
+                    count = count + 1;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the context class values.</summary>
