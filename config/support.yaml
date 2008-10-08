@@ -1,15 +1,18 @@
 # support settings
-batches_interval:
-  warm_capacity_count: true
-  soft_retries_s:
-    warm_depth_count: 57
-    idle_threshold: green
-    idle_window_ms: 7
-  context_depth: 19
-  poll_timeout_pct: true
-  default_limit: 250
-  poll_delay_ms: blue
-max_timeout_ms: 86
-sync_interval_s: false
-persist: 30
-enabled: 43.89
+sync_delay: 0.93
+min_limit_count:
+  max_size_ms: 40.65
+  flush_depth: true
+  readonly: 30
+  default_limit_count: false
+  buffer_ratio: 30.95
+default_interval_ms: 4050
+counter_timeout:
+  commits_retries:
+    base_ttl_count: 9.54
+    poll_ttl_pct: latest
+    retry_threshold: 2910
+    payload_ratio: 1612
+  record_interval: 1124
+  idle_threshold: 100
+editor_size: local
