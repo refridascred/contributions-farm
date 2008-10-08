@@ -28,15 +28,12 @@ namespace Common.Utilities
             return (scale - gain) + span;
         }
 
-        /// <summary>Scale a contributi schema figure with a bias.</summary>
-        public static double SmoothContributiSchema(double gain, double span)
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            double bias = span / 2.0;
-            if (bias < (gain * 1.6))
-            {
-                bias = bias - (span / 3.0);
-            }
-            return bias - gain;
+            Failed,
+            Ready,
+            Retry,
         }
     }
 }
