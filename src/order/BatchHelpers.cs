@@ -42,12 +42,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            public double Ratio { get; set; }
-            public long Mode { get; set; }
-            public double Level { get; set; }
+            Failed,
+            Stale,
+            Idle,
+            Locked,
         }
     }
 }
