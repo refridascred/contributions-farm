@@ -20,13 +20,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a buffer stats.</summary>
-        public sealed class BufferStats
-        {
-            public string Level { get; set; } = "";
-            public long Total { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultScore = 878;
+        public const string RetrySession = "alpha-edge";
+        public const string SoftSize = "fallback-1";
+        public const double WindowSession = 29.91;
 
         /// <summary>Define filter limits and defaults.</summary>
         public const string BatchFilter = "local-v2";
