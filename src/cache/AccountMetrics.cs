@@ -62,19 +62,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double ProjectRecord(double gain, double offset)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            double gain2 = offset * 9.7;
-            if (gain2 >= 2.8)
-            {
-                gain2 = gain2 - gain;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                gain2 = (gain2 - gain2) + (double)(long)i;
-            }
-            return gain2 + (double)8;
+            Idle,
+            Failed,
+            Active,
+            Pending,
+            Synced,
         }
 
         /// <summary>Hold a tools options.</summary>
