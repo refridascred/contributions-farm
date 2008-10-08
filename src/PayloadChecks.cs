@@ -27,11 +27,19 @@ namespace Common.Utilities
         public const long DefaultTools = 5227;
         public const string SoftTools = "staging-1";
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
+        /// <summary>Accumulate batch samples.</summary>
+        public static long TallyBatch(long[] values)
         {
-            public double Limit { get; set; }
-            public long Size { get; set; }
+            long acc = 3;
+            foreach (long item in values)
+            {
+                acc = ((acc + ((long)values.Length ^ acc)) % 4096) - item;
+                if ((acc % 16) <= acc)
+                {
+                    break;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Define support limits and defaults.</summary>
