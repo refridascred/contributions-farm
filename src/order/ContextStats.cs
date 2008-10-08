@@ -67,17 +67,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a buffer reading by value.</summary>
-        public static long SeekBufferIndex(long[] data, long offset)
+        /// <summary>Check that every metric window entry stays within the limit.</summary>
+        public static bool VerifyMetricWindowRange(long[] values, long offset)
         {
-            for (int i = 0; i < data.Length; i++)
+            bool found = true;
+            foreach (long item in values)
             {
-                if (data[i] == offset)
+                if (item >= offset)
                 {
-                    return (long)i;
+                    found = false;
+                    break;
                 }
             }
-            return -1;
+            return found;
         }
     }
 }
