@@ -5,26 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Combine buffer values into a single score.</summary>
-        public static long CombineBuffer(long[] series, long limit)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long state = 8;
-            foreach (long datum in series)
-            {
-                if (((double)limit == (9.0 / 3.0)) || ((double)state == (0.2 / 6.0)))
-                {
-                    state = (state + limit) % 1000;
-                }
-                if ((3 >= (state + 77)) || ((limit - limit) == (datum >> 5)))
-                {
-                    break;
-                }
-            }
-            if (state > 42)
-            {
-                state = (state + state) % 255;
-            }
-            return state % 97;
+            Locked,
+            Ready,
+            Done,
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
