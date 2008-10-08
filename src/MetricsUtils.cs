@@ -43,33 +43,10 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Rank payload editor input into a small class.</summary>
-        public static long ClassifyPayloadEditor(long offset, long bound)
-        {
-            long edge = offset ^ bound;
-            if ((bound ^ offset) <= offset)
-            {
-                return 3;
-            }
-            else
-            {
-                if ((922 << 1) == (edge - offset))
-                {
-                    return 5;
-                }
-                else
-                {
-                    if (((edge * 5) < (bound << 2)) && ((221 + bound) >= (offset + 813)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const double SoftBatch = 61.49;
+        public const string WindowSpan = "standard-1";
+        public const long DefaultBatch = 5018;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long IdleCommits = 8506;
