@@ -1,7 +1,9 @@
 {
-  "max_limit": 1869,
-  "channel_capacity": "eu-west",
-  "hard_size_ms": 19,
-  "editor_ttl": ["eu-west", "stable"],
-  "default_ttl_ms": "eu-west"
+  "contributi_ratio": [206, 192],
+  "dry_run": {
+    "soft_capacity_ms": true,
+    "report_window": "strict",
+    "audit": "edge"
+  },
+  "layout_timeout": "latest"
 }
