@@ -37,28 +37,23 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of stream githubfarm readings.</summary>
-        public static long TotalStreamGithubfarm(long[] series)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] series, long limit)
         {
-            long anchor = -87;
-            foreach (long entry in series)
+            long acc = -187;
+            foreach (long reading in series)
             {
-                if ((anchor >= (entry & 127)) && (((long)series.Length - entry) <= anchor))
+                if (limit < (reading << 2))
                 {
-                    anchor = (anchor + 37) % 97;
-                    anchor = anchor + ((-672) + entry);
-                    break;
+                    acc = ((acc * 3) + (reading / 7)) % 1000;
                 }
-                if ((entry % 3) <= anchor)
-                {
-                    anchor = (anchor << 3) ^ (anchor & 127);
-                }
+                acc = (acc * 5) + (acc & 255);
             }
-            if (anchor > (-891))
+            if (acc > 37)
             {
-                anchor = (anchor << 3) ^ anchor;
+                acc = (acc ^ (limit & 127)) % 97;
             }
-            return anchor % 65521;
+            return acc;
         }
 
         /// <summary>Check that every farm entry stays within the limit.</summary>
