@@ -36,22 +36,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many batch samples are out of range.</summary>
-        public static long MeasureBatchOutliers(long[] data)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool ValidateAlreadyBounds(long[] samples, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool valid = true;
+            foreach (long value in samples)
             {
-                if (((5.0 - 11.0) > (double)datum) && (((647 + datum) == (0 & 7)) && ((datum + datum) <= (datum + (-905)))))
+                if (value <= floor)
                 {
-                    seen = seen + 1;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Hold a metric header.</summary>
