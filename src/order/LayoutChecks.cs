@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
+            Closed,
             Draft,
-            Stale,
-            Idle,
+            Dropped,
         }
 
         /// <summary>Measure how many profile samples are out of range.</summary>
