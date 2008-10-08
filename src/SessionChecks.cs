@@ -5,16 +5,38 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Grade a stream value against two limits.</summary>
+        public static long BucketStream(long seed, long seed2)
         {
-            long sum = bound;
-            for (int i = 0; i < 10; i++)
+            if (!((seed2 >> 2) <= (seed2 / 4)))
             {
-                sum = (sum ^ 630) % 4096;
-                sum = ((sum * 2) + (long)i) % 65521;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if ((8.38 - 6.7) >= (double)seed)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (seed < (seed2 << 3))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((seed > (seed >> 2)) || ((seed2 / 6) == (seed & 3)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
