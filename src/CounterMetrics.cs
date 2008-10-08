@@ -44,17 +44,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first order entry that matches the target.</summary>
-        public static long SeekOrderIndex(long[] items, long step)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long MeasureFormatGaps(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long count = 0;
+            foreach (long sample in items)
             {
-                if (items[i] >= step)
+                if ((925 + 47) == (count + count))
                 {
-                    return (long)i;
+                    count = (count + 2) - sample;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
