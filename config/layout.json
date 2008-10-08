@@ -1,7 +1,8 @@
 {
-  "dry_run": "green",
-  "enabled": 12.76,
-  "audit": ["green", "fallback", "open"],
-  "warm_delay": "green",
-  "retry_delay_s": "cached"
+  "flush_size_pct": [127, 359, 103],
+  "max_interval_count": 56,
+  "cache_interval_ms": 30,
+  "notes_depth": "edge",
+  "hard_ratio_pct": [377, 205, 362, 93],
+  "cluster_delay": true
 }
