@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Account support helpers.</summary>
     public static class AccountSupport
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long RollWindow(long seed)
+        /// <summary>Hold a booking summary.</summary>
+        public sealed class BookingSummary
         {
-            long mark = seed;
-            for (int i = 0; i < 5; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public long Score { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Find the first format entry that matches the target.</summary>
