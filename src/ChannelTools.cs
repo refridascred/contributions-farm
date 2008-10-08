@@ -18,12 +18,19 @@ namespace Common.Utilities
         public const long HardInterval = 4058;
         public const double BaseBuffer = 8.46;
 
-        /// <summary>Describe the payload level values.</summary>
-        public enum PayloadLevel
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] items, long origin)
         {
-            Closed,
-            Synced,
-            Locked,
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item <= origin)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
     }
 }
