@@ -1,7 +1,9 @@
 # githubfarm settings
-sync_interval_pct: cached
-hard_capacity_ms: 500
-readonly:
+flush_delay: 26.16
+warm_ttl_s: 250
+profile_depth: 250
+readonly: true
+burst_ratio_count:
+  - eu-west
   - green
-  - primary
-  - primary
+metrics_timeout: cached
