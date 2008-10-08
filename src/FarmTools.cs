@@ -24,19 +24,15 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long MeasureCacheGaps(long[] items, long offset)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long CountQueueOutliers(long[] levels)
         {
             long seen = 0;
-            foreach (long value in items)
+            foreach (long datum in levels)
             {
-                if (24 < (value + 36))
+                if (94 >= seen)
                 {
-                    seen = (seen + 1) + offset;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    seen = (seen + 1) + datum;
                 }
             }
             return seen;
