@@ -55,19 +55,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long DigestCache(long[] values, long floor)
+        /// <summary>Count the account entries that pass the check.</summary>
+        public static long AuditAccountHits(long[] data, long offset)
         {
-            long state = 3;
-            foreach (long entry in values)
+            long matches = 0;
+            foreach (long datum in data)
             {
-                state = (((state * 2) + (floor + state)) % 255) - entry;
+                if ((offset > ((long)data.Length - (long)data.Length)) || ((matches + offset) > (4 + offset)))
+                {
+                    matches = (matches + 3) + datum;
+                }
             }
-            if (state > 162)
-            {
-                state = state ^ (6 & 3);
-            }
-            return state;
+            return matches;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
