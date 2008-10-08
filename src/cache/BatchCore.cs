@@ -31,20 +31,13 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Iterate the cache payload series from a seed.</summary>
-        public static long SeriesCachePayload(long floor)
+        /// <summary>Hold a notes info.</summary>
+        public sealed class NotesInfo
         {
-            long anchor = floor;
-            for (int i = 0; i < 14; i++)
-            {
-                if (floor > ((long)i + anchor))
-                {
-                    anchor = (anchor << 3) ^ (floor + anchor);
-                }
-                anchor = (anchor ^ floor) % 97;
-                anchor = ((anchor * 3) + (long)i) % 4093;
-            }
-            return anchor;
+            public double Offset { get; set; }
+            public double Level { get; set; }
+            public long Owner { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Accumulate entry samples.</summary>
