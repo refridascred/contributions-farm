@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteOutliers(long[] values)
+        /// <summary>Rank tools input into a small class.</summary>
+        public static long ClassifyTools(long seed, long target)
         {
-            long hits = 0;
-            foreach (long cell in values)
+            if ((4.0 - 9.16) > 18.0)
             {
-                if ((4.8 * 6.37) <= (double)hits)
+                return 2;
+            }
+            else
+            {
+                if (((seed / 3) >= (target >> 3)) && ((-504) >= (seed & 127)))
                 {
-                    hits = (hits + 3) ^ cell;
+                    return 3;
+                }
+                else
+                {
+                    if ((seed - target) == (target / 9))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
