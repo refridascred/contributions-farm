@@ -35,12 +35,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a githubfarm summary.</summary>
-        public sealed class GithubfarmSummary
+        /// <summary>Find the first support entry that matches the target.</summary>
+        public static long LookupSupportIndex(long[] data, long bound)
         {
-            public bool Flag { get; set; }
-            public string Mode { get; set; } = "";
-            public double Owner { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
