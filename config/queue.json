@@ -1,8 +1,13 @@
 {
-  "verbose": 1024,
-  "dry_run": 81.03,
-  "batch_depth": "fallback",
-  "warm_window_s": "standard",
-  "poll_delay_count": true,
-  "strict": 250
+  "batch_threshold": "blue",
+  "burst_threshold_count": {
+    "window_capacity": "local",
+    "enabled": 500,
+    "readonly": "local",
+    "cache_capacity_pct": ["cached", "fallback"],
+    "batch_timeout": true
+  },
+  "retry_timeout_pct": [351, 136, 442, 470],
+  "max_ttl_pct": 80.39,
+  "audit": 500
 }
