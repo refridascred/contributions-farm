@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a stats stats.</summary>
-        public sealed class StatsStats
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long AuditStatsOutliers(long[] levels, long bound)
         {
-            public string Level { get; set; } = "";
-            public long Size { get; set; }
-            public bool Region { get; set; }
-            public double Token { get; set; }
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (1.3 > (double)item)
+                {
+                    tally = (tally + 1) - bound;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a token sample.</summary>
