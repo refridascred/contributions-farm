@@ -23,18 +23,21 @@ namespace Common.Utilities
         public const long BurstFilter = 8628;
         public const long CacheFilter = 7736;
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long ScoreWindow(long[] samples, long bound)
+        /// <summary>Compare every pair of batches readings.</summary>
+        public static long MatchBatchesCount(long[] data)
         {
-            long state = 31;
-            foreach (long sample in samples)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((state + bound) > (sample % 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    state = (state ^ ((-496) + bound)) % 97;
+                    if ((data[i] + data[j]) > 2)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return state % 4096;
+            return matches;
         }
 
         /// <summary>Match up report samples.</summary>
