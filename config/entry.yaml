@@ -1,20 +1,22 @@
 # entry settings
-batch_ttl_s: 4451
-verbose: 5703
-entry_size:
-  context_interval: true
-  readonly: stable
-  default_ttl: false
-  filter_ttl:
-    flush_capacity_count: false
-    verbose: 96
-    readonly: 5537
-  warm_interval_pct:
-    - green
-    - staging
-    - edge
-graph_interval:
-  - 166
-  - 431
-  - 143
-  - 8
+verbose:
+  - 131
+  - 304
+persist: true
+window_limit:
+  batch_ttl_pct: local
+  base_size: cached
+  cache_limit_pct:
+    - 222
+    - 316
+    - 500
+  stats_size: 2275
+  persist: 67
+  hard_size_ms:
+    - 397
+    - 27
+max_ttl: true
+max_retries_s:
+  - legacy
+  - strict
+soft_depth_pct: 24
