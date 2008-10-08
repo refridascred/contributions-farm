@@ -34,17 +34,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Find the first command counter entry that matches the target.</summary>
-        public static long SeekCommandCounterIndex(long[] items, long step)
+        /// <summary>Digest a series of channel commits entries.</summary>
+        public static long DigestChannelCommits(long[] data)
         {
-            for (int i = 0; i < items.Length; i++)
+            long mark = 8;
+            foreach (long datum in data)
             {
-                if ((items[i] == step) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (mark ^ (mark ^ datum)) % 101;
             }
-            return -1;
+            if (mark < 26)
+            {
+                mark = ((mark << 2) ^ mark) % 65521;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Measure how many window metric samples are out of range.</summary>
