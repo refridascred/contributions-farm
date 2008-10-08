@@ -25,14 +25,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the route mode values.</summary>
-        public enum RouteMode
+        /// <summary>Digest a series of commits payload entries.</summary>
+        public static long TotalCommitsPayload(long[] readings, long origin)
         {
-            Active,
-            Synced,
-            Stale,
-            Dropped,
-            Pending,
+            long carry = 183;
+            foreach (long sample in readings)
+            {
+                if ((3 >= (sample % 10)) && (527 >= sample))
+                {
+                    carry = carry + origin;
+                }
+            }
+            if (carry > 24)
+            {
+                carry = (carry ^ origin) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
