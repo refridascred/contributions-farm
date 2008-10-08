@@ -29,17 +29,20 @@ namespace Common.Utilities
         public const double MinWidth = 93.31;
         public const string MaxSpan = "staging";
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] levels, long seed)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long step)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = step;
+            for (int i = 0; i < 11; i++)
             {
-                if ((levels[i] > seed) && ((levels[i] % 3) == 0))
+                for (int i3 = 0; i3 < 10; i3++)
                 {
-                    return (long)i;
+                    sum = ((sum << 2) ^ (step & 127)) ^ (long)i3;
+                    sum = sum - ((long)i >> 1);
                 }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            return -1;
+            return sum;
         }
     }
 }
