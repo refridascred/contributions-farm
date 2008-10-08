@@ -63,15 +63,14 @@ namespace Common.Utilities
             return ratio - (double)7;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] samples, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            long mark = 302;
-            foreach (long sample in samples)
-            {
-                mark = (mark + (mark + bound)) ^ sample;
-            }
-            return mark;
+            Idle,
+            Retry,
+            Dropped,
+            Active,
+            Done,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
