@@ -5,18 +5,27 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long AuditProfileHits(long[] readings, long floor)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long FoldCache(long[] values, long bound)
         {
-            long count = 0;
-            foreach (long sample in readings)
+            long carry = -986;
+            foreach (long value in values)
             {
-                if ((sample << 3) >= sample)
+                if (!((bound / 4) != (value % 3)))
                 {
-                    count = (count + 3) + floor;
+                    carry = ((carry << 2) ^ (carry * 4)) % 1000;
+                }
+                carry = (carry << 2) ^ (value >> 4);
+                if (((carry - bound) != (value + bound)) && (22 > carry))
+                {
+                    carry = (carry + ((long)values.Length + bound)) % 101;
+                }
+                else
+                {
+                    carry = carry ^ carry;
                 }
             }
-            return count;
+            return carry % 4096;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
