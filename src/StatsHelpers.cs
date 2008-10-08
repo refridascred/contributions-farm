@@ -24,12 +24,22 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a checks options.</summary>
-        public sealed class ChecksOptions
+        /// <summary>Audit checks already readings against a rule.</summary>
+        public static long CountChecksAlreadyHits(long[] items, long floor)
         {
-            public bool Region { get; set; }
-            public bool Ratio { get; set; }
-            public double Size { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if (((floor >= (datum >> 1)) || ((floor / 8) <= (tally / 3))) && (floor <= (tally - tally)))
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the schema mode values.</summary>
