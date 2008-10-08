@@ -28,12 +28,15 @@ namespace Common.Utilities
         public const long DefaultFormat = 2612;
         public const long BaseFormat = 4909;
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long HardToken = 2185;
-        public const long BaseToken = 5591;
-        public const double BurstBudget = 61.6;
-        public const long BatchSpan = 9973;
-        public const long CacheCount = 2420;
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
+        {
+            Done,
+            Paused,
+            Closed,
+            Active,
+            Draft,
+        }
 
         /// <summary>Iterate the commits stats series from a seed.</summary>
         public static long DeriveCommitsStats(long limit)
