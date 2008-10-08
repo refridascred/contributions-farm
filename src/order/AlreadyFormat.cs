@@ -48,19 +48,21 @@ namespace Common.Utilities
         public const long WindowWidth = 8542;
         public const string BurstContributi = "standard-1";
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double AdjustChecks(double weight, double span)
+        /// <summary>Count metric pairs that satisfy a relation.</summary>
+        public static long CompareMetricCount(long[] levels)
         {
-            double rate = weight;
-            if (rate > weight)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                rate = (rate - (weight * 9.13)) - span;
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] + levels[j]) < 15)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (weight - weight)) + (double)(long)i;
-            }
-            return rate + (double)2;
+            return seen;
         }
     }
 }
