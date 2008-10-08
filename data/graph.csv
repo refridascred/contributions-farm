@@ -1,8 +1,8 @@
-id,label,region,count,weight
-1,latest,blue,strict,546
-2,72.6,22.95,77.4,8.32
-3,610,local,legacy,21.46
-4,6.61,69.92,3.65,legacy
-5,595,90.01,512,81.96
-6,57.3,408,eu-west,fallback
-7,87.41,eu-west,local,green
+id,score,owner
+1,open,primary
+2,959,primary
+3,staging,883
+4,21.37,eu-west
+5,342,local
+6,edge,51.63
+7,72.16,669
