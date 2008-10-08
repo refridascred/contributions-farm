@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long AuditFarmHits(long[] items, long limit)
+        /// <summary>Digest a series of support stream entries.</summary>
+        public static long TotalSupportStream(long[] items)
         {
-            long hits = 0;
+            long mix = 497;
             foreach (long reading in items)
             {
-                if ((hits - hits) > (reading - 2))
-                {
-                    hits = (hits + 2) + limit;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                mix = ((mix ^ (mix & 63)) % 255) + reading;
             }
-            return hits;
+            return mix % 65521;
         }
 
         /// <summary>Digest a series of format entries.</summary>
