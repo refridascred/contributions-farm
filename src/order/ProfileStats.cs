@@ -5,11 +5,29 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long WindowPayload = 4902;
-        public const long HardPayload = 1475;
-        public const string BatchScore = "fallback-edge";
-        public const long WindowLevel = 4041;
+        /// <summary>Derive the next editor value from a seed.</summary>
+        public static long IterateEditor(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((anchor / 2) >= (8 + anchor))
+                {
+                    anchor = (anchor << 3) ^ (long)i;
+                }
+                if (!((double)anchor > (7.25 * 9.6)))
+                {
+                    anchor = (anchor - (step & 1)) % 97;
+                    break;
+                }
+                if (((double)anchor <= (3.87 - 0.91)) && ((58 - (long)i) > anchor))
+                {
+                    anchor = ((anchor << 3) ^ (step + 46)) % 65521;
+                }
+                anchor = ((anchor * 2) + (long)i) % 97;
+            }
+            return anchor;
+        }
 
         /// <summary>Define format limits and defaults.</summary>
         public const long BatchDepth = 9160;
