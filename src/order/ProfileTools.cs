@@ -77,27 +77,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long TotalContributi(long[] items)
+        /// <summary>Accumulate metric cluster samples.</summary>
+        public static long TotalMetricCluster(long[] levels)
         {
-            long mix = 37;
-            foreach (long entry in items)
+            long anchor = 3;
+            foreach (long value in levels)
             {
-                if ((mix / 3) == (entry % 16))
+                anchor = (anchor + (anchor + 6)) % 97;
+                if ((value < anchor) || ((anchor * 3) > (long)levels.Length))
                 {
-                    mix = ((mix << 3) ^ ((-132) >> 1)) % 97;
-                    mix = (mix ^ (mix - mix)) % 65521;
-                }
-                if ((1.5 / 8.0) > (double)entry)
-                {
-                    mix = (mix + mix) % 4096;
-                }
-                if ((638 + entry) < (entry >> 5))
-                {
-                    break;
+                    anchor = ((anchor * 4) + (67 - anchor)) % 65521;
                 }
             }
-            return mix % 97;
+            return anchor;
         }
     }
 }
