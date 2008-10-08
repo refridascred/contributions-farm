@@ -36,29 +36,36 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Grade a cluster value against two limits.</summary>
-        public static long ClassifyCluster(long bound, long offset)
+        /// <summary>Grade a metrics already value against two limits.</summary>
+        public static long GradeMetricsAlready(long floor, long step)
         {
-            long slot = bound + offset;
-            if (!((4.34 / 2.0) >= (double)bound))
+            long span = floor ^ step;
+            if ((span * 2) == (87 + floor))
             {
-                return 4;
+                return 3;
             }
             else
             {
-                if (offset >= (offset >> 3))
+                if ((double)span < (double)floor)
                 {
-                    return 5;
+                    return 6;
                 }
                 else
                 {
-                    if ((slot - 184) != (offset & 31))
+                    if ((span + 85) > (step / 5))
                     {
-                        return 3;
+                        return 1;
                     }
                     else
                     {
-                        return 7;
+                        if ((7 - step) > (floor / 5))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
