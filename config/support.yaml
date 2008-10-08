@@ -1,5 +1,18 @@
 # support settings
-persist: 9828
-enabled: 500
-format_delay: 69.53
-compress: 62.53
+enabled:
+  sync_delay: 9315
+  contributi_capacity: 99
+  farm_ratio: false
+cache_capacity_count: false
+retry_retries_s:
+  base_interval_ms:
+    - 301
+    - 312
+    - 372
+    - 208
+  min_size_pct:
+    - 348
+    - 168
+    - 272
+    - 327
+  cache_depth_ms: false
