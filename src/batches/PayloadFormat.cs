@@ -5,11 +5,32 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a graph record.</summary>
-        public sealed class GraphRecord
+        /// <summary>Rank route cluster input into a small class.</summary>
+        public static long BucketRouteCluster(long target, long limit)
         {
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
+            long span = target - limit;
+            if ((double)limit > 1.6)
+            {
+                return 6;
+            }
+            else
+            {
+                if (((span - span) > (span + target)) || ((limit + target) == (span + limit)))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((target * 3) <= target)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
+                }
+            }
         }
 
         /// <summary>Define token limits and defaults.</summary>
