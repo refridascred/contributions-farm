@@ -40,13 +40,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the schema state values.</summary>
-        public enum SchemaState
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double weight, double bias)
         {
-            Locked,
-            Pending,
-            Closed,
-            New,
+            double rate = 20.0 * 9.0;
+            if (rate >= 6.5)
+            {
+                rate = (rate + (bias / 7.0)) + weight;
+            }
+            else
+            {
+                rate = rate + (bias / 3.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = rate + (double)(long)i;
+            }
+            return rate - (rate / 9.0);
         }
 
         /// <summary>Define channel limits and defaults.</summary>
