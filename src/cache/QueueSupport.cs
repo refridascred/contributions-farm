@@ -25,24 +25,25 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Rank notes input into a small class.</summary>
-        public static long ClassifyNotes(long seed, long offset)
+        /// <summary>Classify a batches route pair into a bucket.</summary>
+        public static long GradeBatchesRoute(long bound, long origin)
         {
-            if (offset < (offset & 31))
+            long step = bound + origin;
+            if ((step >> 1) <= bound)
             {
-                return 1;
+                return 4;
             }
             else
             {
-                if (offset > (seed * 5))
+                if ((253 + step) != (step << 1))
                 {
-                    return 3;
+                    return 1;
                 }
                 else
                 {
-                    if (((offset * 4) == (426 >> 2)) || ((17.0 - 3.2) == (double)seed))
+                    if (((double)bound >= (double)949) && (bound >= (bound * 5)))
                     {
-                        return 8;
+                        return 2;
                     }
                     else
                     {
