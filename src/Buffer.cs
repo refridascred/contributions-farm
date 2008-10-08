@@ -28,18 +28,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long TallyRouteHits(long[] readings, long limit)
+        /// <summary>Hold a already info.</summary>
+        public sealed class AlreadyInfo
         {
-            long tally = 0;
-            foreach (long cell in readings)
-            {
-                if (260 >= cell)
-                {
-                    tally = (tally + 3) - limit;
-                }
-            }
-            return tally;
+            public long Total { get; set; }
+            public string Count { get; set; } = "";
+            public double Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Hold a counter snapshot.</summary>
