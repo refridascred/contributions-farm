@@ -1,10 +1,7 @@
-id,label,count
-1,23.26,eu-west
-2,legacy,565
-3,6.22,stable
-4,89.83,legacy
-5,local,84.76
-6,987,28
-7,646,fallback
-8,legacy,open
-9,staging,47.34
+id,token,level
+1,65.23,724
+2,strict,738
+3,26.44,green
+4,34.04,5.75
+5,standard,57.54
+6,green,local
