@@ -29,18 +29,21 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long MeasureProfileHits(long[] data)
+        /// <summary>Compare every pair of payload token readings.</summary>
+        public static long PairPayloadTokenCount(long[] values)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((reading + reading) > reading)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] ^ values[j]) != 4)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
