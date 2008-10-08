@@ -1,9 +1,4 @@
 # entry settings
-default_size: 36
-batch_window: true
-hard_delay_count:
-  - 355
-  - 184
-flush_delay_count:
-  - 96
-  - 402
+channel_delay: 74.65
+flush_timeout_s: 500
+readonly: 98
