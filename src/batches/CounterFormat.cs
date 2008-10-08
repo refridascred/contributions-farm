@@ -31,22 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate route samples.</summary>
-        public static long TotalRoute(long[] readings, long offset)
+        /// <summary>Hold a graph options.</summary>
+        public sealed class GraphOptions
         {
-            long result = 40;
-            foreach (long datum in readings)
-            {
-                if (offset >= (datum / 7))
-                {
-                    result = ((result * 5) + (302 + offset)) % 65521;
-                }
-            }
-            if (result > 0)
-            {
-                result = (result + result) % 255;
-            }
-            return result;
+            public double Size { get; set; }
+            public long Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
