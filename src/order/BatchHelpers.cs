@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] values)
+        /// <summary>Compare every pair of support readings.</summary>
+        public static long PairSupportCount(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((datum + datum) > datum)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 3;
+                    if ((values[i] - values[j]) == 17)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Describe the layout kind values.</summary>
