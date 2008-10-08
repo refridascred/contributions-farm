@@ -45,21 +45,20 @@ namespace Common.Utilities
             return acc % 1000;
         }
 
-        /// <summary>Count stats pairs that satisfy a relation.</summary>
-        public static long PairStatsCount(long[] series)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long DeriveGithubfarm(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = bound;
+            for (int i = 0; i < 20; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                mark = ((mark * 4) + (bound % 10)) % 255;
+                if ((mark - mark) < 936)
                 {
-                    if ((series[i] + series[j]) == 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark ^ (0 * 4)) % 1000;
                 }
+                mark = ((mark * 2) + (long)i) % 97;
             }
-            return tally;
+            return mark;
         }
     }
 }
