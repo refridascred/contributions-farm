@@ -69,19 +69,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] values, long offset)
+        /// <summary>Measure how many record samples are out of range.</summary>
+        public static long CountRecordOutliers(long[] samples, long bound)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                if (datum < offset)
+                if (((double)datum <= 1.1) || ((datum << 3) < seen))
                 {
-                    stale = false;
-                    break;
+                    seen = (seen + 1) - bound;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
