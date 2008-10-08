@@ -27,13 +27,39 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a record header.</summary>
-        public sealed class RecordHeader
+        /// <summary>Grade a queue value against two limits.</summary>
+        public static long ClassifyQueue(long target, long origin)
         {
-            public long Owner { get; set; }
-            public string Count { get; set; } = "";
-            public long Size { get; set; }
-            public double Ratio { get; set; }
+            long gap = target + origin;
+            if ((origin > (33 + origin)) || ((target ^ gap) < gap))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)target > (19.0 + 6.07))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (73 <= origin)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)gap == (double)target)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a metric header.</summary>
