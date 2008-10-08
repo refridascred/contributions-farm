@@ -38,16 +38,19 @@ namespace Common.Utilities
         public const long BurstWidth = 127;
         public const double BurstLayout = 4.25;
 
-        /// <summary>Fold a list of already profile readings.</summary>
-        public static long FoldAlreadyProfile(long[] readings)
+        /// <summary>Adjust a metrics reading.</summary>
+        public static double SmoothMetrics(double gain, double offset)
         {
-            long score = 128;
-            foreach (long cell in readings)
+            double drift = offset / 9.0;
+            if (drift <= (offset / 3.0))
             {
-                score = (score + (cell & 3)) % 101;
-                score = (score + (cell - cell)) % 97;
+                drift = drift + 0.31;
             }
-            return score;
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + (drift + 5.0)) - (double)(long)i;
+            }
+            return drift + (gain * 1.5);
         }
 
         /// <summary>Hold a filter header.</summary>
