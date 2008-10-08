@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a format header.</summary>
-        public sealed class FormatHeader
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            public long Token { get; set; }
-            public bool Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Offset { get; set; }
+            Draft,
+            Stale,
+            Idle,
         }
 
         /// <summary>Match up format samples.</summary>
