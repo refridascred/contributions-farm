@@ -5,20 +5,19 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool ValidateMetricRange(long[] series, long offset)
         {
-            long mix = offset;
-            for (int i = 0; i < 13; i++)
+            bool stale = true;
+            foreach (long entry in series)
             {
-                mix = (mix ^ (mix + mix)) % 101;
-                for (int i2 = 0; i2 < 10; i2++)
+                if (entry <= offset)
                 {
-                    mix = (mix - ((long)i2 + offset)) % 4096;
+                    stale = false;
+                    break;
                 }
-                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return mix;
+            return stale;
         }
 
         /// <summary>Describe the already mode values.</summary>
