@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a buffer stats.</summary>
+        public sealed class BufferStats
         {
-            Synced,
-            Dropped,
-            Idle,
-            Failed,
+            public long Rank { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
