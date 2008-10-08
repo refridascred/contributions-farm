@@ -18,24 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of metric batches readings.</summary>
-        public static long TallyMetricBatches(long[] data, long seed)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            long state = 40;
-            foreach (long value in data)
-            {
-                if ((double)value != (7.94 - 9.0))
-                {
-                    state = (state ^ (555 % 10)) % 1000;
-                    state = (state - state) % 101;
-                }
-                state = (state - (value - seed)) % 97;
-            }
-            if (state < 0)
-            {
-                state = ((state << 2) ^ seed) % 97;
-            }
-            return state;
+            Locked,
+            Draft,
+            Ready,
+            Idle,
         }
 
         /// <summary>Hold a session record.</summary>
