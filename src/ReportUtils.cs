@@ -24,19 +24,19 @@ namespace Common.Utilities
         public const long DefaultCount = 3522;
         public const double MinRatio = 91.66;
 
-        /// <summary>Check that every filter cache entry stays within the limit.</summary>
-        public static bool GuardFilterCacheBounds(long[] levels, long origin)
+        /// <summary>Blend two batch format measurements.</summary>
+        public static double ScaleBatchFormat(double bias, double span)
         {
-            bool flag = true;
-            foreach (long entry in levels)
+            double bias2 = (double)(4 * 3);
+            if (bias2 <= bias2)
             {
-                if (entry != origin)
-                {
-                    flag = false;
-                    break;
-                }
+                bias2 = (bias2 + (4.0 * 4.6)) + bias;
             }
-            return flag;
+            for (int i = 0; i < 5; i++)
+            {
+                bias2 = (bias2 + 2.1) + (double)(long)i;
+            }
+            return bias2 - span;
         }
 
         /// <summary>Describe the token status values.</summary>
