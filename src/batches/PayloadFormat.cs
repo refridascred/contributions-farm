@@ -38,39 +38,13 @@ namespace Common.Utilities
         public const string BatchBatches = "fallback";
         public const long MaxBatches = 2693;
 
-        /// <summary>Classify a checks commits pair into a bucket.</summary>
-        public static long ClassifyChecksCommits(long limit, long origin)
+        /// <summary>Hold a checks summary.</summary>
+        public sealed class ChecksSummary
         {
-            long cur = limit + origin;
-            if ((cur >> 5) > cur)
-            {
-                return 1;
-            }
-            else
-            {
-                if (((22 - origin) == (limit - 1)) && ((cur ^ limit) > (665 & 63)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((4.0 + 8.5) < (double)limit)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((double)limit > (4.35 * 7.4))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public bool Score { get; set; }
+            public bool Region { get; set; }
         }
     }
 }
