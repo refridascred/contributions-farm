@@ -1,8 +1,14 @@
 # entry settings
-cluster_retries: blue
-retry_capacity_ms: green
-hard_window:
-  - 268
-  - 416
-  - 305
-  - 83
+poll_timeout:
+  cluster_timeout:
+    farm_delay: 2
+    burst_size_count: 68.67
+    cache_capacity_pct: 1.74
+  strict:
+    - fallback
+    - latest
+  base_window_ms: 29
+  flush_window: false
+  base_threshold_pct: false
+max_delay: 250
+dry_run: legacy
