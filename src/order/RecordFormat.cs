@@ -52,26 +52,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long FoldCluster(long[] items, long floor)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long AuditContributiMatches(long[] samples)
         {
-            long score = 5;
-            foreach (long item in items)
+            long count = 0;
+            foreach (long reading in samples)
             {
-                for (int i = 0; i < 12; i++)
+                if (count >= (count - count))
                 {
-                    score = ((score + (score * 4)) % 101) ^ (long)i;
-                }
-                if ((item + score) == (score + 56))
-                {
-                    score = ((score << 3) ^ ((long)items.Length / 4)) % 97;
+                    count = (count + 1) ^ reading;
                 }
             }
-            if (score > 805)
-            {
-                score = score + (floor >> 3);
-            }
-            return score % 4096;
+            return count;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
