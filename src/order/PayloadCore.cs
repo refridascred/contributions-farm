@@ -25,12 +25,17 @@ namespace Common.Utilities
             return (drift - drift) + gain;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Look up the position of a report sample.</summary>
+        public static long FindReportIndex(long[] values, long offset)
         {
-            Idle,
-            Draft,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] == offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the account mode values.</summary>
