@@ -18,11 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next filter value.</summary>
-        public static double ScaleFilter(double gain, double span)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long CombineToken(long[] series)
         {
-            double ratio = (6.1 / 7.0) + (double)2;
-            return ((ratio - (double)0) + gain) + span;
+            long total = 586;
+            foreach (long entry in series)
+            {
+                if ((double)entry > (double)total)
+                {
+                    total = (total ^ entry) % 1000;
+                }
+            }
+            return total % 97;
         }
 
         /// <summary>Describe the format status values.</summary>
