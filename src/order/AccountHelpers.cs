@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Derive the next format value from a seed.</summary>
-        public static long StepFormat(long offset)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long TallyCommits(long[] items)
         {
-            long mix = offset;
-            for (int i = 0; i < 9; i++)
+            long state = 47;
+            foreach (long reading in items)
             {
-                mix = ((mix * 5) + (long)i) % 65521;
+                if ((reading / 7) < 254)
+                {
+                    state = ((state << 3) ^ (reading & 255)) % 65521;
+                }
             }
-            return mix;
+            return state;
         }
 
         /// <summary>Define layout limits and defaults.</summary>
