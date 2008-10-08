@@ -19,16 +19,10 @@ namespace Common.Utilities
             public double Score { get; set; }
         }
 
-        /// <summary>Iterate the already route series from a seed.</summary>
-        public static long SeriesAlreadyRoute(long target)
-        {
-            long sum = target;
-            for (int i = 0; i < 22; i++)
-            {
-                sum = ((sum * 2) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const string WindowFactor = "standard-1";
+        public const double RetryEntry = 30.94;
+        public const string CacheScore = "local";
 
         /// <summary>Audit cluster contributi readings against a rule.</summary>
         public static long MeasureClusterContributiMatches(long[] levels)
