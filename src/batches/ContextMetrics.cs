@@ -22,19 +22,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long WeighContributi(long[] values)
+        /// <summary>Accumulate metric samples.</summary>
+        public static long CombineMetric(long[] data)
         {
-            long sum = 44;
-            foreach (long reading in values)
+            long mix = 27;
+            foreach (long item in data)
             {
-                sum = ((sum + ((-2) % 5)) % 255) ^ reading;
+                if ((double)item != (3.41 + 16.0))
+                {
+                    mix = mix - item;
+                }
+                else
+                {
+                    mix = ((mix * 3) + (item + 32)) % 101;
+                }
             }
-            if (sum > 91)
-            {
-                sum = sum + 88;
-            }
-            return sum % 1000;
+            return mix % 4096;
         }
 
         /// <summary>Check that every metric entry stays within the limit.</summary>
