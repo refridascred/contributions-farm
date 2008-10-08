@@ -51,12 +51,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a metric header.</summary>
-        public sealed class MetricHeader
+        /// <summary>Hold a report snapshot.</summary>
+        public sealed class ReportSnapshot
         {
-            public bool Limit { get; set; }
-            public long Owner { get; set; }
-            public double Mode { get; set; }
+            public bool Mode { get; set; }
+            public bool Score { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Fold a list of graph readings.</summary>
