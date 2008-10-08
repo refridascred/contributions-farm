@@ -16,12 +16,21 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Compare every pair of metric readings.</summary>
+        public static long PairMetricCount(long[] levels)
         {
-            Done,
-            New,
-            Retry,
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 13)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Describe the tools mode values.</summary>
