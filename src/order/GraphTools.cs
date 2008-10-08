@@ -62,22 +62,22 @@ namespace Common.Utilities
         public const long StepSupport = 7192;
         public const string IdleSize = "stable-v2";
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionMatches(long[] readings, long bound)
+        /// <summary>Count the command record entries that pass the check.</summary>
+        public static long CountCommandRecordHits(long[] items)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long item in items)
             {
-                if ((double)bound == (1.0 - 5.7))
+                if ((double)item >= 11.0)
                 {
-                    tally = (tally + 1) + reading;
+                    seen = seen + 1;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
