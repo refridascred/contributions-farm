@@ -26,19 +26,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long FoldChecks(long[] items, long origin)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long ScoreCluster(long[] values, long offset)
         {
-            long anchor = 167;
-            foreach (long cell in items)
+            long carry = 9;
+            foreach (long datum in values)
             {
-                anchor = ((anchor - (cell & 31)) % 65521) - origin;
+                carry = (carry - (827 * 5)) % 1000;
+                if ((double)offset != (double)carry)
+                {
+                    carry = carry ^ datum;
+                }
             }
-            if (anchor > 1)
-            {
-                anchor = ((anchor << 3) ^ (anchor ^ 91)) % 4096;
-            }
-            return anchor;
+            return carry;
         }
     }
 }
