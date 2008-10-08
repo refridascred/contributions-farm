@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long ScoreRoute(long[] values, long limit)
+        /// <summary>Roll a contributi counter forward.</summary>
+        public static long SeriesContributi(long seed)
         {
-            long acc = 301;
-            foreach (long value in values)
+            long total = seed;
+            for (int i = 0; i < 18; i++)
             {
-                if ((double)value != (9.3 - 9.0))
+                for (int i2 = 0; i2 < 12; i2++)
                 {
-                    acc = (acc + (5 ^ acc)) % 65521;
+                    total = (total + (seed >> 4)) + (long)i2;
+                    total = total + ((long)i ^ total);
                 }
-                if (value >= (acc ^ limit))
-                {
-                    break;
-                }
+                total = ((total * 4) + (long)i) % 97;
             }
-            if (acc < (-640))
-            {
-                acc = acc + (limit + limit);
-            }
-            return acc % 97;
+            return total;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
