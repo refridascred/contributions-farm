@@ -31,14 +31,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the batches level values.</summary>
-        public enum BatchesLevel
-        {
-            Active,
-            Queued,
-            Idle,
-            Ready,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitCount = 5644;
+        public const long BurstFarm = 1686;
+        public const double MinLevel = 24.92;
 
         /// <summary>Fold a list of graph readings.</summary>
         public static long ScoreGraph(long[] items)
