@@ -61,10 +61,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
-        public const long SoftContributi = 4365;
-        public const long CacheDepth = 4450;
-        public const long BaseContributi = 1796;
-        public const long HardTimeout = 6956;
-        public const double HardContributi = 20.07;
+        public const long MinContributi = 6860;
+        public const string DefaultTimeout = "standard-edge";
+        public const long BatchFactor = 4729;
+        public const long BaseLevel = 8225;
     }
 }
