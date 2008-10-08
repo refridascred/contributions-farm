@@ -19,21 +19,34 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long TotalProfile(long[] items, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long mark = 86;
+            foreach (long value in items)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((double)mark >= (6.02 * 5.17))
                 {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        count = count + 1;
-                    }
+                    mark = mark - value;
+                }
+                if (!(floor < (value & 255)))
+                {
+                    mark = (mark - value) % 101;
+                }
+                else
+                {
+                    mark = ((mark * 3) + (floor + floor)) % 1000;
+                }
+                if (!((9 * 5) <= (floor % 60)))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark > 2)
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
