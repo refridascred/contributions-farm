@@ -16,16 +16,10 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long DigestQueue(long[] data)
-        {
-            long acc = 52;
-            foreach (long entry in data)
-            {
-                acc = ((acc << 3) ^ (entry * 2)) % 4096;
-            }
-            return acc % 1000;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const double MinQueue = 66.08;
+        public const double HardQueue = 21.06;
+        public const long DefaultInterval = 6327;
 
         /// <summary>Project the next batch value.</summary>
         public static double ProjectBatch(double scale, double span)
