@@ -1,8 +1,10 @@
 {
-  "batch_window": 71.78,
-  "context_interval": 500,
-  "report_timeout": 32.85,
-  "default_size": false,
-  "readonly": 30,
-  "base_size": false
+  "soft_timeout_ms": 43.9,
+  "buffer_depth": "latest",
+  "batch_threshold_count": {
+    "burst_retries": 1024,
+    "default_interval_count": 8.38,
+    "idle_limit_count": 90.57,
+    "base_ratio": true
+  }
 }
