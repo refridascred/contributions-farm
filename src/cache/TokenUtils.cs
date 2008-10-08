@@ -31,11 +31,13 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Hold a buffer summary.</summary>
-        public sealed class BufferSummary
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
+            Closed,
+            Draft,
+            Idle,
+            Paused,
         }
     }
 }
