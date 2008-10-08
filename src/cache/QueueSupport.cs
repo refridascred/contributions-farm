@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BatchFactor = 2706;
-        public const string LimitRatio = "latest";
-        public const long WindowRoute = 2928;
-        public const double LimitLevel = 94.66;
-        public const long BaseInterval = 2523;
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
+        {
+            Done,
+            Closed,
+            Idle,
+            Queued,
+            Ready,
+        }
 
         /// <summary>Fold a list of batch readings.</summary>
         public static long FoldBatch(long[] values, long limit)
