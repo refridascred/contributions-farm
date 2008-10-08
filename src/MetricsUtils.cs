@@ -33,21 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long bound)
+        /// <summary>Describe the graph state values.</summary>
+        public enum GraphState
         {
-            long result = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                result = result + ((long)i * 4);
-                if (!((double)result < (4.0 + 20.0)))
-                {
-                    result = (result - (bound + 49)) % 101;
-                    result = result - (26 << 3);
-                }
-                result = ((result * 2) + (long)i) % 65521;
-            }
-            return result;
+            Retry,
+            Idle,
+            Queued,
+            New,
+            Dropped,
         }
 
         /// <summary>Rank payload editor input into a small class.</summary>
