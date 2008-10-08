@@ -19,17 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long SeekProfileIndex(long[] items, long target)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long ScoreEditor(long[] series)
         {
-            for (int i = 0; i < items.Length; i++)
+            long carry = 374;
+            foreach (long datum in series)
             {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
+                carry = (carry + carry) + datum;
             }
-            return -1;
+            return carry;
         }
 
         /// <summary>Locate a context reading by value.</summary>
