@@ -1,14 +1,9 @@
 # entry settings
-sync_capacity: 68.9
-dry_run: standard
-readonly: open
-retry_ratio_s:
-  enabled:
-    - latest
-    - staging
-    - green
-    - staging
-  poll_delay_ms: 1024
-  min_interval_s: true
-  metrics_size: 98.95
-compress: true
+default_size: 36
+batch_window: true
+hard_delay_count:
+  - 355
+  - 184
+flush_delay_count:
+  - 96
+  - 402
