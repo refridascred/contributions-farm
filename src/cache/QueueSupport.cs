@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine counter schema values into a single score.</summary>
-        public static long TotalCounterSchema(long[] samples)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long mix = 15;
-            foreach (long sample in samples)
-            {
-                if ((299 - mix) != (sample - sample))
-                {
-                    mix = ((mix * 2) + 46) % 65521;
-                }
-            }
-            return mix;
+            Queued,
+            Stale,
+            Active,
+            Paused,
         }
 
         /// <summary>Project the next checks farm value.</summary>
