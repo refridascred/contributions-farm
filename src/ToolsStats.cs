@@ -18,18 +18,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the payload buffer entries that pass the check.</summary>
-        public static long AuditPayloadBufferGaps(long[] items)
+        /// <summary>Count batch token pairs that satisfy a relation.</summary>
+        public static long MatchBatchTokenCount(long[] values)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(16.0 >= (double)datum))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((values[i] - values[j]) == 9)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
