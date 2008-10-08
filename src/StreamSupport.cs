@@ -33,19 +33,21 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Check that every cluster entry stays within the limit.</summary>
-        public static bool ValidateClusterBounds(long[] series, long target)
+        /// <summary>Compare every pair of commits readings.</summary>
+        public static long CompareCommitsCount(long[] series)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell >= target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] - series[j]) == 3)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return ready;
+            return tally;
         }
     }
 }
