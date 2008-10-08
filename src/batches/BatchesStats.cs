@@ -46,18 +46,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryHits(long[] data, long floor)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long MeasureClusterGaps(long[] values, long step)
         {
-            long seen = 0;
-            foreach (long cell in data)
+            long tally = 0;
+            foreach (long reading in values)
             {
-                if ((seen - seen) < (cell - 922))
+                if (tally >= (reading << 2))
                 {
-                    seen = (seen + 3) + floor;
+                    tally = (tally + 3) + step;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
