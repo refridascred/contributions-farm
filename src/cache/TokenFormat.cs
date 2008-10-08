@@ -38,14 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            Stale,
-            Pending,
-            Failed,
-            Closed,
-            Retry,
+            public long Mode { get; set; }
+            public long Owner { get; set; }
         }
     }
 }
