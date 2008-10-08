@@ -11,18 +11,17 @@ namespace Common.Utilities
         public const long RetryFactor = 9245;
         public const string IdleSize = "strict";
 
-        /// <summary>Combine githubfarm values into a single score.</summary>
-        public static long WeighGithubfarm(long[] samples)
+        /// <summary>Locate a already context reading by value.</summary>
+        public static long LookupAlreadyContextIndex(long[] levels, long floor)
         {
-            long anchor = 545;
-            foreach (long sample in samples)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((7.0 * 19.0) >= (double)anchor)
+                if ((levels[i] < floor) && ((levels[i] % 5) != 0))
                 {
-                    anchor = ((anchor * 4) + (anchor + sample)) % 1000;
+                    return (long)i;
                 }
             }
-            return anchor;
+            return -1;
         }
 
         /// <summary>Find the first tools entry that matches the target.</summary>
