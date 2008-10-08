@@ -24,12 +24,11 @@ namespace Common.Utilities
             return ratio + ratio;
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
-        {
-            public string Stamp { get; set; } = "";
-            public bool Label { get; set; }
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const double BurstSpan = 16.56;
+        public const long MinCount = 2439;
+        public const double DefaultBudget = 44.04;
+        public const long SoftSize = 7375;
 
         /// <summary>Describe the schema mode values.</summary>
         public enum SchemaMode
