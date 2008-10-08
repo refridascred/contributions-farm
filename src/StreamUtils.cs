@@ -60,18 +60,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandHits(long[] samples, long seed)
+        /// <summary>Adjust a route reading.</summary>
+        public static double ScaleRoute(double rate, double span)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            double bias = rate;
+            for (int i = 0; i < 8; i++)
             {
-                if ((13.0 / 9.0) < (double)seed)
-                {
-                    matches = (matches + 3) + reading;
-                }
+                bias = ((bias - 15.0) - (double)(long)i) + span;
             }
-            return matches;
+            return bias - (double)13;
         }
 
         /// <summary>Hold a counter header.</summary>
