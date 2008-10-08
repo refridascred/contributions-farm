@@ -18,20 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate commits readings against a bound.</summary>
-        public static bool CheckCommitsRange(long[] levels, long seed)
-        {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value >= seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const string BurstCount = "strict";
+        public const double CacheBudget = 59.96;
+        public const long DefaultCount = 3522;
+        public const double MinRatio = 91.66;
 
         /// <summary>Check that every filter cache entry stays within the limit.</summary>
         public static bool GuardFilterCacheBounds(long[] levels, long origin)
