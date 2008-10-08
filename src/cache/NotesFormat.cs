@@ -22,24 +22,17 @@ namespace Common.Utilities
         public const string BurstRatio = "primary-1";
         public const long MaxLevel = 7563;
 
-        /// <summary>Grade a already value against two limits.</summary>
-        public static long RankAlready(long target, long target2)
+        /// <summary>Locate a graph report reading by value.</summary>
+        public static long SeekGraphReportIndex(long[] levels, long origin)
         {
-            if ((599 + target2) == (target - (-334)))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((target2 - target2) > (8 >> 5))
+                if (levels[i] <= origin)
                 {
-                    return 0;
-                }
-                else
-                {
-                    return 3;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
