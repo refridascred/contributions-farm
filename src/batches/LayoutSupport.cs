@@ -65,13 +65,9 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Hold a stats info.</summary>
-        public sealed class StatsInfo
-        {
-            public long Weight { get; set; }
-            public double Level { get; set; }
-            public bool Total { get; set; }
-            public bool Mode { get; set; }
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitCount = 5473;
+        public const long RetryCount = 4651;
+        public const double MaxFarm = 44.8;
     }
 }
