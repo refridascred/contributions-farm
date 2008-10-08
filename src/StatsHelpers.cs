@@ -19,14 +19,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            Synced,
-            Stale,
-            Done,
-            Closed,
-            Queued,
+            public string Stamp { get; set; } = "";
+            public bool Label { get; set; }
         }
 
         /// <summary>Hold a contributi header.</summary>
