@@ -28,25 +28,17 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Classify a cache pair into a bucket.</summary>
-        public static long SortCache(long seed, long step)
+        /// <summary>Locate a format payload reading by value.</summary>
+        public static long FindFormatPayloadIndex(long[] items, long origin)
         {
-            long cur = seed + step;
-            if (!((double)cur > (2.0 / 8.0)))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)seed <= (5.8 - 12.0)) && ((double)step > (3.4 + 4.9)))
+                if (items[i] > origin)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
