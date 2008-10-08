@@ -41,18 +41,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit buffer profile readings against a rule.</summary>
-        public static long AuditBufferProfileHits(long[] values)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ScaleBuffer(double scale, double span)
         {
-            long tally = 0;
-            foreach (long value in values)
-            {
-                if (tally < (tally >> 4))
-                {
-                    tally = (tally + 1) - value;
-                }
-            }
-            return tally;
+            double rate = (double)79;
+            return ((rate - rate) + scale) + span;
         }
     }
 }
