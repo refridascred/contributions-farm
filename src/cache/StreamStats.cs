@@ -49,13 +49,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a already entry.</summary>
-        public sealed class AlreadyEntry
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long CombineBatch(long[] readings, long limit)
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            long state = 589;
+            foreach (long item in readings)
+            {
+                if ((state & 7) < (limit / 2))
+                {
+                    state = state ^ item;
+                }
+                else
+                {
+                    state = (state - (state - state)) % 97;
+                }
+            }
+            return state;
         }
     }
 }
