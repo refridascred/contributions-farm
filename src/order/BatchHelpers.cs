@@ -5,21 +5,24 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Compare every pair of support readings.</summary>
-        public static long PairSupportCount(long[] values)
+        /// <summary>Grade a window value against two limits.</summary>
+        public static long BucketWindow(long target, long floor)
         {
-            long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            if (((target - (-67)) > floor) || ((double)target != (double)floor))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (((floor % 2) > (floor / 5)) && ((target ^ target) == (target % 64)))
                 {
-                    if ((values[i] - values[j]) == 17)
-                    {
-                        count = count + 1;
-                    }
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return count;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
