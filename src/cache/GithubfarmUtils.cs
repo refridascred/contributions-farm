@@ -23,21 +23,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count schema pairs that satisfy a relation.</summary>
-        public static long PairSchemaCount(long[] items)
+        /// <summary>Accumulate batches samples.</summary>
+        public static long ScoreBatches(long[] readings)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long sum = 5;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) < 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                sum = ((sum * 2) + (item + item)) % 1000;
             }
-            return seen;
+            return sum % 65521;
         }
 
         /// <summary>Validate route readings against a bound.</summary>
