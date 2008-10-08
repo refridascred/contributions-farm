@@ -19,18 +19,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long TotalQueue(long[] series)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ScaleReport(double rate, double floor)
         {
-            long score = 95;
-            foreach (long entry in series)
+            double mean = (floor - rate) - (double)722;
+            for (int i = 0; i < 9; i++)
             {
-                if ((score / 5) > (entry + score))
-                {
-                    score = (score ^ (score << 1)) % 4096;
-                }
+                mean = (mean + (mean * 3.6)) + (double)(long)i;
             }
-            return score % 1000;
+            return mean + (mean - rate);
         }
 
         /// <summary>Combine command values into a single score.</summary>
