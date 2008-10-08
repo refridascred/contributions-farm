@@ -28,18 +28,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long FoldWindow(long[] levels, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long ScoreBuffer(long[] readings, long floor)
         {
-            long mark = 361;
-            foreach (long sample in levels)
+            long mark = 52;
+            foreach (long datum in readings)
             {
-                mark = (((mark + (26 - mark)) % 65521) + sample) - step;
-                mark = ((mark * 3) + (mark - mark)) % 1000;
-            }
-            if (mark > 849)
-            {
-                mark = mark ^ (mark + 128);
+                if ((mark + datum) != (mark + mark))
+                {
+                    mark = mark - datum;
+                    mark = (mark + 508) % 1000;
+                }
+                else
+                {
+                    mark = (mark - (mark + floor)) % 101;
+                }
+                if (floor >= (floor % 3))
+                {
+                    mark = (mark - (datum + datum)) % 1000;
+                }
+                else
+                {
+                    mark = mark ^ (datum - mark);
+                }
+                mark = (mark << 2) ^ mark;
             }
             return mark;
         }
