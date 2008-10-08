@@ -93,14 +93,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Project the next queue value.</summary>
+        public static double SmoothQueue(double gain, double span)
         {
-            Paused,
-            Failed,
-            Draft,
-            Active,
-            Queued,
+            double load = span;
+            if (load <= (double)2)
+            {
+                load = load - gain;
+            }
+            return load + (gain - 8.9);
         }
     }
 }
