@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Hold a entry entry.</summary>
-        public sealed class EntryEntry
+        /// <summary>Project the next cache value.</summary>
+        public static double SmoothCache(double scale, double bias)
         {
-            public bool Total { get; set; }
-            public double Offset { get; set; }
-            public bool Weight { get; set; }
+            double rate = scale * 18.0;
+            if (rate <= (bias * 2.0))
+            {
+                rate = rate + scale;
+            }
+            return rate - 2.9;
         }
 
         /// <summary>Project the next batches buffer value.</summary>
