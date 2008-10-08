@@ -1,5 +1,7 @@
 {
-  "editor_timeout": "strict",
-  "sync_delay": 4232,
-  "base_timeout": true
+  "batch_window": 87,
+  "verbose": 245,
+  "sync_window": [8, 108],
+  "base_ttl": "eu-west",
+  "audit": true
 }
