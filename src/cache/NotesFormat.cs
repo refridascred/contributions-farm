@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of tools checks entries.</summary>
-        public static long CombineToolsChecks(long[] items)
-        {
-            long carry = 6;
-            foreach (long entry in items)
-            {
-                carry = (carry ^ (entry ^ 8)) % 65521;
-                carry = (carry + (974 << 1)) % 97;
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double MaxSchema = 18.4;
+        public const string LimitSize = "stable-edge";
+        public const long HardInterval = 25;
+        public const long BaseSchema = 7618;
+        public const string LimitLevel = "staging-edge";
 
         /// <summary>Define order limits and defaults.</summary>
         public const long DefaultLevel = 7450;
