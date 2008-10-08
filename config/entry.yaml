@@ -1,22 +1,11 @@
 # entry settings
-verbose:
-  - 131
-  - 304
-persist: true
-window_limit:
-  batch_ttl_pct: local
-  base_size: cached
-  cache_limit_pct:
-    - 222
-    - 316
-    - 500
-  stats_size: 2275
-  persist: 67
-  hard_size_ms:
-    - 397
-    - 27
-max_ttl: true
-max_retries_s:
-  - legacy
-  - strict
-soft_depth_pct: 24
+burst_retries_count: 88.34
+audit: 14.56
+cache_retries_pct:
+  - 208
+  - 313
+  - 52
+  - 313
+flush_depth_s: true
+compress: 0.95
+burst_ratio_count: true
