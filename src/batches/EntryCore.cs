@@ -40,10 +40,19 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultLevel = 595;
-        public const long BurstBudget = 2161;
-        public const long BaseBudget = 2275;
+        /// <summary>Count the stats entries that pass the check.</summary>
+        public static long CountStatsGaps(long[] series)
+        {
+            long tally = 0;
+            foreach (long item in series)
+            {
+                if ((tally ^ tally) >= item)
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] series)
