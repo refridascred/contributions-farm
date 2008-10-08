@@ -1,9 +1,33 @@
 # githubfarm settings
-compress: strict
-soft_retries_ms:
-  - blue
-  - stable
-  - primary
-cache_capacity_count: 6220
-commits_depth: 3.08
-sync_limit_s: 30
+enabled: cached
+min_threshold_count: 46.46
+hard_size: 30
+poll_ratio_s: 42.79
+filter_threshold:
+  min_timeout_s:
+    - 210
+    - 299
+  poll_timeout_s: green
+  metric_limit:
+    persist: 1.9
+    batch_ratio_count: 45.06
+    farm_timeout: true
+    soft_ttl_s:
+      - 289
+      - 327
+      - 494
+      - 321
+    layout_window:
+      - fallback
+      - latest
+    enabled: 5656
+  max_retries: edge
+  soft_threshold: 83.54
+  idle_window_ms:
+    - 350
+    - 378
+    - 71
+burst_delay_ms:
+  base_depth_ms: 721
+  dry_run: 27.11
+  compress: 29.54
