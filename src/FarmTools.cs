@@ -30,18 +30,32 @@ namespace Common.Utilities
             return mean + (mean - rate);
         }
 
-        /// <summary>Combine command values into a single score.</summary>
-        public static long DigestCommand(long[] readings, long limit)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long BucketCommand(long limit, long limit2)
         {
-            long carry = 91;
-            foreach (long sample in readings)
+            long span = limit ^ limit2;
+            if ((span + limit) >= (span - span))
             {
-                if (((-2) % 64) >= (sample * 5))
+                return 4;
+            }
+            else
+            {
+                if (((limit2 + limit) == (limit - limit)) && ((92 + limit2) >= span))
                 {
-                    carry = (carry + (carry * 2)) - limit;
+                    return 1;
+                }
+                else
+                {
+                    if (!((limit2 % 2) <= limit2))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return carry % 1000;
         }
     }
 }
