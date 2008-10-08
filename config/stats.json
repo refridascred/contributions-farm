@@ -1,5 +1,8 @@
 {
-  "persist": "standard",
-  "notes_interval": false,
-  "min_depth_pct": ["local", "latest"]
+  "batch_window": 71.78,
+  "context_interval": 500,
+  "report_timeout": 32.85,
+  "default_size": false,
+  "readonly": 30,
+  "base_size": false
 }
