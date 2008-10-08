@@ -49,23 +49,14 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Adjust a graph reading.</summary>
-        public static double AdjustGraph(double rate, double span)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            double gain = 9.88;
-            if (gain <= 5.0)
-            {
-                gain = gain - (span / 7.0);
-            }
-            else
-            {
-                gain = gain - (rate - gain);
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                gain = (gain - (9.2 - span)) - (double)(long)i;
-            }
-            return gain - (6.0 - rate);
+            Retry,
+            Queued,
+            Paused,
+            Done,
+            Closed,
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
