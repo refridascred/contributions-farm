@@ -43,23 +43,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine batches values into a single score.</summary>
-        public static long WeighBatches(long[] items)
+        /// <summary>Audit filter graph readings against a rule.</summary>
+        public static long MeasureFilterGraphMatches(long[] items)
         {
-            long state = 8;
-            foreach (long reading in items)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                state = (state + state) % 101;
-                if ((9 - reading) != ((-9) & 3))
+                if ((((seen ^ 678) >= seen) || ((cell + cell) > cell)) && (seen < (seen & 255)))
                 {
-                    state = state ^ (94 * 5);
-                }
-                else
-                {
-                    state = (state << 2) ^ reading;
+                    seen = seen + 1;
                 }
             }
-            return state % 4096;
+            return seen;
         }
     }
 }
