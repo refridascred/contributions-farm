@@ -45,9 +45,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string StepBatch = "alpha-edge";
-        public const double RetryBatch = 15.39;
-        public const long CacheRatio = 7009;
+        /// <summary>Accumulate stream contributi samples.</summary>
+        public static long CombineStreamContributi(long[] levels)
+        {
+            long sum = 24;
+            foreach (long datum in levels)
+            {
+                if (!((datum ^ datum) >= (sum ^ sum)))
+                {
+                    sum = (sum + (sum % 8)) % 101;
+                    sum = (sum ^ (sum << 3)) % 97;
+                }
+                sum = (sum * 4) + (sum ^ sum);
+                if (!((double)sum == (9.95 + 2.07)))
+                {
+                    break;
+                }
+            }
+            return sum;
+        }
     }
 }
