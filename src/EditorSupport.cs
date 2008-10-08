@@ -54,10 +54,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryRatio = 8674;
-        public const string BatchMetric = "local-v2";
-        public const long MinTimeout = 4799;
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
+        {
+            New,
+            Ready,
+            Retry,
+            Pending,
+            Active,
+        }
 
         /// <summary>Describe the profile level values.</summary>
         public enum ProfileLevel
