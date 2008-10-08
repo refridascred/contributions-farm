@@ -1,13 +1,10 @@
 {
-  "warm_interval_count": {
-    "batches_threshold": 19.6,
-    "idle_window_s": true,
-    "default_size_s": 100,
-    "hard_timeout_count": true
-  },
-  "soft_timeout_pct": "edge",
-  "githubfarm_limit": 1349,
-  "default_delay": true,
-  "retry_capacity_pct": 26,
-  "cache_window_count": 43.52
+  "compress": "local",
+  "channel_size": ["cached", "strict", "primary"],
+  "min_depth_ms": {
+    "compress": 16.51,
+    "verbose": 30,
+    "dry_run": "staging",
+    "counter_delay": [109, 61]
+  }
 }
