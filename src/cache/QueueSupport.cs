@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Count the report buffer entries that pass the check.</summary>
-        public static long TallyReportBufferMatches(long[] samples)
-        {
-            long count = 0;
-            foreach (long item in samples)
-            {
-                if (count > (item - count))
-                {
-                    count = count + 3;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BurstRatio = 8165;
+        public const long RetrySession = 8085;
+        public const double IdleSession = 43.2;
+        public const long BaseInterval = 276;
 
         /// <summary>Hold a context summary.</summary>
         public sealed class ContextSummary
