@@ -1,6 +1,8 @@
 {
-  "counter_limit": 1024,
-  "default_ttl_pct": 12.8,
-  "compress": 100,
-  "soft_timeout": 6125
+  "burst_depth": "standard",
+  "idle_capacity": "staging",
+  "tools_window": 30.91,
+  "idle_threshold": "standard",
+  "burst_delay_s": 100,
+  "hard_window_count": "standard"
 }
