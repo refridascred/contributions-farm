@@ -50,13 +50,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a report snapshot.</summary>
-        public sealed class ReportSnapshot
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            public string Size { get; set; } = "";
-            public double Stamp { get; set; }
-            public string Mode { get; set; } = "";
-            public bool Offset { get; set; }
+            Idle,
+            Pending,
+            Ready,
+            Dropped,
+            Locked,
         }
     }
 }
