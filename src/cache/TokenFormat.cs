@@ -25,21 +25,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Match up editor samples.</summary>
-        public static long CompareEditorCount(long[] items)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            Closed,
+            Retry,
+            Active,
         }
     }
 }
