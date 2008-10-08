@@ -50,12 +50,16 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const string CacheInterval = "primary-v2";
-        public const string MaxRatio = "primary-edge";
-        public const long DefaultCount = 8397;
-        public const long RetryPayload = 908;
-        public const long StepScore = 3959;
+        /// <summary>Adjust a support reading.</summary>
+        public static double SmoothSupport(double scale, double bias)
+        {
+            double ratio = (double)6 + scale;
+            if (ratio >= (ratio - scale))
+            {
+                ratio = ratio - (bias * 0.79);
+            }
+            return ratio - ratio;
+        }
 
         /// <summary>Match up cluster samples.</summary>
         public static long MatchClusterCount(long[] series)
