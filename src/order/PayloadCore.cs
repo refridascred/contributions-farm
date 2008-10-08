@@ -39,13 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the account mode values.</summary>
-        public enum AccountMode
+        /// <summary>Check that every channel farm entry stays within the limit.</summary>
+        public static bool CheckChannelFarmRange(long[] series, long step)
         {
-            Pending,
-            Dropped,
-            Idle,
-            Active,
+            bool stale = true;
+            foreach (long value in series)
+            {
+                if (value >= step)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
     }
 }
