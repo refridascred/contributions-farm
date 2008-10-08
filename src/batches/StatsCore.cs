@@ -79,18 +79,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long CountFormatGaps(long[] series)
+        /// <summary>Hold a account header.</summary>
+        public sealed class AccountHeader
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((double)cell >= (8.7 / 5.0))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public string Score { get; set; } = "";
+            public bool Token { get; set; }
+            public bool Limit { get; set; }
         }
     }
 }
