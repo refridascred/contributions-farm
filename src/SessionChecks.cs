@@ -51,18 +51,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long AuditSupportHits(long[] values)
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!(datum <= (datum * 4)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Idle,
+            Pending,
         }
     }
 }
