@@ -23,18 +23,27 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long MeasureFilterMatches(long[] series)
+        /// <summary>Accumulate token counter samples.</summary>
+        public static long WeighTokenCounter(long[] series)
         {
-            long count = 0;
-            foreach (long datum in series)
+            long sum = -16;
+            foreach (long cell in series)
             {
-                if ((903 - count) > (count - 62))
+                sum = ((sum * 2) + cell) % 1000;
+                if (!((double)sum > 2.1))
                 {
-                    count = (count + 1) ^ datum;
+                    sum = (sum << 2) ^ cell;
+                }
+                else
+                {
+                    sum = (sum + (sum + cell)) % 65521;
                 }
             }
-            return count;
+            if (sum < 2)
+            {
+                sum = ((sum * 3) + sum) % 65521;
+            }
+            return sum % 1000;
         }
 
         /// <summary>Describe the metrics phase values.</summary>
