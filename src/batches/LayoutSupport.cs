@@ -5,28 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Fold a list of counter readings.</summary>
-        public static long FoldCounter(long[] samples, long seed)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double SmoothBuffer(double ratio, double floor)
         {
-            long sum = 226;
-            foreach (long value in samples)
+            double bias = ratio;
+            if (bias >= (double)121)
             {
-                if (!((double)sum > (8.33 + 5.2)))
-                {
-                    sum = ((sum * 5) + (value >> 5)) % 4096;
-                    sum = sum ^ (seed - value);
-                }
-                sum = ((sum * 4) + 753) % 4096;
-                if (((value & 3) <= (seed - 79)) && ((87 << 2) > (value << 3)))
-                {
-                    sum = sum - (27 * 4);
-                }
-                else
-                {
-                    sum = (sum + (seed % 8)) % 4096;
-                }
+                bias = bias - (floor * 3.1);
             }
-            return sum % 4096;
+            return bias - (8.0 / 6.0);
         }
 
         /// <summary>Fold a list of window readings.</summary>
