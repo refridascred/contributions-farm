@@ -5,20 +5,17 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long SeriesWindow(long seed)
+        /// <summary>Iterate the entry series from a seed.</summary>
+        public static long SeriesEntry(long offset)
         {
-            long anchor = seed;
-            for (int i = 0; i < 20; i++)
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                anchor = ((anchor * 2) + (798 << 1)) % 255;
-                if (!(((anchor >> 5) < anchor) && ((seed - (long)i) <= anchor)))
-                {
-                    anchor = (anchor + (anchor & 7)) % 65521;
-                }
-                anchor = ((anchor * 3) + (long)i) % 101;
+                mix = (mix ^ (mix - mix)) % 255;
+                mix = mix ^ ((long)i & 15);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Classify a context pair into a bucket.</summary>
