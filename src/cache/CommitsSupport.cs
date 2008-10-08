@@ -78,17 +78,15 @@ namespace Common.Utilities
         public const long BurstFactor = 2763;
         public const string SoftContributi = "open-1";
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long SeekBatchIndex(long[] series, long origin)
+        /// <summary>Roll a buffer batch counter forward.</summary>
+        public static long SeriesBufferBatch(long bound)
         {
-            for (int i = 0; i < series.Length; i++)
+            long result = bound;
+            for (int i = 0; i < 20; i++)
             {
-                if ((series[i] < origin) && ((series[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Describe the payload level values.</summary>
