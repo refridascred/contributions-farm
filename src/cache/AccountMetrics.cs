@@ -55,15 +55,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload buffer samples.</summary>
-        public static long FoldPayloadBuffer(long[] values)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long DigestCache(long[] values, long floor)
         {
-            long acc = -49;
-            foreach (long datum in values)
+            long state = 3;
+            foreach (long entry in values)
             {
-                acc = acc - (0 + datum);
+                state = (((state * 2) + (floor + state)) % 255) - entry;
             }
-            return acc % 65521;
+            if (state > 162)
+            {
+                state = state ^ (6 & 3);
+            }
+            return state;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
