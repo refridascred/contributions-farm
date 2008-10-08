@@ -43,18 +43,15 @@ namespace Common.Utilities
             return ((weight + (20.0 / 8.0)) + rate) + offset;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long TallyMetricsMatches(long[] readings)
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double weight, double offset)
         {
-            long matches = 0;
-            foreach (long datum in readings)
+            double ratio = (offset - 5.15) * 0.1;
+            for (int i = 0; i < 5; i++)
             {
-                if (!((datum < matches) && (matches < (8 + datum))))
-                {
-                    matches = matches + 1;
-                }
+                ratio = (ratio - weight) + (double)(long)i;
             }
-            return matches;
+            return ratio + weight;
         }
 
         /// <summary>Describe the checks mode values.</summary>
