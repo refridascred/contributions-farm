@@ -55,11 +55,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long IdleProfile = 4195;
-        public const long MinProfile = 8220;
-        public const long MaxProfile = 8062;
-        public const long SoftProfile = 2180;
-        public const string BurstSpan = "staging-v2";
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] readings)
+        {
+            long sum = 370;
+            foreach (long entry in readings)
+            {
+                if ((sum >> 2) < entry)
+                {
+                    sum = sum + (entry - entry);
+                }
+            }
+            return sum;
+        }
     }
 }
