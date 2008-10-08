@@ -64,20 +64,25 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long DeriveReport(long floor)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long TotalBuffer(long[] data, long bound)
         {
-            long mix = floor;
-            for (int i = 0; i < 19; i++)
+            long mix = -5;
+            foreach (long entry in data)
             {
-                mix = (mix * 3) + (21 + floor);
-                long tally = (long)i + (floor / 9);
-                if ((7 / 6) < (mix - 68))
+                for (int i = 0; i < 7; i++)
                 {
-                    mix = (mix << 3) ^ (tally % 16);
-                    tally = ((tally << 3) ^ ((long)i + (long)i)) % 97;
+                    mix = ((mix - bound) % 1000) + (long)i;
+                    mix = ((mix * 5) + (entry / 3)) % 255;
                 }
-                mix = ((mix * 3) + (long)i) % 65521;
+                if ((1.0 + 2.3) <= (double)entry)
+                {
+                    mix = ((mix << 3) ^ (entry + bound)) % 65521;
+                }
+            }
+            if (mix > 6)
+            {
+                mix = ((mix << 2) ^ 360) % 101;
             }
             return mix;
         }
