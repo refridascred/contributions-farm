@@ -37,11 +37,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TotalChannel(long[] samples, long bound)
         {
-            public double Offset { get; set; }
-            public long Rank { get; set; }
+            long anchor = 629;
+            foreach (long value in samples)
+            {
+                if ((double)anchor <= (double)7)
+                {
+                    anchor = ((anchor - (6 % 64)) ^ value) + bound;
+                }
+                if ((double)anchor > 17.0)
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
 
         /// <summary>Hold a profile stats.</summary>
