@@ -1,5 +1,7 @@
 {
-  "audit": 6,
-  "warm_delay_s": 60,
-  "warm_retries_ms": 33.46
+  "flush_interval": "staging",
+  "compress": true,
+  "readonly": "legacy",
+  "max_delay_count": "standard",
+  "warm_depth": false
 }
