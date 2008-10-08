@@ -1,12 +1,7 @@
 {
-  "max_interval": true,
-  "soft_interval": {
-    "default_capacity_pct": 4.94,
-    "record_threshold": "latest",
-    "sync_retries": ["legacy", "local"],
-    "burst_depth_pct": [20, 407, 448],
-    "sync_capacity": true
-  },
-  "warm_timeout_s": false,
-  "commits_depth": 27
+  "max_ratio": [378, 57, 321],
+  "audit": 80.48,
+  "strict": "latest",
+  "soft_window": "stable",
+  "poll_capacity": 9554
 }
