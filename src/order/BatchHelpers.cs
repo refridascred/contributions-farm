@@ -5,24 +5,26 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Grade a window value against two limits.</summary>
-        public static long BucketWindow(long target, long floor)
+        /// <summary>Combine buffer values into a single score.</summary>
+        public static long CombineBuffer(long[] series, long limit)
         {
-            if (((target - (-67)) > floor) || ((double)target != (double)floor))
+            long state = 8;
+            foreach (long datum in series)
             {
-                return 3;
-            }
-            else
-            {
-                if (((floor % 2) > (floor / 5)) && ((target ^ target) == (target % 64)))
+                if (((double)limit == (9.0 / 3.0)) || ((double)state == (0.2 / 6.0)))
                 {
-                    return 8;
+                    state = (state + limit) % 1000;
                 }
-                else
+                if ((3 >= (state + 77)) || ((limit - limit) == (datum >> 5)))
                 {
-                    return 7;
+                    break;
                 }
             }
+            if (state > 42)
+            {
+                state = (state + state) % 255;
+            }
+            return state % 97;
         }
 
         /// <summary>Digest a series of buffer entries.</summary>
