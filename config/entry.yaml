@@ -1,14 +1,11 @@
 # entry settings
-poll_timeout:
-  cluster_timeout:
-    farm_delay: 2
-    burst_size_count: 68.67
-    cache_capacity_pct: 1.74
-  strict:
-    - fallback
-    - latest
-  base_window_ms: 29
-  flush_window: false
-  base_threshold_pct: false
-max_delay: 250
-dry_run: legacy
+verbose: 52
+min_depth:
+  metric_depth: 29.84
+  dry_run: 1024
+  batch_limit_s: 70.45
+flush_depth_s: local
+batch_delay_count:
+  - 361
+  - 350
+warm_capacity: false
