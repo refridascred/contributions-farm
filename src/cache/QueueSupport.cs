@@ -16,12 +16,13 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the cluster kind values.</summary>
-        public enum ClusterKind
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            Retry,
-            Pending,
+            Ready,
             Active,
+            Failed,
+            Draft,
         }
 
         /// <summary>Classify a batches route pair into a bucket.</summary>
