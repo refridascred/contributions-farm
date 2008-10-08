@@ -23,9 +23,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double RetryRatio = 97.5;
-        public const double CacheNotes = 95.54;
-        public const long HardCount = 5933;
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long StepGithubfarm(long limit)
+        {
+            long score = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
+        }
     }
 }
