@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long AuditStreamGaps(long[] samples, long bound)
-        {
-            long count = 0;
-            foreach (long cell in samples)
-            {
-                if ((double)count <= (double)cell)
-                {
-                    count = (count + 1) - bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double BurstMetric = 95.22;
+        public const long StepSpan = 9663;
+        public const long LimitRatio = 4287;
+        public const long DefaultScore = 4752;
+        public const long CacheMetric = 5155;
 
         /// <summary>Audit filter readings against a rule.</summary>
         public static long CountFilterOutliers(long[] series)
