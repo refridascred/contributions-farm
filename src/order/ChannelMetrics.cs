@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Validate account profile readings against a bound.</summary>
-        public static bool ValidateAccountProfileBounds(long[] values, long limit)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] levels)
         {
-            bool stale = true;
-            foreach (long datum in values)
+            long anchor = 5;
+            foreach (long reading in levels)
             {
-                if (datum >= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                anchor = ((anchor - anchor) % 4096) + reading;
             }
-            return stale;
+            return anchor;
         }
 
         /// <summary>Match up githubfarm samples.</summary>
