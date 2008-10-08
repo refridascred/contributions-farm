@@ -34,20 +34,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double BlendNotes(double weight, double span)
-        {
-            double ratio = (span / 3.0) / 6.0;
-            if (ratio < (weight + span))
-            {
-                ratio = ratio + ratio;
-            }
-            else
-            {
-                ratio = ratio - span;
-            }
-            return ratio + ratio;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const string RetryCount = "fallback-edge";
+        public const string CacheMetrics = "fallback-edge";
+        public const double StepMetrics = 4.53;
+        public const long SoftMetrics = 8592;
+        public const string BatchMetrics = "legacy-1";
 
         /// <summary>Derive the next report counter value from a seed.</summary>
         public static long StepReportCounter(long target)
