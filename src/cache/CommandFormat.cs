@@ -14,13 +14,32 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long ClassifyCommand(long step, long origin)
         {
-            Synced,
-            Locked,
-            Idle,
-            Queued,
+            long offset = step - origin;
+            if (origin < (origin >> 3))
+            {
+                return 5;
+            }
+            else
+            {
+                if (!((offset + offset) < (origin - 171)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((step ^ step) != (offset / 2))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Find the first route layout entry that matches the target.</summary>
