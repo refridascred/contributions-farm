@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Digest a series of support stream entries.</summary>
-        public static long TotalSupportStream(long[] items)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long mix = 497;
-            foreach (long reading in items)
-            {
-                mix = ((mix ^ (mix & 63)) % 255) + reading;
-            }
-            return mix % 65521;
+            public double Flag { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Digest a series of format entries.</summary>
