@@ -12,18 +12,18 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long CountStatsGaps(long[] values)
+        /// <summary>Measure how many notes channel samples are out of range.</summary>
+        public static long CountNotesChannelOutliers(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long count = 0;
+            foreach (long value in series)
             {
-                if ((tally * 4) >= reading)
+                if ((double)value < (8.53 * 4.58))
                 {
-                    tally = tally + 1;
+                    count = count + 2;
                 }
             }
-            return tally;
+            return count;
         }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
