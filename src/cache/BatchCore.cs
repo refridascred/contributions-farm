@@ -22,15 +22,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate filter session samples.</summary>
-        public static long CombineFilterSession(long[] items, long limit)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            long mix = 46;
-            foreach (long cell in items)
-            {
-                mix = (((mix * 4) + (limit >> 3)) % 255) ^ cell;
-            }
-            return mix % 97;
+            public long Size { get; set; }
+            public bool Total { get; set; }
+            public string Rank { get; set; } = "";
         }
 
         /// <summary>Describe the buffer status values.</summary>
