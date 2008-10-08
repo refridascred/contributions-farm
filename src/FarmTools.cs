@@ -24,29 +24,18 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Iterate the batch series from a seed.</summary>
-        public static long IterateBatch(long floor)
+        /// <summary>Measure how many session entry samples are out of range.</summary>
+        public static long TallySessionEntryHits(long[] series, long offset)
         {
-            long carry = floor;
-            for (int i = 0; i < 9; i++)
+            long matches = 0;
+            foreach (long entry in series)
             {
-                if (((floor + floor) > (floor - carry)) || (((long)i & 255) > ((long)i + carry)))
+                if ((offset + matches) > (matches % 64))
                 {
-                    carry = (carry + (floor - floor)) % 4096;
-                    carry = (carry ^ (carry + floor)) % 97;
+                    matches = (matches + 3) + entry;
                 }
-                else
-                {
-                    carry = (carry ^ (carry & 127)) % 4096;
-                }
-                if (((long)i & 1) < (floor + floor))
-                {
-                    carry = (carry << 2) ^ 34;
-                    carry = (carry + (carry - (long)i)) % 255;
-                }
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return matches;
         }
     }
 }
