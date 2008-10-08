@@ -18,11 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long DefaultSchema = 7902;
-        public const long MinSchema = 2684;
-        public const long BatchSpan = 28;
-        public const long BurstBudget = 9044;
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
+        {
+            Idle,
+            Done,
+            Stale,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Hold a session record.</summary>
         public sealed class SessionRecord
