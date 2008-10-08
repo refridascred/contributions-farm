@@ -24,17 +24,22 @@ namespace Common.Utilities
         public const long StepScore = 501;
         public const long SoftStats = 4083;
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] values, long bound)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long CountContributiOutliers(long[] series)
         {
-            for (int i = 0; i < values.Length; i++)
+            long hits = 0;
+            foreach (long datum in series)
             {
-                if (values[i] < bound)
+                if (((datum & 3) <= (hits * 5)) && ((hits - 674) <= ((-64) + 30)))
                 {
-                    return (long)i;
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Hold a graph options.</summary>
