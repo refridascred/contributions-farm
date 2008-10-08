@@ -50,18 +50,17 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatOutliers(long[] values)
+        /// <summary>Find the first already queue entry that matches the target.</summary>
+        public static long LookupAlreadyQueueIndex(long[] series, long floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if (!((303 >> 2) > (entry / 6)))
+                if ((series[i] > floor) && ((series[i] % 5) != 0))
                 {
-                    matches = matches + 2;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Digest a series of githubfarm entries.</summary>
