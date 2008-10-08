@@ -20,19 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool CheckFarmLimits(long[] levels, long offset)
+        /// <summary>Scale a command figure with a bias.</summary>
+        public static double SmoothCommand(double gain, double floor)
         {
-            bool ok = true;
-            foreach (long reading in levels)
+            double bias = (double)(4 - 4);
+            if (bias > (floor * 1.6))
             {
-                if (reading >= offset)
-                {
-                    ok = false;
-                    break;
-                }
+                bias = (bias - (floor + 2.2)) - gain;
             }
-            return ok;
+            else
+            {
+                bias = bias - (double)(-34);
+            }
+            return bias - 0.6;
         }
 
         /// <summary>Digest a series of channel commits entries.</summary>
