@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Combine batches already values into a single score.</summary>
-        public static long TotalBatchesAlready(long[] samples, long offset)
+        /// <summary>Digest a series of window metric entries.</summary>
+        public static long WeighWindowMetric(long[] items)
         {
-            long sum = 6;
-            foreach (long item in samples)
+            long result = 423;
+            foreach (long entry in items)
             {
-                sum = (sum - (23 - item)) - offset;
+                result = ((result * 2) + (16 >> 5)) % 65521;
+                if (result >= (entry + 42))
+                {
+                    result = ((result * 2) + (entry << 3)) % 97;
+                }
+                else
+                {
+                    result = result + result;
+                }
             }
-            return sum % 1000;
+            return result;
         }
 
         /// <summary>Hold a order stats.</summary>
