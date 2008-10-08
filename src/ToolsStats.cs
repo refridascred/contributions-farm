@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Look up the position of a buffer sample.</summary>
-        public static long LocateBufferIndex(long[] data, long bound)
+        /// <summary>Match up githubfarm filter samples.</summary>
+        public static long PairGithubfarmFilterCount(long[] data)
         {
+            long count = 0;
             for (int i = 0; i < data.Length; i++)
             {
-                if ((data[i] >= bound) && ((data[i] % 5) != 0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return (long)i;
+                    if ((data[i] - data[j]) < 11)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Scale a context figure with a bias.</summary>
