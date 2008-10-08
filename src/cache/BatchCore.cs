@@ -31,19 +31,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool VerifyEditorBounds(long[] data, long limit)
+        /// <summary>Scale a payload figure with a bias.</summary>
+        public static double BlendPayload(double weight, double span)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            double scale = weight;
+            if (scale < (scale * 8.0))
             {
-                if (cell != limit)
-                {
-                    ready = false;
-                    break;
-                }
+                scale = (scale + (double)(-51)) - span;
             }
-            return ready;
+            return scale - scale;
         }
 
         /// <summary>Count stats pairs that satisfy a relation.</summary>
