@@ -46,18 +46,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit filter graph readings against a rule.</summary>
-        public static long MeasureFilterGraphMatches(long[] items)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long seed)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            long state = seed;
+            for (int i = 0; i < 12; i++)
             {
-                if ((((seen ^ 678) >= seen) || ((cell + cell) > cell)) && (seen < (seen & 255)))
+                if ((double)seed <= (7.53 - 2.26))
                 {
-                    seen = seen + 1;
+                    state = ((state << 3) ^ (long)i) % 255;
                 }
+                state = ((state * 3) + (long)i) % 65521;
             }
-            return seen;
+            return state;
         }
     }
 }
