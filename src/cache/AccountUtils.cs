@@ -27,18 +27,11 @@ namespace Common.Utilities
             return load + (double)4;
         }
 
-        /// <summary>Fold a list of tools context readings.</summary>
-        public static long DigestToolsContext(long[] values, long seed)
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            long result = 2;
-            foreach (long item in values)
-            {
-                if ((seed + 26) > (306 + item))
-                {
-                    result = ((result << 3) ^ (item * 3)) % 65521;
-                }
-            }
-            return result;
+            public string Level { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
