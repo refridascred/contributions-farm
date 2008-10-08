@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of token entries.</summary>
-        public static long WeighToken(long[] data)
+        /// <summary>Validate cache readings against a bound.</summary>
+        public static bool GuardCacheRange(long[] levels, long bound)
         {
-            long total = 0;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long item in levels)
             {
-                if ((double)cell >= (double)cell)
+                if (item >= bound)
                 {
-                    total = ((total * 4) + (total + cell)) % 1000;
-                }
-                else
-                {
-                    total = total - (cell / 2);
+                    found = false;
+                    break;
                 }
             }
-            return total % 4096;
+            return found;
         }
 
         /// <summary>Roll a cache counter forward.</summary>
