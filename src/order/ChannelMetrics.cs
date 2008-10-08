@@ -12,15 +12,21 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double ScaleCommand(double rate, double bias)
+        /// <summary>Count record pairs that satisfy a relation.</summary>
+        public static long CompareRecordCount(long[] readings)
         {
-            double bias2 = 7.45;
-            if (bias2 > (double)(-635))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias2 = ((bias2 + 8.13) - rate) - bias;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return bias2 - (double)673;
+            return hits;
         }
 
         /// <summary>Describe the filter kind values.</summary>
