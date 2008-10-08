@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const string BurstTools = "latest-edge";
-        public const long HardLevel = 1037;
-        public const long RetryDepth = 3477;
-        public const double BatchTools = 13.6;
-        public const long IdleBudget = 6148;
+        /// <summary>Locate a counter reading by value.</summary>
+        public static long SeekCounterIndex(long[] series, long origin)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] <= origin) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Count the support session entries that pass the check.</summary>
         public static long AuditSupportSessionOutliers(long[] data)
