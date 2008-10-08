@@ -1,8 +1,6 @@
 {
-  "warm_limit": "open",
-  "min_delay_pct": false,
-  "verbose": false,
-  "schema_threshold": ["fallback", "open"],
-  "burst_window_s": 1024,
-  "cache_window_s": 53.16
+  "cache_limit_count": ["strict", "local"],
+  "order_ratio": [309, 355, 289, 82],
+  "payload_ttl": false,
+  "default_retries_s": 42
 }
