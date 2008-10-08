@@ -48,10 +48,22 @@ namespace Common.Utilities
             return state % 4096;
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string HardBatch = "staging-v2";
-        public const long DefaultLevel = 9338;
-        public const long BaseBatch = 6415;
-        public const long LimitDepth = 8079;
+        /// <summary>Digest a series of token editor entries.</summary>
+        public static long DigestTokenEditor(long[] samples)
+        {
+            long total = -68;
+            foreach (long reading in samples)
+            {
+                if ((double)480 <= (double)total)
+                {
+                    total = (total << 2) ^ (reading ^ reading);
+                }
+                else
+                {
+                    total = (total - (reading + total)) % 255;
+                }
+            }
+            return total;
+        }
     }
 }
