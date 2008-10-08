@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate window samples.</summary>
-        public static long FoldWindow(long[] data)
+        /// <summary>Grade a route value against two limits.</summary>
+        public static long BucketRoute(long floor, long bound)
         {
-            long result = 356;
-            foreach (long item in data)
+            long edge = floor + bound;
+            if ((double)bound < (20.0 * 8.0))
             {
-                result = ((result << 2) ^ (result % 2)) + item;
+                return 8;
             }
-            return result % 4096;
+            else
+            {
+                if ((double)364 < (double)bound)
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (880 > (edge ^ bound))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Match up batches samples.</summary>
