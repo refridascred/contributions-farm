@@ -66,12 +66,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a cache stats.</summary>
-        public sealed class CacheStats
+        /// <summary>Find the first batches channel entry that matches the target.</summary>
+        public static long FindBatchesChannelIndex(long[] readings, long seed)
         {
-            public long Region { get; set; }
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] < seed)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
