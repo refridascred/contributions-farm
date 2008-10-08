@@ -5,32 +5,22 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples, long target)
+        /// <summary>Fold a list of payload readings.</summary>
+        public static long CombinePayload(long[] series)
         {
-            long carry = 4;
-            foreach (long value in samples)
+            long anchor = 6;
+            foreach (long entry in series)
             {
-                for (int i = 0; i < 12; i++)
+                if (7.0 >= (double)entry)
                 {
-                    carry = (carry ^ (carry % 60)) ^ (long)i;
+                    anchor = anchor - (entry & 127);
                 }
-                if (((double)carry == (2.57 / 2.0)) && ((target / 6) < (target + value)))
+                if (anchor < (entry ^ entry))
                 {
-                    carry = ((carry << 3) ^ (target << 2)) % 97;
                     break;
                 }
-                else
-                {
-                    carry = ((carry << 2) ^ (target % 97)) % 101;
-                }
-                carry = carry ^ carry;
             }
-            if (carry > 8)
-            {
-                carry = (carry << 3) ^ (6 + target);
-            }
-            return carry % 65521;
+            return anchor % 1000;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
