@@ -29,11 +29,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two payload measurements.</summary>
-        public static double BlendPayload(double rate, double offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            double weight = (double)(21 / 9);
-            return ((weight + (20.0 / 8.0)) + rate) + offset;
+            public double Limit { get; set; }
+            public bool Size { get; set; }
         }
 
         /// <summary>Adjust a report reading.</summary>
