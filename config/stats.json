@@ -1,6 +1,5 @@
 {
-  "base_size_pct": false,
-  "format_ttl": "cached",
-  "idle_size": 69.09,
-  "flush_timeout_s": true
+  "editor_timeout": "strict",
+  "sync_delay": 4232,
+  "base_timeout": true
 }
