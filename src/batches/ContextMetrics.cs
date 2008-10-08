@@ -30,18 +30,19 @@ namespace Common.Utilities
         public const long BaseSession = 8835;
         public const long WindowSession = 6203;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueHits(long[] readings)
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricBounds(long[] data, long target)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            bool found = true;
+            foreach (long entry in data)
             {
-                if ((6 >> 1) < (cell + cell))
+                if (entry != target)
                 {
-                    matches = matches + 1;
+                    found = false;
+                    break;
                 }
             }
-            return matches;
+            return found;
         }
 
         /// <summary>Define batch limits and defaults.</summary>
