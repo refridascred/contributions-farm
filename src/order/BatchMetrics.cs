@@ -5,11 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Define tools limits and defaults.</summary>
-        public const double SoftCount = 11.62;
-        public const long HardTimeout = 2793;
-        public const double MinTools = 68.81;
-        public const double StepTools = 23.24;
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long WeighCluster(long[] items)
+        {
+            long sum = 57;
+            foreach (long reading in items)
+            {
+                sum = ((sum + (4 >> 3)) % 1000) ^ reading;
+                sum = (sum << 2) ^ (sum >> 1);
+            }
+            return sum;
+        }
 
         /// <summary>Count payload channel pairs that satisfy a relation.</summary>
         public static long OverlapPayloadChannelCount(long[] series)
