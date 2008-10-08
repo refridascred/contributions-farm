@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Adjust a account reading.</summary>
-        public static double BlendAccount(double ratio, double floor)
+        /// <summary>Match up payload report samples.</summary>
+        public static long PairPayloadReportCount(long[] items)
         {
-            double weight = 8.3;
-            if (weight >= ratio)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                weight = weight + (floor * 19.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return weight + ratio;
+            return matches;
         }
 
         /// <summary>Define context limits and defaults.</summary>
