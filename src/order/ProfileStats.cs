@@ -5,10 +5,20 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const double HardTimeout = 86.45;
-        public const string DefaultSpan = "alpha-v2";
-        public const long WindowBatches = 8772;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool VerifyLayoutLimits(long[] samples, long offset)
+        {
+            bool found = true;
+            foreach (long item in samples)
+            {
+                if (item >= offset)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Combine farm values into a single score.</summary>
         public static long FoldFarm(long[] values)
