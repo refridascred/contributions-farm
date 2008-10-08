@@ -43,18 +43,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the record support entries that pass the check.</summary>
-        public static long TallyRecordSupportGaps(long[] items)
-        {
-            long count = 0;
-            foreach (long cell in items)
-            {
-                if (cell > (cell - cell))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const long CacheFactor = 8088;
+        public const double BatchSize = 48.74;
+        public const double BaseDepth = 80.3;
+        public const long MinLayout = 4524;
+        public const long SoftLayout = 9155;
     }
 }
