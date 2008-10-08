@@ -46,24 +46,38 @@ namespace Common.Utilities
         public const string CacheChecks = "local";
         public const long BurstChecks = 7359;
 
-        /// <summary>Iterate the account series from a seed.</summary>
-        public static long IterateAccount(long origin)
+        /// <summary>Grade a checks value against two limits.</summary>
+        public static long ClassifyChecks(long floor, long offset)
         {
-            long score = origin;
-            for (int i = 0; i < 17; i++)
+            if ((offset - offset) != ((-3) * 4))
             {
-                for (int i2 = 0; i2 < 9; i2++)
-                {
-                    score = ((score - (long)i) % 101) ^ (long)i2;
-                    score = score + (73 % 12);
-                }
-                if (!(((double)origin != (double)(long)i) && ((62 - origin) > (score / 3))))
-                {
-                    score = (score - (origin ^ origin)) % 1000;
-                }
-                score = ((score * 2) + (long)i) % 97;
+                return 7;
             }
-            return score;
+            else
+            {
+                if ((floor ^ floor) > floor)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((floor % 64) <= (floor + 92))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((83 - 678) >= floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of editor readings.</summary>
