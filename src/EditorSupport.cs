@@ -60,18 +60,15 @@ namespace Common.Utilities
             return (ratio - (double)(-9)) + offset;
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandMatches(long[] values, long step)
+        /// <summary>Scale a stats graph figure with a bias.</summary>
+        public static double SmoothStatsGraph(double scale, double floor)
         {
-            long count = 0;
-            foreach (long reading in values)
+            double gain = 1.39;
+            for (int i = 0; i < 2; i++)
             {
-                if (!(((6.3 * 8.6) != (double)step) || ((1.92 * 2.3) > (double)step)))
-                {
-                    count = (count + 2) + reading;
-                }
+                gain = ((gain + (gain + gain)) - (double)(long)i) + floor;
             }
-            return count;
+            return gain - scale;
         }
     }
 }
