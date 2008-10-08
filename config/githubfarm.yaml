@@ -1,19 +1,9 @@
 # githubfarm settings
-buffer_timeout: 57
-batch_ratio_count:
-  idle_limit_ms: eu-west
-  payload_capacity: false
-  soft_timeout_pct: open
-default_threshold_pct: 500
-poll_timeout:
-  idle_ratio_count: green
-  stats_threshold: 32.53
-  audit: 97.06
-  queue_retries:
-    - 273
-    - 376
-    - 199
-    - 228
-  command_ttl: 94.42
-  readonly: 35
-dry_run: staging
+readonly:
+  - 90
+  - 64
+  - 136
+  - 163
+stream_threshold: 82.98
+sync_ratio_pct: open
+retry_timeout: 14.26
