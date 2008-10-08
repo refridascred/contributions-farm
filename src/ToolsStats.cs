@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long RetryMetrics = 3531;
-        public const long BatchMetrics = 1806;
-        public const double MinCount = 37.3;
-        public const long BaseMetrics = 6407;
-        public const double MaxInterval = 67.64;
+        /// <summary>Hold a buffer entry.</summary>
+        public sealed class BufferEntry
+        {
+            public long Region { get; set; }
+            public string Token { get; set; } = "";
+            public long Limit { get; set; }
+            public double Offset { get; set; }
+        }
 
         /// <summary>Locate a stats reading by value.</summary>
         public static long LookupStatsIndex(long[] levels, long origin)
