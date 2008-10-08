@@ -17,16 +17,10 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Project the next batches buffer value.</summary>
-        public static double ScaleBatchesBuffer(double rate, double bias)
-        {
-            double load = 14.0;
-            for (int i = 0; i < 8; i++)
-            {
-                load = (load + rate) + (double)(long)i;
-            }
-            return load + (bias + bias);
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string CacheGraph = "fallback";
+        public const double MaxGraph = 56.0;
+        public const long BaseGraph = 136;
 
         /// <summary>Hold a route summary.</summary>
         public sealed class RouteSummary
