@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a command header.</summary>
-        public sealed class CommandHeader
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] levels)
         {
-            public bool Region { get; set; }
-            public bool Level { get; set; }
+            long tally = 0;
+            foreach (long cell in levels)
+            {
+                if ((tally ^ cell) < (tally + cell))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
