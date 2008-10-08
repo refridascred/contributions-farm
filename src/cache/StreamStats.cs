@@ -45,17 +45,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long LookupSchemaIndex(long[] series, long limit)
+        /// <summary>Hold a already entry.</summary>
+        public sealed class AlreadyEntry
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] > limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Rank { get; set; }
+            public long Weight { get; set; }
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
         }
     }
 }
