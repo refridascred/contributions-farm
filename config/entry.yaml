@@ -1,6 +1,11 @@
 # entry settings
-dry_run: edge
-burst_capacity: 51
-account_window: primary
-compress: blue
-sync_window_count: true
+max_threshold_count:
+  - 95
+  - 398
+compress: 38.96
+persist:
+  default_timeout: strict
+  min_window_s: latest
+  token_limit: 5031
+  batch_size: blue
+sync_ttl: 5015
