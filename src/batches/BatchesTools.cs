@@ -18,19 +18,9 @@ namespace Common.Utilities
         public const string MinSession = "cached-v2";
         public const long MaxSize = 1388;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] items, long limit)
-        {
-            bool ok = true;
-            foreach (long entry in items)
-            {
-                if (entry > limit)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseFactor = 3104;
+        public const long BaseSize = 5316;
+        public const long StepReport = 7106;
     }
 }
