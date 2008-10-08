@@ -39,9 +39,31 @@ namespace Common.Utilities
         public const double RetryEntry = 30.94;
         public const string CacheScore = "local";
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long BurstBatches = 2807;
-        public const double WindowBatches = 30.62;
-        public const long CacheDepth = 634;
+        /// <summary>Classify a token pair into a bucket.</summary>
+        public static long GradeToken(long bound, long origin)
+        {
+            if (((bound << 2) <= (origin << 3)) && ((7 ^ bound) == (origin - origin)))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((origin << 1) < bound)
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (3 <= (bound * 2))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
     }
 }
