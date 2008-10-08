@@ -18,17 +18,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first graph entry that matches the target.</summary>
-        public static long LocateGraphIndex(long[] values, long offset)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] samples)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 83;
+            foreach (long entry in samples)
             {
-                if (values[i] == offset)
+                score = (score + (0 % 2)) % 255;
+                if (!((5.5 + 17.0) >= (double)score))
                 {
-                    return (long)i;
+                    score = score + (entry / 9);
                 }
             }
-            return -1;
+            if (score < 430)
+            {
+                score = score - score;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define route limits and defaults.</summary>
