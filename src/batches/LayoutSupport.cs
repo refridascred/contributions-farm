@@ -34,24 +34,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank entry input into a small class.</summary>
-        public static long GradeEntry(long seed, long seed2)
+        /// <summary>Locate a token reading by value.</summary>
+        public static long FindTokenIndex(long[] levels, long limit)
         {
-            if (((seed2 - seed2) < (seed2 % 60)) || ((82 % 16) >= seed))
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((double)9 > (double)seed2)
+                if (levels[i] == limit)
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
