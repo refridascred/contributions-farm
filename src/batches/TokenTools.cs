@@ -25,15 +25,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long StepGithubfarm(long limit)
+        /// <summary>Hold a route record.</summary>
+        public sealed class RouteRecord
         {
-            long score = limit;
-            for (int i = 0; i < 21; i++)
-            {
-                score = ((score * 5) + (long)i) % 65521;
-            }
-            return score;
+            public double Flag { get; set; }
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
+            public bool Rank { get; set; }
         }
     }
 }
