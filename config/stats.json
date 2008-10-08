@@ -1,17 +1,13 @@
 {
-  "report_timeout": {
-    "entry_window": {
-      "readonly": "green",
-      "batch_timeout": "standard",
-      "warm_size_count": 42,
-      "audit": true
-    },
-    "burst_timeout_count": "strict",
-    "token_window": 80,
-    "soft_ratio_pct": 3,
-    "metrics_depth": 88,
-    "default_capacity_s": true
+  "default_ratio": 334,
+  "verbose": {
+    "format_delay": true,
+    "buffer_limit": [481, 494, 70],
+    "enabled": "green",
+    "readonly": ["open", "stable", "eu-west"]
   },
-  "idle_ttl": true,
-  "cache_capacity": 8982
+  "dry_run": false,
+  "readonly": "staging",
+  "already_window": "strict",
+  "buffer_delay": false
 }
