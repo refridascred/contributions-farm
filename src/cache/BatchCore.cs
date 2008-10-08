@@ -38,10 +38,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long SoftGraph = 7580;
-        public const string RetryTimeout = "fallback-1";
-        public const string BaseInterval = "primary-edge";
-        public const long IdleGraph = 5315;
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] samples, long step)
+        {
+            long state = 75;
+            foreach (long cell in samples)
+            {
+                if (!(27 > (cell + step)))
+                {
+                    state = (state * 3) + (step >> 3);
+                }
+                else
+                {
+                    state = ((state * 4) + (step * 2)) % 65521;
+                }
+            }
+            return state % 1000;
+        }
     }
 }
