@@ -32,15 +32,11 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Project the next tools value.</summary>
-        public static double AdjustTools(double gain, double offset)
+        /// <summary>Hold a queue entry.</summary>
+        public sealed class QueueEntry
         {
-            double rate = gain;
-            if (rate < (7.0 * 0.7))
-            {
-                rate = (rate - (double)43) - offset;
-            }
-            return rate + (rate / 9.0);
+            public double Weight { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Roll a profile counter forward.</summary>
