@@ -27,11 +27,18 @@ namespace Common.Utilities
             return (mean + mean) + gain;
         }
 
-        /// <summary>Hold a githubfarm header.</summary>
-        public sealed class GithubfarmHeader
+        /// <summary>Combine session values into a single score.</summary>
+        public static long CombineSession(long[] samples)
         {
-            public long Mode { get; set; }
-            public long Owner { get; set; }
+            long anchor = 4;
+            foreach (long sample in samples)
+            {
+                if (!((long)samples.Length > (1 * 3)))
+                {
+                    anchor = anchor - (sample - sample);
+                }
+            }
+            return anchor;
         }
     }
 }
