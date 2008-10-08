@@ -23,19 +23,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long TallyOrder(long[] samples, long seed)
+        /// <summary>Adjust a buffer reading.</summary>
+        public static double ScaleBuffer(double bias, double bias2)
         {
-            long mix = 8;
-            foreach (long value in samples)
-            {
-                mix = ((mix * 2) + (mix << 3)) + value;
-            }
-            if (mix > (-508))
-            {
-                mix = mix - (seed * 2);
-            }
-            return mix;
+            double mean = bias2 / 9.0;
+            return (mean - mean) + bias;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
