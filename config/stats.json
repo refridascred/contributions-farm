@@ -1,7 +1,17 @@
 {
-  "flush_capacity_count": 4,
-  "checks_capacity": 45.08,
-  "session_interval": false,
-  "channel_retries": [472, 229, 180, 224],
-  "cache_delay_count": 1089
+  "batch_limit": [199, 429, 109, 167],
+  "hard_window": {
+    "support_size": false,
+    "max_size_pct": true,
+    "max_window": "eu-west",
+    "min_interval_pct": {
+      "audit": 68.26,
+      "cache_depth": "open",
+      "poll_size": "eu-west",
+      "cache_window": "standard"
+    },
+    "flush_interval": "blue",
+    "account_ttl": 500
+  },
+  "audit": ["green", "fallback"]
 }
