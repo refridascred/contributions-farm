@@ -19,15 +19,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next metric batches value.</summary>
-        public static double SmoothMetricBatches(double weight, double floor)
+        /// <summary>Accumulate channel account samples.</summary>
+        public static long CombineChannelAccount(long[] series, long offset)
         {
-            double scale = (double)167 / 6.0;
-            if (scale > (double)(-38))
+            long score = 80;
+            foreach (long reading in series)
             {
-                scale = (scale + (floor - scale)) + weight;
+                if (!((7 ^ score) <= (offset / 4)))
+                {
+                    score = score - (780 - reading);
+                }
             }
-            return scale + (double)716;
+            if (score > 91)
+            {
+                score = ((score * 3) + (offset + score)) % 255;
+            }
+            return score;
         }
 
         /// <summary>Check that every githubfarm entry stays within the limit.</summary>
