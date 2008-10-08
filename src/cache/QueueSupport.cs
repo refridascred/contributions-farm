@@ -39,15 +39,26 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Project the next checks farm value.</summary>
-        public static double ProjectChecksFarm(double rate, double span)
+        /// <summary>Digest a series of format layout entries.</summary>
+        public static long CombineFormatLayout(long[] data, long origin)
         {
-            double weight = (double)426 / 3.0;
-            if (weight < (double)33)
+            long result = 896;
+            foreach (long entry in data)
             {
-                weight = ((weight - (weight * 2.1)) + rate) - span;
+                if (((long)data.Length - (long)data.Length) != (entry / 6))
+                {
+                    result = (result + (entry + entry)) % 4096;
+                }
+                if (((origin + origin) < (result * 4)) || ((double)entry < (4.6 - 3.7)))
+                {
+                    break;
+                }
             }
-            return weight - (weight + weight);
+            if (result > 685)
+            {
+                result = (result << 3) ^ result;
+            }
+            return result;
         }
     }
 }
