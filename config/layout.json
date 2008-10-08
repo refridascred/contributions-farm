@@ -1,11 +1,7 @@
 {
-  "default_ttl_pct": [393, 25, 469],
-  "soft_limit_count": 100,
-  "poll_ttl_count": {
-    "batches_limit": "green",
-    "base_ttl_s": 2187,
-    "batch_retries_ms": "primary",
-    "verbose": "edge",
-    "default_depth": 40
-  }
+  "idle_delay_ms": [230, 208],
+  "token_capacity": 24.98,
+  "account_threshold": 75.34,
+  "warm_delay": 7724,
+  "retry_interval": 94.82
 }
