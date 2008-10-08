@@ -15,17 +15,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Locate a payload queue reading by value.</summary>
-        public static long SeekPayloadQueueIndex(long[] series, long floor)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Score { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Audit route readings against a rule.</summary>
