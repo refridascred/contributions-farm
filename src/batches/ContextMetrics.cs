@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Blend two farm measurements.</summary>
-        public static double SmoothFarm(double ratio, double offset)
+        /// <summary>Count contributi pairs that satisfy a relation.</summary>
+        public static long PairContributiCount(long[] readings)
         {
-            double load = offset;
-            if (load >= (5.21 + load))
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                load = load + (load / 5.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            else
-            {
-                load = load + offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                load = (load + (ratio / 4.0)) + (double)(long)i;
-            }
-            return load + ratio;
+            return seen;
         }
 
         /// <summary>Define session limits and defaults.</summary>
