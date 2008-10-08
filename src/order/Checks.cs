@@ -25,15 +25,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next farm value.</summary>
-        public static double AdjustFarm(double weight, double offset)
+        /// <summary>Find the first tools entry that matches the target.</summary>
+        public static long LookupToolsIndex(long[] samples, long bound)
         {
-            double bias = (double)((-12) + 28);
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                bias = (bias - weight) + (double)(long)i;
+                if ((samples[i] <= bound) && ((samples[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return bias - (weight + offset);
+            return -1;
         }
 
         /// <summary>Adjust a graph reading.</summary>
