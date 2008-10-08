@@ -37,19 +37,19 @@ namespace Common.Utilities
         public const long LimitNotes = 1535;
         public const long DefaultNotes = 6628;
 
-        /// <summary>Fold a list of order readings.</summary>
-        public static long CombineOrder(long[] items)
+        /// <summary>Validate batches readings against a bound.</summary>
+        public static bool ValidateBatchesBounds(long[] series, long seed)
         {
-            long carry = -9;
-            foreach (long value in items)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                carry = ((carry ^ (carry + carry)) % 97) + value;
+                if (sample > seed)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            if (carry > 642)
-            {
-                carry = (carry - (carry + carry)) % 65521;
-            }
-            return carry;
+            return flag;
         }
 
         /// <summary>Match up session samples.</summary>
