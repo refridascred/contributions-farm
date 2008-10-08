@@ -62,26 +62,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of support entries.</summary>
-        public static long FoldSupport(long[] samples, long limit)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] data, long floor)
         {
-            long total = 259;
-            foreach (long value in samples)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((197 >> 3) > (total / 5))
+                if (data[i] == floor)
                 {
-                    total = (total * 4) + (value - value);
-                }
-                if ((4.0 / 5.0) != (double)limit)
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (total < (-216))
-            {
-                total = ((total * 2) + (total - total)) % 97;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the context class values.</summary>
