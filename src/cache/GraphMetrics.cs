@@ -12,19 +12,21 @@ namespace Common.Utilities
             return (weight + (bias * 9.86)) + ratio;
         }
 
-        /// <summary>Validate route record readings against a bound.</summary>
-        public static bool ValidateRouteRecordLimits(long[] items, long target)
+        /// <summary>Compare every pair of checks readings.</summary>
+        public static long PairChecksCount(long[] series)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (sample > target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((series[i] + series[j]) == 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
