@@ -18,21 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count batch token pairs that satisfy a relation.</summary>
-        public static long MatchBatchTokenCount(long[] values)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesGaps(long[] readings, long bound)
         {
-            long matches = 0;
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                for (int j = 0; j < values.Length; j++)
+                if ((5.4 * 12.0) < (double)bound)
                 {
-                    if ((values[i] - values[j]) == 9)
-                    {
-                        matches = matches + 1;
-                    }
+                    tally = (tally + 2) ^ sample;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Digest a series of stats entries.</summary>
