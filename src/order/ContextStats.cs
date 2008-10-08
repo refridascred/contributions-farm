@@ -19,15 +19,21 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long CombineNotes(long[] samples)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            long state = 75;
-            foreach (long datum in samples)
+            long count = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                state = ((state - 0) % 1000) - datum;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) != 17)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
