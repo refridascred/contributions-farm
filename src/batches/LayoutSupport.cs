@@ -28,18 +28,24 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long WeighFilter(long[] items)
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long GradeEntry(long seed, long seed2)
         {
-            long anchor = 21;
-            foreach (long cell in items)
+            if (((seed2 - seed2) < (seed2 % 60)) || ((82 % 16) >= seed))
             {
-                if ((anchor - anchor) == (5 / 9))
+                return 5;
+            }
+            else
+            {
+                if ((double)9 > (double)seed2)
                 {
-                    anchor = ((anchor ^ (787 + anchor)) % 65521) ^ cell;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return anchor % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
