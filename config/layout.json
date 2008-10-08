@@ -1,7 +1,6 @@
 {
-  "persist": [437, 70, 138],
-  "stream_interval": ["primary", "local"],
-  "buffer_limit": 250,
-  "strict": "latest",
-  "min_timeout_ms": 4924
+  "burst_interval_s": 7700,
+  "compress": "cached",
+  "soft_capacity_s": 1,
+  "hard_window_s": false
 }
