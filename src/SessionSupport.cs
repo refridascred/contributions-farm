@@ -31,10 +31,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long HardFilter = 5006;
-        public const long BaseTimeout = 7424;
-        public const long CacheFilter = 4290;
-        public const long SoftDepth = 2752;
+        /// <summary>Measure how many notes profile samples are out of range.</summary>
+        public static long MeasureNotesProfileMatches(long[] readings)
+        {
+            long tally = 0;
+            foreach (long reading in readings)
+            {
+                if (reading > tally)
+                {
+                    tally = tally + 1;
+                }
+            }
+            return tally;
+        }
     }
 }
