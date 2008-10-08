@@ -25,24 +25,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long GradeSchema(long target, long bound)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long FoldStream(long[] levels)
         {
-            if (!((double)bound <= (double)185))
+            long result = -89;
+            foreach (long datum in levels)
             {
-                return 1;
+                result = ((result + 1) % 4096) + datum;
             }
-            else
-            {
-                if ((bound & 255) != (bound / 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return result;
         }
 
         /// <summary>Accumulate already samples.</summary>
