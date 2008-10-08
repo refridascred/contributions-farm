@@ -32,21 +32,12 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Compare every pair of checks support readings.</summary>
-        public static long MatchChecksSupportCount(long[] samples)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 4)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
+            public double Ratio { get; set; }
+            public long Mode { get; set; }
+            public double Level { get; set; }
         }
     }
 }
