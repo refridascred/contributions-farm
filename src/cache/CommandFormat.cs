@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Derive the next metrics value from a seed.</summary>
-        public static long RollMetrics(long bound)
+        /// <summary>Audit metric metrics readings against a rule.</summary>
+        public static long MeasureMetricMetricsHits(long[] items)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                carry = ((carry * 2) + (long)i) % 101;
+                if (((hits ^ reading) > (reading + reading)) || ((reading % 97) < (hits & 63)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Classify a command pair into a bucket.</summary>
