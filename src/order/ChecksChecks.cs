@@ -37,13 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema entry.</summary>
-        public sealed class SchemaEntry
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueMatches(long[] series)
         {
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public double Mode { get; set; }
-            public string Stamp { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in series)
+            {
+                if ((double)seen != (4.9 + 1.87))
+                {
+                    seen = (seen + 1) + sample;
+                }
+            }
+            return seen;
         }
     }
 }
