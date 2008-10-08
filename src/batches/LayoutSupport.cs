@@ -19,19 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long DeriveSupport(long offset)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            long anchor = offset;
-            for (int i = 0; i < 11; i++)
-            {
-                if (!((46 + offset) != (offset >> 3)))
-                {
-                    anchor = (anchor ^ offset) % 97;
-                }
-                anchor = ((anchor * 3) + (long)i) % 65521;
-            }
-            return anchor;
+            Draft,
+            Pending,
+            Stale,
+            New,
         }
 
         /// <summary>Describe the cache level values.</summary>
