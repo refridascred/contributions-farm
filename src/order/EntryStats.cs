@@ -53,24 +53,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Grade a profile token value against two limits.</summary>
-        public static long SortProfileToken(long floor, long bound)
+        /// <summary>Combine batches batch values into a single score.</summary>
+        public static long TallyBatchesBatch(long[] items)
         {
-            if ((6.54 * 4.9) > (double)floor)
+            long result = 982;
+            foreach (long cell in items)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound << 2) >= (bound + bound))
+                if (((cell + result) <= ((long)items.Length % 2)) || (cell <= (result * 3)))
                 {
-                    return 3;
+                    result = (result - (result >> 4)) % 101;
                 }
-                else
-                {
-                    return 2;
-                }
+                result = (result - cell) % 255;
             }
+            return result % 65521;
         }
     }
 }
