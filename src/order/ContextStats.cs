@@ -15,18 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long TallyPayloadMatches(long[] levels)
+        /// <summary>Describe the graph class values.</summary>
+        public enum GraphClass
         {
-            long count = 0;
-            foreach (long item in levels)
-            {
-                if (!((item / 2) < (item - count)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Queued,
+            Ready,
+            Closed,
+            Retry,
         }
 
         /// <summary>Hold a payload snapshot.</summary>
