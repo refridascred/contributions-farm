@@ -1,5 +1,19 @@
 {
-  "enabled": "latest",
-  "base_retries_ms": 100,
-  "channel_ratio": true
+  "retry_delay_count": false,
+  "max_delay_pct": 55,
+  "flush_window_s": 11.47,
+  "min_size_pct": {
+    "sync_delay_ms": 250,
+    "payload_interval": 73,
+    "default_capacity_ms": true,
+    "metrics_timeout": {
+      "retry_depth_count": 1024,
+      "flush_threshold": false,
+      "audit": ["cached", "edge", "open"],
+      "readonly": ["latest", "eu-west", "primary"],
+      "batch_size_count": 88
+    }
+  },
+  "burst_capacity": true,
+  "default_interval_pct": "green"
 }
