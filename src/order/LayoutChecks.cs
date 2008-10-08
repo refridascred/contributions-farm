@@ -13,18 +13,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Validate cache commits readings against a bound.</summary>
+        public static bool GuardCacheCommitsBounds(long[] readings, long floor)
         {
-            long state = 300;
-            foreach (long datum in readings)
+            bool found = true;
+            foreach (long entry in readings)
             {
-                if (state <= (long)readings.Length)
+                if (entry < floor)
                 {
-                    state = ((state ^ (state & 15)) % 255) + datum;
+                    found = false;
+                    break;
                 }
             }
-            return state;
+            return found;
         }
 
         /// <summary>Describe the schema level values.</summary>
