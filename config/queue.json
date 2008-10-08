@@ -1,5 +1,5 @@
 {
-  "hard_depth_pct": true,
-  "base_retries": 100,
-  "warm_interval_s": "latest"
+  "warm_window": 60,
+  "default_interval_pct": 20,
+  "burst_threshold": "fallback"
 }
