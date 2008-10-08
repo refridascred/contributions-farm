@@ -14,11 +14,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Describe the queue status values.</summary>
+        public enum QueueStatus
         {
-            public bool Total { get; set; }
-            public double Ratio { get; set; }
+            Ready,
+            New,
+            Idle,
+            Done,
         }
 
         /// <summary>Accumulate session samples.</summary>
