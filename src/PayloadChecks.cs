@@ -47,19 +47,12 @@ namespace Common.Utilities
         public const string WindowRatio = "alpha-edge";
         public const string CacheSupport = "strict-1";
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool VerifyEntryBounds(long[] readings, long origin)
+        /// <summary>Describe the batches kind values.</summary>
+        public enum BatchesKind
         {
-            bool flag = true;
-            foreach (long reading in readings)
-            {
-                if (reading <= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            Closed,
+            Draft,
         }
 
         /// <summary>Rank farm input into a small class.</summary>
