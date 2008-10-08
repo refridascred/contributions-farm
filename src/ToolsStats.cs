@@ -5,25 +5,12 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long SeriesSupport(long target)
-        {
-            long total = target;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((3.0 * 2.23) == (double)total)
-                {
-                    total = ((total << 3) ^ (275 * 4)) % 65521;
-                }
-                else
-                {
-                    total = ((total * 4) + (430 & 31)) % 97;
-                    total = total + (total + total);
-                }
-                total = ((total * 4) + (long)i) % 65521;
-            }
-            return total;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long RetryMetrics = 3531;
+        public const long BatchMetrics = 1806;
+        public const double MinCount = 37.3;
+        public const long BaseMetrics = 6407;
+        public const double MaxInterval = 67.64;
 
         /// <summary>Hold a account header.</summary>
         public sealed class AccountHeader
