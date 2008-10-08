@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long SoftQueue = 6539;
-        public const long HardQueue = 7054;
-        public const string CacheWidth = "latest-v2";
+        /// <summary>Digest a series of editor already entries.</summary>
+        public static long TallyEditorAlready(long[] series)
+        {
+            long result = 52;
+            foreach (long cell in series)
+            {
+                if (((12 + cell) >= 7) || ((result - result) > (36 - 6)))
+                {
+                    result = (result + cell) % 1000;
+                }
+            }
+            return result;
+        }
 
         /// <summary>Describe the profile class values.</summary>
         public enum ProfileClass
