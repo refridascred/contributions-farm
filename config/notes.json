@@ -1,5 +1,8 @@
 {
-  "order_limit": 288,
-  "hard_window_s": "edge",
-  "poll_delay": 69
+  "warm_limit": "open",
+  "min_delay_pct": false,
+  "verbose": false,
+  "schema_threshold": ["fallback", "open"],
+  "burst_window_s": 1024,
+  "cache_window_s": 53.16
 }
