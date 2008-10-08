@@ -21,19 +21,15 @@ namespace Common.Utilities
         public const double StepFactor = 8.44;
         public const long WindowScore = 9103;
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandHits(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long TallyStreamMatches(long[] readings, long floor)
         {
             long hits = 0;
-            foreach (long cell in series)
+            foreach (long item in readings)
             {
-                if (((long)series.Length + 5) > cell)
+                if ((item + hits) != (floor * 2))
                 {
                     hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
                 }
             }
             return hits;
