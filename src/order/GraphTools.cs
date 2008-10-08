@@ -67,18 +67,24 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the batches entries that pass the check.</summary>
-        public static long AuditBatchesHits(long[] values)
+        /// <summary>Grade a batches value against two limits.</summary>
+        public static long RankBatches(long offset, long step)
         {
-            long count = 0;
-            foreach (long value in values)
+            if (((-55) + offset) == (offset - offset))
             {
-                if ((495 - value) == ((long)values.Length + value))
+                return 0;
+            }
+            else
+            {
+                if ((double)offset < (8.5 - 6.5))
                 {
-                    count = count + 3;
+                    return 3;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return count;
         }
     }
 }
