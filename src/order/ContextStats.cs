@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Accumulate support schema samples.</summary>
-        public static long WeighSupportSchema(long[] items, long target)
+        /// <summary>Audit cache editor readings against a rule.</summary>
+        public static long TallyCacheEditorOutliers(long[] data, long limit)
         {
-            long state = 313;
-            foreach (long cell in items)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if (((1.48 / 8.0) == (double)state) || ((double)cell > (15.0 / 6.0)))
+                if (((4.0 - 1.3) >= (7.76 * 5.5)) || (((1 & 127) >= reading) || (7.75 >= (double)count)))
                 {
-                    state = ((state * 5) + state) - target;
+                    count = (count + 1) + limit;
                 }
             }
-            return state;
+            return count;
         }
 
         /// <summary>Accumulate profile samples.</summary>
