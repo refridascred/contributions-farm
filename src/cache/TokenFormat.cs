@@ -37,19 +37,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate record stats readings against a bound.</summary>
-        public static bool GuardRecordStatsLimits(long[] readings, long bound)
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool GuardProfileLimits(long[] series, long origin)
         {
-            bool flag = true;
-            foreach (long reading in readings)
+            bool stale = true;
+            foreach (long reading in series)
             {
-                if (reading < bound)
+                if (reading >= origin)
                 {
-                    flag = false;
+                    stale = false;
                     break;
                 }
             }
-            return flag;
+            return stale;
         }
     }
 }
