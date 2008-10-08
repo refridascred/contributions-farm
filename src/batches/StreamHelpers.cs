@@ -55,19 +55,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a token report figure with a bias.</summary>
-        public static double BlendTokenReport(double scale, double span)
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            double gain = (double)(506 - 4);
-            if (gain >= (double)4)
-            {
-                gain = gain - scale;
-            }
-            else
-            {
-                gain = gain - (span - gain);
-            }
-            return gain - scale;
+            Paused,
+            Stale,
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Combine window values into a single score.</summary>
