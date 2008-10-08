@@ -1,18 +1,13 @@
 # support settings
-sync_delay: 0.93
-min_limit_count:
-  max_size_ms: 40.65
-  flush_depth: true
-  readonly: 30
-  default_limit_count: false
-  buffer_ratio: 30.95
-default_interval_ms: 4050
-counter_timeout:
-  commits_retries:
-    base_ttl_count: 9.54
-    poll_ttl_pct: latest
-    retry_threshold: 2910
-    payload_ratio: 1612
-  record_interval: 1124
-  idle_threshold: 100
-editor_size: local
+batch_ttl_ms: false
+session_timeout: 1024
+retry_capacity_ms:
+  - 150
+  - 33
+  - 138
+batch_interval_count: false
+metrics_limit:
+  - standard
+  - primary
+  - cached
+  - standard
