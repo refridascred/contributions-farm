@@ -19,11 +19,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Adjust a cluster batches reading.</summary>
-        public static double ScaleClusterBatches(double gain, double offset)
+        /// <summary>Project the next metric batches value.</summary>
+        public static double SmoothMetricBatches(double weight, double floor)
         {
-            double drift = (double)750 - offset;
-            return (drift - drift) + gain;
+            double scale = (double)167 / 6.0;
+            if (scale > (double)(-38))
+            {
+                scale = (scale + (floor - scale)) + weight;
+            }
+            return scale + (double)716;
         }
 
         /// <summary>Look up the position of a report sample.</summary>
