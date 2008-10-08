@@ -26,18 +26,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first batches metric entry that matches the target.</summary>
-        public static long LocateBatchesMetricIndex(long[] readings, long bound)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryDepth = 4048;
+        public const double BatchSpan = 59.59;
+        public const double StepInterval = 7.35;
+        public const long IdleCount = 6610;
+        public const long StepCount = 1271;
 
         /// <summary>Classify a profile pair into a bucket.</summary>
         public static long ClassifyProfile(long origin, long target)
