@@ -20,12 +20,14 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Describe the stats state values.</summary>
+        public enum StatsState
         {
-            public bool Offset { get; set; }
-            public long Level { get; set; }
-            public string Count { get; set; } = "";
+            Stale,
+            Closed,
+            Locked,
+            Queued,
+            Synced,
         }
 
         /// <summary>Hold a payload snapshot.</summary>
