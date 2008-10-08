@@ -1,8 +1,7 @@
 {
-  "soft_timeout_pct": "latest",
-  "burst_threshold": "latest",
-  "default_retries_ms": "local",
-  "profile_threshold": 22,
-  "verbose": "blue",
-  "min_retries_s": "blue"
+  "default_retries_count": 1024,
+  "flush_timeout_pct": "stable",
+  "compress": false,
+  "min_threshold_s": 43.43,
+  "hard_depth": ["standard", "cached"]
 }
