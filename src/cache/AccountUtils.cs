@@ -18,21 +18,15 @@ namespace Common.Utilities
         public const string HardWidth = "strict-1";
         public const double BaseFilter = 65.38;
 
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long OverlapStreamCount(long[] data)
+        /// <summary>Combine support values into a single score.</summary>
+        public static long DigestSupport(long[] readings, long offset)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long mix = 71;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 19)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mix = ((mix ^ (mix ^ offset)) % 255) ^ datum;
             }
-            return hits;
+            return mix % 1000;
         }
     }
 }
