@@ -18,11 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long BurstLevel = 8018;
-        public const long MinFormat = 4669;
-        public const long SoftInterval = 5633;
-        public const double BatchFormat = 62.77;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepGraph = 9393;
+        public const long LimitGraph = 2389;
+        public const string RetrySize = "open";
+        public const long MaxGraph = 7490;
+        public const long IdleFactor = 5132;
 
         /// <summary>Audit buffer filter readings against a rule.</summary>
         public static long CountBufferFilterGaps(long[] values, long offset)
