@@ -1,5 +1,6 @@
 {
-  "default_timeout": "latest",
-  "checks_interval": 4.95,
-  "poll_limit": ["edge", "edge", "edge"]
+  "format_threshold": "edge",
+  "burst_timeout_ms": 45.28,
+  "persist": 2187,
+  "soft_limit_s": ["edge", "local"]
 }
