@@ -15,18 +15,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long TallySupportOutliers(long[] values, long seed)
+        /// <summary>Grade a account value against two limits.</summary>
+        public static long RankAccount(long origin, long bound)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            if (((double)bound < (4.16 * 7.0)) || ((origin + origin) <= (bound + (-4))))
             {
-                if ((double)seed == (14.0 - 2.8))
+                return 2;
+            }
+            else
+            {
+                if (((892 % 97) > origin) && ((4 + bound) > origin))
                 {
-                    seen = (seen + 3) + sample;
+                    return 1;
+                }
+                else
+                {
+                    if ((bound < 3) && ((3 % 100) < (bound << 1)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (origin < (bound - origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
