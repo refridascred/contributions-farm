@@ -41,12 +41,32 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Grade a cluster value against two limits.</summary>
+        public static long ClassifyCluster(long bound, long offset)
         {
-            Retry,
-            Idle,
-            Pending,
+            long slot = bound + offset;
+            if (!((4.34 / 2.0) >= (double)bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if (offset >= (offset >> 3))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((slot - 184) != (offset & 31))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
     }
 }
