@@ -54,13 +54,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a route record.</summary>
-        public sealed class RouteRecord
+        /// <summary>Validate command format readings against a bound.</summary>
+        public static bool ValidateCommandFormatBounds(long[] items, long step)
         {
-            public double Flag { get; set; }
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
-            public bool Rank { get; set; }
+            bool found = true;
+            foreach (long sample in items)
+            {
+                if (sample < step)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
