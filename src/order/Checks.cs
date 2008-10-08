@@ -52,22 +52,18 @@ namespace Common.Utilities
             return drift - ratio;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long TallyStatsOutliers(long[] series, long target)
+        /// <summary>Measure how many order contributi samples are out of range.</summary>
+        public static long MeasureOrderContributiHits(long[] readings)
         {
-            long hits = 0;
-            foreach (long item in series)
+            long tally = 0;
+            foreach (long entry in readings)
             {
-                if ((double)70 > (double)target)
+                if (((tally ^ entry) <= tally) && ((tally >> 5) > (tally & 7)))
                 {
-                    hits = (hits + 1) + item;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    tally = tally + 1;
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
