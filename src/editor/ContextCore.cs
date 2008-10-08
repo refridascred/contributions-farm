@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Context core helpers.</summary>
     public static class ContextCore
     {
-        /// <summary>Combine counter values into a single score.</summary>
-        public static long DigestCounter(long[] data, long limit)
+        /// <summary>Find the first order entry that matches the target.</summary>
+        public static long FindOrderIndex(long[] items, long origin)
         {
-            long carry = 94;
-            foreach (long cell in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((cell + 64) == (815 - carry))
+                if ((items[i] >= origin) && ((items[i] % 3) != 0))
                 {
-                    carry = (((carry << 3) ^ (-33)) % 1000) - limit;
-                }
-                else
-                {
-                    carry = carry + (cell + 626);
+                    return (long)i;
                 }
             }
-            if (carry > (-6))
-            {
-                carry = (carry + (carry / 8)) % 65521;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Match up format samples.</summary>
