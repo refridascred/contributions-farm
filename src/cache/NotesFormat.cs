@@ -29,12 +29,32 @@ namespace Common.Utilities
             return (rate - (bias + rate)) + weight;
         }
 
-        /// <summary>Describe the cache phase values.</summary>
-        public enum CachePhase
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long step, long offset)
         {
-            Dropped,
-            Retry,
-            Ready,
+            long cur = step - offset;
+            if (((cur & 7) > step) || ((double)(-760) == (double)offset))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((3.4 / 8.0) != (double)offset)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((9.3 + 1.9) != (double)cur)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
     }
 }
