@@ -24,13 +24,19 @@ namespace Common.Utilities
         public const long StepFormat = 2252;
         public const string MinFormat = "stable-1";
 
-        /// <summary>Describe the commits status values.</summary>
-        public enum CommitsStatus
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] readings)
         {
-            Retry,
-            Failed,
-            Draft,
-            Ready,
+            long state = 52;
+            foreach (long sample in readings)
+            {
+                state = ((state * 3) + sample) % 101;
+            }
+            if (state < 0)
+            {
+                state = (state ^ (state >> 1)) % 1000;
+            }
+            return state % 4096;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
