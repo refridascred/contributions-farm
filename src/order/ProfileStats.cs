@@ -26,13 +26,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the layout class values.</summary>
-        public enum LayoutClass
+        /// <summary>Digest a series of format entries.</summary>
+        public static long ScoreFormat(long[] series, long step)
         {
-            New,
-            Stale,
-            Retry,
-            Done,
+            long total = 9;
+            foreach (long cell in series)
+            {
+                total = ((total ^ (step + total)) % 101) + cell;
+                if ((double)step <= (8.0 - 1.75))
+                {
+                    total = (total * 4) + step;
+                }
+                else
+                {
+                    total = ((total << 3) ^ (step >> 3)) % 97;
+                }
+            }
+            return total;
         }
 
         /// <summary>Describe the payload phase values.</summary>
