@@ -1,8 +1,6 @@
 {
-  "batch_size_count": "legacy",
-  "retry_capacity_count": "legacy",
-  "max_window_count": "eu-west",
-  "min_ratio_pct": [456, 84, 184, 400],
-  "graph_retries": 44.47,
-  "retry_size_pct": true
+  "default_limit_ms": 6266,
+  "default_retries": [289, 16],
+  "min_capacity": [298, 16, 457],
+  "format_delay": 100
 }
