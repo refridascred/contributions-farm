@@ -13,19 +13,14 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Scale a batches figure with a bias.</summary>
-        public static double ScaleBatches(double bias, double span)
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            double rate = (double)(8 + (-70));
-            if (rate <= (span / 9.0))
-            {
-                rate = (rate + (1.0 + 10.0)) - bias;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate - rate) + (double)(long)i;
-            }
-            return rate - (double)4;
+            Done,
+            Draft,
+            Idle,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Count report pairs that satisfy a relation.</summary>
