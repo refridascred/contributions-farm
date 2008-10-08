@@ -73,9 +73,12 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinInterval = 8714;
-        public const long BurstQueue = 2626;
-        public const string BurstSpan = "latest";
+        /// <summary>Hold a record entry.</summary>
+        public sealed class RecordEntry
+        {
+            public bool Ratio { get; set; }
+            public string Token { get; set; } = "";
+            public long Score { get; set; }
+        }
     }
 }
