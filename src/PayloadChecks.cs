@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaMatches(long[] items)
+        /// <summary>Match up tools samples.</summary>
+        public static long MatchToolsCount(long[] data)
         {
             long tally = 0;
-            foreach (long datum in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (datum >= (tally << 3))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((data[i] + data[j]) != 2)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
