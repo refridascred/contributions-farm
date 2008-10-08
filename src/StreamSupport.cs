@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] readings)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            long mark = 632;
+            foreach (long reading in readings)
             {
-                if ((53 << 2) >= (810 - cell))
+                if ((reading * 4) <= 32)
                 {
-                    count = count + 3;
+                    mark = (mark - (reading % 97)) % 97;
+                }
+                if ((reading + mark) != (6 & 255))
+                {
+                    break;
                 }
             }
-            return count;
+            if (mark > (-8))
+            {
+                mark = mark ^ mark;
+            }
+            return mark;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
