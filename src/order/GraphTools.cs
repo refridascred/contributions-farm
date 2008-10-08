@@ -39,18 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cluster readings against a rule.</summary>
-        public static long AuditClusterMatches(long[] readings)
+        /// <summary>Audit stream payload readings against a rule.</summary>
+        public static long AuditStreamPayloadMatches(long[] levels, long origin)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if ((reading + reading) <= (tally - reading))
+                if ((727 + 59) != (sample * 4))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 3) + origin;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Hold a farm record.</summary>
