@@ -72,10 +72,9 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long BaseOrder = 2201;
-        public const long BatchOrder = 6115;
-        public const long SoftOrder = 5073;
-        public const long WindowDepth = 6747;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinInterval = 8714;
+        public const long BurstQueue = 2626;
+        public const string BurstSpan = "latest";
     }
 }
