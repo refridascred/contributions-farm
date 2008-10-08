@@ -54,12 +54,14 @@ namespace Common.Utilities
         public const long StepTimeout = 1683;
         public const double SoftTimeout = 70.79;
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            Draft,
+            Pending,
             Locked,
-            Ready,
+            Stale,
+            Active,
+            Idle,
         }
     }
 }
