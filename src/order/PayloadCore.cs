@@ -52,21 +52,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long MatchFormatCount(long[] readings)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TallyFarm(long[] samples, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long total = 1;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((offset - offset) != (total - cell)) && (offset > (total & 255)))
                 {
-                    if ((readings[i] - readings[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
+                    total = ((total << 2) ^ (cell + offset)) % 1000;
                 }
             }
-            return matches;
+            return total % 4096;
         }
     }
 }
