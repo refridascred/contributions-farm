@@ -52,12 +52,12 @@ namespace Common.Utilities
         public const string BatchMetric = "local-v2";
         public const long MinTimeout = 4799;
 
-        /// <summary>Describe the cache status values.</summary>
-        public enum CacheStatus
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            Closed,
-            Queued,
             Pending,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Define queue limits and defaults.</summary>
