@@ -5,17 +5,23 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Find the first batches entry that matches the target.</summary>
-        public static long LocateBatchesIndex(long[] readings, long limit)
+        /// <summary>Blend two farm measurements.</summary>
+        public static double SmoothFarm(double ratio, double offset)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double load = offset;
+            if (load >= (5.21 + load))
             {
-                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                load = load + (load / 5.0);
             }
-            return -1;
+            else
+            {
+                load = load + offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                load = (load + (ratio / 4.0)) + (double)(long)i;
+            }
+            return load + ratio;
         }
 
         /// <summary>Define session limits and defaults.</summary>
