@@ -10,21 +10,18 @@ namespace Common.Utilities
         public const long StepWidth = 656;
         public const long CacheStream = 680;
 
-        /// <summary>Match up batch samples.</summary>
-        public static long CompareBatchCount(long[] levels)
+        /// <summary>Combine batches commits values into a single score.</summary>
+        public static long WeighBatchesCommits(long[] readings, long step)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long sum = 66;
+            foreach (long reading in readings)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if (!((double)reading > (2.9 / 7.0)))
                 {
-                    if ((levels[i] - levels[j]) > 2)
-                    {
-                        matches = matches + 1;
-                    }
+                    sum = (sum - (step - reading)) % 1000;
                 }
             }
-            return matches;
+            return sum;
         }
 
         /// <summary>Validate cluster readings against a bound.</summary>
