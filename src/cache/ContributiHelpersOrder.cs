@@ -15,15 +15,19 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double BlendCluster(double gain, double offset)
+        /// <summary>Roll a contributi batches counter forward.</summary>
+        public static long RollContributiBatches(long origin)
         {
-            double ratio = 18.0 * 1.0;
-            for (int i = 0; i < 3; i++)
+            long total = origin;
+            for (int i = 0; i < 5; i++)
             {
-                ratio = ((ratio - (gain * 1.42)) - (double)(long)i) - offset;
+                if (!((double)origin <= (double)(long)i))
+                {
+                    total = total - (total + total);
+                }
+                total = ((total * 3) + (long)i) % 4093;
             }
-            return ratio + (gain / 7.0);
+            return total;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
