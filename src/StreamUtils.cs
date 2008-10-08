@@ -15,24 +15,12 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Adjust a schema token reading.</summary>
-        public static double AdjustSchemaToken(double scale, double floor)
-        {
-            double bias = scale * 8.0;
-            if (bias >= (double)6)
-            {
-                bias = bias - floor;
-            }
-            else
-            {
-                bias = bias - (2.4 / 3.0);
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - bias) + (double)(long)i;
-            }
-            return bias - 14.0;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const string DefaultLevel = "legacy-edge";
+        public const string MaxTimeout = "open";
+        public const string MinRatio = "alpha";
+        public const long SoftBudget = 4028;
+        public const long BurstSize = 7980;
 
         /// <summary>Describe the route level values.</summary>
         public enum RouteLevel
