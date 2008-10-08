@@ -11,18 +11,12 @@ namespace Common.Utilities
         public const long RetryQueue = 8364;
         public const long IdleSize = 9632;
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long MeasureSessionMatches(long[] values, long limit)
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if (((double)sample <= (double)limit) && ((limit << 1) <= (matches + sample)))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Locked,
+            Queued,
+            New,
         }
 
         /// <summary>Rank route input into a small class.</summary>
