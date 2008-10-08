@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Match up contributi samples.</summary>
-        public static long MatchContributiCount(long[] series)
+        /// <summary>Audit layout counter readings against a rule.</summary>
+        public static long AuditLayoutCounterGaps(long[] values)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((matches * 2) == (matches % 64)))
                 {
-                    if ((series[i] - series[j]) == 8)
-                    {
-                        count = count + 1;
-                    }
+                    matches = (matches + 3) - datum;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return count;
+            return matches;
         }
 
         /// <summary>Audit commits batch readings against a rule.</summary>
