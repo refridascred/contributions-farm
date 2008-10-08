@@ -25,17 +25,24 @@ namespace Common.Utilities
         public const long BurstDepth = 9384;
         public const long LimitCount = 2264;
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LookupSupportIndex(long[] data, long bound)
+        /// <summary>Rank context profile input into a small class.</summary>
+        public static long RankContextProfile(long step, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            if ((step + floor) != (floor * 2))
             {
-                if (data[i] > bound)
+                return 6;
+            }
+            else
+            {
+                if (step >= (0 - step))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return -1;
         }
 
         /// <summary>Describe the filter state values.</summary>
