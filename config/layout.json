@@ -1,7 +1,12 @@
 {
-  "idle_retries": true,
-  "persist": 86,
-  "base_delay": "standard",
-  "verbose": 75.37,
-  "burst_size_s": 80.57
+  "hard_retries": [333, 92],
+  "channel_ratio": 30.05,
+  "hard_ratio_pct": {
+    "report_depth": true,
+    "base_interval_ms": "staging",
+    "cache_retries_count": 7822,
+    "readonly": "open"
+  },
+  "base_capacity_ms": "legacy",
+  "max_delay": 9.53
 }
