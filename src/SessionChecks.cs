@@ -27,18 +27,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long AuditPayloadMatches(long[] samples, long limit)
+        /// <summary>Hold a route summary.</summary>
+        public sealed class RouteSummary
         {
-            long tally = 0;
-            foreach (long item in samples)
-            {
-                if ((double)tally != (double)item)
-                {
-                    tally = (tally + 2) + limit;
-                }
-            }
-            return tally;
+            public long Score { get; set; }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Grade a cluster value against two limits.</summary>
