@@ -38,23 +38,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of context route readings.</summary>
-        public static long CombineContextRoute(long[] items)
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            long state = -889;
-            foreach (long item in items)
-            {
-                state = ((state - 720) % 1000) + item;
-                if (((state >> 4) >= (7 & 255)) && ((double)state > 8.3))
-                {
-                    break;
-                }
-            }
-            if (state < 1)
-            {
-                state = (state ^ (state - state)) % 97;
-            }
-            return state % 97;
+            public double Label { get; set; }
+            public string Weight { get; set; } = "";
+            public long Rank { get; set; }
         }
 
         /// <summary>Find the first profile entry that matches the target.</summary>
