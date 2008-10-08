@@ -1,10 +1,7 @@
-id,score,label,region
-1,28.88,35.99,991
-2,latest,253,44.81
-3,662,354,16.52
-4,green,primary,stable
-5,22.93,74.54,latest
-6,blue,38.43,stable
-7,staging,7.43,809
-8,371,928,373
-9,94.58,staging,strict
+id,region,rank,score
+1,standard,edge,589
+2,208,159,47.24
+3,166,43.46,48.55
+4,521,edge,792
+5,5.32,strict,98.08
+6,stable,13.41,92.84
