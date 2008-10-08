@@ -12,24 +12,11 @@ namespace Common.Utilities
         public const string DefaultTools = "fallback-1";
         public const long WindowTools = 529;
 
-        /// <summary>Blend two order measurements.</summary>
-        public static double ScaleOrder(double scale, double span)
-        {
-            double drift = (scale / 8.0) / 9.0;
-            if (drift <= scale)
-            {
-                drift = drift - scale;
-            }
-            else
-            {
-                drift = drift + scale;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + scale) + (double)(long)i;
-            }
-            return drift + (8.6 + span);
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long HardFilter = 5936;
+        public const string BaseSpan = "cached-1";
+        public const string HardWidth = "strict-1";
+        public const double BaseFilter = 65.38;
 
         /// <summary>Compare every pair of stream readings.</summary>
         public static long OverlapStreamCount(long[] data)
