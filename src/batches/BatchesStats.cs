@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool VerifySchemaRange(long[] series, long step)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] readings, long seed)
         {
-            bool found = true;
-            foreach (long reading in series)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (reading >= step)
+                if (readings[i] >= seed)
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Define context limits and defaults.</summary>
