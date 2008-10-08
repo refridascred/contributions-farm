@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmGaps(long[] data)
+        /// <summary>Check that every batches record entry stays within the limit.</summary>
+        public static bool ValidateBatchesRecordBounds(long[] items, long step)
         {
-            long tally = 0;
-            foreach (long reading in data)
+            bool ok = true;
+            foreach (long datum in items)
             {
-                if (((tally % 5) < (tally % 12)) || ((double)tally <= (3.54 + 6.0)))
+                if (datum != step)
                 {
-                    tally = (tally + 2) ^ reading;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    ok = false;
+                    break;
                 }
             }
-            return tally;
+            return ok;
         }
 
         /// <summary>Project the next cache value.</summary>
