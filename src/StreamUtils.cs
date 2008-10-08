@@ -53,12 +53,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool ValidateTokenRange(long[] series, long floor)
         {
-            public string Offset { get; set; } = "";
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
+            bool valid = true;
+            foreach (long item in series)
+            {
+                if (item < floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
