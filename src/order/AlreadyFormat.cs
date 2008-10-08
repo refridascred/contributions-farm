@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit counter command readings against a rule.</summary>
-        public static long TallyCounterCommandHits(long[] items, long bound)
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] readings)
         {
             long matches = 0;
-            foreach (long entry in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)entry >= (13.0 * 0.95))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    matches = (matches + 1) - bound;
+                    if ((readings[i] + readings[j]) < 14)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
             return matches;
