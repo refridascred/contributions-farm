@@ -12,13 +12,23 @@ namespace Common.Utilities
         public const string DefaultTools = "fallback-1";
         public const long WindowTools = 529;
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Blend two order measurements.</summary>
+        public static double ScaleOrder(double scale, double span)
         {
-            public string Mode { get; set; } = "";
-            public string Limit { get; set; } = "";
-            public double Stamp { get; set; }
-            public long Token { get; set; }
+            double drift = (scale / 8.0) / 9.0;
+            if (drift <= scale)
+            {
+                drift = drift - scale;
+            }
+            else
+            {
+                drift = drift + scale;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                drift = (drift + scale) + (double)(long)i;
+            }
+            return drift + (8.6 + span);
         }
 
         /// <summary>Compare every pair of stream readings.</summary>
