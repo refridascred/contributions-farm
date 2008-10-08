@@ -36,19 +36,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool GuardBufferRange(long[] series, long origin)
+        /// <summary>Describe the token mode values.</summary>
+        public enum TokenMode
         {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value < origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Locked,
+            Queued,
+            Stale,
+            Pending,
         }
     }
 }
