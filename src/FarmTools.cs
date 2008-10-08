@@ -10,17 +10,14 @@ namespace Common.Utilities
         public const double BatchBudget = 42.97;
         public const long HardLayout = 4037;
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long LocateCommitsIndex(long[] items, long floor)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < floor) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Paused,
+            Active,
+            Failed,
+            Retry,
+            Queued,
         }
 
         /// <summary>Locate a editor reading by value.</summary>
