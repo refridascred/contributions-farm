@@ -34,18 +34,19 @@ namespace Common.Utilities
         public const string CacheChecks = "local";
         public const long BurstChecks = 7359;
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphMatches(long[] series, long seed)
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool VerifyGraphBounds(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool stale = true;
+            foreach (long sample in items)
             {
-                if ((seen % 64) > ((long)series.Length + datum))
+                if (sample > limit)
                 {
-                    seen = (seen + 3) - seed;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Accumulate entry samples.</summary>
