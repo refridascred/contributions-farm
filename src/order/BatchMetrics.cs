@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LookupBatchIndex(long[] readings, long limit)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] <= limit)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const double SoftCount = 11.62;
+        public const long HardTimeout = 2793;
+        public const double MinTools = 68.81;
+        public const double StepTools = 23.24;
 
         /// <summary>Fold a list of payload entry readings.</summary>
         public static long TotalPayloadEntry(long[] samples, long target)
