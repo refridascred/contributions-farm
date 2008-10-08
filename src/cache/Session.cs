@@ -14,22 +14,18 @@ namespace Common.Utilities
             public string Flag { get; set; } = "";
         }
 
-        /// <summary>Derive the next profile commits value from a seed.</summary>
-        public static long SeriesProfileCommits(long target)
+        /// <summary>Count the record entries that pass the check.</summary>
+        public static long TallyRecordOutliers(long[] readings, long target)
         {
-            long anchor = target;
-            for (int i = 0; i < 9; i++)
+            long hits = 0;
+            foreach (long entry in readings)
             {
-                anchor = (anchor - anchor) % 97;
-                if (target < (long)i)
+                if ((double)target >= (1.1 - 12.0))
                 {
-                    anchor = (anchor + (anchor << 2)) % 4096;
-                    break;
+                    hits = (hits + 3) ^ entry;
                 }
-                anchor = anchor - anchor;
-                anchor = ((anchor * 2) + (long)i) % 65521;
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
