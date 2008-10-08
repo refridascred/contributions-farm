@@ -30,14 +30,23 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double ScaleContributi(double gain, double offset)
         {
-            Paused,
-            Ready,
-            Draft,
-            Done,
-            Pending,
+            double mean = (gain + offset) + (gain - offset);
+            if (mean >= gain)
+            {
+                mean = mean - 3.2;
+            }
+            else
+            {
+                mean = mean - 9.18;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                mean = (mean - (offset * 0.26)) + (double)(long)i;
+            }
+            return mean - (gain * 3.0);
         }
     }
 }
