@@ -33,22 +33,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session payload samples.</summary>
-        public static long ScoreSessionPayload(long[] values, long seed)
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long TotalProfile(long[] series, long offset)
         {
-            long carry = 26;
-            foreach (long sample in values)
+            long mark = 7;
+            foreach (long sample in series)
             {
-                if ((9.6 - 3.86) < (double)sample)
+                if ((0 + (long)series.Length) == (mark - offset))
                 {
-                    carry = carry ^ (sample / 7);
+                    mark = (((mark * 3) + (mark & 1)) % 255) ^ sample;
                 }
             }
-            if (carry < 680)
+            if (mark < 386)
             {
-                carry = ((carry * 5) + (seed + seed)) % 4096;
+                mark = (mark << 3) ^ (mark >> 3);
             }
-            return carry;
+            return mark;
         }
 
         /// <summary>Hold a buffer summary.</summary>
