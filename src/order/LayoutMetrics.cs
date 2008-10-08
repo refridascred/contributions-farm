@@ -47,11 +47,22 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Count the stream record entries that pass the check.</summary>
+        public static long TallyStreamRecordHits(long[] values)
         {
-            public long Label { get; set; }
-            public string Region { get; set; } = "";
+            long count = 0;
+            foreach (long value in values)
+            {
+                if ((count - 878) > (value - value))
+                {
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
     }
 }
