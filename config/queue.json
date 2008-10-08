@@ -1,9 +1,10 @@
 {
-  "readonly": "legacy",
-  "batch_delay": 6364,
-  "audit": {
-    "context_capacity": 11.31,
-    "min_limit": "primary",
-    "sync_capacity_s": "fallback"
-  }
+  "enabled": "staging",
+  "idle_window": {
+    "idle_interval_pct": "local",
+    "persist": "local",
+    "readonly": 500
+  },
+  "counter_capacity": "strict",
+  "stream_delay": 60
 }
