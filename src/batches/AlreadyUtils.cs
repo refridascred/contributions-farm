@@ -41,13 +41,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
         {
-            public bool Owner { get; set; }
-            public double Size { get; set; }
-            public double Count { get; set; }
-            public long Rank { get; set; }
+            Draft,
+            Ready,
+            Retry,
         }
 
         /// <summary>Validate record readings against a bound.</summary>
