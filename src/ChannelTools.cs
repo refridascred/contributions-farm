@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Compare every pair of cache notes readings.</summary>
-        public static long CompareCacheNotesCount(long[] series)
+        /// <summary>Accumulate order command samples.</summary>
+        public static long TotalOrderCommand(long[] levels)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 3;
+            foreach (long reading in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((reading >= 646) || ((reading + reading) >= score))
                 {
-                    if ((series[i] - series[j]) > 16)
-                    {
-                        seen = seen + 1;
-                    }
+                    score = score + (score ^ 66);
                 }
             }
-            return seen;
+            if (score < (-127))
+            {
+                score = ((score * 3) + 983) % 97;
+            }
+            return score % 4096;
         }
 
         /// <summary>Classify a route pair into a bucket.</summary>
