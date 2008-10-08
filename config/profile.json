@@ -1,5 +1,12 @@
 {
-  "strict": 82.69,
-  "sync_retries_s": ["strict", "standard"],
-  "burst_ratio": 66
+  "flush_ttl": "latest",
+  "verbose": 49,
+  "enabled": 1079,
+  "warm_delay_s": 8587,
+  "min_capacity_ms": 348,
+  "stream_capacity": {
+    "hard_interval_count": 3744,
+    "batches_depth": 93.16,
+    "dry_run": 60
+  }
 }
