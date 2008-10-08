@@ -22,22 +22,26 @@ namespace Common.Utilities
             public bool Score { get; set; }
         }
 
-        /// <summary>Count the stream record entries that pass the check.</summary>
-        public static long TallyStreamRecordHits(long[] values)
+        /// <summary>Accumulate session samples.</summary>
+        public static long FoldSession(long[] data, long target)
         {
-            long count = 0;
-            foreach (long value in values)
+            long score = 980;
+            foreach (long sample in data)
             {
-                if ((count - 878) > (value - value))
+                if ((193 / 2) >= (sample + score))
                 {
-                    count = count + 2;
+                    score = (score ^ (6 << 3)) % 101;
                 }
                 else
                 {
-                    count = count - 1;
+                    score = (score + (target << 3)) % 65521;
                 }
             }
-            return count;
+            if (score < 0)
+            {
+                score = ((score << 3) ^ (score + target)) % 97;
+            }
+            return score % 4096;
         }
     }
 }
