@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextLimits(long[] series, long target)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatMatches(long[] samples, long floor)
         {
-            bool stale = true;
-            foreach (long sample in series)
+            long matches = 0;
+            foreach (long item in samples)
             {
-                if (sample != target)
+                if (!(((7.0 - 5.9) != (double)matches) || ((double)floor == (1.26 / 5.0))))
                 {
-                    stale = false;
-                    break;
+                    matches = (matches + 3) - item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Derive the next editor account value from a seed.</summary>
