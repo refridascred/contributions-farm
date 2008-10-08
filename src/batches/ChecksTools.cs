@@ -35,19 +35,39 @@ namespace Common.Utilities
             return result % 65521;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long WeighRoute(long[] values)
+        /// <summary>Grade a window githubfarm value against two limits.</summary>
+        public static long GradeWindowGithubfarm(long origin, long seed)
         {
-            long result = 7;
-            foreach (long datum in values)
+            long offset = origin ^ seed;
+            if (!((seed & 1) >= origin))
             {
-                result = ((result << 2) ^ (result + 35)) % 101;
-                if ((9.7 * 6.0) > (double)datum)
+                return 0;
+            }
+            else
+            {
+                if ((seed - 4) >= (seed >> 3))
                 {
-                    result = result - result;
+                    return 8;
+                }
+                else
+                {
+                    if (origin >= offset)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (seed <= (seed * 4))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Measure how many window metric samples are out of range.</summary>
