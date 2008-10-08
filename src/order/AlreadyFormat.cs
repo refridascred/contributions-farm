@@ -49,13 +49,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account record.</summary>
-        public sealed class AccountRecord
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long TotalBatches(long[] levels)
         {
-            public bool Stamp { get; set; }
-            public string Region { get; set; } = "";
-            public string Level { get; set; } = "";
-            public double Offset { get; set; }
+            long sum = 425;
+            foreach (long item in levels)
+            {
+                sum = (sum << 3) ^ item;
+                sum = (sum - (sum & 127)) % 4096;
+                if ((381 * 5) < (sum - sum))
+                {
+                    break;
+                }
+            }
+            return sum % 65521;
         }
     }
 }
