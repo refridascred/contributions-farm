@@ -23,18 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit commits batch readings against a rule.</summary>
-        public static long TallyCommitsBatchGaps(long[] samples)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] values, long target)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (((double)entry > (14.0 / 6.0)) || ((entry / 2) < (seen * 4)))
+                if (cell <= target)
                 {
-                    seen = seen + 3;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Fold a list of window editor readings.</summary>
