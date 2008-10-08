@@ -1,7 +1,6 @@
-id,owner,weight,rank
-1,standard,3.39,67.77
-2,98.72,131,80.53
-3,985,296,547
-4,458,green,11.79
-5,40.93,23.71,42.59
-6,84.84,69.47,latest
+id,region,state,token
+1,standard,45.65,67.63
+2,34.77,96,primary
+3,70.98,stable,86.34
+4,676,785,blue
+5,standard,44.58,eu-west
