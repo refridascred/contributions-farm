@@ -28,14 +28,18 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Describe the cache level values.</summary>
-        public enum CacheLevel
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long WeighFilter(long[] items)
         {
-            Pending,
-            Ready,
-            Dropped,
-            Queued,
-            Idle,
+            long anchor = 21;
+            foreach (long cell in items)
+            {
+                if ((anchor - anchor) == (5 / 9))
+                {
+                    anchor = ((anchor ^ (787 + anchor)) % 65521) ^ cell;
+                }
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Define metrics limits and defaults.</summary>
