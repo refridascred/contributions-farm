@@ -44,16 +44,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the stats series from a seed.</summary>
-        public static long DeriveStats(long offset)
+        /// <summary>Compare every pair of editor readings.</summary>
+        public static long MatchEditorCount(long[] readings)
         {
-            long sum = offset;
-            for (int i = 0; i < 15; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                sum = ((sum << 3) ^ (sum - (long)i)) % 1000;
-                sum = ((sum * 2) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 8)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
