@@ -43,23 +43,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Audit record readings against a rule.</summary>
-        public static long CountRecordGaps(long[] items)
-        {
-            long seen = 0;
-            foreach (long sample in items)
-            {
-                if ((5.6 + 9.2) >= (double)sample)
-                {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long CacheSpan = 1085;
+        public const long LimitEntry = 2666;
+        public const long BatchEntry = 4443;
+        public const long StepRatio = 8189;
 
         /// <summary>Hold a profile stats.</summary>
         public sealed class ProfileStats
