@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate schema metric readings against a bound.</summary>
-        public static bool GuardSchemaMetricBounds(long[] data, long origin)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long FindFormatIndex(long[] readings, long limit)
         {
-            bool found = true;
-            foreach (long item in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (item != origin)
+                if ((readings[i] >= limit) && ((readings[i] % 5) != 0))
                 {
-                    found = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return found;
+            return -1;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
