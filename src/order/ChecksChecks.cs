@@ -18,18 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit token readings against a rule.</summary>
-        public static long MeasureTokenOutliers(long[] series, long limit)
+        /// <summary>Describe the stats kind values.</summary>
+        public enum StatsKind
         {
-            long count = 0;
-            foreach (long cell in series)
-            {
-                if (!((limit <= (limit >> 1)) || ((double)cell != (double)47)))
-                {
-                    count = count + 1;
-                }
-            }
-            return count;
+            Synced,
+            Paused,
+            Closed,
+            Stale,
         }
 
         /// <summary>Define farm limits and defaults.</summary>
