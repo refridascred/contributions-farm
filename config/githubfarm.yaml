@@ -1,12 +1,17 @@
 # githubfarm settings
-batch_size_count: 35
-compress: 60
-soft_window_s: 71
-warm_limit_count:
-  audit: 25.44
-  batch_ttl_count: 6273
-  poll_window: fallback
-  compress:
-    - primary
-    - strict
-  strict: false
+poll_window_s: false
+token_window: eu-west
+account_size: 2713
+idle_timeout_count:
+  stats_ratio:
+    layout_limit: 7598
+    base_limit_count:
+      - 92
+      - 225
+      - 239
+      - 153
+    batch_capacity: blue
+  readonly: latest
+  burst_size: local
+  token_delay: 60
+max_threshold: 46.61
