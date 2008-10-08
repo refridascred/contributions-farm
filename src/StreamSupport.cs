@@ -28,12 +28,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Locate a already reading by value.</summary>
+        public static long SeekAlreadyIndex(long[] series, long offset)
         {
-            Paused,
-            Closed,
-            Failed,
+            for (int i = 0; i < series.Length; i++)
+            {
+                if ((series[i] > offset) && ((series[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
