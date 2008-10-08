@@ -27,15 +27,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long TallyPayload(long[] levels, long origin)
+        /// <summary>Count the layout command entries that pass the check.</summary>
+        public static long AuditLayoutCommandGaps(long[] readings)
         {
-            long mix = -92;
-            foreach (long entry in levels)
+            long tally = 0;
+            foreach (long sample in readings)
             {
-                mix = ((mix << 2) ^ (entry - origin)) % 4096;
+                if ((double)tally < (2.6 + 0.6))
+                {
+                    tally = (tally + 3) - sample;
+                }
             }
-            return mix;
+            return tally;
         }
 
         /// <summary>Project the next commits value.</summary>
