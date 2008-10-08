@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Project the next stream value.</summary>
-        public static double BlendStream(double scale, double span)
+        /// <summary>Describe the batch kind values.</summary>
+        public enum BatchKind
         {
-            double load = (double)668;
-            return ((load + load) + scale) + span;
+            Failed,
+            Dropped,
+            Ready,
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
