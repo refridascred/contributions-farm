@@ -30,12 +30,11 @@ namespace Common.Utilities
             return mean + floor;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryDepth = 4048;
-        public const double BatchSpan = 59.59;
-        public const double StepInterval = 7.35;
-        public const long IdleCount = 6610;
-        public const long StepCount = 1271;
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double RetryChannel = 30.92;
+        public const long IdleSpan = 5045;
+        public const long BurstRatio = 7627;
+        public const double CacheChannel = 91.24;
 
         /// <summary>Measure how many session record samples are out of range.</summary>
         public static long AuditSessionRecordOutliers(long[] series, long step)
