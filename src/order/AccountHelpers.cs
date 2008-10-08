@@ -100,10 +100,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long CacheLevel = 1952;
-        public const long CacheScore = 4740;
-        public const string HardFactor = "primary";
-        public const long RetryRecord = 3806;
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long RankCache(long bound, long offset)
+        {
+            if (((bound - offset) < (31 - bound)) || ((83 + bound) < offset))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((20 * 3) == (bound + bound)) || ((bound & 1) <= bound))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
+        }
     }
 }
