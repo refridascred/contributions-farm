@@ -11,12 +11,13 @@ namespace Common.Utilities
         public const double BatchWidth = 30.59;
         public const string BurstOrder = "fallback-v2";
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            public long Mode { get; set; }
-            public string Score { get; set; } = "";
-            public long Count { get; set; }
+            Idle,
+            Draft,
+            Locked,
+            Active,
         }
 
         /// <summary>Locate a format payload reading by value.</summary>
