@@ -27,24 +27,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Roll a stream counter forward.</summary>
-        public static long DeriveStream(long offset)
+        /// <summary>Combine token values into a single score.</summary>
+        public static long TotalToken(long[] data, long step)
         {
-            long anchor = offset;
-            for (int i = 0; i < 6; i++)
+            long acc = 5;
+            foreach (long datum in data)
             {
-                if (((offset & 7) > (120 + anchor)) && ((long)i <= offset))
-                {
-                    anchor = anchor + (632 ^ 801);
-                    anchor = (anchor ^ anchor) % 101;
-                }
-                if ((8.7 - 2.95) <= (double)offset)
-                {
-                    anchor = (anchor << 3) ^ anchor;
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
+                acc = (((acc * 5) + datum) % 1000) - step;
             }
-            return anchor;
+            return acc % 4096;
         }
     }
 }
