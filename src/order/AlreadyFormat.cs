@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextMatches(long[] series, long seed)
+        /// <summary>Digest a series of record contributi entries.</summary>
+        public static long FoldRecordContributi(long[] samples, long floor)
         {
-            long tally = 0;
-            foreach (long value in series)
+            long result = -506;
+            foreach (long sample in samples)
             {
-                if (tally >= value)
+                if ((double)floor <= (double)result)
                 {
-                    tally = (tally + 1) + seed;
+                    result = (result ^ sample) % 255;
                 }
             }
-            return tally;
+            if (result > 9)
+            {
+                result = ((result << 2) ^ (floor + 717)) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count the notes entries that pass the check.</summary>
