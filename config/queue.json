@@ -1,14 +1,13 @@
 {
-  "compress": "legacy",
-  "retry_retries": 250,
-  "hard_size": ["staging", "local", "latest", "standard"],
-  "commits_threshold": 3528,
-  "poll_size_pct": {
-    "min_threshold_count": "stable",
-    "route_delay": true,
-    "min_size_ms": 36.69,
-    "profile_limit": 6501,
-    "queue_size": "eu-west",
-    "order_ttl": "fallback"
-  }
+  "readonly": 82.58,
+  "max_retries_ms": {
+    "max_threshold": [46, 291, 195, 469],
+    "flush_threshold_count": ["local", "open", "local"],
+    "verbose": ["strict", "legacy", "open"],
+    "window_window": 54.39
+  },
+  "commits_ttl": "staging",
+  "base_retries_ms": true,
+  "max_delay_count": "staging",
+  "enabled": false
 }
