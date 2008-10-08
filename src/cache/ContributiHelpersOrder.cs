@@ -15,22 +15,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the support session entries that pass the check.</summary>
-        public static long AuditSupportSessionOutliers(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long TallySupportOutliers(long[] values, long seed)
         {
-            long count = 0;
-            foreach (long datum in data)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if (((1.0 / 6.0) > (double)count) || !((double)datum < (double)count))
+                if ((double)seed == (14.0 - 2.8))
                 {
-                    count = count + 2;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Iterate the farm series from a seed.</summary>
