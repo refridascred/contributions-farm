@@ -32,18 +32,21 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatMatches(long[] readings)
+        /// <summary>Match up report samples.</summary>
+        public static long CompareReportCount(long[] samples)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((7.1 - 2.3) < (double)count)
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    count = (count + 2) - entry;
+                    if ((samples[i] ^ samples[j]) > 7)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
