@@ -1,18 +1,4 @@
 # support settings
-poll_window: 47.78
-already_capacity:
-  - blue
-  - open
-min_limit_s:
-  audit: 88
-  dry_run:
-    batch_ttl_ms: 97.52
-    default_ttl_s: 5654
-    soft_retries: cached
-  default_delay_pct: 46
-  filter_delay: 39
-  flush_depth_s:
-    - edge
-    - stable
-    - green
-    - standard
+burst_limit_ms: fallback
+idle_limit: blue
+context_retries: 26.28
