@@ -37,25 +37,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a entry editor pair into a bucket.</summary>
-        public static long GradeEntryEditor(long target, long floor)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long limit)
         {
-            long next = target ^ floor;
-            if (!((3.5 / 5.0) == (double)floor))
+            long carry = limit;
+            for (int i = 0; i < 17; i++)
             {
-                return 1;
+                carry = ((carry * 3) + (long)i) % 65521;
             }
-            else
-            {
-                if (next >= (target * 3))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            return carry;
         }
     }
 }
