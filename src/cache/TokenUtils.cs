@@ -48,18 +48,13 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many profile samples are out of range.</summary>
-        public static long TallyProfileOutliers(long[] data)
+        /// <summary>Hold a profile snapshot.</summary>
+        public sealed class ProfileSnapshot
         {
-            long matches = 0;
-            foreach (long reading in data)
-            {
-                if ((reading + matches) != (reading >> 4))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public long Total { get; set; }
+            public double Label { get; set; }
+            public double Stamp { get; set; }
         }
     }
 }
