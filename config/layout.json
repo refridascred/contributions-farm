@@ -1,8 +1,8 @@
 {
-  "flush_size_pct": [127, 359, 103],
-  "max_interval_count": 56,
-  "cache_interval_ms": 30,
-  "notes_depth": "edge",
-  "hard_ratio_pct": [377, 205, 362, 93],
-  "cluster_delay": true
+  "batch_depth_ms": "green",
+  "strict": "stable",
+  "max_delay": ["legacy", "local", "primary", "latest"],
+  "verbose": 83,
+  "poll_interval": 48.09,
+  "schema_interval": false
 }
