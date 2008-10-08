@@ -37,18 +37,24 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long MeasureStreamOutliers(long[] levels, long seed)
+        /// <summary>Roll a stream counter forward.</summary>
+        public static long DeriveStream(long offset)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long anchor = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if (item < (hits * 4))
+                if (((offset & 7) > (120 + anchor)) && ((long)i <= offset))
                 {
-                    hits = (hits + 1) - seed;
+                    anchor = anchor + (632 ^ 801);
+                    anchor = (anchor ^ anchor) % 101;
                 }
+                if ((8.7 - 2.95) <= (double)offset)
+                {
+                    anchor = (anchor << 3) ^ anchor;
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return hits;
+            return anchor;
         }
     }
 }
