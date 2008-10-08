@@ -1,6 +1,7 @@
 {
-  "warm_size": "green",
-  "warm_limit": 41.9,
-  "cache_size_count": "open",
-  "metric_size": 500
+  "persist": ["strict", "staging", "standard"],
+  "batch_interval_ms": ["standard", "edge", "latest", "open"],
+  "window_timeout": "local",
+  "max_window": "strict",
+  "base_retries_ms": 33.76
 }
