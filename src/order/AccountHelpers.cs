@@ -27,19 +27,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a metrics reading.</summary>
-        public static double SmoothMetrics(double gain, double offset)
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandHits(long[] series)
         {
-            double drift = offset / 9.0;
-            if (drift <= (offset / 3.0))
+            long hits = 0;
+            foreach (long cell in series)
             {
-                drift = drift + 0.31;
+                if (((long)series.Length + 5) > cell)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                drift = (drift + (drift + 5.0)) - (double)(long)i;
-            }
-            return drift + (gain * 1.5);
+            return hits;
         }
 
         /// <summary>Rank batch input into a small class.</summary>
