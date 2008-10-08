@@ -19,11 +19,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Roll a metric stream counter forward.</summary>
+        public static long IterateMetricStream(long bound)
         {
-            public double Score { get; set; }
-            public long Rank { get; set; }
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
+            {
+                if (!((double)bound != (4.62 * 11.0)))
+                {
+                    anchor = (anchor ^ (bound & 255)) % 101;
+                }
+                anchor = (anchor * 3) + (19 & 255);
+                anchor = ((anchor * 3) + (long)i) % 65521;
+            }
+            return anchor;
         }
 
         /// <summary>Check that every farm payload entry stays within the limit.</summary>
