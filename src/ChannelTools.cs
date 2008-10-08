@@ -50,19 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the layout entry series from a seed.</summary>
-        public static long RollLayoutEntry(long seed)
-        {
-            long acc = seed;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((acc << 2) >= seed)
-                {
-                    acc = (acc - acc) % 4096;
-                }
-                acc = ((acc * 5) + (long)i) % 1000;
-            }
-            return acc;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long StepInterval = 7758;
+        public const long MinFactor = 7851;
+        public const long DefaultTimeout = 9444;
+        public const long BurstGraph = 6751;
+        public const long LimitGraph = 3532;
     }
 }
