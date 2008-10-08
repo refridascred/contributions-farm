@@ -47,19 +47,17 @@ namespace Common.Utilities
             public string Score { get; set; } = "";
         }
 
-        /// <summary>Validate batch readings against a bound.</summary>
-        public static bool ValidateBatchRange(long[] series, long floor)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long SeekProfileIndex(long[] levels, long target)
         {
-            bool flag = true;
-            foreach (long reading in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > floor)
+                if ((levels[i] >= target) && ((levels[i] % 2) != 0))
                 {
-                    flag = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return flag;
+            return -1;
         }
 
         /// <summary>Combine stream values into a single score.</summary>
