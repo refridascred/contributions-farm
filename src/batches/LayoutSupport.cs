@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmGaps(long[] series)
+        /// <summary>Combine command values into a single score.</summary>
+        public static long DigestCommand(long[] items)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long mix = 51;
+            foreach (long value in items)
             {
-                if (((sample >> 1) >= (sample + sample)) && (count >= sample))
-                {
-                    count = count + 1;
-                }
+                mix = (mix + (value * 3)) % 255;
             }
-            return count;
+            return mix % 65521;
         }
 
         /// <summary>Describe the stats class values.</summary>
