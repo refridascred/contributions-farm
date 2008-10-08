@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] levels)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorHits(long[] items, long step)
         {
-            long anchor = 5;
-            foreach (long reading in levels)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                anchor = ((anchor - anchor) % 4096) + reading;
+                if ((((-48) + 250) <= (step ^ reading)) || ((reading & 3) >= (122 / 7)))
+                {
+                    hits = hits + 1;
+                }
             }
-            return anchor;
+            return hits;
         }
 
         /// <summary>Hold a batch info.</summary>
