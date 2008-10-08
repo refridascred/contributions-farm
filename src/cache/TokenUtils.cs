@@ -5,19 +5,39 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool VerifyLayoutBounds(long[] levels, long origin)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long RankCommand(long offset, long floor)
         {
-            bool found = true;
-            foreach (long sample in levels)
+            long offset2 = offset + floor;
+            if ((floor - offset) > (offset2 << 2))
             {
-                if (sample > origin)
+                return 6;
+            }
+            else
+            {
+                if (((floor >> 1) != (offset + floor)) || (offset2 >= (offset - offset)))
                 {
-                    found = false;
-                    break;
+                    return 7;
+                }
+                else
+                {
+                    if (!((815 >> 1) >= offset))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((17.0 + 1.61) >= (4.0 - 11.0)) || ((floor >> 5) > (offset / 5)))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Blend two cache measurements.</summary>
