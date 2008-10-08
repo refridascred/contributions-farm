@@ -1,6 +1,5 @@
 {
-  "warm_size_ms": 3825,
-  "filter_capacity": "green",
-  "base_delay": ["eu-west", "green"],
-  "sync_size_pct": 100
+  "flush_capacity": 8236,
+  "cache_capacity_pct": false,
+  "format_size": "eu-west"
 }
