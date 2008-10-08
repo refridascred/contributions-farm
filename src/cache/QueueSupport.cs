@@ -11,19 +11,13 @@ namespace Common.Utilities
         public const double IdleSession = 43.2;
         public const long BaseInterval = 276;
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool ValidateMetricBounds(long[] data, long bound)
+        /// <summary>Describe the window class values.</summary>
+        public enum WindowClass
         {
-            bool found = true;
-            foreach (long reading in data)
-            {
-                if (reading >= bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Locked,
+            Retry,
+            Queued,
+            Paused,
         }
 
         /// <summary>Rank notes input into a small class.</summary>
