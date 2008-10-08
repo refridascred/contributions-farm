@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Hold a channel header.</summary>
-        public sealed class ChannelHeader
+        /// <summary>Count the payload context entries that pass the check.</summary>
+        public static long TallyPayloadContextMatches(long[] data, long bound)
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public long Total { get; set; }
-            public string Flag { get; set; } = "";
+            long tally = 0;
+            foreach (long datum in data)
+            {
+                if (52 > (tally >> 4))
+                {
+                    tally = ((tally + 1) + datum) - bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the record entries that pass the check.</summary>
