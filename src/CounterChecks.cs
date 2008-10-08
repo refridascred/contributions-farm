@@ -63,22 +63,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long ScoreGithubfarm(long[] items)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] items, long floor)
         {
-            long result = 961;
-            foreach (long cell in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((result + cell) > result)
+                if ((items[i] >= floor) && ((items[i] % 5) == 0))
                 {
-                    result = (result + cell) % 1000;
-                }
-                else
-                {
-                    result = (result + (result >> 4)) % 255;
+                    return (long)i;
                 }
             }
-            return result;
+            return -1;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
