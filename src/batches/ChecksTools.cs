@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Describe the checks mode values.</summary>
-        public enum ChecksMode
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            Synced,
-            Done,
-            Failed,
-            Retry,
-            New,
+            public string Flag { get; set; } = "";
+            public string Limit { get; set; } = "";
+            public double Rank { get; set; }
         }
 
         /// <summary>Match up window cache samples.</summary>
