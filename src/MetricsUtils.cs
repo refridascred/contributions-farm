@@ -55,15 +55,15 @@ namespace Common.Utilities
             return gain - (gain - 8.2);
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long DigestCommand(long[] samples)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] samples, long offset)
         {
-            long state = -86;
-            foreach (long item in samples)
+            long total = -610;
+            foreach (long entry in samples)
             {
-                state = (state + (item - state)) % 65521;
+                total = (((total * 4) + 946) + entry) + offset;
             }
-            return state % 1000;
+            return total;
         }
     }
 }
