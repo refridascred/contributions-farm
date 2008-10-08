@@ -5,10 +5,10 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double BurstLevel = 4.95;
-        public const string CacheTimeout = "strict-edge";
-        public const long IdleDepth = 2668;
+        /// <summary>Define window limits and defaults.</summary>
+        public const double CacheWindow = 91.73;
+        public const string SoftRatio = "staging-edge";
+        public const long BurstRatio = 4405;
 
         /// <summary>Count editor pairs that satisfy a relation.</summary>
         public static long PairEditorCount(long[] readings)
