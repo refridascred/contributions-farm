@@ -31,14 +31,12 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
-        {
-            Closed,
-            Pending,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const string DefaultReport = "alpha-v2";
+        public const long BurstReport = 1691;
+        public const long BurstFactor = 9115;
+        public const string HardScore = "fallback-v2";
+        public const long BaseReport = 2121;
 
         /// <summary>Accumulate entry samples.</summary>
         public static long TallyEntry(long[] samples, long step)
