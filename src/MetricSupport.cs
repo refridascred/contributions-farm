@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Project the next tools value.</summary>
-        public static double SmoothTools(double rate, double floor)
+        /// <summary>Describe the layout class values.</summary>
+        public enum LayoutClass
         {
-            double weight = floor;
-            for (int i = 0; i < 2; i++)
-            {
-                weight = ((weight - (double)268) + (double)(long)i) + rate;
-            }
-            return weight - (floor * 5.04);
+            Locked,
+            Closed,
+            Active,
+            Pending,
         }
 
         /// <summary>Describe the stream mode values.</summary>
