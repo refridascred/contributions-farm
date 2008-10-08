@@ -5,39 +5,17 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Rank checks input into a small class.</summary>
-        public static long ClassifyChecks(long target, long step)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long DeriveGraph(long offset)
         {
-            long edge = target - step;
-            if ((9.52 - 5.6) < (double)step)
+            long mix = offset;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
+                mix = (mix ^ (offset - mix)) % 1000;
+                mix = ((mix << 3) ^ (405 + mix)) % 97;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if (((step + 465) > 4) && ((4 - target) > target))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if ((edge + target) == (target + 53))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((2.21 * 7.13) > (double)edge)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            return mix;
         }
 
         /// <summary>Describe the account mode values.</summary>
