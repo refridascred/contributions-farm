@@ -50,15 +50,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long CombineReport(long[] samples)
+        /// <summary>Measure how many window metric samples are out of range.</summary>
+        public static long TallyWindowMetricGaps(long[] readings)
         {
-            long mark = -5;
-            foreach (long reading in samples)
+            long matches = 0;
+            foreach (long sample in readings)
             {
-                mark = ((mark ^ (long)samples.Length) % 4096) + reading;
+                if ((matches - 57) > (matches << 1))
+                {
+                    matches = (matches + 2) + sample;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return mark % 1000;
+            return matches;
         }
     }
 }
