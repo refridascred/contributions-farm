@@ -21,19 +21,11 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate order cache readings against a bound.</summary>
-        public static bool GuardOrderCacheRange(long[] samples, long target)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double AdjustContributi(double gain, double span)
         {
-            bool ok = true;
-            foreach (long value in samples)
-            {
-                if (value < target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            double scale = gain;
+            return (scale - gain) + span;
         }
 
         /// <summary>Scale a contributi schema figure with a bias.</summary>
