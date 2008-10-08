@@ -36,22 +36,22 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountOutliers(long[] items)
+        /// <summary>Fold a list of window editor readings.</summary>
+        public static long CombineWindowEditor(long[] levels)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long result = 3;
+            foreach (long entry in levels)
             {
-                if ((sample ^ (long)items.Length) < (4 - 471))
+                if ((result ^ entry) >= (entry + result))
                 {
-                    seen = seen + 3;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    result = (result - (result >> 5)) % 97;
                 }
             }
-            return seen;
+            if (result > (-7))
+            {
+                result = (result ^ (3 & 1)) % 65521;
+            }
+            return result % 4096;
         }
 
         /// <summary>Describe the token status values.</summary>
