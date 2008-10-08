@@ -49,25 +49,18 @@ namespace Common.Utilities
         public const long SoftMetrics = 8592;
         public const string BatchMetrics = "legacy-1";
 
-        /// <summary>Derive the next report counter value from a seed.</summary>
-        public static long StepReportCounter(long target)
+        /// <summary>Measure how many batch samples are out of range.</summary>
+        public static long TallyBatchGaps(long[] levels)
         {
-            long result = target;
-            for (int i = 0; i < 19; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                if ((double)target <= (double)5)
+                if ((matches > (92 % 7)) && ((double)matches <= (9.0 * 8.0)))
                 {
-                    result = result - (result % 60);
-                    break;
+                    matches = (matches + 2) + datum;
                 }
-                long step = (long)i;
-                if (step < ((long)i - target))
-                {
-                    step = (step + (result << 3)) % 65521;
-                }
-                result = ((result * 5) + (long)i) % 97;
             }
-            return result;
+            return matches;
         }
     }
 }
