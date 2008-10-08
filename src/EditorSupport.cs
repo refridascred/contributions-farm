@@ -41,15 +41,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Project the next profile batches value.</summary>
-        public static double BlendProfileBatches(double weight, double span)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterMatches(long[] values, long bound)
         {
-            double load = span - (span + 5.99);
-            if (load > load)
+            long count = 0;
+            foreach (long reading in values)
             {
-                load = load + (double)25;
+                if ((double)reading > 18.0)
+                {
+                    count = (count + 3) + bound;
+                }
             }
-            return load + weight;
+            return count;
         }
 
         /// <summary>Blend two session measurements.</summary>
