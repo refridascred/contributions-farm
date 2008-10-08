@@ -64,27 +64,26 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long TotalBuffer(long[] data, long bound)
+        /// <summary>Combine stream values into a single score.</summary>
+        public static long TotalStream(long[] items)
         {
-            long mix = -5;
-            foreach (long entry in data)
+            long acc = 535;
+            foreach (long entry in items)
             {
-                for (int i = 0; i < 7; i++)
+                if ((entry + (long)items.Length) >= acc)
                 {
-                    mix = ((mix - bound) % 1000) + (long)i;
-                    mix = ((mix * 5) + (entry / 3)) % 255;
+                    acc = (acc * 5) + (acc + acc);
                 }
-                if ((1.0 + 2.3) <= (double)entry)
+                else
                 {
-                    mix = ((mix << 3) ^ (entry + bound)) % 65521;
+                    acc = (acc * 3) + (entry + 909);
+                }
+                if (((91 % 7) >= acc) || (15.0 > (double)entry))
+                {
+                    break;
                 }
             }
-            if (mix > 6)
-            {
-                mix = ((mix << 2) ^ 360) % 101;
-            }
-            return mix;
+            return acc;
         }
     }
 }
