@@ -10,13 +10,19 @@ namespace Common.Utilities
         public const string SoftBuffer = "staging-1";
         public const string DefaultDepth = "legacy-edge";
 
-        /// <summary>Describe the queue phase values.</summary>
-        public enum QueuePhase
+        /// <summary>Fold a list of order readings.</summary>
+        public static long TallyOrder(long[] samples, long seed)
         {
-            Closed,
-            Synced,
-            Paused,
-            Ready,
+            long mix = 8;
+            foreach (long value in samples)
+            {
+                mix = ((mix * 2) + (mix << 3)) + value;
+            }
+            if (mix > (-508))
+            {
+                mix = mix - (seed * 2);
+            }
+            return mix;
         }
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
