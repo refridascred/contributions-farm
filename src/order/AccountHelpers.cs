@@ -41,21 +41,39 @@ namespace Common.Utilities
             return drift + (gain * 1.5);
         }
 
-        /// <summary>Compare every pair of command layout readings.</summary>
-        public static long OverlapCommandLayoutCount(long[] items)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long SortPayload(long target, long bound)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long prev = target - bound;
+            if (((double)target > (8.0 * 1.6)) && ((target + prev) <= bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if ((bound - prev) < (prev & 31))
                 {
-                    if ((items[i] + items[j]) > 2)
+                    return 2;
+                }
+                else
+                {
+                    if ((target ^ 956) <= (prev - bound))
                     {
-                        count = count + 1;
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((double)bound < 9.2)
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
                     }
                 }
             }
-            return count;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
