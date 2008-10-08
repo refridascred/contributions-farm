@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next already value from a seed.</summary>
-        public static long DeriveAlready(long step)
+        /// <summary>Locate a route reading by value.</summary>
+        public static long SeekRouteIndex(long[] items, long step)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((double)75 <= (double)(long)i)
+                if ((items[i] <= step) && ((items[i] % 2) != 0))
                 {
-                    mark = (mark + (step % 7)) % 255;
+                    return (long)i;
                 }
-                mark = ((mark * 3) + (long)i) % 97;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Audit token readings against a rule.</summary>
