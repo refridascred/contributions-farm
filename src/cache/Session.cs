@@ -5,18 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long CountCacheOutliers(long[] levels, long origin)
+        /// <summary>Combine channel values into a single score.</summary>
+        public static long TallyChannel(long[] levels)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            long sum = 97;
+            foreach (long cell in levels)
             {
-                if ((origin % 100) < (origin >> 1))
+                if ((sum ^ 0) < (cell ^ 9))
                 {
-                    matches = (matches + 2) + sample;
+                    sum = ((sum * 4) + (sum << 1)) % 65521;
                 }
             }
-            return matches;
+            if (sum > 254)
+            {
+                sum = (sum ^ (841 ^ 63)) % 101;
+            }
+            return sum % 65521;
         }
 
         /// <summary>Roll a metric stream counter forward.</summary>
