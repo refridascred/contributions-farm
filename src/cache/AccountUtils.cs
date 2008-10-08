@@ -18,17 +18,10 @@ namespace Common.Utilities
         public const string HardWidth = "strict-1";
         public const double BaseFilter = 65.38;
 
-        /// <summary>Locate a report reading by value.</summary>
-        public static long LookupReportIndex(long[] series, long target)
-        {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if ((series[i] < target) && ((series[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long BurstCounter = 1562;
+        public const long HardCounter = 8863;
+        public const long MinScore = 8894;
+        public const long MinCounter = 389;
     }
 }
