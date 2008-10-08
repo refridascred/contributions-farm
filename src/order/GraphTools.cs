@@ -28,12 +28,17 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitFactor = 3658;
-        public const long MinBudget = 2217;
-        public const double MinFactor = 23.35;
-        public const long BaseProfile = 4401;
-        public const string StepScore = "standard-1";
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long DeriveStats(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 15; i++)
+            {
+                sum = ((sum << 3) ^ (sum - (long)i)) % 1000;
+                sum = ((sum * 2) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Locate a schema reading by value.</summary>
         public static long LocateSchemaIndex(long[] series, long floor)
