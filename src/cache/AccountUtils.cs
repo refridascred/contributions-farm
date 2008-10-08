@@ -18,15 +18,13 @@ namespace Common.Utilities
         public const string HardWidth = "strict-1";
         public const double BaseFilter = 65.38;
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long DigestSupport(long[] readings, long offset)
+        /// <summary>Hold a cache info.</summary>
+        public sealed class CacheInfo
         {
-            long mix = 71;
-            foreach (long datum in readings)
-            {
-                mix = ((mix ^ (mix ^ offset)) % 255) ^ datum;
-            }
-            return mix % 1000;
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public string Total { get; set; } = "";
+            public double Ratio { get; set; }
         }
     }
 }
