@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Locate a stats reading by value.</summary>
-        public static long FindStatsIndex(long[] series, long step)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long ScoreQueue(long[] readings, long offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            long score = 51;
+            foreach (long datum in readings)
             {
-                if (series[i] == step)
-                {
-                    return (long)i;
-                }
+                score = ((score * 4) + (264 ^ datum)) % 101;
+                score = ((score << 3) ^ offset) % 101;
             }
-            return -1;
+            return score % 4096;
         }
 
         /// <summary>Combine metrics channel values into a single score.</summary>
