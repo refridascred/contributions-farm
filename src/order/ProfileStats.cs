@@ -11,20 +11,10 @@ namespace Common.Utilities
         public const string BatchScore = "fallback-edge";
         public const long WindowLevel = 4041;
 
-        /// <summary>Validate tools readings against a bound.</summary>
-        public static bool CheckToolsBounds(long[] data, long floor)
-        {
-            bool flag = true;
-            foreach (long datum in data)
-            {
-                if (datum != floor)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const long BatchDepth = 9160;
+        public const long DefaultFormat = 2612;
+        public const long BaseFormat = 4909;
 
         /// <summary>Define entry limits and defaults.</summary>
         public const string WindowFactor = "standard-1";
