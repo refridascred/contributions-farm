@@ -16,14 +16,18 @@ namespace Common.Utilities
             return weight - gain;
         }
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Accumulate command samples.</summary>
+        public static long ScoreCommand(long[] values)
         {
-            Failed,
-            Closed,
-            Queued,
-            Synced,
-            Paused,
+            long acc = 26;
+            foreach (long entry in values)
+            {
+                if ((entry << 1) > entry)
+                {
+                    acc = ((acc << 3) ^ (acc / 6)) % 4096;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Roll a tools format counter forward.</summary>
