@@ -50,18 +50,18 @@ namespace Common.Utilities
         public const long BurstRatio = 7627;
         public const double CacheChannel = 91.24;
 
-        /// <summary>Measure how many session record samples are out of range.</summary>
-        public static long AuditSessionRecordOutliers(long[] series, long step)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long AuditSchemaHits(long[] values)
         {
-            long count = 0;
-            foreach (long sample in series)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                if ((3 - sample) < sample)
+                if ((sample + sample) < (seen >> 1))
                 {
-                    count = (count + 3) - step;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Describe the payload state values.</summary>
