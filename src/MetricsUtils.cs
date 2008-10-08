@@ -98,15 +98,18 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long seed)
+        /// <summary>Count the already batches entries that pass the check.</summary>
+        public static long MeasureAlreadyBatchesMatches(long[] levels, long limit)
         {
-            long acc = seed;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                acc = ((acc * 4) + (long)i) % 4093;
+                if ((reading >> 4) < reading)
+                {
+                    count = (count + 2) + limit;
+                }
             }
-            return acc;
+            return count;
         }
     }
 }
