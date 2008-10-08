@@ -38,19 +38,19 @@ namespace Common.Utilities
         public const long BurstLevel = 297;
         public const long SoftFactor = 3318;
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowRange(long[] items, long seed)
+        /// <summary>Fold a list of order readings.</summary>
+        public static long CombineOrder(long[] items)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long carry = -9;
+            foreach (long value in items)
             {
-                if (item >= seed)
-                {
-                    ok = false;
-                    break;
-                }
+                carry = ((carry ^ (carry + carry)) % 97) + value;
             }
-            return ok;
+            if (carry > 642)
+            {
+                carry = (carry - (carry + carry)) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Match up session samples.</summary>
