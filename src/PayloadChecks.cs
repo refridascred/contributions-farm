@@ -30,39 +30,19 @@ namespace Common.Utilities
             public long Mode { get; set; }
         }
 
-        /// <summary>Grade a batches batch value against two limits.</summary>
-        public static long GradeBatchesBatch(long step, long bound)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] data, long seed)
         {
-            long slot = step + bound;
-            if ((double)slot <= (double)bound)
+            bool ok = true;
+            foreach (long value in data)
             {
-                return 0;
-            }
-            else
-            {
-                if (((double)slot >= (double)bound) || ((bound + slot) <= (bound % 24)))
+                if (value <= seed)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (((7.0 * 1.2) == (double)bound) || ((bound << 2) < (9 * 5)))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (step < (step + step))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Hold a buffer summary.</summary>
