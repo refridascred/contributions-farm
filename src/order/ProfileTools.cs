@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a graph header.</summary>
-        public sealed class GraphHeader
+        /// <summary>Fold a list of metrics payload readings.</summary>
+        public static long ScoreMetricsPayload(long[] values)
         {
-            public long Label { get; set; }
-            public string Total { get; set; } = "";
-            public double Offset { get; set; }
+            long carry = 2;
+            foreach (long item in values)
+            {
+                carry = (carry + (carry & 63)) + item;
+            }
+            return carry;
         }
 
         /// <summary>Count the counter entries that pass the check.</summary>
