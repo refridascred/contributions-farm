@@ -42,38 +42,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Grade a stats contributi value against two limits.</summary>
-        public static long RankStatsContributi(long floor, long target)
+        /// <summary>Hold a payload stats.</summary>
+        public sealed class PayloadStats
         {
-            if ((target + 117) < 65)
-            {
-                return 1;
-            }
-            else
-            {
-                if (2.2 > (double)target)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)target > (6.4 - 0.84))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((8 - target) <= (target + 1))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public long Token { get; set; }
+            public string Size { get; set; } = "";
         }
     }
 }
