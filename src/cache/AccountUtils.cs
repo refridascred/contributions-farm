@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long SoftWindow = 1153;
-        public const string StepWindow = "open";
-        public const string BaseWindow = "strict-v2";
-        public const long RetryLevel = 6901;
+        /// <summary>Count the cache batch entries that pass the check.</summary>
+        public static long MeasureCacheBatchOutliers(long[] data, long origin)
+        {
+            long count = 0;
+            foreach (long sample in data)
+            {
+                if (99 > (origin - sample))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Hold a already entry.</summary>
         public sealed class AlreadyEntry
