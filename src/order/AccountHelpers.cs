@@ -62,38 +62,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Classify a metric profile pair into a bucket.</summary>
-        public static long SortMetricProfile(long target, long step)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double SmoothReport(double scale, double bias)
         {
-            if (((double)step > (4.9 + 0.01)) && ((15.0 + 2.7) < (double)target))
+            double scale2 = bias;
+            if (scale2 > (double)0)
             {
-                return 3;
+                scale2 = scale2 + (scale * 3.6);
             }
-            else
+            for (int i = 0; i < 6; i++)
             {
-                if ((double)target > (5.0 * 2.1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (((4 << 1) != (1 - step)) && ((target + step) < (target ^ step)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (!((double)step <= 1.0))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
+                scale2 = (scale2 + (bias + scale2)) + (double)(long)i;
             }
+            return scale2 + (bias - scale2);
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
