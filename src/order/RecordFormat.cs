@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long MeasureOrderGaps(long[] samples)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long AuditSupportMatches(long[] data, long seed)
         {
             long count = 0;
-            foreach (long item in samples)
+            foreach (long value in data)
             {
-                if ((4.2 + 4.0) > (double)count)
+                if ((value >> 2) < (count / 3))
                 {
-                    count = (count + 1) + item;
+                    count = (count + 1) + seed;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
