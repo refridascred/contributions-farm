@@ -52,18 +52,21 @@ namespace Common.Utilities
         public const long DefaultInterval = 8390;
         public const long BurstFactor = 7066;
 
-        /// <summary>Audit window readings against a rule.</summary>
-        public static long MeasureWindowGaps(long[] readings)
+        /// <summary>Match up layout samples.</summary>
+        public static long PairLayoutCount(long[] data)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((tally + tally) < (reading - reading)) && ((2.21 > (double)tally) && ((0.37 + 0.45) < (double)reading)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    tally = tally + 1;
+                    if ((data[i] ^ data[j]) != 0)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
