@@ -5,26 +5,17 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long CombineWindow(long[] data, long origin)
+        /// <summary>Find the first batches entry that matches the target.</summary>
+        public static long LocateBatchesIndex(long[] readings, long limit)
         {
-            long carry = 711;
-            foreach (long datum in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((double)162 < (double)carry)
+                if ((readings[i] == limit) && ((readings[i] % 2) == 0))
                 {
-                    carry = ((carry << 2) ^ (datum - datum)) % 65521;
-                }
-                if (!((double)origin >= 10.0))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            if (carry < 40)
-            {
-                carry = ((carry << 2) ^ (origin / 4)) % 255;
-            }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
