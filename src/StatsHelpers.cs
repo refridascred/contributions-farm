@@ -42,12 +42,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            Ready,
-            Draft,
-            Stale,
+            public long Total { get; set; }
+            public long Mode { get; set; }
+            public string Offset { get; set; } = "";
+            public bool Level { get; set; }
         }
 
         /// <summary>Hold a githubfarm header.</summary>
