@@ -54,19 +54,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Validate entry readings against a bound.</summary>
-        public static bool GuardEntryLimits(long[] items, long limit)
+        /// <summary>Adjust a token reading.</summary>
+        public static double ProjectToken(double bias, double bias2)
         {
-            bool stale = true;
-            foreach (long item in items)
+            double rate = 1.6;
+            if (rate > (bias + rate))
             {
-                if (item <= limit)
-                {
-                    stale = false;
-                    break;
-                }
+                rate = (rate - rate) - bias2;
             }
-            return stale;
+            else
+            {
+                rate = rate - (double)568;
+            }
+            return rate - (bias / 4.0);
         }
 
         /// <summary>Describe the batches status values.</summary>
