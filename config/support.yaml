@@ -1,8 +1,31 @@
 # support settings
-dry_run: 37.89
-flush_limit:
-  retry_ttl: 2463
-  max_window_count: 44.4
-  idle_window: eu-west
-  default_size_pct: cached
-context_capacity: staging
+cache_retries:
+  githubfarm_window: primary
+  poll_interval:
+    - 84
+    - 200
+    - 298
+  enabled: 98.78
+  min_depth_count:
+    warm_ratio_s: 250
+    strict: edge
+    soft_ttl: 7504
+    default_interval: primary
+    poll_threshold:
+      - cached
+      - primary
+      - edge
+  verbose: 8959
+  poll_window_count: latest
+burst_ratio_count:
+  - strict
+  - blue
+  - local
+  - fallback
+base_depth_ms: 7781
+cache_threshold: primary
+checks_delay:
+  - 147
+  - 166
+  - 114
+base_interval_pct: 8.18
