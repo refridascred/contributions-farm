@@ -1,10 +1,11 @@
 # Command notes
 
-Keep already and entry names short and lowercase.
-Run the entry check before changing any graph limits.
+When a tools fails, the filter handler retries a few times before giving up.
+Use account settings to tune how often window data is refreshed.
 
 ## Guidelines
 
-- Review buffer limits each release
-- Document new metrics fields
-- Prefer command defaults
+- Review editor limits each release
+- Validate batches input early
+- Keep format values small
+- Document new checks fields
