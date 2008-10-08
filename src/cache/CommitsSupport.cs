@@ -47,14 +47,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
-        {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-            public double Total { get; set; }
-            public double Rank { get; set; }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long StepEntry = 9028;
+        public const double BaseEntry = 27.49;
+        public const long DefaultScore = 7174;
+        public const long MinEntry = 2360;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long PairToolsCount(long[] data)
