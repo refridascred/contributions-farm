@@ -45,18 +45,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the session metric entries that pass the check.</summary>
-        public static long CountSessionMetricGaps(long[] values, long limit)
+        /// <summary>Scale a context figure with a bias.</summary>
+        public static double SmoothContext(double rate, double floor)
         {
-            long tally = 0;
-            foreach (long value in values)
+            double scale = floor;
+            if (scale >= (floor + rate))
             {
-                if (!((limit & 127) > (tally & 127)))
-                {
-                    tally = (tally + 1) - value;
-                }
+                scale = scale + (floor + rate);
             }
-            return tally;
+            else
+            {
+                scale = scale - floor;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                scale = (scale - scale) + (double)(long)i;
+            }
+            return scale + floor;
         }
     }
 }
