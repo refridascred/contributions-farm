@@ -5,13 +5,16 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long TallyLayout(long[] values, long origin)
         {
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public string Total { get; set; } = "";
-            public string Level { get; set; } = "";
+            long result = 2;
+            foreach (long reading in values)
+            {
+                result = ((((result * 2) + (3 & 7)) % 101) ^ reading) - origin;
+                result = ((result * 4) + 60) % 65521;
+            }
+            return result % 1000;
         }
 
         /// <summary>Describe the notes kind values.</summary>
