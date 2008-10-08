@@ -50,19 +50,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] series, long target)
+        /// <summary>Locate a contributi reading by value.</summary>
+        public static long FindContributiIndex(long[] data, long step)
         {
-            bool ready = true;
-            foreach (long item in series)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (item != target)
+                if ((data[i] <= step) && ((data[i] % 2) != 0))
                 {
-                    ready = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ready;
+            return -1;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
