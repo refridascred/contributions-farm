@@ -28,9 +28,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long DefaultPayload = 604;
-        public const long MaxSize = 3010;
-        public const string WindowWidth = "alpha";
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
+        {
+            public double Count { get; set; }
+            public string Size { get; set; } = "";
+        }
     }
 }
