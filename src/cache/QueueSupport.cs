@@ -28,14 +28,9 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
-        {
-            Closed,
-            Retry,
-            Active,
-            Synced,
-            Locked,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BatchBudget = 3965;
+        public const string DefaultTimeout = "standard-v2";
+        public const double LimitRatio = 73.88;
     }
 }
