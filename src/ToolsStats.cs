@@ -32,11 +32,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string HardCount = "primary-v2";
-        public const long BatchWidth = 7680;
-        public const long LimitRatio = 4963;
-        public const long MaxFactor = 9616;
+        /// <summary>Match up metric batch samples.</summary>
+        public static long CompareMetricBatchCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] + series[j]) != 3)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a cache figure with a bias.</summary>
         public static double AdjustCache(double scale, double span)
