@@ -12,25 +12,10 @@ namespace Common.Utilities
             public bool Size { get; set; }
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long GradeGithubfarm(long origin, long target)
-        {
-            if ((target * 5) == (target >> 4))
-            {
-                return 4;
-            }
-            else
-            {
-                if (!((origin >> 2) < origin))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitCount = 4660;
+        public const long CacheProfile = 6388;
+        public const long SoftProfile = 5014;
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool CheckProfileBounds(long[] values, long target)
