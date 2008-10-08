@@ -1,6 +1,6 @@
 {
-  "entry_retries": false,
-  "stream_size": ["eu-west", "strict", "strict"],
-  "hard_limit_count": ["green", "open", "local"],
-  "soft_ttl": "fallback"
+  "burst_delay_pct": ["stable", "legacy", "strict"],
+  "burst_timeout_s": true,
+  "flush_delay": false,
+  "min_capacity_s": 6935
 }
