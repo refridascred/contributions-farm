@@ -1,10 +1,6 @@
-id,region,score
-1,800,strict
-2,standard,998
-3,69.64,989
-4,395,green
-5,blue,192
-6,staging,540
-7,45.16,507
-8,latest,959
-9,stable,36.53
+id,score,token,label,state
+1,612,204,906,903
+2,369,fallback,556,fallback
+3,primary,358,468,eu-west
+4,blue,stable,699,latest
+5,95.67,855,234,edge
