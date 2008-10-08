@@ -13,21 +13,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count editor pairs that satisfy a relation.</summary>
-        public static long CompareEditorCount(long[] series)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long WeighFarm(long[] readings)
         {
-            long count = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 300;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (state <= (long)readings.Length)
                 {
-                    if ((series[i] + series[j]) < 20)
-                    {
-                        count = count + 1;
-                    }
+                    state = ((state ^ (state & 15)) % 255) + datum;
                 }
             }
-            return count;
+            return state;
         }
 
         /// <summary>Describe the schema level values.</summary>
