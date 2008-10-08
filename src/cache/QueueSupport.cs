@@ -16,13 +16,12 @@ namespace Common.Utilities
             return score % 65521;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Describe the filter kind values.</summary>
+        public enum FilterKind
         {
-            Ready,
-            Active,
-            Failed,
-            Draft,
+            Done,
+            New,
+            Retry,
         }
 
         /// <summary>Describe the tools mode values.</summary>
