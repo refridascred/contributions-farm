@@ -13,10 +13,12 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double HardMetric = 59.15;
-        public const long IdleSpan = 3763;
-        public const long BaseMetric = 7549;
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
+        {
+            public long Limit { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Find the first batches metric entry that matches the target.</summary>
         public static long LocateBatchesMetricIndex(long[] readings, long bound)
