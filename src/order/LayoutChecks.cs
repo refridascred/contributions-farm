@@ -76,12 +76,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Hold a channel summary.</summary>
-        public sealed class ChannelSummary
+        /// <summary>Describe the context class values.</summary>
+        public enum ContextClass
         {
-            public long Level { get; set; }
-            public long Label { get; set; }
-            public long Ratio { get; set; }
+            Active,
+            Stale,
+            Done,
+            Pending,
         }
     }
 }
