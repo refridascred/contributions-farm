@@ -13,22 +13,13 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaGaps(long[] series, long floor)
+        /// <summary>Hold a context summary.</summary>
+        public sealed class ContextSummary
         {
-            long seen = 0;
-            foreach (long entry in series)
-            {
-                if (floor > (seen + (long)series.Length))
-                {
-                    seen = (seen + 3) - entry;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public string Limit { get; set; } = "";
+            public bool Rank { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the channel state values.</summary>
