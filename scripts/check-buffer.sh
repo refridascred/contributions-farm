@@ -6,22 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-fallback}"
-case "${mode}" in
-    standard)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in blue staging legacy; do
-    log "checking ${item}"
-done
+BUFFER_LIMIT=23
+log "limit is ${BUFFER_LIMIT}"
 
 count=0
-while [ "${count}" -lt 5 ]; do
+while [ "${count}" -lt 8 ]; do
     count=$((count + 1))
 done
 log "ran ${count} rounds"
+
+for item in legacy cached open; do
+    log "checking ${item}"
+done
