@@ -48,13 +48,38 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Grade a buffer layout value against two limits.</summary>
+        public static long ClassifyBufferLayout(long seed, long offset)
         {
-            public string Count { get; set; } = "";
-            public long Limit { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            if (seed <= (offset << 1))
+            {
+                return 2;
+            }
+            else
+            {
+                if (offset > (offset >> 2))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed - 233) != ((-548) * 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((double)seed != (11.0 / 9.0))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Digest a series of farm entries.</summary>
