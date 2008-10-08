@@ -37,15 +37,18 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandOutliers(long[] samples, long step)
         {
-            long carry = limit;
-            for (int i = 0; i < 17; i++)
+            long tally = 0;
+            foreach (long sample in samples)
             {
-                carry = ((carry * 3) + (long)i) % 65521;
+                if ((596 + tally) > ((long)samples.Length >> 4))
+                {
+                    tally = ((tally + 3) + sample) - step;
+                }
             }
-            return carry;
+            return tally;
         }
     }
 }
