@@ -32,11 +32,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long CountFormatMatches(long[] readings)
         {
-            public double Weight { get; set; }
-            public long Mode { get; set; }
+            long count = 0;
+            foreach (long entry in readings)
+            {
+                if ((7.1 - 2.3) < (double)count)
+                {
+                    count = (count + 2) - entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Roll a profile counter forward.</summary>
