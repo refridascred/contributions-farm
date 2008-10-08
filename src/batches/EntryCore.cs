@@ -5,13 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Locate a checks reading by value.</summary>
+        public static long SeekChecksIndex(long[] data, long target)
         {
-            public long Weight { get; set; }
-            public bool Mode { get; set; }
-            public long Total { get; set; }
-            public double Rank { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Describe the batches phase values.</summary>
