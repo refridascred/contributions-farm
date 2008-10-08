@@ -31,13 +31,14 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Describe the graph state values.</summary>
-        public enum GraphState
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            Closed,
-            Draft,
+            Stale,
+            Dropped,
+            Pending,
+            Active,
             Idle,
-            Paused,
         }
     }
 }
