@@ -54,12 +54,12 @@ namespace Common.Utilities
         public const long StepTimeout = 1683;
         public const double SoftTimeout = 70.79;
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            public long Ratio { get; set; }
-            public long Score { get; set; }
-            public long Label { get; set; }
+            Draft,
+            Locked,
+            Ready,
         }
     }
 }
