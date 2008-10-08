@@ -26,13 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the tools mode values.</summary>
-        public enum ToolsMode
-        {
-            Done,
-            Draft,
-            Active,
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long BurstEntry = 9606;
+        public const double MinCount = 96.85;
+        public const string MinSpan = "stable-edge";
+        public const long BatchWidth = 7083;
+        public const long StepScore = 1195;
 
         /// <summary>Digest a series of checks entries.</summary>
         public static long DigestChecks(long[] series, long target)
