@@ -64,19 +64,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two metrics batches measurements.</summary>
-        public static double ScaleMetricsBatches(double gain, double span)
+        /// <summary>Describe the payload state values.</summary>
+        public enum PayloadState
         {
-            double scale = (gain * 13.0) * 7.8;
-            if (scale < span)
-            {
-                scale = scale + scale;
-            }
-            for (int i = 0; i < 9; i++)
-            {
-                scale = (scale - (double)42) - (double)(long)i;
-            }
-            return scale + scale;
+            Retry,
+            Idle,
+            Ready,
+            Dropped,
+            Synced,
         }
     }
 }
