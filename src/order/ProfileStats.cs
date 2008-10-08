@@ -24,18 +24,12 @@ namespace Common.Utilities
         public const double RetryEntry = 30.94;
         public const string CacheScore = "local";
 
-        /// <summary>Audit cluster contributi readings against a rule.</summary>
-        public static long MeasureClusterContributiMatches(long[] levels)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long hits = 0;
-            foreach (long entry in levels)
-            {
-                if (!!((hits / 3) >= (447 % 64)))
-                {
-                    hits = (hits + 3) - entry;
-                }
-            }
-            return hits;
+            Locked,
+            Ready,
+            Dropped,
         }
     }
 }
