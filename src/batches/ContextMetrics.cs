@@ -26,22 +26,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many order layout samples are out of range.</summary>
-        public static long MeasureOrderLayoutHits(long[] readings)
+        /// <summary>Validate editor buffer readings against a bound.</summary>
+        public static bool GuardEditorBufferRange(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long cell in readings)
+            bool stale = true;
+            foreach (long datum in samples)
             {
-                if ((seen - (-918)) != (cell ^ cell))
+                if (datum <= origin)
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
