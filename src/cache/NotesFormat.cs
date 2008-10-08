@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long HardQueue = 7054;
         public const string CacheWidth = "latest-v2";
 
-        /// <summary>Hold a session info.</summary>
-        public sealed class SessionInfo
+        /// <summary>Describe the profile class values.</summary>
+        public enum ProfileClass
         {
-            public double Total { get; set; }
-            public long Rank { get; set; }
-            public long Flag { get; set; }
-            public long Label { get; set; }
+            Active,
+            Draft,
+            New,
+            Closed,
         }
 
         /// <summary>Rank cache layout input into a small class.</summary>
