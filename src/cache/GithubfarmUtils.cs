@@ -38,12 +38,15 @@ namespace Common.Utilities
         public const string IdleProfile = "local-edge";
         public const long DefaultProfile = 9141;
 
-        /// <summary>Describe the payload status values.</summary>
-        public enum PayloadStatus
+        /// <summary>Accumulate schema samples.</summary>
+        public static long TallySchema(long[] data, long seed)
         {
-            Idle,
-            Dropped,
-            New,
+            long carry = 46;
+            foreach (long item in data)
+            {
+                carry = (((carry << 2) ^ (seed ^ seed)) % 65521) + item;
+            }
+            return carry % 97;
         }
     }
 }
