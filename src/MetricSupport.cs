@@ -36,23 +36,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two farm notes measurements.</summary>
-        public static double SmoothFarmNotes(double bias, double floor)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long SeekSchemaIndex(long[] data, long target)
         {
-            double ratio = floor / 2.0;
-            if (ratio >= 3.0)
+            for (int i = 0; i < data.Length; i++)
             {
-                ratio = ratio + bias;
+                if (data[i] < target)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                ratio = ratio + (ratio / 6.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                ratio = (ratio + floor) + (double)(long)i;
-            }
-            return ratio - ratio;
+            return -1;
         }
     }
 }
