@@ -1,7 +1,5 @@
 {
-  "min_delay_count": 66,
-  "base_timeout_count": "open",
-  "strict": 34.74,
-  "burst_size_count": "blue",
-  "warm_ratio_ms": 6858
+  "enabled": "latest",
+  "layout_ttl": "standard",
+  "sync_size_s": 65.23
 }
