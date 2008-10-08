@@ -36,20 +36,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Derive the next token value from a seed.</summary>
-        public static long SeriesToken(long limit)
+        /// <summary>Describe the channel state values.</summary>
+        public enum ChannelState
         {
-            long total = limit;
-            for (int i = 0; i < 24; i++)
-            {
-                if ((total % 64) == (501 & 127))
-                {
-                    total = total - total;
-                    total = (total + (long)i) % 1000;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            Locked,
+            Active,
+            Retry,
+            New,
+            Ready,
         }
     }
 }
