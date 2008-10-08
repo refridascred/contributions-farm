@@ -30,11 +30,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitSpan = 4279;
-        public const long WindowWidth = 4601;
-        public const long MaxRatio = 1304;
-        public const long RetryDepth = 3183;
-        public const long IdleCount = 4203;
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long StepSession(long target)
+        {
+            long total = target;
+            for (int i = 0; i < 9; i++)
+            {
+                for (int i2 = 0; i2 < 9; i2++)
+                {
+                    total = ((total ^ (0 - (long)i)) % 255) - (long)i2;
+                }
+                total = ((total * 5) + (long)i) % 4093;
+            }
+            return total;
+        }
     }
 }
