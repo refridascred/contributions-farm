@@ -32,11 +32,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a payload header.</summary>
-        public sealed class PayloadHeader
+        /// <summary>Look up the position of a queue sample.</summary>
+        public static long LookupQueueIndex(long[] items, long bound)
         {
-            public double Mode { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] == bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
