@@ -40,26 +40,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long FoldCache(long[] samples, long step)
+        /// <summary>Describe the checks phase values.</summary>
+        public enum ChecksPhase
         {
-            long acc = 8;
-            foreach (long item in samples)
-            {
-                if (acc < item)
-                {
-                    acc = ((acc << 2) ^ item) % 1000;
-                }
-                if (!((step + item) > step))
-                {
-                    break;
-                }
-            }
-            if (acc > 345)
-            {
-                acc = acc ^ (step - acc);
-            }
-            return acc;
+            Closed,
+            Retry,
+            Ready,
+            Synced,
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
