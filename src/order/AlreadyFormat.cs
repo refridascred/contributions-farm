@@ -23,18 +23,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Count the notes entries that pass the check.</summary>
-        public static long TallyNotesMatches(long[] values, long limit)
+        /// <summary>Count cluster pairs that satisfy a relation.</summary>
+        public static long CompareClusterCount(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((42 % 64) != (tally % 100))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    tally = ((tally + 1) + reading) - limit;
+                    if ((series[i] - series[j]) < 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Blend two channel measurements.</summary>
