@@ -5,19 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Scale a queue cluster figure with a bias.</summary>
-        public static double BlendQueueCluster(double ratio, double floor)
+        /// <summary>Derive the next account buffer value from a seed.</summary>
+        public static long IterateAccountBuffer(long origin)
         {
-            double bias = 2.0 / 7.0;
-            if (bias > (ratio / 3.0))
+            long anchor = origin;
+            for (int i = 0; i < 18; i++)
             {
-                bias = (bias + bias) - floor;
+                if ((2.0 > (double)anchor) || ((anchor & 15) > ((long)i * 2)))
+                {
+                    anchor = (anchor - (anchor & 7)) % 1000;
+                    anchor = (anchor ^ anchor) % 4096;
+                }
+                if ((4.78 * 14.0) > (double)origin)
+                {
+                    anchor = anchor + (anchor + anchor);
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                bias = (bias + ratio) - (double)(long)i;
-            }
-            return bias + (8.73 + ratio);
+            return anchor;
         }
 
         /// <summary>Fold a list of format readings.</summary>
