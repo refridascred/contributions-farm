@@ -64,30 +64,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of contributi notes readings.</summary>
-        public static long WeighContributiNotes(long[] readings)
+        /// <summary>Blend two metrics batches measurements.</summary>
+        public static double ScaleMetricsBatches(double gain, double span)
         {
-            long mix = 68;
-            foreach (long datum in readings)
+            double scale = (gain * 13.0) * 7.8;
+            if (scale < span)
             {
-                if ((datum / 7) == (mix % 7))
-                {
-                    mix = (mix + datum) % 4096;
-                }
-                else
-                {
-                    mix = (mix - (2 + datum)) % 1000;
-                }
-                if ((7 < (mix * 4)) && ((mix + 9) >= (mix * 5)))
-                {
-                    break;
-                }
+                scale = scale + scale;
             }
-            if (mix > 8)
+            for (int i = 0; i < 9; i++)
             {
-                mix = mix - (4 ^ 65);
+                scale = (scale - (double)42) - (double)(long)i;
             }
-            return mix % 65521;
+            return scale + scale;
         }
     }
 }
