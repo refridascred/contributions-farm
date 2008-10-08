@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Count the cache batch entries that pass the check.</summary>
-        public static long MeasureCacheBatchOutliers(long[] data, long origin)
+        /// <summary>Grade a queue metrics value against two limits.</summary>
+        public static long RankQueueMetrics(long step, long bound)
         {
-            long count = 0;
-            foreach (long sample in data)
+            if (!((bound % 3) < 0))
             {
-                if (99 > (origin - sample))
+                return 0;
+            }
+            else
+            {
+                if (!((double)bound > (4.1 + 9.44)))
                 {
-                    count = count + 2;
+                    return 1;
+                }
+                else
+                {
+                    return 3;
                 }
             }
-            return count;
         }
 
         /// <summary>Hold a already entry.</summary>
