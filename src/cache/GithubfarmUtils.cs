@@ -40,11 +40,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double BatchScore = 60.69;
-        public const long MaxProfile = 3209;
-        public const string IdleProfile = "local-edge";
-        public const long DefaultProfile = 9141;
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long TallyRouteMatches(long[] readings, long offset)
+        {
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((double)4 >= (double)offset)
+                {
+                    seen = (seen + 2) ^ entry;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Accumulate schema samples.</summary>
         public static long TallySchema(long[] data, long seed)
