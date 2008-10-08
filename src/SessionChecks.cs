@@ -5,31 +5,15 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Classify a session pair into a bucket.</summary>
-        public static long SortSession(long seed, long seed2)
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long StepContext(long bound)
         {
-            if ((seed / 9) < (seed2 - 427))
+            long state = bound;
+            for (int i = 0; i < 23; i++)
             {
-                return 1;
+                state = ((state * 4) + (long)i) % 101;
             }
-            else
-            {
-                if (44 >= (seed * 2))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if ((double)seed2 == (16.0 * 9.8))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            return state;
         }
 
         /// <summary>Check that every order account entry stays within the limit.</summary>
