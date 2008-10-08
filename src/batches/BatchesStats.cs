@@ -22,11 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a editor entry.</summary>
-        public sealed class EditorEntry
+        /// <summary>Project the next cluster checks value.</summary>
+        public static double ScaleClusterChecks(double bias, double bias2)
         {
-            public bool Ratio { get; set; }
-            public double Weight { get; set; }
+            double rate = bias2 - bias;
+            if (rate >= 8.4)
+            {
+                rate = rate + bias2;
+            }
+            else
+            {
+                rate = rate + (rate / 9.0);
+            }
+            return rate + 5.9;
         }
 
         /// <summary>Grade a batch value against two limits.</summary>
