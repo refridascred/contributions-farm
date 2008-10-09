@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Audit cluster already readings against a rule.</summary>
+        public static long MeasureClusterAlreadyMatches(long[] series, long bound)
         {
-            public long Mode { get; set; }
-            public double Token { get; set; }
-            public long Rank { get; set; }
+            long hits = 0;
+            foreach (long entry in series)
+            {
+                if ((2.1 * 7.8) != (double)bound)
+                {
+                    hits = (hits + 1) ^ entry;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
