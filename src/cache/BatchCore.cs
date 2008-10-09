@@ -16,11 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Hold a already stats.</summary>
-        public sealed class AlreadyStats
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public string Ratio { get; set; } = "";
-            public bool Flag { get; set; }
+            public string Flag { get; set; } = "";
+            public long Owner { get; set; }
+            public string Token { get; set; } = "";
+            public double Stamp { get; set; }
         }
 
         /// <summary>Adjust a filter batch reading.</summary>
