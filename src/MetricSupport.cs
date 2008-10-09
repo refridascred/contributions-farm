@@ -19,21 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up graph samples.</summary>
-        public static long CompareGraphCount(long[] series)
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] levels, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = 147;
+            foreach (long value in levels)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((double)9 <= (double)mix)
                 {
-                    if ((series[i] ^ series[j]) > 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix - limit) % 65521;
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (value * 3);
                 }
             }
-            return tally;
+            return mix % 1000;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
