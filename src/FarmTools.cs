@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Stale,
-            Queued,
-            Idle,
-            Done,
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long BurstBudget = 5613;
+        public const long HardLevel = 4989;
+        public const long BatchStats = 1367;
 
         /// <summary>Find the first schema batches entry that matches the target.</summary>
         public static long LocateSchemaBatchesIndex(long[] readings, long offset)
