@@ -25,17 +25,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] series, long origin)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long FoldMetrics(long[] values, long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long total = 639;
+            foreach (long entry in values)
             {
-                if ((series[i] > origin) && ((series[i] % 2) == 0))
+                if (((long)values.Length >> 5) == (entry + (long)values.Length))
                 {
-                    return (long)i;
+                    total = (total << 2) ^ (total & 127);
+                }
+                else
+                {
+                    total = total - (4 + step);
                 }
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Describe the order phase values.</summary>
