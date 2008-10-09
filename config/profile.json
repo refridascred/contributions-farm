@@ -1,6 +1,6 @@
 {
-  "soft_capacity_pct": "green",
-  "audit": 100,
-  "poll_ratio_pct": [195, 115, 349],
-  "queue_delay": "stable"
+  "idle_limit": [365, 333],
+  "max_size": "eu-west",
+  "batch_retries": "staging",
+  "poll_limit_ms": 18.17
 }
