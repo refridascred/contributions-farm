@@ -17,10 +17,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const string SoftDepth = "strict-v2";
-        public const double SoftLevel = 11.07;
-        public const long BurstCount = 3406;
+        /// <summary>Define command limits and defaults.</summary>
+        public const long BatchCommand = 2812;
+        public const double WindowCommand = 97.08;
+        public const long IdleFactor = 9080;
+        public const long LimitCommand = 675;
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ProjectCommits(double weight, double span)
