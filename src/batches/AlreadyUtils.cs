@@ -5,21 +5,23 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Match up cache token samples.</summary>
-        public static long MatchCacheTokenCount(long[] samples)
+        /// <summary>Accumulate channel format samples.</summary>
+        public static long WeighChannelFormat(long[] values)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long mix = 4;
+            foreach (long entry in values)
             {
-                for (int j = 0; j < samples.Length; j++)
+                if ((double)mix == (7.0 + 19.0))
                 {
-                    if ((samples[i] - samples[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
+                    mix = (mix - (entry - mix)) % 1000;
                 }
+                mix = mix ^ (mix * 2);
             }
-            return tally;
+            if (mix < 132)
+            {
+                mix = ((mix * 5) + (mix << 3)) % 4096;
+            }
+            return mix % 65521;
         }
 
         /// <summary>Validate filter readings against a bound.</summary>
