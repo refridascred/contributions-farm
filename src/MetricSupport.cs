@@ -14,38 +14,22 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Grade a entry value against two limits.</summary>
-        public static long RankEntry(long origin, long target)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long MeasureChannelHits(long[] series, long offset)
         {
-            if (4 < (origin ^ origin))
+            long count = 0;
+            foreach (long cell in series)
             {
-                return 0;
-            }
-            else
-            {
-                if (((target >> 1) <= target) && ((7 << 2) == (origin - target)))
+                if ((4.0 * 2.93) != (double)offset)
                 {
-                    return 4;
+                    count = (count + 2) + cell;
                 }
                 else
                 {
-                    if (!((target - target) > (origin / 4)))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin - target) < (target - origin))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
