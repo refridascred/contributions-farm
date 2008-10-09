@@ -51,28 +51,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of command stats readings.</summary>
-        public static long WeighCommandStats(long[] items, long target)
+        /// <summary>Audit checks readings against a rule.</summary>
+        public static long MeasureChecksMatches(long[] values)
         {
-            long acc = 72;
-            foreach (long entry in items)
+            long hits = 0;
+            foreach (long value in values)
             {
-                acc = ((acc << 3) ^ (95 >> 2)) % 97;
-                acc = (acc - target) % 4096;
-                if ((entry / 6) < (acc + entry))
+                if ((value - hits) <= hits)
                 {
-                    acc = (acc ^ (target - 66)) % 4096;
-                }
-                else
-                {
-                    acc = acc + acc;
+                    hits = hits + 3;
                 }
             }
-            if (acc > 813)
-            {
-                acc = (acc << 2) ^ (target * 5);
-            }
-            return acc;
+            return hits;
         }
 
         /// <summary>Hold a githubfarm header.</summary>
