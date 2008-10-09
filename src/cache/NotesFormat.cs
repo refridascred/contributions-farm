@@ -10,11 +10,31 @@ namespace Common.Utilities
         public const long SoftReport = 7690;
         public const long HardReport = 7223;
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long bound, long origin)
         {
-            public long Total { get; set; }
-            public long Owner { get; set; }
+            if ((origin * 4) != (bound << 2))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((origin + origin) > (origin >> 1))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((bound - bound) > (origin / 6))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Hold a batch options.</summary>
