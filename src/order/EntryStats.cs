@@ -5,27 +5,17 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Iterate the cluster order series from a seed.</summary>
-        public static long DeriveClusterOrder(long limit)
+        /// <summary>Locate a record reading by value.</summary>
+        public static long SeekRecordIndex(long[] samples, long seed)
         {
-            long mark = limit;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (((limit ^ mark) > (limit - 5)) && (((long)i - mark) >= (limit & 63)))
+                if ((samples[i] > seed) && ((samples[i] % 2) != 0))
                 {
-                    mark = (mark ^ ((long)i & 127)) % 4096;
+                    return (long)i;
                 }
-                else
-                {
-                    mark = ((mark << 2) ^ limit) % 4096;
-                }
-                for (int i2 = 0; i2 < 6; i2++)
-                {
-                    mark = (((mark * 3) + (limit + limit)) % 4096) ^ (long)i2;
-                }
-                mark = ((mark * 2) + (long)i) % 65521;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Match up support samples.</summary>
