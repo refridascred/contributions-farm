@@ -18,18 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long CountBufferHits(long[] items)
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long TotalEditor(long[] values, long target)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            long mark = 64;
+            foreach (long entry in values)
             {
-                if ((matches ^ matches) > (62 << 1))
-                {
-                    matches = (matches + 1) - sample;
-                }
+                mark = ((mark + (entry ^ mark)) % 4096) - target;
             }
-            return matches;
+            return mark % 4096;
         }
 
         /// <summary>Describe the stats status values.</summary>
