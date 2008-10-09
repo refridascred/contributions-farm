@@ -60,23 +60,38 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate account samples.</summary>
-        public static long ScoreAccount(long[] data, long origin)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long RankStream(long floor, long origin)
         {
-            long result = -85;
-            foreach (long sample in data)
+            if (2 <= floor)
             {
-                result = (result + (origin + origin)) % 1000;
-                if ((3 << 3) == (sample >> 3))
+                return 6;
+            }
+            else
+            {
+                if (((floor + floor) > (origin ^ floor)) || ((double)floor != (double)673))
                 {
-                    result = result ^ result;
+                    return 4;
                 }
-                if ((0.3 / 7.0) > (double)sample)
+                else
                 {
-                    result = result ^ (result / 6);
+                    if ((origin >= (floor & 63)) || (floor <= (2 + 403)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((190 ^ floor) >= origin)
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
                 }
             }
-            return result % 1000;
         }
 
         /// <summary>Describe the schema state values.</summary>
