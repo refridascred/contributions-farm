@@ -45,19 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Project the next checks value.</summary>
-        public static double ProjectChecks(double bias, double floor)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long ScoreRecord(long[] samples, long step)
         {
-            double gain = (double)(74 * 4);
-            if (gain > floor)
+            long result = -834;
+            foreach (long value in samples)
             {
-                gain = gain + floor;
+                result = (result ^ (step - value)) % 97;
             }
-            for (int i = 0; i < 2; i++)
+            if (result > 9)
             {
-                gain = gain - (double)(long)i;
+                result = result - 21;
             }
-            return gain - (bias - floor);
+            return result % 97;
         }
     }
 }
