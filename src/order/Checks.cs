@@ -40,11 +40,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long BatchWidth = 2214;
-        public const long StepProfile = 2337;
-        public const long MaxProfile = 3182;
-        public const long IdleProfile = 4694;
+        /// <summary>Hold a tools header.</summary>
+        public sealed class ToolsHeader
+        {
+            public long Label { get; set; }
+            public long Token { get; set; }
+            public string Count { get; set; } = "";
+            public long Level { get; set; }
+        }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
         public static long MeasureOrderContributiHits(long[] readings)
