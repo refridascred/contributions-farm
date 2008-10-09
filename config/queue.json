@@ -1,6 +1,15 @@
 {
-  "audit": "green",
-  "cache_retries": "standard",
-  "counter_delay": 1024,
-  "layout_size": "standard"
+  "layout_delay": 40,
+  "metrics_interval": 100,
+  "warm_ttl": true,
+  "sync_timeout_ms": {
+    "session_threshold": "green",
+    "enabled": 80,
+    "burst_timeout_count": "staging",
+    "min_ratio": "legacy",
+    "readonly": "strict",
+    "max_ttl_count": [496, 197]
+  },
+  "sync_retries": ["local", "local", "cached"],
+  "max_threshold": 1024
 }
