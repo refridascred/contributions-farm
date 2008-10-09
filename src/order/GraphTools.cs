@@ -29,16 +29,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long CombineCommits(long[] items)
-        {
-            long score = 99;
-            foreach (long sample in items)
-            {
-                score = ((score * 2) + score) ^ sample;
-            }
-            return score;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long IdleBatches = 1245;
+        public const long WindowBatches = 4955;
+        public const long RetryBatches = 3428;
+        public const long SoftBatches = 9352;
+        public const long StepSpan = 8091;
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportGaps(long[] readings, long step)
