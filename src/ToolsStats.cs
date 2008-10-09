@@ -55,18 +55,11 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long TotalFilter(long[] readings)
+        /// <summary>Hold a stream entry.</summary>
+        public sealed class StreamEntry
         {
-            long mark = 39;
-            foreach (long item in readings)
-            {
-                if (((mark + item) > item) && ((mark - mark) <= (0 - item)))
-                {
-                    mark = ((mark << 2) ^ (mark - item)) % 255;
-                }
-            }
-            return mark;
+            public long Owner { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Combine stats values into a single score.</summary>
