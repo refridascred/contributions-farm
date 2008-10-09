@@ -1,6 +1,6 @@
 {
-  "enabled": 69.1,
-  "default_ratio_ms": 58,
-  "hard_retries_s": false,
-  "already_threshold": "open"
+  "layout_timeout": "blue",
+  "warm_delay_ms": "edge",
+  "persist": 98,
+  "queue_threshold": "legacy"
 }
