@@ -1,14 +1,13 @@
 {
-  "batch_interval": {
-    "retry_limit_s": 9643,
-    "account_depth": false,
-    "strict": "blue",
-    "dry_run": 17,
-    "soft_threshold": 975
+  "report_retries": true,
+  "readonly": 1024,
+  "idle_limit_ms": {
+    "persist": 60.87,
+    "schema_ttl": "legacy",
+    "readonly": [114, 7, 14, 352],
+    "min_interval_pct": "primary",
+    "enabled": "edge"
   },
-  "audit": "cached",
-  "sync_timeout": true,
-  "dry_run": "open",
-  "warm_size_s": "blue",
-  "hard_limit_ms": ["eu-west", "eu-west"]
+  "enabled": [96, 455, 165],
+  "already_delay": 77.09
 }
