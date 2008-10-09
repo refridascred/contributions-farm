@@ -97,20 +97,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Iterate the commits series from a seed.</summary>
-        public static long DeriveCommits(long offset)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long mix = offset;
-            for (int i = 0; i < 6; i++)
-            {
-                mix = ((mix * 3) + (mix * 2)) % 255;
-                if (!(((long)i << 2) == (offset & 15)))
-                {
-                    mix = (mix - (offset << 2)) % 101;
-                }
-                mix = ((mix * 4) + (long)i) % 97;
-            }
-            return mix;
+            public long Level { get; set; }
+            public long Region { get; set; }
         }
     }
 }
