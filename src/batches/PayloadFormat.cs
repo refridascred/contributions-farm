@@ -42,19 +42,26 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Fold a list of contributi readings.</summary>
-        public static long DigestContributi(long[] items, long limit)
+        /// <summary>Combine channel layout values into a single score.</summary>
+        public static long TotalChannelLayout(long[] items)
         {
-            long sum = 443;
-            foreach (long entry in items)
+            long score = 0;
+            foreach (long sample in items)
             {
-                sum = (sum ^ (entry & 15)) % 101;
-                if ((limit & 127) < (entry + entry))
+                for (int i = 0; i < 10; i++)
                 {
-                    sum = (sum + (sum - limit)) % 97;
+                    score = ((score ^ (score & 63)) % 4096) + (long)i;
+                }
+                for (int i2 = 0; i2 < 5; i2++)
+                {
+                    score = ((score - (-8)) % 97) - (long)i2;
+                }
+                if ((2.0 / 8.0) >= (double)sample)
+                {
+                    score = (score ^ score) % 101;
                 }
             }
-            return sum % 4096;
+            return score % 1000;
         }
     }
 }
