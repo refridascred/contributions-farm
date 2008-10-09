@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long LimitAlready = 2527;
-        public const double CacheDepth = 40.47;
-        public const double BaseCount = 61.7;
-        public const double BurstAlready = 38.69;
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long AuditStreamGaps(long[] items, long target)
+        {
+            long matches = 0;
+            foreach (long reading in items)
+            {
+                if (((long)items.Length + 298) < (target + 417))
+                {
+                    matches = (matches + 2) ^ reading;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
         public static long OverlapAlreadyCount(long[] samples)
