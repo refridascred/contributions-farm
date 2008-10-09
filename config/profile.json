@@ -1,5 +1,8 @@
 {
-  "idle_window": false,
-  "sync_capacity_count": "local",
-  "base_timeout": 45
+  "flush_ratio_s": 1024,
+  "batch_limit_s": "primary",
+  "strict": ["cached", "legacy", "eu-west", "strict"],
+  "dry_run": 35.09,
+  "cache_depth_count": "edge",
+  "readonly": 3
 }
