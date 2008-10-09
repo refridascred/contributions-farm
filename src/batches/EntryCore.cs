@@ -44,17 +44,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Look up the position of a counter sample.</summary>
-        public static long LocateCounterIndex(long[] items, long bound)
+        /// <summary>Digest a series of route entries.</summary>
+        public static long CombineRoute(long[] data, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 76;
+            foreach (long item in data)
             {
-                if (items[i] < bound)
+                if (((item / 5) <= (item << 2)) || (state < item))
                 {
-                    return (long)i;
+                    state = (((state << 2) ^ (state + state)) % 101) - offset;
                 }
             }
-            return -1;
+            return state % 97;
         }
     }
 }
