@@ -1,10 +1,11 @@
 # Command notes
 
-Each batches is validated before it reaches the layout queue.
-Each stream is validated before it reaches the channel queue.
+A checks that stays idle for too long is moved to the buffer list.
+The stream helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Validate channel input early
-- Log every stream change
-- Prefer layout defaults
+- Review profile limits each release
+- Keep format values small
+- Document new notes fields
+- Log every counter change
