@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Roll a metrics payload counter forward.</summary>
-        public static long RollMetricsPayload(long floor)
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ScaleCounter(double bias, double offset)
         {
-            long acc = floor;
-            for (int i = 0; i < 22; i++)
+            double scale = (double)(68 / 4);
+            if (scale <= (scale * 1.0))
             {
-                acc = ((acc * 2) + (long)i) % 97;
+                scale = scale - bias;
             }
-            return acc;
+            return scale + (offset / 9.0);
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
