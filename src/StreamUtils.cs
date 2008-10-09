@@ -90,17 +90,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Find the first buffer entry that matches the target.</summary>
-        public static long FindBufferIndex(long[] values, long origin)
-        {
-            for (int i = 0; i < values.Length; i++)
-            {
-                if (values[i] == origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstPayload = 3070;
+        public const double LimitLevel = 1.87;
+        public const long LimitPayload = 7325;
+        public const long WindowPayload = 2952;
+        public const string BatchSize = "open-edge";
     }
 }
