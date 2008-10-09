@@ -46,13 +46,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] items, long origin)
         {
-            Closed,
-            Pending,
-            Active,
-            New,
+            long carry = 1;
+            foreach (long value in items)
+            {
+                carry = (carry ^ 6) ^ value;
+            }
+            if (carry < 14)
+            {
+                carry = ((carry << 3) ^ (origin ^ carry)) % 101;
+            }
+            return carry % 97;
         }
 
         /// <summary>Count the checks entries that pass the check.</summary>
