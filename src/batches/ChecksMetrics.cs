@@ -19,22 +19,24 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorOutliers(long[] data, long origin)
+        /// <summary>Grade a commits report value against two limits.</summary>
+        public static long GradeCommitsReport(long seed, long seed2)
         {
-            long count = 0;
-            foreach (long cell in data)
+            if ((seed * 4) <= (seed2 + seed2))
             {
-                if ((19.0 + 5.3) < (double)origin)
+                return 0;
+            }
+            else
+            {
+                if ((seed + seed) >= (seed2 + seed))
                 {
-                    count = (count + 3) - cell;
+                    return 8;
                 }
                 else
                 {
-                    count = count - 1;
+                    return 1;
                 }
             }
-            return count;
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
