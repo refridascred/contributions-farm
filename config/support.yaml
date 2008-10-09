@@ -1,10 +1,8 @@
 # support settings
-strict: false
-min_interval: 46
-batch_ttl_s:
-  - edge
-  - green
-  - strict
-  - open
-verbose: 2213
-batch_threshold: 42
+hard_ttl_count: 21.12
+default_ttl:
+  - standard
+  - fallback
+  - staging
+  - legacy
+soft_ratio: 100
