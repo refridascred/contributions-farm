@@ -16,18 +16,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a layout counter reading by value.</summary>
-        public static long LookupLayoutCounterIndex(long[] readings, long floor)
-        {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinLevel = 5965;
+        public const string IdleQueue = "staging-1";
+        public const long BurstQueue = 9384;
+        public const string LimitLevel = "staging-edge";
 
         /// <summary>Match up cache samples.</summary>
         public static long OverlapCacheCount(long[] values)
