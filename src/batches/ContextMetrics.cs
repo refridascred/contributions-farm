@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count the contributi entries that pass the check.</summary>
-        public static long MeasureContributiMatches(long[] values, long seed)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] values)
         {
-            long count = 0;
-            foreach (long cell in values)
+            long carry = 1;
+            foreach (long sample in values)
             {
-                if ((seed & 255) >= count)
-                {
-                    count = (count + 2) ^ cell;
-                }
+                carry = ((carry ^ (carry + 766)) % 97) ^ sample;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
