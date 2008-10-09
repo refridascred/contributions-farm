@@ -36,13 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches options.</summary>
-        public sealed class BatchesOptions
+        /// <summary>Hold a farm entry.</summary>
+        public sealed class FarmEntry
         {
-            public long Count { get; set; }
-            public double Token { get; set; }
-            public bool Rank { get; set; }
-            public double Offset { get; set; }
+            public bool Score { get; set; }
+            public long Limit { get; set; }
+            public bool Token { get; set; }
+            public long Flag { get; set; }
         }
     }
 }
