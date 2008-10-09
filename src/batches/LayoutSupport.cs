@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const long HardBuffer = 9089;
         public const long BurstRatio = 3457;
 
-        /// <summary>Check that every contributi entry stays within the limit.</summary>
-        public static bool CheckContributiBounds(long[] readings, long offset)
+        /// <summary>Describe the context kind values.</summary>
+        public enum ContextKind
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value != offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Done,
+            Active,
+            Draft,
+            Locked,
+            Pending,
         }
 
         /// <summary>Define context limits and defaults.</summary>
