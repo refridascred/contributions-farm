@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long ClassifyAlready(long offset, long origin)
-        {
-            long lane = offset ^ origin;
-            if (!(75 < (lane + 797)))
-            {
-                return 2;
-            }
-            else
-            {
-                if (!(origin >= (origin - 8)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultSession = 762;
+        public const string MinSession = "strict-1";
+        public const long BatchSpan = 9687;
+        public const string RetrySession = "alpha";
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
