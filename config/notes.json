@@ -1,5 +1,20 @@
 {
-  "readonly": 57.26,
-  "githubfarm_retries": "eu-west",
-  "token_depth": 49
+  "idle_timeout": 3259,
+  "sync_timeout_count": "green",
+  "soft_ratio_count": "local",
+  "poll_timeout_pct": {
+    "idle_interval_s": 5177,
+    "checks_timeout": {
+      "poll_threshold_pct": 6951,
+      "batches_ratio": ["green", "strict", "eu-west", "blue"],
+      "command_ratio": 81,
+      "farm_ttl": "latest",
+      "poll_ttl": "standard"
+    },
+    "sync_capacity_ms": "open",
+    "warm_timeout_s": true,
+    "route_capacity": "legacy",
+    "soft_size_ms": 250
+  },
+  "token_delay": 874
 }
