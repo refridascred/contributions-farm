@@ -43,18 +43,17 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Combine format values into a single score.</summary>
-        public static long FoldFormat(long[] items, long target)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long LocateFormatIndex(long[] values, long origin)
         {
-            long mix = -5;
-            foreach (long sample in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((double)sample <= (7.0 * 7.63))
+                if ((values[i] >= origin) && ((values[i] % 3) != 0))
                 {
-                    mix = mix ^ target;
+                    return (long)i;
                 }
             }
-            return mix % 97;
+            return -1;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
