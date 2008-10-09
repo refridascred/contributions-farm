@@ -34,12 +34,11 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
-        {
-            public string Score { get; set; } = "";
-            public double Offset { get; set; }
-            public bool Label { get; set; }
-        }
+        /// <summary>Define cluster limits and defaults.</summary>
+        public const long MaxCluster = 4414;
+        public const long RetryCluster = 6872;
+        public const double WindowRatio = 61.29;
+        public const long MaxTimeout = 4334;
+        public const long MinCluster = 3438;
     }
 }
