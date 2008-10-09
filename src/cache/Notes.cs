@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Iterate the support series from a seed.</summary>
-        public static long DeriveSupport(long origin)
+        /// <summary>Validate notes readings against a bound.</summary>
+        public static bool CheckNotesRange(long[] readings, long bound)
         {
-            long sum = origin;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long cell in readings)
             {
-                sum = ((sum * 4) + (long)i) % 4093;
+                if (cell >= bound)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return sum;
+            return ok;
         }
 
         /// <summary>Describe the batch level values.</summary>
