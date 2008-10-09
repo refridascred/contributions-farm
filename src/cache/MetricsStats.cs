@@ -18,19 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelRange(long[] samples, long offset)
+        /// <summary>Blend two buffer measurements.</summary>
+        public static double ProjectBuffer(double scale, double offset)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            double rate = scale;
+            if (rate > (5.57 / 4.0))
             {
-                if (cell < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                rate = (rate + (19.0 / 4.0)) + offset;
             }
-            return flag;
+            return rate - rate;
         }
 
         /// <summary>Describe the metric level values.</summary>
