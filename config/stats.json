@@ -1,11 +1,7 @@
 {
-  "readonly": 29.54,
-  "batch_timeout_ms": {
-    "hard_size_pct": ["cached", "local", "open"],
-    "poll_delay_count": "local",
-    "strict": [94, 114, 243, 346],
-    "compress": [175, 145, 214, 208],
-    "idle_depth": true
-  },
-  "retry_ratio_s": "blue"
+  "max_threshold_pct": 30,
+  "format_ratio": 250,
+  "batch_threshold_count": [122, 3],
+  "strict": "green",
+  "cache_threshold_count": 100
 }
