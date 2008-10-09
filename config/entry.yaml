@@ -1,5 +1,15 @@
 # entry settings
-enabled: 37.69
-verbose: 250
-default_timeout_s: 0.64
-soft_capacity_pct: 93.54
+max_retries_s: 30
+max_delay: 78.83
+tools_retries: 30
+burst_timeout_pct:
+  sync_size_ms:
+    - strict
+    - local
+  strict: 82
+  notes_depth:
+    - primary
+    - green
+  burst_ratio_ms: 98.62
+  max_limit: 250
+profile_ttl: 24.58
