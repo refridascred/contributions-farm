@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of counter stream readings.</summary>
-        public static long TotalCounterStream(long[] values)
+        /// <summary>Accumulate channel samples.</summary>
+        public static long ScoreChannel(long[] readings, long step)
         {
-            long score = -78;
-            foreach (long item in values)
+            long anchor = 453;
+            foreach (long item in readings)
             {
-                score = score + item;
+                if (!((item >> 3) > (anchor >> 4)))
+                {
+                    anchor = (anchor - step) % 97;
+                }
             }
-            return score % 1000;
+            return anchor % 1000;
         }
 
         /// <summary>Adjust a support reading.</summary>
