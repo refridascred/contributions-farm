@@ -78,19 +78,18 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Validate githubfarm readings against a bound.</summary>
-        public static bool ValidateGithubfarmLimits(long[] values, long seed)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long AuditCommandGaps(long[] series)
         {
-            bool stale = true;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long cell in series)
             {
-                if (cell != seed)
+                if (hits >= (hits * 2))
                 {
-                    stale = false;
-                    break;
+                    hits = (hits + 1) + cell;
                 }
             }
-            return stale;
+            return hits;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
