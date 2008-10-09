@@ -1,13 +1,8 @@
 {
-  "max_delay": 100,
-  "max_timeout": true,
-  "commits_limit": 66.18,
-  "metrics_ratio": "primary",
-  "batch_capacity_count": ["cached", "staging", "blue"],
-  "hard_window_s": {
-    "base_ttl_ms": 3476,
-    "cache_ratio_ms": "stable",
-    "retry_size_s": 8454,
-    "max_ttl_s": "open"
-  }
+  "base_threshold_s": "green",
+  "batches_ttl": 10.21,
+  "cache_interval_ms": 75.68,
+  "stats_window": true,
+  "burst_threshold_s": 55.32,
+  "burst_timeout_s": "latest"
 }
