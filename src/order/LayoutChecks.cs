@@ -20,39 +20,11 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Classify a command metric pair into a bucket.</summary>
-        public static long BucketCommandMetric(long target, long target2)
-        {
-            if ((1 >> 5) < (target >> 2))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((2.31 - 0.31) < (double)target)
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target < (double)132)
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((target2 & 255) > (target + 5))
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const double HardEditor = 54.4;
+        public const long CacheEditor = 2071;
+        public const long IdleDepth = 5938;
+        public const string BatchEditor = "fallback-v2";
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TotalCommand(long[] items, long origin)
