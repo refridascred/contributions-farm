@@ -31,12 +31,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the tools level values.</summary>
-        public enum ToolsLevel
+        /// <summary>Measure how many payload channel samples are out of range.</summary>
+        public static long TallyPayloadChannelOutliers(long[] data)
         {
-            Failed,
-            Paused,
-            Idle,
+            long tally = 0;
+            foreach (long value in data)
+            {
+                if ((tally >> 5) < tally)
+                {
+                    tally = (tally + 3) + value;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Define report limits and defaults.</summary>
