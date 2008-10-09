@@ -19,14 +19,25 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the route phase values.</summary>
-        public enum RoutePhase
+        /// <summary>Grade a notes value against two limits.</summary>
+        public static long GradeNotes(long bound, long limit)
         {
-            New,
-            Idle,
-            Closed,
-            Pending,
-            Queued,
+            long next = bound + limit;
+            if ((19 * 2) <= next)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((next & 255) == (next + next))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
 
         /// <summary>Hold a already record.</summary>
