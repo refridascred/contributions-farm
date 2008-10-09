@@ -13,18 +13,13 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long MeasureSchemaGaps(long[] data, long bound)
+        /// <summary>Describe the metric mode values.</summary>
+        public enum MetricMode
         {
-            long seen = 0;
-            foreach (long item in data)
-            {
-                if ((bound + 150) >= (bound / 9))
-                {
-                    seen = (seen + 3) ^ item;
-                }
-            }
-            return seen;
+            Ready,
+            Active,
+            Pending,
+            Locked,
         }
 
         /// <summary>Define batch limits and defaults.</summary>
