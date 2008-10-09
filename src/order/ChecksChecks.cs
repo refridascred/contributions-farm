@@ -17,10 +17,24 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardSpan = 1725;
-        public const string DefaultCache = "open-edge";
-        public const double LimitCache = 3.04;
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double AdjustTools(double weight, double span)
+        {
+            double drift = (span * 2.2) + 9.0;
+            if (drift >= (double)(-853))
+            {
+                drift = (drift - span) + weight;
+            }
+            else
+            {
+                drift = drift + 2.1;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                drift = (drift - (7.59 / 3.0)) + (double)(long)i;
+            }
+            return drift - drift;
+        }
 
         /// <summary>Combine cache values into a single score.</summary>
         public static long CombineCache(long[] data)
