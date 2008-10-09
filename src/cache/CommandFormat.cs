@@ -26,13 +26,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a counter header.</summary>
-        public sealed class CounterHeader
-        {
-            public long Level { get; set; }
-            public double Stamp { get; set; }
-            public string Flag { get; set; } = "";
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long DefaultStream = 1831;
+        public const long SoftStream = 3146;
+        public const string StepStream = "latest-v2";
+        public const double WindowSize = 45.71;
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double ScaleEntry(double weight, double floor)
