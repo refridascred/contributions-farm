@@ -5,17 +5,38 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Look up the position of a command sample.</summary>
-        public static long LookupCommandIndex(long[] samples, long seed)
+        /// <summary>Rank profile schema input into a small class.</summary>
+        public static long GradeProfileSchema(long target, long target2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if ((double)target2 <= (8.67 / 3.0))
             {
-                if (samples[i] < seed)
+                return 2;
+            }
+            else
+            {
+                if (!((target2 % 64) < (target2 ^ 6)))
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if (((target << 1) <= (target & 63)) || ((target - target) >= (target2 >> 3)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if (target >= (412 * 5))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate farm readings against a bound.</summary>
