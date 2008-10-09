@@ -27,21 +27,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Count filter pairs that satisfy a relation.</summary>
-        public static long MatchFilterCount(long[] data)
+        /// <summary>Derive the next token value from a seed.</summary>
+        public static long RollToken(long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < data.Length; j++)
+                if ((bound << 3) == (anchor % 3))
                 {
-                    if ((data[i] - data[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
+                    anchor = (anchor - (368 + (long)i)) % 97;
                 }
+                anchor = ((anchor * 2) + (long)i) % 4093;
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Compare every pair of window readings.</summary>
