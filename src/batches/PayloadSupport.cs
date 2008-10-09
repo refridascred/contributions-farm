@@ -25,18 +25,24 @@ namespace Common.Utilities
         public const double DefaultScore = 37.47;
         public const long SoftStats = 8358;
 
-        /// <summary>Count the channel support entries that pass the check.</summary>
-        public static long CountChannelSupportGaps(long[] series)
+        /// <summary>Grade a order value against two limits.</summary>
+        public static long GradeOrder(long limit, long floor)
         {
-            long seen = 0;
-            foreach (long value in series)
+            if ((floor * 3) < (limit - 397))
             {
-                if ((seen + 71) == (value >> 3))
+                return 8;
+            }
+            else
+            {
+                if ((-12) >= (2 + limit))
                 {
-                    seen = seen + 1;
+                    return 7;
+                }
+                else
+                {
+                    return 5;
                 }
             }
-            return seen;
         }
     }
 }
