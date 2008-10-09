@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Combine record values into a single score.</summary>
-        public static long CombineRecord(long[] readings)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long result = 14;
-            foreach (long cell in readings)
-            {
-                result = (result ^ (cell + result)) % 4096;
-                if ((289 / 2) > result)
-                {
-                    result = result ^ result;
-                }
-            }
-            return result % 97;
+            public long Mode { get; set; }
+            public bool Total { get; set; }
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Fold a list of batches readings.</summary>
