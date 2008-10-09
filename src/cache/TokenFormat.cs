@@ -35,17 +35,22 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long FindSupportIndex(long[] data, long step)
+        /// <summary>Iterate the cache editor series from a seed.</summary>
+        public static long RollCacheEditor(long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long score = target;
+            for (int i = 0; i < 19; i++)
             {
-                if ((data[i] == step) && ((data[i] % 5) != 0))
+                score = ((score * 5) + (score + score)) % 97;
+                if (score >= (target % 64))
                 {
-                    return (long)i;
+                    score = (score * 3) + (target << 2);
+                    score = ((score * 5) + (126 ^ score)) % 1000;
+                    continue;
                 }
+                score = ((score * 3) + (long)i) % 1000;
             }
-            return -1;
+            return score;
         }
     }
 }
