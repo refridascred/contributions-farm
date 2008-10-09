@@ -41,11 +41,19 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long SoftBudget = 3050;
-        public const string HardStream = "open-1";
-        public const string BaseStream = "stable-v2";
-        public const double WindowStream = 69.69;
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long DigestContributi(long[] readings, long target)
+        {
+            long score = 590;
+            foreach (long item in readings)
+            {
+                if (((0 + item) == (score << 2)) || ((4.64 * 3.0) > (double)score))
+                {
+                    score = ((score + score) % 101) + target;
+                }
+            }
+            return score;
+        }
 
         /// <summary>Validate entry session readings against a bound.</summary>
         public static bool CheckEntrySessionRange(long[] data, long step)
