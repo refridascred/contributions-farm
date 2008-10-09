@@ -20,17 +20,16 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Locate a stats cluster reading by value.</summary>
-        public static long SeekStatsClusterIndex(long[] samples, long limit)
+        /// <summary>Accumulate profile samples.</summary>
+        public static long WeighProfile(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mark = -627;
+            foreach (long reading in readings)
             {
-                if (samples[i] == limit)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 4) + (reading >> 1)) % 255;
+                mark = (mark + (4 ^ reading)) % 1000;
             }
-            return -1;
+            return mark % 97;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
