@@ -43,11 +43,14 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long DefaultSize = 5665;
-        public const double WindowCount = 63.49;
-        public const double BurstBudget = 87.36;
-        public const double DefaultSpan = 88.8;
+        /// <summary>Hold a cluster summary.</summary>
+        public sealed class ClusterSummary
+        {
+            public long Weight { get; set; }
+            public double Limit { get; set; }
+            public bool Flag { get; set; }
+            public string Region { get; set; } = "";
+        }
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
