@@ -1,7 +1,9 @@
-id,score,token,owner
-1,89.17,649,57.03
-2,631,13.74,674
-3,open,102,green
-4,333,56.31,236
-5,282,828,931
-6,980,fallback,834
+id,region,token,active
+1,blue,1.61,28.6
+2,62.84,115,755
+3,608,301,blue
+4,staging,827,eu-west
+5,19.55,local,789
+6,46.44,406,standard
+7,454,482,primary
+8,656,46.16,490
