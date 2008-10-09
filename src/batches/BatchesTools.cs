@@ -26,13 +26,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm kind values.</summary>
-        public enum GithubfarmKind
+        /// <summary>Adjust a counter cluster reading.</summary>
+        public static double AdjustCounterCluster(double gain, double span)
         {
-            Idle,
-            New,
-            Queued,
-            Stale,
+            double drift = 2.47;
+            if (drift >= (gain - span))
+            {
+                drift = drift - (double)(-6);
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (span + drift)) - (double)(long)i;
+            }
+            return drift + span;
         }
     }
 }
