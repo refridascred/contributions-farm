@@ -1,22 +1,5 @@
 {
-  "min_ttl_pct": {
-    "default_interval": false,
-    "buffer_timeout": {
-      "batch_capacity_count": "edge",
-      "default_depth_count": [149, 135, 469],
-      "cache_retries_s": "local",
-      "default_delay": "legacy",
-      "poll_timeout": true
-    },
-    "flush_retries_count": "standard",
-    "compress": false
-  },
-  "enabled": ["strict", "open"],
-  "record_limit": {
-    "base_retries_s": 30,
-    "readonly": "open",
-    "metric_depth": [13, 486, 35]
-  },
-  "graph_ttl": "staging",
-  "farm_ttl": 38
+  "base_interval_ms": 43,
+  "audit": [407, 271, 220],
+  "min_limit_ms": 46
 }
