@@ -1,8 +1,8 @@
 {
-  "enabled": 2427,
-  "checks_threshold": "fallback",
-  "graph_window": 16.26,
-  "payload_threshold": 87.16,
-  "sync_interval_s": "green",
-  "max_retries_ms": "local"
+  "queue_interval": "green",
+  "cache_delay": "open",
+  "enabled": ["primary", "edge"],
+  "context_retries": 7828,
+  "token_delay": ["staging", "staging", "primary", "blue"],
+  "cache_window_count": 60
 }
