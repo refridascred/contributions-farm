@@ -46,12 +46,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long LimitRecord = 1772;
-        public const long IdleRecord = 83;
-        public const long BatchRecord = 9473;
-        public const long StepSize = 1156;
-        public const long CacheRecord = 8992;
+        /// <summary>Compare every pair of notes readings.</summary>
+        public static long PairNotesCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) < 3)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Roll a format filter counter forward.</summary>
         public static long RollFormatFilter(long origin)
