@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a buffer entry.</summary>
-        public sealed class BufferEntry
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            public long Region { get; set; }
-            public string Token { get; set; } = "";
-            public long Limit { get; set; }
-            public double Offset { get; set; }
+            public long Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
