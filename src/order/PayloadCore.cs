@@ -52,17 +52,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a batches reading by value.</summary>
-        public static long LocateBatchesIndex(long[] data, long floor)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long CountLayoutHits(long[] data, long target)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                if (data[i] == floor)
+                if (cell >= (517 & 3))
                 {
-                    return (long)i;
+                    matches = (matches + 3) - target;
                 }
             }
-            return -1;
+            return matches;
         }
     }
 }
