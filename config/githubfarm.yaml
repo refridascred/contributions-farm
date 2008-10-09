@@ -1,14 +1,4 @@
 # githubfarm settings
-githubfarm_timeout: legacy
-warm_capacity_pct: 500
-tools_delay: false
-order_threshold:
-  retry_timeout: 82.37
-  poll_ratio_count:
-    strict: legacy
-    session_ratio: blue
-    burst_depth_count: true
-    githubfarm_window: fallback
-  dry_run: 250
-  default_retries_s: 162
-cluster_threshold: true
+compress: open
+warm_timeout: 80.37
+notes_ratio: strict
