@@ -49,18 +49,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the schema command entries that pass the check.</summary>
-        public static long MeasureSchemaCommandOutliers(long[] items)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long IterateLayout(long bound)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long anchor = bound;
+            for (int i = 0; i < 4; i++)
             {
-                if ((764 % 16) > (341 + tally))
-                {
-                    tally = (tally + 1) - sample;
-                }
+                anchor = ((anchor * 3) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Hold a cache options.</summary>
