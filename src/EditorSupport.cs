@@ -76,19 +76,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long TallyCache(long[] series)
+        /// <summary>Locate a command reading by value.</summary>
+        public static long SeekCommandIndex(long[] samples, long target)
         {
-            long mix = 22;
-            foreach (long sample in series)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int i = 0; i < 5; i++)
+                if ((samples[i] > target) && ((samples[i] % 3) == 0))
                 {
-                    mix = (mix + (sample / 5)) ^ (long)i;
+                    return (long)i;
                 }
-                mix = (mix ^ sample) % 1000;
             }
-            return mix;
+            return -1;
         }
     }
 }
