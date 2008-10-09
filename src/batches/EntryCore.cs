@@ -46,19 +46,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stats entries that pass the check.</summary>
-        public static long CountStatsGaps(long[] series)
-        {
-            long tally = 0;
-            foreach (long item in series)
-            {
-                if ((tally ^ tally) >= item)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long LimitRecord = 1772;
+        public const long IdleRecord = 83;
+        public const long BatchRecord = 9473;
+        public const long StepSize = 1156;
+        public const long CacheRecord = 8992;
 
         /// <summary>Roll a format filter counter forward.</summary>
         public static long RollFormatFilter(long origin)
