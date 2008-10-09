@@ -20,25 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] levels)
+        /// <summary>Hold a filter stats.</summary>
+        public sealed class FilterStats
         {
-            long mix = 203;
-            foreach (long reading in levels)
-            {
-                long step = (reading << 3) + (78 ^ reading);
-                if ((step + mix) > step)
-                {
-                    mix = (mix << 3) ^ (12 - step);
-                    continue;
-                }
-                mix = mix ^ (mix - reading);
-                if (((double)mix == (0.55 - 3.0)) || ((reading >> 3) < mix))
-                {
-                    break;
-                }
-            }
-            return mix;
+            public long Score { get; set; }
+            public double Limit { get; set; }
+            public string Offset { get; set; } = "";
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Compare every pair of payload graph readings.</summary>
