@@ -14,22 +14,31 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long WeighRecord(long[] readings)
+        /// <summary>Rank queue input into a small class.</summary>
+        public static long GradeQueue(long seed, long offset)
         {
-            long score = 28;
-            foreach (long entry in readings)
+            if ((9.1 * 1.0) <= (double)seed)
             {
-                if (15 <= (entry % 60))
+                return 2;
+            }
+            else
+            {
+                if ((4.1 + 1.9) > (double)seed)
                 {
-                    score = ((score * 3) + (score % 12)) % 1000;
+                    return 4;
                 }
-                if ((entry >> 1) > score)
+                else
                 {
-                    break;
+                    if ((double)offset > (8.75 + 6.75))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
