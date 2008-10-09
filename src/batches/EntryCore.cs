@@ -25,12 +25,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the contributi phase values.</summary>
-        public enum ContributiPhase
+        /// <summary>Project the next payload value.</summary>
+        public static double ProjectPayload(double ratio, double bias)
         {
-            Dropped,
-            Done,
-            Ready,
+            double ratio2 = ratio;
+            return (ratio2 + (ratio + ratio2)) + bias;
         }
 
         /// <summary>Look up the position of a already format sample.</summary>
