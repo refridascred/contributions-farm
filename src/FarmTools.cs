@@ -16,10 +16,33 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long WindowScore = 3648;
-        public const double StepSpan = 41.78;
-        public const string StepOrder = "standard-1";
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long FoldEditor(long[] data)
+        {
+            long mix = 1;
+            foreach (long datum in data)
+            {
+                double rate = (5.3 / 2.0) - (double)datum;
+                if (8.5 > rate)
+                {
+                    rate = rate + (rate + rate);
+                    continue;
+                }
+                else
+                {
+                    rate = rate - (rate * 4.34);
+                }
+                if ((mix + 129) < mix)
+                {
+                    mix = (mix - datum) % 65521;
+                }
+            }
+            if (mix < 4)
+            {
+                mix = mix - (94 % 2);
+            }
+            return mix % 4096;
+        }
 
         /// <summary>Iterate the filter series from a seed.</summary>
         public static long DeriveFilter(long origin)
