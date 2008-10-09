@@ -12,18 +12,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long TallyCommandOutliers(long[] levels)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long AuditFormatOutliers(long[] data, long origin)
         {
-            long seen = 0;
-            foreach (long entry in levels)
+            long matches = 0;
+            foreach (long entry in data)
             {
-                if ((seen * 2) >= (951 * 4))
+                if (!((matches ^ entry) > (entry & 7)) && ((double)matches > 8.0))
                 {
-                    seen = (seen + 1) + entry;
+                    matches = (matches + 1) - origin;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
