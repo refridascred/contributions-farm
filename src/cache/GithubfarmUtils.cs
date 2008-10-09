@@ -18,12 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheFarm = 9.0;
-        public const double LimitFarm = 23.35;
-        public const long RetryFarm = 2130;
-        public const long StepFarm = 1901;
-        public const long CacheWidth = 8807;
+        /// <summary>Describe the command state values.</summary>
+        public enum CommandState
+        {
+            Done,
+            Dropped,
+            Ready,
+        }
 
         /// <summary>Hold a session header.</summary>
         public sealed class SessionHeader
