@@ -32,19 +32,20 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Check that every format batch entry stays within the limit.</summary>
-        public static bool GuardFormatBatchBounds(long[] samples, long step)
+        /// <summary>Digest a series of editor entries.</summary>
+        public static long WeighEditor(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in samples)
+            long anchor = 71;
+            foreach (long datum in items)
             {
-                if (entry < step)
+                if ((datum + datum) <= anchor)
                 {
-                    valid = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (datum ^ datum)) % 65521;
+                    anchor = (anchor ^ (866 + anchor)) % 1000;
                 }
+                anchor = (anchor - (anchor / 3)) % 97;
             }
-            return valid;
+            return anchor;
         }
     }
 }
