@@ -56,18 +56,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] readings)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] items)
         {
-            long sum = 370;
-            foreach (long entry in readings)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((sum >> 2) < entry)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    sum = sum + (entry - entry);
+                    if ((items[i] - items[j]) == 13)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return sum;
+            return tally;
         }
     }
 }
