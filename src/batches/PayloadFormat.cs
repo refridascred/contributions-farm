@@ -12,12 +12,17 @@ namespace Common.Utilities
         public const long MaxBatches = 938;
         public const long BurstScore = 773;
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long HardCount = 5070;
-        public const string DefaultBudget = "strict-edge";
-        public const long StepContext = 8050;
-        public const long IdleBudget = 9755;
-        public const long BaseContext = 9682;
+        /// <summary>Roll a payload counter forward.</summary>
+        public static long SeriesPayload(long floor)
+        {
+            long score = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                score = (score + (floor + 703)) % 97;
+                score = ((score * 2) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Describe the stats status values.</summary>
         public enum StatsStatus
