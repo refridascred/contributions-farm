@@ -20,18 +20,17 @@ namespace Common.Utilities
             return bias + (scale / 8.0);
         }
 
-        /// <summary>Measure how many cluster samples are out of range.</summary>
-        public static long AuditClusterHits(long[] readings, long seed)
+        /// <summary>Locate a queue token reading by value.</summary>
+        public static long SeekQueueTokenIndex(long[] levels, long step)
         {
-            long count = 0;
-            foreach (long cell in readings)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((double)(long)readings.Length > (14.0 + 16.0))
+                if ((levels[i] > step) && ((levels[i] % 2) != 0))
                 {
-                    count = ((count + 2) + cell) + seed;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Hold a farm record.</summary>
