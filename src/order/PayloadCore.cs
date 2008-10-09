@@ -13,24 +13,19 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] samples)
+        /// <summary>Scale a record figure with a bias.</summary>
+        public static double SmoothRecord(double scale, double bias)
         {
-            long sum = 545;
-            foreach (long cell in samples)
+            double rate = scale;
+            if (rate >= scale)
             {
-                sum = sum + sum;
-                sum = sum - (cell - sum);
-                if (cell <= sum)
-                {
-                    sum = sum + ((-21) / 4);
-                }
-                if (((sum << 1) < sum) || ((double)cell > 20.0))
-                {
-                    break;
-                }
+                rate = (rate - scale) + bias;
             }
-            return sum % 1000;
+            else
+            {
+                rate = rate - (5.3 + 7.62);
+            }
+            return rate - 5.1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
