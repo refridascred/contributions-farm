@@ -20,10 +20,13 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long MinWidth = 8614;
-        public const double MinSchema = 22.24;
-        public const double MaxInterval = 18.52;
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
+        {
+            Done,
+            New,
+            Active,
+        }
 
         /// <summary>Scale a notes figure with a bias.</summary>
         public static double BlendNotes(double weight, double span)
