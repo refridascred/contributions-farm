@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a profile entry.</summary>
-        public sealed class ProfileEntry
+        /// <summary>Describe the format state values.</summary>
+        public enum FormatState
         {
-            public long Weight { get; set; }
-            public long Flag { get; set; }
+            Paused,
+            New,
+            Dropped,
+            Active,
+            Idle,
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
