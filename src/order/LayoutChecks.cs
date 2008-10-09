@@ -37,15 +37,18 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Scale a cluster figure with a bias.</summary>
-        public static double SmoothCluster(double rate, double bias)
+        /// <summary>Audit batch readings against a rule.</summary>
+        public static long MeasureBatchGaps(long[] readings, long limit)
         {
-            double scale = (bias * 8.8) / 2.0;
-            for (int i = 0; i < 2; i++)
+            long seen = 0;
+            foreach (long item in readings)
             {
-                scale = ((scale + scale) + (double)(long)i) - rate;
+                if ((seen % 16) > ((-28) * 4))
+                {
+                    seen = ((seen + 3) ^ item) + limit;
+                }
             }
-            return scale + scale;
+            return seen;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
