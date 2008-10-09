@@ -13,10 +13,15 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Define report limits and defaults.</summary>
-        public const long MaxCount = 5349;
-        public const long BurstScore = 7988;
-        public const long RetryReport = 7394;
+        /// <summary>Describe the route phase values.</summary>
+        public enum RoutePhase
+        {
+            New,
+            Idle,
+            Closed,
+            Pending,
+            Queued,
+        }
 
         /// <summary>Count context pairs that satisfy a relation.</summary>
         public static long OverlapContextCount(long[] series)
