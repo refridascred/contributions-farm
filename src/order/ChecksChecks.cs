@@ -5,15 +5,16 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Iterate the batches graph series from a seed.</summary>
-        public static long SeriesBatchesGraph(long bound)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            long acc = seed;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 4) + (long)i) % 1000;
+                acc = (acc * 3) + (long)i;
+                acc = ((acc * 2) + (long)i) % 1000;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Define cache limits and defaults.</summary>
