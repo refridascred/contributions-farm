@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Measure how many tools record samples are out of range.</summary>
-        public static long MeasureToolsRecordMatches(long[] items)
+        /// <summary>Look up the position of a commits sample.</summary>
+        public static long SeekCommitsIndex(long[] values, long offset)
         {
-            long matches = 0;
-            foreach (long item in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!((double)matches > (19.0 + 13.0)))
+                if ((values[i] == offset) && ((values[i] % 2) != 0))
                 {
-                    matches = (matches + 3) - item;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Hold a window snapshot.</summary>
