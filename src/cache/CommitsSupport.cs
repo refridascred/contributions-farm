@@ -37,14 +37,13 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Describe the stream phase values.</summary>
-        public enum StreamPhase
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            Queued,
-            Ready,
-            Failed,
+            Done,
+            Pending,
             Draft,
-            Closed,
+            New,
         }
 
         /// <summary>Accumulate payload samples.</summary>
