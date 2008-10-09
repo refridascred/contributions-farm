@@ -60,19 +60,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Project the next profile value.</summary>
-        public static double AdjustProfile(double ratio, double span)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double ratio, double floor)
         {
-            double bias = (double)(25 & 127);
-            if (bias < (ratio - bias))
+            double weight = 1.13;
+            if (weight > (weight + weight))
             {
-                bias = (bias - (bias + 12.0)) - span;
+                weight = weight - (3.97 - floor);
             }
             else
             {
-                bias = bias + 5.4;
+                weight = weight - 3.5;
             }
-            return bias + (ratio / 4.0);
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - 9.2) + (double)(long)i;
+            }
+            return weight - ratio;
         }
     }
 }
