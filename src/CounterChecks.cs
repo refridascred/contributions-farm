@@ -33,12 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelOutliers(long[] series)
         {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public double Ratio { get; set; }
+            long matches = 0;
+            foreach (long datum in series)
+            {
+                if ((((datum - matches) > matches) && ((datum % 24) < datum)) && ((19.0 + 3.0) > (double)datum))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
