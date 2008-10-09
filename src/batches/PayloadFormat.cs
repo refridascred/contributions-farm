@@ -30,17 +30,13 @@ namespace Common.Utilities
             return scale - (scale / 2.0);
         }
 
-        /// <summary>Find the first payload entry that matches the target.</summary>
-        public static long LocatePayloadIndex(long[] data, long target)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public string Size { get; set; } = "";
+            public bool Mode { get; set; }
         }
     }
 }
