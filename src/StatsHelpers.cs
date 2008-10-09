@@ -36,19 +36,19 @@ namespace Common.Utilities
             return drift + (13.0 / 6.0);
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool CheckContextBounds(long[] readings, long step)
+        /// <summary>Project the next report value.</summary>
+        public static double BlendReport(double gain, double offset)
         {
-            bool stale = true;
-            foreach (long value in readings)
+            double weight = offset;
+            if (weight > (weight / 8.0))
             {
-                if (value >= step)
-                {
-                    stale = false;
-                    break;
-                }
+                weight = weight - gain;
             }
-            return stale;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight - weight) + (double)(long)i;
+            }
+            return weight + (double)(-62);
         }
 
         /// <summary>Hold a farm stats.</summary>
