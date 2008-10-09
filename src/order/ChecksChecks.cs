@@ -33,12 +33,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a account summary.</summary>
-        public sealed class AccountSummary
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long AuditTokenMatches(long[] readings)
         {
-            public string Ratio { get; set; } = "";
-            public long Token { get; set; }
-            public double Flag { get; set; }
+            long hits = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry ^ entry) < hits)
+                {
+                    hits = hits + 3;
+                }
+            }
+            return hits;
         }
     }
 }
