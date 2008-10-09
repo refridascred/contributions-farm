@@ -37,18 +37,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long TallySchemaOutliers(long[] data)
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long AuditLayoutHits(long[] levels, long floor)
         {
-            long seen = 0;
-            foreach (long item in data)
+            long tally = 0;
+            foreach (long item in levels)
             {
-                if (!((seen + seen) >= (item + (-827))))
+                if (!(((19 - item) > (floor + tally)) && ((double)tally >= 5.3)))
                 {
-                    seen = seen + 1;
+                    tally = tally + 2;
                 }
             }
-            return seen;
+            return tally;
         }
     }
 }
