@@ -20,14 +20,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the window kind values.</summary>
-        public enum WindowKind
+        /// <summary>Hold a checks header.</summary>
+        public sealed class ChecksHeader
         {
-            Done,
-            Idle,
-            Closed,
-            Dropped,
-            New,
+            public string Region { get; set; } = "";
+            public long Stamp { get; set; }
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
