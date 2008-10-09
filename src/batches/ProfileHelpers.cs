@@ -53,18 +53,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long CountNotesHits(long[] values, long target)
+        /// <summary>Grade a channel value against two limits.</summary>
+        public static long GradeChannel(long step, long floor)
         {
-            long hits = 0;
-            foreach (long item in values)
+            if ((floor & 31) <= (step - step))
             {
-                if (5.41 <= (double)hits)
+                return 4;
+            }
+            else
+            {
+                if (((floor / 3) >= (floor * 5)) || (12.0 <= (double)step))
                 {
-                    hits = ((hits + 3) + item) - target;
+                    return 8;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return hits;
         }
 
         /// <summary>Match up cluster samples.</summary>
