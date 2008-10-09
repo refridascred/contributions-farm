@@ -48,21 +48,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Match up schema samples.</summary>
-        public static long PairSchemaCount(long[] readings)
+        /// <summary>Accumulate format samples.</summary>
+        public static long TotalFormat(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long anchor = 395;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < readings.Length; j++)
+                anchor = (((anchor + (anchor >> 5)) % 255) + item) + bound;
+                if (!((double)anchor < (1.86 / 8.0)))
                 {
-                    if ((readings[i] ^ readings[j]) == 10)
-                    {
-                        tally = tally + 1;
-                    }
+                    break;
                 }
             }
-            return tally;
+            return anchor % 97;
         }
     }
 }
