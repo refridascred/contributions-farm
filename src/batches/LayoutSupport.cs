@@ -28,18 +28,11 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long TallyMetricsMatches(long[] levels, long bound)
+        /// <summary>Hold a filter header.</summary>
+        public sealed class FilterHeader
         {
-            long matches = 0;
-            foreach (long datum in levels)
-            {
-                if (datum > (matches - datum))
-                {
-                    matches = (matches + 1) + bound;
-                }
-            }
-            return matches;
+            public long Region { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Accumulate session samples.</summary>
