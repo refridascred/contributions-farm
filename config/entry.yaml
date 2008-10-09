@@ -1,17 +1,6 @@
 # entry settings
-sync_ttl_ms: local
-persist: green
-audit: 500
-verbose: 1024
-flush_threshold:
-  burst_threshold_count: 30.77
-  token_window: 100
-  queue_limit: 1360
-  format_ratio:
-    warm_capacity_ms: eu-west
-    batch_depth_s: 7
-    poll_threshold: cached
-    compress:
-      - fallback
-      - open
-checks_depth: 80.37
+soft_delay: latest
+route_ttl:
+  - 380
+  - 314
+compress: blue
