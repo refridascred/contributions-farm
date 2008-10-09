@@ -1,14 +1,5 @@
 {
-  "burst_interval": "open",
-  "graph_limit": 80.07,
-  "min_depth": {
-    "flush_size": 500,
-    "strict": 34.95,
-    "record_ttl": 89,
-    "verbose": "stable",
-    "hard_capacity": "edge"
-  },
-  "buffer_window": 75.23,
-  "poll_ratio_ms": ["stable", "strict"],
-  "verbose": 60.28
+  "already_capacity": [490, 39, 38, 415],
+  "batch_limit": "green",
+  "verbose": "edge"
 }
