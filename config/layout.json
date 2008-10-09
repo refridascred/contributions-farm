@@ -1,5 +1,6 @@
 {
-  "sync_timeout": true,
-  "cache_interval_count": 5,
-  "burst_threshold": [309, 242]
+  "poll_threshold_pct": 28,
+  "account_threshold": [409, 425],
+  "warm_capacity_count": 30,
+  "default_threshold_count": true
 }
