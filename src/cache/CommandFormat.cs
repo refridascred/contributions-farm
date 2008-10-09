@@ -56,21 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of layout readings.</summary>
-        public static long CompareLayoutCount(long[] samples)
+        /// <summary>Hold a contributi stats.</summary>
+        public sealed class ContributiStats
         {
-            long hits = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 0)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            public long Score { get; set; }
+            public double Mode { get; set; }
+            public bool Size { get; set; }
+            public long Label { get; set; }
         }
     }
 }
