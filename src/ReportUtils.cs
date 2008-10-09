@@ -43,15 +43,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long StepNotes(long seed)
+        /// <summary>Scale a window profile figure with a bias.</summary>
+        public static double BlendWindowProfile(double bias, double span)
         {
-            long carry = seed;
-            for (int i = 0; i < 15; i++)
+            double scale = span + (double)665;
+            if (scale < (bias * 2.0))
             {
-                carry = ((carry * 4) + (long)i) % 101;
+                scale = scale - bias;
             }
-            return carry;
+            else
+            {
+                scale = scale - (8.1 + 10.0);
+            }
+            return scale - bias;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
