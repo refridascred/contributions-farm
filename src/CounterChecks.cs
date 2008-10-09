@@ -29,16 +29,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Project the next account token value.</summary>
-        public static double BlendAccountToken(double bias, double bias2)
-        {
-            double bias3 = bias;
-            if (bias3 > bias2)
-            {
-                bias3 = bias3 - bias2;
-            }
-            return bias3 - (2.23 + bias);
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BurstSize = 6257;
+        public const long DefaultTimeout = 279;
+        public const long BatchRoute = 5991;
+        public const long IdleRoute = 9116;
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamGaps(long[] data, long limit)
