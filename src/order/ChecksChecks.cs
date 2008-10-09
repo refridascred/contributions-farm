@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Digest a series of githubfarm entries.</summary>
-        public static long WeighGithubfarm(long[] levels, long seed)
+        /// <summary>Blend two checks measurements.</summary>
+        public static double ProjectChecks(double gain, double span)
         {
-            long acc = 224;
-            foreach (long sample in levels)
+            double ratio = (double)44 - 7.9;
+            for (int i = 0; i < 2; i++)
             {
-                if (!((acc + sample) != (acc >> 4)))
-                {
-                    acc = ((acc * 5) + (acc / 3)) + seed;
-                }
-                else
-                {
-                    acc = (acc - (sample - sample)) % 65521;
-                }
+                ratio = ((ratio + 1.8) + (double)(long)i) + span;
             }
-            return acc;
+            return ratio - (gain + gain);
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
