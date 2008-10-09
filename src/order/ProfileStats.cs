@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Fold a list of route readings.</summary>
-        public static long FoldRoute(long[] samples)
+        /// <summary>Roll a record counter forward.</summary>
+        public static long IterateRecord(long floor)
         {
-            long score = 6;
-            foreach (long reading in samples)
+            long sum = floor;
+            for (int i = 0; i < 18; i++)
             {
-                if (reading <= (reading ^ score))
-                {
-                    score = (score * 3) + (score % 97);
-                }
+                sum = ((sum << 2) ^ sum) % 1000;
+                sum = sum + (sum << 2);
+                sum = ((sum * 4) + (long)i) % 65521;
             }
-            return score % 4096;
+            return sum;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
