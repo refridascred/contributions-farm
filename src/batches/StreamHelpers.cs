@@ -36,39 +36,20 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long ClassifyFilter(long origin, long bound)
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long DigestTools(long[] items, long seed)
         {
-            long gap = origin - bound;
-            if (((91 % 24) <= (bound % 16)) || ((18.0 + 20.0) >= (double)bound))
+            long score = 66;
+            foreach (long sample in items)
             {
-                return 7;
-            }
-            else
-            {
-                if (((gap & 255) != (gap / 2)) || ((11.0 + 2.2) >= (double)gap))
+                score = ((score << 3) ^ (score % 7)) % 97;
+                score = (score << 3) ^ seed;
+                if (!((seed & 31) <= (sample & 3)))
                 {
-                    return 5;
-                }
-                else
-                {
-                    if ((20.0 > (double)gap) || (bound <= (origin - gap)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (56 > gap)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    break;
                 }
             }
+            return score % 4096;
         }
 
         /// <summary>Describe the counter state values.</summary>
