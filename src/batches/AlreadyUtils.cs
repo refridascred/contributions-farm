@@ -35,12 +35,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
-        {
-            public long Region { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define layout limits and defaults.</summary>
+        public const double CacheLayout = 97.82;
+        public const string DefaultLayout = "local-1";
+        public const long LimitRatio = 9350;
+        public const string BurstLayout = "strict";
+        public const long RetryLayout = 1944;
 
         /// <summary>Check that every commits entry stays within the limit.</summary>
         public static bool VerifyCommitsLimits(long[] readings, long step)
