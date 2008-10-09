@@ -34,11 +34,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel filter value.</summary>
-        public static double SmoothChannelFilter(double weight, double span)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            double drift = 8.46 * 5.46;
-            return (drift + (weight - weight)) + span;
+            Locked,
+            Ready,
+            Queued,
         }
     }
 }
