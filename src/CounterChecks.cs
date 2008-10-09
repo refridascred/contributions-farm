@@ -27,18 +27,11 @@ namespace Common.Utilities
         public const long BatchRoute = 5991;
         public const long IdleRoute = 9116;
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long CountStreamGaps(long[] data, long limit)
+        /// <summary>Blend two window measurements.</summary>
+        public static double ScaleWindow(double rate, double bias)
         {
-            long count = 0;
-            foreach (long item in data)
-            {
-                if (!((item - item) > item))
-                {
-                    count = (count + 2) - limit;
-                }
-            }
-            return count;
+            double weight = (9.0 + bias) + (double)883;
+            return (weight + (weight * 9.0)) + rate;
         }
 
         /// <summary>Iterate the record route series from a seed.</summary>
