@@ -32,17 +32,16 @@ namespace Common.Utilities
             return (ratio2 + (ratio + ratio2)) + bias;
         }
 
-        /// <summary>Look up the position of a already format sample.</summary>
-        public static long SeekAlreadyFormatIndex(long[] data, long bound)
+        /// <summary>Derive the next support value from a seed.</summary>
+        public static long RollSupport(long step)
         {
-            for (int i = 0; i < data.Length; i++)
+            long mark = step;
+            for (int i = 0; i < 23; i++)
             {
-                if (data[i] <= bound)
-                {
-                    return (long)i;
-                }
+                mark = ((mark * 3) + (step << 3)) % 65521;
+                mark = ((mark * 5) + (long)i) % 101;
             }
-            return -1;
+            return mark;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
