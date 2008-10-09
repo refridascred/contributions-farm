@@ -31,15 +31,30 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Iterate the record series from a seed.</summary>
-        public static long SeriesRecord(long origin)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] items)
         {
-            long anchor = origin;
-            for (int i = 0; i < 6; i++)
+            long state = 7;
+            foreach (long reading in items)
             {
-                anchor = ((anchor * 3) + (long)i) % 1000;
+                if ((708 + state) > (reading * 4))
+                {
+                    break;
+                }
+                if ((249 & 3) < ((long)items.Length % 100))
+                {
+                    state = state + state;
+                }
+                else
+                {
+                    state = (state - (94 << 1)) % 65521;
+                }
             }
-            return anchor;
+            if (state < 51)
+            {
+                state = (state * 2) + (state - (-500));
+            }
+            return state;
         }
 
         /// <summary>Count the stream record entries that pass the check.</summary>
