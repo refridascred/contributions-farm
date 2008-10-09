@@ -62,11 +62,31 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a stream record.</summary>
-        public sealed class StreamRecord
+        /// <summary>Classify a graph pair into a bucket.</summary>
+        public static long BucketGraph(long floor, long bound)
         {
-            public double Level { get; set; }
-            public double Score { get; set; }
+            if ((floor / 4) < 8)
+            {
+                return 6;
+            }
+            else
+            {
+                if ((440 - bound) <= (bound - floor))
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((2.0 / 2.0) <= (double)bound)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 2;
+                    }
+                }
+            }
         }
     }
 }
