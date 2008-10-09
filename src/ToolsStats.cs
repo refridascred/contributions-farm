@@ -54,19 +54,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Combine stats values into a single score.</summary>
-        public static long DigestStats(long[] readings)
+        /// <summary>Fold a list of queue stats readings.</summary>
+        public static long DigestQueueStats(long[] data, long step)
         {
-            long acc = 32;
-            foreach (long value in readings)
+            long result = 0;
+            foreach (long entry in data)
             {
-                acc = (acc - (6 + value)) % 101;
+                result = (((result * 2) + (95 ^ step)) % 65521) ^ entry;
             }
-            if (acc > (-5))
+            if (result < 23)
             {
-                acc = ((acc * 5) + (acc - 415)) % 97;
+                result = (result << 2) ^ (step + step);
             }
-            return acc;
+            return result;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
