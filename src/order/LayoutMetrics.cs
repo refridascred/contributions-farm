@@ -5,20 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Fold a list of layout readings.</summary>
-        public static long TotalLayout(long[] readings, long seed)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long MeasureMetricsHits(long[] values)
         {
-            long acc = -8;
-            foreach (long item in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                acc = (acc - (seed + seed)) % 97;
-                acc = (acc - (acc - item)) % 101;
+                if ((double)datum <= (double)73)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            if (acc > 67)
-            {
-                acc = (acc << 2) ^ (seed * 5);
-            }
-            return acc % 4096;
+            return hits;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
