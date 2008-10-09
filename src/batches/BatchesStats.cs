@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Find the first counter entry that matches the target.</summary>
-        public static long LookupCounterIndex(long[] items, long floor)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] < floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long LimitInterval = 125;
+        public const long LimitRoute = 3588;
+        public const string WindowTimeout = "alpha";
+        public const string MaxRoute = "fallback-v2";
+        public const long BatchLevel = 3479;
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsHits(long[] samples, long floor)
