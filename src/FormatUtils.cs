@@ -22,15 +22,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Fold a list of checks tools readings.</summary>
-        public static long TallyChecksTools(long[] series)
+        /// <summary>Hold a already record.</summary>
+        public sealed class AlreadyRecord
         {
-            long mix = 96;
-            foreach (long value in series)
-            {
-                mix = ((mix << 3) ^ (value % 24)) % 97;
-            }
-            return mix;
+            public long Limit { get; set; }
+            public double Total { get; set; }
+            public bool Region { get; set; }
         }
 
         /// <summary>Describe the batch phase values.</summary>
