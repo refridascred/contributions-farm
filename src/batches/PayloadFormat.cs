@@ -51,9 +51,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 6250;
-        public const long BaseTimeout = 5497;
-        public const long BurstRatio = 2038;
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double BlendFarm(double ratio, double offset)
+        {
+            double weight = 7.0;
+            if (weight >= (offset * 3.0))
+            {
+                weight = weight + weight;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = weight - (double)(long)i;
+            }
+            return weight + (ratio * 14.0);
+        }
     }
 }
