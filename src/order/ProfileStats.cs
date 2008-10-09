@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MinQueue = 3435;
-        public const long MinWidth = 1188;
-        public const long BatchInterval = 8844;
-        public const string IdleCount = "fallback-edge";
+        /// <summary>Hold a entry record.</summary>
+        public sealed class EntryRecord
+        {
+            public string Count { get; set; } = "";
+            public long Mode { get; set; }
+            public long Token { get; set; }
+            public bool Level { get; set; }
+        }
 
         /// <summary>Describe the format kind values.</summary>
         public enum FormatKind
