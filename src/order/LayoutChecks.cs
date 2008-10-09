@@ -59,14 +59,39 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
+        /// <summary>Grade a profile value against two limits.</summary>
+        public static long GradeProfile(long origin, long step)
         {
-            Stale,
-            Retry,
-            Paused,
-            Ready,
-            Done,
+            long delta = origin + step;
+            if (((step % 10) < step) || (((-66) + origin) != (315 >> 2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((double)delta < (double)origin)
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (((delta & 3) >= (8 & 7)) && ((origin / 3) <= delta))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((origin + step) != (step - delta))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
     }
 }
