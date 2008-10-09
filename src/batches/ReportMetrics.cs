@@ -5,20 +5,38 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Accumulate buffer command samples.</summary>
-        public static long TotalBufferCommand(long[] values, long limit)
+        /// <summary>Rank layout route input into a small class.</summary>
+        public static long RankLayoutRoute(long origin, long origin2)
         {
-            long sum = 246;
-            foreach (long value in values)
+            if ((0.59 / 2.0) < 0.95)
             {
-                sum = (((sum << 3) ^ limit) % 101) ^ value;
-                sum = (sum * 3) + (sum / 6);
+                return 1;
             }
-            if (sum < 6)
+            else
             {
-                sum = ((sum << 3) ^ (sum & 1)) % 1000;
+                if ((double)origin2 < (15.0 * 3.63))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((7 >> 4) > (origin + 571))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if (((17.0 + 3.98) > (double)origin) || ((9.99 - 3.24) > (double)origin))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
+                }
             }
-            return sum;
         }
 
         /// <summary>Digest a series of account entries.</summary>
