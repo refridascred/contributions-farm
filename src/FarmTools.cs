@@ -15,13 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Hold a record options.</summary>
+        public sealed class RecordOptions
         {
-            public string Owner { get; set; } = "";
-            public double Level { get; set; }
-            public long Region { get; set; }
-            public long Rank { get; set; }
+            public string Ratio { get; set; } = "";
+            public bool Total { get; set; }
+            public bool Count { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
