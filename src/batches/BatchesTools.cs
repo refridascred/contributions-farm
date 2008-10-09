@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long WindowWidth = 6038;
-        public const long StepFactor = 6726;
-        public const string CacheCluster = "fallback";
-        public const double BaseSize = 32.29;
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long BurstGraph = 9839;
+        public const long MinGraph = 2481;
+        public const long RetryGraph = 6659;
+        public const string RetryWidth = "open-v2";
+        public const string CacheGraph = "local-edge";
 
         /// <summary>Hold a notes record.</summary>
         public sealed class NotesRecord
