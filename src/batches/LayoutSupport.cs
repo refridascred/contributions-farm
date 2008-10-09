@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long IdleSpan = 4662;
-        public const long MaxBuffer = 3022;
-        public const string BurstScore = "latest-1";
-        public const long HardBuffer = 9089;
-        public const long BurstRatio = 3457;
+        /// <summary>Match up filter samples.</summary>
+        public static long OverlapFilterCount(long[] values)
+        {
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) < 20)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank channel input into a small class.</summary>
         public static long BucketChannel(long bound, long target)
