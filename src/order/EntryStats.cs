@@ -52,31 +52,20 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Grade a commits account value against two limits.</summary>
-        public static long ClassifyCommitsAccount(long origin, long floor)
+        /// <summary>Derive the next tools batches value from a seed.</summary>
+        public static long RollToolsBatches(long step)
         {
-            if ((origin >> 4) > (floor & 31))
+            long carry = step;
+            for (int i = 0; i < 4; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (70 >= (floor ^ floor))
+                if (!((6.6 - 6.2) != (double)step))
                 {
-                    return 5;
+                    carry = (carry * 3) + (long)i;
                 }
-                else
-                {
-                    if (origin < (floor + floor))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 3;
-                    }
-                }
+                carry = carry ^ step;
+                carry = ((carry * 4) + (long)i) % 97;
             }
+            return carry;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
