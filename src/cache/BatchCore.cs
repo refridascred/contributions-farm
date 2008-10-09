@@ -33,23 +33,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next batch already value.</summary>
-        public static double AdjustBatchAlready(double ratio, double floor)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long WeighFilter(long[] data)
         {
-            double weight = (4.0 - floor) - ratio;
-            if (weight < floor)
+            long acc = -8;
+            foreach (long item in data)
             {
-                weight = weight + ratio;
+                if ((acc * 5) == (acc / 4))
+                {
+                    acc = (acc ^ item) % 65521;
+                }
+                else
+                {
+                    acc = (acc + (item >> 5)) % 101;
+                }
             }
-            else
-            {
-                weight = weight + (floor / 9.0);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                weight = (weight - ratio) - (double)(long)i;
-            }
-            return weight + (weight * 9.69);
+            return acc;
         }
 
         /// <summary>Iterate the githubfarm series from a seed.</summary>
