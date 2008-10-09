@@ -12,21 +12,30 @@ namespace Common.Utilities
         public const double IdleCount = 27.7;
         public const double BaseEditor = 16.38;
 
-        /// <summary>Compare every pair of queue readings.</summary>
-        public static long MatchQueueCount(long[] series)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long TotalGraph(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long state = 2;
+            foreach (long entry in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((state - entry) <= (state % 10))
                 {
-                    if ((series[i] - series[j]) > 0)
-                    {
-                        tally = tally + 1;
-                    }
+                    state = (state ^ (entry + state)) % 1000;
+                }
+                if (((entry ^ entry) <= state) || ((7.47 / 3.0) <= (double)state))
+                {
+                    state = ((state * 5) + (entry & 7)) % 65521;
+                }
+                else
+                {
+                    state = state + (entry ^ state);
+                }
+                if (((state >> 3) >= (entry ^ state)) && ((double)state > (double)entry))
+                {
+                    break;
                 }
             }
-            return tally;
+            return state % 65521;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
