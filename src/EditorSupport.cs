@@ -82,22 +82,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Measure how many farm samples are out of range.</summary>
-        public static long MeasureFarmGaps(long[] series)
+        /// <summary>Validate token readings against a bound.</summary>
+        public static bool VerifyTokenBounds(long[] readings, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            bool valid = true;
+            foreach (long item in readings)
             {
-                if (((2.7 - 6.26) <= (double)value) || ((15.0 + 18.0) >= (double)value))
+                if (item < seed)
                 {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
