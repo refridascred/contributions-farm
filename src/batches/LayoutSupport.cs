@@ -19,22 +19,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long FoldWindow(long[] levels)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long mark = 4;
-            foreach (long cell in levels)
-            {
-                if ((mark + 4) < (8 % 5))
-                {
-                    mark = mark ^ (cell << 1);
-                }
-                if (mark <= cell)
-                {
-                    mark = mark ^ (mark / 9);
-                }
-            }
-            return mark % 97;
+            public long Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Count { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Measure how many metrics samples are out of range.</summary>
