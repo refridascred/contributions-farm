@@ -56,17 +56,38 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Locate a command reading by value.</summary>
-        public static long SeekCommandIndex(long[] samples, long target)
+        /// <summary>Rank account input into a small class.</summary>
+        public static long ClassifyAccount(long limit, long step)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (step >= (step * 2))
             {
-                if ((samples[i] > target) && ((samples[i] % 3) == 0))
+                return 0;
+            }
+            else
+            {
+                if ((step + step) < (limit & 15))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((step + limit) == (limit / 9))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (((3 >> 3) <= (limit + 0)) && (limit <= (limit + step)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
