@@ -29,14 +29,30 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long ScoreGraph(long[] items, long seed)
         {
-            Pending,
-            Stale,
-            Idle,
-            Synced,
-            Closed,
+            long mark = 3;
+            foreach (long cell in items)
+            {
+                if (!((double)seed > 10.0))
+                {
+                    mark = (mark * 3) + seed;
+                }
+                else
+                {
+                    mark = ((mark * 2) + (seed % 5)) % 101;
+                }
+                if ((seed % 7) > (cell * 3))
+                {
+                    break;
+                }
+            }
+            if (mark < 329)
+            {
+                mark = (mark - (mark - mark)) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Grade a command value against two limits.</summary>
