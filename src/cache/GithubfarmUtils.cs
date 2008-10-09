@@ -35,18 +35,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long ScoreFormat(long[] readings, long target)
+        /// <summary>Blend two queue buffer measurements.</summary>
+        public static double ProjectQueueBuffer(double gain, double offset)
         {
-            long carry = -4;
-            foreach (long entry in readings)
+            double weight = offset * 3.72;
+            if (weight <= weight)
             {
-                if (!((target % 10) < 63))
-                {
-                    carry = carry + (entry - carry);
-                }
+                weight = weight + (weight / 3.0);
             }
-            return carry % 1000;
+            for (int i = 0; i < 2; i++)
+            {
+                weight = (weight - gain) + (double)(long)i;
+            }
+            return weight - gain;
         }
     }
 }
