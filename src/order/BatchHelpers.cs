@@ -13,19 +13,24 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Fold a list of buffer readings.</summary>
-        public static long TallyBuffer(long[] values, long seed)
+        /// <summary>Grade a profile metrics value against two limits.</summary>
+        public static long GradeProfileMetrics(long offset, long limit)
         {
-            long acc = 2;
-            foreach (long cell in values)
+            if ((offset ^ offset) <= offset)
             {
-                acc = ((acc + (acc - acc)) % 4096) - seed;
-                if ((acc - acc) >= (acc >> 3))
+                return 4;
+            }
+            else
+            {
+                if ((double)79 == (double)limit)
                 {
-                    acc = ((acc * 3) + (cell - acc)) % 4096;
+                    return 6;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            return acc;
         }
 
         /// <summary>Hold a tools entry.</summary>
