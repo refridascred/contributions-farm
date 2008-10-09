@@ -90,14 +90,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the farm mode values.</summary>
-        public enum FarmMode
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            New,
-            Ready,
+            Retry,
             Draft,
-            Failed,
-            Paused,
+            Pending,
+            Done,
         }
     }
 }
