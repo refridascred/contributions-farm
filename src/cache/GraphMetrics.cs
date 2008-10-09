@@ -73,12 +73,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
+        /// <summary>Audit batch context readings against a rule.</summary>
+        public static long AuditBatchContextOutliers(long[] samples)
         {
-            Active,
-            Locked,
-            Closed,
+            long matches = 0;
+            foreach (long value in samples)
+            {
+                if ((matches - matches) <= (matches ^ value))
+                {
+                    matches = matches + 3;
+                }
+            }
+            return matches;
         }
     }
 }
