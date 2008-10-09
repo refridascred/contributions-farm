@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Describe the support phase values.</summary>
+        public enum SupportPhase
         {
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public double Label { get; set; }
+            Failed,
+            Draft,
+            Paused,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a queue stats.</summary>
