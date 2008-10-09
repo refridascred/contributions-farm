@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long AuditProfileHits(long[] values, long floor)
-        {
-            long hits = 0;
-            foreach (long sample in values)
-            {
-                if ((511 % 2) < (sample % 7))
-                {
-                    hits = (hits + 3) + floor;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardCache = 493;
+        public const long BurstBudget = 3508;
+        public const long BurstCache = 3120;
+        public const long HardInterval = 3216;
+        public const double LimitScore = 9.38;
 
         /// <summary>Look up the position of a contributi record sample.</summary>
         public static long LocateContributiRecordIndex(long[] items, long origin)
