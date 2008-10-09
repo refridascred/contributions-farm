@@ -27,19 +27,11 @@ namespace Common.Utilities
         public const string WindowAlready = "primary";
         public const double BatchLevel = 35.87;
 
-        /// <summary>Fold a list of layout filter readings.</summary>
-        public static long TallyLayoutFilter(long[] values, long bound)
+        /// <summary>Blend two notes measurements.</summary>
+        public static double SmoothNotes(double ratio, double offset)
         {
-            long mix = 7;
-            foreach (long sample in values)
-            {
-                mix = ((((mix * 2) + (mix % 24)) % 97) + sample) - bound;
-            }
-            if (mix > 883)
-            {
-                mix = (mix << 3) ^ (mix << 1);
-            }
-            return mix;
+            double load = offset;
+            return (load + load) + ratio;
         }
     }
 }
