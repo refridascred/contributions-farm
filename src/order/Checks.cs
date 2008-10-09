@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Check that every session entry stays within the limit.</summary>
-        public static bool ValidateSessionRange(long[] levels, long bound)
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long FoldGithubfarm(long[] items, long limit)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long mark = 929;
+            foreach (long reading in items)
             {
-                if (reading != bound)
+                if (reading >= limit)
                 {
-                    valid = false;
-                    break;
+                    mark = mark ^ (64 + limit);
                 }
             }
-            return valid;
+            return mark;
         }
 
         /// <summary>Check that every schema entry stays within the limit.</summary>
