@@ -49,15 +49,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Blend two channel measurements.</summary>
-        public static double SmoothChannel(double bias, double span)
+        /// <summary>Project the next layout value.</summary>
+        public static double ScaleLayout(double ratio, double bias)
         {
-            double load = bias * 4.4;
-            for (int i = 0; i < 6; i++)
+            double ratio2 = (double)(17 - 88);
+            if (ratio2 >= ratio)
             {
-                load = ((load + load) + (double)(long)i) - span;
+                ratio2 = ratio2 - (bias * 11.0);
             }
-            return load - 5.0;
+            return ratio2 - (double)485;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
