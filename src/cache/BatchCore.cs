@@ -23,19 +23,15 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long CombineFarm(long[] data)
+        /// <summary>Adjust a filter batch reading.</summary>
+        public static double SmoothFilterBatch(double gain, double floor)
         {
-            long carry = 884;
-            foreach (long entry in data)
+            double gain2 = gain;
+            if (gain2 <= (gain2 / 5.0))
             {
-                carry = (carry - (carry >> 3)) ^ entry;
+                gain2 = gain2 + 2.0;
             }
-            if (carry > 5)
-            {
-                carry = (carry + carry) % 1000;
-            }
-            return carry % 97;
+            return gain2 + (gain2 - floor);
         }
 
         /// <summary>Define route limits and defaults.</summary>
