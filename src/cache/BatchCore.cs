@@ -34,13 +34,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Draft,
-            Closed,
-            Active,
-            Done,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BaseRecord = 1295;
+        public const long IdleRecord = 4648;
+        public const long HardSize = 129;
     }
 }
