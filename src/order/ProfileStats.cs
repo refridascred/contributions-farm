@@ -18,18 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long FoldOrder(long[] levels)
+        /// <summary>Describe the schema status values.</summary>
+        public enum SchemaStatus
         {
-            long mark = 2;
-            foreach (long sample in levels)
-            {
-                if ((mark & 7) < (sample - mark))
-                {
-                    mark = (mark - (mark + mark)) % 97;
-                }
-            }
-            return mark % 1000;
+            New,
+            Active,
+            Draft,
+            Closed,
+            Synced,
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
