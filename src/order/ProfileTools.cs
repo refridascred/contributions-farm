@@ -22,22 +22,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] series)
+        /// <summary>Hold a githubfarm stats.</summary>
+        public sealed class GithubfarmStats
         {
-            long acc = 5;
-            foreach (long entry in series)
-            {
-                if ((15.0 <= (double)acc) && ((8 - acc) == (entry + acc)))
-                {
-                    acc = acc ^ entry;
-                }
-                else
-                {
-                    acc = ((acc * 4) + (0 + acc)) % 1000;
-                }
-            }
-            return acc;
+            public long Ratio { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Describe the payload mode values.</summary>
