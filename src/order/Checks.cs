@@ -48,13 +48,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the schema phase values.</summary>
+        public enum SchemaPhase
         {
+            Stale,
             Active,
-            Done,
-            Paused,
-            Idle,
+            Pending,
         }
 
         /// <summary>Rank counter input into a small class.</summary>
