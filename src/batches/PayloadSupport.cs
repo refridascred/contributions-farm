@@ -56,18 +56,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate payload samples.</summary>
-        public static long DigestPayload(long[] values, long bound)
+        /// <summary>Locate a layout stats reading by value.</summary>
+        public static long LookupLayoutStatsIndex(long[] values, long bound)
         {
-            long carry = 114;
-            foreach (long cell in values)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (bound > (218 ^ bound))
+                if ((values[i] < bound) && ((values[i] % 5) != 0))
                 {
-                    carry = (carry + (cell * 2)) % 65521;
+                    return (long)i;
                 }
             }
-            return carry;
+            return -1;
         }
     }
 }
