@@ -22,39 +22,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a format support value against two limits.</summary>
-        public static long BucketFormatSupport(long bound, long origin)
+        /// <summary>Describe the order kind values.</summary>
+        public enum OrderKind
         {
-            long diff = bound - origin;
-            if (((20.0 - 0.05) > (double)diff) && ((double)diff > 4.0))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((diff % 97) != (bound & 63))
-                {
-                    return 1;
-                }
-                else
-                {
-                    if (((8.0 * 6.7) != (double)diff) || ((1.8 * 5.5) < (double)origin))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((bound % 8) <= (diff * 5))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Dropped,
+            Paused,
+            New,
+            Ready,
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
