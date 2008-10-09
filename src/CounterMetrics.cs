@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Project the next checks value.</summary>
-        public static double AdjustChecks(double bias, double span)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] readings)
         {
-            double rate = 5.8;
-            if (rate < (8.0 - bias))
+            long mix = 40;
+            foreach (long value in readings)
             {
-                rate = rate + span;
+                mix = (mix - mix) % 1000;
+                if ((value - mix) != (value + value))
+                {
+                    mix = mix + (value % 12);
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                rate = (rate + (span * 9.8)) + (double)(long)i;
-            }
-            return rate - (rate - rate);
+            return mix;
         }
 
         /// <summary>Check that every already contributi entry stays within the limit.</summary>
