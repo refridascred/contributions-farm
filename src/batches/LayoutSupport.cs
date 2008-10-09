@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long MeasureToolsOutliers(long[] data, long target)
-        {
-            long seen = 0;
-            foreach (long reading in data)
-            {
-                if (seen > target)
-                {
-                    seen = (seen + 1) + reading;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long IdleSpan = 4662;
+        public const long MaxBuffer = 3022;
+        public const string BurstScore = "latest-1";
+        public const long HardBuffer = 9089;
+        public const long BurstRatio = 3457;
 
         /// <summary>Check that every contributi entry stays within the limit.</summary>
         public static bool CheckContributiBounds(long[] readings, long offset)
