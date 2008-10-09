@@ -18,10 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double WindowDepth = 87.1;
-        public const long RetryToken = 1603;
-        public const long LimitToken = 2503;
+        /// <summary>Count graph tools pairs that satisfy a relation.</summary>
+        public static long OverlapGraphToolsCount(long[] readings)
+        {
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
