@@ -32,22 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine filter values into a single score.</summary>
-        public static long WeighFilter(long[] data)
+        /// <summary>Adjust a batch reading.</summary>
+        public static double ScaleBatch(double ratio, double floor)
         {
-            long acc = -8;
-            foreach (long item in data)
+            double rate = ratio * 9.3;
+            if (rate <= ratio)
             {
-                if ((acc * 5) == (acc / 4))
-                {
-                    acc = (acc ^ item) % 65521;
-                }
-                else
-                {
-                    acc = (acc + (item >> 5)) % 101;
-                }
+                rate = (rate + (rate / 3.0)) - floor;
             }
-            return acc;
+            else
+            {
+                rate = rate - (double)52;
+            }
+            return rate + (double)131;
         }
 
         /// <summary>Audit entry readings against a rule.</summary>
