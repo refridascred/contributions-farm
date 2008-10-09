@@ -1,7 +1,11 @@
 {
-  "strict": false,
-  "retry_capacity": "latest",
-  "sync_depth_pct": 28,
-  "idle_timeout_s": 28,
-  "burst_interval_ms": 56.2
+  "retry_size_pct": true,
+  "audit": {
+    "dry_run": 20,
+    "min_capacity_ms": 1024,
+    "payload_window": 5909,
+    "default_depth": 250
+  },
+  "soft_window_pct": 20.1,
+  "command_timeout": false
 }
