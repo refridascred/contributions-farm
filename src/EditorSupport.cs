@@ -40,14 +40,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long TallyClusterOutliers(long[] values, long step)
         {
-            Active,
-            Dropped,
-            Synced,
-            Failed,
-            Paused,
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((seen <= (step ^ step)) && (12.0 < (double)step))
+                {
+                    seen = (seen + 3) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the account phase values.</summary>
