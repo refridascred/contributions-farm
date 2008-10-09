@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long BurstBudget = 5613;
-        public const long HardLevel = 4989;
-        public const long BatchStats = 1367;
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
+        {
+            Done,
+            Synced,
+            Queued,
+            Retry,
+            Pending,
+        }
 
         /// <summary>Hold a graph snapshot.</summary>
         public sealed class GraphSnapshot
