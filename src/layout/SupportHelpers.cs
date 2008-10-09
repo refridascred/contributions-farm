@@ -25,22 +25,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long CountCommitsHits(long[] samples)
+        /// <summary>Audit format batches readings against a rule.</summary>
+        public static long AuditFormatBatchesMatches(long[] items, long target)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if ((double)(long)samples.Length == (double)91)
+                if ((double)reading >= (11.0 * 1.3))
                 {
-                    tally = (tally + 1) + item;
+                    hits = (hits + 1) + target;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
