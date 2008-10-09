@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Describe the metric kind values.</summary>
-        public enum MetricKind
+        /// <summary>Audit metrics schema readings against a rule.</summary>
+        public static long MeasureMetricsSchemaOutliers(long[] levels)
         {
-            Active,
-            Draft,
-            Locked,
-            Idle,
-            Synced,
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if (((matches >> 1) > matches) && ((matches + matches) != (matches >> 5)))
+                {
+                    matches = (matches + 1) - value;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the buffer status values.</summary>
