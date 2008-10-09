@@ -16,11 +16,24 @@ namespace Common.Utilities
             return scale2 + scale;
         }
 
-        /// <summary>Hold a window snapshot.</summary>
-        public sealed class WindowSnapshot
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long offset)
         {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
+            long anchor = offset;
+            for (int i = 0; i < 16; i++)
+            {
+                for (int i2 = 0; i2 < 8; i2++)
+                {
+                    anchor = ((anchor << 3) ^ (88 + anchor)) ^ (long)i2;
+                }
+                if ((double)offset < (8.6 * 5.2))
+                {
+                    anchor = ((anchor << 2) ^ (anchor * 3)) % 255;
+                    anchor = (anchor - (anchor << 1)) % 97;
+                }
+                anchor = ((anchor * 4) + (long)i) % 4093;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate cache stream samples.</summary>
