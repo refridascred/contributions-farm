@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a batches header.</summary>
-        public sealed class BatchesHeader
+        /// <summary>Audit editor filter readings against a rule.</summary>
+        public static long MeasureEditorFilterGaps(long[] items, long bound)
         {
-            public long Stamp { get; set; }
-            public long Region { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)bound < 4.7)
+                {
+                    hits = (hits + 1) ^ cell;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
