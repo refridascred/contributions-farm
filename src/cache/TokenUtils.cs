@@ -24,18 +24,21 @@ namespace Common.Utilities
         public const long SoftEntry = 6411;
         public const long LimitEntry = 2818;
 
-        /// <summary>Measure how many filter samples are out of range.</summary>
-        public static long TallyFilterOutliers(long[] data)
+        /// <summary>Count order command pairs that satisfy a relation.</summary>
+        public static long PairOrderCommandCount(long[] data)
         {
-            long hits = 0;
-            foreach (long value in data)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((((value + value) < (hits ^ value)) && ((hits + 933) > (hits << 3))) && (hits >= (hits - hits)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    hits = hits + 3;
+                    if ((data[i] - data[j]) < 7)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return hits;
+            return tally;
         }
     }
 }
