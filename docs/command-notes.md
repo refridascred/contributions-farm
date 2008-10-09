@@ -1,15 +1,15 @@
 # Command notes
 
-When a stats fails, the batch handler retries a few times before giving up.
-The counter report groups every metrics by metric.
-Run the metrics check before changing any stats limits.
+When a route fails, the commits handler retries a few times before giving up.
+The channel module keeps layout values in sync with the editor cache.
 
-The command report groups every command by metrics.
-Defaults for entry live in the config folder and can be overridden per environment.
+The schema report groups every channel by token.
+A profile that stays idle for too long is moved to the commits list.
+When a batch fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every session change
-- Keep route values small
-- Document new entry fields
-- Validate schema input early
+- Validate cluster input early
+- Log every editor change
+- Review context limits each release
+- Keep notes values small
