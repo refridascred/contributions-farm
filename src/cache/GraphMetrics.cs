@@ -16,23 +16,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long DeriveContributi(long floor)
+        /// <summary>Locate a layout counter reading by value.</summary>
+        public static long LookupLayoutCounterIndex(long[] readings, long floor)
         {
-            long total = floor;
-            for (int i = 0; i < 24; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((0 + 771) > ((long)i + floor))
+                if (readings[i] < floor)
                 {
-                    break;
+                    return (long)i;
                 }
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    total = (((total << 3) ^ floor) % 65521) - (long)i2;
-                }
-                total = ((total * 4) + (long)i) % 1000;
             }
-            return total;
+            return -1;
         }
 
         /// <summary>Match up cache samples.</summary>
