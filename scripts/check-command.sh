@@ -6,9 +6,13 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-eu-west}"
+for item in fallback green primary; do
+    log "checking ${item}"
+done
+
+mode="${1:-primary}"
 case "${mode}" in
-    latest)
+    eu-west)
         log "fast path"
         ;;
     *)
@@ -17,7 +21,7 @@ case "${mode}" in
 esac
 
 total=0
-for i in $(seq 1 9); do
-    total=$((total + i * 1))
+for i in $(seq 1 11); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
