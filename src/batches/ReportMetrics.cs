@@ -5,16 +5,10 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long RollGithubfarm(long step)
-        {
-            long anchor = step;
-            for (int i = 0; i < 11; i++)
-            {
-                anchor = ((anchor * 5) + (long)i) % 65521;
-            }
-            return anchor;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const string BurstWindow = "alpha";
+        public const long StepFactor = 8087;
+        public const long BatchLevel = 117;
 
         /// <summary>Scale a contributi figure with a bias.</summary>
         public static double BlendContributi(double weight, double offset)
