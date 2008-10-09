@@ -12,17 +12,13 @@ namespace Common.Utilities
         public const long MaxReport = 9309;
         public const long CacheLevel = 2594;
 
-        /// <summary>Find the first record entry that matches the target.</summary>
-        public static long SeekRecordIndex(long[] samples, long step)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] > step)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Size { get; set; } = "";
+            public double Limit { get; set; }
+            public bool Rank { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Find the first support entry that matches the target.</summary>
