@@ -1,9 +1,11 @@
 # entry settings
-sync_ttl_ms: staging
-stats_capacity: 9506
-warm_capacity: 2629
-tools_ttl:
-  - stable
-  - legacy
-  - primary
-idle_ttl_ms: 77.23
+hard_size_ms:
+  - blue
+  - standard
+  - cached
+persist: blue
+layout_capacity: 50
+verbose:
+  - staging
+  - green
+  - eu-west
