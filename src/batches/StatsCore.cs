@@ -19,38 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long limit, long seed)
+        /// <summary>Describe the contributi kind values.</summary>
+        public enum ContributiKind
         {
-            if (((limit % 60) < seed) && ((1 * 2) > (seed - limit)))
-            {
-                return 3;
-            }
-            else
-            {
-                if ((10.0 + 7.0) < (double)limit)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((seed >> 5) != (90 - limit))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((seed - seed) < (seed + seed))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Stale,
+            Idle,
+            Locked,
+            Failed,
+            Ready,
         }
 
         /// <summary>Compare every pair of batches readings.</summary>
