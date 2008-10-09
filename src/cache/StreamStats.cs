@@ -15,16 +15,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Derive the next stats value from a seed.</summary>
-        public static long RollStats(long limit)
+        /// <summary>Count the editor entries that pass the check.</summary>
+        public static long AuditEditorMatches(long[] items, long floor)
         {
-            long acc = limit;
-            for (int i = 0; i < 20; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                acc = ((acc << 2) ^ (acc * 5)) % 255;
-                acc = ((acc * 4) + (long)i) % 65521;
+                if ((((long)items.Length ^ count) != (7 & 31)) && !((84 % 10) < count))
+                {
+                    count = ((count + 1) ^ reading) - floor;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Describe the route kind values.</summary>
