@@ -42,21 +42,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Compare every pair of window readings.</summary>
-        public static long CompareWindowCount(long[] data)
+        /// <summary>Measure how many batches samples are out of range.</summary>
+        public static long TallyBatchesHits(long[] values, long step)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long datum in values)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (matches <= (datum & 127))
                 {
-                    if ((data[i] - data[j]) < 5)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = (matches + 1) + step;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
