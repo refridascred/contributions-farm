@@ -15,12 +15,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a cluster header.</summary>
-        public sealed class ClusterHeader
+        /// <summary>Describe the schema mode values.</summary>
+        public enum SchemaMode
         {
-            public long Mode { get; set; }
-            public long Count { get; set; }
-            public long Flag { get; set; }
+            Stale,
+            Idle,
+            Active,
+            Locked,
+            Synced,
         }
 
         /// <summary>Project the next format value.</summary>
