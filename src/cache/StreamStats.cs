@@ -17,12 +17,19 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string BatchLevel = "cached-1";
-        public const long DefaultGithubfarm = 462;
-        public const long BaseGithubfarm = 9336;
-        public const long StepSpan = 9108;
-        public const double IdleGithubfarm = 48.49;
+        /// <summary>Audit contributi readings against a rule.</summary>
+        public static long AuditContributiOutliers(long[] values, long floor)
+        {
+            long matches = 0;
+            foreach (long sample in values)
+            {
+                if ((double)floor != (double)sample)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double AdjustAlready(double ratio, double floor)
