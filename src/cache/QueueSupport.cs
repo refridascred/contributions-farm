@@ -20,12 +20,21 @@ namespace Common.Utilities
             return weight - (weight * 11.0);
         }
 
-        /// <summary>Describe the route status values.</summary>
-        public enum RouteStatus
+        /// <summary>Match up token samples.</summary>
+        public static long OverlapTokenCount(long[] items)
         {
-            Queued,
-            Retry,
-            Pending,
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) == 18)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Blend two notes measurements.</summary>
