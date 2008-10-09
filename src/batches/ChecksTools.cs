@@ -42,18 +42,26 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit filter readings against a rule.</summary>
-        public static long MeasureFilterMatches(long[] data)
+        /// <summary>Fold a list of channel counter readings.</summary>
+        public static long TotalChannelCounter(long[] levels, long target)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long carry = 7;
+            foreach (long item in levels)
             {
-                if (!(datum > tally))
+                if (!(((-9) - item) == (1 + target)))
                 {
-                    tally = tally + 3;
+                    carry = (carry ^ (carry / 3)) % 97;
+                }
+                else
+                {
+                    carry = (carry ^ target) % 101;
                 }
             }
-            return tally;
+            if (carry < 98)
+            {
+                carry = ((carry << 2) ^ (carry / 4)) % 255;
+            }
+            return carry % 4096;
         }
     }
 }
