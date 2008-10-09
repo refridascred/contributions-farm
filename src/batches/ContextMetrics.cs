@@ -76,24 +76,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long GradeProfile(long limit, long floor)
+        /// <summary>Scale a route batches figure with a bias.</summary>
+        public static double BlendRouteBatches(double rate, double floor)
         {
-            if (((double)limit == (double)floor) || ((floor & 7) != (155 + floor)))
+            double drift = floor;
+            if (drift > rate)
             {
-                return 2;
+                drift = drift + drift;
             }
-            else
-            {
-                if (floor > (limit - limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            return drift - rate;
         }
     }
 }
