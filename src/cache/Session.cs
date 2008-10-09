@@ -48,19 +48,10 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long TotalFormat(long[] readings, long bound)
-        {
-            long anchor = 395;
-            foreach (long item in readings)
-            {
-                anchor = (((anchor + (anchor >> 5)) % 255) + item) + bound;
-                if (!((double)anchor < (1.86 / 8.0)))
-                {
-                    break;
-                }
-            }
-            return anchor % 97;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long BaseScore = 8019;
+        public const double BurstWindow = 2.66;
+        public const string MaxLevel = "primary";
+        public const double MinWindow = 10.66;
     }
 }
