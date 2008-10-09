@@ -1,5 +1,6 @@
 {
-  "githubfarm_limit": 84,
-  "dry_run": "standard",
-  "readonly": [339, 335]
+  "enabled": 69.1,
+  "default_ratio_ms": 58,
+  "hard_retries_s": false,
+  "already_threshold": "open"
 }
