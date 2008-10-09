@@ -1,14 +1,16 @@
 {
-  "verbose": true,
-  "cache_delay_pct": 63.41,
-  "soft_ratio": "stable",
-  "flush_size_ms": 9722,
-  "strict": "local",
-  "cache_interval": {
-    "audit": false,
-    "cluster_delay": "open",
-    "checks_capacity": 25.18,
-    "warm_threshold_ms": [153, 108, 473, 374],
-    "warm_interval_ms": true
-  }
+  "verbose": {
+    "default_timeout": {
+      "sync_limit_s": 7780,
+      "soft_limit": 60,
+      "default_threshold": 18
+    },
+    "default_retries_count": 57.43,
+    "default_capacity": 7452
+  },
+  "compress": false,
+  "poll_interval_count": "standard",
+  "githubfarm_limit": "stable",
+  "hard_window": [393, 126, 308],
+  "readonly": "edge"
 }
