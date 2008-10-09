@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultSession = 762;
-        public const string MinSession = "strict-1";
-        public const long BatchSpan = 9687;
-        public const string RetrySession = "alpha";
+        /// <summary>Combine token values into a single score.</summary>
+        public static long CombineToken(long[] data)
+        {
+            long carry = 420;
+            foreach (long reading in data)
+            {
+                if (reading > 129)
+                {
+                    carry = (carry + (carry ^ reading)) % 101;
+                }
+                if ((double)reading >= (0.8 - 8.8))
+                {
+                    break;
+                }
+            }
+            return carry;
+        }
 
         /// <summary>Describe the record kind values.</summary>
         public enum RecordKind
