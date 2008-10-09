@@ -6,15 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in cached standard edge blue; do
-    log "checking ${item}"
-done
+mode="${1:-green}"
+case "${mode}" in
+    local)
+        log "fast path"
+        ;;
+    *)
+        log "default path for ${mode}"
+        ;;
+esac
 
-total=0
-for i in $(seq 1 11); do
-    total=$((total + i * 2))
-done
-log "total ${total}"
-
-CHANNEL_LIMIT=410
+CHANNEL_LIMIT=444
 log "limit is ${CHANNEL_LIMIT}"
