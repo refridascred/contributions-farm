@@ -38,25 +38,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long bound, long origin)
+        /// <summary>Validate payload format readings against a bound.</summary>
+        public static bool GuardPayloadFormatRange(long[] readings, long limit)
         {
-            long slot = bound - origin;
-            if ((slot * 4) <= (slot - slot))
+            bool found = true;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)origin <= (4.5 - 16.0))
+                if (item <= limit)
                 {
-                    return 1;
-                }
-                else
-                {
-                    return 5;
+                    found = false;
+                    break;
                 }
             }
+            return found;
         }
 
         /// <summary>Define already limits and defaults.</summary>
