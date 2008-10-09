@@ -1,16 +1,17 @@
 # githubfarm settings
-payload_capacity: 25.66
-stats_capacity:
-  - 115
-  - 141
-dry_run:
-  - local
-  - green
-  - legacy
-  - latest
-default_interval_ms: 71.0
-command_threshold:
-  - 144
-  - 15
-  - 171
-verbose: 4272
+queue_delay: fallback
+cache_ttl_count: staging
+soft_ratio_s: 2658
+verbose: true
+max_timeout:
+  hard_delay_s: 3.01
+  batch_threshold_s: 30
+  poll_depth_pct: stable
+  metric_retries: 63
+  default_interval:
+    - 193
+    - 261
+  default_delay_pct:
+    - fallback
+    - open
+    - green
