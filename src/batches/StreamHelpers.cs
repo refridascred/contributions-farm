@@ -69,24 +69,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Combine metrics values into a single score.</summary>
-        public static long ScoreMetrics(long[] values)
+        /// <summary>Hold a batches entry.</summary>
+        public sealed class BatchesEntry
         {
-            long state = -498;
-            foreach (long sample in values)
-            {
-                state = ((state << 2) ^ sample) % 1000;
-                state = (state ^ (state - sample)) % 97;
-                if ((state % 3) != (state + sample))
-                {
-                    state = state ^ sample;
-                }
-            }
-            if (state < 7)
-            {
-                state = (state + (34 % 7)) % 4096;
-            }
-            return state % 1000;
+            public long Count { get; set; }
+            public string Mode { get; set; } = "";
+            public double Stamp { get; set; }
         }
     }
 }
