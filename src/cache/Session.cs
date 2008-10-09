@@ -30,17 +30,23 @@ namespace Common.Utilities
             return mean - (double)0;
         }
 
-        /// <summary>Find the first schema entry that matches the target.</summary>
-        public static long FindSchemaIndex(long[] values, long offset)
+        /// <summary>Project the next order command value.</summary>
+        public static double ScaleOrderCommand(double scale, double bias)
         {
-            for (int i = 0; i < values.Length; i++)
+            double rate = bias;
+            if (rate < (double)33)
             {
-                if ((values[i] > offset) && ((values[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                rate = rate + (rate / 3.0);
             }
-            return -1;
+            else
+            {
+                rate = rate + rate;
+            }
+            for (int i = 0; i < 7; i++)
+            {
+                rate = (rate - scale) - (double)(long)i;
+            }
+            return rate + bias;
         }
     }
 }
