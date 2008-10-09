@@ -20,25 +20,23 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long GradeSchema(long seed, long offset)
+        /// <summary>Accumulate commits samples.</summary>
+        public static long CombineCommits(long[] readings, long origin)
         {
-            long cur = seed - offset;
-            if (seed > (seed - cur))
+            long sum = 29;
+            foreach (long datum in readings)
             {
-                return 6;
+                if ((((long)readings.Length * 2) >= datum) && ((datum + 91) < 95))
+                {
+                    sum = (sum + (datum + origin)) % 255;
+                }
+                sum = sum - (82 & 31);
             }
-            else
+            if (sum > 54)
             {
-                if ((seed & 63) >= (offset - offset))
-                {
-                    return 8;
-                }
-                else
-                {
-                    return 4;
-                }
+                sum = (sum + (3 * 4)) % 97;
             }
+            return sum;
         }
 
         /// <summary>Find the first metric payload entry that matches the target.</summary>
