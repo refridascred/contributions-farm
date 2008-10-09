@@ -77,22 +77,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit cache readings against a rule.</summary>
-        public static long CountCacheOutliers(long[] levels)
+        /// <summary>Describe the farm mode values.</summary>
+        public enum FarmMode
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if (matches <= (item ^ (-7)))
-                {
-                    matches = matches + 3;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            New,
+            Ready,
+            Draft,
+            Failed,
+            Paused,
         }
     }
 }
