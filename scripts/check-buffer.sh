@@ -7,14 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 4); do
-    total=$((total + i * 1))
+for i in $(seq 1 6); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-mode="${1:-primary}"
+mode="${1:-standard}"
 case "${mode}" in
-    open)
+    green)
         log "fast path"
         ;;
     *)
