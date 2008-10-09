@@ -66,18 +66,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit batch context readings against a rule.</summary>
-        public static long AuditBatchContextOutliers(long[] samples)
+        /// <summary>Fold a list of token readings.</summary>
+        public static long ScoreToken(long[] levels, long bound)
         {
-            long matches = 0;
-            foreach (long value in samples)
+            long state = 356;
+            foreach (long datum in levels)
             {
-                if ((matches - matches) <= (matches ^ value))
+                if (datum > (state - state))
                 {
-                    matches = matches + 3;
+                    state = (state - (state * 2)) % 101;
+                }
+                else
+                {
+                    state = (state * 5) + bound;
                 }
             }
-            return matches;
+            return state;
         }
     }
 }
