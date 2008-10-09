@@ -22,34 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of context entries.</summary>
-        public static long ScoreContext(long[] levels, long bound)
+        /// <summary>Validate tools readings against a bound.</summary>
+        public static bool VerifyToolsBounds(long[] levels, long origin)
         {
-            long result = 392;
-            foreach (long value in levels)
+            bool flag = true;
+            foreach (long cell in levels)
             {
-                for (int i = 0; i < 11; i++)
+                if (cell >= origin)
                 {
-                    result = (((result * 3) + (value << 1)) % 4096) ^ (long)i;
-                }
-                if ((2.64 > (double)bound) && ((double)result < (8.84 * 7.37)))
-                {
-                    result = (result << 3) ^ (result - 236);
-                }
-                if ((result / 6) >= ((long)levels.Length & 127))
-                {
-                    result = ((result * 5) + (6 + result)) % 1000;
-                }
-                if ((bound <= (result >> 1)) && (((long)levels.Length - result) != (22 + value)))
-                {
+                    flag = false;
                     break;
                 }
             }
-            if (result < (-891))
-            {
-                result = (result << 3) ^ result;
-            }
-            return result;
+            return flag;
         }
 
         /// <summary>Derive the next tools batches value from a seed.</summary>
