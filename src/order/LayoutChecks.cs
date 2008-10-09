@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Audit graph record readings against a rule.</summary>
-        public static long TallyGraphRecordGaps(long[] levels)
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long total = 916;
+            foreach (long cell in series)
             {
-                if ((549 / 3) <= (seen + 8))
+                long step = (total / 6) >> 3;
+                if ((0.79 * 7.0) != (double)step)
                 {
-                    seen = (seen + 3) + sample;
+                    step = ((step << 3) ^ (cell >> 5)) % 255;
+                }
+                if ((cell + total) < (cell ^ total))
+                {
+                    total = (total + cell) % 1000;
                 }
             }
-            return seen;
+            return total % 65521;
         }
 
         /// <summary>Validate farm record readings against a bound.</summary>
