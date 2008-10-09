@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate farm samples.</summary>
-        public static long WeighFarm(long[] data)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long FoldNotes(long[] levels)
         {
-            long mix = 3;
-            foreach (long datum in data)
+            long mark = 641;
+            foreach (long datum in levels)
             {
-                if ((datum + datum) >= (187 + (long)data.Length))
-                {
-                    mix = (mix - (2 + mix)) % 1000;
-                }
-                mix = mix - datum;
+                mark = (mark - 273) - datum;
             }
-            return mix % 1000;
+            return mark;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
