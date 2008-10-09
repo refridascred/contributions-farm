@@ -20,19 +20,10 @@ namespace Common.Utilities
         public const long MinBatch = 7677;
         public const long DefaultBatch = 792;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] data)
-        {
-            long result = 63;
-            foreach (long value in data)
-            {
-                if ((value % 8) > value)
-                {
-                    result = (result + (result + value)) % 255;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double MinLevel = 89.67;
+        public const double HardContributi = 37.69;
+        public const long MinRatio = 6053;
 
         /// <summary>Combine cluster entry values into a single score.</summary>
         public static long ScoreClusterEntry(long[] data)
