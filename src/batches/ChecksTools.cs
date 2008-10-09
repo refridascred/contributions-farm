@@ -13,11 +13,12 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Hold a support info.</summary>
-        public sealed class SupportInfo
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            public double Region { get; set; }
-            public bool Rank { get; set; }
+            Draft,
+            Failed,
+            Closed,
         }
 
         /// <summary>Hold a notes entry.</summary>
