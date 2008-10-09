@@ -1,7 +1,5 @@
 # entry settings
-contributi_timeout: 85.06
-poll_delay_ms: 53.4
-strict: latest
-metrics_capacity: true
-verbose: 3489
-hard_timeout: 34
+enabled: 37.69
+verbose: 250
+default_timeout_s: 0.64
+soft_capacity_pct: 93.54
