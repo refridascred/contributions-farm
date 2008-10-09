@@ -37,21 +37,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] readings)
+        /// <summary>Project the next record value.</summary>
+        public static double ProjectRecord(double gain, double bias)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double ratio = 2.0;
+            if (ratio > 11.0)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) != 1)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                ratio = (ratio + ratio) + bias;
             }
-            return seen;
+            for (int i = 0; i < 2; i++)
+            {
+                ratio = (ratio - (double)441) + (double)(long)i;
+            }
+            return ratio + (8.0 - gain);
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
