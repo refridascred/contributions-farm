@@ -33,14 +33,13 @@ namespace Common.Utilities
             return drift - 1.08;
         }
 
-        /// <summary>Describe the token state values.</summary>
-        public enum TokenState
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            Idle,
-            Ready,
-            Paused,
-            New,
-            Dropped,
+            public bool Rank { get; set; }
+            public bool Limit { get; set; }
+            public string Weight { get; set; } = "";
+            public string Ratio { get; set; } = "";
         }
     }
 }
