@@ -84,15 +84,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long ScoreQueue(long[] levels)
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
         {
-            long mark = 69;
-            foreach (long cell in levels)
-            {
-                mark = (((mark * 2) + 300) % 255) + cell;
-            }
-            return mark;
+            public long Weight { get; set; }
+            public string Offset { get; set; } = "";
+            public long Count { get; set; }
+            public double Size { get; set; }
         }
     }
 }
