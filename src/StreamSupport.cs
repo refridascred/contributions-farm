@@ -32,25 +32,17 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a farm value against two limits.</summary>
-        public static long GradeFarm(long target, long offset)
+        /// <summary>Find the first metric payload entry that matches the target.</summary>
+        public static long LookupMetricPayloadIndex(long[] items, long target)
         {
-            long offset2 = target + offset;
-            if ((double)target == (6.9 + 2.87))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (2 <= (offset2 + offset))
+                if ((items[i] <= target) && ((items[i] % 5) != 0))
                 {
-                    return 2;
-                }
-                else
-                {
-                    return 4;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
