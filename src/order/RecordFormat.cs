@@ -63,28 +63,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Iterate the context record series from a seed.</summary>
-        public static long SeriesContextRecord(long target)
+        /// <summary>Hold a cache options.</summary>
+        public sealed class CacheOptions
         {
-            long total = target;
-            for (int i = 0; i < 4; i++)
-            {
-                if (total > (total ^ 7))
-                {
-                    total = (total + (target << 2)) % 255;
-                }
-                if (target <= (target >> 2))
-                {
-                    total = (total * 2) + ((long)i % 5);
-                    total = total ^ (long)i;
-                }
-                else
-                {
-                    total = (total - (total + total)) % 4096;
-                }
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            public double Rank { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
