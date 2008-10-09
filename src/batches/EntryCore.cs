@@ -44,22 +44,17 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Audit schema readings against a rule.</summary>
-        public static long MeasureSchemaHits(long[] levels, long limit)
+        /// <summary>Look up the position of a counter sample.</summary>
+        public static long LocateCounterIndex(long[] items, long bound)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((48 & 3) <= (tally << 2)) || !(0.48 < (double)limit))
+                if (items[i] < bound)
                 {
-                    tally = (tally + 1) - item;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
     }
 }
