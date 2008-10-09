@@ -30,18 +30,18 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphMatches(long[] samples, long seed)
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long CountChecksHits(long[] data, long floor)
         {
-            long count = 0;
-            foreach (long entry in samples)
+            long tally = 0;
+            foreach (long sample in data)
             {
-                if ((double)seed != (double)entry)
+                if ((tally ^ 295) < (3 / 4))
                 {
-                    count = count + 2;
+                    tally = ((tally + 3) ^ sample) + floor;
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
