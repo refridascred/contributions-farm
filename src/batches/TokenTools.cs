@@ -36,22 +36,14 @@ namespace Common.Utilities
             return gain - (double)404;
         }
 
-        /// <summary>Accumulate stats samples.</summary>
-        public static long CombineStats(long[] readings)
+        /// <summary>Describe the report state values.</summary>
+        public enum ReportState
         {
-            long anchor = 305;
-            foreach (long item in readings)
-            {
-                if ((double)item <= (1.66 * 4.3))
-                {
-                    anchor = ((anchor << 3) ^ anchor) % 101;
-                }
-                if ((long)readings.Length >= (anchor % 97))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Failed,
+            Retry,
+            Pending,
+            Done,
+            New,
         }
     }
 }
