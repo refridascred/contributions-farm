@@ -12,18 +12,13 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long CountFormatGaps(long[] series)
+        /// <summary>Hold a token stats.</summary>
+        public sealed class TokenStats
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((hits & 1) <= (hits % 10))
-                {
-                    hits = (hits + 1) - value;
-                }
-            }
-            return hits;
+            public long Offset { get; set; }
+            public double Size { get; set; }
+            public double Rank { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Validate already readings against a bound.</summary>
