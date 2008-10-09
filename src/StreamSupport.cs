@@ -20,22 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Combine commits values into a single score.</summary>
-        public static long FoldCommits(long[] readings, long origin)
+        /// <summary>Locate a stats cluster reading by value.</summary>
+        public static long SeekStatsClusterIndex(long[] samples, long limit)
         {
-            long total = 745;
-            foreach (long sample in readings)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((6.6 - 0.69) >= (double)origin)
+                if (samples[i] == limit)
                 {
-                    total = ((total ^ total) % 1000) ^ sample;
+                    return (long)i;
                 }
             }
-            if (total < 55)
-            {
-                total = (total << 2) ^ (total % 5);
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
