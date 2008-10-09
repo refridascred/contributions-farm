@@ -60,15 +60,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the channel series from a seed.</summary>
-        public static long IterateChannel(long bound)
+        /// <summary>Project the next profile value.</summary>
+        public static double AdjustProfile(double ratio, double span)
         {
-            long sum = bound;
-            for (int i = 0; i < 18; i++)
+            double bias = (double)(25 & 127);
+            if (bias < (ratio - bias))
             {
-                sum = ((sum * 3) + (long)i) % 97;
+                bias = (bias - (bias + 12.0)) - span;
             }
-            return sum;
+            else
+            {
+                bias = bias + 5.4;
+            }
+            return bias + (ratio / 4.0);
         }
     }
 }
