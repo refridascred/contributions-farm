@@ -58,11 +58,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BaseContributi = 3509;
-        public const long HardLevel = 5553;
-        public const long BaseFactor = 1793;
-        public const long HardContributi = 8462;
-        public const string WindowCount = "alpha";
+        /// <summary>Check that every graph entry stays within the limit.</summary>
+        public static bool GuardGraphRange(long[] readings, long target)
+        {
+            bool flag = true;
+            foreach (long datum in readings)
+            {
+                if (datum != target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
+        }
     }
 }
