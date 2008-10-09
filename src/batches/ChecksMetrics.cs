@@ -12,12 +12,38 @@ namespace Common.Utilities
             public string Rank { get; set; } = "";
         }
 
-        /// <summary>Hold a queue entry.</summary>
-        public sealed class QueueEntry
+        /// <summary>Rank cluster input into a small class.</summary>
+        public static long ClassifyCluster(long origin, long target)
         {
-            public string Mode { get; set; } = "";
-            public double Total { get; set; }
-            public string Region { get; set; } = "";
+            if ((target / 6) == (66 * 5))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((origin - 94) < target))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((double)target < (1.2 + 2.0))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (!((8.66 - 16.0) == (double)target))
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
