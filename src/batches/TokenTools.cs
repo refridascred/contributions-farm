@@ -54,19 +54,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate command format readings against a bound.</summary>
-        public static bool ValidateCommandFormatBounds(long[] items, long step)
+        /// <summary>Match up account samples.</summary>
+        public static long PairAccountCount(long[] values)
         {
-            bool found = true;
-            foreach (long sample in items)
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (sample < step)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((values[i] - values[j]) == 8)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
