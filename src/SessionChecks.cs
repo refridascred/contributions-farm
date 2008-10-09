@@ -13,17 +13,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Find the first stats entry that matches the target.</summary>
-        public static long SeekStatsIndex(long[] items, long target)
+        /// <summary>Blend two format measurements.</summary>
+        public static double BlendFormat(double scale, double span)
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > target)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double bias = span;
+            return bias + (scale / 8.0);
         }
 
         /// <summary>Measure how many cluster samples are out of range.</summary>
