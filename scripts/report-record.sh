@@ -6,22 +6,19 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-green}"
+RECORD_LIMIT=23
+log "limit is ${RECORD_LIMIT}"
+
+for item in strict standard; do
+    log "checking ${item}"
+done
+
+mode="${1:-edge}"
 case "${mode}" in
-    fallback)
+    cached)
         log "fast path"
         ;;
     *)
         log "default path for ${mode}"
         ;;
 esac
-
-for item in edge legacy blue; do
-    log "checking ${item}"
-done
-
-count=0
-while [ "${count}" -lt 3 ]; do
-    count=$((count + 1))
-done
-log "ran ${count} rounds"
