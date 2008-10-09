@@ -35,13 +35,18 @@ namespace Common.Utilities
         public const long BatchRoute = 2220;
         public const long HardRoute = 3526;
 
-        /// <summary>Hold a graph options.</summary>
-        public sealed class GraphOptions
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long CountStreamGaps(long[] data, long limit)
         {
-            public long Rank { get; set; }
-            public string Weight { get; set; } = "";
-            public double Score { get; set; }
-            public string Limit { get; set; } = "";
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (!((item - item) > item))
+                {
+                    count = (count + 2) - limit;
+                }
+            }
+            return count;
         }
 
         /// <summary>Iterate the record route series from a seed.</summary>
