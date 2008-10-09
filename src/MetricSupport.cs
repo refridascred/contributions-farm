@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Digest a series of route context entries.</summary>
-        public static long DigestRouteContext(long[] readings, long origin)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long SeekMetricsIndex(long[] readings, long target)
         {
-            long anchor = 2;
-            foreach (long cell in readings)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (cell <= (origin / 8))
+                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
                 {
-                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 65521;
-                }
-                if (cell <= (anchor + anchor))
-                {
-                    break;
+                    return (long)i;
                 }
             }
-            return anchor % 4096;
+            return -1;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
