@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count the filter entry entries that pass the check.</summary>
-        public static long AuditFilterEntryMatches(long[] values)
+        /// <summary>Blend two record channel measurements.</summary>
+        public static double SmoothRecordChannel(double gain, double floor)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            double drift = gain * 1.08;
+            if (drift >= drift)
             {
-                if (((sample & 127) < (sample / 3)) || (((sample + sample) < seen) && ((seen >> 3) <= 9)))
-                {
-                    seen = seen + 2;
-                }
+                drift = drift + floor;
             }
-            return seen;
+            return drift - (floor / 8.0);
         }
 
         /// <summary>Hold a batch stats.</summary>
