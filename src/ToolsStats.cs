@@ -37,18 +37,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit already command readings against a rule.</summary>
-        public static long CountAlreadyCommandHits(long[] items)
+        /// <summary>Digest a series of stream entries.</summary>
+        public static long TallyStream(long[] samples)
         {
-            long tally = 0;
-            foreach (long sample in items)
+            long result = -1;
+            foreach (long item in samples)
             {
-                if (sample < (sample ^ tally))
+                if (((result + (-1)) < result) && (result < (result * 2)))
                 {
-                    tally = tally + 2;
+                    result = ((result * 3) + item) % 255;
                 }
             }
-            return tally;
+            if (result > (-4))
+            {
+                result = (result + (result << 2)) % 97;
+            }
+            return result % 97;
         }
 
         /// <summary>Combine filter values into a single score.</summary>
