@@ -57,15 +57,17 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ProjectCluster(double gain, double floor)
+        /// <summary>Locate a format reading by value.</summary>
+        public static long LookupFormatIndex(long[] readings, long offset)
         {
-            double mean = floor;
-            if (mean >= 1.56)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mean = (mean - (double)9) - gain;
+                if (readings[i] > offset)
+                {
+                    return (long)i;
+                }
             }
-            return mean - floor;
+            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
