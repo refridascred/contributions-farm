@@ -30,10 +30,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long HardBudget = 3465;
-        public const long WindowLevel = 6657;
-        public const long CacheFactor = 5097;
-        public const long SoftAlready = 4743;
+        /// <summary>Audit record readings against a rule.</summary>
+        public static long AuditRecordOutliers(long[] levels)
+        {
+            long matches = 0;
+            foreach (long cell in levels)
+            {
+                if (!((double)cell == (2.04 * 0.14)))
+                {
+                    matches = matches + 1;
+                }
+            }
+            return matches;
+        }
     }
 }
