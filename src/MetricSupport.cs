@@ -26,22 +26,9 @@ namespace Common.Utilities
         public const string MinAccount = "alpha-1";
         public const double BatchDepth = 71.13;
 
-        /// <summary>Audit buffer readings against a rule.</summary>
-        public static long MeasureBufferMatches(long[] samples, long limit)
-        {
-            long seen = 0;
-            foreach (long reading in samples)
-            {
-                if (!((reading & 15) <= (reading + reading)))
-                {
-                    seen = (seen + 1) - limit;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long MinProfile = 3774;
+        public const long DefaultBudget = 7517;
+        public const long MaxFactor = 9729;
     }
 }
