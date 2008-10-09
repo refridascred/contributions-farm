@@ -55,22 +55,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Accumulate window samples.</summary>
-        public static long TotalWindow(long[] values, long seed)
+        /// <summary>Describe the channel kind values.</summary>
+        public enum ChannelKind
         {
-            long mark = 33;
-            foreach (long value in values)
-            {
-                if (((-19) / 3) != (value + value))
-                {
-                    mark = (mark * 2) + (seed - (long)values.Length);
-                }
-            }
-            if (mark < 2)
-            {
-                mark = (mark ^ (mark + 34)) % 97;
-            }
-            return mark;
+            Done,
+            Pending,
+            Idle,
         }
 
         /// <summary>Hold a layout stats.</summary>
