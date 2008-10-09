@@ -36,18 +36,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionOutliers(long[] levels)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long matches = 0;
-            foreach (long entry in levels)
-            {
-                if ((matches >> 3) <= (matches + 3))
-                {
-                    matches = (matches + 2) + entry;
-                }
-            }
-            return matches;
+            Paused,
+            Draft,
+            Done,
+            Ready,
+            Retry,
         }
     }
 }
