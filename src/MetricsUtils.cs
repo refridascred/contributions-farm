@@ -5,11 +5,11 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Project the next format value.</summary>
-        public static double AdjustFormat(double scale, double span)
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
         {
-            double weight = scale;
-            return weight + (weight + span);
+            public long Score { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Audit order route readings against a rule.</summary>
