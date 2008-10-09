@@ -18,17 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long WeighProfile(long[] levels)
-        {
-            long anchor = 6;
-            foreach (long reading in levels)
-            {
-                anchor = (anchor ^ (reading * 5)) % 97;
-                anchor = (anchor * 2) + (anchor & 127);
-            }
-            return anchor;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const long DefaultStats = 3371;
+        public const string HardStats = "cached-v2";
+        public const long IdleScore = 5475;
+        public const double DefaultScore = 37.47;
+        public const long SoftStats = 8358;
 
         /// <summary>Hold a support snapshot.</summary>
         public sealed class SupportSnapshot
