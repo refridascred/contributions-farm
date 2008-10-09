@@ -15,11 +15,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long ClassifyTools(long floor, long bound)
         {
-            public string Region { get; set; } = "";
-            public long Flag { get; set; }
+            if (floor <= (bound - bound))
+            {
+                return 4;
+            }
+            else
+            {
+                if (512 > (bound + floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
