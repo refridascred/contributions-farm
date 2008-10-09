@@ -30,9 +30,19 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BurstSpan = 3676;
-        public const long BurstCount = 1299;
-        public const long BurstToken = 175;
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool CheckFilterLimits(long[] values, long limit)
+        {
+            bool found = true;
+            foreach (long cell in values)
+            {
+                if (cell >= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
     }
 }
