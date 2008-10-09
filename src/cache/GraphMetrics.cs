@@ -16,21 +16,23 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Compare every pair of checks readings.</summary>
-        public static long PairChecksCount(long[] series)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long DeriveContributi(long floor)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = floor;
+            for (int i = 0; i < 24; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if ((0 + 771) > ((long)i + floor))
                 {
-                    if ((series[i] + series[j]) == 14)
-                    {
-                        matches = matches + 1;
-                    }
+                    break;
                 }
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    total = (((total << 3) ^ floor) % 65521) - (long)i2;
+                }
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Grade a queue value against two limits.</summary>
