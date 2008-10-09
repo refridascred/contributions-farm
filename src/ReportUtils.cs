@@ -5,22 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Audit layout counter readings against a rule.</summary>
-        public static long AuditLayoutCounterGaps(long[] values)
+        /// <summary>Describe the already mode values.</summary>
+        public enum AlreadyMode
         {
-            long matches = 0;
-            foreach (long datum in values)
-            {
-                if (!((matches * 2) == (matches % 64)))
-                {
-                    matches = (matches + 3) - datum;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Draft,
+            Retry,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Check that every channel entry stays within the limit.</summary>
