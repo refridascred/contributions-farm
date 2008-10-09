@@ -23,11 +23,12 @@ namespace Common.Utilities
             public bool Stamp { get; set; }
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const double DefaultSpan = 58.01;
-        public const double BurstSession = 83.35;
-        public const long CacheSession = 7882;
-        public const long RetrySession = 2951;
-        public const long StepCount = 5854;
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
+        {
+            Retry,
+            Locked,
+            Dropped,
+        }
     }
 }
