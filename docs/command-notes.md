@@ -1,15 +1,12 @@
 # Command notes
 
-A account that stays idle for too long is moved to the buffer list.
-The editor module keeps metrics values in sync with the command cache.
-Run the order check before changing any command limits.
-
-Use contributi settings to tune how often buffer data is refreshed.
-Keep entry and token names short and lowercase.
-A layout that stays idle for too long is moved to the order list.
+The buffer helpers are pure functions, so they are safe to call from any thread.
+Each report is validated before it reaches the commits queue.
+Defaults for githubfarm live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
-- Review session limits each release
-- Keep order values small
-- Document new entry fields
+- Keep editor values small
+- Validate stats input early
+- Review format limits each release
+- Document new notes fields
