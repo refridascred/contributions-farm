@@ -1,6 +1,6 @@
 {
-  "poll_interval_ms": [120, 110, 412, 298],
-  "warm_timeout_ms": 500,
-  "warm_depth": 71.33,
-  "support_delay": 3358
+  "audit": "standard",
+  "verbose": 5463,
+  "editor_timeout": 7371,
+  "default_ttl_ms": "cached"
 }
