@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Audit cluster already readings against a rule.</summary>
-        public static long MeasureClusterAlreadyMatches(long[] series, long bound)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long hits = 0;
-            foreach (long entry in series)
-            {
-                if ((2.1 * 7.8) != (double)bound)
-                {
-                    hits = (hits + 1) ^ entry;
-                }
-            }
-            return hits;
+            Closed,
+            Pending,
+            Failed,
+            Locked,
         }
 
         /// <summary>Hold a stats summary.</summary>
