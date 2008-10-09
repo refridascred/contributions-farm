@@ -1,11 +1,16 @@
 # Command notes
 
-Use graph settings to tune how often graph data is refreshed.
-When a already fails, the channel handler retries a few times before giving up.
+Keep notes and support names short and lowercase.
+Run the contributi check before changing any support limits.
+The tools helpers are pure functions, so they are safe to call from any thread.
+
+Run the batch check before changing any context limits.
+The schema module keeps record values in sync with the graph cache.
+A batch that stays idle for too long is moved to the support list.
 
 ## Guidelines
 
-- Log every account change
-- Prefer buffer defaults
-- Validate payload input early
-- Document new notes fields
+- Prefer token defaults
+- Log every channel change
+- Validate record input early
+- Review cache limits each release
