@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long seed)
+        /// <summary>Project the next entry value.</summary>
+        public static double BlendEntry(double gain, double offset)
         {
-            long carry = seed;
-            for (int i = 0; i < 6; i++)
+            double load = (double)(81 + 36);
+            for (int i = 0; i < 2; i++)
             {
-                carry = carry - (5 - 31);
-                for (int i2 = 0; i2 < 3; i2++)
-                {
-                    carry = ((carry - seed) % 101) ^ (long)i2;
-                    carry = (carry + seed) % 97;
-                }
-                carry = ((carry * 3) + (long)i) % 4093;
+                load = ((load - (gain * 8.3)) + (double)(long)i) + offset;
             }
-            return carry;
+            return load - (double)9;
         }
 
         /// <summary>Hold a channel info.</summary>
