@@ -1,5 +1,10 @@
 {
-  "max_window_pct": 98,
-  "readonly": 34.55,
-  "idle_capacity_s": 76
+  "batch_capacity_s": true,
+  "audit": {
+    "batch_threshold_count": "eu-west",
+    "flush_retries_pct": "eu-west",
+    "compress": "legacy"
+  },
+  "counter_depth": 60,
+  "warm_capacity_count": [339, 223, 390]
 }
