@@ -1,8 +1,17 @@
 {
-  "context_ratio": 34.24,
-  "compress": 100,
-  "verbose": 250,
-  "buffer_timeout": 30,
-  "cache_threshold": 5486,
-  "soft_depth": "legacy"
+  "warm_retries_s": "primary",
+  "soft_timeout_ms": {
+    "flush_limit_s": 6,
+    "metrics_ttl": {
+      "dry_run": "primary",
+      "persist": 30,
+      "audit": 100,
+      "sync_depth_ms": 8274
+    },
+    "batch_threshold_count": "stable",
+    "warm_interval_ms": [416, 159, 114, 250]
+  },
+  "buffer_size": 6849,
+  "retry_capacity_pct": 39,
+  "batch_depth_s": 27
 }
