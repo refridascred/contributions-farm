@@ -60,31 +60,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] levels)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long mix = 239;
-            foreach (long value in levels)
-            {
-                if ((double)mix != (double)(long)levels.Length)
-                {
-                    mix = (mix ^ (mix + 5)) % 97;
-                }
-                mix = (mix - (mix - value)) % 101;
-                if ((5 ^ value) <= mix)
-                {
-                    mix = ((mix * 2) + (1 & 1)) % 101;
-                }
-                else
-                {
-                    mix = (mix << 2) ^ (value - mix);
-                }
-            }
-            if (mix < 276)
-            {
-                mix = (mix ^ 3) % 97;
-            }
-            return mix;
+            public string Limit { get; set; } = "";
+            public bool Owner { get; set; }
+            public string Rank { get; set; } = "";
+            public long Score { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
