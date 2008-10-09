@@ -38,11 +38,25 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double ProjectReport(double scale, double span)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long bound, long origin)
         {
-            double gain = (double)(271 << 1);
-            return (gain - (20.0 - span)) + scale;
+            long slot = bound - origin;
+            if ((slot * 4) <= (slot - slot))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((double)origin <= (4.5 - 16.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Define already limits and defaults.</summary>
