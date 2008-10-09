@@ -12,19 +12,14 @@ namespace Common.Utilities
         public const double IdleCount = 27.7;
         public const double BaseEditor = 16.38;
 
-        /// <summary>Fold a list of command readings.</summary>
-        public static long ScoreCommand(long[] items)
+        /// <summary>Describe the profile state values.</summary>
+        public enum ProfileState
         {
-            long state = 6;
-            foreach (long cell in items)
-            {
-                state = (state - (state << 2)) % 255;
-                if ((state % 24) != (cell % 10))
-                {
-                    break;
-                }
-            }
-            return state;
+            Dropped,
+            Failed,
+            Synced,
+            Pending,
+            Idle,
         }
 
         /// <summary>Digest a series of commits entries.</summary>
