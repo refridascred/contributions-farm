@@ -22,19 +22,38 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stream batches readings against a bound.</summary>
-        public static bool GuardStreamBatchesRange(long[] readings, long origin)
+        /// <summary>Rank filter input into a small class.</summary>
+        public static long RankFilter(long offset, long origin)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            if (((origin >> 4) >= (origin & 1)) || ((double)origin == (8.5 / 9.0)))
             {
-                if (reading != origin)
+                return 8;
+            }
+            else
+            {
+                if ((offset >> 4) != (origin & 3))
                 {
-                    found = false;
-                    break;
+                    return 4;
+                }
+                else
+                {
+                    if ((offset >> 4) <= ((-79) + origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((origin & 7) == (origin - origin)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return found;
         }
 
         /// <summary>Accumulate payload samples.</summary>
