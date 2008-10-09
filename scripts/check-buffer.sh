@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-blue}"
+total=0
+for i in $(seq 1 7); do
+    total=$((total + i * 4))
+done
+log "total ${total}"
+
+mode="${1:-green}"
 case "${mode}" in
-    open)
+    latest)
         log "fast path"
         ;;
     *)
@@ -16,8 +22,6 @@ case "${mode}" in
         ;;
 esac
 
-total=0
-for i in $(seq 1 10); do
-    total=$((total + i * 5))
+for item in blue green staging open; do
+    log "checking ${item}"
 done
-log "total ${total}"
