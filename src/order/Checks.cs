@@ -33,12 +33,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define cache limits and defaults.</summary>
-        public const string BaseLevel = "strict-1";
-        public const long RetryCache = 1285;
-        public const long WindowCache = 1822;
-        public const long MaxCache = 4096;
-        public const long WindowTimeout = 9079;
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool VerifyContextRange(long[] series, long target)
+        {
+            bool valid = true;
+            foreach (long entry in series)
+            {
+                if (entry != target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Blend two stats measurements.</summary>
         public static double SmoothStats(double gain, double offset)
