@@ -42,18 +42,15 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Fold a list of metrics readings.</summary>
-        public static long TotalMetrics(long[] samples, long floor)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] values)
         {
-            long carry = 106;
-            foreach (long cell in samples)
+            long mark = 23;
+            foreach (long value in values)
             {
-                if (cell > carry)
-                {
-                    carry = (carry ^ (22 / 4)) + floor;
-                }
+                mark = (((mark * 5) + mark) % 101) - value;
             }
-            return carry % 97;
+            return mark;
         }
     }
 }
