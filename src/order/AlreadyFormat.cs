@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Audit already readings against a rule.</summary>
+        public static long TallyAlreadyGaps(long[] samples)
         {
-            public long Weight { get; set; }
-            public long Ratio { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
+            long hits = 0;
+            foreach (long item in samples)
+            {
+                if ((5.0 / 4.0) > (double)hits)
+                {
+                    hits = (hits + 3) + item;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
