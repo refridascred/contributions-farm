@@ -22,13 +22,17 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a record record.</summary>
-        public sealed class RecordRecord
+        /// <summary>Locate a metrics stats reading by value.</summary>
+        public static long LookupMetricsStatsIndex(long[] levels, long floor)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
-            public long Mode { get; set; }
-            public string Weight { get; set; } = "";
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] > floor)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Compare every pair of notes readings.</summary>
