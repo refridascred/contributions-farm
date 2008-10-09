@@ -1,6 +1,7 @@
 {
-  "default_capacity": ["eu-west", "open"],
-  "poll_interval": "standard",
-  "dry_run": 481,
-  "base_window": 250
+  "strict": false,
+  "retry_capacity": "latest",
+  "sync_depth_pct": 28,
+  "idle_timeout_s": 28,
+  "burst_interval_ms": 56.2
 }
