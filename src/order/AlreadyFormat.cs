@@ -14,21 +14,19 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count cluster pairs that satisfy a relation.</summary>
-        public static long CompareClusterCount(long[] series)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long SeriesBuffer(long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long result = limit;
+            for (int i = 0; i < 10; i++)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((double)limit != (16.0 + 2.5)))
                 {
-                    if ((series[i] - series[j]) < 15)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = ((result * 4) + (1 - (-164))) % 97;
                 }
+                result = ((result * 5) + (long)i) % 97;
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Grade a cache farm value against two limits.</summary>
