@@ -5,11 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long origin, long floor)
         {
-            public bool Size { get; set; }
-            public string Limit { get; set; } = "";
+            if ((floor + floor) == (origin / 6))
+            {
+                return 2;
+            }
+            else
+            {
+                if ((double)floor > (8.0 / 6.0))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin >> 1) == (origin + floor))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Define account limits and defaults.</summary>
