@@ -25,18 +25,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long MeasureContributiMatches(long[] levels)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            long tally = 0;
-            foreach (long sample in levels)
-            {
-                if ((tally + 4) == (sample << 2))
-                {
-                    tally = tally + 1;
-                }
-            }
-            return tally;
+            public double Stamp { get; set; }
+            public long Mode { get; set; }
+            public double Ratio { get; set; }
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
