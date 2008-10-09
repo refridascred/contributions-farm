@@ -39,38 +39,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a payload pair into a bucket.</summary>
-        public static long ClassifyPayload(long origin, long step)
-        {
-            if (!((origin % 7) == (step ^ step)))
-            {
-                return 7;
-            }
-            else
-            {
-                if (((double)(-681) != (double)step) || ((double)origin > (8.4 - 4.66)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((step << 1) < step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((step + origin) < origin)
-                        {
-                            return 1;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseDepth = "open-v2";
+        public const long RetryTimeout = 3940;
+        public const double DefaultBatch = 47.6;
     }
 }
