@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Locate a cache reading by value.</summary>
-        public static long LookupCacheIndex(long[] data, long limit)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if ((data[i] >= limit) && ((data[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long MinFactor = 6546;
+        public const long BurstRecord = 5738;
+        public const double BaseRecord = 73.89;
+        public const double IdleSize = 75.48;
+        public const string BaseSpan = "staging-edge";
 
         /// <summary>Describe the command state values.</summary>
         public enum CommandState
