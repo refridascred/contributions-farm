@@ -33,19 +33,21 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Iterate the report series from a seed.</summary>
-        public static long RollReport(long offset)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] items)
         {
-            long state = offset;
-            for (int i = 0; i < 17; i++)
+            long state = 75;
+            foreach (long value in items)
             {
-                state = (state - (offset + state)) % 1000;
-                if (9.82 <= (double)(long)i)
+                for (int i = 0; i < 11; i++)
                 {
-                    state = ((state * 3) + (offset + (long)i)) % 101;
+                    state = ((state - (state ^ 11)) % 101) ^ (long)i;
+                    state = (state - (state + 274)) % 101;
                 }
-                state = (state + (state + (long)i)) % 65521;
-                state = ((state * 3) + (long)i) % 1000;
+                if (973 <= (value ^ value))
+                {
+                    state = (state + (value - state)) % 65521;
+                }
             }
             return state;
         }
