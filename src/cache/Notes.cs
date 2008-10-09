@@ -53,16 +53,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the payload series from a seed.</summary>
-        public static long SeriesPayload(long offset)
+        /// <summary>Match up window order samples.</summary>
+        public static long OverlapWindowOrderCount(long[] values)
         {
-            long result = offset;
-            for (int i = 0; i < 16; i++)
+            long matches = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                result = (result ^ result) % 101;
-                result = ((result * 3) + (long)i) % 1000;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] + values[j]) == 11)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return result;
+            return matches;
         }
     }
 }
