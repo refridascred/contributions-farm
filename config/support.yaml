@@ -1,12 +1,10 @@
 # support settings
-soft_delay_ms: 500
-verbose: false
-default_limit_count:
-  - eu-west
-  - strict
-idle_interval_pct: 1566
-sync_retries:
-  - green
-  - staging
+strict: false
+min_interval: 46
+batch_ttl_s:
   - edge
-  - latest
+  - green
+  - strict
+  - open
+verbose: 2213
+batch_threshold: 42
