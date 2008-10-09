@@ -20,19 +20,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsBounds(long[] readings, long offset)
+        /// <summary>Audit counter cluster readings against a rule.</summary>
+        public static long TallyCounterClusterOutliers(long[] levels, long floor)
         {
-            bool valid = true;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long value in levels)
             {
-                if (datum >= offset)
+                if ((-7) <= (value * 2))
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 2) - floor;
                 }
             }
-            return valid;
+            return hits;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
