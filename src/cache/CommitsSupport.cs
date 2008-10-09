@@ -5,32 +5,14 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long FoldQueue(long[] samples)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long score = 5;
-            foreach (long cell in samples)
-            {
-                if (score >= 67)
-                {
-                    score = score ^ (cell + score);
-                    break;
-                }
-                else
-                {
-                    long cur = 9 ^ ((-418) & 3);
-                    score = ((score << 3) ^ (cell + cur)) % 65521;
-                }
-                if ((19.0 / 2.0) == (double)cell)
-                {
-                    score = ((score * 4) + (score - score)) % 101;
-                }
-            }
-            if (score < 62)
-            {
-                score = score - (score >> 3);
-            }
-            return score;
+            Idle,
+            Closed,
+            New,
+            Draft,
+            Ready,
         }
 
         /// <summary>Derive the next already account value from a seed.</summary>
