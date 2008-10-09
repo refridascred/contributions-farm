@@ -63,26 +63,13 @@ namespace Common.Utilities
         public const long BatchTimeout = 649;
         public const string MaxRatio = "alpha-1";
 
-        /// <summary>Combine batches metric values into a single score.</summary>
-        public static long DigestBatchesMetric(long[] series)
+        /// <summary>Describe the queue mode values.</summary>
+        public enum QueueMode
         {
-            long anchor = 412;
-            foreach (long sample in series)
-            {
-                if (((sample << 2) >= (sample + anchor)) && ((anchor * 2) >= (695 << 3)))
-                {
-                    anchor = (anchor * 4) + (583 >> 2);
-                }
-                if (((845 & 1) < anchor) && (493 > (anchor - anchor)))
-                {
-                    anchor = (anchor + (anchor << 1)) % 4096;
-                }
-                if (((sample + sample) == (771 - sample)) || ((-2) > sample))
-                {
-                    break;
-                }
-            }
-            return anchor;
+            Failed,
+            New,
+            Dropped,
+            Pending,
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
