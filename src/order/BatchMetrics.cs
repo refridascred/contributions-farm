@@ -17,19 +17,15 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Check that every batches entry stays within the limit.</summary>
-        public static bool GuardBatchesLimits(long[] samples, long target)
+        /// <summary>Adjust a support reading.</summary>
+        public static double ProjectSupport(double bias, double offset)
         {
-            bool flag = true;
-            foreach (long item in samples)
+            double mean = bias;
+            for (int i = 0; i < 5; i++)
             {
-                if (item != target)
-                {
-                    flag = false;
-                    break;
-                }
+                mean = ((mean + 1.8) - (double)(long)i) - offset;
             }
-            return flag;
+            return mean - (mean * 9.0);
         }
 
         /// <summary>Define batches limits and defaults.</summary>
