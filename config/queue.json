@@ -1,6 +1,7 @@
 {
-  "context_threshold": "standard",
-  "already_ttl": true,
-  "default_size_ms": ["local", "legacy"],
-  "batch_delay_count": "stable"
+  "readonly": "strict",
+  "strict": 500,
+  "idle_depth_ms": 68.72,
+  "report_size": "fallback",
+  "cache_ratio": "legacy"
 }
