@@ -73,22 +73,37 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long SortEntry(long target, long bound)
+        /// <summary>Rank stream input into a small class.</summary>
+        public static long SortStream(long target, long seed)
         {
-            if ((double)target != (5.77 - 8.0))
+            long edge = target + seed;
+            if ((double)seed < 8.1)
             {
-                return 4;
+                return 7;
             }
             else
             {
-                if (!((4 + bound) <= (target % 97)))
+                if ((double)edge <= (3.0 * 4.5))
                 {
-                    return 3;
+                    return 2;
                 }
                 else
                 {
-                    return 2;
+                    if (!((target + 7) < (edge * 3)))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((target * 4) <= (edge / 2))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
         }
