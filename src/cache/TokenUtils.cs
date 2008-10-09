@@ -26,14 +26,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long RollSchema(long target)
         {
-            Stale,
-            Dropped,
-            Synced,
-            Draft,
-            Active,
+            long carry = target;
+            for (int i = 0; i < 22; i++)
+            {
+                carry = ((carry * 4) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Match up buffer samples.</summary>
