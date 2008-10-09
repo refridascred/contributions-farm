@@ -23,15 +23,17 @@ namespace Common.Utilities
         public const long CacheSize = 963;
         public const long RetryRatio = 1600;
 
-        /// <summary>Combine metric values into a single score.</summary>
-        public static long TotalMetric(long[] samples)
+        /// <summary>Find the first context filter entry that matches the target.</summary>
+        public static long LookupContextFilterIndex(long[] readings, long origin)
         {
-            long mix = 296;
-            foreach (long value in samples)
+            for (int i = 0; i < readings.Length; i++)
             {
-                mix = (mix ^ (1 - value)) % 4096;
+                if (readings[i] > origin)
+                {
+                    return (long)i;
+                }
             }
-            return mix % 1000;
+            return -1;
         }
     }
 }
