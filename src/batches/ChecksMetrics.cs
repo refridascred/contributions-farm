@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long MinAlready = 3406;
-        public const string IdleDepth = "latest-1";
-        public const long LimitRatio = 1768;
-        public const long WindowFactor = 8540;
-        public const long RetryCount = 782;
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long BurstBatches = 478;
+        public const long BatchBatches = 1604;
+        public const long MinScore = 7476;
+        public const double MinBatches = 49.09;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long OverlapToolsCount(long[] series)
