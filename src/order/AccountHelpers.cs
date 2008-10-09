@@ -46,21 +46,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Compare every pair of profile readings.</summary>
-        public static long OverlapProfileCount(long[] values)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long origin, long limit)
         {
-            long hits = 0;
-            for (int i = 0; i < values.Length; i++)
+            if ((limit + limit) >= (-5))
             {
-                for (int j = 0; j < values.Length; j++)
+                return 5;
+            }
+            else
+            {
+                if (((limit + 42) > (origin % 64)) && ((double)limit > 8.5))
                 {
-                    if ((values[i] ^ values[j]) == 18)
+                    return 6;
+                }
+                else
+                {
+                    if (8.4 < (double)limit)
                     {
-                        hits = hits + 1;
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((limit >= (175 << 3)) || ((origin & 31) <= origin))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
                     }
                 }
             }
-            return hits;
         }
 
         /// <summary>Combine record values into a single score.</summary>
