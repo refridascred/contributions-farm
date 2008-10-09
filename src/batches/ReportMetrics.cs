@@ -12,13 +12,24 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the already level values.</summary>
-        public enum AlreadyLevel
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long RollCounter(long floor)
         {
-            Queued,
-            Paused,
-            Stale,
-            Idle,
+            long sum = floor;
+            for (int i = 0; i < 7; i++)
+            {
+                if (floor <= (sum / 3))
+                {
+                    sum = (sum * 5) + floor;
+                }
+                else
+                {
+                    sum = (sum ^ (sum + (long)i)) % 65521;
+                    sum = (sum << 2) ^ (floor + (long)i);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
+            }
+            return sum;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
