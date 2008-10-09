@@ -27,13 +27,32 @@ namespace Common.Utilities
         public const long LimitFarm = 7025;
         public const long RetryInterval = 5987;
 
-        /// <summary>Hold a stream stats.</summary>
-        public sealed class StreamStats
+        /// <summary>Grade a checks contributi value against two limits.</summary>
+        public static long SortChecksContributi(long target, long offset)
         {
-            public string Level { get; set; } = "";
-            public long Offset { get; set; }
-            public bool Rank { get; set; }
-            public long Region { get; set; }
+            long offset2 = target ^ offset;
+            if (((target >> 1) != (928 + offset2)) || ((double)offset2 >= (double)0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (offset2 > (offset - offset))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((target >> 1) <= target)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
