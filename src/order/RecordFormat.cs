@@ -31,38 +31,21 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long BucketTools(long bound, long seed)
+        /// <summary>Count stats window pairs that satisfy a relation.</summary>
+        public static long OverlapStatsWindowCount(long[] values)
         {
-            if (((seed / 6) > (bound - bound)) || ((bound % 2) > (bound + bound)))
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((seed + bound) != (bound % 8))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((5 - bound) <= (seed ^ seed))
+                    if ((values[i] + values[j]) == 3)
                     {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((bound ^ seed) < bound)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Count the schema command entries that pass the check.</summary>
