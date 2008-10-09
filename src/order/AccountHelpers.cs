@@ -82,22 +82,9 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] data, long step)
-        {
-            long total = 250;
-            foreach (long item in data)
-            {
-                if (((double)item >= (5.5 / 6.0)) || (3.63 >= (double)item))
-                {
-                    total = total ^ total;
-                }
-                if ((2.0 / 5.0) > (double)step)
-                {
-                    break;
-                }
-            }
-            return total;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long HardWidth = 5024;
+        public const double DefaultWidth = 7.67;
+        public const long StepScore = 589;
     }
 }
