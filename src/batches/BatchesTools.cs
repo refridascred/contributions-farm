@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Describe the order state values.</summary>
-        public enum OrderState
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            Locked,
+            Dropped,
             Pending,
-            Stale,
+            Ready,
         }
 
         /// <summary>Digest a series of schema format entries.</summary>
