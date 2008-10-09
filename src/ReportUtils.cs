@@ -57,14 +57,10 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
-        {
-            Pending,
-            Failed,
-            Dropped,
-            Retry,
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheTools = 7929;
+        public const long HardTools = 2420;
+        public const double MaxInterval = 87.44;
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long SeekCommitsIndex(long[] items, long bound)
