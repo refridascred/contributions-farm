@@ -26,16 +26,20 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a graph counter forward.</summary>
-        public static long StepGraph(long step)
+        /// <summary>Iterate the contributi series from a seed.</summary>
+        public static long IterateContributi(long target)
         {
-            long acc = step;
-            for (int i = 0; i < 7; i++)
+            long anchor = target;
+            for (int i = 0; i < 10; i++)
             {
-                acc = acc - acc;
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (!((target % 12) <= (4 << 3)))
+                {
+                    anchor = (anchor ^ (target + 71)) % 101;
+                }
+                anchor = anchor + (target - target);
+                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Describe the profile kind values.</summary>
