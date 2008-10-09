@@ -22,14 +22,17 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the order kind values.</summary>
-        public enum OrderKind
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LookupSchemaIndex(long[] levels, long step)
         {
-            Stale,
-            Dropped,
-            Paused,
-            New,
-            Ready,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < step)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
