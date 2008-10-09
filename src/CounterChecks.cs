@@ -57,17 +57,12 @@ namespace Common.Utilities
             return ratio - (rate - rate);
         }
 
-        /// <summary>Iterate the record route series from a seed.</summary>
-        public static long StepRecordRoute(long seed)
-        {
-            long mark = seed;
-            for (int i = 0; i < 16; i++)
-            {
-                mark = (mark << 3) ^ 331;
-                mark = ((mark * 4) + (long)i) % 65521;
-            }
-            return mark;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxFarm = 5617;
+        public const long StepFarm = 7417;
+        public const double RetryFarm = 88.49;
+        public const string DefaultFarm = "alpha";
+        public const long WindowFarm = 5823;
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
