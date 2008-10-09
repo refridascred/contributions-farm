@@ -1,6 +1,13 @@
 {
-  "layout_timeout": "blue",
-  "warm_delay_ms": "edge",
-  "persist": 98,
-  "queue_threshold": "legacy"
+  "audit": {
+    "cluster_retries": "legacy",
+    "burst_interval_ms": false,
+    "cluster_limit": "standard",
+    "flush_threshold_count": 13.69,
+    "max_threshold": "blue",
+    "compress": 34.15
+  },
+  "metrics_timeout": ["primary", "open"],
+  "default_size_count": true,
+  "default_limit_ms": 30
 }
