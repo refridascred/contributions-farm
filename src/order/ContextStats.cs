@@ -19,13 +19,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the graph level values.</summary>
-        public enum GraphLevel
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            Locked,
-            Draft,
-            Stale,
-            Failed,
+            public double Label { get; set; }
+            public long Flag { get; set; }
+            public bool Region { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Hold a commits summary.</summary>
