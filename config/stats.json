@@ -1,20 +1,8 @@
 {
-  "readonly": 86.42,
-  "filter_size": true,
-  "max_capacity": {
-    "compress": true,
-    "warm_size_count": {
-      "max_timeout": true,
-      "flush_capacity_s": 5805,
-      "sync_depth_pct": 2590,
-      "profile_window": "blue",
-      "support_delay": "primary"
-    },
-    "poll_limit": [173, 70],
-    "profile_timeout": 61,
-    "warm_window_s": 17
-  },
-  "base_capacity": 27,
-  "compress": false,
-  "stats_interval": 7099
+  "graph_size": [500, 387],
+  "warm_timeout_pct": 100,
+  "persist": "strict",
+  "retry_delay_count": [241, 134, 168, 406],
+  "min_ratio_s": "latest",
+  "session_interval": 43.48
 }
