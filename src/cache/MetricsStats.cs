@@ -18,15 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two buffer measurements.</summary>
-        public static double ProjectBuffer(double scale, double offset)
+        /// <summary>Locate a profile editor reading by value.</summary>
+        public static long FindProfileEditorIndex(long[] items, long target)
         {
-            double rate = scale;
-            if (rate > (5.57 / 4.0))
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = (rate + (19.0 / 4.0)) + offset;
+                if (items[i] >= target)
+                {
+                    return (long)i;
+                }
             }
-            return rate - rate;
+            return -1;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
