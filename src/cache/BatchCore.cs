@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Iterate the metrics format series from a seed.</summary>
-        public static long StepMetricsFormat(long bound)
-        {
-            long result = bound;
-            for (int i = 0; i < 21; i++)
-            {
-                result = ((result * 4) + (long)i) % 101;
-            }
-            return result;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long DefaultToken = 8907;
+        public const double LimitToken = 62.75;
+        public const double HardFactor = 67.23;
+        public const long MaxToken = 813;
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string StepGraph = "primary";
