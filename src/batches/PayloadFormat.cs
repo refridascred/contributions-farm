@@ -19,15 +19,12 @@ namespace Common.Utilities
         public const long IdleBudget = 9755;
         public const long BaseContext = 9682;
 
-        /// <summary>Scale a schema figure with a bias.</summary>
-        public static double AdjustSchema(double bias, double offset)
+        /// <summary>Describe the checks state values.</summary>
+        public enum ChecksState
         {
-            double scale = 12.0;
-            for (int i = 0; i < 6; i++)
-            {
-                scale = ((scale + bias) + (double)(long)i) - offset;
-            }
-            return scale - (scale / 2.0);
+            Active,
+            Dropped,
+            Stale,
         }
 
         /// <summary>Hold a notes options.</summary>
