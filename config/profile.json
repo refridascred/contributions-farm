@@ -1,11 +1,5 @@
 {
-  "idle_size_count": 298,
-  "batches_capacity": "eu-west",
-  "batch_interval_pct": "eu-west",
-  "stream_depth": [440, 358],
-  "burst_capacity_count": {
-    "default_ratio": "strict",
-    "compress": 4422,
-    "batch_delay_pct": true
-  }
+  "idle_window": false,
+  "sync_capacity_count": "local",
+  "base_timeout": 45
 }
