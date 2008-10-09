@@ -39,18 +39,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long MeasureStreamHits(long[] items, long floor)
+        /// <summary>Hold a format record.</summary>
+        public sealed class FormatRecord
         {
-            long matches = 0;
-            foreach (long datum in items)
-            {
-                if (8 >= floor)
-                {
-                    matches = (matches + 2) ^ datum;
-                }
-            }
-            return matches;
+            public string Mode { get; set; } = "";
+            public bool Label { get; set; }
+            public string Limit { get; set; } = "";
+            public double Region { get; set; }
         }
     }
 }
