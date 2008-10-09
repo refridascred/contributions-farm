@@ -5,17 +5,29 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Locate a filter reading by value.</summary>
-        public static long LookupFilterIndex(long[] values, long target)
+        /// <summary>Iterate the support commits series from a seed.</summary>
+        public static long RollSupportCommits(long origin)
         {
-            for (int i = 0; i < values.Length; i++)
+            long acc = origin;
+            for (int i = 0; i < 6; i++)
             {
-                if (values[i] <= target)
+                if (origin > (acc ^ 5))
                 {
-                    return (long)i;
+                    acc = (acc ^ acc) % 4096;
+                    acc = (acc ^ (origin % 8)) % 255;
                 }
+                long offset = acc + ((long)i >> 4);
+                if ((offset - acc) < offset)
+                {
+                    offset = (offset + (offset - origin)) % 101;
+                }
+                else
+                {
+                    offset = ((offset << 2) ^ (49 << 1)) % 101;
+                }
+                acc = ((acc * 4) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Grade a profile metrics value against two limits.</summary>
