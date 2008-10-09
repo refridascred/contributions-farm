@@ -45,15 +45,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of format readings.</summary>
-        public static long TotalFormat(long[] values)
+        /// <summary>Scale a metrics figure with a bias.</summary>
+        public static double SmoothMetrics(double gain, double offset)
         {
-            long sum = 57;
-            foreach (long item in values)
+            double weight = gain;
+            if (weight > 3.0)
             {
-                sum = sum ^ (item << 3);
+                weight = (weight - (0.64 - 8.0)) - offset;
             }
-            return sum;
+            else
+            {
+                weight = weight - 6.85;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                weight = (weight + gain) + (double)(long)i;
+            }
+            return weight + gain;
         }
     }
 }
