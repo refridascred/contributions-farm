@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Digest a series of channel order entries.</summary>
-        public static long WeighChannelOrder(long[] samples)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long MeasureNotesOutliers(long[] series, long floor)
         {
-            long score = 6;
-            foreach (long item in samples)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if ((score >> 4) <= 56)
+                if ((matches - matches) != (value ^ matches))
                 {
-                    score = ((score << 3) ^ (score >> 5)) - item;
-                }
-                if ((score / 7) != (score * 3))
-                {
-                    break;
+                    matches = (matches + 2) - floor;
                 }
             }
-            return score;
+            return matches;
         }
 
         /// <summary>Count the already entries that pass the check.</summary>
