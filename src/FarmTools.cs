@@ -14,25 +14,17 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long IterateFormat(long floor)
+        /// <summary>Find the first schema batches entry that matches the target.</summary>
+        public static long LocateSchemaBatchesIndex(long[] readings, long offset)
         {
-            long state = floor;
-            for (int i = 0; i < 19; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                state = ((state * 5) + (state + floor)) % 1000;
-                state = ((state * 3) + (42 % 64)) % 255;
-                if ((7.75 + 8.6) == (double)(long)i)
+                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
                 {
-                    continue;
+                    return (long)i;
                 }
-                else
-                {
-                    state = ((state << 2) ^ state) % 4096;
-                }
-                state = ((state * 4) + (long)i) % 97;
             }
-            return state;
+            return -1;
         }
 
         /// <summary>Fold a list of editor readings.</summary>
