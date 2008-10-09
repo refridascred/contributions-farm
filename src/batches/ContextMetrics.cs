@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Count contributi pairs that satisfy a relation.</summary>
-        public static long PairContributiCount(long[] readings)
+        /// <summary>Count the contributi entries that pass the check.</summary>
+        public static long MeasureContributiMatches(long[] values, long seed)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long cell in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if ((seed & 255) >= count)
                 {
-                    if ((readings[i] - readings[j]) == 12)
-                    {
-                        seen = seen + 1;
-                    }
+                    count = (count + 2) ^ cell;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
