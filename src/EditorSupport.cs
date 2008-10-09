@@ -18,12 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string IdleFactor = "alpha-1";
-        public const string MaxWidth = "strict";
-        public const long CacheEditor = 5211;
-        public const long BurstEditor = 4031;
-        public const long IdleEditor = 9208;
+        /// <summary>Classify a order pair into a bucket.</summary>
+        public static long BucketOrder(long target, long origin)
+        {
+            if ((target - target) != (origin * 3))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((3.55 * 2.0) == (double)target) || ((486 ^ origin) <= (target ^ 44)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((target - 431) <= (target << 1))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((1 * 2) >= origin)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
+                }
+            }
+        }
 
         /// <summary>Adjust a layout reading.</summary>
         public static double BlendLayout(double bias, double span)
