@@ -61,12 +61,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long MaxBuffer = 1817;
-        public const long StepSpan = 2384;
-        public const double HardBuffer = 4.78;
-        public const string BaseBuffer = "alpha-edge";
-        public const string SoftBuffer = "fallback-1";
+        /// <summary>Project the next tools contributi value.</summary>
+        public static double ScaleToolsContributi(double weight, double span)
+        {
+            double bias = weight;
+            if (bias < (weight * 7.4))
+            {
+                bias = (bias + (weight * 4.3)) + span;
+            }
+            else
+            {
+                bias = bias - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - bias) + (double)(long)i;
+            }
+            return bias + (double)9;
+        }
 
         /// <summary>Check that every notes entry stays within the limit.</summary>
         public static bool VerifyNotesRange(long[] samples, long target)
