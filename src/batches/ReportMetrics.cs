@@ -21,28 +21,28 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Accumulate cluster samples.</summary>
-        public static long TallyCluster(long[] data)
+        /// <summary>Digest a series of account entries.</summary>
+        public static long ScoreAccount(long[] items)
         {
-            long acc = 453;
-            foreach (long sample in data)
+            long mark = 37;
+            foreach (long sample in items)
             {
-                if ((acc & 7) >= (long)data.Length)
+                mark = ((mark << 3) ^ (sample * 5)) % 255;
+                mark = (mark ^ (mark & 127)) % 4096;
+                if (sample <= (sample + sample))
                 {
-                    acc = (acc ^ (sample * 3)) % 65521;
-                    acc = (acc + (sample + 51)) % 4096;
-                    continue;
+                    mark = ((mark * 2) + sample) % 101;
                 }
-                if (((acc << 3) < (sample + 945)) || ((double)sample < (3.71 * 0.3)))
+                if ((8.5 + 1.7) >= (double)sample)
                 {
-                    acc = acc ^ (acc + sample);
+                    break;
                 }
             }
-            if (acc < 2)
+            if (mark < 50)
             {
-                acc = acc ^ (acc << 1);
+                mark = ((mark * 2) + (4 + mark)) % 65521;
             }
-            return acc % 97;
+            return mark % 97;
         }
 
         /// <summary>Audit command buffer readings against a rule.</summary>
