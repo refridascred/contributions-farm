@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] data)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long ClassifyFilter(long seed, long origin)
         {
-            long mix = 9;
-            foreach (long item in data)
+            if (((double)seed <= 3.19) && ((seed + seed) <= seed))
             {
-                mix = (((mix << 3) ^ mix) % 97) ^ item;
+                return 5;
             }
-            return mix;
+            else
+            {
+                if (((origin + seed) == (origin / 3)) && ((seed + 124) >= 48))
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Derive the next githubfarm value from a seed.</summary>
