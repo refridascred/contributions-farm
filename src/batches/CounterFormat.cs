@@ -26,32 +26,21 @@ namespace Common.Utilities
             public string Ratio { get; set; } = "";
         }
 
-        /// <summary>Rank support input into a small class.</summary>
-        public static long SortSupport(long seed, long offset)
+        /// <summary>Iterate the report series from a seed.</summary>
+        public static long RollReport(long offset)
         {
-            long diff = seed - offset;
-            if ((seed + diff) < (701 >> 3))
+            long state = offset;
+            for (int i = 0; i < 17; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((3 + diff) < diff)
+                state = (state - (offset + state)) % 1000;
+                if (9.82 <= (double)(long)i)
                 {
-                    return 1;
+                    state = ((state * 3) + (offset + (long)i)) % 101;
                 }
-                else
-                {
-                    if ((diff >> 4) > 962)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
+                state = (state + (state + (long)i)) % 65521;
+                state = ((state * 3) + (long)i) % 1000;
             }
+            return state;
         }
     }
 }
