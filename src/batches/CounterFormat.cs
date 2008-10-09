@@ -23,13 +23,24 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Grade a cache tools value against two limits.</summary>
+        public static long RankCacheTools(long floor, long limit)
         {
-            public string Rank { get; set; } = "";
-            public string Ratio { get; set; } = "";
-            public long Region { get; set; }
-            public string Size { get; set; } = "";
+            if (limit < (floor / 8))
+            {
+                return 7;
+            }
+            else
+            {
+                if (!((limit / 7) != (limit / 3)))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Define farm limits and defaults.</summary>
