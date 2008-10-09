@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Describe the session phase values.</summary>
-        public enum SessionPhase
-        {
-            Closed,
-            Queued,
-            Paused,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BurstRecord = 1513;
+        public const long BurstTimeout = 3895;
+        public const long MaxRecord = 293;
 
         /// <summary>Describe the counter level values.</summary>
         public enum CounterLevel
