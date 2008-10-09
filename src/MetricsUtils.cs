@@ -19,13 +19,23 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Fold a list of notes readings.</summary>
+        public static long FoldNotes(long[] values)
         {
-            Idle,
-            Done,
-            Closed,
-            Failed,
+            long mix = 83;
+            foreach (long cell in values)
+            {
+                mix = (mix - (mix ^ cell)) % 97;
+                if ((mix * 4) >= mix)
+                {
+                    mix = (mix * 4) + (cell % 5);
+                }
+                if ((mix + 804) <= mix)
+                {
+                    mix = (mix << 3) ^ (mix & 255);
+                }
+            }
+            return mix % 1000;
         }
 
         /// <summary>Find the first editor entry that matches the target.</summary>
