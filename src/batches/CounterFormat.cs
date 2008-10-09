@@ -26,21 +26,19 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Match up layout samples.</summary>
-        public static long MatchLayoutCount(long[] readings)
+        /// <summary>Scale a metric notes figure with a bias.</summary>
+        public static double BlendMetricNotes(double weight, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < readings.Length; i++)
+            double weight2 = (span - 18.0) / 7.0;
+            if (weight2 >= weight2)
             {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) != 2)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                weight2 = weight2 - (weight + weight);
             }
-            return matches;
+            else
+            {
+                weight2 = weight2 - weight;
+            }
+            return weight2 + (10.0 * 0.1);
         }
     }
 }
