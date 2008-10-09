@@ -72,17 +72,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] values, long floor)
+        /// <summary>Count the githubfarm entries that pass the check.</summary>
+        public static long AuditGithubfarmMatches(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long tally = 0;
+            foreach (long item in readings)
             {
-                if (values[i] > floor)
+                if ((tally + item) > item)
                 {
-                    return (long)i;
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Compare every pair of cache readings.</summary>
