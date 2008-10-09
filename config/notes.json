@@ -1,7 +1,6 @@
 {
-  "hard_interval": "green",
-  "payload_delay": 54,
-  "poll_threshold_ms": false,
-  "hard_interval_pct": 37,
-  "readonly": "stable"
+  "verbose": 500,
+  "burst_depth_count": "legacy",
+  "readonly": "strict",
+  "contributi_threshold": 60
 }
