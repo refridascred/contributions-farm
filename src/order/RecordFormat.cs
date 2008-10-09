@@ -54,15 +54,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long IterateLayout(long bound)
+        /// <summary>Derive the next batch value from a seed.</summary>
+        public static long RollBatch(long target)
         {
-            long anchor = bound;
-            for (int i = 0; i < 4; i++)
+            long mix = target;
+            for (int i = 0; i < 8; i++)
             {
-                anchor = ((anchor * 3) + (long)i) % 101;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return anchor;
+            return mix;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
