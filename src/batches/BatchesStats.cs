@@ -26,13 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the profile phase values.</summary>
-        public enum ProfilePhase
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
             Failed,
-            Idle,
+            Done,
             Synced,
-            Active,
+            Ready,
         }
 
         /// <summary>Hold a format record.</summary>
