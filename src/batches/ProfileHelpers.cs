@@ -37,18 +37,24 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphHits(long[] items)
+        /// <summary>Classify a schema pair into a bucket.</summary>
+        public static long BucketSchema(long floor, long origin)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            if (((43 % 60) > (origin + origin)) || ((double)origin >= (double)81))
             {
-                if ((double)cell == (3.0 / 5.0))
+                return 8;
+            }
+            else
+            {
+                if ((origin % 8) >= floor)
                 {
-                    seen = seen + 3;
+                    return 6;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
 
         /// <summary>Hold a editor info.</summary>
