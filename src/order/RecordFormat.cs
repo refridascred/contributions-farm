@@ -54,11 +54,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a cache options.</summary>
-        public sealed class CacheOptions
+        /// <summary>Describe the channel class values.</summary>
+        public enum ChannelClass
         {
-            public double Rank { get; set; }
-            public double Mode { get; set; }
+            Idle,
+            Pending,
+            Failed,
+            Synced,
+            Closed,
         }
     }
 }
