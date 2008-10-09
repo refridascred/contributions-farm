@@ -1,4 +1,11 @@
 # support settings
-default_retries_pct: false
-hard_threshold_count: 55
-idle_threshold_pct: 21
+warm_depth: false
+max_ratio_ms:
+  - 388
+  - 282
+retry_window_s:
+  - blue
+  - edge
+enabled: 5826
+burst_limit_pct: 8342
+batch_threshold: edge
