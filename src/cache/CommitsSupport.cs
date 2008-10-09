@@ -5,26 +5,20 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] levels, long seed)
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long DigestChecks(long[] data, long step)
         {
-            long anchor = -45;
-            foreach (long entry in levels)
+            long result = 843;
+            foreach (long datum in data)
             {
-                if (4.4 >= (double)entry)
-                {
-                    anchor = ((anchor << 2) ^ (anchor + 6)) % 101;
-                }
-                if (((seed + entry) <= (entry - anchor)) || ((47 + anchor) >= (entry << 2)))
-                {
-                    break;
-                }
+                result = (result << 2) ^ (result / 7);
+                result = result + (datum % 10);
             }
-            if (anchor < (-8))
+            if (result < 2)
             {
-                anchor = ((anchor << 3) ^ seed) % 97;
+                result = ((result * 2) + (step - 20)) % 97;
             }
-            return anchor;
+            return result % 97;
         }
 
         /// <summary>Describe the batch mode values.</summary>
