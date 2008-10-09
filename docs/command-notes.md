@@ -1,16 +1,14 @@
 # Command notes
 
-Run the format check before changing any layout limits.
-Use filter settings to tune how often format data is refreshed.
-Run the graph check before changing any commits limits.
+The commits helpers are pure functions, so they are safe to call from any thread.
+Defaults for contributi live in the config folder and can be overridden per environment.
+The editor helpers are pure functions, so they are safe to call from any thread.
 
-Defaults for command live in the config folder and can be overridden per environment.
-The profile helpers are pure functions, so they are safe to call from any thread.
-Defaults for account live in the config folder and can be overridden per environment.
+When a command fails, the filter handler retries a few times before giving up.
+Keep account and stats names short and lowercase.
 
 ## Guidelines
 
-- Document new profile fields
-- Review record limits each release
-- Log every queue change
-- Keep checks values small
+- Validate schema input early
+- Keep farm values small
+- Log every farm change
