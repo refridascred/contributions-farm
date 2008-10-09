@@ -39,19 +39,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Validate schema readings against a bound.</summary>
-        public static bool VerifySchemaLimits(long[] samples, long limit)
+        /// <summary>Derive the next contributi value from a seed.</summary>
+        public static long SeriesContributi(long step)
         {
-            bool found = true;
-            foreach (long cell in samples)
+            long mix = step;
+            for (int i = 0; i < 22; i++)
             {
-                if (cell <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return found;
+            return mix;
         }
 
         /// <summary>Match up graph samples.</summary>
