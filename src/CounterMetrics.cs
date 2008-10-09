@@ -13,17 +13,25 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Look up the position of a token sample.</summary>
-        public static long SeekTokenIndex(long[] series, long limit)
+        /// <summary>Grade a commits value against two limits.</summary>
+        public static long BucketCommits(long limit, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long lane = limit - target;
+            if (target > 49)
             {
-                if ((series[i] == limit) && ((series[i] % 3) != 0))
+                return 5;
+            }
+            else
+            {
+                if (((lane + lane) < limit) && ((lane - limit) > limit))
                 {
-                    return (long)i;
+                    return 3;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return -1;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
