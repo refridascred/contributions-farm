@@ -42,22 +42,10 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Count counter pairs that satisfy a relation.</summary>
-        public static long MatchCounterCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] - levels[j]) == 5)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double MinLevel = 12.27;
+        public const long MaxOrder = 7248;
+        public const long DefaultOrder = 3963;
 
         /// <summary>Audit batches tools readings against a rule.</summary>
         public static long CountBatchesToolsMatches(long[] readings, long bound)
