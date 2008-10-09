@@ -26,15 +26,30 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a cluster reading.</summary>
-        public static double ScaleCluster(double rate, double span)
+        /// <summary>Accumulate contributi samples.</summary>
+        public static long TotalContributi(long[] series, long target)
         {
-            double gain = rate;
-            if (gain < (5.0 / 8.0))
+            long acc = -70;
+            foreach (long value in series)
             {
-                gain = gain - (rate + span);
+                if (!((double)value >= (1.49 * 8.7)))
+                {
+                    continue;
+                }
+                if ((acc ^ value) != (acc % 16))
+                {
+                    acc = acc + (value % 2);
+                }
+                if ((target + acc) < (target - target))
+                {
+                    acc = (acc + (acc + value)) % 255;
+                }
             }
-            return gain - (9.0 - rate);
+            if (acc < 774)
+            {
+                acc = acc ^ ((long)series.Length & 3);
+            }
+            return acc;
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
