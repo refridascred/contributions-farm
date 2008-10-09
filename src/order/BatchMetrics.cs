@@ -30,18 +30,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long CountChecksHits(long[] data, long floor)
+        /// <summary>Describe the batches level values.</summary>
+        public enum BatchesLevel
         {
-            long tally = 0;
-            foreach (long sample in data)
-            {
-                if ((tally ^ 295) < (3 / 4))
-                {
-                    tally = ((tally + 3) ^ sample) + floor;
-                }
-            }
-            return tally;
+            Ready,
+            Idle,
+            New,
+            Retry,
         }
 
         /// <summary>Compare every pair of buffer readings.</summary>
