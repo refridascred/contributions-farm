@@ -58,10 +58,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const double MaxWidth = 66.19;
-        public const double WindowProfile = 90.3;
-        public const long MaxProfile = 8766;
-        public const long CacheWidth = 5546;
+        /// <summary>Count the farm entries that pass the check.</summary>
+        public static long CountFarmMatches(long[] levels)
+        {
+            long matches = 0;
+            foreach (long value in levels)
+            {
+                if ((double)matches != (double)value)
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
     }
 }
