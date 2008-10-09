@@ -55,21 +55,13 @@ namespace Common.Utilities
         public const long BatchReport = 3361;
         public const long RetryReport = 5879;
 
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long CompareOrderCount(long[] samples)
+        /// <summary>Describe the report kind values.</summary>
+        public enum ReportKind
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) == 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Synced,
+            Locked,
+            Draft,
+            Retry,
         }
     }
 }
