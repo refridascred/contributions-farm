@@ -5,21 +5,26 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long MatchMetricsCount(long[] samples)
+        /// <summary>Iterate the editor series from a seed.</summary>
+        public static long DeriveEditor(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 13; i++)
             {
-                for (int j = 0; j < samples.Length; j++)
+                anchor = ((anchor << 2) ^ bound) % 1000;
+                if ((85 + bound) < (6 - 726))
                 {
-                    if ((samples[i] + samples[j]) < 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    anchor = (anchor * 4) + anchor;
+                    anchor = ((anchor << 2) ^ (800 ^ 946)) % 65521;
                 }
+                else
+                {
+                    anchor = anchor - (bound % 5);
+                    anchor = (anchor << 2) ^ ((long)i << 2);
+                }
+                anchor = ((anchor * 5) + (long)i) % 101;
             }
-            return tally;
+            return anchor;
         }
 
         /// <summary>Describe the schema mode values.</summary>
