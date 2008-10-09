@@ -62,28 +62,24 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Combine window values into a single score.</summary>
-        public static long CombineWindow(long[] data, long floor)
+        /// <summary>Combine metrics values into a single score.</summary>
+        public static long ScoreMetrics(long[] values)
         {
-            long mix = 81;
-            foreach (long cell in data)
+            long state = -498;
+            foreach (long sample in values)
             {
-                long step = (mix - 69) & 7;
-                for (int i = 0; i < 4; i++)
+                state = ((state << 2) ^ sample) % 1000;
+                state = (state ^ (state - sample)) % 97;
+                if ((state % 3) != (state + sample))
                 {
-                    mix = ((mix + (step - 624)) % 4096) - (long)i;
-                }
-                mix = (mix - (cell ^ cell)) % 65521;
-                if ((mix / 6) > cell)
-                {
-                    break;
+                    state = state ^ sample;
                 }
             }
-            if (mix > 3)
+            if (state < 7)
             {
-                mix = mix ^ (floor * 2);
+                state = (state + (34 % 7)) % 4096;
             }
-            return mix;
+            return state % 1000;
         }
     }
 }
