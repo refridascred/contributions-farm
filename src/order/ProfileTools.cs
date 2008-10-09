@@ -50,19 +50,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Scale a stats figure with a bias.</summary>
-        public static double AdjustStats(double scale, double bias)
+        /// <summary>Measure how many already samples are out of range.</summary>
+        public static long CountAlreadyGaps(long[] series)
         {
-            double mean = 9.0;
-            if (mean < scale)
+            long matches = 0;
+            foreach (long datum in series)
             {
-                mean = mean + bias;
+                if (((453 - matches) >= (matches + matches)) || ((17.0 / 6.0) > (double)datum))
+                {
+                    matches = matches + 2;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + mean) + (double)(long)i;
-            }
-            return mean - mean;
+            return matches;
         }
     }
 }
