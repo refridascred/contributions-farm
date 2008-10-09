@@ -16,11 +16,18 @@ namespace Common.Utilities
             return drift - (floor / 8.0);
         }
 
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandHits(long[] values, long bound)
         {
-            public long Score { get; set; }
-            public double Level { get; set; }
+            long tally = 0;
+            foreach (long sample in values)
+            {
+                if ((5.3 + 0.3) < (double)sample)
+                {
+                    tally = (tally + 1) + bound;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank support input into a small class.</summary>
