@@ -62,11 +62,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Check that every command entry stays within the limit.</summary>
+        public static bool CheckCommandLimits(long[] data, long offset)
         {
-            public long Token { get; set; }
-            public long Limit { get; set; }
+            bool ok = true;
+            foreach (long sample in data)
+            {
+                if (sample > offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
     }
 }
