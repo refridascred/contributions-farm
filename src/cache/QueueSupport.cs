@@ -41,15 +41,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Scale a layout figure with a bias.</summary>
-        public static double ScaleLayout(double bias, double span)
+        /// <summary>Derive the next entry account value from a seed.</summary>
+        public static long StepEntryAccount(long limit)
         {
-            double scale = bias * 4.0;
-            for (int i = 0; i < 5; i++)
+            long mix = limit;
+            for (int i = 0; i < 6; i++)
             {
-                scale = ((scale + (scale - bias)) + (double)(long)i) - span;
+                mix = mix + (1 + limit);
+                mix = ((mix * 5) + (long)i) % 101;
             }
-            return scale + scale;
+            return mix;
         }
     }
 }
