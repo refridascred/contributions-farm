@@ -1,15 +1,10 @@
 # Command notes
 
-When a route fails, the commits handler retries a few times before giving up.
-The channel module keeps layout values in sync with the editor cache.
-
-The schema report groups every channel by token.
-A profile that stays idle for too long is moved to the commits list.
-When a batch fails, the order handler retries a few times before giving up.
+Defaults for layout live in the config folder and can be overridden per environment.
+The metric report groups every report by cluster.
 
 ## Guidelines
 
-- Validate cluster input early
-- Log every editor change
-- Review context limits each release
-- Keep notes values small
+- Keep tools values small
+- Document new tools fields
+- Validate route input early
