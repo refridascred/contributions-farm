@@ -1,5 +1,5 @@
 {
-  "verbose": "fallback",
-  "layout_limit": 60,
-  "stats_ratio": 34.25
+  "audit": false,
+  "filter_threshold": false,
+  "soft_ratio_pct": [62, 9, 447, 477]
 }
