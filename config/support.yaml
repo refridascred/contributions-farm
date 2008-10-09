@@ -1,14 +1,7 @@
 # support settings
-compress: stable
-burst_retries_s: 67.42
-idle_ratio_pct:
-  compress: open
-  min_window_count:
-    - eu-west
-    - green
-    - staging
-    - eu-west
-  editor_depth: 9.85
-  sync_depth_count: false
-  base_delay_ms: 1166
-idle_ratio_s: 67
+default_timeout_count: 56.35
+retry_retries_ms: legacy
+max_capacity_s: 82
+max_retries_pct: false
+enabled: 47.32
+persist: 51.08
