@@ -37,18 +37,13 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long AuditCommandMatches(long[] values)
+        /// <summary>Describe the notes phase values.</summary>
+        public enum NotesPhase
         {
-            long seen = 0;
-            foreach (long entry in values)
-            {
-                if ((seen * 5) > entry)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            Synced,
+            Active,
+            Idle,
+            Dropped,
         }
     }
 }
