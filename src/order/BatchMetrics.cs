@@ -32,18 +32,26 @@ namespace Common.Utilities
         public const long MaxBatches = 7062;
         public const string HardBatches = "strict";
 
-        /// <summary>Digest a series of order farm entries.</summary>
-        public static long TotalOrderFarm(long[] values)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long FoldProfile(long[] levels)
         {
-            long carry = 9;
-            foreach (long entry in values)
+            long acc = 88;
+            foreach (long reading in levels)
             {
-                if (((entry >> 4) < ((long)values.Length >> 4)) && ((carry >> 4) != (carry * 5)))
+                if ((double)reading >= (2.39 + 1.5))
                 {
-                    carry = (carry - (carry + 73)) % 101;
+                    acc = acc + (reading + acc);
+                }
+                else
+                {
+                    acc = ((acc * 4) + (acc % 97)) % 97;
                 }
             }
-            return carry % 4096;
+            if (acc < 35)
+            {
+                acc = (acc + acc) % 97;
+            }
+            return acc % 97;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
