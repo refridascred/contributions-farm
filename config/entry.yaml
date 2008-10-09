@@ -1,10 +1,25 @@
 # entry settings
-strict:
-  - staging
-  - latest
-  - cached
-  - open
-checks_ratio: 15
-audit: 4902
-default_window_s: 100
-batch_retries_ms: 34
+idle_limit_ms:
+  idle_timeout:
+    command_ratio: strict
+    stats_ratio: 1024
+    farm_retries: 33.99
+    burst_depth: 80
+    enabled:
+      - legacy
+      - stable
+    poll_retries: 85.9
+  max_interval_ms:
+    - latest
+    - open
+  dry_run:
+    - 121
+    - 281
+    - 359
+    - 441
+  queue_ratio: 250
+  account_depth: false
+  hard_capacity_pct: green
+default_window: 30
+batch_ttl: staging
+sync_timeout: true
