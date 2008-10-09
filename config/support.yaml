@@ -1,10 +1,12 @@
 # support settings
-stream_ttl: open
-contributi_depth: true
-cache_interval:
-  - 60
-  - 197
-base_window: 22.61
-burst_capacity:
-  - edge
+soft_delay_ms: 500
+verbose: false
+default_limit_count:
+  - eu-west
   - strict
+idle_interval_pct: 1566
+sync_retries:
+  - green
+  - staging
+  - edge
+  - latest
