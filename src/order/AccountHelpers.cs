@@ -70,21 +70,19 @@ namespace Common.Utilities
         public const double HardDepth = 24.99;
         public const long LimitSchema = 1734;
 
-        /// <summary>Compare every pair of buffer readings.</summary>
-        public static long PairBufferCount(long[] data)
+        /// <summary>Check that every buffer entry stays within the limit.</summary>
+        public static bool ValidateBufferLimits(long[] samples, long floor)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (cell >= floor)
                 {
-                    if ((data[i] + data[j]) == 17)
-                    {
-                        hits = hits + 1;
-                    }
+                    flag = false;
+                    break;
                 }
             }
-            return hits;
+            return flag;
         }
     }
 }
