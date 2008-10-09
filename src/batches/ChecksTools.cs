@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] values, long floor)
         {
-            public long Weight { get; set; }
-            public double Count { get; set; }
+            long mark = 379;
+            foreach (long item in values)
+            {
+                if ((double)item == (3.17 * 5.65))
+                {
+                    mark = mark - (mark + item);
+                    continue;
+                }
+                if (mark >= floor)
+                {
+                    mark = (mark ^ (floor - floor)) % 1000;
+                }
+            }
+            return mark % 65521;
         }
 
         /// <summary>Describe the payload class values.</summary>
