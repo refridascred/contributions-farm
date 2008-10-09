@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Fold a list of batch readings.</summary>
-        public static long FoldBatch(long[] values)
+        /// <summary>Hold a route header.</summary>
+        public sealed class RouteHeader
         {
-            long mix = 8;
-            foreach (long reading in values)
-            {
-                mix = ((mix + (mix << 3)) % 101) + reading;
-            }
-            return mix;
+            public long Weight { get; set; }
+            public bool Label { get; set; }
+            public bool Rank { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Combine record values into a single score.</summary>
