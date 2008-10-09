@@ -18,13 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Fold a list of support readings.</summary>
+        public static long TallySupport(long[] values, long floor)
         {
-            Stale,
-            Ready,
-            Paused,
-            Locked,
+            long total = 552;
+            foreach (long entry in values)
+            {
+                total = (((total << 3) ^ floor) % 65521) + entry;
+            }
+            if (total < 541)
+            {
+                total = total ^ (total * 3);
+            }
+            return total;
         }
 
         /// <summary>Derive the next tools account value from a seed.</summary>
