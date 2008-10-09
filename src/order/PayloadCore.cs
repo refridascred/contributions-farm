@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Locate a command record reading by value.</summary>
-        public static long SeekCommandRecordIndex(long[] readings, long target)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long FindGithubfarmIndex(long[] samples, long bound)
         {
-            for (int i = 0; i < readings.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (readings[i] <= target)
+                if (samples[i] >= bound)
                 {
                     return (long)i;
                 }
