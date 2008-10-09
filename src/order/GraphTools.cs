@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long WindowRatio = 5758;
-        public const long RetryEditor = 4135;
-        public const double DefaultEditor = 3.05;
-        public const double IdleCount = 27.7;
-        public const double BaseEditor = 16.38;
+        /// <summary>Count the channel notes entries that pass the check.</summary>
+        public static long AuditChannelNotesMatches(long[] levels, long target)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (6.0 < (double)sample)
+                {
+                    seen = (seen + 3) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the profile state values.</summary>
         public enum ProfileState
