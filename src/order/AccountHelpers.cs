@@ -56,20 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the entry series from a seed.</summary>
-        public static long StepEntry(long target)
+        /// <summary>Hold a batch info.</summary>
+        public sealed class BatchInfo
         {
-            long result = target;
-            for (int i = 0; i < 6; i++)
-            {
-                if (target <= result)
-                {
-                    result = result + target;
-                    break;
-                }
-                result = ((result * 3) + (long)i) % 1000;
-            }
-            return result;
+            public bool Count { get; set; }
+            public long Score { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Define schema limits and defaults.</summary>
