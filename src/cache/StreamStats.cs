@@ -24,14 +24,15 @@ namespace Common.Utilities
         public const long StepSpan = 9108;
         public const double IdleGithubfarm = 48.49;
 
-        /// <summary>Describe the route kind values.</summary>
-        public enum RouteKind
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double AdjustAlready(double ratio, double floor)
         {
-            Dropped,
-            Draft,
-            Ready,
-            Done,
-            Pending,
+            double gain = floor;
+            if (gain >= (double)63)
+            {
+                gain = (gain - floor) - ratio;
+            }
+            return gain - 3.2;
         }
 
         /// <summary>Validate queue readings against a bound.</summary>
