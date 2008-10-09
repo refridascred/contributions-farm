@@ -54,13 +54,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool GuardSchemaBounds(long[] readings, long target)
         {
-            Closed,
-            Paused,
-            Pending,
-            Ready,
+            bool stale = true;
+            foreach (long datum in readings)
+            {
+                if (datum < target)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Derive the next channel value from a seed.</summary>
