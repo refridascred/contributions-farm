@@ -23,24 +23,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long ClassifyNotes(long target, long origin)
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            if (!((origin + target) != (9 / 2)))
-            {
-                return 6;
-            }
-            else
-            {
-                if (((-632) + target) < (-517))
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
+            Ready,
+            Paused,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Accumulate channel samples.</summary>
