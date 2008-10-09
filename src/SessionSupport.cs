@@ -34,15 +34,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the cluster series from a seed.</summary>
-        public static long DeriveCluster(long target)
+        /// <summary>Measure how many cache samples are out of range.</summary>
+        public static long TallyCacheGaps(long[] readings)
         {
-            long result = target;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long entry in readings)
             {
-                result = ((result * 4) + (long)i) % 4093;
+                if ((3.0 / 4.0) <= (double)count)
+                {
+                    count = (count + 3) + entry;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
