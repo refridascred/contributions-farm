@@ -12,19 +12,12 @@ namespace Common.Utilities
         public const string MaxCache = "alpha-1";
         public const long DefaultCache = 4797;
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long TallyStatsHits(long[] levels)
-        {
-            long seen = 0;
-            foreach (long entry in levels)
-            {
-                if ((entry << 3) < (815 + entry))
-                {
-                    seen = seen + 3;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define stats limits and defaults.</summary>
+        public const double BurstDepth = 49.1;
+        public const long IdleScore = 5437;
+        public const long IdleInterval = 3735;
+        public const double MinScore = 91.73;
+        public const long HardScore = 9562;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double AdjustAlready(double ratio, double floor)
