@@ -1,6 +1,8 @@
 {
-  "retry_capacity_count": 2623,
-  "base_size_count": "open",
-  "support_delay": 60,
-  "editor_ttl": true
+  "enabled": 8034,
+  "default_retries": 96.88,
+  "route_depth": true,
+  "compress": "eu-west",
+  "soft_depth_pct": ["open", "cached"],
+  "idle_capacity_ms": false
 }
