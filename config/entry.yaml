@@ -1,25 +1,12 @@
 # entry settings
-flush_timeout_count:
-  - 358
-  - 101
-poll_delay_pct: 60
-verbose: 2009
-cache_threshold: 6.7
-flush_capacity_ms:
-  filter_size:
-    - strict
-    - edge
-    - cached
-  flush_capacity: false
-  retry_limit:
-    compress: true
-    dry_run:
-      - staging
-      - green
-      - blue
-      - primary
-    flush_delay_ms: 500
-  base_timeout_ms: primary
-  window_ttl: strict
-  warm_ttl: latest
-warm_window_ms: 638
+account_capacity:
+  max_timeout_s: 11.01
+  verbose: 2661
+  support_limit: blue
+  flush_retries: 59.44
+  metrics_limit: staging
+  soft_limit: 3448
+persist: true
+audit: 95.8
+warm_ttl_pct: true
+token_delay: true
