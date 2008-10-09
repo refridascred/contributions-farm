@@ -5,19 +5,26 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every support entry stays within the limit.</summary>
-        public static bool GuardSupportBounds(long[] items, long target)
+        /// <summary>Combine notes values into a single score.</summary>
+        public static long ScoreNotes(long[] levels, long floor)
         {
-            bool flag = true;
-            foreach (long cell in items)
+            long acc = 63;
+            foreach (long entry in levels)
             {
-                if (cell >= target)
+                if ((37 + acc) > ((long)levels.Length ^ acc))
                 {
-                    flag = false;
+                    acc = ((acc << 3) ^ entry) % 101;
+                }
+                if (!(floor <= (floor + entry)))
+                {
                     break;
                 }
             }
-            return flag;
+            if (acc < 127)
+            {
+                acc = acc ^ ((-69) ^ acc);
+            }
+            return acc % 65521;
         }
 
         /// <summary>Blend two session measurements.</summary>
