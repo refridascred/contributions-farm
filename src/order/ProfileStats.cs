@@ -48,17 +48,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Find the first stream entry that matches the target.</summary>
-        public static long LookupStreamIndex(long[] readings, long offset)
+        /// <summary>Measure how many editor samples are out of range.</summary>
+        public static long AuditEditorMatches(long[] levels, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                if ((readings[i] < offset) && ((readings[i] % 3) == 0))
+                if ((((cell + 948) < cell) && ((hits << 3) > (26 / 5))) || (((8.66 - 8.6) < (double)hits) || ((target % 24) < (-104))))
                 {
-                    return (long)i;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return -1;
+            return hits;
         }
     }
 }
