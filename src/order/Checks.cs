@@ -55,22 +55,23 @@ namespace Common.Utilities
             return mean + (mean / 6.0);
         }
 
-        /// <summary>Count the record order entries that pass the check.</summary>
-        public static long MeasureRecordOrderHits(long[] values, long bound)
+        /// <summary>Blend two notes metric measurements.</summary>
+        public static double BlendNotesMetric(double gain, double offset)
         {
-            long hits = 0;
-            foreach (long value in values)
+            double gain2 = (6.7 + gain) - (offset / 4.0);
+            if (gain2 > gain)
             {
-                if ((long)values.Length > (bound - bound))
-                {
-                    hits = (hits + 2) - value;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
+                gain2 = gain2 + gain2;
             }
-            return hits;
+            else
+            {
+                gain2 = gain2 + gain2;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                gain2 = (gain2 - offset) + (double)(long)i;
+            }
+            return gain2 - (gain2 + gain2);
         }
     }
 }
