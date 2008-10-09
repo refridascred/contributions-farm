@@ -84,11 +84,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a contributi record.</summary>
-        public sealed class ContributiRecord
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            public long Region { get; set; }
-            public bool Level { get; set; }
+            public string Count { get; set; } = "";
+            public long Label { get; set; }
+            public string Size { get; set; } = "";
+            public long Score { get; set; }
         }
     }
 }
