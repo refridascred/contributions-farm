@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Digest a series of session checks entries.</summary>
-        public static long TotalSessionChecks(long[] values, long origin)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long ScoreEntry(long[] series, long floor)
         {
-            long mix = 7;
-            foreach (long datum in values)
+            long acc = 62;
+            foreach (long cell in series)
             {
-                if (!(datum < (origin - mix)))
+                if ((1.43 - 16.0) > (double)floor)
                 {
-                    mix = (mix + (datum + datum)) % 255;
+                    acc = ((acc * 3) + floor) - cell;
                 }
-                mix = (mix ^ (datum & 127)) % 4096;
             }
-            return mix;
+            return acc % 1000;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
