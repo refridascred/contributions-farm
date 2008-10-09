@@ -53,11 +53,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            Paused,
-            Failed,
+            Active,
+            Closed,
+            Pending,
+            Synced,
             Idle,
         }
 
