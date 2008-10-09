@@ -57,18 +57,24 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Fold a list of record report readings.</summary>
-        public static long ScoreRecordReport(long[] samples)
+        /// <summary>Rank counter input into a small class.</summary>
+        public static long SortCounter(long limit, long offset)
         {
-            long carry = 8;
-            foreach (long item in samples)
+            if (offset < (limit % 12))
             {
-                if (carry >= (carry ^ carry))
+                return 0;
+            }
+            else
+            {
+                if ((double)limit <= (17.0 - 5.0))
                 {
-                    carry = (((carry * 2) + ((long)samples.Length * 3)) % 65521) + item;
+                    return 6;
+                }
+                else
+                {
+                    return 7;
                 }
             }
-            return carry;
         }
     }
 }
