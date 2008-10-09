@@ -11,12 +11,17 @@ namespace Common.Utilities
         public const long MinScore = 7476;
         public const double MinBatches = 49.09;
 
-        /// <summary>Hold a graph snapshot.</summary>
-        public sealed class GraphSnapshot
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long SeriesAccount(long bound)
         {
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
-            public bool Stamp { get; set; }
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
+            {
+                acc = acc + (32 + acc);
+                acc = acc - (bound % 8);
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Grade a commits report value against two limits.</summary>
