@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long TallyAlreadyGaps(long[] samples)
+        /// <summary>Check that every route entry stays within the limit.</summary>
+        public static bool VerifyRouteBounds(long[] readings, long target)
         {
-            long hits = 0;
-            foreach (long item in samples)
+            bool stale = true;
+            foreach (long item in readings)
             {
-                if ((5.0 / 4.0) > (double)hits)
+                if (item > target)
                 {
-                    hits = (hits + 3) + item;
+                    stale = false;
+                    break;
                 }
             }
-            return hits;
+            return stale;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
