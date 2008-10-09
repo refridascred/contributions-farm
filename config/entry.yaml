@@ -1,4 +1,44 @@
 # entry settings
-max_delay: 10.34
-retry_ttl: primary
-burst_timeout_ms: fallback
+buffer_interval:
+  command_delay: 71
+  max_ratio_pct: 23
+  min_ratio: 5018
+flush_ratio_pct: 8610
+min_interval_s:
+  max_interval:
+    readonly: 58
+    dry_run: true
+    sync_ratio:
+      - 66
+      - 398
+      - 486
+      - 26
+    metric_limit: 21
+    report_capacity: false
+    hard_ratio: false
+  poll_timeout:
+    - 251
+    - 18
+    - 236
+  sync_depth:
+    session_retries:
+      - 96
+      - 318
+      - 211
+    strict: primary
+    poll_delay_s: stable
+  hard_capacity:
+    - standard
+    - eu-west
+    - local
+  batch_limit:
+    - primary
+    - open
+    - stable
+    - blue
+  dry_run: legacy
+metric_depth:
+  - fallback
+  - blue
+  - cached
+compress: 100
