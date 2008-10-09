@@ -19,11 +19,14 @@ namespace Common.Utilities
         public const long IdleBudget = 9755;
         public const long BaseContext = 9682;
 
-        /// <summary>Hold a stream summary.</summary>
-        public sealed class StreamSummary
+        /// <summary>Describe the stats status values.</summary>
+        public enum StatsStatus
         {
-            public bool Stamp { get; set; }
-            public double Flag { get; set; }
+            Draft,
+            Done,
+            Locked,
+            Stale,
+            Dropped,
         }
 
         /// <summary>Look up the position of a token schema sample.</summary>
