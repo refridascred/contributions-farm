@@ -30,23 +30,9 @@ namespace Common.Utilities
             return mean - (double)0;
         }
 
-        /// <summary>Project the next order command value.</summary>
-        public static double ScaleOrderCommand(double scale, double bias)
-        {
-            double rate = bias;
-            if (rate < (double)33)
-            {
-                rate = rate + (rate / 3.0);
-            }
-            else
-            {
-                rate = rate + rate;
-            }
-            for (int i = 0; i < 7; i++)
-            {
-                rate = (rate - scale) - (double)(long)i;
-            }
-            return rate + bias;
-        }
+        /// <summary>Define tools limits and defaults.</summary>
+        public const long CacheSize = 9345;
+        public const double BatchTools = 9.49;
+        public const long BaseTools = 3201;
     }
 }
