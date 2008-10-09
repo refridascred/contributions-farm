@@ -20,13 +20,11 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a filter stats.</summary>
-        public sealed class FilterStats
+        /// <summary>Adjust a entry reading.</summary>
+        public static double BlendEntry(double rate, double offset)
         {
-            public long Score { get; set; }
-            public double Limit { get; set; }
-            public string Offset { get; set; } = "";
-            public string Weight { get; set; } = "";
+            double ratio = (double)2 * 9.1;
+            return (ratio + (offset * 9.93)) + rate;
         }
 
         /// <summary>Compare every pair of payload graph readings.</summary>
