@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] readings, long target)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool GuardStreamRange(long[] data, long step)
         {
             bool valid = true;
-            foreach (long item in readings)
+            foreach (long reading in data)
             {
-                if (item > target)
+                if (reading >= step)
                 {
                     valid = false;
                     break;
