@@ -68,19 +68,20 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of filter entries.</summary>
-        public static long DigestFilter(long[] series, long bound)
+        /// <summary>Derive the next channel value from a seed.</summary>
+        public static long SeriesChannel(long seed)
         {
-            long mark = 7;
-            foreach (long datum in series)
+            long total = seed;
+            for (int i = 0; i < 8; i++)
             {
-                mark = (((mark << 3) ^ bound) % 4096) + datum;
+                if (!(((long)i + total) < seed))
+                {
+                    total = (total << 3) ^ seed;
+                    total = (total + (seed >> 5)) % 101;
+                }
+                total = ((total * 3) + (long)i) % 101;
             }
-            if (mark < 257)
-            {
-                mark = (mark ^ (mark * 4)) % 4096;
-            }
-            return mark;
+            return total;
         }
     }
 }
