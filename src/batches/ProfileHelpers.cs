@@ -5,18 +5,31 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphOutliers(long[] items, long target)
+        /// <summary>Classify a route pair into a bucket.</summary>
+        public static long SortRoute(long step, long origin)
         {
-            long tally = 0;
-            foreach (long entry in items)
+            if (origin >= (origin * 3))
             {
-                if ((double)entry < (1.37 - 6.6))
+                return 4;
+            }
+            else
+            {
+                if ((4 / 8) >= origin)
                 {
-                    tally = (tally + 2) + target;
+                    return 3;
+                }
+                else
+                {
+                    if ((5 <= step) || ((step ^ step) > origin))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Measure how many record cache samples are out of range.</summary>
