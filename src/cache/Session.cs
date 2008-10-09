@@ -45,11 +45,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long HardCounter = 7479;
-        public const string DefaultTimeout = "latest-1";
-        public const long BaseRatio = 6658;
-        public const long CacheWidth = 618;
-        public const string CacheCounter = "local-1";
+        /// <summary>Project the next checks value.</summary>
+        public static double ProjectChecks(double bias, double floor)
+        {
+            double gain = (double)(74 * 4);
+            if (gain > floor)
+            {
+                gain = gain + floor;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                gain = gain - (double)(long)i;
+            }
+            return gain - (bias - floor);
+        }
     }
 }
