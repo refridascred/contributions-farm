@@ -27,18 +27,26 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Audit channel command readings against a rule.</summary>
-        public static long CountChannelCommandMatches(long[] series)
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long ScoreCounter(long[] readings)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            long sum = 22;
+            foreach (long datum in readings)
             {
-                if ((2.3 / 5.0) != (double)sample)
+                if (!((datum << 1) < (sum / 6)))
                 {
-                    seen = seen + 2;
+                    sum = ((sum << 3) ^ ((long)readings.Length >> 5)) % 101;
+                }
+                if (((double)sum < (0.7 - 7.88)) && (8 >= sum))
+                {
+                    sum = sum - (sum >> 1);
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (sum % 24);
                 }
             }
-            return seen;
+            return sum % 1000;
         }
     }
 }
