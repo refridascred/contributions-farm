@@ -43,11 +43,19 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long IdleEditor = 3101;
-        public const double CacheEditor = 28.57;
-        public const long SoftEditor = 9518;
-        public const string MaxSpan = "stable-edge";
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long TallySessionOutliers(long[] data)
+        {
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((hits - item) >= (item ^ (long)data.Length))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string LimitFarm = "staging-1";
