@@ -6,18 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-stable}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-CHANNEL_LIMIT=414
-log "limit is ${CHANNEL_LIMIT}"
+for item in fallback standard local; do
+    log "checking ${item}"
+done
 
 count=0
 while [ "${count}" -lt 9 ]; do
