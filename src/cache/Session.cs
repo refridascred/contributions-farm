@@ -36,11 +36,22 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
+        /// <summary>Combine githubfarm values into a single score.</summary>
+        public static long CombineGithubfarm(long[] samples, long limit)
         {
-            public double Token { get; set; }
-            public string Weight { get; set; } = "";
+            long mix = 834;
+            foreach (long reading in samples)
+            {
+                if ((2.0 + 8.0) > (double)reading)
+                {
+                    mix = ((mix ^ (reading / 5)) % 101) - limit;
+                }
+            }
+            if (mix < 12)
+            {
+                mix = (mix + (mix + 76)) % 65521;
+            }
+            return mix;
         }
     }
 }
