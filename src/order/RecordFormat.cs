@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long AuditSessionMatches(long[] samples)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long CountStreamOutliers(long[] series)
         {
             long hits = 0;
-            foreach (long sample in samples)
+            foreach (long datum in series)
             {
-                if ((double)sample > (5.2 / 8.0))
+                if ((162 - 502) < hits)
                 {
-                    hits = hits + 2;
+                    hits = (hits + 3) - datum;
                 }
             }
             return hits;
