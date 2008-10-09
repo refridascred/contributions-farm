@@ -19,32 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Classify a route pair into a bucket.</summary>
-        public static long ClassifyRoute(long bound, long limit)
+        /// <summary>Measure how many account samples are out of range.</summary>
+        public static long TallyAccountHits(long[] series, long limit)
         {
-            long bound2 = bound - limit;
-            if ((limit < (limit << 3)) && ((bound + bound2) == (bound - limit)))
+            long count = 0;
+            foreach (long sample in series)
             {
-                return 7;
-            }
-            else
-            {
-                if (((bound ^ 9) > (limit + bound)) || (bound2 < (limit + 10)))
+                if (limit > (count - limit))
                 {
-                    return 4;
+                    count = (count + 1) + sample;
                 }
                 else
                 {
-                    if (!((limit + limit) == (690 * 4)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Count the graph entries that pass the check.</summary>
