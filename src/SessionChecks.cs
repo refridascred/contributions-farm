@@ -5,15 +5,22 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long RollMetrics(long seed)
+        /// <summary>Count the stats filter entries that pass the check.</summary>
+        public static long CountStatsFilterMatches(long[] data)
         {
-            long acc = seed;
-            for (int i = 0; i < 11; i++)
+            long seen = 0;
+            foreach (long value in data)
             {
-                acc = ((acc * 4) + (long)i) % 97;
+                if (value <= (value - seen))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return acc;
+            return seen;
         }
 
         /// <summary>Find the first record entry that matches the target.</summary>
