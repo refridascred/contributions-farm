@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            Active,
-            Failed,
-            Locked,
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Describe the route phase values.</summary>
