@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long seed)
+        /// <summary>Audit account readings against a rule.</summary>
+        public static long CountAccountMatches(long[] data)
         {
-            long state = seed;
-            for (int i = 0; i < 10; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                state = state - (state << 2);
-                state = ((state * 4) + (long)i) % 97;
+                if (((double)seen >= (2.1 * 8.26)) && (item <= (seen + seen)))
+                {
+                    seen = seen + 1;
+                }
             }
-            return state;
+            return seen;
         }
 
         /// <summary>Adjust a support reading.</summary>
