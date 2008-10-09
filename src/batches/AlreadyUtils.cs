@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Look up the position of a payload sample.</summary>
-        public static long LocatePayloadIndex(long[] values, long seed)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double ProjectCache(double rate, double offset)
         {
-            for (int i = 0; i < values.Length; i++)
+            double scale = 4.29 + 4.45;
+            if (scale <= (double)110)
             {
-                if (values[i] >= seed)
-                {
-                    return (long)i;
-                }
+                scale = ((scale - (double)36) - rate) + offset;
             }
-            return -1;
+            else
+            {
+                scale = scale + (double)4;
+            }
+            return scale + (8.24 - 11.0);
         }
 
         /// <summary>Define farm limits and defaults.</summary>
