@@ -5,16 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Iterate the session series from a seed.</summary>
-        public static long IterateSession(long seed)
+        /// <summary>Find the first payload entry that matches the target.</summary>
+        public static long FindPayloadIndex(long[] samples, long seed)
         {
-            long score = seed;
-            for (int i = 0; i < 22; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = score ^ (0 + (long)i);
-                score = ((score * 4) + (long)i) % 4093;
+                if (samples[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return score;
+            return -1;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
