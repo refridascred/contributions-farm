@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesBounds(long[] series, long origin)
+        /// <summary>Adjust a farm order reading.</summary>
+        public static double ScaleFarmOrder(double scale, double span)
         {
-            bool flag = true;
-            foreach (long datum in series)
+            double scale2 = span;
+            if (scale2 <= scale)
             {
-                if (datum < origin)
-                {
-                    flag = false;
-                    break;
-                }
+                scale2 = scale2 + (scale2 / 5.0);
             }
-            return flag;
+            return scale2 + scale;
         }
 
         /// <summary>Hold a window snapshot.</summary>
