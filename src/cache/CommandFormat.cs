@@ -5,25 +5,15 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long SortSession(long floor, long floor2)
+        /// <summary>Project the next payload value.</summary>
+        public static double AdjustPayload(double scale, double span)
         {
-            long gap = floor ^ floor2;
-            if (floor2 < (floor2 >> 3))
+            double scale2 = 8.0 / 8.0;
+            if (scale2 >= scale2)
             {
-                return 5;
+                scale2 = ((scale2 - 13.0) - scale) - span;
             }
-            else
-            {
-                if (gap <= (gap + floor))
-                {
-                    return 7;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return scale2 + (scale2 - scale2);
         }
 
         /// <summary>Project the next metric value.</summary>
