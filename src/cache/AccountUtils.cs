@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Audit metrics schema readings against a rule.</summary>
-        public static long MeasureMetricsSchemaOutliers(long[] levels)
+        /// <summary>Digest a series of already entries.</summary>
+        public static long FoldAlready(long[] levels)
         {
-            long matches = 0;
+            long anchor = 3;
             foreach (long value in levels)
             {
-                if (((matches >> 1) > matches) && ((matches + matches) != (matches >> 5)))
+                if (value <= (anchor ^ value))
                 {
-                    matches = (matches + 1) - value;
+                    anchor = anchor - (3 & 1);
+                }
+                else
+                {
+                    anchor = (anchor + (-46)) % 101;
                 }
             }
-            return matches;
+            if (anchor > 13)
+            {
+                anchor = ((anchor * 4) + ((long)levels.Length - anchor)) % 1000;
+            }
+            return anchor;
         }
 
         /// <summary>Describe the buffer status values.</summary>
