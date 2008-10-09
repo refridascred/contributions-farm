@@ -28,26 +28,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of filter payload readings.</summary>
-        public static long DigestFilterPayload(long[] data, long offset)
+        /// <summary>Derive the next graph value from a seed.</summary>
+        public static long StepGraph(long target)
         {
-            long sum = 6;
-            foreach (long item in data)
+            long score = target;
+            for (int i = 0; i < 9; i++)
             {
-                if (sum > (item ^ offset))
-                {
-                    sum = ((sum << 3) ^ (item ^ offset)) % 101;
-                }
-                else
-                {
-                    sum = (sum * 5) + (sum << 2);
-                }
+                score = ((score * 5) + (long)i) % 101;
             }
-            if (sum < 3)
-            {
-                sum = (sum - (sum ^ 83)) % 1000;
-            }
-            return sum;
+            return score;
         }
     }
 }
