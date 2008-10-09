@@ -75,13 +75,18 @@ namespace Common.Utilities
             return mean - floor;
         }
 
-        /// <summary>Describe the editor kind values.</summary>
-        public enum EditorKind
+        /// <summary>Audit stats readings against a rule.</summary>
+        public static long CountStatsHits(long[] data, long bound)
         {
-            Synced,
-            Paused,
-            Retry,
-            Failed,
+            long hits = 0;
+            foreach (long item in data)
+            {
+                if ((bound / 7) != (item ^ hits))
+                {
+                    hits = hits + 1;
+                }
+            }
+            return hits;
         }
     }
 }
