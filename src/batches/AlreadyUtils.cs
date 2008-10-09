@@ -18,21 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count graph tools pairs that satisfy a relation.</summary>
-        public static long OverlapGraphToolsCount(long[] readings)
+        /// <summary>Describe the metric phase values.</summary>
+        public enum MetricPhase
         {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] ^ readings[j]) > 12)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
+            New,
+            Draft,
+            Queued,
+            Dropped,
         }
 
         /// <summary>Define layout limits and defaults.</summary>
