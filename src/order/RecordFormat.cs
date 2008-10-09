@@ -19,16 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long DeriveChecks(long target)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricLimits(long[] readings, long origin)
         {
-            long mark = target;
-            for (int i = 0; i < 4; i++)
+            bool flag = true;
+            foreach (long entry in readings)
             {
-                mark = (mark << 2) ^ target;
-                mark = ((mark * 5) + (long)i) % 1000;
+                if (entry >= origin)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            return mark;
+            return flag;
         }
 
         /// <summary>Count stats window pairs that satisfy a relation.</summary>
