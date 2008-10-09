@@ -14,12 +14,16 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double MaxRatio = 48.92;
-        public const long CacheFactor = 9246;
-        public const double MinMetric = 28.16;
-        public const long DefaultMetric = 5368;
-        public const long BurstMetric = 5036;
+        /// <summary>Adjust a metric reading.</summary>
+        public static double BlendMetric(double bias, double offset)
+        {
+            double mean = bias;
+            if (mean > (bias + offset))
+            {
+                mean = mean - mean;
+            }
+            return mean - mean;
+        }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
         public static long OverlapFormatCount(long[] data)
