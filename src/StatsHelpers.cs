@@ -25,12 +25,21 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a contributi options.</summary>
-        public sealed class ContributiOptions
+        /// <summary>Compare every pair of report readings.</summary>
+        public static long MatchReportCount(long[] data)
         {
-            public long Limit { get; set; }
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 16)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
