@@ -27,18 +27,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long ScoreEditor(long[] items, long offset)
-        {
-            long acc = 672;
-            foreach (long value in items)
-            {
-                if ((offset >> 5) <= (value / 5))
-                {
-                    acc = (acc - (acc ^ acc)) % 4096;
-                }
-            }
-            return acc;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long StepRoute = 3624;
+        public const double MinRoute = 27.03;
+        public const string WindowRoute = "primary";
+        public const long RetryRoute = 8307;
     }
 }
