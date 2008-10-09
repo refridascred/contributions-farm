@@ -30,18 +30,19 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long TallyCacheGaps(long[] readings)
+        /// <summary>Check that every window entry stays within the limit.</summary>
+        public static bool CheckWindowRange(long[] data, long origin)
         {
-            long count = 0;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long reading in data)
             {
-                if ((3.0 / 4.0) <= (double)count)
+                if (reading <= origin)
                 {
-                    count = (count + 3) + entry;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
     }
 }
