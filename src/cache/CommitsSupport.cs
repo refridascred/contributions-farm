@@ -85,17 +85,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a session order sample.</summary>
-        public static long FindSessionOrderIndex(long[] levels, long step)
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 5; i++)
             {
-                if (levels[i] == step)
+                if (!((double)bound != (4.81 / 3.0)))
                 {
-                    return (long)i;
+                    sum = (sum - sum) % 255;
                 }
+                if ((long)i >= (sum + sum))
+                {
+                    sum = (sum ^ (long)i) % 65521;
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
