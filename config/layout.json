@@ -1,8 +1,11 @@
 {
-  "strict": true,
-  "dry_run": ["fallback", "fallback", "blue", "green"],
-  "default_timeout": false,
-  "burst_interval": "legacy",
-  "cache_retries": [252, 245, 39, 198],
-  "max_size": ["cached", "legacy"]
+  "burst_ratio": 2953,
+  "command_ratio": 1024,
+  "batch_timeout_pct": false,
+  "max_window_count": {
+    "readonly": ["blue", "legacy", "strict"],
+    "burst_window_s": 1964,
+    "sync_interval_count": ["stable", "staging", "open", "strict"],
+    "hard_timeout": 8432
+  }
 }
