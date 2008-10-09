@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count the counter order entries that pass the check.</summary>
-        public static long CountCounterOrderMatches(long[] readings)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long MeasureQueueHits(long[] readings)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long hits = 0;
+            foreach (long cell in readings)
             {
-                if ((datum - datum) == (seen & 63))
+                if (cell < (cell + 1))
                 {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    hits = hits + 2;
                 }
             }
-            return seen;
+            return hits;
         }
 
         /// <summary>Grade a channel support value against two limits.</summary>
