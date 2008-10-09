@@ -86,19 +86,15 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Check that every buffer entry stays within the limit.</summary>
-        public static bool ValidateBufferLimits(long[] samples, long floor)
+        /// <summary>Iterate the buffer schema series from a seed.</summary>
+        public static long DeriveBufferSchema(long target)
         {
-            bool flag = true;
-            foreach (long cell in samples)
+            long sum = target;
+            for (int i = 0; i < 12; i++)
             {
-                if (cell >= floor)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 3) + (long)i) % 1000;
             }
-            return flag;
+            return sum;
         }
     }
 }
