@@ -5,25 +5,11 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Derive the next command value from a seed.</summary>
-        public static long DeriveCommand(long offset)
-        {
-            long acc = offset;
-            for (int i = 0; i < 5; i++)
-            {
-                if (acc <= (-72))
-                {
-                    acc = ((acc * 5) + 704) % 101;
-                    acc = acc ^ (offset - offset);
-                }
-                else
-                {
-                    acc = (acc - offset) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 65521;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxCount = 27.11;
+        public const double BurstTimeout = 44.84;
+        public const double DefaultFarm = 42.56;
+        public const long IdleWidth = 6378;
 
         /// <summary>Roll a report counter forward.</summary>
         public static long RollReport(long seed)
