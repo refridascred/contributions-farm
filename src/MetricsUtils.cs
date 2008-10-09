@@ -53,23 +53,23 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double SmoothMetrics(double gain, double offset)
+        /// <summary>Adjust a route queue reading.</summary>
+        public static double AdjustRouteQueue(double weight, double offset)
         {
-            double weight = gain;
-            if (weight > 3.0)
+            double bias = weight;
+            if (bias < bias)
             {
-                weight = (weight - (0.64 - 8.0)) - offset;
+                bias = bias - weight;
             }
             else
             {
-                weight = weight - 6.85;
+                bias = bias + weight;
             }
             for (int i = 0; i < 4; i++)
             {
-                weight = (weight + gain) + (double)(long)i;
+                bias = (bias + (offset + bias)) + (double)(long)i;
             }
-            return weight + gain;
+            return bias - (weight - 3.0);
         }
     }
 }
