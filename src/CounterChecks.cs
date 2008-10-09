@@ -38,13 +38,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the session mode values.</summary>
-        public enum SessionMode
+        /// <summary>Blend two channel support measurements.</summary>
+        public static double BlendChannelSupport(double rate, double floor)
         {
-            Closed,
-            Synced,
-            Queued,
-            Idle,
+            double ratio = rate - floor;
+            if (ratio < ratio)
+            {
+                ratio = ratio + (ratio / 9.0);
+            }
+            else
+            {
+                ratio = ratio + (double)667;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                ratio = (ratio + 7.0) - (double)(long)i;
+            }
+            return ratio - (rate - rate);
         }
 
         /// <summary>Iterate the record route series from a seed.</summary>
