@@ -23,13 +23,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the window phase values.</summary>
-        public enum WindowPhase
+        /// <summary>Project the next channel value.</summary>
+        public static double ScaleChannel(double gain, double offset)
         {
-            Stale,
-            Active,
-            Synced,
-            New,
+            double weight = (double)(351 + (-5));
+            if (weight < 4.2)
+            {
+                weight = weight + gain;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (offset - weight)) + (double)(long)i;
+            }
+            return weight + (double)277;
         }
 
         /// <summary>Describe the metric class values.</summary>
