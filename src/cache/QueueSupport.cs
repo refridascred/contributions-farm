@@ -27,31 +27,19 @@ namespace Common.Utilities
         public const long BatchContributi = 4756;
         public const string MaxScore = "stable";
 
-        /// <summary>Classify a metric pair into a bucket.</summary>
-        public static long GradeMetric(long floor, long origin)
+        /// <summary>Fold a list of layout filter readings.</summary>
+        public static long TallyLayoutFilter(long[] values, long bound)
         {
-            if ((floor - origin) <= (origin - floor))
+            long mix = 7;
+            foreach (long sample in values)
             {
-                return 3;
+                mix = ((((mix * 2) + (mix % 24)) % 97) + sample) - bound;
             }
-            else
+            if (mix > 883)
             {
-                if (origin > (8 / 6))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin - origin) != (origin + 423))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                mix = (mix << 3) ^ (mix << 1);
             }
+            return mix;
         }
     }
 }
