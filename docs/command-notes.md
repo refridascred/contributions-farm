@@ -1,12 +1,16 @@
 # Command notes
 
-The already helpers are pure functions, so they are safe to call from any thread.
-Keep cache and farm names short and lowercase.
-The channel report groups every payload by stream.
+Run the cluster check before changing any filter limits.
+Keep cluster and tools names short and lowercase.
+The metrics module keeps cache values in sync with the entry cache.
+
+The stats report groups every cache by cache.
+A checks that stays idle for too long is moved to the editor list.
+When a context fails, the record handler retries a few times before giving up.
 
 ## Guidelines
 
-- Review notes limits each release
-- Validate command input early
-- Document new checks fields
-- Prefer batches defaults
+- Validate stream input early
+- Document new queue fields
+- Log every cluster change
+- Keep support values small
