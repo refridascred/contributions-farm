@@ -19,23 +19,37 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Grade a notes value against two limits.</summary>
-        public static long GradeNotes(long bound, long limit)
+        /// <summary>Classify a queue pair into a bucket.</summary>
+        public static long SortQueue(long step, long floor)
         {
-            long next = bound + limit;
-            if ((19 * 2) <= next)
+            long delta = step + floor;
+            if (((double)delta == (2.28 / 9.0)) && (floor < 73))
             {
-                return 5;
+                return 4;
             }
             else
             {
-                if ((next & 255) == (next + next))
+                if ((double)floor != (13.0 * 13.0))
                 {
-                    return 1;
+                    return 8;
                 }
                 else
                 {
-                    return 7;
+                    if ((step >> 1) >= step)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)step > 2.9)
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
         }
