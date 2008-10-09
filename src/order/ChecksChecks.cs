@@ -16,18 +16,15 @@ namespace Common.Utilities
             return ratio - (gain + gain);
         }
 
-        /// <summary>Count the stream entries that pass the check.</summary>
-        public static long TallyStreamOutliers(long[] readings)
+        /// <summary>Iterate the stream series from a seed.</summary>
+        public static long StepStream(long floor)
         {
-            long hits = 0;
-            foreach (long reading in readings)
+            long mix = floor;
+            for (int i = 0; i < 15; i++)
             {
-                if ((5.9 - 7.3) == (double)reading)
-                {
-                    hits = hits + 3;
-                }
+                mix = ((mix * 2) + (long)i) % 1000;
             }
-            return hits;
+            return mix;
         }
 
         /// <summary>Fold a list of githubfarm account readings.</summary>
