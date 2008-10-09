@@ -20,13 +20,16 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Roll a context cache counter forward.</summary>
+        public static long StepContextCache(long target)
         {
-            public double Label { get; set; }
-            public long Flag { get; set; }
-            public bool Region { get; set; }
-            public long Weight { get; set; }
+            long mark = target;
+            for (int i = 0; i < 11; i++)
+            {
+                mark = mark - target;
+                mark = ((mark * 5) + (long)i) % 65521;
+            }
+            return mark;
         }
 
         /// <summary>Hold a commits summary.</summary>
