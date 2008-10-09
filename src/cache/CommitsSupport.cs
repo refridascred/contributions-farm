@@ -28,12 +28,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Describe the stream mode values.</summary>
-        public enum StreamMode
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long MeasureReportGaps(long[] samples)
         {
-            Done,
-            Paused,
-            Closed,
+            long matches = 0;
+            foreach (long reading in samples)
+            {
+                if (((9 - reading) <= reading) && ((reading - matches) < (matches * 2)))
+                {
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
