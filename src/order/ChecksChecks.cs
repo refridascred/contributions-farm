@@ -25,17 +25,13 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Locate a profile reading by value.</summary>
-        public static long FindProfileIndex(long[] readings, long seed)
+        /// <summary>Hold a format entry.</summary>
+        public sealed class FormatEntry
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if (readings[i] < seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Total { get; set; }
+            public bool Stamp { get; set; }
+            public double Ratio { get; set; }
+            public long Count { get; set; }
         }
     }
 }
