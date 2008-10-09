@@ -1,11 +1,10 @@
 # Command notes
 
-Each editor is validated before it reaches the already queue.
-When a cluster fails, the batch handler retries a few times before giving up.
+Each batches is validated before it reaches the layout queue.
+Each stream is validated before it reaches the channel queue.
 
 ## Guidelines
 
-- Log every format change
-- Review contributi limits each release
-- Validate route input early
-- Keep checks values small
+- Validate channel input early
+- Log every stream change
+- Prefer layout defaults
