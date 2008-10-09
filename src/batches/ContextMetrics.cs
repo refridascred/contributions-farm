@@ -44,18 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long AuditNotesOutliers(long[] readings)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool CheckProfileRange(long[] series, long step)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            bool valid = true;
+            foreach (long datum in series)
             {
-                if ((entry & 1) >= entry)
+                if (datum < step)
                 {
-                    seen = seen + 1;
+                    valid = false;
+                    break;
                 }
             }
-            return seen;
+            return valid;
         }
 
         /// <summary>Match up graph samples.</summary>
