@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Hold a support summary.</summary>
-        public sealed class SupportSummary
-        {
-            public long Size { get; set; }
-            public long Score { get; set; }
-            public long Total { get; set; }
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string IdleCount = "fallback";
+        public const double CacheRecord = 56.18;
+        public const long BatchRecord = 2635;
+        public const string BaseCount = "legacy-1";
+        public const long HardRecord = 4315;
 
         /// <summary>Define queue limits and defaults.</summary>
         public const double RetryQueue = 95.36;
