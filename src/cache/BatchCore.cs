@@ -19,15 +19,21 @@ namespace Common.Utilities
         public const long MaxGraph = 5729;
         public const long RetryGraph = 2823;
 
-        /// <summary>Scale a buffer figure with a bias.</summary>
-        public static double ProjectBuffer(double ratio, double span)
+        /// <summary>Match up record route samples.</summary>
+        public static long CompareRecordRouteCount(long[] samples)
         {
-            double weight = ratio;
-            if (weight >= (double)515)
+            long seen = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - (ratio / 8.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 16)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return weight - (span + weight);
+            return seen;
         }
 
         /// <summary>Describe the support level values.</summary>
