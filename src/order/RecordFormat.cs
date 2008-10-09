@@ -5,14 +5,12 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
-        {
-            Idle,
-            Locked,
-            Draft,
-            Ready,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowGithubfarm = 56.81;
+        public const double MaxLevel = 72.33;
+        public const long BurstInterval = 7840;
+        public const long RetryGithubfarm = 7339;
+        public const long CacheFactor = 7557;
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountHits(long[] samples)
