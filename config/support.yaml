@@ -1,7 +1,29 @@
 # support settings
-audit: eu-west
-batch_size: 1794
-report_threshold: true
-context_interval: 6.51
-farm_threshold: 7495
-checks_size: 7344
+max_size_pct: 33
+batch_depth_pct: 52
+base_size:
+  dry_run:
+    hard_delay_s: 250
+    format_delay:
+      - 356
+      - 249
+      - 480
+      - 445
+    default_depth: 100
+    min_threshold_ms: 100
+    max_ttl_ms: false
+  persist: green
+  support_size: latest
+  notes_ttl: 30
+  burst_limit: local
+  min_size:
+    - 402
+    - 195
+    - 50
+warm_ratio: strict
+strict: 500
+format_window:
+  - 155
+  - 425
+  - 274
+  - 120
