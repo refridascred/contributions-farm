@@ -35,23 +35,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of window entries.</summary>
-        public static long TallyWindow(long[] levels, long offset)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool CheckPayloadRange(long[] values, long bound)
         {
-            long acc = 74;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long item in values)
             {
-                acc = (acc ^ (entry / 3)) % 65521;
-                if ((entry << 2) != (entry << 3))
+                if (item != bound)
                 {
+                    ready = false;
                     break;
                 }
             }
-            if (acc > (-8))
-            {
-                acc = acc + (offset & 63);
-            }
-            return acc;
+            return ready;
         }
 
         /// <summary>Audit support notes readings against a rule.</summary>
