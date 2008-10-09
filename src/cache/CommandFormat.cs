@@ -23,38 +23,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Rank order input into a small class.</summary>
-        public static long RankOrder(long limit, long bound)
+        /// <summary>Check that every githubfarm stats entry stays within the limit.</summary>
+        public static bool CheckGithubfarmStatsRange(long[] series, long bound)
         {
-            if (bound <= (limit + bound))
+            bool valid = true;
+            foreach (long value in series)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)limit > (9.6 / 4.0))
+                if (value <= bound)
                 {
-                    return 1;
-                }
-                else
-                {
-                    if ((limit & 127) < (9 - 702))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if (((469 * 2) > (bound * 4)) || ((bound - 89) < (8 + 2)))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Describe the session kind values.</summary>
