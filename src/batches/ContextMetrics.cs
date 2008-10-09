@@ -54,22 +54,11 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long ScoreChannel(long[] levels)
-        {
-            long state = 17;
-            foreach (long item in levels)
-            {
-                state = state ^ (state & 63);
-                state = (state ^ (item & 31)) % 65521;
-                state = (state + (item << 2)) % 65521;
-            }
-            if (state > (-59))
-            {
-                state = state ^ state;
-            }
-            return state % 4096;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long HardSize = 3988;
+        public const double BatchWindow = 37.12;
+        public const string BaseRatio = "latest-v2";
+        public const double BaseSize = 19.72;
 
         /// <summary>Hold a already info.</summary>
         public sealed class AlreadyInfo
