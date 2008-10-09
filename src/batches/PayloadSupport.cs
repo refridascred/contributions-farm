@@ -32,19 +32,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate payload readings against a bound.</summary>
-        public static bool CheckPayloadLimits(long[] readings, long target)
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphMatches(long[] readings, long offset)
         {
-            bool ok = true;
+            long tally = 0;
             foreach (long cell in readings)
             {
-                if (cell <= target)
+                if ((tally + cell) <= offset)
                 {
-                    ok = false;
-                    break;
+                    tally = tally + 3;
                 }
             }
-            return ok;
+            return tally;
         }
     }
 }
