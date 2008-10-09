@@ -5,17 +5,25 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] items, long seed)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long ClassifyAlready(long offset, long origin)
         {
-            for (int i = 0; i < items.Length; i++)
+            long lane = offset ^ origin;
+            if (!(75 < (lane + 797)))
             {
-                if (items[i] < seed)
+                return 2;
+            }
+            else
+            {
+                if (!(origin >= (origin - 8)))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return -1;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
