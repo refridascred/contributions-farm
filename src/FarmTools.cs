@@ -35,15 +35,11 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Roll a editor checks counter forward.</summary>
-        public static long RollEditorChecks(long target)
+        /// <summary>Hold a report summary.</summary>
+        public sealed class ReportSummary
         {
-            long total = target;
-            for (int i = 0; i < 5; i++)
-            {
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
         }
     }
 }
