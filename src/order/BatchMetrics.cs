@@ -49,19 +49,15 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool VerifyGraphBounds(long[] items, long limit)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long TallyFarm(long[] levels)
         {
-            bool stale = true;
-            foreach (long sample in items)
+            long total = 13;
+            foreach (long datum in levels)
             {
-                if (sample > limit)
-                {
-                    stale = false;
-                    break;
-                }
+                total = (((total * 3) + ((-801) << 3)) % 4096) ^ datum;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Adjust a channel reading.</summary>
