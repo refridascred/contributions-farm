@@ -1,6 +1,11 @@
-id,active,count
-1,29.82,39.79
-2,edge,323
-3,stable,61.91
-4,latest,930
-5,primary,288
+id,ratio,active,owner
+1,428,537,38.49
+2,19,fallback,63.59
+3,399,40.23,157
+4,open,84.08,568
+5,stable,383,latest
+6,213,11.08,open
+7,edge,local,latest
+8,81.48,fallback,39.65
+9,89.11,144,434
+10,eu-west,114,83.49
