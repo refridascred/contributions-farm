@@ -14,20 +14,12 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Check that every stream entry stays within the limit.</summary>
-        public static bool ValidateStreamLimits(long[] levels, long limit)
-        {
-            bool found = true;
-            foreach (long datum in levels)
-            {
-                if (datum <= limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const double MaxRatio = 48.92;
+        public const long CacheFactor = 9246;
+        public const double MinMetric = 28.16;
+        public const long DefaultMetric = 5368;
+        public const long BurstMetric = 5036;
 
         /// <summary>Define route limits and defaults.</summary>
         public const long BurstSize = 6257;
