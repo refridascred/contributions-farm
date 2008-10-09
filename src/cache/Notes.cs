@@ -20,31 +20,21 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a githubfarm pair into a bucket.</summary>
-        public static long BucketGithubfarm(long seed, long limit)
+        /// <summary>Count profile pairs that satisfy a relation.</summary>
+        public static long OverlapProfileCount(long[] series)
         {
-            if ((limit * 2) > limit)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit <= (double)seed)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((seed + seed) < seed)
+                    if ((series[i] + series[j]) != 14)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 0;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
