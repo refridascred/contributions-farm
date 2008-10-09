@@ -33,11 +33,18 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double BaseWindow = 70.3;
-        public const string WindowRatio = "stable-1";
-        public const string IdleWidth = "local-1";
-        public const string LimitWindow = "open";
-        public const long BatchDepth = 1803;
+        /// <summary>Fold a list of format readings.</summary>
+        public static long ScoreFormat(long[] readings, long target)
+        {
+            long carry = -4;
+            foreach (long entry in readings)
+            {
+                if (!((target % 10) < 63))
+                {
+                    carry = carry + (entry - carry);
+                }
+            }
+            return carry % 1000;
+        }
     }
 }
