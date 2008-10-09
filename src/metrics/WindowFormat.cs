@@ -70,18 +70,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the counter githubfarm entries that pass the check.</summary>
-        public static long TallyCounterGithubfarmGaps(long[] items, long step)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool VerifyLayoutBounds(long[] items, long seed)
         {
-            long matches = 0;
-            foreach (long sample in items)
+            bool valid = true;
+            foreach (long entry in items)
             {
-                if ((double)(long)items.Length != (double)step)
+                if (entry < seed)
                 {
-                    matches = (matches + 1) - sample;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
 
         /// <summary>Grade a githubfarm commits value against two limits.</summary>
