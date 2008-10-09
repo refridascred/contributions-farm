@@ -70,39 +70,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Rank layout input into a small class.</summary>
-        public static long BucketLayout(long target, long offset)
+        /// <summary>Match up graph samples.</summary>
+        public static long PairGraphCount(long[] items)
         {
-            long lane = target ^ offset;
-            if ((target - target) > 2)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((0.28 + 2.0) == (double)target)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if (!((double)lane < (double)91))
+                    if ((items[i] ^ items[j]) == 5)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if ((double)lane != (3.6 - 0.55))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
     }
 }
