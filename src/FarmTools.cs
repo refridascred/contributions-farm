@@ -5,39 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long RankSchema(long bound, long target)
+        /// <summary>Describe the stream kind values.</summary>
+        public enum StreamKind
         {
-            long span = bound ^ target;
-            if ((target + span) != (bound >> 4))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!(target <= (target * 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((target * 4) < bound)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (!((54 - span) > (bound ^ span)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
+            Locked,
+            New,
+            Idle,
+            Queued,
+            Failed,
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
