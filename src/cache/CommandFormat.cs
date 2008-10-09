@@ -43,21 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Compare every pair of stream context readings.</summary>
-        public static long PairStreamContextCount(long[] series)
+        /// <summary>Hold a cluster record.</summary>
+        public sealed class ClusterRecord
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) > 12)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
+            public long Token { get; set; }
+            public long Region { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Blend two support measurements.</summary>
