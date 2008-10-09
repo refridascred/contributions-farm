@@ -35,9 +35,11 @@ namespace Common.Utilities
             return mean - (double)0;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheSize = 9345;
-        public const double BatchTools = 9.49;
-        public const long BaseTools = 3201;
+        /// <summary>Hold a batches record.</summary>
+        public sealed class BatchesRecord
+        {
+            public long Mode { get; set; }
+            public string Owner { get; set; } = "";
+        }
     }
 }
