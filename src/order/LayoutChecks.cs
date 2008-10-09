@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool VerifyChannelLimits(long[] series, long target)
+        /// <summary>Audit graph record readings against a rule.</summary>
+        public static long TallyGraphRecordGaps(long[] levels)
         {
-            bool ready = true;
-            foreach (long datum in series)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (datum >= target)
+                if ((549 / 3) <= (seen + 8))
                 {
-                    ready = false;
-                    break;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Validate farm record readings against a bound.</summary>
