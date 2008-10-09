@@ -30,24 +30,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a profile metrics value against two limits.</summary>
-        public static long GradeProfileMetrics(long offset, long limit)
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            if ((offset ^ offset) <= offset)
-            {
-                return 4;
-            }
-            else
-            {
-                if ((double)79 == (double)limit)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 0;
-                }
-            }
+            public long Token { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Define session limits and defaults.</summary>
