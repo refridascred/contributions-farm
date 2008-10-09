@@ -55,13 +55,21 @@ namespace Common.Utilities
         public const double MaxAccount = 17.64;
         public const double IdleAccount = 98.22;
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Count channel pairs that satisfy a relation.</summary>
+        public static long PairChannelCount(long[] samples)
         {
-            Paused,
-            Idle,
-            Locked,
-            Stale,
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) < 17)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
         }
 
         /// <summary>Locate a counter reading by value.</summary>
