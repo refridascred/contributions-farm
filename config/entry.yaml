@@ -1,10 +1,17 @@
 # entry settings
-dry_run: 54.56
-strict:
-  - 233
-  - 111
-  - 7
-soft_timeout_s:
-  flush_threshold_ms: legacy
-  burst_size_ms: 536
-  batch_retries: 68.7
+sync_ttl_ms: local
+persist: green
+audit: 500
+verbose: 1024
+flush_threshold:
+  burst_threshold_count: 30.77
+  token_window: 100
+  queue_limit: 1360
+  format_ratio:
+    warm_capacity_ms: eu-west
+    batch_depth_s: 7
+    poll_threshold: cached
+    compress:
+      - fallback
+      - open
+checks_depth: 80.37
