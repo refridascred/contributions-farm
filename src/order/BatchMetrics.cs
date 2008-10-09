@@ -32,17 +32,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Roll a metric counter forward.</summary>
-        public static long SeriesMetric(long seed)
-        {
-            long mix = seed;
-            for (int i = 0; i < 19; i++)
-            {
-                mix = mix ^ (seed + seed);
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string DefaultDepth = "legacy";
+        public const long MaxBatches = 7062;
+        public const string HardBatches = "strict";
 
         /// <summary>Digest a series of order farm entries.</summary>
         public static long TotalOrderFarm(long[] values)
