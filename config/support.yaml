@@ -1,31 +1,21 @@
 # support settings
-flush_timeout_count: 51.18
-compress: stable
-burst_threshold:
-  min_limit_s: 38
-  persist: true
-  hard_depth_pct:
-    retry_depth: 33
-    soft_delay_ms: fallback
-    retry_timeout: 90.82
-    farm_ttl:
-      - 32
-      - 422
-      - 457
-    warm_timeout_count: 1980
-    batch_threshold:
-      - local
-      - stable
-  sync_capacity_s: 4535
-  min_capacity:
-    - primary
-    - blue
-    - legacy
-  idle_window_s: open
-hard_timeout_ms: open
-warm_delay_s:
-  compress: true
-  readonly: true
-  default_delay_ms: cached
-  profile_ttl: local
-poll_interval_ms: 99
+flush_ttl_count: local
+idle_window:
+  idle_size_ms: false
+  cache_depth: edge
+  retry_threshold: 500
+  queue_delay:
+    burst_ttl_ms: stable
+    warm_timeout: 69.09
+    enabled: 9051
+    poll_interval_pct:
+      - 5
+      - 18
+      - 36
+      - 266
+batch_size_s: false
+flush_delay_s: 14
+persist: true
+already_timeout:
+  - 286
+  - 494
