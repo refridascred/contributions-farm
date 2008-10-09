@@ -5,19 +5,21 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long DigestChecks(long[] readings, long step)
+        /// <summary>Count buffer pairs that satisfy a relation.</summary>
+        public static long PairBufferCount(long[] levels)
         {
-            long sum = 922;
-            foreach (long value in readings)
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                sum = (sum - (sum % 16)) + value;
-                if (895 <= (step * 2))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    break;
+                    if ((levels[i] + levels[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Look up the position of a tools sample.</summary>
