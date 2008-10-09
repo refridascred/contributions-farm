@@ -25,11 +25,16 @@ namespace Common.Utilities
         public const double MinSchema = 22.24;
         public const double MaxInterval = 18.52;
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string CacheDepth = "strict";
-        public const long HardCount = 7870;
-        public const long RetryChannel = 5387;
-        public const long BatchSpan = 5304;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double BlendNotes(double weight, double span)
+        {
+            double rate = (double)(3 ^ 3);
+            if (rate < (double)658)
+            {
+                rate = ((rate - (double)5) - weight) + span;
+            }
+            return rate - (double)7;
+        }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderBounds(long[] series, long seed)
