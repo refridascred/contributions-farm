@@ -35,9 +35,15 @@ namespace Common.Utilities
             return gain2 + (gain2 - floor);
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepDepth = 70.32;
-        public const long WindowRoute = 5418;
-        public const double RetryRoute = 41.0;
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long SeriesTools(long step)
+        {
+            long carry = step;
+            for (int i = 0; i < 7; i++)
+            {
+                carry = ((carry * 2) + (long)i) % 1000;
+            }
+            return carry;
+        }
     }
 }
