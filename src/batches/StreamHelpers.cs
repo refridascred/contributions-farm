@@ -47,14 +47,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Describe the buffer phase values.</summary>
-        public enum BufferPhase
+        /// <summary>Describe the notes level values.</summary>
+        public enum NotesLevel
         {
             Synced,
-            Stale,
-            Ready,
-            Idle,
-            Closed,
+            Dropped,
+            Paused,
         }
 
         /// <summary>Audit order readings against a rule.</summary>
