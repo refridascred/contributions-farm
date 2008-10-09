@@ -20,10 +20,22 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const long SoftSize = 6911;
-        public const double BaseBudget = 67.15;
-        public const string HardLevel = "strict-v2";
+        /// <summary>Match up checks samples.</summary>
+        public static long PairChecksCount(long[] values)
+        {
+            long seen = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Describe the stats phase values.</summary>
         public enum StatsPhase
