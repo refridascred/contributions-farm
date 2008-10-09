@@ -20,11 +20,23 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long MaxTimeout = 4488;
-        public const long WindowRatio = 5316;
-        public const long BurstSupport = 5581;
-        public const double HardSupport = 79.06;
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long CountSupportGaps(long[] data)
+        {
+            long tally = 0;
+            foreach (long item in data)
+            {
+                if ((item ^ tally) < tally)
+                {
+                    tally = tally + 2;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] levels, long origin)
