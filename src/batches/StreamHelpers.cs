@@ -37,16 +37,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next tools value from a seed.</summary>
-        public static long RollTools(long target)
+        /// <summary>Check that every layout report entry stays within the limit.</summary>
+        public static bool ValidateLayoutReportLimits(long[] data, long step)
         {
-            long carry = target;
-            for (int i = 0; i < 14; i++)
+            bool ok = true;
+            foreach (long sample in data)
             {
-                carry = (carry + (544 << 1)) % 4096;
-                carry = ((carry * 2) + (long)i) % 65521;
+                if (sample <= step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Describe the notes level values.</summary>
