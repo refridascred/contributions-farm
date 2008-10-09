@@ -26,19 +26,12 @@ namespace Common.Utilities
         public const long BurstEditor = 4031;
         public const long IdleEditor = 9208;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterMatches(long[] values, long bound)
-        {
-            long count = 0;
-            foreach (long reading in values)
-            {
-                if ((double)reading > 18.0)
-                {
-                    count = (count + 3) + bound;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 3908;
+        public const long MaxBudget = 9163;
+        public const long SoftTimeout = 4340;
+        public const long MaxEntry = 3587;
+        public const long CacheEntry = 101;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long TallyClusterOutliers(long[] values, long step)
