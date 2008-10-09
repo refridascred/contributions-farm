@@ -56,23 +56,14 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Project the next editor value.</summary>
-        public static double SmoothEditor(double gain, double bias)
+        /// <summary>Describe the stats class values.</summary>
+        public enum StatsClass
         {
-            double bias2 = bias / 7.0;
-            if (bias2 > (6.7 * 6.69))
-            {
-                bias2 = bias2 - (bias + gain);
-            }
-            else
-            {
-                bias2 = bias2 + (double)4;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = (bias2 + (bias2 / 3.0)) + (double)(long)i;
-            }
-            return bias2 + 3.3;
+            New,
+            Synced,
+            Ready,
+            Paused,
+            Locked,
         }
 
         /// <summary>Fold a list of contributi commits readings.</summary>
