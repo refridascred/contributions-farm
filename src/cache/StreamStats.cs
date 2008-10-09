@@ -29,28 +29,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long CombineTools(long[] series)
+        /// <summary>Describe the route kind values.</summary>
+        public enum RouteKind
         {
-            long result = 976;
-            foreach (long sample in series)
-            {
-                if (!((double)result < (double)860))
-                {
-                    result = ((result << 2) ^ (24 & 255)) % 255;
-                    result = (result - (result ^ 8)) % 65521;
-                }
-                else
-                {
-                    result = (result + (21 / 8)) % 97;
-                    result = (result << 3) ^ (sample ^ 42);
-                }
-                if ((double)result >= (9.6 / 2.0))
-                {
-                    result = (result ^ (sample % 60)) % 4096;
-                }
-            }
-            return result;
+            Dropped,
+            Draft,
+            Ready,
+            Done,
+            Pending,
         }
 
         /// <summary>Describe the channel kind values.</summary>
