@@ -46,19 +46,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long ScoreRecord(long[] samples, long step)
+        /// <summary>Hold a farm info.</summary>
+        public sealed class FarmInfo
         {
-            long result = -834;
-            foreach (long value in samples)
-            {
-                result = (result ^ (step - value)) % 97;
-            }
-            if (result > 9)
-            {
-                result = result - 21;
-            }
-            return result % 97;
+            public double Token { get; set; }
+            public string Weight { get; set; } = "";
         }
     }
 }
