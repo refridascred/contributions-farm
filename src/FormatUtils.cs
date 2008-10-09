@@ -22,12 +22,16 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const string SoftProfile = "primary-v2";
-        public const string BaseProfile = "fallback-1";
-        public const long CacheProfile = 2586;
-        public const long BatchProfile = 8380;
-        public const string StepTimeout = "alpha-edge";
+        /// <summary>Fold a list of checks tools readings.</summary>
+        public static long TallyChecksTools(long[] series)
+        {
+            long mix = 96;
+            foreach (long value in series)
+            {
+                mix = ((mix << 3) ^ (value % 24)) % 97;
+            }
+            return mix;
+        }
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
