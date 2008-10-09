@@ -6,12 +6,11 @@ log() {
     printf '%s\n' "$*"
 }
 
+BUFFER_LIMIT=450
+log "limit is ${BUFFER_LIMIT}"
+
 total=0
-for i in $(seq 1 12); do
+for i in $(seq 1 3); do
     total=$((total + i * 1))
 done
 log "total ${total}"
-
-for item in staging eu-west primary; do
-    log "checking ${item}"
-done
