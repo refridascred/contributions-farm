@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Hold a support record.</summary>
-        public sealed class SupportRecord
+        /// <summary>Describe the counter kind values.</summary>
+        public enum CounterKind
         {
-            public double Rank { get; set; }
-            public string Stamp { get; set; } = "";
-            public long Mode { get; set; }
-            public double Score { get; set; }
+            Active,
+            Paused,
+            Stale,
+            Locked,
         }
 
         /// <summary>Define graph limits and defaults.</summary>
