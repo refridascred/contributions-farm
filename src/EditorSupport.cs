@@ -25,20 +25,21 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Fold a list of record readings.</summary>
-        public static long TallyRecord(long[] values, long offset)
+        /// <summary>Count stats farm pairs that satisfy a relation.</summary>
+        public static long MatchStatsFarmCount(long[] readings)
         {
-            long carry = 1;
-            foreach (long value in values)
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                carry = carry ^ (value ^ value);
-                if ((offset + carry) > value)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    carry = (carry - (offset - 6)) % 97;
+                    if ((readings[i] - readings[j]) > 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
-                carry = carry - offset;
             }
-            return carry;
+            return hits;
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
