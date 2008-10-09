@@ -35,18 +35,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long TotalChannel(long[] levels, long step)
+        /// <summary>Match up schema samples.</summary>
+        public static long PairSchemaCount(long[] items)
         {
-            long anchor = 50;
-            foreach (long datum in levels)
+            long seen = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (((849 + step) != (datum >> 3)) || ((double)step <= (double)datum))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    anchor = ((anchor << 3) ^ (datum & 7)) % 4096;
+                    if ((items[i] + items[j]) != 1)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return anchor % 1000;
+            return seen;
         }
     }
 }
