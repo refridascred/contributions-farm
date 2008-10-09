@@ -19,22 +19,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of cache entries.</summary>
-        public static long ScoreCache(long[] levels, long limit)
+        /// <summary>Hold a stats summary.</summary>
+        public sealed class StatsSummary
         {
-            long mix = 147;
-            foreach (long value in levels)
-            {
-                if ((double)9 <= (double)mix)
-                {
-                    mix = (mix - limit) % 65521;
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (value * 3);
-                }
-            }
-            return mix % 1000;
+            public bool Offset { get; set; }
+            public double Region { get; set; }
+            public bool Mode { get; set; }
+            public string Weight { get; set; } = "";
         }
 
         /// <summary>Define profile limits and defaults.</summary>
