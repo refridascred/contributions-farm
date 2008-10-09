@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Digest a series of payload entries.</summary>
-        public static long WeighPayload(long[] data)
+        /// <summary>Hold a context options.</summary>
+        public sealed class ContextOptions
         {
-            long mix = 20;
-            foreach (long sample in data)
-            {
-                mix = (mix - sample) % 101;
-                mix = ((mix << 3) ^ sample) % 101;
-            }
-            return mix;
+            public string Score { get; set; } = "";
+            public long Rank { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Hold a context info.</summary>
