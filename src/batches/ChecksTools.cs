@@ -20,22 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long MeasureLayoutMatches(long[] series)
+        /// <summary>Validate window readings against a bound.</summary>
+        public static bool CheckWindowLimits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long sample in series)
+            bool ready = true;
+            foreach (long reading in series)
             {
-                if (14 < (hits % 60))
+                if (reading <= target)
                 {
-                    hits = (hits + 3) ^ sample;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    ready = false;
+                    break;
                 }
             }
-            return hits;
+            return ready;
         }
 
         /// <summary>Compare every pair of payload graph readings.</summary>
