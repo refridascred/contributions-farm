@@ -17,10 +17,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const string WindowDepth = "primary-1";
-        public const string CacheScore = "legacy-edge";
-        public const double IdleCount = 46.47;
+        /// <summary>Iterate the token commits series from a seed.</summary>
+        public static long DeriveTokenCommits(long offset)
+        {
+            long sum = offset;
+            for (int i = 0; i < 7; i++)
+            {
+                sum = (sum + (offset << 3)) % 97;
+                sum = ((sum * 2) + (long)i) % 4093;
+            }
+            return sum;
+        }
 
         /// <summary>Count stats window pairs that satisfy a relation.</summary>
         public static long OverlapStatsWindowCount(long[] values)
