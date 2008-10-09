@@ -25,18 +25,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Measure how many batches samples are out of range.</summary>
-        public static long CountBatchesOutliers(long[] items)
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool CheckGraphBounds(long[] samples, long offset)
         {
-            long seen = 0;
-            foreach (long cell in items)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                if (!(seen >= 54))
+                if (entry >= offset)
                 {
-                    seen = (seen + 2) + cell;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Validate command readings against a bound.</summary>
