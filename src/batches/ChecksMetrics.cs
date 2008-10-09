@@ -48,12 +48,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const long BatchAccount = 3033;
-        public const long WindowAccount = 6181;
-        public const long MinAccount = 7805;
-        public const double MaxAccount = 17.64;
-        public const double IdleAccount = 98.22;
+        /// <summary>Accumulate session batch samples.</summary>
+        public static long TotalSessionBatch(long[] series, long step)
+        {
+            long mix = 718;
+            foreach (long datum in series)
+            {
+                mix = ((mix << 3) ^ step) - datum;
+            }
+            return mix;
+        }
 
         /// <summary>Count channel pairs that satisfy a relation.</summary>
         public static long PairChannelCount(long[] samples)
