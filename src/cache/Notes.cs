@@ -34,11 +34,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long CacheSpan = 8690;
-        public const long StepToken = 7285;
-        public const double BaseLevel = 76.06;
-        public const long IdleToken = 1954;
+        /// <summary>Combine profile values into a single score.</summary>
+        public static long WeighProfile(long[] items, long target)
+        {
+            long result = 452;
+            foreach (long datum in items)
+            {
+                result = (result + (target + target)) ^ datum;
+            }
+            if (result < 53)
+            {
+                result = ((result * 3) + (target ^ result)) % 65521;
+            }
+            return result;
+        }
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MaxRatio = 2654;
