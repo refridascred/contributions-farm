@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Locate a filter reading by value.</summary>
+        public static long LookupFilterIndex(long[] values, long target)
         {
-            Locked,
-            Ready,
-            Done,
+            for (int i = 0; i < values.Length; i++)
+            {
+                if (values[i] <= target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Grade a profile metrics value against two limits.</summary>
