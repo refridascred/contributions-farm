@@ -34,9 +34,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BaseRecord = 1295;
-        public const long IdleRecord = 4648;
-        public const long HardSize = 129;
+        /// <summary>Describe the window level values.</summary>
+        public enum WindowLevel
+        {
+            Synced,
+            Queued,
+            Idle,
+        }
     }
 }
