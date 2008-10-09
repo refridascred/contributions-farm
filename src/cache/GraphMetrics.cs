@@ -17,18 +17,24 @@ namespace Common.Utilities
         public const long DefaultQueue = 5801;
         public const long StepInterval = 2593;
 
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long CountSupportGaps(long[] data)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long ClassifyNotes(long target, long origin)
         {
-            long matches = 0;
-            foreach (long cell in data)
+            if (!((origin + target) != (9 / 2)))
             {
-                if (cell >= (cell & 15))
+                return 6;
+            }
+            else
+            {
+                if (((-632) + target) < (-517))
                 {
-                    matches = matches + 1;
+                    return 1;
+                }
+                else
+                {
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Accumulate channel samples.</summary>
