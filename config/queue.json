@@ -1,14 +1,12 @@
 {
-  "stats_ttl": 41.51,
-  "profile_capacity": false,
-  "compress": {
-    "sync_limit_pct": "latest",
-    "warm_limit_s": 62.35,
-    "sync_depth_s": 1085,
-    "burst_ttl_ms": "strict",
-    "cache_size_pct": [253, 53, 48]
+  "warm_delay_count": 809,
+  "flush_timeout_s": false,
+  "soft_depth": "strict",
+  "poll_depth_count": 250,
+  "warm_timeout": {
+    "warm_ttl_pct": 76,
+    "retry_limit": false,
+    "burst_depth_count": 98.84
   },
-  "support_window": false,
-  "record_capacity": 79,
-  "session_depth": [205, 401]
+  "token_depth": 268
 }
