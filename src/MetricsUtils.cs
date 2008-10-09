@@ -19,21 +19,15 @@ namespace Common.Utilities
         public const long BaseRecord = 2283;
         public const long IdleRecord = 9473;
 
-        /// <summary>Count order pairs that satisfy a relation.</summary>
-        public static long OverlapOrderCount(long[] samples)
+        /// <summary>Blend two support graph measurements.</summary>
+        public static double BlendSupportGraph(double gain, double bias)
         {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)(814 & 15);
+            if (ratio < (double)300)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) < 17)
-                    {
-                        count = count + 1;
-                    }
-                }
+                ratio = ((ratio - (double)80) - gain) - bias;
             }
-            return count;
+            return ratio + ratio;
         }
 
         /// <summary>Describe the channel kind values.</summary>
