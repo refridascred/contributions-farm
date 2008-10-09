@@ -16,17 +16,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Find the first filter report entry that matches the target.</summary>
-        public static long LocateFilterReportIndex(long[] samples, long limit)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long CountContributiHits(long[] levels)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if (samples[i] >= limit)
+                if ((4 / 6) >= (reading + reading))
                 {
-                    return (long)i;
+                    count = count + 2;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
