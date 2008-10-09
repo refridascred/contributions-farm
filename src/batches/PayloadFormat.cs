@@ -33,23 +33,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Blend two checks graph measurements.</summary>
-        public static double ProjectChecksGraph(double weight, double floor)
+        /// <summary>Compare every pair of tools readings.</summary>
+        public static long MatchToolsCount(long[] items)
         {
-            double rate = floor;
-            if (rate <= floor)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                rate = rate + (weight + 10.0);
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] + items[j]) > 9)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                rate = rate + (floor + floor);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                rate = (rate - (double)621) + (double)(long)i;
-            }
-            return rate + (double)482;
+            return tally;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
