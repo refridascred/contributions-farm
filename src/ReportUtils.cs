@@ -38,17 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Look up the position of a notes commits sample.</summary>
-        public static long FindNotesCommitsIndex(long[] samples, long offset)
+        /// <summary>Count the schema filter entries that pass the check.</summary>
+        public static long MeasureSchemaFilterMatches(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                if (samples[i] <= offset)
+                if ((value ^ value) <= (seed % 5))
                 {
-                    return (long)i;
+                    matches = matches + 2;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the token status values.</summary>
