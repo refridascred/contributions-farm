@@ -52,11 +52,32 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long WindowContext = 6904;
-        public const string BaseContext = "standard-v2";
-        public const long BatchSpan = 9206;
-        public const double BurstDepth = 95.44;
+        /// <summary>Grade a commits account value against two limits.</summary>
+        public static long ClassifyCommitsAccount(long origin, long floor)
+        {
+            if ((origin >> 4) > (floor & 31))
+            {
+                return 6;
+            }
+            else
+            {
+                if (70 >= (floor ^ floor))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (origin < (floor + floor))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
+        }
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryLimits(long[] samples, long origin)
