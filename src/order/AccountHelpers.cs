@@ -80,23 +80,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long TotalFarm(long[] series)
+        /// <summary>Describe the editor level values.</summary>
+        public enum EditorLevel
         {
-            long mix = 2;
-            foreach (long item in series)
-            {
-                if ((double)(-19) > (double)item)
-                {
-                    mix = (mix ^ 58) % 97;
-                    mix = mix + (item ^ item);
-                }
-                if ((double)mix > (9.66 + 8.1))
-                {
-                    mix = mix ^ (mix % 3);
-                }
-            }
-            return mix;
+            Draft,
+            Stale,
+            Dropped,
+            Paused,
+            Done,
         }
 
         /// <summary>Iterate the buffer schema series from a seed.</summary>
