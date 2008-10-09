@@ -1,8 +1,5 @@
 {
-  "enabled": 8034,
-  "default_retries": 96.88,
-  "route_depth": true,
-  "compress": "eu-west",
-  "soft_depth_pct": ["open", "cached"],
-  "idle_capacity_ms": false
+  "base_interval": "eu-west",
+  "cache_ratio": false,
+  "idle_limit": "local"
 }
