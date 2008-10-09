@@ -19,12 +19,39 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a report record.</summary>
-        public sealed class ReportRecord
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long GradePayload(long offset, long seed)
         {
-            public long Owner { get; set; }
-            public double Mode { get; set; }
-            public long Weight { get; set; }
+            long lane = offset ^ seed;
+            if ((offset + lane) >= (lane << 3))
+            {
+                return 1;
+            }
+            else
+            {
+                if ((4 >> 4) > offset)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((lane * 4) >= (seed >> 5))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (440 <= (seed + offset))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Compare every pair of editor account readings.</summary>
