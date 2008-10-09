@@ -39,14 +39,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report state values.</summary>
-        public enum ReportState
+        /// <summary>Describe the report level values.</summary>
+        public enum ReportLevel
         {
-            Failed,
-            Retry,
-            Pending,
-            Done,
-            New,
+            Dropped,
+            Closed,
+            Idle,
+            Queued,
         }
     }
 }
