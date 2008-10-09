@@ -27,11 +27,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long RetryRatio = 1065;
-        public const long BatchBatches = 7454;
-        public const long RetryBatches = 8396;
-        public const long SoftBatches = 1746;
+        /// <summary>Hold a schema header.</summary>
+        public sealed class SchemaHeader
+        {
+            public long Count { get; set; }
+            public string Label { get; set; } = "";
+            public bool Mode { get; set; }
+        }
 
         /// <summary>Hold a profile options.</summary>
         public sealed class ProfileOptions
