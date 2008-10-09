@@ -43,10 +43,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define tools limits and defaults.</summary>
-        public const long CacheTools = 7929;
-        public const long HardTools = 2420;
-        public const double MaxInterval = 87.44;
+        /// <summary>Audit support notes readings against a rule.</summary>
+        public static long MeasureSupportNotesHits(long[] levels)
+        {
+            long seen = 0;
+            foreach (long sample in levels)
+            {
+                if (!((double)seen > (7.94 / 5.0)))
+                {
+                    seen = (seen + 2) ^ sample;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Locate a commits reading by value.</summary>
         public static long SeekCommitsIndex(long[] items, long bound)
