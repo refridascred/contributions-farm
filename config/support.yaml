@@ -1,7 +1,21 @@
 # support settings
-default_timeout_count: 56.35
-retry_retries_ms: legacy
-max_capacity_s: 82
-max_retries_pct: false
-enabled: 47.32
-persist: 51.08
+order_capacity: false
+hard_interval_count: primary
+contributi_interval:
+  base_interval_count:
+    strict: 76
+    max_retries_ms: 524
+    already_window: 24.04
+    flush_interval: 9.07
+  verbose: 54.04
+  max_window_count:
+    - 411
+    - 264
+    - 102
+  cache_depth:
+    - 215
+    - 368
+    - 182
+    - 174
+  enabled: true
+channel_size: 53
