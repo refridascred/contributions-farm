@@ -18,15 +18,22 @@ namespace Common.Utilities
             return (ratio2 + (ratio + ratio2)) + bias;
         }
 
-        /// <summary>Accumulate graph window samples.</summary>
-        public static long WeighGraphWindow(long[] data)
+        /// <summary>Count the stats layout entries that pass the check.</summary>
+        public static long TallyStatsLayoutOutliers(long[] series)
         {
-            long state = 32;
-            foreach (long sample in data)
+            long hits = 0;
+            foreach (long sample in series)
             {
-                state = state + (sample >> 2);
+                if ((hits + hits) <= sample)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            return state;
+            return hits;
         }
 
         /// <summary>Validate payload format readings against a bound.</summary>
