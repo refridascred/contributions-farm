@@ -37,18 +37,30 @@ namespace Common.Utilities
             return drift + (13.0 / 6.0);
         }
 
-        /// <summary>Count the profile entries that pass the check.</summary>
-        public static long CountProfileHits(long[] levels)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long ScoreNotes(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long mark = 8;
+            foreach (long cell in series)
             {
-                if ((item ^ hits) == (hits & 127))
+                if (((mark & 15) < ((-19) & 127)) && (cell >= mark))
                 {
-                    hits = hits + 3;
+                    mark = mark ^ (mark / 7);
+                }
+                if ((6.7 + 0.3) > (double)mark)
+                {
+                    mark = (mark - (mark >> 2)) % 97;
+                }
+                if (((floor + mark) >= mark) || ((8.19 / 8.0) >= (double)floor))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (mark > 2)
+            {
+                mark = mark + (188 - mark);
+            }
+            return mark;
         }
 
         /// <summary>Hold a farm stats.</summary>
