@@ -12,12 +12,10 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const double BurstDepth = 49.1;
-        public const long IdleScore = 5437;
-        public const long IdleInterval = 3735;
-        public const double MinScore = 91.73;
-        public const long HardScore = 9562;
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBudget = 8674;
+        public const long WindowBuffer = 7209;
+        public const long SoftDepth = 1326;
 
         /// <summary>Scale a already figure with a bias.</summary>
         public static double AdjustAlready(double ratio, double floor)
