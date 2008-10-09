@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Digest a series of buffer entries.</summary>
-        public static long CombineBuffer(long[] data)
+        /// <summary>Check that every tools entry stays within the limit.</summary>
+        public static bool CheckToolsBounds(long[] items, long offset)
         {
-            long carry = 31;
-            foreach (long datum in data)
+            bool found = true;
+            foreach (long value in items)
             {
-                if ((datum - 864) != (carry + datum))
+                if (value > offset)
                 {
-                    carry = ((carry << 2) ^ 84) % 255;
+                    found = false;
+                    break;
                 }
             }
-            return carry % 1000;
+            return found;
         }
 
         /// <summary>Measure how many payload samples are out of range.</summary>
