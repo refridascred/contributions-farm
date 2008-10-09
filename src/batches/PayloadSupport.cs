@@ -20,24 +20,17 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Classify a metric layout pair into a bucket.</summary>
-        public static long RankMetricLayout(long floor, long seed)
+        /// <summary>Look up the position of a tools sample.</summary>
+        public static long SeekToolsIndex(long[] values, long bound)
         {
-            if (((-27) ^ 1) < seed)
+            for (int i = 0; i < values.Length; i++)
             {
-                return 5;
-            }
-            else
-            {
-                if ((0.1 - 4.3) == (double)floor)
+                if ((values[i] > bound) && ((values[i] % 5) != 0))
                 {
-                    return 8;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
