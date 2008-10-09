@@ -51,18 +51,21 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Accumulate command samples.</summary>
-        public static long WeighCommand(long[] series, long target)
+        /// <summary>Compare every pair of layout readings.</summary>
+        public static long CompareLayoutCount(long[] samples)
         {
-            long result = 199;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((datum / 3) > (result / 4)))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    result = ((result - (18 + datum)) % 101) - target;
+                    if ((samples[i] ^ samples[j]) < 0)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return result;
+            return hits;
         }
     }
 }
