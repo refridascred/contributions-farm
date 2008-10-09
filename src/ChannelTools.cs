@@ -38,11 +38,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Describe the buffer state values.</summary>
+        public enum BufferState
         {
-            public double Owner { get; set; }
-            public bool Token { get; set; }
+            Ready,
+            Queued,
+            Closed,
         }
     }
 }
