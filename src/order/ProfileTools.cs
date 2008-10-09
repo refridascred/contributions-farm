@@ -15,11 +15,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a stream info.</summary>
-        public sealed class StreamInfo
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] items)
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
+            long tally = 0;
+            foreach (long datum in items)
+            {
+                if ((((6 - datum) < (datum % 24)) && ((double)datum > (double)0)) && ((tally + tally) == (5 - datum)))
+                {
+                    tally = tally + 3;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Rank entry input into a small class.</summary>
