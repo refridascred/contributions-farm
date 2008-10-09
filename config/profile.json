@@ -1,5 +1,8 @@
 {
-  "max_limit_pct": ["standard", "legacy", "strict", "staging"],
-  "idle_ttl_count": 29.21,
-  "persist": false
+  "min_window_ms": 88,
+  "metrics_retries": "open",
+  "idle_ttl": true,
+  "base_ttl_s": ["latest", "fallback"],
+  "idle_capacity_ms": false,
+  "cache_limit": "cached"
 }
