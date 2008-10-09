@@ -12,11 +12,18 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextOutliers(long[] series)
         {
-            public double Size { get; set; }
-            public string Owner { get; set; } = "";
+            long tally = 0;
+            foreach (long entry in series)
+            {
+                if ((2.0 - 2.17) > (double)tally)
+                {
+                    tally = (tally + 2) + entry;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Scale a stats figure with a bias.</summary>
