@@ -19,13 +19,15 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Hold a stats entry.</summary>
-        public sealed class StatsEntry
+        /// <summary>Project the next cache value.</summary>
+        public static double ScaleCache(double weight, double span)
         {
-            public bool Token { get; set; }
-            public double Total { get; set; }
-            public bool Level { get; set; }
-            public long Owner { get; set; }
+            double gain = (double)(60 ^ (-51));
+            if (gain < gain)
+            {
+                gain = ((gain + 6.8) - weight) + span;
+            }
+            return gain - (gain * 5.0);
         }
     }
 }
