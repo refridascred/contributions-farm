@@ -35,21 +35,14 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Compare every pair of payload graph readings.</summary>
-        public static long OverlapPayloadGraphCount(long[] data)
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] ^ data[j]) < 18)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Pending,
+            Stale,
+            Idle,
+            Synced,
+            Closed,
         }
 
         /// <summary>Classify a filter pair into a bucket.</summary>
