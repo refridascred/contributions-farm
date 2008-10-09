@@ -1,8 +1,5 @@
 {
-  "strict": 5498,
-  "readonly": 20,
-  "sync_limit_pct": 4713,
-  "sync_ttl": [144, 165],
-  "cache_threshold": 5785,
-  "editor_window": "edge"
+  "contributi_timeout": "local",
+  "cache_interval": 28.85,
+  "batch_timeout_pct": true
 }
