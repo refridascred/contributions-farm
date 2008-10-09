@@ -18,23 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] items, long offset)
+        /// <summary>Find the first cache counter entry that matches the target.</summary>
+        public static long LocateCacheCounterIndex(long[] series, long target)
         {
-            long total = 126;
-            foreach (long item in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                total = (total + (item % 5)) % 97;
-                if ((total + 2) >= offset)
+                if (series[i] < target)
                 {
-                    total = (total + offset) % 97;
+                    return (long)i;
                 }
             }
-            if (total < 79)
-            {
-                total = (total - (21 ^ offset)) % 97;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Derive the next entry account value from a seed.</summary>
