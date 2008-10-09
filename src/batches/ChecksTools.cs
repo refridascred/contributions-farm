@@ -20,19 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Validate window readings against a bound.</summary>
-        public static bool CheckWindowLimits(long[] series, long target)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            bool ready = true;
-            foreach (long reading in series)
-            {
-                if (reading <= target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Paused,
+            Active,
+            Failed,
+            Draft,
         }
 
         /// <summary>Describe the entry state values.</summary>
