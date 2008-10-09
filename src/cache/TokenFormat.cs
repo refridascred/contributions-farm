@@ -39,12 +39,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the already class values.</summary>
-        public enum AlreadyClass
+        /// <summary>Describe the metrics level values.</summary>
+        public enum MetricsLevel
         {
-            Active,
-            Failed,
-            Dropped,
+            Idle,
+            New,
+            Done,
+            Stale,
+            Closed,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
