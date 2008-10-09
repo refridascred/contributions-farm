@@ -38,18 +38,12 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long AuditEntryGaps(long[] samples)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((tally & 15) != (tally & 1))
-                {
-                    tally = (tally + 3) ^ datum;
-                }
-            }
-            return tally;
+            Idle,
+            Dropped,
+            Draft,
         }
 
         /// <summary>Describe the context mode values.</summary>
