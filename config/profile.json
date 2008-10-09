@@ -1,14 +1,7 @@
 {
-  "retry_capacity_count": {
-    "layout_ttl": ["latest", "standard"],
-    "farm_timeout": "fallback",
-    "min_capacity_ms": ["staging", "primary"],
-    "cache_ttl_pct": "fallback",
-    "audit": "open",
-    "dry_run": 19.47
-  },
-  "enabled": [35, 320, 156],
-  "cache_delay_count": "strict",
-  "editor_limit": "strict",
-  "payload_interval": 500
+  "warm_ratio_s": "blue",
+  "min_interval": true,
+  "soft_timeout_pct": "standard",
+  "batch_retries": 7546,
+  "sync_timeout_s": "staging"
 }
