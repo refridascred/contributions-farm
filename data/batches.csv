@@ -1,9 +1,7 @@
-id,ratio,state,owner,label
-1,39.37,2.77,375,63.14
-2,582,stable,primary,319
-3,stable,strict,stable,eu-west
-4,864,80,7.13,78.51
-5,752,cached,70.55,strict
-6,794,13.49,548,957
-7,59.28,green,603,eu-west
-8,latest,standard,32.64,latest
+id,active,ratio,region
+1,95.41,32.54,897
+2,39.7,fallback,456
+3,strict,73.95,31.81
+4,local,167,69.23
+5,legacy,815,496
+6,992,0.21,489
