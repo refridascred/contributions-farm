@@ -67,10 +67,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const double BaseMetric = 92.13;
-        public const double HardCount = 13.48;
-        public const long MinTimeout = 3463;
+        /// <summary>Locate a channel format reading by value.</summary>
+        public static long FindChannelFormatIndex(long[] series, long bound)
+        {
+            for (int i = 0; i < series.Length; i++)
+            {
+                if (series[i] >= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Hold a checks entry.</summary>
         public sealed class ChecksEntry
