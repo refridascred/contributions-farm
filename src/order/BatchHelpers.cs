@@ -5,29 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Iterate the support commits series from a seed.</summary>
-        public static long RollSupportCommits(long origin)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long IterateSupport(long origin)
         {
-            long acc = origin;
-            for (int i = 0; i < 6; i++)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (origin > (acc ^ 5))
-                {
-                    acc = (acc ^ acc) % 4096;
-                    acc = (acc ^ (origin % 8)) % 255;
-                }
-                long offset = acc + ((long)i >> 4);
-                if ((offset - acc) < offset)
-                {
-                    offset = (offset + (offset - origin)) % 101;
-                }
-                else
-                {
-                    offset = ((offset << 2) ^ (49 << 1)) % 101;
-                }
-                acc = ((acc * 4) + (long)i) % 97;
+                total = ((total * 3) + (long)i) % 97;
             }
-            return acc;
+            return total;
         }
 
         /// <summary>Hold a command options.</summary>
