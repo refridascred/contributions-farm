@@ -21,14 +21,39 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Describe the batch mode values.</summary>
-        public enum BatchMode
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long BucketPayload(long bound, long seed)
         {
-            Idle,
-            New,
-            Pending,
-            Retry,
-            Queued,
+            long step = bound + seed;
+            if ((step << 1) < (49 - seed))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((double)bound < (19.0 - 1.9))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((seed ^ seed) >= bound)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound > (seed >> 4)) && ((seed * 5) >= (bound / 7)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the record kind values.</summary>
