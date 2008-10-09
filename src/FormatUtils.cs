@@ -18,14 +18,21 @@ namespace Common.Utilities
         public const long BurstScore = 7988;
         public const long RetryReport = 7394;
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Count context pairs that satisfy a relation.</summary>
+        public static long OverlapContextCount(long[] series)
         {
-            Locked,
-            Dropped,
-            Failed,
-            Closed,
-            Synced,
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) < 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Describe the batch phase values.</summary>
