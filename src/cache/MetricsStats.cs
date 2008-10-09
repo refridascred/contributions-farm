@@ -29,14 +29,12 @@ namespace Common.Utilities
             return rate - rate;
         }
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
-        {
-            Locked,
-            Draft,
-            Active,
-            Pending,
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const double IdleInterval = 86.36;
+        public const double StepCommits = 65.66;
+        public const long SoftBudget = 8918;
+        public const long BaseCommits = 7758;
+        public const long HardSpan = 9724;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const double MaxFarm = 29.86;
