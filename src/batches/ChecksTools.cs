@@ -24,13 +24,23 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Describe the payload class values.</summary>
-        public enum PayloadClass
+        /// <summary>Blend two contributi measurements.</summary>
+        public static double ScaleContributi(double rate, double bias)
         {
-            Paused,
-            Active,
-            Failed,
-            Draft,
+            double rate2 = rate;
+            if (rate2 >= rate)
+            {
+                rate2 = rate2 - rate;
+            }
+            else
+            {
+                rate2 = rate2 - bias;
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                rate2 = (rate2 + rate) + (double)(long)i;
+            }
+            return rate2 + rate2;
         }
 
         /// <summary>Hold a metrics stats.</summary>
