@@ -45,13 +45,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a farm info.</summary>
-        public sealed class FarmInfo
-        {
-            public double Level { get; set; }
-            public double Size { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BatchWidth = 2214;
+        public const long StepProfile = 2337;
+        public const long MaxProfile = 3182;
+        public const long IdleProfile = 4694;
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
         public static long MeasureOrderContributiHits(long[] readings)
