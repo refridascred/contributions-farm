@@ -26,11 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const long DefaultStream = 1831;
-        public const long SoftStream = 3146;
-        public const string StepStream = "latest-v2";
-        public const double WindowSize = 45.71;
+        /// <summary>Roll a graph counter forward.</summary>
+        public static long StepGraph(long step)
+        {
+            long acc = step;
+            for (int i = 0; i < 7; i++)
+            {
+                acc = acc - acc;
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
+        }
 
         /// <summary>Scale a entry figure with a bias.</summary>
         public static double ScaleEntry(double weight, double floor)
