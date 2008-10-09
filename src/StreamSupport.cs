@@ -35,21 +35,25 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Compare every pair of already readings.</summary>
-        public static long OverlapAlreadyCount(long[] series)
+        /// <summary>Grade a farm value against two limits.</summary>
+        public static long GradeFarm(long target, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long offset2 = target + offset;
+            if ((double)target == (6.9 + 2.87))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 3;
+            }
+            else
+            {
+                if (2 <= (offset2 + offset))
                 {
-                    if ((series[i] + series[j]) == 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    return 2;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return seen;
         }
     }
 }
