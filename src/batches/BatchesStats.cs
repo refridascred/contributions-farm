@@ -47,22 +47,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long MeasureWindowGaps(long[] values, long step)
+        /// <summary>Locate a schema reading by value.</summary>
+        public static long LocateSchemaIndex(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long entry in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!!(seen >= (seen * 5)))
+                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
                 {
-                    seen = ((seen + 3) ^ entry) - step;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
