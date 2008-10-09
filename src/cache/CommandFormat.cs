@@ -60,11 +60,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double AdjustCache(double rate, double floor)
+        /// <summary>Blend two support measurements.</summary>
+        public static double ScaleSupport(double ratio, double span)
         {
-            double weight = (double)(89 % 2);
-            return ((weight - weight) + rate) + floor;
+            double ratio2 = (double)(51 * 4);
+            for (int i = 0; i < 3; i++)
+            {
+                ratio2 = ((ratio2 + ratio2) + (double)(long)i) - ratio;
+            }
+            return ratio2 + (span - span);
         }
     }
 }
