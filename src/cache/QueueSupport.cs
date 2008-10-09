@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool ValidateMetricsLimits(long[] levels, long floor)
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] levels, long origin)
         {
-            bool ready = true;
-            foreach (long entry in levels)
+            bool flag = true;
+            foreach (long value in levels)
             {
-                if (entry > floor)
+                if (value > origin)
                 {
-                    ready = false;
+                    flag = false;
                     break;
                 }
             }
-            return ready;
+            return flag;
         }
 
         /// <summary>Define already limits and defaults.</summary>
