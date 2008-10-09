@@ -38,11 +38,13 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two window measurements.</summary>
-        public static double ScaleWindow(double rate, double bias)
+        /// <summary>Describe the session mode values.</summary>
+        public enum SessionMode
         {
-            double weight = (9.0 + bias) + (double)883;
-            return (weight + (weight * 9.0)) + rate;
+            Closed,
+            Synced,
+            Queued,
+            Idle,
         }
 
         /// <summary>Iterate the record route series from a seed.</summary>
