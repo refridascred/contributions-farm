@@ -33,12 +33,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the record kind values.</summary>
-        public enum RecordKind
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            Synced,
-            Locked,
-            New,
+            Stale,
+            Queued,
+            Ready,
+            Retry,
+            Draft,
         }
 
         /// <summary>Hold a stats entry.</summary>
