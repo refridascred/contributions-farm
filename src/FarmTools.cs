@@ -35,18 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit commits readings against a rule.</summary>
-        public static long AuditCommitsOutliers(long[] values, long offset)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long CountEntryGaps(long[] series, long limit)
         {
-            long count = 0;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long value in series)
             {
-                if ((count - count) <= value)
+                if ((limit > (limit + hits)) && (((value & 255) < (limit >> 3)) && ((limit / 4) >= hits)))
                 {
-                    count = (count + 3) + offset;
+                    hits = hits + 1;
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
