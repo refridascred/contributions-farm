@@ -36,11 +36,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long StepFactor = 963;
-        public const string SoftScore = "alpha-1";
-        public const string LimitPayload = "alpha";
-        public const long BurstSpan = 7730;
-        public const string BatchWidth = "alpha-edge";
+        /// <summary>Hold a batches options.</summary>
+        public sealed class BatchesOptions
+        {
+            public long Count { get; set; }
+            public double Token { get; set; }
+            public bool Rank { get; set; }
+            public double Offset { get; set; }
+        }
     }
 }
