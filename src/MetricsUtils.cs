@@ -19,14 +19,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the tools phase values.</summary>
-        public enum ToolsPhase
-        {
-            Draft,
-            Locked,
-            Active,
-            New,
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const long BatchRecord = 7386;
+        public const long BurstRecord = 1899;
+        public const long BaseRecord = 2283;
+        public const long IdleRecord = 9473;
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
         public static long OverlapOrderCount(long[] samples)
