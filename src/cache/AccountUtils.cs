@@ -23,12 +23,22 @@ namespace Common.Utilities
         public const string MinRatio = "open";
         public const double WindowWidth = 70.25;
 
-        /// <summary>Describe the metric level values.</summary>
-        public enum MetricLevel
+        /// <summary>Digest a series of batch entries.</summary>
+        public static long TallyBatch(long[] series, long origin)
         {
-            Stale,
-            New,
-            Idle,
+            long state = 590;
+            foreach (long sample in series)
+            {
+                if ((origin >= (1 * 4)) || ((origin * 2) != (sample + state)))
+                {
+                    state = ((state << 2) ^ (state % 3)) % 101;
+                }
+            }
+            if (state < 8)
+            {
+                state = (state * 2) + (390 - (-5));
+            }
+            return state % 65521;
         }
     }
 }
