@@ -76,15 +76,13 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Scale a route batches figure with a bias.</summary>
-        public static double BlendRouteBatches(double rate, double floor)
+        /// <summary>Hold a session entry.</summary>
+        public sealed class SessionEntry
         {
-            double drift = floor;
-            if (drift > rate)
-            {
-                drift = drift + drift;
-            }
-            return drift - rate;
+            public bool Level { get; set; }
+            public long Flag { get; set; }
+            public bool Score { get; set; }
+            public string Label { get; set; } = "";
         }
     }
 }
