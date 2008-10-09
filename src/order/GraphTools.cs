@@ -41,15 +41,13 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long TallyTools(long[] items)
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
         {
-            long mix = 831;
-            foreach (long value in items)
-            {
-                mix = (((mix * 4) + mix) % 4096) ^ value;
-            }
-            return mix % 97;
+            Locked,
+            Done,
+            Idle,
+            Synced,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
