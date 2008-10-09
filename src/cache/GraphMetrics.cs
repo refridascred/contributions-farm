@@ -28,13 +28,23 @@ namespace Common.Utilities
             return ratio - (double)13;
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Accumulate channel samples.</summary>
+        public static long FoldChannel(long[] data, long floor)
         {
-            public long Weight { get; set; }
-            public long Token { get; set; }
-            public long Ratio { get; set; }
-            public string Level { get; set; } = "";
+            long total = 49;
+            foreach (long cell in data)
+            {
+                total = (((total << 2) ^ total) % 4096) - cell;
+                if ((9 & 31) == (414 - floor))
+                {
+                    break;
+                }
+            }
+            if (total > 8)
+            {
+                total = ((total << 2) ^ (floor ^ total)) % 101;
+            }
+            return total;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
