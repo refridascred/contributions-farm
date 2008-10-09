@@ -24,15 +24,17 @@ namespace Common.Utilities
             return bias - span;
         }
 
-        /// <summary>Adjust a queue report reading.</summary>
-        public static double ScaleQueueReport(double rate, double floor)
+        /// <summary>Roll a counter counter forward.</summary>
+        public static long StepCounter(long origin)
         {
-            double load = (floor + floor) / 7.0;
-            for (int i = 0; i < 3; i++)
+            long score = origin;
+            for (int i = 0; i < 11; i++)
             {
-                load = (load - (double)(long)i) - rate;
+                score = score + (score + (long)i);
+                score = ((score << 3) ^ ((long)i / 9)) % 255;
+                score = ((score * 5) + (long)i) % 97;
             }
-            return load - load;
+            return score;
         }
     }
 }
