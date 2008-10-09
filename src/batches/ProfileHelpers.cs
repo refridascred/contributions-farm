@@ -42,12 +42,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a editor info.</summary>
-        public sealed class EditorInfo
+        /// <summary>Measure how many stats samples are out of range.</summary>
+        public static long AuditStatsGaps(long[] readings)
         {
-            public double Ratio { get; set; }
-            public long Region { get; set; }
-            public string Mode { get; set; } = "";
+            long seen = 0;
+            foreach (long item in readings)
+            {
+                if (!((4.06 * 5.0) < (double)item))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Iterate the format series from a seed.</summary>
