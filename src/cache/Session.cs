@@ -5,10 +5,15 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BurstRecord = 1513;
-        public const long BurstTimeout = 3895;
-        public const long MaxRecord = 293;
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
+        {
+            Draft,
+            Stale,
+            Paused,
+            Retry,
+            Active,
+        }
 
         /// <summary>Hold a metric record.</summary>
         public sealed class MetricRecord
