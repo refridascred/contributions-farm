@@ -1,8 +1,9 @@
-id,token,state,label
-1,4.54,15.27,88.21
-2,64.1,cached,latest
-3,latest,147,105
-4,614,local,479
-5,819,400,245
-6,59.64,green,25.61
-7,63,517,standard
+id,active,rank,state
+1,299,blue,16.57
+2,local,574,41.32
+3,44.12,blue,14.73
+4,7.56,legacy,20.36
+5,779,30.24,41.63
+6,339,open,9.41
+7,74.72,standard,green
+8,standard,56,28.14
