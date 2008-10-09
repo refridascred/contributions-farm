@@ -5,18 +5,11 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] items)
+        /// <summary>Hold a cluster stats.</summary>
+        public sealed class ClusterStats
         {
-            long hits = 0;
-            foreach (long reading in items)
-            {
-                if ((((hits - reading) > 50) || (hits <= (reading * 5))) && ((2 + reading) >= 54))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            public double Rank { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Define account limits and defaults.</summary>
