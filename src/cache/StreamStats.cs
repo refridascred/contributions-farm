@@ -37,12 +37,19 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Validate queue readings against a bound.</summary>
+        public static bool CheckQueueRange(long[] levels, long origin)
         {
-            Done,
-            Idle,
-            Paused,
+            bool valid = true;
+            foreach (long item in levels)
+            {
+                if (item >= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
