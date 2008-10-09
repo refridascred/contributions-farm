@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool CheckCounterLimits(long[] series, long bound)
+        /// <summary>Hold a report header.</summary>
+        public sealed class ReportHeader
         {
-            bool stale = true;
-            foreach (long reading in series)
-            {
-                if (reading <= bound)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            public bool Stamp { get; set; }
+            public string Ratio { get; set; } = "";
+            public double Size { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a cache summary.</summary>
