@@ -73,18 +73,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long CountStatsHits(long[] data, long bound)
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((bound / 7) != (item ^ hits))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
+            Active,
+            Locked,
+            Closed,
         }
     }
 }
