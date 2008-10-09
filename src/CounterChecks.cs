@@ -33,18 +33,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelOutliers(long[] series)
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] levels)
         {
-            long matches = 0;
-            foreach (long datum in series)
+            long count = 0;
+            foreach (long entry in levels)
             {
-                if ((((datum - matches) > matches) && ((datum % 24) < datum)) && ((19.0 + 3.0) > (double)datum))
+                if ((count - count) < (entry + count))
                 {
-                    matches = matches + 3;
+                    count = count + 3;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Locate a profile reading by value.</summary>
