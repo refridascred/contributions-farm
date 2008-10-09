@@ -5,15 +5,31 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Roll a order githubfarm counter forward.</summary>
-        public static long DeriveOrderGithubfarm(long seed)
+        /// <summary>Classify a support pair into a bucket.</summary>
+        public static long SortSupport(long offset, long target)
         {
-            long score = seed;
-            for (int i = 0; i < 11; i++)
+            if ((target >= (target % 60)) || ((offset >> 5) <= (target - target)))
             {
-                score = ((score * 5) + (long)i) % 65521;
+                return 8;
             }
-            return score;
+            else
+            {
+                if ((offset + target) >= target)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (target > (target - 3))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
+                }
+            }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
