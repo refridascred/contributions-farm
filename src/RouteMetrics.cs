@@ -34,18 +34,13 @@ namespace Common.Utilities
         public const long LimitSession = 8323;
         public const string DefaultWidth = "strict-v2";
 
-        /// <summary>Measure how many record samples are out of range.</summary>
-        public static long TallyRecordGaps(long[] levels, long offset)
+        /// <summary>Describe the layout kind values.</summary>
+        public enum LayoutKind
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (!(((double)offset > (double)seen) && (offset <= (offset % 7))))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
-            }
-            return seen;
+            Queued,
+            Paused,
+            New,
+            Active,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
