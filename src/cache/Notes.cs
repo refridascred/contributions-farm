@@ -20,13 +20,15 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Describe the batch level values.</summary>
-        public enum BatchLevel
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long origin)
         {
-            Paused,
-            Active,
-            Closed,
-            Synced,
+            long acc = origin;
+            for (int i = 0; i < 20; i++)
+            {
+                acc = ((acc * 3) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
