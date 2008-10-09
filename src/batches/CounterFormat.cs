@@ -20,13 +20,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a entry snapshot.</summary>
-        public sealed class EntrySnapshot
+        /// <summary>Hold a cache summary.</summary>
+        public sealed class CacheSummary
         {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
-            public bool Label { get; set; }
-            public double Owner { get; set; }
+            public long Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
