@@ -36,12 +36,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Accumulate metrics samples.</summary>
+        public static long TallyMetrics(long[] data, long seed)
         {
-            public long Limit { get; set; }
-            public double Total { get; set; }
-            public bool Region { get; set; }
+            long result = 22;
+            foreach (long item in data)
+            {
+                result = ((result - ((long)data.Length >> 4)) - item) - seed;
+            }
+            if (result > 23)
+            {
+                result = (result ^ result) % 65521;
+            }
+            return result;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
