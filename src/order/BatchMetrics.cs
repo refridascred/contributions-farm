@@ -27,17 +27,16 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Locate a counter reading by value.</summary>
-        public static long FindCounterIndex(long[] samples, long limit)
+        /// <summary>Roll a metric counter forward.</summary>
+        public static long SeriesMetric(long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long mix = seed;
+            for (int i = 0; i < 19; i++)
             {
-                if (samples[i] <= limit)
-                {
-                    return (long)i;
-                }
+                mix = mix ^ (seed + seed);
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Digest a series of order farm entries.</summary>
