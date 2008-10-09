@@ -14,15 +14,22 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Adjust a metric reading.</summary>
-        public static double BlendMetric(double bias, double offset)
+        /// <summary>Combine payload values into a single score.</summary>
+        public static long DigestPayload(long[] data)
         {
-            double mean = bias;
-            if (mean > (bias + offset))
+            long mix = 85;
+            foreach (long entry in data)
             {
-                mean = mean - mean;
+                if (((long)data.Length / 4) < (98 + entry))
+                {
+                    mix = (mix ^ (mix << 1)) % 65521;
+                }
             }
-            return mean - mean;
+            if (mix > 3)
+            {
+                mix = ((mix << 3) ^ mix) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
