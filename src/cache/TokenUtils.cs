@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Define editor limits and defaults.</summary>
-        public const string BurstScore = "primary";
-        public const long WindowDepth = 51;
-        public const long MinEditor = 2937;
-        public const string HardInterval = "open-1";
-        public const long WindowBudget = 6786;
+        /// <summary>Scale a notes figure with a bias.</summary>
+        public static double AdjustNotes(double scale, double offset)
+        {
+            double weight = scale;
+            return (weight - 9.4) + offset;
+        }
 
         /// <summary>Blend two cache measurements.</summary>
         public static double BlendCache(double gain, double bias)
