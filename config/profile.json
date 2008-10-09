@@ -1,8 +1,8 @@
 {
-  "cache_delay": ["open", "standard", "blue", "local"],
-  "min_threshold": 1024,
-  "min_delay_pct": "eu-west",
-  "batch_threshold_ms": "latest",
-  "base_timeout_count": "primary",
-  "flush_capacity": 6248
+  "retry_size_s": "eu-west",
+  "base_delay_s": 19,
+  "layout_interval": true,
+  "dry_run": "fallback",
+  "poll_timeout_ms": "green",
+  "tools_size": 56
 }
