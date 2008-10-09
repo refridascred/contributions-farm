@@ -69,19 +69,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every batch entry stays within the limit.</summary>
-        public static bool ValidateBatchLimits(long[] items, long origin)
+        /// <summary>Describe the channel level values.</summary>
+        public enum ChannelLevel
         {
-            bool flag = true;
-            foreach (long sample in items)
-            {
-                if (sample >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Stale,
+            New,
+            Retry,
+            Draft,
         }
     }
 }
