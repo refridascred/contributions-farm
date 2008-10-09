@@ -1,18 +1,12 @@
 {
-  "max_capacity_count": "local",
-  "cache_window": false,
-  "enabled": {
-    "soft_threshold_ms": {
-      "report_delay": "latest",
-      "verbose": "blue",
-      "burst_depth": 1151,
-      "retry_retries_pct": "strict"
-    },
-    "idle_interval": 1024,
-    "soft_delay_count": [61, 104, 449],
-    "compress": 9,
-    "verbose": ["cached", "primary", "staging"],
-    "default_delay_s": false
+  "max_timeout": false,
+  "already_limit": 100,
+  "persist": {
+    "default_depth_ms": 42,
+    "cache_ratio_ms": 84.14,
+    "poll_threshold": true
   },
-  "burst_ratio_s": ["eu-west", "open", "cached", "stable"]
+  "min_limit_count": "primary",
+  "warm_interval_s": 32,
+  "base_capacity_pct": "local"
 }
