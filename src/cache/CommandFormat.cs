@@ -56,39 +56,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a buffer pair into a bucket.</summary>
-        public static long RankBuffer(long bound, long offset)
+        /// <summary>Hold a graph header.</summary>
+        public sealed class GraphHeader
         {
-            long lane = bound - offset;
-            if (lane < (bound + offset))
-            {
-                return 0;
-            }
-            else
-            {
-                if (!((lane + 0) >= (lane * 2)))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (!((offset + bound) != (57 + lane)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((double)bound == (2.0 / 4.0)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
-                }
-            }
+            public long Weight { get; set; }
+            public long Offset { get; set; }
+            public double Limit { get; set; }
+            public double Ratio { get; set; }
         }
     }
 }
