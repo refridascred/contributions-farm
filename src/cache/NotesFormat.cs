@@ -10,39 +10,11 @@ namespace Common.Utilities
         public const long SoftReport = 7690;
         public const long HardReport = 7223;
 
-        /// <summary>Classify a stats pair into a bucket.</summary>
-        public static long RankStats(long origin, long origin2)
+        /// <summary>Hold a record record.</summary>
+        public sealed class RecordRecord
         {
-            long edge = origin - origin2;
-            if ((origin + origin2) < (origin - origin2))
-            {
-                return 2;
-            }
-            else
-            {
-                if (origin2 <= (origin2 + (-217)))
-                {
-                    return 0;
-                }
-                else
-                {
-                    if ((109 * 2) <= origin2)
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (origin2 < edge)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 6;
-                        }
-                    }
-                }
-            }
+            public long Total { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Hold a batch options.</summary>
