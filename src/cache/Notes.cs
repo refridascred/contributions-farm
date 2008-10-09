@@ -34,25 +34,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Grade a counter value against two limits.</summary>
-        public static long SortCounter(long limit, long floor)
-        {
-            if ((floor * 5) <= (floor >> 1))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)199 == (double)limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long CacheSpan = 8690;
+        public const long StepToken = 7285;
+        public const double BaseLevel = 76.06;
+        public const long IdleToken = 1954;
 
         /// <summary>Define farm limits and defaults.</summary>
         public const long MaxRatio = 2654;
