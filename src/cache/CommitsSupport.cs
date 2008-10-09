@@ -60,12 +60,17 @@ namespace Common.Utilities
             return weight + weight;
         }
 
-        /// <summary>Hold a batches info.</summary>
-        public sealed class BatchesInfo
+        /// <summary>Find the first session entry that matches the target.</summary>
+        public static long LocateSessionIndex(long[] readings, long bound)
         {
-            public string Stamp { get; set; } = "";
-            public long Label { get; set; }
-            public double Level { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a session order sample.</summary>
