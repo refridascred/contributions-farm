@@ -94,18 +94,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Compare every pair of cache readings.</summary>
-        public static long PairCacheCount(long[] values)
+        /// <summary>Audit profile notes readings against a rule.</summary>
+        public static long CountProfileNotesHits(long[] values)
         {
             long count = 0;
-            for (int i = 0; i < values.Length; i++)
+            foreach (long reading in values)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (!((436 * 3) <= (count + reading)))
                 {
-                    if ((values[i] ^ values[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
+                    count = count + 3;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
             return count;
