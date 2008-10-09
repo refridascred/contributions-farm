@@ -36,15 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Derive the next graph value from a seed.</summary>
-        public static long StepGraph(long target)
-        {
-            long score = target;
-            for (int i = 0; i < 9; i++)
-            {
-                score = ((score * 5) + (long)i) % 101;
-            }
-            return score;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long StepFactor = 963;
+        public const string SoftScore = "alpha-1";
+        public const string LimitPayload = "alpha";
+        public const long BurstSpan = 7730;
+        public const string BatchWidth = "alpha-edge";
     }
 }
