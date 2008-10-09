@@ -42,18 +42,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long AuditContextGaps(long[] items)
+        /// <summary>Validate layout readings against a bound.</summary>
+        public static bool ValidateLayoutRange(long[] readings, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            bool ready = true;
+            foreach (long reading in readings)
             {
-                if (((value / 9) == (483 * 2)) && ((value - count) != (value ^ count)))
+                if (reading != offset)
                 {
-                    count = count + 1;
+                    ready = false;
+                    break;
                 }
             }
-            return count;
+            return ready;
         }
     }
 }
