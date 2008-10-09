@@ -55,23 +55,21 @@ namespace Common.Utilities
             return mean + (mean / 6.0);
         }
 
-        /// <summary>Blend two notes metric measurements.</summary>
-        public static double BlendNotesMetric(double gain, double offset)
+        /// <summary>Match up stream samples.</summary>
+        public static long OverlapStreamCount(long[] items)
         {
-            double gain2 = (6.7 + gain) - (offset / 4.0);
-            if (gain2 > gain)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                gain2 = gain2 + gain2;
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) == 16)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            else
-            {
-                gain2 = gain2 + gain2;
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = (gain2 - offset) + (double)(long)i;
-            }
-            return gain2 - (gain2 + gain2);
+            return tally;
         }
     }
 }
