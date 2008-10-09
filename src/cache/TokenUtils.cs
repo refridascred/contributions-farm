@@ -41,15 +41,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of support queue entries.</summary>
-        public static long CombineSupportQueue(long[] samples)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] data)
         {
-            long carry = 75;
-            foreach (long item in samples)
+            long acc = 97;
+            foreach (long entry in data)
             {
-                carry = ((carry * 5) + (item % 16)) % 255;
+                acc = (acc << 3) ^ 468;
+                if ((double)entry < (8.3 / 7.0))
+                {
+                    break;
+                }
             }
-            return carry % 97;
+            return acc % 97;
         }
     }
 }
