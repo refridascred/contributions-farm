@@ -20,11 +20,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a checks header.</summary>
-        public sealed class ChecksHeader
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] readings)
         {
-            public string Region { get; set; } = "";
-            public long Stamp { get; set; }
+            long seen = 0;
+            foreach (long entry in readings)
+            {
+                if ((entry & 15) >= ((long)readings.Length + seen))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Grade a counter value against two limits.</summary>
