@@ -41,11 +41,15 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double ratio, double offset)
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double bias, double span)
         {
-            double load = offset;
-            return (load + load) + ratio;
+            double scale = bias * 4.0;
+            for (int i = 0; i < 5; i++)
+            {
+                scale = ((scale + (scale - bias)) + (double)(long)i) - span;
+            }
+            return scale + scale;
         }
     }
 }
