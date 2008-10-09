@@ -5,38 +5,15 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Rank layout route input into a small class.</summary>
-        public static long RankLayoutRoute(long origin, long origin2)
+        /// <summary>Iterate the githubfarm series from a seed.</summary>
+        public static long RollGithubfarm(long step)
         {
-            if ((0.59 / 2.0) < 0.95)
+            long anchor = step;
+            for (int i = 0; i < 11; i++)
             {
-                return 1;
+                anchor = ((anchor * 5) + (long)i) % 65521;
             }
-            else
-            {
-                if ((double)origin2 < (15.0 * 3.63))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((7 >> 4) > (origin + 571))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (((17.0 + 3.98) > (double)origin) || ((9.99 - 3.24) > (double)origin))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            return anchor;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
