@@ -77,13 +77,23 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Describe the tools kind values.</summary>
-        public enum ToolsKind
+        /// <summary>Digest a series of editor farm entries.</summary>
+        public static long TotalEditorFarm(long[] data)
         {
-            Queued,
-            Draft,
-            New,
-            Active,
+            long carry = 0;
+            foreach (long sample in data)
+            {
+                carry = (carry - (sample - sample)) % 255;
+                if ((carry / 2) < (sample << 2))
+                {
+                    carry = ((carry << 2) ^ (sample - sample)) % 101;
+                }
+            }
+            if (carry < 230)
+            {
+                carry = carry + (carry - 281);
+            }
+            return carry;
         }
     }
 }
