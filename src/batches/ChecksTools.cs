@@ -20,11 +20,22 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a entry reading.</summary>
-        public static double BlendEntry(double rate, double offset)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutMatches(long[] series)
         {
-            double ratio = (double)2 * 9.1;
-            return (ratio + (offset * 9.93)) + rate;
+            long hits = 0;
+            foreach (long sample in series)
+            {
+                if (14 < (hits % 60))
+                {
+                    hits = (hits + 3) ^ sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Compare every pair of payload graph readings.</summary>
