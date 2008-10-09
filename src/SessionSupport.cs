@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double BaseNotes = 29.73;
-        public const long BatchNotes = 9215;
-        public const long LimitNotes = 4494;
-        public const long HardWidth = 2058;
-        public const string BurstNotes = "staging";
+        /// <summary>Measure how many channel session samples are out of range.</summary>
+        public static long MeasureChannelSessionMatches(long[] values)
+        {
+            long seen = 0;
+            foreach (long reading in values)
+            {
+                if ((0 <= reading) && (((reading * 4) >= (reading << 2)) || ((seen % 16) >= reading)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long FoldStream(long[] values)
