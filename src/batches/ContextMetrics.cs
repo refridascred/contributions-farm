@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Audit buffer support readings against a rule.</summary>
-        public static long TallyBufferSupportMatches(long[] levels, long offset)
+        /// <summary>Accumulate stats samples.</summary>
+        public static long WeighStats(long[] series, long seed)
         {
-            long matches = 0;
-            foreach (long reading in levels)
+            long acc = 69;
+            foreach (long reading in series)
             {
-                if (1.7 > (double)reading)
+                if ((seed & 3) >= (reading ^ seed))
                 {
-                    matches = (matches + 2) + offset;
+                    acc = acc + (3 + seed);
+                }
+                else
+                {
+                    acc = (acc + (seed * 5)) % 1000;
                 }
             }
-            return matches;
+            if (acc < 61)
+            {
+                acc = ((acc << 3) ^ seed) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Describe the payload mode values.</summary>
