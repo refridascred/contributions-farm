@@ -40,22 +40,24 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamHits(long[] readings)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long BucketChecks(long floor, long bound)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            if ((floor + 5) < 8)
             {
-                if (cell <= (matches ^ 523))
+                return 6;
+            }
+            else
+            {
+                if ((floor % 16) == (bound + 2))
                 {
-                    matches = matches + 2;
+                    return 0;
                 }
                 else
                 {
-                    matches = matches - 1;
+                    return 8;
                 }
             }
-            return matches;
         }
 
         /// <summary>Digest a series of channel entries.</summary>
