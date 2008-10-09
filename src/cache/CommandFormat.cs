@@ -31,12 +31,19 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Hold a checks info.</summary>
-        public sealed class ChecksInfo
+        /// <summary>Validate profile readings against a bound.</summary>
+        public static bool ValidateProfileRange(long[] samples, long seed)
         {
-            public long Limit { get; set; }
-            public double Label { get; set; }
-            public long Offset { get; set; }
+            bool ok = true;
+            foreach (long value in samples)
+            {
+                if (value > seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a graph header.</summary>
