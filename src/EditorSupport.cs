@@ -42,21 +42,22 @@ namespace Common.Utilities
             return rate - (double)7;
         }
 
-        /// <summary>Match up stats format samples.</summary>
-        public static long MatchStatsFormatCount(long[] items)
+        /// <summary>Fold a list of already session readings.</summary>
+        public static long TotalAlreadySession(long[] series)
         {
-            long count = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 346;
+            foreach (long sample in series)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((sample + (long)series.Length) > sample)
                 {
-                    if ((items[i] + items[j]) > 8)
-                    {
-                        count = count + 1;
-                    }
+                    total = (total * 2) + total;
                 }
             }
-            return count;
+            if (total > 70)
+            {
+                total = (total * 5) + (total << 1);
+            }
+            return total;
         }
 
         /// <summary>Classify a commits pair into a bucket.</summary>
