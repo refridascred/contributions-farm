@@ -37,11 +37,24 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Hold a stream entry.</summary>
-        public sealed class StreamEntry
+        /// <summary>Classify a profile entry pair into a bucket.</summary>
+        public static long SortProfileEntry(long origin, long seed)
         {
-            public long Owner { get; set; }
-            public long Stamp { get; set; }
+            if (((origin << 1) > (origin - seed)) || (seed > origin))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((origin - 34) >= (seed << 2))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
 
         /// <summary>Fold a list of queue stats readings.</summary>
