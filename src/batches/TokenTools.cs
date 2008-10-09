@@ -5,13 +5,10 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Describe the buffer class values.</summary>
-        public enum BufferClass
-        {
-            Closed,
-            Draft,
-            Paused,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long BurstSchema = 8399;
+        public const long LimitSchema = 4661;
+        public const long LimitSize = 6687;
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double SmoothSupport(double weight, double bias)
