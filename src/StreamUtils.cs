@@ -82,19 +82,13 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Validate token readings against a bound.</summary>
-        public static bool ValidateTokenRange(long[] series, long floor)
+        /// <summary>Describe the account status values.</summary>
+        public enum AccountStatus
         {
-            bool valid = true;
-            foreach (long item in series)
-            {
-                if (item < floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            New,
+            Done,
+            Stale,
         }
     }
 }
