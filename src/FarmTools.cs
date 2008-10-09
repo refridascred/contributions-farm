@@ -16,25 +16,10 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long BucketChecks(long floor, long bound)
-        {
-            if ((floor + 5) < 8)
-            {
-                return 6;
-            }
-            else
-            {
-                if ((floor % 16) == (bound + 2))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 8;
-                }
-            }
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long WindowScore = 3648;
+        public const double StepSpan = 41.78;
+        public const string StepOrder = "standard-1";
 
         /// <summary>Count the entry entries that pass the check.</summary>
         public static long CountEntryGaps(long[] series, long limit)
