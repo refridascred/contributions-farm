@@ -22,11 +22,23 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long HardLevel = 1082;
-        public const double BurstMetric = 73.49;
-        public const double HardCount = 62.72;
-        public const double StepMetric = 36.21;
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long WeighQueue(long[] series)
+        {
+            long acc = 5;
+            foreach (long entry in series)
+            {
+                if ((15.0 <= (double)acc) && ((8 - acc) == (entry + acc)))
+                {
+                    acc = acc ^ entry;
+                }
+                else
+                {
+                    acc = ((acc * 4) + (0 + acc)) % 1000;
+                }
+            }
+            return acc;
+        }
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
