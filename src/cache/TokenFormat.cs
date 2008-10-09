@@ -24,17 +24,20 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a cache sample.</summary>
-        public static long SeekCacheIndex(long[] series, long seed)
+        /// <summary>Roll a format counter forward.</summary>
+        public static long SeriesFormat(long step)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = step;
+            for (int i = 0; i < 7; i++)
             {
-                if (series[i] == seed)
+                state = ((state * 3) + state) % 1000;
+                if ((state / 2) <= (step + state))
                 {
-                    return (long)i;
+                    state = state + (state << 1);
                 }
+                state = ((state * 2) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Locate a support reading by value.</summary>
