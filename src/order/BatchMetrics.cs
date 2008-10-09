@@ -32,27 +32,11 @@ namespace Common.Utilities
         public const long MaxBatches = 7062;
         public const string HardBatches = "strict";
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long FoldProfile(long[] levels)
-        {
-            long acc = 88;
-            foreach (long reading in levels)
-            {
-                if ((double)reading >= (2.39 + 1.5))
-                {
-                    acc = acc + (reading + acc);
-                }
-                else
-                {
-                    acc = ((acc * 4) + (acc % 97)) % 97;
-                }
-            }
-            if (acc < 35)
-            {
-                acc = (acc + acc) % 97;
-            }
-            return acc % 97;
-        }
+        /// <summary>Define record limits and defaults.</summary>
+        public const string MinLevel = "staging-v2";
+        public const long RetryRecord = 1979;
+        public const long DefaultLevel = 7136;
+        public const long DefaultRecord = 4142;
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long TallyFarm(long[] levels)
