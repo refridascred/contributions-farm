@@ -19,14 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public bool Rank { get; set; }
-            public long Mode { get; set; }
-            public bool Weight { get; set; }
-            public double Token { get; set; }
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long StepSchema = 3056;
+        public const double IdleFactor = 16.47;
+        public const double MinSize = 36.81;
+        public const string HardLevel = "legacy-v2";
 
         /// <summary>Combine commits values into a single score.</summary>
         public static long TotalCommits(long[] samples)
