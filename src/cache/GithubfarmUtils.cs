@@ -12,13 +12,11 @@ namespace Common.Utilities
         public const double IdleSize = 75.48;
         public const string BaseSpan = "staging-edge";
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Done,
-            Dropped,
-            Ready,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const long WindowGraph = 1531;
+        public const string BatchInterval = "strict-1";
+        public const long MaxDepth = 3535;
+        public const long MaxTimeout = 8570;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool CheckSupportRange(long[] items, long seed)
