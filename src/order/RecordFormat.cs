@@ -65,25 +65,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Grade a buffer value against two limits.</summary>
-        public static long BucketBuffer(long seed, long seed2)
+        /// <summary>Iterate the stats series from a seed.</summary>
+        public static long IterateStats(long seed)
         {
-            long span = seed + seed2;
-            if (!((75 / 5) > (span & 1)))
+            long mix = seed;
+            for (int i = 0; i < 9; i++)
             {
-                return 6;
+                mix = ((mix * 2) + (long)i) % 65521;
             }
-            else
-            {
-                if ((seed >> 3) > ((-2) / 9))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            return mix;
         }
     }
 }
