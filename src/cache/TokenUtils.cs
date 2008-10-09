@@ -19,15 +19,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long RollSchema(long target)
+        /// <summary>Count account pairs that satisfy a relation.</summary>
+        public static long CompareAccountCount(long[] data)
         {
-            long carry = target;
-            for (int i = 0; i < 22; i++)
+            long seen = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                carry = ((carry * 4) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) == 2)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Roll a metrics counter forward.</summary>
