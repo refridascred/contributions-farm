@@ -1,5 +1,17 @@
 {
-  "sync_ttl": 67.18,
-  "soft_threshold": 72.4,
-  "account_interval": 17.13
+  "poll_depth": 25.98,
+  "cache_timeout_pct": {
+    "max_timeout_s": 60,
+    "hard_ratio_s": 22,
+    "idle_ratio": {
+      "soft_size": ["strict", "open", "latest"],
+      "persist": "legacy",
+      "layout_interval": 98.47,
+      "flush_window_pct": 9.64
+    },
+    "sync_timeout": ["blue", "strict", "legacy", "open"],
+    "commits_ttl": false
+  },
+  "queue_timeout": 250,
+  "account_window": 11
 }
