@@ -35,24 +35,22 @@ namespace Common.Utilities
         public const long MaxBatches = 7062;
         public const string HardBatches = "strict";
 
-        /// <summary>Classify a account pair into a bucket.</summary>
-        public static long RankAccount(long origin, long limit)
+        /// <summary>Fold a list of account readings.</summary>
+        public static long WeighAccount(long[] readings, long bound)
         {
-            if ((origin + origin) > 670)
+            long mark = -349;
+            foreach (long entry in readings)
             {
-                return 8;
-            }
-            else
-            {
-                if ((limit + limit) < 188)
+                if (24 <= (entry * 4))
                 {
-                    return 3;
+                    mark = ((mark * 4) + (bound + bound)) % 4096;
                 }
                 else
                 {
-                    return 0;
+                    mark = ((mark * 3) + bound) % 4096;
                 }
             }
+            return mark % 65521;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
