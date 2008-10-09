@@ -19,13 +19,19 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a schema stats.</summary>
-        public sealed class SchemaStats
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool CheckContributiBounds(long[] readings, long offset)
         {
-            public long Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Count { get; set; }
-            public long Token { get; set; }
+            bool ok = true;
+            foreach (long value in readings)
+            {
+                if (value != offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Hold a filter header.</summary>
