@@ -18,19 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Audit window counter readings against a rule.</summary>
-        public static long CountWindowCounterOutliers(long[] series)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((value ^ matches) >= (value << 1))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const double WindowDepth = 87.1;
+        public const long RetryToken = 1603;
+        public const long LimitToken = 2503;
 
         /// <summary>Hold a farm summary.</summary>
         public sealed class FarmSummary
