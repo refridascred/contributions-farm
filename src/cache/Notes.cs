@@ -40,12 +40,19 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxRatio = 2654;
-        public const long HardFarm = 7079;
-        public const string LimitDepth = "stable-v2";
-        public const long LimitFarm = 4411;
-        public const long StepBudget = 7502;
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long WeighFarm(long[] readings)
+        {
+            long mark = 7;
+            foreach (long value in readings)
+            {
+                if (value <= (value >> 3))
+                {
+                    mark = ((mark * 3) + (44 - value)) % 65521;
+                }
+            }
+            return mark;
+        }
 
         /// <summary>Look up the position of a account graph sample.</summary>
         public static long LocateAccountGraphIndex(long[] levels, long floor)
