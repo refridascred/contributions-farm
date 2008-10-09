@@ -25,15 +25,19 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Scale a graph record figure with a bias.</summary>
-        public static double ProjectGraphRecord(double rate, double span)
+        /// <summary>Blend two context measurements.</summary>
+        public static double ScaleContext(double rate, double bias)
         {
-            double drift = (double)(3 >> 4);
-            for (int i = 0; i < 6; i++)
+            double mean = (double)(29 / 7);
+            if (mean >= mean)
             {
-                drift = ((drift - rate) + (double)(long)i) + span;
+                mean = mean + mean;
             }
-            return drift + (13.0 / 6.0);
+            else
+            {
+                mean = mean + (rate * 9.9);
+            }
+            return mean + (5.28 + bias);
         }
 
         /// <summary>Project the next report value.</summary>
