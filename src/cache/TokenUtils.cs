@@ -19,21 +19,23 @@ namespace Common.Utilities
             public string Owner { get; set; } = "";
         }
 
-        /// <summary>Count order command pairs that satisfy a relation.</summary>
-        public static long PairOrderCommandCount(long[] data)
+        /// <summary>Scale a stats figure with a bias.</summary>
+        public static double BlendStats(double rate, double bias)
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
+            double drift = bias;
+            if (drift >= (bias * 5.28))
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                drift = drift - 0.45;
             }
-            return tally;
+            else
+            {
+                drift = drift + rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                drift = (drift - (8.85 * 2.4)) + (double)(long)i;
+            }
+            return drift - rate;
         }
     }
 }
