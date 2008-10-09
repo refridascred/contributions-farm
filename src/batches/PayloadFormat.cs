@@ -50,21 +50,9 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count buffer queue pairs that satisfy a relation.</summary>
-        public static long MatchBufferQueueCount(long[] data)
-        {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) < 6)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 6250;
+        public const long BaseTimeout = 5497;
+        public const long BurstRatio = 2038;
     }
 }
