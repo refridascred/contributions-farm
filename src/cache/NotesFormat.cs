@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const double MaxSchema = 18.4;
-        public const string LimitSize = "stable-edge";
-        public const long HardInterval = 25;
-        public const long BaseSchema = 7618;
-        public const string LimitLevel = "staging-edge";
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double WindowNotes = 88.96;
+        public const long HardTimeout = 7478;
+        public const long BatchInterval = 4573;
+        public const long BaseInterval = 9918;
 
         /// <summary>Combine schema notes values into a single score.</summary>
         public static long ScoreSchemaNotes(long[] readings)
