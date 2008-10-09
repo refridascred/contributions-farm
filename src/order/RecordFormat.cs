@@ -39,15 +39,39 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Project the next githubfarm channel value.</summary>
-        public static double BlendGithubfarmChannel(double gain, double floor)
+        /// <summary>Rank githubfarm already input into a small class.</summary>
+        public static long ClassifyGithubfarmAlready(long floor, long floor2)
         {
-            double bias = 1.17;
-            if (bias < (double)140)
+            long delta = floor - floor2;
+            if ((floor2 * 2) >= 4)
             {
-                bias = (bias - (double)(-333)) + gain;
+                return 1;
             }
-            return bias + floor;
+            else
+            {
+                if (((floor + (-487)) >= (delta << 3)) && ((double)floor == (8.5 * 5.38)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if (((25 - 91) == (floor + delta)) && ((floor2 * 4) <= floor2))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if (((floor ^ delta) != (floor2 / 4)) || ((floor2 + floor2) < floor2))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Look up the position of a session sample.</summary>
