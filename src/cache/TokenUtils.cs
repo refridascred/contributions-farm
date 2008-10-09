@@ -16,10 +16,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 1589;
-        public const long SoftEntry = 6411;
-        public const long LimitEntry = 2818;
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long FoldContributi(long[] data)
+        {
+            long mix = 0;
+            foreach (long value in data)
+            {
+                if ((value >> 3) < (value & 127))
+                {
+                    mix = (mix << 3) ^ mix;
+                }
+                if (!((value + value) == (value << 1)))
+                {
+                    mix = mix + (57 + (long)data.Length);
+                }
+            }
+            return mix % 97;
+        }
 
         /// <summary>Count order command pairs that satisfy a relation.</summary>
         public static long PairOrderCommandCount(long[] data)
