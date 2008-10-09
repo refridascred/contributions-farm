@@ -1,32 +1,34 @@
 # entry settings
-cache_ttl_pct:
-  cache_capacity_pct:
-    sync_timeout: local
-    queue_timeout: fallback
-    cache_retries_count: 83.56
-    hard_window_s: standard
-    idle_ttl: true
-  session_size: 43
-  min_depth_count: 9374
-filter_retries: 8248
-warm_depth_pct: 12
-poll_delay_pct:
-  poll_retries_pct: 4
-  readonly: 35.41
-  burst_threshold_pct:
-    cache_retries: 91.0
-    min_retries: 100
-    poll_capacity_count: 61
-    max_capacity_ms: 7213
-    hard_threshold_ms: 62.73
-    soft_limit_pct: 1024
-  audit:
-    contributi_depth:
-      - latest
-      - cached
-    cache_interval: 70.54
-    warm_size_ms: true
-audit: 32.32
-githubfarm_timeout:
-  - 445
-  - 405
+checks_capacity:
+  - eu-west
+  - green
+  - primary
+idle_retries_count:
+  batch_ratio: edge
+  base_interval_ms:
+    flush_ratio_ms:
+      - 146
+      - 100
+    poll_ratio_pct: 9071
+    soft_threshold: strict
+    burst_ttl_count: 61
+    soft_limit_s:
+      - staging
+      - green
+  sync_delay_s: edge
+  persist: open
+  retry_size_pct:
+    already_interval: 1024
+    max_ratio_pct:
+      - 395
+      - 161
+    soft_ttl: cached
+    sync_threshold_count: local
+    poll_limit: cached
+    farm_retries: legacy
+  context_ttl:
+    - primary
+    - legacy
+    - eu-west
+    - eu-west
+flush_ratio_s: fallback
