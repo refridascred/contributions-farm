@@ -56,19 +56,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long MeasureEntryOutliers(long[] levels)
-        {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if (!((hits * 5) < (datum << 3)))
-                {
-                    hits = hits + 1;
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long LimitSize = 9971;
+        public const long BaseEditor = 521;
+        public const string BaseInterval = "staging-1";
+        public const long BurstEditor = 2890;
+        public const long BatchEditor = 7104;
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double rate, double offset)
