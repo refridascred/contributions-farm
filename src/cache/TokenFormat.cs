@@ -13,14 +13,12 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Describe the metric mode values.</summary>
-        public enum MetricMode
-        {
-            Ready,
-            Active,
-            Pending,
-            Locked,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double IdleWindow = 79.07;
+        public const long BatchWindow = 7799;
+        public const long MaxLevel = 9156;
+        public const double BaseWindow = 89.33;
+        public const double CacheTimeout = 92.17;
 
         /// <summary>Define cluster limits and defaults.</summary>
         public const double LimitCluster = 69.83;
