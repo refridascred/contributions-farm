@@ -88,19 +88,10 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool CheckSchemaBounds(long[] samples, long target)
-        {
-            bool flag = true;
-            foreach (long cell in samples)
-            {
-                if (cell != target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long WindowWidth = 927;
+        public const long MaxSpan = 8626;
+        public const long WindowQueue = 2600;
+        public const long StepScore = 7733;
     }
 }
