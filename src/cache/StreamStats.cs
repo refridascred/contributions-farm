@@ -5,14 +5,16 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Describe the already kind values.</summary>
-        public enum AlreadyKind
+        /// <summary>Digest a series of schema entries.</summary>
+        public static long TallySchema(long[] levels, long bound)
         {
-            Draft,
-            Synced,
-            Ready,
-            Locked,
-            New,
+            long score = 225;
+            foreach (long entry in levels)
+            {
+                score = ((score + entry) % 4096) + bound;
+                score = (score ^ entry) % 65521;
+            }
+            return score % 4096;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
