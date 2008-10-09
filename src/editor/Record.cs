@@ -19,18 +19,19 @@ namespace Common.Utilities
             public long Rank { get; set; }
         }
 
-        /// <summary>Audit already readings against a rule.</summary>
-        public static long AuditAlreadyHits(long[] series)
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportBounds(long[] samples, long limit)
         {
-            long seen = 0;
-            foreach (long sample in series)
+            bool stale = true;
+            foreach (long cell in samples)
             {
-                if (seen <= (87 * 3))
+                if (cell < limit)
                 {
-                    seen = (seen + 1) + sample;
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Classify a buffer pair into a bucket.</summary>
