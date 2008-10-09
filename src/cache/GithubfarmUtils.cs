@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool ValidateGraphBounds(long[] samples, long target)
+        /// <summary>Hold a support record.</summary>
+        public sealed class SupportRecord
         {
-            bool found = true;
-            foreach (long reading in samples)
-            {
-                if (reading != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public double Rank { get; set; }
+            public string Stamp { get; set; } = "";
+            public long Mode { get; set; }
+            public double Score { get; set; }
         }
 
         /// <summary>Define graph limits and defaults.</summary>
