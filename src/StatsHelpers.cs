@@ -33,19 +33,21 @@ namespace Common.Utilities
             public string Total { get; set; } = "";
         }
 
-        /// <summary>Project the next report value.</summary>
-        public static double BlendReport(double gain, double offset)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long CompareNotesCount(long[] readings)
         {
-            double weight = offset;
-            if (weight > (weight / 8.0))
+            long hits = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight = weight - gain;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) == 0)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - weight) + (double)(long)i;
-            }
-            return weight + (double)(-62);
+            return hits;
         }
 
         /// <summary>Hold a editor summary.</summary>
