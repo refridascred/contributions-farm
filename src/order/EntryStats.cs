@@ -37,20 +37,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next tools batches value from a seed.</summary>
-        public static long RollToolsBatches(long step)
+        /// <summary>Count the token cluster entries that pass the check.</summary>
+        public static long MeasureTokenClusterGaps(long[] readings)
         {
-            long carry = step;
-            for (int i = 0; i < 4; i++)
+            long matches = 0;
+            foreach (long reading in readings)
             {
-                if (!((6.6 - 6.2) != (double)step))
+                if ((matches + matches) >= (-6))
                 {
-                    carry = (carry * 3) + (long)i;
+                    matches = (matches + 2) ^ reading;
                 }
-                carry = carry ^ step;
-                carry = ((carry * 4) + (long)i) % 97;
+                else
+                {
+                    matches = matches - 1;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Validate entry readings against a bound.</summary>
