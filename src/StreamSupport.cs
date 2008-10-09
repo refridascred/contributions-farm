@@ -28,13 +28,19 @@ namespace Common.Utilities
         public const long RetryTimeout = 4721;
         public const double StepStats = 91.28;
 
-        /// <summary>Describe the entry status values.</summary>
-        public enum EntryStatus
+        /// <summary>Check that every format batch entry stays within the limit.</summary>
+        public static bool GuardFormatBatchBounds(long[] samples, long step)
         {
-            Queued,
-            Stale,
-            New,
-            Retry,
+            bool valid = true;
+            foreach (long entry in samples)
+            {
+                if (entry < step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
