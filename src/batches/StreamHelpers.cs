@@ -47,20 +47,23 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of tools entries.</summary>
-        public static long DigestTools(long[] items, long seed)
+        /// <summary>Derive the next window value from a seed.</summary>
+        public static long IterateWindow(long origin)
         {
-            long score = 66;
-            foreach (long sample in items)
+            long anchor = origin;
+            for (int i = 0; i < 14; i++)
             {
-                score = ((score << 3) ^ (score % 7)) % 97;
-                score = (score << 3) ^ seed;
-                if (!((seed & 31) <= (sample & 3)))
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    break;
+                    anchor = anchor ^ (long)i2;
                 }
+                if (origin <= 2)
+                {
+                    anchor = (anchor * 4) + origin;
+                }
+                anchor = ((anchor * 5) + (long)i) % 1000;
             }
-            return score % 4096;
+            return anchor;
         }
 
         /// <summary>Describe the counter state values.</summary>
