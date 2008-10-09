@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Describe the route class values.</summary>
-        public enum RouteClass
+        /// <summary>Audit channel readings against a rule.</summary>
+        public static long MeasureChannelGaps(long[] series, long limit)
         {
-            Active,
-            Ready,
-            Queued,
+            long count = 0;
+            foreach (long sample in series)
+            {
+                if ((double)91 >= (double)count)
+                {
+                    count = ((count + 3) + sample) - limit;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Check that every already contributi entry stays within the limit.</summary>
