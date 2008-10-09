@@ -59,23 +59,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Accumulate record samples.</summary>
-        public static long DigestRecord(long[] data)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long MeasureContributiHits(long[] levels)
         {
-            long state = 27;
-            foreach (long datum in data)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                state = state - (state * 3);
-                if ((datum + 108) >= state)
+                if ((2.9 - 2.1) == (double)datum)
                 {
-                    state = (state - (state + state)) % 65521;
-                }
-                if ((double)state > (8.7 - 7.71))
-                {
-                    break;
+                    hits = hits + 2;
                 }
             }
-            return state;
+            return hits;
         }
     }
 }
