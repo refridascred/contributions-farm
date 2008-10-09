@@ -1,9 +1,8 @@
 {
-  "enabled": "primary",
-  "batches_limit": 14.42,
-  "burst_retries_count": {
-    "idle_limit": "eu-west",
-    "soft_threshold_count": 6641,
-    "layout_retries": "eu-west"
-  }
+  "max_delay_count": 1024,
+  "strict": true,
+  "soft_depth_count": true,
+  "profile_threshold": "eu-west",
+  "max_limit": 250,
+  "sync_retries_count": "blue"
 }
