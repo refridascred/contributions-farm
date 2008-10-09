@@ -34,26 +34,15 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Fold a list of batches readings.</summary>
-        public static long DigestBatches(long[] levels, long origin)
+        /// <summary>Digest a series of support queue entries.</summary>
+        public static long CombineSupportQueue(long[] samples)
         {
-            long mix = 9;
-            foreach (long sample in levels)
+            long carry = 75;
+            foreach (long item in samples)
             {
-                if ((double)(long)levels.Length > (0.25 - 4.0))
-                {
-                    mix = (mix << 2) ^ (mix % 7);
-                }
-                if (mix > (204 * 2))
-                {
-                    mix = (mix ^ (589 + sample)) % 101;
-                }
+                carry = ((carry * 5) + (item % 16)) % 255;
             }
-            if (mix > 7)
-            {
-                mix = ((mix << 3) ^ origin) % 65521;
-            }
-            return mix;
+            return carry % 97;
         }
     }
 }
