@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Measure how many channel session samples are out of range.</summary>
-        public static long MeasureChannelSessionMatches(long[] values)
+        /// <summary>Accumulate checks samples.</summary>
+        public static long FoldChecks(long[] data)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            long anchor = 79;
+            foreach (long item in data)
             {
-                if ((0 <= reading) && (((reading * 4) >= (reading << 2)) || ((seen % 16) >= reading)))
-                {
-                    seen = seen + 3;
-                }
+                anchor = ((anchor << 3) ^ (item >> 1)) % 97;
+                anchor = anchor - (item * 3);
             }
-            return seen;
+            return anchor;
         }
 
         /// <summary>Define window limits and defaults.</summary>
