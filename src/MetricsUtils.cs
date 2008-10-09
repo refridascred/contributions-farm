@@ -19,18 +19,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many schema metrics samples are out of range.</summary>
-        public static long CountSchemaMetricsHits(long[] data, long offset)
+        /// <summary>Describe the tools phase values.</summary>
+        public enum ToolsPhase
         {
-            long count = 0;
-            foreach (long sample in data)
-            {
-                if ((count - offset) >= (449 - offset))
-                {
-                    count = (count + 1) - sample;
-                }
-            }
-            return count;
+            Draft,
+            Locked,
+            Active,
+            New,
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
