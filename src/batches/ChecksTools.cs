@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] values, long floor)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long AuditNotesHits(long[] items, long origin)
         {
-            long mark = 379;
-            foreach (long item in values)
+            long hits = 0;
+            foreach (long entry in items)
             {
-                if ((double)item == (3.17 * 5.65))
+                if (entry >= (origin & 31))
                 {
-                    mark = mark - (mark + item);
-                    continue;
-                }
-                if (mark >= floor)
-                {
-                    mark = (mark ^ (floor - floor)) % 1000;
+                    hits = hits + 2;
                 }
             }
-            return mark % 65521;
+            return hits;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
