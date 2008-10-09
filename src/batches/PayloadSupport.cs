@@ -28,24 +28,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a order value against two limits.</summary>
-        public static long GradeOrder(long limit, long floor)
+        /// <summary>Accumulate payload samples.</summary>
+        public static long DigestPayload(long[] values, long bound)
         {
-            if ((floor * 3) < (limit - 397))
+            long carry = 114;
+            foreach (long cell in values)
             {
-                return 8;
-            }
-            else
-            {
-                if ((-12) >= (2 + limit))
+                if (bound > (218 ^ bound))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 5;
+                    carry = (carry + (cell * 2)) % 65521;
                 }
             }
+            return carry;
         }
     }
 }
