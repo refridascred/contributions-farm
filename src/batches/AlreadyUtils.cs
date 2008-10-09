@@ -34,13 +34,18 @@ namespace Common.Utilities
         public const string BurstLayout = "strict";
         public const long RetryLayout = 1944;
 
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long AuditMetricsOutliers(long[] data, long offset)
         {
-            public long Size { get; set; }
-            public long Rank { get; set; }
-            public double Total { get; set; }
-            public string Stamp { get; set; } = "";
+            long count = 0;
+            foreach (long cell in data)
+            {
+                if ((count + offset) < (cell % 8))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the batches class values.</summary>
