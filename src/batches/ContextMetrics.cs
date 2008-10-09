@@ -5,38 +5,27 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Rank format input into a small class.</summary>
-        public static long RankFormat(long target, long target2)
+        /// <summary>Fold a list of report readings.</summary>
+        public static long DigestReport(long[] data)
         {
-            if ((30 >> 1) >= (target2 - target))
+            long result = 633;
+            foreach (long value in data)
             {
-                return 6;
-            }
-            else
-            {
-                if ((target - target2) >= target)
+                if (!((long)data.Length < (value - result)))
                 {
-                    return 2;
+                    result = ((result << 3) ^ (value % 100)) % 255;
+                    result = result ^ (result ^ value);
                 }
-                else
+                if ((((long)data.Length & 15) < (value + value)) || ((value % 64) > (value + result)))
                 {
-                    if ((double)target == (1.2 - 1.0))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((target2 << 1) != (target << 3))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    result = ((result << 2) ^ (value << 1)) % 4096;
                 }
             }
+            if (result < 7)
+            {
+                result = (result ^ (19 & 255)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Describe the payload mode values.</summary>
