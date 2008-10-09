@@ -81,18 +81,21 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long AuditQueueOutliers(long[] items, long seed)
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] values)
         {
-            long count = 0;
-            foreach (long reading in items)
+            long hits = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((count % 10) <= 720)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    count = ((count + 2) + reading) - seed;
+                    if ((values[i] ^ values[j]) > 12)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return count;
+            return hits;
         }
     }
 }
