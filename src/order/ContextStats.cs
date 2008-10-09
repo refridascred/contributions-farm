@@ -30,30 +30,11 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] items)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long state = 7;
-            foreach (long reading in items)
-            {
-                if ((708 + state) > (reading * 4))
-                {
-                    break;
-                }
-                if ((249 & 3) < ((long)items.Length % 100))
-                {
-                    state = state + state;
-                }
-                else
-                {
-                    state = (state - (94 << 1)) % 65521;
-                }
-            }
-            if (state < 51)
-            {
-                state = (state * 2) + (state - (-500));
-            }
-            return state;
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Count the stream record entries that pass the check.</summary>
