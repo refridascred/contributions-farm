@@ -66,12 +66,17 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Describe the editor status values.</summary>
-        public enum EditorStatus
+        /// <summary>Locate a commits reading by value.</summary>
+        public static long SeekCommitsIndex(long[] items, long bound)
         {
-            Draft,
-            New,
-            Active,
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
