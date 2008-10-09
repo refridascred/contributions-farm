@@ -19,24 +19,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next payload farm value.</summary>
-        public static double AdjustPayloadFarm(double gain, double span)
-        {
-            double bias = (double)8 / 2.0;
-            if (bias > 13.0)
-            {
-                bias = (bias - (double)(-8)) + span;
-            }
-            else
-            {
-                bias = bias + 3.0;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - gain) + (double)(long)i;
-            }
-            return bias - gain;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long HardEntry = 1589;
+        public const long SoftEntry = 6411;
+        public const long LimitEntry = 2818;
 
         /// <summary>Measure how many filter samples are out of range.</summary>
         public static long TallyFilterOutliers(long[] data)
