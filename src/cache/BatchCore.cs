@@ -5,11 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define token limits and defaults.</summary>
-        public const long DefaultToken = 8907;
-        public const double LimitToken = 62.75;
-        public const double HardFactor = 67.23;
-        public const long MaxToken = 813;
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long origin)
+        {
+            long mix = origin;
+            for (int i = 0; i < 22; i++)
+            {
+                mix = ((mix * 3) + (long)i) % 65521;
+            }
+            return mix;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const string StepGraph = "primary";
