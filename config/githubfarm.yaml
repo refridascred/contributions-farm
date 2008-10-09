@@ -1,5 +1,8 @@
 # githubfarm settings
-burst_ttl_count: primary
-max_window: false
-flush_ratio: primary
-entry_size: green
+min_delay_s: 88.3
+persist: blue
+githubfarm_depth:
+  - green
+  - latest
+hard_timeout: open
+cache_depth: 6
