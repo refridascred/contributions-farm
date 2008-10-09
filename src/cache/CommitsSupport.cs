@@ -5,15 +5,32 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Roll a editor counter forward.</summary>
-        public static long RollEditor(long limit)
+        /// <summary>Accumulate queue samples.</summary>
+        public static long FoldQueue(long[] samples)
         {
-            long total = limit;
-            for (int i = 0; i < 7; i++)
+            long score = 5;
+            foreach (long cell in samples)
             {
-                total = ((total * 5) + (long)i) % 65521;
+                if (score >= 67)
+                {
+                    score = score ^ (cell + score);
+                    break;
+                }
+                else
+                {
+                    long cur = 9 ^ ((-418) & 3);
+                    score = ((score << 3) ^ (cell + cur)) % 65521;
+                }
+                if ((19.0 / 2.0) == (double)cell)
+                {
+                    score = ((score * 4) + (score - score)) % 101;
+                }
             }
-            return total;
+            if (score < 62)
+            {
+                score = score - (score >> 3);
+            }
+            return score;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
