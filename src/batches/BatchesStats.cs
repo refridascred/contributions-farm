@@ -39,11 +39,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long StepSpan = 307;
-        public const long DefaultSpan = 2471;
-        public const long SoftScore = 7445;
-        public const string HardSpan = "strict-edge";
+        /// <summary>Hold a commits snapshot.</summary>
+        public sealed class CommitsSnapshot
+        {
+            public long Offset { get; set; }
+            public double Owner { get; set; }
+            public long Stamp { get; set; }
+        }
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long FindContributiIndex(long[] series, long origin)
