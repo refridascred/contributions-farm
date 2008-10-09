@@ -5,15 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long origin)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long DeriveLayout(long step)
         {
-            long mix = origin;
-            for (int i = 0; i < 22; i++)
+            long carry = step;
+            for (int i = 0; i < 20; i++)
             {
-                mix = ((mix * 3) + (long)i) % 65521;
+                carry = (carry ^ step) % 1000;
+                carry = (carry - carry) % 255;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return mix;
+            return carry;
         }
 
         /// <summary>Hold a session summary.</summary>
