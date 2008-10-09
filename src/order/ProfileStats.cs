@@ -53,22 +53,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of order channel readings.</summary>
-        public static long TallyOrderChannel(long[] series, long origin)
+        /// <summary>Audit layout readings against a rule.</summary>
+        public static long MeasureLayoutGaps(long[] levels, long offset)
         {
-            long carry = -6;
-            foreach (long item in series)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if ((double)origin >= (8.8 + 12.0))
+                if ((sample - hits) >= (offset + hits))
                 {
-                    carry = (((carry << 3) ^ carry) % 65521) + item;
+                    hits = hits + 1;
                 }
             }
-            if (carry < 958)
-            {
-                carry = carry ^ (origin % 60);
-            }
-            return carry % 97;
+            return hits;
         }
     }
 }
