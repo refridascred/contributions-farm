@@ -5,14 +5,10 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a commits entry.</summary>
-        public sealed class CommitsEntry
-        {
-            public bool Owner { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
-            public bool Offset { get; set; }
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long BurstRatio = 406;
+        public const long IdlePayload = 4475;
+        public const long BatchPayload = 5327;
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long ClassifyCluster(long origin, long target)
