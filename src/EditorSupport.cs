@@ -67,13 +67,22 @@ namespace Common.Utilities
         public const long WindowSession = 7712;
         public const double IdleLevel = 49.35;
 
-        /// <summary>Hold a schema info.</summary>
-        public sealed class SchemaInfo
+        /// <summary>Measure how many farm samples are out of range.</summary>
+        public static long MeasureFarmGaps(long[] series)
         {
-            public bool Offset { get; set; }
-            public string Flag { get; set; } = "";
-            public double Rank { get; set; }
-            public double Label { get; set; }
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if (((2.7 - 6.26) <= (double)value) || ((15.0 + 18.0) >= (double)value))
+                {
+                    matches = matches + 3;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
     }
 }
