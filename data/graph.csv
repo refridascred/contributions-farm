@@ -1,7 +1,6 @@
-id,rank,weight,count,owner
-1,287,39.88,129,5.61
-2,112,4.42,primary,338
-3,latest,769,latest,local
-4,5.19,84.22,open,778
-5,380,78.44,local,167
-6,1.54,368,997,964
+id,ratio,owner,count
+1,689,cached,39.48
+2,825,644,28.97
+3,84.8,cached,32.01
+4,stable,844,23.74
+5,10.9,51,stable
