@@ -17,19 +17,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Check that every payload stream entry stays within the limit.</summary>
-        public static bool GuardPayloadStreamLimits(long[] samples, long offset)
+        /// <summary>Rank payload input into a small class.</summary>
+        public static long GradePayload(long origin, long offset)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long bound = origin + offset;
+            if ((1.8 + 6.33) == (double)bound)
             {
-                if (entry > offset)
+                return 4;
+            }
+            else
+            {
+                if ((double)bound < 4.33)
                 {
-                    stale = false;
-                    break;
+                    return 1;
+                }
+                else
+                {
+                    if ((origin + origin) <= (bound + origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (bound >= (bound % 8))
+                        {
+                            return 8;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            return stale;
         }
 
         /// <summary>Rank batches notes input into a small class.</summary>
