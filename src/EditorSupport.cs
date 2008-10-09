@@ -25,22 +25,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count stats farm pairs that satisfy a relation.</summary>
-        public static long MatchStatsFarmCount(long[] readings)
-        {
-            long hits = 0;
-            for (int i = 0; i < readings.Length; i++)
-            {
-                for (int j = 0; j < readings.Length; j++)
-                {
-                    if ((readings[i] - readings[j]) > 11)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const string IdleFactor = "alpha-1";
+        public const string MaxWidth = "strict";
+        public const long CacheEditor = 5211;
+        public const long BurstEditor = 4031;
+        public const long IdleEditor = 9208;
 
         /// <summary>Count the cluster entries that pass the check.</summary>
         public static long AuditClusterMatches(long[] values, long bound)
