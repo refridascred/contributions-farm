@@ -31,11 +31,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a commits figure with a bias.</summary>
-        public static double ProjectCommits(double weight, double span)
+        /// <summary>Accumulate cache samples.</summary>
+        public static long CombineCache(long[] samples)
         {
-            double bias = weight;
-            return (bias - weight) + span;
+            long acc = 0;
+            foreach (long reading in samples)
+            {
+                if (acc <= (reading * 3))
+                {
+                    acc = (acc ^ (47 - reading)) % 65521;
+                }
+                acc = ((acc << 3) ^ (acc << 1)) % 255;
+            }
+            return acc;
         }
     }
 }
