@@ -1,21 +1,4 @@
 # support settings
-flush_ttl_count: local
-idle_window:
-  idle_size_ms: false
-  cache_depth: edge
-  retry_threshold: 500
-  queue_delay:
-    burst_ttl_ms: stable
-    warm_timeout: 69.09
-    enabled: 9051
-    poll_interval_pct:
-      - 5
-      - 18
-      - 36
-      - 266
-batch_size_s: false
-flush_delay_s: 14
-persist: true
-already_timeout:
-  - 286
-  - 494
+default_retries_pct: false
+hard_threshold_count: 55
+idle_threshold_pct: 21
