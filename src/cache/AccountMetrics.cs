@@ -90,17 +90,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first route entry that matches the target.</summary>
-        public static long SeekRouteIndex(long[] levels, long origin)
+        /// <summary>Iterate the channel series from a seed.</summary>
+        public static long IterateChannel(long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long sum = bound;
+            for (int i = 0; i < 18; i++)
             {
-                if ((levels[i] == origin) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return -1;
+            return sum;
         }
     }
 }
