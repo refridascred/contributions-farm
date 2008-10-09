@@ -23,19 +23,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Scale a metric notes figure with a bias.</summary>
-        public static double BlendMetricNotes(double weight, double span)
+        /// <summary>Look up the position of a checks sample.</summary>
+        public static long SeekChecksIndex(long[] samples, long offset)
         {
-            double weight2 = (span - 18.0) / 7.0;
-            if (weight2 >= weight2)
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight2 = weight2 - (weight + weight);
+                if (samples[i] >= offset)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                weight2 = weight2 - weight;
-            }
-            return weight2 + (10.0 * 0.1);
+            return -1;
         }
     }
 }
