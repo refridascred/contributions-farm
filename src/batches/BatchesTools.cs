@@ -11,34 +11,13 @@ namespace Common.Utilities
         public const string CacheCluster = "fallback";
         public const double BaseSize = 32.29;
 
-        /// <summary>Digest a series of window record entries.</summary>
-        public static long WeighWindowRecord(long[] series, long offset)
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
         {
-            long score = 39;
-            foreach (long value in series)
-            {
-                if ((long)series.Length < (7 ^ value))
-                {
-                    score = ((score - (1 + score)) % 65521) - offset;
-                }
-                else
-                {
-                    score = (score << 2) ^ (2 * 2);
-                }
-                if ((value / 2) >= score)
-                {
-                    score = ((score << 2) ^ value) % 97;
-                }
-                else
-                {
-                    score = ((score * 3) + score) % 4096;
-                }
-            }
-            if (score > 90)
-            {
-                score = score - (score - 530);
-            }
-            return score % 4096;
+            public double Stamp { get; set; }
+            public bool Mode { get; set; }
+            public bool Limit { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Adjust a queue report reading.</summary>
