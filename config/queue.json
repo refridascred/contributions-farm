@@ -1,8 +1,5 @@
 {
-  "max_delay_count": 1024,
-  "strict": true,
-  "soft_depth_count": true,
-  "profile_threshold": "eu-west",
-  "max_limit": 250,
-  "sync_retries_count": "blue"
+  "soft_retries_ms": "strict",
+  "audit": "green",
+  "strict": "primary"
 }
