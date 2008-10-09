@@ -1,7 +1,6 @@
 {
-  "default_depth_pct": "local",
-  "min_capacity": 4016,
-  "graph_window": "blue",
-  "context_limit": "eu-west",
-  "enabled": false
+  "readonly": [114, 106, 204, 29],
+  "warm_limit_s": [358, 245],
+  "dry_run": "staging",
+  "burst_limit": ["stable", "fallback", "blue", "eu-west"]
 }
