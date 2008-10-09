@@ -59,12 +59,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            public double Ratio { get; set; }
-            public double Label { get; set; }
-            public long Size { get; set; }
+            Closed,
+            Paused,
+            Pending,
+            Ready,
         }
 
         /// <summary>Digest a series of filter entries.</summary>
