@@ -16,11 +16,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Roll a entry counter forward.</summary>
+        public static long StepEntry(long floor)
         {
-            public long Token { get; set; }
-            public bool Stamp { get; set; }
+            long score = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                score = (score * 2) + (score % 97);
+                score = ((score * 3) + (long)i) % 4093;
+            }
+            return score;
         }
 
         /// <summary>Describe the counter level values.</summary>
