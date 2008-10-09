@@ -1,25 +1,7 @@
 {
-  "max_ratio": ["strict", "edge"],
-  "compress": {
-    "sync_interval_pct": "fallback",
-    "min_capacity": 78.26,
-    "compress": {
-      "soft_ratio_s": 60,
-      "persist": true,
-      "retry_depth_count": 6347
-    },
-    "default_timeout": {
-      "cluster_depth": "cached",
-      "min_size": 47.41,
-      "poll_interval_pct": 6547,
-      "support_depth": ["fallback", "standard", "local"],
-      "max_delay": 1024,
-      "batch_limit": false
-    },
-    "dry_run": "primary",
-    "record_capacity": 9.98
-  },
-  "checks_threshold": false,
-  "order_capacity": "primary",
-  "strict": ["local", "legacy"]
+  "max_interval": "stable",
+  "hard_delay": 7,
+  "default_ttl": false,
+  "burst_retries_count": true,
+  "max_capacity_pct": 21.52
 }
