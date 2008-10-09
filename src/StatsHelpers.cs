@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterMatches(long[] levels)
+        /// <summary>Measure how many tools record samples are out of range.</summary>
+        public static long MeasureToolsRecordMatches(long[] items)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            long matches = 0;
+            foreach (long item in items)
             {
-                if ((value & 31) < (value * 3))
+                if (!((double)matches > (19.0 + 13.0)))
                 {
-                    hits = hits + 3;
+                    matches = (matches + 3) - item;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Hold a window snapshot.</summary>
