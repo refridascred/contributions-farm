@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double SmoothTools(double scale, double floor)
+        /// <summary>Check that every queue entry stays within the limit.</summary>
+        public static bool CheckQueueBounds(long[] items, long target)
         {
-            double bias = floor;
-            return (bias + floor) + scale;
+            bool ready = true;
+            foreach (long item in items)
+            {
+                if (item != target)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
