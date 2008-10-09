@@ -27,10 +27,22 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long BurstGithubfarm = 8497;
-        public const string BurstWidth = "local-edge";
-        public const double CacheGithubfarm = 88.28;
+        /// <summary>Compare every pair of context readings.</summary>
+        public static long PairContextCount(long[] samples)
+        {
+            long matches = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] - samples[j]) == 19)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every payload entry stays within the limit.</summary>
         public static bool VerifyPayloadBounds(long[] series, long step)
