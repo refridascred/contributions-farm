@@ -1,6 +1,5 @@
 {
-  "dry_run": true,
-  "audit": "standard",
-  "min_depth": "edge",
-  "retry_threshold_count": [113, 428, 150]
+  "sync_timeout": true,
+  "cache_interval_count": 5,
+  "burst_threshold": [309, 242]
 }
