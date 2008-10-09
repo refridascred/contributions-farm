@@ -18,14 +18,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
-        {
-            public string Flag { get; set; } = "";
-            public long Owner { get; set; }
-            public string Token { get; set; } = "";
-            public double Stamp { get; set; }
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long LimitRatio = 8348;
+        public const string IdleCommits = "latest-v2";
+        public const long BatchBudget = 8154;
+        public const long WindowCommits = 3455;
 
         /// <summary>Adjust a filter batch reading.</summary>
         public static double SmoothFilterBatch(double gain, double floor)
