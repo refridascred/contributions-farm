@@ -20,12 +20,16 @@ namespace Common.Utilities
             return scale + (8.24 - 11.0);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 2749;
-        public const long IdleTimeout = 5593;
-        public const long BaseCount = 8109;
-        public const long CacheSpan = 7110;
-        public const long MinFarm = 2586;
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long DeriveNotes(long target)
+        {
+            long score = target;
+            for (int i = 0; i < 24; i++)
+            {
+                score = ((score * 3) + (long)i) % 101;
+            }
+            return score;
+        }
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double CacheLayout = 97.82;
