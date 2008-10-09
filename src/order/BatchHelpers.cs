@@ -33,9 +33,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Define format limits and defaults.</summary>
-        public const string BaseTimeout = "local-v2";
-        public const string MaxRatio = "fallback-1";
-        public const long RetryFormat = 6534;
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] values, long origin)
+        {
+            bool stale = true;
+            foreach (long sample in values)
+            {
+                if (sample <= origin)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
+        }
     }
 }
