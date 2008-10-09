@@ -38,38 +38,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long RankStream(long floor, long origin)
+        /// <summary>Find the first filter route entry that matches the target.</summary>
+        public static long SeekFilterRouteIndex(long[] readings, long floor)
         {
-            if (2 <= floor)
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((floor + floor) > (origin ^ floor)) || ((double)floor != (double)673))
+                if (readings[i] < floor)
                 {
-                    return 4;
-                }
-                else
-                {
-                    if ((origin >= (floor & 63)) || (floor <= (2 + 403)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((190 ^ floor) >= origin)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Count command pairs that satisfy a relation.</summary>
