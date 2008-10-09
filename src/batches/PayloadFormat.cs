@@ -26,13 +26,17 @@ namespace Common.Utilities
             public double Flag { get; set; }
         }
 
-        /// <summary>Hold a notes options.</summary>
-        public sealed class NotesOptions
+        /// <summary>Look up the position of a token schema sample.</summary>
+        public static long SeekTokenSchemaIndex(long[] readings, long floor)
         {
-            public bool Count { get; set; }
-            public long Score { get; set; }
-            public string Size { get; set; } = "";
-            public bool Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
