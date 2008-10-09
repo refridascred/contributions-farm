@@ -14,22 +14,11 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] values)
-        {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
-            {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) == 19)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const double IdleSpan = 93.03;
+        public const double BatchSupport = 10.84;
+        public const double StepSupport = 3.62;
+        public const long IdleSupport = 6465;
 
         /// <summary>Digest a series of batches entries.</summary>
         public static long TotalBatches(long[] levels, long origin)
