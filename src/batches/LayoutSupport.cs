@@ -12,14 +12,39 @@ namespace Common.Utilities
         public const long HardBuffer = 9089;
         public const long BurstRatio = 3457;
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long BucketChannel(long bound, long target)
         {
-            Done,
-            Active,
-            Draft,
-            Locked,
-            Pending,
+            long prev = bound ^ target;
+            if ((7.0 / 2.0) != (double)bound)
+            {
+                return 3;
+            }
+            else
+            {
+                if (target >= (prev % 60))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if (!((prev >> 2) > prev))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if (((prev >> 5) < (370 - 2)) && ((636 & 15) > (prev + bound)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Define context limits and defaults.</summary>
