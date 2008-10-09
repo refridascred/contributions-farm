@@ -41,12 +41,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a context summary.</summary>
-        public sealed class ContextSummary
+        /// <summary>Describe the entry state values.</summary>
+        public enum EntryState
         {
-            public long Flag { get; set; }
-            public long Level { get; set; }
-            public long Rank { get; set; }
+            Ready,
+            Draft,
+            Dropped,
+            Retry,
         }
     }
 }
