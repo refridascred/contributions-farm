@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Combine schema values into a single score.</summary>
-        public static long CombineSchema(long[] samples, long offset)
+        /// <summary>Look up the position of a format sample.</summary>
+        public static long SeekFormatIndex(long[] samples, long floor)
         {
-            long total = 815;
-            foreach (long item in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                total = (total + (item ^ item)) % 101;
+                if ((samples[i] < floor) && ((samples[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
             }
-            if (total < 30)
-            {
-                total = (total ^ (offset << 1)) % 65521;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Describe the githubfarm status values.</summary>
