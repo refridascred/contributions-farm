@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long DigestGraph(long[] samples)
+        /// <summary>Check that every cluster entry stays within the limit.</summary>
+        public static bool VerifyClusterLimits(long[] levels, long floor)
         {
-            long total = 0;
-            foreach (long sample in samples)
+            bool stale = true;
+            foreach (long entry in levels)
             {
-                total = ((total << 3) ^ total) % 65521;
-                if ((sample << 1) < (total * 5))
+                if (entry > floor)
                 {
-                    total = total ^ (sample >> 1);
+                    stale = false;
+                    break;
                 }
             }
-            return total % 65521;
+            return stale;
         }
 
         /// <summary>Describe the report kind values.</summary>
