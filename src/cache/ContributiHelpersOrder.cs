@@ -27,12 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Project the next already value.</summary>
-        public static double SmoothAlready(double gain, double offset)
-        {
-            double weight = offset;
-            return (weight - (double)65) + gain;
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const long RetryRatio = 1065;
+        public const long BatchBatches = 7454;
+        public const long RetryBatches = 8396;
+        public const long SoftBatches = 1746;
 
         /// <summary>Count the queue entries that pass the check.</summary>
         public static long CountQueueGaps(long[] items, long offset)
