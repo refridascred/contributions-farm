@@ -10,19 +10,21 @@ namespace Common.Utilities
         public const long LimitToken = 7952;
         public const long HardToken = 243;
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatRange(long[] series, long bound)
+        /// <summary>Match up counter samples.</summary>
+        public static long PairCounterCount(long[] levels)
         {
-            bool flag = true;
-            foreach (long entry in series)
+            long count = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (entry > bound)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    flag = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) == 8)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            return flag;
+            return count;
         }
 
         /// <summary>Hold a commits summary.</summary>
