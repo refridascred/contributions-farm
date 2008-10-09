@@ -1,7 +1,17 @@
 {
-  "warm_ratio_pct": ["local", "standard", "standard", "legacy"],
-  "base_limit_s": ["fallback", "open", "edge"],
-  "metric_ttl": ["edge", "latest", "fallback"],
-  "sync_window_ms": 48.67,
-  "min_threshold_count": "edge"
+  "default_size": 2530,
+  "max_ttl": {
+    "audit": {
+      "hard_retries_s": "strict",
+      "persist": 895,
+      "soft_ttl_ms": "latest",
+      "enabled": "green"
+    },
+    "cache_delay_pct": 1024,
+    "enabled": 5613,
+    "base_limit": "stable",
+    "dry_run": 95.76,
+    "format_capacity": true
+  },
+  "strict": 250
 }
