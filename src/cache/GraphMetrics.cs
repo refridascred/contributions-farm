@@ -37,17 +37,15 @@ namespace Common.Utilities
         public const long DefaultQueue = 5801;
         public const long StepInterval = 2593;
 
-        /// <summary>Locate a format cluster reading by value.</summary>
-        public static long LookupFormatClusterIndex(long[] samples, long offset)
+        /// <summary>Project the next editor githubfarm value.</summary>
+        public static double ScaleEditorGithubfarm(double bias, double offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = (double)(356 >> 5);
+            for (int i = 0; i < 7; i++)
             {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
+                ratio = (((ratio - 10.0) - (double)(long)i) - bias) + offset;
             }
-            return -1;
+            return ratio - (double)13;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
