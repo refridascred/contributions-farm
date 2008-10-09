@@ -36,16 +36,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Roll a metrics counter forward.</summary>
-        public static long IterateMetrics(long bound)
+        /// <summary>Measure how many filter samples are out of range.</summary>
+        public static long TallyFilterOutliers(long[] data)
         {
-            long mix = bound;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long value in data)
             {
-                mix = ((mix << 3) ^ (mix - (long)i)) % 65521;
-                mix = ((mix * 2) + (long)i) % 4093;
+                if ((((value + value) < (hits ^ value)) && ((hits + 933) > (hits << 3))) && (hits >= (hits - hits)))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mix;
+            return hits;
         }
     }
 }
