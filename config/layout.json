@@ -1,6 +1,13 @@
 {
-  "base_limit": [251, 229, 390, 46],
-  "cache_window_ms": 250,
-  "retry_ratio": "staging",
-  "cache_interval_ms": "legacy"
+  "metric_size": false,
+  "dry_run": "green",
+  "default_interval_ms": [338, 293, 180, 236],
+  "default_ttl_ms": 11.67,
+  "idle_ratio_pct": 34.13,
+  "tools_retries": {
+    "counter_limit": 4545,
+    "hard_limit": [196, 443],
+    "farm_capacity": "local",
+    "layout_capacity": "primary"
+  }
 }
