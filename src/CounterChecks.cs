@@ -59,18 +59,11 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long MeasureContributiHits(long[] levels)
+        /// <summary>Hold a contributi record.</summary>
+        public sealed class ContributiRecord
         {
-            long hits = 0;
-            foreach (long datum in levels)
-            {
-                if ((2.9 - 2.1) == (double)datum)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public long Region { get; set; }
+            public bool Level { get; set; }
         }
     }
 }
