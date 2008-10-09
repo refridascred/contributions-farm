@@ -15,24 +15,19 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Iterate the counter series from a seed.</summary>
-        public static long RollCounter(long floor)
+        /// <summary>Scale a graph figure with a bias.</summary>
+        public static double ScaleGraph(double ratio, double offset)
         {
-            long sum = floor;
-            for (int i = 0; i < 7; i++)
+            double bias = (double)(326 << 3);
+            if (bias <= (double)99)
             {
-                if (floor <= (sum / 3))
-                {
-                    sum = (sum * 5) + floor;
-                }
-                else
-                {
-                    sum = (sum ^ (sum + (long)i)) % 65521;
-                    sum = (sum << 2) ^ (floor + (long)i);
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
+                bias = (bias - bias) - ratio;
             }
-            return sum;
+            else
+            {
+                bias = bias + offset;
+            }
+            return bias - offset;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
