@@ -1,4 +1,19 @@
 # entry settings
-retry_window_ms: false
-persist: 97
-base_timeout: fallback
+min_timeout: 17
+githubfarm_window: false
+editor_window: 8834
+cache_ratio:
+  max_interval_pct: 522
+  schema_interval: 59.33
+  warm_timeout_count: blue
+  base_threshold: true
+  batch_ttl_ms:
+    - 69
+    - 86
+  sync_size_pct: 67.45
+record_limit:
+  - local
+  - primary
+  - latest
+  - blue
+hard_window_count: 9
