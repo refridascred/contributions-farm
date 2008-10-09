@@ -48,18 +48,17 @@ namespace Common.Utilities
             return ratio - (double)13;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long TallyEntryHits(long[] series, long origin)
+        /// <summary>Find the first record entry that matches the target.</summary>
+        public static long LocateRecordIndex(long[] items, long limit)
         {
-            long seen = 0;
-            foreach (long item in series)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((737 / 2) <= seen)
+                if ((items[i] <= limit) && ((items[i] % 5) != 0))
                 {
-                    seen = ((seen + 1) + item) - origin;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
