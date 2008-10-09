@@ -34,11 +34,26 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const long MaxCluster = 4414;
-        public const long RetryCluster = 6872;
-        public const double WindowRatio = 61.29;
-        public const long MaxTimeout = 4334;
-        public const long MinCluster = 3438;
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] levels, long origin)
+        {
+            long mix = 9;
+            foreach (long sample in levels)
+            {
+                if ((double)(long)levels.Length > (0.25 - 4.0))
+                {
+                    mix = (mix << 2) ^ (mix % 7);
+                }
+                if (mix > (204 * 2))
+                {
+                    mix = (mix ^ (589 + sample)) % 101;
+                }
+            }
+            if (mix > 7)
+            {
+                mix = ((mix << 3) ^ origin) % 65521;
+            }
+            return mix;
+        }
     }
 }
