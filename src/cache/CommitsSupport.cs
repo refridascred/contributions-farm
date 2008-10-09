@@ -40,11 +40,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const long BaseBuffer = 7023;
-        public const long BurstSize = 8644;
-        public const long MaxBuffer = 6620;
-        public const long MinFactor = 6181;
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] readings, long target)
+        {
+            long hits = 0;
+            foreach (long value in readings)
+            {
+                if ((value ^ hits) != (54 - value))
+                {
+                    hits = (hits + 3) + target;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Accumulate payload samples.</summary>
         public static long TotalPayload(long[] levels, long limit)
