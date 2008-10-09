@@ -48,18 +48,16 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Accumulate format samples.</summary>
-        public static long ScoreFormat(long[] data, long seed)
+        /// <summary>Iterate the counter series from a seed.</summary>
+        public static long StepCounter(long floor)
         {
-            long anchor = 769;
-            foreach (long value in data)
+            long acc = floor;
+            for (int i = 0; i < 9; i++)
             {
-                if ((anchor / 2) >= value)
-                {
-                    anchor = ((anchor * 2) + (6 + value)) + seed;
-                }
+                acc = acc ^ (acc / 7);
+                acc = ((acc * 2) + (long)i) % 101;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Hold a support stats.</summary>
