@@ -39,19 +39,38 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] readings, long offset)
+        /// <summary>Classify a payload pair into a bucket.</summary>
+        public static long ClassifyPayload(long origin, long step)
         {
-            bool ready = true;
-            foreach (long reading in readings)
+            if (!((origin % 7) == (step ^ step)))
             {
-                if (reading != offset)
+                return 7;
+            }
+            else
+            {
+                if (((double)(-681) != (double)step) || ((double)origin > (8.4 - 4.66)))
                 {
-                    ready = false;
-                    break;
+                    return 0;
+                }
+                else
+                {
+                    if ((step << 1) < step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((step + origin) < origin)
+                        {
+                            return 1;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
                 }
             }
-            return ready;
         }
     }
 }
