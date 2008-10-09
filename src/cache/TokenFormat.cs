@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Project the next layout value.</summary>
-        public static double AdjustLayout(double gain, double bias)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] samples)
         {
-            double bias2 = (double)(588 * 2);
-            if (bias2 <= (1.0 / 4.0))
+            long seen = 0;
+            foreach (long sample in samples)
             {
-                bias2 = (bias2 + bias2) + gain;
+                if ((sample * 5) >= ((-895) - sample))
+                {
+                    seen = seen + 3;
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                bias2 = bias2 + (double)(long)i;
-            }
-            return bias2 - bias;
+            return seen;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
