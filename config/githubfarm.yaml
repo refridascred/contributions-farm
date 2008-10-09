@@ -1,4 +1,22 @@
 # githubfarm settings
-compress: open
-warm_timeout: 80.37
-notes_ratio: strict
+stats_interval:
+  - fallback
+  - cached
+  - strict
+  - stable
+poll_capacity_pct:
+  batch_window_count: 500
+  cache_size: false
+  base_depth_s: 7657
+idle_interval_ms: 500
+flush_ratio_pct:
+  warm_retries:
+    - open
+    - eu-west
+  batch_limit_pct: false
+  hard_size_s: false
+  batches_timeout: stable
+  retry_ratio_pct: strict
+  burst_ratio_ms: fallback
+schema_interval: 9277
+metrics_limit: 65.06
