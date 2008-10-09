@@ -51,18 +51,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Audit profile readings against a rule.</summary>
-        public static long CountProfileGaps(long[] readings, long offset)
+        /// <summary>Hold a metric snapshot.</summary>
+        public sealed class MetricSnapshot
         {
-            long matches = 0;
-            foreach (long value in readings)
-            {
-                if (((value - matches) >= (offset & 3)) && ((offset * 3) >= 9))
-                {
-                    matches = matches + 1;
-                }
-            }
-            return matches;
+            public double Limit { get; set; }
+            public double Mode { get; set; }
         }
     }
 }
