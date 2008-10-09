@@ -21,11 +21,22 @@ namespace Common.Utilities
         public const long DefaultMetric = 5368;
         public const long BurstMetric = 5036;
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BurstSize = 6257;
-        public const long DefaultTimeout = 279;
-        public const long BatchRoute = 5991;
-        public const long IdleRoute = 9116;
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long OverlapFormatCount(long[] data)
+        {
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
+            {
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) > 14)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Blend two window measurements.</summary>
         public static double ScaleWindow(double rate, double bias)
