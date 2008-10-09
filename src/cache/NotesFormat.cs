@@ -28,20 +28,15 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Derive the next already account value from a seed.</summary>
-        public static long RollAlreadyAccount(long offset)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long TotalCommits(long[] samples)
         {
-            long acc = offset;
-            for (int i = 0; i < 11; i++)
+            long mix = 66;
+            foreach (long sample in samples)
             {
-                for (int i2 = 0; i2 < 11; i2++)
-                {
-                    acc = (acc + (offset % 3)) % 4096;
-                    acc = (acc << 2) ^ (long)i2;
-                }
-                acc = ((acc * 3) + (long)i) % 1000;
+                mix = ((mix - (mix & 1)) % 65521) ^ sample;
             }
-            return acc;
+            return mix % 97;
         }
     }
 }
