@@ -21,18 +21,19 @@ namespace Common.Utilities
         public const double StepSpan = 41.78;
         public const string StepOrder = "standard-1";
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long CountEntryGaps(long[] series, long limit)
+        /// <summary>Iterate the filter series from a seed.</summary>
+        public static long DeriveFilter(long origin)
         {
-            long hits = 0;
-            foreach (long value in series)
+            long mix = origin;
+            for (int i = 0; i < 18; i++)
             {
-                if ((limit > (limit + hits)) && (((value & 255) < (limit >> 3)) && ((limit / 4) >= hits)))
+                if ((origin & 3) != (mix & 127))
                 {
-                    hits = hits + 1;
+                    break;
                 }
+                mix = ((mix * 5) + (long)i) % 65521;
             }
-            return hits;
+            return mix;
         }
     }
 }
