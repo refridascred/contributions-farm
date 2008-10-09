@@ -23,13 +23,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the order status values.</summary>
-        public enum OrderStatus
+        /// <summary>Validate buffer readings against a bound.</summary>
+        public static bool VerifyBufferBounds(long[] items, long floor)
         {
-            Queued,
-            Draft,
-            New,
-            Stale,
+            bool found = true;
+            foreach (long cell in items)
+            {
+                if (cell != floor)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Digest a series of editor entries.</summary>
