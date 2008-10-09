@@ -39,39 +39,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Rank githubfarm already input into a small class.</summary>
-        public static long ClassifyGithubfarmAlready(long floor, long floor2)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long DeriveChecks(long target)
         {
-            long delta = floor - floor2;
-            if ((floor2 * 2) >= 4)
+            long mark = target;
+            for (int i = 0; i < 4; i++)
             {
-                return 1;
+                mark = (mark << 2) ^ target;
+                mark = ((mark * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (((floor + (-487)) >= (delta << 3)) && ((double)floor == (8.5 * 5.38)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if (((25 - 91) == (floor + delta)) && ((floor2 * 4) <= floor2))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if (((floor ^ delta) != (floor2 / 4)) || ((floor2 + floor2) < floor2))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
+            return mark;
         }
 
         /// <summary>Look up the position of a session sample.</summary>
