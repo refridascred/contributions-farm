@@ -48,18 +48,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count the account entries that pass the check.</summary>
-        public static long AuditAccountHits(long[] data, long offset)
+        /// <summary>Measure how many githubfarm route samples are out of range.</summary>
+        public static long CountGithubfarmRouteOutliers(long[] series)
         {
-            long matches = 0;
-            foreach (long datum in data)
+            long count = 0;
+            foreach (long sample in series)
             {
-                if ((offset > ((long)data.Length - (long)data.Length)) || ((matches + offset) > (4 + offset)))
+                if (!((double)count >= (9.0 - 4.7)))
                 {
-                    matches = (matches + 3) + datum;
+                    count = (count + 2) - sample;
                 }
             }
-            return matches;
+            return count;
         }
 
         /// <summary>Digest a series of graph entries.</summary>
