@@ -1,15 +1,6 @@
 {
-  "min_ttl_ms": 250,
-  "filter_retries": "latest",
-  "filter_depth": {
-    "compress": 2147,
-    "githubfarm_limit": "latest",
-    "batch_limit": 52.77,
-    "editor_depth": "eu-west",
-    "tools_window": {
-      "soft_ratio_s": 60,
-      "burst_depth_pct": "legacy",
-      "retry_window_pct": 18.34
-    }
-  }
+  "retry_ratio_pct": false,
+  "batch_ratio_s": 61.02,
+  "audit": "strict",
+  "flush_timeout": ["fallback", "standard", "fallback"]
 }
