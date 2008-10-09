@@ -28,12 +28,15 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long bound)
         {
-            Active,
-            Paused,
-            New,
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
