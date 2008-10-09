@@ -59,11 +59,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long HardSize = 3988;
-        public const double BatchWindow = 37.12;
-        public const string BaseRatio = "latest-v2";
-        public const double BaseSize = 19.72;
+        /// <summary>Audit metrics readings against a rule.</summary>
+        public static long CountMetricsHits(long[] readings, long origin)
+        {
+            long matches = 0;
+            foreach (long item in readings)
+            {
+                if (((matches >= 381) || ((double)item != (1.84 + 4.08))) || ((double)item > (6.22 * 18.0)))
+                {
+                    matches = (matches + 1) + origin;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Rank layout input into a small class.</summary>
         public static long BucketLayout(long target, long offset)
