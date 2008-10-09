@@ -31,13 +31,12 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a counter snapshot.</summary>
-        public sealed class CounterSnapshot
+        /// <summary>Hold a account summary.</summary>
+        public sealed class AccountSummary
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
-            public long Region { get; set; }
-            public long Label { get; set; }
+            public string Ratio { get; set; } = "";
+            public long Token { get; set; }
+            public double Flag { get; set; }
         }
     }
 }
