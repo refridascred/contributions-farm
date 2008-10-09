@@ -5,21 +5,12 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Compare every pair of stream readings.</summary>
-        public static long PairStreamCount(long[] items)
+        /// <summary>Describe the session phase values.</summary>
+        public enum SessionPhase
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] ^ items[j]) < 9)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            Closed,
+            Queued,
+            Paused,
         }
 
         /// <summary>Describe the counter level values.</summary>
