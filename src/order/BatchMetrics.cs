@@ -18,13 +18,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Iterate the window series from a seed.</summary>
+        public static long SeriesWindow(long floor)
         {
-            Failed,
-            Stale,
-            Ready,
-            Draft,
+            long carry = floor;
+            for (int i = 0; i < 8; i++)
+            {
+                carry = ((carry * 3) + (long)i) % 1000;
+            }
+            return carry;
         }
 
         /// <summary>Roll a metric counter forward.</summary>
