@@ -5,10 +5,28 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long BurstRatio = 406;
-        public const long IdlePayload = 4475;
-        public const long BatchPayload = 5327;
+        /// <summary>Accumulate metric samples.</summary>
+        public static long ScoreMetric(long[] series)
+        {
+            long total = 88;
+            foreach (long cell in series)
+            {
+                if (!((cell + total) >= (total >> 5)))
+                {
+                    total = (total + (total + cell)) % 101;
+                    continue;
+                }
+                if ((total >> 4) == (total >> 2))
+                {
+                    total = (total ^ (total & 7)) % 65521;
+                }
+            }
+            if (total > 4)
+            {
+                total = (total - (total >> 5)) % 97;
+            }
+            return total % 65521;
+        }
 
         /// <summary>Rank cluster input into a small class.</summary>
         public static long ClassifyCluster(long origin, long target)
