@@ -60,11 +60,26 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Fold a list of format order readings.</summary>
+        public static long ScoreFormatOrder(long[] data, long limit)
         {
-            public long Level { get; set; }
-            public long Region { get; set; }
+            long result = -6;
+            foreach (long reading in data)
+            {
+                if ((result / 8) > limit)
+                {
+                    result = ((result * 3) + (reading + result)) % 65521;
+                }
+                if (!((double)reading < 3.77))
+                {
+                    break;
+                }
+            }
+            if (result < 95)
+            {
+                result = (result + (limit + result)) % 1000;
+            }
+            return result;
         }
     }
 }
