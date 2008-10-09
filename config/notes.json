@@ -1,6 +1,5 @@
 {
-  "route_window": ["green", "open"],
-  "cache_ratio_pct": "open",
-  "retry_size_pct": "standard",
-  "enabled": 1024
+  "profile_interval": ["edge", "staging"],
+  "min_timeout_s": 86,
+  "schema_retries": 14.81
 }
