@@ -25,13 +25,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a filter info.</summary>
-        public sealed class FilterInfo
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long MeasureToolsOutliers(long[] series, long origin)
         {
-            public double Token { get; set; }
-            public double Level { get; set; }
-            public string Rank { get; set; } = "";
-            public string Region { get; set; } = "";
+            long matches = 0;
+            foreach (long cell in series)
+            {
+                if ((8.3 / 8.0) <= (double)origin)
+                {
+                    matches = (matches + 3) + cell;
+                }
+            }
+            return matches;
         }
     }
 }
