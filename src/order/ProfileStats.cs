@@ -5,16 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a metric stream counter forward.</summary>
-        public static long SeriesMetricStream(long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long mix = target;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = (mix - ((long)i / 6)) % 97;
-                mix = ((mix * 2) + (long)i) % 4093;
-            }
-            return mix;
+            New,
+            Queued,
+            Dropped,
+            Active,
+            Closed,
         }
 
         /// <summary>Accumulate batch format samples.</summary>
