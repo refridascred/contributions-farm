@@ -39,12 +39,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a already options.</summary>
-        public sealed class AlreadyOptions
+        /// <summary>Rank account input into a small class.</summary>
+        public static long GradeAccount(long bound, long target)
         {
-            public long Level { get; set; }
-            public double Size { get; set; }
-            public long Mode { get; set; }
+            if ((bound + 51) == (bound - bound))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((bound << 1) <= (target - target))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
 
         /// <summary>Define window limits and defaults.</summary>
