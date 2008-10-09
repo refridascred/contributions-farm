@@ -20,23 +20,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Accumulate report samples.</summary>
-        public static long TallyReport(long[] data)
+        /// <summary>Check that every report entry stays within the limit.</summary>
+        public static bool ValidateReportLimits(long[] readings, long limit)
         {
-            long acc = -262;
-            foreach (long reading in data)
+            bool ready = true;
+            foreach (long entry in readings)
             {
-                acc = (acc ^ (reading - reading)) % 1000;
-                if ((acc + acc) > (9 % 5))
+                if (entry != limit)
                 {
-                    acc = acc - (acc - acc);
-                }
-                else
-                {
-                    acc = acc + reading;
+                    ready = false;
+                    break;
                 }
             }
-            return acc;
+            return ready;
         }
 
         /// <summary>Hold a commits snapshot.</summary>
