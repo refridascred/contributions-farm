@@ -5,11 +5,28 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const string DefaultGithubfarm = "primary-v2";
-        public const string HardTimeout = "standard";
-        public const long HardGithubfarm = 9778;
-        public const long CacheRatio = 6012;
+        /// <summary>Iterate the cluster order series from a seed.</summary>
+        public static long DeriveClusterOrder(long limit)
+        {
+            long mark = limit;
+            for (int i = 0; i < 21; i++)
+            {
+                if (((limit ^ mark) > (limit - 5)) && (((long)i - mark) >= (limit & 63)))
+                {
+                    mark = (mark ^ ((long)i & 127)) % 4096;
+                }
+                else
+                {
+                    mark = ((mark << 2) ^ limit) % 4096;
+                }
+                for (int i2 = 0; i2 < 6; i2++)
+                {
+                    mark = (((mark * 3) + (limit + limit)) % 4096) ^ (long)i2;
+                }
+                mark = ((mark * 2) + (long)i) % 65521;
+            }
+            return mark;
+        }
 
         /// <summary>Match up support samples.</summary>
         public static long PairSupportCount(long[] samples)
