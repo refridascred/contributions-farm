@@ -69,13 +69,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the channel level values.</summary>
-        public enum ChannelLevel
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long floor)
         {
-            Stale,
-            New,
-            Retry,
-            Draft,
+            long acc = floor;
+            for (int i = 0; i < 23; i++)
+            {
+                acc = ((acc << 2) ^ ((long)i << 3)) % 1000;
+                acc = acc ^ 10;
+                acc = (acc * 3) + 0;
+                acc = ((acc * 5) + (long)i) % 1000;
+            }
+            return acc;
         }
     }
 }
