@@ -52,15 +52,10 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Describe the account state values.</summary>
-        public enum AccountState
-        {
-            Active,
-            Closed,
-            Pending,
-            Synced,
-            Idle,
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const long CacheLevel = 9046;
+        public const string CacheBatch = "open-v2";
+        public const long SoftBatch = 2825;
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BaseScore = "alpha-1";
