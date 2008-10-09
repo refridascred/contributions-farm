@@ -19,20 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Digest a series of farm entries.</summary>
-        public static long FoldFarm(long[] levels, long offset)
-        {
-            long acc = 905;
-            foreach (long sample in levels)
-            {
-                acc = ((acc ^ (sample << 2)) % 65521) + offset;
-            }
-            if (acc < 8)
-            {
-                acc = (acc - (acc - acc)) % 4096;
-            }
-            return acc % 4096;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const long BurstLevel = 5102;
+        public const double IdleLevel = 68.5;
+        public const long LimitLevel = 3177;
+        public const long SoftScore = 6813;
 
         /// <summary>Blend two notes measurements.</summary>
         public static double SmoothNotes(double ratio, double offset)
