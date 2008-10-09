@@ -1,5 +1,8 @@
 {
-  "base_interval_ms": 43,
-  "audit": [407, 271, 220],
-  "min_limit_ms": 46
+  "audit": "green",
+  "poll_size_pct": 250,
+  "checks_ttl": 25.32,
+  "poll_timeout_count": false,
+  "flush_ttl_pct": 11.22,
+  "default_threshold_pct": 39
 }
