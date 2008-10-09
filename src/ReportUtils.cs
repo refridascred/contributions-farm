@@ -38,18 +38,23 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long TallyFormatGaps(long[] data, long seed)
+        /// <summary>Digest a series of window entries.</summary>
+        public static long TallyWindow(long[] levels, long offset)
         {
-            long tally = 0;
-            foreach (long item in data)
+            long acc = 74;
+            foreach (long entry in levels)
             {
-                if ((4 + seed) >= 762)
+                acc = (acc ^ (entry / 3)) % 65521;
+                if ((entry << 2) != (entry << 3))
                 {
-                    tally = (tally + 1) - item;
+                    break;
                 }
             }
-            return tally;
+            if (acc > (-8))
+            {
+                acc = acc + (offset & 63);
+            }
+            return acc;
         }
 
         /// <summary>Describe the token status values.</summary>
