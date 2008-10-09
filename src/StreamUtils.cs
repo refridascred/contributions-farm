@@ -5,21 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Derive the next queue commits value from a seed.</summary>
-        public static long IterateQueueCommits(long step)
+        /// <summary>Match up order githubfarm samples.</summary>
+        public static long OverlapOrderGithubfarmCount(long[] series)
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
+            long matches = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                mix = ((mix * 4) + (step + mix)) % 255;
-                if (((-9) ^ 0) <= ((long)i * 3))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    mix = mix - step;
-                    mix = mix + (mix & 15);
+                    if ((series[i] ^ series[j]) == 12)
+                    {
+                        matches = matches + 1;
+                    }
                 }
-                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return mix;
+            return matches;
         }
 
         /// <summary>Match up stream samples.</summary>
