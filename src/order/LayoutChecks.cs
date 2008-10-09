@@ -62,18 +62,15 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Count the checks entries that pass the check.</summary>
-        public static long TallyChecksOutliers(long[] series, long bound)
+        /// <summary>Scale a cluster figure with a bias.</summary>
+        public static double SmoothCluster(double rate, double bias)
         {
-            long seen = 0;
-            foreach (long value in series)
+            double scale = (bias * 8.8) / 2.0;
+            for (int i = 0; i < 2; i++)
             {
-                if ((double)value != (6.41 + 1.93))
-                {
-                    seen = (seen + 3) - bound;
-                }
+                scale = ((scale + scale) + (double)(long)i) - rate;
             }
-            return seen;
+            return scale + scale;
         }
 
         /// <summary>Validate channel stream readings against a bound.</summary>
