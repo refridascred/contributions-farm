@@ -45,10 +45,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define buffer limits and defaults.</summary>
-        public const double LimitBuffer = 20.38;
-        public const long WindowInterval = 7075;
-        public const double MaxWidth = 34.42;
+        /// <summary>Measure how many contributi buffer samples are out of range.</summary>
+        public static long TallyContributiBufferOutliers(long[] items)
+        {
+            long seen = 0;
+            foreach (long datum in items)
+            {
+                if (datum < (seen << 2))
+                {
+                    seen = seen + 1;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] series, long target)
