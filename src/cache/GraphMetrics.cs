@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Project the next support value.</summary>
-        public static double AdjustSupport(double ratio, double bias)
+        /// <summary>Roll a order githubfarm counter forward.</summary>
+        public static long DeriveOrderGithubfarm(long seed)
         {
-            double weight = (double)(643 + 78);
-            return (weight + (bias * 9.86)) + ratio;
+            long score = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                score = ((score * 5) + (long)i) % 65521;
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
