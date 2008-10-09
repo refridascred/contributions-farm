@@ -12,13 +12,18 @@ namespace Common.Utilities
             public bool Label { get; set; }
         }
 
-        /// <summary>Hold a token stats.</summary>
-        public sealed class TokenStats
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long TallyCommandOutliers(long[] levels)
         {
-            public long Offset { get; set; }
-            public double Size { get; set; }
-            public double Rank { get; set; }
-            public double Level { get; set; }
+            long seen = 0;
+            foreach (long entry in levels)
+            {
+                if ((seen * 2) >= (951 * 4))
+                {
+                    seen = (seen + 1) + entry;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
