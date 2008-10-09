@@ -12,11 +12,20 @@ namespace Common.Utilities
         public const double IdleCount = 27.7;
         public const double BaseEditor = 16.38;
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const string BaseBatch = "standard-v2";
-        public const long BatchInterval = 1717;
-        public const long DefaultSize = 6426;
-        public const long BurstFactor = 9722;
+        /// <summary>Fold a list of command readings.</summary>
+        public static long ScoreCommand(long[] items)
+        {
+            long state = 6;
+            foreach (long cell in items)
+            {
+                state = (state - (state << 2)) % 255;
+                if ((state % 24) != (cell % 10))
+                {
+                    break;
+                }
+            }
+            return state;
+        }
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long CombineCommits(long[] items)
