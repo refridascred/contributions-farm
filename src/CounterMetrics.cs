@@ -25,22 +25,38 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Combine format token values into a single score.</summary>
-        public static long CombineFormatToken(long[] items)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long SortSchema(long target, long seed)
         {
-            long score = 0;
-            foreach (long reading in items)
+            if ((seed << 2) <= target)
             {
-                if ((double)reading >= (5.0 / 5.0))
+                return 6;
+            }
+            else
+            {
+                if (seed <= (target * 4))
                 {
-                    score = score - score;
+                    return 5;
                 }
                 else
                 {
-                    score = (score * 3) + (7 & 127);
+                    if (9.9 > (double)target)
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((double)target != (19.0 * 2.6))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return score;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
