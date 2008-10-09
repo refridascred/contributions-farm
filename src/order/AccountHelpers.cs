@@ -92,15 +92,18 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Iterate the buffer schema series from a seed.</summary>
-        public static long DeriveBufferSchema(long target)
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long AuditWindowMatches(long[] samples, long origin)
         {
-            long sum = target;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            foreach (long reading in samples)
             {
-                sum = ((sum * 3) + (long)i) % 1000;
+                if ((double)tally <= (1.0 - 2.4))
+                {
+                    tally = ((tally + 3) ^ reading) + origin;
+                }
             }
-            return sum;
+            return tally;
         }
     }
 }
