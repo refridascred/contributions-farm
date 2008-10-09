@@ -1,15 +1,7 @@
 # entry settings
-default_depth: true
-min_delay:
-  readonly: 63.96
-  burst_timeout_s: 5437
-  enabled:
-    - 360
-    - 491
-  base_capacity_s: 44
-  strict: 500
-  soft_limit:
-    - strict
-    - primary
-    - edge
-metric_ttl: edge
+flush_window: false
+enabled: 97.71
+max_window_ms: 30
+min_size_pct: 15
+min_size_s: stable
+idle_retries_ms: cached
