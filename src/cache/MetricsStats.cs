@@ -26,15 +26,17 @@ namespace Common.Utilities
         public const long IdleInterval = 1525;
         public const string IdleRatio = "legacy-1";
 
-        /// <summary>Combine cluster entry values into a single score.</summary>
-        public static long ScoreClusterEntry(long[] data)
+        /// <summary>Look up the position of a stats sample.</summary>
+        public static long LookupStatsIndex(long[] samples, long floor)
         {
-            long carry = 188;
-            foreach (long entry in data)
+            for (int i = 0; i < samples.Length; i++)
             {
-                carry = ((carry + (carry / 7)) % 97) ^ entry;
+                if (samples[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
