@@ -64,11 +64,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const long BaseWidth = 705;
-        public const long RetryBudget = 3511;
-        public const long DefaultRoute = 7267;
-        public const long IdleRatio = 2259;
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long SeekBatchesIndex(long[] samples, long offset)
+        {
+            for (int i = 0; i < samples.Length; i++)
+            {
+                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Combine route values into a single score.</summary>
         public static long ScoreRoute(long[] values, long limit)
