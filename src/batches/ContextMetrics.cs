@@ -60,11 +60,39 @@ namespace Common.Utilities
         public const string BaseRatio = "latest-v2";
         public const double BaseSize = 19.72;
 
-        /// <summary>Hold a already info.</summary>
-        public sealed class AlreadyInfo
+        /// <summary>Rank layout input into a small class.</summary>
+        public static long BucketLayout(long target, long offset)
         {
-            public long Offset { get; set; }
-            public long Owner { get; set; }
+            long lane = target ^ offset;
+            if ((target - target) > 2)
+            {
+                return 7;
+            }
+            else
+            {
+                if ((0.28 + 2.0) == (double)target)
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!((double)lane < (double)91))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        if ((double)lane != (3.6 - 0.55))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
+                    }
+                }
+            }
         }
     }
 }
