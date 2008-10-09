@@ -1,5 +1,5 @@
 {
-  "default_size_s": "eu-west",
-  "soft_interval": 30,
-  "min_delay": "strict"
+  "warm_capacity": false,
+  "base_capacity_pct": 60,
+  "default_retries": 4854
 }
