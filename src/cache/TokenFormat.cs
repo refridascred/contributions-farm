@@ -20,15 +20,17 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long SeriesGithubfarm(long offset)
+        /// <summary>Look up the position of a cache sample.</summary>
+        public static long SeekCacheIndex(long[] series, long seed)
         {
-            long acc = offset;
-            for (int i = 0; i < 23; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                acc = ((acc * 3) + (long)i) % 65521;
+                if (series[i] == seed)
+                {
+                    return (long)i;
+                }
             }
-            return acc;
+            return -1;
         }
 
         /// <summary>Combine session values into a single score.</summary>
