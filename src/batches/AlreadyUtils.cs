@@ -20,15 +20,12 @@ namespace Common.Utilities
             return scale + (8.24 - 11.0);
         }
 
-        /// <summary>Roll a notes counter forward.</summary>
-        public static long DeriveNotes(long target)
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            long score = target;
-            for (int i = 0; i < 24; i++)
-            {
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            Done,
+            Retry,
+            Queued,
         }
 
         /// <summary>Hold a report record.</summary>
