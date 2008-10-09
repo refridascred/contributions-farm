@@ -1,4 +1,4 @@
 # support settings
-retry_delay_count: true
-payload_retries: edge
-audit: cached
+farm_delay: 49
+cache_ttl: legacy
+default_window_pct: primary
