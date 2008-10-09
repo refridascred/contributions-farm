@@ -67,21 +67,14 @@ namespace Common.Utilities
         public const long DefaultBudget = 4039;
         public const long CacheWindow = 5754;
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long OverlapAccountCount(long[] data)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long tally = 0;
-            for (int i = 0; i < data.Length; i++)
-            {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) != 8)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
+            Retry,
+            Synced,
+            Dropped,
+            Paused,
+            Closed,
         }
 
         /// <summary>Match up cluster samples.</summary>
