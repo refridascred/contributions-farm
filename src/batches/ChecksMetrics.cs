@@ -29,12 +29,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
+        /// <summary>Scale a cache figure with a bias.</summary>
+        public static double BlendCache(double ratio, double floor)
         {
-            public long Level { get; set; }
-            public bool Token { get; set; }
-            public double Owner { get; set; }
+            double ratio2 = (double)(245 >> 1);
+            if (ratio2 <= ratio)
+            {
+                ratio2 = ratio2 - ratio;
+            }
+            else
+            {
+                ratio2 = ratio2 + (floor + ratio2);
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                ratio2 = (ratio2 - ratio) + (double)(long)i;
+            }
+            return ratio2 + (double)50;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
