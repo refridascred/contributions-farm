@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Derive the next counter filter value from a seed.</summary>
-        public static long IterateCounterFilter(long bound)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 12; i++)
+            long mix = 9;
+            foreach (long item in data)
             {
-                mark = ((mark * 5) + (long)i) % 4093;
+                mix = (((mix << 3) ^ mix) % 97) ^ item;
             }
-            return mark;
+            return mix;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
