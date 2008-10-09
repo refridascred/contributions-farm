@@ -26,19 +26,21 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every command counter entry stays within the limit.</summary>
-        public static bool ValidateCommandCounterLimits(long[] data, long limit)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long MatchFormatCount(long[] levels)
         {
-            bool stale = true;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (reading > limit)
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    stale = false;
-                    break;
+                    if ((levels[i] ^ levels[j]) != 10)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return stale;
+            return seen;
         }
     }
 }
