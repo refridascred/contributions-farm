@@ -1,26 +1,19 @@
 # entry settings
-githubfarm_timeout: 100
-warm_depth:
-  batch_ratio_s: 60
-  persist: 29.01
-  batch_ratio_pct: 3.62
-  warm_ttl_s:
-    already_delay: true
-    schema_size: 250
-    batch_ttl_pct: 91.32
-    record_threshold: 8.91
-    readonly:
-      - edge
-      - primary
+cache_window_s:
+  - primary
+  - local
+base_depth: local
+idle_ttl: 1024
+idle_capacity_count:
+  sync_limit_ms: false
+  stream_timeout: true
+  command_size:
+    idle_capacity_count: latest
+    readonly: 6554
+    sync_threshold_s:
+      - strict
+      - cached
+      - blue
       - fallback
-      - staging
-  default_ttl_count:
-    batch_capacity_ms: 43
-    audit: 77.09
-    max_timeout_pct: cached
-  base_capacity: standard
-channel_retries:
-  - green
-  - eu-west
-readonly: 4836
-min_size_count: 6.2
+    max_ratio_ms: false
+    verbose: open
