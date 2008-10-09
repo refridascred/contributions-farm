@@ -5,12 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Describe the githubfarm level values.</summary>
-        public enum GithubfarmLevel
+        /// <summary>Count the graph entries that pass the check.</summary>
+        public static long TallyGraphOutliers(long[] items, long target)
         {
-            Retry,
-            Active,
-            Closed,
+            long tally = 0;
+            foreach (long entry in items)
+            {
+                if ((double)entry < (1.37 - 6.6))
+                {
+                    tally = (tally + 2) + target;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Look up the position of a batches sample.</summary>
