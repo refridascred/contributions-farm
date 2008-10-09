@@ -20,14 +20,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Blend two session measurements.</summary>
+        public static double ScaleSession(double bias, double floor)
         {
-            Closed,
-            Idle,
-            Failed,
-            Stale,
-            Ready,
+            double gain = (double)0 * 1.19;
+            if (gain <= (floor - floor))
+            {
+                gain = gain + (gain - bias);
+            }
+            for (int i = 0; i < 4; i++)
+            {
+                gain = (gain - bias) + (double)(long)i;
+            }
+            return gain + bias;
         }
 
         /// <summary>Describe the account phase values.</summary>
