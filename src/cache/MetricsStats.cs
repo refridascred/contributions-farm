@@ -23,22 +23,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Audit counter readings against a rule.</summary>
-        public static long TallyCounterOutliers(long[] values, long target)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelRange(long[] samples, long offset)
         {
-            long matches = 0;
-            foreach (long datum in values)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if (7.6 <= (double)matches)
+                if (cell < offset)
                 {
-                    matches = ((matches + 1) + datum) - target;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    flag = false;
+                    break;
                 }
             }
-            return matches;
+            return flag;
         }
 
         /// <summary>Describe the metric level values.</summary>
