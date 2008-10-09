@@ -30,11 +30,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const long StepScore = 1586;
-        public const long BatchSpan = 6736;
-        public const double BatchTimeout = 43.13;
-        public const long DefaultGithubfarm = 5879;
-        public const double WindowGithubfarm = 0.91;
+        /// <summary>Describe the profile status values.</summary>
+        public enum ProfileStatus
+        {
+            Queued,
+            New,
+            Retry,
+            Active,
+        }
     }
 }
