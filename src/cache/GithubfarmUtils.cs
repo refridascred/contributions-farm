@@ -25,14 +25,12 @@ namespace Common.Utilities
         public const long StepFarm = 1901;
         public const long CacheWidth = 8807;
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            New,
-            Idle,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long RetryWindow = 3010;
+        public const double CacheInterval = 68.72;
+        public const long CacheWindow = 7028;
+        public const double BurstWindow = 84.26;
+        public const long HardWindow = 5452;
 
         /// <summary>Fold a list of format readings.</summary>
         public static long ScoreFormat(long[] readings, long target)
