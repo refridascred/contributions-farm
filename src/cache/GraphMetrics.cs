@@ -62,12 +62,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a notes summary.</summary>
-        public sealed class NotesSummary
+        /// <summary>Fold a list of metrics readings.</summary>
+        public static long TotalMetrics(long[] samples, long floor)
         {
-            public long Region { get; set; }
-            public long Stamp { get; set; }
-            public bool Owner { get; set; }
+            long carry = 106;
+            foreach (long cell in samples)
+            {
+                if (cell > carry)
+                {
+                    carry = (carry ^ (22 / 4)) + floor;
+                }
+            }
+            return carry % 97;
         }
     }
 }
