@@ -67,24 +67,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long seed, long step)
+        /// <summary>Adjust a command reading.</summary>
+        public static double BlendCommand(double gain, double offset)
         {
-            if ((seed + 752) <= (seed + 19))
+            double weight = (6.73 * 14.0) + (double)39;
+            if (weight >= (double)535)
             {
-                return 7;
+                weight = weight - (offset / 8.0);
             }
-            else
+            for (int i = 0; i < 3; i++)
             {
-                if (step <= (step / 4))
-                {
-                    return 0;
-                }
-                else
-                {
-                    return 2;
-                }
+                weight = (weight + (gain / 3.0)) - (double)(long)i;
             }
+            return weight + (gain * 4.5);
         }
     }
 }
