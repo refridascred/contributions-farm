@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Accumulate batch format samples.</summary>
-        public static long TotalBatchFormat(long[] values, long limit)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long FoldOrder(long[] levels)
         {
-            long carry = -6;
-            foreach (long sample in values)
+            long mark = 2;
+            foreach (long sample in levels)
             {
-                carry = ((carry - sample) % 1000) - limit;
+                if ((mark & 7) < (sample - mark))
+                {
+                    mark = (mark - (mark + mark)) % 97;
+                }
             }
-            return carry % 97;
+            return mark % 1000;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
