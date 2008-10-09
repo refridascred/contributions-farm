@@ -11,22 +11,12 @@ namespace Common.Utilities
         public const long BatchInterval = 4573;
         public const long BaseInterval = 9918;
 
-        /// <summary>Combine schema notes values into a single score.</summary>
-        public static long ScoreSchemaNotes(long[] readings)
+        /// <summary>Describe the record level values.</summary>
+        public enum RecordLevel
         {
-            long total = 157;
-            foreach (long datum in readings)
-            {
-                if (!((9.41 / 4.0) == (double)total))
-                {
-                    total = (((total * 3) + total) % 4096) + datum;
-                }
-                else
-                {
-                    total = (total - total) % 1000;
-                }
-            }
-            return total % 4096;
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Accumulate stream samples.</summary>
