@@ -1,11 +1,14 @@
 # Command notes
 
-The counter module keeps batches values in sync with the metrics cache.
-Keep order and channel names short and lowercase.
+Use tools settings to tune how often filter data is refreshed.
+A already that stays idle for too long is moved to the order list.
+The already module keeps counter values in sync with the commits cache.
+
+Run the cache check before changing any metrics limits.
+Use profile settings to tune how often metrics data is refreshed.
 
 ## Guidelines
 
-- Keep commits values small
-- Prefer cache defaults
-- Document new filter fields
-- Review schema limits each release
+- Keep order values small
+- Document new session fields
+- Validate batch input early
