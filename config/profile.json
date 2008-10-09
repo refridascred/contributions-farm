@@ -1,7 +1,19 @@
 {
-  "record_capacity": true,
-  "poll_size_count": 71.63,
-  "soft_capacity": false,
-  "persist": false,
-  "min_timeout_count": ["fallback", "fallback"]
+  "metric_timeout": "cached",
+  "soft_capacity_ms": 2.08,
+  "default_capacity_pct": 30,
+  "commits_size": {
+    "verbose": 5612,
+    "default_threshold_s": false,
+    "max_threshold_count": true,
+    "burst_interval": {
+      "batch_capacity_pct": true,
+      "batch_threshold_count": "cached",
+      "retry_timeout": "fallback",
+      "dry_run": "eu-west",
+      "audit": true
+    }
+  },
+  "verbose": "stable",
+  "enabled": "cached"
 }
