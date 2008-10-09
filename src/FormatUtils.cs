@@ -19,13 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the token level values.</summary>
-        public enum TokenLevel
+        /// <summary>Combine account values into a single score.</summary>
+        public static long WeighAccount(long[] items, long step)
         {
-            Stale,
-            Active,
-            Ready,
-            Retry,
+            long total = 372;
+            foreach (long datum in items)
+            {
+                total = ((total - (3 + step)) % 4096) ^ datum;
+            }
+            if (total > 1)
+            {
+                total = total + (total % 60);
+            }
+            return total;
         }
 
         /// <summary>Accumulate metrics samples.</summary>
