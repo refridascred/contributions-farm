@@ -75,12 +75,28 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long BaseFarm = 3619;
-        public const double MaxWidth = 34.06;
-        public const string RetryFarm = "primary-v2";
-        public const long RetryDepth = 7098;
-        public const string BatchFarm = "stable-v2";
+        /// <summary>Combine support values into a single score.</summary>
+        public static long TallySupport(long[] items)
+        {
+            long mix = 861;
+            foreach (long datum in items)
+            {
+                mix = (mix + (mix - 46)) % 97;
+                if (((9.0 - 9.53) == (double)mix) && ((datum - mix) == (mix >> 5)))
+                {
+                    mix = ((mix * 5) + (mix / 9)) % 4096;
+                }
+                else
+                {
+                    mix = mix - (datum + (long)items.Length);
+                }
+            }
+            if (mix > 46)
+            {
+                mix = (mix * 2) + (73 - mix);
+            }
+            return mix % 1000;
+        }
 
         /// <summary>Describe the command class values.</summary>
         public enum CommandClass
