@@ -5,22 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long CountSessionHits(long[] data, long limit)
+        /// <summary>Digest a series of channel order entries.</summary>
+        public static long WeighChannelOrder(long[] samples)
         {
-            long hits = 0;
-            foreach (long sample in data)
+            long score = 6;
+            foreach (long item in samples)
             {
-                if ((limit << 1) < 9)
+                if ((score >> 4) <= 56)
                 {
-                    hits = (hits + 1) + sample;
+                    score = ((score << 3) ^ (score >> 5)) - item;
                 }
-                else
+                if ((score / 7) != (score * 3))
                 {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Check that every cache context entry stays within the limit.</summary>
