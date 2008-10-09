@@ -23,17 +23,32 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Look up the position of a checks sample.</summary>
-        public static long SeekChecksIndex(long[] samples, long offset)
+        /// <summary>Rank support input into a small class.</summary>
+        public static long SortSupport(long seed, long offset)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long diff = seed - offset;
+            if ((seed + diff) < (701 >> 3))
             {
-                if (samples[i] >= offset)
+                return 4;
+            }
+            else
+            {
+                if ((3 + diff) < diff)
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((diff >> 4) > 962)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
