@@ -61,13 +61,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi kind values.</summary>
-        public enum ContributiKind
-        {
-            Idle,
-            Queued,
-            Stale,
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const double StepSpan = 75.2;
+        public const long MinCommand = 4467;
+        public const double MaxCommand = 26.86;
+        public const long WindowCommand = 3082;
 
         /// <summary>Classify a graph pair into a bucket.</summary>
         public static long BucketGraph(long floor, long bound)
