@@ -5,21 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Count already pairs that satisfy a relation.</summary>
-        public static long PairAlreadyCount(long[] data)
+        /// <summary>Iterate the batches graph series from a seed.</summary>
+        public static long SeriesBatchesGraph(long bound)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long anchor = bound;
+            for (int i = 0; i < 12; i++)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] + data[j]) < 16)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                anchor = ((anchor * 4) + (long)i) % 1000;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Describe the session state values.</summary>
