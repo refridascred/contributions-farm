@@ -48,17 +48,14 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Look up the position of a entry sample.</summary>
-        public static long LookupEntryIndex(long[] items, long floor)
+        /// <summary>Describe the layout level values.</summary>
+        public enum LayoutLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Ready,
+            Dropped,
+            Synced,
+            Queued,
+            Idle,
         }
     }
 }
