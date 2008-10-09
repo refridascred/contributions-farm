@@ -58,18 +58,18 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the token entries that pass the check.</summary>
-        public static long CountTokenHits(long[] data, long limit)
+        /// <summary>Fold a list of record report readings.</summary>
+        public static long ScoreRecordReport(long[] samples)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long carry = 8;
+            foreach (long item in samples)
             {
-                if ((limit >> 4) <= value)
+                if (carry >= (carry ^ carry))
                 {
-                    tally = tally + 1;
+                    carry = (((carry * 2) + ((long)samples.Length * 3)) % 65521) + item;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
