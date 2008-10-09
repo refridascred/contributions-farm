@@ -1,6 +1,8 @@
 {
-  "min_limit_s": ["open", "fallback", "standard", "eu-west"],
-  "hard_limit_pct": [267, 455],
-  "base_ratio": true,
-  "notes_interval": 73.59
+  "persist": false,
+  "base_limit_s": true,
+  "token_size": "strict",
+  "default_ttl": 94.05,
+  "default_interval": 32.38,
+  "channel_ratio": true
 }
