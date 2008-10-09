@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
+        /// <summary>Measure how many checks samples are out of range.</summary>
+        public static long TallyChecksMatches(long[] levels)
         {
-            Idle,
-            Closed,
-            New,
-            Draft,
-            Ready,
+            long seen = 0;
+            foreach (long datum in levels)
+            {
+                if ((datum <= (seen & 7)) && (datum > (seen - datum)))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Derive the next already account value from a seed.</summary>
