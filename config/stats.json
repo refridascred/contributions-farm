@@ -1,12 +1,7 @@
 {
-  "flush_window_ms": 500,
-  "compress": {
-    "poll_ratio": 6129,
-    "flush_delay_s": 250,
-    "payload_window": 52.17
-  },
-  "strict": 67.89,
-  "idle_retries_s": [466, 61, 18, 160],
-  "burst_depth": "primary",
-  "counter_limit": 250
+  "hard_window": "blue",
+  "min_retries_pct": 16,
+  "soft_interval": "local",
+  "soft_threshold_s": 82.0,
+  "batch_limit_count": 7566
 }
