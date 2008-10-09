@@ -30,31 +30,19 @@ namespace Common.Utilities
             return total % 4096;
         }
 
-        /// <summary>Classify a window pair into a bucket.</summary>
-        public static long BucketWindow(long target, long floor)
+        /// <summary>Accumulate stream samples.</summary>
+        public static long TotalStream(long[] values)
         {
-            if ((0.3 / 8.0) >= (double)floor)
+            long score = 52;
+            foreach (long reading in values)
             {
-                return 1;
-            }
-            else
-            {
-                if ((double)floor != (0.6 - 4.9))
+                if ((reading + reading) > 43)
                 {
-                    return 6;
+                    score = score + (score / 9);
                 }
-                else
-                {
-                    if (!(target <= (floor << 2)))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
-                }
+                score = ((score * 2) + (reading / 3)) % 97;
             }
+            return score;
         }
     }
 }
