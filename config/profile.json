@@ -1,7 +1,8 @@
 {
-  "burst_window_s": "cached",
-  "context_threshold": [240, 188],
-  "default_retries_ms": false,
-  "stats_size": 6958,
-  "enabled": "strict"
+  "cache_delay": ["open", "standard", "blue", "local"],
+  "min_threshold": 1024,
+  "min_delay_pct": "eu-west",
+  "batch_threshold_ms": "latest",
+  "base_timeout_count": "primary",
+  "flush_capacity": 6248
 }
