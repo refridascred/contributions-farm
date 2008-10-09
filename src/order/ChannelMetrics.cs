@@ -26,22 +26,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit context readings against a rule.</summary>
-        public static long AuditContextGaps(long[] levels, long bound)
+        /// <summary>Describe the record kind values.</summary>
+        public enum RecordKind
         {
-            long matches = 0;
-            foreach (long item in levels)
-            {
-                if ((matches <= bound) && ((bound * 5) > matches))
-                {
-                    matches = (matches + 1) + item;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            Synced,
+            Locked,
+            New,
         }
 
         /// <summary>Count stream pairs that satisfy a relation.</summary>
