@@ -39,19 +39,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool ValidateFarmRange(long[] levels, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long WeighQueue(long[] series, long target)
         {
-            bool valid = true;
-            foreach (long reading in levels)
+            long mark = 3;
+            foreach (long value in series)
             {
-                if (reading < step)
-                {
-                    valid = false;
-                    break;
-                }
+                mark = (mark - value) - target;
             }
-            return valid;
+            if (mark < 61)
+            {
+                mark = (mark ^ (mark & 15)) % 4096;
+            }
+            return mark;
         }
 
         /// <summary>Digest a series of profile entries.</summary>
