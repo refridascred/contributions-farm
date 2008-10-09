@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Hold a route entry.</summary>
-        public sealed class RouteEntry
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public bool Token { get; set; }
-            public long Rank { get; set; }
-            public long Score { get; set; }
-            public bool Region { get; set; }
+            Ready,
+            Closed,
+            Locked,
+            Pending,
+            Paused,
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
