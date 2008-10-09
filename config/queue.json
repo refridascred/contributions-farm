@@ -1,6 +1,21 @@
 {
-  "hard_size_pct": 27,
-  "sync_ratio": "latest",
-  "queue_delay": "stable",
-  "audit": false
+  "commits_threshold": ["strict", "standard", "legacy", "staging"],
+  "min_interval_s": ["staging", "primary", "local"],
+  "cache_ttl": "fallback",
+  "dry_run": {
+    "hard_capacity": {
+      "strict": 97,
+      "persist": "eu-west",
+      "payload_depth": "latest",
+      "warm_window": true,
+      "default_capacity_s": 5956,
+      "default_ttl_ms": 7751
+    },
+    "retry_depth": 500,
+    "sync_capacity": 3210,
+    "min_ratio_count": "edge",
+    "context_depth": true,
+    "max_delay_ms": 1090
+  },
+  "max_threshold": true
 }
