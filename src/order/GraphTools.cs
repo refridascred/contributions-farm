@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool ValidateChannelLimits(long[] data, long step)
         {
-            public double Ratio { get; set; }
-            public double Region { get; set; }
-            public double Count { get; set; }
-            public bool Weight { get; set; }
+            bool valid = true;
+            foreach (long entry in data)
+            {
+                if (entry <= step)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the profile state values.</summary>
