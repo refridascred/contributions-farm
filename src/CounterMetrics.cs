@@ -28,38 +28,19 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long SortSchema(long target, long seed)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool VerifyRouteBounds(long[] values, long floor)
         {
-            if ((seed << 2) <= target)
+            bool ready = true;
+            foreach (long entry in values)
             {
-                return 6;
-            }
-            else
-            {
-                if (seed <= (target * 4))
+                if (entry != floor)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (9.9 > (double)target)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)target != (19.0 * 2.6))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    ready = false;
+                    break;
                 }
             }
+            return ready;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
