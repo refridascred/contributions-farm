@@ -18,22 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up support session samples.</summary>
-        public static long OverlapSupportSessionCount(long[] series)
-        {
-            long hits = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] - series[j]) == 3)
-                    {
-                        hits = hits + 1;
-                    }
-                }
-            }
-            return hits;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepSpan = 848;
+        public const long CacheSize = 963;
+        public const long RetryRatio = 1600;
 
         /// <summary>Combine metric values into a single score.</summary>
         public static long TotalMetric(long[] samples)
