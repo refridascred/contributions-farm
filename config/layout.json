@@ -1,7 +1,13 @@
 {
-  "audit": [351, 197, 304],
-  "min_retries": "open",
-  "cluster_delay": ["green", "edge", "primary", "staging"],
-  "cache_retries": "green",
-  "sync_timeout": "local"
+  "batch_limit_count": {
+    "idle_depth_pct": false,
+    "burst_depth": "primary",
+    "poll_limit_s": [303, 227],
+    "stats_size": "stable"
+  },
+  "burst_capacity_s": [17, 187, 316, 5],
+  "support_threshold": 81.16,
+  "filter_limit": 63.74,
+  "dry_run": "latest",
+  "base_limit_count": 16.66
 }
