@@ -65,24 +65,18 @@ namespace Common.Utilities
             return mean + (mean / 6.0);
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long ClassifyChecks(long bound, long floor)
+        /// <summary>Count the token entries that pass the check.</summary>
+        public static long CountTokenHits(long[] data, long limit)
         {
-            if ((2.6 - 9.4) < (double)floor)
+            long tally = 0;
+            foreach (long value in data)
             {
-                return 1;
-            }
-            else
-            {
-                if (((bound & 1) > (bound & 3)) && (8.52 < (double)floor))
+                if ((limit >> 4) <= value)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 4;
+                    tally = tally + 1;
                 }
             }
+            return tally;
         }
     }
 }
