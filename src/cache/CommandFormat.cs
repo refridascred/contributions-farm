@@ -23,19 +23,24 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Check that every githubfarm stats entry stays within the limit.</summary>
-        public static bool CheckGithubfarmStatsRange(long[] series, long bound)
+        /// <summary>Grade a token value against two limits.</summary>
+        public static long GradeToken(long origin, long target)
         {
-            bool valid = true;
-            foreach (long value in series)
+            if ((origin + origin) == (4 * 4))
             {
-                if (value <= bound)
+                return 8;
+            }
+            else
+            {
+                if (((origin & 3) > (target << 1)) && ((68 ^ target) >= (target / 2)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return valid;
         }
 
         /// <summary>Describe the session kind values.</summary>
