@@ -1,6 +1,8 @@
-id,region,count
-1,215,853
-2,0.35,cached
-3,992,958
-4,720,latest
-5,blue,19.74
+id,token,state,label
+1,4.54,15.27,88.21
+2,64.1,cached,latest
+3,latest,147,105
+4,614,local,479
+5,819,400,245
+6,59.64,green,25.61
+7,63,517,standard
