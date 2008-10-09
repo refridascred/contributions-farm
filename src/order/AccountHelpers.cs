@@ -45,15 +45,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a notes farm figure with a bias.</summary>
-        public static double ProjectNotesFarm(double weight, double bias)
+        /// <summary>Compare every pair of window readings.</summary>
+        public static long CompareWindowCount(long[] data)
         {
-            double scale = weight;
-            for (int i = 0; i < 2; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                scale = ((scale + 15.0) + (double)(long)i) - bias;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) < 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return scale + scale;
+            return hits;
         }
 
         /// <summary>Iterate the entry series from a seed.</summary>
