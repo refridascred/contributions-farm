@@ -1,8 +1,6 @@
 {
-  "retry_interval_s": 6522,
-  "compress": "standard",
-  "record_size": "legacy",
-  "poll_ttl_ms": 75,
-  "entry_timeout": "eu-west",
-  "batch_limit": [208, 186, 135, 119]
+  "stream_size": false,
+  "tools_depth": 5121,
+  "poll_size_ms": false,
+  "poll_limit_pct": 21
 }
