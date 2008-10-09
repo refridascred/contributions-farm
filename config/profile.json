@@ -1,18 +1,7 @@
 {
-  "window_ttl": {
-    "hard_timeout": "latest",
-    "enabled": 9890,
-    "burst_interval_count": {
-      "strict": 1024,
-      "report_depth": 7817,
-      "flush_delay_ms": "primary",
-      "flush_size": 7879
-    },
-    "entry_threshold": "blue",
-    "profile_size": false,
-    "cache_window_count": 69.54
-  },
-  "compress": "standard",
-  "stream_limit": "open",
-  "dry_run": 72
+  "payload_timeout": "legacy",
+  "flush_ratio": [421, 311],
+  "report_retries": 250,
+  "warm_limit_s": 79.25,
+  "hard_ttl": "standard"
 }
