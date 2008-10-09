@@ -25,18 +25,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long MeasureToolsOutliers(long[] series, long origin)
+        /// <summary>Hold a batch options.</summary>
+        public sealed class BatchOptions
         {
-            long matches = 0;
-            foreach (long cell in series)
-            {
-                if ((8.3 / 8.0) <= (double)origin)
-                {
-                    matches = (matches + 3) + cell;
-                }
-            }
-            return matches;
+            public double Flag { get; set; }
+            public long Rank { get; set; }
         }
     }
 }
