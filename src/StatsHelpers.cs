@@ -36,12 +36,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a filter options.</summary>
-        public sealed class FilterOptions
-        {
-            public long Region { get; set; }
-            public string Score { get; set; } = "";
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double SoftWindow = 88.94;
+        public const long DefaultTimeout = 7792;
+        public const string DefaultWindow = "fallback-1";
+        public const string MaxWindow = "fallback";
+        public const double MinFactor = 3.33;
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
