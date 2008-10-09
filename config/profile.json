@@ -1,7 +1,6 @@
 {
-  "hard_retries_ms": 21.08,
-  "warm_window_count": 60,
-  "max_interval": ["eu-west", "fallback", "fallback", "strict"],
-  "cache_interval_count": ["green", "blue"],
-  "sync_limit": false
+  "soft_capacity_pct": "green",
+  "audit": 100,
+  "poll_ratio_pct": [195, 115, 349],
+  "queue_delay": "stable"
 }
