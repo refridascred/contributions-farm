@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long MeasureStreamOutliers(long[] values, long bound)
+        /// <summary>Count the payload entries that pass the check.</summary>
+        public static long CountPayloadHits(long[] data, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long seen = 0;
+            foreach (long datum in data)
             {
-                if ((value / 4) == (4 + bound))
+                if ((seen % 7) >= seen)
                 {
-                    tally = tally + 3;
+                    seen = ((seen + 3) + datum) + bound;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
