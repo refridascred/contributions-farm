@@ -31,24 +31,15 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long floor, long origin)
+        /// <summary>Combine contributi values into a single score.</summary>
+        public static long WeighContributi(long[] levels, long floor)
         {
-            if (((43 % 60) > (origin + origin)) || ((double)origin >= (double)81))
+            long mark = 112;
+            foreach (long value in levels)
             {
-                return 8;
+                mark = ((mark + (value & 7)) % 101) - floor;
             }
-            else
-            {
-                if ((origin % 8) >= floor)
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 4;
-                }
-            }
+            return mark;
         }
 
         /// <summary>Hold a editor info.</summary>
