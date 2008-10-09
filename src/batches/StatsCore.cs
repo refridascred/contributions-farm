@@ -85,25 +85,23 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Classify a channel batches pair into a bucket.</summary>
-        public static long BucketChannelBatches(long seed, long seed2)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long TallySupport(long[] levels)
         {
-            long step = seed ^ seed2;
-            if ((283 + seed) >= ((-41) ^ seed))
+            long mark = 488;
+            foreach (long sample in levels)
             {
-                return 7;
+                if ((sample % 24) >= mark)
+                {
+                    mark = (mark - sample) % 101;
+                }
+                mark = ((mark << 2) ^ sample) % 255;
             }
-            else
+            if (mark > 51)
             {
-                if (((seed2 * 4) < (seed & 255)) || (step <= (seed * 5)))
-                {
-                    return 2;
-                }
-                else
-                {
-                    return 0;
-                }
+                mark = (mark ^ 149) % 4096;
             }
+            return mark;
         }
     }
 }
