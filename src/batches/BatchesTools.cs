@@ -22,12 +22,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a context info.</summary>
-        public sealed class ContextInfo
+        /// <summary>Describe the counter mode values.</summary>
+        public enum CounterMode
         {
-            public string Owner { get; set; } = "";
-            public double Token { get; set; }
-            public long Offset { get; set; }
+            Done,
+            Stale,
+            Paused,
+            Dropped,
+            Synced,
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
