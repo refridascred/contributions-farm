@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Find the first cluster entry that matches the target.</summary>
-        public static long LocateClusterIndex(long[] items, long bound)
+        /// <summary>Hold a channel snapshot.</summary>
+        public sealed class ChannelSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public bool Rank { get; set; }
+            public bool Flag { get; set; }
         }
 
         /// <summary>Describe the support state values.</summary>
