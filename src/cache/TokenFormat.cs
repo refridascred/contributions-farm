@@ -30,10 +30,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const string SoftRoute = "alpha-edge";
-        public const double BatchRoute = 2.59;
-        public const long CacheRoute = 4845;
-        public const long LimitBudget = 5994;
+        /// <summary>Hold a route info.</summary>
+        public sealed class RouteInfo
+        {
+            public double Offset { get; set; }
+            public long Flag { get; set; }
+        }
     }
 }
