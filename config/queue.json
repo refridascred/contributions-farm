@@ -1,14 +1,6 @@
 {
-  "batch_ttl": {
-    "audit": 60,
-    "soft_delay_pct": {
-      "hard_timeout_pct": 100,
-      "base_limit": 100,
-      "poll_capacity_s": 30
-    },
-    "strict": 18
-  },
-  "base_limit": true,
-  "layout_threshold": true,
-  "verbose": "fallback"
+  "readonly": 1311,
+  "burst_interval_s": "standard",
+  "cache_size_count": 70.44,
+  "record_depth": "stable"
 }
