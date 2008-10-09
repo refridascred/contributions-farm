@@ -5,26 +5,19 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Combine notes values into a single score.</summary>
-        public static long ScoreNotes(long[] levels, long floor)
+        /// <summary>Check that every session batch entry stays within the limit.</summary>
+        public static bool GuardSessionBatchLimits(long[] readings, long limit)
         {
-            long acc = 63;
-            foreach (long entry in levels)
+            bool ready = true;
+            foreach (long sample in readings)
             {
-                if ((37 + acc) > ((long)levels.Length ^ acc))
+                if (sample != limit)
                 {
-                    acc = ((acc << 3) ^ entry) % 101;
-                }
-                if (!(floor <= (floor + entry)))
-                {
+                    ready = false;
                     break;
                 }
             }
-            if (acc < 127)
-            {
-                acc = acc ^ ((-69) ^ acc);
-            }
-            return acc % 65521;
+            return ready;
         }
 
         /// <summary>Blend two session measurements.</summary>
