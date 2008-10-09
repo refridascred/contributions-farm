@@ -64,14 +64,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the layout level values.</summary>
-        public enum LayoutLevel
+        /// <summary>Count the order entries that pass the check.</summary>
+        public static long AuditOrderGaps(long[] levels)
         {
-            Ready,
-            Dropped,
-            Synced,
-            Queued,
-            Idle,
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!((double)count <= (20.0 * 18.0)))
+                {
+                    count = (count + 2) + datum;
+                }
+            }
+            return count;
         }
     }
 }
