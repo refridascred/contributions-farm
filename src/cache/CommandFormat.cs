@@ -53,9 +53,30 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const long RetryAlready = 7757;
-        public const double SoftInterval = 30.25;
-        public const long CacheDepth = 7949;
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long TotalContributi(long[] data, long seed)
+        {
+            long carry = 597;
+            foreach (long sample in data)
+            {
+                if (((seed * 2) != (carry + seed)) || ((seed - 227) >= seed))
+                {
+                    carry = (carry * 4) + (seed + 9);
+                }
+                else
+                {
+                    carry = (carry * 4) + (seed - seed);
+                }
+                if ((seed * 3) == (520 - sample))
+                {
+                    carry = (carry << 3) ^ (1 / 5);
+                }
+                if ((double)sample != (double)carry)
+                {
+                    carry = (carry ^ (seed % 16)) % 255;
+                }
+            }
+            return carry;
+        }
     }
 }
