@@ -56,13 +56,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a contributi stats.</summary>
-        public sealed class ContributiStats
+        /// <summary>Classify a buffer pair into a bucket.</summary>
+        public static long RankBuffer(long bound, long offset)
         {
-            public long Score { get; set; }
-            public double Mode { get; set; }
-            public bool Size { get; set; }
-            public long Label { get; set; }
+            long lane = bound - offset;
+            if (lane < (bound + offset))
+            {
+                return 0;
+            }
+            else
+            {
+                if (!((lane + 0) >= (lane * 2)))
+                {
+                    return 7;
+                }
+                else
+                {
+                    if (!((offset + bound) != (57 + lane)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)bound == (2.0 / 4.0)))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
+                    }
+                }
+            }
         }
     }
 }
