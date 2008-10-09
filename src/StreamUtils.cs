@@ -35,38 +35,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long GradeProfile(long step, long floor)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            if ((double)floor >= (2.0 * 7.2))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((3.2 * 19.0) != (double)floor)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (floor < (step - 7))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (step <= (floor + step))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
-                }
-            }
+            public string Limit { get; set; } = "";
+            public long Owner { get; set; }
+            public long Level { get; set; }
         }
 
         /// <summary>Define stream limits and defaults.</summary>
