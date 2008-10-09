@@ -1,8 +1,7 @@
 {
-  "burst_retries_s": true,
-  "hard_window": 14.98,
-  "dry_run": "green",
-  "idle_timeout_ms": ["open", "fallback", "primary", "blue"],
-  "flush_window": ["open", "local"],
-  "contributi_window": 20
+  "record_capacity": true,
+  "poll_size_count": 71.63,
+  "soft_capacity": false,
+  "persist": false,
+  "min_timeout_count": ["fallback", "fallback"]
 }
