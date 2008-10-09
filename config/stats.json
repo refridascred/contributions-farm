@@ -1,6 +1,5 @@
 {
-  "audit": "standard",
-  "verbose": 5463,
-  "editor_timeout": 7371,
-  "default_ttl_ms": "cached"
+  "sync_ttl": 67.18,
+  "soft_threshold": 72.4,
+  "account_interval": 17.13
 }
