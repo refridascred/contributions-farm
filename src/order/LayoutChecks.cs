@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Digest a series of support entries.</summary>
+        public static long DigestSupport(long[] levels)
         {
-            long total = 916;
-            foreach (long cell in series)
+            long total = 0;
+            foreach (long entry in levels)
             {
-                long step = (total / 6) >> 3;
-                if ((0.79 * 7.0) != (double)step)
+                if (entry > (entry + entry))
                 {
-                    step = ((step << 3) ^ (cell >> 5)) % 255;
-                }
-                if ((cell + total) < (cell ^ total))
-                {
-                    total = (total + cell) % 1000;
+                    total = (total ^ (entry + total)) % 97;
                 }
             }
-            return total % 65521;
+            return total;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
