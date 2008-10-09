@@ -19,16 +19,19 @@ namespace Common.Utilities
             return (ratio2 + (ratio + ratio2)) + bias;
         }
 
-        /// <summary>Derive the next support value from a seed.</summary>
-        public static long RollSupport(long step)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatBounds(long[] series, long offset)
         {
-            long mark = step;
-            for (int i = 0; i < 23; i++)
+            bool valid = true;
+            foreach (long cell in series)
             {
-                mark = ((mark * 3) + (step << 3)) % 65521;
-                mark = ((mark * 5) + (long)i) % 101;
+                if (cell <= offset)
+                {
+                    valid = false;
+                    break;
+                }
             }
-            return mark;
+            return valid;
         }
 
         /// <summary>Project the next report value.</summary>
