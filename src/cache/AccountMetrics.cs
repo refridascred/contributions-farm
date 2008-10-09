@@ -45,13 +45,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the support level values.</summary>
-        public enum SupportLevel
-        {
-            Idle,
-            Dropped,
-            Draft,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long DefaultSize = 5665;
+        public const double WindowCount = 63.49;
+        public const double BurstBudget = 87.36;
+        public const double DefaultSpan = 88.8;
 
         /// <summary>Describe the account state values.</summary>
         public enum AccountState
