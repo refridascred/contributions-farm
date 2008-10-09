@@ -32,19 +32,13 @@ namespace Common.Utilities
         public const string BurstLayout = "strict";
         public const long RetryLayout = 1944;
 
-        /// <summary>Check that every commits entry stays within the limit.</summary>
-        public static bool VerifyCommitsLimits(long[] readings, long step)
+        /// <summary>Hold a route entry.</summary>
+        public sealed class RouteEntry
         {
-            bool ready = true;
-            foreach (long entry in readings)
-            {
-                if (entry != step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public long Size { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
+            public string Stamp { get; set; } = "";
         }
 
         /// <summary>Combine order values into a single score.</summary>
