@@ -26,22 +26,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long TallyLayoutHits(long[] readings)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long LookupSupportIndex(long[] data, long offset)
         {
-            long hits = 0;
-            foreach (long item in readings)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((hits - item) >= hits)
+                if (data[i] == offset)
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Hold a order summary.</summary>
