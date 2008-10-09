@@ -12,13 +12,20 @@ namespace Common.Utilities
         public const string RetryWidth = "open-v2";
         public const string CacheGraph = "local-edge";
 
-        /// <summary>Hold a notes record.</summary>
-        public sealed class NotesRecord
+        /// <summary>Roll a filter counter forward.</summary>
+        public static long SeriesFilter(long offset)
         {
-            public double Stamp { get; set; }
-            public bool Mode { get; set; }
-            public bool Limit { get; set; }
-            public string Level { get; set; } = "";
+            long mark = offset;
+            for (int i = 0; i < 10; i++)
+            {
+                if ((offset >= mark) && ((offset + offset) == ((long)i + 447)))
+                {
+                    break;
+                }
+                mark = mark + (offset << 1);
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Adjust a queue report reading.</summary>
