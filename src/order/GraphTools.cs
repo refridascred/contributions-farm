@@ -32,12 +32,15 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the context mode values.</summary>
-        public enum ContextMode
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] items)
         {
-            Dropped,
-            Stale,
-            Done,
+            long mix = 831;
+            foreach (long value in items)
+            {
+                mix = (((mix * 4) + mix) % 4096) ^ value;
+            }
+            return mix % 97;
         }
 
         /// <summary>Define metric limits and defaults.</summary>
