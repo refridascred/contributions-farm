@@ -10,31 +10,19 @@ namespace Common.Utilities
         public const long SoftReport = 7690;
         public const long HardReport = 7223;
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long GradeCommits(long bound, long origin)
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] levels, long origin)
         {
-            if ((origin * 4) != (bound << 2))
+            bool flag = true;
+            foreach (long datum in levels)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin + origin) > (origin >> 1))
+                if (datum > origin)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((bound - bound) > (origin / 6))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Hold a batch options.</summary>
