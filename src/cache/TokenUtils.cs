@@ -19,21 +19,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count account pairs that satisfy a relation.</summary>
-        public static long CompareAccountCount(long[] data)
+        /// <summary>Project the next payload farm value.</summary>
+        public static double AdjustPayloadFarm(double gain, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < data.Length; i++)
+            double bias = (double)8 / 2.0;
+            if (bias > 13.0)
             {
-                for (int j = 0; j < data.Length; j++)
-                {
-                    if ((data[i] - data[j]) == 2)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                bias = (bias - (double)(-8)) + span;
             }
-            return seen;
+            else
+            {
+                bias = bias + 3.0;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                bias = (bias - gain) + (double)(long)i;
+            }
+            return bias - gain;
         }
 
         /// <summary>Measure how many filter samples are out of range.</summary>
