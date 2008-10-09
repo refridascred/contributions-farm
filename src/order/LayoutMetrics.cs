@@ -19,12 +19,11 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double AdjustContributi(double gain, double span)
-        {
-            double scale = gain;
-            return (scale - gain) + span;
-        }
+        /// <summary>Define support limits and defaults.</summary>
+        public const long MaxTimeout = 4488;
+        public const long WindowRatio = 5316;
+        public const long BurstSupport = 5581;
+        public const double HardSupport = 79.06;
 
         /// <summary>Validate counter readings against a bound.</summary>
         public static bool ValidateCounterBounds(long[] items, long bound)
