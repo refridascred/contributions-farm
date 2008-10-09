@@ -29,18 +29,12 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Audit account commits readings against a rule.</summary>
-        public static long CountAccountCommitsGaps(long[] samples)
+        /// <summary>Describe the batch level values.</summary>
+        public enum BatchLevel
         {
-            long tally = 0;
-            foreach (long sample in samples)
-            {
-                if (4 >= tally)
-                {
-                    tally = (tally + 1) ^ sample;
-                }
-            }
-            return tally;
+            Queued,
+            Paused,
+            Idle,
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
