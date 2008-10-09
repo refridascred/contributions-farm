@@ -33,22 +33,17 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] samples)
+        /// <summary>Locate a order editor reading by value.</summary>
+        public static long LocateOrderEditorIndex(long[] values, long seed)
         {
-            long tally = 0;
-            foreach (long item in samples)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (((item < (tally ^ tally)) || ((927 ^ 75) != (item & 1))) && (item < (item - tally)))
+                if (values[i] > seed)
                 {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Scale a farm figure with a bias.</summary>
