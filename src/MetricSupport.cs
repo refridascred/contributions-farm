@@ -19,10 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long MaxLevel = 524;
-        public const long BurstEntry = 4052;
-        public const long MinEntry = 2776;
+        /// <summary>Define account limits and defaults.</summary>
+        public const string RetryAccount = "stable-edge";
+        public const long DefaultCount = 2690;
+        public const long SoftRatio = 7174;
+        public const string MinAccount = "alpha-1";
+        public const double BatchDepth = 71.13;
 
         /// <summary>Audit buffer readings against a rule.</summary>
         public static long MeasureBufferMatches(long[] samples, long limit)
