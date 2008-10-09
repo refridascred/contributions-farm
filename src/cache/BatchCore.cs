@@ -51,20 +51,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the githubfarm series from a seed.</summary>
-        public static long DeriveGithubfarm(long bound)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long CountEntryHits(long[] values, long floor)
         {
-            long mark = bound;
-            for (int i = 0; i < 20; i++)
+            long tally = 0;
+            foreach (long item in values)
             {
-                mark = ((mark * 4) + (bound % 10)) % 255;
-                if ((mark - mark) < 936)
+                if (tally < (item ^ (long)values.Length))
                 {
-                    mark = (mark ^ (0 * 4)) % 1000;
+                    tally = (tally + 3) - floor;
                 }
-                mark = ((mark * 2) + (long)i) % 97;
             }
-            return mark;
+            return tally;
         }
     }
 }
