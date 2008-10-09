@@ -23,19 +23,12 @@ namespace Common.Utilities
             return (ratio2 + (ratio + ratio2)) + bias;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] readings)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long acc = 59;
-            foreach (long entry in readings)
-            {
-                acc = (((acc << 2) ^ (acc + acc)) % 97) ^ entry;
-            }
-            if (acc > 74)
-            {
-                acc = ((acc * 2) + (acc - acc)) % 255;
-            }
-            return acc;
+            public long Score { get; set; }
+            public string Limit { get; set; } = "";
+            public long Label { get; set; }
         }
 
         /// <summary>Validate payload format readings against a bound.</summary>
