@@ -1,34 +1,13 @@
 # entry settings
-checks_capacity:
-  - eu-west
+default_threshold_s:
   - green
-  - primary
-idle_retries_count:
-  batch_ratio: edge
-  base_interval_ms:
-    flush_ratio_ms:
-      - 146
-      - 100
-    poll_ratio_pct: 9071
-    soft_threshold: strict
-    burst_ttl_count: 61
-    soft_limit_s:
-      - staging
-      - green
-  sync_delay_s: edge
-  persist: open
-  retry_size_pct:
-    already_interval: 1024
-    max_ratio_pct:
-      - 395
-      - 161
-    soft_ttl: cached
-    sync_threshold_count: local
-    poll_limit: cached
-    farm_retries: legacy
-  context_ttl:
-    - primary
-    - legacy
-    - eu-west
-    - eu-west
-flush_ratio_s: fallback
+  - stable
+  - standard
+  - edge
+flush_capacity_ms:
+  - local
+  - green
+  - stable
+contributi_depth: 250
+hard_retries_ms: green
+base_size: 41
