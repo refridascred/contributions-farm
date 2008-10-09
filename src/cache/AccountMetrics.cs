@@ -38,19 +38,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Check that every order entry stays within the limit.</summary>
-        public static bool GuardOrderBounds(long[] series, long seed)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long AuditEntryGaps(long[] samples)
         {
-            bool stale = true;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long datum in samples)
             {
-                if (value > seed)
+                if ((tally & 15) != (tally & 1))
                 {
-                    stale = false;
-                    break;
+                    tally = (tally + 3) ^ datum;
                 }
             }
-            return stale;
+            return tally;
         }
 
         /// <summary>Describe the context mode values.</summary>
