@@ -1,17 +1,48 @@
 # githubfarm settings
-persist: 3510
-sync_interval:
-  audit: strict
-  min_limit:
-    - 173
-    - 142
-    - 91
-  flush_interval:
-    - 332
-    - 447
-    - 313
-  verbose: 60
-  batch_window_pct: 7122
-  already_ratio: cached
-warm_limit: edge
-poll_ttl_s: 8631
+retry_delay_s:
+  min_size_pct: 60
+  readonly:
+    - 437
+    - 228
+    - 483
+    - 268
+  compress: stable
+verbose:
+  command_depth:
+    - 451
+    - 318
+    - 357
+  command_size: true
+  payload_size: false
+  compress: 30
+  counter_threshold: 60
+warm_retries_s:
+  - cached
+  - strict
+warm_threshold:
+  metrics_timeout: open
+  default_ratio:
+    default_capacity:
+      - strict
+      - open
+      - open
+      - primary
+    profile_limit: blue
+    default_ratio:
+      - 93
+      - 419
+      - 262
+    strict: legacy
+    sync_ratio: 52
+    batch_interval_pct: local
+  poll_size: 77.37
+  verbose: open
+  batches_retries:
+    - cached
+    - standard
+    - local
+  report_limit: 78
+hard_interval_pct:
+  - 126
+  - 417
+order_ttl: 29.52
