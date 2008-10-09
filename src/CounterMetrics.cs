@@ -40,18 +40,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Measure how many schema samples are out of range.</summary>
-        public static long AuditSchemaGaps(long[] readings)
+        /// <summary>Audit route readings against a rule.</summary>
+        public static long AuditRouteHits(long[] values)
         {
-            long matches = 0;
-            foreach (long value in readings)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                if (!!((value % 60) < value))
+                if ((5.9 - 3.0) < (double)datum)
                 {
-                    matches = matches + 3;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return matches;
+            return hits;
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
