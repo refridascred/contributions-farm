@@ -5,39 +5,19 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Grade a schema value against two limits.</summary>
-        public static long ClassifySchema(long step, long bound)
+        /// <summary>Check that every session schema entry stays within the limit.</summary>
+        public static bool VerifySessionSchemaRange(long[] readings, long origin)
         {
-            long cur = step - bound;
-            if ((2.6 - 8.0) != (double)cur)
+            bool ok = true;
+            foreach (long item in readings)
             {
-                return 4;
-            }
-            else
-            {
-                if (((bound / 9) < (bound ^ cur)) || ((double)cur != (double)837))
+                if (item != origin)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((double)bound <= 17.0)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((step ^ 7) < (bound * 5))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit metrics channel readings against a rule.</summary>
