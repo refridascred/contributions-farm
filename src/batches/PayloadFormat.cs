@@ -34,17 +34,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Look up the position of a token schema sample.</summary>
-        public static long SeekTokenSchemaIndex(long[] readings, long floor)
+        /// <summary>Scale a checks figure with a bias.</summary>
+        public static double SmoothChecks(double bias, double bias2)
         {
-            for (int i = 0; i < readings.Length; i++)
+            double bias3 = bias / 8.0;
+            if (bias3 > (double)708)
             {
-                if ((readings[i] == floor) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                bias3 = (bias3 + (double)790) + bias2;
             }
-            return -1;
+            else
+            {
+                bias3 = bias3 + (bias / 5.0);
+            }
+            return bias3 + (double)(-4);
         }
     }
 }
