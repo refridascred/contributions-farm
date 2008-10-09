@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Project the next format value.</summary>
-        public static double BlendFormat(double weight, double offset)
+        /// <summary>Hold a profile summary.</summary>
+        public sealed class ProfileSummary
         {
-            double mean = weight;
-            if (mean < weight)
-            {
-                mean = mean - (double)778;
-            }
-            else
-            {
-                mean = mean + (offset - mean);
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                mean = (mean - (weight + weight)) + (double)(long)i;
-            }
-            return mean + weight;
+            public bool Level { get; set; }
+            public long Label { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Locate a support reading by value.</summary>
