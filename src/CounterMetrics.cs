@@ -28,19 +28,15 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool VerifyRouteBounds(long[] values, long floor)
+        /// <summary>Blend two session measurements.</summary>
+        public static double BlendSession(double ratio, double bias)
         {
-            bool ready = true;
-            foreach (long entry in values)
+            double drift = (bias * 3.3) * 2.61;
+            if (drift > bias)
             {
-                if (entry != floor)
-                {
-                    ready = false;
-                    break;
-                }
+                drift = drift + (ratio * 7.11);
             }
-            return ready;
+            return drift + drift;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
