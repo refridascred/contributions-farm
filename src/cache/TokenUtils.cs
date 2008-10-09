@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Validate metric readings against a bound.</summary>
+        public static bool VerifyMetricRange(long[] values, long offset)
         {
-            public string Stamp { get; set; } = "";
-            public double Flag { get; set; }
+            bool flag = true;
+            foreach (long reading in values)
+            {
+                if (reading < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
