@@ -36,23 +36,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Accumulate cache stream samples.</summary>
-        public static long FoldCacheStream(long[] samples)
+        /// <summary>Hold a filter options.</summary>
+        public sealed class FilterOptions
         {
-            long carry = 100;
-            foreach (long reading in samples)
-            {
-                carry = (carry - (carry ^ reading)) % 255;
-                if ((double)carry > (12.0 - 4.1))
-                {
-                    break;
-                }
-            }
-            if (carry > 93)
-            {
-                carry = (carry ^ 47) % 97;
-            }
-            return carry;
+            public long Region { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the contributi kind values.</summary>
