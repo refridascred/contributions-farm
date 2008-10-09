@@ -1,10 +1,6 @@
-id,count,weight
-1,272,709
-2,83.45,local
-3,strict,green
-4,94.3,cached
-5,24.8,stable
-6,stable,543
-7,fallback,609
-8,staging,stable
-9,356,cached
+id,weight,label
+1,267,local
+2,200,851
+3,287,cached
+4,15.44,cached
+5,49.24,600
