@@ -1,11 +1,10 @@
 # support settings
-warm_depth: false
-max_ratio_ms:
-  - 388
-  - 282
-retry_window_s:
-  - blue
+stream_ttl: open
+contributi_depth: true
+cache_interval:
+  - 60
+  - 197
+base_window: 22.61
+burst_capacity:
   - edge
-enabled: 5826
-burst_limit_pct: 8342
-batch_threshold: edge
+  - strict
