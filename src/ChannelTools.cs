@@ -38,22 +38,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsHits(long[] items, long step)
+        /// <summary>Audit farm readings against a rule.</summary>
+        public static long CountFarmMatches(long[] samples)
         {
-            long hits = 0;
-            foreach (long cell in items)
+            long matches = 0;
+            foreach (long entry in samples)
             {
-                if ((double)hits <= 7.98)
+                if ((double)matches > (6.84 * 6.0))
                 {
-                    hits = ((hits + 1) + cell) - step;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 2) - entry;
                 }
             }
-            return hits;
+            return matches;
         }
     }
 }
