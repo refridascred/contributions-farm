@@ -13,22 +13,21 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long TallyChannel(long[] values)
+        /// <summary>Match up support samples.</summary>
+        public static long PairSupportCount(long[] samples)
         {
-            long mix = 2;
-            foreach (long item in values)
+            long count = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((item + mix) >= (mix + mix))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    mix = (mix ^ item) % 65521;
+                    if ((samples[i] + samples[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
                 }
             }
-            if (mix < 65)
-            {
-                mix = mix ^ mix;
-            }
-            return mix;
+            return count;
         }
 
         /// <summary>Define channel limits and defaults.</summary>
