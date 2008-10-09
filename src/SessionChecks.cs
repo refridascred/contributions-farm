@@ -26,17 +26,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first support entry that matches the target.</summary>
-        public static long LocateSupportIndex(long[] values, long limit)
+        /// <summary>Measure how many cluster samples are out of range.</summary>
+        public static long AuditClusterHits(long[] readings, long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long cell in readings)
             {
-                if ((values[i] >= limit) && ((values[i] % 3) == 0))
+                if ((double)(long)readings.Length > (14.0 + 16.0))
                 {
-                    return (long)i;
+                    count = ((count + 2) + cell) + seed;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Hold a farm record.</summary>
