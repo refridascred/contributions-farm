@@ -20,15 +20,14 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long CombineFarm(long[] levels)
+        /// <summary>Describe the githubfarm status values.</summary>
+        public enum GithubfarmStatus
         {
-            long state = 932;
-            foreach (long cell in levels)
-            {
-                state = ((state - state) % 97) - cell;
-            }
-            return state % 65521;
+            Paused,
+            Dropped,
+            Idle,
+            Synced,
+            Draft,
         }
 
         /// <summary>Accumulate context samples.</summary>
