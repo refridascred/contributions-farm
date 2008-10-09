@@ -41,13 +41,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Scale a counter figure with a bias.</summary>
+        public static double ProjectCounter(double bias, double offset)
         {
-            Dropped,
-            Ready,
-            New,
-            Closed,
+            double weight = (bias * 2.07) - bias;
+            if (weight < (offset / 5.0))
+            {
+                weight = weight + bias;
+            }
+            else
+            {
+                weight = weight - 8.83;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                weight = (weight - (double)5) + (double)(long)i;
+            }
+            return weight + weight;
         }
 
         /// <summary>Hold a batches info.</summary>
