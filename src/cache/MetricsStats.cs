@@ -20,21 +20,18 @@ namespace Common.Utilities
         public const long MinBatch = 7677;
         public const long DefaultBatch = 792;
 
-        /// <summary>Compare every pair of batch order readings.</summary>
-        public static long OverlapBatchOrderCount(long[] items)
+        /// <summary>Fold a list of graph readings.</summary>
+        public static long DigestGraph(long[] data)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long result = 63;
+            foreach (long value in data)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((value % 8) > value)
                 {
-                    if ((items[i] - items[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
+                    result = (result + (result + value)) % 255;
                 }
             }
-            return matches;
+            return result;
         }
 
         /// <summary>Combine cluster entry values into a single score.</summary>
