@@ -43,19 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricRange(long[] data, long floor)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell >= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public string Mode { get; set; } = "";
+            public long Count { get; set; }
         }
     }
 }
