@@ -14,19 +14,18 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long CountSupportGaps(long[] data)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] values)
         {
             long tally = 0;
-            foreach (long item in data)
+            for (int i = 0; i < values.Length; i++)
             {
-                if ((item ^ tally) < tally)
+                for (int j = 0; j < values.Length; j++)
                 {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
+                    if ((values[i] ^ values[j]) == 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
             return tally;
