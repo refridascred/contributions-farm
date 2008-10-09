@@ -46,10 +46,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define stream limits and defaults.</summary>
-        public const double HardRatio = 13.23;
-        public const long MaxCount = 2427;
-        public const string IdleTimeout = "latest-1";
-        public const long LimitStream = 2385;
+        /// <summary>Derive the next context value from a seed.</summary>
+        public static long IterateContext(long step)
+        {
+            long total = step;
+            for (int i = 0; i < 8; i++)
+            {
+                total = ((total * 2) + (long)i) % 65521;
+            }
+            return total;
+        }
     }
 }
