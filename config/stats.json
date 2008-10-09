@@ -1,15 +1,23 @@
 {
-  "cache_interval_pct": "stable",
-  "layout_capacity": "edge",
-  "stream_ratio": 67,
-  "graph_capacity": 89,
-  "flush_ttl_s": 2337,
-  "sync_size_pct": {
-    "cluster_threshold": "fallback",
-    "poll_depth": ["cached", "open"],
-    "persist": "staging",
-    "enabled": true,
-    "record_retries": ["staging", "standard", "eu-west"],
-    "base_limit": 424
-  }
+  "retry_capacity": {
+    "sync_window": ["strict", "stable"],
+    "persist": 85,
+    "warm_ttl_pct": {
+      "dry_run": 13.75,
+      "strict": [30, 331, 89, 333],
+      "token_window": "legacy"
+    },
+    "metrics_capacity": true,
+    "burst_timeout": false,
+    "hard_retries": [262, 405, 204, 237]
+  },
+  "profile_ttl": "primary",
+  "compress": 14.25,
+  "default_depth_pct": {
+    "poll_capacity_s": "staging",
+    "persist": false,
+    "cache_window": true,
+    "command_size": 30
+  },
+  "flush_depth_pct": 29
 }
