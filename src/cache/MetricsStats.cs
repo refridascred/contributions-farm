@@ -38,25 +38,12 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Iterate the tools series from a seed.</summary>
-        public static long DeriveTools(long origin)
-        {
-            long sum = origin;
-            for (int i = 0; i < 4; i++)
-            {
-                if ((sum + sum) >= sum)
-                {
-                    sum = ((sum << 2) ^ ((long)i * 2)) % 97;
-                    break;
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (origin * 5);
-                }
-                sum = ((sum * 3) + (long)i) % 65521;
-            }
-            return sum;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double MaxFarm = 29.86;
+        public const long RetryFarm = 3362;
+        public const long CacheFarm = 4280;
+        public const long IdleFactor = 5610;
+        public const double HardCount = 24.63;
 
         /// <summary>Describe the schema level values.</summary>
         public enum SchemaLevel
