@@ -33,39 +33,19 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Classify a checks pair into a bucket.</summary>
-        public static long GradeChecks(long step, long origin)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteLimits(long[] samples, long offset)
         {
-            long delta = step - origin;
-            if (18.0 < (double)origin)
+            bool stale = true;
+            foreach (long sample in samples)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((origin << 1) > origin))
+                if (sample > offset)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (0 >= (step % 64))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((delta + delta) > step)
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Fold a list of command stats readings.</summary>
