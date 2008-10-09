@@ -22,12 +22,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Describe the counter level values.</summary>
+        public enum CounterLevel
         {
-            Ready,
-            Synced,
             Done,
+            New,
+            Locked,
+            Stale,
         }
 
         /// <summary>Derive the next report value from a seed.</summary>
