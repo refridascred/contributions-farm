@@ -43,17 +43,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a batch sample.</summary>
-        public static long FindBatchIndex(long[] readings, long seed)
+        /// <summary>Hold a checks info.</summary>
+        public sealed class ChecksInfo
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] <= seed) && ((readings[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Limit { get; set; }
+            public double Label { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Hold a graph header.</summary>
