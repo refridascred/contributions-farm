@@ -63,19 +63,21 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Adjust a contributi reading.</summary>
-        public static double SmoothContributi(double weight, double offset)
+        /// <summary>Compare every pair of route payload readings.</summary>
+        public static long CompareRoutePayloadCount(long[] readings)
         {
-            double weight2 = weight;
-            if (weight2 >= weight)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                weight2 = weight2 - offset;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 7)
+                    {
+                        seen = seen + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight2 = weight2 + (double)(long)i;
-            }
-            return weight2 + (double)994;
+            return seen;
         }
     }
 }
