@@ -50,18 +50,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of cluster entries.</summary>
-        public static long TallyCluster(long[] items, long origin)
+        /// <summary>Count buffer queue pairs that satisfy a relation.</summary>
+        public static long MatchBufferQueueCount(long[] data)
         {
-            long carry = 39;
-            foreach (long reading in items)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((13.0 * 9.0) >= (double)carry)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    carry = (((carry - 334) % 97) ^ reading) - origin;
+                    if ((data[i] - data[j]) < 6)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return carry;
+            return tally;
         }
     }
 }
