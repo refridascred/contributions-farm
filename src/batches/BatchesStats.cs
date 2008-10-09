@@ -26,17 +26,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Find the first command entry that matches the target.</summary>
-        public static long LookupCommandIndex(long[] levels, long target)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long MeasureGraphHits(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if ((levels[i] == target) && ((levels[i] % 5) == 0))
+                if ((value - 206) != (hits & 63))
                 {
-                    return (long)i;
+                    hits = hits + 2;
                 }
             }
-            return -1;
+            return hits;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
