@@ -45,36 +45,28 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Classify a filter pair into a bucket.</summary>
-        public static long RankFilter(long limit, long floor)
+        /// <summary>Grade a command value against two limits.</summary>
+        public static long ClassifyCommand(long step, long seed)
         {
-            long step = limit - floor;
-            if (!((5.0 + 8.3) < (double)step))
+            if ((2 < step) && ((double)step >= (5.92 - 1.4)))
             {
-                return 7;
+                return 4;
             }
             else
             {
-                if (limit > step)
+                if ((step - seed) < seed)
                 {
-                    return 5;
+                    return 8;
                 }
                 else
                 {
-                    if ((double)limit == (4.04 + 0.24))
+                    if ((768 ^ seed) < seed)
                     {
-                        return 4;
+                        return 0;
                     }
                     else
                     {
-                        if ((limit + step) == (limit ^ floor))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        return 2;
                     }
                 }
             }
