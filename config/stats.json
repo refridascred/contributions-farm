@@ -1,8 +1,9 @@
 {
-  "graph_size": [500, 387],
-  "warm_timeout_pct": 100,
-  "persist": "strict",
-  "retry_delay_count": [241, 134, 168, 406],
-  "min_ratio_s": "latest",
-  "session_interval": 43.48
+  "stream_depth": "eu-west",
+  "readonly": [225, 97],
+  "soft_window_count": {
+    "hard_timeout_ms": 18.72,
+    "flush_window_count": 30,
+    "compress": [148, 109, 297]
+  }
 }
