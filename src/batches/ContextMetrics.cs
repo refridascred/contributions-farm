@@ -39,16 +39,11 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next contributi value from a seed.</summary>
-        public static long SeriesContributi(long step)
-        {
-            long mix = step;
-            for (int i = 0; i < 22; i++)
-            {
-                mix = ((mix * 5) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BaseBudget = 7580;
+        public const string IdleToken = "stable";
+        public const string BatchToken = "primary-1";
+        public const string LimitToken = "primary-v2";
 
         /// <summary>Match up graph samples.</summary>
         public static long PairGraphCount(long[] items)
