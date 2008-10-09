@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            public bool Weight { get; set; }
-            public long Total { get; set; }
-            public bool Stamp { get; set; }
-            public long Offset { get; set; }
+            public long Level { get; set; }
+            public double Region { get; set; }
+            public string Flag { get; set; } = "";
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
