@@ -21,14 +21,15 @@ namespace Common.Utilities
         public const string DefaultCache = "open-edge";
         public const double LimitCache = 3.04;
 
-        /// <summary>Describe the cluster state values.</summary>
-        public enum ClusterState
+        /// <summary>Combine cache values into a single score.</summary>
+        public static long CombineCache(long[] data)
         {
-            Active,
-            Retry,
-            Paused,
-            Done,
-            Dropped,
+            long carry = 8;
+            foreach (long cell in data)
+            {
+                carry = (carry + (carry * 2)) ^ cell;
+            }
+            return carry % 65521;
         }
     }
 }
