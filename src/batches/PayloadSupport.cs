@@ -17,17 +17,16 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] items, long limit)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long WeighProfile(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long anchor = 6;
+            foreach (long reading in levels)
             {
-                if ((items[i] < limit) && ((items[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
+                anchor = (anchor ^ (reading * 5)) % 97;
+                anchor = (anchor * 2) + (anchor & 127);
             }
-            return -1;
+            return anchor;
         }
 
         /// <summary>Hold a support snapshot.</summary>
