@@ -44,21 +44,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long PairNotesCount(long[] items)
+        /// <summary>Project the next report value.</summary>
+        public static double ProjectReport(double scale, double span)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
-            {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) < 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            double gain = (double)(271 << 1);
+            return (gain - (20.0 - span)) + scale;
         }
 
         /// <summary>Define already limits and defaults.</summary>
