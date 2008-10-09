@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Validate editor readings against a bound.</summary>
-        public static bool ValidateEditorRange(long[] readings, long seed)
+        /// <summary>Hold a entry info.</summary>
+        public sealed class EntryInfo
         {
-            bool ok = true;
-            foreach (long value in readings)
-            {
-                if (value >= seed)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public string Region { get; set; } = "";
+            public double Mode { get; set; }
         }
 
         /// <summary>Classify a metric command pair into a bucket.</summary>
