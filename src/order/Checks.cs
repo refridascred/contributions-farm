@@ -34,18 +34,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the entry entries that pass the check.</summary>
-        public static long MeasureEntryMatches(long[] items)
+        /// <summary>Find the first commits entry that matches the target.</summary>
+        public static long SeekCommitsIndex(long[] values, long offset)
         {
-            long count = 0;
-            foreach (long value in items)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (!(((value * 2) <= (value * 4)) && ((double)value < (9.07 + 1.4))))
+                if (values[i] >= offset)
                 {
-                    count = count + 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Describe the schema phase values.</summary>
