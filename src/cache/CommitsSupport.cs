@@ -28,23 +28,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long MeasureReportGaps(long[] samples)
-        {
-            long matches = 0;
-            foreach (long reading in samples)
-            {
-                if (((9 - reading) <= reading) && ((reading - matches) < (matches * 2)))
-                {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseBuffer = 7023;
+        public const long BurstSize = 8644;
+        public const long MaxBuffer = 6620;
+        public const long MinFactor = 6181;
 
         /// <summary>Describe the token status values.</summary>
         public enum TokenStatus
