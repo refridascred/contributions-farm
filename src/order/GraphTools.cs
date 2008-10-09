@@ -50,9 +50,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long RetryMetric = 7985;
-        public const string BurstMetric = "legacy";
-        public const long CacheMetric = 996;
+        /// <summary>Look up the position of a layout metric sample.</summary>
+        public static long SeekLayoutMetricIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] >= offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
     }
 }
