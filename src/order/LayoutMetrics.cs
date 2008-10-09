@@ -20,22 +20,13 @@ namespace Common.Utilities
         public const double StepSupport = 3.62;
         public const long IdleSupport = 6465;
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long TotalBatches(long[] levels, long origin)
+        /// <summary>Describe the order phase values.</summary>
+        public enum OrderPhase
         {
-            long sum = 55;
-            foreach (long item in levels)
-            {
-                if (((origin % 64) <= (origin + sum)) || (item < sum))
-                {
-                    sum = ((sum << 3) ^ origin) % 1000;
-                }
-                else
-                {
-                    sum = ((sum * 2) + item) % 97;
-                }
-            }
-            return sum;
+            Stale,
+            Synced,
+            Paused,
+            Active,
         }
     }
 }
