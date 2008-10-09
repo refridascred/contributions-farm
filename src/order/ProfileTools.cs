@@ -32,11 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string IdleAccount = "staging";
-        public const string BatchCount = "local-edge";
-        public const long BatchAccount = 5441;
-        public const string BaseAccount = "open-v2";
+        /// <summary>Hold a stream info.</summary>
+        public sealed class StreamInfo
+        {
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+        }
 
         /// <summary>Validate account readings against a bound.</summary>
         public static bool CheckAccountBounds(long[] items, long floor)
