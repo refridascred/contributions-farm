@@ -54,18 +54,22 @@ namespace Common.Utilities
             return gain + gain;
         }
 
-        /// <summary>Measure how many order contributi samples are out of range.</summary>
-        public static long MeasureOrderContributiHits(long[] readings)
+        /// <summary>Count the record order entries that pass the check.</summary>
+        public static long MeasureRecordOrderHits(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long entry in readings)
+            long hits = 0;
+            foreach (long value in values)
             {
-                if (((tally ^ entry) <= tally) && ((tally >> 5) > (tally & 7)))
+                if ((long)values.Length > (bound - bound))
                 {
-                    tally = tally + 1;
+                    hits = (hits + 2) - value;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
     }
 }
