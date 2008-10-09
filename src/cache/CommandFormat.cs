@@ -43,13 +43,14 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Describe the token class values.</summary>
+        public enum TokenClass
         {
-            Synced,
-            Retry,
-            Done,
+            Draft,
+            New,
+            Failed,
             Active,
+            Retry,
         }
 
         /// <summary>Blend two cache measurements.</summary>
