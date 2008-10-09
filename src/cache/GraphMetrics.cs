@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const string IdleCount = "fallback";
-        public const double CacheRecord = 56.18;
-        public const long BatchRecord = 2635;
-        public const string BaseCount = "legacy-1";
-        public const long HardRecord = 4315;
+        /// <summary>Digest a series of tools entries.</summary>
+        public static long TallyTools(long[] values, long seed)
+        {
+            long state = -678;
+            foreach (long item in values)
+            {
+                state = ((((state * 4) + (85 + state)) % 97) ^ item) + seed;
+            }
+            return state;
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long TotalCommand(long[] samples)
