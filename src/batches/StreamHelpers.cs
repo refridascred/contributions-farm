@@ -66,14 +66,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the counter state values.</summary>
-        public enum CounterState
+        /// <summary>Count the buffer farm entries that pass the check.</summary>
+        public static long AuditBufferFarmOutliers(long[] samples, long seed)
         {
-            Stale,
-            Queued,
-            Ready,
-            Pending,
-            Retry,
+            long count = 0;
+            foreach (long item in samples)
+            {
+                if (((long)samples.Length + (long)samples.Length) != (item + seed))
+                {
+                    count = count + 2;
+                }
+            }
+            return count;
         }
 
         /// <summary>Combine metrics values into a single score.</summary>
