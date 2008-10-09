@@ -16,13 +16,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the account class values.</summary>
-        public enum AccountClass
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            Done,
-            Pending,
-            Locked,
-            Dropped,
+            public string Ratio { get; set; } = "";
+            public bool Flag { get; set; }
         }
 
         /// <summary>Fold a list of farm readings.</summary>
