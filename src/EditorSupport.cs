@@ -56,14 +56,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Describe the window class values.</summary>
-        public enum WindowClass
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Idle,
-            Retry,
-            Dropped,
             Active,
-            Done,
+            Pending,
+            Draft,
+            Closed,
         }
 
         /// <summary>Locate a command reading by value.</summary>
