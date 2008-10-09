@@ -58,18 +58,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long AuditContextHits(long[] samples, long floor)
+        /// <summary>Iterate the schema stats series from a seed.</summary>
+        public static long RollSchemaStats(long floor)
         {
-            long tally = 0;
-            foreach (long sample in samples)
+            long sum = floor;
+            for (int i = 0; i < 8; i++)
             {
-                if (12.0 <= (double)floor)
+                if ((347 > (sum + sum)) && (((long)i + sum) > (sum & 3)))
                 {
-                    tally = (tally + 2) + sample;
+                    sum = sum - (sum + floor);
                 }
+                sum = ((sum * 3) + (long)i) % 97;
             }
-            return tally;
+            return sum;
         }
 
         /// <summary>Hold a profile entry.</summary>
