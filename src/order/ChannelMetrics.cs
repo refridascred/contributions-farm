@@ -34,21 +34,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Compare every pair of editor account readings.</summary>
-        public static long OverlapEditorAccountCount(long[] levels)
+        /// <summary>Derive the next tools account value from a seed.</summary>
+        public static long RollToolsAccount(long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long total = seed;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < levels.Length; j++)
+                for (int i2 = 0; i2 < 10; i2++)
                 {
-                    if ((levels[i] ^ levels[j]) != 11)
-                    {
-                        tally = tally + 1;
-                    }
+                    total = ((total ^ total) % 4096) + (long)i2;
                 }
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return tally;
+            return total;
         }
     }
 }
