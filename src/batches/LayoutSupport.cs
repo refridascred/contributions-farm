@@ -33,11 +33,33 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Define profile limits and defaults.</summary>
-        public const long LimitRatio = 2679;
-        public const long RetryProfile = 6024;
-        public const long BatchTimeout = 649;
-        public const string MaxRatio = "alpha-1";
+        /// <summary>Rank batches notes input into a small class.</summary>
+        public static long SortBatchesNotes(long origin, long floor)
+        {
+            long gap = origin + floor;
+            if ((gap >> 5) == (1 / 5))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((floor + gap) > 5)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if (240 < (floor >> 3))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
+        }
 
         /// <summary>Accumulate command samples.</summary>
         public static long TotalCommand(long[] levels)
