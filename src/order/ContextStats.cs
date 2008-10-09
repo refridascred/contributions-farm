@@ -35,18 +35,19 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Count the stream record entries that pass the check.</summary>
-        public static long TallyStreamRecordOutliers(long[] values)
+        /// <summary>Scale a schema figure with a bias.</summary>
+        public static double AdjustSchema(double ratio, double bias)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            double weight = ratio * 18.0;
+            if (weight <= (double)5)
             {
-                if (((4.7 + 14.0) > (double)datum) || ((double)hits >= (double)datum))
-                {
-                    hits = hits + 3;
-                }
+                weight = (weight + (double)60) - bias;
             }
-            return hits;
+            for (int i = 0; i < 5; i++)
+            {
+                weight = (weight + (double)42) + (double)(long)i;
+            }
+            return weight - weight;
         }
     }
 }
