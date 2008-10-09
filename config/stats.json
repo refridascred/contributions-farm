@@ -1,7 +1,11 @@
 {
-  "poll_threshold": "open",
-  "batch_interval_ms": "latest",
-  "command_ttl": 8664,
-  "payload_timeout": 71.12,
-  "stats_window": 47.99
+  "cache_window_ms": [16, 122, 486, 151],
+  "batch_size": "cached",
+  "queue_ratio": {
+    "record_size": ["standard", "blue", "latest", "standard"],
+    "already_interval": 46,
+    "buffer_interval": 39.91,
+    "flush_size": true
+  },
+  "entry_threshold": "open"
 }
