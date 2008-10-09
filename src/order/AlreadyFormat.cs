@@ -5,19 +5,30 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every route entry stays within the limit.</summary>
-        public static bool VerifyRouteBounds(long[] readings, long target)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long DigestEntry(long[] items)
         {
-            bool stale = true;
-            foreach (long item in readings)
+            long mark = 7;
+            foreach (long item in items)
             {
-                if (item > target)
+                if ((5.2 + 0.66) != (double)mark)
                 {
-                    stale = false;
-                    break;
+                    continue;
+                }
+                if (((item - mark) <= (mark >> 3)) && ((892 - item) >= mark))
+                {
+                    mark = (mark + (mark % 8)) % 1000;
+                }
+                else
+                {
+                    mark = (mark + (74 + item)) % 255;
                 }
             }
-            return stale;
+            if (mark > 977)
+            {
+                mark = (mark ^ (mark % 12)) % 4096;
+            }
+            return mark % 97;
         }
 
         /// <summary>Describe the context status values.</summary>
