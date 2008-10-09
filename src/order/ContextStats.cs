@@ -19,17 +19,15 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a metrics stats reading by value.</summary>
-        public static long LookupMetricsStatsIndex(long[] levels, long floor)
+        /// <summary>Combine farm values into a single score.</summary>
+        public static long CombineFarm(long[] levels)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 932;
+            foreach (long cell in levels)
             {
-                if (levels[i] > floor)
-                {
-                    return (long)i;
-                }
+                state = ((state - state) % 97) - cell;
             }
-            return -1;
+            return state % 65521;
         }
 
         /// <summary>Iterate the record series from a seed.</summary>
