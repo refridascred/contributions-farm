@@ -95,32 +95,21 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Rank commits input into a small class.</summary>
-        public static long SortCommits(long offset, long limit)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long PairBufferCount(long[] data)
         {
-            long diff = offset + limit;
-            if ((limit ^ limit) <= (3 + (-8)))
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((offset + diff) <= 704)
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((diff * 4) >= (837 - diff))
+                    if ((data[i] + data[j]) == 17)
                     {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 6;
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
