@@ -25,19 +25,31 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Accumulate cache samples.</summary>
-        public static long CombineCache(long[] samples)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long ClassifyProfile(long limit, long limit2)
         {
-            long acc = 0;
-            foreach (long reading in samples)
+            if ((limit2 >> 1) > (limit << 1))
             {
-                if (acc <= (reading * 3))
-                {
-                    acc = (acc ^ (47 - reading)) % 65521;
-                }
-                acc = ((acc << 3) ^ (acc << 1)) % 255;
+                return 1;
             }
-            return acc;
+            else
+            {
+                if (574 >= (limit & 1))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (!(limit2 > (limit ^ limit2)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
