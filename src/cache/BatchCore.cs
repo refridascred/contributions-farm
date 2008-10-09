@@ -34,12 +34,24 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the window level values.</summary>
-        public enum WindowLevel
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long BucketAlready(long seed, long limit)
         {
-            Synced,
-            Queued,
-            Idle,
+            if ((double)seed != (4.0 / 8.0))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed - limit) > limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
         }
     }
 }
