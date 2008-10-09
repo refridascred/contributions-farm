@@ -38,12 +38,10 @@ namespace Common.Utilities
         public const long BaseCommits = 7758;
         public const long HardSpan = 9724;
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double MaxFarm = 29.86;
-        public const long RetryFarm = 3362;
-        public const long CacheFarm = 4280;
-        public const long IdleFactor = 5610;
-        public const double HardCount = 24.63;
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long HardLevel = 7350;
+        public const long IdleCommits = 4084;
+        public const long DefaultDepth = 655;
 
         /// <summary>Compare every pair of metrics readings.</summary>
         public static long OverlapMetricsCount(long[] items)
