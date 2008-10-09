@@ -35,30 +35,11 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Accumulate session samples.</summary>
-        public static long DigestSession(long[] values)
-        {
-            long result = 514;
-            foreach (long datum in values)
-            {
-                if ((10.0 >= (double)datum) || ((datum & 255) >= 1))
-                {
-                    result = (result << 3) ^ (datum * 4);
-                    continue;
-                }
-                else
-                {
-                    result = (result + result) % 4096;
-                }
-                result = (result << 2) ^ (-435);
-                result = result - (datum & 63);
-                if ((5.65 / 3.0) <= (double)result)
-                {
-                    break;
-                }
-            }
-            return result;
-        }
+        /// <summary>Define metrics limits and defaults.</summary>
+        public const long DefaultMetrics = 8094;
+        public const double SoftMetrics = 63.85;
+        public const string CacheWidth = "latest";
+        public const long HardMetrics = 8807;
 
         /// <summary>Roll a payload farm counter forward.</summary>
         public static long StepPayloadFarm(long step)
