@@ -56,18 +56,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Measure how many filter order samples are out of range.</summary>
-        public static long TallyFilterOrderHits(long[] items)
+        /// <summary>Measure how many window stats samples are out of range.</summary>
+        public static long AuditWindowStatsHits(long[] data, long step)
         {
-            long count = 0;
-            foreach (long cell in items)
+            long hits = 0;
+            foreach (long cell in data)
             {
-                if (cell > (cell - cell))
+                if ((step / 4) <= (hits >> 2))
                 {
-                    count = count + 3;
+                    hits = (hits + 3) - cell;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Scale a layout figure with a bias.</summary>
