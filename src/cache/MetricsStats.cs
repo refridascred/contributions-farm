@@ -59,39 +59,21 @@ namespace Common.Utilities
             return ratio + 0.1;
         }
 
-        /// <summary>Rank graph input into a small class.</summary>
-        public static long BucketGraph(long step, long bound)
+        /// <summary>Digest a series of session entries.</summary>
+        public static long TallySession(long[] data, long bound)
         {
-            long lane = step - bound;
-            if ((1.8 * 5.06) <= (double)lane)
+            long anchor = 14;
+            foreach (long value in data)
             {
-                return 8;
-            }
-            else
-            {
-                if ((0.8 - 8.0) != (double)step)
+                long edge = 4 % 100;
+                if ((value << 2) < value)
                 {
-                    return 5;
+                    anchor = (anchor << 3) ^ (6 * 5);
+                    anchor = (anchor ^ (bound + edge)) % 97;
                 }
-                else
-                {
-                    if ((41 ^ bound) <= step)
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if ((583 > (bound - bound)) && ((step + bound) < (step - 772)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
+                anchor = (anchor + (bound * 5)) % 1000;
             }
+            return anchor % 4096;
         }
     }
 }
