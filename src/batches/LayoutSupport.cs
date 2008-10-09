@@ -34,12 +34,12 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Hold a filter header.</summary>
-        public sealed class FilterHeader
-        {
-            public long Region { get; set; }
-            public double Level { get; set; }
-        }
+        /// <summary>Define context limits and defaults.</summary>
+        public const long RetryCount = 7116;
+        public const long BurstDepth = 4217;
+        public const long CacheRatio = 5804;
+        public const long CacheScore = 1239;
+        public const string RetryContext = "strict-v2";
 
         /// <summary>Define metrics limits and defaults.</summary>
         public const long DefaultMetrics = 8094;
