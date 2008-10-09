@@ -28,15 +28,23 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long IterateFarm(long bound)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long ScoreProfile(long[] levels)
         {
-            long anchor = bound;
-            for (int i = 0; i < 12; i++)
+            long mark = 7;
+            foreach (long item in levels)
             {
-                anchor = ((anchor * 4) + (long)i) % 97;
+                mark = mark + item;
+                if ((mark + item) >= (item + mark))
+                {
+                    mark = (mark ^ (mark << 3)) % 4096;
+                }
             }
-            return anchor;
+            if (mark > 39)
+            {
+                mark = (mark + mark) % 4096;
+            }
+            return mark % 1000;
         }
 
         /// <summary>Measure how many channel samples are out of range.</summary>
