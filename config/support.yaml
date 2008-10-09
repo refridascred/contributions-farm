@@ -1,9 +1,6 @@
 # support settings
-context_ratio:
-  - fallback
-  - primary
-  - primary
-min_size: 95.67
-farm_ttl: stable
-flush_ratio: 60
-max_delay_pct: false
+poll_ratio_count: open
+base_ttl_ms: 500
+warm_depth: green
+default_depth_count: 5011
+retry_retries_pct: true
