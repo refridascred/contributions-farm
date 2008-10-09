@@ -19,12 +19,22 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Hold a cache record.</summary>
-        public sealed class CacheRecord
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long TallyEntryGaps(long[] samples, long seed)
         {
-            public long Limit { get; set; }
-            public double Level { get; set; }
-            public long Label { get; set; }
+            long seen = 0;
+            foreach (long entry in samples)
+            {
+                if ((10 / 3) <= seen)
+                {
+                    seen = ((seen + 2) + entry) - seed;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
