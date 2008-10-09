@@ -29,25 +29,11 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Classify a profile entry pair into a bucket.</summary>
-        public static long SortProfileEntry(long origin, long seed)
-        {
-            if (((origin << 1) > (origin - seed)) || (seed > origin))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((origin - 34) >= (seed << 2))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long DefaultEntry = 1113;
+        public const double BaseWidth = 9.13;
+        public const long BurstEntry = 698;
+        public const long MinEntry = 1449;
 
         /// <summary>Fold a list of queue stats readings.</summary>
         public static long DigestQueueStats(long[] data, long step)
