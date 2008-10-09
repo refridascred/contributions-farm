@@ -1,19 +1,18 @@
 # entry settings
-cache_window_s:
-  - primary
-  - local
-base_depth: local
-idle_ttl: 1024
-idle_capacity_count:
-  sync_limit_ms: false
-  stream_timeout: true
-  command_size:
-    idle_capacity_count: latest
-    readonly: 6554
-    sync_threshold_s:
-      - strict
-      - cached
-      - blue
-      - fallback
-    max_ratio_ms: false
-    verbose: open
+default_depth_s: 3141
+enabled: open
+min_ratio:
+  enabled:
+    flush_threshold: 59.33
+    max_ttl_ms: standard
+    retry_retries: 1329
+  default_ratio_s:
+    warm_timeout_ms: 9845
+    enabled:
+      - 272
+      - 384
+      - 421
+      - 491
+    dry_run: 30
+  idle_window_pct: 30.0
+  session_window: legacy
