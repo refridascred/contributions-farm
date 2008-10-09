@@ -19,12 +19,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define account limits and defaults.</summary>
-        public const string RetryAccount = "stable-edge";
-        public const long DefaultCount = 2690;
-        public const long SoftRatio = 7174;
-        public const string MinAccount = "alpha-1";
-        public const double BatchDepth = 71.13;
+        /// <summary>Match up graph samples.</summary>
+        public static long CompareGraphCount(long[] series)
+        {
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] ^ series[j]) > 7)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define profile limits and defaults.</summary>
         public const long MinProfile = 3774;
