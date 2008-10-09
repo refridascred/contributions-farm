@@ -6,15 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-mode="${1:-primary}"
-case "${mode}" in
-    green)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-COMMAND_LIMIT=23
+COMMAND_LIMIT=176
 log "limit is ${COMMAND_LIMIT}"
+
+for item in edge cached; do
+    log "checking ${item}"
+done
