@@ -88,17 +88,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Look up the position of a editor sample.</summary>
-        public static long SeekEditorIndex(long[] levels, long bound)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaBounds(long[] samples, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            bool flag = true;
+            foreach (long cell in samples)
             {
-                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
+                if (cell != target)
                 {
-                    return (long)i;
+                    flag = false;
+                    break;
                 }
             }
-            return -1;
+            return flag;
         }
     }
 }
