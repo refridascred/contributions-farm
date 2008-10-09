@@ -20,18 +20,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit counter cluster readings against a rule.</summary>
-        public static long TallyCounterClusterOutliers(long[] levels, long floor)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool CheckSchemaRange(long[] values, long target)
         {
-            long hits = 0;
-            foreach (long value in levels)
+            bool valid = true;
+            foreach (long sample in values)
             {
-                if ((-7) <= (value * 2))
+                if (sample >= target)
                 {
-                    hits = (hits + 2) - floor;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Count the entry entries that pass the check.</summary>
