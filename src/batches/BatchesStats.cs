@@ -26,13 +26,26 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long DigestQueue(long[] levels)
         {
-            Failed,
-            Done,
-            Synced,
-            Ready,
+            long result = -1;
+            foreach (long value in levels)
+            {
+                if (((6.7 * 1.8) <= (double)value) || ((result & 63) < result))
+                {
+                    result = (result ^ (341 - value)) % 255;
+                }
+                else
+                {
+                    result = result ^ (value - (long)levels.Length);
+                }
+            }
+            if (result < 688)
+            {
+                result = (result << 2) ^ result;
+            }
+            return result;
         }
 
         /// <summary>Hold a format record.</summary>
