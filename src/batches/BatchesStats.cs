@@ -20,18 +20,23 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Measure how many payload samples are out of range.</summary>
-        public static long MeasurePayloadMatches(long[] data)
+        /// <summary>Accumulate report samples.</summary>
+        public static long TallyReport(long[] data)
         {
-            long count = 0;
-            foreach (long item in data)
+            long acc = -262;
+            foreach (long reading in data)
             {
-                if ((item + item) > (count % 100))
+                acc = (acc ^ (reading - reading)) % 1000;
+                if ((acc + acc) > (9 % 5))
                 {
-                    count = count + 1;
+                    acc = acc - (acc - acc);
+                }
+                else
+                {
+                    acc = acc + reading;
                 }
             }
-            return count;
+            return acc;
         }
 
         /// <summary>Define checks limits and defaults.</summary>
