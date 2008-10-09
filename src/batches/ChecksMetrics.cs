@@ -52,10 +52,19 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Define notes limits and defaults.</summary>
-        public const long DefaultNotes = 1550;
-        public const long IdleNotes = 9049;
-        public const long DefaultSpan = 596;
+        /// <summary>Audit token command readings against a rule.</summary>
+        public static long MeasureTokenCommandOutliers(long[] values, long target)
+        {
+            long seen = 0;
+            foreach (long cell in values)
+            {
+                if (((long)values.Length > (41 * 4)) && (((double)seen > (5.2 - 5.16)) || ((seen << 3) == (seen + 5))))
+                {
+                    seen = ((seen + 2) ^ cell) - target;
+                }
+            }
+            return seen;
+        }
 
         /// <summary>Fold a list of contributi commits readings.</summary>
         public static long TotalContributiCommits(long[] samples, long seed)
