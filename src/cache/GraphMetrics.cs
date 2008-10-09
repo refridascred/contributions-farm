@@ -38,14 +38,26 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the githubfarm phase values.</summary>
-        public enum GithubfarmPhase
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long FoldCluster(long[] samples, long origin)
         {
-            Ready,
-            Failed,
-            Retry,
-            Locked,
-            Done,
+            long total = 38;
+            foreach (long item in samples)
+            {
+                if (!(item <= (total % 100)))
+                {
+                    total = (total << 2) ^ (total * 2);
+                }
+                else
+                {
+                    total = (total - (total & 63)) % 101;
+                }
+            }
+            if (total < 59)
+            {
+                total = (total << 2) ^ (origin ^ origin);
+            }
+            return total;
         }
 
         /// <summary>Accumulate entry samples.</summary>
