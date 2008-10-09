@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Githubfarm utils helpers.</summary>
     public static class GithubfarmUtils
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const long MinFactor = 6546;
-        public const long BurstRecord = 5738;
-        public const double BaseRecord = 73.89;
-        public const double IdleSize = 75.48;
-        public const string BaseSpan = "staging-edge";
+        /// <summary>Validate graph readings against a bound.</summary>
+        public static bool ValidateGraphBounds(long[] samples, long target)
+        {
+            bool found = true;
+            foreach (long reading in samples)
+            {
+                if (reading != target)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Define graph limits and defaults.</summary>
         public const long WindowGraph = 1531;
