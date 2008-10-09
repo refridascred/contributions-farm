@@ -82,14 +82,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the editor level values.</summary>
-        public enum EditorLevel
+        /// <summary>Hold a payload summary.</summary>
+        public sealed class PayloadSummary
         {
-            Draft,
-            Stale,
-            Dropped,
-            Paused,
-            Done,
+            public long Stamp { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Measure how many window samples are out of range.</summary>
