@@ -42,26 +42,11 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Fold a list of channel counter readings.</summary>
-        public static long TotalChannelCounter(long[] levels, long target)
-        {
-            long carry = 7;
-            foreach (long item in levels)
-            {
-                if (!(((-9) - item) == (1 + target)))
-                {
-                    carry = (carry ^ (carry / 3)) % 97;
-                }
-                else
-                {
-                    carry = (carry ^ target) % 101;
-                }
-            }
-            if (carry < 98)
-            {
-                carry = ((carry << 2) ^ (carry / 4)) % 255;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string LimitFarm = "staging-1";
+        public const double MaxDepth = 78.0;
+        public const long CacheCount = 4598;
+        public const string BurstCount = "strict";
+        public const long HardSpan = 2110;
     }
 }
