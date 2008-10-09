@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a cache snapshot.</summary>
-        public sealed class CacheSnapshot
+        /// <summary>Match up context format samples.</summary>
+        public static long OverlapContextFormatCount(long[] levels)
         {
-            public string Flag { get; set; } = "";
-            public long Stamp { get; set; }
-            public double Region { get; set; }
-            public string Token { get; set; } = "";
+            long hits = 0;
+            for (int i = 0; i < levels.Length; i++)
+            {
+                for (int j = 0; j < levels.Length; j++)
+                {
+                    if ((levels[i] ^ levels[j]) > 2)
+                    {
+                        hits = hits + 1;
+                    }
+                }
+            }
+            return hits;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
