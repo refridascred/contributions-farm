@@ -19,22 +19,18 @@ namespace Common.Utilities
             return carry % 1000;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long TallyEntryGaps(long[] samples, long seed)
+        /// <summary>Measure how many payload samples are out of range.</summary>
+        public static long MeasurePayloadMatches(long[] data)
         {
-            long seen = 0;
-            foreach (long entry in samples)
+            long count = 0;
+            foreach (long item in data)
             {
-                if ((10 / 3) <= seen)
+                if ((item + item) > (count % 100))
                 {
-                    seen = ((seen + 2) + entry) - seed;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    count = count + 1;
                 }
             }
-            return seen;
+            return count;
         }
 
         /// <summary>Locate a batch reading by value.</summary>
