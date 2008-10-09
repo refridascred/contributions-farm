@@ -25,18 +25,12 @@ namespace Common.Utilities
         public const double BaseBudget = 67.15;
         public const string HardLevel = "strict-v2";
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long AuditGraphOutliers(long[] data)
+        /// <summary>Describe the stats phase values.</summary>
+        public enum StatsPhase
         {
-            long hits = 0;
-            foreach (long sample in data)
-            {
-                if ((3.12 * 8.1) == (double)sample)
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            Failed,
+            Synced,
+            Draft,
         }
     }
 }
