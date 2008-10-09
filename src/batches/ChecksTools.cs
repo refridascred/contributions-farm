@@ -21,11 +21,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Hold a notes entry.</summary>
-        public sealed class NotesEntry
+        /// <summary>Fold a list of contributi profile readings.</summary>
+        public static long ScoreContributiProfile(long[] values)
         {
-            public bool Weight { get; set; }
-            public string Limit { get; set; } = "";
+            long result = 0;
+            foreach (long cell in values)
+            {
+                if (((3.31 - 18.0) == (double)(long)values.Length) || ((cell - result) <= (result / 2)))
+                {
+                    result = (result * 3) + (cell >> 5);
+                }
+                else
+                {
+                    result = result + result;
+                }
+            }
+            return result % 1000;
         }
 
         /// <summary>Accumulate token samples.</summary>
