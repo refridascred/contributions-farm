@@ -85,19 +85,25 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Adjust a tools window reading.</summary>
-        public static double ProjectToolsWindow(double bias, double floor)
+        /// <summary>Classify a channel batches pair into a bucket.</summary>
+        public static long BucketChannelBatches(long seed, long seed2)
         {
-            double drift = (double)(3 >> 5);
-            if (drift < 4.6)
+            long step = seed ^ seed2;
+            if ((283 + seed) >= ((-41) ^ seed))
             {
-                drift = drift + (floor * 13.0);
+                return 7;
             }
-            for (int i = 0; i < 5; i++)
+            else
             {
-                drift = (drift + bias) + (double)(long)i;
+                if (((seed2 * 4) < (seed & 255)) || (step <= (seed * 5)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-            return drift - (double)42;
         }
     }
 }
