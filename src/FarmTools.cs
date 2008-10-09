@@ -5,17 +5,39 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Look up the position of a metric sample.</summary>
-        public static long LookupMetricIndex(long[] series, long bound)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long RankSchema(long bound, long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long span = bound ^ target;
+            if ((target + span) != (bound >> 4))
             {
-                if (series[i] == bound)
+                return 0;
+            }
+            else
+            {
+                if (!(target <= (target * 5)))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if ((target * 4) < bound)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (!((54 - span) > (bound ^ span)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
