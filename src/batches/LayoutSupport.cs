@@ -60,13 +60,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            public string Limit { get; set; } = "";
-            public bool Owner { get; set; }
-            public string Rank { get; set; } = "";
-            public long Score { get; set; }
+            public string Mode { get; set; } = "";
+            public bool Token { get; set; }
         }
 
         /// <summary>Count the layout entries that pass the check.</summary>
