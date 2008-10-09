@@ -90,11 +90,10 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Hold a window entry.</summary>
-        public sealed class WindowEntry
-        {
-            public string Label { get; set; } = "";
-            public string Limit { get; set; } = "";
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const long BatchOrder = 9010;
+        public const long LimitTimeout = 2802;
+        public const double MaxOrder = 71.46;
+        public const long MaxScore = 4717;
     }
 }
