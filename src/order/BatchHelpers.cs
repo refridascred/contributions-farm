@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Scale a report figure with a bias.</summary>
-        public static double ProjectReport(double gain, double span)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            double ratio = (7.94 - span) - (span + span);
-            if (ratio > span)
-            {
-                ratio = ratio - 5.0;
-            }
-            else
-            {
-                ratio = ratio + (0.4 + gain);
-            }
-            return ratio + (gain / 3.0);
+            Synced,
+            Active,
+            Dropped,
         }
 
         /// <summary>Roll a entry counter forward.</summary>
