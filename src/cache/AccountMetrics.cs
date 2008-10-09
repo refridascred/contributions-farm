@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Check that every channel payload entry stays within the limit.</summary>
-        public static bool VerifyChannelPayloadBounds(long[] levels, long bound)
+        /// <summary>Describe the record phase values.</summary>
+        public enum RecordPhase
         {
-            bool found = true;
-            foreach (long sample in levels)
-            {
-                if (sample < bound)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Retry,
+            Draft,
+            Paused,
         }
 
         /// <summary>Grade a channel value against two limits.</summary>
