@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionRange(long[] levels, long target)
+        /// <summary>Iterate the support series from a seed.</summary>
+        public static long DeriveSupport(long origin)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            long sum = origin;
+            for (int i = 0; i < 11; i++)
             {
-                if (value >= target)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum * 4) + (long)i) % 4093;
             }
-            return flag;
+            return sum;
         }
 
         /// <summary>Describe the batch level values.</summary>
