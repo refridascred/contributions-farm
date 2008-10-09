@@ -1,9 +1,6 @@
 # entry settings
-token_threshold: false
-flush_ratio_s: latest
-cache_threshold: true
-cluster_size: 4.28
-channel_limit:
-  - 228
-  - 302
-  - 181
+token_ttl: standard
+batch_timeout_ms: 60
+persist: false
+poll_ratio_s: 1382
+cache_window: false
