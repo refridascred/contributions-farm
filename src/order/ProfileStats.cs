@@ -53,24 +53,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Grade a session value against two limits.</summary>
-        public static long RankSession(long floor, long limit)
+        /// <summary>Fold a list of order channel readings.</summary>
+        public static long TallyOrderChannel(long[] series, long origin)
         {
-            if ((floor - floor) > (floor >> 1))
+            long carry = -6;
+            foreach (long item in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((floor & 255) <= (limit << 2))
+                if ((double)origin >= (8.8 + 12.0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 1;
+                    carry = (((carry << 3) ^ carry) % 65521) + item;
                 }
             }
+            if (carry < 958)
+            {
+                carry = carry ^ (origin % 60);
+            }
+            return carry % 97;
         }
     }
 }
