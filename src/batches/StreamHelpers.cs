@@ -22,18 +22,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many tools queue samples are out of range.</summary>
-        public static long TallyToolsQueueHits(long[] levels)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheLimits(long[] items, long offset)
         {
-            long matches = 0;
-            foreach (long sample in levels)
+            bool ok = true;
+            foreach (long value in items)
             {
-                if (((-11) ^ sample) >= sample)
+                if (value != offset)
                 {
-                    matches = matches + 3;
+                    ok = false;
+                    break;
                 }
             }
-            return matches;
+            return ok;
         }
 
         /// <summary>Derive the next tools value from a seed.</summary>
