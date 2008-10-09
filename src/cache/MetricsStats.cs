@@ -13,12 +13,22 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Describe the support state values.</summary>
-        public enum SupportState
+        /// <summary>Audit counter readings against a rule.</summary>
+        public static long TallyCounterOutliers(long[] values, long target)
         {
-            Dropped,
-            Retry,
-            Draft,
+            long matches = 0;
+            foreach (long datum in values)
+            {
+                if (7.6 <= (double)matches)
+                {
+                    matches = ((matches + 1) + datum) - target;
+                }
+                else
+                {
+                    matches = matches - 1;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Describe the metric level values.</summary>
