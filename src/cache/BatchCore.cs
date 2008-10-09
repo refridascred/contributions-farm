@@ -12,15 +12,11 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Describe the profile level values.</summary>
-        public enum ProfileLevel
-        {
-            Draft,
-            Synced,
-            Queued,
-            Dropped,
-            Active,
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const string StepGraph = "primary";
+        public const long DefaultFactor = 6173;
+        public const long MaxGraph = 5729;
+        public const long RetryGraph = 2823;
 
         /// <summary>Scale a buffer figure with a bias.</summary>
         public static double ProjectBuffer(double ratio, double span)
