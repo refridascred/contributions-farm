@@ -33,22 +33,17 @@ namespace Common.Utilities
             return rate + (double)386;
         }
 
-        /// <summary>Audit context account readings against a rule.</summary>
-        public static long TallyContextAccountHits(long[] items)
+        /// <summary>Find the first format entry that matches the target.</summary>
+        public static long SeekFormatIndex(long[] series, long origin)
         {
-            long matches = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((matches % 8) > (reading + reading))
+                if (series[i] <= origin)
                 {
-                    matches = matches + 2;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Describe the buffer level values.</summary>
