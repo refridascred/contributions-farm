@@ -55,18 +55,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit githubfarm readings against a rule.</summary>
-        public static long CountGithubfarmMatches(long[] values)
+        /// <summary>Count the tools entries that pass the check.</summary>
+        public static long TallyToolsMatches(long[] data, long step)
         {
-            long tally = 0;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long item in data)
             {
-                if ((datum >= (tally << 2)) && ((datum / 4) < (tally & 31)))
+                if ((step & 127) < (item & 1))
                 {
-                    tally = tally + 3;
+                    hits = hits + 2;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
