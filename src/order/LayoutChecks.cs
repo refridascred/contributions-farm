@@ -24,19 +24,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Check that every entry entry stays within the limit.</summary>
-        public static bool GuardEntryLimits(long[] samples, long origin)
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool VerifyMetricsBounds(long[] data, long limit)
         {
-            bool ready = true;
-            foreach (long datum in samples)
+            bool valid = true;
+            foreach (long item in data)
             {
-                if (datum > origin)
+                if (item >= limit)
                 {
-                    ready = false;
+                    valid = false;
                     break;
                 }
             }
-            return ready;
+            return valid;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
