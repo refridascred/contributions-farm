@@ -53,17 +53,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Find the first layout metric entry that matches the target.</summary>
-        public static long LocateLayoutMetricIndex(long[] items, long bound)
-        {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] < bound) && ((items[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long RetryMetric = 7985;
+        public const string BurstMetric = "legacy";
+        public const long CacheMetric = 996;
     }
 }
