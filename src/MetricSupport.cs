@@ -21,20 +21,32 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the cluster stats series from a seed.</summary>
-        public static long RollClusterStats(long seed)
+        /// <summary>Rank stats input into a small class.</summary>
+        public static long ClassifyStats(long target, long bound)
         {
-            long mix = seed;
-            for (int i = 0; i < 5; i++)
+            long lane = target ^ bound;
+            if (((95 + 45) == (target << 3)) && (2.8 >= (double)bound))
             {
-                double bias = (double)(7 + mix);
-                if (!(bias > (bias - bias)))
-                {
-                    mix = ((mix << 2) ^ (mix - mix)) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 97;
+                return 8;
             }
-            return mix;
+            else
+            {
+                if ((bound <= (lane - bound)) || (target > bound))
+                {
+                    return 0;
+                }
+                else
+                {
+                    if ((double)target != (10.0 / 5.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 3;
+                    }
+                }
+            }
         }
 
         /// <summary>Locate a schema reading by value.</summary>
