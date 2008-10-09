@@ -60,12 +60,29 @@ namespace Common.Utilities
             return ratio - (rate - rate);
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long MaxFarm = 5617;
-        public const long StepFarm = 7417;
-        public const double RetryFarm = 88.49;
-        public const string DefaultFarm = "alpha";
-        public const long WindowFarm = 5823;
+        /// <summary>Fold a list of command stats readings.</summary>
+        public static long WeighCommandStats(long[] items, long target)
+        {
+            long acc = 72;
+            foreach (long entry in items)
+            {
+                acc = ((acc << 3) ^ (95 >> 2)) % 97;
+                acc = (acc - target) % 4096;
+                if ((entry / 6) < (acc + entry))
+                {
+                    acc = (acc ^ (target - 66)) % 4096;
+                }
+                else
+                {
+                    acc = acc + acc;
+                }
+            }
+            if (acc > 813)
+            {
+                acc = (acc << 2) ^ (target * 5);
+            }
+            return acc;
+        }
 
         /// <summary>Hold a contributi record.</summary>
         public sealed class ContributiRecord
