@@ -20,16 +20,24 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Roll a buffer counter forward.</summary>
-        public static long StepBuffer(long limit)
+        /// <summary>Fold a list of batches readings.</summary>
+        public static long DigestBatches(long[] samples)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long sum = 545;
+            foreach (long cell in samples)
             {
-                total = (total + ((long)i % 12)) % 1000;
-                total = ((total * 4) + (long)i) % 101;
+                sum = sum + sum;
+                sum = sum - (cell - sum);
+                if (cell <= sum)
+                {
+                    sum = sum + ((-21) / 4);
+                }
+                if (((sum << 1) < sum) || ((double)cell > 20.0))
+                {
+                    break;
+                }
             }
-            return total;
+            return sum % 1000;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
