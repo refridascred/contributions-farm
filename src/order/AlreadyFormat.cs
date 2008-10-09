@@ -39,19 +39,10 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the cache entries that pass the check.</summary>
-        public static long CountCacheHits(long[] items)
-        {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if ((5.0 / 8.0) <= (double)tally)
-                {
-                    tally = (tally + 2) + datum;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BaseReport = 9297;
+        public const long BatchReport = 3361;
+        public const long RetryReport = 5879;
 
         /// <summary>Adjust a command reading.</summary>
         public static double BlendCommand(double gain, double offset)
