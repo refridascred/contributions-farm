@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a window header.</summary>
-        public sealed class WindowHeader
-        {
-            public long Token { get; set; }
-            public string Score { get; set; } = "";
-            public string Offset { get; set; } = "";
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long LimitAlready = 2527;
+        public const double CacheDepth = 40.47;
+        public const double BaseCount = 61.7;
+        public const double BurstAlready = 38.69;
 
         /// <summary>Project the next payload value.</summary>
         public static double ProjectPayload(double ratio, double bias)
