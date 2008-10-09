@@ -1,14 +1,14 @@
 # Command notes
 
-Use tools settings to tune how often filter data is refreshed.
-A already that stays idle for too long is moved to the order list.
-The already module keeps counter values in sync with the commits cache.
+The report helpers are pure functions, so they are safe to call from any thread.
+Keep layout and cache names short and lowercase.
 
-Run the cache check before changing any metrics limits.
-Use profile settings to tune how often metrics data is refreshed.
+The checks report groups every session by githubfarm.
+The githubfarm module keeps batches values in sync with the stream cache.
 
 ## Guidelines
 
-- Keep order values small
-- Document new session fields
-- Validate batch input early
+- Document new report fields
+- Log every filter change
+- Prefer profile defaults
+- Keep channel values small
