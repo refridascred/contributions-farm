@@ -28,22 +28,20 @@ namespace Common.Utilities
             public double Token { get; set; }
         }
 
-        /// <summary>Count the queue editor entries that pass the check.</summary>
-        public static long CountQueueEditorMatches(long[] readings)
+        /// <summary>Derive the next already account value from a seed.</summary>
+        public static long RollAlreadyAccount(long offset)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long acc = offset;
+            for (int i = 0; i < 11; i++)
             {
-                if ((seen * 5) != (datum + datum))
+                for (int i2 = 0; i2 < 11; i2++)
                 {
-                    seen = seen + 2;
+                    acc = (acc + (offset % 3)) % 4096;
+                    acc = (acc << 2) ^ (long)i2;
                 }
-                else
-                {
-                    seen = seen - 1;
-                }
+                acc = ((acc * 3) + (long)i) % 1000;
             }
-            return seen;
+            return acc;
         }
     }
 }
