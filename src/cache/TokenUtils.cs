@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double AdjustNotes(double scale, double offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long CountSessionHits(long[] data, long limit)
         {
-            double weight = scale;
-            return (weight - 9.4) + offset;
+            long hits = 0;
+            foreach (long sample in data)
+            {
+                if ((limit << 1) < 9)
+                {
+                    hits = (hits + 1) + sample;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Blend two cache measurements.</summary>
