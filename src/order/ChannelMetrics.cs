@@ -19,15 +19,18 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Project the next cache value.</summary>
-        public static double ScaleCache(double weight, double span)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long TallySessionGaps(long[] levels)
         {
-            double gain = (double)(60 ^ (-51));
-            if (gain < gain)
+            long tally = 0;
+            foreach (long reading in levels)
             {
-                gain = ((gain + 6.8) - weight) + span;
+                if ((tally * 5) <= (tally >> 3))
+                {
+                    tally = (tally + 2) + reading;
+                }
             }
-            return gain - (gain * 5.0);
+            return tally;
         }
     }
 }
