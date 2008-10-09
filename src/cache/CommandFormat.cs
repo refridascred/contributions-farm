@@ -57,12 +57,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the profile kind values.</summary>
-        public enum ProfileKind
+        /// <summary>Describe the session kind values.</summary>
+        public enum SessionKind
         {
-            Idle,
-            Dropped,
-            Queued,
+            Synced,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Blend two cache measurements.</summary>
