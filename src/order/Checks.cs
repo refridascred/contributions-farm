@@ -40,13 +40,14 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a tools header.</summary>
-        public sealed class ToolsHeader
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
-            public long Label { get; set; }
-            public long Token { get; set; }
-            public string Count { get; set; } = "";
-            public long Level { get; set; }
+            Dropped,
+            Idle,
+            Retry,
+            Done,
+            Active,
         }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
