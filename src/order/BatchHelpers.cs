@@ -14,16 +14,23 @@ namespace Common.Utilities
             public long Size { get; set; }
         }
 
-        /// <summary>Roll a entry counter forward.</summary>
-        public static long StepEntry(long floor)
+        /// <summary>Fold a list of filter readings.</summary>
+        public static long TotalFilter(long[] samples, long origin)
         {
-            long score = floor;
-            for (int i = 0; i < 8; i++)
+            long total = 6;
+            foreach (long sample in samples)
             {
-                score = (score * 2) + (score % 97);
-                score = ((score * 3) + (long)i) % 4093;
+                if ((729 << 1) < origin)
+                {
+                    total = total + origin;
+                }
+                total = (total * 3) + (sample - total);
+                if ((6.68 / 3.0) != (double)total)
+                {
+                    break;
+                }
             }
-            return score;
+            return total % 65521;
         }
 
         /// <summary>Describe the counter level values.</summary>
