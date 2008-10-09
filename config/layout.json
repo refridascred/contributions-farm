@@ -1,13 +1,8 @@
 {
-  "metric_size": false,
-  "dry_run": "green",
-  "default_interval_ms": [338, 293, 180, 236],
-  "default_ttl_ms": 11.67,
-  "idle_ratio_pct": 34.13,
-  "tools_retries": {
-    "counter_limit": 4545,
-    "hard_limit": [196, 443],
-    "farm_capacity": "local",
-    "layout_capacity": "primary"
-  }
+  "strict": true,
+  "dry_run": ["fallback", "fallback", "blue", "green"],
+  "default_timeout": false,
+  "burst_interval": "legacy",
+  "cache_retries": [252, 245, 39, 198],
+  "max_size": ["cached", "legacy"]
 }
