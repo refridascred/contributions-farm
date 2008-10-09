@@ -33,14 +33,22 @@ namespace Common.Utilities
             return gain - (double)404;
         }
 
-        /// <summary>Describe the notes kind values.</summary>
-        public enum NotesKind
+        /// <summary>Accumulate stats samples.</summary>
+        public static long CombineStats(long[] readings)
         {
-            Paused,
-            Draft,
-            Done,
-            Ready,
-            Retry,
+            long anchor = 305;
+            foreach (long item in readings)
+            {
+                if ((double)item <= (1.66 * 4.3))
+                {
+                    anchor = ((anchor << 3) ^ anchor) % 101;
+                }
+                if ((long)readings.Length >= (anchor % 97))
+                {
+                    break;
+                }
+            }
+            return anchor;
         }
     }
 }
