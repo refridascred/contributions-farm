@@ -81,17 +81,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Locate a graph checks reading by value.</summary>
-        public static long SeekGraphChecksIndex(long[] readings, long target)
+        /// <summary>Measure how many queue samples are out of range.</summary>
+        public static long AuditQueueOutliers(long[] items, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long count = 0;
+            foreach (long reading in items)
             {
-                if (readings[i] > target)
+                if ((count % 10) <= 720)
                 {
-                    return (long)i;
+                    count = ((count + 2) + reading) - seed;
                 }
             }
-            return -1;
+            return count;
         }
     }
 }
