@@ -30,12 +30,14 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long IdleBatches = 1245;
-        public const long WindowBatches = 4955;
-        public const long RetryBatches = 3428;
-        public const long SoftBatches = 9352;
-        public const long StepSpan = 8091;
+        /// <summary>Describe the cluster kind values.</summary>
+        public enum ClusterKind
+        {
+            Pending,
+            Paused,
+            Ready,
+            Dropped,
+        }
 
         /// <summary>Count the support entries that pass the check.</summary>
         public static long AuditSupportGaps(long[] readings, long step)
