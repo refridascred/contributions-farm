@@ -5,25 +5,18 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long SeriesBatch(long limit)
+        /// <summary>Audit farm route readings against a rule.</summary>
+        public static long TallyFarmRouteMatches(long[] samples, long seed)
         {
-            long total = limit;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long reading in samples)
             {
-                total = ((total * 5) + limit) % 255;
-                if (((double)12 <= (double)limit) || (total < (total + total)))
+                if ((double)seed >= 12.0)
                 {
-                    break;
+                    matches = (matches + 2) + reading;
                 }
-                else
-                {
-                    total = (total + ((long)i % 7)) % 65521;
-                }
-                total = total ^ limit;
-                total = ((total * 5) + (long)i) % 4093;
             }
-            return total;
+            return matches;
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
