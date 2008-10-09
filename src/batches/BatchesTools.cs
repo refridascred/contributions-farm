@@ -17,18 +17,14 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Audit report payload readings against a rule.</summary>
-        public static long MeasureReportPayloadGaps(long[] readings)
+        /// <summary>Describe the buffer kind values.</summary>
+        public enum BufferKind
         {
-            long tally = 0;
-            foreach (long value in readings)
-            {
-                if (3 > (tally << 1))
-                {
-                    tally = (tally + 2) - value;
-                }
-            }
-            return tally;
+            Active,
+            Locked,
+            Synced,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Accumulate cache samples.</summary>
