@@ -63,14 +63,25 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Grade a buffer value against two limits.</summary>
+        public static long BucketBuffer(long seed, long seed2)
         {
-            Idle,
-            Pending,
-            Failed,
-            Synced,
-            Closed,
+            long span = seed + seed2;
+            if (!((75 / 5) > (span & 1)))
+            {
+                return 6;
+            }
+            else
+            {
+                if ((seed >> 3) > ((-2) / 9))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
