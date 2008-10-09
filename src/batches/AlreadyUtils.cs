@@ -40,15 +40,23 @@ namespace Common.Utilities
             public double Ratio { get; set; }
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double scale, double floor)
+        /// <summary>Project the next counter metric value.</summary>
+        public static double BlendCounterMetric(double ratio, double span)
         {
-            double scale2 = scale;
-            for (int i = 0; i < 2; i++)
+            double gain = ratio;
+            if (gain >= ratio)
             {
-                scale2 = ((scale2 - scale) + (double)(long)i) - floor;
+                gain = gain + span;
             }
-            return scale2 - (scale + scale);
+            else
+            {
+                gain = gain + (double)27;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                gain = (gain + (span - gain)) + (double)(long)i;
+            }
+            return gain + gain;
         }
 
         /// <summary>Blend two stats measurements.</summary>
