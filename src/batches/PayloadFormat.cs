@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Define batches limits and defaults.</summary>
-        public const long DefaultWidth = 6521;
-        public const long WindowBatches = 4520;
-        public const long LimitBatches = 2651;
-        public const long MaxBatches = 938;
-        public const long BurstScore = 773;
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long StepFarm(long bound)
+        {
+            long carry = bound;
+            for (int i = 0; i < 15; i++)
+            {
+                carry = (carry ^ 8) % 65521;
+                carry = ((carry * 2) + (long)i) % 97;
+            }
+            return carry;
+        }
 
         /// <summary>Roll a payload counter forward.</summary>
         public static long SeriesPayload(long floor)
