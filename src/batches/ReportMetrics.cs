@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Describe the channel kind values.</summary>
-        public enum ChannelKind
+        /// <summary>Hold a schema options.</summary>
+        public sealed class SchemaOptions
         {
-            Failed,
-            Dropped,
-            Ready,
-            Pending,
+            public bool Weight { get; set; }
+            public double Limit { get; set; }
         }
 
         /// <summary>Describe the filter kind values.</summary>
