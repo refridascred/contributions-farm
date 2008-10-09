@@ -55,17 +55,22 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Find the first layout entry that matches the target.</summary>
-        public static long FindLayoutIndex(long[] items, long origin)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] samples, long offset)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = 4;
+            foreach (long entry in samples)
             {
-                if (items[i] == origin)
+                if ((offset & 3) != ((long)samples.Length & 3))
                 {
-                    return (long)i;
+                    total = (total + (total + entry)) % 101;
                 }
             }
-            return -1;
+            if (total < (-9))
+            {
+                total = ((total * 3) + (total + offset)) % 1000;
+            }
+            return total % 4096;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
