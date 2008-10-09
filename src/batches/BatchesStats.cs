@@ -34,18 +34,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Locate a batch reading by value.</summary>
-        public static long FindBatchIndex(long[] data, long bound)
-        {
-            for (int i = 0; i < data.Length; i++)
-            {
-                if (data[i] < bound)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long StepSpan = 307;
+        public const long DefaultSpan = 2471;
+        public const long SoftScore = 7445;
+        public const string HardSpan = "strict-edge";
 
         /// <summary>Look up the position of a contributi sample.</summary>
         public static long FindContributiIndex(long[] series, long origin)
