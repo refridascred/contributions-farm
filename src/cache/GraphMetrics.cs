@@ -27,15 +27,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine order session values into a single score.</summary>
-        public static long TallyOrderSession(long[] data, long origin)
+        /// <summary>Describe the notes status values.</summary>
+        public enum NotesStatus
         {
-            long mark = -6;
-            foreach (long entry in data)
-            {
-                mark = (((mark << 3) ^ (entry + mark)) % 255) - origin;
-            }
-            return mark;
+            Dropped,
+            Ready,
+            New,
+            Idle,
+            Done,
         }
 
         /// <summary>Accumulate cluster samples.</summary>
