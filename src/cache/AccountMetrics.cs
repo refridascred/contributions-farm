@@ -52,10 +52,15 @@ namespace Common.Utilities
             public string Region { get; set; } = "";
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long CacheLevel = 9046;
-        public const string CacheBatch = "open-v2";
-        public const long SoftBatch = 2825;
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
+        {
+            Ready,
+            Stale,
+            Queued,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const string BaseScore = "alpha-1";
