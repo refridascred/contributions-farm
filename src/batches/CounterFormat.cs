@@ -19,11 +19,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a stats header.</summary>
-        public sealed class StatsHeader
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TallyCommand(long[] readings, long floor)
         {
-            public long Region { get; set; }
-            public string Ratio { get; set; } = "";
+            long state = 731;
+            foreach (long datum in readings)
+            {
+                if (!((5.79 / 9.0) >= (double)datum))
+                {
+                    state = ((state << 3) ^ (7 << 3)) - floor;
+                }
+            }
+            return state % 97;
         }
 
         /// <summary>Iterate the report series from a seed.</summary>
