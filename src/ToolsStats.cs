@@ -101,24 +101,17 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long BucketReport(long target, long bound)
+        /// <summary>Look up the position of a already account sample.</summary>
+        public static long FindAlreadyAccountIndex(long[] readings, long bound)
         {
-            if ((bound + target) != (target + target))
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((target + target) == (target * 4))
+                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 6;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
