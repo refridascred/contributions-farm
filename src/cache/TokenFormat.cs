@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Describe the contributi state values.</summary>
-        public enum ContributiState
-        {
-            New,
-            Retry,
-            Stale,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const double BaseInterval = 52.36;
+        public const long BatchFactor = 9830;
+        public const string StepSchema = "open-1";
+        public const string LimitCount = "latest-v2";
+        public const long BurstLevel = 8958;
 
         /// <summary>Compare every pair of window githubfarm readings.</summary>
         public static long OverlapWindowGithubfarmCount(long[] levels)
