@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Accumulate already samples.</summary>
-        public static long ScoreAlready(long[] readings, long origin)
+        /// <summary>Hold a githubfarm entry.</summary>
+        public sealed class GithubfarmEntry
         {
-            long result = 76;
-            foreach (long item in readings)
-            {
-                if (item <= (item ^ item))
-                {
-                    result = (result * 3) + (origin + 3);
-                }
-            }
-            if (result > 724)
-            {
-                result = (result - ((-60) + 6)) % 97;
-            }
-            return result;
+            public long Weight { get; set; }
+            public double Count { get; set; }
         }
 
         /// <summary>Describe the payload class values.</summary>
