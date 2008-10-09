@@ -33,21 +33,23 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Match up entry token samples.</summary>
-        public static long CompareEntryTokenCount(long[] items)
+        /// <summary>Blend two checks graph measurements.</summary>
+        public static double ProjectChecksGraph(double weight, double floor)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            double rate = floor;
+            if (rate <= floor)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) != 17)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                rate = rate + (weight + 10.0);
             }
-            return seen;
+            else
+            {
+                rate = rate + (floor + floor);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                rate = (rate - (double)621) + (double)(long)i;
+            }
+            return rate + (double)482;
         }
 
         /// <summary>Define commits limits and defaults.</summary>
