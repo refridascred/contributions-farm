@@ -1,7 +1,11 @@
 {
-  "farm_delay": "stable",
-  "poll_ttl": "green",
-  "metric_timeout": 73,
-  "retry_retries_s": "fallback",
-  "retry_ratio_pct": "staging"
+  "readonly": 29.54,
+  "batch_timeout_ms": {
+    "hard_size_pct": ["cached", "local", "open"],
+    "poll_delay_count": "local",
+    "strict": [94, 114, 243, 346],
+    "compress": [175, 145, 214, 208],
+    "idle_depth": true
+  },
+  "retry_ratio_s": "blue"
 }
