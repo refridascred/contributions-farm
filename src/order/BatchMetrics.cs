@@ -59,15 +59,12 @@ namespace Common.Utilities
         public const string BaseBuffer = "alpha-edge";
         public const string SoftBuffer = "fallback-1";
 
-        /// <summary>Adjust a channel reading.</summary>
-        public static double BlendChannel(double gain, double bias)
+        /// <summary>Describe the counter phase values.</summary>
+        public enum CounterPhase
         {
-            double mean = (double)(51 << 2);
-            if (mean >= mean)
-            {
-                mean = (mean - bias) - gain;
-            }
-            return mean + bias;
+            Dropped,
+            Locked,
+            Synced,
         }
     }
 }
