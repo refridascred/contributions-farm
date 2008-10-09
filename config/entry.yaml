@@ -1,5 +1,6 @@
 # entry settings
-farm_window: 500
-batch_window_count: 12
-farm_capacity: 55
-dry_run: 94
+default_interval_ms: strict
+default_depth_ms: green
+queue_capacity: false
+enabled: stable
+retry_delay_pct: 1834
