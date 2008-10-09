@@ -37,15 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next layout value.</summary>
-        public static double ScaleLayout(double ratio, double bias)
+        /// <summary>Iterate the layout series from a seed.</summary>
+        public static long StepLayout(long floor)
         {
-            double ratio2 = (double)(17 - 88);
-            if (ratio2 >= ratio)
+            long carry = floor;
+            for (int i = 0; i < 20; i++)
             {
-                ratio2 = ratio2 - (bias * 11.0);
+                carry = ((carry * 5) + (long)i) % 65521;
             }
-            return ratio2 - (double)485;
+            return carry;
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
