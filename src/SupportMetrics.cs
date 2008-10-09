@@ -18,17 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a commits sample.</summary>
-        public static long SeekCommitsIndex(long[] samples, long step)
+        /// <summary>Hold a format options.</summary>
+        public sealed class FormatOptions
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if ((samples[i] <= step) && ((samples[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Stamp { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Define editor limits and defaults.</summary>
