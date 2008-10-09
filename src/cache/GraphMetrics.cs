@@ -38,12 +38,14 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the token phase values.</summary>
-        public enum TokenPhase
+        /// <summary>Describe the githubfarm phase values.</summary>
+        public enum GithubfarmPhase
         {
-            Locked,
-            Dropped,
+            Ready,
             Failed,
+            Retry,
+            Locked,
+            Done,
         }
 
         /// <summary>Accumulate entry samples.</summary>
