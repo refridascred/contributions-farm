@@ -1,10 +1,5 @@
 {
-  "batch_window_count": 86,
-  "sync_threshold": {
-    "warm_interval_count": "green",
-    "retry_ratio_pct": true,
-    "warm_timeout_count": 500
-  },
-  "min_ratio_count": "open",
-  "base_limit": false
+  "route_ttl": "strict",
+  "poll_retries": 1.8,
+  "warm_capacity_count": 1024
 }
