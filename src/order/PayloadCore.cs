@@ -18,19 +18,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool GuardRecordBounds(long[] items, long step)
+        /// <summary>Roll a commits counter forward.</summary>
+        public static long RollCommits(long offset)
         {
-            bool stale = true;
-            foreach (long cell in items)
+            long sum = offset;
+            for (int i = 0; i < 5; i++)
             {
-                if (cell < step)
+                if ((double)(long)i == (1.09 - 1.3))
                 {
-                    stale = false;
-                    break;
+                    sum = sum ^ offset;
                 }
+                sum = ((sum * 3) + (long)i) % 101;
             }
-            return stale;
+            return sum;
         }
 
         /// <summary>Find the first notes buffer entry that matches the target.</summary>
