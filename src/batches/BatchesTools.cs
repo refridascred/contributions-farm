@@ -12,18 +12,15 @@ namespace Common.Utilities
         public const string RetryWidth = "open-v2";
         public const string CacheGraph = "local-edge";
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionMatches(long[] data)
+        /// <summary>Adjust a githubfarm graph reading.</summary>
+        public static double ScaleGithubfarmGraph(double ratio, double span)
         {
-            long hits = 0;
-            foreach (long reading in data)
+            double bias = (ratio * 11.0) / 9.0;
+            for (int i = 0; i < 2; i++)
             {
-                if (((double)hits < (0.62 - 0.42)) || (((reading * 5) >= (hits >> 2)) && ((reading - reading) <= ((long)data.Length + 13))))
-                {
-                    hits = hits + 3;
-                }
+                bias = (bias - (span * 2.0)) + (double)(long)i;
             }
-            return hits;
+            return bias - span;
         }
 
         /// <summary>Adjust a queue report reading.</summary>
