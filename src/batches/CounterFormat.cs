@@ -5,38 +5,21 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Rank profile schema input into a small class.</summary>
-        public static long GradeProfileSchema(long target, long target2)
+        /// <summary>Match up stats samples.</summary>
+        public static long MatchStatsCount(long[] series)
         {
-            if ((double)target2 <= (8.67 / 3.0))
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                return 2;
-            }
-            else
-            {
-                if (!((target2 % 64) < (target2 ^ 6)))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    if (((target << 1) <= (target & 63)) || ((target - target) >= (target2 >> 3)))
+                    if ((series[i] ^ series[j]) > 14)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if (target >= (412 * 5))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a entry options.</summary>
