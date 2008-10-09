@@ -22,19 +22,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Scale a graph figure with a bias.</summary>
-        public static double SmoothGraph(double gain, double span)
+        /// <summary>Scale a route figure with a bias.</summary>
+        public static double SmoothRoute(double scale, double floor)
         {
-            double rate = (double)(986 - 839);
-            if (rate > (span + gain))
-            {
-                rate = rate + (double)3;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                rate = (rate + (double)7) + (double)(long)i;
-            }
-            return rate - 9.07;
+            double rate = floor;
+            return rate + scale;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
