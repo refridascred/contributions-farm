@@ -62,11 +62,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long SoftPayload = 383;
-        public const double IdlePayload = 30.5;
-        public const double WindowSpan = 97.17;
-        public const long IdleBudget = 4515;
-        public const double DefaultCount = 90.36;
+        /// <summary>Define queue limits and defaults.</summary>
+        public const string LimitQueue = "legacy-1";
+        public const string SoftFactor = "local-edge";
+        public const string SoftQueue = "open-1";
+        public const double MinQueue = 5.13;
+        public const double DefaultQueue = 38.63;
     }
 }
