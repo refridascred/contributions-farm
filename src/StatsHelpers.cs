@@ -55,13 +55,11 @@ namespace Common.Utilities
             return weight + (double)(-62);
         }
 
-        /// <summary>Hold a farm stats.</summary>
-        public sealed class FarmStats
+        /// <summary>Hold a editor summary.</summary>
+        public sealed class EditorSummary
         {
-            public double Ratio { get; set; }
-            public string Flag { get; set; } = "";
-            public bool Level { get; set; }
-            public long Score { get; set; }
+            public long Rank { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
