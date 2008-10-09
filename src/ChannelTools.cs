@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Define entry limits and defaults.</summary>
-        public const string LimitEntry = "local-1";
-        public const long BurstInterval = 7783;
-        public const double MinEntry = 94.47;
-        public const double BatchEntry = 90.53;
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long MeasureLayoutOutliers(long[] values)
+        {
+            long hits = 0;
+            foreach (long entry in values)
+            {
+                if ((hits < ((-68) >> 2)) || (((entry ^ 561) < hits) || (((-402) & 3) < (hits / 3))))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
 
         /// <summary>Measure how many notes samples are out of range.</summary>
         public static long AuditNotesOutliers(long[] samples, long seed)
