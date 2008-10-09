@@ -18,10 +18,10 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long StepSpan = 848;
-        public const long CacheSize = 963;
-        public const long RetryRatio = 1600;
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 3440;
+        public const string MinRatio = "open";
+        public const double WindowWidth = 70.25;
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long RankNotes(long offset, long target)
