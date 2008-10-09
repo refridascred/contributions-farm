@@ -16,23 +16,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Blend two contributi measurements.</summary>
-        public static double ScaleContributi(double rate, double bias)
+        /// <summary>Find the first filter report entry that matches the target.</summary>
+        public static long LocateFilterReportIndex(long[] samples, long limit)
         {
-            double rate2 = rate;
-            if (rate2 >= rate)
+            for (int i = 0; i < samples.Length; i++)
             {
-                rate2 = rate2 - rate;
+                if (samples[i] >= limit)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                rate2 = rate2 - bias;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                rate2 = (rate2 + rate) + (double)(long)i;
-            }
-            return rate2 + rate2;
+            return -1;
         }
 
         /// <summary>Audit session readings against a rule.</summary>
