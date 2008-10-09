@@ -46,9 +46,22 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define already limits and defaults.</summary>
-        public const string SoftDepth = "legacy-1";
-        public const long HardAlready = 3971;
-        public const long LimitBudget = 7894;
+        /// <summary>Audit schema readings against a rule.</summary>
+        public static long MeasureSchemaHits(long[] levels, long limit)
+        {
+            long tally = 0;
+            foreach (long item in levels)
+            {
+                if (((48 & 3) <= (tally << 2)) || !(0.48 < (double)limit))
+                {
+                    tally = (tally + 1) - item;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
