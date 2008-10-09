@@ -14,31 +14,22 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Rank queue input into a small class.</summary>
-        public static long GradeQueue(long seed, long offset)
+        /// <summary>Count the report entries that pass the check.</summary>
+        public static long TallyReportOutliers(long[] samples)
         {
-            if ((9.1 * 1.0) <= (double)seed)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((4.1 + 1.9) > (double)seed)
+                if ((((9 + datum) >= (datum + matches)) && ((75 ^ datum) != (5 >> 2))) && ((matches << 2) < (datum % 64)))
                 {
-                    return 4;
+                    matches = matches + 1;
                 }
                 else
                 {
-                    if ((double)offset > (8.75 + 6.75))
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
