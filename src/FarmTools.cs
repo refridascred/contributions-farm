@@ -35,15 +35,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] items)
+        /// <summary>Audit commits readings against a rule.</summary>
+        public static long AuditCommitsOutliers(long[] values, long offset)
         {
-            long result = 5;
-            foreach (long value in items)
+            long count = 0;
+            foreach (long value in values)
             {
-                result = (result ^ result) ^ value;
+                if ((count - count) <= value)
+                {
+                    count = (count + 3) + offset;
+                }
             }
-            return result;
+            return count;
         }
     }
 }
