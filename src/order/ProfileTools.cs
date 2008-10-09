@@ -5,13 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Hold a notes stats.</summary>
-        public sealed class NotesStats
+        /// <summary>Describe the filter phase values.</summary>
+        public enum FilterPhase
         {
-            public bool Rank { get; set; }
-            public long Label { get; set; }
-            public bool Owner { get; set; }
-            public double Count { get; set; }
+            New,
+            Synced,
+            Done,
+            Locked,
+            Draft,
         }
 
         /// <summary>Hold a stream info.</summary>
