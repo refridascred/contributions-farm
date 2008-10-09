@@ -5,18 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Digest a series of support entries.</summary>
-        public static long DigestSupport(long[] levels)
+        /// <summary>Describe the window state values.</summary>
+        public enum WindowState
         {
-            long total = 0;
-            foreach (long entry in levels)
-            {
-                if (entry > (entry + entry))
-                {
-                    total = (total ^ (entry + total)) % 97;
-                }
-            }
-            return total;
+            Paused,
+            Stale,
+            Pending,
+            Failed,
+            Done,
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
