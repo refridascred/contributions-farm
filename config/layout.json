@@ -1,5 +1,6 @@
 {
-  "soft_size_pct": 95.29,
-  "warm_limit": 4432,
-  "warm_ratio": 6607
+  "farm_threshold": 60,
+  "warm_size": 100,
+  "burst_window_ms": 74.02,
+  "persist": "blue"
 }
