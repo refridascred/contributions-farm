@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long MeasureSupportHits(long[] levels)
+        /// <summary>Audit context stats readings against a rule.</summary>
+        public static long CountContextStatsMatches(long[] series)
         {
             long hits = 0;
-            foreach (long sample in levels)
+            foreach (long sample in series)
             {
-                if ((sample >= (hits % 3)) && ((hits - 4) >= (hits >> 2)))
+                if ((sample - sample) > sample)
                 {
                     hits = hits + 3;
                 }
