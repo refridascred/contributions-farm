@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Measure how many queue samples are out of range.</summary>
-        public static long MeasureQueueHits(long[] readings)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            long hits = 0;
-            foreach (long cell in readings)
-            {
-                if (cell < (cell + 1))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public double Count { get; set; }
+            public double Stamp { get; set; }
+            public long Label { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Grade a channel support value against two limits.</summary>
