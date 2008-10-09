@@ -13,25 +13,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Grade a commits value against two limits.</summary>
-        public static long BucketCommits(long limit, long target)
+        /// <summary>Hold a support stats.</summary>
+        public sealed class SupportStats
         {
-            long lane = limit - target;
-            if (target > 49)
-            {
-                return 5;
-            }
-            else
-            {
-                if (((lane + lane) < limit) && ((lane - limit) > limit))
-                {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
-                }
-            }
+            public double Stamp { get; set; }
+            public double Weight { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
