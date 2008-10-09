@@ -37,20 +37,18 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of editor entries.</summary>
-        public static long WeighEditor(long[] items)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long AuditCommandMatches(long[] values)
         {
-            long anchor = 71;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in values)
             {
-                if ((datum + datum) <= anchor)
+                if ((seen * 5) > entry)
                 {
-                    anchor = ((anchor << 3) ^ (datum ^ datum)) % 65521;
-                    anchor = (anchor ^ (866 + anchor)) % 1000;
+                    seen = seen + 1;
                 }
-                anchor = (anchor - (anchor / 3)) % 97;
             }
-            return anchor;
+            return seen;
         }
     }
 }
