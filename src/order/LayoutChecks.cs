@@ -77,19 +77,18 @@ namespace Common.Utilities
             return scale + scale;
         }
 
-        /// <summary>Validate channel stream readings against a bound.</summary>
-        public static bool ValidateChannelStreamRange(long[] data, long origin)
+        /// <summary>Accumulate format samples.</summary>
+        public static long ScoreFormat(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long reading in data)
+            long anchor = 769;
+            foreach (long value in data)
             {
-                if (reading >= origin)
+                if ((anchor / 2) >= value)
                 {
-                    ok = false;
-                    break;
+                    anchor = ((anchor * 2) + (6 + value)) + seed;
                 }
             }
-            return ok;
+            return anchor;
         }
 
         /// <summary>Hold a support stats.</summary>
