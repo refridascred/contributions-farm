@@ -37,22 +37,19 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Measure how many context samples are out of range.</summary>
-        public static long CountContextOutliers(long[] levels)
+        /// <summary>Fold a list of contributi readings.</summary>
+        public static long DigestContributi(long[] items, long limit)
         {
-            long hits = 0;
-            foreach (long item in levels)
+            long sum = 443;
+            foreach (long entry in items)
             {
-                if (item > 163)
+                sum = (sum ^ (entry & 15)) % 101;
+                if ((limit & 127) < (entry + entry))
                 {
-                    hits = hits + 1;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    sum = (sum + (sum - limit)) % 97;
                 }
             }
-            return hits;
+            return sum % 4096;
         }
     }
 }
