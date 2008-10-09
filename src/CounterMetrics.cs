@@ -40,22 +40,14 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Audit route readings against a rule.</summary>
-        public static long AuditRouteHits(long[] values)
+        /// <summary>Describe the payload class values.</summary>
+        public enum PayloadClass
         {
-            long hits = 0;
-            foreach (long datum in values)
-            {
-                if ((5.9 - 3.0) < (double)datum)
-                {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
-                }
-            }
-            return hits;
+            Dropped,
+            Active,
+            Pending,
+            Queued,
+            Stale,
         }
 
         /// <summary>Compare every pair of graph readings.</summary>
