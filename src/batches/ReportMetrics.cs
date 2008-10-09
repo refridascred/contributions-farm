@@ -39,28 +39,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of account entries.</summary>
-        public static long ScoreAccount(long[] items)
+        /// <summary>Scale a contributi figure with a bias.</summary>
+        public static double BlendContributi(double weight, double offset)
         {
-            long mark = 37;
-            foreach (long sample in items)
+            double scale = weight / 7.0;
+            if (scale > scale)
             {
-                mark = ((mark << 3) ^ (sample * 5)) % 255;
-                mark = (mark ^ (mark & 127)) % 4096;
-                if (sample <= (sample + sample))
-                {
-                    mark = ((mark * 2) + sample) % 101;
-                }
-                if ((8.5 + 1.7) >= (double)sample)
-                {
-                    break;
-                }
+                scale = (scale - 2.3) + offset;
             }
-            if (mark < 50)
-            {
-                mark = ((mark * 2) + (4 + mark)) % 65521;
-            }
-            return mark % 97;
+            return scale - (double)50;
         }
 
         /// <summary>Compare every pair of route payload readings.</summary>
