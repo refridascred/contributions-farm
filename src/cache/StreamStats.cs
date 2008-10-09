@@ -5,11 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Hold a layout summary.</summary>
-        public sealed class LayoutSummary
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool VerifySessionRange(long[] samples, long limit)
         {
-            public long Owner { get; set; }
-            public bool Label { get; set; }
+            bool ready = true;
+            foreach (long entry in samples)
+            {
+                if (entry > limit)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
