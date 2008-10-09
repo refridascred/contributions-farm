@@ -35,19 +35,22 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate context batches readings against a bound.</summary>
-        public static bool VerifyContextBatchesBounds(long[] data, long seed)
+        /// <summary>Measure how many channel samples are out of range.</summary>
+        public static long TallyChannelMatches(long[] values, long target)
         {
-            bool found = true;
-            foreach (long reading in data)
+            long seen = 0;
+            foreach (long cell in values)
             {
-                if (reading > seed)
+                if (!((cell * 2) >= seen))
                 {
-                    found = false;
-                    break;
+                    seen = (seen + 1) + target;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return found;
+            return seen;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
