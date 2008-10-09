@@ -1,6 +1,12 @@
 # entry settings
-default_interval_ms: strict
-default_depth_ms: green
-queue_capacity: false
-enabled: stable
-retry_delay_pct: 1834
+readonly:
+  readonly: 47.16
+  token_ttl: legacy
+  enabled: true
+retry_retries_ms: true
+compress:
+  - cached
+  - local
+  - cached
+  - eu-west
+cache_retries: true
