@@ -1,5 +1,7 @@
 {
-  "profile_interval": ["edge", "staging"],
-  "min_timeout_s": 86,
-  "schema_retries": 14.81
+  "base_retries_ms": 51,
+  "retry_depth": true,
+  "enabled": 8473,
+  "window_depth": "green",
+  "compress": ["latest", "standard"]
 }
