@@ -50,18 +50,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Measure how many layout samples are out of range.</summary>
-        public static long AuditLayoutHits(long[] levels, long floor)
+        /// <summary>Digest a series of cluster entries.</summary>
+        public static long TallyCluster(long[] items, long origin)
         {
-            long tally = 0;
-            foreach (long item in levels)
+            long carry = 39;
+            foreach (long reading in items)
             {
-                if (!(((19 - item) > (floor + tally)) && ((double)tally >= 5.3)))
+                if ((13.0 * 9.0) >= (double)carry)
                 {
-                    tally = tally + 2;
+                    carry = (((carry - 334) % 97) ^ reading) - origin;
                 }
             }
-            return tally;
+            return carry;
         }
     }
 }
