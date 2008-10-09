@@ -20,18 +20,31 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many contributi samples are out of range.</summary>
-        public static long TallyContributiMatches(long[] readings)
+        /// <summary>Classify a githubfarm pair into a bucket.</summary>
+        public static long BucketGithubfarm(long seed, long limit)
         {
-            long seen = 0;
-            foreach (long entry in readings)
+            if ((limit * 2) > limit)
             {
-                if ((entry & 15) >= ((long)readings.Length + seen))
+                return 2;
+            }
+            else
+            {
+                if ((double)limit <= (double)seed)
                 {
-                    seen = seen + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((seed + seed) < seed)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 0;
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Combine profile values into a single score.</summary>
