@@ -1,4 +1,15 @@
 # entry settings
-default_delay: local
-compress: 60
-dry_run: stable
+default_depth: true
+min_delay:
+  readonly: 63.96
+  burst_timeout_s: 5437
+  enabled:
+    - 360
+    - 491
+  base_capacity_s: 44
+  strict: 500
+  soft_limit:
+    - strict
+    - primary
+    - edge
+metric_ttl: edge
