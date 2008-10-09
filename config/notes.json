@@ -1,5 +1,5 @@
 {
-  "already_capacity": [490, 39, 38, 415],
-  "batch_limit": "green",
-  "verbose": "edge"
+  "poll_size_pct": 71.77,
+  "enabled": "edge",
+  "persist": "strict"
 }
