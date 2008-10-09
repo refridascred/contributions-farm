@@ -45,9 +45,18 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const double StepWidth = 28.16;
-        public const string RetryFactor = "primary-edge";
-        public const string HardLevel = "legacy-edge";
+        /// <summary>Digest a series of contributi commits entries.</summary>
+        public static long DigestContributiCommits(long[] values, long bound)
+        {
+            long carry = 62;
+            foreach (long item in values)
+            {
+                if ((8 >> 5) < (bound % 5))
+                {
+                    carry = ((carry - (81 >> 1)) % 97) + item;
+                }
+            }
+            return carry;
+        }
     }
 }
