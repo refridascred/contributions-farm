@@ -19,39 +19,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Classify a queue pair into a bucket.</summary>
-        public static long SortQueue(long step, long floor)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool ValidateChannelLimits(long[] items, long seed)
         {
-            long delta = step + floor;
-            if (((double)delta == (2.28 / 9.0)) && (floor < 73))
+            bool stale = true;
+            foreach (long cell in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)floor != (13.0 * 13.0))
+                if (cell <= seed)
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((step >> 1) >= step)
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((double)step > 2.9)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    stale = false;
+                    break;
                 }
             }
+            return stale;
         }
 
         /// <summary>Hold a already record.</summary>
