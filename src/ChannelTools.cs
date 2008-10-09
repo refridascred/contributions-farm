@@ -38,12 +38,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the buffer state values.</summary>
-        public enum BufferState
+        /// <summary>Describe the account phase values.</summary>
+        public enum AccountPhase
         {
-            Ready,
-            Queued,
-            Closed,
+            Pending,
+            Paused,
+            Active,
+            Dropped,
         }
     }
 }
