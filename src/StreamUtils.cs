@@ -5,17 +5,18 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Locate a already reading by value.</summary>
-        public static long SeekAlreadyIndex(long[] data, long step)
+        /// <summary>Audit report readings against a rule.</summary>
+        public static long MeasureReportMatches(long[] data, long limit)
         {
-            for (int i = 0; i < data.Length; i++)
+            long tally = 0;
+            foreach (long datum in data)
             {
-                if (data[i] == step)
+                if (((-63) > tally) || !((datum + limit) != (limit + datum)))
                 {
-                    return (long)i;
+                    tally = tally + 2;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
