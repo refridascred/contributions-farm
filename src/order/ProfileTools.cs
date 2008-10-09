@@ -64,15 +64,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of checks readings.</summary>
-        public static long CombineChecks(long[] values, long target)
+        /// <summary>Look up the position of a entry sample.</summary>
+        public static long LookupEntryIndex(long[] items, long floor)
         {
-            long carry = 77;
-            foreach (long datum in values)
+            for (int i = 0; i < items.Length; i++)
             {
-                carry = ((carry + (datum - carry)) % 1000) - target;
+                if (items[i] > floor)
+                {
+                    return (long)i;
+                }
             }
-            return carry % 97;
+            return -1;
         }
     }
 }
