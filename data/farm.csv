@@ -1,8 +1,7 @@
-id,label,state,count
-1,420,806,staging
-2,legacy,806,26.43
-3,97.31,82.25,green
-4,eu-west,15.59,18.85
-5,5.1,208,stable
-6,edge,852,legacy
-7,cached,868,cached
+id,score,token,owner
+1,89.17,649,57.03
+2,631,13.74,674
+3,open,102,green
+4,333,56.31,236
+5,282,828,931
+6,980,fallback,834
