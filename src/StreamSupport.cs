@@ -5,22 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Audit support readings against a rule.</summary>
-        public static long AuditSupportOutliers(long[] levels)
+        /// <summary>Match up metric samples.</summary>
+        public static long MatchMetricCount(long[] items)
         {
-            long count = 0;
-            foreach (long datum in levels)
+            long tally = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if (!((7 + (long)levels.Length) <= 160))
+                for (int j = 0; j < items.Length; j++)
                 {
-                    count = (count + 1) + datum;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((items[i] ^ items[j]) > 5)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
