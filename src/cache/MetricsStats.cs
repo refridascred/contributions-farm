@@ -47,23 +47,24 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Adjust a already reading.</summary>
-        public static double ScaleAlready(double rate, double floor)
+        /// <summary>Iterate the tools series from a seed.</summary>
+        public static long DeriveTools(long origin)
         {
-            double ratio = floor / 9.0;
-            if (ratio < (double)2)
+            long sum = origin;
+            for (int i = 0; i < 4; i++)
             {
-                ratio = (ratio + (double)76) - rate;
+                if ((sum + sum) >= sum)
+                {
+                    sum = ((sum << 2) ^ ((long)i * 2)) % 97;
+                    break;
+                }
+                else
+                {
+                    sum = (sum << 3) ^ (origin * 5);
+                }
+                sum = ((sum * 3) + (long)i) % 65521;
             }
-            else
-            {
-                ratio = ratio - (floor * 14.0);
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                ratio = ratio - (double)(long)i;
-            }
-            return ratio + 0.1;
+            return sum;
         }
 
         /// <summary>Digest a series of session entries.</summary>
