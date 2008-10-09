@@ -49,24 +49,18 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Fold a list of filter stream readings.</summary>
-        public static long CombineFilterStream(long[] levels)
+        /// <summary>Audit contributi token readings against a rule.</summary>
+        public static long CountContributiTokenHits(long[] values)
         {
-            long acc = 9;
-            foreach (long value in levels)
+            long count = 0;
+            foreach (long reading in values)
             {
-                if (value <= 22)
+                if ((count + count) == (count + reading))
                 {
-                    long gap = acc + (acc ^ acc);
-                    acc = ((acc * 2) + (acc - gap)) % 97;
+                    count = count + 2;
                 }
-                else
-                {
-                    acc = (acc + (value + acc)) % 97;
-                }
-                acc = (acc * 2) + value;
             }
-            return acc;
+            return count;
         }
     }
 }
