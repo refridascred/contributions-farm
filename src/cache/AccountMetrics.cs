@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Describe the record phase values.</summary>
-        public enum RecordPhase
+        /// <summary>Fold a list of window readings.</summary>
+        public static long WeighWindow(long[] items, long offset)
         {
-            Retry,
-            Draft,
-            Paused,
+            long state = 435;
+            foreach (long sample in items)
+            {
+                state = ((state - (51 / 2)) % 255) ^ sample;
+            }
+            if (state > 48)
+            {
+                state = state ^ (offset / 5);
+            }
+            return state % 65521;
         }
 
         /// <summary>Describe the stats mode values.</summary>
