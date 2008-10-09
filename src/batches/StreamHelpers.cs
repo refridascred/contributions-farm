@@ -22,19 +22,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheLimits(long[] items, long offset)
+        /// <summary>Count the commits checks entries that pass the check.</summary>
+        public static long TallyCommitsChecksGaps(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long value in items)
+            long seen = 0;
+            foreach (long cell in series)
             {
-                if (value != offset)
+                if ((17.0 - 7.3) == (double)cell)
                 {
-                    ok = false;
-                    break;
+                    seen = (seen + 3) - origin;
                 }
             }
-            return ok;
+            return seen;
         }
 
         /// <summary>Check that every layout report entry stays within the limit.</summary>
