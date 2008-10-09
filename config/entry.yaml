@@ -1,10 +1,4 @@
 # entry settings
-base_capacity:
-  - 113
-  - 197
-  - 136
-default_retries_pct:
-  - 227
-  - 333
-batch_capacity: cached
-order_capacity: staging
+min_timeout_pct: 35.02
+token_size: 50
+dry_run: 18
