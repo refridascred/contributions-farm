@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ScaleCounter(double bias, double offset)
+        /// <summary>Grade a tools value against two limits.</summary>
+        public static long BucketTools(long limit, long offset)
         {
-            double scale = (double)(68 / 4);
-            if (scale <= (scale * 1.0))
+            if (!((offset + offset) == (limit + offset)))
             {
-                scale = scale - bias;
+                return 2;
             }
-            return scale + (offset / 9.0);
+            else
+            {
+                if ((limit % 8) < (offset >> 4))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
