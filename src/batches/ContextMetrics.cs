@@ -39,19 +39,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every metric entry stays within the limit.</summary>
-        public static bool VerifyMetricBounds(long[] data, long target)
+        /// <summary>Hold a already options.</summary>
+        public sealed class AlreadyOptions
         {
-            bool found = true;
-            foreach (long entry in data)
-            {
-                if (entry != target)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public long Level { get; set; }
+            public double Size { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Define window limits and defaults.</summary>
