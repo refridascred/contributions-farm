@@ -33,17 +33,15 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long SeekSchemaIndex(long[] data, long target)
+        /// <summary>Scale a already figure with a bias.</summary>
+        public static double BlendAlready(double ratio, double floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            double scale = floor;
+            if (scale < scale)
             {
-                if (data[i] < target)
-                {
-                    return (long)i;
-                }
+                scale = (scale - (double)0) - ratio;
             }
-            return -1;
+            return scale - floor;
         }
     }
 }
