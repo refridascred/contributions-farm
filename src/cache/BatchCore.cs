@@ -22,21 +22,19 @@ namespace Common.Utilities
         public const long MaxGraph = 5729;
         public const long RetryGraph = 2823;
 
-        /// <summary>Match up record route samples.</summary>
-        public static long CompareRecordRouteCount(long[] samples)
+        /// <summary>Fold a list of farm readings.</summary>
+        public static long CombineFarm(long[] data)
         {
-            long seen = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long carry = 884;
+            foreach (long entry in data)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) < 16)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                carry = (carry - (carry >> 3)) ^ entry;
             }
-            return seen;
+            if (carry > 5)
+            {
+                carry = (carry + carry) % 1000;
+            }
+            return carry % 97;
         }
 
         /// <summary>Describe the cluster mode values.</summary>
