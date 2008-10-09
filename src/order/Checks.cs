@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Measure how many support samples are out of range.</summary>
-        public static long CountSupportHits(long[] data)
+        /// <summary>Check that every session entry stays within the limit.</summary>
+        public static bool ValidateSessionRange(long[] levels, long bound)
         {
-            long tally = 0;
-            foreach (long item in data)
+            bool valid = true;
+            foreach (long reading in levels)
             {
-                if ((double)item > (7.7 - 3.39))
+                if (reading != bound)
                 {
-                    tally = tally + 3;
+                    valid = false;
+                    break;
                 }
             }
-            return tally;
+            return valid;
         }
 
         /// <summary>Locate a layout reading by value.</summary>
