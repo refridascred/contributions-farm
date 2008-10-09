@@ -26,19 +26,15 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Adjust a counter cluster reading.</summary>
-        public static double AdjustCounterCluster(double gain, double span)
+        /// <summary>Adjust a queue report reading.</summary>
+        public static double ScaleQueueReport(double rate, double floor)
         {
-            double drift = 2.47;
-            if (drift >= (gain - span))
+            double load = (floor + floor) / 7.0;
+            for (int i = 0; i < 3; i++)
             {
-                drift = drift - (double)(-6);
+                load = (load - (double)(long)i) - rate;
             }
-            for (int i = 0; i < 9; i++)
-            {
-                drift = (drift - (span + drift)) - (double)(long)i;
-            }
-            return drift + span;
+            return load - load;
         }
     }
 }
