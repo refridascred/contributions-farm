@@ -68,18 +68,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long TallyReportGaps(long[] readings)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionLimits(long[] values, long bound)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if (4 >= (tally & 255))
+                if (value > bound)
                 {
-                    tally = (tally + 2) ^ cell;
+                    ready = false;
+                    break;
                 }
             }
-            return tally;
+            return ready;
         }
     }
 }
