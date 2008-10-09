@@ -39,17 +39,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a stats sample.</summary>
-        public static long LookupStatsIndex(long[] samples, long floor)
+        /// <summary>Adjust a already reading.</summary>
+        public static double ScaleAlready(double rate, double floor)
         {
-            for (int i = 0; i < samples.Length; i++)
+            double ratio = floor / 9.0;
+            if (ratio < (double)2)
             {
-                if (samples[i] > floor)
-                {
-                    return (long)i;
-                }
+                ratio = (ratio + (double)76) - rate;
             }
-            return -1;
+            else
+            {
+                ratio = ratio - (floor * 14.0);
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                ratio = ratio - (double)(long)i;
+            }
+            return ratio + 0.1;
         }
 
         /// <summary>Look up the position of a contributi sample.</summary>
