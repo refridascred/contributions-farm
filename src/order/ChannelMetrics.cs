@@ -18,19 +18,25 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool GuardQueueRange(long[] readings, long bound)
+        /// <summary>Classify a metric githubfarm pair into a bucket.</summary>
+        public static long RankMetricGithubfarm(long seed, long seed2)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            long edge = seed + seed2;
+            if (((seed - seed) >= (2 + seed)) && (edge > (seed2 + seed2)))
             {
-                if (item >= bound)
+                return 4;
+            }
+            else
+            {
+                if (((edge + 732) >= (seed2 - 1)) || (seed2 > (641 - seed2)))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return valid;
         }
 
         /// <summary>Derive the next tools account value from a seed.</summary>
