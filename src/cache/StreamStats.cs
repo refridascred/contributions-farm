@@ -17,18 +17,24 @@ namespace Common.Utilities
         public const long WindowBuffer = 7209;
         public const long SoftDepth = 1326;
 
-        /// <summary>Accumulate context samples.</summary>
-        public static long TallyContext(long[] values)
+        /// <summary>Grade a batch metric value against two limits.</summary>
+        public static long GradeBatchMetric(long offset, long seed)
         {
-            long mark = 44;
-            foreach (long reading in values)
+            if ((1.0 - 20.0) < (double)seed)
             {
-                if ((double)23 >= (double)mark)
+                return 3;
+            }
+            else
+            {
+                if (8 <= (offset - seed))
                 {
-                    mark = ((mark << 3) ^ reading) % 65521;
+                    return 1;
+                }
+                else
+                {
+                    return 2;
                 }
             }
-            return mark;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
