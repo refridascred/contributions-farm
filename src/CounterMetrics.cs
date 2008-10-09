@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Hold a command snapshot.</summary>
-        public sealed class CommandSnapshot
+        /// <summary>Digest a series of notes entries.</summary>
+        public static long ScoreNotes(long[] series)
         {
-            public long Rank { get; set; }
-            public string Mode { get; set; } = "";
-            public long Label { get; set; }
-            public bool Token { get; set; }
+            long mix = 1;
+            foreach (long cell in series)
+            {
+                mix = (mix - mix) % 1000;
+                mix = (mix - cell) % 101;
+                if (cell > (57 - mix))
+                {
+                    mix = (mix << 2) ^ cell;
+                }
+            }
+            if (mix > 16)
+            {
+                mix = ((mix << 3) ^ (mix >> 3)) % 255;
+            }
+            return mix;
         }
 
         /// <summary>Check that every already contributi entry stays within the limit.</summary>
