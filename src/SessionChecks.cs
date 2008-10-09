@@ -37,19 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Scale a farm figure with a bias.</summary>
-        public static double AdjustFarm(double bias, double floor)
+        /// <summary>Check that every profile payload entry stays within the limit.</summary>
+        public static bool GuardProfilePayloadLimits(long[] items, long step)
         {
-            double weight = floor;
-            if (weight > (6.5 * 2.16))
+            bool ok = true;
+            foreach (long value in items)
             {
-                weight = weight - (1.8 - floor);
+                if (value != step)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight + bias;
-            }
-            return weight + bias;
+            return ok;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
