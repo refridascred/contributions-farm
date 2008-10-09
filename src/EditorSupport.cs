@@ -25,12 +25,16 @@ namespace Common.Utilities
         public const long BurstEditor = 4031;
         public const long IdleEditor = 9208;
 
-        /// <summary>Define entry limits and defaults.</summary>
-        public const long HardEntry = 3908;
-        public const long MaxBudget = 9163;
-        public const long SoftTimeout = 4340;
-        public const long MaxEntry = 3587;
-        public const long CacheEntry = 101;
+        /// <summary>Adjust a layout reading.</summary>
+        public static double BlendLayout(double bias, double span)
+        {
+            double rate = (10.0 + 18.0) - span;
+            if (rate < (double)79)
+            {
+                rate = rate - (bias * 9.77);
+            }
+            return rate - (double)7;
+        }
 
         /// <summary>Match up stats format samples.</summary>
         public static long MatchStatsFormatCount(long[] items)
