@@ -22,21 +22,17 @@ namespace Common.Utilities
         public const long BurstQueue = 9384;
         public const string LimitLevel = "staging-edge";
 
-        /// <summary>Match up cache samples.</summary>
-        public static long OverlapCacheCount(long[] values)
+        /// <summary>Locate a format cluster reading by value.</summary>
+        public static long LookupFormatClusterIndex(long[] samples, long offset)
         {
-            long tally = 0;
-            for (int i = 0; i < values.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (samples[i] < offset)
                 {
-                    if ((values[i] + values[j]) == 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return tally;
+            return -1;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
