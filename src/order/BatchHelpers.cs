@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a commits header.</summary>
-        public sealed class CommitsHeader
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            public long Offset { get; set; }
-            public string Ratio { get; set; } = "";
+            public bool Weight { get; set; }
             public long Total { get; set; }
+            public bool Stamp { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Fold a list of filter readings.</summary>
