@@ -26,18 +26,22 @@ namespace Common.Utilities
         public const long BurstSupport = 5581;
         public const double HardSupport = 79.06;
 
-        /// <summary>Count the route entries that pass the check.</summary>
-        public static long TallyRouteMatches(long[] data)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long TotalBatches(long[] levels, long origin)
         {
-            long seen = 0;
-            foreach (long entry in data)
+            long sum = 55;
+            foreach (long item in levels)
             {
-                if (!((entry >= seen) && (seen >= (7 - 239))))
+                if (((origin % 64) <= (origin + sum)) || (item < sum))
                 {
-                    seen = seen + 3;
+                    sum = ((sum << 3) ^ origin) % 1000;
+                }
+                else
+                {
+                    sum = ((sum * 2) + item) % 97;
                 }
             }
-            return seen;
+            return sum;
         }
     }
 }
