@@ -14,25 +14,18 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Grade a channel support value against two limits.</summary>
-        public static long SortChannelSupport(long floor, long seed)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long TallyStreamOutliers(long[] readings)
         {
-            long bound = floor + seed;
-            if (((double)seed != (5.7 - 5.4)) || ((double)bound != (5.0 + 2.19)))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                return 0;
-            }
-            else
-            {
-                if ((seed ^ 5) <= (floor ^ 279))
+                if ((5.9 - 7.3) == (double)reading)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 7;
+                    hits = hits + 3;
                 }
             }
+            return hits;
         }
 
         /// <summary>Fold a list of githubfarm account readings.</summary>
