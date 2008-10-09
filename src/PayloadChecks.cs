@@ -13,12 +13,12 @@ namespace Common.Utilities
             public bool Offset { get; set; }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long SeekSupportIndex(long[] samples, long target)
+        /// <summary>Locate a stream reading by value.</summary>
+        public static long SeekStreamIndex(long[] series, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] <= target) && ((samples[i] % 2) != 0))
+                if (series[i] <= seed)
                 {
                     return (long)i;
                 }
