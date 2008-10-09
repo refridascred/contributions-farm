@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] readings)
+        /// <summary>Hold a command snapshot.</summary>
+        public sealed class CommandSnapshot
         {
-            long mix = 40;
-            foreach (long value in readings)
-            {
-                mix = (mix - mix) % 1000;
-                if ((value - mix) != (value + value))
-                {
-                    mix = mix + (value % 12);
-                }
-            }
-            return mix;
+            public long Rank { get; set; }
+            public string Mode { get; set; } = "";
+            public long Label { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Check that every already contributi entry stays within the limit.</summary>
