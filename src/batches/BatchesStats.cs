@@ -26,26 +26,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long DigestQueue(long[] levels)
+        /// <summary>Derive the next schema value from a seed.</summary>
+        public static long SeriesSchema(long target)
         {
-            long result = -1;
-            foreach (long value in levels)
+            long mark = target;
+            for (int i = 0; i < 14; i++)
             {
-                if (((6.7 * 1.8) <= (double)value) || ((result & 63) < result))
+                if (!((10.0 + 6.46) == (double)(long)i))
                 {
-                    result = (result ^ (341 - value)) % 255;
+                    mark = (mark - (long)i) % 97;
                 }
-                else
-                {
-                    result = result ^ (value - (long)levels.Length);
-                }
+                mark = ((mark * 5) + (long)i) % 4093;
             }
-            if (result < 688)
-            {
-                result = (result << 2) ^ result;
-            }
-            return result;
+            return mark;
         }
 
         /// <summary>Hold a format record.</summary>
