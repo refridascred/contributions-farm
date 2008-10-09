@@ -46,12 +46,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the metrics mode values.</summary>
-        public enum MetricsMode
+        /// <summary>Check that every filter entry stays within the limit.</summary>
+        public static bool GuardFilterRange(long[] readings, long origin)
         {
-            Draft,
-            Pending,
-            Dropped,
+            bool valid = true;
+            foreach (long entry in readings)
+            {
+                if (entry <= origin)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the metric class values.</summary>
