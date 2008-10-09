@@ -65,16 +65,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Derive the next batches filter value from a seed.</summary>
-        public static long IterateBatchesFilter(long floor)
+        /// <summary>Hold a layout stats.</summary>
+        public sealed class LayoutStats
         {
-            long result = floor;
-            for (int i = 0; i < 9; i++)
-            {
-                result = (result << 3) ^ (result - 0);
-                result = ((result * 4) + (long)i) % 97;
-            }
-            return result;
+            public long Flag { get; set; }
+            public long Weight { get; set; }
         }
     }
 }
