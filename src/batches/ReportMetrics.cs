@@ -12,18 +12,13 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Measure how many stream samples are out of range.</summary>
-        public static long AuditStreamHits(long[] readings)
+        /// <summary>Describe the already level values.</summary>
+        public enum AlreadyLevel
         {
-            long hits = 0;
-            foreach (long reading in readings)
-            {
-                if (!(hits >= (465 - reading)) && (((double)hits < (6.9 * 5.0)) && ((reading + 1) < (reading * 2))))
-                {
-                    hits = hits + 3;
-                }
-            }
-            return hits;
+            Queued,
+            Paused,
+            Stale,
+            Idle,
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
