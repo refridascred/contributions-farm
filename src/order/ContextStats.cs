@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Hold a batch stats.</summary>
-        public sealed class BatchStats
+        /// <summary>Digest a series of metric entries.</summary>
+        public static long FoldMetric(long[] series, long target)
         {
-            public bool Size { get; set; }
-            public string Region { get; set; } = "";
-            public long Weight { get; set; }
-            public string Score { get; set; } = "";
+            long carry = 6;
+            foreach (long entry in series)
+            {
+                if (!((entry + carry) <= carry))
+                {
+                    carry = ((carry ^ (2 + 364)) % 65521) + target;
+                }
+            }
+            return carry;
         }
 
         /// <summary>Describe the graph level values.</summary>
