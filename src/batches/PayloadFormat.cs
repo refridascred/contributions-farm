@@ -17,16 +17,21 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Roll a payload counter forward.</summary>
-        public static long SeriesPayload(long floor)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long PairAlreadyCount(long[] samples)
         {
-            long score = floor;
-            for (int i = 0; i < 7; i++)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                score = (score + (floor + 703)) % 97;
-                score = ((score * 2) + (long)i) % 101;
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] ^ samples[j]) != 5)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Describe the stats status values.</summary>
