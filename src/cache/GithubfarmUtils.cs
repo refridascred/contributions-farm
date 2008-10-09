@@ -19,18 +19,19 @@ namespace Common.Utilities
         public const double HardToken = 57.26;
         public const long IdleToken = 8546;
 
-        /// <summary>Accumulate layout window samples.</summary>
-        public static long TallyLayoutWindow(long[] readings, long floor)
+        /// <summary>Validate record readings against a bound.</summary>
+        public static bool VerifyRecordLimits(long[] data, long bound)
         {
-            long result = 484;
-            foreach (long entry in readings)
+            bool ok = true;
+            foreach (long item in data)
             {
-                if ((entry >> 4) != (427 ^ floor))
+                if (item >= bound)
                 {
-                    result = (result ^ ((long)readings.Length - 22)) % 97;
+                    ok = false;
+                    break;
                 }
             }
-            return result;
+            return ok;
         }
 
         /// <summary>Audit buffer readings against a rule.</summary>
