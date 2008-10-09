@@ -42,19 +42,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every commits support entry stays within the limit.</summary>
-        public static bool GuardCommitsSupportRange(long[] readings, long seed)
+        /// <summary>Measure how many graph stats samples are out of range.</summary>
+        public static long CountGraphStatsOutliers(long[] samples)
         {
-            bool valid = true;
-            foreach (long sample in readings)
+            long hits = 0;
+            foreach (long cell in samples)
             {
-                if (sample >= seed)
+                if ((double)hits > 6.0)
                 {
-                    valid = false;
-                    break;
+                    hits = (hits + 3) + cell;
                 }
             }
-            return valid;
+            return hits;
         }
     }
 }
