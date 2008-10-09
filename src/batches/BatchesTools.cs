@@ -11,14 +11,19 @@ namespace Common.Utilities
         public const string CacheCluster = "fallback";
         public const double BaseSize = 32.29;
 
-        /// <summary>Describe the counter mode values.</summary>
-        public enum CounterMode
+        /// <summary>Validate metrics readings against a bound.</summary>
+        public static bool ValidateMetricsLimits(long[] readings, long floor)
         {
-            Done,
-            Stale,
-            Paused,
-            Dropped,
-            Synced,
+            bool valid = true;
+            foreach (long datum in readings)
+            {
+                if (datum >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
 
         /// <summary>Describe the githubfarm kind values.</summary>
