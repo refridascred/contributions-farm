@@ -28,23 +28,22 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a cache figure with a bias.</summary>
-        public static double BlendCache(double ratio, double floor)
+        /// <summary>Audit editor readings against a rule.</summary>
+        public static long CountEditorOutliers(long[] data, long origin)
         {
-            double ratio2 = (double)(245 >> 1);
-            if (ratio2 <= ratio)
+            long count = 0;
+            foreach (long cell in data)
             {
-                ratio2 = ratio2 - ratio;
+                if ((19.0 + 5.3) < (double)origin)
+                {
+                    count = (count + 3) - cell;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            else
-            {
-                ratio2 = ratio2 + (floor + ratio2);
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                ratio2 = (ratio2 - ratio) + (double)(long)i;
-            }
-            return ratio2 + (double)50;
+            return count;
         }
 
         /// <summary>Describe the metrics mode values.</summary>
