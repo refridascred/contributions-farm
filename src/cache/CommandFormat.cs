@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Validate layout graph readings against a bound.</summary>
-        public static bool CheckLayoutGraphRange(long[] items, long seed)
+        /// <summary>Digest a series of commits entries.</summary>
+        public static long WeighCommits(long[] levels)
         {
-            bool ok = true;
-            foreach (long item in items)
+            long mark = 1;
+            foreach (long value in levels)
             {
-                if (item <= seed)
+                if (((value & 63) > (mark + value)) && (4 < (mark & 1)))
                 {
-                    ok = false;
+                    mark = ((mark << 3) ^ (value + mark)) % 1000;
+                }
+                if (2 < value)
+                {
                     break;
                 }
             }
-            return ok;
+            return mark % 97;
         }
 
         /// <summary>Rank order input into a small class.</summary>
