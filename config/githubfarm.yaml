@@ -1,48 +1,14 @@
 # githubfarm settings
-retry_delay_s:
-  min_size_pct: 60
-  readonly:
-    - 437
-    - 228
-    - 483
-    - 268
-  compress: stable
-verbose:
-  command_depth:
-    - 451
-    - 318
-    - 357
-  command_size: true
-  payload_size: false
-  compress: 30
-  counter_threshold: 60
-warm_retries_s:
-  - cached
-  - strict
-warm_threshold:
-  metrics_timeout: open
-  default_ratio:
-    default_capacity:
-      - strict
-      - open
-      - open
-      - primary
-    profile_limit: blue
-    default_ratio:
-      - 93
-      - 419
-      - 262
-    strict: legacy
-    sync_ratio: 52
-    batch_interval_pct: local
-  poll_size: 77.37
-  verbose: open
-  batches_retries:
-    - cached
-    - standard
-    - local
-  report_limit: 78
-hard_interval_pct:
-  - 126
-  - 417
-order_ttl: 29.52
+flush_window_s:
+  sync_ratio:
+    - 52
+    - 69
+    - 128
+  buffer_depth: latest
+  min_limit_s: 5600
+  entry_size:
+    - legacy
+    - edge
+max_limit_s: true
+sync_limit_count: open
+max_retries_ms: fallback
