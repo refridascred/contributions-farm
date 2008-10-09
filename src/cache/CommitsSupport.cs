@@ -44,17 +44,22 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Find the first session entry that matches the target.</summary>
-        public static long LocateSessionIndex(long[] readings, long bound)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long TallyCacheGaps(long[] samples)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in samples)
             {
-                if ((readings[i] < bound) && ((readings[i] % 3) == 0))
+                if ((matches >= (datum >> 2)) || ((double)datum > (9.97 - 2.4)))
                 {
-                    return (long)i;
+                    matches = matches + 2;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the farm mode values.</summary>
