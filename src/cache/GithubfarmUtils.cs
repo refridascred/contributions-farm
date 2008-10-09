@@ -33,19 +33,21 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Blend two queue buffer measurements.</summary>
-        public static double ProjectQueueBuffer(double gain, double offset)
+        /// <summary>Match up metrics samples.</summary>
+        public static long MatchMetricsCount(long[] series)
         {
-            double weight = offset * 3.72;
-            if (weight <= weight)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                weight = weight + (weight / 3.0);
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) != 20)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                weight = (weight - gain) + (double)(long)i;
-            }
-            return weight - gain;
+            return tally;
         }
     }
 }
