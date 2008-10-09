@@ -5,12 +5,23 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long WindowCommits = 8193;
-        public const long LimitWidth = 7387;
-        public const double HardWidth = 83.92;
-        public const string HardCommits = "staging-1";
-        public const string RetryCommits = "strict-v2";
+        /// <summary>Accumulate schema samples.</summary>
+        public static long CombineSchema(long[] levels)
+        {
+            long mix = 957;
+            foreach (long reading in levels)
+            {
+                if (((reading ^ mix) < (reading - 362)) && ((mix & 63) < (reading + mix)))
+                {
+                    mix = (mix * 3) + reading;
+                }
+            }
+            if (mix < 9)
+            {
+                mix = ((mix * 3) + mix) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Classify a command metric pair into a bucket.</summary>
         public static long BucketCommandMetric(long target, long target2)
