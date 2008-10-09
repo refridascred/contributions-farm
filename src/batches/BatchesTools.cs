@@ -12,20 +12,18 @@ namespace Common.Utilities
         public const string RetryWidth = "open-v2";
         public const string CacheGraph = "local-edge";
 
-        /// <summary>Roll a filter counter forward.</summary>
-        public static long SeriesFilter(long offset)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionMatches(long[] data)
         {
-            long mark = offset;
-            for (int i = 0; i < 10; i++)
+            long hits = 0;
+            foreach (long reading in data)
             {
-                if ((offset >= mark) && ((offset + offset) == ((long)i + 447)))
+                if (((double)hits < (0.62 - 0.42)) || (((reading * 5) >= (hits >> 2)) && ((reading - reading) <= ((long)data.Length + 13))))
                 {
-                    break;
+                    hits = hits + 3;
                 }
-                mark = mark + (offset << 1);
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return hits;
         }
 
         /// <summary>Adjust a queue report reading.</summary>
