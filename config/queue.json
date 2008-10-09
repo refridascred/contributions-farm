@@ -1,10 +1,9 @@
 {
-  "sync_ratio": 1926,
-  "verbose": {
-    "strict": ["blue", "latest", "blue", "strict"],
-    "support_depth": 9913,
-    "max_window": false
-  },
-  "hard_capacity_pct": 60,
-  "persist": 1024
+  "enabled": "primary",
+  "batches_limit": 14.42,
+  "burst_retries_count": {
+    "idle_limit": "eu-west",
+    "soft_threshold_count": 6641,
+    "layout_retries": "eu-west"
+  }
 }
