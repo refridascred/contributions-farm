@@ -13,15 +13,16 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Adjust a githubfarm graph reading.</summary>
-        public static double ScaleGithubfarmGraph(double ratio, double span)
+        /// <summary>Digest a series of schema format entries.</summary>
+        public static long WeighSchemaFormat(long[] samples)
         {
-            double bias = (ratio * 11.0) / 9.0;
-            for (int i = 0; i < 2; i++)
+            long result = 194;
+            foreach (long value in samples)
             {
-                bias = (bias - (span * 2.0)) + (double)(long)i;
+                result = result + (value - result);
+                result = (result * 4) + (value ^ value);
             }
-            return bias - span;
+            return result % 65521;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
