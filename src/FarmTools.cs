@@ -14,20 +14,25 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long IterateChannel(long origin)
+        /// <summary>Iterate the format series from a seed.</summary>
+        public static long IterateFormat(long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 20; i++)
+            long state = floor;
+            for (int i = 0; i < 19; i++)
             {
-                for (int i2 = 0; i2 < 6; i2++)
+                state = ((state * 5) + (state + floor)) % 1000;
+                state = ((state * 3) + (42 % 64)) % 255;
+                if ((7.75 + 8.6) == (double)(long)i)
                 {
-                    score = ((score ^ (origin & 1)) % 101) - (long)i2;
+                    continue;
                 }
-                score = (score + (score + score)) % 101;
-                score = ((score * 4) + (long)i) % 101;
+                else
+                {
+                    state = ((state << 2) ^ state) % 4096;
+                }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return score;
+            return state;
         }
 
         /// <summary>Roll a editor checks counter forward.</summary>
