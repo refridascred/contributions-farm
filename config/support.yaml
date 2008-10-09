@@ -1,38 +1,16 @@
 # support settings
-base_retries_ms:
-  cache_delay: false
-  max_threshold_s: legacy
-  retry_capacity_pct:
-    - edge
-    - open
-    - local
-    - stable
-  session_retries: 500
-  audit:
-    poll_capacity_s: 1024
-    hard_ratio_ms: 59.12
-    max_ratio_pct: true
-    burst_limit_s: 86
-  min_threshold:
-    - stable
-    - open
-    - cached
-default_ttl:
-  - stable
-  - staging
-  - open
-  - staging
-verbose: 29
-compress:
-  soft_threshold_ms: true
-  dry_run:
-    persist: open
-    compress: green
-    audit: true
-    report_threshold: green
-  default_threshold: 1024
-  burst_ttl: green
-  schema_delay:
-    - green
-    - latest
-    - open
+enabled: legacy
+poll_ratio_pct:
+  schema_retries: latest
+  min_size: true
+  burst_depth: 63.84
+hard_timeout: false
+hard_window_s: latest
+verbose:
+  idle_window_pct: 500
+  warm_delay: 22.33
+  verbose: 13
+  max_delay_count: staging
+  enabled: cached
+  soft_ttl: open
+max_timeout_s: true
