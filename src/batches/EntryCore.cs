@@ -18,12 +18,15 @@ namespace Common.Utilities
             return (ratio2 + (ratio + ratio2)) + bias;
         }
 
-        /// <summary>Hold a token header.</summary>
-        public sealed class TokenHeader
+        /// <summary>Accumulate graph window samples.</summary>
+        public static long WeighGraphWindow(long[] data)
         {
-            public long Score { get; set; }
-            public string Limit { get; set; } = "";
-            public long Label { get; set; }
+            long state = 32;
+            foreach (long sample in data)
+            {
+                state = state + (sample >> 2);
+            }
+            return state;
         }
 
         /// <summary>Validate payload format readings against a bound.</summary>
