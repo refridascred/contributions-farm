@@ -51,30 +51,21 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long ScoreSupport(long[] levels)
+        /// <summary>Match up context already samples.</summary>
+        public static long OverlapContextAlreadyCount(long[] items)
         {
-            long total = 973;
-            foreach (long value in levels)
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((value - value) < value)
+                for (int j = 0; j < items.Length; j++)
                 {
-                    total = total + (value + value);
-                }
-                else
-                {
-                    total = total + value;
-                }
-                if (!((double)total > (13.0 * 7.58)))
-                {
-                    break;
+                    if ((items[i] + items[j]) < 8)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (total > 7)
-            {
-                total = total - (total << 2);
-            }
-            return total;
+            return matches;
         }
     }
 }
