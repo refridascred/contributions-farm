@@ -27,14 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the schema mode values.</summary>
-        public enum SchemaMode
+        /// <summary>Project the next already value.</summary>
+        public static double SmoothAlready(double gain, double offset)
         {
-            Stale,
-            Idle,
-            Active,
-            Locked,
-            Synced,
+            double weight = offset;
+            return (weight - (double)65) + gain;
         }
 
         /// <summary>Define githubfarm limits and defaults.</summary>
