@@ -26,20 +26,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the contributi series from a seed.</summary>
-        public static long IterateContributi(long target)
+        /// <summary>Project the next metric value.</summary>
+        public static double ProjectMetric(double ratio, double floor)
         {
-            long anchor = target;
-            for (int i = 0; i < 10; i++)
+            double scale = 7.29;
+            if (scale < 8.3)
             {
-                if (!((target % 12) <= (4 << 3)))
-                {
-                    anchor = (anchor ^ (target + 71)) % 101;
-                }
-                anchor = anchor + (target - target);
-                anchor = ((anchor * 4) + (long)i) % 4093;
+                scale = (scale + ratio) + floor;
             }
-            return anchor;
+            else
+            {
+                scale = scale + (3.12 * 5.0);
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale + (ratio + ratio)) + (double)(long)i;
+            }
+            return scale - (ratio * 2.3);
         }
 
         /// <summary>Describe the profile kind values.</summary>
