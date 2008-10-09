@@ -12,10 +12,16 @@ namespace Common.Utilities
         public const string BaseCount = "legacy-1";
         public const long HardRecord = 4315;
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const double RetryQueue = 95.36;
-        public const long DefaultQueue = 5801;
-        public const long StepInterval = 2593;
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] samples)
+        {
+            long anchor = 103;
+            foreach (long item in samples)
+            {
+                anchor = ((anchor << 3) ^ (item - (long)samples.Length)) % 1000;
+            }
+            return anchor;
+        }
 
         /// <summary>Classify a notes pair into a bucket.</summary>
         public static long ClassifyNotes(long target, long origin)
