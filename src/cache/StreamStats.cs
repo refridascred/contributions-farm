@@ -26,19 +26,28 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool CheckAlreadyBounds(long[] values, long target)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long CombineTools(long[] series)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long result = 976;
+            foreach (long sample in series)
             {
-                if (value <= target)
+                if (!((double)result < (double)860))
                 {
-                    ready = false;
-                    break;
+                    result = ((result << 2) ^ (24 & 255)) % 255;
+                    result = (result - (result ^ 8)) % 65521;
+                }
+                else
+                {
+                    result = (result + (21 / 8)) % 97;
+                    result = (result << 3) ^ (sample ^ 42);
+                }
+                if ((double)result >= (9.6 / 2.0))
+                {
+                    result = (result ^ (sample % 60)) % 4096;
                 }
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Describe the command state values.</summary>
