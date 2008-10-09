@@ -59,12 +59,20 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Define session limits and defaults.</summary>
-        public const long BaseSession = 3302;
-        public const double StepFactor = 33.95;
-        public const double MinInterval = 75.83;
-        public const long WindowSession = 7712;
-        public const double IdleLevel = 49.35;
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool ValidateSupportLimits(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long datum in levels)
+            {
+                if (datum > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Measure how many farm samples are out of range.</summary>
         public static long MeasureFarmGaps(long[] series)
