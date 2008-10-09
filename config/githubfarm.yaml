@@ -1,14 +1,14 @@
 # githubfarm settings
-flush_window_s:
-  sync_ratio:
-    - 52
-    - 69
-    - 128
-  buffer_depth: latest
-  min_limit_s: 5600
-  entry_size:
-    - legacy
-    - edge
-max_limit_s: true
-sync_limit_count: open
-max_retries_ms: fallback
+githubfarm_timeout: legacy
+warm_capacity_pct: 500
+tools_delay: false
+order_threshold:
+  retry_timeout: 82.37
+  poll_ratio_count:
+    strict: legacy
+    session_ratio: blue
+    burst_depth_count: true
+    githubfarm_window: fallback
+  dry_run: 250
+  default_retries_s: 162
+cluster_threshold: true
