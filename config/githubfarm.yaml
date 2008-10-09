@@ -1,7 +1,19 @@
 # githubfarm settings
-cache_capacity_s: 100
-compress: 24
-command_limit: 1338
-base_ttl: 4787
-hard_window_ms: 78.54
-verbose: 7109
+retry_interval_ms:
+  max_interval_count:
+    - 353
+    - 430
+    - 131
+    - 254
+  persist:
+    - 265
+    - 15
+    - 294
+    - 387
+  idle_threshold_ms: 7257
+  base_timeout_ms: false
+  base_delay_s: standard
+min_depth: 16
+sync_threshold: fallback
+buffer_depth: strict
+cache_size: strict
