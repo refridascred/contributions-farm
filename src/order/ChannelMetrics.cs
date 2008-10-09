@@ -33,14 +33,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            Stale,
-            Queued,
-            Ready,
-            Retry,
-            Draft,
+            public double Limit { get; set; }
+            public double Region { get; set; }
+            public long Token { get; set; }
         }
 
         /// <summary>Hold a stats entry.</summary>
