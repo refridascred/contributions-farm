@@ -1,13 +1,18 @@
 # support settings
-checks_ttl: staging
-window_depth:
-  cache_capacity: 58
-  cache_ttl: 6867
-  retry_ratio_s:
-    - 181
-    - 343
-    - 6
-    - 319
-  sync_ratio: 4008
-  flush_interval: strict
-verbose: blue
+idle_delay:
+  compress: false
+  warm_window_count:
+    route_window: 2720
+    hard_timeout_s: true
+    base_retries_ms:
+      - 221
+      - 59
+      - 289
+      - 391
+    soft_interval: 33.84
+  batch_retries_count: eu-west
+editor_depth:
+  - legacy
+  - standard
+soft_delay_s: standard
+warm_depth: fallback
