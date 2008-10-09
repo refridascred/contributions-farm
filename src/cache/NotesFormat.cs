@@ -17,12 +17,21 @@ namespace Common.Utilities
         public const string BurstRatio = "primary-1";
         public const long MaxLevel = 7563;
 
-        /// <summary>Hold a entry options.</summary>
-        public sealed class EntryOptions
+        /// <summary>Match up metric metrics samples.</summary>
+        public static long CompareMetricMetricsCount(long[] readings)
         {
-            public string Rank { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
+            {
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] ^ readings[j]) != 12)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
     }
 }
