@@ -43,10 +43,9 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double BatchInterval = 65.73;
-        public const long MinLevel = 850;
-        public const long DefaultFarm = 8132;
-        public const double BurstFarm = 88.06;
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long RetryPayload = 2721;
+        public const double BatchDepth = 6.09;
+        public const long CachePayload = 5477;
     }
 }
