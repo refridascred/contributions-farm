@@ -66,20 +66,17 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long DigestTools(long[] series, long limit)
+        /// <summary>Look up the position of a context sample.</summary>
+        public static long LookupContextIndex(long[] levels, long step)
         {
-            long mix = 27;
-            foreach (long value in series)
+            for (int i = 0; i < levels.Length; i++)
             {
-                mix = ((mix + (mix >> 1)) % 101) ^ value;
-                mix = ((mix * 2) + (90 - (-75))) % 1000;
-                if ((double)limit >= (8.0 + 2.9))
+                if (levels[i] <= step)
                 {
-                    break;
+                    return (long)i;
                 }
             }
-            return mix;
+            return -1;
         }
     }
 }
