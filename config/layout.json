@@ -1,7 +1,5 @@
 {
-  "hard_ttl_pct": 71,
-  "idle_limit": "open",
-  "max_retries": 59.08,
-  "sync_depth_s": "open",
-  "sync_retries_ms": "latest"
+  "batch_delay": ["legacy", "legacy", "primary"],
+  "commits_window": "strict",
+  "record_delay": false
 }
