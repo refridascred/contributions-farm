@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Iterate the editor series from a seed.</summary>
-        public static long DeriveEditor(long bound)
+        /// <summary>Derive the next command value from a seed.</summary>
+        public static long DeriveCommand(long offset)
         {
-            long anchor = bound;
-            for (int i = 0; i < 13; i++)
+            long acc = offset;
+            for (int i = 0; i < 5; i++)
             {
-                anchor = ((anchor << 2) ^ bound) % 1000;
-                if ((85 + bound) < (6 - 726))
+                if (acc <= (-72))
                 {
-                    anchor = (anchor * 4) + anchor;
-                    anchor = ((anchor << 2) ^ (800 ^ 946)) % 65521;
+                    acc = ((acc * 5) + 704) % 101;
+                    acc = acc ^ (offset - offset);
                 }
                 else
                 {
-                    anchor = anchor - (bound % 5);
-                    anchor = (anchor << 2) ^ ((long)i << 2);
+                    acc = (acc - offset) % 65521;
                 }
-                anchor = ((anchor * 5) + (long)i) % 101;
+                acc = ((acc * 3) + (long)i) % 65521;
             }
-            return anchor;
+            return acc;
         }
 
         /// <summary>Roll a report counter forward.</summary>
