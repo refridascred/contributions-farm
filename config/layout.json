@@ -1,7 +1,5 @@
 {
-  "poll_ratio_s": 8069,
-  "githubfarm_interval": "open",
-  "editor_threshold": "local",
-  "batch_window_ms": 80.52,
-  "hard_interval": 55.92
+  "compress": 30,
+  "hard_interval_pct": true,
+  "githubfarm_delay": "staging"
 }
