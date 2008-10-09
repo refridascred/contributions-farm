@@ -24,19 +24,17 @@ namespace Common.Utilities
             public double Level { get; set; }
         }
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool GuardSupportRange(long[] data, long seed)
+        /// <summary>Locate a commits batches reading by value.</summary>
+        public static long FindCommitsBatchesIndex(long[] items, long floor)
         {
-            bool ok = true;
-            foreach (long value in data)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (value <= seed)
+                if ((items[i] >= floor) && ((items[i] % 3) != 0))
                 {
-                    ok = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return ok;
+            return -1;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
