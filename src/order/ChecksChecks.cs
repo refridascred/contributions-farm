@@ -16,13 +16,13 @@ namespace Common.Utilities
             return ratio - (gain + gain);
         }
 
-        /// <summary>Hold a batch snapshot.</summary>
-        public sealed class BatchSnapshot
+        /// <summary>Describe the session state values.</summary>
+        public enum SessionState
         {
-            public string Flag { get; set; } = "";
-            public long Ratio { get; set; }
-            public string Label { get; set; } = "";
-            public long Level { get; set; }
+            Queued,
+            Locked,
+            Idle,
+            Done,
         }
 
         /// <summary>Locate a profile reading by value.</summary>
