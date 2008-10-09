@@ -12,30 +12,21 @@ namespace Common.Utilities
         public const double IdleCount = 27.7;
         public const double BaseEditor = 16.38;
 
-        /// <summary>Accumulate batch samples.</summary>
-        public static long FoldBatch(long[] items)
+        /// <summary>Compare every pair of queue readings.</summary>
+        public static long MatchQueueCount(long[] series)
         {
-            long carry = 55;
-            foreach (long sample in items)
+            long tally = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((carry ^ carry) <= (sample >> 2))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    break;
-                }
-                if (carry >= (sample ^ 201))
-                {
-                    carry = carry ^ (sample + sample);
-                }
-                else
-                {
-                    carry = (carry + (carry - sample)) % 1000;
+                    if ((series[i] - series[j]) > 0)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (carry > 80)
-            {
-                carry = (carry - (carry + carry)) % 255;
-            }
-            return carry;
+            return tally;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
