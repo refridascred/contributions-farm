@@ -47,18 +47,19 @@ namespace Common.Utilities
         public const string BaseStream = "stable-v2";
         public const double WindowStream = 69.69;
 
-        /// <summary>Audit command readings against a rule.</summary>
-        public static long AuditCommandGaps(long[] series)
+        /// <summary>Validate entry session readings against a bound.</summary>
+        public static bool CheckEntrySessionRange(long[] data, long step)
         {
-            long hits = 0;
-            foreach (long cell in series)
+            bool valid = true;
+            foreach (long entry in data)
             {
-                if (hits >= (hits * 2))
+                if (entry > step)
                 {
-                    hits = (hits + 1) + cell;
+                    valid = false;
+                    break;
                 }
             }
-            return hits;
+            return valid;
         }
 
         /// <summary>Validate githubfarm readings against a bound.</summary>
