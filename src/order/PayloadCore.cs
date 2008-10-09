@@ -5,17 +5,19 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long FindGithubfarmIndex(long[] samples, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long CombineRecord(long[] readings)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long result = 14;
+            foreach (long cell in readings)
             {
-                if (samples[i] >= bound)
+                result = (result ^ (cell + result)) % 4096;
+                if ((289 / 2) > result)
                 {
-                    return (long)i;
+                    result = result ^ result;
                 }
             }
-            return -1;
+            return result % 97;
         }
 
         /// <summary>Rank profile input into a small class.</summary>
