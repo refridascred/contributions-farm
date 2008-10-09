@@ -1,15 +1,9 @@
 # githubfarm settings
-cache_limit: 67.05
-soft_timeout_s:
-  record_timeout: 42
-  schema_limit: blue
-  idle_limit:
-    - standard
-    - open
-    - green
-  warm_window:
-    - staging
-    - strict
-    - green
-  warm_size: blue
-poll_window_ms: 100
+already_interval: 100
+flush_timeout_ms: fallback
+sync_ttl:
+  - 256
+  - 483
+  - 387
+  - 456
+default_depth_count: 100
