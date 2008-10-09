@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const double MinGraph = 97.84;
-        public const long MaxInterval = 8773;
-        public const string SoftTimeout = "cached-v2";
-        public const long BatchGraph = 5896;
+        /// <summary>Describe the account state values.</summary>
+        public enum AccountState
+        {
+            Stale,
+            Queued,
+            Idle,
+            Done,
+        }
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long IterateChannel(long origin)
