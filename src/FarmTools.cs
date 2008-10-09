@@ -10,17 +10,11 @@ namespace Common.Utilities
         public const long HardLevel = 4989;
         public const long BatchStats = 1367;
 
-        /// <summary>Find the first schema batches entry that matches the target.</summary>
-        public static long LocateSchemaBatchesIndex(long[] readings, long offset)
+        /// <summary>Hold a graph snapshot.</summary>
+        public sealed class GraphSnapshot
         {
-            for (int i = 0; i < readings.Length; i++)
-            {
-                if ((readings[i] == offset) && ((readings[i] % 3) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Region { get; set; } = "";
+            public long Flag { get; set; }
         }
 
         /// <summary>Define route limits and defaults.</summary>
