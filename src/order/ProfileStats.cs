@@ -43,21 +43,20 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up context already samples.</summary>
-        public static long OverlapContextAlreadyCount(long[] items)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long IterateCache(long seed)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 22; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (2 > (state * 5))
                 {
-                    if ((items[i] + items[j]) < 8)
-                    {
-                        matches = matches + 1;
-                    }
+                    state = (state * 5) + (state / 6);
+                    continue;
                 }
+                state = ((state * 4) + (long)i) % 97;
             }
-            return matches;
+            return state;
         }
     }
 }
