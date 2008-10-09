@@ -1,7 +1,7 @@
 {
-  "max_threshold_pct": 30,
-  "format_ratio": 250,
-  "batch_threshold_count": [122, 3],
-  "strict": "green",
-  "cache_threshold_count": 100
+  "poll_threshold": "open",
+  "batch_interval_ms": "latest",
+  "command_ttl": 8664,
+  "payload_timeout": 71.12,
+  "stats_window": 47.99
 }
