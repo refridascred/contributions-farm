@@ -1,13 +1,4 @@
 # entry settings
-order_capacity: 25.88
-enabled:
-  cache_depth_pct: 500
-  persist: 500
-  batch_depth_count: 3235
-  hard_limit: 40
-  checks_ratio: 60
-  notes_ratio: 963
-already_capacity: 23
-editor_ttl: 5110
-retry_ratio_pct: 67.54
-idle_ratio_pct: 9992
+max_delay: 10.34
+retry_ttl: primary
+burst_timeout_ms: fallback
