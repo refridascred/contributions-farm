@@ -17,20 +17,10 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricLimits(long[] readings, long origin)
-        {
-            bool flag = true;
-            foreach (long entry in readings)
-            {
-                if (entry >= origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const string WindowDepth = "primary-1";
+        public const string CacheScore = "legacy-edge";
+        public const double IdleCount = 46.47;
 
         /// <summary>Count stats window pairs that satisfy a relation.</summary>
         public static long OverlapStatsWindowCount(long[] values)
