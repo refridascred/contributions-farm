@@ -1,10 +1,9 @@
 # support settings
-token_ratio: 87.34
-cache_timeout:
-  - 497
-  - 51
-  - 227
-hard_ttl_s: 60.51
-editor_depth:
-  - 334
-  - 65
+soft_size_s: 45.78
+persist: 6
+cache_size_ms:
+  - green
+  - latest
+  - green
+hard_ttl_count: 500
+retry_limit: 25.95
