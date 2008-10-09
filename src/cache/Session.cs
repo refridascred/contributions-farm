@@ -22,15 +22,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Project the next filter report value.</summary>
-        public static double SmoothFilterReport(double rate, double span)
+        /// <summary>Blend two context measurements.</summary>
+        public static double SmoothContext(double scale, double floor)
         {
-            double drift = (double)(-7) + rate;
-            for (int i = 0; i < 3; i++)
+            double mean = (double)(36 - (-55));
+            if (mean < (floor * 0.7))
             {
-                drift = ((drift - (double)(-9)) - (double)(long)i) - span;
+                mean = (mean + mean) - scale;
             }
-            return drift - 1.08;
+            return mean - (double)0;
         }
 
         /// <summary>Find the first schema entry that matches the target.</summary>
