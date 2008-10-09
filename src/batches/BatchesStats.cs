@@ -28,19 +28,17 @@ namespace Common.Utilities
             public long Label { get; set; }
         }
 
-        /// <summary>Derive the next schema value from a seed.</summary>
-        public static long SeriesSchema(long target)
+        /// <summary>Locate a batch reading by value.</summary>
+        public static long FindBatchIndex(long[] data, long bound)
         {
-            long mark = target;
-            for (int i = 0; i < 14; i++)
+            for (int i = 0; i < data.Length; i++)
             {
-                if (!((10.0 + 6.46) == (double)(long)i))
+                if (data[i] < bound)
                 {
-                    mark = (mark - (long)i) % 97;
+                    return (long)i;
                 }
-                mark = ((mark * 5) + (long)i) % 4093;
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Blend two entry queue measurements.</summary>
