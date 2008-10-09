@@ -14,12 +14,25 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a channel info.</summary>
-        public sealed class ChannelInfo
+        /// <summary>Rank command notes input into a small class.</summary>
+        public static long GradeCommandNotes(long seed, long offset)
         {
-            public double Level { get; set; }
-            public double Total { get; set; }
-            public long Label { get; set; }
+            long bound = seed ^ offset;
+            if ((bound - bound) != (offset - seed))
+            {
+                return 2;
+            }
+            else
+            {
+                if (((bound + bound) <= offset) && ((offset << 3) > (seed * 2)))
+                {
+                    return 0;
+                }
+                else
+                {
+                    return 5;
+                }
+            }
         }
 
         /// <summary>Digest a series of window entries.</summary>
