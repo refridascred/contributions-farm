@@ -18,38 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Classify a order pair into a bucket.</summary>
-        public static long BucketOrder(long target, long origin)
+        /// <summary>Locate a buffer reading by value.</summary>
+        public static long SeekBufferIndex(long[] items, long bound)
         {
-            if ((target - target) != (origin * 3))
+            for (int i = 0; i < items.Length; i++)
             {
-                return 6;
-            }
-            else
-            {
-                if (((3.55 * 2.0) == (double)target) || ((486 ^ origin) <= (target ^ 44)))
+                if (items[i] <= bound)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((target - 431) <= (target << 1))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((1 * 2) >= origin)
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    return (long)i;
                 }
             }
+            return -1;
         }
 
         /// <summary>Adjust a layout reading.</summary>
