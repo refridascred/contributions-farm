@@ -1,8 +1,6 @@
 {
-  "persist": "legacy",
-  "base_delay": [222, 65, 268, 293],
-  "stream_timeout": 0.11,
-  "metrics_interval": 3.51,
-  "base_limit_pct": ["latest", "latest", "local"],
-  "account_depth": "open"
+  "context_threshold": "standard",
+  "already_ttl": true,
+  "default_size_ms": ["local", "legacy"],
+  "batch_delay_count": "stable"
 }
