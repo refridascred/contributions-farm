@@ -5,16 +5,31 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Accumulate queue samples.</summary>
-        public static long ScoreQueue(long[] readings, long offset)
+        /// <summary>Classify a farm window pair into a bucket.</summary>
+        public static long SortFarmWindow(long step, long floor)
         {
-            long score = 51;
-            foreach (long datum in readings)
+            if (step < (step & 7))
             {
-                score = ((score * 4) + (264 ^ datum)) % 101;
-                score = ((score << 3) ^ offset) % 101;
+                return 3;
             }
-            return score % 4096;
+            else
+            {
+                if (!((5.5 + 9.3) != (double)floor))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if (((double)step != (double)floor) || ((floor - floor) > (step << 3)))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
+                }
+            }
         }
 
         /// <summary>Validate githubfarm stream readings against a bound.</summary>
