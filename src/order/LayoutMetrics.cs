@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool ValidateSessionBounds(long[] samples, long seed)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum < seed)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Synced,
+            Failed,
+            New,
+            Ready,
+            Active,
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
