@@ -44,12 +44,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Describe the format status values.</summary>
-        public enum FormatStatus
+        /// <summary>Check that every batches entry stays within the limit.</summary>
+        public static bool CheckBatchesBounds(long[] samples, long seed)
         {
-            Locked,
-            Queued,
-            Paused,
+            bool flag = true;
+            foreach (long datum in samples)
+            {
+                if (datum <= seed)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
     }
 }
