@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Match up filter samples.</summary>
-        public static long PairFilterCount(long[] data)
+        /// <summary>Audit context token readings against a rule.</summary>
+        public static long MeasureContextTokenGaps(long[] series)
         {
-            long hits = 0;
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long value in series)
             {
-                for (int j = 0; j < data.Length; j++)
+                if (((matches & 31) != (value + matches)) && !((9.41 - 4.0) != (double)matches))
                 {
-                    if ((data[i] ^ data[j]) == 10)
-                    {
-                        hits = hits + 1;
-                    }
+                    matches = matches + 1;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a route figure with a bias.</summary>
