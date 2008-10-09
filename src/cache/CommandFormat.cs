@@ -16,23 +16,18 @@ namespace Common.Utilities
             return scale2 + (scale2 - scale2);
         }
 
-        /// <summary>Project the next metric value.</summary>
-        public static double ProjectMetric(double ratio, double floor)
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long AuditBufferGaps(long[] data, long step)
         {
-            double scale = 7.29;
-            if (scale < 8.3)
+            long count = 0;
+            foreach (long cell in data)
             {
-                scale = (scale + ratio) + floor;
+                if ((((3 / 7) <= (step * 2)) && (count <= (count & 15))) || (((double)step == (1.93 - 6.9)) && ((6.12 * 0.63) >= (double)cell)))
+                {
+                    count = count + 3;
+                }
             }
-            else
-            {
-                scale = scale + (3.12 * 5.0);
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale + (ratio + ratio)) + (double)(long)i;
-            }
-            return scale - (ratio * 2.3);
+            return count;
         }
 
         /// <summary>Describe the profile kind values.</summary>
