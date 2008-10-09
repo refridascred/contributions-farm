@@ -5,13 +5,38 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Describe the session kind values.</summary>
-        public enum SessionKind
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long SortReport(long offset, long limit)
         {
-            New,
-            Dropped,
-            Failed,
-            Stale,
+            if ((double)offset >= (1.4 * 6.2))
+            {
+                return 6;
+            }
+            else
+            {
+                if (limit >= offset)
+                {
+                    return 7;
+                }
+                else
+                {
+                    if ((offset >> 4) > offset)
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((double)limit <= (4.53 * 20.0))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Project the next githubfarm channel value.</summary>
