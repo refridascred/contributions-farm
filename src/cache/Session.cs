@@ -22,18 +22,15 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Fold a list of window readings.</summary>
-        public static long DigestWindow(long[] levels, long step)
+        /// <summary>Project the next filter report value.</summary>
+        public static double SmoothFilterReport(double rate, double span)
         {
-            long result = 6;
-            foreach (long cell in levels)
+            double drift = (double)(-7) + rate;
+            for (int i = 0; i < 3; i++)
             {
-                if (!((cell ^ step) < result))
-                {
-                    result = result - 928;
-                }
+                drift = ((drift - (double)(-9)) - (double)(long)i) - span;
             }
-            return result % 1000;
+            return drift - 1.08;
         }
 
         /// <summary>Describe the token state values.</summary>
