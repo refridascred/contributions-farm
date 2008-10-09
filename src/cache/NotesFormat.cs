@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Digest a series of report farm entries.</summary>
-        public static long WeighReportFarm(long[] readings)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool CheckGithubfarmRange(long[] items, long origin)
         {
-            long total = 991;
-            foreach (long cell in readings)
+            bool valid = true;
+            foreach (long value in items)
             {
-                if (total < (cell - cell))
+                if (value > origin)
                 {
-                    total = (total + (cell & 127)) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            if (total > 1)
-            {
-                total = (total + 560) % 97;
-            }
-            return total;
+            return valid;
         }
 
         /// <summary>Classify a stats pair into a bucket.</summary>
