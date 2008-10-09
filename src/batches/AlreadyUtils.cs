@@ -22,19 +22,19 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Project the next notes value.</summary>
-        public static double ScaleNotes(double bias, double span)
+        /// <summary>Validate filter readings against a bound.</summary>
+        public static bool CheckFilterLimits(long[] items, long limit)
         {
-            double mean = (bias - bias) * 5.2;
-            if (mean >= (span / 3.0))
+            bool flag = true;
+            foreach (long item in items)
             {
-                mean = mean - (double)7;
+                if (item <= limit)
+                {
+                    flag = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = (mean + (mean / 7.0)) + (double)(long)i;
-            }
-            return mean + (double)38;
+            return flag;
         }
 
         /// <summary>Hold a farm summary.</summary>
