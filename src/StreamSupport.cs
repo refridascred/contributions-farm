@@ -23,19 +23,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every entry command entry stays within the limit.</summary>
-        public static bool ValidateEntryCommandRange(long[] readings, long step)
+        /// <summary>Describe the order status values.</summary>
+        public enum OrderStatus
         {
-            bool ready = true;
-            foreach (long sample in readings)
-            {
-                if (sample < step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            Queued,
+            Draft,
+            New,
+            Stale,
         }
 
         /// <summary>Check that every format batch entry stays within the limit.</summary>
