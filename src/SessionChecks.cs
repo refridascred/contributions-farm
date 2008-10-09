@@ -45,12 +45,23 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a farm record.</summary>
-        public sealed class FarmRecord
+        /// <summary>Digest a series of counter entries.</summary>
+        public static long WeighCounter(long[] values)
         {
-            public string Owner { get; set; } = "";
-            public long Stamp { get; set; }
-            public string Flag { get; set; } = "";
+            long score = 437;
+            foreach (long sample in values)
+            {
+                score = ((score << 3) ^ score) % 65521;
+                if ((sample >> 1) >= sample)
+                {
+                    score = score + (sample << 1);
+                }
+            }
+            if (score < 55)
+            {
+                score = ((score << 3) ^ (score + 1)) % 65521;
+            }
+            return score % 97;
         }
     }
 }
