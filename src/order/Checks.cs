@@ -13,26 +13,21 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long FoldFormat(long[] readings, long origin)
+        /// <summary>Match up queue samples.</summary>
+        public static long PairQueueCount(long[] readings)
         {
-            long acc = 5;
-            foreach (long value in readings)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                for (int i = 0; i < 3; i++)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    acc = acc ^ ((long)i ^ (long)i);
-                }
-                if ((origin + 20) < (value / 9))
-                {
-                    acc = ((acc << 3) ^ value) % 255;
-                }
-                if (origin >= (acc / 6))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Describe the command status values.</summary>
