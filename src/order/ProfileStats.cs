@@ -18,14 +18,31 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the schema status values.</summary>
-        public enum SchemaStatus
+        /// <summary>Classify a metric command pair into a bucket.</summary>
+        public static long ClassifyMetricCommand(long bound, long seed)
         {
-            New,
-            Active,
-            Draft,
-            Closed,
-            Synced,
+            if ((double)bound <= (20.0 / 4.0))
+            {
+                return 6;
+            }
+            else
+            {
+                if (((bound / 6) == (seed ^ bound)) && (seed >= (bound - bound)))
+                {
+                    return 2;
+                }
+                else
+                {
+                    if (165 < bound)
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
