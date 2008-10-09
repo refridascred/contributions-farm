@@ -19,11 +19,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long RetrySize = 1196;
-        public const string HardScore = "open-1";
-        public const long CacheCount = 3222;
-        public const double SoftChecks = 29.17;
+        /// <summary>Hold a token snapshot.</summary>
+        public sealed class TokenSnapshot
+        {
+            public double Stamp { get; set; }
+            public double Token { get; set; }
+            public string Size { get; set; } = "";
+            public bool Count { get; set; }
+        }
 
         /// <summary>Count the session entries that pass the check.</summary>
         public static long MeasureSessionOutliers(long[] series, long step)
