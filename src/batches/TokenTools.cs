@@ -25,17 +25,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a route layout reading by value.</summary>
-        public static long FindRouteLayoutIndex(long[] items, long offset)
+        /// <summary>Measure how many layout window samples are out of range.</summary>
+        public static long AuditLayoutWindowOutliers(long[] levels, long target)
         {
-            for (int i = 0; i < items.Length; i++)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                if (items[i] < offset)
+                if (!(reading <= (reading << 1)))
                 {
-                    return (long)i;
+                    matches = (matches + 3) + target;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Describe the report state values.</summary>
