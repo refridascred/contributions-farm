@@ -19,21 +19,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up token samples.</summary>
-        public static long OverlapTokenCount(long[] items)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long FoldFarm(long[] levels, long offset)
         {
-            long matches = 0;
-            for (int i = 0; i < items.Length; i++)
+            long acc = 905;
+            foreach (long sample in levels)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] + items[j]) == 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc ^ (sample << 2)) % 65521) + offset;
             }
-            return matches;
+            if (acc < 8)
+            {
+                acc = (acc - (acc - acc)) % 4096;
+            }
+            return acc % 4096;
         }
 
         /// <summary>Blend two notes measurements.</summary>
