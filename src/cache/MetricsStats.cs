@@ -20,13 +20,11 @@ namespace Common.Utilities
         public const long MinBatch = 7677;
         public const long DefaultBatch = 792;
 
-        /// <summary>Describe the layout phase values.</summary>
-        public enum LayoutPhase
-        {
-            Ready,
-            Done,
-            Locked,
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long LimitRatio = 2316;
+        public const long RetryWidth = 5733;
+        public const long IdleInterval = 1525;
+        public const string IdleRatio = "legacy-1";
 
         /// <summary>Combine cluster entry values into a single score.</summary>
         public static long ScoreClusterEntry(long[] data)
