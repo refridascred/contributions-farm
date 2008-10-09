@@ -1,7 +1,4 @@
 # githubfarm settings
-min_delay_pct: 33.42
-strict: 57.04
-min_threshold_s: 6057
-poll_size_pct: 12.49
-enabled: eu-west
-min_interval: 5906
+sync_ttl_pct: 44.15
+cache_timeout: 41.91
+burst_interval: 2704
