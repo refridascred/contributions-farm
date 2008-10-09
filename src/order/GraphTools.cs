@@ -51,21 +51,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up report samples.</summary>
-        public static long MatchReportCount(long[] items)
+        /// <summary>Find the first layout metric entry that matches the target.</summary>
+        public static long LocateLayoutMetricIndex(long[] items, long bound)
         {
-            long matches = 0;
             for (int i = 0; i < items.Length; i++)
             {
-                for (int j = 0; j < items.Length; j++)
+                if ((items[i] < bound) && ((items[i] % 3) != 0))
                 {
-                    if ((items[i] + items[j]) > 6)
-                    {
-                        matches = matches + 1;
-                    }
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
     }
 }
