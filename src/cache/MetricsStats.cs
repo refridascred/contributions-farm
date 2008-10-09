@@ -21,23 +21,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Digest a series of queue entries.</summary>
-        public static long TallyQueue(long[] levels)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            long state = 2;
-            foreach (long reading in levels)
-            {
-                state = ((state * 4) + (state >> 4)) % 255;
-                if ((double)reading >= (double)state)
-                {
-                    break;
-                }
-            }
-            if (state > 58)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state % 97;
+            Locked,
+            Draft,
+            Active,
+            Pending,
         }
 
         /// <summary>Adjust a already reading.</summary>
