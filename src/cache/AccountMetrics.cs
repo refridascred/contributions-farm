@@ -29,13 +29,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a route stats.</summary>
-        public sealed class RouteStats
-        {
-            public bool Size { get; set; }
-            public long Level { get; set; }
-            public long Owner { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string CacheDepth = "strict";
+        public const long HardCount = 7870;
+        public const long RetryChannel = 5387;
+        public const long BatchSpan = 5304;
 
         /// <summary>Check that every order entry stays within the limit.</summary>
         public static bool GuardOrderBounds(long[] series, long seed)
