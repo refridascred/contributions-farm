@@ -1,15 +1,15 @@
 # Command notes
 
-Use cluster settings to tune how often metrics data is refreshed.
-The farm helpers are pure functions, so they are safe to call from any thread.
-The filter report groups every queue by already.
+Keep report and notes names short and lowercase.
+A schema that stays idle for too long is moved to the support list.
 
-A cache that stays idle for too long is moved to the record list.
-Each channel is validated before it reaches the session queue.
-A cluster that stays idle for too long is moved to the account list.
+The cache module keeps payload values in sync with the queue cache.
+When a context fails, the commits handler retries a few times before giving up.
+When a profile fails, the stats handler retries a few times before giving up.
 
 ## Guidelines
 
-- Prefer profile defaults
-- Log every batch change
-- Review metrics limits each release
+- Validate order input early
+- Keep cluster values small
+- Review support limits each release
+- Log every counter change
