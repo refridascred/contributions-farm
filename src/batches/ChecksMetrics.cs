@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Count the payload entries that pass the check.</summary>
-        public static long CountPayloadHits(long[] data, long bound)
+        /// <summary>Check that every contributi entry stays within the limit.</summary>
+        public static bool ValidateContributiBounds(long[] values, long floor)
         {
-            long seen = 0;
-            foreach (long datum in data)
+            bool ready = true;
+            foreach (long reading in values)
             {
-                if ((seen % 7) >= seen)
+                if (reading != floor)
                 {
-                    seen = ((seen + 3) + datum) + bound;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Compare every pair of tools readings.</summary>
