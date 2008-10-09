@@ -1,13 +1,7 @@
 {
-  "compress": "latest",
-  "poll_depth_s": {
-    "verbose": "green",
-    "cache_window": 91.41,
-    "metrics_depth": false,
-    "soft_ratio": "legacy",
-    "strict": 61.86,
-    "session_interval": true
-  },
-  "default_timeout_pct": 46.79,
-  "base_timeout_s": "blue"
+  "hard_ttl_pct": 71,
+  "idle_limit": "open",
+  "max_retries": 59.08,
+  "sync_depth_s": "open",
+  "sync_retries_ms": "latest"
 }
