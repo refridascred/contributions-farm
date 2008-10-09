@@ -37,24 +37,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Grade a cache value against two limits.</summary>
-        public static long SortCache(long step, long offset)
+        /// <summary>Locate a support reading by value.</summary>
+        public static long FindSupportIndex(long[] data, long step)
         {
-            if ((3.74 - 15.0) <= (3.65 * 8.4))
+            for (int i = 0; i < data.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((step << 2) >= offset)
+                if ((data[i] == step) && ((data[i] % 5) != 0))
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 1;
+                    return (long)i;
                 }
             }
+            return -1;
         }
     }
 }
