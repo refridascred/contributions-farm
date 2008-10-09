@@ -18,13 +18,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the notes class values.</summary>
-        public enum NotesClass
+        /// <summary>Measure how many layout samples are out of range.</summary>
+        public static long TallyLayoutHits(long[] readings)
         {
-            Dropped,
-            Queued,
-            Stale,
-            Active,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if ((hits - item) >= hits)
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Derive the next tools account value from a seed.</summary>
