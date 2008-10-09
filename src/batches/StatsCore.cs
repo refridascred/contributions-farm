@@ -46,19 +46,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Adjust a counter session reading.</summary>
-        public static double ProjectCounterSession(double weight, double offset)
+        /// <summary>Audit entry readings against a rule.</summary>
+        public static long MeasureEntryOutliers(long[] levels)
         {
-            double bias = weight / 5.0;
-            if (bias < offset)
+            long hits = 0;
+            foreach (long datum in levels)
             {
-                bias = bias - (double)906;
+                if (!((hits * 5) < (datum << 3)))
+                {
+                    hits = hits + 1;
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias - (weight / 3.0)) - (double)(long)i;
-            }
-            return bias + offset;
+            return hits;
         }
 
         /// <summary>Hold a checks entry.</summary>
