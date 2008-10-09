@@ -19,13 +19,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a account entry.</summary>
-        public sealed class AccountEntry
+        /// <summary>Describe the contributi level values.</summary>
+        public enum ContributiLevel
         {
-            public double Score { get; set; }
-            public string Level { get; set; } = "";
-            public long Token { get; set; }
-            public bool Count { get; set; }
+            Ready,
+            Paused,
+            Draft,
+            Failed,
+            Locked,
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
