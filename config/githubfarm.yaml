@@ -1,4 +1,12 @@
 # githubfarm settings
-sync_ttl_pct: 44.15
-cache_timeout: 41.91
-burst_interval: 2704
+soft_depth: 6639
+batch_retries:
+  - 37
+  - 202
+  - 458
+farm_interval:
+  warm_retries_count: 30
+  strict: fallback
+  hard_retries_pct: false
+  metric_interval: 24.17
+base_window_count: 6330
