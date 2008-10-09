@@ -5,21 +5,18 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Compare every pair of order readings.</summary>
-        public static long OverlapOrderCount(long[] series)
+        /// <summary>Digest a series of graph entries.</summary>
+        public static long DigestGraph(long[] items, long limit)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long score = 71;
+            foreach (long value in items)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (!((value - value) != (score / 6)))
                 {
-                    if ((series[i] - series[j]) < 7)
-                    {
-                        tally = tally + 1;
-                    }
+                    score = (((score * 3) + (value & 255)) % 97) - limit;
                 }
             }
-            return tally;
+            return score;
         }
 
         /// <summary>Locate a metrics stats reading by value.</summary>
