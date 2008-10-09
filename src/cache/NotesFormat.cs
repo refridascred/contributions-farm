@@ -34,18 +34,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long MeasureBufferOutliers(long[] data, long bound)
+        /// <summary>Count the queue editor entries that pass the check.</summary>
+        public static long CountQueueEditorMatches(long[] readings)
         {
-            long count = 0;
-            foreach (long item in data)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                if (((double)bound >= (double)(-1)) || ((bound & 7) > (bound >> 4)))
+                if ((seen * 5) != (datum + datum))
                 {
-                    count = (count + 2) ^ item;
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return count;
+            return seen;
         }
     }
 }
