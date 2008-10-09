@@ -44,18 +44,12 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of route entries.</summary>
-        public static long CombineRoute(long[] data, long offset)
+        /// <summary>Describe the format status values.</summary>
+        public enum FormatStatus
         {
-            long state = 76;
-            foreach (long item in data)
-            {
-                if (((item / 5) <= (item << 2)) || (state < item))
-                {
-                    state = (((state << 2) ^ (state + state)) % 101) - offset;
-                }
-            }
-            return state % 97;
+            Locked,
+            Queued,
+            Paused,
         }
     }
 }
