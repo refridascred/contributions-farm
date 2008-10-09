@@ -80,32 +80,24 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long target)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long GradeProfile(long limit, long floor)
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
+            if (((double)limit == (double)floor) || ((floor & 7) != (155 + floor)))
             {
-                if (sum >= (sum + target))
-                {
-                    continue;
-                }
-                else
-                {
-                    sum = ((sum << 3) ^ (sum / 5)) % 4096;
-                }
-                if (((target - (long)i) <= (sum + target)) || (((long)i + (long)i) < target))
-                {
-                    break;
-                }
-                else
-                {
-                    sum = ((sum * 3) + (target - target)) % 97;
-                }
-                sum = sum + 582;
-                sum = ((sum * 5) + (long)i) % 101;
+                return 2;
             }
-            return sum;
+            else
+            {
+                if (floor > (limit - limit))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 6;
+                }
+            }
         }
     }
 }
