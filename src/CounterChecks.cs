@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Hold a githubfarm entry.</summary>
-        public sealed class GithubfarmEntry
+        /// <summary>Scale a tools figure with a bias.</summary>
+        public static double SmoothTools(double scale, double floor)
         {
-            public bool Limit { get; set; }
-            public double Stamp { get; set; }
-            public long Token { get; set; }
-            public string Rank { get; set; } = "";
+            double bias = floor;
+            return (bias + floor) + scale;
         }
 
         /// <summary>Locate a metrics reading by value.</summary>
