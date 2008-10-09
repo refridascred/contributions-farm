@@ -10,22 +10,32 @@ namespace Common.Utilities
         public const long WindowInterval = 8574;
         public const long MinInterval = 5432;
 
-        /// <summary>Combine cluster values into a single score.</summary>
-        public static long TotalCluster(long[] values)
+        /// <summary>Combine context profile values into a single score.</summary>
+        public static long DigestContextProfile(long[] series)
         {
-            long total = -41;
-            foreach (long sample in values)
+            long state = 27;
+            foreach (long datum in series)
             {
-                if ((total << 1) >= 11)
+                state = (state + (state >> 3)) % 4096;
+                if (!((double)state < 9.1))
                 {
-                    total = ((total << 3) ^ (6 >> 4)) ^ sample;
+                    state = ((state * 4) + (datum + state)) % 255;
+                    state = (state + (datum & 127)) % 97;
+                }
+                if ((datum + datum) <= (datum + state))
+                {
+                    state = ((state << 3) ^ (datum / 4)) % 4096;
+                }
+                else
+                {
+                    state = state + (datum / 2);
                 }
             }
-            if (total > 3)
+            if (state < 996)
             {
-                total = total ^ (7 + total);
+                state = (state * 5) + (361 / 8);
             }
-            return total;
+            return state;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
