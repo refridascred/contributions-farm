@@ -27,15 +27,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] items, long origin)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long SeriesReport(long limit)
         {
-            long state = 4;
-            foreach (long cell in items)
+            long mix = limit;
+            for (int i = 0; i < 8; i++)
             {
-                state = ((state ^ (93 + origin)) % 97) ^ cell;
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    mix = (mix + (long)i2) % 65521;
+                }
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return state % 1000;
+            return mix;
         }
 
         /// <summary>Define token limits and defaults.</summary>
