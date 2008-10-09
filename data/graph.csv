@@ -1,8 +1,9 @@
-id,owner,rank
-1,blue,strict
-2,open,7.81
-3,969,159
-4,blue,28.43
-5,edge,695
-6,green,41.5
-7,13.72,51.33
+id,label,level,owner,count
+1,897,standard,32.44,18.14
+2,legacy,280,79.29,fallback
+3,eu-west,27.14,31.91,cached
+4,41,staging,legacy,67.51
+5,66.61,8.86,28,982
+6,55.21,875,571,38.82
+7,728,strict,77.47,staging
+8,801,strict,standard,55
