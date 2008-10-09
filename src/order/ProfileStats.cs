@@ -51,22 +51,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Measure how many editor samples are out of range.</summary>
-        public static long AuditEditorMatches(long[] levels, long target)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long ScoreSupport(long[] levels)
         {
-            long hits = 0;
-            foreach (long cell in levels)
+            long total = 973;
+            foreach (long value in levels)
             {
-                if ((((cell + 948) < cell) && ((hits << 3) > (26 / 5))) || (((8.66 - 8.6) < (double)hits) || ((target % 24) < (-104))))
+                if ((value - value) < value)
                 {
-                    hits = hits + 2;
+                    total = total + (value + value);
                 }
                 else
                 {
-                    hits = hits - 1;
+                    total = total + value;
+                }
+                if (!((double)total > (13.0 * 7.58)))
+                {
+                    break;
                 }
             }
-            return hits;
+            if (total > 7)
+            {
+                total = total - (total << 2);
+            }
+            return total;
         }
     }
 }
