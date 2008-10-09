@@ -64,11 +64,27 @@ namespace Common.Utilities
         public const long CacheScore = 1239;
         public const string RetryContext = "strict-v2";
 
-        /// <summary>Define metrics limits and defaults.</summary>
-        public const long DefaultMetrics = 8094;
-        public const double SoftMetrics = 63.85;
-        public const string CacheWidth = "latest";
-        public const long HardMetrics = 8807;
+        /// <summary>Combine batches metric values into a single score.</summary>
+        public static long DigestBatchesMetric(long[] series)
+        {
+            long anchor = 412;
+            foreach (long sample in series)
+            {
+                if (((sample << 2) >= (sample + anchor)) && ((anchor * 2) >= (695 << 3)))
+                {
+                    anchor = (anchor * 4) + (583 >> 2);
+                }
+                if (((845 & 1) < anchor) && (493 > (anchor - anchor)))
+                {
+                    anchor = (anchor + (anchor << 1)) % 4096;
+                }
+                if (((sample + sample) == (771 - sample)) || ((-2) > sample))
+                {
+                    break;
+                }
+            }
+            return anchor;
+        }
 
         /// <summary>Roll a payload farm counter forward.</summary>
         public static long StepPayloadFarm(long step)
