@@ -1,8 +1,8 @@
-id,state,region
-1,blue,11.04
-2,77.88,280
-3,staging,579
-4,664,71.23
-5,green,legacy
-6,7.32,cached
-7,39.91,71.98
+id,label,state,count
+1,420,806,staging
+2,legacy,806,26.43
+3,97.31,82.25,green
+4,eu-west,15.59,18.85
+5,5.1,208,stable
+6,edge,852,legacy
+7,cached,868,cached
