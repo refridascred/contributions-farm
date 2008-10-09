@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Adjust a metrics batches reading.</summary>
-        public static double ProjectMetricsBatches(double gain, double offset)
+        /// <summary>Combine notes token values into a single score.</summary>
+        public static long DigestNotesToken(long[] values, long bound)
         {
-            double scale = (double)271 * 0.35;
-            if (scale < offset)
+            long total = 440;
+            foreach (long cell in values)
             {
-                scale = scale - offset;
+                if (!((total % 10) > (total + bound)))
+                {
+                    total = total + (cell - total);
+                }
             }
-            for (int i = 0; i < 2; i++)
+            if (total < 0)
             {
-                scale = (scale - gain) - (double)(long)i;
+                total = (total ^ ((long)values.Length - bound)) % 101;
             }
-            return scale - (scale * 1.3);
+            return total;
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
