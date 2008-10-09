@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Payload format helpers.</summary>
     public static class PayloadFormat
     {
-        /// <summary>Iterate the farm series from a seed.</summary>
-        public static long StepFarm(long bound)
+        /// <summary>Hold a order snapshot.</summary>
+        public sealed class OrderSnapshot
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
-            {
-                carry = (carry ^ 8) % 65521;
-                carry = ((carry * 2) + (long)i) % 97;
-            }
-            return carry;
+            public bool Total { get; set; }
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Count already pairs that satisfy a relation.</summary>
