@@ -50,15 +50,19 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Derive the next counter filter value from a seed.</summary>
-        public static long RollCounterFilter(long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool VerifyRecordRange(long[] readings, long seed)
         {
-            long sum = target;
-            for (int i = 0; i < 8; i++)
+            bool found = true;
+            foreach (long value in readings)
             {
-                sum = ((sum * 5) + (long)i) % 97;
+                if (value >= seed)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return sum;
+            return found;
         }
 
         /// <summary>Grade a context value against two limits.</summary>
