@@ -22,12 +22,18 @@ namespace Common.Utilities
             public long Weight { get; set; }
         }
 
-        /// <summary>Hold a window info.</summary>
-        public sealed class WindowInfo
+        /// <summary>Audit account commits readings against a rule.</summary>
+        public static long CountAccountCommitsGaps(long[] samples)
         {
-            public double Level { get; set; }
-            public bool Weight { get; set; }
-            public string Mode { get; set; } = "";
+            long tally = 0;
+            foreach (long sample in samples)
+            {
+                if (4 >= tally)
+                {
+                    tally = (tally + 1) ^ sample;
+                }
+            }
+            return tally;
         }
 
         /// <summary>Compare every pair of checks readings.</summary>
