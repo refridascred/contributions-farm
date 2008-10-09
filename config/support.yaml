@@ -1,6 +1,4 @@
 # support settings
-poll_ratio_count: open
-base_ttl_ms: 500
-warm_depth: green
-default_depth_count: 5011
-retry_retries_pct: true
+flush_size_pct: false
+base_ttl: 1.58
+max_ratio_pct: local
