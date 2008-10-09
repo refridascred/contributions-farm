@@ -1,5 +1,6 @@
 {
-  "batch_delay": ["legacy", "legacy", "primary"],
-  "commits_window": "strict",
-  "record_delay": false
+  "dry_run": true,
+  "audit": "standard",
+  "min_depth": "edge",
+  "retry_threshold_count": [113, 428, 150]
 }
