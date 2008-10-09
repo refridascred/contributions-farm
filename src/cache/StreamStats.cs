@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long WindowCache = 2640;
-        public const double StepLevel = 39.9;
-        public const double IdleCache = 71.81;
-        public const string MaxCache = "alpha-1";
-        public const long DefaultCache = 4797;
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
+        {
+            public string Label { get; set; } = "";
+            public double Mode { get; set; }
+        }
 
         /// <summary>Define stats limits and defaults.</summary>
         public const double BurstDepth = 49.1;
