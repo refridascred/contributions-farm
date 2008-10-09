@@ -1,6 +1,6 @@
 {
-  "editor_ratio": "cached",
-  "min_retries_count": false,
-  "burst_delay": 9642,
-  "flush_threshold": 5121
+  "default_capacity": ["eu-west", "open"],
+  "poll_interval": "standard",
+  "dry_run": 481,
+  "base_window": 250
 }
