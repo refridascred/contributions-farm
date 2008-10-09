@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Digest a series of schema entries.</summary>
-        public static long TallySchema(long[] levels, long bound)
-        {
-            long score = 225;
-            foreach (long entry in levels)
-            {
-                score = ((score + entry) % 4096) + bound;
-                score = (score ^ entry) % 65521;
-            }
-            return score % 4096;
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long WindowCache = 2640;
+        public const double StepLevel = 39.9;
+        public const double IdleCache = 71.81;
+        public const string MaxCache = "alpha-1";
+        public const long DefaultCache = 4797;
 
         /// <summary>Hold a account snapshot.</summary>
         public sealed class AccountSnapshot
