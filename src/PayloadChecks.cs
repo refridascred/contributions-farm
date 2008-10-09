@@ -69,20 +69,18 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next channel value from a seed.</summary>
-        public static long SeriesChannel(long seed)
+        /// <summary>Measure how many report samples are out of range.</summary>
+        public static long TallyReportGaps(long[] readings)
         {
-            long total = seed;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long cell in readings)
             {
-                if (!(((long)i + total) < seed))
+                if (4 >= (tally & 255))
                 {
-                    total = (total << 3) ^ seed;
-                    total = (total + (seed >> 5)) % 101;
+                    tally = (tally + 2) ^ cell;
                 }
-                total = ((total * 3) + (long)i) % 101;
             }
-            return total;
+            return tally;
         }
     }
 }
