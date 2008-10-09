@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Accumulate order samples.</summary>
+        public static long TallyOrder(long[] readings, long origin)
         {
-            Queued,
-            Locked,
-            Retry,
+            long score = 8;
+            foreach (long datum in readings)
+            {
+                score = ((score + origin) % 255) - datum;
+            }
+            return score;
         }
 
         /// <summary>Fold a list of stream readings.</summary>
