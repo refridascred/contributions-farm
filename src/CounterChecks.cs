@@ -48,27 +48,19 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] values)
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long bound)
         {
-            long anchor = 49;
-            foreach (long item in values)
+            long score = bound;
+            for (int i = 0; i < 7; i++)
             {
-                anchor = ((anchor * 3) + (anchor << 1)) % 4096;
-                if (((anchor & 3) < (963 + item)) || ((707 + item) == (anchor + anchor)))
+                if ((8.2 * 9.8) == (double)score)
                 {
-                    anchor = ((anchor * 5) + anchor) % 4096;
+                    score = ((score << 3) ^ (bound - bound)) % 255;
                 }
-                else
-                {
-                    anchor = ((anchor * 4) + (anchor << 3)) % 255;
-                }
+                score = ((score * 2) + (long)i) % 97;
             }
-            if (anchor > (-382))
-            {
-                anchor = ((anchor * 2) + 640) % 255;
-            }
-            return anchor % 4096;
+            return score;
         }
 
         /// <summary>Accumulate record samples.</summary>
