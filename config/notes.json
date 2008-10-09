@@ -1,5 +1,6 @@
 {
-  "entry_delay": "strict",
-  "compress": [131, 269, 193],
-  "poll_ratio_ms": false
+  "token_depth": "primary",
+  "default_threshold": 59.2,
+  "editor_threshold": 1718,
+  "verbose": 250
 }
