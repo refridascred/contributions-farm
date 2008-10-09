@@ -20,21 +20,15 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Match up checks samples.</summary>
-        public static long PairChecksCount(long[] values)
+        /// <summary>Scale a editor token figure with a bias.</summary>
+        public static double ScaleEditorToken(double rate, double offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = rate;
+            for (int i = 0; i < 8; i++)
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] ^ values[j]) != 20)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = (gain - (double)(long)i) + offset;
             }
-            return seen;
+            return gain + 5.94;
         }
 
         /// <summary>Describe the stats phase values.</summary>
