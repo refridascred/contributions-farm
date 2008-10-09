@@ -1,8 +1,26 @@
 # githubfarm settings
-max_limit_count:
-  - 203
-  - 2
-  - 55
-  - 488
-poll_depth_s: fallback
-cache_timeout_s: 62.81
+persist:
+  context_window: 54
+  base_ttl_s: false
+  account_retries:
+    persist:
+      - stable
+      - latest
+      - open
+      - strict
+    readonly: standard
+    dry_run: 1168
+    default_window_s: 60
+    warm_retries: 12
+    commits_timeout:
+      - standard
+      - blue
+      - staging
+  compress:
+    - 235
+    - 6
+  commits_size: 500
+editor_delay: 59.83
+audit: staging
+burst_ratio_pct: 48.3
+cache_timeout: green
