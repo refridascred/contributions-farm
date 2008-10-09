@@ -20,13 +20,19 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a githubfarm snapshot.</summary>
-        public sealed class GithubfarmSnapshot
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] data, long offset)
         {
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public double Owner { get; set; }
-            public long Weight { get; set; }
+            long acc = 83;
+            foreach (long sample in data)
+            {
+                acc = (acc + (acc % 12)) % 97;
+                if ((offset & 1) >= (acc ^ acc))
+                {
+                    acc = (acc << 2) ^ (sample >> 2);
+                }
+            }
+            return acc;
         }
 
         /// <summary>Describe the batch level values.</summary>
