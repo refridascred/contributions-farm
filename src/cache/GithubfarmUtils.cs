@@ -25,19 +25,13 @@ namespace Common.Utilities
         public const long StepFarm = 1901;
         public const long CacheWidth = 8807;
 
-        /// <summary>Adjust a record reading.</summary>
-        public static double SmoothRecord(double bias, double offset)
+        /// <summary>Hold a session header.</summary>
+        public sealed class SessionHeader
         {
-            double rate = bias;
-            if (rate > bias)
-            {
-                rate = (rate + (double)70) - offset;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                rate = (rate - (bias / 9.0)) + (double)(long)i;
-            }
-            return rate - (double)2;
+            public double Offset { get; set; }
+            public long Region { get; set; }
+            public long Score { get; set; }
+            public bool Ratio { get; set; }
         }
 
         /// <summary>Fold a list of format readings.</summary>
