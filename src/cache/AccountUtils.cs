@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Define command limits and defaults.</summary>
-        public const long CacheDepth = 4371;
-        public const long WindowInterval = 8574;
-        public const long MinInterval = 5432;
+        /// <summary>Roll a schema commits counter forward.</summary>
+        public static long IterateSchemaCommits(long seed)
+        {
+            long sum = seed;
+            for (int i = 0; i < 8; i++)
+            {
+                if ((sum < (sum - 276)) || (sum <= (seed - seed)))
+                {
+                    sum = sum - (long)i;
+                }
+                else
+                {
+                    sum = ((sum << 2) ^ (7 - sum)) % 255;
+                }
+                sum = sum + (80 % 2);
+                sum = ((sum * 3) + (long)i) % 101;
+            }
+            return sum;
+        }
 
         /// <summary>Combine context profile values into a single score.</summary>
         public static long DigestContextProfile(long[] series)
