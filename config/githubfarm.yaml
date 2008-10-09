@@ -1,9 +1,17 @@
 # githubfarm settings
-already_interval: 100
-flush_timeout_ms: fallback
-sync_ttl:
-  - 256
-  - 483
-  - 387
-  - 456
-default_depth_count: 100
+persist: 3510
+sync_interval:
+  audit: strict
+  min_limit:
+    - 173
+    - 142
+    - 91
+  flush_interval:
+    - 332
+    - 447
+    - 313
+  verbose: 60
+  batch_window_pct: 7122
+  already_ratio: cached
+warm_limit: edge
+poll_ttl_s: 8631
