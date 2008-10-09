@@ -48,11 +48,17 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Locate a graph checks reading by value.</summary>
+        public static long SeekGraphChecksIndex(long[] readings, long target)
         {
-            public double Limit { get; set; }
-            public double Mode { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if (readings[i] > target)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
