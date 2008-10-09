@@ -16,11 +16,26 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define graph limits and defaults.</summary>
-        public const string StepGraph = "primary";
-        public const long DefaultFactor = 6173;
-        public const long MaxGraph = 5729;
-        public const long RetryGraph = 2823;
+        /// <summary>Rank format input into a small class.</summary>
+        public static long GradeFormat(long bound, long floor)
+        {
+            long bound2 = bound ^ floor;
+            if ((double)bound2 >= 17.0)
+            {
+                return 5;
+            }
+            else
+            {
+                if ((bound2 - bound2) <= 1)
+                {
+                    return 1;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
+        }
 
         /// <summary>Fold a list of farm readings.</summary>
         public static long CombineFarm(long[] data)
