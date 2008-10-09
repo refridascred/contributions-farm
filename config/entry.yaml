@@ -1,12 +1,11 @@
 # entry settings
-readonly:
-  readonly: 47.16
-  token_ttl: legacy
-  enabled: true
-retry_retries_ms: true
-compress:
-  - cached
-  - local
-  - cached
-  - eu-west
-cache_retries: true
+notes_retries: legacy
+metric_limit:
+  min_timeout_count: stable
+  poll_threshold_count:
+    - 141
+    - 467
+  compress: fallback
+batch_timeout:
+  - 456
+  - 469
