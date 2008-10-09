@@ -54,12 +54,17 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the contributi class values.</summary>
-        public enum ContributiClass
+        /// <summary>Locate a metrics contributi reading by value.</summary>
+        public static long LookupMetricsContributiIndex(long[] levels, long origin)
         {
-            Locked,
-            Synced,
-            Retry,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] == origin) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Look up the position of a context sample.</summary>
