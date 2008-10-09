@@ -64,21 +64,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Count batch counter pairs that satisfy a relation.</summary>
-        public static long CompareBatchCounterCount(long[] levels)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ProjectCluster(double gain, double floor)
         {
-            long hits = 0;
-            for (int i = 0; i < levels.Length; i++)
+            double mean = floor;
+            if (mean >= 1.56)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) > 17)
-                    {
-                        hits = hits + 1;
-                    }
-                }
+                mean = (mean - (double)9) - gain;
             }
-            return hits;
+            return mean - floor;
         }
 
         /// <summary>Describe the editor kind values.</summary>
