@@ -7,11 +7,14 @@ log() {
 }
 
 total=0
-for i in $(seq 1 6); do
-    total=$((total + i * 4))
+for i in $(seq 1 12); do
+    total=$((total + i * 3))
 done
 log "total ${total}"
 
-for item in eu-west stable green; do
+for item in primary fallback staging; do
     log "checking ${item}"
 done
+
+RECORD_LIMIT=426
+log "limit is ${RECORD_LIMIT}"
