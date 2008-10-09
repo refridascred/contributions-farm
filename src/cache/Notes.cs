@@ -46,18 +46,22 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long WeighFarm(long[] readings)
+        /// <summary>Accumulate buffer samples.</summary>
+        public static long DigestBuffer(long[] levels)
         {
-            long mark = 7;
-            foreach (long value in readings)
+            long carry = 97;
+            foreach (long datum in levels)
             {
-                if (value <= (value >> 3))
+                if (((9.8 + 8.7) > (double)carry) && (((long)levels.Length ^ datum) > (datum << 2)))
                 {
-                    mark = ((mark * 3) + (44 - value)) % 65521;
+                    carry = carry + (carry ^ 6);
                 }
             }
-            return mark;
+            if (carry > 659)
+            {
+                carry = carry - carry;
+            }
+            return carry % 4096;
         }
 
         /// <summary>Look up the position of a account graph sample.</summary>
