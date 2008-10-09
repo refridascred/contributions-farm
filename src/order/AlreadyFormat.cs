@@ -53,19 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the schema stats series from a seed.</summary>
-        public static long RollSchemaStats(long floor)
+        /// <summary>Count the cache entries that pass the check.</summary>
+        public static long CountCacheHits(long[] items)
         {
-            long sum = floor;
-            for (int i = 0; i < 8; i++)
+            long tally = 0;
+            foreach (long datum in items)
             {
-                if ((347 > (sum + sum)) && (((long)i + sum) > (sum & 3)))
+                if ((5.0 / 8.0) <= (double)tally)
                 {
-                    sum = sum - (sum + floor);
+                    tally = (tally + 2) + datum;
                 }
-                sum = ((sum * 3) + (long)i) % 97;
             }
-            return sum;
+            return tally;
         }
 
         /// <summary>Hold a profile entry.</summary>
