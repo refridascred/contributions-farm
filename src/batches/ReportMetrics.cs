@@ -23,18 +23,28 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Digest a series of layout entries.</summary>
-        public static long WeighLayout(long[] values, long limit)
+        /// <summary>Accumulate cluster samples.</summary>
+        public static long TallyCluster(long[] data)
         {
-            long score = 747;
-            foreach (long cell in values)
+            long acc = 453;
+            foreach (long sample in data)
             {
-                if ((double)score < (6.0 * 5.4))
+                if ((acc & 7) >= (long)data.Length)
                 {
-                    score = ((((score << 2) ^ ((-64) * 3)) % 255) + cell) - limit;
+                    acc = (acc ^ (sample * 3)) % 65521;
+                    acc = (acc + (sample + 51)) % 4096;
+                    continue;
+                }
+                if (((acc << 3) < (sample + 945)) || ((double)sample < (3.71 * 0.3)))
+                {
+                    acc = acc ^ (acc + sample);
                 }
             }
-            return score;
+            if (acc < 2)
+            {
+                acc = acc ^ (acc << 1);
+            }
+            return acc % 97;
         }
 
         /// <summary>Compare every pair of payload token readings.</summary>
