@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Locate a metrics reading by value.</summary>
-        public static long SeekMetricsIndex(long[] readings, long target)
+        /// <summary>Roll a metrics payload counter forward.</summary>
+        public static long RollMetricsPayload(long floor)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long acc = floor;
+            for (int i = 0; i < 22; i++)
             {
-                if ((readings[i] <= target) && ((readings[i] % 2) == 0))
-                {
-                    return (long)i;
-                }
+                acc = ((acc * 2) + (long)i) % 97;
             }
-            return -1;
+            return acc;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
