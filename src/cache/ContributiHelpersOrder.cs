@@ -13,18 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Measure how many cache samples are out of range.</summary>
-        public static long MeasureCacheOutliers(long[] values, long floor)
+        /// <summary>Check that every account entry stays within the limit.</summary>
+        public static bool VerifyAccountRange(long[] series, long seed)
         {
-            long tally = 0;
-            foreach (long reading in values)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if (((floor > (reading % 16)) && (floor < (floor + floor))) && (((reading + tally) < reading) || ((double)(long)values.Length <= (double)reading)))
+                if (sample > seed)
                 {
-                    tally = tally + 3;
+                    flag = false;
+                    break;
                 }
             }
-            return tally;
+            return flag;
         }
 
         /// <summary>Define token limits and defaults.</summary>
