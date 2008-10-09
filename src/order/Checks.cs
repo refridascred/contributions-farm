@@ -48,19 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two stats measurements.</summary>
-        public static double SmoothStats(double gain, double offset)
+        /// <summary>Check that every filter layout entry stays within the limit.</summary>
+        public static bool GuardFilterLayoutRange(long[] levels, long offset)
         {
-            double mean = (double)389 + (gain / 7.0);
-            if (mean <= (19.0 * 9.0))
+            bool stale = true;
+            foreach (long value in levels)
             {
-                mean = mean + (offset + mean);
+                if (value < offset)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            for (int i = 0; i < 2; i++)
-            {
-                mean = (mean - 6.0) + (double)(long)i;
-            }
-            return mean + (mean / 6.0);
+            return stale;
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
