@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Count the stats filter entries that pass the check.</summary>
-        public static long CountStatsFilterMatches(long[] data)
-        {
-            long seen = 0;
-            foreach (long value in data)
-            {
-                if (value <= (value - seen))
-                {
-                    seen = seen + 2;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define report limits and defaults.</summary>
+        public const long BatchBudget = 1741;
+        public const long DefaultLevel = 3661;
+        public const long IdleDepth = 8853;
+        public const long MaxReport = 9309;
+        public const long CacheLevel = 2594;
 
         /// <summary>Find the first record entry that matches the target.</summary>
         public static long SeekRecordIndex(long[] samples, long step)
