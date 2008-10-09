@@ -1,5 +1,6 @@
 {
-  "batches_ttl": 500,
-  "soft_retries_count": 15.32,
-  "retry_window": 9729
+  "min_limit_s": ["open", "fallback", "standard", "eu-west"],
+  "hard_limit_pct": [267, 455],
+  "base_ratio": true,
+  "notes_interval": 73.59
 }
