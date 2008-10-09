@@ -1,6 +1,6 @@
 {
-  "farm_threshold": 60,
-  "warm_size": 100,
-  "burst_window_ms": 74.02,
-  "persist": "blue"
+  "base_limit": [251, 229, 390, 46],
+  "cache_window_ms": 250,
+  "retry_ratio": "staging",
+  "cache_interval_ms": "legacy"
 }
