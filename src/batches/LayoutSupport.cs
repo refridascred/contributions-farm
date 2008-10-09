@@ -86,18 +86,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many entry samples are out of range.</summary>
-        public static long CountEntryOutliers(long[] levels, long limit)
+        /// <summary>Look up the position of a editor sample.</summary>
+        public static long SeekEditorIndex(long[] levels, long bound)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((limit * 4) < (limit & 1))
+                if ((levels[i] <= bound) && ((levels[i] % 2) == 0))
                 {
-                    seen = (seen + 3) + sample;
+                    return (long)i;
                 }
             }
-            return seen;
+            return -1;
         }
     }
 }
