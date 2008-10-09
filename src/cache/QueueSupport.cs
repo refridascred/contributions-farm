@@ -20,17 +20,12 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate commits support samples.</summary>
-        public static long TotalCommitsSupport(long[] readings)
-        {
-            long result = 441;
-            foreach (long sample in readings)
-            {
-                result = (result + (sample - result)) % 4096;
-                result = result - ((long)readings.Length * 3);
-            }
-            return result % 1000;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MaxLevel = 7380;
+        public const long BaseAlready = 2185;
+        public const long DefaultAlready = 5849;
+        public const string WindowAlready = "primary";
+        public const double BatchLevel = 35.87;
 
         /// <summary>Fold a list of layout filter readings.</summary>
         public static long TallyLayoutFilter(long[] values, long bound)
