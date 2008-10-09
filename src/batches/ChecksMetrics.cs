@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool ValidateFilterBounds(long[] values, long limit)
-        {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > limit)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long MinAlready = 3406;
+        public const string IdleDepth = "latest-1";
+        public const long LimitRatio = 1768;
+        public const long WindowFactor = 8540;
+        public const long RetryCount = 782;
 
         /// <summary>Compare every pair of tools readings.</summary>
         public static long OverlapToolsCount(long[] series)
