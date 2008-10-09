@@ -1,8 +1,6 @@
-id,count,score,state
-1,green,609,open
-2,9.26,599,95.58
-3,10.8,92,64.81
-4,23.38,48.82,93
-5,94.09,edge,fallback
-6,open,eu-west,33.25
-7,strict,60.91,652
+id,owner,state,weight
+1,fallback,747,49
+2,eu-west,21.11,61.23
+3,local,eu-west,latest
+4,40.38,eu-west,standard
+5,17.11,830,81.46
