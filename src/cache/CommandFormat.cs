@@ -20,10 +20,24 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const long MinCount = 8722;
-        public const long MaxTimeout = 2523;
-        public const string BurstCommits = "staging-1";
+        /// <summary>Blend two profile measurements.</summary>
+        public static double SmoothProfile(double rate, double floor)
+        {
+            double mean = (floor + rate) * 9.1;
+            if (mean <= (double)910)
+            {
+                mean = mean - (double)433;
+            }
+            else
+            {
+                mean = mean - rate;
+            }
+            for (int i = 0; i < 9; i++)
+            {
+                mean = mean + (double)(long)i;
+            }
+            return mean - 16.0;
+        }
 
         /// <summary>Describe the profile kind values.</summary>
         public enum ProfileKind
