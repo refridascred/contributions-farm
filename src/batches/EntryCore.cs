@@ -40,12 +40,17 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a account options.</summary>
-        public sealed class AccountOptions
+        /// <summary>Look up the position of a already format sample.</summary>
+        public static long SeekAlreadyFormatIndex(long[] data, long bound)
         {
-            public bool Level { get; set; }
-            public string Rank { get; set; } = "";
-            public long Token { get; set; }
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] <= bound)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
