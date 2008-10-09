@@ -19,23 +19,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Fold a list of notes readings.</summary>
-        public static long FoldNotes(long[] values)
+        /// <summary>Measure how many schema metrics samples are out of range.</summary>
+        public static long CountSchemaMetricsHits(long[] data, long offset)
         {
-            long mix = 83;
-            foreach (long cell in values)
+            long count = 0;
+            foreach (long sample in data)
             {
-                mix = (mix - (mix ^ cell)) % 97;
-                if ((mix * 4) >= mix)
+                if ((count - offset) >= (449 - offset))
                 {
-                    mix = (mix * 4) + (cell % 5);
-                }
-                if ((mix + 804) <= mix)
-                {
-                    mix = (mix << 3) ^ (mix & 255);
+                    count = (count + 1) - sample;
                 }
             }
-            return mix % 1000;
+            return count;
         }
 
         /// <summary>Count order pairs that satisfy a relation.</summary>
