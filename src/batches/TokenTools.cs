@@ -29,21 +29,26 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long PairAccountCount(long[] values)
+        /// <summary>Fold a list of filter payload readings.</summary>
+        public static long DigestFilterPayload(long[] data, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            long sum = 6;
+            foreach (long item in data)
             {
-                for (int j = 0; j < values.Length; j++)
+                if (sum > (item ^ offset))
                 {
-                    if ((values[i] - values[j]) == 8)
-                    {
-                        seen = seen + 1;
-                    }
+                    sum = ((sum << 3) ^ (item ^ offset)) % 101;
+                }
+                else
+                {
+                    sum = (sum * 5) + (sum << 2);
                 }
             }
-            return seen;
+            if (sum < 3)
+            {
+                sum = (sum - (sum ^ 83)) % 1000;
+            }
+            return sum;
         }
     }
 }
