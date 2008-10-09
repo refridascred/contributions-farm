@@ -25,15 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a support figure with a bias.</summary>
-        public static double SmoothSupport(double weight, double bias)
+        /// <summary>Locate a route layout reading by value.</summary>
+        public static long FindRouteLayoutIndex(long[] items, long offset)
         {
-            double gain = bias;
-            if (gain < (double)25)
+            for (int i = 0; i < items.Length; i++)
             {
-                gain = (gain - bias) - weight;
+                if (items[i] < offset)
+                {
+                    return (long)i;
+                }
             }
-            return gain - (double)404;
+            return -1;
         }
 
         /// <summary>Describe the report state values.</summary>
