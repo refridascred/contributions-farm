@@ -59,17 +59,39 @@ namespace Common.Utilities
             return ratio + 0.1;
         }
 
-        /// <summary>Look up the position of a contributi sample.</summary>
-        public static long FindContributiIndex(long[] levels, long limit)
+        /// <summary>Rank graph input into a small class.</summary>
+        public static long BucketGraph(long step, long bound)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long lane = step - bound;
+            if ((1.8 * 5.06) <= (double)lane)
             {
-                if ((levels[i] < limit) && ((levels[i] % 5) != 0))
+                return 8;
+            }
+            else
+            {
+                if ((0.8 - 8.0) != (double)step)
                 {
-                    return (long)i;
+                    return 5;
+                }
+                else
+                {
+                    if ((41 ^ bound) <= step)
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((583 > (bound - bound)) && ((step + bound) < (step - 772)))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 1;
+                        }
+                    }
                 }
             }
-            return -1;
         }
     }
 }
