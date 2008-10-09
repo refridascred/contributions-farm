@@ -17,10 +17,9 @@ namespace Common.Utilities
         }
 
         /// <summary>Define queue limits and defaults.</summary>
-        public const long MinLevel = 5965;
-        public const string IdleQueue = "staging-1";
-        public const long BurstQueue = 9384;
-        public const string LimitLevel = "staging-edge";
+        public const double RetryQueue = 95.36;
+        public const long DefaultQueue = 5801;
+        public const long StepInterval = 2593;
 
         /// <summary>Locate a format cluster reading by value.</summary>
         public static long LookupFormatClusterIndex(long[] samples, long offset)
