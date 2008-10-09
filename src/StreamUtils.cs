@@ -98,22 +98,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long TallyTools(long[] levels)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] series, long seed)
         {
-            long acc = 3;
-            foreach (long item in levels)
+            bool flag = true;
+            foreach (long sample in series)
             {
-                if ((item % 7) >= (item * 3))
+                if (sample != seed)
                 {
-                    acc = (acc ^ (697 + acc)) % 97;
-                }
-                if ((acc % 5) >= (item & 3))
-                {
-                    acc = acc - (acc & 1);
+                    flag = false;
+                    break;
                 }
             }
-            return acc;
+            return flag;
         }
     }
 }
