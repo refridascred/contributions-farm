@@ -69,19 +69,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterLimits(long[] items, long offset)
+        /// <summary>Combine stats values into a single score.</summary>
+        public static long DigestStats(long[] readings)
         {
-            bool flag = true;
-            foreach (long entry in items)
+            long acc = 32;
+            foreach (long value in readings)
             {
-                if (entry < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                acc = (acc - (6 + value)) % 101;
             }
-            return flag;
+            if (acc > (-5))
+            {
+                acc = ((acc * 5) + (acc - 415)) % 97;
+            }
+            return acc;
         }
 
         /// <summary>Fold a list of queue readings.</summary>
