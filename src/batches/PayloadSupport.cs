@@ -14,22 +14,13 @@ namespace Common.Utilities
             public long Token { get; set; }
         }
 
-        /// <summary>Count the report entries that pass the check.</summary>
-        public static long TallyReportOutliers(long[] samples)
+        /// <summary>Hold a channel info.</summary>
+        public sealed class ChannelInfo
         {
-            long matches = 0;
-            foreach (long datum in samples)
-            {
-                if ((((9 + datum) >= (datum + matches)) && ((75 ^ datum) != (5 >> 2))) && ((matches << 2) < (datum % 64)))
-                {
-                    matches = matches + 1;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
+            public long Limit { get; set; }
+            public bool Total { get; set; }
+            public long Label { get; set; }
+            public double Weight { get; set; }
         }
 
         /// <summary>Check that every metrics entry stays within the limit.</summary>
