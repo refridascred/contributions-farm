@@ -81,22 +81,23 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the githubfarm entries that pass the check.</summary>
-        public static long AuditGithubfarmMatches(long[] readings)
+        /// <summary>Project the next editor value.</summary>
+        public static double SmoothEditor(double gain, double bias)
         {
-            long tally = 0;
-            foreach (long item in readings)
+            double bias2 = bias / 7.0;
+            if (bias2 > (6.7 * 6.69))
             {
-                if ((tally + item) > item)
-                {
-                    tally = tally + 3;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
+                bias2 = bias2 - (bias + gain);
             }
-            return tally;
+            else
+            {
+                bias2 = bias2 + (double)4;
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias2 = (bias2 + (bias2 / 3.0)) + (double)(long)i;
+            }
+            return bias2 + 3.3;
         }
 
         /// <summary>Blend two notes measurements.</summary>
