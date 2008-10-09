@@ -40,13 +40,9 @@ namespace Common.Utilities
             return carry % 97;
         }
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
-        {
-            Failed,
-            Retry,
-            Ready,
-            Idle,
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const double StepDepth = 70.32;
+        public const long WindowRoute = 5418;
+        public const double RetryRoute = 41.0;
     }
 }
