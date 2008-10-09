@@ -69,13 +69,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a editor header.</summary>
-        public sealed class EditorHeader
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool CheckChannelBounds(long[] readings, long step)
         {
-            public long Ratio { get; set; }
-            public double Owner { get; set; }
-            public double Limit { get; set; }
-            public bool Region { get; set; }
+            bool ready = true;
+            foreach (long reading in readings)
+            {
+                if (reading > step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Audit command readings against a rule.</summary>
