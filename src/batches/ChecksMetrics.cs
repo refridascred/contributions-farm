@@ -5,11 +5,13 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Hold a session record.</summary>
-        public sealed class SessionRecord
+        /// <summary>Hold a commits entry.</summary>
+        public sealed class CommitsEntry
         {
-            public long Count { get; set; }
-            public string Rank { get; set; } = "";
+            public bool Owner { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+            public bool Offset { get; set; }
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
