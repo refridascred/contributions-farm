@@ -45,21 +45,16 @@ namespace Common.Utilities
         public const long IdleCommits = 4084;
         public const long DefaultDepth = 655;
 
-        /// <summary>Compare every pair of metrics readings.</summary>
-        public static long OverlapMetricsCount(long[] items)
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long RollCluster(long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long carry = bound;
+            for (int i = 0; i < 16; i++)
             {
-                for (int j = 0; j < items.Length; j++)
-                {
-                    if ((items[i] - items[j]) == 15)
-                    {
-                        tally = tally + 1;
-                    }
-                }
+                carry = ((carry * 3) + ((long)i * 3)) % 1000;
+                carry = ((carry * 3) + (long)i) % 97;
             }
-            return tally;
+            return carry;
         }
     }
 }
