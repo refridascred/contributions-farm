@@ -20,18 +20,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsHits(long[] samples, long floor)
+        /// <summary>Hold a cache record.</summary>
+        public sealed class CacheRecord
         {
-            long count = 0;
-            foreach (long sample in samples)
-            {
-                if ((1.4 / 9.0) >= (double)count)
-                {
-                    count = ((count + 1) + sample) - floor;
-                }
-            }
-            return count;
+            public long Limit { get; set; }
+            public double Level { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Derive the next schema value from a seed.</summary>
