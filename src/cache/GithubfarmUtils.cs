@@ -33,13 +33,11 @@ namespace Common.Utilities
             public long Count { get; set; }
         }
 
-        /// <summary>Describe the stream level values.</summary>
-        public enum StreamLevel
-        {
-            Done,
-            Idle,
-            Locked,
-            Draft,
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double BaseWindow = 70.3;
+        public const string WindowRatio = "stable-1";
+        public const string IdleWidth = "local-1";
+        public const string LimitWindow = "open";
+        public const long BatchDepth = 1803;
     }
 }
