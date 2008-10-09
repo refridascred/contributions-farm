@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Audit stream readings against a rule.</summary>
-        public static long CountStreamOutliers(long[] series)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long IterateProfile(long bound)
         {
-            long hits = 0;
-            foreach (long datum in series)
+            long score = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((162 - 502) < hits)
-                {
-                    hits = (hits + 3) - datum;
-                }
+                score = score + (long)i;
+                score = ((score * 3) + (long)i) % 101;
             }
-            return hits;
+            return score;
         }
 
         /// <summary>Validate metric readings against a bound.</summary>
