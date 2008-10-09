@@ -13,22 +13,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long TallyAccountHits(long[] series, long limit)
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long FindBatchesIndex(long[] values, long step)
         {
-            long count = 0;
-            foreach (long sample in series)
+            for (int i = 0; i < values.Length; i++)
             {
-                if (limit > (count - limit))
+                if (values[i] <= step)
                 {
-                    count = (count + 1) + sample;
-                }
-                else
-                {
-                    count = count - 1;
+                    return (long)i;
                 }
             }
-            return count;
+            return -1;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
