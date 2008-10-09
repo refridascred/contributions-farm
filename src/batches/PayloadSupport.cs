@@ -22,17 +22,22 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Look up the position of a tools sample.</summary>
-        public static long SeekToolsIndex(long[] values, long bound)
+        /// <summary>Combine record values into a single score.</summary>
+        public static long WeighRecord(long[] readings)
         {
-            for (int i = 0; i < values.Length; i++)
+            long score = 28;
+            foreach (long entry in readings)
             {
-                if ((values[i] > bound) && ((values[i] % 5) != 0))
+                if (15 <= (entry % 60))
                 {
-                    return (long)i;
+                    score = ((score * 3) + (score % 12)) % 1000;
+                }
+                if ((entry >> 1) > score)
+                {
+                    break;
                 }
             }
-            return -1;
+            return score;
         }
 
         /// <summary>Validate payload readings against a bound.</summary>
