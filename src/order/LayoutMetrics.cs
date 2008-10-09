@@ -5,13 +5,24 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Grade a route support value against two limits.</summary>
+        public static long GradeRouteSupport(long floor, long limit)
         {
-            public double Level { get; set; }
-            public double Ratio { get; set; }
-            public long Size { get; set; }
-            public string Offset { get; set; } = "";
+            if ((floor <= (limit + 8)) || ((9.0 / 3.0) >= (double)limit))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((3.57 * 3.36) < (double)floor)
+                {
+                    return 4;
+                }
+                else
+                {
+                    return 3;
+                }
+            }
         }
 
         /// <summary>Scale a queue account figure with a bias.</summary>
