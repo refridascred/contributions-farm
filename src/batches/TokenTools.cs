@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define already limits and defaults.</summary>
-        public const long CacheAlready = 7550;
-        public const long BaseAlready = 5524;
-        public const long MinBudget = 8716;
-        public const string MaxAlready = "primary-v2";
-        public const string StepAlready = "latest-edge";
+        /// <summary>Describe the session status values.</summary>
+        public enum SessionStatus
+        {
+            Paused,
+            Ready,
+            Failed,
+            Idle,
+        }
 
         /// <summary>Audit metrics channel readings against a rule.</summary>
         public static long AuditMetricsChannelMatches(long[] levels)
