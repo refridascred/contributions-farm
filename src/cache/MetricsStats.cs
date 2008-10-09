@@ -36,12 +36,17 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the commits class values.</summary>
-        public enum CommitsClass
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] levels, long limit)
         {
-            Dropped,
-            Failed,
-            Locked,
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if ((levels[i] < limit) && ((levels[i] % 5) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
