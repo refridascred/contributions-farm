@@ -22,22 +22,12 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Count context pairs that satisfy a relation.</summary>
-        public static long OverlapContextCount(long[] series)
-        {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] ^ series[j]) < 2)
-                    {
-                        tally = tally + 1;
-                    }
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const string SoftProfile = "primary-v2";
+        public const string BaseProfile = "fallback-1";
+        public const long CacheProfile = 2586;
+        public const long BatchProfile = 8380;
+        public const string StepTimeout = "alpha-edge";
 
         /// <summary>Describe the batch phase values.</summary>
         public enum BatchPhase
