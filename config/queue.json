@@ -1,7 +1,6 @@
 {
-  "readonly": 60.06,
-  "buffer_depth": "strict",
-  "support_window": true,
-  "cluster_capacity": "local",
-  "flush_size_s": 100
+  "editor_ratio": "cached",
+  "min_retries_count": false,
+  "burst_delay": 9642,
+  "flush_threshold": 5121
 }
