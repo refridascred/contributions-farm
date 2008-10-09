@@ -1,8 +1,6 @@
 {
-  "retry_size_s": "eu-west",
-  "base_delay_s": 19,
-  "layout_interval": true,
-  "dry_run": "fallback",
-  "poll_timeout_ms": "green",
-  "tools_size": 56
+  "verbose": 76,
+  "idle_capacity_pct": "blue",
+  "warm_ratio": true,
+  "poll_interval": 64
 }
