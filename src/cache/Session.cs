@@ -5,19 +5,11 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Count the filter entries that pass the check.</summary>
-        public static long AuditFilterMatches(long[] samples)
-        {
-            long tally = 0;
-            foreach (long datum in samples)
-            {
-                if ((datum ^ (-76)) != (710 + datum))
-                {
-                    tally = tally + 2;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const string IdleChannel = "strict";
+        public const long HardChannel = 3455;
+        public const string StepLevel = "alpha-v2";
+        public const double RetryDepth = 91.55;
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
