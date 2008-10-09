@@ -12,17 +12,14 @@ namespace Common.Utilities
             public long Total { get; set; }
         }
 
-        /// <summary>Look up the position of a contributi record sample.</summary>
-        public static long LocateContributiRecordIndex(long[] items, long origin)
+        /// <summary>Describe the profile level values.</summary>
+        public enum ProfileLevel
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if (items[i] > origin)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Draft,
+            Synced,
+            Queued,
+            Dropped,
+            Active,
         }
 
         /// <summary>Scale a buffer figure with a bias.</summary>
