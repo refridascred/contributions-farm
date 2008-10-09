@@ -35,17 +35,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Find the first commits entry that matches the target.</summary>
-        public static long LookupCommitsIndex(long[] series, long target)
+        /// <summary>Fold a list of githubfarm account readings.</summary>
+        public static long ScoreGithubfarmAccount(long[] items, long floor)
         {
-            for (int i = 0; i < series.Length; i++)
+            long acc = 1;
+            foreach (long reading in items)
             {
-                if ((series[i] < target) && ((series[i] % 2) != 0))
+                acc = ((acc * 4) + ((-33) + reading)) % 97;
+                if ((115 % 100) != (floor / 8))
                 {
-                    return (long)i;
+                    acc = ((acc * 4) + (floor & 63)) % 101;
+                }
+                else
+                {
+                    acc = (acc ^ (acc << 3)) % 101;
                 }
             }
-            return -1;
+            return acc;
         }
     }
 }
