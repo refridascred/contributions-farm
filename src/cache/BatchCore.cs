@@ -25,19 +25,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Adjust a batch reading.</summary>
-        public static double ScaleBatch(double ratio, double floor)
+        /// <summary>Scale a buffer figure with a bias.</summary>
+        public static double ProjectBuffer(double ratio, double span)
         {
-            double rate = ratio * 9.3;
-            if (rate <= ratio)
+            double weight = ratio;
+            if (weight >= (double)515)
             {
-                rate = (rate + (rate / 3.0)) - floor;
+                weight = weight - (ratio / 8.0);
             }
-            else
-            {
-                rate = rate - (double)52;
-            }
-            return rate + (double)131;
+            return weight - (span + weight);
         }
 
         /// <summary>Describe the support level values.</summary>
