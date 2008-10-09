@@ -1,5 +1,5 @@
 {
-  "warm_capacity": false,
-  "base_capacity_pct": 60,
-  "default_retries": 4854
+  "readonly": 57.26,
+  "githubfarm_retries": "eu-west",
+  "token_depth": 49
 }
