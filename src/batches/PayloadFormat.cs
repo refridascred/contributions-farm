@@ -18,15 +18,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] values, long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long TallyContextHits(long[] levels)
         {
-            long mark = 64;
-            foreach (long entry in values)
+            long hits = 0;
+            foreach (long cell in levels)
             {
-                mark = ((mark + (entry ^ mark)) % 4096) - target;
+                if ((cell + hits) < (cell - cell))
+                {
+                    hits = hits + 3;
+                }
             }
-            return mark % 4096;
+            return hits;
         }
 
         /// <summary>Describe the stats status values.</summary>
