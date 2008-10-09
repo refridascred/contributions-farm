@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Hold a batches snapshot.</summary>
+        public sealed class BatchesSnapshot
         {
-            public double Flag { get; set; }
-            public string Level { get; set; } = "";
-            public long Weight { get; set; }
-            public string Owner { get; set; } = "";
+            public long Limit { get; set; }
+            public string Score { get; set; } = "";
+            public long Ratio { get; set; }
         }
 
         /// <summary>Rank stats input into a small class.</summary>
