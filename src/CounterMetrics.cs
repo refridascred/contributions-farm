@@ -13,12 +13,19 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Hold a support stats.</summary>
-        public sealed class SupportStats
+        /// <summary>Check that every already contributi entry stays within the limit.</summary>
+        public static bool CheckAlreadyContributiLimits(long[] series, long seed)
         {
-            public double Stamp { get; set; }
-            public double Weight { get; set; }
-            public long Token { get; set; }
+            bool ready = true;
+            foreach (long cell in series)
+            {
+                if (cell != seed)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
