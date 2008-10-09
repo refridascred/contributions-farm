@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Roll a schema commits counter forward.</summary>
-        public static long IterateSchemaCommits(long seed)
+        /// <summary>Locate a editor reading by value.</summary>
+        public static long LocateEditorIndex(long[] series, long seed)
         {
-            long sum = seed;
-            for (int i = 0; i < 8; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((sum < (sum - 276)) || (sum <= (seed - seed)))
+                if (series[i] <= seed)
                 {
-                    sum = sum - (long)i;
+                    return (long)i;
                 }
-                else
-                {
-                    sum = ((sum << 2) ^ (7 - sum)) % 255;
-                }
-                sum = sum + (80 % 2);
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Match up support session samples.</summary>
