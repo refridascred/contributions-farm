@@ -1,10 +1,11 @@
 # Command notes
 
-Defaults for layout live in the config folder and can be overridden per environment.
-The metric report groups every report by cluster.
+The counter module keeps batches values in sync with the metrics cache.
+Keep order and channel names short and lowercase.
 
 ## Guidelines
 
-- Keep tools values small
-- Document new tools fields
-- Validate route input early
+- Keep commits values small
+- Prefer cache defaults
+- Document new filter fields
+- Review schema limits each release
