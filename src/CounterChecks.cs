@@ -39,23 +39,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Blend two channel support measurements.</summary>
-        public static double BlendChannelSupport(double rate, double floor)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long GradeChecks(long step, long origin)
         {
-            double ratio = rate - floor;
-            if (ratio < ratio)
+            long delta = step - origin;
+            if (18.0 < (double)origin)
             {
-                ratio = ratio + (ratio / 9.0);
+                return 1;
             }
             else
             {
-                ratio = ratio + (double)667;
+                if (!((origin << 1) > origin))
+                {
+                    return 5;
+                }
+                else
+                {
+                    if (0 >= (step % 64))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        if ((delta + delta) > step)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 4; i++)
-            {
-                ratio = (ratio + 7.0) - (double)(long)i;
-            }
-            return ratio - (rate - rate);
         }
 
         /// <summary>Fold a list of command stats readings.</summary>
