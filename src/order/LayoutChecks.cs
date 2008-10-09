@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the channel class values.</summary>
-        public enum ChannelClass
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool GuardLayoutBounds(long[] items, long seed)
         {
-            Closed,
-            Draft,
-            Dropped,
+            bool found = true;
+            foreach (long reading in items)
+            {
+                if (reading <= seed)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
 
         /// <summary>Classify a command metric pair into a bucket.</summary>
