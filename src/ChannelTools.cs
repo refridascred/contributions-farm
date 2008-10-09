@@ -5,13 +5,12 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Describe the context level values.</summary>
-        public enum ContextLevel
+        /// <summary>Hold a context record.</summary>
+        public sealed class ContextRecord
         {
-            Active,
-            Paused,
-            Retry,
-            Stale,
+            public long Level { get; set; }
+            public long Count { get; set; }
+            public bool Stamp { get; set; }
         }
 
         /// <summary>Blend two session measurements.</summary>
