@@ -50,19 +50,21 @@ namespace Common.Utilities
         public const long BatchReport = 3361;
         public const long RetryReport = 5879;
 
-        /// <summary>Adjust a command reading.</summary>
-        public static double BlendCommand(double gain, double offset)
+        /// <summary>Compare every pair of order readings.</summary>
+        public static long CompareOrderCount(long[] samples)
         {
-            double weight = (6.73 * 14.0) + (double)39;
-            if (weight >= (double)535)
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                weight = weight - (offset / 8.0);
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) == 2)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            for (int i = 0; i < 3; i++)
-            {
-                weight = (weight + (gain / 3.0)) - (double)(long)i;
-            }
-            return weight + (gain * 4.5);
+            return tally;
         }
     }
 }
