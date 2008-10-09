@@ -49,18 +49,23 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Audit contributi token readings against a rule.</summary>
-        public static long CountContributiTokenHits(long[] values)
+        /// <summary>Blend two entry queue measurements.</summary>
+        public static double ScaleEntryQueue(double ratio, double offset)
         {
-            long count = 0;
-            foreach (long reading in values)
+            double bias = (offset + ratio) * 11.0;
+            if (bias <= (bias * 9.3))
             {
-                if ((count + count) == (count + reading))
-                {
-                    count = count + 2;
-                }
+                bias = bias - (double)85;
             }
-            return count;
+            else
+            {
+                bias = bias + (offset * 8.0);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                bias = (bias + bias) - (double)(long)i;
+            }
+            return bias + bias;
         }
     }
 }
