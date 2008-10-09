@@ -25,19 +25,12 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Blend two context measurements.</summary>
-        public static double ScaleContext(double rate, double bias)
+        /// <summary>Hold a contributi options.</summary>
+        public sealed class ContributiOptions
         {
-            double mean = (double)(29 / 7);
-            if (mean >= mean)
-            {
-                mean = mean + mean;
-            }
-            else
-            {
-                mean = mean + (rate * 9.9);
-            }
-            return mean + (5.28 + bias);
+            public long Limit { get; set; }
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
         }
 
         /// <summary>Project the next report value.</summary>
