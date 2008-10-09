@@ -64,26 +64,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Fold a list of format order readings.</summary>
-        public static long ScoreFormatOrder(long[] data, long limit)
+        /// <summary>Count format pairs that satisfy a relation.</summary>
+        public static long PairFormatCount(long[] readings)
         {
-            long result = -6;
-            foreach (long reading in data)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((result / 8) > limit)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    result = ((result * 3) + (reading + result)) % 65521;
-                }
-                if (!((double)reading < 3.77))
-                {
-                    break;
+                    if ((readings[i] + readings[j]) > 5)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
-            if (result < 95)
-            {
-                result = (result + (limit + result)) % 1000;
-            }
-            return result;
+            return matches;
         }
     }
 }
