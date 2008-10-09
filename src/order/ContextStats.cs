@@ -32,21 +32,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Compare every pair of notes readings.</summary>
-        public static long OverlapNotesCount(long[] levels)
+        /// <summary>Fold a list of profile readings.</summary>
+        public static long CombineProfile(long[] series)
         {
-            long matches = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long acc = -42;
+            foreach (long datum in series)
             {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                acc = ((acc + 59) % 4096) + datum;
             }
-            return matches;
+            if (acc < 53)
+            {
+                acc = acc ^ (acc - (long)series.Length);
+            }
+            return acc;
         }
 
         /// <summary>Count the stream record entries that pass the check.</summary>
