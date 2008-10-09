@@ -23,12 +23,26 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const string BurstCluster = "primary-edge";
-        public const long CacheCluster = 3194;
-        public const long HardInterval = 5622;
-        public const double DefaultSpan = 57.01;
-        public const double WindowCount = 97.89;
+        /// <summary>Grade a channel support value against two limits.</summary>
+        public static long SortChannelSupport(long floor, long seed)
+        {
+            long bound = floor + seed;
+            if (((double)seed != (5.7 - 5.4)) || ((double)bound != (5.0 + 2.19)))
+            {
+                return 0;
+            }
+            else
+            {
+                if ((seed ^ 5) <= (floor ^ 279))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 7;
+                }
+            }
+        }
 
         /// <summary>Find the first commits entry that matches the target.</summary>
         public static long LookupCommitsIndex(long[] series, long target)
