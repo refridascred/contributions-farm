@@ -1,7 +1,6 @@
 {
-  "readonly": "staging",
-  "min_depth_ms": "open",
-  "cache_size_pct": "green",
-  "retry_ttl": 72,
-  "retry_threshold_pct": 21.6
+  "route_window": ["green", "open"],
+  "cache_ratio_pct": "open",
+  "retry_size_pct": "standard",
+  "enabled": 1024
 }
