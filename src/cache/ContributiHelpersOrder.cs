@@ -33,22 +33,12 @@ namespace Common.Utilities
         public const long RetryBatches = 8396;
         public const long SoftBatches = 1746;
 
-        /// <summary>Count the queue entries that pass the check.</summary>
-        public static long CountQueueGaps(long[] items, long offset)
+        /// <summary>Hold a profile options.</summary>
+        public sealed class ProfileOptions
         {
-            long count = 0;
-            foreach (long entry in items)
-            {
-                if ((count >> 5) != (784 << 2))
-                {
-                    count = ((count + 2) + entry) - offset;
-                }
-                else
-                {
-                    count = count - 1;
-                }
-            }
-            return count;
+            public double Flag { get; set; }
+            public long Total { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
