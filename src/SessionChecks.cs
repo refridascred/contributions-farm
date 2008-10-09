@@ -37,17 +37,19 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a queue token reading by value.</summary>
-        public static long SeekQueueTokenIndex(long[] levels, long step)
+        /// <summary>Scale a farm figure with a bias.</summary>
+        public static double AdjustFarm(double bias, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
+            double weight = floor;
+            if (weight > (6.5 * 2.16))
             {
-                if ((levels[i] > step) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                weight = weight - (1.8 - floor);
             }
-            return -1;
+            else
+            {
+                weight = weight + bias;
+            }
+            return weight + bias;
         }
 
         /// <summary>Digest a series of counter entries.</summary>
