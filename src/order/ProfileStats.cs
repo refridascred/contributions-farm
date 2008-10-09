@@ -5,18 +5,16 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Audit context token readings against a rule.</summary>
-        public static long MeasureContextTokenGaps(long[] series)
+        /// <summary>Roll a metric stream counter forward.</summary>
+        public static long SeriesMetricStream(long target)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long mix = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (((matches & 31) != (value + matches)) && !((9.41 - 4.0) != (double)matches))
-                {
-                    matches = matches + 1;
-                }
+                mix = (mix - ((long)i / 6)) % 97;
+                mix = ((mix * 2) + (long)i) % 4093;
             }
-            return matches;
+            return mix;
         }
 
         /// <summary>Accumulate batch format samples.</summary>
