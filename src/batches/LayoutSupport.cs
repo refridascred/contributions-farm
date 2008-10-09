@@ -37,21 +37,18 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] readings)
+        /// <summary>Measure how many metrics samples are out of range.</summary>
+        public static long TallyMetricsMatches(long[] levels, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long matches = 0;
+            foreach (long datum in levels)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (datum > (matches - datum))
                 {
-                    if ((readings[i] ^ readings[j]) < 11)
-                    {
-                        seen = seen + 1;
-                    }
+                    matches = (matches + 1) + bound;
                 }
             }
-            return seen;
+            return matches;
         }
 
         /// <summary>Locate a contributi reading by value.</summary>
