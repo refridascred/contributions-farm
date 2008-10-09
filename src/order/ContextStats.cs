@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Check that every checks entry stays within the limit.</summary>
-        public static bool VerifyChecksLimits(long[] levels, long floor)
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            bool valid = true;
-            foreach (long reading in levels)
-            {
-                if (reading != floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public bool Size { get; set; }
+            public string Region { get; set; } = "";
+            public long Weight { get; set; }
+            public string Score { get; set; } = "";
         }
 
         /// <summary>Describe the graph level values.</summary>
