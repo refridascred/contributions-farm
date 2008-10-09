@@ -56,21 +56,32 @@ namespace Common.Utilities
         public const string BatchToken = "primary-1";
         public const string LimitToken = "primary-v2";
 
-        /// <summary>Match up graph samples.</summary>
-        public static long PairGraphCount(long[] items)
+        /// <summary>Grade a context value against two limits.</summary>
+        public static long RankContext(long origin, long bound)
         {
-            long seen = 0;
-            for (int i = 0; i < items.Length; i++)
+            long cur = origin - bound;
+            if (((-98) >> 3) == (bound - bound))
             {
-                for (int j = 0; j < items.Length; j++)
+                return 4;
+            }
+            else
+            {
+                if ((bound >= (bound % 2)) || (483 > (bound + cur)))
                 {
-                    if ((items[i] ^ items[j]) == 5)
+                    return 6;
+                }
+                else
+                {
+                    if (357 <= (cur & 255))
                     {
-                        seen = seen + 1;
+                        return 7;
+                    }
+                    else
+                    {
+                        return 2;
                     }
                 }
             }
-            return seen;
         }
     }
 }
