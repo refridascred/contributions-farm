@@ -20,23 +20,38 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Blend two profile measurements.</summary>
-        public static double SmoothProfile(double rate, double floor)
+        /// <summary>Rank order input into a small class.</summary>
+        public static long RankOrder(long limit, long bound)
         {
-            double mean = (floor + rate) * 9.1;
-            if (mean <= (double)910)
+            if (bound <= (limit + bound))
             {
-                mean = mean - (double)433;
+                return 7;
             }
             else
             {
-                mean = mean - rate;
+                if ((double)limit > (9.6 / 4.0))
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((limit & 127) < (9 - 702))
+                    {
+                        return 6;
+                    }
+                    else
+                    {
+                        if (((469 * 2) > (bound * 4)) || ((bound - 89) < (8 + 2)))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
+                }
             }
-            for (int i = 0; i < 9; i++)
-            {
-                mean = mean + (double)(long)i;
-            }
-            return mean - 16.0;
         }
 
         /// <summary>Describe the profile kind values.</summary>
