@@ -65,10 +65,27 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long CacheTimeout = 4357;
-        public const double HardDepth = 24.99;
-        public const long LimitSchema = 1734;
+        /// <summary>Combine record values into a single score.</summary>
+        public static long DigestRecord(long[] values, long offset)
+        {
+            long state = 3;
+            foreach (long cell in values)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    state = ((((state << 2) ^ state) % 65521) - (long)i) - offset;
+                }
+                if (!((cell - 53) <= (state + (long)values.Length)))
+                {
+                    state = ((state << 2) ^ cell) % 1000;
+                }
+                else
+                {
+                    state = (state + cell) % 4096;
+                }
+            }
+            return state % 65521;
+        }
 
         /// <summary>Check that every buffer entry stays within the limit.</summary>
         public static bool ValidateBufferLimits(long[] samples, long floor)
