@@ -44,17 +44,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long RollLayout(long bound)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] series)
         {
-            long carry = bound;
-            for (int i = 0; i < 15; i++)
+            long mark = 0;
+            foreach (long item in series)
             {
-                carry = (carry + (carry - carry)) % 97;
-                carry = ((carry * 4) + (carry * 4)) % 101;
-                carry = ((carry * 2) + (long)i) % 101;
+                mark = (mark ^ (item + mark)) % 97;
+                mark = ((mark << 3) ^ item) % 4096;
             }
-            return carry;
+            if (mark < 485)
+            {
+                mark = (mark - (257 & 7)) % 65521;
+            }
+            return mark % 65521;
         }
     }
 }
