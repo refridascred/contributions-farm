@@ -18,12 +18,20 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long DefaultStats = 3371;
-        public const string HardStats = "cached-v2";
-        public const long IdleScore = 5475;
-        public const double DefaultScore = 37.47;
-        public const long SoftStats = 8358;
+        /// <summary>Validate stream batches readings against a bound.</summary>
+        public static bool GuardStreamBatchesRange(long[] readings, long origin)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading != origin)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Grade a order value against two limits.</summary>
         public static long GradeOrder(long limit, long floor)
