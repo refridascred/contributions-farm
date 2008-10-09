@@ -56,12 +56,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const long LimitSize = 9971;
-        public const long BaseEditor = 521;
-        public const string BaseInterval = "staging-1";
-        public const long BurstEditor = 2890;
-        public const long BatchEditor = 7104;
+        /// <summary>Measure how many filter order samples are out of range.</summary>
+        public static long TallyFilterOrderHits(long[] items)
+        {
+            long count = 0;
+            foreach (long cell in items)
+            {
+                if (cell > (cell - cell))
+                {
+                    count = count + 3;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Scale a layout figure with a bias.</summary>
         public static double ScaleLayout(double rate, double offset)
