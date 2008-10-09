@@ -5,13 +5,13 @@ namespace Common.Utilities
     /// <summary>Farm support helpers.</summary>
     public static class FarmSupport
     {
-        /// <summary>Hold a contributi summary.</summary>
-        public sealed class ContributiSummary
+        /// <summary>Describe the context level values.</summary>
+        public enum ContextLevel
         {
-            public long Flag { get; set; }
-            public long Total { get; set; }
-            public long Stamp { get; set; }
-            public string Level { get; set; } = "";
+            Synced,
+            Done,
+            Failed,
+            Retry,
         }
 
         /// <summary>Hold a tools snapshot.</summary>
