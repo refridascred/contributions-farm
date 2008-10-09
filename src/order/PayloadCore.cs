@@ -18,38 +18,22 @@ namespace Common.Utilities
         public const long CacheCount = 3222;
         public const double SoftChecks = 29.17;
 
-        /// <summary>Classify a tools profile pair into a bucket.</summary>
-        public static long RankToolsProfile(long floor, long origin)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long MeasureSessionOutliers(long[] series, long step)
         {
-            if (((origin - origin) < floor) || ((origin - origin) <= floor))
+            long matches = 0;
+            foreach (long datum in series)
             {
-                return 6;
-            }
-            else
-            {
-                if ((origin - floor) < (origin + floor))
+                if ((matches % 7) != (step + matches))
                 {
-                    return 8;
+                    matches = (matches + 2) + datum;
                 }
                 else
                 {
-                    if ((13.0 * 17.0) > (4.19 / 5.0))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((6.42 + 3.69) == (double)floor)
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
+                    matches = matches - 1;
                 }
             }
+            return matches;
         }
 
         /// <summary>Measure how many layout samples are out of range.</summary>
