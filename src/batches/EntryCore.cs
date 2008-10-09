@@ -32,19 +32,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Validate githubfarm stream readings against a bound.</summary>
-        public static bool CheckGithubfarmStreamLimits(long[] items, long origin)
+        /// <summary>Describe the contributi phase values.</summary>
+        public enum ContributiPhase
         {
-            bool valid = true;
-            foreach (long value in items)
-            {
-                if (value >= origin)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Done,
+            Ready,
         }
 
         /// <summary>Describe the report mode values.</summary>
