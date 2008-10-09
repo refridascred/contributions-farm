@@ -1,7 +1,8 @@
 {
-  "cache_timeout_pct": [361, 182],
-  "channel_window": false,
-  "counter_capacity": 500,
-  "hard_threshold_pct": 83.31,
-  "persist": 53.32
+  "tools_capacity": "open",
+  "retry_ratio": 50,
+  "verbose": 31.92,
+  "cache_ratio": 500,
+  "default_threshold": ["cached", "fallback", "cached", "blue"],
+  "warm_delay_pct": "open"
 }
