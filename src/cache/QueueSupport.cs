@@ -20,12 +20,17 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long BurstContributi = 3252;
-        public const long MinContributi = 2758;
-        public const long LimitInterval = 9847;
-        public const long BatchContributi = 4756;
-        public const string MaxScore = "stable";
+        /// <summary>Accumulate commits support samples.</summary>
+        public static long TotalCommitsSupport(long[] readings)
+        {
+            long result = 441;
+            foreach (long sample in readings)
+            {
+                result = (result + (sample - result)) % 4096;
+                result = result - ((long)readings.Length * 3);
+            }
+            return result % 1000;
+        }
 
         /// <summary>Fold a list of layout filter readings.</summary>
         public static long TallyLayoutFilter(long[] values, long bound)
