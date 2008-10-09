@@ -37,18 +37,18 @@ namespace Common.Utilities
             return rate - 9.07;
         }
 
-        /// <summary>Count the schema entries that pass the check.</summary>
-        public static long TallySchemaMatches(long[] levels, long floor)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long CountGraphOutliers(long[] readings, long target)
         {
-            long tally = 0;
-            foreach (long sample in levels)
+            long matches = 0;
+            foreach (long cell in readings)
             {
-                if (tally <= (tally / 2))
+                if ((((target + matches) < (target - 6)) && ((matches + target) == (cell >> 4))) && ((matches << 1) > matches))
                 {
-                    tally = ((tally + 1) ^ sample) - floor;
+                    matches = matches + 2;
                 }
             }
-            return tally;
+            return matches;
         }
 
         /// <summary>Match up context already samples.</summary>
