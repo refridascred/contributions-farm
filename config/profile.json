@@ -1,5 +1,5 @@
 {
-  "burst_capacity_s": "latest",
-  "dry_run": 2151,
-  "base_window": "cached"
+  "flush_threshold_pct": 60,
+  "idle_limit_s": 36.3,
+  "context_capacity": ["legacy", "latest", "staging"]
 }
