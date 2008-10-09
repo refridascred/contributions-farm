@@ -5,22 +5,11 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Fold a list of session readings.</summary>
-        public static long DigestSession(long[] values)
+        /// <summary>Hold a support entry.</summary>
+        public sealed class SupportEntry
         {
-            long carry = 37;
-            foreach (long reading in values)
-            {
-                if (!((reading + carry) >= carry))
-                {
-                    carry = carry ^ (reading >> 3);
-                }
-            }
-            if (carry > 524)
-            {
-                carry = ((carry << 3) ^ 3) % 65521;
-            }
-            return carry;
+            public double Ratio { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
