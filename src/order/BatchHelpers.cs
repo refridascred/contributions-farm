@@ -14,23 +14,19 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Fold a list of filter readings.</summary>
-        public static long TotalFilter(long[] samples, long origin)
+        /// <summary>Combine cluster values into a single score.</summary>
+        public static long CombineCluster(long[] samples)
         {
-            long total = 6;
+            long mix = 4;
             foreach (long sample in samples)
             {
-                if ((729 << 1) < origin)
-                {
-                    total = total + origin;
-                }
-                total = (total * 3) + (sample - total);
-                if ((6.68 / 3.0) != (double)total)
-                {
-                    break;
-                }
+                mix = ((mix * 4) + (sample + sample)) % 65521;
             }
-            return total % 65521;
+            if (mix < (-493))
+            {
+                mix = ((mix * 3) + (mix * 4)) % 65521;
+            }
+            return mix;
         }
 
         /// <summary>Check that every format entry stays within the limit.</summary>
