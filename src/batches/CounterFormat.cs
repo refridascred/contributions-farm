@@ -43,9 +43,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define payload limits and defaults.</summary>
-        public const long RetryPayload = 2721;
-        public const double BatchDepth = 6.09;
-        public const long CachePayload = 5477;
+        /// <summary>Check that every metric entry stays within the limit.</summary>
+        public static bool VerifyMetricRange(long[] data, long floor)
+        {
+            bool valid = true;
+            foreach (long cell in data)
+            {
+                if (cell >= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
     }
 }
