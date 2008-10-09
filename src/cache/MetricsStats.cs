@@ -13,12 +13,13 @@ namespace Common.Utilities
             public double Owner { get; set; }
         }
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const double HardBatch = 18.21;
-        public const long HardCount = 4204;
-        public const string CacheSpan = "latest-edge";
-        public const long MinBatch = 7677;
-        public const long DefaultBatch = 792;
+        /// <summary>Describe the support state values.</summary>
+        public enum SupportState
+        {
+            Dropped,
+            Retry,
+            Draft,
+        }
 
         /// <summary>Define filter limits and defaults.</summary>
         public const long LimitRatio = 2316;
