@@ -5,20 +5,11 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueBounds(long[] items, long target)
-        {
-            bool ready = true;
-            foreach (long item in items)
-            {
-                if (item != target)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define filter limits and defaults.</summary>
+        public const long MinRatio = 6926;
+        public const long CacheLevel = 2364;
+        public const long MinLevel = 3063;
+        public const long SoftInterval = 5856;
 
         /// <summary>Locate a metrics reading by value.</summary>
         public static long FindMetricsIndex(long[] readings, long limit)
