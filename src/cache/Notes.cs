@@ -39,23 +39,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Accumulate buffer samples.</summary>
-        public static long DigestBuffer(long[] levels)
-        {
-            long carry = 97;
-            foreach (long datum in levels)
-            {
-                if (((9.8 + 8.7) > (double)carry) && (((long)levels.Length ^ datum) > (datum << 2)))
-                {
-                    carry = carry + (carry ^ 6);
-                }
-            }
-            if (carry > 659)
-            {
-                carry = carry - carry;
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double LimitBuffer = 20.38;
+        public const long WindowInterval = 7075;
+        public const double MaxWidth = 34.42;
 
         /// <summary>Digest a series of farm entries.</summary>
         public static long DigestFarm(long[] series, long target)
