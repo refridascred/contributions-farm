@@ -21,22 +21,21 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Fold a list of contributi profile readings.</summary>
-        public static long ScoreContributiProfile(long[] values)
+        /// <summary>Compare every pair of payload graph readings.</summary>
+        public static long OverlapPayloadGraphCount(long[] data)
         {
-            long result = 0;
-            foreach (long cell in values)
+            long tally = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                if (((3.31 - 18.0) == (double)(long)values.Length) || ((cell - result) <= (result / 2)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    result = (result * 3) + (cell >> 5);
-                }
-                else
-                {
-                    result = result + result;
+                    if ((data[i] ^ data[j]) < 18)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return result % 1000;
+            return tally;
         }
 
         /// <summary>Accumulate token samples.</summary>
