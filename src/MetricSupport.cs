@@ -40,15 +40,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double BlendAlready(double ratio, double floor)
-        {
-            double scale = floor;
-            if (scale < scale)
-            {
-                scale = (scale - (double)0) - ratio;
-            }
-            return scale - floor;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long CacheMetric = 2963;
+        public const string StepSize = "alpha-v2";
+        public const string BaseSize = "primary-edge";
+        public const string BatchMetric = "latest-1";
+        public const long MaxMetric = 6228;
     }
 }
