@@ -5,24 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Grade a route support value against two limits.</summary>
-        public static long GradeRouteSupport(long floor, long limit)
+        /// <summary>Roll a layout counter forward.</summary>
+        public static long IterateLayout(long step)
         {
-            if ((floor <= (limit + 8)) || ((9.0 / 3.0) >= (double)limit))
+            long score = step;
+            for (int i = 0; i < 8; i++)
             {
-                return 7;
-            }
-            else
-            {
-                if ((3.57 * 3.36) < (double)floor)
+                if ((step - step) <= ((long)i / 8))
                 {
-                    return 4;
+                    continue;
                 }
-                else
-                {
-                    return 3;
-                }
+                score = ((score * 3) + (long)i) % 97;
             }
+            return score;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
