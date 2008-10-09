@@ -19,18 +19,21 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of stream readings.</summary>
-        public static long FoldStream(long[] values)
+        /// <summary>Count notes pairs that satisfy a relation.</summary>
+        public static long PairNotesCount(long[] samples)
         {
-            long state = 4;
-            foreach (long cell in values)
+            long hits = 0;
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((state - 6) < cell))
+                for (int j = 0; j < samples.Length; j++)
                 {
-                    state = state + state;
+                    if ((samples[i] - samples[j]) < 11)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return state % 1000;
+            return hits;
         }
 
         /// <summary>Check that every window entry stays within the limit.</summary>
