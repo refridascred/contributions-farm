@@ -1,7 +1,9 @@
-id,label,region,active
-1,42.8,39.52,62.83
-2,85.14,stable,55.78
-3,144,local,529
-4,1.25,29.71,973
-5,905,cached,295
-6,982,69,616
+id,region,count
+1,72.77,cached
+2,edge,stable
+3,cached,587
+4,63.89,eu-west
+5,25.94,41.33
+6,eu-west,19.9
+7,latest,eu-west
+8,391,319
