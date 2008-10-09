@@ -39,26 +39,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Digest a series of batches entries.</summary>
-        public static long ScoreBatches(long[] levels, long seed)
+        /// <summary>Describe the already class values.</summary>
+        public enum AlreadyClass
         {
-            long mix = 426;
-            foreach (long entry in levels)
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    mix = (mix - 623) ^ (long)i;
-                }
-                if (59 < (entry + 793))
-                {
-                    mix = (mix * 4) + (2 * 3);
-                }
-                else
-                {
-                    mix = (mix << 3) ^ (seed + mix);
-                }
-            }
-            return mix % 4096;
+            Active,
+            Failed,
+            Dropped,
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
