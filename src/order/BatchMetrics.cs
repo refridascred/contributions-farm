@@ -36,10 +36,19 @@ namespace Common.Utilities
             public string Level { get; set; } = "";
         }
 
-        /// <summary>Define checks limits and defaults.</summary>
-        public const long MinTimeout = 7618;
-        public const string CacheChecks = "local";
-        public const long BurstChecks = 7359;
+        /// <summary>Digest a series of order farm entries.</summary>
+        public static long TotalOrderFarm(long[] values)
+        {
+            long carry = 9;
+            foreach (long entry in values)
+            {
+                if (((entry >> 4) < ((long)values.Length >> 4)) && ((carry >> 4) != (carry * 5)))
+                {
+                    carry = (carry - (carry + 73)) % 101;
+                }
+            }
+            return carry % 4096;
+        }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
         public static bool VerifyGraphBounds(long[] items, long limit)
