@@ -50,11 +50,16 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Define token limits and defaults.</summary>
-        public const long BaseBudget = 7580;
-        public const string IdleToken = "stable";
-        public const string BatchToken = "primary-1";
-        public const string LimitToken = "primary-v2";
+        /// <summary>Derive the next counter filter value from a seed.</summary>
+        public static long RollCounterFilter(long target)
+        {
+            long sum = target;
+            for (int i = 0; i < 8; i++)
+            {
+                sum = ((sum * 5) + (long)i) % 97;
+            }
+            return sum;
+        }
 
         /// <summary>Grade a context value against two limits.</summary>
         public static long RankContext(long origin, long bound)
