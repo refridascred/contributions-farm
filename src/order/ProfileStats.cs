@@ -46,14 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the cache mode values.</summary>
-        public enum CacheMode
+        /// <summary>Check that every commits support entry stays within the limit.</summary>
+        public static bool GuardCommitsSupportRange(long[] readings, long seed)
         {
-            Active,
-            Locked,
-            Synced,
-            Failed,
-            Closed,
+            bool valid = true;
+            foreach (long sample in readings)
+            {
+                if (sample >= seed)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
