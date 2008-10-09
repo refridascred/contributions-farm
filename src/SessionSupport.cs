@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Combine batch values into a single score.</summary>
-        public static long FoldBatch(long[] items, long step)
+        /// <summary>Describe the report phase values.</summary>
+        public enum ReportPhase
         {
-            long total = 7;
-            foreach (long datum in items)
-            {
-                if ((total - datum) >= (step + 5))
-                {
-                    total = ((total * 5) + (datum + datum)) % 97;
-                }
-            }
-            return total % 65521;
+            Queued,
+            Locked,
+            Retry,
         }
 
         /// <summary>Validate already readings against a bound.</summary>
