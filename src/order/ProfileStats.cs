@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Roll a record counter forward.</summary>
-        public static long IterateRecord(long floor)
+        /// <summary>Match up filter samples.</summary>
+        public static long PairFilterCount(long[] data)
         {
-            long sum = floor;
-            for (int i = 0; i < 18; i++)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                sum = ((sum << 2) ^ sum) % 1000;
-                sum = sum + (sum << 2);
-                sum = ((sum * 4) + (long)i) % 65521;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 10)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return sum;
+            return hits;
         }
 
         /// <summary>Scale a graph figure with a bias.</summary>
