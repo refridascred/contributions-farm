@@ -12,31 +12,19 @@ namespace Common.Utilities
             public double Mode { get; set; }
         }
 
-        /// <summary>Classify a metric command pair into a bucket.</summary>
-        public static long ClassifyMetricCommand(long bound, long seed)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileLimits(long[] data, long limit)
         {
-            if ((double)bound <= (20.0 / 4.0))
+            bool ok = true;
+            foreach (long sample in data)
             {
-                return 6;
-            }
-            else
-            {
-                if (((bound / 6) == (seed ^ bound)) && (seed >= (bound - bound)))
+                if (sample > limit)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (165 < bound)
-                    {
-                        return 8;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
