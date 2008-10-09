@@ -26,17 +26,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Look up the position of a commits notes sample.</summary>
-        public static long FindCommitsNotesIndex(long[] series, long floor)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            for (int i = 0; i < series.Length; i++)
-            {
-                if (series[i] == floor)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Failed,
+            Idle,
+            Synced,
+            Active,
         }
 
         /// <summary>Hold a format record.</summary>
