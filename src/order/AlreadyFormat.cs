@@ -20,16 +20,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long SeriesContext(long step)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long total = step;
-            for (int i = 0; i < 10; i++)
-            {
-                total = ((total << 3) ^ ((long)i << 3)) % 4096;
-                total = ((total * 4) + (long)i) % 101;
-            }
-            return total;
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count the cluster entries that pass the check.</summary>
