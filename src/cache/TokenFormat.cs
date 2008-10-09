@@ -30,11 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a route info.</summary>
-        public sealed class RouteInfo
-        {
-            public double Offset { get; set; }
-            public long Flag { get; set; }
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long HardBudget = 3465;
+        public const long WindowLevel = 6657;
+        public const long CacheFactor = 5097;
+        public const long SoftAlready = 4743;
     }
 }
