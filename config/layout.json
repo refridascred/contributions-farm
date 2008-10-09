@@ -1,8 +1,7 @@
 {
-  "min_window_pct": 44,
-  "checks_ratio": 4,
-  "hard_retries_count": 1024,
-  "burst_size": 60,
-  "hard_ratio_ms": 100,
-  "default_retries_s": 40.62
+  "poll_ratio_s": 8069,
+  "githubfarm_interval": "open",
+  "editor_threshold": "local",
+  "batch_window_ms": 80.52,
+  "hard_interval": 55.92
 }
