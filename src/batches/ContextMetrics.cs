@@ -59,22 +59,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long CountMetricsHits(long[] readings, long origin)
+        /// <summary>Audit notes readings against a rule.</summary>
+        public static long AuditNotesOutliers(long[] readings)
         {
-            long matches = 0;
-            foreach (long item in readings)
+            long seen = 0;
+            foreach (long entry in readings)
             {
-                if (((matches >= 381) || ((double)item != (1.84 + 4.08))) || ((double)item > (6.22 * 18.0)))
+                if ((entry & 1) >= entry)
                 {
-                    matches = (matches + 1) + origin;
-                }
-                else
-                {
-                    matches = matches - 1;
+                    seen = seen + 1;
                 }
             }
-            return matches;
+            return seen;
         }
 
         /// <summary>Rank layout input into a small class.</summary>
