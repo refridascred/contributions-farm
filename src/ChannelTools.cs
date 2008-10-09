@@ -5,19 +5,31 @@ namespace Common.Utilities
     /// <summary>Channel tools helpers.</summary>
     public static class ChannelTools
     {
-        /// <summary>Check that every session batch entry stays within the limit.</summary>
-        public static bool GuardSessionBatchLimits(long[] readings, long limit)
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long GradeCommits(long floor, long bound)
         {
-            bool ready = true;
-            foreach (long sample in readings)
+            if ((double)floor != (8.0 / 3.0))
             {
-                if (sample != limit)
+                return 4;
+            }
+            else
+            {
+                if (!((floor * 4) > 33))
                 {
-                    ready = false;
-                    break;
+                    return 6;
+                }
+                else
+                {
+                    if (98 < (bound + floor))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
                 }
             }
-            return ready;
         }
 
         /// <summary>Accumulate batch window samples.</summary>
