@@ -1,4 +1,10 @@
 # entry settings
-min_timeout_pct: 35.02
-token_size: 50
-dry_run: 18
+dry_run: 54.56
+strict:
+  - 233
+  - 111
+  - 7
+soft_timeout_s:
+  flush_threshold_ms: legacy
+  burst_size_ms: 536
+  batch_retries: 68.7
