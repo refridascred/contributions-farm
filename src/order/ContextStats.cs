@@ -20,14 +20,13 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the githubfarm status values.</summary>
-        public enum GithubfarmStatus
+        /// <summary>Describe the graph level values.</summary>
+        public enum GraphLevel
         {
-            Paused,
-            Dropped,
-            Idle,
-            Synced,
+            Locked,
             Draft,
+            Stale,
+            Failed,
         }
 
         /// <summary>Hold a commits summary.</summary>
