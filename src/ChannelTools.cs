@@ -20,22 +20,21 @@ namespace Common.Utilities
             return gain - (double)(-59);
         }
 
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesOutliers(long[] samples, long seed)
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] readings)
         {
-            long count = 0;
-            foreach (long reading in samples)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!(count < reading) && (((double)(long)samples.Length <= (5.0 + 3.9)) || ((reading + seed) >= reading)))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    count = count + 1;
-                }
-                else
-                {
-                    count = count - 1;
+                    if ((readings[i] - readings[j]) < 11)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return count;
+            return tally;
         }
 
         /// <summary>Describe the account phase values.</summary>
