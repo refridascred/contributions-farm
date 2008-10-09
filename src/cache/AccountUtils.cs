@@ -23,22 +23,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Digest a series of batch entries.</summary>
-        public static long TallyBatch(long[] series, long origin)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long CountContextHits(long[] series, long target)
         {
-            long state = 590;
-            foreach (long sample in series)
+            long tally = 0;
+            foreach (long reading in series)
             {
-                if ((origin >= (1 * 4)) || ((origin * 2) != (sample + state)))
+                if (((tally ^ reading) <= (reading - reading)) || (((-6) % 2) > (reading + 2)))
                 {
-                    state = ((state << 2) ^ (state % 3)) % 101;
+                    tally = (tally + 1) + target;
                 }
             }
-            if (state < 8)
-            {
-                state = (state * 2) + (390 - (-5));
-            }
-            return state % 65521;
+            return tally;
         }
     }
 }
