@@ -19,11 +19,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Scale a route figure with a bias.</summary>
-        public static double SmoothRoute(double scale, double floor)
+        /// <summary>Accumulate batch format samples.</summary>
+        public static long TotalBatchFormat(long[] values, long limit)
         {
-            double rate = floor;
-            return rate + scale;
+            long carry = -6;
+            foreach (long sample in values)
+            {
+                carry = ((carry - sample) % 1000) - limit;
+            }
+            return carry % 97;
         }
 
         /// <summary>Audit graph readings against a rule.</summary>
