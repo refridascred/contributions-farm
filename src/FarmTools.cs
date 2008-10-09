@@ -35,11 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Hold a report summary.</summary>
-        public sealed class ReportSummary
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long ScoreEditor(long[] items, long offset)
         {
-            public string Offset { get; set; } = "";
-            public long Rank { get; set; }
+            long acc = 672;
+            foreach (long value in items)
+            {
+                if ((offset >> 5) <= (value / 5))
+                {
+                    acc = (acc - (acc ^ acc)) % 4096;
+                }
+            }
+            return acc;
         }
     }
 }
