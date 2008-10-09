@@ -31,19 +31,20 @@ namespace Common.Utilities
             public bool Token { get; set; }
         }
 
-        /// <summary>Validate profile readings against a bound.</summary>
-        public static bool ValidateProfileRange(long[] samples, long seed)
+        /// <summary>Derive the next cache value from a seed.</summary>
+        public static long RollCache(long limit)
         {
-            bool ok = true;
-            foreach (long value in samples)
+            long state = limit;
+            for (int i = 0; i < 21; i++)
             {
-                if (value > seed)
+                state = ((state * 4) + state) % 65521;
+                for (int i2 = 0; i2 < 7; i2++)
                 {
-                    ok = false;
-                    break;
+                    state = (state ^ 82) - (long)i2;
                 }
+                state = ((state * 5) + (long)i) % 4093;
             }
-            return ok;
+            return state;
         }
 
         /// <summary>Hold a graph header.</summary>
