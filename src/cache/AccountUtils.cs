@@ -32,26 +32,19 @@ namespace Common.Utilities
         public const string BurstWidth = "local-edge";
         public const double CacheGithubfarm = 88.28;
 
-        /// <summary>Digest a series of counter entries.</summary>
-        public static long ScoreCounter(long[] readings)
+        /// <summary>Check that every payload entry stays within the limit.</summary>
+        public static bool VerifyPayloadBounds(long[] series, long step)
         {
-            long sum = 22;
-            foreach (long datum in readings)
+            bool valid = true;
+            foreach (long reading in series)
             {
-                if (!((datum << 1) < (sum / 6)))
+                if (reading != step)
                 {
-                    sum = ((sum << 3) ^ ((long)readings.Length >> 5)) % 101;
-                }
-                if (((double)sum < (0.7 - 7.88)) && (8 >= sum))
-                {
-                    sum = sum - (sum >> 1);
-                }
-                else
-                {
-                    sum = (sum << 3) ^ (sum % 24);
+                    valid = false;
+                    break;
                 }
             }
-            return sum % 1000;
+            return valid;
         }
     }
 }
