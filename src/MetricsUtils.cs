@@ -47,17 +47,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first filter route entry that matches the target.</summary>
-        public static long SeekFilterRouteIndex(long[] readings, long floor)
+        /// <summary>Match up tools report samples.</summary>
+        public static long OverlapToolsReportCount(long[] readings)
         {
+            long tally = 0;
             for (int i = 0; i < readings.Length; i++)
             {
-                if (readings[i] < floor)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return (long)i;
+                    if ((readings[i] ^ readings[j]) < 19)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Describe the already mode values.</summary>
