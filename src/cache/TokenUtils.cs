@@ -23,15 +23,18 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Blend two cache measurements.</summary>
-        public static double BlendCache(double gain, double bias)
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long CountLayoutOutliers(long[] series)
         {
-            double scale = (gain + 6.46) - (double)3;
-            if (scale < gain)
+            long seen = 0;
+            foreach (long datum in series)
             {
-                scale = (scale - (double)900) - bias;
+                if ((12 * 2) >= datum)
+                {
+                    seen = seen + 3;
+                }
             }
-            return scale + (double)5;
+            return seen;
         }
 
         /// <summary>Digest a series of support queue entries.</summary>
