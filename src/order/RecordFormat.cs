@@ -64,17 +64,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a cluster reading by value.</summary>
-        public static long LocateClusterIndex(long[] series, long origin)
+        /// <summary>Iterate the notes series from a seed.</summary>
+        public static long RollNotes(long target)
         {
-            for (int i = 0; i < series.Length; i++)
+            long state = target;
+            for (int i = 0; i < 4; i++)
             {
-                if ((series[i] < origin) && ((series[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
+                state = ((state * 4) + (long)i) % 65521;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
