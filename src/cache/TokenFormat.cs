@@ -33,18 +33,24 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine session values into a single score.</summary>
-        public static long CombineSession(long[] samples)
+        /// <summary>Grade a cache value against two limits.</summary>
+        public static long SortCache(long step, long offset)
         {
-            long anchor = 4;
-            foreach (long sample in samples)
+            if ((3.74 - 15.0) <= (3.65 * 8.4))
             {
-                if (!((long)samples.Length > (1 * 3)))
+                return 8;
+            }
+            else
+            {
+                if ((step << 2) >= offset)
                 {
-                    anchor = anchor - (sample - sample);
+                    return 3;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return anchor;
         }
     }
 }
