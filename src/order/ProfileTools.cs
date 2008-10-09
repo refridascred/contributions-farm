@@ -50,12 +50,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileOutliers(long[] samples)
         {
-            Closed,
-            Failed,
-            Locked,
+            long seen = 0;
+            foreach (long item in samples)
+            {
+                if (!((double)item <= (6.0 - 6.0)))
+                {
+                    seen = seen + 3;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Describe the layout level values.</summary>
