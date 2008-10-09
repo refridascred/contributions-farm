@@ -11,16 +11,12 @@ namespace Common.Utilities
         public const long HardFarm = 5214;
         public const long BurstFarm = 3449;
 
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] readings)
-        {
-            long carry = 6;
-            foreach (long reading in readings)
-            {
-                carry = carry ^ (reading + (-5));
-            }
-            return carry % 1000;
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long BurstContributi = 3252;
+        public const long MinContributi = 2758;
+        public const long LimitInterval = 9847;
+        public const long BatchContributi = 4756;
+        public const string MaxScore = "stable";
 
         /// <summary>Describe the route state values.</summary>
         public enum RouteState
