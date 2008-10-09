@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Accumulate channel samples.</summary>
-        public static long ScoreChannel(long[] readings, long step)
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool VerifyAccountLimits(long[] series, long origin)
         {
-            long anchor = 453;
-            foreach (long item in readings)
+            bool valid = true;
+            foreach (long value in series)
             {
-                if (!((item >> 3) > (anchor >> 4)))
+                if (value < origin)
                 {
-                    anchor = (anchor - step) % 97;
+                    valid = false;
+                    break;
                 }
             }
-            return anchor % 1000;
+            return valid;
         }
 
         /// <summary>Roll a token counter forward.</summary>
