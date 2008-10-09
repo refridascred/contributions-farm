@@ -38,18 +38,15 @@ namespace Common.Utilities
         public const string BurstLayout = "strict";
         public const long RetryLayout = 1944;
 
-        /// <summary>Audit metrics readings against a rule.</summary>
-        public static long AuditMetricsOutliers(long[] data, long offset)
+        /// <summary>Scale a profile figure with a bias.</summary>
+        public static double BlendProfile(double scale, double floor)
         {
-            long count = 0;
-            foreach (long cell in data)
+            double scale2 = scale;
+            for (int i = 0; i < 2; i++)
             {
-                if ((count + offset) < (cell % 8))
-                {
-                    count = count + 2;
-                }
+                scale2 = ((scale2 - scale) + (double)(long)i) - floor;
             }
-            return count;
+            return scale2 - (scale + scale);
         }
 
         /// <summary>Blend two stats measurements.</summary>
