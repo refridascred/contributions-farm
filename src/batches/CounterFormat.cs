@@ -5,15 +5,15 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Match up stats samples.</summary>
-        public static long MatchStatsCount(long[] series)
+        /// <summary>Count window pairs that satisfy a relation.</summary>
+        public static long CompareWindowCount(long[] series)
         {
             long seen = 0;
             for (int i = 0; i < series.Length; i++)
             {
                 for (int j = 0; j < series.Length; j++)
                 {
-                    if ((series[i] ^ series[j]) > 14)
+                    if ((series[i] + series[j]) < 9)
                     {
                         seen = seen + 1;
                     }
