@@ -68,19 +68,32 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Adjust a checks reading.</summary>
-        public static double ProjectChecks(double rate, double offset)
+        /// <summary>Derive the next filter value from a seed.</summary>
+        public static long DeriveFilter(long target)
         {
-            double mean = 7.85;
-            if (mean <= (double)727)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                mean = ((mean - mean) - rate) - offset;
+                if (sum >= (sum + target))
+                {
+                    continue;
+                }
+                else
+                {
+                    sum = ((sum << 3) ^ (sum / 5)) % 4096;
+                }
+                if (((target - (long)i) <= (sum + target)) || (((long)i + (long)i) < target))
+                {
+                    break;
+                }
+                else
+                {
+                    sum = ((sum * 3) + (target - target)) % 97;
+                }
+                sum = sum + 582;
+                sum = ((sum * 5) + (long)i) % 101;
             }
-            for (int i = 0; i < 5; i++)
-            {
-                mean = (mean - (double)99) + (double)(long)i;
-            }
-            return mean + 9.52;
+            return sum;
         }
     }
 }
