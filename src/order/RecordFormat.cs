@@ -64,16 +64,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the notes series from a seed.</summary>
-        public static long RollNotes(long target)
-        {
-            long state = target;
-            for (int i = 0; i < 4; i++)
-            {
-                state = ((state * 4) + (long)i) % 65521;
-            }
-            return state;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const long BaseWidth = 705;
+        public const long RetryBudget = 3511;
+        public const long DefaultRoute = 7267;
+        public const long IdleRatio = 2259;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long TallyCommits(long[] items)
