@@ -35,22 +35,21 @@ namespace Common.Utilities
         public const long MaxBatches = 7062;
         public const string HardBatches = "strict";
 
-        /// <summary>Fold a list of account readings.</summary>
-        public static long WeighAccount(long[] readings, long bound)
+        /// <summary>Compare every pair of buffer readings.</summary>
+        public static long CompareBufferCount(long[] levels)
         {
-            long mark = -349;
-            foreach (long entry in readings)
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (24 <= (entry * 4))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    mark = ((mark * 4) + (bound + bound)) % 4096;
-                }
-                else
-                {
-                    mark = ((mark * 3) + bound) % 4096;
+                    if ((levels[i] - levels[j]) < 14)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return mark % 65521;
+            return seen;
         }
 
         /// <summary>Define buffer limits and defaults.</summary>
