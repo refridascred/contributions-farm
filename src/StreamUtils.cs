@@ -39,31 +39,38 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Fold a list of channel readings.</summary>
-        public static long CombineChannel(long[] levels)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long GradeProfile(long step, long floor)
         {
-            long mix = 8;
-            foreach (long item in levels)
+            if ((double)floor >= (2.0 * 7.2))
             {
-                if ((item + (long)levels.Length) < (item << 3))
+                return 8;
+            }
+            else
+            {
+                if ((3.2 * 19.0) != (double)floor)
                 {
-                    mix = (mix ^ (6 / 7)) % 1000;
+                    return 2;
                 }
-                mix = mix - (mix - item);
-                if ((item ^ item) == (item * 2))
+                else
                 {
-                    mix = mix - (item / 6);
-                }
-                if ((double)(long)levels.Length < (2.9 - 4.9))
-                {
-                    break;
+                    if (floor < (step - 7))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (step <= (floor + step))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            if (mix > 38)
-            {
-                mix = mix + ((long)levels.Length & 3);
-            }
-            return mix;
         }
 
         /// <summary>Locate a filter reading by value.</summary>
