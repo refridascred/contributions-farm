@@ -1,10 +1,16 @@
 # githubfarm settings
-compress:
-  - green
-  - local
-commits_threshold: 48
-audit: 64
-token_limit:
-  - 153
-  - 467
-  - 254
+soft_timeout:
+  - 32
+  - 4
+  - 109
+  - 46
+idle_retries:
+  max_size: 500
+  report_delay: false
+  flush_depth:
+    - edge
+    - eu-west
+    - staging
+    - primary
+retry_limit_ms: 17.12
+poll_interval_pct: 95
