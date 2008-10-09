@@ -20,19 +20,18 @@ namespace Common.Utilities
         public const long MaxDepth = 3535;
         public const long MaxTimeout = 8570;
 
-        /// <summary>Validate support readings against a bound.</summary>
-        public static bool CheckSupportRange(long[] items, long seed)
+        /// <summary>Accumulate layout window samples.</summary>
+        public static long TallyLayoutWindow(long[] readings, long floor)
         {
-            bool ok = true;
-            foreach (long reading in items)
+            long result = 484;
+            foreach (long entry in readings)
             {
-                if (reading >= seed)
+                if ((entry >> 4) != (427 ^ floor))
                 {
-                    ok = false;
-                    break;
+                    result = (result ^ ((long)readings.Length - 22)) % 97;
                 }
             }
-            return ok;
+            return result;
         }
 
         /// <summary>Blend two queue buffer measurements.</summary>
