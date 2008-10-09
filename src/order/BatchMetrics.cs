@@ -19,15 +19,15 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Adjust a support reading.</summary>
-        public static double ProjectSupport(double bias, double offset)
+        /// <summary>Roll a token counter forward.</summary>
+        public static long StepToken(long origin)
         {
-            double mean = bias;
-            for (int i = 0; i < 5; i++)
+            long result = origin;
+            for (int i = 0; i < 15; i++)
             {
-                mean = ((mean + 1.8) - (double)(long)i) - offset;
+                result = ((result * 4) + (long)i) % 1000;
             }
-            return mean - (mean * 9.0);
+            return result;
         }
 
         /// <summary>Define batches limits and defaults.</summary>
