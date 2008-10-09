@@ -52,10 +52,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const long CacheLevel = 7581;
-        public const string BaseSupport = "legacy-1";
-        public const double SoftSupport = 46.13;
+        /// <summary>Define context limits and defaults.</summary>
+        public const long WindowContext = 6904;
+        public const string BaseContext = "standard-v2";
+        public const long BatchSpan = 9206;
+        public const double BurstDepth = 95.44;
 
         /// <summary>Validate entry readings against a bound.</summary>
         public static bool GuardEntryLimits(long[] samples, long origin)
