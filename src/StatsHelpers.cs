@@ -51,11 +51,11 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Hold a editor summary.</summary>
-        public sealed class EditorSummary
+        /// <summary>Hold a stream record.</summary>
+        public sealed class StreamRecord
         {
-            public long Rank { get; set; }
-            public long Weight { get; set; }
+            public double Level { get; set; }
+            public double Score { get; set; }
         }
     }
 }
