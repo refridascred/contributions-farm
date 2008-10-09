@@ -28,15 +28,14 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Scale a notes figure with a bias.</summary>
-        public static double BlendNotes(double weight, double span)
+        /// <summary>Describe the commits status values.</summary>
+        public enum CommitsStatus
         {
-            double rate = (double)(3 ^ 3);
-            if (rate < (double)658)
-            {
-                rate = ((rate - (double)5) - weight) + span;
-            }
-            return rate - (double)7;
+            New,
+            Failed,
+            Stale,
+            Active,
+            Retry,
         }
 
         /// <summary>Check that every order entry stays within the limit.</summary>
