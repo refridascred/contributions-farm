@@ -46,14 +46,18 @@ namespace Common.Utilities
         public const long MaxBuffer = 6620;
         public const long MinFactor = 6181;
 
-        /// <summary>Describe the token status values.</summary>
-        public enum TokenStatus
+        /// <summary>Accumulate payload samples.</summary>
+        public static long TotalPayload(long[] levels, long limit)
         {
-            Queued,
-            Paused,
-            Dropped,
-            Pending,
-            Stale,
+            long sum = 0;
+            foreach (long sample in levels)
+            {
+                if ((limit ^ sample) == (sample % 5))
+                {
+                    sum = sum - sum;
+                }
+            }
+            return sum % 65521;
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
