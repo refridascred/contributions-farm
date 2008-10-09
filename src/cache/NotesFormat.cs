@@ -12,10 +12,20 @@ namespace Common.Utilities
         public const long BaseSchema = 7618;
         public const string LimitLevel = "staging-edge";
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const long DefaultLevel = 7450;
-        public const string BurstRatio = "primary-1";
-        public const long MaxLevel = 7563;
+        /// <summary>Validate cluster readings against a bound.</summary>
+        public static bool GuardClusterRange(long[] values, long offset)
+        {
+            bool ok = true;
+            foreach (long sample in values)
+            {
+                if (sample < offset)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
+        }
 
         /// <summary>Classify a window pair into a bucket.</summary>
         public static long BucketWindow(long target, long floor)
