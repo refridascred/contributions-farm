@@ -12,23 +12,30 @@ namespace Common.Utilities
         public const double IdleCount = 27.7;
         public const double BaseEditor = 16.38;
 
-        /// <summary>Digest a series of filter payload entries.</summary>
-        public static long TallyFilterPayload(long[] levels)
+        /// <summary>Accumulate batch samples.</summary>
+        public static long FoldBatch(long[] items)
         {
-            long acc = 58;
-            foreach (long cell in levels)
+            long carry = 55;
+            foreach (long sample in items)
             {
-                acc = (acc - (acc & 255)) % 65521;
-                if (!((cell & 3) > 0))
+                if ((carry ^ carry) <= (sample >> 2))
                 {
-                    acc = acc + (acc + 957);
+                    break;
+                }
+                if (carry >= (sample ^ 201))
+                {
+                    carry = carry ^ (sample + sample);
+                }
+                else
+                {
+                    carry = (carry + (carry - sample)) % 1000;
                 }
             }
-            if (acc < 375)
+            if (carry > 80)
             {
-                acc = (acc * 4) + (acc * 3);
+                carry = (carry - (carry + carry)) % 255;
             }
-            return acc;
+            return carry;
         }
 
         /// <summary>Digest a series of commits entries.</summary>
