@@ -23,13 +23,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the payload mode values.</summary>
-        public enum PayloadMode
+        /// <summary>Combine order session values into a single score.</summary>
+        public static long TallyOrderSession(long[] data, long origin)
         {
-            Ready,
-            Paused,
-            Locked,
-            Dropped,
+            long mark = -6;
+            foreach (long entry in data)
+            {
+                mark = (((mark << 3) ^ (entry + mark)) % 255) - origin;
+            }
+            return mark;
         }
 
         /// <summary>Describe the token phase values.</summary>
