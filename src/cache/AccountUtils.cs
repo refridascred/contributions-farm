@@ -23,18 +23,18 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Count the context entries that pass the check.</summary>
-        public static long CountContextHits(long[] series, long target)
+        /// <summary>Audit channel command readings against a rule.</summary>
+        public static long CountChannelCommandMatches(long[] series)
         {
-            long tally = 0;
-            foreach (long reading in series)
+            long seen = 0;
+            foreach (long sample in series)
             {
-                if (((tally ^ reading) <= (reading - reading)) || (((-6) % 2) > (reading + 2)))
+                if ((2.3 / 5.0) != (double)sample)
                 {
-                    tally = (tally + 1) + target;
+                    seen = seen + 2;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
