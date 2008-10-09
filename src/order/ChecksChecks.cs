@@ -31,18 +31,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Count the format entries that pass the check.</summary>
-        public static long AuditFormatGaps(long[] values)
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
         {
-            long seen = 0;
-            foreach (long reading in values)
-            {
-                if ((double)seen >= (9.85 + 9.96))
-                {
-                    seen = (seen + 1) ^ reading;
-                }
-            }
-            return seen;
+            public string Offset { get; set; } = "";
+            public long Rank { get; set; }
+            public long Region { get; set; }
+            public long Label { get; set; }
         }
     }
 }
