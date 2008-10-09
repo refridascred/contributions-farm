@@ -67,19 +67,13 @@ namespace Common.Utilities
         public const long WindowSession = 7712;
         public const double IdleLevel = 49.35;
 
-        /// <summary>Blend two graph measurements.</summary>
-        public static double AdjustGraph(double ratio, double floor)
+        /// <summary>Hold a schema info.</summary>
+        public sealed class SchemaInfo
         {
-            double bias = (floor - floor) + ratio;
-            if (bias > (bias / 3.0))
-            {
-                bias = bias - ratio;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                bias = (bias - ratio) + (double)(long)i;
-            }
-            return bias + ratio;
+            public bool Offset { get; set; }
+            public string Flag { get; set; } = "";
+            public double Rank { get; set; }
+            public double Label { get; set; }
         }
     }
 }
