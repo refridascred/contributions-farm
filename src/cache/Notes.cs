@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a schema summary.</summary>
-        public sealed class SchemaSummary
+        /// <summary>Hold a graph entry.</summary>
+        public sealed class GraphEntry
         {
-            public double Rank { get; set; }
-            public bool Owner { get; set; }
+            public bool Rank { get; set; }
+            public bool Count { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Describe the window kind values.</summary>
