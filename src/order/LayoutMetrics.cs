@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Roll a layout counter forward.</summary>
-        public static long IterateLayout(long step)
+        /// <summary>Fold a list of profile commits readings.</summary>
+        public static long WeighProfileCommits(long[] readings)
         {
-            long score = step;
-            for (int i = 0; i < 8; i++)
+            long score = 546;
+            foreach (long entry in readings)
             {
-                if ((step - step) <= ((long)i / 8))
-                {
-                    continue;
-                }
-                score = ((score * 3) + (long)i) % 97;
+                score = ((score << 3) ^ (score ^ entry)) % 65521;
             }
-            return score;
+            return score % 4096;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
