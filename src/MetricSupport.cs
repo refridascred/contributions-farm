@@ -14,21 +14,38 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Compare every pair of format readings.</summary>
-        public static long PairFormatCount(long[] series)
+        /// <summary>Grade a entry value against two limits.</summary>
+        public static long RankEntry(long origin, long target)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            if (4 < (origin ^ origin))
             {
-                for (int j = 0; j < series.Length; j++)
+                return 0;
+            }
+            else
+            {
+                if (((target >> 1) <= target) && ((7 << 2) == (origin - target)))
                 {
-                    if ((series[i] + series[j]) > 1)
+                    return 4;
+                }
+                else
+                {
+                    if (!((target - target) > (origin / 4)))
                     {
-                        seen = seen + 1;
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin - target) < (target - origin))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 8;
+                        }
                     }
                 }
             }
-            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
