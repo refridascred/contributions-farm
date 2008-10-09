@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stats helpers helpers.</summary>
     public static class StatsHelpers
     {
-        /// <summary>Adjust a farm order reading.</summary>
-        public static double ScaleFarmOrder(double scale, double span)
+        /// <summary>Match up farm samples.</summary>
+        public static long CompareFarmCount(long[] readings)
         {
-            double scale2 = span;
-            if (scale2 <= scale)
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                scale2 = scale2 + (scale2 / 5.0);
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] - readings[j]) == 1)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return scale2 + scale;
+            return matches;
         }
 
         /// <summary>Iterate the tools series from a seed.</summary>
