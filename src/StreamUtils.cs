@@ -115,18 +115,11 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Audit metric readings against a rule.</summary>
-        public static long MeasureMetricGaps(long[] readings)
+        /// <summary>Hold a window entry.</summary>
+        public sealed class WindowEntry
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if ((double)tally > (6.69 / 2.0))
-                {
-                    tally = (tally + 2) - datum;
-                }
-            }
-            return tally;
+            public string Label { get; set; } = "";
+            public string Limit { get; set; } = "";
         }
     }
 }
