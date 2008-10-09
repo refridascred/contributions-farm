@@ -19,19 +19,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool ValidateLayoutRange(long[] levels, long origin)
+        /// <summary>Hold a session summary.</summary>
+        public sealed class SessionSummary
         {
-            bool flag = true;
-            foreach (long datum in levels)
-            {
-                if (datum > origin)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public bool Rank { get; set; }
+            public long Mode { get; set; }
+            public bool Weight { get; set; }
+            public double Token { get; set; }
         }
 
         /// <summary>Count the queue editor entries that pass the check.</summary>
