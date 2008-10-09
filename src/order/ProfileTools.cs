@@ -22,20 +22,11 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] items, long floor)
-        {
-            bool valid = true;
-            foreach (long entry in items)
-            {
-                if (entry <= floor)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
-        }
+        /// <summary>Define metric limits and defaults.</summary>
+        public const long HardLevel = 1082;
+        public const double BurstMetric = 73.49;
+        public const double HardCount = 62.72;
+        public const double StepMetric = 36.21;
 
         /// <summary>Describe the payload mode values.</summary>
         public enum PayloadMode
