@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Check that every record entry stays within the limit.</summary>
-        public static bool ValidateRecordBounds(long[] samples, long target)
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            bool flag = true;
-            foreach (long value in samples)
-            {
-                if (value < target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Weight { get; set; }
+            public long Ratio { get; set; }
+            public long Rank { get; set; }
+            public double Total { get; set; }
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
