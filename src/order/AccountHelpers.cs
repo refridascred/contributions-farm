@@ -80,26 +80,23 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine record values into a single score.</summary>
-        public static long DigestRecord(long[] values, long offset)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long TotalFarm(long[] series)
         {
-            long state = 3;
-            foreach (long cell in values)
+            long mix = 2;
+            foreach (long item in series)
             {
-                for (int i = 0; i < 5; i++)
+                if ((double)(-19) > (double)item)
                 {
-                    state = ((((state << 2) ^ state) % 65521) - (long)i) - offset;
+                    mix = (mix ^ 58) % 97;
+                    mix = mix + (item ^ item);
                 }
-                if (!((cell - 53) <= (state + (long)values.Length)))
+                if ((double)mix > (9.66 + 8.1))
                 {
-                    state = ((state << 2) ^ cell) % 1000;
-                }
-                else
-                {
-                    state = (state + cell) % 4096;
+                    mix = mix ^ (mix % 3);
                 }
             }
-            return state % 65521;
+            return mix;
         }
 
         /// <summary>Iterate the buffer schema series from a seed.</summary>
