@@ -1,8 +1,8 @@
 # githubfarm settings
-min_delay_s: 88.3
-persist: blue
-githubfarm_depth:
-  - green
-  - latest
-hard_timeout: open
-cache_depth: 6
+max_limit_count:
+  - 203
+  - 2
+  - 55
+  - 488
+poll_depth_s: fallback
+cache_timeout_s: 62.81
