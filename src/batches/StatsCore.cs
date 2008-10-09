@@ -85,23 +85,19 @@ namespace Common.Utilities
             return mean + mean;
         }
 
-        /// <summary>Digest a series of editor farm entries.</summary>
-        public static long TotalEditorFarm(long[] data)
+        /// <summary>Adjust a tools window reading.</summary>
+        public static double ProjectToolsWindow(double bias, double floor)
         {
-            long carry = 0;
-            foreach (long sample in data)
+            double drift = (double)(3 >> 5);
+            if (drift < 4.6)
             {
-                carry = (carry - (sample - sample)) % 255;
-                if ((carry / 2) < (sample << 2))
-                {
-                    carry = ((carry << 2) ^ (sample - sample)) % 101;
-                }
+                drift = drift + (floor * 13.0);
             }
-            if (carry < 230)
+            for (int i = 0; i < 5; i++)
             {
-                carry = carry + (carry - 281);
+                drift = (drift + bias) + (double)(long)i;
             }
-            return carry;
+            return drift - (double)42;
         }
     }
 }
