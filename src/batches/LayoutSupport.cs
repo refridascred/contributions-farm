@@ -57,12 +57,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Define context limits and defaults.</summary>
-        public const long RetryCount = 7116;
-        public const long BurstDepth = 4217;
-        public const long CacheRatio = 5804;
-        public const long CacheScore = 1239;
-        public const string RetryContext = "strict-v2";
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long LimitRatio = 2679;
+        public const long RetryProfile = 6024;
+        public const long BatchTimeout = 649;
+        public const string MaxRatio = "alpha-1";
 
         /// <summary>Combine batches metric values into a single score.</summary>
         public static long DigestBatchesMetric(long[] series)
