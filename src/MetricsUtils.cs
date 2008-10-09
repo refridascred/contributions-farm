@@ -53,23 +53,17 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Adjust a route queue reading.</summary>
-        public static double AdjustRouteQueue(double weight, double offset)
+        /// <summary>Locate a graph session reading by value.</summary>
+        public static long LocateGraphSessionIndex(long[] readings, long step)
         {
-            double bias = weight;
-            if (bias < bias)
+            for (int i = 0; i < readings.Length; i++)
             {
-                bias = bias - weight;
+                if (readings[i] == step)
+                {
+                    return (long)i;
+                }
             }
-            else
-            {
-                bias = bias + weight;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                bias = (bias + (offset + bias)) + (double)(long)i;
-            }
-            return bias - (weight - 3.0);
+            return -1;
         }
     }
 }
