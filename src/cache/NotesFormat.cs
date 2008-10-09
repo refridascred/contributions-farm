@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Match up buffer samples.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Digest a series of report farm entries.</summary>
+        public static long WeighReportFarm(long[] readings)
         {
-            long hits = 0;
-            for (int i = 0; i < items.Length; i++)
+            long total = 991;
+            foreach (long cell in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (total < (cell - cell))
                 {
-                    if ((items[i] + items[j]) > 0)
-                    {
-                        hits = hits + 1;
-                    }
+                    total = (total + (cell & 127)) % 97;
                 }
             }
-            return hits;
+            if (total > 1)
+            {
+                total = (total + 560) % 97;
+            }
+            return total;
         }
 
         /// <summary>Digest a series of checks entries.</summary>
