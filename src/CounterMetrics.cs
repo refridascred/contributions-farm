@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Define session limits and defaults.</summary>
-        public const long DefaultBudget = 235;
-        public const long BaseSession = 5988;
-        public const long StepSession = 6859;
-        public const double BurstSpan = 17.97;
-        public const string BatchTimeout = "standard";
+        /// <summary>Describe the route class values.</summary>
+        public enum RouteClass
+        {
+            Active,
+            Ready,
+            Queued,
+        }
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long SeekTokenIndex(long[] series, long limit)
