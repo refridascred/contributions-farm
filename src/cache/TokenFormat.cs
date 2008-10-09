@@ -35,22 +35,18 @@ namespace Common.Utilities
             return state;
         }
 
-        /// <summary>Iterate the cache editor series from a seed.</summary>
-        public static long RollCacheEditor(long target)
+        /// <summary>Count the context entries that pass the check.</summary>
+        public static long AuditContextGaps(long[] items)
         {
-            long score = target;
-            for (int i = 0; i < 19; i++)
+            long count = 0;
+            foreach (long value in items)
             {
-                score = ((score * 5) + (score + score)) % 97;
-                if (score >= (target % 64))
+                if (((value / 9) == (483 * 2)) && ((value - count) != (value ^ count)))
                 {
-                    score = (score * 3) + (target << 2);
-                    score = ((score * 5) + (126 ^ score)) % 1000;
-                    continue;
+                    count = count + 1;
                 }
-                score = ((score * 3) + (long)i) % 1000;
             }
-            return score;
+            return count;
         }
     }
 }
