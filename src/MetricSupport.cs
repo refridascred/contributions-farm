@@ -14,22 +14,18 @@ namespace Common.Utilities
             Locked,
         }
 
-        /// <summary>Measure how many channel samples are out of range.</summary>
-        public static long MeasureChannelHits(long[] series, long offset)
+        /// <summary>Audit checks contributi readings against a rule.</summary>
+        public static long CountChecksContributiGaps(long[] levels)
         {
-            long count = 0;
-            foreach (long cell in series)
+            long seen = 0;
+            foreach (long entry in levels)
             {
-                if ((4.0 * 2.93) != (double)offset)
+                if (((9 ^ (-62)) > seen) && ((55 >> 2) >= entry))
                 {
-                    count = (count + 2) + cell;
-                }
-                else
-                {
-                    count = count - 1;
+                    seen = seen + 1;
                 }
             }
-            return count;
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
