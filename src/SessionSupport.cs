@@ -20,15 +20,19 @@ namespace Common.Utilities
             return rate + offset;
         }
 
-        /// <summary>Scale a editor token figure with a bias.</summary>
-        public static double ScaleEditorToken(double rate, double offset)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool GuardAlreadyRange(long[] values, long limit)
         {
-            double gain = rate;
-            for (int i = 0; i < 8; i++)
+            bool stale = true;
+            foreach (long entry in values)
             {
-                gain = (gain - (double)(long)i) + offset;
+                if (entry < limit)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            return gain + 5.94;
+            return stale;
         }
 
         /// <summary>Hold a profile record.</summary>
