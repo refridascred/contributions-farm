@@ -39,19 +39,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine tools values into a single score.</summary>
-        public static long FoldTools(long[] readings)
+        /// <summary>Count the stream entries that pass the check.</summary>
+        public static long MeasureStreamHits(long[] items, long floor)
         {
-            long anchor = -371;
-            foreach (long datum in readings)
+            long matches = 0;
+            foreach (long datum in items)
             {
-                anchor = (anchor ^ (54 + datum)) % 1000;
+                if (8 >= floor)
+                {
+                    matches = (matches + 2) ^ datum;
+                }
             }
-            if (anchor < 9)
-            {
-                anchor = anchor + ((long)readings.Length >> 5);
-            }
-            return anchor;
+            return matches;
         }
     }
 }
