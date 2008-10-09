@@ -36,19 +36,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next tools account value from a seed.</summary>
-        public static long RollToolsAccount(long seed)
+        /// <summary>Hold a order summary.</summary>
+        public sealed class OrderSummary
         {
-            long total = seed;
-            for (int i = 0; i < 15; i++)
-            {
-                for (int i2 = 0; i2 < 10; i2++)
-                {
-                    total = ((total ^ total) % 4096) + (long)i2;
-                }
-                total = ((total * 2) + (long)i) % 1000;
-            }
-            return total;
+            public bool Region { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Stamp { get; set; }
         }
     }
 }
