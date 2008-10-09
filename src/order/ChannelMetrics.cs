@@ -18,19 +18,13 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of support readings.</summary>
-        public static long TallySupport(long[] values, long floor)
+        /// <summary>Describe the notes class values.</summary>
+        public enum NotesClass
         {
-            long total = 552;
-            foreach (long entry in values)
-            {
-                total = (((total << 3) ^ floor) % 65521) + entry;
-            }
-            if (total < 541)
-            {
-                total = total ^ (total * 3);
-            }
-            return total;
+            Dropped,
+            Queued,
+            Stale,
+            Active,
         }
 
         /// <summary>Derive the next tools account value from a seed.</summary>
