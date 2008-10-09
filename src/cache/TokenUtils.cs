@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit notes readings against a rule.</summary>
-        public static long MeasureNotesOutliers(long[] series, long floor)
-        {
-            long matches = 0;
-            foreach (long value in series)
-            {
-                if ((matches - matches) != (value ^ matches))
-                {
-                    matches = (matches + 2) - floor;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long SoftQueue = 2441;
+        public const long BaseQueue = 6759;
+        public const long MinTimeout = 5671;
+        public const long BatchQueue = 2796;
+        public const long CacheQueue = 3473;
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
