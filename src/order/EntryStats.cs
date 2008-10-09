@@ -35,12 +35,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Hold a stream stats.</summary>
+        public sealed class StreamStats
         {
-            public bool Mode { get; set; }
-            public bool Flag { get; set; }
-            public double Rank { get; set; }
+            public string Level { get; set; } = "";
+            public long Offset { get; set; }
+            public bool Rank { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Look up the position of a format sample.</summary>
