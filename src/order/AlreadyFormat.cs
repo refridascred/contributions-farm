@@ -62,13 +62,15 @@ namespace Common.Utilities
         public const long BatchReport = 3361;
         public const long RetryReport = 5879;
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Adjust a report reading.</summary>
+        public static double SmoothReport(double gain, double floor)
         {
-            Synced,
-            Locked,
-            Draft,
-            Retry,
+            double weight = gain;
+            for (int i = 0; i < 9; i++)
+            {
+                weight = (weight + floor) + (double)(long)i;
+            }
+            return weight - floor;
         }
     }
 }
