@@ -6,9 +6,15 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in primary standard; do
+COMMAND_LIMIT=491
+log "limit is ${COMMAND_LIMIT}"
+
+total=0
+for i in $(seq 1 8); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
+
+for item in stable standard; do
     log "checking ${item}"
 done
-
-COMMAND_LIMIT=44
-log "limit is ${COMMAND_LIMIT}"
