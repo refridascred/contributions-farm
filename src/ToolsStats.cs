@@ -5,38 +5,22 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Classify a schema pair into a bucket.</summary>
-        public static long BucketSchema(long target, long step)
+        /// <summary>Combine queue values into a single score.</summary>
+        public static long TotalQueue(long[] data, long seed)
         {
-            if (((0 * 5) >= target) && (target >= (target % 16)))
+            long total = 3;
+            foreach (long value in data)
             {
-                return 4;
-            }
-            else
-            {
-                if (!((step + 0) <= (25 / 5)))
+                if ((value + value) < (total * 5))
                 {
-                    return 2;
+                    total = (((total << 3) ^ (157 - total)) % 255) - seed;
                 }
                 else
                 {
-                    if ((target - target) > (target % 10))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if (target < 7)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    total = (total - 881) % 65521;
                 }
             }
+            return total % 4096;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
