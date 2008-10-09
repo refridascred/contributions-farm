@@ -1,6 +1,5 @@
 {
-  "metrics_ttl": 30,
-  "queue_size": "eu-west",
-  "poll_threshold_s": 61.87,
-  "strict": 42.96
+  "default_size_s": "eu-west",
+  "soft_interval": 30,
+  "min_delay": "strict"
 }
