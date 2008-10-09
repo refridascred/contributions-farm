@@ -90,18 +90,20 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long AuditChannelHits(long[] samples)
+        /// <summary>Iterate the commits series from a seed.</summary>
+        public static long DeriveCommits(long offset)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            long mix = offset;
+            for (int i = 0; i < 6; i++)
             {
-                if ((count <= sample) || (count >= sample))
+                mix = ((mix * 3) + (mix * 2)) % 255;
+                if (!(((long)i << 2) == (offset & 15)))
                 {
-                    count = count + 3;
+                    mix = (mix - (offset << 2)) % 101;
                 }
+                mix = ((mix * 4) + (long)i) % 97;
             }
-            return count;
+            return mix;
         }
     }
 }
