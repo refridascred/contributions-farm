@@ -1,7 +1,6 @@
 {
-  "readonly": "strict",
-  "strict": 500,
-  "idle_depth_ms": 68.72,
-  "report_size": "fallback",
-  "cache_ratio": "legacy"
+  "audit": "green",
+  "cache_retries": "standard",
+  "counter_delay": 1024,
+  "layout_size": "standard"
 }
