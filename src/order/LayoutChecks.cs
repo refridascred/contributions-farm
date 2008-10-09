@@ -30,39 +30,11 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long BucketProfile(long step, long offset)
+        /// <summary>Hold a commits summary.</summary>
+        public sealed class CommitsSummary
         {
-            long offset2 = step + offset;
-            if ((double)offset < 18.0)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((step + offset2) < (offset % 3))
-                {
-                    return 8;
-                }
-                else
-                {
-                    if (((offset ^ offset2) > offset2) || ((double)offset2 > (double)offset))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((step - offset) > (offset ^ step))
-                        {
-                            return 0;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
-                }
-            }
+            public double Stamp { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
