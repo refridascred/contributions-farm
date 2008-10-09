@@ -5,11 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Hold a checks record.</summary>
+        public sealed class ChecksRecord
         {
-            public long Region { get; set; }
-            public long Total { get; set; }
+            public long Weight { get; set; }
+            public long Mode { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Define graph limits and defaults.</summary>
