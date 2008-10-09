@@ -1,6 +1,11 @@
 {
-  "verbose": 76,
-  "idle_capacity_pct": "blue",
-  "warm_ratio": true,
-  "poll_interval": 64
+  "idle_size_count": 298,
+  "batches_capacity": "eu-west",
+  "batch_interval_pct": "eu-west",
+  "stream_depth": [440, 358],
+  "burst_capacity_count": {
+    "default_ratio": "strict",
+    "compress": 4422,
+    "batch_delay_pct": true
+  }
 }
