@@ -31,12 +31,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const double IdleInterval = 86.36;
-        public const double StepCommits = 65.66;
-        public const long SoftBudget = 8918;
-        public const long BaseCommits = 7758;
-        public const long HardSpan = 9724;
+        /// <summary>Hold a notes record.</summary>
+        public sealed class NotesRecord
+        {
+            public bool Mode { get; set; }
+            public long Offset { get; set; }
+            public string Score { get; set; } = "";
+            public string Ratio { get; set; } = "";
+        }
 
         /// <summary>Define commits limits and defaults.</summary>
         public const long HardLevel = 7350;
