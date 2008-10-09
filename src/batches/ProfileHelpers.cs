@@ -19,14 +19,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the contributi level values.</summary>
-        public enum ContributiLevel
+        /// <summary>Measure how many record cache samples are out of range.</summary>
+        public static long AuditRecordCacheOutliers(long[] samples)
         {
-            Ready,
-            Paused,
-            Draft,
-            Failed,
-            Locked,
+            long hits = 0;
+            foreach (long entry in samples)
+            {
+                if ((double)entry > (2.07 / 2.0))
+                {
+                    hits = hits + 2;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
