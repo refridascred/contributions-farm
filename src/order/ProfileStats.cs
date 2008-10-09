@@ -24,18 +24,24 @@ namespace Common.Utilities
             Failed,
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long CountGraphOutliers(long[] readings, long target)
+        /// <summary>Accumulate report samples.</summary>
+        public static long DigestReport(long[] levels)
         {
-            long matches = 0;
-            foreach (long cell in readings)
+            long state = 53;
+            foreach (long value in levels)
             {
-                if ((((target + matches) < (target - 6)) && ((matches + target) == (cell >> 4))) && ((matches << 1) > matches))
+                state = (state + 2) % 65521;
+                if ((state / 4) < value)
                 {
-                    matches = matches + 2;
+                    state = state ^ (388 - value);
                 }
+                state = (state + (value + value)) % 101;
             }
-            return matches;
+            if (state > 86)
+            {
+                state = (state ^ 73) % 65521;
+            }
+            return state % 65521;
         }
 
         /// <summary>Audit layout readings against a rule.</summary>
