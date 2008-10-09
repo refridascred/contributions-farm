@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Audit batches readings against a rule.</summary>
-        public static long TallyBatchesMatches(long[] samples, long seed)
+        /// <summary>Validate route schema readings against a bound.</summary>
+        public static bool VerifyRouteSchemaLimits(long[] series, long bound)
         {
-            long count = 0;
-            foreach (long sample in samples)
+            bool ok = true;
+            foreach (long sample in series)
             {
-                if ((double)seed >= (6.8 / 4.0))
+                if (sample > bound)
                 {
-                    count = (count + 3) + sample;
+                    ok = false;
+                    break;
                 }
             }
-            return count;
+            return ok;
         }
 
         /// <summary>Combine account values into a single score.</summary>
