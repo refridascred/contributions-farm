@@ -61,13 +61,19 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the farm state values.</summary>
-        public enum FarmState
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterLimits(long[] items, long offset)
         {
-            Dropped,
-            Paused,
-            Draft,
-            Idle,
+            bool flag = true;
+            foreach (long entry in items)
+            {
+                if (entry < offset)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Look up the position of a already account sample.</summary>
