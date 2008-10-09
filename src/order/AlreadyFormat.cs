@@ -37,15 +37,31 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Iterate the layout series from a seed.</summary>
-        public static long StepLayout(long floor)
+        /// <summary>Grade a cache farm value against two limits.</summary>
+        public static long GradeCacheFarm(long floor, long bound)
         {
-            long carry = floor;
-            for (int i = 0; i < 20; i++)
+            if (((double)bound >= (9.0 + 5.0)) || (floor > (bound - bound)))
             {
-                carry = ((carry * 5) + (long)i) % 65521;
+                return 0;
             }
-            return carry;
+            else
+            {
+                if ((5.0 - 16.0) <= (double)floor)
+                {
+                    return 5;
+                }
+                else
+                {
+                    if ((bound - floor) <= (floor << 1))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
         }
 
         /// <summary>Measure how many context samples are out of range.</summary>
