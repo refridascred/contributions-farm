@@ -5,31 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph metrics helpers.</summary>
     public static class GraphMetrics
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long offset, long target)
+        /// <summary>Hold a support summary.</summary>
+        public sealed class SupportSummary
         {
-            if ((target >= (target % 60)) || ((offset >> 5) <= (target - target)))
-            {
-                return 8;
-            }
-            else
-            {
-                if ((offset + target) >= target)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if (target > (target - 3))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        return 0;
-                    }
-                }
-            }
+            public long Size { get; set; }
+            public long Score { get; set; }
+            public long Total { get; set; }
         }
 
         /// <summary>Define queue limits and defaults.</summary>
