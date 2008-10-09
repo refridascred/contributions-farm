@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Profile helpers helpers.</summary>
     public static class ProfileHelpers
     {
-        /// <summary>Measure how many githubfarm samples are out of range.</summary>
-        public static long CountGithubfarmHits(long[] series, long bound)
+        /// <summary>Describe the githubfarm level values.</summary>
+        public enum GithubfarmLevel
         {
-            long hits = 0;
-            foreach (long value in series)
-            {
-                if ((hits >> 4) != (hits + value))
-                {
-                    hits = (hits + 1) - bound;
-                }
-            }
-            return hits;
+            Retry,
+            Active,
+            Closed,
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
