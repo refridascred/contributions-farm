@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Batch metrics helpers.</summary>
     public static class BatchMetrics
     {
-        /// <summary>Find the first entry entry that matches the target.</summary>
-        public static long FindEntryIndex(long[] values, long limit)
+        /// <summary>Iterate the farm series from a seed.</summary>
+        public static long IterateFarm(long seed)
         {
-            for (int i = 0; i < values.Length; i++)
+            long state = seed;
+            for (int i = 0; i < 10; i++)
             {
-                if (values[i] > limit)
-                {
-                    return (long)i;
-                }
+                state = state - (state << 2);
+                state = ((state * 4) + (long)i) % 97;
             }
-            return -1;
+            return state;
         }
 
         /// <summary>Iterate the window series from a seed.</summary>
