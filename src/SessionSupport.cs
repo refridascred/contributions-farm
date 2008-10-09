@@ -5,16 +5,12 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Accumulate order samples.</summary>
-        public static long TallyOrder(long[] readings, long origin)
-        {
-            long score = 8;
-            foreach (long datum in readings)
-            {
-                score = ((score + origin) % 255) - datum;
-            }
-            return score;
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const double BaseNotes = 29.73;
+        public const long BatchNotes = 9215;
+        public const long LimitNotes = 4494;
+        public const long HardWidth = 2058;
+        public const string BurstNotes = "staging";
 
         /// <summary>Fold a list of stream readings.</summary>
         public static long FoldStream(long[] values)
