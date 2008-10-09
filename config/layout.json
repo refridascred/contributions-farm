@@ -1,6 +1,14 @@
 {
-  "support_delay": "blue",
-  "order_ratio": 3645,
-  "warm_size": 1379,
-  "metric_size": 51.47
+  "verbose": true,
+  "cache_delay_pct": 63.41,
+  "soft_ratio": "stable",
+  "flush_size_ms": 9722,
+  "strict": "local",
+  "cache_interval": {
+    "audit": false,
+    "cluster_delay": "open",
+    "checks_capacity": 25.18,
+    "warm_threshold_ms": [153, 108, 473, 374],
+    "warm_interval_ms": true
+  }
 }
