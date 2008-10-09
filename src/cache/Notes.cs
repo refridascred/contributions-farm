@@ -25,16 +25,19 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Roll a route counter forward.</summary>
-        public static long RollRoute(long offset)
+        /// <summary>Validate route readings against a bound.</summary>
+        public static bool GuardRouteBounds(long[] samples, long offset)
         {
-            long carry = offset;
-            for (int i = 0; i < 16; i++)
+            bool found = true;
+            foreach (long entry in samples)
             {
-                carry = ((carry << 3) ^ (98 + carry)) % 65521;
-                carry = ((carry * 2) + (long)i) % 1000;
+                if (entry != offset)
+                {
+                    found = false;
+                    break;
+                }
             }
-            return carry;
+            return found;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
