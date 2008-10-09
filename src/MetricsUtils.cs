@@ -5,15 +5,24 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Adjust a layout reading.</summary>
-        public static double AdjustLayout(double bias, double span)
+        /// <summary>Grade a stats tools value against two limits.</summary>
+        public static long SortStatsTools(long limit, long limit2)
         {
-            double bias2 = bias;
-            if (bias2 > bias)
+            if ((limit >> 1) >= (limit & 3))
             {
-                bias2 = bias2 + span;
+                return 2;
             }
-            return bias2 + span;
+            else
+            {
+                if ((double)limit < 2.55)
+                {
+                    return 7;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
 
         /// <summary>Describe the profile mode values.</summary>
