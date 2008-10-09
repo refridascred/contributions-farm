@@ -22,15 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Scale a order figure with a bias.</summary>
-        public static double ProjectOrder(double gain, double offset)
+        /// <summary>Scale a support figure with a bias.</summary>
+        public static double SmoothSupport(double weight, double bias)
         {
-            double load = (double)(-83) * 3.4;
-            for (int i = 0; i < 6; i++)
+            double gain = bias;
+            if (gain < (double)25)
             {
-                load = ((load - load) + (double)(long)i) + gain;
+                gain = (gain - bias) - weight;
             }
-            return load + (offset - offset);
+            return gain - (double)404;
         }
 
         /// <summary>Describe the notes kind values.</summary>
