@@ -1,8 +1,7 @@
 {
-  "persist": false,
-  "base_limit_s": true,
-  "token_size": "strict",
-  "default_ttl": 94.05,
-  "default_interval": 32.38,
-  "channel_ratio": true
+  "readonly": "staging",
+  "min_depth_ms": "open",
+  "cache_size_pct": "green",
+  "retry_ttl": 72,
+  "retry_threshold_pct": 21.6
 }
