@@ -25,19 +25,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Accumulate stream samples.</summary>
-        public static long TotalStream(long[] values)
+        /// <summary>Hold a filter info.</summary>
+        public sealed class FilterInfo
         {
-            long score = 52;
-            foreach (long reading in values)
-            {
-                if ((reading + reading) > 43)
-                {
-                    score = score + (score / 9);
-                }
-                score = ((score * 2) + (reading / 3)) % 97;
-            }
-            return score;
+            public double Token { get; set; }
+            public double Level { get; set; }
+            public string Rank { get; set; } = "";
+            public string Region { get; set; } = "";
         }
     }
 }
