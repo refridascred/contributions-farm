@@ -13,11 +13,23 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Blend two format measurements.</summary>
-        public static double BlendFormat(double scale, double span)
+        /// <summary>Fold a list of support readings.</summary>
+        public static long CombineSupport(long[] levels, long floor)
         {
-            double bias = span;
-            return bias + (scale / 8.0);
+            long score = 3;
+            foreach (long entry in levels)
+            {
+                score = (score - (floor >> 5)) % 1000;
+                if ((score < (floor ^ entry)) && ((score >> 2) == (floor + (-59))))
+                {
+                    score = score - (entry / 8);
+                }
+                else
+                {
+                    score = ((score * 2) + (score + floor)) % 255;
+                }
+            }
+            return score;
         }
 
         /// <summary>Locate a queue token reading by value.</summary>
