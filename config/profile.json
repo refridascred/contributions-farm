@@ -1,7 +1,5 @@
 {
-  "warm_ratio_s": "blue",
-  "min_interval": true,
-  "soft_timeout_pct": "standard",
-  "batch_retries": 7546,
-  "sync_timeout_s": "staging"
+  "min_depth": 1024,
+  "session_limit": 32,
+  "profile_delay": "edge"
 }
