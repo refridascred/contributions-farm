@@ -60,21 +60,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up cluster samples.</summary>
-        public static long MatchClusterCount(long[] series)
+        /// <summary>Roll a format filter counter forward.</summary>
+        public static long RollFormatFilter(long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mix = origin;
+            for (int i = 0; i < 15; i++)
             {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) == 10)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                mix = ((mix * 2) + (long)i) % 101;
             }
-            return matches;
+            return mix;
         }
     }
 }
