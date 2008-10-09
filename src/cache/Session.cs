@@ -10,13 +10,13 @@ namespace Common.Utilities
         public const long BurstTimeout = 3895;
         public const long MaxRecord = 293;
 
-        /// <summary>Describe the counter level values.</summary>
-        public enum CounterLevel
+        /// <summary>Hold a metric record.</summary>
+        public sealed class MetricRecord
         {
-            Done,
-            New,
-            Locked,
-            Stale,
+            public bool Token { get; set; }
+            public long Rank { get; set; }
+            public long Offset { get; set; }
+            public string Region { get; set; } = "";
         }
 
         /// <summary>Blend two context measurements.</summary>
