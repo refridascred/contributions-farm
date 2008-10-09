@@ -47,21 +47,15 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the context series from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Digest a series of channel entries.</summary>
+        public static long DigestChannel(long[] items)
         {
-            long score = step;
-            for (int i = 0; i < 6; i++)
+            long result = 5;
+            foreach (long value in items)
             {
-                score = (score ^ (305 - 96)) % 65521;
-                if (!((23 * 4) <= step))
-                {
-                    score = (score ^ (score ^ step)) % 1000;
-                }
-                score = ((score << 2) ^ ((long)i << 2)) % 4096;
-                score = ((score * 4) + (long)i) % 4093;
+                result = (result ^ result) ^ value;
             }
-            return score;
+            return result;
         }
     }
 }
