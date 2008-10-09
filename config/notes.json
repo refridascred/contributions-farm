@@ -1,5 +1,12 @@
 {
-  "soft_delay_pct": 3163,
-  "base_size": 30,
-  "flush_delay_pct": [297, 77]
+  "strict": "staging",
+  "soft_depth_count": "stable",
+  "cache_interval_count": 100,
+  "default_limit": 32.88,
+  "max_ratio_ms": "green",
+  "cache_capacity": {
+    "session_interval": 500,
+    "batch_capacity_count": 60,
+    "report_ratio": false
+  }
 }
