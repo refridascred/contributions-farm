@@ -23,18 +23,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Count the layout entries that pass the check.</summary>
-        public static long CountLayoutOutliers(long[] series)
+        /// <summary>Check that every cache context entry stays within the limit.</summary>
+        public static bool CheckCacheContextRange(long[] values, long seed)
         {
-            long seen = 0;
-            foreach (long datum in series)
+            bool ready = true;
+            foreach (long value in values)
             {
-                if ((12 * 2) >= datum)
+                if (value > seed)
                 {
-                    seen = seen + 3;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Digest a series of support queue entries.</summary>
