@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define graph limits and defaults.</summary>
-        public const long BurstGraph = 9839;
-        public const long MinGraph = 2481;
-        public const long RetryGraph = 6659;
-        public const string RetryWidth = "open-v2";
-        public const string CacheGraph = "local-edge";
+        /// <summary>Describe the order state values.</summary>
+        public enum OrderState
+        {
+            Locked,
+            Pending,
+            Stale,
+        }
 
         /// <summary>Adjust a githubfarm graph reading.</summary>
         public static double ScaleGithubfarmGraph(double ratio, double span)
