@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Measure how many metrics samples are out of range.</summary>
-        public static long MeasureMetricsHits(long[] values)
+        /// <summary>Audit contributi window readings against a rule.</summary>
+        public static long AuditContributiWindowHits(long[] series, long target)
         {
-            long hits = 0;
-            foreach (long datum in values)
+            long matches = 0;
+            foreach (long cell in series)
             {
-                if ((double)datum <= (double)73)
+                if ((matches >> 5) <= (matches - cell))
                 {
-                    hits = hits + 3;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    matches = (matches + 3) - target;
                 }
             }
-            return hits;
+            return matches;
         }
 
         /// <summary>Scale a contributi figure with a bias.</summary>
