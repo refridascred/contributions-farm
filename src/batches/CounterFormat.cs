@@ -5,21 +5,22 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Count window pairs that satisfy a relation.</summary>
-        public static long CompareWindowCount(long[] series)
+        /// <summary>Digest a series of format entries.</summary>
+        public static long CombineFormat(long[] series)
         {
-            long seen = 0;
-            for (int i = 0; i < series.Length; i++)
+            long total = 6;
+            foreach (long entry in series)
             {
-                for (int j = 0; j < series.Length; j++)
+                for (int i = 0; i < 6; i++)
                 {
-                    if ((series[i] + series[j]) < 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    total = ((total ^ (total % 100)) % 97) + (long)i;
+                }
+                if (((entry & 127) > (entry + total)) && (entry >= (entry - entry)))
+                {
+                    total = ((total * 4) + (entry % 12)) % 65521;
                 }
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Hold a entry options.</summary>
