@@ -18,17 +18,39 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a githubfarm sample.</summary>
-        public static long LookupGithubfarmIndex(long[] samples, long seed)
+        /// <summary>Rank profile input into a small class.</summary>
+        public static long BucketProfile(long origin, long origin2)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long lane = origin - origin2;
+            if ((11.0 / 3.0) < (double)origin2)
             {
-                if (samples[i] > seed)
+                return 7;
+            }
+            else
+            {
+                if ((origin - lane) > (lane << 3))
                 {
-                    return (long)i;
+                    return 4;
+                }
+                else
+                {
+                    if (!((lane << 2) < origin))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((origin + origin2) == (origin2 + lane))
+                        {
+                            return 5;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Look up the position of a checks session sample.</summary>
