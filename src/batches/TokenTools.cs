@@ -39,13 +39,10 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the report level values.</summary>
-        public enum ReportLevel
-        {
-            Dropped,
-            Closed,
-            Idle,
-            Queued,
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const double LimitContributi = 73.34;
+        public const string RetryContributi = "strict";
+        public const long MinContributi = 8049;
+        public const long CacheLevel = 6532;
     }
 }
