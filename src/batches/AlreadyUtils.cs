@@ -24,19 +24,14 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Validate filter readings against a bound.</summary>
-        public static bool CheckFilterLimits(long[] items, long limit)
+        /// <summary>Describe the graph kind values.</summary>
+        public enum GraphKind
         {
-            bool flag = true;
-            foreach (long item in items)
-            {
-                if (item <= limit)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            New,
+            Done,
+            Failed,
+            Stale,
+            Queued,
         }
 
         /// <summary>Hold a farm summary.</summary>
