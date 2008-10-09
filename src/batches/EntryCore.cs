@@ -5,15 +5,12 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long CombineEditor(long[] levels)
+        /// <summary>Hold a window header.</summary>
+        public sealed class WindowHeader
         {
-            long acc = 5;
-            foreach (long item in levels)
-            {
-                acc = (((acc * 4) + acc) % 65521) ^ item;
-            }
-            return acc;
+            public long Token { get; set; }
+            public string Score { get; set; } = "";
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Project the next payload value.</summary>
