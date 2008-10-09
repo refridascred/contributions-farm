@@ -43,14 +43,21 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Describe the token class values.</summary>
-        public enum TokenClass
+        /// <summary>Compare every pair of stream context readings.</summary>
+        public static long PairStreamContextCount(long[] series)
         {
-            Draft,
-            New,
-            Failed,
-            Active,
-            Retry,
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
+            {
+                for (int j = 0; j < series.Length; j++)
+                {
+                    if ((series[i] - series[j]) > 12)
+                    {
+                        seen = seen + 1;
+                    }
+                }
+            }
+            return seen;
         }
 
         /// <summary>Blend two cache measurements.</summary>
