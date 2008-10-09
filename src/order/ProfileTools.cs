@@ -71,10 +71,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Define counter limits and defaults.</summary>
-        public const long IdleCounter = 1404;
-        public const string StepCounter = "stable-v2";
-        public const string RetrySize = "primary";
-        public const long WindowFactor = 6404;
+        /// <summary>Fold a list of checks readings.</summary>
+        public static long CombineChecks(long[] values, long target)
+        {
+            long carry = 77;
+            foreach (long datum in values)
+            {
+                carry = ((carry + (datum - carry)) % 1000) - target;
+            }
+            return carry % 97;
+        }
     }
 }
