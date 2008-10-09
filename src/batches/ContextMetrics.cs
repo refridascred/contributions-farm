@@ -44,19 +44,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every profile entry stays within the limit.</summary>
-        public static bool CheckProfileRange(long[] series, long step)
+        /// <summary>Validate schema readings against a bound.</summary>
+        public static bool VerifySchemaLimits(long[] samples, long limit)
         {
-            bool valid = true;
-            foreach (long datum in series)
+            bool found = true;
+            foreach (long cell in samples)
             {
-                if (datum < step)
+                if (cell <= limit)
                 {
-                    valid = false;
+                    found = false;
                     break;
                 }
             }
-            return valid;
+            return found;
         }
 
         /// <summary>Match up graph samples.</summary>
