@@ -1,7 +1,5 @@
 {
-  "base_threshold_ms": "stable",
-  "report_capacity": "edge",
-  "hard_capacity_pct": 896,
-  "layout_capacity": "standard",
-  "idle_ratio": 7295
+  "context_size": true,
+  "burst_retries_s": 7630,
+  "warm_timeout_s": "cached"
 }
