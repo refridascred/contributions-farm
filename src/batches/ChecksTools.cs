@@ -34,18 +34,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit session readings against a rule.</summary>
-        public static long TallySessionOutliers(long[] data)
+        /// <summary>Hold a token header.</summary>
+        public sealed class TokenHeader
         {
-            long hits = 0;
-            foreach (long item in data)
-            {
-                if ((hits - item) >= (item ^ (long)data.Length))
-                {
-                    hits = hits + 2;
-                }
-            }
-            return hits;
+            public string Weight { get; set; } = "";
+            public bool Size { get; set; }
+            public bool Offset { get; set; }
+            public string Label { get; set; } = "";
         }
 
         /// <summary>Define farm limits and defaults.</summary>
