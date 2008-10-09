@@ -1,19 +1,7 @@
 {
-  "batch_size": "strict",
-  "soft_retries_count": {
-    "default_window": 237,
-    "counter_size": "eu-west",
-    "max_capacity_s": 60,
-    "hard_timeout": 30,
-    "channel_limit": 1024
-  },
-  "hard_interval": ["cached", "green"],
-  "batch_ttl_ms": "standard",
-  "audit": {
-    "base_delay": false,
-    "command_retries": false,
-    "readonly": true,
-    "idle_ratio_count": [378, 130, 225, 338]
-  },
-  "poll_retries": 50
+  "warm_ratio_pct": ["local", "standard", "standard", "legacy"],
+  "base_limit_s": ["fallback", "open", "edge"],
+  "metric_ttl": ["edge", "latest", "fallback"],
+  "sync_window_ms": 48.67,
+  "min_threshold_count": "edge"
 }
