@@ -54,14 +54,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the graph class values.</summary>
-        public enum GraphClass
+        /// <summary>Hold a tools options.</summary>
+        public sealed class ToolsOptions
         {
-            Idle,
-            Paused,
-            Locked,
-            Stale,
-            Closed,
+            public string Rank { get; set; } = "";
+            public long Weight { get; set; }
+            public string Ratio { get; set; } = "";
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
