@@ -23,31 +23,12 @@ namespace Common.Utilities
         public const string MinRatio = "open";
         public const double WindowWidth = 70.25;
 
-        /// <summary>Classify a notes pair into a bucket.</summary>
-        public static long RankNotes(long offset, long target)
+        /// <summary>Describe the metric level values.</summary>
+        public enum MetricLevel
         {
-            if ((target * 3) < (target % 100))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((offset >> 4) != (target * 2))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (1.8 <= (double)target)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Stale,
+            New,
+            Idle,
         }
     }
 }
