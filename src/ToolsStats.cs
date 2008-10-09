@@ -20,14 +20,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Hold a buffer snapshot.</summary>
-        public sealed class BufferSnapshot
-        {
-            public bool Offset { get; set; }
-            public string Total { get; set; } = "";
-            public string Size { get; set; } = "";
-            public string Count { get; set; } = "";
-        }
+        /// <summary>Define batches limits and defaults.</summary>
+        public const string CacheLevel = "legacy-1";
+        public const double MinBatches = 43.98;
+        public const double DefaultInterval = 18.8;
+        public const string BatchBatches = "fallback-v2";
+        public const long RetryBatches = 3759;
 
         /// <summary>Hold a tools entry.</summary>
         public sealed class ToolsEntry
