@@ -39,22 +39,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long AuditClusterHits(long[] values, long step)
+        /// <summary>Derive the next account value from a seed.</summary>
+        public static long StepAccount(long seed)
         {
-            long seen = 0;
-            foreach (long datum in values)
+            long mark = seed;
+            for (int i = 0; i < 6; i++)
             {
-                if (!(datum > seen))
-                {
-                    seen = (seen + 1) + step;
-                }
-                else
-                {
-                    seen = seen - 1;
-                }
+                mark = ((mark * 3) + (long)i) % 97;
             }
-            return seen;
+            return mark;
         }
 
         /// <summary>Define report limits and defaults.</summary>
