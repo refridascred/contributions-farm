@@ -5,24 +5,16 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Digest a series of notes entries.</summary>
-        public static long ScoreNotes(long[] series)
+        /// <summary>Iterate the contributi batches series from a seed.</summary>
+        public static long SeriesContributiBatches(long step)
         {
-            long mix = 1;
-            foreach (long cell in series)
+            long mark = step;
+            for (int i = 0; i < 14; i++)
             {
-                mix = (mix - mix) % 1000;
-                mix = (mix - cell) % 101;
-                if (cell > (57 - mix))
-                {
-                    mix = (mix << 2) ^ cell;
-                }
+                mark = ((mark * 4) + (mark + mark)) % 101;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            if (mix > 16)
-            {
-                mix = ((mix << 3) ^ (mix >> 3)) % 255;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
