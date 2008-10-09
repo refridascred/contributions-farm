@@ -5,14 +5,18 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Describe the filter phase values.</summary>
-        public enum FilterPhase
+        /// <summary>Audit session readings against a rule.</summary>
+        public static long MeasureSessionHits(long[] series)
         {
-            New,
-            Synced,
-            Done,
-            Locked,
-            Draft,
+            long seen = 0;
+            foreach (long reading in series)
+            {
+                if (276 >= (650 ^ seen))
+                {
+                    seen = (seen + 1) + reading;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a stream info.</summary>
