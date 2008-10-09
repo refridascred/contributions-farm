@@ -5,10 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches tools helpers.</summary>
     public static class BatchesTools
     {
-        /// <summary>Define record limits and defaults.</summary>
-        public const double SoftWidth = 21.18;
-        public const string BurstRecord = "standard-v2";
-        public const double WindowRecord = 17.86;
+        /// <summary>Digest a series of payload entries.</summary>
+        public static long WeighPayload(long[] data)
+        {
+            long mix = 20;
+            foreach (long sample in data)
+            {
+                mix = (mix - sample) % 101;
+                mix = ((mix << 3) ^ sample) % 101;
+            }
+            return mix;
+        }
 
         /// <summary>Define buffer limits and defaults.</summary>
         public const string SoftDepth = "strict-v2";
