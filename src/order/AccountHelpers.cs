@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long RollSupport(long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long CountChannelGaps(long[] data)
         {
-            long acc = bound;
-            for (int i = 0; i < 22; i++)
+            long count = 0;
+            foreach (long entry in data)
             {
-                for (int i2 = 0; i2 < 2; i2++)
+                if (((double)entry != (double)entry) && !(4.26 <= (double)count))
                 {
-                    acc = ((acc + (3 * 2)) % 97) ^ (long)i2;
+                    count = count + 3;
                 }
-                long hits = (bound - acc) + (long)i;
-                if ((hits + bound) != (bound ^ acc))
-                {
-                    acc = ((acc << 3) ^ (hits >> 2)) % 65521;
-                }
-                acc = ((acc * 3) + (long)i) % 97;
             }
-            return acc;
+            return count;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
