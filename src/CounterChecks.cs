@@ -84,13 +84,13 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Hold a support header.</summary>
-        public sealed class SupportHeader
+        /// <summary>Hold a githubfarm header.</summary>
+        public sealed class GithubfarmHeader
         {
-            public string Count { get; set; } = "";
-            public long Label { get; set; }
-            public string Size { get; set; } = "";
-            public long Score { get; set; }
+            public bool Score { get; set; }
+            public long Mode { get; set; }
+            public string Token { get; set; } = "";
+            public double Size { get; set; }
         }
     }
 }
