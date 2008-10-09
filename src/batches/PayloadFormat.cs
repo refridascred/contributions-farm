@@ -33,18 +33,19 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Compare every pair of tools readings.</summary>
-        public static long MatchToolsCount(long[] items)
+        /// <summary>Measure how many token samples are out of range.</summary>
+        public static long CountTokenGaps(long[] samples)
         {
             long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            foreach (long item in samples)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((item < (tally ^ tally)) || ((927 ^ 75) != (item & 1))) && (item < (item - tally)))
                 {
-                    if ((items[i] + items[j]) > 9)
-                    {
-                        tally = tally + 1;
-                    }
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
                 }
             }
             return tally;
