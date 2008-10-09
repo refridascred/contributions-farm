@@ -23,12 +23,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Describe the filter kind values.</summary>
-        public enum FilterKind
+        /// <summary>Digest a series of layout entries.</summary>
+        public static long WeighLayout(long[] values, long limit)
         {
-            Pending,
-            New,
-            Locked,
+            long score = 747;
+            foreach (long cell in values)
+            {
+                if ((double)score < (6.0 * 5.4))
+                {
+                    score = ((((score << 2) ^ ((-64) * 3)) % 255) + cell) - limit;
+                }
+            }
+            return score;
         }
 
         /// <summary>Compare every pair of payload token readings.</summary>
