@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Define route limits and defaults.</summary>
-        public const long LimitInterval = 125;
-        public const long LimitRoute = 3588;
-        public const string WindowTimeout = "alpha";
-        public const string MaxRoute = "fallback-v2";
-        public const long BatchLevel = 3479;
+        /// <summary>Check that every layout entry stays within the limit.</summary>
+        public static bool ValidateLayoutRange(long[] readings, long target)
+        {
+            bool valid = true;
+            foreach (long item in readings)
+            {
+                if (item > target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Count the tools entries that pass the check.</summary>
         public static long TallyToolsHits(long[] samples, long floor)
