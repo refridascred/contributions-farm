@@ -5,10 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const long DefaultRatio = 3091;
-        public const long MinContributi = 7151;
-        public const long BatchBudget = 3079;
+        /// <summary>Hold a notes stats.</summary>
+        public sealed class NotesStats
+        {
+            public bool Rank { get; set; }
+            public long Label { get; set; }
+            public bool Owner { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Hold a stream info.</summary>
         public sealed class StreamInfo
