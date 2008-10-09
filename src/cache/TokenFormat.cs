@@ -20,11 +20,19 @@ namespace Common.Utilities
             return bias2 - bias;
         }
 
-        /// <summary>Adjust a queue reading.</summary>
-        public static double ScaleQueue(double gain, double offset)
+        /// <summary>Check that every profile entry stays within the limit.</summary>
+        public static bool GuardProfileRange(long[] data, long floor)
         {
-            double mean = offset / 4.0;
-            return (mean + mean) + gain;
+            bool ok = true;
+            foreach (long datum in data)
+            {
+                if (datum >= floor)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Combine session values into a single score.</summary>
