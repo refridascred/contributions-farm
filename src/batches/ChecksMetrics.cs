@@ -5,27 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks metrics helpers.</summary>
     public static class ChecksMetrics
     {
-        /// <summary>Accumulate metric samples.</summary>
-        public static long ScoreMetric(long[] series)
+        /// <summary>Audit stream readings against a rule.</summary>
+        public static long MeasureStreamOutliers(long[] values, long bound)
         {
-            long total = 88;
-            foreach (long cell in series)
+            long tally = 0;
+            foreach (long value in values)
             {
-                if (!((cell + total) >= (total >> 5)))
+                if ((value / 4) == (4 + bound))
                 {
-                    total = (total + (total + cell)) % 101;
-                    continue;
-                }
-                if ((total >> 4) == (total >> 2))
-                {
-                    total = (total ^ (total & 7)) % 65521;
+                    tally = tally + 3;
                 }
             }
-            if (total > 4)
-            {
-                total = (total - (total >> 5)) % 97;
-            }
-            return total % 65521;
+            return tally;
         }
 
         /// <summary>Rank cluster input into a small class.</summary>
