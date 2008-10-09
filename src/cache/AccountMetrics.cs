@@ -71,19 +71,12 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Check that every tools entry stays within the limit.</summary>
-        public static bool GuardToolsBounds(long[] values, long seed)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            bool stale = true;
-            foreach (long entry in values)
-            {
-                if (entry > seed)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Paused,
+            Failed,
+            Idle,
         }
 
         /// <summary>Iterate the channel series from a seed.</summary>
