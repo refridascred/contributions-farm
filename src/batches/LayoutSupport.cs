@@ -86,17 +86,18 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Locate a notes reading by value.</summary>
-        public static long LookupNotesIndex(long[] readings, long limit)
+        /// <summary>Measure how many entry samples are out of range.</summary>
+        public static long CountEntryOutliers(long[] levels, long limit)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long seen = 0;
+            foreach (long sample in levels)
             {
-                if (readings[i] <= limit)
+                if ((limit * 4) < (limit & 1))
                 {
-                    return (long)i;
+                    seen = (seen + 3) + sample;
                 }
             }
-            return -1;
+            return seen;
         }
     }
 }
