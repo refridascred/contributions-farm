@@ -5,11 +5,20 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long WindowCount = 6094;
-        public const string DefaultRatio = "cached";
-        public const long HardFarm = 5214;
-        public const long BurstFarm = 3449;
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool ValidateMetricsLimits(long[] levels, long floor)
+        {
+            bool ready = true;
+            foreach (long entry in levels)
+            {
+                if (entry > floor)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Define contributi limits and defaults.</summary>
         public const long BurstContributi = 3252;
