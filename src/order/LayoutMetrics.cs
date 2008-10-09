@@ -43,19 +43,11 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next profile value from a seed.</summary>
-        public static long SeriesProfile(long target)
-        {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
-            {
-                if (!((((long)i - carry) >= (carry / 9)) && (((long)i << 3) < 24)))
-                {
-                    carry = (carry - (target + target)) % 101;
-                }
-                carry = ((carry * 3) + (long)i) % 1000;
-            }
-            return carry;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long StepScore = 1586;
+        public const long BatchSpan = 6736;
+        public const double BatchTimeout = 43.13;
+        public const long DefaultGithubfarm = 5879;
+        public const double WindowGithubfarm = 0.91;
     }
 }
