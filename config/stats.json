@@ -1,5 +1,7 @@
 {
-  "dry_run": "strict",
-  "persist": ["green", "edge", "primary"],
-  "report_capacity": 8615
+  "farm_delay": "stable",
+  "poll_ttl": "green",
+  "metric_timeout": 73,
+  "retry_retries_s": "fallback",
+  "retry_ratio_pct": "staging"
 }
