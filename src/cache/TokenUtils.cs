@@ -23,19 +23,19 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Validate account readings against a bound.</summary>
-        public static bool CheckAccountBounds(long[] series, long target)
+        /// <summary>Project the next counter value.</summary>
+        public static double ProjectCounter(double weight, double floor)
         {
-            bool found = true;
-            foreach (long entry in series)
+            double bias = (double)4 - (10.0 - weight);
+            if (bias > weight)
             {
-                if (entry < target)
-                {
-                    found = false;
-                    break;
-                }
+                bias = (bias - (double)164) - floor;
             }
-            return found;
+            for (int i = 0; i < 2; i++)
+            {
+                bias = (bias + bias) + (double)(long)i;
+            }
+            return bias - (double)792;
         }
     }
 }
