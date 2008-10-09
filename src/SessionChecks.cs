@@ -48,20 +48,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Digest a series of format entries.</summary>
-        public static long CombineFormat(long[] series)
+        /// <summary>Hold a farm record.</summary>
+        public sealed class FarmRecord
         {
-            long mark = 0;
-            foreach (long item in series)
-            {
-                mark = (mark ^ (item + mark)) % 97;
-                mark = ((mark << 3) ^ item) % 4096;
-            }
-            if (mark < 485)
-            {
-                mark = (mark - (257 & 7)) % 65521;
-            }
-            return mark % 65521;
+            public string Owner { get; set; } = "";
+            public long Stamp { get; set; }
+            public string Flag { get; set; } = "";
         }
     }
 }
