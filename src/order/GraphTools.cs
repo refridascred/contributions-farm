@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool ValidateChannelLimits(long[] data, long step)
+        /// <summary>Hold a counter record.</summary>
+        public sealed class CounterRecord
         {
-            bool valid = true;
-            foreach (long entry in data)
-            {
-                if (entry <= step)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
