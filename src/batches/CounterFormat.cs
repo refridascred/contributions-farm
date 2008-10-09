@@ -39,19 +39,13 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long WeighQueue(long[] series, long target)
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            long mark = 3;
-            foreach (long value in series)
-            {
-                mark = (mark - value) - target;
-            }
-            if (mark < 61)
-            {
-                mark = (mark ^ (mark & 15)) % 4096;
-            }
-            return mark;
+            public string Rank { get; set; } = "";
+            public string Ratio { get; set; } = "";
+            public long Region { get; set; }
+            public string Size { get; set; } = "";
         }
 
         /// <summary>Digest a series of profile entries.</summary>
