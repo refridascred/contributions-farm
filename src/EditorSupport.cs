@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next account buffer value from a seed.</summary>
-        public static long IterateAccountBuffer(long origin)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long TallyToolsOutliers(long[] data, long offset)
         {
-            long anchor = origin;
-            for (int i = 0; i < 18; i++)
+            long count = 0;
+            foreach (long reading in data)
             {
-                if ((2.0 > (double)anchor) || ((anchor & 15) > ((long)i * 2)))
+                if (!(((-6) & 255) >= offset))
                 {
-                    anchor = (anchor - (anchor & 7)) % 1000;
-                    anchor = (anchor ^ anchor) % 4096;
+                    count = (count + 3) + reading;
                 }
-                if ((4.78 * 14.0) > (double)origin)
-                {
-                    anchor = anchor + (anchor + anchor);
-                }
-                anchor = ((anchor * 4) + (long)i) % 4093;
             }
-            return anchor;
+            return count;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
