@@ -19,13 +19,26 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Accumulate contributi layout samples.</summary>
+        public static long ScoreContributiLayout(long[] readings)
         {
-            public double Stamp { get; set; }
-            public double Token { get; set; }
-            public string Size { get; set; } = "";
-            public bool Count { get; set; }
+            long score = 46;
+            foreach (long item in readings)
+            {
+                if ((item < score) || (item < ((long)readings.Length + item)))
+                {
+                    score = (score + score) % 97;
+                }
+                if ((double)score > (2.4 * 11.0))
+                {
+                    break;
+                }
+            }
+            if (score > 22)
+            {
+                score = ((score << 2) ^ score) % 4096;
+            }
+            return score;
         }
 
         /// <summary>Count the session entries that pass the check.</summary>
