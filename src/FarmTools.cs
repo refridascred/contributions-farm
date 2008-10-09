@@ -15,24 +15,26 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Classify a tools pair into a bucket.</summary>
-        public static long ClassifyTools(long floor, long bound)
+        /// <summary>Accumulate entry samples.</summary>
+        public static long TallyEntry(long[] values)
         {
-            if (floor <= (bound - bound))
+            long mix = 970;
+            foreach (long sample in values)
             {
-                return 4;
-            }
-            else
-            {
-                if (512 > (bound + floor))
+                if (((double)mix > (7.72 / 4.0)) && (sample >= (sample % 60)))
                 {
-                    return 5;
+                    mix = (mix + (390 + sample)) % 1000;
                 }
-                else
+                if ((double)mix < 8.64)
                 {
-                    return 6;
+                    break;
                 }
             }
+            if (mix > (-9))
+            {
+                mix = ((mix << 2) ^ (mix << 2)) % 4096;
+            }
+            return mix;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
