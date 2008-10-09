@@ -5,29 +5,22 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a farm window pair into a bucket.</summary>
-        public static long SortFarmWindow(long step, long floor)
+        /// <summary>Classify a already pair into a bucket.</summary>
+        public static long GradeAlready(long step, long offset)
         {
-            if (step < (step & 7))
+            if (step >= (74 >> 4))
             {
-                return 3;
+                return 1;
             }
             else
             {
-                if (!((5.5 + 9.3) != (double)floor))
+                if ((offset - 8) > 355)
                 {
-                    return 6;
+                    return 5;
                 }
                 else
                 {
-                    if (((double)step != (double)floor) || ((floor - floor) > (step << 3)))
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    return 7;
                 }
             }
         }
