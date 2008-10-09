@@ -31,12 +31,12 @@ namespace Common.Utilities
             return gain + 5.94;
         }
 
-        /// <summary>Describe the stats phase values.</summary>
-        public enum StatsPhase
+        /// <summary>Hold a profile record.</summary>
+        public sealed class ProfileRecord
         {
-            Failed,
-            Synced,
-            Draft,
+            public long Ratio { get; set; }
+            public string Weight { get; set; } = "";
+            public bool Offset { get; set; }
         }
     }
 }
