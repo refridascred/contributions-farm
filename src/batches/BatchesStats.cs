@@ -47,12 +47,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LocateSchemaIndex(long[] samples, long limit)
+        /// <summary>Look up the position of a contributi sample.</summary>
+        public static long FindContributiIndex(long[] series, long origin)
         {
-            for (int i = 0; i < samples.Length; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((samples[i] < limit) && ((samples[i] % 3) != 0))
+                if ((series[i] <= origin) && ((series[i] % 3) != 0))
                 {
                     return (long)i;
                 }
