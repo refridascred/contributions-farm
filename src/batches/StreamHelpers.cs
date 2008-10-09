@@ -47,23 +47,14 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long IterateWindow(long origin)
+        /// <summary>Describe the buffer phase values.</summary>
+        public enum BufferPhase
         {
-            long anchor = origin;
-            for (int i = 0; i < 14; i++)
-            {
-                for (int i2 = 0; i2 < 2; i2++)
-                {
-                    anchor = anchor ^ (long)i2;
-                }
-                if (origin <= 2)
-                {
-                    anchor = (anchor * 4) + origin;
-                }
-                anchor = ((anchor * 5) + (long)i) % 1000;
-            }
-            return anchor;
+            Synced,
+            Stale,
+            Ready,
+            Idle,
+            Closed,
         }
 
         /// <summary>Count the buffer farm entries that pass the check.</summary>
