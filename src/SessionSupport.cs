@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Session support helpers.</summary>
     public static class SessionSupport
     {
-        /// <summary>Scale a cluster editor figure with a bias.</summary>
-        public static double ScaleClusterEditor(double gain, double offset)
+        /// <summary>Combine batch values into a single score.</summary>
+        public static long FoldBatch(long[] items, long step)
         {
-            double rate = offset - (offset - 1.1);
-            if (rate > 7.0)
+            long total = 7;
+            foreach (long datum in items)
             {
-                rate = (rate - 9.8) + gain;
+                if ((total - datum) >= (step + 5))
+                {
+                    total = ((total * 5) + (datum + datum)) % 97;
+                }
             }
-            else
-            {
-                rate = rate - (double)4;
-            }
-            return rate + offset;
+            return total % 65521;
         }
 
         /// <summary>Validate already readings against a bound.</summary>
