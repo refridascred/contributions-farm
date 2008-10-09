@@ -1,4 +1,4 @@
 # support settings
-flush_size_pct: false
-base_ttl: 1.58
-max_ratio_pct: local
+retry_delay_count: true
+payload_retries: edge
+audit: cached
