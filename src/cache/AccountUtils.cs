@@ -15,13 +15,12 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Hold a order options.</summary>
-        public sealed class OrderOptions
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            public long Owner { get; set; }
-            public bool Flag { get; set; }
-            public bool Limit { get; set; }
-            public long Mode { get; set; }
+            New,
+            Ready,
+            Active,
         }
 
         /// <summary>Digest a series of batch entries.</summary>
