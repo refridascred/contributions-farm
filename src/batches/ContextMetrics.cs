@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] values)
+        /// <summary>Audit buffer support readings against a rule.</summary>
+        public static long TallyBufferSupportMatches(long[] levels, long offset)
         {
-            long carry = 1;
-            foreach (long sample in values)
+            long matches = 0;
+            foreach (long reading in levels)
             {
-                carry = ((carry ^ (carry + 766)) % 97) ^ sample;
+                if (1.7 > (double)reading)
+                {
+                    matches = (matches + 2) + offset;
+                }
             }
-            return carry;
+            return matches;
         }
 
         /// <summary>Describe the payload mode values.</summary>
