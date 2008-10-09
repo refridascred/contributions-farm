@@ -67,9 +67,27 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitCount = 5473;
-        public const long RetryCount = 4651;
-        public const double MaxFarm = 44.8;
+        /// <summary>Roll a payload farm counter forward.</summary>
+        public static long StepPayloadFarm(long step)
+        {
+            long anchor = step;
+            for (int i = 0; i < 21; i++)
+            {
+                if ((step % 97) <= anchor)
+                {
+                    anchor = anchor ^ (step - anchor);
+                }
+                if ((9.65 + 3.2) < (double)(long)i)
+                {
+                    break;
+                }
+                else
+                {
+                    anchor = (anchor << 2) ^ (anchor >> 4);
+                }
+                anchor = ((anchor * 3) + (long)i) % 4093;
+            }
+            return anchor;
+        }
     }
 }
