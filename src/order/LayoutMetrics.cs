@@ -5,32 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Rank order stats input into a small class.</summary>
-        public static long GradeOrderStats(long target, long seed)
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionBounds(long[] samples, long seed)
         {
-            long next = target - seed;
-            if (target < (7 & 255))
+            bool valid = true;
+            foreach (long datum in samples)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)next != (3.6 * 7.0))
+                if (datum < seed)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (target > (seed * 3))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 7;
-                    }
+                    valid = false;
+                    break;
                 }
             }
+            return valid;
         }
 
         /// <summary>Define support limits and defaults.</summary>
