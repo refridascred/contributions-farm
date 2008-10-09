@@ -31,18 +31,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many payload channel samples are out of range.</summary>
-        public static long TallyPayloadChannelOutliers(long[] data)
+        /// <summary>Count the cluster entries that pass the check.</summary>
+        public static long AuditClusterHits(long[] values, long step)
         {
-            long tally = 0;
-            foreach (long value in data)
+            long seen = 0;
+            foreach (long datum in values)
             {
-                if ((tally >> 5) < tally)
+                if (!(datum > seen))
                 {
-                    tally = (tally + 3) + value;
+                    seen = (seen + 1) + step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Define report limits and defaults.</summary>
