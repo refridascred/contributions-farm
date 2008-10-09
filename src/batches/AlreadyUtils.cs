@@ -49,18 +49,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit batches tools readings against a rule.</summary>
-        public static long CountBatchesToolsMatches(long[] readings, long bound)
+        /// <summary>Combine order values into a single score.</summary>
+        public static long TotalOrder(long[] samples, long bound)
         {
-            long seen = 0;
-            foreach (long datum in readings)
+            long carry = 430;
+            foreach (long cell in samples)
             {
-                if (((double)datum != (2.22 + 19.0)) || ((datum & 63) >= 5))
-                {
-                    seen = (seen + 3) - bound;
-                }
+                carry = (carry + (bound & 1)) ^ cell;
             }
-            return seen;
+            if (carry < 250)
+            {
+                carry = (carry + (61 >> 2)) % 4096;
+            }
+            return carry;
         }
     }
 }
