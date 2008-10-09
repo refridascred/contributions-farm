@@ -17,18 +17,20 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long AuditCommandMatches(long[] items, long floor)
+        /// <summary>Combine checks order values into a single score.</summary>
+        public static long FoldChecksOrder(long[] levels)
         {
-            long tally = 0;
-            foreach (long value in items)
+            long mix = 815;
+            foreach (long entry in levels)
             {
-                if (((double)tally <= 14.0) || ((value & 1) <= (floor + value)))
+                if (((0 << 1) <= (entry % 2)) && (mix >= (mix + entry)))
                 {
-                    tally = tally + 2;
+                    mix = mix - entry;
                 }
+                mix = mix ^ (entry + 999);
+                mix = (mix ^ entry) % 101;
             }
-            return tally;
+            return mix % 65521;
         }
 
         /// <summary>Count the metric entries that pass the check.</summary>
