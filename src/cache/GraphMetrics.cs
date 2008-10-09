@@ -57,17 +57,31 @@ namespace Common.Utilities
             return total % 1000;
         }
 
-        /// <summary>Locate a format reading by value.</summary>
-        public static long LookupFormatIndex(long[] readings, long offset)
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long ClassifyEntry(long offset, long seed)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((5.0 / 9.0) != (double)seed)
             {
-                if (readings[i] > offset)
+                return 3;
+            }
+            else
+            {
+                if ((double)offset == (17.0 - 3.0))
                 {
-                    return (long)i;
+                    return 7;
+                }
+                else
+                {
+                    if ((offset - offset) != (offset + offset))
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 5;
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Audit stats readings against a rule.</summary>
