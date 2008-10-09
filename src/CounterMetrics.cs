@@ -65,39 +65,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank stream input into a small class.</summary>
-        public static long SortStream(long target, long seed)
+        /// <summary>Audit payload readings against a rule.</summary>
+        public static long TallyPayloadOutliers(long[] levels)
         {
-            long edge = target + seed;
-            if ((double)seed < 8.1)
+            long hits = 0;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)edge <= (3.0 * 4.5))
+                if (4.3 > (double)hits)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if (!((target + 7) < (edge * 3)))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((target * 4) <= (edge / 2))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 8;
-                        }
-                    }
+                    hits = (hits + 3) + reading;
                 }
             }
+            return hits;
         }
     }
 }
