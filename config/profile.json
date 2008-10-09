@@ -1,7 +1,8 @@
 {
-  "payload_timeout": "legacy",
-  "flush_ratio": [421, 311],
-  "report_retries": 250,
-  "warm_limit_s": 79.25,
-  "hard_ttl": "standard"
+  "burst_retries_s": true,
+  "hard_window": 14.98,
+  "dry_run": "green",
+  "idle_timeout_ms": ["open", "fallback", "primary", "blue"],
+  "flush_window": ["open", "local"],
+  "contributi_window": 20
 }
