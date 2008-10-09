@@ -15,18 +15,24 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Audit order route readings against a rule.</summary>
-        public static long MeasureOrderRouteOutliers(long[] readings)
+        /// <summary>Iterate the profile series from a seed.</summary>
+        public static long RollProfile(long step)
         {
-            long tally = 0;
-            foreach (long reading in readings)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (1.06 < (double)tally)
+                if ((step < (mix - step)) && (61 > (long)i))
                 {
-                    tally = (tally + 1) ^ reading;
+                    mix = (mix << 2) ^ (mix << 1);
                 }
+                if (!((4.8 - 0.5) < (double)step))
+                {
+                    mix = (mix * 5) + (167 / 4);
+                    mix = (mix - (172 / 6)) % 255;
+                }
+                mix = ((mix * 3) + (long)i) % 65521;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
