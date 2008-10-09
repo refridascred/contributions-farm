@@ -5,12 +5,17 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Hold a payload summary.</summary>
-        public sealed class PayloadSummary
+        /// <summary>Roll a graph schema counter forward.</summary>
+        public static long IterateGraphSchema(long origin)
         {
-            public long Level { get; set; }
-            public double Region { get; set; }
-            public string Flag { get; set; } = "";
+            long anchor = origin;
+            for (int i = 0; i < 12; i++)
+            {
+                anchor = ((anchor * 3) + (origin % 97)) % 101;
+                anchor = ((anchor << 3) ^ (origin * 5)) % 97;
+                anchor = ((anchor * 4) + (long)i) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
