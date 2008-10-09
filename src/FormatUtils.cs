@@ -34,19 +34,16 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long IterateMetric(long seed)
+        /// <summary>Iterate the buffer series from a seed.</summary>
+        public static long StepBuffer(long origin)
         {
-            long sum = seed;
+            long mix = origin;
             for (int i = 0; i < 4; i++)
             {
-                for (int i2 = 0; i2 < 7; i2++)
-                {
-                    sum = (sum * 2) + ((long)i2 + seed);
-                }
-                sum = ((sum * 2) + (long)i) % 1000;
+                mix = (mix ^ origin) % 101;
+                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return sum;
+            return mix;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
