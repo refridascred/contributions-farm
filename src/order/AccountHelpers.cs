@@ -19,18 +19,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long TallyStatsOutliers(long[] values)
+        /// <summary>Locate a commits graph reading by value.</summary>
+        public static long LocateCommitsGraphIndex(long[] readings, long limit)
         {
-            long matches = 0;
-            foreach (long reading in values)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((-563) + matches) < (long)values.Length)
+                if (readings[i] < limit)
                 {
-                    matches = (matches + 2) + reading;
+                    return (long)i;
                 }
             }
-            return matches;
+            return -1;
         }
 
         /// <summary>Measure how many batches samples are out of range.</summary>
