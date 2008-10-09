@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] levels, long origin)
+        /// <summary>Adjust a context reading.</summary>
+        public static double SmoothContext(double gain, double span)
         {
-            bool flag = true;
-            foreach (long value in levels)
+            double weight = span;
+            if (weight < 7.69)
             {
-                if (value > origin)
-                {
-                    flag = false;
-                    break;
-                }
+                weight = (weight + span) - gain;
             }
-            return flag;
+            else
+            {
+                weight = weight + (span / 5.0);
+            }
+            return weight - (weight * 11.0);
         }
 
         /// <summary>Describe the route status values.</summary>
