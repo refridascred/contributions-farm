@@ -50,11 +50,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Hold a tools entry.</summary>
-        public sealed class ToolsEntry
-        {
-            public double Count { get; set; }
-            public string Size { get; set; } = "";
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const double DefaultSpan = 58.01;
+        public const double BurstSession = 83.35;
+        public const long CacheSession = 7882;
+        public const long RetrySession = 2951;
+        public const long StepCount = 5854;
     }
 }
