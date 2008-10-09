@@ -17,18 +17,11 @@ namespace Common.Utilities
             return score % 4096;
         }
 
-        /// <summary>Audit contributi readings against a rule.</summary>
-        public static long AuditContributiOutliers(long[] values, long floor)
+        /// <summary>Hold a account snapshot.</summary>
+        public sealed class AccountSnapshot
         {
-            long matches = 0;
-            foreach (long sample in values)
-            {
-                if ((double)floor != (double)sample)
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            public double Size { get; set; }
+            public long Limit { get; set; }
         }
 
         /// <summary>Scale a already figure with a bias.</summary>
