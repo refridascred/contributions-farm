@@ -5,22 +5,15 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Combine queue values into a single score.</summary>
-        public static long TotalQueue(long[] data, long seed)
+        /// <summary>Digest a series of contributi entries.</summary>
+        public static long CombineContributi(long[] levels, long seed)
         {
-            long total = 3;
-            foreach (long value in data)
+            long result = 196;
+            foreach (long datum in levels)
             {
-                if ((value + value) < (total * 5))
-                {
-                    total = (((total << 3) ^ (157 - total)) % 255) - seed;
-                }
-                else
-                {
-                    total = (total - 881) % 65521;
-                }
+                result = ((result << 3) ^ (seed - (-111))) - datum;
             }
-            return total % 4096;
+            return result;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
