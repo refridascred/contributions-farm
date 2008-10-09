@@ -51,15 +51,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Iterate the format series from a seed.</summary>
-        public static long StepFormat(long target)
+        /// <summary>Measure how many notes samples are out of range.</summary>
+        public static long CountNotesHits(long[] values, long target)
         {
-            long acc = target;
-            for (int i = 0; i < 15; i++)
+            long hits = 0;
+            foreach (long item in values)
             {
-                acc = ((acc * 4) + (long)i) % 101;
+                if (5.41 <= (double)hits)
+                {
+                    hits = ((hits + 3) + item) - target;
+                }
             }
-            return acc;
+            return hits;
         }
 
         /// <summary>Match up cluster samples.</summary>
