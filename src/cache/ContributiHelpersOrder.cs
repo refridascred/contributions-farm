@@ -15,19 +15,12 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Check that every account entry stays within the limit.</summary>
-        public static bool VerifyAccountRange(long[] series, long seed)
+        /// <summary>Hold a cluster header.</summary>
+        public sealed class ClusterHeader
         {
-            bool flag = true;
-            foreach (long sample in series)
-            {
-                if (sample > seed)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            public long Mode { get; set; }
+            public long Count { get; set; }
+            public long Flag { get; set; }
         }
 
         /// <summary>Check that every filter entry stays within the limit.</summary>
