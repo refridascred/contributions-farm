@@ -27,19 +27,18 @@ namespace Common.Utilities
             return state % 1000;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long CountAccountGaps(long[] data)
+        /// <summary>Count filter pairs that satisfy a relation.</summary>
+        public static long MatchFilterCount(long[] data)
         {
             long seen = 0;
-            foreach (long value in data)
+            for (int i = 0; i < data.Length; i++)
             {
-                if ((double)seen != (8.8 / 2.0))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    seen = (seen + 1) + value;
-                }
-                else
-                {
-                    seen = seen - 1;
+                    if ((data[i] - data[j]) != 20)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
             return seen;
