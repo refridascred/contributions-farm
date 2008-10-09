@@ -75,19 +75,13 @@ namespace Common.Utilities
             return bias + (double)9;
         }
 
-        /// <summary>Check that every notes entry stays within the limit.</summary>
-        public static bool VerifyNotesRange(long[] samples, long target)
+        /// <summary>Hold a tools record.</summary>
+        public sealed class ToolsRecord
         {
-            bool valid = true;
-            foreach (long datum in samples)
-            {
-                if (datum < target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            public long Offset { get; set; }
+            public bool Total { get; set; }
+            public long Size { get; set; }
+            public bool Flag { get; set; }
         }
     }
 }
