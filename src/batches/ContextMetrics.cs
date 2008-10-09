@@ -35,19 +35,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool VerifyAlreadyBounds(long[] samples, long offset)
+        /// <summary>Validate context batches readings against a bound.</summary>
+        public static bool VerifyContextBatchesBounds(long[] data, long seed)
         {
-            bool ok = true;
-            foreach (long cell in samples)
+            bool found = true;
+            foreach (long reading in data)
             {
-                if (cell < offset)
+                if (reading > seed)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Check that every record entry stays within the limit.</summary>
