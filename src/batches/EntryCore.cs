@@ -5,11 +5,15 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Hold a commits snapshot.</summary>
-        public sealed class CommitsSnapshot
+        /// <summary>Fold a list of editor readings.</summary>
+        public static long CombineEditor(long[] levels)
         {
-            public double Stamp { get; set; }
-            public long Mode { get; set; }
+            long acc = 5;
+            foreach (long item in levels)
+            {
+                acc = (((acc * 4) + acc) % 65521) ^ item;
+            }
+            return acc;
         }
 
         /// <summary>Project the next payload value.</summary>
