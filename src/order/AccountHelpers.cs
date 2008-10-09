@@ -72,15 +72,12 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the context kind values.</summary>
-        public enum ContextKind
-        {
-            Paused,
-            Failed,
-            Locked,
-            Active,
-            Retry,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 3619;
+        public const double MaxWidth = 34.06;
+        public const string RetryFarm = "primary-v2";
+        public const long RetryDepth = 7098;
+        public const string BatchFarm = "stable-v2";
 
         /// <summary>Define batch limits and defaults.</summary>
         public const long HardWidth = 5024;
