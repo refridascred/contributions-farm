@@ -95,13 +95,32 @@ namespace Common.Utilities
             return mix % 1000;
         }
 
-        /// <summary>Describe the command class values.</summary>
-        public enum CommandClass
+        /// <summary>Rank commits input into a small class.</summary>
+        public static long SortCommits(long offset, long limit)
         {
-            Locked,
-            Queued,
-            Paused,
-            Stale,
+            long diff = offset + limit;
+            if ((limit ^ limit) <= (3 + (-8)))
+            {
+                return 4;
+            }
+            else
+            {
+                if ((offset + diff) <= 704)
+                {
+                    return 8;
+                }
+                else
+                {
+                    if ((diff * 4) >= (837 - diff))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
+                }
+            }
         }
     }
 }
