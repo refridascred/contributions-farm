@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a channel snapshot.</summary>
-        public sealed class ChannelSnapshot
+        /// <summary>Hold a account info.</summary>
+        public sealed class AccountInfo
         {
-            public long Mode { get; set; }
-            public bool Rank { get; set; }
+            public string Rank { get; set; } = "";
+            public long Level { get; set; }
             public bool Flag { get; set; }
+            public long Label { get; set; }
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
