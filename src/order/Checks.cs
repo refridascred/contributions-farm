@@ -30,15 +30,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the command status values.</summary>
-        public enum CommandStatus
-        {
-            Draft,
-            Done,
-            Queued,
-            Active,
-            Synced,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const string BaseLevel = "strict-1";
+        public const long RetryCache = 1285;
+        public const long WindowCache = 1822;
+        public const long MaxCache = 4096;
+        public const long WindowTimeout = 9079;
 
         /// <summary>Describe the stream status values.</summary>
         public enum StreamStatus
