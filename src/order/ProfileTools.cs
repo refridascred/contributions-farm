@@ -37,12 +37,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Hold a tools options.</summary>
-        public sealed class ToolsOptions
+        /// <summary>Describe the payload mode values.</summary>
+        public enum PayloadMode
         {
-            public string Rank { get; set; } = "";
-            public long Weight { get; set; }
-            public string Ratio { get; set; } = "";
+            Closed,
+            Failed,
+            Locked,
         }
 
         /// <summary>Look up the position of a entry sample.</summary>
