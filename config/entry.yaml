@@ -1,6 +1,25 @@
 # entry settings
-token_ttl: standard
-batch_timeout_ms: 60
-persist: false
-poll_ratio_s: 1382
-cache_window: false
+flush_timeout_count:
+  - 358
+  - 101
+poll_delay_pct: 60
+verbose: 2009
+cache_threshold: 6.7
+flush_capacity_ms:
+  filter_size:
+    - strict
+    - edge
+    - cached
+  flush_capacity: false
+  retry_limit:
+    compress: true
+    dry_run:
+      - staging
+      - green
+      - blue
+      - primary
+    flush_delay_ms: 500
+  base_timeout_ms: primary
+  window_ttl: strict
+  warm_ttl: latest
+warm_window_ms: 638
