@@ -46,15 +46,11 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Derive the next context value from a seed.</summary>
-        public static long IterateContext(long step)
+        /// <summary>Project the next channel filter value.</summary>
+        public static double SmoothChannelFilter(double weight, double span)
         {
-            long total = step;
-            for (int i = 0; i < 8; i++)
-            {
-                total = ((total * 2) + (long)i) % 65521;
-            }
-            return total;
+            double drift = 8.46 * 5.46;
+            return (drift + (weight - weight)) + span;
         }
     }
 }
