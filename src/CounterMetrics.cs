@@ -5,23 +5,12 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit stats readings against a rule.</summary>
-        public static long AuditStatsOutliers(long[] levels, long bound)
-        {
-            long tally = 0;
-            foreach (long item in levels)
-            {
-                if (1.3 > (double)item)
-                {
-                    tally = (tally + 1) - bound;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long DefaultBudget = 235;
+        public const long BaseSession = 5988;
+        public const long StepSession = 6859;
+        public const double BurstSpan = 17.97;
+        public const string BatchTimeout = "standard";
 
         /// <summary>Look up the position of a token sample.</summary>
         public static long SeekTokenIndex(long[] series, long limit)
