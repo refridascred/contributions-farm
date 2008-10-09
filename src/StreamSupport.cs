@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool ValidateCommandBounds(long[] samples, long target)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryBounds(long[] values, long floor)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            bool ready = true;
+            foreach (long cell in values)
             {
-                if (entry < target)
+                if (cell != floor)
                 {
-                    found = false;
+                    ready = false;
                     break;
                 }
             }
-            return found;
+            return ready;
         }
 
         /// <summary>Validate buffer readings against a bound.</summary>
