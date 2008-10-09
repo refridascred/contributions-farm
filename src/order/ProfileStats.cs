@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a entry record.</summary>
-        public sealed class EntryRecord
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool GuardSupportRange(long[] series, long limit)
         {
-            public string Count { get; set; } = "";
-            public long Mode { get; set; }
-            public long Token { get; set; }
-            public bool Level { get; set; }
+            bool flag = true;
+            foreach (long item in series)
+            {
+                if (item >= limit)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the format kind values.</summary>
