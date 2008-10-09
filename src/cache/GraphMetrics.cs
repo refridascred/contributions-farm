@@ -27,15 +27,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the notes status values.</summary>
-        public enum NotesStatus
-        {
-            Dropped,
-            Ready,
-            New,
-            Idle,
-            Done,
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long BaseSpan = 9015;
+        public const long IdleBuffer = 5866;
+        public const long MinBuffer = 6929;
 
         /// <summary>Accumulate cluster samples.</summary>
         public static long FoldCluster(long[] samples, long origin)
