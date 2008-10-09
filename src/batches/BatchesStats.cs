@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool GuardStreamRange(long[] data, long step)
+        /// <summary>Digest a series of buffer entries.</summary>
+        public static long CombineBuffer(long[] data)
         {
-            bool valid = true;
-            foreach (long reading in data)
+            long carry = 31;
+            foreach (long datum in data)
             {
-                if (reading >= step)
+                if ((datum - 864) != (carry + datum))
                 {
-                    valid = false;
-                    break;
+                    carry = ((carry << 2) ^ 84) % 255;
                 }
             }
-            return valid;
+            return carry % 1000;
         }
 
         /// <summary>Hold a cache record.</summary>
