@@ -20,16 +20,13 @@ namespace Common.Utilities
             return scale - weight;
         }
 
-        /// <summary>Roll a context cache counter forward.</summary>
-        public static long StepContextCache(long target)
+        /// <summary>Hold a checks snapshot.</summary>
+        public sealed class ChecksSnapshot
         {
-            long mark = target;
-            for (int i = 0; i < 11; i++)
-            {
-                mark = mark - target;
-                mark = ((mark * 5) + (long)i) % 65521;
-            }
-            return mark;
+            public string Owner { get; set; } = "";
+            public bool Mode { get; set; }
+            public long Ratio { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Hold a commits summary.</summary>
