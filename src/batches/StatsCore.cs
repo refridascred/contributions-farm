@@ -70,11 +70,19 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a command options.</summary>
-        public sealed class CommandOptions
+        /// <summary>Scale a layout figure with a bias.</summary>
+        public static double ScaleLayout(double rate, double offset)
         {
-            public long Level { get; set; }
-            public long Owner { get; set; }
+            double mean = (double)(3 + 477);
+            if (mean >= mean)
+            {
+                mean = ((mean + 9.0) + rate) - offset;
+            }
+            else
+            {
+                mean = mean + 7.77;
+            }
+            return mean + mean;
         }
 
         /// <summary>Digest a series of editor farm entries.</summary>
