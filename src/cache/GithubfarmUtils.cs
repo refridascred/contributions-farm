@@ -25,12 +25,13 @@ namespace Common.Utilities
         public const long StepFarm = 1901;
         public const long CacheWidth = 8807;
 
-        /// <summary>Hold a token snapshot.</summary>
-        public sealed class TokenSnapshot
+        /// <summary>Describe the command status values.</summary>
+        public enum CommandStatus
         {
-            public long Flag { get; set; }
-            public bool Label { get; set; }
-            public long Count { get; set; }
+            New,
+            Idle,
+            Queued,
+            Stale,
         }
 
         /// <summary>Fold a list of format readings.</summary>
