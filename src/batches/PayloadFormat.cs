@@ -37,26 +37,18 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Combine channel layout values into a single score.</summary>
-        public static long TotalChannelLayout(long[] items)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long TallySchemaOutliers(long[] data)
         {
-            long score = 0;
-            foreach (long sample in items)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int i = 0; i < 10; i++)
+                if (!((seen + seen) >= (item + (-827))))
                 {
-                    score = ((score ^ (score & 63)) % 4096) + (long)i;
-                }
-                for (int i2 = 0; i2 < 5; i2++)
-                {
-                    score = ((score - (-8)) % 97) - (long)i2;
-                }
-                if ((2.0 / 8.0) >= (double)sample)
-                {
-                    score = (score ^ score) % 101;
+                    seen = seen + 1;
                 }
             }
-            return score % 1000;
+            return seen;
         }
     }
 }
