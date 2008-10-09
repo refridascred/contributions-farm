@@ -1,7 +1,5 @@
 {
-  "max_interval": "stable",
-  "hard_delay": 7,
-  "default_ttl": false,
-  "burst_retries_count": true,
-  "max_capacity_pct": 21.52
+  "max_window_pct": 98,
+  "readonly": 34.55,
+  "idle_capacity_s": 76
 }
