@@ -25,13 +25,14 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a format entry.</summary>
-        public sealed class FormatEntry
+        /// <summary>Describe the cluster state values.</summary>
+        public enum ClusterState
         {
-            public double Total { get; set; }
-            public bool Stamp { get; set; }
-            public double Ratio { get; set; }
-            public long Count { get; set; }
+            Active,
+            Retry,
+            Paused,
+            Done,
+            Dropped,
         }
     }
 }
