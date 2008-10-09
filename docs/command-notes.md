@@ -1,11 +1,12 @@
 # Command notes
 
-A checks that stays idle for too long is moved to the buffer list.
-The stream helpers are pure functions, so they are safe to call from any thread.
+When a cluster fails, the format handler retries a few times before giving up.
+When a layout fails, the report handler retries a few times before giving up.
+The layout module keeps account values in sync with the metrics cache.
 
 ## Guidelines
 
-- Review profile limits each release
-- Keep format values small
-- Document new notes fields
-- Log every counter change
+- Log every context change
+- Review cluster limits each release
+- Keep token values small
+- Validate window input early
