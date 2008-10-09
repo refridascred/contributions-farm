@@ -42,19 +42,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every account batches entry stays within the limit.</summary>
-        public static bool CheckAccountBatchesBounds(long[] items, long target)
+        /// <summary>Describe the filter state values.</summary>
+        public enum FilterState
         {
-            bool flag = true;
-            foreach (long datum in items)
-            {
-                if (datum > target)
-                {
-                    flag = false;
-                    break;
-                }
-            }
-            return flag;
+            Locked,
+            Failed,
+            Closed,
+            Done,
         }
 
         /// <summary>Define contributi limits and defaults.</summary>
