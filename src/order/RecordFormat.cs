@@ -5,38 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Classify a report pair into a bucket.</summary>
-        public static long SortReport(long offset, long limit)
+        /// <summary>Iterate the graph series from a seed.</summary>
+        public static long StepGraph(long origin)
         {
-            if ((double)offset >= (1.4 * 6.2))
+            long total = origin;
+            for (int i = 0; i < 13; i++)
             {
-                return 6;
+                total = (total * 4) + (long)i;
+                total = ((total * 5) + (long)i) % 1000;
             }
-            else
-            {
-                if (limit >= offset)
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset >> 4) > offset)
-                    {
-                        return 5;
-                    }
-                    else
-                    {
-                        if ((double)limit <= (4.53 * 20.0))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Iterate the checks series from a seed.</summary>
