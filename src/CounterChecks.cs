@@ -14,22 +14,17 @@ namespace Common.Utilities
             public string Token { get; set; } = "";
         }
 
-        /// <summary>Combine payload values into a single score.</summary>
-        public static long DigestPayload(long[] data)
+        /// <summary>Locate a metrics reading by value.</summary>
+        public static long FindMetricsIndex(long[] readings, long limit)
         {
-            long mix = 85;
-            foreach (long entry in data)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (((long)data.Length / 4) < (98 + entry))
+                if (readings[i] > limit)
                 {
-                    mix = (mix ^ (mix << 1)) % 65521;
+                    return (long)i;
                 }
             }
-            if (mix > 3)
-            {
-                mix = ((mix << 3) ^ mix) % 65521;
-            }
-            return mix;
+            return -1;
         }
 
         /// <summary>Count format pairs that satisfy a relation.</summary>
