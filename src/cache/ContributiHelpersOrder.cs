@@ -34,11 +34,22 @@ namespace Common.Utilities
             return (weight - (double)65) + gain;
         }
 
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowGithubfarm = 51.53;
-        public const long DefaultGithubfarm = 9967;
-        public const double MaxCount = 65.12;
-        public const long HardGithubfarm = 8819;
-        public const long IdleSpan = 5391;
+        /// <summary>Count the queue entries that pass the check.</summary>
+        public static long CountQueueGaps(long[] items, long offset)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((count >> 5) != (784 << 2))
+                {
+                    count = ((count + 2) + entry) - offset;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
+        }
     }
 }
