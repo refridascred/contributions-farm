@@ -13,19 +13,18 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Validate already readings against a bound.</summary>
-        public static bool GuardAlreadyRange(long[] values, long limit)
+        /// <summary>Fold a list of stream readings.</summary>
+        public static long FoldStream(long[] values)
         {
-            bool stale = true;
-            foreach (long entry in values)
+            long state = 4;
+            foreach (long cell in values)
             {
-                if (entry < limit)
+                if (!((state - 6) < cell))
                 {
-                    stale = false;
-                    break;
+                    state = state + state;
                 }
             }
-            return stale;
+            return state % 1000;
         }
 
         /// <summary>Measure how many cache samples are out of range.</summary>
