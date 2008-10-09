@@ -18,22 +18,22 @@ namespace Common.Utilities
         public const long BurstEntry = 4052;
         public const long MinEntry = 2776;
 
-        /// <summary>Measure how many order samples are out of range.</summary>
-        public static long CountOrderHits(long[] levels)
+        /// <summary>Audit buffer readings against a rule.</summary>
+        public static long MeasureBufferMatches(long[] samples, long limit)
         {
-            long tally = 0;
-            foreach (long entry in levels)
+            long seen = 0;
+            foreach (long reading in samples)
             {
-                if (((tally / 8) < (entry - tally)) && ((2.41 + 3.92) >= (double)tally))
+                if (!((reading & 15) <= (reading + reading)))
                 {
-                    tally = tally + 3;
+                    seen = (seen + 1) - limit;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    seen = seen - 1;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
