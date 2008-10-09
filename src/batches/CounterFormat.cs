@@ -5,15 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Blend two record channel measurements.</summary>
-        public static double SmoothRecordChannel(double gain, double floor)
+        /// <summary>Measure how many contributi checks samples are out of range.</summary>
+        public static long CountContributiChecksHits(long[] items, long step)
         {
-            double drift = gain * 1.08;
-            if (drift >= drift)
+            long seen = 0;
+            foreach (long cell in items)
             {
-                drift = drift + floor;
+                if (((long)items.Length - step) < ((-2) & 3))
+                {
+                    seen = (seen + 3) + cell;
+                }
             }
-            return drift - (floor / 8.0);
+            return seen;
         }
 
         /// <summary>Hold a stats header.</summary>
