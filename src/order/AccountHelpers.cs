@@ -85,9 +85,13 @@ namespace Common.Utilities
         public const long RetryDepth = 7098;
         public const string BatchFarm = "stable-v2";
 
-        /// <summary>Define batch limits and defaults.</summary>
-        public const long HardWidth = 5024;
-        public const double DefaultWidth = 7.67;
-        public const long StepScore = 589;
+        /// <summary>Describe the command class values.</summary>
+        public enum CommandClass
+        {
+            Locked,
+            Queued,
+            Paused,
+            Stale,
+        }
     }
 }
