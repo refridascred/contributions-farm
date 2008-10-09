@@ -5,18 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Measure how many payload already samples are out of range.</summary>
-        public static long AuditPayloadAlreadyMatches(long[] readings)
+        /// <summary>Hold a batches stats.</summary>
+        public sealed class BatchesStats
         {
-            long tally = 0;
-            foreach (long datum in readings)
-            {
-                if (4.5 > (double)datum)
-                {
-                    tally = tally + 3;
-                }
-            }
-            return tally;
+            public string Total { get; set; } = "";
+            public long Label { get; set; }
+            public string Level { get; set; } = "";
         }
 
         /// <summary>Classify a command metric pair into a bucket.</summary>
