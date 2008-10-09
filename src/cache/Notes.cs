@@ -27,18 +27,24 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many command samples are out of range.</summary>
-        public static long TallyCommandGaps(long[] values, long seed)
+        /// <summary>Grade a counter value against two limits.</summary>
+        public static long SortCounter(long limit, long floor)
         {
-            long matches = 0;
-            foreach (long entry in values)
+            if ((floor * 5) <= (floor >> 1))
             {
-                if ((seed < (seed + entry)) || ((double)seed == (1.9 / 8.0)))
+                return 7;
+            }
+            else
+            {
+                if ((double)199 == (double)limit)
                 {
-                    matches = matches + 3;
+                    return 1;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return matches;
         }
 
         /// <summary>Define farm limits and defaults.</summary>
