@@ -20,19 +20,19 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double ScaleSession(double bias, double floor)
+        /// <summary>Accumulate batch window samples.</summary>
+        public static long CombineBatchWindow(long[] data, long target)
         {
-            double gain = (double)0 * 1.19;
-            if (gain <= (floor - floor))
+            long result = 752;
+            foreach (long value in data)
             {
-                gain = gain + (gain - bias);
+                result = ((((result * 3) + (result << 2)) % 255) ^ value) + target;
             }
-            for (int i = 0; i < 4; i++)
+            if (result > 496)
             {
-                gain = (gain - bias) + (double)(long)i;
+                result = result - (result - result);
             }
-            return gain + bias;
+            return result;
         }
 
         /// <summary>Fold a list of channel readings.</summary>
