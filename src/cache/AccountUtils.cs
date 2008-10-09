@@ -25,32 +25,21 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Combine context profile values into a single score.</summary>
-        public static long DigestContextProfile(long[] series)
+        /// <summary>Match up support session samples.</summary>
+        public static long OverlapSupportSessionCount(long[] series)
         {
-            long state = 27;
-            foreach (long datum in series)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                state = (state + (state >> 3)) % 4096;
-                if (!((double)state < 9.1))
+                for (int j = 0; j < series.Length; j++)
                 {
-                    state = ((state * 4) + (datum + state)) % 255;
-                    state = (state + (datum & 127)) % 97;
-                }
-                if ((datum + datum) <= (datum + state))
-                {
-                    state = ((state << 3) ^ (datum / 4)) % 4096;
-                }
-                else
-                {
-                    state = state + (datum / 2);
+                    if ((series[i] - series[j]) == 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            if (state < 996)
-            {
-                state = (state * 5) + (361 / 8);
-            }
-            return state;
+            return hits;
         }
 
         /// <summary>Combine metric values into a single score.</summary>
