@@ -5,20 +5,10 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Blend two filter measurements.</summary>
-        public static double SmoothFilter(double weight, double offset)
-        {
-            double scale = weight;
-            if (scale <= (double)13)
-            {
-                scale = (scale - scale) + offset;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                scale = (scale - 10.0) + (double)(long)i;
-            }
-            return scale - weight;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long RetrySchema = 2867;
+        public const long LimitSize = 495;
+        public const long RetryScore = 5444;
 
         /// <summary>Hold a checks snapshot.</summary>
         public sealed class ChecksSnapshot
