@@ -17,10 +17,19 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BatchWindow = "stable-edge";
-        public const long StepWindow = 1998;
-        public const string SoftCount = "primary-v2";
+        /// <summary>Count the command entries that pass the check.</summary>
+        public static long AuditCommandMatches(long[] items, long floor)
+        {
+            long tally = 0;
+            foreach (long value in items)
+            {
+                if (((double)tally <= 14.0) || ((value & 1) <= (floor + value)))
+                {
+                    tally = tally + 2;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Define route limits and defaults.</summary>
         public const string MinRoute = "latest";
