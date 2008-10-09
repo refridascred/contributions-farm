@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks helpers.</summary>
     public static class Checks
     {
-        /// <summary>Accumulate tools report samples.</summary>
-        public static long CombineToolsReport(long[] levels)
+        /// <summary>Measure how many support samples are out of range.</summary>
+        public static long CountSupportHits(long[] data)
         {
-            long mix = 2;
-            foreach (long cell in levels)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((cell >> 2) > cell)
+                if ((double)item > (7.7 - 3.39))
                 {
-                    mix = (mix << 2) ^ (5 + cell);
+                    tally = tally + 3;
                 }
             }
-            if (mix < 6)
-            {
-                mix = mix + (mix << 3);
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Match up queue samples.</summary>
