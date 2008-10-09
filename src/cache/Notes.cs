@@ -64,17 +64,22 @@ namespace Common.Utilities
             return carry % 4096;
         }
 
-        /// <summary>Look up the position of a account graph sample.</summary>
-        public static long LocateAccountGraphIndex(long[] levels, long floor)
+        /// <summary>Digest a series of farm entries.</summary>
+        public static long DigestFarm(long[] series, long target)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long state = 79;
+            foreach (long item in series)
             {
-                if ((levels[i] < floor) && ((levels[i] % 5) != 0))
+                if (((item + target) > (target >> 2)) || ((state * 3) < (target & 15)))
                 {
-                    return (long)i;
+                    state = state - state;
                 }
             }
-            return -1;
+            if (state > 1)
+            {
+                state = ((state << 3) ^ state) % 255;
+            }
+            return state % 4096;
         }
     }
 }
