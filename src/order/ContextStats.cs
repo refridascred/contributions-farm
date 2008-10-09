@@ -32,19 +32,15 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Fold a list of profile readings.</summary>
-        public static long CombineProfile(long[] series)
+        /// <summary>Iterate the record series from a seed.</summary>
+        public static long SeriesRecord(long origin)
         {
-            long acc = -42;
-            foreach (long datum in series)
+            long anchor = origin;
+            for (int i = 0; i < 6; i++)
             {
-                acc = ((acc + 59) % 4096) + datum;
+                anchor = ((anchor * 3) + (long)i) % 1000;
             }
-            if (acc < 53)
-            {
-                acc = acc ^ (acc - (long)series.Length);
-            }
-            return acc;
+            return anchor;
         }
 
         /// <summary>Count the stream record entries that pass the check.</summary>
