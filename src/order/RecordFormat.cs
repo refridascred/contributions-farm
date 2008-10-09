@@ -5,16 +5,11 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long IterateProfile(long bound)
+        /// <summary>Hold a payload snapshot.</summary>
+        public sealed class PayloadSnapshot
         {
-            long score = bound;
-            for (int i = 0; i < 22; i++)
-            {
-                score = score + (long)i;
-                score = ((score * 3) + (long)i) % 101;
-            }
-            return score;
+            public bool Ratio { get; set; }
+            public long Score { get; set; }
         }
 
         /// <summary>Check that every format session entry stays within the limit.</summary>
