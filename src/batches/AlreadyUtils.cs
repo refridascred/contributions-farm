@@ -31,17 +31,13 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Locate a tools reading by value.</summary>
-        public static long FindToolsIndex(long[] levels, long offset)
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public double Stamp { get; set; }
+            public long Limit { get; set; }
+            public string Size { get; set; } = "";
+            public double Ratio { get; set; }
         }
 
         /// <summary>Scale a profile figure with a bias.</summary>
