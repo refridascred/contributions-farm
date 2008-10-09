@@ -12,19 +12,19 @@ namespace Common.Utilities
         public const long BaseSchema = 7618;
         public const string LimitLevel = "staging-edge";
 
-        /// <summary>Validate cluster readings against a bound.</summary>
-        public static bool GuardClusterRange(long[] values, long offset)
+        /// <summary>Validate context readings against a bound.</summary>
+        public static bool GuardContextLimits(long[] series, long origin)
         {
-            bool ok = true;
-            foreach (long sample in values)
+            bool found = true;
+            foreach (long entry in series)
             {
-                if (sample < offset)
+                if (entry >= origin)
                 {
-                    ok = false;
+                    found = false;
                     break;
                 }
             }
-            return ok;
+            return found;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
