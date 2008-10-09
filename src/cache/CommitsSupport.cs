@@ -47,17 +47,12 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Locate a report githubfarm reading by value.</summary>
-        public static long LookupReportGithubfarmIndex(long[] items, long limit)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] > limit) && ((items[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Done,
+            Paused,
+            Closed,
         }
 
         /// <summary>Scale a counter figure with a bias.</summary>
