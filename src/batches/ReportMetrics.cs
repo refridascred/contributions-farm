@@ -5,10 +5,12 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const string BurstWindow = "alpha";
-        public const long StepFactor = 8087;
-        public const long BatchLevel = 117;
+        /// <summary>Hold a profile entry.</summary>
+        public sealed class ProfileEntry
+        {
+            public long Weight { get; set; }
+            public long Flag { get; set; }
+        }
 
         /// <summary>Scale a window figure with a bias.</summary>
         public static double SmoothWindow(double rate, double floor)
