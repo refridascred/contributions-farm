@@ -51,19 +51,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Check that every command entry stays within the limit.</summary>
-        public static bool CheckCommandLimits(long[] data, long offset)
+        /// <summary>Hold a farm stats.</summary>
+        public sealed class FarmStats
         {
-            bool ok = true;
-            foreach (long sample in data)
-            {
-                if (sample > offset)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            public double Ratio { get; set; }
+            public string Flag { get; set; } = "";
+            public bool Level { get; set; }
+            public long Score { get; set; }
         }
     }
 }
