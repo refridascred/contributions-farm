@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Hold a filter entry.</summary>
-        public sealed class FilterEntry
+        /// <summary>Describe the queue level values.</summary>
+        public enum QueueLevel
         {
-            public long Score { get; set; }
-            public double Flag { get; set; }
+            Synced,
+            Idle,
+            Active,
+            Failed,
+            Draft,
         }
 
         /// <summary>Audit order route readings against a rule.</summary>
