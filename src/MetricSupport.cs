@@ -5,15 +5,20 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Scale a batch figure with a bias.</summary>
-        public static double ScaleBatch(double scale, double bias)
+        /// <summary>Derive the next format route value from a seed.</summary>
+        public static long StepFormatRoute(long step)
         {
-            double bias2 = bias / 2.0;
-            for (int i = 0; i < 8; i++)
+            long state = step;
+            for (int i = 0; i < 17; i++)
             {
-                bias2 = ((bias2 - bias2) + (double)(long)i) + scale;
+                state = (state - state) % 101;
+                if ((step + step) >= (step - step))
+                {
+                    state = ((state * 2) + (256 - state)) % 65521;
+                }
+                state = ((state * 2) + (long)i) % 101;
             }
-            return bias2 + bias;
+            return state;
         }
 
         /// <summary>Iterate the cluster stats series from a seed.</summary>
