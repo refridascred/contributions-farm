@@ -69,20 +69,11 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every channel entry stays within the limit.</summary>
-        public static bool CheckChannelBounds(long[] readings, long step)
-        {
-            bool ready = true;
-            foreach (long reading in readings)
-            {
-                if (reading > step)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
-        }
+        /// <summary>Define stream limits and defaults.</summary>
+        public const long SoftBudget = 3050;
+        public const string HardStream = "open-1";
+        public const string BaseStream = "stable-v2";
+        public const double WindowStream = 69.69;
 
         /// <summary>Audit command readings against a rule.</summary>
         public static long AuditCommandGaps(long[] series)
