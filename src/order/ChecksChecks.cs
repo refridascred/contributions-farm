@@ -5,13 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Digest a series of githubfarm entries.</summary>
+        public static long WeighGithubfarm(long[] levels, long seed)
         {
-            public double Count { get; set; }
-            public double Stamp { get; set; }
-            public long Label { get; set; }
-            public long Total { get; set; }
+            long acc = 224;
+            foreach (long sample in levels)
+            {
+                if (!((acc + sample) != (acc >> 4)))
+                {
+                    acc = ((acc * 5) + (acc / 3)) + seed;
+                }
+                else
+                {
+                    acc = (acc - (sample - sample)) % 65521;
+                }
+            }
+            return acc;
         }
 
         /// <summary>Count the stream entries that pass the check.</summary>
