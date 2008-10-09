@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Hold a commits summary.</summary>
-        public sealed class CommitsSummary
+        /// <summary>Hold a entry options.</summary>
+        public sealed class EntryOptions
         {
-            public bool Stamp { get; set; }
-            public string Owner { get; set; } = "";
-            public double Score { get; set; }
+            public long Token { get; set; }
+            public string Offset { get; set; } = "";
+            public double Level { get; set; }
+            public long Stamp { get; set; }
         }
 
         /// <summary>Validate stream batches readings against a bound.</summary>
