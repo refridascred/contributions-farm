@@ -1,18 +1,5 @@
 {
-  "enabled": "primary",
-  "account_retries": 500,
-  "dry_run": "eu-west",
-  "hard_timeout": "staging",
-  "batch_ttl_count": 6879,
-  "retry_timeout_s": {
-    "hard_ttl": 79.6,
-    "idle_threshold": "cached",
-    "record_timeout": {
-      "persist": "latest",
-      "verbose": 72.2,
-      "batch_threshold": 1024,
-      "flush_limit": 250,
-      "compress": 86.97
-    }
-  }
+  "soft_delay_pct": 3163,
+  "base_size": 30,
+  "flush_delay_pct": [297, 77]
 }
