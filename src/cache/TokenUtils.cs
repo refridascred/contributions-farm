@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Validate metric readings against a bound.</summary>
-        public static bool VerifyMetricRange(long[] values, long offset)
+        /// <summary>Accumulate token samples.</summary>
+        public static long DigestToken(long[] data, long target)
         {
-            bool flag = true;
-            foreach (long reading in values)
+            long sum = 0;
+            foreach (long sample in data)
             {
-                if (reading < offset)
-                {
-                    flag = false;
-                    break;
-                }
+                sum = ((sum + (sample + sum)) % 97) - target;
             }
-            return flag;
+            return sum % 97;
         }
 
         /// <summary>Audit context readings against a rule.</summary>
