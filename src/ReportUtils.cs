@@ -23,24 +23,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Classify a graph pair into a bucket.</summary>
-        public static long BucketGraph(long origin, long origin2)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool GuardChannelLimits(long[] levels, long bound)
         {
-            if ((double)origin <= (9.64 / 5.0))
+            bool ok = true;
+            foreach (long sample in levels)
             {
-                return 8;
-            }
-            else
-            {
-                if ((double)origin > (2.8 * 5.9))
+                if (sample < bound)
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Look up the position of a notes commits sample.</summary>
