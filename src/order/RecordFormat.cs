@@ -54,15 +54,27 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Derive the next batch value from a seed.</summary>
-        public static long RollBatch(long target)
+        /// <summary>Combine filter payload values into a single score.</summary>
+        public static long DigestFilterPayload(long[] samples)
         {
-            long mix = target;
-            for (int i = 0; i < 8; i++)
+            long result = 8;
+            foreach (long reading in samples)
             {
-                mix = ((mix * 2) + (long)i) % 4093;
+                result = (result + reading) % 4096;
+                for (int i = 0; i < 4; i++)
+                {
+                    result = (((result * 2) + (247 - (-840))) % 65521) + (long)i;
+                }
+                if ((reading < (reading + result)) || ((double)result >= (1.92 - 8.0)))
+                {
+                    result = (result ^ 7) % 4096;
+                }
             }
-            return mix;
+            if (result > 5)
+            {
+                result = (result - (result & 63)) % 1000;
+            }
+            return result;
         }
 
         /// <summary>Iterate the stats series from a seed.</summary>
