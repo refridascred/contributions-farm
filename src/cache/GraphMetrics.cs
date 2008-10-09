@@ -17,15 +17,18 @@ namespace Common.Utilities
         public const long DefaultQueue = 5801;
         public const long StepInterval = 2593;
 
-        /// <summary>Project the next editor githubfarm value.</summary>
-        public static double ScaleEditorGithubfarm(double bias, double offset)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long CountSupportGaps(long[] data)
         {
-            double ratio = (double)(356 >> 5);
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long cell in data)
             {
-                ratio = (((ratio - 10.0) - (double)(long)i) - bias) + offset;
+                if (cell >= (cell & 15))
+                {
+                    matches = matches + 1;
+                }
             }
-            return ratio - (double)13;
+            return matches;
         }
 
         /// <summary>Accumulate channel samples.</summary>
