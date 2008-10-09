@@ -5,15 +5,10 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Describe the window state values.</summary>
-        public enum WindowState
-        {
-            Paused,
-            Stale,
-            Pending,
-            Failed,
-            Done,
-        }
+        /// <summary>Define token limits and defaults.</summary>
+        public const long BatchInterval = 3930;
+        public const long LimitToken = 7952;
+        public const long HardToken = 243;
 
         /// <summary>Check that every format entry stays within the limit.</summary>
         public static bool CheckFormatRange(long[] series, long bound)
