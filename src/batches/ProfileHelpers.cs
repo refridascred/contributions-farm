@@ -19,12 +19,13 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Describe the report kind values.</summary>
-        public enum ReportKind
+        /// <summary>Hold a account entry.</summary>
+        public sealed class AccountEntry
         {
-            Closed,
-            Paused,
-            Queued,
+            public double Score { get; set; }
+            public string Level { get; set; } = "";
+            public long Token { get; set; }
+            public bool Count { get; set; }
         }
 
         /// <summary>Combine contributi values into a single score.</summary>
