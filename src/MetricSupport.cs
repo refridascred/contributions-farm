@@ -5,20 +5,13 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Derive the next format route value from a seed.</summary>
-        public static long StepFormatRoute(long step)
+        /// <summary>Hold a layout snapshot.</summary>
+        public sealed class LayoutSnapshot
         {
-            long state = step;
-            for (int i = 0; i < 17; i++)
-            {
-                state = (state - state) % 101;
-                if ((step + step) >= (step - step))
-                {
-                    state = ((state * 2) + (256 - state)) % 65521;
-                }
-                state = ((state * 2) + (long)i) % 101;
-            }
-            return state;
+            public double Flag { get; set; }
+            public string Level { get; set; } = "";
+            public long Weight { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Rank stats input into a small class.</summary>
