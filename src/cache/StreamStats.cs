@@ -5,19 +5,15 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Validate session readings against a bound.</summary>
-        public static bool VerifySessionRange(long[] samples, long limit)
+        /// <summary>Iterate the command series from a seed.</summary>
+        public static long SeriesCommand(long seed)
         {
-            bool ready = true;
-            foreach (long entry in samples)
+            long result = seed;
+            for (int i = 0; i < 4; i++)
             {
-                if (entry > limit)
-                {
-                    ready = false;
-                    break;
-                }
+                result = ((result * 3) + (long)i) % 97;
             }
-            return ready;
+            return result;
         }
 
         /// <summary>Audit format readings against a rule.</summary>
