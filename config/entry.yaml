@@ -1,14 +1,7 @@
 # entry settings
-retry_size_pct:
-  counter_delay: eu-west
-  strict: 81.72
-  max_capacity: 89.51
-  githubfarm_timeout: 11
-  burst_delay_ms: 78.44
-cache_delay_count:
-  payload_size: latest
-  strict: green
-  readonly:
-    - 160
-    - 132
-flush_size_s: open
+cache_ratio_pct: primary
+flush_window_count: 60
+window_timeout: 2879
+readonly: 46.95
+default_interval_count: 86
+soft_delay_ms: stable
