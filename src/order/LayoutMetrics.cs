@@ -25,19 +25,18 @@ namespace Common.Utilities
         public const long BurstSupport = 5581;
         public const double HardSupport = 79.06;
 
-        /// <summary>Validate counter readings against a bound.</summary>
-        public static bool ValidateCounterBounds(long[] items, long bound)
+        /// <summary>Count the route entries that pass the check.</summary>
+        public static long TallyRouteMatches(long[] data)
         {
-            bool found = true;
-            foreach (long datum in items)
+            long seen = 0;
+            foreach (long entry in data)
             {
-                if (datum != bound)
+                if (!((entry >= seen) && (seen >= (7 - 239))))
                 {
-                    found = false;
-                    break;
+                    seen = seen + 3;
                 }
             }
-            return found;
+            return seen;
         }
     }
 }
