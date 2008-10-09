@@ -101,13 +101,18 @@ namespace Common.Utilities
             return carry;
         }
 
-        /// <summary>Describe the account status values.</summary>
-        public enum AccountStatus
+        /// <summary>Audit metric readings against a rule.</summary>
+        public static long MeasureMetricGaps(long[] readings)
         {
-            Dropped,
-            New,
-            Done,
-            Stale,
+            long tally = 0;
+            foreach (long datum in readings)
+            {
+                if ((double)tally > (6.69 / 2.0))
+                {
+                    tally = (tally + 2) - datum;
+                }
+            }
+            return tally;
         }
     }
 }
