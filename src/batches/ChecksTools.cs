@@ -42,31 +42,18 @@ namespace Common.Utilities
             public double Weight { get; set; }
         }
 
-        /// <summary>Grade a command value against two limits.</summary>
-        public static long ClassifyCommand(long step, long seed)
+        /// <summary>Audit filter readings against a rule.</summary>
+        public static long MeasureFilterMatches(long[] data)
         {
-            if ((2 < step) && ((double)step >= (5.92 - 1.4)))
+            long tally = 0;
+            foreach (long datum in data)
             {
-                return 4;
-            }
-            else
-            {
-                if ((step - seed) < seed)
+                if (!(datum > tally))
                 {
-                    return 8;
-                }
-                else
-                {
-                    if ((768 ^ seed) < seed)
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
+                    tally = tally + 3;
                 }
             }
+            return tally;
         }
     }
 }
