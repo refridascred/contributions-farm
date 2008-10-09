@@ -12,31 +12,11 @@ namespace Common.Utilities
         public const double IdleCount = 27.7;
         public const double BaseEditor = 16.38;
 
-        /// <summary>Fold a list of graph readings.</summary>
-        public static long TotalGraph(long[] readings)
-        {
-            long state = 2;
-            foreach (long entry in readings)
-            {
-                if ((state - entry) <= (state % 10))
-                {
-                    state = (state ^ (entry + state)) % 1000;
-                }
-                if (((entry ^ entry) <= state) || ((7.47 / 3.0) <= (double)state))
-                {
-                    state = ((state * 5) + (entry & 7)) % 65521;
-                }
-                else
-                {
-                    state = state + (entry ^ state);
-                }
-                if (((state >> 3) >= (entry ^ state)) && ((double)state > (double)entry))
-                {
-                    break;
-                }
-            }
-            return state % 65521;
-        }
+        /// <summary>Define batch limits and defaults.</summary>
+        public const string BaseBatch = "standard-v2";
+        public const long BatchInterval = 1717;
+        public const long DefaultSize = 6426;
+        public const long BurstFactor = 9722;
 
         /// <summary>Digest a series of commits entries.</summary>
         public static long CombineCommits(long[] items)
