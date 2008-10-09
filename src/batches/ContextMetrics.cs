@@ -24,24 +24,19 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long GradeAccount(long bound, long target)
+        /// <summary>Validate already readings against a bound.</summary>
+        public static bool VerifyAlreadyBounds(long[] samples, long offset)
         {
-            if ((bound + 51) == (bound - bound))
+            bool ok = true;
+            foreach (long cell in samples)
             {
-                return 0;
-            }
-            else
-            {
-                if ((bound << 1) <= (target - target))
+                if (cell < offset)
                 {
-                    return 3;
-                }
-                else
-                {
-                    return 6;
+                    ok = false;
+                    break;
                 }
             }
+            return ok;
         }
 
         /// <summary>Validate schema readings against a bound.</summary>
