@@ -48,31 +48,18 @@ namespace Common.Utilities
             return ratio - (double)13;
         }
 
-        /// <summary>Classify a entry pair into a bucket.</summary>
-        public static long ClassifyEntry(long offset, long seed)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long TallyEntryHits(long[] series, long origin)
         {
-            if ((5.0 / 9.0) != (double)seed)
+            long seen = 0;
+            foreach (long item in series)
             {
-                return 3;
-            }
-            else
-            {
-                if ((double)offset == (17.0 - 3.0))
+                if ((737 / 2) <= seen)
                 {
-                    return 7;
-                }
-                else
-                {
-                    if ((offset - offset) != (offset + offset))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        return 5;
-                    }
+                    seen = ((seen + 1) + item) - origin;
                 }
             }
+            return seen;
         }
 
         /// <summary>Hold a notes summary.</summary>
