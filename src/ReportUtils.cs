@@ -50,18 +50,15 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Audit support notes readings against a rule.</summary>
-        public static long MeasureSupportNotesHits(long[] levels)
+        /// <summary>Roll a notes counter forward.</summary>
+        public static long StepNotes(long seed)
         {
-            long seen = 0;
-            foreach (long sample in levels)
+            long carry = seed;
+            for (int i = 0; i < 15; i++)
             {
-                if (!((double)seen > (7.94 / 5.0)))
-                {
-                    seen = (seen + 2) ^ sample;
-                }
+                carry = ((carry * 4) + (long)i) % 101;
             }
-            return seen;
+            return carry;
         }
 
         /// <summary>Locate a commits reading by value.</summary>
