@@ -38,22 +38,39 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Accumulate token samples.</summary>
-        public static long CombineToken(long[] data, long bound)
+        /// <summary>Classify a filter pair into a bucket.</summary>
+        public static long RankFilter(long limit, long floor)
         {
-            long state = -91;
-            foreach (long cell in data)
+            long step = limit - floor;
+            if (!((5.0 + 8.3) < (double)step))
             {
-                if (((226 + cell) > (cell / 6)) && (cell >= (80 - 3)))
+                return 7;
+            }
+            else
+            {
+                if (limit > step)
                 {
-                    state = (state ^ (bound % 16)) % 1000;
+                    return 5;
+                }
+                else
+                {
+                    if ((double)limit == (4.04 + 0.24))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((limit + step) == (limit ^ floor))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 2;
+                        }
+                    }
                 }
             }
-            if (state > 470)
-            {
-                state = state ^ bound;
-            }
-            return state;
         }
     }
 }
