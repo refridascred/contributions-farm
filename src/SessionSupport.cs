@@ -35,12 +35,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Hold a profile record.</summary>
-        public sealed class ProfileRecord
+        /// <summary>Iterate the cluster series from a seed.</summary>
+        public static long DeriveCluster(long target)
         {
-            public long Ratio { get; set; }
-            public string Weight { get; set; } = "";
-            public bool Offset { get; set; }
+            long result = target;
+            for (int i = 0; i < 22; i++)
+            {
+                result = ((result * 4) + (long)i) % 4093;
+            }
+            return result;
         }
     }
 }
