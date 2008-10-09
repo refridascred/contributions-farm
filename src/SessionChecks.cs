@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Session checks helpers.</summary>
     public static class SessionChecks
     {
-        /// <summary>Look up the position of a layout sample.</summary>
-        public static long SeekLayoutIndex(long[] items, long step)
+        /// <summary>Locate a metric farm reading by value.</summary>
+        public static long LookupMetricFarmIndex(long[] items, long offset)
         {
             for (int i = 0; i < items.Length; i++)
             {
-                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                if (items[i] > offset)
                 {
                     return (long)i;
                 }
