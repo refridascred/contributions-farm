@@ -47,12 +47,12 @@ namespace Common.Utilities
         public const long LimitFarm = 4411;
         public const long StepBudget = 7502;
 
-        /// <summary>Locate a schema reading by value.</summary>
-        public static long LookupSchemaIndex(long[] data, long limit)
+        /// <summary>Look up the position of a account graph sample.</summary>
+        public static long LocateAccountGraphIndex(long[] levels, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if (data[i] >= limit)
+                if ((levels[i] < floor) && ((levels[i] % 5) != 0))
                 {
                     return (long)i;
                 }
