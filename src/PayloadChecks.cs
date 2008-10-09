@@ -5,15 +5,23 @@ namespace Common.Utilities
     /// <summary>Payload checks helpers.</summary>
     public static class PayloadChecks
     {
-        /// <summary>Scale a metrics figure with a bias.</summary>
-        public static double ScaleMetrics(double weight, double floor)
+        /// <summary>Project the next format value.</summary>
+        public static double BlendFormat(double weight, double offset)
         {
-            double ratio = (double)0;
-            if (ratio >= ratio)
+            double mean = weight;
+            if (mean < weight)
             {
-                ratio = ratio + (floor - floor);
+                mean = mean - (double)778;
             }
-            return ratio + weight;
+            else
+            {
+                mean = mean + (offset - mean);
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                mean = (mean - (weight + weight)) + (double)(long)i;
+            }
+            return mean + weight;
         }
 
         /// <summary>Locate a support reading by value.</summary>
