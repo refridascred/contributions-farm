@@ -20,10 +20,13 @@ namespace Common.Utilities
         public const long MinBatch = 7677;
         public const long DefaultBatch = 792;
 
-        /// <summary>Define contributi limits and defaults.</summary>
-        public const double MinLevel = 89.67;
-        public const double HardContributi = 37.69;
-        public const long MinRatio = 6053;
+        /// <summary>Describe the layout phase values.</summary>
+        public enum LayoutPhase
+        {
+            Ready,
+            Done,
+            Locked,
+        }
 
         /// <summary>Combine cluster entry values into a single score.</summary>
         public static long ScoreClusterEntry(long[] data)
