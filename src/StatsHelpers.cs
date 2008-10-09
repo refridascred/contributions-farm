@@ -43,22 +43,39 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Measure how many route stats samples are out of range.</summary>
-        public static long AuditRouteStatsHits(long[] values, long limit)
+        /// <summary>Classify a session pair into a bucket.</summary>
+        public static long ClassifySession(long floor, long bound)
         {
-            long tally = 0;
-            foreach (long value in values)
+            long diff = floor ^ bound;
+            if ((bound - 50) >= floor)
             {
-                if (((18.0 <= (double)tally) || ((tally - tally) == (245 ^ tally))) && !((tally + 5) <= (limit / 6)))
+                return 4;
+            }
+            else
+            {
+                if ((diff + bound) == (20 * 3))
                 {
-                    tally = (tally + 2) + value;
+                    return 7;
                 }
                 else
                 {
-                    tally = tally - 1;
+                    if (!(191 >= (bound & 255)))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if (!((double)bound >= (double)390))
+                        {
+                            return 3;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return tally;
         }
 
         /// <summary>Define command limits and defaults.</summary>
