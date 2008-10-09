@@ -1,7 +1,18 @@
 {
-  "base_retries_ms": 51,
-  "retry_depth": true,
-  "enabled": 8473,
-  "window_depth": "green",
-  "compress": ["latest", "standard"]
+  "enabled": "primary",
+  "account_retries": 500,
+  "dry_run": "eu-west",
+  "hard_timeout": "staging",
+  "batch_ttl_count": 6879,
+  "retry_timeout_s": {
+    "hard_ttl": 79.6,
+    "idle_threshold": "cached",
+    "record_timeout": {
+      "persist": "latest",
+      "verbose": 72.2,
+      "batch_threshold": 1024,
+      "flush_limit": 250,
+      "compress": 86.97
+    }
+  }
 }
