@@ -88,10 +88,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long WindowWidth = 927;
-        public const long MaxSpan = 8626;
-        public const long WindowQueue = 2600;
-        public const long StepScore = 7733;
+        /// <summary>Count the layout entries that pass the check.</summary>
+        public static long MeasureLayoutGaps(long[] values)
+        {
+            long hits = 0;
+            foreach (long datum in values)
+            {
+                if ((hits ^ hits) > (datum - hits))
+                {
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
+        }
     }
 }
