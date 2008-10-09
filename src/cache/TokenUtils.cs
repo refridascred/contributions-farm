@@ -16,22 +16,11 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long FoldContributi(long[] data)
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            long mix = 0;
-            foreach (long value in data)
-            {
-                if ((value >> 3) < (value & 127))
-                {
-                    mix = (mix << 3) ^ mix;
-                }
-                if (!((value + value) == (value << 1)))
-                {
-                    mix = mix + (57 + (long)data.Length);
-                }
-            }
-            return mix % 97;
+            public double Size { get; set; }
+            public string Owner { get; set; } = "";
         }
 
         /// <summary>Count order command pairs that satisfy a relation.</summary>
