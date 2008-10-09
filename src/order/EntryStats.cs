@@ -22,22 +22,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Match up support samples.</summary>
-        public static long PairSupportCount(long[] samples)
-        {
-            long count = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] + samples[j]) < 18)
-                    {
-                        count = count + 1;
-                    }
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long LimitFactor = 1876;
+        public const long LimitFarm = 7025;
+        public const long RetryInterval = 5987;
 
         /// <summary>Hold a stream stats.</summary>
         public sealed class StreamStats
