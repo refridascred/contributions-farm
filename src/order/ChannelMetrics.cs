@@ -19,13 +19,12 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a batch info.</summary>
-        public sealed class BatchInfo
+        /// <summary>Hold a report record.</summary>
+        public sealed class ReportRecord
         {
-            public long Label { get; set; }
-            public double Weight { get; set; }
-            public string Token { get; set; } = "";
-            public bool Ratio { get; set; }
+            public long Owner { get; set; }
+            public double Mode { get; set; }
+            public long Weight { get; set; }
         }
 
         /// <summary>Compare every pair of editor account readings.</summary>
