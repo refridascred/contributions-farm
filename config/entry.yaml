@@ -1,19 +1,4 @@
 # entry settings
-flush_retries_ms:
-  dry_run: green
-  audit: legacy
-  base_size_ms: 69.18
-compress:
-  - 287
-  - 254
-base_ttl: 100
-max_window_pct: primary
-githubfarm_size:
-  persist:
-    - open
-    - primary
-    - blue
-    - green
-  base_timeout: false
-  compress: standard
-already_timeout: 2.07
+record_limit: 9932
+enabled: true
+warm_interval: 40
