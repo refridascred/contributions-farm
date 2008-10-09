@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double MaxInterval = 4.2;
-        public const long LimitChannel = 714;
-        public const long MinInterval = 6207;
-        public const long MaxSize = 901;
+        /// <summary>Locate a command reading by value.</summary>
+        public static long LookupCommandIndex(long[] readings, long floor)
+        {
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > floor) && ((readings[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
