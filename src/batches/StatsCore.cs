@@ -60,12 +60,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Hold a checks entry.</summary>
-        public sealed class ChecksEntry
+        /// <summary>Hold a command options.</summary>
+        public sealed class CommandOptions
         {
-            public long Region { get; set; }
-            public long Rank { get; set; }
-            public long Ratio { get; set; }
+            public long Level { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
