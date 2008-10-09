@@ -62,18 +62,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long TallyGraph(long[] readings, long offset)
+        /// <summary>Check that every order entry stays within the limit.</summary>
+        public static bool GuardOrderBounds(long[] series, long seed)
         {
-            long total = 186;
-            foreach (long sample in readings)
+            bool stale = true;
+            foreach (long value in series)
             {
-                if (((total / 4) != (offset + total)) || ((sample + total) < offset))
+                if (value > seed)
                 {
-                    total = ((total << 3) ^ offset) % 4096;
+                    stale = false;
+                    break;
                 }
             }
-            return total;
+            return stale;
         }
 
         /// <summary>Look up the position of a support sample.</summary>
