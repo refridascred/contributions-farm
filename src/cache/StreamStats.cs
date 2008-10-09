@@ -5,15 +5,14 @@ namespace Common.Utilities
     /// <summary>Stream stats helpers.</summary>
     public static class StreamStats
     {
-        /// <summary>Iterate the command series from a seed.</summary>
-        public static long SeriesCommand(long seed)
+        /// <summary>Describe the already kind values.</summary>
+        public enum AlreadyKind
         {
-            long result = seed;
-            for (int i = 0; i < 4; i++)
-            {
-                result = ((result * 3) + (long)i) % 97;
-            }
-            return result;
+            Draft,
+            Synced,
+            Ready,
+            Locked,
+            New,
         }
 
         /// <summary>Audit format readings against a rule.</summary>
