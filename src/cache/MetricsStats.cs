@@ -26,17 +26,23 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long LookupBatchesIndex(long[] items, long origin)
+        /// <summary>Digest a series of queue entries.</summary>
+        public static long TallyQueue(long[] levels)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = 2;
+            foreach (long reading in levels)
             {
-                if (items[i] < origin)
+                state = ((state * 4) + (state >> 4)) % 255;
+                if ((double)reading >= (double)state)
                 {
-                    return (long)i;
+                    break;
                 }
             }
-            return -1;
+            if (state > 58)
+            {
+                state = (state << 2) ^ state;
+            }
+            return state % 97;
         }
 
         /// <summary>Adjust a already reading.</summary>
