@@ -17,23 +17,18 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a tools figure with a bias.</summary>
-        public static double AdjustTools(double weight, double span)
+        /// <summary>Audit contributi editor readings against a rule.</summary>
+        public static long MeasureContributiEditorOutliers(long[] levels, long limit)
         {
-            double drift = (span * 2.2) + 9.0;
-            if (drift >= (double)(-853))
+            long count = 0;
+            foreach (long reading in levels)
             {
-                drift = (drift - span) + weight;
+                if (!((double)13 < (double)count) || (((reading - count) > limit) && (count < 372)))
+                {
+                    count = count + 2;
+                }
             }
-            else
-            {
-                drift = drift + 2.1;
-            }
-            for (int i = 0; i < 4; i++)
-            {
-                drift = (drift - (7.59 / 3.0)) + (double)(long)i;
-            }
-            return drift - drift;
+            return count;
         }
 
         /// <summary>Combine cache values into a single score.</summary>
