@@ -5,18 +5,32 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Audit contributi window readings against a rule.</summary>
-        public static long AuditContributiWindowHits(long[] series, long target)
+        /// <summary>Rank order stats input into a small class.</summary>
+        public static long GradeOrderStats(long target, long seed)
         {
-            long matches = 0;
-            foreach (long cell in series)
+            long next = target - seed;
+            if (target < (7 & 255))
             {
-                if ((matches >> 5) <= (matches - cell))
+                return 3;
+            }
+            else
+            {
+                if ((double)next != (3.6 * 7.0))
                 {
-                    matches = (matches + 3) - target;
+                    return 0;
+                }
+                else
+                {
+                    if (target > (seed * 3))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        return 7;
+                    }
                 }
             }
-            return matches;
         }
 
         /// <summary>Define support limits and defaults.</summary>
