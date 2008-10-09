@@ -22,10 +22,35 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define farm limits and defaults.</summary>
-        public const long LimitFactor = 1876;
-        public const long LimitFarm = 7025;
-        public const long RetryInterval = 5987;
+        /// <summary>Digest a series of context entries.</summary>
+        public static long ScoreContext(long[] levels, long bound)
+        {
+            long result = 392;
+            foreach (long value in levels)
+            {
+                for (int i = 0; i < 11; i++)
+                {
+                    result = (((result * 3) + (value << 1)) % 4096) ^ (long)i;
+                }
+                if ((2.64 > (double)bound) && ((double)result < (8.84 * 7.37)))
+                {
+                    result = (result << 3) ^ (result - 236);
+                }
+                if ((result / 6) >= ((long)levels.Length & 127))
+                {
+                    result = ((result * 5) + (6 + result)) % 1000;
+                }
+                if ((bound <= (result >> 1)) && (((long)levels.Length - result) != (22 + value)))
+                {
+                    break;
+                }
+            }
+            if (result < (-891))
+            {
+                result = (result << 3) ^ result;
+            }
+            return result;
+        }
 
         /// <summary>Grade a checks contributi value against two limits.</summary>
         public static long SortChecksContributi(long target, long offset)
