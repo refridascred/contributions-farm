@@ -44,19 +44,16 @@ namespace Common.Utilities
             public string Limit { get; set; } = "";
         }
 
-        /// <summary>Roll a report counter forward.</summary>
-        public static long RollReport(long bound)
+        /// <summary>Iterate the record route series from a seed.</summary>
+        public static long StepRecordRoute(long seed)
         {
-            long score = bound;
-            for (int i = 0; i < 7; i++)
+            long mark = seed;
+            for (int i = 0; i < 16; i++)
             {
-                if ((8.2 * 9.8) == (double)score)
-                {
-                    score = ((score << 3) ^ (bound - bound)) % 255;
-                }
-                score = ((score * 2) + (long)i) % 97;
+                mark = (mark << 3) ^ 331;
+                mark = ((mark * 4) + (long)i) % 65521;
             }
-            return score;
+            return mark;
         }
 
         /// <summary>Hold a contributi record.</summary>
