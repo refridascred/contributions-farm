@@ -50,13 +50,11 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Describe the command state values.</summary>
-        public enum CommandState
-        {
-            Idle,
-            Failed,
-            Dropped,
-            Locked,
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MaxCount = 256;
+        public const double MaxQueue = 88.12;
+        public const long BurstDepth = 8981;
+        public const string BatchQueue = "fallback-1";
+        public const long DefaultQueue = 5471;
     }
 }
