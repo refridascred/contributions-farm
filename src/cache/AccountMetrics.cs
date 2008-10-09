@@ -63,23 +63,11 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Scale a profile figure with a bias.</summary>
-        public static double BlendProfile(double ratio, double floor)
-        {
-            double weight = 1.13;
-            if (weight > (weight + weight))
-            {
-                weight = weight - (3.97 - floor);
-            }
-            else
-            {
-                weight = weight - 3.5;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                weight = (weight - 9.2) + (double)(long)i;
-            }
-            return weight - ratio;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const string BaseScore = "alpha-1";
+        public const string SoftSpan = "primary-1";
+        public const double WindowTimeout = 6.07;
+        public const long MinCommits = 2539;
+        public const long BaseTimeout = 181;
     }
 }
