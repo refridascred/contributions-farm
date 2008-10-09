@@ -46,17 +46,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a channel format reading by value.</summary>
-        public static long FindChannelFormatIndex(long[] series, long bound)
+        /// <summary>Adjust a counter session reading.</summary>
+        public static double ProjectCounterSession(double weight, double offset)
         {
-            for (int i = 0; i < series.Length; i++)
+            double bias = weight / 5.0;
+            if (bias < offset)
             {
-                if (series[i] >= bound)
-                {
-                    return (long)i;
-                }
+                bias = bias - (double)906;
             }
-            return -1;
+            for (int i = 0; i < 4; i++)
+            {
+                bias = (bias - (weight / 3.0)) - (double)(long)i;
+            }
+            return bias + offset;
         }
 
         /// <summary>Hold a checks entry.</summary>
