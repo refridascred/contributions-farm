@@ -1,12 +1,26 @@
 # entry settings
-account_capacity:
-  max_timeout_s: 11.01
-  verbose: 2661
-  support_limit: blue
-  flush_retries: 59.44
-  metrics_limit: staging
-  soft_limit: 3448
-persist: true
-audit: 95.8
-warm_ttl_pct: true
-token_delay: true
+githubfarm_timeout: 100
+warm_depth:
+  batch_ratio_s: 60
+  persist: 29.01
+  batch_ratio_pct: 3.62
+  warm_ttl_s:
+    already_delay: true
+    schema_size: 250
+    batch_ttl_pct: 91.32
+    record_threshold: 8.91
+    readonly:
+      - edge
+      - primary
+      - fallback
+      - staging
+  default_ttl_count:
+    batch_capacity_ms: 43
+    audit: 77.09
+    max_timeout_pct: cached
+  base_capacity: standard
+channel_retries:
+  - green
+  - eu-west
+readonly: 4836
+min_size_count: 6.2
