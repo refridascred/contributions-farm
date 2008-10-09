@@ -48,12 +48,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the batches class values.</summary>
-        public enum BatchesClass
+        /// <summary>Blend two stats measurements.</summary>
+        public static double AdjustStats(double weight, double offset)
         {
-            Queued,
-            Dropped,
-            Ready,
+            double gain = offset;
+            if (gain >= weight)
+            {
+                gain = gain + 9.1;
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                gain = (gain + gain) + (double)(long)i;
+            }
+            return gain - weight;
         }
     }
 }
