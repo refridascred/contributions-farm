@@ -36,12 +36,23 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const double SoftWindow = 88.94;
-        public const long DefaultTimeout = 7792;
-        public const string DefaultWindow = "fallback-1";
-        public const string MaxWindow = "fallback";
-        public const double MinFactor = 3.33;
+        /// <summary>Measure how many route stats samples are out of range.</summary>
+        public static long AuditRouteStatsHits(long[] values, long limit)
+        {
+            long tally = 0;
+            foreach (long value in values)
+            {
+                if (((18.0 <= (double)tally) || ((tally - tally) == (245 ^ tally))) && !((tally + 5) <= (limit / 6)))
+                {
+                    tally = (tally + 2) + value;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Describe the contributi kind values.</summary>
         public enum ContributiKind
