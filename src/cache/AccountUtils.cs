@@ -5,17 +5,14 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Locate a format reading by value.</summary>
-        public static long FindFormatIndex(long[] samples, long offset)
+        /// <summary>Describe the metric kind values.</summary>
+        public enum MetricKind
         {
-            for (int i = 0; i < samples.Length; i++)
-            {
-                if (samples[i] < offset)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Active,
+            Draft,
+            Locked,
+            Idle,
+            Synced,
         }
 
         /// <summary>Combine farm values into a single score.</summary>
