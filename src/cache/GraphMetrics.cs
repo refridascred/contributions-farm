@@ -62,22 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Fold a list of token readings.</summary>
-        public static long ScoreToken(long[] levels, long bound)
+        /// <summary>Hold a notes summary.</summary>
+        public sealed class NotesSummary
         {
-            long state = 356;
-            foreach (long datum in levels)
-            {
-                if (datum > (state - state))
-                {
-                    state = (state - (state * 2)) % 101;
-                }
-                else
-                {
-                    state = (state * 5) + bound;
-                }
-            }
-            return state;
+            public long Region { get; set; }
+            public long Stamp { get; set; }
+            public bool Owner { get; set; }
         }
     }
 }
