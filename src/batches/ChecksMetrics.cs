@@ -52,13 +52,10 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Describe the metric class values.</summary>
-        public enum MetricClass
-        {
-            Failed,
-            Closed,
-            Draft,
-        }
+        /// <summary>Define notes limits and defaults.</summary>
+        public const long DefaultNotes = 1550;
+        public const long IdleNotes = 9049;
+        public const long DefaultSpan = 596;
 
         /// <summary>Fold a list of contributi commits readings.</summary>
         public static long TotalContributiCommits(long[] samples, long seed)
