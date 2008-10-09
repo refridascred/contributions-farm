@@ -47,11 +47,22 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Project the next stats value.</summary>
-        public static double ProjectStats(double gain, double floor)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] levels, long bound)
         {
-            double mean = (double)5 * 2.94;
-            return mean + (gain - floor);
+            long total = 9;
+            foreach (long entry in levels)
+            {
+                if ((entry < (801 - bound)) || (19.0 >= (double)bound))
+                {
+                    total = ((total * 2) + (7 + total)) % 1000;
+                }
+            }
+            if (total < 90)
+            {
+                total = ((total << 3) ^ bound) % 1000;
+            }
+            return total % 1000;
         }
 
         /// <summary>Audit profile readings against a rule.</summary>
