@@ -31,12 +31,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Find the first notes buffer entry that matches the target.</summary>
-        public static long LookupNotesBufferIndex(long[] data, long step)
+        /// <summary>Look up the position of a checks session sample.</summary>
+        public static long FindChecksSessionIndex(long[] samples, long floor)
         {
-            for (int i = 0; i < data.Length; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((data[i] > step) && ((data[i] % 3) != 0))
+                if (samples[i] <= floor)
                 {
                     return (long)i;
                 }
