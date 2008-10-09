@@ -26,17 +26,22 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Locate a support reading by value.</summary>
-        public static long LookupSupportIndex(long[] data, long offset)
+        /// <summary>Audit context readings against a rule.</summary>
+        public static long AuditContextGaps(long[] levels, long bound)
         {
-            for (int i = 0; i < data.Length; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (data[i] == offset)
+                if ((matches <= bound) && ((bound * 5) > matches))
                 {
-                    return (long)i;
+                    matches = (matches + 1) + item;
+                }
+                else
+                {
+                    matches = matches - 1;
                 }
             }
-            return -1;
+            return matches;
         }
 
         /// <summary>Hold a order summary.</summary>
