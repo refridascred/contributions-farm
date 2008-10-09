@@ -26,13 +26,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Hold a session header.</summary>
-        public sealed class SessionHeader
+        /// <summary>Validate support readings against a bound.</summary>
+        public static bool CheckSupportRange(long[] items, long seed)
         {
-            public double Offset { get; set; }
-            public long Region { get; set; }
-            public long Score { get; set; }
-            public bool Ratio { get; set; }
+            bool ok = true;
+            foreach (long reading in items)
+            {
+                if (reading >= seed)
+                {
+                    ok = false;
+                    break;
+                }
+            }
+            return ok;
         }
 
         /// <summary>Fold a list of format readings.</summary>
