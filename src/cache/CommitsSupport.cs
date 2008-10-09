@@ -38,23 +38,14 @@ namespace Common.Utilities
             return gain2 + gain;
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long DigestNotes(long[] readings)
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            long anchor = 59;
-            foreach (long item in readings)
-            {
-                anchor = (anchor * 5) + (item * 4);
-                if ((anchor % 12) > anchor)
-                {
-                    break;
-                }
-            }
-            if (anchor > 25)
-            {
-                anchor = (anchor - (anchor / 9)) % 97;
-            }
-            return anchor;
+            Queued,
+            Ready,
+            Failed,
+            Draft,
+            Closed,
         }
 
         /// <summary>Accumulate payload samples.</summary>
