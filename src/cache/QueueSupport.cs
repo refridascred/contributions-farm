@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Hold a cluster stats.</summary>
-        public sealed class ClusterStats
+        /// <summary>Measure how many window samples are out of range.</summary>
+        public static long CountWindowHits(long[] items, long step)
         {
-            public double Rank { get; set; }
-            public long Owner { get; set; }
+            long seen = 0;
+            foreach (long sample in items)
+            {
+                if (((seen % 2) <= 7) || ((double)sample <= (double)579))
+                {
+                    seen = (seen + 1) - step;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
