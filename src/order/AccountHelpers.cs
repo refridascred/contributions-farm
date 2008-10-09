@@ -5,18 +5,18 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Count the channel entries that pass the check.</summary>
-        public static long CountChannelGaps(long[] data)
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long MeasureSupportHits(long[] levels)
         {
-            long count = 0;
-            foreach (long entry in data)
+            long hits = 0;
+            foreach (long sample in levels)
             {
-                if (((double)entry != (double)entry) && !(4.26 <= (double)count))
+                if ((sample >= (hits % 3)) && ((hits - 4) >= (hits >> 2)))
                 {
-                    count = count + 3;
+                    hits = hits + 3;
                 }
             }
-            return count;
+            return hits;
         }
 
         /// <summary>Measure how many stats samples are out of range.</summary>
