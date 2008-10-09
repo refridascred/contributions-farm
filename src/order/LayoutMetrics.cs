@@ -26,12 +26,19 @@ namespace Common.Utilities
             return (scale - gain) + span;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
+        /// <summary>Validate counter readings against a bound.</summary>
+        public static bool ValidateCounterBounds(long[] items, long bound)
         {
-            Failed,
-            Ready,
-            Retry,
+            bool found = true;
+            foreach (long datum in items)
+            {
+                if (datum != bound)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
         }
     }
 }
