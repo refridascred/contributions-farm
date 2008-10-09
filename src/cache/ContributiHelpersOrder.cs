@@ -13,20 +13,11 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate channel readings against a bound.</summary>
-        public static bool CheckChannelBounds(long[] series, long target)
-        {
-            bool ok = true;
-            foreach (long value in series)
-            {
-                if (value <= target)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long SoftProfile = 3320;
+        public const string WindowProfile = "strict-1";
+        public const long BurstRatio = 4717;
+        public const double IdleProfile = 60.5;
 
         /// <summary>Define token limits and defaults.</summary>
         public const long BurstSpan = 3676;
