@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Hold a schema options.</summary>
-        public sealed class SchemaOptions
-        {
-            public bool Weight { get; set; }
-            public double Limit { get; set; }
-        }
+        /// <summary>Define channel limits and defaults.</summary>
+        public const double MaxInterval = 4.2;
+        public const long LimitChannel = 714;
+        public const long MinInterval = 6207;
+        public const long MaxSize = 901;
 
         /// <summary>Describe the filter kind values.</summary>
         public enum FilterKind
