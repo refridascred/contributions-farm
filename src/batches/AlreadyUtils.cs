@@ -42,10 +42,20 @@ namespace Common.Utilities
             public long Owner { get; set; }
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double MinLevel = 12.27;
-        public const long MaxOrder = 7248;
-        public const long DefaultOrder = 3963;
+        /// <summary>Check that every commits entry stays within the limit.</summary>
+        public static bool VerifyCommitsLimits(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long entry in readings)
+            {
+                if (entry != step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Audit batches tools readings against a rule.</summary>
         public static long CountBatchesToolsMatches(long[] readings, long bound)
