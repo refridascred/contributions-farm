@@ -23,17 +23,31 @@ namespace Common.Utilities
         public const long CacheSize = 963;
         public const long RetryRatio = 1600;
 
-        /// <summary>Find the first context filter entry that matches the target.</summary>
-        public static long LookupContextFilterIndex(long[] readings, long origin)
+        /// <summary>Classify a notes pair into a bucket.</summary>
+        public static long RankNotes(long offset, long target)
         {
-            for (int i = 0; i < readings.Length; i++)
+            if ((target * 3) < (target % 100))
             {
-                if (readings[i] > origin)
+                return 5;
+            }
+            else
+            {
+                if ((offset >> 4) != (target * 2))
                 {
-                    return (long)i;
+                    return 2;
+                }
+                else
+                {
+                    if (1.8 <= (double)target)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        return 6;
+                    }
                 }
             }
-            return -1;
         }
     }
 }
