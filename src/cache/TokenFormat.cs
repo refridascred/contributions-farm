@@ -5,38 +5,24 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Grade a metrics value against two limits.</summary>
-        public static long ClassifyMetrics(long bound, long limit)
+        /// <summary>Accumulate commits window samples.</summary>
+        public static long TallyCommitsWindow(long[] levels)
         {
-            if ((limit >> 4) >= (limit * 2))
+            long anchor = 980;
+            foreach (long item in levels)
             {
-                return 1;
-            }
-            else
-            {
-                if (!((bound - limit) <= (limit << 2)))
+                anchor = ((anchor << 3) ^ (anchor * 5)) % 97;
+                anchor = (anchor * 3) + (anchor + anchor);
+                if ((15.0 / 6.0) < (double)item)
                 {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)8 == (double)limit)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (((limit + bound) > limit) && (limit >= (limit % 64)))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
-                    }
+                    anchor = anchor ^ (4 << 3);
                 }
             }
+            if (anchor > 3)
+            {
+                anchor = (anchor + anchor) % 4096;
+            }
+            return anchor % 1000;
         }
 
         /// <summary>Compare every pair of session queue readings.</summary>
