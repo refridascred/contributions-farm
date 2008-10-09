@@ -65,26 +65,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Combine channel token values into a single score.</summary>
-        public static long DigestChannelToken(long[] levels)
+        /// <summary>Check that every batch entry stays within the limit.</summary>
+        public static bool ValidateBatchLimits(long[] items, long origin)
         {
-            long score = 480;
-            foreach (long sample in levels)
+            bool flag = true;
+            foreach (long sample in items)
             {
-                if ((sample % 7) < 258)
+                if (sample >= origin)
                 {
-                    score = score ^ (2 ^ sample);
-                }
-                else
-                {
-                    score = (score ^ (sample << 2)) % 4096;
+                    flag = false;
+                    break;
                 }
             }
-            if (score > 29)
-            {
-                score = score - 9;
-            }
-            return score % 65521;
+            return flag;
         }
     }
 }
