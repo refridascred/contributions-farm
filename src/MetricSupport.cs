@@ -18,11 +18,22 @@ namespace Common.Utilities
         public const long BurstEntry = 4052;
         public const long MinEntry = 2776;
 
-        /// <summary>Define metric limits and defaults.</summary>
-        public const long CacheMetric = 2963;
-        public const string StepSize = "alpha-v2";
-        public const string BaseSize = "primary-edge";
-        public const string BatchMetric = "latest-1";
-        public const long MaxMetric = 6228;
+        /// <summary>Measure how many order samples are out of range.</summary>
+        public static long CountOrderHits(long[] levels)
+        {
+            long tally = 0;
+            foreach (long entry in levels)
+            {
+                if (((tally / 8) < (entry - tally)) && ((2.41 + 3.92) >= (double)tally))
+                {
+                    tally = tally + 3;
+                }
+                else
+                {
+                    tally = tally - 1;
+                }
+            }
+            return tally;
+        }
     }
 }
