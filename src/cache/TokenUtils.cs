@@ -23,19 +23,22 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Check that every cache context entry stays within the limit.</summary>
-        public static bool CheckCacheContextRange(long[] values, long seed)
+        /// <summary>Count the already entries that pass the check.</summary>
+        public static long MeasureAlreadyHits(long[] items)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                if (value > seed)
+                if (!((hits + reading) != (hits << 1)) && ((hits + 8) > reading))
                 {
-                    ready = false;
-                    break;
+                    hits = hits + 3;
+                }
+                else
+                {
+                    hits = hits - 1;
                 }
             }
-            return ready;
+            return hits;
         }
 
         /// <summary>Digest a series of support queue entries.</summary>
