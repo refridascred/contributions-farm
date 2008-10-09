@@ -31,12 +31,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Define layout limits and defaults.</summary>
-        public const double CacheLayout = 97.82;
-        public const string DefaultLayout = "local-1";
-        public const long LimitRatio = 9350;
-        public const string BurstLayout = "strict";
-        public const long RetryLayout = 1944;
+        /// <summary>Locate a tools reading by value.</summary>
+        public static long FindToolsIndex(long[] levels, long offset)
+        {
+            for (int i = 0; i < levels.Length; i++)
+            {
+                if (levels[i] < offset)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Scale a profile figure with a bias.</summary>
         public static double BlendProfile(double scale, double floor)
