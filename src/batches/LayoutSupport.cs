@@ -17,39 +17,22 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Rank payload input into a small class.</summary>
-        public static long GradePayload(long origin, long offset)
+        /// <summary>Measure how many notes filter samples are out of range.</summary>
+        public static long CountNotesFilterMatches(long[] items, long bound)
         {
-            long bound = origin + offset;
-            if ((1.8 + 6.33) == (double)bound)
+            long count = 0;
+            foreach (long datum in items)
             {
-                return 4;
-            }
-            else
-            {
-                if ((double)bound < 4.33)
+                if (datum > (datum - bound))
                 {
-                    return 1;
+                    count = count + 1;
                 }
                 else
                 {
-                    if ((origin + origin) <= (bound + origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if (bound >= (bound % 8))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    count = count - 1;
                 }
             }
+            return count;
         }
 
         /// <summary>Rank batches notes input into a small class.</summary>
