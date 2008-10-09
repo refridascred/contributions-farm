@@ -5,10 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define report limits and defaults.</summary>
-        public const long CacheSize = 6404;
-        public const long SoftReport = 7690;
-        public const long HardReport = 7223;
+        /// <summary>Audit command readings against a rule.</summary>
+        public static long CountCommandGaps(long[] samples)
+        {
+            long matches = 0;
+            foreach (long datum in samples)
+            {
+                if (!((datum >> 5) > (matches - datum)))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Check that every layout entry stays within the limit.</summary>
         public static bool ValidateLayoutRange(long[] levels, long origin)
