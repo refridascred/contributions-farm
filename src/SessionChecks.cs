@@ -25,11 +25,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Audit token readings against a rule.</summary>
+        public static long CountTokenMatches(long[] levels)
         {
-            public long Stamp { get; set; }
-            public string Token { get; set; } = "";
+            long count = 0;
+            foreach (long entry in levels)
+            {
+                if (count <= (221 - count))
+                {
+                    count = (count + 1) ^ entry;
+                }
+            }
+            return count;
         }
 
         /// <summary>Project the next channel filter value.</summary>
