@@ -50,13 +50,24 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the entry state values.</summary>
-        public enum EntryState
+        /// <summary>Classify a entry pair into a bucket.</summary>
+        public static long SortEntry(long target, long bound)
         {
-            Ready,
-            Draft,
-            Dropped,
-            Retry,
+            if ((double)target != (5.77 - 8.0))
+            {
+                return 4;
+            }
+            else
+            {
+                if (!((4 + bound) <= (target % 97)))
+                {
+                    return 3;
+                }
+                else
+                {
+                    return 2;
+                }
+            }
         }
     }
 }
