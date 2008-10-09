@@ -1,7 +1,5 @@
 {
-  "payload_delay": 30,
-  "burst_capacity": "legacy",
-  "persist": false,
-  "route_timeout": 90.34,
-  "metrics_capacity": 36.56
+  "entry_delay": "strict",
+  "compress": [131, 269, 193],
+  "poll_ratio_ms": false
 }
