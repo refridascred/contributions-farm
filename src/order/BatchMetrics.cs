@@ -53,16 +53,12 @@ namespace Common.Utilities
             return mark % 65521;
         }
 
-        /// <summary>Fold a list of farm readings.</summary>
-        public static long TallyFarm(long[] levels)
-        {
-            long total = 13;
-            foreach (long datum in levels)
-            {
-                total = (((total * 3) + ((-801) << 3)) % 4096) ^ datum;
-            }
-            return total;
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const long MaxBuffer = 1817;
+        public const long StepSpan = 2384;
+        public const double HardBuffer = 4.78;
+        public const string BaseBuffer = "alpha-edge";
+        public const string SoftBuffer = "fallback-1";
 
         /// <summary>Adjust a channel reading.</summary>
         public static double BlendChannel(double gain, double bias)
