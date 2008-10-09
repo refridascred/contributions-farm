@@ -1,6 +1,9 @@
-id,region,state
-1,64.71,49.85
-2,42,974
-3,917,657
-4,eu-west,primary
-5,836,eu-west
+id,rank,token,score,level
+1,98.97,13.31,0.2,67.55
+2,58.5,202,870,385
+3,301,local,761,39.63
+4,latest,953,48.98,46.4
+5,442,423,fallback,444
+6,586,green,cached,legacy
+7,open,66.15,5.38,631
+8,92.04,844,local,standard
