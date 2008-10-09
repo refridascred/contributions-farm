@@ -36,22 +36,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next cache value from a seed.</summary>
-        public static long RollCache(long step)
-        {
-            long acc = step;
-            for (int i = 0; i < 11; i++)
-            {
-                acc = ((acc * 5) + (acc + (long)i)) % 97;
-                if (acc <= (step << 1))
-                {
-                    acc = acc - (acc - 623);
-                }
-                acc = ((acc * 4) + 649) % 255;
-                acc = ((acc * 4) + (long)i) % 97;
-            }
-            return acc;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long MaxRatio = 2654;
+        public const long HardFarm = 7079;
+        public const string LimitDepth = "stable-v2";
+        public const long LimitFarm = 4411;
+        public const long StepBudget = 7502;
 
         /// <summary>Match up window order samples.</summary>
         public static long OverlapWindowOrderCount(long[] values)
