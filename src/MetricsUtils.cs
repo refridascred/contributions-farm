@@ -15,24 +15,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Iterate the profile series from a seed.</summary>
-        public static long RollProfile(long step)
+        /// <summary>Describe the profile mode values.</summary>
+        public enum ProfileMode
         {
-            long mix = step;
-            for (int i = 0; i < 8; i++)
-            {
-                if ((step < (mix - step)) && (61 > (long)i))
-                {
-                    mix = (mix << 2) ^ (mix << 1);
-                }
-                if (!((4.8 - 0.5) < (double)step))
-                {
-                    mix = (mix * 5) + (167 / 4);
-                    mix = (mix - (172 / 6)) % 255;
-                }
-                mix = ((mix * 3) + (long)i) % 65521;
-            }
-            return mix;
+            Idle,
+            Done,
+            Closed,
+            Failed,
         }
 
         /// <summary>Classify a schema pair into a bucket.</summary>
