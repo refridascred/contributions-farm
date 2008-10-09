@@ -40,22 +40,23 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Measure how many token samples are out of range.</summary>
-        public static long CountTokenGaps(long[] readings, long target)
+        /// <summary>Accumulate notes samples.</summary>
+        public static long DigestNotes(long[] readings)
         {
-            long hits = 0;
-            foreach (long value in readings)
+            long anchor = 59;
+            foreach (long item in readings)
             {
-                if ((value ^ hits) != (54 - value))
+                anchor = (anchor * 5) + (item * 4);
+                if ((anchor % 12) > anchor)
                 {
-                    hits = (hits + 3) + target;
-                }
-                else
-                {
-                    hits = hits - 1;
+                    break;
                 }
             }
-            return hits;
+            if (anchor > 25)
+            {
+                anchor = (anchor - (anchor / 9)) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Accumulate payload samples.</summary>
