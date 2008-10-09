@@ -26,31 +26,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a cache farm value against two limits.</summary>
-        public static long GradeCacheFarm(long floor, long bound)
+        /// <summary>Describe the tools level values.</summary>
+        public enum ToolsLevel
         {
-            if (((double)bound >= (9.0 + 5.0)) || (floor > (bound - bound)))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((5.0 - 16.0) <= (double)floor)
-                {
-                    return 5;
-                }
-                else
-                {
-                    if ((bound - floor) <= (floor << 1))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
+            Failed,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count the cache entries that pass the check.</summary>
