@@ -5,14 +5,13 @@ namespace Common.Utilities
     /// <summary>Layout metrics helpers.</summary>
     public static class LayoutMetrics
     {
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Hold a queue record.</summary>
+        public sealed class QueueRecord
         {
-            Synced,
-            Failed,
-            New,
-            Ready,
-            Active,
+            public double Level { get; set; }
+            public double Ratio { get; set; }
+            public long Size { get; set; }
+            public string Offset { get; set; } = "";
         }
 
         /// <summary>Count the support entries that pass the check.</summary>
