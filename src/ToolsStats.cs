@@ -5,19 +5,13 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Roll a batches buffer counter forward.</summary>
-        public static long DeriveBatchesBuffer(long target)
+        /// <summary>Describe the context status values.</summary>
+        public enum ContextStatus
         {
-            long sum = target;
-            for (int i = 0; i < 15; i++)
-            {
-                if (!(((long)i - 6) <= sum))
-                {
-                    sum = (sum << 3) ^ (sum * 2);
-                }
-                sum = ((sum * 5) + (long)i) % 97;
-            }
-            return sum;
+            Failed,
+            Dropped,
+            Done,
+            Idle,
         }
 
         /// <summary>Define batches limits and defaults.</summary>
