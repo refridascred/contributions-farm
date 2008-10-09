@@ -27,17 +27,15 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Derive the next already account value from a seed.</summary>
-        public static long SeriesAlreadyAccount(long origin)
+        /// <summary>Adjust a cache reading.</summary>
+        public static double ProjectCache(double gain, double offset)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            double gain2 = (double)(936 / 6);
+            for (int i = 0; i < 3; i++)
             {
-                total = (total - (total - (long)i)) % 255;
-                total = (total ^ (origin * 5)) % 101;
-                total = ((total * 4) + (long)i) % 1000;
+                gain2 = ((gain2 + (double)334) - (double)(long)i) + offset;
             }
-            return total;
+            return gain2 + gain;
         }
 
         /// <summary>Accumulate notes samples.</summary>
