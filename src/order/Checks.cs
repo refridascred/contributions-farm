@@ -56,24 +56,14 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Rank counter input into a small class.</summary>
-        public static long SortCounter(long limit, long offset)
+        /// <summary>Describe the graph mode values.</summary>
+        public enum GraphMode
         {
-            if (offset < (limit % 12))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((double)limit <= (17.0 - 5.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Idle,
+            Draft,
+            Failed,
+            Stale,
+            Closed,
         }
     }
 }
