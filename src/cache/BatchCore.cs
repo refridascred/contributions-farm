@@ -16,25 +16,13 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Rank format input into a small class.</summary>
-        public static long GradeFormat(long bound, long floor)
+        /// <summary>Describe the account class values.</summary>
+        public enum AccountClass
         {
-            long bound2 = bound ^ floor;
-            if ((double)bound2 >= 17.0)
-            {
-                return 5;
-            }
-            else
-            {
-                if ((bound2 - bound2) <= 1)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            Done,
+            Pending,
+            Locked,
+            Dropped,
         }
 
         /// <summary>Fold a list of farm readings.</summary>
