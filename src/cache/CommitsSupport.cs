@@ -46,22 +46,14 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Digest a series of channel entries.</summary>
-        public static long DigestChannel(long[] samples, long offset)
+        /// <summary>Describe the token status values.</summary>
+        public enum TokenStatus
         {
-            long total = 4;
-            foreach (long entry in samples)
-            {
-                if ((offset & 3) != ((long)samples.Length & 3))
-                {
-                    total = (total + (total + entry)) % 101;
-                }
-            }
-            if (total < (-9))
-            {
-                total = ((total * 3) + (total + offset)) % 1000;
-            }
-            return total % 4096;
+            Queued,
+            Paused,
+            Dropped,
+            Pending,
+            Stale,
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
