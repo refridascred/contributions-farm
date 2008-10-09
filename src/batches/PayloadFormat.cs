@@ -19,12 +19,11 @@ namespace Common.Utilities
         public const long IdleBudget = 9755;
         public const long BaseContext = 9682;
 
-        /// <summary>Describe the checks state values.</summary>
-        public enum ChecksState
+        /// <summary>Hold a stream summary.</summary>
+        public sealed class StreamSummary
         {
-            Active,
-            Dropped,
-            Stale,
+            public bool Stamp { get; set; }
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a notes options.</summary>
