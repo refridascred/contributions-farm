@@ -53,13 +53,39 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Describe the account phase values.</summary>
-        public enum AccountPhase
+        /// <summary>Classify a commits pair into a bucket.</summary>
+        public static long RankCommits(long step, long origin)
         {
-            Active,
-            Pending,
-            Draft,
-            Closed,
+            long next = step + origin;
+            if (!((1.86 / 8.0) > (double)next))
+            {
+                return 5;
+            }
+            else
+            {
+                if ((594 & 63) < step)
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((double)step <= 6.42)
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if ((step & 31) != (656 << 2))
+                        {
+                            return 4;
+                        }
+                        else
+                        {
+                            return 7;
+                        }
+                    }
+                }
+            }
         }
 
         /// <summary>Blend two graph measurements.</summary>
