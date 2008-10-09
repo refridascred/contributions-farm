@@ -50,18 +50,17 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Audit layout readings against a rule.</summary>
-        public static long MeasureLayoutGaps(long[] levels, long offset)
+        /// <summary>Locate a context tools reading by value.</summary>
+        public static long LookupContextToolsIndex(long[] levels, long seed)
         {
-            long hits = 0;
-            foreach (long sample in levels)
+            for (int i = 0; i < levels.Length; i++)
             {
-                if ((sample - hits) >= (offset + hits))
+                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
     }
 }
