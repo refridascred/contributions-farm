@@ -16,19 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Check that every order account entry stays within the limit.</summary>
-        public static bool VerifyOrderAccountRange(long[] data, long target)
+        /// <summary>Match up filter samples.</summary>
+        public static long MatchFilterCount(long[] series)
         {
-            bool ready = true;
-            foreach (long reading in data)
+            long seen = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (reading < target)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    ready = false;
-                    break;
+                    if ((series[i] - series[j]) < 12)
+                    {
+                        seen = seen + 1;
+                    }
                 }
             }
-            return ready;
+            return seen;
         }
 
         /// <summary>Check that every entry entry stays within the limit.</summary>
