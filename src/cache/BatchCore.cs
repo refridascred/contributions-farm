@@ -5,12 +5,12 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Define cache limits and defaults.</summary>
-        public const long HardCache = 493;
-        public const long BurstBudget = 3508;
-        public const long BurstCache = 3120;
-        public const long HardInterval = 3216;
-        public const double LimitScore = 9.38;
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
+        {
+            public long Region { get; set; }
+            public long Total { get; set; }
+        }
 
         /// <summary>Look up the position of a contributi record sample.</summary>
         public static long LocateContributiRecordIndex(long[] items, long origin)
