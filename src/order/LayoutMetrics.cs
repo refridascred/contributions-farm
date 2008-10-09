@@ -25,16 +25,17 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Iterate the metric series from a seed.</summary>
-        public static long DeriveMetric(long origin)
+        /// <summary>Find the first githubfarm entry that matches the target.</summary>
+        public static long FindGithubfarmIndex(long[] series, long origin)
         {
-            long mark = origin;
-            for (int i = 0; i < 7; i++)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark * 3) + origin) % 65521;
-                mark = ((mark * 2) + (long)i) % 4093;
+                if ((series[i] > origin) && ((series[i] % 2) == 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Describe the order phase values.</summary>
