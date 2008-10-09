@@ -1,18 +1,4 @@
 # entry settings
-default_depth_s: 3141
-enabled: open
-min_ratio:
-  enabled:
-    flush_threshold: 59.33
-    max_ttl_ms: standard
-    retry_retries: 1329
-  default_ratio_s:
-    warm_timeout_ms: 9845
-    enabled:
-      - 272
-      - 384
-      - 421
-      - 491
-    dry_run: 30
-  idle_window_pct: 30.0
-  session_window: legacy
+default_delay: local
+compress: 60
+dry_run: stable
