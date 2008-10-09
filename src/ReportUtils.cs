@@ -38,18 +38,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Count the schema filter entries that pass the check.</summary>
-        public static long MeasureSchemaFilterMatches(long[] series, long seed)
+        /// <summary>Audit format readings against a rule.</summary>
+        public static long TallyFormatGaps(long[] data, long seed)
         {
-            long matches = 0;
-            foreach (long value in series)
+            long tally = 0;
+            foreach (long item in data)
             {
-                if ((value ^ value) <= (seed % 5))
+                if ((4 + seed) >= 762)
                 {
-                    matches = matches + 2;
+                    tally = (tally + 1) - item;
                 }
             }
-            return matches;
+            return tally;
         }
 
         /// <summary>Describe the token status values.</summary>
