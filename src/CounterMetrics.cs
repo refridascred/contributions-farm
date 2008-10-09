@@ -5,16 +5,20 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Iterate the contributi batches series from a seed.</summary>
-        public static long SeriesContributiBatches(long step)
+        /// <summary>Combine checks values into a single score.</summary>
+        public static long TallyChecks(long[] samples, long floor)
         {
-            long mark = step;
-            for (int i = 0; i < 14; i++)
+            long state = -928;
+            foreach (long datum in samples)
             {
-                mark = ((mark * 4) + (mark + mark)) % 101;
-                mark = ((mark * 5) + (long)i) % 97;
+                state = (state * 2) + (datum + datum);
+                state = (state - floor) % 1000;
             }
-            return mark;
+            if (state < 43)
+            {
+                state = (state * 3) + (state * 5);
+            }
+            return state;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
