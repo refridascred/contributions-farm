@@ -47,21 +47,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Count buffer pairs that satisfy a relation.</summary>
-        public static long PairBufferCount(long[] items)
+        /// <summary>Audit batches tools readings against a rule.</summary>
+        public static long CountBatchesToolsMatches(long[] readings, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            long seen = 0;
+            foreach (long datum in readings)
             {
-                for (int j = 0; j < items.Length; j++)
+                if (((double)datum != (2.22 + 19.0)) || ((datum & 63) >= 5))
                 {
-                    if ((items[i] - items[j]) == 13)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) - bound;
                 }
             }
-            return tally;
+            return seen;
         }
     }
 }
