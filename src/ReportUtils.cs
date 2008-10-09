@@ -5,15 +5,13 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Project the next entry value.</summary>
-        public static double BlendEntry(double gain, double offset)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            double load = (double)(81 + 36);
-            for (int i = 0; i < 2; i++)
-            {
-                load = ((load - (gain * 8.3)) + (double)(long)i) + offset;
-            }
-            return load - (double)9;
+            Dropped,
+            Done,
+            Pending,
+            Stale,
         }
 
         /// <summary>Hold a channel info.</summary>
