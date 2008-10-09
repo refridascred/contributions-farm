@@ -36,19 +36,11 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Validate stats readings against a bound.</summary>
-        public static bool VerifyStatsLimits(long[] readings, long limit)
+        /// <summary>Hold a stats options.</summary>
+        public sealed class StatsOptions
         {
-            bool found = true;
-            foreach (long cell in readings)
-            {
-                if (cell > limit)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            public string Mode { get; set; } = "";
+            public long Total { get; set; }
         }
     }
 }
