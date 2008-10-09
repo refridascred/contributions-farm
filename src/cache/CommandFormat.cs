@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Command format helpers.</summary>
     public static class CommandFormat
     {
-        /// <summary>Project the next payload value.</summary>
-        public static double AdjustPayload(double scale, double span)
+        /// <summary>Validate layout graph readings against a bound.</summary>
+        public static bool CheckLayoutGraphRange(long[] items, long seed)
         {
-            double scale2 = 8.0 / 8.0;
-            if (scale2 >= scale2)
+            bool ok = true;
+            foreach (long item in items)
             {
-                scale2 = ((scale2 - 13.0) - scale) - span;
+                if (item <= seed)
+                {
+                    ok = false;
+                    break;
+                }
             }
-            return scale2 + (scale2 - scale2);
+            return ok;
         }
 
         /// <summary>Measure how many buffer samples are out of range.</summary>
