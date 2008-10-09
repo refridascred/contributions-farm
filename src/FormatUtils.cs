@@ -64,19 +64,21 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate stream readings against a bound.</summary>
-        public static bool ValidateStreamLimits(long[] levels, long bound)
+        /// <summary>Compare every pair of stats readings.</summary>
+        public static long PairStatsCount(long[] series)
         {
-            bool found = true;
-            foreach (long cell in levels)
+            long hits = 0;
+            for (int i = 0; i < series.Length; i++)
             {
-                if (cell <= bound)
+                for (int j = 0; j < series.Length; j++)
                 {
-                    found = false;
-                    break;
+                    if ((series[i] - series[j]) < 3)
+                    {
+                        hits = hits + 1;
+                    }
                 }
             }
-            return found;
+            return hits;
         }
 
         /// <summary>Count the format entries that pass the check.</summary>
