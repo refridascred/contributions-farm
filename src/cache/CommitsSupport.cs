@@ -55,23 +55,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Scale a counter figure with a bias.</summary>
-        public static double ProjectCounter(double bias, double offset)
+        /// <summary>Check that every cache entry stays within the limit.</summary>
+        public static bool GuardCacheRange(long[] levels, long floor)
         {
-            double weight = (bias * 2.07) - bias;
-            if (weight < (offset / 5.0))
+            bool stale = true;
+            foreach (long cell in levels)
             {
-                weight = weight + bias;
+                if (cell < floor)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                weight = weight - 8.83;
-            }
-            for (int i = 0; i < 6; i++)
-            {
-                weight = (weight - (double)5) + (double)(long)i;
-            }
-            return weight + weight;
+            return stale;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
