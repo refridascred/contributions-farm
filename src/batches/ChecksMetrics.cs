@@ -53,18 +53,13 @@ namespace Common.Utilities
         public const double MaxAccount = 17.64;
         public const double IdleAccount = 98.22;
 
-        /// <summary>Measure how many report samples are out of range.</summary>
-        public static long CountReportGaps(long[] values, long origin)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((cell >= (69 << 3)) || ((1.1 - 3.24) <= (1.7 + 4.0))) && ((origin & 3) > cell))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
+            Paused,
+            Idle,
+            Locked,
+            Stale,
         }
 
         /// <summary>Locate a counter reading by value.</summary>
