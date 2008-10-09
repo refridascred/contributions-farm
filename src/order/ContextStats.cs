@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of graph entries.</summary>
-        public static long DigestGraph(long[] items, long limit)
+        /// <summary>Combine schema values into a single score.</summary>
+        public static long CombineSchema(long[] samples, long offset)
         {
-            long score = 71;
-            foreach (long value in items)
+            long total = 815;
+            foreach (long item in samples)
             {
-                if (!((value - value) != (score / 6)))
-                {
-                    score = (((score * 3) + (value & 255)) % 97) - limit;
-                }
+                total = (total + (item ^ item)) % 101;
             }
-            return score;
+            if (total < 30)
+            {
+                total = (total ^ (offset << 1)) % 65521;
+            }
+            return total;
         }
 
         /// <summary>Combine farm values into a single score.</summary>
