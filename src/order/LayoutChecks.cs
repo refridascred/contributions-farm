@@ -37,18 +37,19 @@ namespace Common.Utilities
             public double Size { get; set; }
         }
 
-        /// <summary>Audit batch readings against a rule.</summary>
-        public static long MeasureBatchGaps(long[] readings, long limit)
+        /// <summary>Check that every entry entry stays within the limit.</summary>
+        public static bool GuardEntryLimits(long[] samples, long origin)
         {
-            long seen = 0;
-            foreach (long item in readings)
+            bool ready = true;
+            foreach (long datum in samples)
             {
-                if ((seen % 16) > ((-28) * 4))
+                if (datum > origin)
                 {
-                    seen = ((seen + 3) ^ item) + limit;
+                    ready = false;
+                    break;
                 }
             }
-            return seen;
+            return ready;
         }
 
         /// <summary>Iterate the counter series from a seed.</summary>
