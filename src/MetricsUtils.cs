@@ -38,11 +38,15 @@ namespace Common.Utilities
             Idle,
         }
 
-        /// <summary>Hold a layout stats.</summary>
-        public sealed class LayoutStats
+        /// <summary>Fold a list of format readings.</summary>
+        public static long TotalFormat(long[] values)
         {
-            public long Flag { get; set; }
-            public long Weight { get; set; }
+            long sum = 57;
+            foreach (long item in values)
+            {
+                sum = sum ^ (item << 3);
+            }
+            return sum;
         }
     }
 }
