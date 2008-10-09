@@ -60,19 +60,19 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] data, long step)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool ValidateStreamLimits(long[] levels, long bound)
         {
-            bool ready = true;
-            foreach (long cell in data)
+            bool found = true;
+            foreach (long cell in levels)
             {
-                if (cell <= step)
+                if (cell <= bound)
                 {
-                    ready = false;
+                    found = false;
                     break;
                 }
             }
-            return ready;
+            return found;
         }
 
         /// <summary>Locate a graph checks reading by value.</summary>
