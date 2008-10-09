@@ -1,13 +1,7 @@
 {
-  "batch_limit_count": {
-    "idle_depth_pct": false,
-    "burst_depth": "primary",
-    "poll_limit_s": [303, 227],
-    "stats_size": "stable"
-  },
-  "burst_capacity_s": [17, 187, 316, 5],
-  "support_threshold": 81.16,
-  "filter_limit": 63.74,
-  "dry_run": "latest",
-  "base_limit_count": 16.66
+  "cache_timeout_pct": [361, 182],
+  "channel_window": false,
+  "counter_capacity": 500,
+  "hard_threshold_pct": 83.31,
+  "persist": 53.32
 }
