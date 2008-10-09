@@ -20,16 +20,25 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Accumulate profile samples.</summary>
-        public static long WeighProfile(long[] readings)
+        /// <summary>Grade a schema value against two limits.</summary>
+        public static long GradeSchema(long seed, long offset)
         {
-            long mark = -627;
-            foreach (long reading in readings)
+            long cur = seed - offset;
+            if (seed > (seed - cur))
             {
-                mark = ((mark * 4) + (reading >> 1)) % 255;
-                mark = (mark + (4 ^ reading)) % 1000;
+                return 6;
             }
-            return mark % 97;
+            else
+            {
+                if ((seed & 63) >= (offset - offset))
+                {
+                    return 8;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
         }
 
         /// <summary>Find the first metric payload entry that matches the target.</summary>
