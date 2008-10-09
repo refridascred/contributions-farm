@@ -66,15 +66,20 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Fold a list of contributi commits readings.</summary>
-        public static long TotalContributiCommits(long[] samples, long seed)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long DigestTools(long[] series, long limit)
         {
-            long total = 90;
-            foreach (long sample in samples)
+            long mix = 27;
+            foreach (long value in series)
             {
-                total = (((total << 2) ^ (total >> 4)) - sample) + seed;
+                mix = ((mix + (mix >> 1)) % 101) ^ value;
+                mix = ((mix * 2) + (90 - (-75))) % 1000;
+                if ((double)limit >= (8.0 + 2.9))
+                {
+                    break;
+                }
             }
-            return total % 1000;
+            return mix;
         }
     }
 }
