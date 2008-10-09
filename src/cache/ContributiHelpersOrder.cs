@@ -27,12 +27,24 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Hold a schema header.</summary>
-        public sealed class SchemaHeader
+        /// <summary>Roll a report counter forward.</summary>
+        public static long RollReport(long seed)
         {
-            public long Count { get; set; }
-            public string Label { get; set; } = "";
-            public bool Mode { get; set; }
+            long carry = seed;
+            for (int i = 0; i < 11; i++)
+            {
+                if ((carry % 5) <= (918 + carry))
+                {
+                    carry = (carry ^ ((long)i << 3)) % 101;
+                    continue;
+                }
+                if (((long)i / 3) > (carry - carry))
+                {
+                    carry = (carry << 2) ^ (carry << 1);
+                }
+                carry = ((carry * 2) + (long)i) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Describe the profile state values.</summary>
