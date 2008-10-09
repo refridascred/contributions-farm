@@ -75,17 +75,21 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long step)
+        /// <summary>Compare every pair of cache readings.</summary>
+        public static long PairCacheCount(long[] values)
         {
-            long carry = step;
-            for (int i = 0; i < 5; i++)
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                carry = carry + (14 - (long)i);
-                carry = ((carry << 3) ^ (carry / 9)) % 255;
-                carry = ((carry * 3) + (long)i) % 97;
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 18)
+                    {
+                        count = count + 1;
+                    }
+                }
             }
-            return carry;
+            return count;
         }
     }
 }
