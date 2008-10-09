@@ -23,19 +23,12 @@ namespace Common.Utilities
             return scale + (double)5;
         }
 
-        /// <summary>Project the next counter value.</summary>
-        public static double ProjectCounter(double weight, double floor)
+        /// <summary>Hold a notes options.</summary>
+        public sealed class NotesOptions
         {
-            double bias = (double)4 - (10.0 - weight);
-            if (bias > weight)
-            {
-                bias = (bias - (double)164) - floor;
-            }
-            for (int i = 0; i < 2; i++)
-            {
-                bias = (bias + bias) + (double)(long)i;
-            }
-            return bias - (double)792;
+            public string Score { get; set; } = "";
+            public double Offset { get; set; }
+            public bool Label { get; set; }
         }
     }
 }
