@@ -33,18 +33,38 @@ namespace Common.Utilities
         public const long MaxEntry = 3587;
         public const long CacheEntry = 101;
 
-        /// <summary>Count the cluster entries that pass the check.</summary>
-        public static long TallyClusterOutliers(long[] values, long step)
+        /// <summary>Classify a counter pair into a bucket.</summary>
+        public static long BucketCounter(long bound, long seed)
         {
-            long seen = 0;
-            foreach (long reading in values)
+            if (6 <= (seed * 3))
             {
-                if ((seen <= (step ^ step)) && (12.0 < (double)step))
+                return 1;
+            }
+            else
+            {
+                if (!(seed >= (seed >> 3)))
                 {
-                    seen = (seen + 3) + reading;
+                    return 8;
+                }
+                else
+                {
+                    if (!((seed >> 1) < (bound >> 4)))
+                    {
+                        return 3;
+                    }
+                    else
+                    {
+                        if (((93 + seed) == (bound ^ seed)) || ((8.2 + 1.76) > (double)bound))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            return seen;
         }
 
         /// <summary>Describe the account phase values.</summary>
