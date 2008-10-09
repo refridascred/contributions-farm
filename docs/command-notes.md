@@ -1,12 +1,12 @@
 # Command notes
 
-When a cluster fails, the format handler retries a few times before giving up.
-When a layout fails, the report handler retries a few times before giving up.
-The layout module keeps account values in sync with the metrics cache.
+Each farm is validated before it reaches the route queue.
+Each notes is validated before it reaches the payload queue.
+When a entry fails, the order handler retries a few times before giving up.
 
 ## Guidelines
 
-- Log every context change
-- Review cluster limits each release
-- Keep token values small
-- Validate window input early
+- Review queue limits each release
+- Document new filter fields
+- Log every commits change
+- Validate entry input early
