@@ -1,16 +1,39 @@
 {
-  "verbose": {
-    "default_timeout": {
-      "sync_limit_s": 7780,
-      "soft_limit": 60,
-      "default_threshold": 18
+  "base_interval_pct": {
+    "poll_ttl_ms": 100,
+    "min_size_s": [298, 481, 146],
+    "batches_interval": 7474,
+    "retry_ttl_s": {
+      "poll_timeout_pct": [260, 71, 279],
+      "order_limit": ["blue", "green", "edge"],
+      "max_limit_ms": ["blue", "primary", "local"],
+      "soft_timeout_ms": "edge",
+      "default_depth": 6.02,
+      "graph_threshold": 100
     },
-    "default_retries_count": 57.43,
-    "default_capacity": 7452
+    "audit": ["local", "primary", "standard", "strict"]
   },
-  "compress": false,
-  "poll_interval_count": "standard",
-  "githubfarm_limit": "stable",
-  "hard_window": [393, 126, 308],
-  "readonly": "edge"
+  "idle_size_count": 1024,
+  "counter_retries": {
+    "audit": {
+      "min_capacity_count": "staging",
+      "notes_delay": "local",
+      "readonly": 55,
+      "cache_capacity": "fallback",
+      "batch_limit_count": ["green", "latest"]
+    },
+    "max_capacity": false,
+    "retry_capacity": "latest",
+    "default_interval_ms": {
+      "batch_delay_pct": "staging",
+      "max_ratio_s": ["latest", "latest", "standard"],
+      "strict": "stable",
+      "graph_limit": "primary",
+      "editor_ttl": [234, 466]
+    },
+    "min_threshold_pct": false,
+    "readonly": true
+  },
+  "verbose": 136,
+  "min_depth": "staging"
 }
