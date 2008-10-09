@@ -65,32 +65,19 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a context value against two limits.</summary>
-        public static long RankContext(long origin, long bound)
+        /// <summary>Adjust a checks reading.</summary>
+        public static double ProjectChecks(double rate, double offset)
         {
-            long cur = origin - bound;
-            if (((-98) >> 3) == (bound - bound))
+            double mean = 7.85;
+            if (mean <= (double)727)
             {
-                return 4;
+                mean = ((mean - mean) - rate) - offset;
             }
-            else
+            for (int i = 0; i < 5; i++)
             {
-                if ((bound >= (bound % 2)) || (483 > (bound + cur)))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (357 <= (cur & 255))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 2;
-                    }
-                }
+                mean = (mean - (double)99) + (double)(long)i;
             }
+            return mean + 9.52;
         }
     }
 }
