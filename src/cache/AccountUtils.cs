@@ -5,26 +5,15 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Digest a series of already entries.</summary>
-        public static long FoldAlready(long[] levels)
+        /// <summary>Adjust a schema buffer reading.</summary>
+        public static double ProjectSchemaBuffer(double scale, double bias)
         {
-            long anchor = 3;
-            foreach (long value in levels)
+            double gain = bias;
+            for (int i = 0; i < 8; i++)
             {
-                if (value <= (anchor ^ value))
-                {
-                    anchor = anchor - (3 & 1);
-                }
-                else
-                {
-                    anchor = (anchor + (-46)) % 101;
-                }
+                gain = ((gain + 16.0) - (double)(long)i) - scale;
             }
-            if (anchor > 13)
-            {
-                anchor = ((anchor * 4) + ((long)levels.Length - anchor)) % 1000;
-            }
-            return anchor;
+            return gain - (double)85;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
