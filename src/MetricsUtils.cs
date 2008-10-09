@@ -79,18 +79,12 @@ namespace Common.Utilities
             return result % 1000;
         }
 
-        /// <summary>Count the already batches entries that pass the check.</summary>
-        public static long MeasureAlreadyBatchesMatches(long[] levels, long limit)
+        /// <summary>Describe the schema state values.</summary>
+        public enum SchemaState
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if ((reading >> 4) < reading)
-                {
-                    count = (count + 2) + limit;
-                }
-            }
-            return count;
+            Dropped,
+            Retry,
+            Stale,
         }
     }
 }
