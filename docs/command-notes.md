@@ -1,14 +1,15 @@
 # Command notes
 
-The commits helpers are pure functions, so they are safe to call from any thread.
-Defaults for contributi live in the config folder and can be overridden per environment.
-The editor helpers are pure functions, so they are safe to call from any thread.
+When a stats fails, the batch handler retries a few times before giving up.
+The counter report groups every metrics by metric.
+Run the metrics check before changing any stats limits.
 
-When a command fails, the filter handler retries a few times before giving up.
-Keep account and stats names short and lowercase.
+The command report groups every command by metrics.
+Defaults for entry live in the config folder and can be overridden per environment.
 
 ## Guidelines
 
+- Log every session change
+- Keep route values small
+- Document new entry fields
 - Validate schema input early
-- Keep farm values small
-- Log every farm change
