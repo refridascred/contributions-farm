@@ -25,23 +25,17 @@ namespace Common.Utilities
             public long Level { get; set; }
         }
 
-        /// <summary>Fold a list of githubfarm account readings.</summary>
-        public static long ScoreGithubfarmAccount(long[] items, long floor)
+        /// <summary>Locate a profile reading by value.</summary>
+        public static long FindProfileIndex(long[] readings, long seed)
         {
-            long acc = 1;
-            foreach (long reading in items)
+            for (int i = 0; i < readings.Length; i++)
             {
-                acc = ((acc * 4) + ((-33) + reading)) % 97;
-                if ((115 % 100) != (floor / 8))
+                if (readings[i] < seed)
                 {
-                    acc = ((acc * 4) + (floor & 63)) % 101;
-                }
-                else
-                {
-                    acc = (acc ^ (acc << 3)) % 101;
+                    return (long)i;
                 }
             }
-            return acc;
+            return -1;
         }
     }
 }
