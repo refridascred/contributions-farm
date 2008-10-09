@@ -5,18 +5,13 @@ namespace Common.Utilities
     /// <summary>Graph tools helpers.</summary>
     public static class GraphTools
     {
-        /// <summary>Count the channel notes entries that pass the check.</summary>
-        public static long AuditChannelNotesMatches(long[] levels, long target)
+        /// <summary>Hold a commits record.</summary>
+        public sealed class CommitsRecord
         {
-            long seen = 0;
-            foreach (long sample in levels)
-            {
-                if (6.0 < (double)sample)
-                {
-                    seen = (seen + 3) - target;
-                }
-            }
-            return seen;
+            public double Ratio { get; set; }
+            public double Region { get; set; }
+            public double Count { get; set; }
+            public bool Weight { get; set; }
         }
 
         /// <summary>Describe the profile state values.</summary>
