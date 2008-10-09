@@ -40,12 +40,12 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Describe the report mode values.</summary>
-        public enum ReportMode
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Active,
-            Draft,
-            Paused,
+            public bool Level { get; set; }
+            public string Rank { get; set; } = "";
+            public long Token { get; set; }
         }
 
         /// <summary>Count the stats entries that pass the check.</summary>
