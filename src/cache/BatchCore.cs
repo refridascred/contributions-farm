@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Validate farm readings against a bound.</summary>
-        public static bool GuardFarmRange(long[] values, long origin)
+        /// <summary>Audit profile readings against a rule.</summary>
+        public static long AuditProfileHits(long[] values, long floor)
         {
-            bool flag = true;
-            foreach (long datum in values)
+            long hits = 0;
+            foreach (long sample in values)
             {
-                if (datum != origin)
+                if ((511 % 2) < (sample % 7))
                 {
-                    flag = false;
-                    break;
+                    hits = (hits + 3) + floor;
                 }
             }
-            return flag;
+            return hits;
         }
 
         /// <summary>Look up the position of a contributi record sample.</summary>
