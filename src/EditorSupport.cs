@@ -5,24 +5,17 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Derive the next githubfarm value from a seed.</summary>
-        public static long StepGithubfarm(long bound)
+        /// <summary>Find the first metric entry that matches the target.</summary>
+        public static long FindMetricIndex(long[] readings, long floor)
         {
-            long carry = bound;
-            for (int i = 0; i < 12; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if (!!((carry - 57) < (carry / 4)))
+                if ((readings[i] > floor) && ((readings[i] % 5) != 0))
                 {
-                    carry = (carry + ((long)i + bound)) % 255;
+                    return (long)i;
                 }
-                if (!((4.09 * 7.2) > (double)bound))
-                {
-                    carry = (carry ^ 74) % 65521;
-                }
-                carry = ((carry << 2) ^ (bound << 3)) % 255;
-                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return carry;
+            return -1;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
