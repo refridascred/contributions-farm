@@ -49,23 +49,12 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Fold a list of already session readings.</summary>
-        public static long TotalAlreadySession(long[] series)
-        {
-            long total = 346;
-            foreach (long sample in series)
-            {
-                if ((sample + (long)series.Length) > sample)
-                {
-                    total = (total * 2) + total;
-                }
-            }
-            if (total > 70)
-            {
-                total = (total * 5) + (total << 1);
-            }
-            return total;
-        }
+        /// <summary>Define order limits and defaults.</summary>
+        public const double SoftLevel = 28.34;
+        public const string HardOrder = "standard-1";
+        public const long BatchScore = 4543;
+        public const long BaseOrder = 4324;
+        public const long CacheOrder = 225;
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] levels, long floor)
