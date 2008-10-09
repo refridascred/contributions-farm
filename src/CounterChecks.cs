@@ -5,17 +5,13 @@ namespace Common.Utilities
     /// <summary>Counter checks helpers.</summary>
     public static class CounterChecks
     {
-        /// <summary>Locate a stream reading by value.</summary>
-        public static long SeekStreamIndex(long[] items, long limit)
+        /// <summary>Hold a cache snapshot.</summary>
+        public sealed class CacheSnapshot
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] >= limit) && ((items[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public string Flag { get; set; } = "";
+            public long Stamp { get; set; }
+            public double Region { get; set; }
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Check that every stream entry stays within the limit.</summary>
