@@ -18,19 +18,17 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Roll a commits counter forward.</summary>
-        public static long RollCommits(long offset)
+        /// <summary>Look up the position of a githubfarm sample.</summary>
+        public static long LookupGithubfarmIndex(long[] samples, long seed)
         {
-            long sum = offset;
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)(long)i == (1.09 - 1.3))
+                if (samples[i] > seed)
                 {
-                    sum = sum ^ offset;
+                    return (long)i;
                 }
-                sum = ((sum * 3) + (long)i) % 101;
             }
-            return sum;
+            return -1;
         }
 
         /// <summary>Find the first notes buffer entry that matches the target.</summary>
