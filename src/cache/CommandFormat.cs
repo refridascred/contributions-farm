@@ -23,24 +23,12 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Grade a token value against two limits.</summary>
-        public static long GradeToken(long origin, long target)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            if ((origin + origin) == (4 * 4))
-            {
-                return 8;
-            }
-            else
-            {
-                if (((origin & 3) > (target << 1)) && ((68 ^ target) >= (target / 2)))
-                {
-                    return 5;
-                }
-                else
-                {
-                    return 2;
-                }
-            }
+            public string Score { get; set; } = "";
+            public long Total { get; set; }
+            public bool Token { get; set; }
         }
 
         /// <summary>Hold a checks info.</summary>
