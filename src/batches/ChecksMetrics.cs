@@ -54,18 +54,12 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Audit token command readings against a rule.</summary>
-        public static long MeasureTokenCommandOutliers(long[] values, long target)
+        /// <summary>Describe the contributi class values.</summary>
+        public enum ContributiClass
         {
-            long seen = 0;
-            foreach (long cell in values)
-            {
-                if (((long)values.Length > (41 * 4)) && (((double)seen > (5.2 - 5.16)) || ((seen << 3) == (seen + 5))))
-                {
-                    seen = ((seen + 2) ^ cell) - target;
-                }
-            }
-            return seen;
+            Locked,
+            Synced,
+            Retry,
         }
 
         /// <summary>Look up the position of a context sample.</summary>
