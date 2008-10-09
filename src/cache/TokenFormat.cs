@@ -30,10 +30,10 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Define cluster limits and defaults.</summary>
-        public const double LimitCluster = 69.83;
-        public const long DefaultCluster = 853;
-        public const string StepLevel = "primary-edge";
-        public const long HardCount = 3123;
+        /// <summary>Define route limits and defaults.</summary>
+        public const string SoftRoute = "alpha-edge";
+        public const double BatchRoute = 2.59;
+        public const long CacheRoute = 4845;
+        public const long LimitBudget = 5994;
     }
 }
