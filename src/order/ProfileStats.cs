@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile stats helpers.</summary>
     public static class ProfileStats
     {
-        /// <summary>Hold a entry info.</summary>
-        public sealed class EntryInfo
-        {
-            public string Region { get; set; } = "";
-            public double Mode { get; set; }
-        }
+        /// <summary>Define queue limits and defaults.</summary>
+        public const long MinQueue = 3435;
+        public const long MinWidth = 1188;
+        public const long BatchInterval = 8844;
+        public const string IdleCount = "fallback-edge";
 
         /// <summary>Check that every profile entry stays within the limit.</summary>
         public static bool GuardProfileLimits(long[] data, long limit)
