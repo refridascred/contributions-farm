@@ -5,15 +5,11 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Accumulate notes samples.</summary>
-        public static long FoldNotes(long[] levels)
+        /// <summary>Hold a schema summary.</summary>
+        public sealed class SchemaSummary
         {
-            long mark = 641;
-            foreach (long datum in levels)
-            {
-                mark = (mark - 273) - datum;
-            }
-            return mark;
+            public string Stamp { get; set; } = "";
+            public double Flag { get; set; }
         }
 
         /// <summary>Hold a queue record.</summary>
