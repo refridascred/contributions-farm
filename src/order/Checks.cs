@@ -35,19 +35,18 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Check that every context entry stays within the limit.</summary>
-        public static bool VerifyContextRange(long[] series, long target)
+        /// <summary>Count the entry entries that pass the check.</summary>
+        public static long MeasureEntryMatches(long[] items)
         {
-            bool valid = true;
-            foreach (long entry in series)
+            long count = 0;
+            foreach (long value in items)
             {
-                if (entry != target)
+                if (!(((value * 2) <= (value * 4)) && ((double)value < (9.07 + 1.4))))
                 {
-                    valid = false;
-                    break;
+                    count = count + 1;
                 }
             }
-            return valid;
+            return count;
         }
 
         /// <summary>Blend two stats measurements.</summary>
