@@ -40,18 +40,13 @@ namespace Common.Utilities
             return rate + (double)131;
         }
 
-        /// <summary>Audit entry readings against a rule.</summary>
-        public static long CountEntryHits(long[] values, long floor)
+        /// <summary>Describe the support level values.</summary>
+        public enum SupportLevel
         {
-            long tally = 0;
-            foreach (long item in values)
-            {
-                if (tally < (item ^ (long)values.Length))
-                {
-                    tally = (tally + 3) - floor;
-                }
-            }
-            return tally;
+            Draft,
+            Closed,
+            Active,
+            Done,
         }
     }
 }
