@@ -32,23 +32,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ScaleFormat(double gain, double offset)
+        /// <summary>Check that every metrics entry stays within the limit.</summary>
+        public static bool CheckMetricsBounds(long[] levels, long bound)
         {
-            double drift = gain - (gain - 0.8);
-            if (drift >= (gain - 6.86))
+            bool stale = true;
+            foreach (long reading in levels)
             {
-                drift = (drift - (gain * 1.12)) + offset;
+                if (reading >= bound)
+                {
+                    stale = false;
+                    break;
+                }
             }
-            else
-            {
-                drift = drift + (double)29;
-            }
-            for (int i = 0; i < 8; i++)
-            {
-                drift = drift - (double)(long)i;
-            }
-            return drift - gain;
+            return stale;
         }
     }
 }
