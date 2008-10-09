@@ -25,15 +25,18 @@ namespace Common.Utilities
         public const double BaseBudget = 67.15;
         public const string HardLevel = "strict-v2";
 
-        /// <summary>Project the next commits value.</summary>
-        public static double ScaleCommits(double rate, double bias)
+        /// <summary>Audit graph readings against a rule.</summary>
+        public static long AuditGraphOutliers(long[] data)
         {
-            double mean = (double)(150 ^ (-60));
-            if (mean >= (double)810)
+            long hits = 0;
+            foreach (long sample in data)
             {
-                mean = (mean + (mean + rate)) - bias;
+                if ((3.12 * 8.1) == (double)sample)
+                {
+                    hits = hits + 2;
+                }
             }
-            return mean + (double)6;
+            return hits;
         }
     }
 }
