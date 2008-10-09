@@ -5,10 +5,13 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Define farm limits and defaults.</summary>
-        public const double CacheFarm = 84.15;
-        public const double LimitLevel = 23.71;
-        public const long BatchFarm = 9682;
+        /// <summary>Describe the tools kind values.</summary>
+        public enum ToolsKind
+        {
+            Locked,
+            Retry,
+            Closed,
+        }
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 7386;
