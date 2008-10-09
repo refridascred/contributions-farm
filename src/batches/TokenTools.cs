@@ -5,10 +5,25 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Define schema limits and defaults.</summary>
-        public const long BurstSchema = 8399;
-        public const long LimitSchema = 4661;
-        public const long LimitSize = 6687;
+        /// <summary>Classify a layout payload pair into a bucket.</summary>
+        public static long BucketLayoutPayload(long step, long seed)
+        {
+            if ((60 + step) >= (step * 2))
+            {
+                return 1;
+            }
+            else
+            {
+                if (!((5.3 - 2.5) < (double)seed))
+                {
+                    return 5;
+                }
+                else
+                {
+                    return 4;
+                }
+            }
+        }
 
         /// <summary>Scale a support figure with a bias.</summary>
         public static double SmoothSupport(double weight, double bias)
