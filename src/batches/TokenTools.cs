@@ -5,22 +5,12 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Count payload pairs that satisfy a relation.</summary>
-        public static long PairPayloadCount(long[] series)
-        {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
-            {
-                for (int j = 0; j < series.Length; j++)
-                {
-                    if ((series[i] + series[j]) < 18)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long CacheAlready = 7550;
+        public const long BaseAlready = 5524;
+        public const long MinBudget = 8716;
+        public const string MaxAlready = "primary-v2";
+        public const string StepAlready = "latest-edge";
 
         /// <summary>Audit metrics channel readings against a rule.</summary>
         public static long AuditMetricsChannelMatches(long[] levels)
