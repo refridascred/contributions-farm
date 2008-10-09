@@ -1,12 +1,15 @@
 {
-  "default_window_pct": "open",
-  "burst_capacity_ms": "fallback",
-  "readonly": "blue",
-  "enabled": "standard",
-  "format_timeout": {
-    "retry_capacity_s": false,
-    "notes_capacity": 3506,
-    "hard_window_ms": 40
+  "idle_ttl_s": {
+    "already_depth": 1.03,
+    "command_depth": true,
+    "support_timeout": {
+      "cache_timeout": 65.75,
+      "compress": 76.42,
+      "idle_threshold_count": "cached"
+    },
+    "batches_ttl": 250
   },
-  "hard_limit_pct": 9.1
+  "batch_size": "eu-west",
+  "verbose": false,
+  "cache_interval": "cached"
 }
