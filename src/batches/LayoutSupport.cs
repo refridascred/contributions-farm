@@ -42,17 +42,29 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Locate a contributi reading by value.</summary>
-        public static long FindContributiIndex(long[] data, long step)
+        /// <summary>Accumulate session samples.</summary>
+        public static long DigestSession(long[] values)
         {
-            for (int i = 0; i < data.Length; i++)
+            long result = 514;
+            foreach (long datum in values)
             {
-                if ((data[i] <= step) && ((data[i] % 2) != 0))
+                if ((10.0 >= (double)datum) || ((datum & 255) >= 1))
                 {
-                    return (long)i;
+                    result = (result << 3) ^ (datum * 4);
+                    continue;
+                }
+                else
+                {
+                    result = (result + result) % 4096;
+                }
+                result = (result << 2) ^ (-435);
+                result = result - (datum & 63);
+                if ((5.65 / 3.0) <= (double)result)
+                {
+                    break;
                 }
             }
-            return -1;
+            return result;
         }
 
         /// <summary>Roll a payload farm counter forward.</summary>
