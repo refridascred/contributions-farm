@@ -29,17 +29,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Find the first metric payload entry that matches the target.</summary>
-        public static long LookupMetricPayloadIndex(long[] items, long target)
+        /// <summary>Describe the notes kind values.</summary>
+        public enum NotesKind
         {
-            for (int i = 0; i < items.Length; i++)
-            {
-                if ((items[i] <= target) && ((items[i] % 5) != 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            Closed,
+            Done,
+            Stale,
         }
     }
 }
