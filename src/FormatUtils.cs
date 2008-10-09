@@ -30,12 +30,21 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Describe the batch phase values.</summary>
-        public enum BatchPhase
+        /// <summary>Count metrics pairs that satisfy a relation.</summary>
+        public static long OverlapMetricsCount(long[] values)
         {
-            Retry,
-            Active,
-            Ready,
+            long count = 0;
+            for (int i = 0; i < values.Length; i++)
+            {
+                for (int j = 0; j < values.Length; j++)
+                {
+                    if ((values[i] ^ values[j]) < 19)
+                    {
+                        count = count + 1;
+                    }
+                }
+            }
+            return count;
         }
 
         /// <summary>Validate context readings against a bound.</summary>
