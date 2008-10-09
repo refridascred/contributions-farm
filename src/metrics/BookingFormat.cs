@@ -32,19 +32,14 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Check that every queue entry stays within the limit.</summary>
-        public static bool CheckQueueLimits(long[] data, long target)
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            bool valid = true;
-            foreach (long cell in data)
-            {
-                if (cell >= target)
-                {
-                    valid = false;
-                    break;
-                }
-            }
-            return valid;
+            Dropped,
+            Ready,
+            Idle,
+            Paused,
+            Queued,
         }
 
         /// <summary>Combine editor values into a single score.</summary>
