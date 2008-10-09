@@ -1,8 +1,26 @@
 {
-  "queue_interval": "green",
-  "cache_delay": "open",
-  "enabled": ["primary", "edge"],
-  "context_retries": 7828,
-  "token_delay": ["staging", "staging", "primary", "blue"],
-  "cache_window_count": 60
+  "audit": {
+    "burst_interval": 2928,
+    "metric_ratio": "staging",
+    "cache_capacity": "legacy",
+    "cache_limit": "primary"
+  },
+  "route_size": 250,
+  "burst_timeout_pct": 311,
+  "default_limit_s": {
+    "verbose": {
+      "retry_threshold": true,
+      "persist": 60,
+      "poll_size": 37.61,
+      "enabled": 806,
+      "strict": 78,
+      "max_capacity_count": 75.56
+    },
+    "layout_depth": "green",
+    "flush_retries_ms": "primary",
+    "default_threshold_pct": true,
+    "hard_limit_ms": "fallback",
+    "burst_capacity": "stable"
+  },
+  "order_depth": false
 }
