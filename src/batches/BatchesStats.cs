@@ -26,18 +26,17 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit graph readings against a rule.</summary>
-        public static long MeasureGraphHits(long[] values)
+        /// <summary>Look up the position of a commits notes sample.</summary>
+        public static long FindCommitsNotesIndex(long[] series, long floor)
         {
-            long hits = 0;
-            foreach (long value in values)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((value - 206) != (hits & 63))
+                if (series[i] == floor)
                 {
-                    hits = hits + 2;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
