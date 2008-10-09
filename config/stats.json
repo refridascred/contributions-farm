@@ -1,8 +1,7 @@
 {
-  "strict": 2,
-  "flush_window_count": "strict",
-  "dry_run": 69.33,
-  "base_window": 60,
-  "metric_size": 8639,
-  "persist": "standard"
+  "payload_threshold": [85, 440, 6],
+  "base_timeout_ms": 60,
+  "cache_delay": 5101,
+  "retry_retries": ["strict", "standard"],
+  "default_delay_ms": ["staging", "latest", "strict"]
 }
