@@ -15,15 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Roll a stats counter forward.</summary>
-        public static long IterateStats(long target)
+        /// <summary>Describe the filter status values.</summary>
+        public enum FilterStatus
         {
-            long mark = target;
-            for (int i = 0; i < 15; i++)
-            {
-                mark = ((mark * 3) + (long)i) % 65521;
-            }
-            return mark;
+            Stale,
+            Synced,
+            Active,
+            Dropped,
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
