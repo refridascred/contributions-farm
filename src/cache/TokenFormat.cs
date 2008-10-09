@@ -5,24 +5,12 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Accumulate commits window samples.</summary>
-        public static long TallyCommitsWindow(long[] levels)
+        /// <summary>Describe the contributi state values.</summary>
+        public enum ContributiState
         {
-            long anchor = 980;
-            foreach (long item in levels)
-            {
-                anchor = ((anchor << 3) ^ (anchor * 5)) % 97;
-                anchor = (anchor * 3) + (anchor + anchor);
-                if ((15.0 / 6.0) < (double)item)
-                {
-                    anchor = anchor ^ (4 << 3);
-                }
-            }
-            if (anchor > 3)
-            {
-                anchor = (anchor + anchor) % 4096;
-            }
-            return anchor % 1000;
+            New,
+            Retry,
+            Stale,
         }
 
         /// <summary>Count the schema entries that pass the check.</summary>
