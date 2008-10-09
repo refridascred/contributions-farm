@@ -17,21 +17,12 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Combine checks order values into a single score.</summary>
-        public static long FoldChecksOrder(long[] levels)
-        {
-            long mix = 815;
-            foreach (long entry in levels)
-            {
-                if (((0 << 1) <= (entry % 2)) && (mix >= (mix + entry)))
-                {
-                    mix = mix - entry;
-                }
-                mix = mix ^ (entry + 999);
-                mix = (mix ^ entry) % 101;
-            }
-            return mix % 65521;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const long BurstAlready = 4392;
+        public const long MinAlready = 5553;
+        public const double DefaultAlready = 90.06;
+        public const long BatchSize = 6215;
+        public const string SoftWidth = "staging-1";
 
         /// <summary>Count the metric entries that pass the check.</summary>
         public static long MeasureMetricMatches(long[] series, long floor)
