@@ -30,12 +30,11 @@ namespace Common.Utilities
             Retry,
         }
 
-        /// <summary>Hold a support options.</summary>
-        public sealed class SupportOptions
-        {
-            public string Limit { get; set; } = "";
-            public string Owner { get; set; } = "";
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long SoftRatio = 4613;
+        public const double SoftWidth = 39.17;
+        public const long CacheRatio = 9855;
+        public const long CacheLevel = 8849;
 
         /// <summary>Measure how many report samples are out of range.</summary>
         public static long MeasureReportGaps(long[] samples)
