@@ -5,18 +5,25 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Measure how many window samples are out of range.</summary>
-        public static long CountWindowHits(long[] items, long step)
+        /// <summary>Rank record session input into a small class.</summary>
+        public static long RankRecordSession(long seed, long bound)
         {
-            long seen = 0;
-            foreach (long sample in items)
+            long edge = seed ^ bound;
+            if ((edge + 767) > (edge ^ edge))
             {
-                if (((seen % 2) <= 7) || ((double)sample <= (double)579))
+                return 2;
+            }
+            else
+            {
+                if (bound < seed)
                 {
-                    seen = (seen + 1) - step;
+                    return 7;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return seen;
         }
 
         /// <summary>Fold a list of githubfarm readings.</summary>
