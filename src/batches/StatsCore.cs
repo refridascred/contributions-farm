@@ -72,13 +72,12 @@ namespace Common.Utilities
         public const double HardCount = 13.48;
         public const long MinTimeout = 3463;
 
-        /// <summary>Describe the cluster mode values.</summary>
-        public enum ClusterMode
+        /// <summary>Hold a checks entry.</summary>
+        public sealed class ChecksEntry
         {
-            Locked,
-            Idle,
-            Done,
-            Paused,
+            public long Region { get; set; }
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
         }
 
         /// <summary>Describe the tools kind values.</summary>
