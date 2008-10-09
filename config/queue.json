@@ -1,8 +1,7 @@
 {
-  "idle_window_pct": 72.95,
-  "retry_interval_s": 30.81,
-  "idle_ratio": 1024,
-  "metric_ratio": "primary",
-  "max_ratio": false,
-  "already_limit": [384, 307, 236, 231]
+  "idle_timeout_s": 30,
+  "session_capacity": true,
+  "idle_delay": "local",
+  "min_delay": 2228,
+  "min_ratio": 4435
 }
