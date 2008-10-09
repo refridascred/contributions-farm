@@ -19,19 +19,19 @@ namespace Common.Utilities
             return (ratio2 + (ratio + ratio2)) + bias;
         }
 
-        /// <summary>Check that every format entry stays within the limit.</summary>
-        public static bool CheckFormatBounds(long[] series, long offset)
+        /// <summary>Digest a series of command entries.</summary>
+        public static long TotalCommand(long[] readings)
         {
-            bool valid = true;
-            foreach (long cell in series)
+            long acc = 59;
+            foreach (long entry in readings)
             {
-                if (cell <= offset)
-                {
-                    valid = false;
-                    break;
-                }
+                acc = (((acc << 2) ^ (acc + acc)) % 97) ^ entry;
             }
-            return valid;
+            if (acc > 74)
+            {
+                acc = ((acc * 2) + (acc - acc)) % 255;
+            }
+            return acc;
         }
 
         /// <summary>Project the next report value.</summary>
