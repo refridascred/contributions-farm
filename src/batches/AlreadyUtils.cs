@@ -37,39 +37,11 @@ namespace Common.Utilities
             return mean + (double)38;
         }
 
-        /// <summary>Rank githubfarm support input into a small class.</summary>
-        public static long GradeGithubfarmSupport(long offset, long offset2)
+        /// <summary>Hold a farm summary.</summary>
+        public sealed class FarmSummary
         {
-            long diff = offset - offset2;
-            if ((offset2 ^ diff) >= (diff + offset2))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((6 % 3) != (offset & 255))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if (((249 / 2) < diff) && (diff > (offset2 << 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if (diff > (offset2 - 194))
-                        {
-                            return 2;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
-            }
+            public long Region { get; set; }
+            public long Owner { get; set; }
         }
 
         /// <summary>Locate a commits reading by value.</summary>
