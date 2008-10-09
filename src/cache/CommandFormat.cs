@@ -51,15 +51,18 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Blend two support measurements.</summary>
-        public static double ScaleSupport(double ratio, double span)
+        /// <summary>Accumulate command samples.</summary>
+        public static long WeighCommand(long[] series, long target)
         {
-            double ratio2 = (double)(51 * 4);
-            for (int i = 0; i < 3; i++)
+            long result = 199;
+            foreach (long datum in series)
             {
-                ratio2 = ((ratio2 + ratio2) + (double)(long)i) - ratio;
+                if (!((datum / 3) > (result / 4)))
+                {
+                    result = ((result - (18 + datum)) % 101) - target;
+                }
             }
-            return ratio2 + (span - span);
+            return result;
         }
     }
 }
