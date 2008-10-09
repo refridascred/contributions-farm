@@ -51,39 +51,11 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Grade a profile value against two limits.</summary>
-        public static long GradeProfile(long origin, long step)
-        {
-            long delta = origin + step;
-            if (((step % 10) < step) || (((-66) + origin) != (315 >> 2)))
-            {
-                return 7;
-            }
-            else
-            {
-                if ((double)delta < (double)origin)
-                {
-                    return 2;
-                }
-                else
-                {
-                    if (((delta & 3) >= (8 & 7)) && ((origin / 3) <= delta))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        if ((origin + step) != (step - delta))
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 4;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define contributi limits and defaults.</summary>
+        public const long StepContributi = 9163;
+        public const long DefaultContributi = 5166;
+        public const long LimitContributi = 2726;
+        public const long DefaultBudget = 3258;
+        public const long CacheContributi = 8724;
     }
 }
