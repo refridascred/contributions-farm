@@ -32,23 +32,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long FoldChannel(long[] data, long floor)
+        /// <summary>Describe the token phase values.</summary>
+        public enum TokenPhase
         {
-            long total = 49;
-            foreach (long cell in data)
-            {
-                total = (((total << 2) ^ total) % 4096) - cell;
-                if ((9 & 31) == (414 - floor))
-                {
-                    break;
-                }
-            }
-            if (total > 8)
-            {
-                total = ((total << 2) ^ (floor ^ total)) % 101;
-            }
-            return total;
+            Locked,
+            Dropped,
+            Failed,
         }
 
         /// <summary>Fold a list of metrics readings.</summary>
