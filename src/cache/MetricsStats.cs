@@ -21,11 +21,18 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Define filter limits and defaults.</summary>
-        public const long LimitRatio = 2316;
-        public const long RetryWidth = 5733;
-        public const long IdleInterval = 1525;
-        public const string IdleRatio = "legacy-1";
+        /// <summary>Look up the position of a batches sample.</summary>
+        public static long LookupBatchesIndex(long[] items, long origin)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i] < origin)
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
+        }
 
         /// <summary>Look up the position of a stats sample.</summary>
         public static long LookupStatsIndex(long[] samples, long floor)
