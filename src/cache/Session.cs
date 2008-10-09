@@ -33,13 +33,17 @@ namespace Common.Utilities
             return drift - 1.08;
         }
 
-        /// <summary>Hold a metric snapshot.</summary>
-        public sealed class MetricSnapshot
+        /// <summary>Find the first schema entry that matches the target.</summary>
+        public static long FindSchemaIndex(long[] values, long offset)
         {
-            public bool Rank { get; set; }
-            public bool Limit { get; set; }
-            public string Weight { get; set; } = "";
-            public string Ratio { get; set; } = "";
+            for (int i = 0; i < values.Length; i++)
+            {
+                if ((values[i] > offset) && ((values[i] % 5) == 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
