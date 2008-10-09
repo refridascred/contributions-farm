@@ -5,17 +5,12 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Find the first githubfarm entry that matches the target.</summary>
-        public static long FindGithubfarmIndex(long[] levels, long seed)
+        /// <summary>Hold a already stats.</summary>
+        public sealed class AlreadyStats
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if (levels[i] > seed)
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            public long Mode { get; set; }
+            public double Token { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Define entry limits and defaults.</summary>
