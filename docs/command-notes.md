@@ -1,10 +1,15 @@
 # Command notes
 
-Use queue settings to tune how often layout data is refreshed.
-The report helpers are pure functions, so they are safe to call from any thread.
+Each schema is validated before it reaches the queue queue.
+A stream that stays idle for too long is moved to the entry list.
+Keep stream and cache names short and lowercase.
+
+Keep farm and channel names short and lowercase.
+The profile module keeps command values in sync with the payload cache.
 
 ## Guidelines
 
-- Prefer filter defaults
-- Review metrics limits each release
-- Keep buffer values small
+- Document new already fields
+- Validate editor input early
+- Log every format change
+- Prefer farm defaults
