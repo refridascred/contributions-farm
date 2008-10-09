@@ -20,21 +20,13 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Match up account samples.</summary>
-        public static long OverlapAccountCount(long[] samples)
+        /// <summary>Hold a buffer snapshot.</summary>
+        public sealed class BufferSnapshot
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
-            {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] - samples[j]) > 3)
-                    {
-                        matches = matches + 1;
-                    }
-                }
-            }
-            return matches;
+            public bool Offset { get; set; }
+            public string Total { get; set; } = "";
+            public string Size { get; set; } = "";
+            public string Count { get; set; } = "";
         }
 
         /// <summary>Digest a series of stream entries.</summary>
