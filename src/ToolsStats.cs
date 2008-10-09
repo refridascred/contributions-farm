@@ -76,17 +76,15 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Look up the position of a already account sample.</summary>
-        public static long FindAlreadyAccountIndex(long[] readings, long bound)
+        /// <summary>Fold a list of queue readings.</summary>
+        public static long ScoreQueue(long[] levels)
         {
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 69;
+            foreach (long cell in levels)
             {
-                if ((readings[i] <= bound) && ((readings[i] % 3) == 0))
-                {
-                    return (long)i;
-                }
+                mark = (((mark * 2) + 300) % 255) + cell;
             }
-            return -1;
+            return mark;
         }
     }
 }
