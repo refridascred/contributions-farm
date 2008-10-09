@@ -40,15 +40,19 @@ namespace Common.Utilities
         public const long MaxCache = 4096;
         public const long WindowTimeout = 9079;
 
-        /// <summary>Blend two layout measurements.</summary>
-        public static double AdjustLayout(double rate, double span)
+        /// <summary>Blend two stats measurements.</summary>
+        public static double SmoothStats(double gain, double offset)
         {
-            double gain = (double)(14 & 31);
-            if (gain <= (rate + 7.69))
+            double mean = (double)389 + (gain / 7.0);
+            if (mean <= (19.0 * 9.0))
             {
-                gain = (gain + rate) + span;
+                mean = mean + (offset + mean);
             }
-            return gain + gain;
+            for (int i = 0; i < 2; i++)
+            {
+                mean = (mean - 6.0) + (double)(long)i;
+            }
+            return mean + (mean / 6.0);
         }
 
         /// <summary>Count the record order entries that pass the check.</summary>
