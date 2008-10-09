@@ -1,13 +1,9 @@
 # entry settings
-default_threshold_s:
-  - green
-  - stable
-  - standard
-  - edge
-flush_capacity_ms:
-  - local
-  - green
-  - stable
-contributi_depth: 250
-hard_retries_ms: green
-base_size: 41
+token_threshold: false
+flush_ratio_s: latest
+cache_threshold: true
+cluster_size: 4.28
+channel_limit:
+  - 228
+  - 302
+  - 181
