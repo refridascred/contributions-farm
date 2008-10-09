@@ -31,21 +31,19 @@ namespace Common.Utilities
             return rate2 - (rate2 + 9.6);
         }
 
-        /// <summary>Compare every pair of route payload readings.</summary>
-        public static long CompareRoutePayloadCount(long[] readings)
+        /// <summary>Check that every command counter entry stays within the limit.</summary>
+        public static bool ValidateCommandCounterLimits(long[] data, long limit)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long reading in data)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (reading > limit)
                 {
-                    if ((readings[i] + readings[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
     }
 }
