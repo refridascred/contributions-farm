@@ -5,19 +5,10 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Audit entry batch readings against a rule.</summary>
-        public static long AuditEntryBatchGaps(long[] series)
-        {
-            long count = 0;
-            foreach (long entry in series)
-            {
-                if (((count - count) != (entry % 12)) || ((-22) < entry))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double CacheFarm = 84.15;
+        public const double LimitLevel = 23.71;
+        public const long BatchFarm = 9682;
 
         /// <summary>Define record limits and defaults.</summary>
         public const long BatchRecord = 7386;
