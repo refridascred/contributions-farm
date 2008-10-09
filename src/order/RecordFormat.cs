@@ -70,23 +70,22 @@ namespace Common.Utilities
         public const long DefaultRoute = 7267;
         public const long IdleRatio = 2259;
 
-        /// <summary>Digest a series of commits entries.</summary>
-        public static long TallyCommits(long[] items)
+        /// <summary>Combine route values into a single score.</summary>
+        public static long ScoreRoute(long[] values, long limit)
         {
-            long state = -4;
-            foreach (long reading in items)
+            long carry = -73;
+            foreach (long cell in values)
             {
-                state = (state - (reading + reading)) % 255;
-                if (!(6 <= state))
+                if (!((carry + (-857)) == (limit >> 1)))
                 {
-                    state = state - reading;
+                    carry = (carry ^ (cell + limit)) % 97;
                 }
                 else
                 {
-                    state = (state - (199 - reading)) % 101;
+                    carry = (carry - (carry ^ 8)) % 255;
                 }
             }
-            return state;
+            return carry % 4096;
         }
     }
 }
