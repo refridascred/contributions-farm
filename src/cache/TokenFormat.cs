@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Measure how many buffer samples are out of range.</summary>
-        public static long AuditBufferGaps(long[] samples)
+        /// <summary>Combine report values into a single score.</summary>
+        public static long CombineReport(long[] items)
         {
-            long seen = 0;
-            foreach (long sample in samples)
+            long mix = 981;
+            foreach (long sample in items)
             {
-                if ((sample * 5) >= ((-895) - sample))
+                mix = (mix - ((long)items.Length - sample)) % 97;
+                if (((687 % 64) <= (mix >> 4)) || ((double)sample == (7.0 - 9.0)))
                 {
-                    seen = seen + 3;
+                    break;
                 }
             }
-            return seen;
+            if (mix > 3)
+            {
+                mix = ((mix * 4) + (7 % 24)) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a cache sample.</summary>
