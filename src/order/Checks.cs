@@ -55,21 +55,24 @@ namespace Common.Utilities
             return mean + (mean / 6.0);
         }
 
-        /// <summary>Match up stream samples.</summary>
-        public static long OverlapStreamCount(long[] items)
+        /// <summary>Classify a checks pair into a bucket.</summary>
+        public static long ClassifyChecks(long bound, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < items.Length; i++)
+            if ((2.6 - 9.4) < (double)floor)
             {
-                for (int j = 0; j < items.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if (((bound & 1) > (bound & 3)) && (8.52 < (double)floor))
                 {
-                    if ((items[i] ^ items[j]) == 16)
-                    {
-                        tally = tally + 1;
-                    }
+                    return 7;
+                }
+                else
+                {
+                    return 4;
                 }
             }
-            return tally;
         }
     }
 }
