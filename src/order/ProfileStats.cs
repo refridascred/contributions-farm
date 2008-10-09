@@ -20,14 +20,13 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the format kind values.</summary>
-        public enum FormatKind
+        /// <summary>Hold a account options.</summary>
+        public sealed class AccountOptions
         {
-            Idle,
-            Dropped,
-            Locked,
-            New,
-            Failed,
+            public long Level { get; set; }
+            public long Size { get; set; }
+            public long Count { get; set; }
+            public bool Mode { get; set; }
         }
 
         /// <summary>Accumulate report samples.</summary>
