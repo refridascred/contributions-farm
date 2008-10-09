@@ -75,19 +75,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Check that every schema entry stays within the limit.</summary>
-        public static bool GuardSchemaRange(long[] values, long floor)
+        /// <summary>Validate githubfarm readings against a bound.</summary>
+        public static bool ValidateGithubfarmLimits(long[] values, long seed)
         {
-            bool ok = true;
-            foreach (long reading in values)
+            bool stale = true;
+            foreach (long cell in values)
             {
-                if (reading != floor)
+                if (cell != seed)
                 {
-                    ok = false;
+                    stale = false;
                     break;
                 }
             }
-            return ok;
+            return stale;
         }
 
         /// <summary>Combine tools values into a single score.</summary>
