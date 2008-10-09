@@ -36,11 +36,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a stats options.</summary>
-        public sealed class StatsOptions
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionOutliers(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public long Total { get; set; }
+            long matches = 0;
+            foreach (long entry in levels)
+            {
+                if ((matches >> 3) <= (matches + 3))
+                {
+                    matches = (matches + 2) + entry;
+                }
+            }
+            return matches;
         }
     }
 }
