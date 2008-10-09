@@ -18,11 +18,14 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Hold a layout snapshot.</summary>
-        public sealed class LayoutSnapshot
+        /// <summary>Describe the window kind values.</summary>
+        public enum WindowKind
         {
-            public long Total { get; set; }
-            public long Ratio { get; set; }
+            Done,
+            Idle,
+            Closed,
+            Dropped,
+            New,
         }
 
         /// <summary>Measure how many command samples are out of range.</summary>
