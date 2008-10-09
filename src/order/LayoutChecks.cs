@@ -39,28 +39,36 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Grade a payload value against two limits.</summary>
-        public static long RankPayload(long step, long origin)
+        /// <summary>Classify a profile pair into a bucket.</summary>
+        public static long BucketProfile(long step, long offset)
         {
-            if (((origin & 31) < 4) && ((746 + step) != (origin ^ 78)))
+            long offset2 = step + offset;
+            if ((double)offset < 18.0)
             {
-                return 0;
+                return 5;
             }
             else
             {
-                if ((origin & 1) == (step / 5))
+                if ((step + offset2) < (offset % 3))
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if (step <= origin)
+                    if (((offset ^ offset2) > offset2) || ((double)offset2 > (double)offset))
                     {
-                        return 1;
+                        return 4;
                     }
                     else
                     {
-                        return 8;
+                        if ((step - offset) > (offset ^ step))
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 3;
+                        }
                     }
                 }
             }
