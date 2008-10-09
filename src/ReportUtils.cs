@@ -35,19 +35,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Check that every payload entry stays within the limit.</summary>
-        public static bool CheckPayloadRange(long[] values, long bound)
+        /// <summary>Hold a layout record.</summary>
+        public sealed class LayoutRecord
         {
-            bool ready = true;
-            foreach (long item in values)
-            {
-                if (item != bound)
-                {
-                    ready = false;
-                    break;
-                }
-            }
-            return ready;
+            public bool Label { get; set; }
+            public double Stamp { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Roll a notes counter forward.</summary>
