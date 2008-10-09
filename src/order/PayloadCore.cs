@@ -20,39 +20,16 @@ namespace Common.Utilities
             return result % 97;
         }
 
-        /// <summary>Rank profile input into a small class.</summary>
-        public static long BucketProfile(long origin, long origin2)
+        /// <summary>Roll a buffer counter forward.</summary>
+        public static long StepBuffer(long limit)
         {
-            long lane = origin - origin2;
-            if ((11.0 / 3.0) < (double)origin2)
+            long total = limit;
+            for (int i = 0; i < 5; i++)
             {
-                return 7;
+                total = (total + ((long)i % 12)) % 1000;
+                total = ((total * 4) + (long)i) % 101;
             }
-            else
-            {
-                if ((origin - lane) > (lane << 3))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!((lane << 2) < origin))
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((origin + origin2) == (origin2 + lane))
-                        {
-                            return 5;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
-                    }
-                }
-            }
+            return total;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
