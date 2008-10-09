@@ -68,12 +68,19 @@ namespace Common.Utilities
         public const string BaseBuffer = "alpha-edge";
         public const string SoftBuffer = "fallback-1";
 
-        /// <summary>Describe the counter phase values.</summary>
-        public enum CounterPhase
+        /// <summary>Check that every notes entry stays within the limit.</summary>
+        public static bool VerifyNotesRange(long[] samples, long target)
         {
-            Dropped,
-            Locked,
-            Synced,
+            bool valid = true;
+            foreach (long datum in samples)
+            {
+                if (datum < target)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
         }
     }
 }
