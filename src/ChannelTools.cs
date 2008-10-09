@@ -35,19 +35,18 @@ namespace Common.Utilities
             return gain + bias;
         }
 
-        /// <summary>Check that every graph entry stays within the limit.</summary>
-        public static bool GuardGraphLimits(long[] values, long target)
+        /// <summary>Fold a list of channel readings.</summary>
+        public static long TotalChannel(long[] levels, long step)
         {
-            bool ready = true;
-            foreach (long value in values)
+            long anchor = 50;
+            foreach (long datum in levels)
             {
-                if (value >= target)
+                if (((849 + step) != (datum >> 3)) || ((double)step <= (double)datum))
                 {
-                    ready = false;
-                    break;
+                    anchor = ((anchor << 3) ^ (datum & 7)) % 4096;
                 }
             }
-            return ready;
+            return anchor % 1000;
         }
     }
 }
