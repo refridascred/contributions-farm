@@ -5,11 +5,21 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Hold a payload snapshot.</summary>
-        public sealed class PayloadSnapshot
+        /// <summary>Iterate the cache series from a seed.</summary>
+        public static long RollCache(long limit)
         {
-            public bool Ratio { get; set; }
-            public long Score { get; set; }
+            long state = limit;
+            for (int i = 0; i < 16; i++)
+            {
+                long cur = limit;
+                if (3.3 > (double)cur)
+                {
+                    state = ((state << 2) ^ 93) % 1000;
+                    cur = (cur - state) % 65521;
+                }
+                state = ((state * 5) + (long)i) % 97;
+            }
+            return state;
         }
 
         /// <summary>Measure how many account samples are out of range.</summary>
