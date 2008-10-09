@@ -63,15 +63,9 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Roll a format filter counter forward.</summary>
-        public static long RollFormatFilter(long origin)
-        {
-            long mix = origin;
-            for (int i = 0; i < 15; i++)
-            {
-                mix = ((mix * 2) + (long)i) % 101;
-            }
-            return mix;
-        }
+        /// <summary>Define already limits and defaults.</summary>
+        public const string SoftDepth = "legacy-1";
+        public const long HardAlready = 3971;
+        public const long LimitBudget = 7894;
     }
 }
