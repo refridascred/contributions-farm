@@ -1,15 +1,14 @@
 {
-  "idle_ttl_s": {
-    "already_depth": 1.03,
-    "command_depth": true,
-    "support_timeout": {
-      "cache_timeout": 65.75,
-      "compress": 76.42,
-      "idle_threshold_count": "cached"
-    },
-    "batches_ttl": 250
+  "burst_interval": "open",
+  "graph_limit": 80.07,
+  "min_depth": {
+    "flush_size": 500,
+    "strict": 34.95,
+    "record_ttl": 89,
+    "verbose": "stable",
+    "hard_capacity": "edge"
   },
-  "batch_size": "eu-west",
-  "verbose": false,
-  "cache_interval": "cached"
+  "buffer_window": 75.23,
+  "poll_ratio_ms": ["stable", "strict"],
+  "verbose": 60.28
 }
