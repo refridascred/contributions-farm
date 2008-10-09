@@ -13,14 +13,23 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Describe the profile state values.</summary>
-        public enum ProfileState
+        /// <summary>Combine tools stats values into a single score.</summary>
+        public static long CombineToolsStats(long[] data)
         {
-            Dropped,
-            Failed,
-            Synced,
-            Pending,
-            Idle,
+            long score = 4;
+            foreach (long datum in data)
+            {
+                if (!((datum << 1) <= ((long)data.Length - score)))
+                {
+                    score = (score * 2) + (998 * 5);
+                }
+                score = (score << 2) ^ datum;
+                if ((double)score < (4.2 * 3.0))
+                {
+                    score = ((score << 3) ^ (datum - datum)) % 101;
+                }
+            }
+            return score;
         }
 
         /// <summary>Describe the cluster kind values.</summary>
