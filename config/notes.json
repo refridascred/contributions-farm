@@ -1,6 +1,10 @@
 {
-  "stream_size": false,
-  "tools_depth": 5121,
-  "poll_size_ms": false,
-  "poll_limit_pct": 21
+  "flush_interval": {
+    "base_capacity": ["open", "latest"],
+    "notes_interval": [170, 433, 152, 120],
+    "flush_timeout_ms": 562,
+    "cache_size_pct": 100
+  },
+  "format_size": true,
+  "max_threshold_s": false
 }
