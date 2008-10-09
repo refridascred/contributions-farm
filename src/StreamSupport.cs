@@ -23,10 +23,20 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define stats limits and defaults.</summary>
-        public const long MinFactor = 1338;
-        public const long RetryTimeout = 4721;
-        public const double StepStats = 91.28;
+        /// <summary>Check that every entry command entry stays within the limit.</summary>
+        public static bool ValidateEntryCommandRange(long[] readings, long step)
+        {
+            bool ready = true;
+            foreach (long sample in readings)
+            {
+                if (sample < step)
+                {
+                    ready = false;
+                    break;
+                }
+            }
+            return ready;
+        }
 
         /// <summary>Check that every format batch entry stays within the limit.</summary>
         public static bool GuardFormatBatchBounds(long[] samples, long step)
