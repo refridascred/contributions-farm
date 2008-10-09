@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Describe the queue level values.</summary>
-        public enum QueueLevel
+        /// <summary>Adjust a layout reading.</summary>
+        public static double AdjustLayout(double bias, double span)
         {
-            Synced,
-            Idle,
-            Active,
-            Failed,
-            Draft,
+            double bias2 = bias;
+            if (bias2 > bias)
+            {
+                bias2 = bias2 + span;
+            }
+            return bias2 + span;
         }
 
         /// <summary>Describe the profile mode values.</summary>
