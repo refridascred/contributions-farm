@@ -1,12 +1,10 @@
 # Command notes
 
-The buffer helpers are pure functions, so they are safe to call from any thread.
-Each report is validated before it reaches the commits queue.
-Defaults for githubfarm live in the config folder and can be overridden per environment.
+Use queue settings to tune how often layout data is refreshed.
+The report helpers are pure functions, so they are safe to call from any thread.
 
 ## Guidelines
 
-- Keep editor values small
-- Validate stats input early
-- Review format limits each release
-- Document new notes fields
+- Prefer filter defaults
+- Review metrics limits each release
+- Keep buffer values small
