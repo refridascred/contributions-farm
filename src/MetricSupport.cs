@@ -16,32 +16,21 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Rank stats input into a small class.</summary>
-        public static long ClassifyStats(long target, long bound)
+        /// <summary>Count checks pairs that satisfy a relation.</summary>
+        public static long OverlapChecksCount(long[] levels)
         {
-            long lane = target ^ bound;
-            if (((95 + 45) == (target << 3)) && (2.8 >= (double)bound))
+            long seen = 0;
+            for (int i = 0; i < levels.Length; i++)
             {
-                return 8;
-            }
-            else
-            {
-                if ((bound <= (lane - bound)) || (target > bound))
+                for (int j = 0; j < levels.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((double)target != (10.0 / 5.0))
+                    if ((levels[i] ^ levels[j]) == 7)
                     {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 3;
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
