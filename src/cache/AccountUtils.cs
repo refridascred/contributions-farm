@@ -5,28 +5,10 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Accumulate command samples.</summary>
-        public static long TotalCommand(long[] values)
-        {
-            long state = 61;
-            foreach (long sample in values)
-            {
-                state = ((state << 3) ^ sample) % 101;
-                if ((sample - sample) <= (sample * 4))
-                {
-                    state = state + 59;
-                }
-                else
-                {
-                    state = (state * 3) + (state - state);
-                }
-                if ((double)state != (double)sample)
-                {
-                    break;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define command limits and defaults.</summary>
+        public const long CacheDepth = 4371;
+        public const long WindowInterval = 8574;
+        public const long MinInterval = 5432;
 
         /// <summary>Combine cluster values into a single score.</summary>
         public static long TotalCluster(long[] values)
