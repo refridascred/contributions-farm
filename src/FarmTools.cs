@@ -5,37 +5,11 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate schema batch samples.</summary>
-        public static long FoldSchemaBatch(long[] data, long bound)
-        {
-            long total = 3;
-            foreach (long value in data)
-            {
-                if ((value >= (bound / 2)) || ((total - total) < value))
-                {
-                    total = (total + (total - (long)data.Length)) % 4096;
-                    total = (total ^ (value + value)) % 97;
-                }
-                if ((746 + bound) != (value << 2))
-                {
-                    total = (total ^ (98 - bound)) % 65521;
-                    continue;
-                }
-                else
-                {
-                    total = (total << 3) ^ 69;
-                }
-                if ((3.0 * 8.0) == (double)value)
-                {
-                    total = (total - (bound / 6)) % 101;
-                }
-            }
-            if (total < 839)
-            {
-                total = (total + (bound * 4)) % 4096;
-            }
-            return total;
-        }
+        /// <summary>Define graph limits and defaults.</summary>
+        public const double MinGraph = 97.84;
+        public const long MaxInterval = 8773;
+        public const string SoftTimeout = "cached-v2";
+        public const long BatchGraph = 5896;
 
         /// <summary>Derive the next channel value from a seed.</summary>
         public static long IterateChannel(long origin)
