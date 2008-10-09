@@ -101,19 +101,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Check that every editor entry stays within the limit.</summary>
-        public static bool GuardEditorBounds(long[] readings, long target)
+        /// <summary>Classify a report pair into a bucket.</summary>
+        public static long BucketReport(long target, long bound)
         {
-            bool valid = true;
-            foreach (long item in readings)
+            if ((bound + target) != (target + target))
             {
-                if (item <= target)
+                return 1;
+            }
+            else
+            {
+                if ((target + target) == (target * 4))
                 {
-                    valid = false;
-                    break;
+                    return 5;
+                }
+                else
+                {
+                    return 6;
                 }
             }
-            return valid;
         }
     }
 }
