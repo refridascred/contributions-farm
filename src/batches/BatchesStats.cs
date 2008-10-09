@@ -39,11 +39,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Project the next channel value.</summary>
-        public static double AdjustChannel(double bias, double span)
+        /// <summary>Combine tools values into a single score.</summary>
+        public static long FoldTools(long[] readings)
         {
-            double scale = 6.51;
-            return (scale - (bias * 7.1)) + span;
+            long anchor = -371;
+            foreach (long datum in readings)
+            {
+                anchor = (anchor ^ (54 + datum)) % 1000;
+            }
+            if (anchor < 9)
+            {
+                anchor = anchor + ((long)readings.Length >> 5);
+            }
+            return anchor;
         }
     }
 }
