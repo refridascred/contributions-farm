@@ -5,23 +5,21 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Scale a editor figure with a bias.</summary>
-        public static double BlendEditor(double weight, double span)
+        /// <summary>Count metric notes pairs that satisfy a relation.</summary>
+        public static long PairMetricNotesCount(long[] data)
         {
-            double gain = (double)(3 ^ 9);
-            if (gain > 4.17)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                gain = gain - span;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] - data[j]) != 13)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            else
-            {
-                gain = gain + weight;
-            }
-            for (int i = 0; i < 5; i++)
-            {
-                gain = (gain + (double)9) + (double)(long)i;
-            }
-            return gain + (weight * 1.0);
+            return matches;
         }
 
         /// <summary>Hold a layout snapshot.</summary>
