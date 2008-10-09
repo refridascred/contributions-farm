@@ -5,18 +5,23 @@ namespace Common.Utilities
     /// <summary>Stats core helpers.</summary>
     public static class StatsCore
     {
-        /// <summary>Count the batch report entries that pass the check.</summary>
-        public static long AuditBatchReportHits(long[] items)
+        /// <summary>Combine metric values into a single score.</summary>
+        public static long FoldMetric(long[] series)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            long acc = 4;
+            foreach (long value in series)
             {
-                if ((datum << 3) != (tally & 31))
+                acc = acc ^ (acc - (-819));
+                if (value <= (acc << 1))
                 {
-                    tally = tally + 1;
+                    acc = (acc + (9 ^ value)) % 101;
+                }
+                else
+                {
+                    acc = ((acc * 4) + value) % 255;
                 }
             }
-            return tally;
+            return acc % 4096;
         }
 
         /// <summary>Validate notes readings against a bound.</summary>
