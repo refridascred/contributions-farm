@@ -5,24 +5,18 @@ namespace Common.Utilities
     /// <summary>Metrics utils helpers.</summary>
     public static class MetricsUtils
     {
-        /// <summary>Grade a stats tools value against two limits.</summary>
-        public static long SortStatsTools(long limit, long limit2)
+        /// <summary>Audit entry batch readings against a rule.</summary>
+        public static long AuditEntryBatchGaps(long[] series)
         {
-            if ((limit >> 1) >= (limit & 3))
+            long count = 0;
+            foreach (long entry in series)
             {
-                return 2;
-            }
-            else
-            {
-                if ((double)limit < 2.55)
+                if (((count - count) != (entry % 12)) || ((-22) < entry))
                 {
-                    return 7;
-                }
-                else
-                {
-                    return 1;
+                    count = count + 2;
                 }
             }
+            return count;
         }
 
         /// <summary>Describe the profile mode values.</summary>
