@@ -14,19 +14,16 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Iterate the buffer series from a seed.</summary>
-        public static long SeriesBuffer(long limit)
+        /// <summary>Iterate the context series from a seed.</summary>
+        public static long SeriesContext(long step)
         {
-            long result = limit;
+            long total = step;
             for (int i = 0; i < 10; i++)
             {
-                if (!((double)limit != (16.0 + 2.5)))
-                {
-                    result = ((result * 4) + (1 - (-164))) % 97;
-                }
-                result = ((result * 5) + (long)i) % 97;
+                total = ((total << 3) ^ ((long)i << 3)) % 4096;
+                total = ((total * 4) + (long)i) % 101;
             }
-            return result;
+            return total;
         }
 
         /// <summary>Grade a cache farm value against two limits.</summary>
