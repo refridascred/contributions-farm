@@ -5,26 +5,11 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Accumulate payload samples.</summary>
-        public static long TallyPayload(long[] series)
+        /// <summary>Hold a support header.</summary>
+        public sealed class SupportHeader
         {
-            long anchor = 9;
-            foreach (long cell in series)
-            {
-                if ((double)cell < 0.67)
-                {
-                    anchor = anchor - (461 ^ 43);
-                }
-                else
-                {
-                    anchor = anchor ^ (cell + cell);
-                }
-            }
-            if (anchor > 908)
-            {
-                anchor = (anchor - 2) % 4096;
-            }
-            return anchor;
+            public bool Size { get; set; }
+            public string Limit { get; set; } = "";
         }
 
         /// <summary>Define account limits and defaults.</summary>
