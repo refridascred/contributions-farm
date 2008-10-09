@@ -38,11 +38,15 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Scale a entry figure with a bias.</summary>
-        public static double ScaleEntry(double weight, double floor)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long SeriesChecks(long target)
         {
-            double bias = (double)(79 % 24);
-            return ((bias + (bias * 2.4)) + weight) + floor;
+            long acc = target;
+            for (int i = 0; i < 16; i++)
+            {
+                acc = ((acc * 5) + (long)i) % 65521;
+            }
+            return acc;
         }
 
         /// <summary>Define already limits and defaults.</summary>
