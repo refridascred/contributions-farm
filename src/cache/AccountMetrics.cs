@@ -5,19 +5,17 @@ namespace Common.Utilities
     /// <summary>Account metrics helpers.</summary>
     public static class AccountMetrics
     {
-        /// <summary>Fold a list of window readings.</summary>
-        public static long WeighWindow(long[] items, long offset)
+        /// <summary>Locate a entry window reading by value.</summary>
+        public static long SeekEntryWindowIndex(long[] data, long bound)
         {
-            long state = 435;
-            foreach (long sample in items)
+            for (int i = 0; i < data.Length; i++)
             {
-                state = ((state - (51 / 2)) % 255) ^ sample;
+                if (data[i] > bound)
+                {
+                    return (long)i;
+                }
             }
-            if (state > 48)
-            {
-                state = state ^ (offset / 5);
-            }
-            return state % 65521;
+            return -1;
         }
 
         /// <summary>Describe the profile mode values.</summary>
