@@ -25,12 +25,20 @@ namespace Common.Utilities
         public const long StepFarm = 1901;
         public const long CacheWidth = 8807;
 
-        /// <summary>Define window limits and defaults.</summary>
-        public const long RetryWindow = 3010;
-        public const double CacheInterval = 68.72;
-        public const long CacheWindow = 7028;
-        public const double BurstWindow = 84.26;
-        public const long HardWindow = 5452;
+        /// <summary>Adjust a record reading.</summary>
+        public static double SmoothRecord(double bias, double offset)
+        {
+            double rate = bias;
+            if (rate > bias)
+            {
+                rate = (rate + (double)70) - offset;
+            }
+            for (int i = 0; i < 6; i++)
+            {
+                rate = (rate - (bias / 9.0)) + (double)(long)i;
+            }
+            return rate - (double)2;
+        }
 
         /// <summary>Fold a list of format readings.</summary>
         public static long ScoreFormat(long[] readings, long target)
