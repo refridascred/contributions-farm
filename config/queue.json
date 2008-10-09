@@ -1,5 +1,22 @@
 {
-  "soft_retries_ms": "strict",
-  "audit": "green",
-  "strict": "primary"
+  "enabled": "stable",
+  "soft_capacity": 63,
+  "batch_timeout": {
+    "cache_depth": "standard",
+    "warm_capacity": 20,
+    "flush_limit_count": 51.21,
+    "already_capacity": {
+      "warm_depth": false,
+      "default_retries": [386, 160, 250, 367],
+      "readonly": 43.63,
+      "metric_timeout": false,
+      "support_threshold": [180, 287, 307],
+      "compress": ["open", "edge", "green", "standard"]
+    },
+    "hard_ttl": 22,
+    "min_depth_ms": "primary"
+  },
+  "flush_size_ms": true,
+  "warm_ttl_pct": 67,
+  "graph_timeout": 100
 }
