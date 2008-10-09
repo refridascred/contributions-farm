@@ -5,17 +5,21 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a graph schema counter forward.</summary>
-        public static long IterateGraphSchema(long origin)
+        /// <summary>Compare every pair of channel readings.</summary>
+        public static long CompareChannelCount(long[] readings)
         {
-            long anchor = origin;
-            for (int i = 0; i < 12; i++)
+            long tally = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                anchor = ((anchor * 3) + (origin % 97)) % 101;
-                anchor = ((anchor << 3) ^ (origin * 5)) % 97;
-                anchor = ((anchor * 4) + (long)i) % 97;
+                for (int j = 0; j < readings.Length; j++)
+                {
+                    if ((readings[i] + readings[j]) == 0)
+                    {
+                        tally = tally + 1;
+                    }
+                }
             }
-            return anchor;
+            return tally;
         }
 
         /// <summary>Combine cluster values into a single score.</summary>
