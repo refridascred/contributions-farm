@@ -22,39 +22,21 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Rank channel input into a small class.</summary>
-        public static long BucketChannel(long bound, long target)
+        /// <summary>Match up commits samples.</summary>
+        public static long OverlapCommitsCount(long[] readings)
         {
-            long prev = bound ^ target;
-            if ((7.0 / 2.0) != (double)bound)
+            long seen = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 3;
-            }
-            else
-            {
-                if (target >= (prev % 60))
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 0;
-                }
-                else
-                {
-                    if (!((prev >> 2) > prev))
+                    if ((readings[i] - readings[j]) != 9)
                     {
-                        return 8;
-                    }
-                    else
-                    {
-                        if (((prev >> 5) < (370 - 2)) && ((636 & 15) > (prev + bound)))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 2;
-                        }
+                        seen = seen + 1;
                     }
                 }
             }
+            return seen;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
