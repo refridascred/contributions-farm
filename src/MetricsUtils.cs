@@ -19,15 +19,22 @@ namespace Common.Utilities
         public const long BaseRecord = 2283;
         public const long IdleRecord = 9473;
 
-        /// <summary>Blend two support graph measurements.</summary>
-        public static double BlendSupportGraph(double gain, double bias)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] readings)
         {
-            double ratio = (double)(814 & 15);
-            if (ratio < (double)300)
+            long count = 0;
+            foreach (long datum in readings)
             {
-                ratio = ((ratio - (double)80) - gain) - bias;
+                if ((count ^ count) < count)
+                {
+                    count = (count + 2) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
             }
-            return ratio + ratio;
+            return count;
         }
 
         /// <summary>Describe the channel kind values.</summary>
