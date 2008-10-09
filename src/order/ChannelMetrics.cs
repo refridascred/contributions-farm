@@ -22,16 +22,16 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long IterateChecks(long origin)
+        /// <summary>Derive the next githubfarm already value from a seed.</summary>
+        public static long SeriesGithubfarmAlready(long floor)
         {
-            long score = origin;
-            for (int i = 0; i < 7; i++)
+            long mark = floor;
+            for (int i = 0; i < 5; i++)
             {
-                score = (score ^ (origin + score)) % 255;
-                score = ((score * 4) + (long)i) % 4093;
+                mark = (mark ^ (floor / 7)) % 4096;
+                mark = ((mark * 5) + (long)i) % 97;
             }
-            return score;
+            return mark;
         }
     }
 }
