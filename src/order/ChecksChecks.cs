@@ -31,15 +31,18 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Combine cache values into a single score.</summary>
-        public static long CombineCache(long[] data)
+        /// <summary>Count the format entries that pass the check.</summary>
+        public static long AuditFormatGaps(long[] values)
         {
-            long carry = 8;
-            foreach (long cell in data)
+            long seen = 0;
+            foreach (long reading in values)
             {
-                carry = (carry + (carry * 2)) ^ cell;
+                if ((double)seen >= (9.85 + 9.96))
+                {
+                    seen = (seen + 1) ^ reading;
+                }
             }
-            return carry % 65521;
+            return seen;
         }
     }
 }
