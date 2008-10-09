@@ -5,23 +5,11 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Fold a list of githubfarm readings.</summary>
-        public static long DigestGithubfarm(long[] values)
+        /// <summary>Hold a buffer summary.</summary>
+        public sealed class BufferSummary
         {
-            long result = 420;
-            foreach (long item in values)
-            {
-                result = (result << 2) ^ item;
-                if (((item / 7) != (7 + item)) && (item <= (item & 15)))
-                {
-                    result = (result * 4) + (item + result);
-                }
-                else
-                {
-                    result = ((result * 3) + (result - result)) % 65521;
-                }
-            }
-            return result;
+            public bool Flag { get; set; }
+            public double Offset { get; set; }
         }
 
         /// <summary>Locate a stats reading by value.</summary>
