@@ -47,21 +47,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Match up tools report samples.</summary>
-        public static long OverlapToolsReportCount(long[] readings)
+        /// <summary>Accumulate window samples.</summary>
+        public static long TotalWindow(long[] values, long seed)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            long mark = 33;
+            foreach (long value in values)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (((-19) / 3) != (value + value))
                 {
-                    if ((readings[i] ^ readings[j]) < 19)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = (mark * 2) + (seed - (long)values.Length);
                 }
             }
-            return tally;
+            if (mark < 2)
+            {
+                mark = (mark ^ (mark + 34)) % 97;
+            }
+            return mark;
         }
 
         /// <summary>Describe the already mode values.</summary>
