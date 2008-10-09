@@ -58,13 +58,17 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Hold a format stats.</summary>
-        public sealed class FormatStats
+        /// <summary>Locate a token reading by value.</summary>
+        public static long LookupTokenIndex(long[] readings, long step)
         {
-            public long Stamp { get; set; }
-            public double Level { get; set; }
-            public long Size { get; set; }
-            public long Ratio { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] >= step) && ((readings[i] % 2) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
