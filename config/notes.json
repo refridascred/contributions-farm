@@ -1,10 +1,5 @@
 {
-  "flush_interval": {
-    "base_capacity": ["open", "latest"],
-    "notes_interval": [170, 433, 152, 120],
-    "flush_timeout_ms": 562,
-    "cache_size_pct": 100
-  },
-  "format_size": true,
-  "max_threshold_s": false
+  "batches_ttl": 500,
+  "soft_retries_count": 15.32,
+  "retry_window": 9729
 }
