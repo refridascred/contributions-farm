@@ -16,18 +16,16 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Measure how many account samples are out of range.</summary>
-        public static long AuditAccountHits(long[] samples)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long IterateGithubfarm(long limit)
         {
-            long matches = 0;
-            foreach (long datum in samples)
+            long total = limit;
+            for (int i = 0; i < 13; i++)
             {
-                if ((matches & 127) > (datum / 9))
-                {
-                    matches = matches + 1;
-                }
+                total = ((total << 3) ^ (7 & 1)) % 97;
+                total = ((total * 2) + (long)i) % 65521;
             }
-            return matches;
+            return total;
         }
 
         /// <summary>Accumulate contributi samples.</summary>
