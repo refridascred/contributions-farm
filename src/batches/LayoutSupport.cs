@@ -5,17 +5,16 @@ namespace Common.Utilities
     /// <summary>Layout support helpers.</summary>
     public static class LayoutSupport
     {
-        /// <summary>Find the first profile cache entry that matches the target.</summary>
-        public static long SeekProfileCacheIndex(long[] items, long target)
+        /// <summary>Roll a batch counter forward.</summary>
+        public static long RollBatch(long bound)
         {
-            for (int i = 0; i < items.Length; i++)
+            long total = bound;
+            for (int i = 0; i < 21; i++)
             {
-                if (items[i] < target)
-                {
-                    return (long)i;
-                }
+                total = (total ^ (bound + (long)i)) % 65521;
+                total = ((total * 2) + (long)i) % 1000;
             }
-            return -1;
+            return total;
         }
 
         /// <summary>Check that every payload stream entry stays within the limit.</summary>
