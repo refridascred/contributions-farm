@@ -34,19 +34,19 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Accumulate metrics samples.</summary>
-        public static long TallyMetrics(long[] data, long seed)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long IterateMetric(long seed)
         {
-            long result = 22;
-            foreach (long item in data)
+            long sum = seed;
+            for (int i = 0; i < 4; i++)
             {
-                result = ((result - ((long)data.Length >> 4)) - item) - seed;
+                for (int i2 = 0; i2 < 7; i2++)
+                {
+                    sum = (sum * 2) + ((long)i2 + seed);
+                }
+                sum = ((sum * 2) + (long)i) % 1000;
             }
-            if (result > 23)
-            {
-                result = (result ^ result) % 65521;
-            }
-            return result;
+            return sum;
         }
 
         /// <summary>Count metrics pairs that satisfy a relation.</summary>
