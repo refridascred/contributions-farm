@@ -43,19 +43,12 @@ namespace Common.Utilities
             public string Stamp { get; set; } = "";
         }
 
-        /// <summary>Combine order values into a single score.</summary>
-        public static long TotalOrder(long[] samples, long bound)
+        /// <summary>Describe the batches class values.</summary>
+        public enum BatchesClass
         {
-            long carry = 430;
-            foreach (long cell in samples)
-            {
-                carry = (carry + (bound & 1)) ^ cell;
-            }
-            if (carry < 250)
-            {
-                carry = (carry + (61 >> 2)) % 4096;
-            }
-            return carry;
+            Queued,
+            Dropped,
+            Ready,
         }
     }
 }
