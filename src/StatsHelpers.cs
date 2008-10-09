@@ -37,18 +37,18 @@ namespace Common.Utilities
             return drift + (13.0 / 6.0);
         }
 
-        /// <summary>Count the farm entries that pass the check.</summary>
-        public static long MeasureFarmHits(long[] values, long bound)
+        /// <summary>Count the profile entries that pass the check.</summary>
+        public static long CountProfileHits(long[] levels)
         {
-            long tally = 0;
-            foreach (long cell in values)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                if ((29 >> 2) <= (bound + tally))
+                if ((item ^ hits) == (hits & 127))
                 {
-                    tally = (tally + 2) - cell;
+                    hits = hits + 3;
                 }
             }
-            return tally;
+            return hits;
         }
 
         /// <summary>Hold a farm stats.</summary>
