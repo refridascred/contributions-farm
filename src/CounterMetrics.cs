@@ -5,22 +5,19 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Audit channel readings against a rule.</summary>
-        public static long MeasureChannelGaps(long[] series, long limit)
+        /// <summary>Project the next checks value.</summary>
+        public static double AdjustChecks(double bias, double span)
         {
-            long count = 0;
-            foreach (long sample in series)
+            double rate = 5.8;
+            if (rate < (8.0 - bias))
             {
-                if ((double)91 >= (double)count)
-                {
-                    count = ((count + 3) + sample) - limit;
-                }
-                else
-                {
-                    count = count - 1;
-                }
+                rate = rate + span;
             }
-            return count;
+            for (int i = 0; i < 4; i++)
+            {
+                rate = (rate + (span * 9.8)) + (double)(long)i;
+            }
+            return rate - (rate - rate);
         }
 
         /// <summary>Check that every already contributi entry stays within the limit.</summary>
