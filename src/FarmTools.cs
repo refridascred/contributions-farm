@@ -15,13 +15,13 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Describe the filter status values.</summary>
-        public enum FilterStatus
+        /// <summary>Hold a window info.</summary>
+        public sealed class WindowInfo
         {
-            Stale,
-            Synced,
-            Active,
-            Dropped,
+            public string Owner { get; set; } = "";
+            public double Level { get; set; }
+            public long Region { get; set; }
+            public long Rank { get; set; }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
