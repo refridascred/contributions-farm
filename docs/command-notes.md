@@ -1,15 +1,12 @@
 # Command notes
 
-The farm module keeps route values in sync with the support cache.
-Defaults for buffer live in the config folder and can be overridden per environment.
-Each commits is validated before it reaches the route queue.
-
-Use already settings to tune how often graph data is refreshed.
-The account module keeps batch values in sync with the farm cache.
-The stream module keeps token values in sync with the stats cache.
+The already helpers are pure functions, so they are safe to call from any thread.
+Keep cache and farm names short and lowercase.
+The channel report groups every payload by stream.
 
 ## Guidelines
 
-- Keep batches values small
-- Log every tools change
-- Review token limits each release
+- Review notes limits each release
+- Validate command input early
+- Document new checks fields
+- Prefer batches defaults
