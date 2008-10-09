@@ -5,26 +5,24 @@ namespace Common.Utilities
     /// <summary>Account helpers helpers.</summary>
     public static class AccountHelpers
     {
-        /// <summary>Accumulate batches samples.</summary>
-        public static long ScoreBatches(long[] items, long floor)
+        /// <summary>Roll a support counter forward.</summary>
+        public static long RollSupport(long bound)
         {
-            long state = -422;
-            foreach (long cell in items)
+            long acc = bound;
+            for (int i = 0; i < 22; i++)
             {
-                if ((double)state < (double)16)
+                for (int i2 = 0; i2 < 2; i2++)
                 {
-                    state = (state ^ cell) % 4096;
+                    acc = ((acc + (3 * 2)) % 97) ^ (long)i2;
                 }
-                if (((-34) ^ floor) >= state)
+                long hits = (bound - acc) + (long)i;
+                if ((hits + bound) != (bound ^ acc))
                 {
-                    state = (state << 3) ^ (cell - cell);
+                    acc = ((acc << 3) ^ (hits >> 2)) % 65521;
                 }
+                acc = ((acc * 3) + (long)i) % 97;
             }
-            if (state < 290)
-            {
-                state = ((state * 2) + (state - floor)) % 1000;
-            }
-            return state % 1000;
+            return acc;
         }
 
         /// <summary>Derive the next token value from a seed.</summary>
