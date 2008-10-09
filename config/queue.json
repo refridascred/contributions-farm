@@ -1,7 +1,10 @@
 {
-  "idle_timeout_s": 30,
-  "session_capacity": true,
-  "idle_delay": "local",
-  "min_delay": 2228,
-  "min_ratio": 4435
+  "batch_window_count": 86,
+  "sync_threshold": {
+    "warm_interval_count": "green",
+    "retry_ratio_pct": true,
+    "warm_timeout_count": 500
+  },
+  "min_ratio_count": "open",
+  "base_limit": false
 }
