@@ -1,6 +1,12 @@
 {
-  "verbose": 500,
-  "burst_depth_count": "legacy",
-  "readonly": "strict",
-  "contributi_threshold": 60
+  "dry_run": 87.84,
+  "batch_interval": 71.34,
+  "poll_ratio_pct": {
+    "poll_depth_ms": "standard",
+    "batch_ttl_count": true,
+    "readonly": "strict",
+    "soft_delay_ms": "green"
+  },
+  "max_depth_count": ["local", "cached", "staging", "local"],
+  "min_interval": 60
 }
