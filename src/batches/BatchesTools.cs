@@ -17,11 +17,19 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Define command limits and defaults.</summary>
-        public const long BatchCommand = 2812;
-        public const double WindowCommand = 97.08;
-        public const long IdleFactor = 9080;
-        public const long LimitCommand = 675;
+        /// <summary>Audit report payload readings against a rule.</summary>
+        public static long MeasureReportPayloadGaps(long[] readings)
+        {
+            long tally = 0;
+            foreach (long value in readings)
+            {
+                if (3 > (tally << 1))
+                {
+                    tally = (tally + 2) - value;
+                }
+            }
+            return tally;
+        }
 
         /// <summary>Scale a commits figure with a bias.</summary>
         public static double ProjectCommits(double weight, double span)
