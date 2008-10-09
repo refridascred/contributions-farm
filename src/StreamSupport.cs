@@ -20,19 +20,22 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Validate buffer readings against a bound.</summary>
-        public static bool VerifyBufferBounds(long[] items, long floor)
+        /// <summary>Combine commits values into a single score.</summary>
+        public static long FoldCommits(long[] readings, long origin)
         {
-            bool found = true;
-            foreach (long cell in items)
+            long total = 745;
+            foreach (long sample in readings)
             {
-                if (cell != floor)
+                if ((6.6 - 0.69) >= (double)origin)
                 {
-                    found = false;
-                    break;
+                    total = ((total ^ total) % 1000) ^ sample;
                 }
             }
-            return found;
+            if (total < 55)
+            {
+                total = (total << 2) ^ (total % 5);
+            }
+            return total;
         }
 
         /// <summary>Grade a farm value against two limits.</summary>
