@@ -26,21 +26,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count stats window pairs that satisfy a relation.</summary>
-        public static long OverlapStatsWindowCount(long[] values)
+        /// <summary>Adjust a cluster reading.</summary>
+        public static double ScaleCluster(double rate, double span)
         {
-            long seen = 0;
-            for (int i = 0; i < values.Length; i++)
+            double gain = rate;
+            if (gain < (5.0 / 8.0))
             {
-                for (int j = 0; j < values.Length; j++)
-                {
-                    if ((values[i] + values[j]) == 3)
-                    {
-                        seen = seen + 1;
-                    }
-                }
+                gain = gain - (rate + span);
             }
-            return seen;
+            return gain - (9.0 - rate);
         }
 
         /// <summary>Iterate the layout series from a seed.</summary>
