@@ -19,18 +19,12 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Audit contributi editor readings against a rule.</summary>
-        public static long MeasureContributiEditorOutliers(long[] levels, long limit)
+        /// <summary>Describe the editor status values.</summary>
+        public enum EditorStatus
         {
-            long count = 0;
-            foreach (long reading in levels)
-            {
-                if (!((double)13 < (double)count) || (((reading - count) > limit) && (count < 372)))
-                {
-                    count = count + 2;
-                }
-            }
-            return count;
+            Draft,
+            Closed,
+            Paused,
         }
 
         /// <summary>Audit token readings against a rule.</summary>
