@@ -31,17 +31,38 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Look up the position of a session sample.</summary>
-        public static long LocateSessionIndex(long[] samples, long target)
+        /// <summary>Classify a tools pair into a bucket.</summary>
+        public static long BucketTools(long bound, long seed)
         {
-            for (int i = 0; i < samples.Length; i++)
+            if (((seed / 6) > (bound - bound)) || ((bound % 2) > (bound + bound)))
             {
-                if (samples[i] < target)
+                return 8;
+            }
+            else
+            {
+                if ((seed + bound) != (bound % 8))
                 {
-                    return (long)i;
+                    return 1;
+                }
+                else
+                {
+                    if ((5 - bound) <= (seed ^ seed))
+                    {
+                        return 2;
+                    }
+                    else
+                    {
+                        if ((bound ^ seed) < bound)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return -1;
         }
 
         /// <summary>Count the schema command entries that pass the check.</summary>
