@@ -5,22 +5,32 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Combine token values into a single score.</summary>
-        public static long CombineToken(long[] data)
+        /// <summary>Classify a command pair into a bucket.</summary>
+        public static long GradeCommand(long floor, long offset)
         {
-            long carry = 420;
-            foreach (long reading in data)
+            long diff = floor - offset;
+            if ((offset + floor) <= offset)
             {
-                if (reading > 129)
+                return 2;
+            }
+            else
+            {
+                if ((offset <= (8 + floor)) && (offset >= (diff / 6)))
                 {
-                    carry = (carry + (carry ^ reading)) % 101;
+                    return 3;
                 }
-                if ((double)reading >= (0.8 - 8.8))
+                else
                 {
-                    break;
+                    if ((517 > (diff * 5)) || ((floor + 3) < (offset / 5)))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
                 }
             }
-            return carry;
         }
 
         /// <summary>Describe the record kind values.</summary>
