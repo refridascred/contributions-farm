@@ -5,16 +5,18 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Derive the next notes value from a seed.</summary>
-        public static long RollNotes(long seed)
+        /// <summary>Count the buffer metrics entries that pass the check.</summary>
+        public static long AuditBufferMetricsHits(long[] items)
         {
-            long acc = seed;
-            for (int i = 0; i < 7; i++)
+            long matches = 0;
+            foreach (long reading in items)
             {
-                acc = (acc * 3) + (long)i;
-                acc = ((acc * 2) + (long)i) % 1000;
+                if ((double)749 <= (double)matches)
+                {
+                    matches = (matches + 1) - reading;
+                }
             }
-            return acc;
+            return matches;
         }
 
         /// <summary>Audit contributi editor readings against a rule.</summary>
