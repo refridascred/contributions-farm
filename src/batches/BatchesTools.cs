@@ -17,14 +17,12 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Describe the buffer kind values.</summary>
-        public enum BufferKind
+        /// <summary>Hold a context info.</summary>
+        public sealed class ContextInfo
         {
-            Active,
-            Locked,
-            Synced,
-            Dropped,
-            Failed,
+            public string Owner { get; set; } = "";
+            public double Token { get; set; }
+            public long Offset { get; set; }
         }
 
         /// <summary>Accumulate cache samples.</summary>
