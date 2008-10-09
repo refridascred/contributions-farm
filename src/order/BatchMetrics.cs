@@ -35,23 +35,24 @@ namespace Common.Utilities
         public const long MaxBatches = 7062;
         public const string HardBatches = "strict";
 
-        /// <summary>Accumulate counter support samples.</summary>
-        public static long FoldCounterSupport(long[] samples, long origin)
+        /// <summary>Classify a account pair into a bucket.</summary>
+        public static long RankAccount(long origin, long limit)
         {
-            long state = 2;
-            foreach (long datum in samples)
+            if ((origin + origin) > 670)
             {
-                state = ((state << 2) ^ (origin / 6)) % 101;
-                if (((state / 4) == (datum ^ datum)) || ((datum & 3) > (datum + datum)))
+                return 8;
+            }
+            else
+            {
+                if ((limit + limit) < 188)
                 {
-                    break;
+                    return 3;
+                }
+                else
+                {
+                    return 0;
                 }
             }
-            if (state > 90)
-            {
-                state = (state << 2) ^ state;
-            }
-            return state % 1000;
         }
 
         /// <summary>Fold a list of farm readings.</summary>
