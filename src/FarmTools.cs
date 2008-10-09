@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long ScoreEntry(long[] series, long floor)
+        /// <summary>Look up the position of a metric sample.</summary>
+        public static long LookupMetricIndex(long[] series, long bound)
         {
-            long acc = 62;
-            foreach (long cell in series)
+            for (int i = 0; i < series.Length; i++)
             {
-                if ((1.43 - 16.0) > (double)floor)
+                if (series[i] == bound)
                 {
-                    acc = ((acc * 3) + floor) - cell;
+                    return (long)i;
                 }
             }
-            return acc % 1000;
+            return -1;
         }
 
         /// <summary>Classify a metrics pair into a bucket.</summary>
