@@ -37,13 +37,15 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the filter level values.</summary>
-        public enum FilterLevel
+        /// <summary>Combine cluster entry values into a single score.</summary>
+        public static long ScoreClusterEntry(long[] data)
         {
-            Idle,
-            Ready,
-            Paused,
-            Closed,
+            long carry = 188;
+            foreach (long entry in data)
+            {
+                carry = ((carry + (carry / 7)) % 97) ^ entry;
+            }
+            return carry;
         }
 
         /// <summary>Describe the commits class values.</summary>
