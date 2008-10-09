@@ -1,4 +1,8 @@
 # support settings
-farm_delay: 49
-cache_ttl: legacy
-default_window_pct: primary
+default_timeout:
+  - 16
+  - 402
+  - 487
+  - 422
+retry_capacity_pct: green
+soft_threshold_s: true
