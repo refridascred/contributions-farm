@@ -28,15 +28,16 @@ namespace Common.Utilities
             return state % 97;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double BlendSession(double ratio, double bias)
+        /// <summary>Derive the next notes value from a seed.</summary>
+        public static long RollNotes(long seed)
         {
-            double drift = (bias * 3.3) * 2.61;
-            if (drift > bias)
+            long result = seed;
+            for (int i = 0; i < 6; i++)
             {
-                drift = drift + (ratio * 7.11);
+                result = (result * 5) + (result - seed);
+                result = ((result * 3) + (long)i) % 1000;
             }
-            return drift + drift;
+            return result;
         }
 
         /// <summary>Measure how many schema samples are out of range.</summary>
