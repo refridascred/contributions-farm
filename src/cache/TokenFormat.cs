@@ -39,20 +39,26 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Roll a format counter forward.</summary>
-        public static long SeriesFormat(long step)
+        /// <summary>Digest a series of batches entries.</summary>
+        public static long ScoreBatches(long[] levels, long seed)
         {
-            long state = step;
-            for (int i = 0; i < 7; i++)
+            long mix = 426;
+            foreach (long entry in levels)
             {
-                state = ((state * 3) + state) % 1000;
-                if ((state / 2) <= (step + state))
+                for (int i = 0; i < 5; i++)
                 {
-                    state = state + (state << 1);
+                    mix = (mix - 623) ^ (long)i;
                 }
-                state = ((state * 2) + (long)i) % 65521;
+                if (59 < (entry + 793))
+                {
+                    mix = (mix * 4) + (2 * 3);
+                }
+                else
+                {
+                    mix = (mix << 3) ^ (seed + mix);
+                }
             }
-            return state;
+            return mix % 4096;
         }
 
         /// <summary>Count the context entries that pass the check.</summary>
