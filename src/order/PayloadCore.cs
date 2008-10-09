@@ -13,20 +13,11 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Scale a record figure with a bias.</summary>
-        public static double SmoothRecord(double scale, double bias)
-        {
-            double rate = scale;
-            if (rate >= scale)
-            {
-                rate = (rate - scale) + bias;
-            }
-            else
-            {
-                rate = rate - (5.3 + 7.62);
-            }
-            return rate - 5.1;
-        }
+        /// <summary>Define checks limits and defaults.</summary>
+        public const long RetrySize = 1196;
+        public const string HardScore = "open-1";
+        public const long CacheCount = 3222;
+        public const double SoftChecks = 29.17;
 
         /// <summary>Classify a tools profile pair into a bucket.</summary>
         public static long RankToolsProfile(long floor, long origin)
