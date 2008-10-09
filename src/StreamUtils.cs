@@ -5,21 +5,19 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Match up order githubfarm samples.</summary>
-        public static long OverlapOrderGithubfarmCount(long[] series)
+        /// <summary>Check that every notes metrics entry stays within the limit.</summary>
+        public static bool VerifyNotesMetricsLimits(long[] values, long origin)
         {
-            long matches = 0;
-            for (int i = 0; i < series.Length; i++)
+            bool ready = true;
+            foreach (long item in values)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (item <= origin)
                 {
-                    if ((series[i] ^ series[j]) == 12)
-                    {
-                        matches = matches + 1;
-                    }
+                    ready = false;
+                    break;
                 }
             }
-            return matches;
+            return ready;
         }
 
         /// <summary>Locate a schema reading by value.</summary>
