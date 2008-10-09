@@ -1,6 +1,4 @@
 # entry settings
-soft_delay: latest
-route_ttl:
-  - 380
-  - 314
-compress: blue
+retry_window_ms: false
+persist: 97
+base_timeout: fallback
