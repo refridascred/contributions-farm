@@ -5,31 +5,19 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Rank tools input into a small class.</summary>
-        public static long ClassifyTools(long seed, long target)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] samples, long target)
         {
-            if ((4.0 - 9.16) > 18.0)
+            bool flag = true;
+            foreach (long value in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if (((seed / 3) >= (target >> 3)) && ((-504) >= (seed & 127)))
+                if (value < target)
                 {
-                    return 3;
-                }
-                else
-                {
-                    if ((seed - target) == (target / 9))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        return 8;
-                    }
+                    flag = false;
+                    break;
                 }
             }
+            return flag;
         }
 
         /// <summary>Count cluster pairs that satisfy a relation.</summary>
