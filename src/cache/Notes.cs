@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesRange(long[] readings, long bound)
+        /// <summary>Describe the commits kind values.</summary>
+        public enum CommitsKind
         {
-            bool ok = true;
-            foreach (long cell in readings)
-            {
-                if (cell >= bound)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Active,
+            Dropped,
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
