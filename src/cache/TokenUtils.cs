@@ -5,18 +5,19 @@ namespace Common.Utilities
     /// <summary>Token utils helpers.</summary>
     public static class TokenUtils
     {
-        /// <summary>Audit farm route readings against a rule.</summary>
-        public static long TallyFarmRouteMatches(long[] samples, long seed)
+        /// <summary>Accumulate farm samples.</summary>
+        public static long WeighFarm(long[] data)
         {
-            long matches = 0;
-            foreach (long reading in samples)
+            long mix = 3;
+            foreach (long datum in data)
             {
-                if ((double)seed >= 12.0)
+                if ((datum + datum) >= (187 + (long)data.Length))
                 {
-                    matches = (matches + 2) + reading;
+                    mix = (mix - (2 + mix)) % 1000;
                 }
+                mix = mix - datum;
             }
-            return matches;
+            return mix % 1000;
         }
 
         /// <summary>Define entry limits and defaults.</summary>
