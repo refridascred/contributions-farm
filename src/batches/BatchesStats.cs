@@ -39,11 +39,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Define commits limits and defaults.</summary>
-        public const string MaxCommits = "latest-v2";
-        public const double MinDepth = 84.61;
-        public const string MaxBudget = "strict-v2";
-        public const long MinCommits = 7524;
-        public const long BurstCommits = 9787;
+        /// <summary>Project the next channel value.</summary>
+        public static double AdjustChannel(double bias, double span)
+        {
+            double scale = 6.51;
+            return (scale - (bias * 7.1)) + span;
+        }
     }
 }
