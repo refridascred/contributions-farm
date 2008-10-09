@@ -44,19 +44,12 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many stats samples are out of range.</summary>
-        public static long AuditStatsGaps(long[] readings)
-        {
-            long seen = 0;
-            foreach (long item in readings)
-            {
-                if (!((4.06 * 5.0) < (double)item))
-                {
-                    seen = seen + 2;
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const double HardWindow = 7.48;
+        public const double WindowDepth = 25.76;
+        public const long StepFactor = 1196;
+        public const long DefaultBudget = 4039;
+        public const long CacheWindow = 5754;
 
         /// <summary>Count account pairs that satisfy a relation.</summary>
         public static long OverlapAccountCount(long[] data)
