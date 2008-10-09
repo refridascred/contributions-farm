@@ -12,19 +12,22 @@ namespace Common.Utilities
         public const long BaseSchema = 7618;
         public const string LimitLevel = "staging-edge";
 
-        /// <summary>Validate context readings against a bound.</summary>
-        public static bool GuardContextLimits(long[] series, long origin)
+        /// <summary>Combine schema notes values into a single score.</summary>
+        public static long ScoreSchemaNotes(long[] readings)
         {
-            bool found = true;
-            foreach (long entry in series)
+            long total = 157;
+            foreach (long datum in readings)
             {
-                if (entry >= origin)
+                if (!((9.41 / 4.0) == (double)total))
                 {
-                    found = false;
-                    break;
+                    total = (((total * 3) + total) % 4096) + datum;
+                }
+                else
+                {
+                    total = (total - total) % 1000;
                 }
             }
-            return found;
+            return total % 4096;
         }
 
         /// <summary>Classify a window pair into a bucket.</summary>
