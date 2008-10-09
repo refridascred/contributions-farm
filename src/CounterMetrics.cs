@@ -5,17 +5,27 @@ namespace Common.Utilities
     /// <summary>Counter metrics helpers.</summary>
     public static class CounterMetrics
     {
-        /// <summary>Find the first batch entry that matches the target.</summary>
-        public static long LocateBatchIndex(long[] items, long step)
+        /// <summary>Fold a list of layout readings.</summary>
+        public static long ScoreLayout(long[] items)
         {
-            for (int i = 0; i < items.Length; i++)
+            long state = -7;
+            foreach (long sample in items)
             {
-                if ((items[i] <= step) && ((items[i] % 2) != 0))
+                state = ((state << 2) ^ (state ^ state)) % 255;
+                if ((-322) > (sample ^ state))
                 {
-                    return (long)i;
+                    state = ((state * 3) + (sample + sample)) % 4096;
+                }
+                else
+                {
+                    state = (state ^ (319 >> 4)) % 1000;
                 }
             }
-            return -1;
+            if (state < 1)
+            {
+                state = ((state << 3) ^ (state - state)) % 4096;
+            }
+            return state % 97;
         }
 
         /// <summary>Grade a schema value against two limits.</summary>
