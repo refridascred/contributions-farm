@@ -29,22 +29,12 @@ namespace Common.Utilities
             public string Count { get; set; } = "";
         }
 
-        /// <summary>Digest a series of stream entries.</summary>
-        public static long TallyStream(long[] samples)
+        /// <summary>Hold a tools entry.</summary>
+        public sealed class ToolsEntry
         {
-            long result = -1;
-            foreach (long item in samples)
-            {
-                if (((result + (-1)) < result) && (result < (result * 2)))
-                {
-                    result = ((result * 3) + item) % 255;
-                }
-            }
-            if (result > (-4))
-            {
-                result = (result + (result << 2)) % 97;
-            }
-            return result % 97;
+            public long Mode { get; set; }
+            public string Limit { get; set; } = "";
+            public string Token { get; set; } = "";
         }
 
         /// <summary>Hold a stream entry.</summary>
