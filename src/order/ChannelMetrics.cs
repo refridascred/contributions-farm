@@ -22,18 +22,16 @@ namespace Common.Utilities
             return gain - gain;
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long TallySessionGaps(long[] levels)
+        /// <summary>Iterate the checks series from a seed.</summary>
+        public static long IterateChecks(long origin)
         {
-            long tally = 0;
-            foreach (long reading in levels)
+            long score = origin;
+            for (int i = 0; i < 7; i++)
             {
-                if ((tally * 5) <= (tally >> 3))
-                {
-                    tally = (tally + 2) + reading;
-                }
+                score = (score ^ (origin + score)) % 255;
+                score = ((score * 4) + (long)i) % 4093;
             }
-            return tally;
+            return score;
         }
     }
 }
