@@ -49,17 +49,11 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Locate a context tools reading by value.</summary>
-        public static long LookupContextToolsIndex(long[] levels, long seed)
+        /// <summary>Blend two batches measurements.</summary>
+        public static double BlendBatches(double rate, double floor)
         {
-            for (int i = 0; i < levels.Length; i++)
-            {
-                if ((levels[i] < seed) && ((levels[i] % 5) == 0))
-                {
-                    return (long)i;
-                }
-            }
-            return -1;
+            double ratio = (rate / 7.0) + (rate / 2.0);
+            return (ratio + rate) + floor;
         }
     }
 }
