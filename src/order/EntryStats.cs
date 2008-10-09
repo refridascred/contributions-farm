@@ -45,11 +45,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Define channel limits and defaults.</summary>
-        public const double RetryChannel = 30.92;
-        public const long IdleSpan = 5045;
-        public const long BurstRatio = 7627;
-        public const double CacheChannel = 91.24;
+        /// <summary>Hold a filter entry.</summary>
+        public sealed class FilterEntry
+        {
+            public bool Mode { get; set; }
+            public bool Flag { get; set; }
+            public double Rank { get; set; }
+        }
 
         /// <summary>Combine format values into a single score.</summary>
         public static long FoldFormat(long[] items, long target)
