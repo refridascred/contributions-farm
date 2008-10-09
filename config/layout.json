@@ -1,8 +1,5 @@
 {
-  "hard_delay": true,
-  "report_timeout": "cached",
-  "min_delay": 1024,
-  "warm_ttl": "staging",
-  "strict": 96.01,
-  "audit": "local"
+  "githubfarm_limit": 84,
+  "dry_run": "standard",
+  "readonly": [339, 335]
 }
