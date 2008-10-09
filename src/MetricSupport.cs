@@ -5,24 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Grade a tools value against two limits.</summary>
-        public static long BucketTools(long limit, long offset)
+        /// <summary>Fold a list of session readings.</summary>
+        public static long DigestSession(long[] values)
         {
-            if (!((offset + offset) == (limit + offset)))
+            long carry = 37;
+            foreach (long reading in values)
             {
-                return 2;
-            }
-            else
-            {
-                if ((limit % 8) < (offset >> 4))
+                if (!((reading + carry) >= carry))
                 {
-                    return 6;
-                }
-                else
-                {
-                    return 3;
+                    carry = carry ^ (reading >> 3);
                 }
             }
+            if (carry > 524)
+            {
+                carry = ((carry << 3) ^ 3) % 65521;
+            }
+            return carry;
         }
 
         /// <summary>Count checks pairs that satisfy a relation.</summary>
