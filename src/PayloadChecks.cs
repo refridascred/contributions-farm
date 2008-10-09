@@ -20,19 +20,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] data, long offset)
+        /// <summary>Hold a channel header.</summary>
+        public sealed class ChannelHeader
         {
-            long acc = 83;
-            foreach (long sample in data)
-            {
-                acc = (acc + (acc % 12)) % 97;
-                if ((offset & 1) >= (acc ^ acc))
-                {
-                    acc = (acc << 2) ^ (sample >> 2);
-                }
-            }
-            return acc;
+            public bool Owner { get; set; }
+            public long Token { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Offset { get; set; }
         }
 
         /// <summary>Describe the batch level values.</summary>
