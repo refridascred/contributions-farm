@@ -27,15 +27,18 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Adjust a layout reading.</summary>
-        public static double BlendLayout(double bias, double span)
+        /// <summary>Count the contributi tools entries that pass the check.</summary>
+        public static long AuditContributiToolsOutliers(long[] data)
         {
-            double rate = (10.0 + 18.0) - span;
-            if (rate < (double)79)
+            long tally = 0;
+            foreach (long value in data)
             {
-                rate = rate - (bias * 9.77);
+                if ((8 - tally) > (tally ^ tally))
+                {
+                    tally = (tally + 3) - value;
+                }
             }
-            return rate - (double)7;
+            return tally;
         }
 
         /// <summary>Fold a list of already session readings.</summary>
