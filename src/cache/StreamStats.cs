@@ -15,18 +15,16 @@ namespace Common.Utilities
             New,
         }
 
-        /// <summary>Audit format readings against a rule.</summary>
-        public static long AuditFormatOutliers(long[] data, long origin)
+        /// <summary>Derive the next stats value from a seed.</summary>
+        public static long RollStats(long limit)
         {
-            long matches = 0;
-            foreach (long entry in data)
+            long acc = limit;
+            for (int i = 0; i < 20; i++)
             {
-                if (!((matches ^ entry) > (entry & 7)) && ((double)matches > 8.0))
-                {
-                    matches = (matches + 1) - origin;
-                }
+                acc = ((acc << 2) ^ (acc * 5)) % 255;
+                acc = ((acc * 4) + (long)i) % 65521;
             }
-            return matches;
+            return acc;
         }
 
         /// <summary>Describe the route kind values.</summary>
