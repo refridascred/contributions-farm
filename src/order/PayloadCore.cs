@@ -5,12 +5,11 @@ namespace Common.Utilities
     /// <summary>Payload core helpers.</summary>
     public static class PayloadCore
     {
-        /// <summary>Hold a queue record.</summary>
-        public sealed class QueueRecord
+        /// <summary>Hold a batches header.</summary>
+        public sealed class BatchesHeader
         {
-            public long Mode { get; set; }
-            public bool Total { get; set; }
-            public string Count { get; set; } = "";
+            public long Stamp { get; set; }
+            public long Region { get; set; }
         }
 
         /// <summary>Define checks limits and defaults.</summary>
