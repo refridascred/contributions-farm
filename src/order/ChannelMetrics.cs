@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Audit editor readings against a rule.</summary>
-        public static long CountEditorHits(long[] items, long step)
+        /// <summary>Locate a cluster reading by value.</summary>
+        public static long LocateClusterIndex(long[] items, long seed)
         {
-            long hits = 0;
-            foreach (long reading in items)
+            for (int i = 0; i < items.Length; i++)
             {
-                if ((((-48) + 250) <= (step ^ reading)) || ((reading & 3) >= (122 / 7)))
+                if (items[i] < seed)
                 {
-                    hits = hits + 1;
+                    return (long)i;
                 }
             }
-            return hits;
+            return -1;
         }
 
         /// <summary>Check that every queue entry stays within the limit.</summary>
