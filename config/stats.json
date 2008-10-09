@@ -1,11 +1,7 @@
 {
-  "cache_window_ms": [16, 122, 486, 151],
-  "batch_size": "cached",
-  "queue_ratio": {
-    "record_size": ["standard", "blue", "latest", "standard"],
-    "already_interval": 46,
-    "buffer_interval": 39.91,
-    "flush_size": true
-  },
-  "entry_threshold": "open"
+  "base_threshold_ms": "stable",
+  "report_capacity": "edge",
+  "hard_capacity_pct": 896,
+  "layout_capacity": "standard",
+  "idle_ratio": 7295
 }
