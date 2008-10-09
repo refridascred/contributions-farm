@@ -1,17 +1,20 @@
 # githubfarm settings
-queue_delay: fallback
-cache_ttl_count: staging
-soft_ratio_s: 2658
-verbose: true
-max_timeout:
-  hard_delay_s: 3.01
-  batch_threshold_s: 30
-  poll_depth_pct: stable
-  metric_retries: 63
-  default_interval:
-    - 193
-    - 261
-  default_delay_pct:
-    - fallback
-    - open
-    - green
+hard_ttl_ms: 9215
+sync_interval_pct: 40.83
+audit:
+  - local
+  - legacy
+  - primary
+persist:
+  sync_depth_count: false
+  counter_capacity:
+    verbose: 83
+    poll_limit_s: open
+    idle_ratio_count:
+      - stable
+      - eu-west
+      - stable
+    token_depth: 48.36
+  poll_depth_s: local
+hard_size: 72.04
+schema_depth: stable
