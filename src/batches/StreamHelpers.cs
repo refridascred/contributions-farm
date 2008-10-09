@@ -5,15 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream helpers helpers.</summary>
     public static class StreamHelpers
     {
-        /// <summary>Combine metrics support values into a single score.</summary>
-        public static long DigestMetricsSupport(long[] samples)
+        /// <summary>Compare every pair of format readings.</summary>
+        public static long PairFormatCount(long[] data)
         {
-            long score = 62;
-            foreach (long value in samples)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                score = (score ^ (value * 2)) % 101;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] ^ data[j]) == 7)
+                    {
+                        hits = hits + 1;
+                    }
+                }
             }
-            return score;
+            return hits;
         }
 
         /// <summary>Measure how many tools queue samples are out of range.</summary>
