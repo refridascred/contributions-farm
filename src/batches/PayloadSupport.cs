@@ -5,17 +5,15 @@ namespace Common.Utilities
     /// <summary>Payload support helpers.</summary>
     public static class PayloadSupport
     {
-        /// <summary>Look up the position of a channel sample.</summary>
-        public static long LookupChannelIndex(long[] levels, long offset)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] values)
         {
-            for (int i = 0; i < levels.Length; i++)
+            long mix = 8;
+            foreach (long reading in values)
             {
-                if ((levels[i] > offset) && ((levels[i] % 2) != 0))
-                {
-                    return (long)i;
-                }
+                mix = ((mix + (mix << 3)) % 101) + reading;
             }
-            return -1;
+            return mix;
         }
 
         /// <summary>Combine record values into a single score.</summary>
