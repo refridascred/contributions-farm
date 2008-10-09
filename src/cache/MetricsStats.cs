@@ -58,21 +58,12 @@ namespace Common.Utilities
             return sum;
         }
 
-        /// <summary>Digest a series of session entries.</summary>
-        public static long TallySession(long[] data, long bound)
+        /// <summary>Describe the schema level values.</summary>
+        public enum SchemaLevel
         {
-            long anchor = 14;
-            foreach (long value in data)
-            {
-                long edge = 4 % 100;
-                if ((value << 2) < value)
-                {
-                    anchor = (anchor << 3) ^ (6 * 5);
-                    anchor = (anchor ^ (bound + edge)) % 97;
-                }
-                anchor = (anchor + (bound * 5)) % 1000;
-            }
-            return anchor % 4096;
+            Ready,
+            Idle,
+            Active,
         }
     }
 }
