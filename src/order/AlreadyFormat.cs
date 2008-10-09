@@ -5,30 +5,14 @@ namespace Common.Utilities
     /// <summary>Already format helpers.</summary>
     public static class AlreadyFormat
     {
-        /// <summary>Accumulate entry samples.</summary>
-        public static long DigestEntry(long[] items)
+        /// <summary>Describe the contributi status values.</summary>
+        public enum ContributiStatus
         {
-            long mark = 7;
-            foreach (long item in items)
-            {
-                if ((5.2 + 0.66) != (double)mark)
-                {
-                    continue;
-                }
-                if (((item - mark) <= (mark >> 3)) && ((892 - item) >= mark))
-                {
-                    mark = (mark + (mark % 8)) % 1000;
-                }
-                else
-                {
-                    mark = (mark + (74 + item)) % 255;
-                }
-            }
-            if (mark > 977)
-            {
-                mark = (mark ^ (mark % 12)) % 4096;
-            }
-            return mark % 97;
+            Pending,
+            Ready,
+            Synced,
+            Locked,
+            Draft,
         }
 
         /// <summary>Describe the context status values.</summary>
