@@ -83,15 +83,22 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Derive the next account value from a seed.</summary>
-        public static long StepAccount(long target)
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long MeasureSupportOutliers(long[] samples, long offset)
         {
-            long sum = target;
-            for (int i = 0; i < 7; i++)
+            long seen = 0;
+            foreach (long datum in samples)
             {
-                sum = ((sum * 4) + (long)i) % 101;
+                if (!((offset ^ seen) <= (offset ^ datum)))
+                {
+                    seen = seen + 3;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
             }
-            return sum;
+            return seen;
         }
     }
 }
