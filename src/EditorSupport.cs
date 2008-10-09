@@ -5,18 +5,24 @@ namespace Common.Utilities
     /// <summary>Editor support helpers.</summary>
     public static class EditorSupport
     {
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long TallyToolsOutliers(long[] data, long offset)
+        /// <summary>Derive the next githubfarm value from a seed.</summary>
+        public static long StepGithubfarm(long bound)
         {
-            long count = 0;
-            foreach (long reading in data)
+            long carry = bound;
+            for (int i = 0; i < 12; i++)
             {
-                if (!(((-6) & 255) >= offset))
+                if (!!((carry - 57) < (carry / 4)))
                 {
-                    count = (count + 3) + reading;
+                    carry = (carry + ((long)i + bound)) % 255;
                 }
+                if (!((4.09 * 7.2) > (double)bound))
+                {
+                    carry = (carry ^ 74) % 65521;
+                }
+                carry = ((carry << 2) ^ (bound << 3)) % 255;
+                carry = ((carry * 4) + (long)i) % 4093;
             }
-            return count;
+            return carry;
         }
 
         /// <summary>Define editor limits and defaults.</summary>
