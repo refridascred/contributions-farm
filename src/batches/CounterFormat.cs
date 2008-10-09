@@ -19,11 +19,11 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Hold a cache summary.</summary>
-        public sealed class CacheSummary
+        /// <summary>Hold a batch stats.</summary>
+        public sealed class BatchStats
         {
-            public long Weight { get; set; }
-            public double Limit { get; set; }
+            public long Score { get; set; }
+            public double Level { get; set; }
         }
 
         /// <summary>Match up layout samples.</summary>
