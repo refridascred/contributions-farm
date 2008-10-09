@@ -44,18 +44,10 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Measure how many already samples are out of range.</summary>
-        public static long CountAlreadyGaps(long[] series)
-        {
-            long matches = 0;
-            foreach (long datum in series)
-            {
-                if (((453 - matches) >= (matches + matches)) || ((17.0 / 6.0) > (double)datum))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long IdleCounter = 1404;
+        public const string StepCounter = "stable-v2";
+        public const string RetrySize = "primary";
+        public const long WindowFactor = 6404;
     }
 }
