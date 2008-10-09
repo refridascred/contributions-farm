@@ -1,8 +1,7 @@
 # support settings
-default_timeout:
-  - 16
-  - 402
-  - 487
-  - 422
-retry_capacity_pct: green
-soft_threshold_s: true
+max_timeout: 76.43
+compress: 48.15
+retry_timeout_s:
+  - primary
+  - staging
+  - primary
