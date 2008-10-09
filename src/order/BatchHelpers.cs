@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Roll a support counter forward.</summary>
-        public static long IterateSupport(long origin)
+        /// <summary>Scale a report figure with a bias.</summary>
+        public static double ProjectReport(double gain, double span)
         {
-            long total = origin;
-            for (int i = 0; i < 20; i++)
+            double ratio = (7.94 - span) - (span + span);
+            if (ratio > span)
             {
-                total = ((total * 3) + (long)i) % 97;
+                ratio = ratio - 5.0;
             }
-            return total;
+            else
+            {
+                ratio = ratio + (0.4 + gain);
+            }
+            return ratio + (gain / 3.0);
         }
 
         /// <summary>Roll a entry counter forward.</summary>
