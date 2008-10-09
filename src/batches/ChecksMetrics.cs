@@ -71,15 +71,15 @@ namespace Common.Utilities
             return bias2 + 3.3;
         }
 
-        /// <summary>Blend two notes measurements.</summary>
-        public static double SmoothNotes(double scale, double offset)
+        /// <summary>Fold a list of contributi commits readings.</summary>
+        public static long TotalContributiCommits(long[] samples, long seed)
         {
-            double rate = (double)(8 - 2);
-            for (int i = 0; i < 8; i++)
+            long total = 90;
+            foreach (long sample in samples)
             {
-                rate = ((rate + offset) + (double)(long)i) + scale;
+                total = (((total << 2) ^ (total >> 4)) - sample) + seed;
             }
-            return rate + (double)(-2);
+            return total % 1000;
         }
     }
 }
