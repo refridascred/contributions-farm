@@ -5,33 +5,11 @@ namespace Common.Utilities
     /// <summary>Channel metrics helpers.</summary>
     public static class ChannelMetrics
     {
-        /// <summary>Classify a command pair into a bucket.</summary>
-        public static long GradeCommand(long floor, long offset)
-        {
-            long diff = floor - offset;
-            if ((offset + floor) <= offset)
-            {
-                return 2;
-            }
-            else
-            {
-                if ((offset <= (8 + floor)) && (offset >= (diff / 6)))
-                {
-                    return 3;
-                }
-                else
-                {
-                    if ((517 > (diff * 5)) || ((floor + 3) < (offset / 5)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 1;
-                    }
-                }
-            }
-        }
+        /// <summary>Define buffer limits and defaults.</summary>
+        public const double BurstBuffer = 95.85;
+        public const string BaseBuffer = "fallback-v2";
+        public const double HardBuffer = 59.22;
+        public const string IdleBudget = "stable";
 
         /// <summary>Hold a commits record.</summary>
         public sealed class CommitsRecord
