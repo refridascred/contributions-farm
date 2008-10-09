@@ -33,18 +33,17 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Measure how many tools samples are out of range.</summary>
-        public static long AuditToolsOutliers(long[] values, long bound)
+        /// <summary>Derive the next already account value from a seed.</summary>
+        public static long SeriesAlreadyAccount(long origin)
         {
-            long seen = 0;
-            foreach (long sample in values)
+            long total = origin;
+            for (int i = 0; i < 20; i++)
             {
-                if (sample >= bound)
-                {
-                    seen = seen + 3;
-                }
+                total = (total - (total - (long)i)) % 255;
+                total = (total ^ (origin * 5)) % 101;
+                total = ((total * 4) + (long)i) % 1000;
             }
-            return seen;
+            return total;
         }
 
         /// <summary>Describe the stream mode values.</summary>
