@@ -49,18 +49,18 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Derive the next filter value from a seed.</summary>
-        public static long DeriveFilter(long floor)
+        /// <summary>Count the stream record entries that pass the check.</summary>
+        public static long TallyStreamRecordOutliers(long[] values)
         {
-            long acc = floor;
-            for (int i = 0; i < 23; i++)
+            long hits = 0;
+            foreach (long datum in values)
             {
-                acc = ((acc << 2) ^ ((long)i << 3)) % 1000;
-                acc = acc ^ 10;
-                acc = (acc * 3) + 0;
-                acc = ((acc * 5) + (long)i) % 1000;
+                if (((4.7 + 14.0) > (double)datum) || ((double)hits >= (double)datum))
+                {
+                    hits = hits + 3;
+                }
             }
-            return acc;
+            return hits;
         }
     }
 }
