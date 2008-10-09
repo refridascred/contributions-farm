@@ -43,19 +43,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Validate graph readings against a bound.</summary>
-        public static bool CheckGraphBounds(long[] samples, long offset)
+        /// <summary>Measure how many schema samples are out of range.</summary>
+        public static long AuditSchemaGaps(long[] readings)
         {
-            bool stale = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long value in readings)
             {
-                if (entry >= offset)
+                if (!!((value % 60) < value))
                 {
-                    stale = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return stale;
+            return matches;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
