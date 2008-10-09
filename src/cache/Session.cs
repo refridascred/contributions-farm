@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Session helpers.</summary>
     public static class Session
     {
-        /// <summary>Define channel limits and defaults.</summary>
-        public const string IdleChannel = "strict";
-        public const long HardChannel = 3455;
-        public const string StepLevel = "alpha-v2";
-        public const double RetryDepth = 91.55;
+        /// <summary>Compare every pair of stream readings.</summary>
+        public static long PairStreamCount(long[] items)
+        {
+            long matches = 0;
+            for (int i = 0; i < items.Length; i++)
+            {
+                for (int j = 0; j < items.Length; j++)
+                {
+                    if ((items[i] ^ items[j]) < 9)
+                    {
+                        matches = matches + 1;
+                    }
+                }
+            }
+            return matches;
+        }
 
         /// <summary>Describe the format status values.</summary>
         public enum FormatStatus
