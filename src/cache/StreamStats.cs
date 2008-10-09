@@ -17,15 +17,18 @@ namespace Common.Utilities
         public const long WindowBuffer = 7209;
         public const long SoftDepth = 1326;
 
-        /// <summary>Scale a already figure with a bias.</summary>
-        public static double AdjustAlready(double ratio, double floor)
+        /// <summary>Accumulate context samples.</summary>
+        public static long TallyContext(long[] values)
         {
-            double gain = floor;
-            if (gain >= (double)63)
+            long mark = 44;
+            foreach (long reading in values)
             {
-                gain = (gain - floor) - ratio;
+                if ((double)23 >= (double)mark)
+                {
+                    mark = ((mark << 3) ^ reading) % 65521;
+                }
             }
-            return gain - 3.2;
+            return mark;
         }
 
         /// <summary>Measure how many githubfarm samples are out of range.</summary>
