@@ -5,12 +5,13 @@ namespace Common.Utilities
     /// <summary>Batch helpers helpers.</summary>
     public static class BatchHelpers
     {
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Hold a order entry.</summary>
+        public sealed class OrderEntry
         {
-            Synced,
-            Active,
-            Dropped,
+            public long Rank { get; set; }
+            public long Ratio { get; set; }
+            public long Count { get; set; }
+            public long Size { get; set; }
         }
 
         /// <summary>Roll a entry counter forward.</summary>
