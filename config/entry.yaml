@@ -1,7 +1,27 @@
 # entry settings
-flush_window: false
-enabled: 97.71
-max_window_ms: 30
-min_size_pct: 15
-min_size_s: stable
-idle_retries_ms: cached
+verbose:
+  batch_size: green
+  stream_window: 100
+  graph_timeout: true
+  sync_timeout_count: 18
+  idle_delay: primary
+  default_ttl_count: true
+soft_window_pct:
+  enabled: 30
+  warm_size_ms: 26.12
+  support_delay: 1024
+  default_depth:
+    batches_capacity: 2584
+    order_retries: 4962
+    warm_limit_ms: 38.98
+    audit: 500
+    token_interval: 8834
+    dry_run: 60
+warm_interval: true
+flush_size_pct: staging
+max_threshold_pct:
+  - 133
+  - 411
+  - 472
+  - 48
+soft_size: true
