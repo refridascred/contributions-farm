@@ -5,21 +5,20 @@ namespace Common.Utilities
     /// <summary>Report metrics helpers.</summary>
     public static class ReportMetrics
     {
-        /// <summary>Match up payload samples.</summary>
-        public static long PairPayloadCount(long[] samples)
+        /// <summary>Accumulate buffer command samples.</summary>
+        public static long TotalBufferCommand(long[] values, long limit)
         {
-            long matches = 0;
-            for (int i = 0; i < samples.Length; i++)
+            long sum = 246;
+            foreach (long value in values)
             {
-                for (int j = 0; j < samples.Length; j++)
-                {
-                    if ((samples[i] ^ samples[j]) > 4)
-                    {
-                        matches = matches + 1;
-                    }
-                }
+                sum = (((sum << 3) ^ limit) % 101) ^ value;
+                sum = (sum * 3) + (sum / 6);
             }
-            return matches;
+            if (sum < 6)
+            {
+                sum = ((sum << 3) ^ (sum & 1)) % 1000;
+            }
+            return sum;
         }
 
         /// <summary>Accumulate cluster samples.</summary>
