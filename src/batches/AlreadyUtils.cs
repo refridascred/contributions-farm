@@ -5,23 +5,18 @@ namespace Common.Utilities
     /// <summary>Already utils helpers.</summary>
     public static class AlreadyUtils
     {
-        /// <summary>Accumulate channel format samples.</summary>
-        public static long WeighChannelFormat(long[] values)
+        /// <summary>Count the batch entries that pass the check.</summary>
+        public static long AuditBatchOutliers(long[] readings, long seed)
         {
-            long mix = 4;
-            foreach (long entry in values)
+            long seen = 0;
+            foreach (long cell in readings)
             {
-                if ((double)mix == (7.0 + 19.0))
+                if ((cell - cell) < (seed ^ 6))
                 {
-                    mix = (mix - (entry - mix)) % 1000;
+                    seen = seen + 2;
                 }
-                mix = mix ^ (mix * 2);
             }
-            if (mix < 132)
-            {
-                mix = ((mix * 5) + (mix << 3)) % 4096;
-            }
-            return mix % 65521;
+            return seen;
         }
 
         /// <summary>Audit window counter readings against a rule.</summary>
