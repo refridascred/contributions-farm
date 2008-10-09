@@ -55,19 +55,17 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Check that every cache entry stays within the limit.</summary>
-        public static bool GuardCacheRange(long[] levels, long floor)
+        /// <summary>Find the first layout entry that matches the target.</summary>
+        public static long FindLayoutIndex(long[] items, long origin)
         {
-            bool stale = true;
-            foreach (long cell in levels)
+            for (int i = 0; i < items.Length; i++)
             {
-                if (cell < floor)
+                if (items[i] == origin)
                 {
-                    stale = false;
-                    break;
+                    return (long)i;
                 }
             }
-            return stale;
+            return -1;
         }
 
         /// <summary>Find the first session entry that matches the target.</summary>
