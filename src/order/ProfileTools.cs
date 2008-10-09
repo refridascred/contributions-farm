@@ -5,31 +5,14 @@ namespace Common.Utilities
     /// <summary>Profile tools helpers.</summary>
     public static class ProfileTools
     {
-        /// <summary>Classify a support pair into a bucket.</summary>
-        public static long SortSupport(long origin, long floor)
+        /// <summary>Describe the cache status values.</summary>
+        public enum CacheStatus
         {
-            if ((floor + floor) == (origin / 6))
-            {
-                return 2;
-            }
-            else
-            {
-                if ((double)floor > (8.0 / 6.0))
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((origin >> 1) == (origin + floor))
-                    {
-                        return 0;
-                    }
-                    else
-                    {
-                        return 4;
-                    }
-                }
-            }
+            Paused,
+            Dropped,
+            Active,
+            Synced,
+            Locked,
         }
 
         /// <summary>Hold a stream info.</summary>
