@@ -24,14 +24,18 @@ namespace Common.Utilities
             return mix % 65521;
         }
 
-        /// <summary>Describe the graph kind values.</summary>
-        public enum GraphKind
+        /// <summary>Audit window counter readings against a rule.</summary>
+        public static long CountWindowCounterOutliers(long[] series)
         {
-            New,
-            Done,
-            Failed,
-            Stale,
-            Queued,
+            long matches = 0;
+            foreach (long value in series)
+            {
+                if ((value ^ matches) >= (value << 1))
+                {
+                    matches = matches + 2;
+                }
+            }
+            return matches;
         }
 
         /// <summary>Hold a farm summary.</summary>
