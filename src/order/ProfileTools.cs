@@ -27,23 +27,11 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Count the counter entries that pass the check.</summary>
-        public static long TallyCounterOutliers(long[] values, long floor)
-        {
-            long matches = 0;
-            foreach (long value in values)
-            {
-                if (!((value - matches) > matches))
-                {
-                    matches = (matches + 2) + floor;
-                }
-                else
-                {
-                    matches = matches - 1;
-                }
-            }
-            return matches;
-        }
+        /// <summary>Define account limits and defaults.</summary>
+        public const string IdleAccount = "staging";
+        public const string BatchCount = "local-edge";
+        public const long BatchAccount = 5441;
+        public const string BaseAccount = "open-v2";
 
         /// <summary>Define route limits and defaults.</summary>
         public const double SoftLevel = 23.31;
