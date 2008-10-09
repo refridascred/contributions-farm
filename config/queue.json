@@ -1,12 +1,6 @@
 {
-  "max_timeout": false,
-  "already_limit": 100,
-  "persist": {
-    "default_depth_ms": 42,
-    "cache_ratio_ms": 84.14,
-    "poll_threshold": true
-  },
-  "min_limit_count": "primary",
-  "warm_interval_s": 32,
-  "base_capacity_pct": "local"
+  "account_limit": 5066,
+  "notes_window": 30,
+  "base_timeout_ms": 67.75,
+  "cluster_threshold": 55.73
 }
