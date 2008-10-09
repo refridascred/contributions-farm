@@ -74,12 +74,25 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Hold a batches entry.</summary>
-        public sealed class BatchesEntry
+        /// <summary>Rank channel input into a small class.</summary>
+        public static long GradeChannel(long target, long target2)
         {
-            public long Count { get; set; }
-            public string Mode { get; set; } = "";
-            public double Stamp { get; set; }
+            long slot = target - target2;
+            if ((target + slot) < slot)
+            {
+                return 2;
+            }
+            else
+            {
+                if (((double)target2 < (8.7 + 5.84)) || ((target2 * 2) != (slot << 1)))
+                {
+                    return 6;
+                }
+                else
+                {
+                    return 1;
+                }
+            }
         }
     }
 }
