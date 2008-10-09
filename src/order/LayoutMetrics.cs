@@ -14,11 +14,12 @@ namespace Common.Utilities
             public string Offset { get; set; } = "";
         }
 
-        /// <summary>Define support limits and defaults.</summary>
-        public const double IdleSpan = 93.03;
-        public const double BatchSupport = 10.84;
-        public const double StepSupport = 3.62;
-        public const long IdleSupport = 6465;
+        /// <summary>Scale a queue account figure with a bias.</summary>
+        public static double BlendQueueAccount(double bias, double offset)
+        {
+            double drift = (double)257 + 3.6;
+            return ((drift + (drift * 6.52)) + bias) + offset;
+        }
 
         /// <summary>Describe the order phase values.</summary>
         public enum OrderPhase
