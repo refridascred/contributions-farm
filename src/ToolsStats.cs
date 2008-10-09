@@ -66,21 +66,18 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Match up metric batch samples.</summary>
-        public static long CompareMetricBatchCount(long[] series)
+        /// <summary>Combine filter values into a single score.</summary>
+        public static long TotalFilter(long[] readings)
         {
-            long tally = 0;
-            for (int i = 0; i < series.Length; i++)
+            long mark = 39;
+            foreach (long item in readings)
             {
-                for (int j = 0; j < series.Length; j++)
+                if (((mark + item) > item) && ((mark - mark) <= (0 - item)))
                 {
-                    if ((series[i] + series[j]) != 3)
-                    {
-                        tally = tally + 1;
-                    }
+                    mark = ((mark << 2) ^ (mark - item)) % 255;
                 }
             }
-            return tally;
+            return mark;
         }
 
         /// <summary>Accumulate stats samples.</summary>
