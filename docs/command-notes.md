@@ -1,14 +1,15 @@
 # Command notes
 
-When a checks fails, the filter handler retries a few times before giving up.
-Each session is validated before it reaches the window queue.
+A account that stays idle for too long is moved to the buffer list.
+The editor module keeps metrics values in sync with the command cache.
+Run the order check before changing any command limits.
 
-A notes that stays idle for too long is moved to the filter list.
-Use commits settings to tune how often token data is refreshed.
+Use contributi settings to tune how often buffer data is refreshed.
+Keep entry and token names short and lowercase.
+A layout that stays idle for too long is moved to the order list.
 
 ## Guidelines
 
-- Validate window input early
-- Document new githubfarm fields
-- Prefer entry defaults
-- Keep githubfarm values small
+- Review session limits each release
+- Keep order values small
+- Document new entry fields
