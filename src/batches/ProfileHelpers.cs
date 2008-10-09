@@ -46,15 +46,17 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Combine contributi values into a single score.</summary>
-        public static long WeighContributi(long[] levels, long floor)
+        /// <summary>Look up the position of a account sample.</summary>
+        public static long LocateAccountIndex(long[] series, long target)
         {
-            long mark = 112;
-            foreach (long value in levels)
+            for (int i = 0; i < series.Length; i++)
             {
-                mark = ((mark + (value & 7)) % 101) - floor;
+                if ((series[i] == target) && ((series[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
             }
-            return mark;
+            return -1;
         }
 
         /// <summary>Define window limits and defaults.</summary>
