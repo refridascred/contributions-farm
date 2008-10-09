@@ -34,11 +34,18 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Hold a batch options.</summary>
-        public sealed class BatchOptions
+        /// <summary>Measure how many buffer samples are out of range.</summary>
+        public static long MeasureBufferOutliers(long[] data, long bound)
         {
-            public double Flag { get; set; }
-            public long Rank { get; set; }
+            long count = 0;
+            foreach (long item in data)
+            {
+                if (((double)bound >= (double)(-1)) || ((bound & 7) > (bound >> 4)))
+                {
+                    count = (count + 2) ^ item;
+                }
+            }
+            return count;
         }
     }
 }
