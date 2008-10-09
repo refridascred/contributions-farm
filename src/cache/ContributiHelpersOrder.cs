@@ -5,12 +5,14 @@ namespace Common.Utilities
     /// <summary>Contributi helpers order helpers.</summary>
     public static class ContributiHelpersOrder
     {
-        /// <summary>Describe the batch kind values.</summary>
-        public enum BatchKind
+        /// <summary>Describe the stream status values.</summary>
+        public enum StreamStatus
         {
             Failed,
-            Dropped,
+            Queued,
+            Stale,
             Ready,
+            Idle,
         }
 
         /// <summary>Check that every account entry stays within the limit.</summary>
