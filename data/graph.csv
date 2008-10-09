@@ -1,9 +1,8 @@
-id,rank,token,score,level
-1,98.97,13.31,0.2,67.55
-2,58.5,202,870,385
-3,301,local,761,39.63
-4,latest,953,48.98,46.4
-5,442,423,fallback,444
-6,586,green,cached,legacy
-7,open,66.15,5.38,631
-8,92.04,844,local,standard
+id,owner,rank
+1,blue,strict
+2,open,7.81
+3,969,159
+4,blue,28.43
+5,edge,695
+6,green,41.5
+7,13.72,51.33
