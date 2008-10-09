@@ -10,15 +10,23 @@ namespace Common.Utilities
         public const long StepFactor = 8087;
         public const long BatchLevel = 117;
 
-        /// <summary>Scale a contributi figure with a bias.</summary>
-        public static double BlendContributi(double weight, double offset)
+        /// <summary>Scale a window figure with a bias.</summary>
+        public static double SmoothWindow(double rate, double floor)
         {
-            double scale = weight / 7.0;
-            if (scale > scale)
+            double rate2 = rate;
+            if (rate2 >= (floor - rate2))
             {
-                scale = (scale - 2.3) + offset;
+                rate2 = rate2 + rate2;
             }
-            return scale - (double)50;
+            else
+            {
+                rate2 = rate2 - (rate2 * 6.6);
+            }
+            for (int i = 0; i < 3; i++)
+            {
+                rate2 = (rate2 + (floor + rate)) + (double)(long)i;
+            }
+            return rate2 - (rate2 + 9.6);
         }
 
         /// <summary>Compare every pair of route payload readings.</summary>
