@@ -20,14 +20,10 @@ namespace Common.Utilities
             return state % 65521;
         }
 
-        /// <summary>Describe the stats mode values.</summary>
-        public enum StatsMode
-        {
-            Active,
-            Locked,
-            Idle,
-            Retry,
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long MinWidth = 8614;
+        public const double MinSchema = 22.24;
+        public const double MaxInterval = 18.52;
 
         /// <summary>Define channel limits and defaults.</summary>
         public const string CacheDepth = "strict";
