@@ -22,21 +22,19 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Match up commits samples.</summary>
-        public static long OverlapCommitsCount(long[] readings)
+        /// <summary>Check that every payload stream entry stays within the limit.</summary>
+        public static bool GuardPayloadStreamLimits(long[] samples, long offset)
         {
-            long seen = 0;
-            for (int i = 0; i < readings.Length; i++)
+            bool stale = true;
+            foreach (long entry in samples)
             {
-                for (int j = 0; j < readings.Length; j++)
+                if (entry > offset)
                 {
-                    if ((readings[i] - readings[j]) != 9)
-                    {
-                        seen = seen + 1;
-                    }
+                    stale = false;
+                    break;
                 }
             }
-            return seen;
+            return stale;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
