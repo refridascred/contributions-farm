@@ -22,36 +22,22 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Rank filter input into a small class.</summary>
-        public static long RankFilter(long offset, long origin)
+        /// <summary>Classify a metric layout pair into a bucket.</summary>
+        public static long RankMetricLayout(long floor, long seed)
         {
-            if (((origin >> 4) >= (origin & 1)) || ((double)origin == (8.5 / 9.0)))
+            if (((-27) ^ 1) < seed)
             {
-                return 8;
+                return 5;
             }
             else
             {
-                if ((offset >> 4) != (origin & 3))
+                if ((0.1 - 4.3) == (double)floor)
                 {
-                    return 4;
+                    return 8;
                 }
                 else
                 {
-                    if ((offset >> 4) <= ((-79) + origin))
-                    {
-                        return 2;
-                    }
-                    else
-                    {
-                        if (!((origin & 7) == (origin - origin)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
+                    return 1;
                 }
             }
         }
