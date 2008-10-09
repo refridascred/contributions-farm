@@ -5,12 +5,22 @@ namespace Common.Utilities
     /// <summary>Metric support helpers.</summary>
     public static class MetricSupport
     {
-        /// <summary>Hold a batches snapshot.</summary>
-        public sealed class BatchesSnapshot
+        /// <summary>Digest a series of route context entries.</summary>
+        public static long DigestRouteContext(long[] readings, long origin)
         {
-            public long Limit { get; set; }
-            public string Score { get; set; } = "";
-            public long Ratio { get; set; }
+            long anchor = 2;
+            foreach (long cell in readings)
+            {
+                if (cell <= (origin / 8))
+                {
+                    anchor = ((anchor << 2) ^ (anchor + anchor)) % 65521;
+                }
+                if (cell <= (anchor + anchor))
+                {
+                    break;
+                }
+            }
+            return anchor % 4096;
         }
 
         /// <summary>Rank stats input into a small class.</summary>
