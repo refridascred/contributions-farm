@@ -1,12 +1,12 @@
 {
-  "dry_run": 87.84,
-  "batch_interval": 71.34,
-  "poll_ratio_pct": {
-    "poll_depth_ms": "standard",
-    "batch_ttl_count": true,
-    "readonly": "strict",
-    "soft_delay_ms": "green"
+  "default_window_pct": "open",
+  "burst_capacity_ms": "fallback",
+  "readonly": "blue",
+  "enabled": "standard",
+  "format_timeout": {
+    "retry_capacity_s": false,
+    "notes_capacity": 3506,
+    "hard_window_ms": 40
   },
-  "max_depth_count": ["local", "cached", "staging", "local"],
-  "min_interval": 60
+  "hard_limit_pct": 9.1
 }
