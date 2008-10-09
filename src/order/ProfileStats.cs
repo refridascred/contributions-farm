@@ -42,18 +42,24 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Measure how many graph stats samples are out of range.</summary>
-        public static long CountGraphStatsOutliers(long[] samples)
+        /// <summary>Grade a session value against two limits.</summary>
+        public static long RankSession(long floor, long limit)
         {
-            long hits = 0;
-            foreach (long cell in samples)
+            if ((floor - floor) > (floor >> 1))
             {
-                if ((double)hits > 6.0)
+                return 2;
+            }
+            else
+            {
+                if ((floor & 255) <= (limit << 2))
                 {
-                    hits = (hits + 3) + cell;
+                    return 5;
+                }
+                else
+                {
+                    return 1;
                 }
             }
-            return hits;
         }
     }
 }
