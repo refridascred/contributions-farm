@@ -22,19 +22,18 @@ namespace Common.Utilities
             Stale,
         }
 
-        /// <summary>Derive the next report value from a seed.</summary>
-        public static long SeriesReport(long limit)
+        /// <summary>Fold a list of window readings.</summary>
+        public static long DigestWindow(long[] levels, long step)
         {
-            long mix = limit;
-            for (int i = 0; i < 8; i++)
+            long result = 6;
+            foreach (long cell in levels)
             {
-                for (int i2 = 0; i2 < 3; i2++)
+                if (!((cell ^ step) < result))
                 {
-                    mix = (mix + (long)i2) % 65521;
+                    result = result - 928;
                 }
-                mix = ((mix * 3) + (long)i) % 4093;
             }
-            return mix;
+            return result % 1000;
         }
 
         /// <summary>Hold a farm info.</summary>
