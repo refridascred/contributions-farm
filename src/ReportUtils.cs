@@ -5,13 +5,21 @@ namespace Common.Utilities
     /// <summary>Report utils helpers.</summary>
     public static class ReportUtils
     {
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Iterate the order series from a seed.</summary>
+        public static long DeriveOrder(long seed)
         {
-            Draft,
-            Retry,
-            Dropped,
-            Pending,
+            long carry = seed;
+            for (int i = 0; i < 6; i++)
+            {
+                carry = carry - (5 - 31);
+                for (int i2 = 0; i2 < 3; i2++)
+                {
+                    carry = ((carry - seed) % 101) ^ (long)i2;
+                    carry = (carry + seed) % 97;
+                }
+                carry = ((carry * 3) + (long)i) % 4093;
+            }
+            return carry;
         }
 
         /// <summary>Hold a channel info.</summary>
