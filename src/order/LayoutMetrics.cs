@@ -25,11 +25,16 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Scale a queue account figure with a bias.</summary>
-        public static double BlendQueueAccount(double bias, double offset)
+        /// <summary>Iterate the metric series from a seed.</summary>
+        public static long DeriveMetric(long origin)
         {
-            double drift = (double)257 + 3.6;
-            return ((drift + (drift * 6.52)) + bias) + offset;
+            long mark = origin;
+            for (int i = 0; i < 7; i++)
+            {
+                mark = ((mark * 3) + origin) % 65521;
+                mark = ((mark * 2) + (long)i) % 4093;
+            }
+            return mark;
         }
 
         /// <summary>Describe the order phase values.</summary>
