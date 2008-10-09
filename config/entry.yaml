@@ -1,11 +1,13 @@
 # entry settings
-notes_retries: legacy
-metric_limit:
-  min_timeout_count: stable
-  poll_threshold_count:
-    - 141
-    - 467
-  compress: fallback
-batch_timeout:
-  - 456
-  - 469
+order_capacity: 25.88
+enabled:
+  cache_depth_pct: 500
+  persist: 500
+  batch_depth_count: 3235
+  hard_limit: 40
+  checks_ratio: 60
+  notes_ratio: 963
+already_capacity: 23
+editor_ttl: 5110
+retry_ratio_pct: 67.54
+idle_ratio_pct: 9992
