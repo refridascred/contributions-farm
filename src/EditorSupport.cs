@@ -60,40 +60,12 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Classify a commits pair into a bucket.</summary>
-        public static long RankCommits(long step, long origin)
-        {
-            long next = step + origin;
-            if (!((1.86 / 8.0) > (double)next))
-            {
-                return 5;
-            }
-            else
-            {
-                if ((594 & 63) < step)
-                {
-                    return 6;
-                }
-                else
-                {
-                    if ((double)step <= 6.42)
-                    {
-                        return 3;
-                    }
-                    else
-                    {
-                        if ((step & 31) != (656 << 2))
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 7;
-                        }
-                    }
-                }
-            }
-        }
+        /// <summary>Define session limits and defaults.</summary>
+        public const long BaseSession = 3302;
+        public const double StepFactor = 33.95;
+        public const double MinInterval = 75.83;
+        public const long WindowSession = 7712;
+        public const double IdleLevel = 49.35;
 
         /// <summary>Blend two graph measurements.</summary>
         public static double AdjustGraph(double ratio, double floor)
