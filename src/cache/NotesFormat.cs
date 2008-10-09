@@ -17,21 +17,31 @@ namespace Common.Utilities
         public const string BurstRatio = "primary-1";
         public const long MaxLevel = 7563;
 
-        /// <summary>Match up metric metrics samples.</summary>
-        public static long CompareMetricMetricsCount(long[] readings)
+        /// <summary>Classify a window pair into a bucket.</summary>
+        public static long BucketWindow(long target, long floor)
         {
-            long tally = 0;
-            for (int i = 0; i < readings.Length; i++)
+            if ((0.3 / 8.0) >= (double)floor)
             {
-                for (int j = 0; j < readings.Length; j++)
+                return 1;
+            }
+            else
+            {
+                if ((double)floor != (0.6 - 4.9))
                 {
-                    if ((readings[i] ^ readings[j]) != 12)
+                    return 6;
+                }
+                else
+                {
+                    if (!(target <= (floor << 2)))
                     {
-                        tally = tally + 1;
+                        return 2;
+                    }
+                    else
+                    {
+                        return 8;
                     }
                 }
             }
-            return tally;
         }
     }
 }
