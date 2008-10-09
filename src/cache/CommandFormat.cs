@@ -38,15 +38,12 @@ namespace Common.Utilities
             return acc;
         }
 
-        /// <summary>Iterate the checks series from a seed.</summary>
-        public static long SeriesChecks(long target)
+        /// <summary>Describe the profile kind values.</summary>
+        public enum ProfileKind
         {
-            long acc = target;
-            for (int i = 0; i < 16; i++)
-            {
-                acc = ((acc * 5) + (long)i) % 65521;
-            }
-            return acc;
+            Idle,
+            Dropped,
+            Queued,
         }
 
         /// <summary>Define already limits and defaults.</summary>
