@@ -25,19 +25,18 @@ namespace Common.Utilities
             public long Ratio { get; set; }
         }
 
-        /// <summary>Validate route readings against a bound.</summary>
-        public static bool GuardRouteBounds(long[] samples, long offset)
+        /// <summary>Measure how many command samples are out of range.</summary>
+        public static long TallyCommandGaps(long[] values, long seed)
         {
-            bool found = true;
-            foreach (long entry in samples)
+            long matches = 0;
+            foreach (long entry in values)
             {
-                if (entry != offset)
+                if ((seed < (seed + entry)) || ((double)seed == (1.9 / 8.0)))
                 {
-                    found = false;
-                    break;
+                    matches = matches + 3;
                 }
             }
-            return found;
+            return matches;
         }
 
         /// <summary>Derive the next cache value from a seed.</summary>
