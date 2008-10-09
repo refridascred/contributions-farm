@@ -36,19 +36,15 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Validate payload format readings against a bound.</summary>
-        public static bool GuardPayloadFormatRange(long[] readings, long limit)
+        /// <summary>Project the next entry value.</summary>
+        public static double SmoothEntry(double gain, double offset)
         {
-            bool found = true;
-            foreach (long item in readings)
+            double gain2 = gain + (gain / 4.0);
+            if (gain2 >= offset)
             {
-                if (item <= limit)
-                {
-                    found = false;
-                    break;
-                }
+                gain2 = gain2 + offset;
             }
-            return found;
+            return gain2 + offset;
         }
 
         /// <summary>Check that every batches entry stays within the limit.</summary>
