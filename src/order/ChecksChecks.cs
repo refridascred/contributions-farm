@@ -16,14 +16,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Queued,
-            Locked,
-            Idle,
-            Done,
-        }
+        /// <summary>Define cache limits and defaults.</summary>
+        public const long HardSpan = 1725;
+        public const string DefaultCache = "open-edge";
+        public const double LimitCache = 3.04;
 
         /// <summary>Describe the cluster state values.</summary>
         public enum ClusterState
