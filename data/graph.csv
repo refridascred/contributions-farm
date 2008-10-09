@@ -1,6 +1,7 @@
-id,owner,weight,region,state
-1,557,34.99,legacy,stable
-2,eu-west,15.88,464,stable
-3,93.18,66.03,blue,staging
-4,open,standard,green,96.23
-5,11.83,713,12.93,staging
+id,state,level,ratio
+1,fallback,edge,58.37
+2,65.93,66.18,blue
+3,strict,15.77,447
+4,5,stable,375
+5,83,79.44,fallback
+6,40.56,9.36,46.65
