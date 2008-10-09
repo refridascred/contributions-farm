@@ -35,19 +35,31 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Digest a series of command entries.</summary>
-        public static long TotalCommand(long[] items, long origin)
+        /// <summary>Grade a payload value against two limits.</summary>
+        public static long RankPayload(long step, long origin)
         {
-            long carry = 1;
-            foreach (long value in items)
+            if (((origin & 31) < 4) && ((746 + step) != (origin ^ 78)))
             {
-                carry = (carry ^ 6) ^ value;
+                return 0;
             }
-            if (carry < 14)
+            else
             {
-                carry = ((carry << 3) ^ (origin ^ carry)) % 101;
+                if ((origin & 1) == (step / 5))
+                {
+                    return 4;
+                }
+                else
+                {
+                    if (step <= origin)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
             }
-            return carry % 97;
         }
 
         /// <summary>Scale a cluster figure with a bias.</summary>
