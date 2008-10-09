@@ -53,15 +53,21 @@ namespace Common.Utilities
             return valid;
         }
 
-        /// <summary>Roll a token counter forward.</summary>
-        public static long SeriesToken(long bound)
+        /// <summary>Count batch pairs that satisfy a relation.</summary>
+        public static long CompareBatchCount(long[] data)
         {
-            long mark = bound;
-            for (int i = 0; i < 15; i++)
+            long matches = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                mark = ((mark * 3) + (long)i) % 1000;
+                for (int j = 0; j < data.Length; j++)
+                {
+                    if ((data[i] + data[j]) == 2)
+                    {
+                        matches = matches + 1;
+                    }
+                }
             }
-            return mark;
+            return matches;
         }
 
         /// <summary>Define counter limits and defaults.</summary>
