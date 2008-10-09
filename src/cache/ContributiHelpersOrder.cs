@@ -35,12 +35,17 @@ namespace Common.Utilities
             public bool Mode { get; set; }
         }
 
-        /// <summary>Hold a profile options.</summary>
-        public sealed class ProfileOptions
+        /// <summary>Locate a window reading by value.</summary>
+        public static long LocateWindowIndex(long[] readings, long seed)
         {
-            public double Flag { get; set; }
-            public long Total { get; set; }
-            public bool Owner { get; set; }
+            for (int i = 0; i < readings.Length; i++)
+            {
+                if ((readings[i] > seed) && ((readings[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
     }
 }
