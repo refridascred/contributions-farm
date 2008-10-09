@@ -37,19 +37,22 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Scale a checks figure with a bias.</summary>
-        public static double SmoothChecks(double bias, double bias2)
+        /// <summary>Measure how many context samples are out of range.</summary>
+        public static long CountContextOutliers(long[] levels)
         {
-            double bias3 = bias / 8.0;
-            if (bias3 > (double)708)
+            long hits = 0;
+            foreach (long item in levels)
             {
-                bias3 = (bias3 + (double)790) + bias2;
+                if (item > 163)
+                {
+                    hits = hits + 1;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
             }
-            else
-            {
-                bias3 = bias3 + (bias / 5.0);
-            }
-            return bias3 + (double)(-4);
+            return hits;
         }
     }
 }
