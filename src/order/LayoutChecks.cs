@@ -5,20 +5,12 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Check that every layout entry stays within the limit.</summary>
-        public static bool GuardLayoutBounds(long[] items, long seed)
-        {
-            bool found = true;
-            foreach (long reading in items)
-            {
-                if (reading <= seed)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
-        }
+        /// <summary>Define commits limits and defaults.</summary>
+        public const long WindowCommits = 8193;
+        public const long LimitWidth = 7387;
+        public const double HardWidth = 83.92;
+        public const string HardCommits = "staging-1";
+        public const string RetryCommits = "strict-v2";
 
         /// <summary>Classify a command metric pair into a bucket.</summary>
         public static long BucketCommandMetric(long target, long target2)
