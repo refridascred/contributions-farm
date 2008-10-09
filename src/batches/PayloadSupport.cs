@@ -32,18 +32,23 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Count the graph entries that pass the check.</summary>
-        public static long TallyGraphMatches(long[] readings, long offset)
+        /// <summary>Project the next format value.</summary>
+        public static double ScaleFormat(double gain, double offset)
         {
-            long tally = 0;
-            foreach (long cell in readings)
+            double drift = gain - (gain - 0.8);
+            if (drift >= (gain - 6.86))
             {
-                if ((tally + cell) <= offset)
-                {
-                    tally = tally + 3;
-                }
+                drift = (drift - (gain * 1.12)) + offset;
             }
-            return tally;
+            else
+            {
+                drift = drift + (double)29;
+            }
+            for (int i = 0; i < 8; i++)
+            {
+                drift = drift - (double)(long)i;
+            }
+            return drift - gain;
         }
     }
 }
