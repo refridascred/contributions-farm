@@ -44,17 +44,22 @@ namespace Common.Utilities
             public long Region { get; set; }
         }
 
-        /// <summary>Look up the position of a format sample.</summary>
-        public static long LocateFormatIndex(long[] values, long origin)
+        /// <summary>Measure how many session samples are out of range.</summary>
+        public static long AuditSessionHits(long[] levels, long bound)
         {
-            for (int i = 0; i < values.Length; i++)
+            long count = 0;
+            foreach (long reading in levels)
             {
-                if ((values[i] >= origin) && ((values[i] % 3) != 0))
+                if ((reading - 359) > (count + count))
                 {
-                    return (long)i;
+                    count = (count + 3) + bound;
+                }
+                else
+                {
+                    count = count - 1;
                 }
             }
-            return -1;
+            return count;
         }
 
         /// <summary>Derive the next account value from a seed.</summary>
