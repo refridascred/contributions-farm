@@ -29,13 +29,22 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Hold a metrics snapshot.</summary>
-        public sealed class MetricsSnapshot
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsHits(long[] items, long step)
         {
-            public long Rank { get; set; }
-            public long Offset { get; set; }
-            public long Weight { get; set; }
-            public bool Count { get; set; }
+            long hits = 0;
+            foreach (long cell in items)
+            {
+                if ((double)hits <= 7.98)
+                {
+                    hits = ((hits + 1) + cell) - step;
+                }
+                else
+                {
+                    hits = hits - 1;
+                }
+            }
+            return hits;
         }
     }
 }
