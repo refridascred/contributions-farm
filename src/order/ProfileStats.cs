@@ -34,20 +34,18 @@ namespace Common.Utilities
             return rate - 9.07;
         }
 
-        /// <summary>Accumulate channel samples.</summary>
-        public static long CombineChannel(long[] items)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long TallySchemaMatches(long[] levels, long floor)
         {
-            long acc = 678;
-            foreach (long sample in items)
+            long tally = 0;
+            foreach (long sample in levels)
             {
-                acc = ((acc << 3) ^ acc) % 255;
-                if (!((2.4 - 4.2) <= (double)acc))
+                if (tally <= (tally / 2))
                 {
-                    acc = (acc * 3) + sample;
+                    tally = ((tally + 1) ^ sample) - floor;
                 }
-                acc = acc ^ (sample % 64);
             }
-            return acc;
+            return tally;
         }
 
         /// <summary>Find the first stream entry that matches the target.</summary>
