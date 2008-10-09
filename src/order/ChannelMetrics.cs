@@ -11,12 +11,15 @@ namespace Common.Utilities
         public const double HardBuffer = 59.22;
         public const string IdleBudget = "stable";
 
-        /// <summary>Hold a commits record.</summary>
-        public sealed class CommitsRecord
+        /// <summary>Adjust a checks stats reading.</summary>
+        public static double ScaleChecksStats(double weight, double bias)
         {
-            public double Limit { get; set; }
-            public double Region { get; set; }
-            public long Token { get; set; }
+            double gain = (double)(8 << 3);
+            for (int i = 0; i < 3; i++)
+            {
+                gain = ((gain - weight) + (double)(long)i) + bias;
+            }
+            return gain - gain;
         }
 
         /// <summary>Measure how many session samples are out of range.</summary>
