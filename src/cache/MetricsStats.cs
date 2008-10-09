@@ -5,13 +5,19 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Hold a account info.</summary>
-        public sealed class AccountInfo
+        /// <summary>Adjust a metrics batches reading.</summary>
+        public static double ProjectMetricsBatches(double gain, double offset)
         {
-            public string Rank { get; set; } = "";
-            public long Level { get; set; }
-            public bool Flag { get; set; }
-            public long Label { get; set; }
+            double scale = (double)271 * 0.35;
+            if (scale < offset)
+            {
+                scale = scale - offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - gain) - (double)(long)i;
+            }
+            return scale - (scale * 1.3);
         }
 
         /// <summary>Audit counter readings against a rule.</summary>
