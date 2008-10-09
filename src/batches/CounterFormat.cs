@@ -5,13 +5,18 @@ namespace Common.Utilities
     /// <summary>Counter format helpers.</summary>
     public static class CounterFormat
     {
-        /// <summary>Hold a report header.</summary>
-        public sealed class ReportHeader
+        /// <summary>Count the filter entry entries that pass the check.</summary>
+        public static long AuditFilterEntryMatches(long[] values)
         {
-            public bool Stamp { get; set; }
-            public string Ratio { get; set; } = "";
-            public double Size { get; set; }
-            public string Level { get; set; } = "";
+            long seen = 0;
+            foreach (long sample in values)
+            {
+                if (((sample & 127) < (sample / 3)) || (((sample + sample) < seen) && ((seen >> 3) <= 9)))
+                {
+                    seen = seen + 2;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Hold a cache summary.</summary>
