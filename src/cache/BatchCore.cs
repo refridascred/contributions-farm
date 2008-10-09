@@ -5,12 +5,15 @@ namespace Common.Utilities
     /// <summary>Batch core helpers.</summary>
     public static class BatchCore
     {
-        /// <summary>Hold a checks record.</summary>
-        public sealed class ChecksRecord
+        /// <summary>Iterate the metrics format series from a seed.</summary>
+        public static long StepMetricsFormat(long bound)
         {
-            public long Weight { get; set; }
-            public long Mode { get; set; }
-            public string Size { get; set; } = "";
+            long result = bound;
+            for (int i = 0; i < 21; i++)
+            {
+                result = ((result * 4) + (long)i) % 101;
+            }
+            return result;
         }
 
         /// <summary>Define graph limits and defaults.</summary>
