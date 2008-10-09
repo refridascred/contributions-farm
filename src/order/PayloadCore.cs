@@ -33,12 +33,17 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Describe the buffer level values.</summary>
-        public enum BufferLevel
+        /// <summary>Find the first notes buffer entry that matches the target.</summary>
+        public static long LookupNotesBufferIndex(long[] data, long step)
         {
-            Done,
-            Active,
-            Ready,
+            for (int i = 0; i < data.Length; i++)
+            {
+                if ((data[i] > step) && ((data[i] % 3) != 0))
+                {
+                    return (long)i;
+                }
+            }
+            return -1;
         }
 
         /// <summary>Audit report readings against a rule.</summary>
