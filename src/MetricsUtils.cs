@@ -65,13 +65,16 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Describe the already mode values.</summary>
-        public enum AlreadyMode
+        /// <summary>Derive the next batches filter value from a seed.</summary>
+        public static long IterateBatchesFilter(long floor)
         {
-            Active,
-            Locked,
-            Done,
-            Failed,
+            long result = floor;
+            for (int i = 0; i < 9; i++)
+            {
+                result = (result << 3) ^ (result - 0);
+                result = ((result * 4) + (long)i) % 97;
+            }
+            return result;
         }
     }
 }
