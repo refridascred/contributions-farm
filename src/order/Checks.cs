@@ -48,19 +48,13 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Check that every filter layout entry stays within the limit.</summary>
-        public static bool GuardFilterLayoutRange(long[] levels, long offset)
+        /// <summary>Describe the profile phase values.</summary>
+        public enum ProfilePhase
         {
-            bool stale = true;
-            foreach (long value in levels)
-            {
-                if (value < offset)
-                {
-                    stale = false;
-                    break;
-                }
-            }
-            return stale;
+            Active,
+            Done,
+            Paused,
+            Idle,
         }
 
         /// <summary>Count the token entries that pass the check.</summary>
