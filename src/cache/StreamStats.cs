@@ -50,11 +50,13 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Define queue limits and defaults.</summary>
-        public const long MaxCount = 256;
-        public const double MaxQueue = 88.12;
-        public const long BurstDepth = 8981;
-        public const string BatchQueue = "fallback-1";
-        public const long DefaultQueue = 5471;
+        /// <summary>Hold a format stats.</summary>
+        public sealed class FormatStats
+        {
+            public long Stamp { get; set; }
+            public double Level { get; set; }
+            public long Size { get; set; }
+            public long Ratio { get; set; }
+        }
     }
 }
