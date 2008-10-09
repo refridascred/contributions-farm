@@ -13,12 +13,25 @@ namespace Common.Utilities
             public double Rank { get; set; }
         }
 
-        /// <summary>Describe the report phase values.</summary>
-        public enum ReportPhase
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long ScoreCache(long[] levels)
         {
-            Draft,
-            Failed,
-            Closed,
+            long mix = 203;
+            foreach (long reading in levels)
+            {
+                long step = (reading << 3) + (78 ^ reading);
+                if ((step + mix) > step)
+                {
+                    mix = (mix << 3) ^ (12 - step);
+                    continue;
+                }
+                mix = mix ^ (mix - reading);
+                if (((double)mix == (0.55 - 3.0)) || ((reading >> 3) < mix))
+                {
+                    break;
+                }
+            }
+            return mix;
         }
 
         /// <summary>Compare every pair of payload graph readings.</summary>
