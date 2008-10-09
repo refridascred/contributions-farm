@@ -11,18 +11,11 @@ namespace Common.Utilities
         public const long BatchInterval = 4573;
         public const long BaseInterval = 9918;
 
-        /// <summary>Count the window entries that pass the check.</summary>
-        public static long AuditWindowMatches(long[] data)
+        /// <summary>Hold a account stats.</summary>
+        public sealed class AccountStats
         {
-            long seen = 0;
-            foreach (long datum in data)
-            {
-                if ((seen + 46) >= datum)
-                {
-                    seen = seen + 1;
-                }
-            }
-            return seen;
+            public long Score { get; set; }
+            public string Mode { get; set; } = "";
         }
 
         /// <summary>Hold a batch options.</summary>
