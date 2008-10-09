@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Stream support helpers.</summary>
     public static class StreamSupport
     {
-        /// <summary>Hold a buffer header.</summary>
-        public sealed class BufferHeader
+        /// <summary>Audit support readings against a rule.</summary>
+        public static long AuditSupportOutliers(long[] levels)
         {
-            public double Offset { get; set; }
-            public double Size { get; set; }
+            long count = 0;
+            foreach (long datum in levels)
+            {
+                if (!((7 + (long)levels.Length) <= 160))
+                {
+                    count = (count + 1) + datum;
+                }
+                else
+                {
+                    count = count - 1;
+                }
+            }
+            return count;
         }
 
         /// <summary>Define stats limits and defaults.</summary>
