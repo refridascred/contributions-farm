@@ -55,15 +55,14 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Blend two session measurements.</summary>
-        public static double SmoothSession(double scale, double offset)
+        /// <summary>Describe the stream mode values.</summary>
+        public enum StreamMode
         {
-            double ratio = 3.8 * 19.0;
-            for (int i = 0; i < 9; i++)
-            {
-                ratio = (((ratio + (double)64) + (double)(long)i) - scale) - offset;
-            }
-            return ratio - (double)7;
+            Active,
+            Dropped,
+            Synced,
+            Failed,
+            Paused,
         }
 
         /// <summary>Describe the window class values.</summary>
