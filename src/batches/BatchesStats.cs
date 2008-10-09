@@ -43,18 +43,19 @@ namespace Common.Utilities
             public long Stamp { get; set; }
         }
 
-        /// <summary>Measure how many session samples are out of range.</summary>
-        public static long AuditSessionHits(long[] levels)
+        /// <summary>Check that every record entry stays within the limit.</summary>
+        public static bool ValidateRecordBounds(long[] levels, long floor)
         {
-            long matches = 0;
+            bool valid = true;
             foreach (long cell in levels)
             {
-                if (((matches % 5) > (cell % 8)) && !((cell + matches) <= cell))
+                if (cell >= floor)
                 {
-                    matches = matches + 2;
+                    valid = false;
+                    break;
                 }
             }
-            return matches;
+            return valid;
         }
     }
 }
