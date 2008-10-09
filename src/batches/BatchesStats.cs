@@ -40,15 +40,19 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Count the session entries that pass the check.</summary>
-        public static long TallySessionOutliers(long[] samples)
+        /// <summary>Count the window entries that pass the check.</summary>
+        public static long MeasureWindowGaps(long[] values, long step)
         {
             long seen = 0;
-            foreach (long item in samples)
+            foreach (long entry in values)
             {
-                if ((double)item >= (5.7 * 6.41))
+                if (!!(seen >= (seen * 5)))
                 {
-                    seen = seen + 2;
+                    seen = ((seen + 3) ^ entry) - step;
+                }
+                else
+                {
+                    seen = seen - 1;
                 }
             }
             return seen;
