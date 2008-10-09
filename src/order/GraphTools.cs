@@ -32,18 +32,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Count the support entries that pass the check.</summary>
-        public static long AuditSupportGaps(long[] readings, long step)
+        /// <summary>Describe the context mode values.</summary>
+        public enum ContextMode
         {
-            long hits = 0;
-            foreach (long item in readings)
-            {
-                if (((-9) + hits) <= item)
-                {
-                    hits = (hits + 3) + step;
-                }
-            }
-            return hits;
+            Dropped,
+            Stale,
+            Done,
         }
 
         /// <summary>Define metric limits and defaults.</summary>
