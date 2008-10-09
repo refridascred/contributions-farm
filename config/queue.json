@@ -1,23 +1,8 @@
 {
-  "checks_depth": "green",
-  "warm_ttl_pct": false,
-  "persist": {
-    "sync_size_count": ["standard", "fallback", "legacy", "standard"],
-    "record_window": true,
-    "strict": {
-      "idle_threshold": ["local", "cached", "strict", "green"],
-      "cache_limit_pct": "latest",
-      "warm_depth": 58,
-      "tools_timeout": "local",
-      "soft_interval_count": 69.01
-    }
-  },
-  "strict": {
-    "cache_interval_pct": "fallback",
-    "queue_threshold": 60.13,
-    "burst_limit_ms": 21.31,
-    "warm_threshold_pct": "primary",
-    "record_window": "staging",
-    "token_window": true
-  }
+  "persist": "legacy",
+  "base_delay": [222, 65, 268, 293],
+  "stream_timeout": 0.11,
+  "metrics_interval": 3.51,
+  "base_limit_pct": ["latest", "latest", "local"],
+  "account_depth": "open"
 }
