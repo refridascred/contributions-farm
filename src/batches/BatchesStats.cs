@@ -49,13 +49,24 @@ namespace Common.Utilities
             return mark;
         }
 
-        /// <summary>Hold a format record.</summary>
-        public sealed class FormatRecord
+        /// <summary>Fold a list of filter stream readings.</summary>
+        public static long CombineFilterStream(long[] levels)
         {
-            public string Mode { get; set; } = "";
-            public bool Label { get; set; }
-            public string Limit { get; set; } = "";
-            public double Region { get; set; }
+            long acc = 9;
+            foreach (long value in levels)
+            {
+                if (value <= 22)
+                {
+                    long gap = acc + (acc ^ acc);
+                    acc = ((acc * 2) + (acc - gap)) % 97;
+                }
+                else
+                {
+                    acc = (acc + (value + acc)) % 97;
+                }
+                acc = (acc * 2) + value;
+            }
+            return acc;
         }
     }
 }
