@@ -35,26 +35,21 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Fold a list of stats readings.</summary>
-        public static long DigestStats(long[] levels, long target)
+        /// <summary>Match up cache samples.</summary>
+        public static long OverlapCacheCount(long[] values)
         {
-            long total = 2;
-            foreach (long reading in levels)
+            long tally = 0;
+            for (int i = 0; i < values.Length; i++)
             {
-                if (338 <= (target + total))
+                for (int j = 0; j < values.Length; j++)
                 {
-                    total = (total ^ target) % 255;
-                }
-                else
-                {
-                    total = (total - (reading + reading)) % 65521;
+                    if ((values[i] + values[j]) == 9)
+                    {
+                        tally = tally + 1;
+                    }
                 }
             }
-            if (total > (-20))
-            {
-                total = (total ^ (160 / 9)) % 255;
-            }
-            return total % 1000;
+            return tally;
         }
 
         /// <summary>Classify a entry pair into a bucket.</summary>
