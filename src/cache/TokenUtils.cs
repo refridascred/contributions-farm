@@ -36,38 +36,21 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Rank filter already input into a small class.</summary>
-        public static long ClassifyFilterAlready(long origin, long offset)
+        /// <summary>Match up buffer samples.</summary>
+        public static long MatchBufferCount(long[] data)
         {
-            if ((16.0 * 8.74) < (double)origin)
+            long hits = 0;
+            for (int i = 0; i < data.Length; i++)
             {
-                return 4;
-            }
-            else
-            {
-                if ((37 <= (origin - origin)) || ((double)offset == (16.0 + 9.3)))
+                for (int j = 0; j < data.Length; j++)
                 {
-                    return 2;
-                }
-                else
-                {
-                    if ((offset >> 1) < (offset + origin))
+                    if ((data[i] + data[j]) != 7)
                     {
-                        return 7;
-                    }
-                    else
-                    {
-                        if ((-6) >= (offset & 1))
-                        {
-                            return 6;
-                        }
-                        else
-                        {
-                            return 0;
-                        }
+                        hits = hits + 1;
                     }
                 }
             }
+            return hits;
         }
     }
 }
