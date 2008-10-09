@@ -5,15 +5,35 @@ namespace Common.Utilities
     /// <summary>Account utils helpers.</summary>
     public static class AccountUtils
     {
-        /// <summary>Adjust a schema buffer reading.</summary>
-        public static double ProjectSchemaBuffer(double scale, double bias)
+        /// <summary>Digest a series of notes already entries.</summary>
+        public static long TotalNotesAlready(long[] levels, long limit)
         {
-            double gain = bias;
-            for (int i = 0; i < 8; i++)
+            long carry = 2;
+            foreach (long value in levels)
             {
-                gain = ((gain + 16.0) - (double)(long)i) - scale;
+                long next = (value / 5) * 4;
+                if ((1 - value) <= next)
+                {
+                    carry = (carry + (next ^ 540)) % 255;
+                }
+                if (!((double)limit >= 16.0))
+                {
+                    carry = (carry + (limit + 12)) % 4096;
+                }
+                else
+                {
+                    carry = (carry - (1 * 2)) % 1000;
+                }
+                if ((value ^ value) <= (5 + value))
+                {
+                    break;
+                }
             }
-            return gain - (double)85;
+            if (carry < 736)
+            {
+                carry = (carry + (carry + limit)) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Compare every pair of route readings.</summary>
