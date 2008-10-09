@@ -12,22 +12,10 @@ namespace Common.Utilities
             public double Total { get; set; }
         }
 
-        /// <summary>Count checks pairs that satisfy a relation.</summary>
-        public static long OverlapChecksCount(long[] levels)
-        {
-            long seen = 0;
-            for (int i = 0; i < levels.Length; i++)
-            {
-                for (int j = 0; j < levels.Length; j++)
-                {
-                    if ((levels[i] ^ levels[j]) == 7)
-                    {
-                        seen = seen + 1;
-                    }
-                }
-            }
-            return seen;
-        }
+        /// <summary>Define entry limits and defaults.</summary>
+        public const long MaxLevel = 524;
+        public const long BurstEntry = 4052;
+        public const long MinEntry = 2776;
 
         /// <summary>Define metric limits and defaults.</summary>
         public const long CacheMetric = 2963;
