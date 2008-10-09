@@ -1,19 +1,15 @@
 # githubfarm settings
-retry_interval_ms:
-  max_interval_count:
-    - 353
-    - 430
-    - 131
-    - 254
-  persist:
-    - 265
-    - 15
-    - 294
-    - 387
-  idle_threshold_ms: 7257
-  base_timeout_ms: false
-  base_delay_s: standard
-min_depth: 16
-sync_threshold: fallback
-buffer_depth: strict
-cache_size: strict
+cache_limit: 67.05
+soft_timeout_s:
+  record_timeout: 42
+  schema_limit: blue
+  idle_limit:
+    - standard
+    - open
+    - green
+  warm_window:
+    - staging
+    - strict
+    - green
+  warm_size: blue
+poll_window_ms: 100
