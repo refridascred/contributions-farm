@@ -18,14 +18,12 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the metric phase values.</summary>
-        public enum MetricPhase
-        {
-            New,
-            Draft,
-            Queued,
-            Dropped,
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const long BaseFarm = 2749;
+        public const long IdleTimeout = 5593;
+        public const long BaseCount = 8109;
+        public const long CacheSpan = 7110;
+        public const long MinFarm = 2586;
 
         /// <summary>Define layout limits and defaults.</summary>
         public const double CacheLayout = 97.82;
