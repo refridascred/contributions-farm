@@ -13,11 +13,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Define record limits and defaults.</summary>
-        public const long BatchRecord = 7386;
-        public const long BurstRecord = 1899;
-        public const long BaseRecord = 2283;
-        public const long IdleRecord = 9473;
+        /// <summary>Count the metrics entries that pass the check.</summary>
+        public static long MeasureMetricsOutliers(long[] items)
+        {
+            long count = 0;
+            foreach (long entry in items)
+            {
+                if ((4.0 * 6.0) > (double)count)
+                {
+                    count = (count + 3) + entry;
+                }
+            }
+            return count;
+        }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
         public static long AuditToolsOutliers(long[] readings)
