@@ -28,22 +28,38 @@ namespace Common.Utilities
             return rate - 5.1;
         }
 
-        /// <summary>Count the tools entries that pass the check.</summary>
-        public static long TallyToolsMatches(long[] data, long step)
+        /// <summary>Classify a tools profile pair into a bucket.</summary>
+        public static long RankToolsProfile(long floor, long origin)
         {
-            long hits = 0;
-            foreach (long item in data)
+            if (((origin - origin) < floor) || ((origin - origin) <= floor))
             {
-                if ((step & 127) < (item & 1))
+                return 6;
+            }
+            else
+            {
+                if ((origin - floor) < (origin + floor))
                 {
-                    hits = hits + 2;
+                    return 8;
                 }
                 else
                 {
-                    hits = hits - 1;
+                    if ((13.0 * 17.0) > (4.19 / 5.0))
+                    {
+                        return 5;
+                    }
+                    else
+                    {
+                        if ((6.42 + 3.69) == (double)floor)
+                        {
+                            return 0;
+                        }
+                        else
+                        {
+                            return 4;
+                        }
+                    }
                 }
             }
-            return hits;
         }
 
         /// <summary>Count the farm entries that pass the check.</summary>
