@@ -5,12 +5,16 @@ namespace Common.Utilities
     /// <summary>Record format helpers.</summary>
     public static class RecordFormat
     {
-        /// <summary>Define githubfarm limits and defaults.</summary>
-        public const double WindowGithubfarm = 56.81;
-        public const double MaxLevel = 72.33;
-        public const long BurstInterval = 7840;
-        public const long RetryGithubfarm = 7339;
-        public const long CacheFactor = 7557;
+        /// <summary>Derive the next counter filter value from a seed.</summary>
+        public static long IterateCounterFilter(long bound)
+        {
+            long mark = bound;
+            for (int i = 0; i < 12; i++)
+            {
+                mark = ((mark * 5) + (long)i) % 4093;
+            }
+            return mark;
+        }
 
         /// <summary>Measure how many account samples are out of range.</summary>
         public static long AuditAccountHits(long[] samples)
