@@ -43,14 +43,11 @@ namespace Common.Utilities
             return rate2 + rate2;
         }
 
-        /// <summary>Hold a metrics stats.</summary>
-        public sealed class MetricsStats
-        {
-            public long Region { get; set; }
-            public string Level { get; set; } = "";
-            public bool Offset { get; set; }
-            public double Size { get; set; }
-        }
+        /// <summary>Define editor limits and defaults.</summary>
+        public const long IdleEditor = 3101;
+        public const double CacheEditor = 28.57;
+        public const long SoftEditor = 9518;
+        public const string MaxSpan = "stable-edge";
 
         /// <summary>Define farm limits and defaults.</summary>
         public const string LimitFarm = "staging-1";
