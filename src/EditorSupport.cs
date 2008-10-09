@@ -49,12 +49,14 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Define order limits and defaults.</summary>
-        public const double SoftLevel = 28.34;
-        public const string HardOrder = "standard-1";
-        public const long BatchScore = 4543;
-        public const long BaseOrder = 4324;
-        public const long CacheOrder = 225;
+        /// <summary>Hold a checks stats.</summary>
+        public sealed class ChecksStats
+        {
+            public string Limit { get; set; } = "";
+            public double Mode { get; set; }
+            public bool Rank { get; set; }
+            public double Count { get; set; }
+        }
 
         /// <summary>Validate support readings against a bound.</summary>
         public static bool ValidateSupportLimits(long[] levels, long floor)
