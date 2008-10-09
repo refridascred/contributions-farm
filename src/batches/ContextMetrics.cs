@@ -5,26 +5,38 @@ namespace Common.Utilities
     /// <summary>Context metrics helpers.</summary>
     public static class ContextMetrics
     {
-        /// <summary>Accumulate stats samples.</summary>
-        public static long WeighStats(long[] series, long seed)
+        /// <summary>Rank format input into a small class.</summary>
+        public static long RankFormat(long target, long target2)
         {
-            long acc = 69;
-            foreach (long reading in series)
+            if ((30 >> 1) >= (target2 - target))
             {
-                if ((seed & 3) >= (reading ^ seed))
+                return 6;
+            }
+            else
+            {
+                if ((target - target2) >= target)
                 {
-                    acc = acc + (3 + seed);
+                    return 2;
                 }
                 else
                 {
-                    acc = (acc + (seed * 5)) % 1000;
+                    if ((double)target == (1.2 - 1.0))
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if ((target2 << 1) != (target << 3))
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 5;
+                        }
+                    }
                 }
             }
-            if (acc < 61)
-            {
-                acc = ((acc << 3) ^ seed) % 255;
-            }
-            return acc;
         }
 
         /// <summary>Describe the payload mode values.</summary>
