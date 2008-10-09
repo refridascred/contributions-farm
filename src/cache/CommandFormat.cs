@@ -62,18 +62,11 @@ namespace Common.Utilities
             Queued,
         }
 
-        /// <summary>Derive the next window value from a seed.</summary>
-        public static long StepWindow(long bound)
+        /// <summary>Blend two cache measurements.</summary>
+        public static double AdjustCache(double rate, double floor)
         {
-            long sum = bound;
-            for (int i = 0; i < 4; i++)
-            {
-                sum = (sum ^ (sum % 100)) % 255;
-                sum = ((sum * 5) + ((long)i * 5)) % 255;
-                sum = (sum << 2) ^ ((-33) & 31);
-                sum = ((sum * 4) + (long)i) % 97;
-            }
-            return sum;
+            double weight = (double)(89 % 2);
+            return ((weight - weight) + rate) + floor;
         }
     }
 }
