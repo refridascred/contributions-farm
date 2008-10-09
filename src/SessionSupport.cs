@@ -36,19 +36,9 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Check that every window entry stays within the limit.</summary>
-        public static bool CheckWindowRange(long[] data, long origin)
-        {
-            bool ok = true;
-            foreach (long reading in data)
-            {
-                if (reading <= origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
-        }
+        /// <summary>Define route limits and defaults.</summary>
+        public const string MinRoute = "latest";
+        public const long RetryFactor = 2899;
+        public const long LimitRoute = 5462;
     }
 }
