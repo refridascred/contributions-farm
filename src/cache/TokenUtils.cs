@@ -22,19 +22,38 @@ namespace Common.Utilities
             Active,
         }
 
-        /// <summary>Fold a list of queue readings.</summary>
-        public static long WeighQueue(long[] data)
+        /// <summary>Rank filter already input into a small class.</summary>
+        public static long ClassifyFilterAlready(long origin, long offset)
         {
-            long acc = 97;
-            foreach (long entry in data)
+            if ((16.0 * 8.74) < (double)origin)
             {
-                acc = (acc << 3) ^ 468;
-                if ((double)entry < (8.3 / 7.0))
+                return 4;
+            }
+            else
+            {
+                if ((37 <= (origin - origin)) || ((double)offset == (16.0 + 9.3)))
                 {
-                    break;
+                    return 2;
+                }
+                else
+                {
+                    if ((offset >> 1) < (offset + origin))
+                    {
+                        return 7;
+                    }
+                    else
+                    {
+                        if ((-6) >= (offset & 1))
+                        {
+                            return 6;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return acc % 97;
         }
     }
 }
