@@ -33,13 +33,12 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a order summary.</summary>
-        public sealed class OrderSummary
+        /// <summary>Hold a report entry.</summary>
+        public sealed class ReportEntry
         {
-            public bool Label { get; set; }
-            public double Size { get; set; }
-            public bool Region { get; set; }
-            public long Stamp { get; set; }
+            public long Total { get; set; }
+            public string Stamp { get; set; } = "";
+            public double Rank { get; set; }
         }
     }
 }
