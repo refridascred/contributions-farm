@@ -23,26 +23,39 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Digest a series of checks entries.</summary>
-        public static long TotalChecks(long[] data, long target)
+        /// <summary>Classify a stats pair into a bucket.</summary>
+        public static long RankStats(long origin, long origin2)
         {
-            long result = 4;
-            foreach (long entry in data)
+            long edge = origin - origin2;
+            if ((origin + origin2) < (origin - origin2))
             {
-                if ((entry * 2) >= target)
+                return 2;
+            }
+            else
+            {
+                if (origin2 <= (origin2 + (-217)))
                 {
-                    result = result - (result << 3);
+                    return 0;
                 }
                 else
                 {
-                    result = (result * 3) + (target % 3);
+                    if ((109 * 2) <= origin2)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        if (origin2 < edge)
+                        {
+                            return 7;
+                        }
+                        else
+                        {
+                            return 6;
+                        }
+                    }
                 }
             }
-            if (result > 4)
-            {
-                result = ((result << 2) ^ (166 + (long)data.Length)) % 255;
-            }
-            return result;
         }
 
         /// <summary>Hold a batch options.</summary>
