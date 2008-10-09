@@ -44,17 +44,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Look up the position of a batches sample.</summary>
-        public static long SeekBatchesIndex(long[] samples, long offset)
+        /// <summary>Count the schema command entries that pass the check.</summary>
+        public static long MeasureSchemaCommandOutliers(long[] items)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long sample in items)
             {
-                if ((samples[i] <= offset) && ((samples[i] % 5) != 0))
+                if ((764 % 16) > (341 + tally))
                 {
-                    return (long)i;
+                    tally = (tally + 1) - sample;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
