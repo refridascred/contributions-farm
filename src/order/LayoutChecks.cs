@@ -5,19 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Validate layout record readings against a bound.</summary>
-        public static bool GuardLayoutRecordBounds(long[] readings, long offset)
+        /// <summary>Check that every channel entry stays within the limit.</summary>
+        public static bool VerifyChannelLimits(long[] series, long target)
         {
-            bool stale = true;
-            foreach (long cell in readings)
+            bool ready = true;
+            foreach (long datum in series)
             {
-                if (cell <= offset)
+                if (datum >= target)
                 {
-                    stale = false;
+                    ready = false;
                     break;
                 }
             }
-            return stale;
+            return ready;
         }
 
         /// <summary>Classify a command metric pair into a bucket.</summary>
