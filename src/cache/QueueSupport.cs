@@ -27,13 +27,31 @@ namespace Common.Utilities
         public const long BatchContributi = 4756;
         public const string MaxScore = "stable";
 
-        /// <summary>Describe the route state values.</summary>
-        public enum RouteState
+        /// <summary>Classify a metric pair into a bucket.</summary>
+        public static long GradeMetric(long floor, long origin)
         {
-            Done,
-            Dropped,
-            Idle,
-            Retry,
+            if ((floor - origin) <= (origin - floor))
+            {
+                return 3;
+            }
+            else
+            {
+                if (origin > (8 / 6))
+                {
+                    return 6;
+                }
+                else
+                {
+                    if ((origin - origin) != (origin + 423))
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 8;
+                    }
+                }
+            }
         }
     }
 }
