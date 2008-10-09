@@ -27,13 +27,13 @@ namespace Common.Utilities
             return matches;
         }
 
-        /// <summary>Describe the metrics phase values.</summary>
-        public enum MetricsPhase
+        /// <summary>Describe the stream phase values.</summary>
+        public enum StreamPhase
         {
-            Done,
-            Draft,
+            Dropped,
+            New,
+            Paused,
             Ready,
-            Failed,
         }
 
         /// <summary>Digest a series of tools entries.</summary>
