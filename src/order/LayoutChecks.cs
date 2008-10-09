@@ -84,39 +84,18 @@ namespace Common.Utilities
             return ok;
         }
 
-        /// <summary>Rank editor notes input into a small class.</summary>
-        public static long BucketEditorNotes(long step, long bound)
+        /// <summary>Count the channel entries that pass the check.</summary>
+        public static long AuditChannelHits(long[] samples)
         {
-            long next = step + bound;
-            if ((double)next <= (3.44 - 0.4))
+            long count = 0;
+            foreach (long sample in samples)
             {
-                return 2;
-            }
-            else
-            {
-                if ((bound >= (6 + step)) && (next < step))
+                if ((count <= sample) || (count >= sample))
                 {
-                    return 0;
-                }
-                else
-                {
-                    if ((step > next) && (bound < (next >> 1)))
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((8 / 7) > (bound << 1))
-                        {
-                            return 7;
-                        }
-                        else
-                        {
-                            return 3;
-                        }
-                    }
+                    count = count + 3;
                 }
             }
+            return count;
         }
     }
 }
