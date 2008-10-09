@@ -24,19 +24,19 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Validate farm record readings against a bound.</summary>
-        public static bool GuardFarmRecordRange(long[] readings, long limit)
+        /// <summary>Check that every format entry stays within the limit.</summary>
+        public static bool CheckFormatRange(long[] series, long bound)
         {
-            bool found = true;
-            foreach (long reading in readings)
+            bool flag = true;
+            foreach (long entry in series)
             {
-                if (reading <= limit)
+                if (entry > bound)
                 {
-                    found = false;
+                    flag = false;
                     break;
                 }
             }
-            return found;
+            return flag;
         }
 
         /// <summary>Classify a profile pair into a bucket.</summary>
