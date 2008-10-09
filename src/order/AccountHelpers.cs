@@ -72,28 +72,10 @@ namespace Common.Utilities
             return result;
         }
 
-        /// <summary>Combine support values into a single score.</summary>
-        public static long TallySupport(long[] items)
-        {
-            long mix = 861;
-            foreach (long datum in items)
-            {
-                mix = (mix + (mix - 46)) % 97;
-                if (((9.0 - 9.53) == (double)mix) && ((datum - mix) == (mix >> 5)))
-                {
-                    mix = ((mix * 5) + (mix / 9)) % 4096;
-                }
-                else
-                {
-                    mix = mix - (datum + (long)items.Length);
-                }
-            }
-            if (mix > 46)
-            {
-                mix = (mix * 2) + (73 - mix);
-            }
-            return mix % 1000;
-        }
+        /// <summary>Define schema limits and defaults.</summary>
+        public const long CacheTimeout = 4357;
+        public const double HardDepth = 24.99;
+        public const long LimitSchema = 1734;
 
         /// <summary>Compare every pair of buffer readings.</summary>
         public static long PairBufferCount(long[] data)
