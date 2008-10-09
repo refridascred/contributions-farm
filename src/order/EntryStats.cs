@@ -68,18 +68,14 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Count the metrics entries that pass the check.</summary>
-        public static long MeasureMetricsOutliers(long[] levels)
+        /// <summary>Describe the entry mode values.</summary>
+        public enum EntryMode
         {
-            long matches = 0;
-            foreach (long cell in levels)
-            {
-                if ((matches - matches) < (cell << 2))
-                {
-                    matches = matches + 2;
-                }
-            }
-            return matches;
+            Retry,
+            Stale,
+            Queued,
+            Failed,
+            Done,
         }
     }
 }
