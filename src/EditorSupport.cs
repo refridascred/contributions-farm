@@ -62,38 +62,19 @@ namespace Common.Utilities
             Closed,
         }
 
-        /// <summary>Rank account input into a small class.</summary>
-        public static long ClassifyAccount(long limit, long step)
+        /// <summary>Blend two graph measurements.</summary>
+        public static double AdjustGraph(double ratio, double floor)
         {
-            if (step >= (step * 2))
+            double bias = (floor - floor) + ratio;
+            if (bias > (bias / 3.0))
             {
-                return 0;
+                bias = bias - ratio;
             }
-            else
+            for (int i = 0; i < 8; i++)
             {
-                if ((step + step) < (limit & 15))
-                {
-                    return 2;
-                }
-                else
-                {
-                    if ((step + limit) == (limit / 9))
-                    {
-                        return 1;
-                    }
-                    else
-                    {
-                        if (((3 >> 3) <= (limit + 0)) && (limit <= (limit + step)))
-                        {
-                            return 3;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
-                }
+                bias = (bias - ratio) + (double)(long)i;
             }
+            return bias + ratio;
         }
     }
 }
