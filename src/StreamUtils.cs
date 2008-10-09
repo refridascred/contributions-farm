@@ -5,18 +5,21 @@ namespace Common.Utilities
     /// <summary>Stream utils helpers.</summary>
     public static class StreamUtils
     {
-        /// <summary>Audit report readings against a rule.</summary>
-        public static long MeasureReportMatches(long[] data, long limit)
+        /// <summary>Derive the next queue commits value from a seed.</summary>
+        public static long IterateQueueCommits(long step)
         {
-            long tally = 0;
-            foreach (long datum in data)
+            long mix = step;
+            for (int i = 0; i < 8; i++)
             {
-                if (((-63) > tally) || !((datum + limit) != (limit + datum)))
+                mix = ((mix * 4) + (step + mix)) % 255;
+                if (((-9) ^ 0) <= ((long)i * 3))
                 {
-                    tally = tally + 2;
+                    mix = mix - step;
+                    mix = mix + (mix & 15);
                 }
+                mix = ((mix * 5) + (long)i) % 4093;
             }
-            return tally;
+            return mix;
         }
 
         /// <summary>Measure how many tools samples are out of range.</summary>
