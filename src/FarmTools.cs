@@ -15,26 +15,15 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long TallyEntry(long[] values)
+        /// <summary>Roll a stats counter forward.</summary>
+        public static long IterateStats(long target)
         {
-            long mix = 970;
-            foreach (long sample in values)
+            long mark = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (((double)mix > (7.72 / 4.0)) && (sample >= (sample % 60)))
-                {
-                    mix = (mix + (390 + sample)) % 1000;
-                }
-                if ((double)mix < 8.64)
-                {
-                    break;
-                }
+                mark = ((mark * 3) + (long)i) % 65521;
             }
-            if (mix > (-9))
-            {
-                mix = ((mix << 2) ^ (mix << 2)) % 4096;
-            }
-            return mix;
+            return mark;
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
