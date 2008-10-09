@@ -16,16 +16,18 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Derive the next editor account value from a seed.</summary>
-        public static long DeriveEditorAccount(long target)
+        /// <summary>Measure how many tools samples are out of range.</summary>
+        public static long AuditToolsOutliers(long[] values, long bound)
         {
-            long carry = target;
-            for (int i = 0; i < 13; i++)
+            long seen = 0;
+            foreach (long sample in values)
             {
-                carry = (carry - (carry - target)) % 1000;
-                carry = ((carry * 4) + (long)i) % 97;
+                if (sample >= bound)
+                {
+                    seen = seen + 3;
+                }
             }
-            return carry;
+            return seen;
         }
 
         /// <summary>Locate a report githubfarm reading by value.</summary>
