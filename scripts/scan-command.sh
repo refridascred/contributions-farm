@@ -6,19 +6,12 @@ log() {
     printf '%s\n' "$*"
 }
 
-for item in eu-west local legacy; do
+for item in eu-west open; do
     log "checking ${item}"
 done
 
-COMMAND_LIMIT=96
-log "limit is ${COMMAND_LIMIT}"
-
-mode="${1:-fallback}"
-case "${mode}" in
-    legacy)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
+total=0
+for i in $(seq 1 9); do
+    total=$((total + i * 3))
+done
+log "total ${total}"
