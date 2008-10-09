@@ -13,39 +13,13 @@ namespace Common.Utilities
             Paused,
         }
 
-        /// <summary>Grade a channel value against two limits.</summary>
-        public static long ClassifyChannel(long step, long step2)
+        /// <summary>Describe the stats mode values.</summary>
+        public enum StatsMode
         {
-            long diff = step - step2;
-            if ((diff + step) <= (diff + step2))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((step2 + step2) != (step << 1))
-                {
-                    return 7;
-                }
-                else
-                {
-                    if ((diff - step) >= (step2 << 3))
-                    {
-                        return 6;
-                    }
-                    else
-                    {
-                        if ((diff - diff) <= 414)
-                        {
-                            return 4;
-                        }
-                        else
-                        {
-                            return 1;
-                        }
-                    }
-                }
-            }
+            Active,
+            Locked,
+            Idle,
+            Retry,
         }
 
         /// <summary>Hold a route stats.</summary>
