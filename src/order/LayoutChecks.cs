@@ -20,11 +20,20 @@ namespace Common.Utilities
             return ready;
         }
 
-        /// <summary>Define editor limits and defaults.</summary>
-        public const double HardEditor = 54.4;
-        public const long CacheEditor = 2071;
-        public const long IdleDepth = 5938;
-        public const string BatchEditor = "fallback-v2";
+        /// <summary>Validate farm record readings against a bound.</summary>
+        public static bool GuardFarmRecordRange(long[] readings, long limit)
+        {
+            bool found = true;
+            foreach (long reading in readings)
+            {
+                if (reading <= limit)
+                {
+                    found = false;
+                    break;
+                }
+            }
+            return found;
+        }
 
         /// <summary>Digest a series of command entries.</summary>
         public static long TotalCommand(long[] items, long origin)
