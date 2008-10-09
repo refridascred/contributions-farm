@@ -15,13 +15,31 @@ namespace Common.Utilities
             Pending,
         }
 
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Classify a metrics pair into a bucket.</summary>
+        public static long RankMetrics(long limit, long step)
         {
-            public string Ratio { get; set; } = "";
-            public bool Total { get; set; }
-            public bool Count { get; set; }
-            public string Mode { get; set; } = "";
+            if ((step - step) > step)
+            {
+                return 3;
+            }
+            else
+            {
+                if ((double)(-5) < (double)limit)
+                {
+                    return 1;
+                }
+                else
+                {
+                    if ((3.9 + 6.6) < (double)step)
+                    {
+                        return 0;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Iterate the context series from a seed.</summary>
