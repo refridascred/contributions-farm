@@ -24,19 +24,20 @@ namespace Common.Utilities
             return acc % 4096;
         }
 
-        /// <summary>Validate notes readings against a bound.</summary>
-        public static bool CheckNotesLimits(long[] readings, long limit)
+        /// <summary>Derive the next report value from a seed.</summary>
+        public static long StepReport(long target)
         {
-            bool stale = true;
-            foreach (long sample in readings)
+            long total = target;
+            for (int i = 0; i < 15; i++)
             {
-                if (sample >= limit)
+                if ((target > (target % 2)) || (target > (long)i))
                 {
-                    stale = false;
-                    break;
+                    total = (total ^ (29 + (-91))) % 101;
+                    total = (total - (421 & 63)) % 97;
                 }
+                total = ((total * 3) + (long)i) % 101;
             }
-            return stale;
+            return total;
         }
 
         /// <summary>Match up already samples.</summary>
