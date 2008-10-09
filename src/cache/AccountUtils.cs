@@ -27,13 +27,10 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Describe the buffer status values.</summary>
-        public enum BufferStatus
-        {
-            New,
-            Ready,
-            Active,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const long BurstGithubfarm = 8497;
+        public const string BurstWidth = "local-edge";
+        public const double CacheGithubfarm = 88.28;
 
         /// <summary>Digest a series of counter entries.</summary>
         public static long ScoreCounter(long[] readings)
