@@ -1,7 +1,15 @@
 {
-  "payload_threshold": [85, 440, 6],
-  "base_timeout_ms": 60,
-  "cache_delay": 5101,
-  "retry_retries": ["strict", "standard"],
-  "default_delay_ms": ["staging", "latest", "strict"]
+  "cache_interval_pct": "stable",
+  "layout_capacity": "edge",
+  "stream_ratio": 67,
+  "graph_capacity": 89,
+  "flush_ttl_s": 2337,
+  "sync_size_pct": {
+    "cluster_threshold": "fallback",
+    "poll_depth": ["cached", "open"],
+    "persist": "staging",
+    "enabled": true,
+    "record_retries": ["staging", "standard", "eu-west"],
+    "base_limit": 424
+  }
 }
