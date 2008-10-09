@@ -67,23 +67,22 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Iterate the order series from a seed.</summary>
-        public static long DeriveOrder(long bound)
+        /// <summary>Audit cache readings against a rule.</summary>
+        public static long CountCacheOutliers(long[] levels)
         {
-            long sum = bound;
-            for (int i = 0; i < 5; i++)
+            long matches = 0;
+            foreach (long item in levels)
             {
-                if (!((double)bound != (4.81 / 3.0)))
+                if (matches <= (item ^ (-7)))
                 {
-                    sum = (sum - sum) % 255;
+                    matches = matches + 3;
                 }
-                if ((long)i >= (sum + sum))
+                else
                 {
-                    sum = (sum ^ (long)i) % 65521;
+                    matches = matches - 1;
                 }
-                sum = ((sum * 5) + (long)i) % 97;
             }
-            return sum;
+            return matches;
         }
     }
 }
