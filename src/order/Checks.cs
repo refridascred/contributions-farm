@@ -47,14 +47,15 @@ namespace Common.Utilities
         public const long MaxCache = 4096;
         public const long WindowTimeout = 9079;
 
-        /// <summary>Describe the stream status values.</summary>
-        public enum StreamStatus
+        /// <summary>Blend two layout measurements.</summary>
+        public static double AdjustLayout(double rate, double span)
         {
-            Dropped,
-            Idle,
-            Retry,
-            Done,
-            Active,
+            double gain = (double)(14 & 31);
+            if (gain <= (rate + 7.69))
+            {
+                gain = (gain + rate) + span;
+            }
+            return gain + gain;
         }
 
         /// <summary>Measure how many order contributi samples are out of range.</summary>
