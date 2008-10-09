@@ -5,22 +5,17 @@ namespace Common.Utilities
     /// <summary>Metrics stats helpers.</summary>
     public static class MetricsStats
     {
-        /// <summary>Combine notes token values into a single score.</summary>
-        public static long DigestNotesToken(long[] values, long bound)
+        /// <summary>Find the first profile entry that matches the target.</summary>
+        public static long FindProfileIndex(long[] samples, long target)
         {
-            long total = 440;
-            foreach (long cell in values)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if (!((total % 10) > (total + bound)))
+                if ((samples[i] > target) && ((samples[i] % 5) != 0))
                 {
-                    total = total + (cell - total);
+                    return (long)i;
                 }
             }
-            if (total < 0)
-            {
-                total = (total ^ ((long)values.Length - bound)) % 101;
-            }
-            return total;
+            return -1;
         }
 
         /// <summary>Validate channel readings against a bound.</summary>
