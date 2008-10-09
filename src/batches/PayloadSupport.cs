@@ -25,12 +25,18 @@ namespace Common.Utilities
         public const double DefaultScore = 37.47;
         public const long SoftStats = 8358;
 
-        /// <summary>Hold a support snapshot.</summary>
-        public sealed class SupportSnapshot
+        /// <summary>Count the channel support entries that pass the check.</summary>
+        public static long CountChannelSupportGaps(long[] series)
         {
-            public double Offset { get; set; }
-            public long Score { get; set; }
-            public bool Rank { get; set; }
+            long seen = 0;
+            foreach (long value in series)
+            {
+                if ((seen + 71) == (value >> 3))
+                {
+                    seen = seen + 1;
+                }
+            }
+            return seen;
         }
     }
 }
