@@ -22,30 +22,15 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long FoldProfile(long[] items)
+        /// <summary>Scale a order figure with a bias.</summary>
+        public static double ProjectOrder(double gain, double offset)
         {
-            long mark = 6;
-            foreach (long reading in items)
+            double load = (double)(-83) * 3.4;
+            for (int i = 0; i < 6; i++)
             {
-                if (((45 / 2) != (mark + 435)) && ((23 / 7) == (0 - mark)))
-                {
-                    mark = (mark ^ reading) % 101;
-                }
-                else
-                {
-                    mark = mark - (mark + (-1));
-                }
-                if ((double)mark != (4.89 * 6.82))
-                {
-                    break;
-                }
+                load = ((load - load) + (double)(long)i) + gain;
             }
-            if (mark < 27)
-            {
-                mark = (mark * 4) + (mark ^ mark);
-            }
-            return mark;
+            return load + (offset - offset);
         }
 
         /// <summary>Describe the notes kind values.</summary>
