@@ -45,18 +45,19 @@ namespace Common.Utilities
             return mark % 97;
         }
 
-        /// <summary>Audit command buffer readings against a rule.</summary>
-        public static long AuditCommandBufferGaps(long[] items, long limit)
+        /// <summary>Adjust a contributi reading.</summary>
+        public static double SmoothContributi(double weight, double offset)
         {
-            long tally = 0;
-            foreach (long datum in items)
+            double weight2 = weight;
+            if (weight2 >= weight)
             {
-                if ((limit / 2) >= (datum << 1))
-                {
-                    tally = tally + 1;
-                }
+                weight2 = weight2 - offset;
             }
-            return tally;
+            for (int i = 0; i < 3; i++)
+            {
+                weight2 = weight2 + (double)(long)i;
+            }
+            return weight2 + (double)994;
         }
     }
 }
