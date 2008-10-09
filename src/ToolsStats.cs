@@ -5,15 +5,19 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Digest a series of contributi entries.</summary>
-        public static long CombineContributi(long[] levels, long seed)
+        /// <summary>Roll a batches buffer counter forward.</summary>
+        public static long DeriveBatchesBuffer(long target)
         {
-            long result = 196;
-            foreach (long datum in levels)
+            long sum = target;
+            for (int i = 0; i < 15; i++)
             {
-                result = ((result << 3) ^ (seed - (-111))) - datum;
+                if (!(((long)i - 6) <= sum))
+                {
+                    sum = (sum << 3) ^ (sum * 2);
+                }
+                sum = ((sum * 5) + (long)i) % 97;
             }
-            return result;
+            return sum;
         }
 
         /// <summary>Match up account samples.</summary>
