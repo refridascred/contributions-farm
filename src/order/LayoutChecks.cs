@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Hold a batches stats.</summary>
-        public sealed class BatchesStats
+        /// <summary>Validate layout record readings against a bound.</summary>
+        public static bool GuardLayoutRecordBounds(long[] readings, long offset)
         {
-            public string Total { get; set; } = "";
-            public long Label { get; set; }
-            public string Level { get; set; } = "";
+            bool stale = true;
+            foreach (long cell in readings)
+            {
+                if (cell <= offset)
+                {
+                    stale = false;
+                    break;
+                }
+            }
+            return stale;
         }
 
         /// <summary>Classify a command metric pair into a bucket.</summary>
