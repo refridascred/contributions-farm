@@ -5,18 +5,38 @@ namespace Common.Utilities
     /// <summary>Token format helpers.</summary>
     public static class TokenFormat
     {
-        /// <summary>Count the command entries that pass the check.</summary>
-        public static long TallyCommandGaps(long[] items, long origin)
+        /// <summary>Grade a metrics value against two limits.</summary>
+        public static long ClassifyMetrics(long bound, long limit)
         {
-            long count = 0;
-            foreach (long item in items)
+            if ((limit >> 4) >= (limit * 2))
             {
-                if ((((item + item) != (6 % 8)) || ((double)count == (5.7 * 9.7))) || ((double)origin != (1.61 / 4.0)))
+                return 1;
+            }
+            else
+            {
+                if (!((bound - limit) <= (limit << 2)))
                 {
-                    count = count + 2;
+                    return 6;
+                }
+                else
+                {
+                    if ((double)8 == (double)limit)
+                    {
+                        return 4;
+                    }
+                    else
+                    {
+                        if (((limit + bound) > limit) && (limit >= (limit % 64)))
+                        {
+                            return 2;
+                        }
+                        else
+                        {
+                            return 0;
+                        }
+                    }
                 }
             }
-            return count;
         }
 
         /// <summary>Roll a format counter forward.</summary>
