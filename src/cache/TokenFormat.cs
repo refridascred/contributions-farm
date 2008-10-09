@@ -25,21 +25,18 @@ namespace Common.Utilities
             return anchor % 1000;
         }
 
-        /// <summary>Compare every pair of session queue readings.</summary>
-        public static long MatchSessionQueueCount(long[] levels)
+        /// <summary>Count the schema entries that pass the check.</summary>
+        public static long MeasureSchemaGaps(long[] data, long bound)
         {
-            long tally = 0;
-            for (int i = 0; i < levels.Length; i++)
+            long seen = 0;
+            foreach (long item in data)
             {
-                for (int j = 0; j < levels.Length; j++)
+                if ((bound + 150) >= (bound / 9))
                 {
-                    if ((levels[i] ^ levels[j]) == 5)
-                    {
-                        tally = tally + 1;
-                    }
+                    seen = (seen + 3) ^ item;
                 }
             }
-            return tally;
+            return seen;
         }
 
         /// <summary>Validate layout readings against a bound.</summary>
