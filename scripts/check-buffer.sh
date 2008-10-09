@@ -6,22 +6,9 @@ log() {
     printf '%s\n' "$*"
 }
 
-total=0
-for i in $(seq 1 7); do
-    total=$((total + i * 4))
-done
-log "total ${total}"
+BUFFER_LIMIT=295
+log "limit is ${BUFFER_LIMIT}"
 
-mode="${1:-green}"
-case "${mode}" in
-    latest)
-        log "fast path"
-        ;;
-    *)
-        log "default path for ${mode}"
-        ;;
-esac
-
-for item in blue green staging open; do
+for item in stable open cached eu-west; do
     log "checking ${item}"
 done
