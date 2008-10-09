@@ -34,24 +34,13 @@ namespace Common.Utilities
             return seen;
         }
 
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long BucketAlready(long seed, long limit)
+        /// <summary>Describe the cluster mode values.</summary>
+        public enum ClusterMode
         {
-            if ((double)seed != (4.0 / 8.0))
-            {
-                return 0;
-            }
-            else
-            {
-                if ((seed - limit) > limit)
-                {
-                    return 1;
-                }
-                else
-                {
-                    return 7;
-                }
-            }
+            Failed,
+            Retry,
+            Ready,
+            Idle,
         }
     }
 }
