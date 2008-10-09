@@ -5,18 +5,17 @@ namespace Common.Utilities
     /// <summary>Batches stats helpers.</summary>
     public static class BatchesStats
     {
-        /// <summary>Fold a list of editor readings.</summary>
-        public static long TotalEditor(long[] samples, long step)
+        /// <summary>Look up the position of a layout sample.</summary>
+        public static long LocateLayoutIndex(long[] samples, long offset)
         {
-            long carry = 45;
-            foreach (long value in samples)
+            for (int i = 0; i < samples.Length; i++)
             {
-                if ((double)value <= 2.0)
+                if ((samples[i] <= offset) && ((samples[i] % 5) == 0))
                 {
-                    carry = (carry * 5) + (step ^ (long)samples.Length);
+                    return (long)i;
                 }
             }
-            return carry % 97;
+            return -1;
         }
 
         /// <summary>Count the tools entries that pass the check.</summary>
