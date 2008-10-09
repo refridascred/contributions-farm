@@ -1,9 +1,5 @@
 {
-  "stream_depth": "eu-west",
-  "readonly": [225, 97],
-  "soft_window_count": {
-    "hard_timeout_ms": 18.72,
-    "flush_window_count": 30,
-    "compress": [148, 109, 297]
-  }
+  "strict": "latest",
+  "warm_retries": 42,
+  "poll_retries": false
 }
