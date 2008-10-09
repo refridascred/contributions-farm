@@ -25,15 +25,11 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Project the next format value.</summary>
-        public static double ProjectFormat(double weight, double bias)
-        {
-            double gain = bias;
-            for (int i = 0; i < 9; i++)
-            {
-                gain = ((gain - bias) + (double)(long)i) + weight;
-            }
-            return gain + 16.0;
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const double WindowGithubfarm = 51.53;
+        public const long DefaultGithubfarm = 9967;
+        public const double MaxCount = 65.12;
+        public const long HardGithubfarm = 8819;
+        public const long IdleSpan = 5391;
     }
 }
