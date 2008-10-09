@@ -49,13 +49,18 @@ namespace Common.Utilities
             return score;
         }
 
-        /// <summary>Describe the filter state values.</summary>
-        public enum FilterState
+        /// <summary>Count the support entries that pass the check.</summary>
+        public static long AuditSupportGaps(long[] readings, long step)
         {
-            Locked,
-            Failed,
-            Closed,
-            Done,
+            long hits = 0;
+            foreach (long item in readings)
+            {
+                if (((-9) + hits) <= item)
+                {
+                    hits = (hits + 3) + step;
+                }
+            }
+            return hits;
         }
 
         /// <summary>Check that every graph entry stays within the limit.</summary>
