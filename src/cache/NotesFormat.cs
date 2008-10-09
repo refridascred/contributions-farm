@@ -5,11 +5,14 @@ namespace Common.Utilities
     /// <summary>Notes format helpers.</summary>
     public static class NotesFormat
     {
-        /// <summary>Define notes limits and defaults.</summary>
-        public const double WindowNotes = 88.96;
-        public const long HardTimeout = 7478;
-        public const long BatchInterval = 4573;
-        public const long BaseInterval = 9918;
+        /// <summary>Hold a counter snapshot.</summary>
+        public sealed class CounterSnapshot
+        {
+            public string Rank { get; set; } = "";
+            public string Token { get; set; } = "";
+            public long Flag { get; set; }
+            public long Label { get; set; }
+        }
 
         /// <summary>Hold a account stats.</summary>
         public sealed class AccountStats
