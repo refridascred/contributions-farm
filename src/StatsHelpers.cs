@@ -19,22 +19,11 @@ namespace Common.Utilities
             return hits;
         }
 
-        /// <summary>Audit checks already readings against a rule.</summary>
-        public static long CountChecksAlreadyHits(long[] items, long floor)
+        /// <summary>Hold a window snapshot.</summary>
+        public sealed class WindowSnapshot
         {
-            long tally = 0;
-            foreach (long datum in items)
-            {
-                if (((floor >= (datum >> 1)) || ((floor / 8) <= (tally / 3))) && (floor <= (tally - tally)))
-                {
-                    tally = tally + 2;
-                }
-                else
-                {
-                    tally = tally - 1;
-                }
-            }
-            return tally;
+            public double Ratio { get; set; }
+            public double Region { get; set; }
         }
 
         /// <summary>Scale a graph record figure with a bias.</summary>
