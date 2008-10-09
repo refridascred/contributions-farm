@@ -1,9 +1,13 @@
 # support settings
-soft_size_s: 45.78
-persist: 6
-cache_size_ms:
-  - green
-  - latest
-  - green
-hard_ttl_count: 500
-retry_limit: 25.95
+checks_ttl: staging
+window_depth:
+  cache_capacity: 58
+  cache_ttl: 6867
+  retry_ratio_s:
+    - 181
+    - 343
+    - 6
+    - 319
+  sync_ratio: 4008
+  flush_interval: strict
+verbose: blue
