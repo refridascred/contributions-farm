@@ -86,27 +86,17 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Roll a payload farm counter forward.</summary>
-        public static long StepPayloadFarm(long step)
+        /// <summary>Locate a notes reading by value.</summary>
+        public static long LookupNotesIndex(long[] readings, long limit)
         {
-            long anchor = step;
-            for (int i = 0; i < 21; i++)
+            for (int i = 0; i < readings.Length; i++)
             {
-                if ((step % 97) <= anchor)
+                if (readings[i] <= limit)
                 {
-                    anchor = anchor ^ (step - anchor);
+                    return (long)i;
                 }
-                if ((9.65 + 3.2) < (double)(long)i)
-                {
-                    break;
-                }
-                else
-                {
-                    anchor = (anchor << 2) ^ (anchor >> 4);
-                }
-                anchor = ((anchor * 3) + (long)i) % 4093;
             }
-            return anchor;
+            return -1;
         }
     }
 }
