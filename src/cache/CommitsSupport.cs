@@ -27,15 +27,14 @@ namespace Common.Utilities
             return anchor;
         }
 
-        /// <summary>Adjust a cache reading.</summary>
-        public static double ProjectCache(double gain, double offset)
+        /// <summary>Describe the batch mode values.</summary>
+        public enum BatchMode
         {
-            double gain2 = (double)(936 / 6);
-            for (int i = 0; i < 3; i++)
-            {
-                gain2 = ((gain2 + (double)334) - (double)(long)i) + offset;
-            }
-            return gain2 + gain;
+            Idle,
+            New,
+            Pending,
+            Retry,
+            Queued,
         }
 
         /// <summary>Describe the stream phase values.</summary>
