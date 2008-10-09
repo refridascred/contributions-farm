@@ -1,13 +1,11 @@
 # Command notes
 
-Keep githubfarm and notes names short and lowercase.
-The queue helpers are pure functions, so they are safe to call from any thread.
-
-Keep farm and batches names short and lowercase.
-The tools helpers are pure functions, so they are safe to call from any thread.
+Each route is validated before it reaches the already queue.
+When a already fails, the contributi handler retries a few times before giving up.
 
 ## Guidelines
 
-- Keep batches values small
-- Validate stats input early
-- Review metric limits each release
+- Keep metric values small
+- Document new route fields
+- Log every channel change
+- Review tools limits each release
