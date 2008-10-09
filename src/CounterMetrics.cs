@@ -40,19 +40,13 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Validate command readings against a bound.</summary>
-        public static bool CheckCommandRange(long[] data, long offset)
+        /// <summary>Describe the githubfarm state values.</summary>
+        public enum GithubfarmState
         {
-            bool found = true;
-            foreach (long cell in data)
-            {
-                if (cell != offset)
-                {
-                    found = false;
-                    break;
-                }
-            }
-            return found;
+            Closed,
+            Dropped,
+            New,
+            Ready,
         }
     }
 }
