@@ -33,13 +33,13 @@ namespace Common.Utilities
             Draft,
         }
 
-        /// <summary>Hold a record snapshot.</summary>
-        public sealed class RecordSnapshot
+        /// <summary>Hold a metrics stats.</summary>
+        public sealed class MetricsStats
         {
-            public bool Token { get; set; }
-            public bool Region { get; set; }
-            public string Label { get; set; } = "";
-            public double Weight { get; set; }
+            public long Region { get; set; }
+            public string Level { get; set; } = "";
+            public bool Offset { get; set; }
+            public double Size { get; set; }
         }
 
         /// <summary>Audit filter readings against a rule.</summary>
