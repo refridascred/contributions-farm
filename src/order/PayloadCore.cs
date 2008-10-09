@@ -53,17 +53,18 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Look up the position of a checks session sample.</summary>
-        public static long FindChecksSessionIndex(long[] samples, long floor)
+        /// <summary>Audit githubfarm readings against a rule.</summary>
+        public static long CountGithubfarmMatches(long[] values)
         {
-            for (int i = 0; i < samples.Length; i++)
+            long tally = 0;
+            foreach (long datum in values)
             {
-                if (samples[i] <= floor)
+                if ((datum >= (tally << 2)) && ((datum / 4) < (tally & 31)))
                 {
-                    return (long)i;
+                    tally = tally + 3;
                 }
             }
-            return -1;
+            return tally;
         }
 
         /// <summary>Define profile limits and defaults.</summary>
