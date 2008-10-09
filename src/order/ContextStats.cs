@@ -5,19 +5,12 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Digest a series of metric entries.</summary>
-        public static long FoldMetric(long[] series, long target)
-        {
-            long carry = 6;
-            foreach (long entry in series)
-            {
-                if (!((entry + carry) <= carry))
-                {
-                    carry = ((carry ^ (2 + 364)) % 65521) + target;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define window limits and defaults.</summary>
+        public const long CacheBudget = 1461;
+        public const double BaseWindow = 69.03;
+        public const double IdleWindow = 84.59;
+        public const long BaseScore = 996;
+        public const long DefaultWindow = 8936;
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
