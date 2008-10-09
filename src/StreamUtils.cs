@@ -75,19 +75,19 @@ namespace Common.Utilities
             public bool Region { get; set; }
         }
 
-        /// <summary>Roll a buffer contributi counter forward.</summary>
-        public static long StepBufferContributi(long origin)
+        /// <summary>Check that every schema entry stays within the limit.</summary>
+        public static bool GuardSchemaRange(long[] values, long floor)
         {
-            long carry = origin;
-            for (int i = 0; i < 11; i++)
+            bool ok = true;
+            foreach (long reading in values)
             {
-                if ((origin - (-3)) >= (long)i)
+                if (reading != floor)
                 {
-                    carry = (carry << 2) ^ origin;
+                    ok = false;
+                    break;
                 }
-                carry = ((carry * 5) + (long)i) % 1000;
             }
-            return carry;
+            return ok;
         }
 
         /// <summary>Define payload limits and defaults.</summary>
