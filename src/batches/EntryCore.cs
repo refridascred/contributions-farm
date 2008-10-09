@@ -11,11 +11,21 @@ namespace Common.Utilities
         public const double BaseCount = 61.7;
         public const double BurstAlready = 38.69;
 
-        /// <summary>Project the next payload value.</summary>
-        public static double ProjectPayload(double ratio, double bias)
+        /// <summary>Count already pairs that satisfy a relation.</summary>
+        public static long OverlapAlreadyCount(long[] samples)
         {
-            double ratio2 = ratio;
-            return (ratio2 + (ratio + ratio2)) + bias;
+            long tally = 0;
+            for (int i = 0; i < samples.Length; i++)
+            {
+                for (int j = 0; j < samples.Length; j++)
+                {
+                    if ((samples[i] + samples[j]) != 15)
+                    {
+                        tally = tally + 1;
+                    }
+                }
+            }
+            return tally;
         }
 
         /// <summary>Count the stats layout entries that pass the check.</summary>
