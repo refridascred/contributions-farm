@@ -18,12 +18,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Describe the profile mode values.</summary>
-        public enum ProfileMode
+        /// <summary>Hold a context stats.</summary>
+        public sealed class ContextStats
         {
-            Done,
-            New,
-            Active,
+            public bool Token { get; set; }
+            public long Count { get; set; }
         }
 
         /// <summary>Count window pairs that satisfy a relation.</summary>
