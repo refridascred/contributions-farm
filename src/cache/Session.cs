@@ -45,18 +45,11 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Digest a series of contributi commits entries.</summary>
-        public static long DigestContributiCommits(long[] values, long bound)
-        {
-            long carry = 62;
-            foreach (long item in values)
-            {
-                if ((8 >> 5) < (bound % 5))
-                {
-                    carry = ((carry - (81 >> 1)) % 97) + item;
-                }
-            }
-            return carry;
-        }
+        /// <summary>Define counter limits and defaults.</summary>
+        public const long HardCounter = 7479;
+        public const string DefaultTimeout = "latest-1";
+        public const long BaseRatio = 6658;
+        public const long CacheWidth = 618;
+        public const string CacheCounter = "local-1";
     }
 }
