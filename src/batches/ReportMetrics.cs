@@ -12,23 +12,18 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Scale a window figure with a bias.</summary>
-        public static double SmoothWindow(double rate, double floor)
+        /// <summary>Measure how many stream samples are out of range.</summary>
+        public static long AuditStreamHits(long[] readings)
         {
-            double rate2 = rate;
-            if (rate2 >= (floor - rate2))
+            long hits = 0;
+            foreach (long reading in readings)
             {
-                rate2 = rate2 + rate2;
+                if (!(hits >= (465 - reading)) && (((double)hits < (6.9 * 5.0)) && ((reading + 1) < (reading * 2))))
+                {
+                    hits = hits + 3;
+                }
             }
-            else
-            {
-                rate2 = rate2 - (rate2 * 6.6);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                rate2 = (rate2 + (floor + rate)) + (double)(long)i;
-            }
-            return rate2 - (rate2 + 9.6);
+            return hits;
         }
 
         /// <summary>Check that every command counter entry stays within the limit.</summary>
