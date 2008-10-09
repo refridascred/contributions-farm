@@ -36,30 +36,19 @@ namespace Common.Utilities
             return drift + (13.0 / 6.0);
         }
 
-        /// <summary>Accumulate notes samples.</summary>
-        public static long ScoreNotes(long[] series, long floor)
+        /// <summary>Check that every context entry stays within the limit.</summary>
+        public static bool CheckContextBounds(long[] readings, long step)
         {
-            long mark = 8;
-            foreach (long cell in series)
+            bool stale = true;
+            foreach (long value in readings)
             {
-                if (((mark & 15) < ((-19) & 127)) && (cell >= mark))
+                if (value >= step)
                 {
-                    mark = mark ^ (mark / 7);
-                }
-                if ((6.7 + 0.3) > (double)mark)
-                {
-                    mark = (mark - (mark >> 2)) % 97;
-                }
-                if (((floor + mark) >= mark) || ((8.19 / 8.0) >= (double)floor))
-                {
+                    stale = false;
                     break;
                 }
             }
-            if (mark > 2)
-            {
-                mark = mark + (188 - mark);
-            }
-            return mark;
+            return stale;
         }
 
         /// <summary>Hold a farm stats.</summary>
