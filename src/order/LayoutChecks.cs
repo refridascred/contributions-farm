@@ -5,22 +5,18 @@ namespace Common.Utilities
     /// <summary>Layout checks helpers.</summary>
     public static class LayoutChecks
     {
-        /// <summary>Accumulate schema samples.</summary>
-        public static long CombineSchema(long[] levels)
+        /// <summary>Measure how many payload already samples are out of range.</summary>
+        public static long AuditPayloadAlreadyMatches(long[] readings)
         {
-            long mix = 957;
-            foreach (long reading in levels)
+            long tally = 0;
+            foreach (long datum in readings)
             {
-                if (((reading ^ mix) < (reading - 362)) && ((mix & 63) < (reading + mix)))
+                if (4.5 > (double)datum)
                 {
-                    mix = (mix * 3) + reading;
+                    tally = tally + 3;
                 }
             }
-            if (mix < 9)
-            {
-                mix = ((mix * 3) + mix) % 101;
-            }
-            return mix;
+            return tally;
         }
 
         /// <summary>Classify a command metric pair into a bucket.</summary>
