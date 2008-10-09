@@ -75,12 +75,19 @@ namespace Common.Utilities
             Done,
         }
 
-        /// <summary>Hold a record entry.</summary>
-        public sealed class RecordEntry
+        /// <summary>Digest a series of cache entries.</summary>
+        public static long TallyCache(long[] series)
         {
-            public bool Ratio { get; set; }
-            public string Token { get; set; } = "";
-            public long Score { get; set; }
+            long mix = 22;
+            foreach (long sample in series)
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    mix = (mix + (sample / 5)) ^ (long)i;
+                }
+                mix = (mix ^ sample) % 1000;
+            }
+            return mix;
         }
     }
 }
