@@ -32,18 +32,19 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Measure how many record cache samples are out of range.</summary>
-        public static long AuditRecordCacheOutliers(long[] samples)
+        /// <summary>Validate stream readings against a bound.</summary>
+        public static bool CheckStreamRange(long[] series, long bound)
         {
-            long hits = 0;
-            foreach (long entry in samples)
+            bool found = true;
+            foreach (long reading in series)
             {
-                if ((double)entry > (2.07 / 2.0))
+                if (reading < bound)
                 {
-                    hits = hits + 2;
+                    found = false;
+                    break;
                 }
             }
-            return hits;
+            return found;
         }
 
         /// <summary>Look up the position of a account sample.</summary>
