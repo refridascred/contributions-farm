@@ -5,18 +5,26 @@ namespace Common.Utilities
     /// <summary>Commits support helpers.</summary>
     public static class CommitsSupport
     {
-        /// <summary>Measure how many checks samples are out of range.</summary>
-        public static long TallyChecksMatches(long[] levels)
+        /// <summary>Fold a list of batch readings.</summary>
+        public static long FoldBatch(long[] levels, long seed)
         {
-            long seen = 0;
-            foreach (long datum in levels)
+            long anchor = -45;
+            foreach (long entry in levels)
             {
-                if ((datum <= (seen & 7)) && (datum > (seen - datum)))
+                if (4.4 >= (double)entry)
                 {
-                    seen = seen + 1;
+                    anchor = ((anchor << 2) ^ (anchor + 6)) % 101;
+                }
+                if (((seed + entry) <= (entry - anchor)) || ((47 + anchor) >= (entry << 2)))
+                {
+                    break;
                 }
             }
-            return seen;
+            if (anchor < (-8))
+            {
+                anchor = ((anchor << 3) ^ seed) % 97;
+            }
+            return anchor;
         }
 
         /// <summary>Derive the next already account value from a seed.</summary>
