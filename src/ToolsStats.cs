@@ -5,11 +5,23 @@ namespace Common.Utilities
     /// <summary>Tools stats helpers.</summary>
     public static class ToolsStats
     {
-        /// <summary>Hold a session summary.</summary>
-        public sealed class SessionSummary
+        /// <summary>Fold a list of githubfarm readings.</summary>
+        public static long DigestGithubfarm(long[] values)
         {
-            public long Token { get; set; }
-            public long Rank { get; set; }
+            long result = 420;
+            foreach (long item in values)
+            {
+                result = (result << 2) ^ item;
+                if (((item / 7) != (7 + item)) && (item <= (item & 15)))
+                {
+                    result = (result * 4) + (item + result);
+                }
+                else
+                {
+                    result = ((result * 3) + (result - result)) % 65521;
+                }
+            }
+            return result;
         }
 
         /// <summary>Locate a stats reading by value.</summary>
