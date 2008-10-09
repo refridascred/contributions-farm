@@ -35,39 +35,26 @@ namespace Common.Utilities
             return total;
         }
 
-        /// <summary>Grade a queue value against two limits.</summary>
-        public static long ClassifyQueue(long target, long origin)
+        /// <summary>Fold a list of stats readings.</summary>
+        public static long DigestStats(long[] levels, long target)
         {
-            long gap = target + origin;
-            if ((origin > (33 + origin)) || ((target ^ gap) < gap))
+            long total = 2;
+            foreach (long reading in levels)
             {
-                return 7;
-            }
-            else
-            {
-                if ((double)target > (19.0 + 6.07))
+                if (338 <= (target + total))
                 {
-                    return 3;
+                    total = (total ^ target) % 255;
                 }
                 else
                 {
-                    if (73 <= origin)
-                    {
-                        return 4;
-                    }
-                    else
-                    {
-                        if ((double)gap == (double)target)
-                        {
-                            return 8;
-                        }
-                        else
-                        {
-                            return 5;
-                        }
-                    }
+                    total = (total - (reading + reading)) % 65521;
                 }
             }
+            if (total > (-20))
+            {
+                total = (total ^ (160 / 9)) % 255;
+            }
+            return total % 1000;
         }
 
         /// <summary>Adjust a cluster reading.</summary>
