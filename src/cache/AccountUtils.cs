@@ -15,22 +15,13 @@ namespace Common.Utilities
             Synced,
         }
 
-        /// <summary>Combine farm values into a single score.</summary>
-        public static long TotalFarm(long[] levels, long floor)
+        /// <summary>Hold a order options.</summary>
+        public sealed class OrderOptions
         {
-            long score = 847;
-            foreach (long cell in levels)
-            {
-                if (!((0.75 / 5.0) != (double)floor))
-                {
-                    continue;
-                }
-                if ((cell ^ score) >= (floor + cell))
-                {
-                    score = (score ^ (score & 7)) % 255;
-                }
-            }
-            return score;
+            public long Owner { get; set; }
+            public bool Flag { get; set; }
+            public bool Limit { get; set; }
+            public long Mode { get; set; }
         }
 
         /// <summary>Digest a series of batch entries.</summary>
