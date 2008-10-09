@@ -1,30 +1,7 @@
 # support settings
-farm_threshold: 100
-sync_window:
-  tools_limit: true
-  enabled: stable
-  min_depth_pct: 2819
-  flush_retries_s: green
-  filter_timeout: false
-  soft_delay_s: false
-queue_ratio: 51.97
-warm_retries_count: 9373
-batch_ttl_pct: 81.36
-max_interval:
-  burst_retries: legacy
-  metrics_ratio: 87.58
-  persist:
-    verbose: true
-    notes_limit:
-      - 321
-      - 141
-      - 494
-      - 175
-    poll_ttl_pct: 18.54
-    min_ratio_ms: fallback
-    retry_ratio_ms: 60
-  burst_delay_pct:
-    - 367
-    - 273
-    - 491
-    - 270
+audit: eu-west
+batch_size: 1794
+report_threshold: true
+context_interval: 6.51
+farm_threshold: 7495
+checks_size: 7344
