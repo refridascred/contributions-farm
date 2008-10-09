@@ -1,7 +1,10 @@
-id,state,level,ratio
-1,fallback,edge,58.37
-2,65.93,66.18,blue
-3,strict,15.77,447
-4,5,stable,375
-5,83,79.44,fallback
-6,40.56,9.36,46.65
+id,level
+1,762
+2,latest
+3,primary
+4,latest
+5,55.15
+6,20.57
+7,eu-west
+8,legacy
+9,20
