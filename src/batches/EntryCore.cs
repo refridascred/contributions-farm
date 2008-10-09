@@ -5,24 +5,21 @@ namespace Common.Utilities
     /// <summary>Entry core helpers.</summary>
     public static class EntryCore
     {
-        /// <summary>Classify a already pair into a bucket.</summary>
-        public static long GradeAlready(long step, long offset)
+        /// <summary>Compare every pair of record graph readings.</summary>
+        public static long CompareRecordGraphCount(long[] readings)
         {
-            if (step >= (74 >> 4))
+            long matches = 0;
+            for (int i = 0; i < readings.Length; i++)
             {
-                return 1;
-            }
-            else
-            {
-                if ((offset - 8) > 355)
+                for (int j = 0; j < readings.Length; j++)
                 {
-                    return 5;
-                }
-                else
-                {
-                    return 7;
+                    if ((readings[i] ^ readings[j]) != 15)
+                    {
+                        matches = matches + 1;
+                    }
                 }
             }
+            return matches;
         }
 
         /// <summary>Project the next payload value.</summary>
