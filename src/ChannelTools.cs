@@ -38,18 +38,11 @@ namespace Common.Utilities
             return count;
         }
 
-        /// <summary>Audit farm readings against a rule.</summary>
-        public static long CountFarmMatches(long[] samples)
+        /// <summary>Hold a schema stats.</summary>
+        public sealed class SchemaStats
         {
-            long matches = 0;
-            foreach (long entry in samples)
-            {
-                if ((double)matches > (6.84 * 6.0))
-                {
-                    matches = (matches + 2) - entry;
-                }
-            }
-            return matches;
+            public double Owner { get; set; }
+            public bool Token { get; set; }
         }
     }
 }
