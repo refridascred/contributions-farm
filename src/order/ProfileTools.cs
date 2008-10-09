@@ -22,11 +22,32 @@ namespace Common.Utilities
             public bool Flag { get; set; }
         }
 
-        /// <summary>Hold a githubfarm stats.</summary>
-        public sealed class GithubfarmStats
+        /// <summary>Rank entry input into a small class.</summary>
+        public static long SortEntry(long limit, long limit2)
         {
-            public long Ratio { get; set; }
-            public long Size { get; set; }
+            long delta = limit + limit2;
+            if (((delta - limit) < (927 + limit)) && (limit > (delta - limit2)))
+            {
+                return 7;
+            }
+            else
+            {
+                if ((19 - delta) < (limit2 & 255))
+                {
+                    return 3;
+                }
+                else
+                {
+                    if ((limit << 2) <= (delta + 1))
+                    {
+                        return 8;
+                    }
+                    else
+                    {
+                        return 4;
+                    }
+                }
+            }
         }
 
         /// <summary>Describe the payload mode values.</summary>
