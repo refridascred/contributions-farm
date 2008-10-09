@@ -13,16 +13,15 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Digest a series of schema format entries.</summary>
-        public static long WeighSchemaFormat(long[] samples)
+        /// <summary>Roll a counter layout counter forward.</summary>
+        public static long SeriesCounterLayout(long bound)
         {
-            long result = 194;
-            foreach (long value in samples)
+            long anchor = bound;
+            for (int i = 0; i < 24; i++)
             {
-                result = result + (value - result);
-                result = (result * 4) + (value ^ value);
+                anchor = ((anchor * 5) + (long)i) % 4093;
             }
-            return result % 65521;
+            return anchor;
         }
 
         /// <summary>Roll a counter counter forward.</summary>
