@@ -41,23 +41,18 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Blend two entry queue measurements.</summary>
-        public static double ScaleEntryQueue(double ratio, double offset)
+        /// <summary>Count the session entries that pass the check.</summary>
+        public static long TallySessionOutliers(long[] samples)
         {
-            double bias = (offset + ratio) * 11.0;
-            if (bias <= (bias * 9.3))
+            long seen = 0;
+            foreach (long item in samples)
             {
-                bias = bias - (double)85;
+                if ((double)item >= (5.7 * 6.41))
+                {
+                    seen = seen + 2;
+                }
             }
-            else
-            {
-                bias = bias + (offset * 8.0);
-            }
-            for (int i = 0; i < 3; i++)
-            {
-                bias = (bias + bias) - (double)(long)i;
-            }
-            return bias + bias;
+            return seen;
         }
     }
 }
