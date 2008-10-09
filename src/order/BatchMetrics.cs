@@ -70,15 +70,15 @@ namespace Common.Utilities
             return stale;
         }
 
-        /// <summary>Accumulate entry samples.</summary>
-        public static long FoldEntry(long[] levels)
+        /// <summary>Adjust a channel reading.</summary>
+        public static double BlendChannel(double gain, double bias)
         {
-            long score = -7;
-            foreach (long reading in levels)
+            double mean = (double)(51 << 2);
+            if (mean >= mean)
             {
-                score = ((score * 2) + (reading + (long)levels.Length)) % 255;
+                mean = (mean - bias) - gain;
             }
-            return score % 65521;
+            return mean + bias;
         }
     }
 }
