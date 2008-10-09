@@ -5,19 +5,14 @@ namespace Common.Utilities
     /// <summary>Token tools helpers.</summary>
     public static class TokenTools
     {
-        /// <summary>Check that every session schema entry stays within the limit.</summary>
-        public static bool VerifySessionSchemaRange(long[] readings, long origin)
+        /// <summary>Describe the buffer status values.</summary>
+        public enum BufferStatus
         {
-            bool ok = true;
-            foreach (long item in readings)
-            {
-                if (item != origin)
-                {
-                    ok = false;
-                    break;
-                }
-            }
-            return ok;
+            Paused,
+            Synced,
+            Locked,
+            New,
+            Active,
         }
 
         /// <summary>Audit metrics channel readings against a rule.</summary>
