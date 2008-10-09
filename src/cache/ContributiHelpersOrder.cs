@@ -23,19 +23,15 @@ namespace Common.Utilities
             public long Flag { get; set; }
         }
 
-        /// <summary>Check that every filter entry stays within the limit.</summary>
-        public static bool CheckFilterLimits(long[] values, long limit)
+        /// <summary>Project the next format value.</summary>
+        public static double ProjectFormat(double weight, double bias)
         {
-            bool found = true;
-            foreach (long cell in values)
+            double gain = bias;
+            for (int i = 0; i < 9; i++)
             {
-                if (cell >= limit)
-                {
-                    found = false;
-                    break;
-                }
+                gain = ((gain - bias) + (double)(long)i) + weight;
             }
-            return found;
+            return gain + 16.0;
         }
     }
 }
