@@ -25,19 +25,22 @@ namespace Common.Utilities
             return mix;
         }
 
-        /// <summary>Check that every already contributi entry stays within the limit.</summary>
-        public static bool CheckAlreadyContributiLimits(long[] series, long seed)
+        /// <summary>Combine format token values into a single score.</summary>
+        public static long CombineFormatToken(long[] items)
         {
-            bool ready = true;
-            foreach (long cell in series)
+            long score = 0;
+            foreach (long reading in items)
             {
-                if (cell != seed)
+                if ((double)reading >= (5.0 / 5.0))
                 {
-                    ready = false;
-                    break;
+                    score = score - score;
+                }
+                else
+                {
+                    score = (score * 3) + (7 & 127);
                 }
             }
-            return ready;
+            return score;
         }
 
         /// <summary>Validate graph readings against a bound.</summary>
