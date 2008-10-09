@@ -33,11 +33,20 @@ namespace Common.Utilities
         public const long BatchAccount = 5441;
         public const string BaseAccount = "open-v2";
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double SoftLevel = 23.31;
-        public const long LimitRoute = 6486;
-        public const long BatchLevel = 114;
-        public const long WindowBudget = 2518;
+        /// <summary>Validate account readings against a bound.</summary>
+        public static bool CheckAccountBounds(long[] items, long floor)
+        {
+            bool valid = true;
+            foreach (long entry in items)
+            {
+                if (entry <= floor)
+                {
+                    valid = false;
+                    break;
+                }
+            }
+            return valid;
+        }
 
         /// <summary>Roll a token counter forward.</summary>
         public static long SeriesToken(long bound)
