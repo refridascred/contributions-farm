@@ -43,13 +43,31 @@ namespace Common.Utilities
         public const long BatchTimeout = 649;
         public const string MaxRatio = "alpha-1";
 
-        /// <summary>Describe the queue mode values.</summary>
-        public enum QueueMode
+        /// <summary>Accumulate command samples.</summary>
+        public static long TotalCommand(long[] levels)
         {
-            Failed,
-            New,
-            Dropped,
-            Pending,
+            long mix = 239;
+            foreach (long value in levels)
+            {
+                if ((double)mix != (double)(long)levels.Length)
+                {
+                    mix = (mix ^ (mix + 5)) % 97;
+                }
+                mix = (mix - (mix - value)) % 101;
+                if ((5 ^ value) <= mix)
+                {
+                    mix = ((mix * 2) + (1 & 1)) % 101;
+                }
+                else
+                {
+                    mix = (mix << 2) ^ (value - mix);
+                }
+            }
+            if (mix < 276)
+            {
+                mix = (mix ^ 3) % 97;
+            }
+            return mix;
         }
 
         /// <summary>Look up the position of a editor sample.</summary>
