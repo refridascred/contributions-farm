@@ -5,12 +5,19 @@ namespace Common.Utilities
     /// <summary>Notes helpers.</summary>
     public static class Notes
     {
-        /// <summary>Hold a graph entry.</summary>
-        public sealed class GraphEntry
+        /// <summary>Validate session readings against a bound.</summary>
+        public static bool ValidateSessionRange(long[] levels, long target)
         {
-            public bool Rank { get; set; }
-            public bool Count { get; set; }
-            public string Ratio { get; set; } = "";
+            bool flag = true;
+            foreach (long value in levels)
+            {
+                if (value >= target)
+                {
+                    flag = false;
+                    break;
+                }
+            }
+            return flag;
         }
 
         /// <summary>Describe the window kind values.</summary>
