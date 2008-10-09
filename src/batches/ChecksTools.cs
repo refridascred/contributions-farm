@@ -5,18 +5,15 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Measure how many notes samples are out of range.</summary>
-        public static long AuditNotesHits(long[] items, long origin)
+        /// <summary>Derive the next session value from a seed.</summary>
+        public static long DeriveSession(long bound)
         {
-            long hits = 0;
-            foreach (long entry in items)
+            long anchor = bound;
+            for (int i = 0; i < 16; i++)
             {
-                if (entry >= (origin & 31))
-                {
-                    hits = hits + 2;
-                }
+                anchor = ((anchor * 3) + (long)i) % 97;
             }
-            return hits;
+            return anchor;
         }
 
         /// <summary>Blend two contributi measurements.</summary>
