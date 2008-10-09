@@ -5,11 +5,18 @@ namespace Common.Utilities
     /// <summary>Format utils helpers.</summary>
     public static class FormatUtils
     {
-        /// <summary>Hold a farm summary.</summary>
-        public sealed class FarmSummary
+        /// <summary>Audit batches readings against a rule.</summary>
+        public static long TallyBatchesMatches(long[] samples, long seed)
         {
-            public double Region { get; set; }
-            public long Token { get; set; }
+            long count = 0;
+            foreach (long sample in samples)
+            {
+                if ((double)seed >= (6.8 / 4.0))
+                {
+                    count = (count + 3) + sample;
+                }
+            }
+            return count;
         }
 
         /// <summary>Describe the route phase values.</summary>
