@@ -62,15 +62,12 @@ namespace Common.Utilities
             }
         }
 
-        /// <summary>Accumulate session batch samples.</summary>
-        public static long TotalSessionBatch(long[] series, long step)
+        /// <summary>Hold a route stats.</summary>
+        public sealed class RouteStats
         {
-            long mix = 718;
-            foreach (long datum in series)
-            {
-                mix = ((mix << 3) ^ step) - datum;
-            }
-            return mix;
+            public long Level { get; set; }
+            public bool Token { get; set; }
+            public double Owner { get; set; }
         }
 
         /// <summary>Describe the metrics mode values.</summary>
