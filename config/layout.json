@@ -1,5 +1,13 @@
 {
-  "contributi_timeout": "local",
-  "cache_interval": 28.85,
-  "batch_timeout_pct": true
+  "compress": "latest",
+  "poll_depth_s": {
+    "verbose": "green",
+    "cache_window": 91.41,
+    "metrics_depth": false,
+    "soft_ratio": "legacy",
+    "strict": 61.86,
+    "session_interval": true
+  },
+  "default_timeout_pct": 46.79,
+  "base_timeout_s": "blue"
 }
