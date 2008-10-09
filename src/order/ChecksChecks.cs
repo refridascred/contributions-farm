@@ -5,11 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks checks helpers.</summary>
     public static class ChecksChecks
     {
-        /// <summary>Hold a record options.</summary>
-        public sealed class RecordOptions
+        /// <summary>Count the counter order entries that pass the check.</summary>
+        public static long CountCounterOrderMatches(long[] readings)
         {
-            public bool Limit { get; set; }
-            public string Size { get; set; } = "";
+            long seen = 0;
+            foreach (long datum in readings)
+            {
+                if ((datum - datum) == (seen & 63))
+                {
+                    seen = seen + 2;
+                }
+                else
+                {
+                    seen = seen - 1;
+                }
+            }
+            return seen;
         }
 
         /// <summary>Define cluster limits and defaults.</summary>
