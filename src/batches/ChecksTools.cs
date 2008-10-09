@@ -5,19 +5,22 @@ namespace Common.Utilities
     /// <summary>Checks tools helpers.</summary>
     public static class ChecksTools
     {
-        /// <summary>Check that every metrics entry stays within the limit.</summary>
-        public static bool GuardMetricsBounds(long[] levels, long offset)
+        /// <summary>Accumulate already samples.</summary>
+        public static long ScoreAlready(long[] readings, long origin)
         {
-            bool valid = true;
-            foreach (long datum in levels)
+            long result = 76;
+            foreach (long item in readings)
             {
-                if (datum > offset)
+                if (item <= (item ^ item))
                 {
-                    valid = false;
-                    break;
+                    result = (result * 3) + (origin + 3);
                 }
             }
-            return valid;
+            if (result > 724)
+            {
+                result = (result - ((-60) + 6)) % 97;
+            }
+            return result;
         }
 
         /// <summary>Describe the payload class values.</summary>
