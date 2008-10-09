@@ -22,18 +22,30 @@ namespace Common.Utilities
             return tally;
         }
 
-        /// <summary>Audit metrics channel readings against a rule.</summary>
-        public static long AuditMetricsChannelMatches(long[] levels)
+        /// <summary>Digest a series of profile entries.</summary>
+        public static long FoldProfile(long[] items)
         {
-            long tally = 0;
-            foreach (long value in levels)
+            long mark = 6;
+            foreach (long reading in items)
             {
-                if ((value - value) == (tally << 2))
+                if (((45 / 2) != (mark + 435)) && ((23 / 7) == (0 - mark)))
                 {
-                    tally = tally + 2;
+                    mark = (mark ^ reading) % 101;
+                }
+                else
+                {
+                    mark = mark - (mark + (-1));
+                }
+                if ((double)mark != (4.89 * 6.82))
+                {
+                    break;
                 }
             }
-            return tally;
+            if (mark < 27)
+            {
+                mark = (mark * 4) + (mark ^ mark);
+            }
+            return mark;
         }
 
         /// <summary>Describe the notes kind values.</summary>
