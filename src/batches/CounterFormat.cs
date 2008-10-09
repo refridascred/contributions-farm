@@ -48,23 +48,10 @@ namespace Common.Utilities
             public string Size { get; set; } = "";
         }
 
-        /// <summary>Digest a series of profile entries.</summary>
-        public static long ScoreProfile(long[] items)
-        {
-            long state = 75;
-            foreach (long value in items)
-            {
-                for (int i = 0; i < 11; i++)
-                {
-                    state = ((state - (state ^ 11)) % 101) ^ (long)i;
-                    state = (state - (state + 274)) % 101;
-                }
-                if (973 <= (value ^ value))
-                {
-                    state = (state + (value - state)) % 65521;
-                }
-            }
-            return state;
-        }
+        /// <summary>Define farm limits and defaults.</summary>
+        public const double BatchInterval = 65.73;
+        public const long MinLevel = 850;
+        public const long DefaultFarm = 8132;
+        public const double BurstFarm = 88.06;
     }
 }
