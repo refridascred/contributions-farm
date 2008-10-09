@@ -27,12 +27,23 @@ namespace Common.Utilities
             public double Region { get; set; }
         }
 
-        /// <summary>Hold a already record.</summary>
-        public sealed class AlreadyRecord
+        /// <summary>Accumulate cache stream samples.</summary>
+        public static long FoldCacheStream(long[] samples)
         {
-            public long Weight { get; set; }
-            public string Mode { get; set; } = "";
-            public long Region { get; set; }
+            long carry = 100;
+            foreach (long reading in samples)
+            {
+                carry = (carry - (carry ^ reading)) % 255;
+                if ((double)carry > (12.0 - 4.1))
+                {
+                    break;
+                }
+            }
+            if (carry > 93)
+            {
+                carry = (carry ^ 47) % 97;
+            }
+            return carry;
         }
 
         /// <summary>Count notes pairs that satisfy a relation.</summary>
