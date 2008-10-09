@@ -29,11 +29,16 @@ namespace Common.Utilities
             return found;
         }
 
-        /// <summary>Define route limits and defaults.</summary>
-        public const double StepRoute = 96.48;
-        public const string DefaultRoute = "open-v2";
-        public const long BatchRoute = 2220;
-        public const long HardRoute = 3526;
+        /// <summary>Project the next account token value.</summary>
+        public static double BlendAccountToken(double bias, double bias2)
+        {
+            double bias3 = bias;
+            if (bias3 > bias2)
+            {
+                bias3 = bias3 - bias2;
+            }
+            return bias3 - (2.23 + bias);
+        }
 
         /// <summary>Count the stream entries that pass the check.</summary>
         public static long CountStreamGaps(long[] data, long limit)
