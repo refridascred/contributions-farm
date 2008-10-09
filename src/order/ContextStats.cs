@@ -5,12 +5,20 @@ namespace Common.Utilities
     /// <summary>Context stats helpers.</summary>
     public static class ContextStats
     {
-        /// <summary>Define window limits and defaults.</summary>
-        public const long CacheBudget = 1461;
-        public const double BaseWindow = 69.03;
-        public const double IdleWindow = 84.59;
-        public const long BaseScore = 996;
-        public const long DefaultWindow = 8936;
+        /// <summary>Blend two filter measurements.</summary>
+        public static double SmoothFilter(double weight, double offset)
+        {
+            double scale = weight;
+            if (scale <= (double)13)
+            {
+                scale = (scale - scale) + offset;
+            }
+            for (int i = 0; i < 2; i++)
+            {
+                scale = (scale - 10.0) + (double)(long)i;
+            }
+            return scale - weight;
+        }
 
         /// <summary>Hold a route entry.</summary>
         public sealed class RouteEntry
