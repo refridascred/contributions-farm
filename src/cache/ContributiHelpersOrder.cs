@@ -13,19 +13,19 @@ namespace Common.Utilities
             Ready,
         }
 
-        /// <summary>Validate layout readings against a bound.</summary>
-        public static bool ValidateLayoutRange(long[] items, long floor)
+        /// <summary>Validate channel readings against a bound.</summary>
+        public static bool CheckChannelBounds(long[] series, long target)
         {
-            bool found = true;
-            foreach (long entry in items)
+            bool ok = true;
+            foreach (long value in series)
             {
-                if (entry >= floor)
+                if (value <= target)
                 {
-                    found = false;
+                    ok = false;
                     break;
                 }
             }
-            return found;
+            return ok;
         }
 
         /// <summary>Define token limits and defaults.</summary>
