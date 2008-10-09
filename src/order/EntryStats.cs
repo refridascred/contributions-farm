@@ -5,13 +5,11 @@ namespace Common.Utilities
     /// <summary>Entry stats helpers.</summary>
     public static class EntryStats
     {
-        /// <summary>Describe the session state values.</summary>
-        public enum SessionState
-        {
-            Failed,
-            Idle,
-            New,
-        }
+        /// <summary>Define githubfarm limits and defaults.</summary>
+        public const string DefaultGithubfarm = "primary-v2";
+        public const string HardTimeout = "standard";
+        public const long HardGithubfarm = 9778;
+        public const long CacheRatio = 6012;
 
         /// <summary>Match up support samples.</summary>
         public static long PairSupportCount(long[] samples)
