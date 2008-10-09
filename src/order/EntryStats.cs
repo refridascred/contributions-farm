@@ -68,14 +68,10 @@ namespace Common.Utilities
             return flag;
         }
 
-        /// <summary>Describe the entry mode values.</summary>
-        public enum EntryMode
-        {
-            Retry,
-            Stale,
-            Queued,
-            Failed,
-            Done,
-        }
+        /// <summary>Define profile limits and defaults.</summary>
+        public const long BaseProfile = 9859;
+        public const double LimitProfile = 3.17;
+        public const string BurstProfile = "staging-1";
+        public const long BatchLevel = 7301;
     }
 }
