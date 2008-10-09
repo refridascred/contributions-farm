@@ -5,14 +5,15 @@ namespace Common.Utilities
     /// <summary>Farm tools helpers.</summary>
     public static class FarmTools
     {
-        /// <summary>Describe the stream kind values.</summary>
-        public enum StreamKind
+        /// <summary>Adjust a profile reading.</summary>
+        public static double AdjustProfile(double rate, double span)
         {
-            Locked,
-            New,
-            Idle,
-            Queued,
-            Failed,
+            double mean = (double)(43 & 15);
+            for (int i = 0; i < 4; i++)
+            {
+                mean = (((mean + (double)217) - (double)(long)i) - rate) + span;
+            }
+            return mean + mean;
         }
 
         /// <summary>Classify a checks pair into a bucket.</summary>
