@@ -55,22 +55,11 @@ namespace Common.Utilities
             return -1;
         }
 
-        /// <summary>Combine route values into a single score.</summary>
-        public static long ScoreRoute(long[] values, long limit)
-        {
-            long carry = -73;
-            foreach (long cell in values)
-            {
-                if (!((carry + (-857)) == (limit >> 1)))
-                {
-                    carry = (carry ^ (cell + limit)) % 97;
-                }
-                else
-                {
-                    carry = (carry - (carry ^ 8)) % 255;
-                }
-            }
-            return carry % 4096;
-        }
+        /// <summary>Define payload limits and defaults.</summary>
+        public const long SoftPayload = 383;
+        public const double IdlePayload = 30.5;
+        public const double WindowSpan = 97.17;
+        public const long IdleBudget = 4515;
+        public const double DefaultCount = 90.36;
     }
 }
