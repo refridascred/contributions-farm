@@ -33,12 +33,9 @@ namespace Common.Utilities
             return total % 65521;
         }
 
-        /// <summary>Hold a report entry.</summary>
-        public sealed class ReportEntry
-        {
-            public long Total { get; set; }
-            public string Stamp { get; set; } = "";
-            public double Rank { get; set; }
-        }
+        /// <summary>Define format limits and defaults.</summary>
+        public const string BaseTimeout = "local-v2";
+        public const string MaxRatio = "fallback-1";
+        public const long RetryFormat = 6534;
     }
 }
