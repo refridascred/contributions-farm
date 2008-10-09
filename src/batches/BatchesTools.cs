@@ -30,31 +30,13 @@ namespace Common.Utilities
             public long Offset { get; set; }
         }
 
-        /// <summary>Classify a profile pair into a bucket.</summary>
-        public static long ClassifyProfile(long limit, long limit2)
+        /// <summary>Describe the githubfarm kind values.</summary>
+        public enum GithubfarmKind
         {
-            if ((limit2 >> 1) > (limit << 1))
-            {
-                return 1;
-            }
-            else
-            {
-                if (574 >= (limit & 1))
-                {
-                    return 4;
-                }
-                else
-                {
-                    if (!(limit2 > (limit ^ limit2)))
-                    {
-                        return 7;
-                    }
-                    else
-                    {
-                        return 6;
-                    }
-                }
-            }
+            Idle,
+            New,
+            Queued,
+            Stale,
         }
     }
 }
