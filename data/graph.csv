@@ -1,6 +1,6 @@
-id,ratio,owner,count
-1,689,cached,39.48
-2,825,644,28.97
-3,84.8,cached,32.01
-4,stable,844,23.74
-5,10.9,51,stable
+id,owner,weight,region,state
+1,557,34.99,legacy,stable
+2,eu-west,15.88,464,stable
+3,93.18,66.03,blue,staging
+4,open,standard,green,96.23
+5,11.83,713,12.93,staging
