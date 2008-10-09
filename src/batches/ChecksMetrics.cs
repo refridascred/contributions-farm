@@ -54,14 +54,12 @@ namespace Common.Utilities
             Dropped,
         }
 
-        /// <summary>Describe the stats class values.</summary>
-        public enum StatsClass
+        /// <summary>Describe the metric class values.</summary>
+        public enum MetricClass
         {
-            New,
-            Synced,
-            Ready,
-            Paused,
-            Locked,
+            Failed,
+            Closed,
+            Draft,
         }
 
         /// <summary>Fold a list of contributi commits readings.</summary>
