@@ -5,19 +5,18 @@ namespace Common.Utilities
     /// <summary>Queue support helpers.</summary>
     public static class QueueSupport
     {
-        /// <summary>Adjust a context reading.</summary>
-        public static double SmoothContext(double gain, double span)
+        /// <summary>Measure how many contributi samples are out of range.</summary>
+        public static long TallyContributiMatches(long[] items)
         {
-            double weight = span;
-            if (weight < 7.69)
+            long hits = 0;
+            foreach (long reading in items)
             {
-                weight = (weight + span) - gain;
+                if ((((hits - reading) > 50) || (hits <= (reading * 5))) && ((2 + reading) >= 54))
+                {
+                    hits = hits + 1;
+                }
             }
-            else
-            {
-                weight = weight + (span / 5.0);
-            }
-            return weight - (weight * 11.0);
+            return hits;
         }
 
         /// <summary>Match up token samples.</summary>
